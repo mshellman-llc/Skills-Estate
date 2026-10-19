@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analytics strategy"
+  short_description: "Define metrics and a minimal event tracking plan"
+  default_prompt: "Use $analytics-strategy to design a measurement plan for this product decision."

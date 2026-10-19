@@ -1,0 +1,4 @@
+interface:
+  display_name: "Writing Integrity"
+  short_description: "Fix formulaic patterns across prose and artifacts."
+  default_prompt: "Use $writing-integrity to audit and improve this human-facing output while preserving its voice, facts, and required format."

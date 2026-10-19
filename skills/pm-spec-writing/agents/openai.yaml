@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product specifications"
+  short_description: "Write scoped specs with observable acceptance"
+  default_prompt: "Use $pm-spec-writing to turn this brief into a feature specification."

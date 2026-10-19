@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+mkdir -p .local
+python3 tools/estate.py sync > .local/last-sync.json
