@@ -1,6 +1,6 @@
 # Skill catalog
 
-74 canonical packages. Generated packages include the shared policies.
+75 canonical packages. Generated packages include the shared policies.
 
 | Skill | Use |
 | --- | --- |
@@ -56,6 +56,7 @@
 | [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md) | Wording method for Megan's tailored resume copy under career-application tailor: stated and estimated figures, rounding, posting keyword placement, bullet shape, ATS layout. |
 | [rom](skills/rom/SKILL.md) | Prepare a rough order of magnitude estimate and its basis, with ranges, assumptions, reconciliation, and explicit conditions that would reopen it. |
 | [s2d-handoff](skills/s2d-handoff/SKILL.md) | Prepare a sales-to-delivery handoff from the executed agreement and deal record, and track the receiving delivery owner's acceptance. |
+| [sales-process-mapping](skills/sales-process-mapping/SKILL.md) | Turn source files into a map of sales business processes, triggers, ownership, handoffs, and systems of record. |
 | [scope-reference](skills/scope-reference/SKILL.md) | Produce a static scope comparison or option matrix with sourced inclusions, exclusions, hours, price, and timeline. Use for print-ready option summaries rather than interactive proposals. |
 | [scoping-agent](skills/scoping-agent/SKILL.md) | Develop or revise a project scope and its estimate with the user's pricing system or supplied quote model. Use for scope items, effort, staffing, and timeline planning. |
 | [session-handoff](skills/session-handoff/SKILL.md) | Prepare an end-of-session handoff that lets another agent resume the same task with its decisions, files, state, verification, and next action intact. |

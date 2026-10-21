@@ -2,7 +2,7 @@
 
 Private source of truth for Megan's reusable skills across Claude Code and Codex. Author each skill once in `skills/`. Branding belongs in [policies/brand.md](policies/brand.md); the build includes the current policy in every portable package.
 
-The estate contains 74 skills: 48 neutral business and delivery workflows, 21 current personal and career skills, two project adapters, and three estate foundations. [CATALOG.md](CATALOG.md) lists their entrypoints. This repository contains instructions and selected supporting tools, not private career evidence, client records, licensed brand assets, or project databases.
+The estate contains 75 skills: 49 neutral business and delivery workflows, 21 current personal and career skills, two project adapters, and three estate foundations. [CATALOG.md](CATALOG.md) lists their entrypoints. This repository contains instructions and selected supporting tools, not private career evidence, client records, licensed brand assets, or project databases.
 
 ## Install on a Mac or Linux machine
 
