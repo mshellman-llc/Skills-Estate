@@ -1,6 +1,8 @@
-# Pattern Reference
+# Pattern reference
 
 These are diagnostic signals, not forbidden strings. Context, density, and purpose decide whether a construction is a problem. Preserve quotations, required language, intentional parody, and a writer's genuine habits.
+
+Read this with [expanded-writing-review.md](expanded-writing-review.md), which covers grammar, whole-document structure, claim quality and response behavior. Neither list is an authorship test.
 
 ## Manufactured drama
 

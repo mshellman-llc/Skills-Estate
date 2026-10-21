@@ -1,13 +1,23 @@
 ---
 name: "writing-integrity"
-description: "Audit or improve human-facing writing and presentation patterns across messages, documents, decks, websites, and UI while preserving voice, facts, uncertainty, scope, and format. Use when the user asks to humanize, de-AI, remove slop, sound natural, or check generic output. Never guess authorship or promise detector evasion."
+description: "Audit or improve human-facing writing and presentation patterns across messages, documents, decks, websites, and UI while preserving voice, facts, uncertainty, scope, and format. Apply whenever drafting or revising prose for a person, including ordinary chat and progress updates; also use for explicit audits, humanizing, and removal of AI writing patterns. Never guess authorship or promise detector evasion."
 ---
 
-# Writing Integrity
+# Writing integrity
 
 Improve the writing without pretending to prove who wrote it. The target is specific, natural, evidence-grounded prose that still belongs to its author.
 
-This skill is the single neutral core for writing quality. It is self-contained: everything it needs is in this file, `references/patterns.md` and `references/context-rules.md`. It has no employer, house voice or brand dependency.
+This skill is the shared core for writing quality. Its pattern references, context rules and examples travel with the skill. It has no employer, house voice or brand dependency.
+
+## Apply by default
+
+Apply this skill to every response and deliverable, including questions, brief acknowledgments, progress updates, explanations, research, critiques, emails, documents, slides, captions, UI copy, commit messages and PR descriptions. The user does not need to request a writing review. Apply it while drafting and before delivery; an unrelated task skill does not replace this requirement.
+
+Read [patterns.md](references/patterns.md) and [expanded-writing-review.md](references/expanded-writing-review.md) on first use in a session. Keep both active for later outputs; reread them when context is lost or the user identifies a missed pattern. The short checklist below is only a reminder. Review argument, structure, evidence, voice and formatting as well as individual words. Use [examples.md](references/examples.md) when calibrating a repair or checking this skill's behavior.
+
+Executable code and verbatim quotations are exempt from prose rewriting. Human-facing text inside code, such as UI strings and generated documentation, still receives review. Preserve required literals, approved quotations and defined terms exactly. Apply the review silently during ordinary tasks; do not add a checklist, score or description of the review to the user's answer.
+
+For a short reply, check the complete reply. For a substantial artifact, read the complete finished content, including titles, labels, captions and closing lines. A clean scanner result never replaces this reading. If the skill files or scanner are unavailable, apply the available rules manually and continue the task; do not claim unavailable checks ran.
 
 ## The standard, on every surface
 
@@ -28,11 +38,12 @@ These twelve rules apply to all prose a person will read. They are the same rule
 
 ## Choose the job
 
-- **Edit** is the default. Return a revised draft that makes the fewest changes needed to remove formulaic writing and improve clarity.
+- **Compose** applies when producing an answer or new prose. Draft the requested content with this standard, then review it before delivery.
+- **Edit** is the default when revising existing prose. Return a revised draft that makes the fewest changes needed to remove formulaic writing and improve clarity.
 - **Audit** applies when the user asks for findings, a scan, or a diagnosis without a rewrite. Point to observable patterns and stop.
 - **Scrutiny** applies when the user asks whether a consequential message or document will hold up under review. Edit the prose and expose unsupported claims, blurred status, missing ownership, privacy risks, or scope ambiguity.
 
-If no draft is present, ask for it. Infer the audience, surface, and intended action from context. Ask one focused question only when the missing answer would materially change the work.
+Use the supplied draft for an edit or audit. When composing an answer, review your own draft without asking the user to supply one. Ask for a missing source only when the requested edit or audit actually depends on it. Infer the audience, surface, and intended action from context; ask one focused question only when the missing answer would materially change the work.
 
 ## Set audience and review depth
 
@@ -90,10 +101,10 @@ The protected set is an internal check, not automatically audience-facing copy. 
 1. Identify what the piece must make the reader know, decide, feel, or do.
 2. Notice the author's actual signals: vocabulary, cadence, directness, humor, uncertainty, rough edges, and preferred amount of structure.
 3. Fix structure before swapping words. Cut dead setup, move the real point, combine or split sentences, and remove repeated ideas only when that improves the job of the piece.
-4. Remove observable formulaic patterns. Use the checklist below and [references/patterns.md](references/patterns.md); do not apply either as a universal blacklist. Density and co-occurrence matter; one instance is rarely a problem.
+4. Remove observable formulaic patterns. Use both pattern references and the checklist below; do not apply them as a universal blacklist. Density and co-occurrence matter; one instance is rarely a problem.
 5. Replace abstraction with source-supported specifics. If no specific is available, stay accurate and flag the gap.
 6. Preserve purposeful irregularity. Do not make every paragraph the same length, every sentence polished, or every section symmetrical.
-7. Read the full result once for voice and once for protected meaning.
+7. Read the full result for voice and protected meaning. Check that the repair has not introduced repetitive brevity, blanket negativity, erased conditions or another formula. Stop when the meaning and voice are right; do not keep cycling through synonyms.
 
 Use this precedence when instructions compete:
 
@@ -107,7 +118,7 @@ For career, commercial, delivery, reflective, presentation, or sensitive interna
 
 ## Pattern checklist
 
-Check a finished draft for these. Each has its repair.
+Check a finished draft for these familiar signals, then apply the broader checks in [expanded-writing-review.md](references/expanded-writing-review.md). That reference covers noun-heavy sentences, paragraph formulas, unsupported logic, decorative sourcing, automatic agreement and loss of personal voice. Neither checklist is exhaustive.
 
 - Trailing participle clause that assigns significance ("..., highlighting the need"): end at the fact, or give the consequence its own sentence.
 - Negative parallelism ("not just X, it's Y", "not only... but"): state the claim directly.
@@ -133,16 +144,20 @@ In Claude Code and Codex on the user's machine, a deterministic scanner may be i
 /usr/bin/python3 ~/.agents/humanize/tellscan.py scan <file> --profile megan   # Megan-authored copy
 ```
 
-Fix what it flags at the structure level, then rerun. Quoted material and code are exempt. On surfaces where the scanner is absent (chat, Cowork, mobile), apply the checklist above by reading; never claim a scan ran when it did not.
+Inspect each flag in context. Repair actual defects at the structure level, then rerun; retain meaningful contrasts, required terminology and deliberate author choices. Quoted material and executable code are exempt. The scanner covers only part of the review. On surfaces where it cannot run, apply both pattern references by reading; never claim a scan ran when it did not. Do not weaken the review or delay an ordinary answer because no scanner is available.
 
 ## Surface rules in brief
 
-- **Email and messages:** open on the substance; one ask; no ceremonial greeting or sign-off offer.
-- **Website and UI:** each label and line names a real thing the reader can do or get; no mission statement where a fact belongs; no empty cards.
-- **Decks:** a slide title states the slide's claim; the body supports it; no three-box layout unless there are three things.
-- **Documents:** the first sentence of each section carries its point; headings in sentence case; tables only for real comparisons.
+- Email and messages: open on the substance; one ask; no ceremonial greeting or sign-off offer.
+- Website and UI: each label and line names a real thing the reader can do or get; no mission statement where a fact belongs; no empty cards.
+- Decks: a slide title states the slide's claim; the body supports it; no three-box layout unless there are three things.
+- Documents: the first sentence of each section carries its point; headings in sentence case; tables only for real comparisons.
+- Chat and progress updates: answer the actual request, name observed progress or uncertainty, and stop when the useful content is complete. Verify challenged factual claims before agreeing, denying, assigning responsibility or explaining a cause. Never invent authorship, memory or motive. Preferences require no verification.
+- Technical explanations, commits and PRs: identify the behavior, mechanism and relevant evidence. Keep identifiers exact. Preserve conditions and limitations instead of replacing them with slogans about simplicity or reliability.
 
 ## Output the useful result
+
+For **composition**, deliver the requested answer or artifact without editing narration.
 
 For an **edit**, lead with the complete revised text. Add a short change note only when the changes are substantial, a protected item needs confirmation, or the user asks for an explanation. For a tiny edit, return only the finished copy.
 
@@ -161,7 +176,7 @@ Never promise that an edit will pass Turnitin, GPTZero, Copyleaks, or another de
 
 ## Check the work
 
-For a full rewrite, audit, or scrutiny pass, confirm before delivery: every protected item survived unchanged; no fact, source or detail was added; the voice still belongs to the author; the checklist patterns are gone without a synonym standing in for each; and the format the user required is intact. A clean result must preserve meaning as well as remove patterns.
+Before delivering any prose, confirm at the depth appropriate to the task: every protected item survived unchanged; no unsupported fact, source or detail was invented; the voice still belongs to the author; the checklist patterns are gone without a synonym standing in for each; and the format the user required is intact. A clean result must preserve meaning as well as remove patterns.
 
 When the user provides before-and-after examples or corrects an edit, use the correction for the current task. Do not store the sample, alter this skill, or turn one preference into a universal rule unless the user explicitly asks to update the skill.
 
