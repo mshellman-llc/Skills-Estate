@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sales process mapping"
+  short_description: "Map sales processes, owners, triggers, and record systems"
+  default_prompt: "Use $sales-process-mapping to turn my source files into a clear map of business processes, ownership, triggers, and systems of record."
