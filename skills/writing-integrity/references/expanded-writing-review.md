@@ -1,12 +1,12 @@
-# Expanded writing review
+# Paragraphs, claims and response habits
 
-Use this reference whenever applying writing-integrity, including ordinary responses and new drafts. The short checklist in SKILL.md is not exhaustive. Review how the argument develops, what each sentence contributes, and whether the voice suits its reader.
+Read this alongside [patterns.md](patterns.md) for every writing task. Check how the argument develops, what each sentence adds and whether the voice suits the reader.
 
-Research reviewed October 21, 2026. Sources distinguish measured tendencies from editorial observations. The repairs and miniature examples below are authored editorial guidance, not quotations or validated detection rules. No single construction establishes authorship.
+Research review date: October 21, 2026. The cited studies report results from the models and tasks they examined. The repairs and examples are editorial advice written for this skill. They are not quotations from the studies or tests of authorship.
 
 ## Grammar and voice
 
-Reinhart and colleagues found noun-heavy prose and more frequent present-participle clauses in the instruction-tuned models they studied. Their results also varied by model. Rallapalli and colleagues' 2026 preprint found substantial genre effects. Apply these findings to audience fit and readability; do not impose a universal ban on nouns, passives, or sentence lengths. [Reinhart et al.](https://arxiv.org/html/2410.16107v2), [Rallapalli et al., preprint](https://arxiv.org/abs/2604.14111)
+Reinhart and colleagues found noun-heavy prose and more frequent present-participle clauses in the instruction-tuned models they studied. Their results varied by model. Rallapalli and colleagues' 2026 preprint found substantial differences by genre. Review whether the sentence suits its reader; these findings do not justify banning nouns, passives or particular sentence lengths. [Reinhart et al.](https://arxiv.org/html/2410.16107v2), [Rallapalli et al., preprint](https://arxiv.org/abs/2604.14111)
 
 | Review signal | What to inspect and how to repair it |
 | --- | --- |
@@ -17,7 +17,7 @@ Reinhart and colleagues found noun-heavy prose and more frequent present-partici
 
 ## Paragraph and document structure
 
-Kim and colleagues found differences in discourse structure, with greater structural variability in human texts in their comparison. Russell and colleagues' annotators noticed formulaic organization, vague optimistic endings, and recurring quotation placement. These findings justify reviewing relationships across paragraphs as well as individual sentences. [Kim et al.](https://aclanthology.org/2024.acl-long.298/), [Russell et al., appendix D.3](https://aclanthology.org/2025.acl-long.267.pdf)
+Kim and colleagues found differences in discourse structure, with greater structural variability in human texts in their comparison. Russell and colleagues' annotators noticed formulaic organization, vague optimistic endings, and recurring quotation placement. [Kim et al.](https://aclanthology.org/2024.acl-long.298/), [Russell et al., appendix D.3](https://aclanthology.org/2025.acl-long.267.pdf)
 
 | Review signal | What to inspect and how to repair it |
 | --- | --- |
@@ -29,7 +29,7 @@ Kim and colleagues found differences in discourse structure, with greater struct
 
 ## Claims and usefulness
 
-Wikipedia's editors document vague relationships and rigid challenge-to-optimism conclusions in their own review work. Treat these as editorial observations. The other checks in this section are this skill's quality criteria; they are not claims of measured AI prevalence. [Wikipedia editors' guidance](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
+Wikipedia's editors describe vague relationships and conclusions that follow a challenge with automatic optimism. Those are editorial observations. The remaining checks below come from this skill; they make no claim about how often AI produces these patterns. [Wikipedia editors' guidance](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
 
 | Review signal | What to inspect and how to repair it |
 | --- | --- |
@@ -43,9 +43,9 @@ Wikipedia's editors document vague relationships and rigid challenge-to-optimism
 | Unnecessary disclaimers repeated throughout | The same source limitation appears after every finding. State it once where it affects interpretation. Keep any qualifier required to preserve a specific claim's meaning. |
 | Assistant commentary inside the deliverable | Promises to help, praise for the user, editing narration, or offers to continue interrupt the requested copy. Deliver the finding or requested copy directly. |
 
-## Response behavior and preservation of voice
+## Agreement and the author's voice
 
-Sharma and colleagues documented assistants favoring agreement with a user's beliefs across several tasks. Baumler and colleagues found that participant editing moved generated drafts toward personal style, while the edited texts still retained stylistic differences from unassisted writing under their measures. These studies support checking agreement and voice separately from grammar. The checks below translate those findings and the user's working requirements into response and editing practice. [Sharma et al.](https://arxiv.org/abs/2310.13548), [Baumler et al.](https://aclanthology.org/2026.acl-long.2030/)
+Sharma and colleagues documented assistants favoring agreement with a user's beliefs across several tasks. Baumler and colleagues found that participant editing moved generated drafts toward personal style, while the edited texts still retained stylistic differences from unassisted writing under their measures. Check agreement and voice separately from grammar. The table combines concerns raised by these studies with the user's instructions for replies and edits. [Sharma et al.](https://arxiv.org/abs/2310.13548), [Baumler et al.](https://aclanthology.org/2026.acl-long.2030/)
 
 | Review signal | What to inspect and how to repair it |
 | --- | --- |
@@ -56,23 +56,10 @@ Sharma and colleagues documented assistants favoring agreement with a user's bel
 | Prompt echo without a judgment | The response paraphrases every requested dimension but never answers the question or assesses the supplied evidence. Give the requested answer, decision or finding with its supporting evidence. Repeat the request only where needed to resolve scope or ambiguity. |
 | A template dictates the amount of content | Every finding receives the same headings and length, even when one sentence would suffice. Use required fields as completeness checks. Keep only the structure needed to follow the evidence and repair. |
 
-## What the existing review still covers
+## Read the revision for new mistakes
 
-Retain the full writing-integrity review alongside this reference:
+For each suspected pattern, identify what it does to this passage before editing. Preserve quotations, required terms and stylistic choices that carry meaning. A dash, passive sentence or three-item list can be appropriate.
 
-| Existing coverage | Patterns |
-| --- | --- |
-| Manufactured drama | Staged reversals; insider reveals; scripted questions and answers; dramatic label-and-reveal openings; slogans. |
-| Authority and interpretation | Unnamed consensus; inflated importance; reader-direction phrases; decorative interpretation. |
-| Generic language | Portable filler; inflated helper verbs; synonym rotation; performed warmth; hedge piles. |
-| Mechanical form | Fragment stacks; repetitive cadence; automatic triads; stock transitions; decorative formatting; punctuation used to manufacture a voice. |
+Compare the revision with the source. Keep every supported finding, condition, figure, source and acceptance check. If a sentence contains both filler and a necessary qualification, rewrite around the qualification. Do not add anecdotes, errors or arbitrary changes in sentence length.
 
-## Apply the review without introducing new defects
-
-For each suspected pattern, locate the passage and explain its effect on this reader before choosing a repair. Preserve quotations verbatim and retain necessary domain terminology. Keep a contrast or an author's stylistic choice when it carries meaning. An em dash, a passive sentence, or a three-item list can be appropriate. Check repetition and purpose across the whole piece.
-
-Preserve every supported finding, condition, number, source, and acceptance check. If removing a construction would erase required meaning, rewrite the sentence around that meaning. Do not create fake anecdotes, deliberate errors, arbitrary sentence-length variation, or a detector score target.
-
-The scanner covers only part of this review. Read the argument against its evidence and check whether the reader can understand the point and act on it when action is required. A text can avoid every flagged word and still contain generic or unusable advice.
-
-Use a second reading to check for damage introduced by editing. Concision must preserve decision conditions and approval state. Do not replace formulaic enthusiasm with robotic fragments, blanket negativity, or unnecessary bluntness. Keep genuine warmth when the relationship and message support it. Stop revising once the passage communicates its supported meaning in the required voice; do not cycle through synonyms to chase a lower score.
+Read the argument even when the scanner finds nothing. The text must support its claims and give the reader a usable action when the task calls for one. Check that editing has not erased approval conditions, created robotic fragments or replaced justified warmth with bluntness. Stop when the passage communicates its meaning in the required voice.

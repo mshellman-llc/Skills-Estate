@@ -1,81 +1,109 @@
-# Repair examples and acceptance checks
+# Editing examples
 
-These miniature cases use invented inputs for illustration. They do not establish facts about a real person or project. Read them when choosing a repair or evaluating whether this skill preserves meaning. Equivalent wording is acceptable; the evidence and constraints determine whether an answer passes.
+The inputs below are invented for these examples. They make no claims about a real project or person. An answer can use different words if it preserves the facts and conditions specified here.
 
-## Ordinary chat without a draft
+## Answer a short question
 
-Request: “The export finished. Where is the CSV?” Available evidence: the tool returned `/tmp/report.csv` and exit code 0.
+The user asks, “The export finished. Where is the CSV?” The tool returned `/tmp/report.csv` and exit code 0.
 
-Acceptable answer: “The CSV is saved at `/tmp/report.csv`.”
+“The CSV is saved at `/tmp/report.csv`” answers the question. Do not ask for a writing sample, echo the request, celebrate the result or add an offer. Review even a one-sentence reply.
 
-The response must give the location. It must not ask the user for a writing sample, echo the request, celebrate the result or add an offer to continue. A one-sentence answer still receives review.
+## Report a build without implying a release
 
-## A progress update that preserves the unfinished work
+The local build passed. Deployment has not been attempted. The draft says:
 
-Evidence: the local build passed; deployment has not been attempted.
+> Great progress! This isn't just a build milestone—it's a major leap toward a seamless release. The result? Production-ready confidence.
 
-Before: “Great progress! This isn't just a build milestone—it's a major leap toward a seamless release. The result? Production-ready confidence.”
+Replace it with:
 
-After: “The local build passed. Deployment has not been attempted.”
+> The local build passed. Deployment has not been attempted.
 
-The repair must retain both states. It must not imply a release, promise production readiness or invent a next action. Necessary status distinctions are meaningful contrasts.
+Both states must survive. Do not claim production readiness or invent a next action. The distinction between a build and a deployment matters here.
 
-## A conditional commercial claim
+## Keep a commercial approval condition
 
-Source: “The proposed option adds 24 hours at $180/hour. Work starts after written approval.”
+The source says, “The proposed option adds 24 hours at $180/hour. Work starts after written approval.” The draft replaces it with:
 
-Before: “Unlock effortless scale with a $4,320 investment, ensuring immediate momentum.”
+> Unlock effortless scale with a $4,320 investment, ensuring immediate momentum.
 
-After: “The proposed option adds 24 hours at $180/hour, totaling $4,320. Work starts after written approval.”
+A supported revision is:
 
-The repair must retain proposed status, hours, rate and approval condition. The total is derived from the supplied figures. The editor must not trade a decision condition for a shorter sentence.
+> The proposed option adds 24 hours at $180/hour, totaling $4,320. Work starts after written approval.
 
-## A challenged claim
+Keep proposed status, hours, rate and the approval condition. The total follows from the supplied figures. Shortening the sentence cannot remove the condition.
 
-User: “You deleted the exclusions.” Evidence: the current draft contains the exclusions in section 4; no reliable change history identifies who edited it.
+## Check a challenged claim
 
-Acceptable response: “The exclusions are present in section 4 of the current draft. I don't have records showing who changed that section.”
+The user says, “You deleted the exclusions.” The current draft contains the exclusions in section 4. No reliable change history identifies who edited it.
 
-Inspect the document before accepting or rejecting the factual claim. Do not invent an apology for deleting it, a recollection of restoring it or a reason another person changed it. A preference such as “put the exclusions earlier” needs no historical proof.
+After inspecting the document, an answer can say:
 
-## A personal position that should survive editing
+> The exclusions are present in section 4 of the current draft. I don't have records showing who changed that section.
 
-Source: “I don't want another status deck. I need to know who can approve the exception.”
+The current file establishes what is present now. It cannot establish that the exclusions were never deleted. Do not invent an apology for deleting them, a memory of restoring them or a reason someone else changed them. “Put the exclusions earlier” is a preference and needs no historical proof.
 
-Bad repair: “I appreciate the team's thoughtful reporting and would welcome enhanced visibility into decision-making ownership.”
+## Preserve a direct objection
 
-Acceptable result: retain the source wording. It already names the objection and the needed decision. Do not soften the position, add praise or substitute abstractions for the approver.
+The source says:
 
-## Advice with an actual action
+> I don't want another status deck. I need to know who can approve the exception.
 
-Evidence: a form submits successfully, then displays an empty page; no next step is shown.
+This edit changes the author's position:
 
-Before: “Improve the experience by creating a more intuitive, user-centric journey.”
+> I appreciate the team's thoughtful reporting and would welcome enhanced visibility into decision-making ownership.
 
-After: “After submission, the page is blank. Show a confirmation and the next step.”
+Keep the original. It identifies the objection and the needed decision. Added praise and abstract wording weaken both.
 
-The repair must connect the observed behavior to a usable recommendation. It must not invent an abandonment rate, customer emotion or measured conversion benefit.
+## Give advice the reader can act on
 
-## Technical copy with precise conditions
+A form submits successfully, then displays an empty page with no next step. The draft says:
 
-Evidence: a parser now rejects a missing `account_id` before making an API request. The validation test passed locally.
+> Improve the experience by creating a more intuitive, user-centric journey.
 
-Before: “This robust enhancement streamlines error handling, ensuring a seamless experience across the ecosystem.”
+Replace it with:
 
-After: “The parser rejects requests without `account_id` before calling the API. The validation test passed locally.”
+> After submission, the page is blank. Show a confirmation and the next step.
 
-The repair must name the behavior, preserve the identifier and retain the local test boundary. It must not claim that every invalid request is handled or the change is deployed.
+The recommendation must follow from the observed behavior. Do not invent an abandonment rate, customer emotion or measured conversion benefit.
 
-## Preserve meaningful punctuation and real lists
+## Preserve technical conditions
 
-Source: “Choose one format—CSV, JSON, or XLSX.” The interface supports exactly those three formats.
+A parser now rejects a missing `account_id` before making an API request. The validation test passed locally. The draft says:
 
-Acceptable result: retain the sentence. Its dash introduces a real list, and all three items are supported. A scanner match alone does not justify deleting a format or replacing the sentence with fragments.
+> This robust enhancement streamlines error handling, ensuring a seamless experience across the ecosystem.
 
-## Evidence and repetition across paragraphs
+A supported revision is:
 
-Evidence: a study observed task completion in 12 participants. It did not measure revenue. A draft cites it after a paragraph promising revenue growth and repeats that promise in its conclusion.
+> The parser rejects requests without `account_id` before calling the API. The validation test passed locally.
 
-Required repair: remove the unsupported revenue claim and its repetition. Attach the citation to the supported task-completion finding, with the sample limit. Do not invent the number who completed the task. If that number is necessary, retrieve it from the study before writing it.
+Keep the identifier, rejection condition, order and local test result. Do not claim the parser handles every invalid request or that the change is deployed.
 
-Passing this case requires reviewing the source-to-claim relationship and the complete draft. Swapping promotional words or moving the citation cannot fix it.
+## Keep a real list and useful punctuation
+
+The interface supports exactly three formats. The source says:
+
+> Choose one format—CSV, JSON, or XLSX.
+
+Keep the sentence. The dash introduces a real list. A scanner match cannot justify deleting a format or turning the sentence into fragments.
+
+## Check the citation and the whole draft
+
+A study observed task completion in 12 participants. It did not measure revenue. The draft cites the study after a claim about revenue growth and repeats that claim in its conclusion.
+
+Remove both instances of the unsupported revenue claim. Cite the study beside its task-completion finding and retain the sample size. Do not invent how many participants completed the task; retrieve that number if the answer needs it.
+
+Review the source and the entire draft. Changing promotional words or moving the citation cannot repair an unsupported claim.
+
+## Review the skill's own instructions
+
+A skill description says:
+
+> Audit or improve human-facing writing and presentation patterns across messages, documents, decks, websites, and UI while preserving voice, facts, uncertainty, scope, and format.
+
+A clearer description says:
+
+> Write and edit clear, specific prose in every response and deliverable. Remove formulaic AI writing while preserving facts, scope, uncertainty, and the author's voice. Also review existing drafts when asked.
+
+Review the description, prompts and every instruction file. Replace phrases such as “resolve the governing layer” with the actual decision, such as “choose which voice rules apply.” Remove repeated explanations and decorative labels. Preserve the writing checks, exceptions, commands, examples and linked research.
+
+Quoted examples of bad prose remain as examples. Instructions around those quotations must follow the skill's own rules.
