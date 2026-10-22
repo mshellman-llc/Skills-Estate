@@ -15,6 +15,7 @@ FAMILIES = [
  ('Career and personal', 'Prepare career materials and work with the private planning and creative tools.', 'career-application career-materials-and-outreach career-progression-and-offers case-study-builder resume-numbers-and-keywords fortunes-weave sticker-sheets'),
  ('Estate and engineering controls', 'Maintain skills, review changes, and verify where a result actually exists.', 'code-simplify execution-truth github-repository-work quality-gate skill-creation-walkthrough skill-estate-sync'),
 ]
+DEFAULT_PUBLISHED_REF = 'refs/remotes/origin/main'
 GROUPS = {name: i for i, (_, _, members) in enumerate(FAMILIES) for name in members.split()}
 
 def git(root, *args):
@@ -97,20 +98,57 @@ def markdown(text):
     if code is not None: out.append('<pre><code>'+html.escape('\n'.join(code))+'</code></pre>')
     return ''.join(out)
 
+def included(parts):
+    """Single inclusion rule for package files, given path parts relative to the skill folder."""
+    return not any(x.startswith('.') or x == '__pycache__' for x in parts) and Path(parts[-1]).suffix != '.pyc'
+
 def inventory(folder):
     result = []
     for p in sorted(folder.rglob('*')):
         rel = p.relative_to(folder)
-        if not p.is_file() or any(x.startswith('.') or x == '__pycache__' for x in rel.parts) or p.suffix == '.pyc': continue
+        if not p.is_file() or not included(rel.parts): continue
         result.append({'path': rel.as_posix(), 'sha256': digest(p.read_bytes()), 'bytes': p.stat().st_size, 'gitBlob': blob_digest(p.read_bytes())})
     return result
 
+def verified_base(baseline, base, published_ref):
+    """Resolve an explicit base commit and require it to be reachable from the published ref.
+
+    The published ref is a locally observed remote-tracking ref, not a live GitHub check;
+    this function performs no network work.
+    """
+    if not base:
+        raise ValueError('Explicit --base commit is required; it is not defaulted to HEAD')
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/@^~-]*', base) or '..' in base:
+        raise ValueError('Malformed base: '+repr(base))
+    if not published_ref or not published_ref.startswith('refs/remotes/') or published_ref.endswith('/'):
+        raise ValueError('Published ref must be a remote-tracking ref under refs/remotes/: '+repr(published_ref))
+    if subprocess.run(['git', 'check-ref-format', published_ref], capture_output=True).returncode != 0:
+        raise ValueError('Malformed published ref: '+repr(published_ref))
+    try:
+        published = git(baseline, 'rev-parse', '--verify', '--quiet', published_ref+'^{commit}').decode().strip()
+    except subprocess.CalledProcessError:
+        raise ValueError('Published ref not found in baseline repo (fetch it first): '+published_ref)
+    try:
+        commit = git(baseline, 'rev-parse', '--verify', '--quiet', base+'^{commit}').decode().strip()
+    except subprocess.CalledProcessError:
+        raise ValueError('Base is not a commit in the baseline repo: '+base)
+    result = subprocess.run(['git', '-C', str(baseline), 'merge-base', '--is-ancestor', commit, published], capture_output=True)
+    if result.returncode == 1:
+        raise ValueError(f'Base {commit} is not reachable from {published_ref}; it is unpublished')
+    if result.returncode != 0:
+        raise ValueError('Could not check base ancestry against '+published_ref)
+    return commit
+
 def build(args):
     root = args.repo.resolve(); baseline = (args.baseline_repo or root).resolve()
-    ref = args.base or git(baseline, 'rev-parse', 'HEAD').decode().strip()
-    ref = git(baseline, 'rev-parse', ref+'^{commit}').decode().strip()
-    tree = git(baseline, 'ls-tree', '-r', ref, 'skills').decode().splitlines()
-    base_blobs = {line.split('\t',1)[1]: line.split('\t',1)[0].split()[2] for line in tree}
+    ref = verified_base(baseline, args.base, args.published_ref)
+    tree = [e for e in git(baseline, 'ls-tree', '-r', '-z', ref, 'skills').decode().split('\0') if e]
+    base_blobs = {}
+    for entry in tree:
+        meta, path = entry.split('\t', 1)
+        parts = path.split('/')
+        if len(parts) > 2 and included(parts[2:]):
+            base_blobs[path] = meta.split()[2]
     base_files = list(base_blobs)
     base_skills = {p.split('/')[1] for p in base_files if re.fullmatch(r'skills/[^/]+/SKILL.md', p)}
     folders = {p.parent.name: (p.parent, False) for p in root.glob('skills/*/SKILL.md')}
@@ -175,7 +213,8 @@ def build(args):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--repo',type=Path,default=HERE.parents[1]); p.add_argument('--base',help='Verified Git commit for comparison; defaults to repo HEAD')
+    p.add_argument('--repo',type=Path,default=HERE.parents[1]); p.add_argument('--base',required=True,help='Git commit for comparison; must be reachable from --published-ref')
+    p.add_argument('--published-ref',default=DEFAULT_PUBLISHED_REF,help='Locally refreshed remote-tracking ref that marks published history (default: %(default)s)')
     p.add_argument('--baseline-repo',type=Path,help='Git checkout containing the compared commit; defaults to --repo')
     p.add_argument('--extra',type=Path,action='append',default=[],help='Explicit local skill folder; can repeat')
     p.add_argument('--output',type=Path,default=HERE/'index.html')
