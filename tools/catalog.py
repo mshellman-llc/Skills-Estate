@@ -15,17 +15,26 @@ def entries(root):
     if record.get('format') != 1 or not isinstance(record.get('entries'), dict):
         raise ValueError('Unsupported skill catalog')
     result = record['entries']
-    used = set(record.get('internal', []))
+    owners = {}
+
+    def claim(module, owner):
+        if module in owners:
+            raise ValueError(f'Duplicate catalog owner for {module}: {owners[module]} and {owner}')
+        owners[module] = owner
+
+    for module in record.get('internal', []):
+        claim(module, 'internal')
     for name, item in result.items():
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name):
             raise ValueError('Invalid public skill name: ' + name)
         if item['source'] not in modules:
             raise ValueError('Missing primary workflow: ' + item['source'])
-        used.add(item['source'])
+        claim(item['source'], name + ' primary')
         for mode, module in item.get('modes', {}).items():
             if not mode.strip() or module not in modules:
                 raise ValueError('Missing mode workflow: ' + str(module))
-            used.add(module)
+            claim(module, name + ' mode ' + mode)
+    used = set(owners)
     if used != modules:
         raise ValueError('Catalog module coverage differs: ' + ', '.join(sorted(used ^ modules)))
     return dict(sorted(result.items()))

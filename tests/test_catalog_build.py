@@ -65,6 +65,23 @@ class CatalogBuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'coverage differs'):
             estate.validate(self.root)
 
+    def test_catalog_rejects_duplicate_source_ownership(self):
+        self.module('primary', 'Keep the primary workflow.\n')
+        self.module('detail', 'Keep the detail workflow.\n')
+        cases = [
+            ({'one': {'source': 'primary'}, 'two': {'source': 'primary'}}, ['detail']),
+            ({'one': {'source': 'primary', 'modes': {'detail': 'detail'}},
+              'two': {'source': 'detail'}}, []),
+            ({'one': {'source': 'primary', 'modes': {'first': 'detail', 'second': 'detail'}}}, []),
+            ({'one': {'source': 'primary', 'modes': {'detail': 'detail'}}}, ['detail']),
+            ({'one': {'source': 'primary'}}, ['detail', 'detail']),
+        ]
+        for public, internal in cases:
+            with self.subTest(entries=public, internal=internal):
+                self.catalog({'format': 1, 'entries': public, 'internal': internal})
+                with self.assertRaisesRegex(ValueError, 'Duplicate catalog owner'):
+                    estate.validate(self.root)
+
     def test_real_scope_package_runs_both_output_modes_without_siblings(self):
         item = entries(ROOT)['scope-options']
         package = self.root / 'scope-options'

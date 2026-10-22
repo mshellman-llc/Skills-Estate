@@ -120,6 +120,32 @@ class EstateTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'stale'):
             estate.current_build(self.root)
 
+    def test_dependency_inputs_add_change_and_remove_invalidate_build(self):
+        for name in ('package.json', 'pnpm-lock.yaml', 'requirements-test.txt'):
+            with self.subTest(input=name):
+                path = self.root / name
+                estate.build(self.root)
+                path.write_text('first dependency revision\n')
+                with self.assertRaisesRegex(ValueError, 'stale'):
+                    estate.current_build(self.root)
+                estate.build(self.root)
+                path.write_text('second dependency revision\n')
+                with self.assertRaisesRegex(ValueError, 'stale'):
+                    estate.current_build(self.root)
+                estate.build(self.root)
+                path.unlink()
+                with self.assertRaisesRegex(ValueError, 'stale'):
+                    estate.current_build(self.root)
+
+    def test_dependency_input_symlink_is_rejected(self):
+        for name in ('package.json', 'pnpm-lock.yaml', 'requirements-test.txt'):
+            with self.subTest(input=name):
+                path = self.root / name
+                path.symlink_to(self.base / 'absent-dependencies')
+                with self.assertRaisesRegex(ValueError, 'Symlink dependency input'):
+                    estate.build(self.root)
+                path.unlink()
+
     def test_runtime_is_vendored_once_and_entrypoint_links_are_rewritten(self):
         dep = self.root / 'skills/helper'
         dep.mkdir()

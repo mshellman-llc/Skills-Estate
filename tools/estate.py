@@ -21,6 +21,7 @@ from portable import assemble, runtime_closure
 from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint
 
 IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv', 'node_modules'}
+DEPENDENCY_INPUTS = ('package.json', 'pnpm-lock.yaml', 'requirements-test.txt')
 
 
 def files(folder):
@@ -65,6 +66,14 @@ def source_hash(root=ROOT):
     for directory in ('skills', 'policies', 'tools', 'agents', 'tests', 'examples', 'config'):
         records += [(str(p.relative_to(root)), sha(p.read_bytes()), p.stat().st_mode & 0o111)
                     for p in files(root / directory)]
+    for name in DEPENDENCY_INPUTS:
+        path = root / name
+        if path.is_symlink():
+            raise ValueError(f'Symlink dependency input: {name}')
+        if path.exists():
+            if not path.is_file():
+                raise ValueError(f'Dependency input is not a file: {name}')
+            records.append((name, sha(path.read_bytes()), path.stat().st_mode & 0o111))
     return sha(json.dumps(records, separators=(',', ':')).encode())
 
 
