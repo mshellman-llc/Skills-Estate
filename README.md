@@ -77,3 +77,7 @@ Verify account and repository access with `gh auth status` and `gh repo view OWN
 [MIGRATION.md](MIGRATION.md) records what was retained, rebuilt, and left in the historical source estate. Existing source folders and account-managed copies are preserved. Reusable workflows were rewritten without the former employer's identity, brand, rates, contractual language, payment details, or customer fixtures. This is not feature parity with the former employer's bespoke rendering and integration engines.
 
 This private repository has no blanket distribution license. Preserve included third-party notices and review provenance before redistributing a skill outside the owner's accounts.
+
+## Interactive skills map
+
+Open [the skills map](artifacts/skills-map/index.html) in a browser to search the estate, follow suggested workflows, and inspect each skill’s instructions and connections. [Build instructions](artifacts/skills-map/README.md) cover canonical and personal snapshots.
