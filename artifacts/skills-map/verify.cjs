@@ -19,6 +19,10 @@ const {chromium}=require('playwright');
  fs.writeFileSync(path.join(output,'rendered.html'),await page.content());
  assert.equal(await page.locator('body').evaluate(e=>getComputedStyle(e).fontSize),'16px');
  assert.equal(await page.locator('body').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 255, 255)');
+ assert((await page.locator('body').evaluate(e=>getComputedStyle(e).fontFamily)).includes('Plus Jakarta Sans'));
+ for(const weight of [400,600,700])assert(await page.evaluate(w=>document.fonts.check(w+' 16px "Plus Jakarta Sans"'),weight));
+ assert.equal(await page.locator('.hero').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(8, 15, 40)');
+ assert.equal(await page.locator('.top-tabs').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(247, 245, 240)');
  // All exact sources remain downloadable and all detail panes populate for every skill.
  for(const skill of data.skills){
   await page.locator(`.skill-row[data-skill="${skill.id}"]`).click();

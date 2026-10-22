@@ -38,6 +38,10 @@ class SkillsMapTests(unittest.TestCase):
         embedded = re.search(r'<script type="application/json" id="estate-data">(.*?)</script>', text, re.S)[1]
         self.assertEqual(json.loads(embedded), self.data)
         self.assertNotIn('<', embedded)
+        self.assertEqual(text.count('data:font/ttf;base64,'), 3)
+        self.assertIn('SIL OPEN FONT LICENSE', text)
+        self.assertNotIn('__EDITORIAL_FONT_FACES__', text)
+        self.assertNotIn('__DESIGN_TOKENS__', text)
 
     def test_connections_have_source_evidence(self):
         names={s['id'] for s in self.data['skills']}

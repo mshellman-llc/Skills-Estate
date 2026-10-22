@@ -28,4 +28,5 @@ jobs:
           path: |
             artifacts/skills-map/index.html
             artifacts/skills-map/index.json
+            artifacts/skills-map/assets/fonts/OFL.txt
           if-no-files-found: error

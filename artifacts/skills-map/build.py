@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build a portable, offline map from complete SKILL.md entrypoints (stdlib only)."""
-import argparse, hashlib, html, json, re, subprocess
+import argparse, base64, hashlib, html, json, re, subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -105,6 +105,22 @@ def inventory(folder):
         result.append({'path': rel.as_posix(), 'sha256': digest(p.read_bytes()), 'bytes': p.stat().st_size, 'gitBlob': blob_digest(p.read_bytes())})
     return result
 
+def render_snapshot(data, output):
+    """Re-render a captured snapshot without rereading or changing skill content."""
+    encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
+    palette=json.loads((HERE/'assets/design-tokens.json').read_text())
+    css_tokens=''.join(token['cssVar']+':'+token['hex']+';' for token in palette['colors'].values())
+    font_css=[]
+    for weight, name in [(400,'Regular'),(600,'SemiBold'),(700,'Bold')]:
+        font=base64.b64encode((HERE/f'assets/fonts/PlusJakartaSans-{name}.ttf').read_bytes()).decode()
+        font_css.append('@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:'+str(weight)+';font-display:swap;src:url(data:font/ttf;base64,'+font+') format("truetype")}')
+    license_text=(HERE/'assets/fonts/OFL.txt').read_text()
+    template=(HERE/'template.html').read_text()
+    rendered=template.replace('__ESTATE_DATA__',encoded).replace('__DESIGN_TOKENS__',css_tokens).replace('__EDITORIAL_FONT_FACES__','\n'.join(font_css))
+    rendered=rendered.replace('</head>','<script type="text/plain" id="font-license">'+html.escape(license_text)+'</script>\n</head>')
+    output=Path(output).resolve();output.parent.mkdir(parents=True,exist_ok=True);output.write_text(rendered)
+    return output
+
 def build(args):
     root = args.repo.resolve(); baseline = (args.baseline_repo or root).resolve()
     ref = args.base or git(baseline, 'rev-parse', 'HEAD').decode().strip()
@@ -165,10 +181,7 @@ def build(args):
     data['counts']={s:sum(x['status']==s for x in skills) for s in ['github','local-revision','local-addition']}
     data['counts']['canonical']=sum(x['id'] in base_skills for x in skills)
     data['counts']['total']=len(skills)
-    encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
-    output=args.output.resolve(); output.parent.mkdir(parents=True,exist_ok=True)
-    template=(HERE/'template.html').read_text()
-    output.write_text(template.replace('__ESTATE_DATA__',encoded))
+    output=render_snapshot(data,args.output)
     output.with_suffix('.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'output':str(output),'base':ref,'counts':data['counts']}))
     return data

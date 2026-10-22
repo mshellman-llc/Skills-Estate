@@ -1,0 +1,316 @@
+{
+  "$comment": [
+    "Default editorial design tokens. Values are retained to preserve the original visual system; no company identity is implied."
+  ],
+  "provenance": {
+    "mode": "authoritative",
+    "guidelines": "Editorial design CSS",
+    "verifiedAgainst": "assets/colors_and_type.css",
+    "modeNote": "Every color is checked against the bundled CSS by runtime_preflight.py."
+  },
+  "colors": {
+    "deepNavy": {
+      "hex": "#080F28",
+      "cssVar": "--deep-navy",
+      "role": "Hero bg, slide headers",
+      "brand": true,
+      "group": "navy"
+    },
+    "abyss": {
+      "hex": "#0A1830",
+      "cssVar": "--abyss",
+      "role": "",
+      "brand": true,
+      "group": "navy"
+    },
+    "midnight": {
+      "hex": "#0D2040",
+      "cssVar": "--midnight",
+      "role": "",
+      "brand": true,
+      "group": "navy"
+    },
+    "lighterNavy": {
+      "hex": "#10213C",
+      "cssVar": "--lighter-navy",
+      "role": "Card bg on deep navy",
+      "brand": true,
+      "group": "navy"
+    },
+    "fg": {
+      "hex": "#111118",
+      "cssVar": "--fg",
+      "role": "Text primary",
+      "brand": false,
+      "group": "neutral"
+    },
+    "deepInk": {
+      "hex": "#12243A",
+      "cssVar": "--deep-ink",
+      "role": "",
+      "brand": true,
+      "group": "navy"
+    },
+    "teal": {
+      "hex": "#1A6B6B",
+      "cssVar": "--teal",
+      "role": "CTAs, primary actions, highlighted actions",
+      "brand": true,
+      "group": "teal"
+    },
+    "tealMid": {
+      "hex": "#1D7A7A",
+      "cssVar": "--teal-mid",
+      "role": "",
+      "brand": true,
+      "group": "teal"
+    },
+    "navyBlue": {
+      "hex": "#1E3070",
+      "cssVar": "--navy-blue",
+      "role": "",
+      "brand": true,
+      "group": "navy"
+    },
+    "tealLight": {
+      "hex": "#2D9A9A",
+      "cssVar": "--teal-light",
+      "role": "",
+      "brand": true,
+      "group": "lightTeal"
+    },
+    "coolGray": {
+      "hex": "#4A5568",
+      "cssVar": "--cool-gray",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    },
+    "lightTeal": {
+      "hex": "#4AA8A8",
+      "cssVar": "--light-teal",
+      "role": "Highlights over deep navy",
+      "brand": true,
+      "group": "lightTeal"
+    },
+    "fgSecondary": {
+      "hex": "#5A5A55",
+      "cssVar": "--fg-secondary",
+      "role": "Text secondary",
+      "brand": false,
+      "group": "neutral"
+    },
+    "slateBlue": {
+      "hex": "#6B7FA0",
+      "cssVar": "--slate-blue",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    },
+    "gray500": {
+      "hex": "#718096",
+      "cssVar": "--gray-500",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    },
+    "steelBlue": {
+      "hex": "#8A9BB8",
+      "cssVar": "--steel-blue",
+      "role": "Link hover, supporting elements",
+      "brand": false,
+      "group": "neutral"
+    },
+    "fgMuted": {
+      "hex": "#9A9890",
+      "cssVar": "--fg-muted",
+      "role": "Text muted, eyebrows on light",
+      "brand": false,
+      "group": "neutral"
+    },
+    "gray400": {
+      "hex": "#A0AEC0",
+      "cssVar": "--gray-400",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    },
+    "tealMuted": {
+      "hex": "#A8D8D8",
+      "cssVar": "--teal-muted",
+      "role": "",
+      "brand": true,
+      "group": "lightTeal"
+    },
+    "blueGray": {
+      "hex": "#ABB8C3",
+      "cssVar": "--blue-gray",
+      "role": "Muted labels, supporting text on dark",
+      "brand": false,
+      "group": "neutral"
+    },
+    "darkSand": {
+      "hex": "#DEDAD0",
+      "cssVar": "--dark-sand",
+      "role": "Borders/dividers on sand",
+      "brand": true,
+      "group": "sand"
+    },
+    "border": {
+      "hex": "#E0E4EA",
+      "cssVar": "--border",
+      "role": "Default 1px divider on light",
+      "brand": false,
+      "group": "neutral"
+    },
+    "tealPale": {
+      "hex": "#E0F0F0",
+      "cssVar": "--teal-pale",
+      "role": "Tag bg, surface tints",
+      "brand": true,
+      "group": "lightTeal"
+    },
+    "iceBlue": {
+      "hex": "#E2EBF4",
+      "cssVar": "--ice-blue",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    },
+    "frost": {
+      "hex": "#F0F4F8",
+      "cssVar": "--frost",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    },
+    "sand": {
+      "hex": "#F7F5F0",
+      "cssVar": "--sand",
+      "role": "Warm alt surfaces",
+      "brand": true,
+      "group": "sand"
+    },
+    "offWhite": {
+      "hex": "#F9F9F9",
+      "cssVar": "--off-white",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    },
+    "white": {
+      "hex": "#FFFFFF",
+      "cssVar": "--white",
+      "role": "",
+      "brand": false,
+      "group": "neutral"
+    }
+  },
+  "aliases": {
+    "$comment": "Semantic name -> token key. Renderers use these so a CSS variable rename does not ripple through every producer. Both loaders merge them into hex/bare.",
+    "navy": "deepNavy",
+    "teal": "teal",
+    "tealLight": "lightTeal",
+    "accentOnDark": "lightTeal",
+    "offWhite": "offWhite",
+    "sand": "sand",
+    "sandDivider": "darkSand",
+    "divider": "border",
+    "blueGray": "blueGray",
+    "textPrimary": "fg",
+    "textSecondary": "fgSecondary",
+    "textMuted": "fgMuted",
+    "white": "white",
+    "cardOnDark": "lighterNavy",
+    "linkHover": "steelBlue",
+    "tagFill": "tealPale"
+  },
+  "rules": {
+    "warmSurfacesAllowed": [
+      "#F7F5F0",
+      "#DEDAD0"
+    ],
+    "warmAccentsAllowed": false,
+    "warmAccentNote": "Sand is the only warm surface on the brand. No orange, amber, or warm red accents. This rules out amber alert boxes; a warning is told by its label.",
+    "borderWidthPx": 1,
+    "borderNeverBlack": true,
+    "borderColorsBySurface": {
+      "light": "#E0E4EA",
+      "sand": "#DEDAD0"
+    },
+    "radius": {
+      "allowedPx": [
+        4,
+        8
+      ],
+      "defaultPx": 8,
+      "smallPx": 4,
+      "capPx": 8,
+      "pillPx": 999,
+      "capNote": "colors_and_type.css: 'Cap at 8px.' --radius:8px is the default for tags, buttons, cards, AND inputs; --radius-sm:4px is the small variant.",
+      "pillUsage": "avatars, dots, and status pucks only",
+      "pillNote": "colors_and_type.css: the circle is 'reserved for visual assets like avatars, dots, status pucks - never used on buttons, cards, or inputs'.",
+      "supersedes": "An earlier 8-to-12px card band in this file was wrong; it came from a paraphrase, not from the CSS."
+    },
+    "headingCase": "sentence",
+    "labelTransform": "uppercase",
+    "labelTrackingEm": 0.14,
+    "bodyAlign": "left",
+    "bodyAlignNote": "Never center a long paragraph.",
+    "titleUnderline": false,
+    "footer": {
+      "required": false,
+      "logo": null,
+      "pageNumber": "content-dependent"
+    },
+    "deckConstruction": {
+      "mode": "tokens",
+      "requireOfficialTemplate": false,
+      "note": "Use content-driven composition and inspect every rendered slide. Do not add a logo or company footer."
+    },
+    "eyebrow": {
+      "brandHex": "#9A9890",
+      "brandContrastOnWhite": 2.89,
+      "defaultHex": "#5A5A55",
+      "defaultContrastOnWhite": 6.93,
+      "wcagLargeTextMin": 3.0,
+      "status": "accessible-default",
+      "note": "Use the secondary text token on light surfaces. Muted gray is decorative only; never use it for required text.",
+      "onDarkHex": "#4AA8A8",
+      "onDarkNote": "colors_and_type.css: .on-dark .eyebrow uses --eyebrow-on-dark, which is --light-teal #4AA8A8. The contrast tradeoff below applies to LIGHT surfaces only."
+    },
+    "shadow": {
+      "allowed": true,
+      "maxOffsetPx": 4,
+      "note": "colors_and_type.css ships --shadow-xs/-sm/(default)/-lg, described as 'restrained, max 4px offset per brand'. Shadows are not banned; oversized ones are.",
+      "tokens": {
+        "xs": "0 1px 2px rgba(8, 15, 40, 0.04)",
+        "sm": "0 1px 3px rgba(8, 15, 40, 0.06), 0 1px 2px rgba(8, 15, 40, 0.04)",
+        "default": "0 2px 4px rgba(8, 15, 40, 0.06), 0 4px 12px rgba(8, 15, 40, 0.06)",
+        "lg": "0 4px 8px rgba(8, 15, 40, 0.08), 0 4px 24px rgba(8, 15, 40, 0.08)"
+      },
+      "source": "colors_and_type.css"
+    }
+  },
+  "type": {
+    "family": "Plus Jakarta Sans",
+    "numerals": "tabular",
+    "monospaceInBodies": false
+  },
+  "blocked": {
+    "$comment": "Known off-brand colors remain blocked even when they resemble a canonical token.",
+    "knownOffBrand": {
+      "reason": "Use the mapped canonical token.",
+      "hexes": [
+        "#1A1A1A",
+        "#5A6478",
+        "#B23A48"
+      ],
+      "replacedBy": {
+        "#1A1A1A": "#111118",
+        "#5A6478": "#5A5A55",
+        "#B23A48": "#080F28"
+      }
+    }
+  }
+}
