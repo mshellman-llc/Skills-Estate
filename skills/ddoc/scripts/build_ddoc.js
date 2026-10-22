@@ -182,6 +182,33 @@ function preflight(m) {
     }
   }
 
+  // A comparison slide renders option headers from m.options and its body from rows.
+  // Without rows the slide is only a header strip, so rows are required, one cell per option.
+  // false and 0 are meaningful cells; only absent, blank, or non-scalar values are rejected.
+  m.slides.forEach((s, i) => {
+    if (s.kind !== "comparison") return;
+    const at = `comparison slide ${i + 1}`;
+    if (!Array.isArray(s.rows) || !s.rows.length) {
+      errs.push(`${at} has no rows. A comparison with only option names and prices compares nothing`);
+      return;
+    }
+    s.rows.forEach((r, ri) => {
+      const row = r && typeof r === "object" ? r : {};
+      if (typeof row.label !== "string" || !row.label.trim()) errs.push(`${at} row ${ri + 1} has a blank label`);
+      if (!Array.isArray(row.values)) {
+        errs.push(`${at} row ${ri + 1} has no values array`);
+        return;
+      }
+      if (row.values.length !== options.length)
+        errs.push(`${at} row ${ri + 1} has ${row.values.length} cells for ${options.length} options`);
+      row.values.forEach((v, ci) => {
+        const ok = typeof v === "boolean" || (typeof v === "number" && Number.isFinite(v))
+          || (typeof v === "string" && v.trim() !== "");
+        if (!ok) errs.push(`${at} row ${ri + 1} cell ${ci + 1} is blank or not a string, number, or boolean`);
+      });
+    });
+  });
+
   // Evidence classes on the "what we heard" slide.
   const heard = m.slides.find((s) => s.kind === "heard");
   if (heard) {

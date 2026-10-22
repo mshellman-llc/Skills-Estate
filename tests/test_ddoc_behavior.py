@@ -94,6 +94,73 @@ class DeckBehaviorTests(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertIn("option_block word counts range", result.stdout)
 
+    def comparison_case(self, name, rows):
+        manifest = self.decision()
+        slide = manifest["slides"][2]
+        if rows is None:
+            del slide["rows"]
+        else:
+            slide["rows"] = rows
+        return self.invoke(manifest, name)
+
+    def test_comparison_without_usable_rows_is_rejected(self):
+        for name, rows, message in (
+            ("absent", None, "has no rows"),
+            ("empty", [], "has no rows"),
+            ("blank-label", [{"label": "  ", "values": ["One", "Two"]}], "blank label"),
+            ("missing-label", [{"values": ["One", "Two"]}], "blank label"),
+            ("missing-cell", [{"label": "Teams", "values": ["One"]}], "1 cells for 2 options"),
+            ("extra-cell", [{"label": "Teams", "values": ["One", "Two", "Three"]}], "3 cells for 2 options"),
+            ("no-values", [{"label": "Teams"}], "no values array"),
+            ("blank-cell", [{"label": "Teams", "values": ["One", " "]}], "cell 2 is blank"),
+            ("null-cell", [{"label": "Teams", "values": ["One", None]}], "cell 2 is blank"),
+        ):
+            with self.subTest(case=name):
+                result, _ = self.comparison_case("comparison-" + name, rows)
+                self.assertNotEqual(0, result.returncode)
+                self.assertIn(message, result.stderr)
+
+    def test_comparison_keeps_false_and_zero_cells(self):
+        rows = [{"label": "Includes training", "values": [False, True]},
+                {"label": "Open defects", "values": [0, 3]}]
+        manifest = self.decision()
+        manifest["slides"][2]["rows"] = rows
+        result, pptx = self.invoke(manifest, "comparison-false-zero", build=True)
+        self.assertEqual(0, result.returncode, result.stderr)
+        with zipfile.ZipFile(pptx) as archive:
+            xml = archive.read("ppt/slides/slide4.xml").decode()
+        for text in ("Includes training", "Open defects", "<a:t>0</a:t>", "<a:t>3</a:t>", "<a:t>—</a:t>", "<a:t>●</a:t>"):
+            self.assertIn(text, xml)
+
+    def test_rendered_comparison_contains_labels_and_cells(self):
+        manifest = self.decision()
+        result, pptx = self.invoke(manifest, "comparison-rendered", build=True)
+        self.assertEqual(0, result.returncode, result.stderr)
+        with zipfile.ZipFile(pptx) as archive:
+            xml = archive.read("ppt/slides/slide4.xml").decode()
+        for row in manifest["slides"][2]["rows"]:
+            self.assertIn(row["label"], xml)
+            for value in row["values"]:
+                self.assertIn(value, xml)
+
+    def test_decision_example_renders_its_comparison_from_option_blocks(self):
+        example = json.loads((ROOT / "skills/ddoc/references/example-decision-manifest.json").read_text())
+        comparison = next(s for s in example["slides"] if s["kind"] == "comparison")
+        blocks = {s["option"]: s["sections"] for s in example["slides"] if s["kind"] == "option_block"}
+        names = [o["name"] for o in example["options"]]
+        sources = {"In scope": "In scope", "Not in scope": "Not in scope", "Assumptions": "Assumptions"}
+        self.assertEqual(list(sources), [r["label"] for r in comparison["rows"]])
+        for row in comparison["rows"]:
+            self.assertEqual([blocks[n][sources[row["label"]]][0] for n in names], row["values"])
+        result, pptx = self.invoke(example, "comparison-example", build=True)
+        self.assertEqual(0, result.returncode, result.stderr)
+        with zipfile.ZipFile(pptx) as archive:
+            xml = archive.read("ppt/slides/slide4.xml").decode()
+        for row in comparison["rows"]:
+            self.assertIn(row["label"], xml)
+            for value in row["values"]:
+                self.assertIn(value, xml)
+
     def test_confirmation_build_contains_required_copy_and_neutral_brand(self):
         result, pptx = self.invoke(self.base, "confirmation-built", build=True)
         self.assertEqual(0, result.returncode, result.stderr)

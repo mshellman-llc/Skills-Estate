@@ -88,7 +88,33 @@
     {
       "kind": "comparison",
       "title": "The three options side by side",
-      "label": "Options"
+      "label": "Options",
+      "rows": [
+        {
+          "label": "In scope",
+          "values": [
+            "Quote configuration and approval routing.",
+            "Quote configuration, approval routing, and order handoff.",
+            "The full revenue lifecycle through billing."
+          ]
+        },
+        {
+          "label": "Not in scope",
+          "values": [
+            "Order management, available as a later phase.",
+            "Billing configuration, available as a later phase.",
+            "Field service, available as a later phase."
+          ]
+        },
+        {
+          "label": "Assumptions",
+          "values": [
+            "One integration endpoint.",
+            "Two integration endpoints.",
+            "Four integration endpoints."
+          ]
+        }
+      ]
     },
     {
       "kind": "option_block",
