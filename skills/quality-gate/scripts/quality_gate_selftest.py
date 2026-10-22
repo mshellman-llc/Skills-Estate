@@ -169,6 +169,25 @@ record["checks"] = [c for c in record["checks"]
 check("declared brand render requires the renderer",
       "unrouted-control" in codes(record), True)
 
+# A control the artifact declares cannot be waved off as not_applicable.
+record = copy.deepcopy(GOOD)
+record["artifact"]["brand_render"] = True
+check("declared brand render with not_applicable is rejected",
+      "unrouted-control" in codes(record), True)
+record = copy.deepcopy(GOOD)
+record["checks"][1]["verdict"] = "not_applicable"
+record["assertions"] = []
+check("declared contract scope with not_applicable is rejected",
+      "unrouted-control" in codes(record), True)
+record = copy.deepcopy(GOOD)
+record["artifact"]["brand_render"] = True
+record["checks"][3] = {"control": "brand-renderer", "verdict": "blocked",
+                       "citation": "no rendered output available"}
+record["release"]["released"] = False
+check("declared brand render with a blocked check is a valid refusal",
+      validate(record).ok, True)
+check("and the refusal does not release", validate(record).released, False)
+
 # Structural refusals.
 check("non-object record is rejected", "shape" in codes([]), True)
 record = copy.deepcopy(GOOD)

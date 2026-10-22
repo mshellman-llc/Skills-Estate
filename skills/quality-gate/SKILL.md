@@ -1,6 +1,6 @@
 ---
 name: quality-gate
-description: 'Select and run the required artifact release controls before any Word document, PowerPoint deck, Excel workbook, PDF, HTML page, proposal, report, email, Slack message, or decision-bearing artifact is finalized. Use for every branded or client-facing output. Requires executable evidence from prose-pass and brand-renderer, not a claim that another skill was mentioned, and blocks release when a required runtime or receipt is absent.'
+description: 'Select and run the required artifact release controls before any Word document, PowerPoint deck, Excel workbook, PDF, HTML page, proposal, report, email, Slack message, or decision-bearing artifact is finalized. Use for every styled or client-facing output. Requires inspected evidence from the prose review (with a prose-pass receipt for final narrative artifacts) and, for styled output, from brand-renderer plus the rendered result, not a claim that another skill was mentioned. Blocks release when a required runtime, receipt, source support, or rendered output is absent.'
 ---
 
 <!-- ESTATE-WRITING:BEGIN -->
@@ -10,10 +10,13 @@ Before writing, read the [writing standard](references/estate/writing.md). Apply
 
 # Quality gate
 
-Read [`build-card.md`](../_shared/build-card.md). Inspect the finished artifact
-and its sources before judging it. For a styled artifact, locate the rendering
-module's preflight and check results. Run an available missing check directly;
-ask the user only for an input or decision the available sources cannot supply.
+Read [`build-card.md`](../_shared/build-card.md). Open the finished artifact
+and its sources before judging it. For a styled artifact, locate the
+`brand-renderer` preflight report (`runtime_preflight.py --json`) and the
+`brand_check.py` result. Record a missing asset or a passed control only after
+the report supplies an absolute path or fails. Run an available missing check
+directly; ask the user only for an input or decision the available sources
+cannot supply.
 
 ## Where this sits
 
@@ -40,33 +43,52 @@ absent report is a `blocked` verdict, never a `pass`.
 
 ## Route the checks
 
-1. Apply `writing-integrity` to every piece of authored prose. Read the complete
-   result and repair actual defects; sound prose does not need arbitrary edits.
-   When a narrative workflow requires a review record, use the internal
-   diagnostic tool (`prose-pass/scripts/prose_receipt.py emit`).
-   Validate that receipt. Reference it on the prose-pass check's `receipt` field.
-   `quality_gate.py` refuses a record that
-   claims a final narrative artifact without one. Sound prose may pass
-   unchanged only with a justified no-change assessment in the receipt.
-2. Cite `brand-renderer` evidence when brand rendering or branded presentation is
-   required: the preflight report and the `brand_check.py` result, by path. Brand
-   controls identity, so an off-palette hex, a redrawn mark, or a substituted font
-   is a fail. Composition is content-driven, so a review flag on footer placement
-   or slide layout takes a disposition and stands.
+1. Review every piece of authored prose under `writing-integrity`, including
+   instructions, labels and internal records. Read the complete result and
+   repair actual defects; sound prose does not need arbitrary edits. The quality
+   record names this check `prose-pass`, the control `quality_gate.py` looks for.
+   Run the `prose-pass` diagnostics on saved files; they report only detectable
+   patterns, so a clean scan does not show that the prose was read.
+   For a final narrative artifact, emit the receipt with
+   `prose-pass/scripts/prose_receipt.py emit`, validate it, and put its path in
+   the check's `receipt` field. `quality_gate.py` refuses a final narrative
+   record without one. Sound prose may pass unchanged only with a justified
+   no-change assessment in the receipt.
+2. For a styled artifact, cite `brand-renderer` evidence: the preflight report
+   and the `brand_check.py` result, by path. Then render or open the actual file
+   and inspect every page, slide or screen for clipping, contrast, missing
+   content, wrong figures and broken controls. A color scan cannot establish
+   legibility or layout. If the rendered output is missing or cannot be
+   produced, the brand check is `blocked`. Brand controls identity, so an
+   off-palette hex or a redrawn mark is a fail. A font substitution passes only
+   when it is the selected profile's documented fallback and the record
+   discloses it; any other substitution is a fail.
+   Composition is content-driven, so a review flag on footer placement or
+   slide layout takes a disposition and stands.
 3. Apply `sow-quality` to SOW or contractual scope content.
 4. Apply the producing skill's deterministic validator when one exists.
-5. Require evidence review for unsupported claims, figures, approvals, scope, status, or go/no-go conclusions.
+5. Reconcile claims, figures, approvals, scope, status, and go/no-go conclusions
+   with their sources. Recompute totals and compare quoted numbers with the
+   source. A claim whose source is missing, conflicting or too thin to support
+   it is `blocked` until the source is found or the claim is removed. Marking it
+   as an assumption is an alternative only for lower-risk provisional analysis,
+   as in Grade. Approvals, deployment or publication status, and unsupported
+   committed financial figures stay fail-closed: find the source or remove the
+   claim, and never record an approval as an assumption. A generated file is not evidence that anyone approved,
+   sent, published or deployed it. When the request included a write, check the
+   destination and state the layer reached: prepared locally, committed,
+   published, or verified in the destination.
 
 Prose-pass receipts apply to narrative artifacts: briefs, proposals, SOWs,
-decks, readouts, one-pagers, decision documents. They do not apply to raw
-evidence, transcripts, ledgers, or machine-readable files; running a voice
-rewrite over evidence corrupts the record it exists to protect.
+decks, readouts, one-pagers, decision documents. Raw evidence, transcripts,
+ledgers, and machine-readable files keep their exact source spans unchanged and
+take accuracy checks instead of a voice rewrite. Any summary, label or comment
+written around those spans is authored prose and is reviewed under item 1.
 
-Ordinary email and Slack take a reading pass against the voice rules, no receipt.
-They arrive here only once the message carries a consequential figure, an
-approval, scope, a commitment, or a decision. That is the same list the
-fail-closed rule below reads, which is why a short message about a number gets
-the same discipline as a document about one.
+Ordinary email and Slack take a reading pass against the writing standard, no
+receipt. They arrive here only once the message carries a consequential figure,
+an approval, scope, a commitment, or a decision. A short message about a number
+gets the same source check as a document about one.
 
 ## Grade
 
@@ -83,4 +105,4 @@ the same discipline as a document about one.
 
 ## Output contract
 
-Return a durable Markdown quality record. Include artifact identity, selected controls, performed checks, assertion evidence, release verdict, blockers, remediation, plus Knowledge Hub update status.
+Return a durable Markdown quality record. Include artifact identity, selected controls, performed checks, assertion evidence, release verdict, blockers, remediation, plus Knowledge Hub update status (`not_applicable` when the workflow has no hub write). A passing record shows which controls ran; it does not replace reading the artifact.

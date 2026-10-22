@@ -2,7 +2,7 @@ schema_version: 1
 name: quality-gate
 display_name: Quality Gate
 summary: Run the required Estate release controls and refuse finalization without
-  executable prose, brand, and evidence records.
+  the prose review and evidence records, plus brand review when the artifact is styled.
 status: active
 tier: core
 version: 1.2.0
@@ -17,8 +17,9 @@ runtimes:
 triggers:
 - Use before finalizing any Estate Word document, PowerPoint deck, Excel workbook,
   PDF, HTML page, proposal, report, email, Slack message, or decision-bearing artifact.
-  Require executable evidence from prose-pass and brand-renderer, not a claim that
-  another skill was mentioned.
+  Require inspected evidence from the prose review and, for styled output, from
+  brand-renderer and the rendered result, not a claim that another skill was
+  mentioned.
 exclusions: []
 inputs:
 - name: task_context

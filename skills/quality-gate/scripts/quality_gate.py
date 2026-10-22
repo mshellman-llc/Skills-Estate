@@ -141,8 +141,11 @@ def validate(record: Any) -> GateVerdict:
     if not isinstance(artifact, dict):
         error("artifact-shape", "artifact must be an object naming the thing graded")
         return GateVerdict(False, blockers, findings)
+    # not_applicable contradicts a declaration that the control is needed.
+    ran = {c.get("control") for c in checks
+           if isinstance(c, dict) and c.get("verdict") in ("pass", "fail", "blocked")}
     for flag, control in sorted(ROUTED_CONTROLS.items()):
-        if artifact.get(flag) and control not in seen:
+        if artifact.get(flag) and control not in ran:
             error("unrouted-control",
                   "artifact declares {} but no check ran {}".format(flag, control))
 
