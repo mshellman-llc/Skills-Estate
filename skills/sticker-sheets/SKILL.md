@@ -3,6 +3,11 @@ name: sticker-sheets
 description: Lay out Megan's PNG designs as Cricut Print Then Cut sheets using the current project generator. Use for sticker sizes, exact counts, sheet rebuilding, and physical print layouts.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Sticker sheets
 
 The current generator is maintained in `/Volumes/Stickers/0 Sticker Sheet Maker/sticker-sheets/skills/sticker-sheets/`. Read that project's skill and inspect `make_sheets.py --help` before using it. This estate entry is the shared adapter; it does not duplicate the project generator or brand assets. If the drive is unavailable, request the specific generator or source designs needed and do not pretend a local path is accessible in a cloud session.

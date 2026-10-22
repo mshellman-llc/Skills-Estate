@@ -1,0 +1,51 @@
+schema_version: 1
+name: team-onboarding
+display_name: Team Onboarding
+summary: Design a structured onboarding experience that gets a new team member productive
+  in 30, 60, and 90 days.
+status: active
+tier: situational
+version: 1.0.0
+owner: Estate
+category: delivery-lifecycle
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Design a structured onboarding experience that gets a new team member productive
+  in 30, 60, and 90 days. Use when a new hire is joining, when contractors or agency
+  partners need to ramp, when a team restructures and people switch focus, or when
+  onboarding is slow and inconsistent. Also triggers when one person holds all the
+  tribal knowledge and it needs capturing, when people keep leaving in their first
+  90 days, or when many people join a project at once. Covers engineering, design,
+  product, marketing and operations roles. Do NOT use for performance management,
+  technology-specific training, hiring, or commercial offering design.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

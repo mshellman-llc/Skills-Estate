@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{CLIENT_NAME}} | Call brief</title>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+__FONTS__
+__PALETTE__
+
+:root{
+  --bg:var(--white); --bg-alt:var(--off-white); --bg-warm:var(--sand); --bg-frost:var(--frost);
+  --border-warm:var(--dark-sand);
+  --bg-dark:var(--deep-navy); --bg-dark-alt:var(--lighter-navy); --bg-dark-card:var(--deep-ink);
+  --fg-on-dark:var(--white); --fg-on-dark-secondary:var(--blue-gray); --eyebrow-on-dark:var(--light-teal);
+  --action:var(--teal); --action-hover:var(--steel-blue); --link-on-dark:var(--light-teal);
+  
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --fs-display:48px; --fs-h1:36px; --fs-h2:24px; --fs-h3:20px; --fs-h4:16px;  --fs-small:12px;
+  --lh-tight:1.05; --lh-snug:1.2; --lh-normal:1.45; --lh-relaxed:1.6;
+  --tracking-tight:-0.02em; --tracking-label:0.14em;
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px; --space-6:32px;
+  --space-7:48px; --space-8:64px; --space-9:96px;
+   
+  --shadow-xs:none;
+  --shadow-sm:none;
+  --shadow:none;
+  --shadow-lg:none;
+  --max-content:1200px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-normal);color:var(--fg);background:var(--bg-alt);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
+h1,h2,h3,h4{margin:0;letter-spacing:var(--tracking-tight);}
+h1{font-size:var(--fs-h1);font-weight:700;line-height:var(--lh-tight);}
+h2{font-size:var(--fs-h2);font-weight:600;line-height:var(--lh-snug);}
+h3{font-size:var(--fs-h3);font-weight:600;line-height:var(--lh-snug);}
+h4{font-size:var(--fs-h4);font-weight:600;line-height:var(--lh-snug);letter-spacing:0;}
+p{margin:0 0 var(--space-3);line-height:var(--lh-relaxed);color:var(--fg-secondary);}
+a{color:var(--action);text-underline-offset:2px;text-decoration-thickness:1px;}
+a:hover{color:var(--action-hover);}
+.eyebrow{font-size:var(--fs-small);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--fg-muted);}
+.on-dark .eyebrow{color:var(--eyebrow-on-dark);}
+.on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--fg-on-dark);}
+.on-dark p{color:var(--fg-on-dark-secondary);}
+.on-dark a{color:var(--link-on-dark);}
+.wrap{max-width:var(--max-content);margin:0 auto;padding:0 var(--space-6);}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:60;background:var(--deep-navy);border-bottom:1px solid color-mix(in srgb,var(--teal) 22%,transparent);}
+.topbar-in{max-width:var(--max-content);margin:0 auto;padding:var(--space-3) var(--space-6);display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap;}
+.topbar img{height:22px;display:block;}
+.clockbox{display:flex;align-items:center;gap:var(--space-2);margin-left:auto;color:var(--blue-gray);font-size:var(--fs-small);}
+.clockbox strong{color:var(--white);font-weight:600;font-variant-numeric:tabular-nums;}
+.searchwrap{position:relative;flex:1 1 240px;max-width:340px;}
+.searchwrap i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--slate-blue);}
+#q{width:100%;padding:7px 10px 7px 32px;border-radius:var(--radius);border:1px solid color-mix(in srgb,var(--teal) 35%,transparent);background:color-mix(in srgb,var(--white) 6%,transparent);color:var(--white);font-family:var(--font-sans);font-size:var(--fs-small);}
+#q::placeholder{color:var(--slate-blue);}
+#q:focus{outline:2px solid var(--teal);outline-offset:0;background:color-mix(in srgb,var(--white) 10%,transparent);}
+.tbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:var(--radius);border:1px solid color-mix(in srgb,var(--teal) 35%,transparent);background:transparent;color:var(--blue-gray);font-family:var(--font-sans);font-size:var(--fs-small);font-weight:600;cursor:pointer;}
+.tbtn:hover{border-color:var(--light-teal);color:var(--white);}
+.tbtn.on{background:var(--teal);border-color:var(--teal);color:var(--white);}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:53px;z-index:55;background:var(--lighter-navy);border-bottom:1px solid color-mix(in srgb,var(--teal) 18%,transparent);}
+.nav-in{max-width:var(--max-content);margin:0 auto;padding:0 var(--space-6);display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;}
+.nav-in::-webkit-scrollbar{display:none;}
+.nav a{flex:0 0 auto;padding:11px 13px;font-size:var(--fs-small);font-weight:600;color:var(--blue-gray);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
+.nav a:hover{color:var(--white);}
+.nav a.active{color:var(--white);border-bottom-color:var(--light-teal);}
+
+/* ---------- hero ---------- */
+.hero{background:var(--deep-navy);padding:var(--space-8) 0 var(--space-7);}
+.hero h1{font-size:var(--fs-display);max-width:16ch;}
+.hero .lead{font-size:18px;color:var(--blue-gray);max-width:62ch;margin-top:var(--space-4);line-height:var(--lh-relaxed);}
+.metastrip{display:flex;flex-wrap:wrap;gap:var(--space-6);margin-top:var(--space-6);padding-top:var(--space-5);border-top:1px solid color-mix(in srgb,var(--teal) 25%,transparent);}
+.metastrip div span{display:block;font-size:11px;font-weight:700;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--light-teal);margin-bottom:3px;}
+.metastrip div b{color:var(--white);font-weight:600;font-size:var(--fs-body);}
+
+/* ---------- sections ---------- */
+section{padding:var(--space-8) 0;border-top:1px solid var(--border);background:var(--bg);}
+section:nth-of-type(even){background:var(--bg-alt);}
+section.warm{background:var(--sand);border-top-color:var(--border-warm);}
+section.dark{background:var(--deep-navy);border-top-color:color-mix(in srgb,var(--teal) 20%,transparent);}
+.sec-head{margin-bottom:var(--space-6);}
+.sec-head h2{margin-top:var(--space-2);max-width:30ch;}
+.sec-head p{margin-top:var(--space-3);max-width:78ch;}
+
+/* ---------- cards ---------- */
+.grid{display:grid;gap:var(--space-4);}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-5);box-shadow:var(--shadow-xs);}
+.dark .card{background:var(--deep-ink);border-color:color-mix(in srgb,var(--teal) 25%,transparent);}
+.card h3,.card h4{margin-bottom:var(--space-3);}
+.card p:last-child{margin-bottom:0;}
+.card.accent{border-left:3px solid var(--teal);}
+.kpi{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-4) var(--space-5);}
+.kpi .v{font-size:28px;font-weight:700;letter-spacing:var(--tracking-tight);color:var(--deep-navy);line-height:1.1;}
+.kpi .l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--fg-muted);margin-bottom:6px;}
+.kpi .s{font-size:var(--fs-small);color:var(--fg-secondary);margin-top:6px;line-height:1.4;}
+.kpi.neg .v{color:var(--teal);}
+.kpi.pos .v{color:var(--teal);}
+.dark .kpi{background:var(--deep-ink);border-color:color-mix(in srgb,var(--teal) 25%,transparent);}
+.dark .kpi .v{color:var(--white);}
+.dark .kpi .l{color:var(--light-teal);}
+.dark .kpi .s{color:var(--blue-gray);}
+
+/* ---------- pills / tags ---------- */
+.tag{display:inline-block;padding:3px 9px;border-radius:var(--radius-sm);font-size:11px;font-weight:700;letter-spacing:.02em;background:var(--teal-pale);color:var(--teal);}
+.tag.warn{background:var(--teal-pale);color:var(--teal);}
+.tag.stop{background:var(--teal-pale);color:var(--teal);}
+.tag.neutral{background:var(--frost);color:var(--cool-gray);}
+
+/* ---------- footnote chips ---------- */
+.fn{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:3px;border-radius:var(--radius-sm);background:var(--teal-pale);color:var(--teal);font-size:10px;font-weight:700;cursor:pointer;vertical-align:super;line-height:16px;border:none;font-family:var(--font-sans);}
+.fn:hover{background:var(--teal);color:var(--white);}
+.dark .fn{background:color-mix(in srgb,var(--teal) 20%,transparent);color:var(--light-teal);}
+.dark .fn:hover{background:var(--light-teal);color:var(--deep-navy);}
+
+/* ---------- assumption callout ---------- */
+.asm{display:block;border-left:3px solid var(--steel-blue);background:var(--frost);padding:var(--space-3) var(--space-4);border-radius:0 var(--radius) var(--radius) 0;margin:var(--space-3) 0;font-size:var(--fs-small);color:var(--cool-gray);line-height:var(--lh-normal);}
+.asm b{color:var(--deep-navy);font-weight:700;}
+.asm .aid{display:inline-block;font-family:var(--font-mono);font-size:10px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1px 5px;margin-right:6px;color:var(--slate-blue);}
+body.asm-hl .asm{border-left-color:var(--teal);background:var(--teal-pale);box-shadow:0 0 0 2px color-mix(in srgb,var(--teal) 18%,transparent);}
+.dark .asm{background:color-mix(in srgb,var(--teal) 10%,transparent);color:var(--blue-gray);border-left-color:var(--steel-blue);}
+.dark .asm b{color:var(--white);}
+.dark .asm .aid{background:transparent;border-color:color-mix(in srgb,var(--teal) 40%,transparent);}
+
+/* ---------- quote ---------- */
+.quote{border-left:3px solid var(--teal);padding:var(--space-2) 0 var(--space-2) var(--space-4);margin:var(--space-4) 0;}
+.quote p{font-size:15px;color:var(--fg);line-height:var(--lh-relaxed);}
+.quote cite{display:block;font-style:normal;font-size:var(--fs-small);color:var(--fg-muted);margin-top:var(--space-2);font-weight:600;}
+.dark .quote p{color:var(--white);}
+.dark .quote cite{color:var(--blue-gray);}
+
+/* ---------- tables ---------- */
+.tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--white);}
+table{width:100%;border-collapse:collapse;font-size:var(--fs-body);}
+th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--fg-muted);padding:11px var(--space-4);border-bottom:1px solid var(--border);background:var(--bg-alt);white-space:nowrap;}
+td{padding:11px var(--space-4);border-bottom:1px solid var(--border);color:var(--fg-secondary);vertical-align:top;line-height:var(--lh-normal);}
+tr:last-child td{border-bottom:none;}
+td strong{color:var(--fg);font-weight:600;}
+tbody tr:hover td{background:var(--bg-alt);}
+
+/* ---------- accordions ---------- */
+details{border:1px solid var(--border);border-radius:var(--radius);background:var(--white);margin-bottom:var(--space-3);overflow:hidden;}
+details[open]{box-shadow:var(--shadow-sm);}
+summary{padding:var(--space-4) var(--space-5);cursor:pointer;font-weight:600;color:var(--fg);list-style:none;display:flex;align-items:center;gap:var(--space-3);}
+summary::-webkit-details-marker{display:none;}
+summary .chev{margin-left:auto;color:var(--slate-blue);transition:transform .15s ease;}
+details[open] summary .chev{transform:rotate(90deg);}
+.dbody{padding:0 var(--space-5) var(--space-5);border-top:1px solid var(--border);padding-top:var(--space-4);}
+
+/* ---------- person cards ---------- */
+.person{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);}
+.person .top{display:flex;align-items:flex-start;gap:var(--space-3);}
+.avatar{width:42px;height:42px;border-radius:999px;background:var(--teal-pale);color:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex:0 0 auto;}
+.avatar.sf{background:var(--ice-blue);color:var(--navy-blue);}
+.avatar.unk{background:var(--frost);color:var(--slate-blue);}
+.person .nm{font-weight:700;color:var(--fg);font-size:15px;}
+.person .rl{font-size:var(--fs-small);color:var(--fg-muted);margin-top:2px;}
+.person ul{margin:0;padding-left:16px;}
+.person li{font-size:var(--fs-small);color:var(--fg-secondary);margin-bottom:5px;line-height:1.45;}
+.reach{background:var(--sand);border-radius:var(--radius);padding:var(--space-3) var(--space-4);font-size:var(--fs-small);color:var(--cool-gray);line-height:1.5;}
+.reach b{color:var(--teal);font-weight:700;display:block;margin-bottom:3px;font-size:10px;text-transform:uppercase;letter-spacing:var(--tracking-label);}
+
+/* ---------- flow diagram ---------- */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--space-4);align-items:stretch;}
+.fnode{background:var(--deep-ink);border:1px solid color-mix(in srgb,var(--teal) 30%,transparent);border-radius:var(--radius);padding:var(--space-4);cursor:pointer;text-align:left;font-family:var(--font-sans);color:var(--fg-on-dark);}
+.fnode:hover,.fnode.sel{border-color:var(--light-teal);background:var(--lighter-navy);}
+.fnode .ft{font-weight:700;font-size:var(--fs-h4);color:var(--white);margin-bottom:5px;}
+.fnode .fv{font-size:var(--fs-small);color:var(--light-teal);font-weight:600;margin-bottom:var(--space-3);}
+.fnode .fd{font-size:var(--fs-small);color:var(--blue-gray);line-height:1.5;}
+#flowdetail{margin-top:var(--space-5);background:var(--deep-ink);border:1px solid color-mix(in srgb,var(--teal) 30%,transparent);border-radius:var(--radius);padding:var(--space-5);min-height:120px;}
+#flowdetail h4{color:var(--white);margin-bottom:var(--space-3);}
+#flowdetail ul{margin:0;padding-left:18px;}
+#flowdetail li{color:var(--blue-gray);font-size:var(--fs-body);margin-bottom:7px;line-height:var(--lh-relaxed);}
+
+/* ---------- checklist ---------- */
+.qitem{display:flex;gap:var(--space-3);align-items:flex-start;padding:var(--space-4);border:1px solid var(--border);border-radius:var(--radius);background:var(--white);margin-bottom:var(--space-2);cursor:pointer;}
+.qitem:hover{border-color:var(--teal-muted);}
+.qitem.done{background:var(--frost);opacity:.62;}
+.qitem.done .qtext{text-decoration:line-through;}
+.qbox{width:18px;height:18px;border:1.75px solid var(--slate-blue);border-radius:var(--radius-sm);flex:0 0 auto;margin-top:2px;display:flex;align-items:center;justify-content:center;}
+.qitem.done .qbox{background:var(--teal);border-color:var(--teal);}
+.qbox i{color:var(--white);opacity:0;}
+.qitem.done .qbox i{opacity:1;}
+.qtext{font-weight:600;color:var(--fg);line-height:var(--lh-normal);}
+.qwhy{font-size:var(--fs-small);color:var(--fg-muted);margin-top:5px;line-height:1.5;}
+
+/* ---------- landmines ---------- */
+.mine{border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:0 var(--radius) var(--radius) 0;background:var(--white);padding:var(--space-4);margin-bottom:var(--space-3);}
+.mine h4{color:var(--teal);margin-bottom:6px;}
+.mine p{margin:0;font-size:var(--fs-small);}
+
+/* ---------- drill mode ---------- */
+.modal{position:fixed;inset:0;background:color-mix(in srgb,var(--deep-navy) 86%,transparent);z-index:200;display:none;align-items:center;justify-content:center;padding:var(--space-5);}
+.modal.open{display:flex;}
+.mcard{background:var(--white);border-radius:var(--radius);max-width:640px;width:100%;padding:var(--space-7);box-shadow:var(--shadow-lg);}
+.mcard .eyebrow{margin-bottom:var(--space-4);}
+#drillQ{font-size:22px;font-weight:600;line-height:var(--lh-snug);color:var(--fg);letter-spacing:var(--tracking-tight);}
+#drillA{margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--border);font-size:var(--fs-body);line-height:var(--lh-relaxed);color:var(--fg-secondary);display:none;}
+#drillA.show{display:block;}
+#drillA b{color:var(--fg);}
+.mbar{display:flex;gap:var(--space-3);margin-top:var(--space-6);align-items:center;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:var(--radius);border:none;background:var(--teal);color:var(--white);font-family:var(--font-sans);font-size:var(--fs-body);font-weight:600;cursor:pointer;}
+.btn:hover{background:var(--steel-blue);}
+.btn.ghost{background:transparent;color:var(--teal);border:1px solid var(--border);}
+.btn.ghost:hover{background:var(--bg-alt);color:var(--teal);border-color:var(--teal-muted);}
+#drillCount{margin-left:auto;font-size:var(--fs-small);color:var(--fg-muted);font-variant-numeric:tabular-nums;}
+
+/* ---------- footnote popover ---------- */
+#fnpop{position:fixed;z-index:300;max-width:400px;background:var(--deep-navy);color:var(--white);border-radius:var(--radius);padding:var(--space-4);font-size:var(--fs-small);line-height:1.55;box-shadow:var(--shadow-lg);display:none;border:1px solid color-mix(in srgb,var(--teal) 35%,transparent);}
+#fnpop.open{display:block;}
+#fnpop a{color:var(--light-teal);word-break:break-all;}
+#fnpop .src{display:block;margin-top:6px;font-size:11px;color:var(--blue-gray);}
+
+/* ---------- misc ---------- */
+.hidden{display:none !important;}
+mark{background:var(--teal-pale);color:var(--fg);padding:0 1px;border-radius:2px;}
+.sec-note{font-size:var(--fs-small);color:var(--fg-muted);margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--border);}
+.footer{background:var(--deep-navy);padding:var(--space-7) 0;}
+.footer img{height:20px;margin-bottom:var(--space-4);}
+.footer p{font-size:var(--fs-small);color:var(--slate-blue);max-width:80ch;}
+.bignum{font-family:var(--font-mono);font-size:11px;color:var(--slate-blue);}
+.rowlist{list-style:none;padding:0;margin:0;}
+.rowlist li{padding:var(--space-3) 0;border-bottom:1px solid var(--border);font-size:var(--fs-body);color:var(--fg-secondary);line-height:var(--lh-relaxed);}
+.rowlist li:last-child{border-bottom:none;}
+.rowlist li strong{color:var(--fg);}
+#noresults{display:none;padding:var(--space-6);text-align:center;color:var(--fg-muted);}
+@media print{
+  .topbar,.nav,.modal,#fnpop{display:none !important;}
+  section{page-break-inside:auto;padding:var(--space-5) 0;}
+  .card,details,.person{page-break-inside:avoid;}
+  details{border:none;} .dbody{display:block !important;}
+  body{background:var(--white);}
+}
+@media (max-width:640px){
+  :root{--fs-display:32px;--fs-h1:26px;--fs-h2:20px;}
+  .wrap{padding:0 var(--space-4);}
+  .nav{top:auto;position:static;}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     HOW TO USE THIS TEMPLATE
+
+     The CSS above and the JS at the bottom are complete and tested. You are
+     filling in CONTENT, not rebuilding mechanics.
+
+     1. Replace every {{SLOT}} below.
+     2. Fill the five JS registries at the bottom (FN, FLOW, QS, ASM, DRILL).
+     3. Run scripts/build_brief.py to inline brand assets and verify.
+
+     Markup patterns available, all styled and ready:
+       <button class="fn" data-fn="KEY">N</button>   footnote chip, KEY must exist in FN
+       <div class="asm"><span class="aid">A-01</span><b>Assumption, ...:</b> ...</div>
+       <div class="quote"><p>"..."</p><cite>Speaker</cite></div>
+       <div class="quote copyable"><p>"..."</p></div>   click-to-copy, for talk-track lines
+       <div class="reach"><b>Label</b>Body text</div>    the sand-coloured action box
+       <span class="tag">/.warn/.stop/.neutral</span>
+       <div class="kpi">/.pos/.neg  with .l label, .v value, .s subtext
+       <div class="mine">                               landmine card
+       <details><summary>…<svg class="ic chev">…</summary><div class="dbody">…
+       Add data-search-scope + data-s="keywords" to anything the filter should match.
+     ===================================================================== -->
+
+<header class="topbar">
+  <div class="topbar-in">
+    <img src="data:image/png;base64,{{LOGO_WHITE}}" alt="Selected project logo">
+    <div class="searchwrap">
+      <i data-lucide="search" width="14" height="14"></i>
+      <input id="q" type="search" placeholder="Filter the brief…" autocomplete="off">
+    </div>
+    <button class="tbtn" id="asmBtn" title="Highlight every assumption on the page">
+      <i data-lucide="flag" width="13" height="13"></i> Assumptions
+    </button>
+    <button class="tbtn" id="drillBtn" title="Rapid recall drill">
+      <i data-lucide="zap" width="13" height="13"></i> Drill
+    </button>
+    <div class="clockbox">
+      <i data-lucide="clock" width="14" height="14"></i>
+      <span id="countdown">Call at {{CALL_TIME_LABEL}}</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-in" id="navlinks">
+    <a href="#brief">60-second brief</a>
+    <a href="#room">The room</a>
+    <a href="#company">Company</a>
+    <a href="#money">Money flow</a>
+    <a href="#problem">The problem</a>
+    <a href="#compete">Competition</a>
+    <a href="#tech">Product context</a>
+    <a href="#track">Talk track</a>
+    <a href="#questions">Questions</a>
+    <a href="#mines">Unresolved conditions</a>
+    <a href="#assume">Assumptions</a>
+  </div>
+</nav>
+
+<div class="hero on-dark">
+  <div class="wrap">
+    <div class="eyebrow">Call brief · Prepared {{PREP_DATE}}</div>
+    <h1 style="margin-top:var(--space-4)">{{CLIENT_NAME}}</h1>
+    <!-- One sentence. The situation, not the company description. What is actually going on. -->
+    <p class="lead">{{SITUATION_SENTENCE}}</p>
+    <div class="metastrip">
+      <div><span>When</span><b>{{WHEN}}</b></div>
+      <div><span>Called by</span><b>{{ORGANIZER}}</b></div>
+      <div><span>In the room</span><b>{{ATTENDEE_COUNTS}}</b></div>
+      <div><span>Stage</span><b>{{DEAL_STAGE}}</b></div>
+      <div><span>Competitors</span><b>{{COMPETITORS}}</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 60-SECOND BRIEF =================
+     Three to five cards. Differentiated facts FIRST — the things competitors
+     do not have. Then the one message, then the wedge. Someone skimming in a
+     parking lot should be able to stop after this section and still be useful.
+     Each fact card ends with a .reach box giving the seller the exact move. -->
+<section id="brief">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Start here</div>
+      <h2>Call objective</h2>
+      <p>{{WHAT_THESE_ARE_AND_WHY}}</p>
+    </div>
+    <div class="grid g2" data-search-scope>
+      <div class="card accent" data-s="{{KEYWORDS}}">
+        <span class="tag">Fact 01</span>
+        <h3 style="margin-top:var(--space-3)">{{HEADLINE_CLAIM}}</h3>
+        <p>{{EVIDENCE}}<button class="fn" data-fn="{{KEY}}">1</button></p>
+        <div class="reach"><b>Use it as one question</b>{{THE_EXACT_MOVE}}</div>
+      </div>
+      <!-- repeat for facts 02, 03; then the one message, then the wedge -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE ROOM =================
+     .person card per attendee. Include a .reach "Suggested question" on each —
+     the read is the point, the biography is context. Use .avatar for client,
+     .avatar.sf for partner org, .avatar.unk for anyone unidentified.
+     Follow with a "Not in the room, but decisive" grid for absent deciders. -->
+<section id="room">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Attendees</div>
+      <h2>The room</h2>
+      <p>{{SOURCE_CAVEAT}}</p>
+    </div>
+    <div class="grid g3" data-search-scope>
+      <div class="person" data-s="{{KEYWORDS}}">
+        <div class="top">
+          <div class="avatar">{{INITIALS}}</div>
+          <div><div class="nm">{{NAME}}</div><div class="rl">{{TITLE}} · {{ORG}}<button class="fn" data-fn="{{KEY}}">N</button></div></div>
+        </div>
+        <ul><li>{{FACT}}</li></ul>
+        <div class="asm"><span class="aid">A-0N</span><b>Assumption, {{BAND}}:</b> {{THE_READ}}</div>
+        <div class="reach"><b>Suggested question</b>{{HOW}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPANY =================
+     KPI row, then segment/unit tables, then "what they can say yes to".
+     That last card is the one sellers forget: covenants, cash position, and
+     approval friction determine deal shape more than appetite does. -->
+<section id="company" class="warm">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Who they are</div>
+      <h2>{{ONE_LINE_CHARACTERISATION}}</h2>
+      <p>{{CONTEXT}}</p>
+    </div>
+    <div class="grid g4" data-search-scope>
+      <div class="kpi" data-s="{{KEYWORDS}}">
+        <div class="l">{{LABEL}}</div><div class="v">{{VALUE}}</div>
+        <div class="s">{{CONTEXT}}<button class="fn" data-fn="{{KEY}}">N</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MONEY FLOW =================
+     Dark section. One .fnode button per node; detail renders from the FLOW
+     registry below. This is the section that separates a partner who read the
+     filings from one who read the website — do not skip it or thin it out. -->
+<section id="money" class="dark on-dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">{{FLOW_HEADING}}</div>
+      <h2>{{FLOW_DESCRIPTION}}</h2>
+      <p>Click any node.</p>
+    </div>
+    <div class="flow" id="flowNodes">
+      <button class="fnode sel" data-flow="{{FLOW_KEY}}">
+        <div class="ft">{{NODE_NAME}}</div>
+        <div class="fv">{{HEADLINE_NUMBER}}</div>
+        <div class="fd">{{ONE_LINE}}</div>
+      </button>
+      <!-- 6 to 8 nodes: revenue streams, pricing mechanics, lifecycle,
+           working capital, legal entities, cash out -->
+    </div>
+    <div id="flowdetail"></div>
+  </div>
+</section>
+
+<!-- ================= THE PROBLEM =================
+     Verbatim client quotes carry this section. Their own words land harder
+     than any paraphrase. Attribute every one. Where two facts collide to
+     produce an insight, put them adjacent and say what the collision means. -->
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Current state</div>
+      <h2>What the client said</h2>
+      <p>{{TRANSCRIPT_PROVENANCE}}</p>
+    </div>
+    <div class="grid g2" data-search-scope>
+      <div class="card" data-s="{{KEYWORDS}}">
+        <h3>{{WHAT_THIS_SHOWS}}</h3>
+        <div class="quote"><p>"{{VERBATIM}}"</p><cite>{{SPEAKER}}</cite></div>
+        <p>{{WHY_IT_MATTERS}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPETITION =================
+     A card per competitor, then a head-to-head table with our column last.
+     Be fair about their genuine strengths — a brief that only lists weaknesses
+     reads as spin and gets discounted wholesale. Close with "where we are
+     exposed" and prepared answers. -->
+<section id="compete">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Who else is in</div>
+      <h2>{{COMPETITOR_NAMES}}</h2>
+      <p>{{TIMELINE_OF_THEIR_INVOLVEMENT}}</p>
+    </div>
+    <div class="grid g2" data-search-scope><!-- competitor cards --></div>
+  </div>
+</section>
+
+<!-- ================= PRODUCT CONTEXT =================
+     <details> accordions, one per platform or vendor. Open the most important
+     one by default. Be honest about the risks of what you are proposing — the
+     technical people in the room already know them, and candour buys more than
+     optimism does. -->
+<section id="tech" class="warm">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Product and technology</div>
+      <h2>Systems to discuss</h2>
+      <p>{{WHO_IN_THE_ROOM_WILL_TEST_THIS}}</p>
+    </div>
+    <details data-search-scope data-s="{{KEYWORDS}}">
+      <summary>
+        <i data-lucide="server" width="17" height="17" style="color:var(--teal)"></i>
+        {{TOPIC}}
+        <i data-lucide="chevron-right" width="16" height="16" class="chev"></i>
+      </summary>
+      <div class="dbody">{{CONTENT}}</div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= TALK TRACK =================
+     Time-boxed. Write the key lines as .quote.copyable — verbatim speakable
+     sentences, not bullets. A seller can say a sentence you wrote; they cannot
+     say a bullet. Close with phasing that fits the client's financial reality
+     and specific next-step options. -->
+<section id="track">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How to run it</div>
+      <h2>Talk track</h2>
+      <p>{{WHAT_THIS_CALL_IS_FOR}} Click any line to copy it.</p>
+    </div>
+    <div class="grid g2" data-search-scope>
+      <div class="card" data-s="{{KEYWORDS}}">
+        <span class="tag">{{MINUTES}}</span>
+        <h3 style="margin-top:var(--space-3)">{{SEGMENT}}</h3>
+        <div class="quote copyable"><p>"{{SPEAKABLE_LINE}}"</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUESTIONS =================
+     Rendered from the QS registry. Tier headings and the progress counter are
+     automatic. Do not hand-write items here. -->
+<section id="questions" class="warm">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Discovery</div>
+      <h2>Questions, ranked</h2>
+      <p>Questions are ordered by priority. Check them off as they are answered.
+         <span id="qprog" style="color:var(--teal);font-weight:700"></span></p>
+    </div>
+    <div id="qlist"></div>
+  </div>
+</section>
+
+<!-- ================= LANDMINES =================
+     Short and blunt. Topics that damage the relationship, inferences that would
+     be fabrications if spoken, and anything the account team warned about. -->
+<section id="mines">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Before making a commitment</div><h2>Unresolved conditions</h2></div>
+    <div class="grid g2" data-search-scope>
+      <div>
+        <div class="mine" data-s="{{KEYWORDS}}"><h4>{{TOPIC}}</h4><p>{{WHY_AND_WHAT_TO_DO}}</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ASSUMPTIONS =================
+     Table renders from the ASM registry. Follow it with "facts commonly
+     misstated" and "things we could not verify at all" — both mirror
+     10-assumptions-register.md. -->
+<section id="assume" class="dark on-dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Full register</div>
+      <h2>Every assumption in this brief</h2>
+      <p>The assumptions below need confirmation. Ask about them in the call before presenting them as facts.</p>
+    </div>
+    <div class="tblwrap" style="background:var(--deep-ink);border-color:color-mix(in srgb,var(--teal) 25%,transparent)">
+      <table id="asmTable">
+        <thead><tr>
+          <th style="background:var(--lighter-navy);color:var(--light-teal);border-color:color-mix(in srgb,var(--teal) 25%,transparent)">ID</th>
+          <th style="background:var(--lighter-navy);color:var(--light-teal);border-color:color-mix(in srgb,var(--teal) 25%,transparent)">Assumption</th>
+          <th style="background:var(--lighter-navy);color:var(--light-teal);border-color:color-mix(in srgb,var(--teal) 25%,transparent)">Confidence</th>
+          <th style="background:var(--lighter-navy);color:var(--light-teal);border-color:color-mix(in srgb,var(--teal) 25%,transparent)">Say it to the client?</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="footer on-dark">
+  <div class="wrap">
+    <img src="data:image/png;base64,{{LOGO_WHITE}}" alt="Selected project logo">
+    <p>{{CLIENT_NAME}} call brief. Prepared {{PREP_DATE}} for {{SELLER}}. Source notes appear beside the claims. The assumptions table lists what still needs confirmation.</p>
+    <p style="margin-top:var(--space-3);color:var(--slate-blue)">Audience: {{AUDIENCE}}.</p>
+  </div>
+</div>
+
+<div class="modal" id="drill">
+  <div class="mcard">
+    <div class="eyebrow">Rapid recall</div>
+    <div id="drillQ"></div>
+    <div id="drillA"></div>
+    <div class="mbar">
+      <button class="btn" id="drillReveal"><i data-lucide="eye" width="15" height="15"></i> Reveal</button>
+      <button class="btn ghost" id="drillNext">Next <i data-lucide="arrow-right" width="15" height="15"></i></button>
+      <button class="btn ghost" id="drillClose">Close</button>
+      <span id="drillCount"></span>
+    </div>
+  </div>
+</div>
+
+<div id="fnpop"></div>
+
+<script>
+/* ============ footnote registry ============ */
+/* FOOTNOTES — key => [title, detail, url]. Every .fn chip's data-fn must exist here.
+   e.g. t1:["Client call transcript","Drive doc 1X_2cu..., shared 2026-07-30.","https://..."] */
+const FN = {};
+
+/* ============ money flow detail ============ */
+/* MONEY FLOW — key => {t: heading, b: [bullet html]}. Keys match .fnode data-flow.
+   e.g. rev:{t:"Revenue in - $Xm",b:["<b>Who pays:</b> ...","<b>Contract form:</b> ..."]} */
+const FLOW = {};
+
+/* ============ questions ============ */
+/* QUESTIONS — [tier "T1".."T4", short title, the question as spoken, why it matters] */
+const QS = [];
+
+/* ============ assumptions ============ */
+/* ASSUMPTIONS — [id, assumption, confidence, safe-to-say verdict].
+   Verdicts starting "No" render red, "Yes" render teal. Mirror 10-assumptions-register.md. */
+const ASM = [];
+
+/* ============ drill deck ============ */
+/* DRILL CARDS — [question, answer html]. Aim for ~20. Most-used feature; do not skimp. */
+const DRILL = [];
+
+/* ============ build questions ============ */
+(function(){
+  const box=document.getElementById('qlist');
+  const groups={T1:"Tier 1 · ask these no matter what",T2:"Tier 2 · the technical wedge",T3:"Tier 3 · the commercial reality",T4:"Tier 4 · qualification, if the room is warm"};
+  let last=null;
+  QS.forEach((q,i)=>{
+    if(q[0]!==last){last=q[0];const h=document.createElement('h3');h.textContent=groups[q[0]];h.style.margin='var(--space-6) 0 var(--space-3)';box.appendChild(h);}
+    const d=document.createElement('div');
+    d.className='qitem';d.setAttribute('data-search-scope','');
+    d.setAttribute('data-s',(q[1]+' '+q[2]+' '+q[3]).toLowerCase());
+    d.innerHTML='<div class="qbox"><i data-lucide="check" width="12" height="12" stroke-width="2.5"></i></div><div><div class="qtext">'+(i+1)+'. '+q[1]+'</div><div class="qwhy" style="margin-top:7px;color:var(--fg-secondary);font-style:normal">'+q[2]+'</div><div class="qwhy"><strong style="color:var(--teal)">Why:</strong> '+q[3]+'</div></div>';
+    d.addEventListener('click',()=>{d.classList.toggle('done');prog();});
+    box.appendChild(d);
+  });
+  function prog(){const t=document.querySelectorAll('.qitem').length,c=document.querySelectorAll('.qitem.done').length;document.getElementById('qprog').textContent=c?c+' of '+t+' covered':'';}
+})();
+
+/* ============ build assumptions table ============ */
+(function(){
+  const tb=document.querySelector('#asmTable tbody');
+  ASM.forEach(a=>{
+    const tr=document.createElement('tr');
+    const say=a[3].startsWith('No')?'var(--teal)':(a[3].startsWith('Yes')?'var(--teal)':'var(--blue-gray)');
+    tr.innerHTML='<td style="border-color:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--light-teal);font-family:var(--font-mono);font-size:11px;white-space:nowrap">'+a[0]+'</td>'+
+      '<td style="border-color:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--white)">'+a[1]+'</td>'+
+      '<td style="border-color:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--blue-gray);white-space:nowrap">'+a[2]+'</td>'+
+      '<td style="border-color:color-mix(in srgb,var(--teal) 15%,transparent);color:'+say+'">'+a[3]+'</td>';
+    tb.appendChild(tr);
+  });
+})();
+
+/* ============ money flow ============ */
+(function(){
+  const det=document.getElementById('flowdetail');
+  function render(k){
+    const f=FLOW[k];
+    if(!f){det.innerHTML='<h4>No detail for node "'+k+'"</h4><p>Add a FLOW entry with this key.</p>';return;}
+    det.innerHTML='<h4>'+f.t+'</h4><ul>'+(f.b||[]).map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+  }
+  document.querySelectorAll('.fnode').forEach(n=>{
+    n.addEventListener('click',()=>{
+      document.querySelectorAll('.fnode').forEach(x=>x.classList.remove('sel'));
+      n.classList.add('sel');render(n.dataset.flow);
+    });
+  });
+  const first=document.querySelector('.fnode'); if(first) render(first.dataset.flow);
+})();
+
+/* ============ footnote popover ============ */
+(function(){
+  const pop=document.getElementById('fnpop');
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('.fn');
+    if(!b){pop.classList.remove('open');return;}
+    e.preventDefault();
+    const f=FN[b.dataset.fn];
+    if(!f){pop.classList.remove('open');return;}
+    pop.innerHTML='<strong>'+f[0]+'</strong><span class="src">'+f[1]+'</span>'+(f[2]?'<span class="src"><a href="'+f[2]+'" target="_blank" rel="noopener">'+f[2]+'</a></span>':'');
+    pop.classList.add('open');
+    const r=b.getBoundingClientRect();
+    let top=r.bottom+8,left=Math.min(r.left,window.innerWidth-420);
+    if(left<12)left=12;
+    if(top+pop.offsetHeight>window.innerHeight-12)top=Math.max(12,r.top-pop.offsetHeight-8);
+    pop.style.top=top+'px';pop.style.left=left+'px';
+  });
+})();
+
+/* ============ search filter ============ */
+(function(){
+  const q=document.getElementById('q');
+  const items=[...document.querySelectorAll('[data-search-scope]')];
+  items.forEach(el=>{el.__txt=(el.getAttribute('data-s')||'')+' '+el.textContent.toLowerCase();});
+  q.addEventListener('input',()=>{
+    const v=q.value.trim().toLowerCase();
+    if(!v){items.forEach(el=>el.classList.remove('hidden'));document.querySelectorAll('section').forEach(s=>s.classList.remove('hidden'));return;}
+    items.forEach(el=>el.classList.toggle('hidden',!el.__txt.includes(v)));
+    document.querySelectorAll('section').forEach(s=>{
+      const sc=s.querySelectorAll('[data-search-scope]');
+      if(sc.length) s.classList.toggle('hidden',![...sc].some(e=>!e.classList.contains('hidden')));
+    });
+  });
+  document.addEventListener('keydown',e=>{
+    if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();q.focus();q.select();}
+    if(e.key==='Escape'){q.value='';q.dispatchEvent(new Event('input'));document.getElementById('drill').classList.remove('open');}
+  });
+})();
+
+/* ============ assumption highlight ============ */
+document.getElementById('asmBtn').addEventListener('click',function(){
+  document.body.classList.toggle('asm-hl');
+  this.classList.toggle('on');
+});
+
+/* ============ drill mode ============ */
+(function(){
+  const m=document.getElementById('drill'),Q=document.getElementById('drillQ'),A=document.getElementById('drillA'),C=document.getElementById('drillCount');
+  let order=[],i=0;
+  function shuffle(a){for(let j=a.length-1;j>0;j--){const k=Math.floor((j*7919+i*104729+a.length*31)%(j+1));[a[j],a[k]]=[a[k],a[j]];}return a;}
+  function show(){const d=DRILL[order[i]];if(!d){Q.textContent='No drill cards yet. Fill the DRILL array.';A.innerHTML='';C.textContent='';return;}Q.textContent=d[0];A.innerHTML=d[1];A.classList.remove('show');C.textContent=(i+1)+' of '+order.length;}
+  function start(){order=shuffle(DRILL.map((_,x)=>x));i=0;m.classList.add('open');show();}
+  document.getElementById('drillBtn').addEventListener('click',start);
+  document.getElementById('drillReveal').addEventListener('click',()=>A.classList.add('show'));
+  document.getElementById('drillNext').addEventListener('click',()=>{if(!order.length)return;i=(i+1)%order.length;show();});
+  document.getElementById('drillClose').addEventListener('click',()=>m.classList.remove('open'));
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});
+})();
+
+/* ============ copy-to-clipboard on talk track quotes ============ */
+document.querySelectorAll('.quote.copyable').forEach(qe=>{
+  qe.style.cursor='pointer';qe.title='Click to copy';
+  qe.addEventListener('click',()=>{
+    const t=qe.querySelector('p').textContent.replace(/^"|"$/g,'');
+    if(!navigator.clipboard){qe.title='Select the text to copy; clipboard access is unavailable.';return;}
+    navigator.clipboard.writeText(t).then(()=>{qe.title='Copied';}).catch(()=>{qe.title='Copy failed; select the text and copy manually.';});
+    const old=qe.style.borderLeftColor;qe.style.borderLeftColor='var(--light-teal)';
+    setTimeout(()=>qe.style.borderLeftColor=old,600);
+  });
+});
+
+/* ============ scrollspy ============ */
+(function(){
+  const links=[...document.querySelectorAll('.nav a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));}});
+  },{rootMargin:'-25% 0px -70% 0px'});
+  secs.forEach(s=>io.observe(s));
+})();
+
+/* ============ countdown ============ */
+(function(){
+  const el=document.getElementById('countdown');
+  const target=new Date('{{CALL_TIME_ISO}}');
+  function tick(){
+    const d=target-new Date();
+    if(d<=0){el.innerHTML='Call is <strong>live or done</strong>';return;}
+    const h=Math.floor(d/3600000),mn=Math.floor(d%3600000/60000);
+    el.innerHTML='Call in <strong>'+(h?h+'h ':'')+mn+'m</strong>';
+  }
+  tick();setInterval(tick,30000);
+})();
+
+lucide.createIcons({attrs:{'stroke-width':1.75}});
+</script>
+</body>
+</html>

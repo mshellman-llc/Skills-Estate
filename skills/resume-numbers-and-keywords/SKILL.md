@@ -3,6 +3,11 @@ name: "resume-numbers-and-keywords"
 description: "Wording method for Megan's tailored resume copy under career-application tailor: stated and estimated figures, rounding, posting keyword placement, bullet shape, ATS layout."
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Resume numbers and keywords
 
 This skill supplies the wording method that `career-application` tailor step 11 leaves open. It does not choose the master, select programs or decide claims; those come from `00_Master/Career_Application_Operating_Context.md` and the role's `Role_Work_Record.md`, whose narrative translation table must be complete. If it is empty, stop and run `career-application tailor` first.

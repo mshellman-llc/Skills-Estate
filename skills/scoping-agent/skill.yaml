@@ -1,0 +1,62 @@
+schema_version: 1
+name: scoping-agent
+display_name: Scoping Agent
+summary: Collaborative scoping assistant for Estate sales pursuits.
+status: active
+tier: core
+version: 1.0.0
+owner: Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Collaborative scoping assistant for Estate sales pursuits. Use whenever the user
+  wants to scope, estimate, size, or price out work for a client or prospect, starting
+  from scratch, refining draft scope, reviewing transcripts, or editing existing scope
+  (e.g., "mark items inactive", "add CTI scope"). Trigger on: scoping, estimate, scope
+  items, pricing a deal, sizing a project, RFP response, discovery notes, prospect,
+  "break this into scope items", "create a quote", "pull up the quote", Q-number refs
+  (Q-000042), capability taxonomy, team presets, leverage ratios, gap analysis against
+  existing scope. Also trigger when editing scope items or managing quote resources
+  and timelines in the Estate Pricing System. Do NOT trigger for: project delivery,
+  staffing plans, timesheets, anything post-sale, or standalone "ballpark LOE" / "rough
+  cost" requests not tied to a specific quote (those use estimation playbooks).'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: required
+  reads:
+  - opportunity.front_door
+  - opportunity.discovery
+  - opportunity.solution_scope
+  - evidence.claims
+  writes:
+  - opportunity.solution_scope
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate

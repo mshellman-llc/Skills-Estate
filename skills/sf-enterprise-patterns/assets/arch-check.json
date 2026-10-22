@@ -1,0 +1,19 @@
+{
+  "$comment": "Copy to the repo root as .arch-check.json. Docs: references/rules.md in the sf-enterprise-patterns skill.",
+  "mode": "block",
+  "legacyPaths": [
+    "force-app/main/default/classes/legacy/**"
+  ],
+  "excludePaths": [],
+  "rules": {
+    "APX004": "warn",
+    "APX006": "warn",
+    "LWC001": "warn"
+  },
+  "dmlAllowlist": ["UnitOfWork"],
+  "soqlAllowlist": [],
+  "exemptTestClasses": true,
+  "engine": "auto",
+  "pmdPath": null,
+  "pmdRuleset": null
+}

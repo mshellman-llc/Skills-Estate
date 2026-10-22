@@ -8,11 +8,18 @@ metadata:
   adapted: "2026-10-06"
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Product specifications
 
 Write a spec that lets the next owner understand the requested behavior and verify it. Read the current brief, supplied sources, and existing decisions before drafting. Separate a confirmed requirement from a proposed choice or open decision.
 
 Read [Spec decisions](references/spec-decisions.md) to choose the appropriate depth. A bounded change can use a compact development brief. A cross-system feature may need a fuller spec. A reproducible defect needs expected behavior and evidence of actual behavior, not a fabricated product strategy.
+
+For UI, API or persistence detail, read [the detailed feature workflow](../spec-writer/SKILL.md). Select the sections the requested feature needs; retain its state transitions and failure paths.
 
 Use the audience's vocabulary. Describe the problem and intended outcome, the behavior in scope, and the constraints that affect implementation. Include exclusions only when they prevent a plausible misunderstanding. Give dependencies and unresolved decisions their actual owners when known.
 

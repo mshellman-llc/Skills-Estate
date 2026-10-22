@@ -1,0 +1,292 @@
+#!/bin/bash
+# Tracked pre-commit hook. Armed via: git config core.hooksPath .githooks
+#
+# Makes the workflow's quality gates DETERMINISTIC rather than remembered.
+# Five gates, cheapest-first, all scoped to STAGED FILES ONLY so this stays fast
+# enough to run on every commit:
+#
+#   1. Block force-app/ commits directly on main      (worktree isolation) BLOCKS
+#  1b. Block husky; keep hook scripts executable      (self-protection)   BLOCKS
+#   2. Prettier auto-format + re-stage                (formatting)
+#   3. ESLint on staged LWC JS                        (linting)           BLOCKS
+#   4. PMD static analysis on staged Apex             (workflow step 3a)  BLOCKS
+#   5. Jest on tests related to staged LWC            (workflow step 4a)  BLOCKS
+#
+# Gates 2-5 skip entirely when no relevant files are staged, so a docs-only or
+# metadata-only commit pays almost nothing.
+#
+# NOT enforced here: /simplify (workflow step 3b). It is an AI judgment step with
+# no mechanical signal, and mandating it on a one-line change is busywork. It stays
+# a judgment call. Do not fake it with a marker file — that would be trivially
+# gamed and would give false confidence.
+#
+# Escape hatch: git commit --no-verify. Deliberate and documented — but reaching
+# for it on a force-app/ change means opting out of the gate, not satisfying it.
+
+set -u
+
+# ─────────────────────────────────────────────────────────────
+# Make the node toolchain work HERE, in whichever working tree this is.
+#
+# node_modules/ is gitignored, so it exists only in the main clone; a worktree
+# materialises tracked content only. Running the binaries from the main clone is
+# not enough — eslint resolves plugins relative to eslint.config.js, jest and
+# prettier likewise resolve relative to the working tree — so tools must run
+# with THIS tree as cwd, against a node_modules that is reachable from it.
+#
+# An earlier version ran the tools from the main clone against worktree-relative
+# paths. eslint reported "no files matching the pattern" and the gate blocked
+# every worktree commit; had a same-named file existed in the main clone it
+# would silently have linted the WRONG file. A symlink is the honest fix: it is
+# gitignored, costs nothing, and makes `npm test` / `npx eslint` behave the same
+# way by hand as they do in this hook.
+# ─────────────────────────────────────────────────────────────
+COMMON_DIR=$(git rev-parse --git-common-dir)
+case "$COMMON_DIR" in
+  /*) ;;
+  *) COMMON_DIR="$(pwd)/$COMMON_DIR" ;;
+esac
+MAIN_ROOT=$(cd "$(dirname "$COMMON_DIR")" && pwd)
+TREE_ROOT=$(git rev-parse --show-toplevel)
+cd "$TREE_ROOT" || exit 1
+
+if [ ! -e node_modules ] && [ -d "$MAIN_ROOT/node_modules" ]; then
+  ln -s "$MAIN_ROOT/node_modules" node_modules 2>/dev/null \
+    && echo "  pre-commit: linked node_modules -> $MAIN_ROOT/node_modules"
+fi
+BIN="$TREE_ROOT/node_modules/.bin"
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+
+warn() { { echo ""; echo "⚠  $*"; } >&2; }
+
+# Files with BOTH staged and unstaged changes must never be rewritten and
+# re-staged — that would sweep unstaged work into the commit silently.
+is_partially_staged() {
+  git diff --name-only --diff-filter=ACM -- "$1" | grep -qxF "$1"
+}
+
+# ═════════════════════════════════════════════════════════════
+# GATE 1 — no force-app/ commits on main
+# ═════════════════════════════════════════════════════════════
+STAGED_FORCE=$(git diff --cached --name-only --diff-filter=ACM -- 'force-app/')
+
+if [ "$BRANCH" = "main" ] && [ -n "$STAGED_FORCE" ]; then
+  {
+    echo ""
+    echo "BLOCKED: Cannot commit force-app/ changes directly to main."
+    echo ""
+    echo "All deployable changes go through a worktree branch first:"
+    echo "  git worktree add ../$(basename "$TREE_ROOT")-N -b feat/N-description"
+    echo ""
+    echo "Staged force-app/ files:"
+    echo "$STAGED_FORCE" | sed 's/^/  /'
+  } >&2
+  exit 1
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 1b — the enforcement stack must not disarm itself
+#
+# Two ways this repo can quietly stop enforcing anything, both invisible in a
+# diff review:
+#   husky repoints core.hooksPath at .husky, disabling every hook in .githooks/
+#   a hook committed without the exec bit is skipped silently in every clone
+# ═════════════════════════════════════════════════════════════
+if git diff --cached --name-only --diff-filter=ACM -- package.json | grep -q .; then
+  if git show :package.json 2>/dev/null | grep -q '"husky"'; then
+    {
+      echo ""
+      echo "BLOCKED: package.json reintroduces husky."
+      echo ""
+      echo "husky sets core.hooksPath=.husky, which silently disables every hook in"
+      echo ".githooks/ — including the gates that keep force-app/ off main and require"
+      echo "a ticket reference. It was removed from this project deliberately."
+      echo ""
+      echo "Hook arming lives in the 'prepare' script:  git config core.hooksPath .githooks"
+    } >&2
+    exit 1
+  fi
+fi
+
+STAGED_HOOKS=$(git diff --cached --name-only --diff-filter=ACM -- '.githooks/*' '.claude/hooks/*')
+if [ -n "$STAGED_HOOKS" ]; then
+  FIXED_MODE=()
+  while IFS= read -r f; do
+    [ -f "$f" ] || continue
+    MODE=$(git ls-files --stage -- "$f" | awk '{print $1}')
+    if [ "$MODE" = "100644" ]; then
+      chmod +x "$f" 2>/dev/null
+      git update-index --chmod=+x -- "$f" 2>/dev/null && FIXED_MODE+=("$f")
+    fi
+  done <<< "$STAGED_HOOKS"
+  if [ "${#FIXED_MODE[@]}" -gt 0 ]; then
+    echo "  pre-commit: marked ${#FIXED_MODE[@]} hook(s) executable — a non-executable hook is skipped silently:"
+    printf '    %s\n' "${FIXED_MODE[@]}"
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 2 — Prettier auto-format on staged supported files
+# ═════════════════════════════════════════════════════════════
+STAGED_FMT=$(git diff --cached --name-only --diff-filter=ACM \
+  -- '*.cls' '*.trigger' '*.js' '*.html' '*.css' '*.json' '*.xml' '*.md' '*.yaml' '*.yml')
+
+if [ -n "$STAGED_FMT" ]; then
+  if [ ! -x "$BIN/prettier" ]; then
+    warn "prettier not found at $BIN — formatting SKIPPED. Run 'npm install' in $MAIN_ROOT."
+  else
+    FORMATTED=0
+    SKIPPED_PARTIAL=()
+    while IFS= read -r f; do
+      [ -f "$f" ] || continue
+      if is_partially_staged "$f"; then
+        # Rewriting would pull unstaged hunks into the commit. Check only.
+        if ! "$BIN/prettier" --check "$f" >/dev/null 2>&1; then
+          SKIPPED_PARTIAL+=("$f")
+        fi
+        continue
+      fi
+      BEFORE=$(git hash-object "$f")
+      "$BIN/prettier" --write "$f" >/dev/null 2>&1 || continue
+      AFTER=$(git hash-object "$f")
+      if [ "$BEFORE" != "$AFTER" ]; then
+        git add -- "$f"
+        FORMATTED=$((FORMATTED+1))
+      fi
+    done <<< "$STAGED_FMT"
+
+    [ "$FORMATTED" -gt 0 ] && echo "  pre-commit: prettier reformatted and re-staged $FORMATTED file(s)"
+
+    if [ "${#SKIPPED_PARTIAL[@]}" -gt 0 ]; then
+      warn "These files are partially staged and badly formatted, so they were NOT auto-fixed
+   (rewriting them would sweep your unstaged changes into the commit):"
+      printf '     %s\n' "${SKIPPED_PARTIAL[@]}" >&2
+      echo "   Run 'npm run prettier' and stage the result when ready." >&2
+    fi
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 3 — ESLint on staged LWC / Aura JS
+# ═════════════════════════════════════════════════════════════
+STAGED_JS=$(git diff --cached --name-only --diff-filter=ACM \
+  -- 'force-app/**/lwc/**/*.js' 'force-app/**/aura/**/*.js')
+
+if [ -n "$STAGED_JS" ]; then
+  if [ ! -x "$BIN/eslint" ]; then
+    warn "eslint not found at $BIN — linting SKIPPED. Run 'npm install' in $MAIN_ROOT."
+  else
+    JS_TARGETS=()
+    while IFS= read -r f; do [ -f "$f" ] && JS_TARGETS+=("$f"); done <<< "$STAGED_JS"
+    if [ "${#JS_TARGETS[@]}" -gt 0 ]; then
+      echo "  pre-commit: linting ${#JS_TARGETS[@]} staged JS file(s)..."
+      if ! LINT_OUT=$("$BIN/eslint" "${JS_TARGETS[@]}" 2>&1); then
+        {
+          echo ""
+          echo "BLOCKED: ESLint errors in staged JS."
+          echo ""
+          echo "$LINT_OUT" | tail -40
+          echo ""
+          echo "Fix these before committing. Full run:  npm run lint"
+        } >&2
+        exit 1
+      fi
+    fi
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 4 — PMD on staged Apex (workflow step 3a)
+# ═════════════════════════════════════════════════════════════
+STAGED_APEX=$(git diff --cached --name-only --diff-filter=ACM -- '*.cls' '*.trigger')
+
+if [ -n "$STAGED_APEX" ]; then
+  if ! command -v pmd >/dev/null 2>&1; then
+    warn "pmd is not installed — Apex static analysis SKIPPED.
+   Staged Apex is going in unchecked. Install it:  brew install pmd
+   (Not blocking, but this is a real hole in the quality gate.)"
+  else
+    FILE_LIST=$(mktemp)
+    while IFS= read -r f; do [ -f "$f" ] && printf '%s\n' "$f"; done <<< "$STAGED_APEX" > "$FILE_LIST"
+
+    if [ -s "$FILE_LIST" ]; then
+      # Prefer the project's own ruleset so this hook and `npm run pmd` cannot
+      # disagree about thresholds — an agent that gets a clean manual run and a
+      # blocked commit will assume the hook is broken.
+      #
+      # Fall back to the built-in categories when it is absent. A worktree
+      # branched before the ruleset landed would otherwise hit a PMD *execution*
+      # error, which degrades to a non-blocking warning below and lets Apex
+      # through unchecked — a missing config file must never silently disarm the
+      # gate. Point `npm run pmd` at the same file.
+      PMD_RULES="config/pmd-ruleset.xml"
+      if [ ! -f "$PMD_RULES" ]; then
+        PMD_RULES="category/apex/bestpractices.xml,category/apex/security.xml,category/apex/design.xml,category/apex/errorprone.xml"
+        warn "config/pmd-ruleset.xml not found — using default category thresholds.
+   Class-level aggregate rules (complexity, size) are tuned for whole classes and
+   will fire on ordinary Apex. If that is noisy, add a project ruleset."
+      fi
+
+      echo "  pre-commit: running PMD on $(wc -l < "$FILE_LIST" | tr -d ' ') staged Apex file(s)..."
+      PMD_OUT=$(pmd check \
+        --file-list "$FILE_LIST" \
+        -R "$PMD_RULES" \
+        -f text 2>&1)
+      PMD_RC=$?
+      rm -f "$FILE_LIST"
+
+      # PMD 7: 0 = clean, 4 = violations found, anything else = execution error.
+      if [ "$PMD_RC" -eq 4 ]; then
+        {
+          echo ""
+          echo "BLOCKED: PMD found violations in staged Apex."
+          echo ""
+          echo "$PMD_OUT"
+          echo ""
+          echo "Fix these before committing. To see them again:  npm run pmd"
+        } >&2
+        exit 1
+      elif [ "$PMD_RC" -ne 0 ]; then
+        warn "PMD exited $PMD_RC (execution error, not violations):
+$(echo "$PMD_OUT" | tail -15)
+   Not blocking, but PMD did not actually verify anything."
+      fi
+    else
+      rm -f "$FILE_LIST"
+    fi
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 5 — Jest on tests related to staged LWC (workflow step 4a)
+# ═════════════════════════════════════════════════════════════
+STAGED_LWC=$(git diff --cached --name-only --diff-filter=ACM -- 'force-app/**/lwc/**/*.js')
+
+if [ -n "$STAGED_LWC" ]; then
+  if [ ! -x "$BIN/sfdx-lwc-jest" ]; then
+    warn "sfdx-lwc-jest not found at $BIN — LWC tests SKIPPED.
+   Run 'npm install' in $MAIN_ROOT.
+   (Not blocking, but staged LWC code is going in untested.)"
+  else
+    JEST_TARGETS=()
+    while IFS= read -r f; do [ -f "$f" ] && JEST_TARGETS+=("$f"); done <<< "$STAGED_LWC"
+    if [ "${#JEST_TARGETS[@]}" -gt 0 ]; then
+      echo "  pre-commit: running Jest related to ${#JEST_TARGETS[@]} staged LWC file(s)..."
+      if ! JEST_OUT=$("$BIN/sfdx-lwc-jest" -- \
+            --bail --passWithNoTests --findRelatedTests "${JEST_TARGETS[@]}" 2>&1); then
+        {
+          echo ""
+          echo "BLOCKED: Jest failures in tests related to staged LWC files."
+          echo ""
+          echo "$JEST_OUT" | tail -40
+          echo ""
+          echo "Fix the failing tests before committing. Full run:  npm test"
+        } >&2
+        exit 1
+      fi
+    fi
+  fi
+fi
+
+exit 0

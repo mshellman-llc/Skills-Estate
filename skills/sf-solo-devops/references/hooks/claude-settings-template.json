@@ -1,0 +1,105 @@
+{
+  "permissions": {
+    "allow": [],
+    "deny": [
+      "Bash(sf project retrieve start:*)",
+      "Bash(sf project retrieve:*)",
+      "Bash(sfdx project retrieve:*)",
+      "Bash(sfdx force:source:retrieve:*)"
+    ],
+    "ask": []
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/verify-git-hooks.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/session-status.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/guard-force-app.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/ensure-worktree-config.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/guard-force-app-bash.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/guard-sf-deploy.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/guard-sf-flags.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/guard-worktree-nesting.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/guard-pr-merge.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/guard-issue-close.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/record-escape-hatch.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/record-validate.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/auto-label-deploy.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-merge-nudge.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/stop-dod-check.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

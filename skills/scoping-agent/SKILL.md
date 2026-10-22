@@ -1,16 +1,131 @@
 ---
 name: scoping-agent
-description: "Develop or revise a project scope and its estimate with the user's pricing system or supplied quote model. Use for scope items, effort, staffing, and timeline planning."
+description: Develop project scope and effort estimates from the user's brief, supplied models or configured pricing system. Support rough ranges and confirmed quote revisions. Produce usable local scope and calculations without requiring a CRM connection.
 ---
 
-# Scoping agent
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
 
-Read [shared workflow](references/estate/workflow.md). For a rendered or branded artifact, read [brand policy](references/estate/brand.md) before choosing visual values. These references are generated from the canonical policies when the estate builds.
+# Project scoping
 
-Identify the opportunity, current quote, source revision, and available pricing integration. Read its actual schema and operations. If there is no integration, use a clearly labeled draft scope model rather than inventing endpoints or claiming a live quote exists.
+Build the requested scope from current project evidence. Use a supplied export
+or the local model below when no pricing integration is configured. A rough
+estimate does not require an existing quote. Keep accepted commitments separate
+from draft scope and estimate assumptions.
 
-Capture outcome, work packages, deliverables, boundaries, acceptance criteria, assumptions, dependencies, and exclusions. Use the project's existing capability taxonomy and stable item IDs. Separate confirmed scope from proposed additions. Preserve scope text across options where it is the same.
+## Select the work
 
-Estimate hours only when requested and from an explained basis. Distinguish stated hours, calculated totals, and estimates. Reconcile work-package, role, and phase totals. Use the pricing system's commercial rules; do not substitute a guessed rate, discount, utilization ratio, or fee.
+| Request | Output |
+| --- | --- |
+| Define scope | Work items with supported boundaries and acceptance conditions |
+| Estimate effort | Sourced role-hour ranges and their basis |
+| Estimate cost | The effort model with an explicit rate source and currency |
+| Plan staffing | Role capacity and a schedule constrained by dependencies |
+| Revise a quote | A comparison against the confirmed quote revision; authorized changes only |
 
-For an authorized write, verify the account and environment, preview the exact changed records, use stable identifiers, and read the result back. Prefer an update or merge to destructive replacement. Report the quote link and changed item count only after the destination confirms them. Creating scope does not authorize signing, sending a proposal, or deploying work.
+Read the supplied brief and existing decisions before asking a question. Find
+the constraints affecting scope or price. Preserve contradictory evidence as
+an unresolved decision. Ask only when a missing choice materially changes the
+work; continue the supported parts while it is pending.
+
+## Define the deliverable scope
+
+Organize items around the behavior or deliverable being supplied. An item can
+carry its requirements work through validation and deployment. Avoid counting
+the same lifecycle effort again in a separate overhead row. A standalone test
+or assessment engagement may have its own deliverable; follow the actual brief.
+
+Give each item a stable ID and descriptive name. Explain its behavior and the
+condition that bounds it. Link it to its source and acceptance check. Keep
+dependencies and exclusions where they affect that item. Use the project's
+capability taxonomy if one exists; a local draft needs no custom CRM taxonomy.
+
+Distinguish explicitly requested work from a necessary implication. Keep an
+inferred addition proposed until its scope owner accepts it. Do not turn an
+unanswered question into a statement that documentation or access is absent.
+An assumption is a proposed estimating condition, with its consequence if it
+changes. It is never a substitute for a fact.
+
+Read [the estimation method](references/methodology.md) for calibration and
+staffing decisions. Use meaningful item names in cross-references; retain IDs
+for traceability rather than making the reader decode abbreviations.
+
+## Estimate with available sources
+
+Use current scope decomposition or relevant comparables. Describe differences
+in volume and complexity when adapting another engagement. A user-supplied
+anchor can support an estimate when its working hours and scope are explicit.
+Do not assume a working week, a phase split or a staffing ratio.
+
+Keep a low and high bound around the expected effort where the source supports
+a range. Explain which condition moves each bound. Do not invent a confidence
+percentage or treat the expected value as a statistical median without data.
+If effort remains unknown, retain the item as unestimated and identify the
+discovery needed. Do not present a priced subset as the complete project cost.
+
+Use the supplied rate card or confirmed quote for rates. Preserve its revision
+and distinguish cost rates from client billing rates. Without rates, deliver
+the effort estimate and the missing pricing input. Do not import old rates
+from this estate or another engagement.
+
+## Run the local calculator
+
+The calculator requires Python 3 and no external service:
+
+```bash
+python3 scripts/estimate.py scope.json --output attempts/001/estimate.json
+```
+
+It writes the exact decimal calculations and a readable Markdown estimate.
+Existing outputs are preserved. Use another attempt path after a revision.
+The [fictional input](fixtures/estimate.example.json) shows the full contract.
+Its rates and effort are test data, with no authority for a real project.
+
+| Input | Required content |
+| --- | --- |
+| `source` | Reference and revision of the scope model |
+| `currency` | Currency supplied for this estimate |
+| `rates` | Role and rate, with the source of that rate |
+| `items` | Unique ID and name; description, source and estimating basis; role allocations |
+| `allocations[].hours` | Nonnegative `low`, `expected` and `high` values in that order |
+| `capacity`, when used | Role count and weekly hours per person, with availability from 0 to 1 |
+| `assumptions` and `exclusions` | Conditions and work boundaries preserved in the result |
+
+The result includes item calculations and role-hour totals. It also gives the
+aggregate hours and fee for each scenario. Amounts retain their decimal value;
+the calculator applies no implicit commercial rounding or contingency uplift.
+It records the input hash and calculator hash.
+
+Capacity produces a workload lower bound in weeks. Dependencies and waiting
+time can extend the schedule. A capacity bound cannot establish a delivery date.
+For a schedule, place the actual work against dependencies and agreed resource
+availability. Preserve phase names and staffing increments from the project.
+
+Inspect the generated estimate against the input. Recompute a representative
+item and reconcile the totals. Check the range drivers and the meaning of each
+assumption. Apply writing-integrity to the generated prose, including text
+carried from a draft input. Calculation success does not establish scope quality.
+
+## Use a configured CRM adapter
+
+Read [CRM scoping](references/crm-scoping.md) only when the project uses the
+documented custom integration. Inspect the tools actually available and confirm
+the org before a write. Read [payloads](references/payloads.md) before preparing
+a supported mutation. Use the target's actual metadata and schema version.
+
+Create or update a record only within the user's authorized request. Show the
+affected quote and scope before a material change. Never add team membership,
+replace a tag catalog or activate a timeline merely to make local estimation
+possible. Read back changed records and report what the system accepted.
+
+## Deliver the result
+
+Return the usable scope and requested calculations. Retain assumptions with the
+estimate and name the conditions that would reopen it. Save actual generated
+files and failed attempts. A hub update is optional and needs an available,
+authorized project destination; local work remains usable without it.
+
+Use scope-options for a comparison or interactive proposal. Use the
+statement-of-work workflow for the contract. A new estimate does not replace an
+accepted quote, authorize a production operation or establish client approval.

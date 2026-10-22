@@ -13,6 +13,19 @@ jobs:
       - uses: actions/setup-python@v7.0.0
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 -m pip install -r requirements-test.txt
+      - run: npm install --global pnpm@11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Configure test runtimes
+        run: |
+          echo "ESTATE_NODE=$(command -v node)" >> "$GITHUB_ENV"
+          echo "ESTATE_NODE_MODULES=$GITHUB_WORKSPACE/node_modules" >> "$GITHUB_ENV"
+          echo "NODE_PATH=$GITHUB_WORKSPACE/node_modules" >> "$GITHUB_ENV"
+          echo "PW_MODULE=file://$GITHUB_WORKSPACE/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
       - run: python3 tools/estate.py validate
       - run: python3 -m unittest discover -s tests -v
       - run: python3 tools/estate.py build

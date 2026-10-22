@@ -8,6 +8,11 @@ metadata:
   adapted: "2026-10-06"
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Analytics strategy
 
 Start with the decision the measurement should inform. Read existing metric definitions and inspect the available data. Check the project's approved data policy before selecting collection methods. Use [Measurement decisions](references/measurement-decisions.md) to define the smallest plan that answers the question.

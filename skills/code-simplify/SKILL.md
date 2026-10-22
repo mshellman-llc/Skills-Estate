@@ -3,6 +3,11 @@ name: code-simplify
 description: 'Review and refine the current code change for reuse, clarity, maintainability, and efficiency without changing behavior. Use when a delivery workflow requires a simplify pass, when the user asks to simplify or clean up a diff, or before committing a non-trivial implementation. Scope work to the current branch diff or an explicit target, preserve public behavior and project conventions, apply only high-confidence edits, and verify the result with focused tests. This is the Codex-native equivalent of Claude Code review with fixes, not a prose-style pass.'
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Code Simplify
 
 Make the current change easier to understand and maintain without changing what it does. This is

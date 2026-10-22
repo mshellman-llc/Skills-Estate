@@ -1,0 +1,69 @@
+schema_version: 1
+name: sf-delivery-standards
+display_name: Salesforce Delivery Standards
+summary: Install, audit, and repair Estate's Salesforce delivery standards for
+  direct, Deploy Engine, or Salesforce DevOps Center delivery, with git hooks,
+  Claude Code or Codex hooks, and a delivery-specific project contract.
+status: active
+tier: situational
+version: 1.1.0
+owner: Estate
+category: delivery-lifecycle
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Install, audit, and repair Estate''s Salesforce delivery standards on a Salesforce
+  project: the enforcement stack (git hooks, Claude Code or Codex hooks, and the host project contract)
+  that makes ticket-first, worktree-isolated, validate-then-merge-then-deploy the
+  path of least resistance against one org. Works with GitHub Issues or Jira as the
+  tracker, and with GitHub, GitLab, Bitbucket, Azure DevOps, or no remote at all.
+  Also handles prerequisites: checking for and walking a user through installing Homebrew,
+  the Salesforce CLI, the GitHub CLI or Atlassian''s ACLI, jq, PMD and Node, and authenticating
+  each one interactively. Trigger on ''set up the delivery standards'', ''init'',
+  ''initialise'', ''bootstrap this project'', ''install the hooks'', ''onboard me
+  onto this project'', ''what do I need installed'', ''prerequisites'', ''the CLI
+  isn''t working'', ''how do I authenticate'', ''install homebrew'', ''install the
+  jira cli'', ''audit the standards'', ''is the stack armed'', ''are the hooks running'',
+  ''why did a guard block me'', ''the managed block was edited'', ''switch this project
+  to Jira'', ''change the trunk branch'', ''seed'', ''baseline'', ''initial retrieve'',
+  ''pull the org into the repo'', ''forceignore'', ''first commit from an existing
+  org'', on DevOps Center local-loop or WI-branch handoff questions, and on questions about org drift or unrecorded Setup changes. Do NOT trigger
+  for ordinary implementation work — ''implement X'', ''fix this bug'', ''deploy this'',
+  ''create a PR'' — that workflow lives in the project''s CLAUDE.md or AGENTS.md managed block
+  and is enforced by hooks; loading this skill adds nothing. Supports a local-loop handoff
+  either to sf-deploy-engine or to Salesforce DevOps Center in a dedicated repository.
+  Do NOT trigger for promotion, releases, rollback or freeze recovery; use the delivery
+  system''s operational skill.'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null
+canon_exempt: engineering-doc
+waivers:
+- install, audit and troubleshooting contracts an agent needs before touching a deploy

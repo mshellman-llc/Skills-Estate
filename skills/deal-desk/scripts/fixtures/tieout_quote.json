@@ -1,0 +1,26 @@
+{
+  "quote_id": "Q-000181",
+  "as_of": "2026-08-11",
+  "fee": 218000,
+  "roles": [
+    {"role": "SA", "hours": 320, "rate": 275},
+    {"role": "PM", "hours": 160, "rate": 250},
+    {"role": "DEV", "hours": 400, "rate": 225}
+  ],
+  "phases": [
+    {"phase": "Mobilize", "hours": 180, "fee": 45000},
+    {"phase": "Build", "hours": 700, "fee": 173000}
+  ],
+  "percentages": [48, 52.84],
+  "extra_amounts": [
+    {"amount": 102800, "reason": "internal cost, recomputed and gated by deal_desk_gate.py"}
+  ],
+  "assumptions": [
+    "Client provides sandbox access by the end of week one",
+    "A single Salesforce org is in scope"
+  ],
+  "scope_lines": [
+    "CPQ configuration for the amendment flow",
+    "Workday integration, outbound only"
+  ]
+}

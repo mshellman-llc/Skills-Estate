@@ -1,30 +1,96 @@
 ---
 name: skill-estate-sync
-description: Validate, build, package, install, and audit the canonical Skills Estate across Claude Code and Codex. Use for skill changes, local drift, release bundles, and account upload tracking.
+description: Validate, assemble, package, install, and audit the canonical Skills Estate across local Claude Code and Codex installations. Use after changing a skill or shared policy, when installed resources drift, or when preparing an account upload. Preserves scripts and runtime dependencies, backs up adopted installs, and distinguishes local file checks from actual host execution and cloud publication.
 ---
+
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
 
 # Skill estate sync
 
-The canonical repository is `mshellman-llc/Skills-Estate`. Locate the checkout from the current project or `~/.config/skills-estate/repository`. Verify that location and its remote before running commands. A hosted session without the checkout can prepare a change but cannot claim a local installation.
+Keep one canonical Git checkout. Edit its `skills/`, `policies/`, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same generated packages locally. A package includes the workflow, scripts, references, templates, and shared policies it needs.
 
-Author in `skills/`; shared branding lives in `policies/brand.md`. Run commands from the checkout:
+Read [the skill standard](references/estate/skill-standard.md) before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.
 
-```sh
-python3 tools/estate.py validate
-python3 -m unittest discover -s tests -v
-python3 tools/estate.py sync
-```
+## Select the estate
 
-The build vendors the current shared policies into each package. Local installs link the generated packages into `~/.claude/skills` and `~/.agents/skills`. `sync` rebuilds, packages, and installs missing managed links. It does not fetch, push, upload, or overwrite a conflicting skill.
+Use the checkout already identified by the user or the installation's repository pointer. The bundled bridge resolves an explicit `--repo`, otherwise `~/.config/skills-estate/repository`. It refuses a missing pointer or a checkout without the expected tooling. It does not clone a repository, change accounts, or guess from the current directory.
 
-Run `status` to inspect current local bytes and pending account packages. Existing conflicts need inspection. `adopt` moves existing entries to a timestamped backup before linking; use it only for an authorized, reviewed migration. `restore <receipt.json>` restores the recorded entries and refuses if a destination changed since installation. Never edit `synced/`, vendor plugin caches, or unrelated skills.
-
-For GitHub updates, inspect the diff, commit, push through the authenticated GitHub CLI, and verify the remote commit and CI. Repository hooks rebuild local packages after commit, checkout, and merge. Another machine needs its own authenticated clone and installation.
-
-Claude account uploads and Codex account/plugin distribution are separate from local installation. `dist/` contains individual ZIP packages and `release.json` with their hashes. Use the actual account interface to upload and test a package; record an upload only after it occurred:
+Run from this skill's directory, replacing the example repository with the confirmed checkout:
 
 ```sh
-python3 tools/estate.py record-publication --surface claude-account --skill NAME --reference 'account and upload record'
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate validate
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate build
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate bundle
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate status
 ```
 
-A publication record is reported state, never independent verification. A changed package returns to pending. Account-enabled Claude skills reach Cowork according to the host's sync behavior; local Claude Code folders do not establish Cowork installation. Do not claim all surfaces are current while any required account or runtime check remains pending.
+From the canonical checkout, the equivalent command is `python3 tools/estate.py <command>`. The bridge invokes that exact tool; it does not maintain a second packaging implementation. Python 3 and a writable canonical checkout are required. Status creates a local lock file and reads the build; it does not contact host services.
+
+If no checkout is available, report the missing prerequisite and identify the user's existing repository. An isolated upload of this maintainer skill can inspect its own resources but cannot synchronize an estate that is absent from the host.
+
+## Repair and verify before installing
+
+1. Run `validate`. Fix malformed entry metadata, broken local links, missing declared runtime dependencies, or dependency cycles in source. Preserve working implementations when repairing instructions.
+2. Run the changed skill's behavioral tests with representative inputs. Save the actual outputs, failures, and command receipts. Check generated prose and figures against the inputs, and inspect rendered artifacts. Use the checkout's `tools/run_preserved_test.py` for Python tests that create temporary files.
+3. Run the estate's packaging and installation tests after changing shared policies, runtime assembly, or synchronization code. Shared changes can affect every dependent package.
+4. Run `build`, then `bundle`. The builder copies the selected shared policies and transitive runtimes, preserves executable modes, and records source/package hashes. It rejects a source change during assembly. Bundle output is in `dist/`; use the release manifest's filenames instead of assuming an extension.
+5. Confirm that the reviewed output belongs to the current source hash. Do not infer task quality from hashes, file counts, ZIP creation, or a structural selftest. A host invocation is separate evidence from local file installation.
+
+The current canonical CLI does not automatically run every behavioral test before building. The agent must complete the applicable tests and content review before treating a build as ready. Preserve a skill's failed attempt and fix the capability; do not replace the workflow with a general description to make validation pass.
+
+## Install and keep local hosts consistent
+
+After the requested repairs and release checks pass:
+
+```sh
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate install
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate status
+```
+
+Installation links each managed package into `~/.claude/skills` and `~/.agents/skills`. Existing matching legacy entries in `~/.codex/skills` are reconciled as well. Unrelated installed skills remain separate. The repository pointer lets this skill find the same checkout from either host.
+
+An existing divergent file, directory, or link is a conflict. Inspect its unique work first. If replacement is authorized, `adopt` backs it up and records a restore receipt before linking. A failed install rolls back its changes. Never discard a divergent installation to force a green status.
+
+`restore /absolute/path/to/receipt.json` reverses a recorded install only if its destinations still match what the installer wrote. It refuses to overwrite a subsequent user change.
+
+`sync` runs build, bundle, install, and status together. Use it only after the applicable capability tests; it has the same installation effects as the separate commands. Do not schedule it to overwrite conflicts automatically. For a test run, put `--home /absolute/path/to/test-home` before the command. This changes the install destination and repository pointer; build output still belongs to the selected checkout.
+
+Status reports `linked-current`, `copy-current`, drift, missing, or broken entries. Its overall success requires the managed links to match. A copied package can match today's bytes while remaining disconnected from future updates. Open the updated skill in a fresh host session when discovery requires a reload, then run a representative task there and retain its output. Do not claim Claude Code execution based on a Codex run, or the reverse.
+
+## Shared brand and dependency changes
+
+Edit the canonical brand policy/profile once. Rebuild dependent packages so their vendored policy copies and runtime assets match. Do not edit generated `build/`, `dist/`, or installed package files. Compare a neutral-profile output and an explicitly selected alternate profile when the change affects branding. Missing declared assets must produce an actionable failure rather than silently restoring former company branding.
+
+Runtime relationships belong in `config/runtime-dependencies.json`. A router must carry the scripts and references needed by its declared dependencies when used alone. Test the assembled package away from sibling source directories to reveal accidental source-tree dependencies.
+
+## Account uploads and other surfaces
+
+Local installation does not upload to Claude's account, a Codex account, Cowork, ChatGPT, or an API deployment. Check the destination's current supported format and available authorized upload method. Do not assume every surface accepts the same ZIP or provides a skill registry.
+
+After an actual authorized account upload, record the specific skill and destination reference:
+
+```sh
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate record-publication \
+  --surface claude-account --skill knowledge-hub --reference 'account and upload record'
+```
+
+The canonical ledger currently accepts `claude-account` and `codex-account`. A ledger row remains `verified_live: false`: it records the reported upload hash, not a readback or execution. Retain a separate receipt for a destination readback or task invocation. For another destination, retain its actual receipt and extend the adapter explicitly before claiming managed synchronization.
+
+## Retained standalone audit tools
+
+The earlier flat-estate tools remain bundled for explicit compatibility work. They are not the canonical release path:
+
+- `scripts/estate_diff.py --source DIR --config FILE --json` compares a flat skills tree to configured local directories. It distinguishes missing skills, SKILL-only stubs, entrypoint drift, and resource drift; each fails the comparison. It also checks the older `_shared/build-card.md` contract, shared references, and declared prose exemptions. Use it on a tree following that contract, not as a substitute for canonical status.
+- `scripts/build_bundles.py --source DIR --out DIR` gates flat-tree bundles on each skill's `*_selftest.py`, carries transitive shared resources, and preserves the original runtime-vendoring mechanism. Its optional release classification filters drafts. `--no-gate` is a diagnostic bypass and is not release evidence. It does not use the canonical dependency graph or manifests.
+- `scripts/record_publish.py` retains the flat-tree publication-ledger format. The bundled ledger starts empty; old organization uploads are not evidence for this estate. Its configuration must match the intended standalone checkout before writing a record.
+- `scripts/sync_build_card.py --skills-root DIR --check` checks the older shared-card/runtime references without generating brand literals.
+- `scripts/estate_sync_selftest.py` exercises those compatibility functions with synthetic fixtures. It does not connect to a host or cloud account.
+
+Use [the optional pre-commit hook](references/pre-commit.sh) only after inspecting existing hooks. It validates the canonical source without staging generated files. A hook is not installed or a recurring check scheduled merely because this file describes one.
+
+## Completion record
+
+State which source revision changed, which tasks produced usable outputs, which packages were built, and which destinations were actually updated. Link the outputs and installation or publication receipts. Name any remaining capability or host test and its next action. A missing service does not justify labeling that service's behavior verified; provide a working local path when the task supports one.
