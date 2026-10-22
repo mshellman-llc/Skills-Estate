@@ -40,7 +40,8 @@ Wikipedia's editors describe vague relationships and conclusions that follow a c
 | Unsupported emotional interpretation | “Customers will feel empowered” asserts an experience without research. Report the observed response, or identify a hypothesis and how to test it. |
 | Precision without a basis | A percentage, score, time estimate, or named framework makes a vague claim look established. Verify its definition and source; preserve legitimate estimates with their basis. |
 | Source references used as decoration | A paragraph names research, authorities, or documents without explaining what they support. Check the source and attach it to the precise claim. Remove unsupported borrowed authority. |
-| Unnecessary disclaimers repeated throughout | The same source limitation appears after every finding. State it once where it affects interpretation. Keep any qualifier required to preserve a specific claim's meaning. |
+| Unnecessary disclaimers repeated throughout | A source limitation appears without a claim or decision that needs it, or repeats after every finding. Omit it when irrelevant; otherwise state it where it affects interpretation. Keep qualifications required to preserve a claim’s meaning and relevant evidence gaps in an audit or status report. |
+| A correction displaces the reader’s purpose | The revised opening, labels or flow revolve around rebutting the AI’s earlier misunderstanding, even without mentioning the AI. Rebuild the passage around the audience’s actual task and supported facts. Remove explanations that only make sense to someone who saw the correction conversation. Keep a correction notice only when the reader needs the change itself. |
 | Assistant commentary inside the deliverable | Promises to help, praise for the user, editing narration, or offers to continue interrupt the requested copy. Deliver the finding or requested copy directly. |
 
 ## Agreement and the author's voice
@@ -60,6 +61,6 @@ Sharma and colleagues documented assistants favoring agreement with a user's bel
 
 For each suspected pattern, identify what it does to this passage before editing. Preserve quotations, required terms and stylistic choices that carry meaning. A dash, passive sentence or three-item list can be appropriate.
 
-Compare the revision with the source. Keep every supported finding, condition, figure, source and acceptance check. If a sentence contains both filler and a necessary qualification, rewrite around the qualification. Do not add anecdotes, errors or arbitrary changes in sentence length.
+Compare the revision with the source. Preserve required findings, conditions, figures, sources and acceptance checks within the requested scope; a summary need not reproduce every source detail. If a sentence contains both filler and a necessary qualification, rewrite around the qualification. Do not add anecdotes, errors or arbitrary changes in sentence length.
 
 Read the argument even when the scanner finds nothing. The text must support its claims and give the reader a usable action when the task calls for one. Check that editing has not erased approval conditions, created robotic fragments or replaced justified warmth with bluntness. Stop when the passage communicates its meaning in the required voice.

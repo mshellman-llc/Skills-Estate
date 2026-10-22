@@ -107,3 +107,35 @@ A clearer description says:
 Review the description, prompts and every instruction file. Replace phrases such as “resolve the governing layer” with the actual decision, such as “choose which voice rules apply.” Remove repeated explanations and decorative labels. Preserve the writing checks, exceptions, commands, examples and linked research.
 
 Quoted examples of bad prose remain as examples. Instructions around those quotations must follow the skill's own rules.
+
+## Correct a mistaken category without making it the message
+
+The source describes a scheduling tool for clinic staff: they book appointments, assign clinicians and handle schedule changes. The AI mistakenly framed it as a marketing tool. The user corrects that mistake.
+
+This replacement still makes the AI’s mistake the subject:
+
+> The experience includes scheduling and staffing, whether or not marketing activity exists. This review shows how operational work differs from promotion.
+
+For the staff-facing opening, write:
+
+> Book appointments, assign clinicians and manage schedule changes.
+
+The reader needs to use the schedule. The former marketing interpretation adds nothing to that task. Do not carry it into headings, diagram branches or UI labels. Replacing “marketing” with a subtler distinction would leave the same defect.
+
+## Keep a correction the reader needs
+
+A published event notice gave Tuesday as the date. The confirmed date is Wednesday, and recipients may have planned around Tuesday. A corrected notice should say the event is on Wednesday and identify the changed date. The reader needs that correction to act.
+
+If only an unpublished draft had the wrong date, the finished notice should give Wednesday without explaining the AI’s earlier misunderstanding. When the requester asks what changed, explain that separately. Do not remove a material correction notice merely to avoid mentioning an error.
+
+## Select facts for the requested copy
+
+Release notes are requested from these internal notes: saved filters are available to beta accounts from November 4; filter names must be unique for each person; time savings have not been measured.
+
+A supported release note is:
+
+> From November 4, beta accounts can save filters. Give each of your filters a unique name.
+
+Keep the date, availability limit and per-person naming rule. Do not broaden uniqueness to the whole workspace. The measurement gap prevents a claim about time saved; it does not require a disclaimer when the release note makes no such claim.
+
+If the request instead asks whether saved filters reduced search time, answer that time savings have not been measured. If a draft claims they save ten minutes, remove that unsupported claim. If the requested copy must include a legal disclosure or a material approval condition, retain it. Source selection does not authorize hiding information the reader needs.
