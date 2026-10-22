@@ -1,9 +1,11 @@
 """Verify plugin boundaries, routing resources and release refusal."""
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,7 +65,9 @@ class PluginTests(unittest.TestCase):
             self.assertIn('_runtime/detail/WORKFLOW.md', text)
             self.assertIn('runtime/control/WORKFLOW.md', text)
             for name in ('plugin.json', '.claude-plugin/plugin.json', '.codex-plugin/plugin.json'):
-                self.assertEqual('estate-solutioning', json.loads((base / name).read_text())['name'])
+                metadata = json.loads((base / name).read_text())
+                self.assertEqual('estate-solutioning', metadata['name'])
+                self.assertTrue(metadata['description'].startswith('Unreviewed candidate for isolated testing. '))
             with zipfile.ZipFile(base.parents[1] / 'estate-solutioning.zip') as archive:
                 self.assertIn('plugin.json', archive.namelist())
                 self.assertFalse(any(name.startswith(('.local/', '.git/')) for name in archive.namelist()))
@@ -77,8 +81,7 @@ class PluginTests(unittest.TestCase):
             plugins.build_plugins(self.root, ['estate-solutioning'])
         self.assertFalse((self.root / 'dist/plugins').exists())
 
-    def test_acceptance_is_bound_to_source_bytes(self):
-        manifest = estate.build(self.root)
+    def accept_fixture_reviews(self):
         settings = self.settings
         settings['release']['shared'] = {'status': 'accepted', 'reviewed_sha256': plugins.shared_hash(self.root, settings), 'evidence': 'synthetic-review'}
         for module in settings['release']['modules']:
@@ -86,10 +89,64 @@ class PluginTests(unittest.TestCase):
         for router in settings['release']['routers']:
             settings['release']['routers'][router] = {'status': 'accepted', 'reviewed_sha256': estate.sha((self.root / f'agents/{router}.md').read_bytes()), 'evidence': 'synthetic-review'}
         self.write('config/plugin-bundles.json', settings)
+
+    def test_acceptance_is_bound_to_source_bytes(self):
+        self.accept_fixture_reviews()
         self.assertEqual('reviewed', plugins.build_plugins(self.root, ['estate-solutioning'])['status'])
+        for name in ('plugin.json', '.claude-plugin/plugin.json', '.codex-plugin/plugin.json'):
+            path = self.root / 'dist/plugins/codex/plugins/estate-solutioning' / name
+            self.assertEqual('Synthetic plugin fixture.', json.loads(path.read_text())['description'])
         (self.root / 'skills/detail/resource.txt').write_text('Unreviewed revision\n')
         with self.assertRaisesRegex(ValueError, 'Release blocked: detail'):
             plugins.build_plugins(self.root, ['estate-solutioning'])
+
+    def test_stale_shared_review_blocks_release(self):
+        self.accept_fixture_reviews()
+        (self.root / 'policies/workflow.md').write_text('Unreviewed shared rule.\n')
+        with self.assertRaisesRegex(ValueError, 'Release blocked: shared assembly'):
+            plugins.build_plugins(self.root, ['estate-solutioning'])
+
+    def test_stale_router_review_blocks_release(self):
+        self.accept_fixture_reviews()
+        path = self.root / 'agents/solutioning-router.md'
+        path.write_text(path.read_text().replace('Read the requested source', 'Read a different source'))
+        with self.assertRaisesRegex(ValueError, 'Release blocked: solutioning-router'):
+            plugins.build_plugins(self.root, ['estate-solutioning'])
+
+    def test_bad_router_links_fail_without_replacing_prior_output(self):
+        previous = plugins.build_plugins(self.root, ['estate-solutioning'], candidate=True)
+        original = plugins.router_text
+        for link in ('missing.md', '../../../../outside.md'):
+            with self.subTest(link=link):
+                def invalid(*args, **kwargs):
+                    return original(*args, **kwargs) + f'\n[Invalid]({link})\n'
+                with patch.object(plugins, 'router_text', invalid):
+                    with self.assertRaisesRegex(ValueError, 'Router target is missing or escapes plugin'):
+                        plugins.build_plugins(self.root, ['estate-solutioning'], candidate=True)
+                self.assertEqual(previous, json.loads((self.root / 'dist/plugins/release.json').read_text()))
+
+    def test_mid_build_source_change_aborts(self):
+        original = plugins.router_text
+        def changing(*args, **kwargs):
+            text = original(*args, **kwargs)
+            (self.root / 'policies/workflow.md').write_text('Changed while assembling.\n')
+            return text
+        with patch.object(plugins, 'router_text', changing):
+            with self.assertRaisesRegex(ValueError, 'Source changed during plugin build'):
+                plugins.build_plugins(self.root, ['estate-solutioning'], candidate=True)
+        self.assertFalse((self.root / 'dist/plugins').exists())
+
+    def test_real_pursuit_routes_both_sales_workflows(self):
+        settings = plugins.config(ROOT)
+        item = settings['bundles']['estate-pursuit']
+        modules = plugins.router_modules(ROOT, item)
+        targets = {name: f'runtime/{name}/WORKFLOW.md' for name in modules}
+        for name in ('sales-process-mapping', 'sales-journey-critique'):
+            self.assertIn(name, modules)
+            for host in ('claude', 'codex'):
+                text = plugins.router_text(ROOT, item, targets, host)
+                self.assertIn(f'[{name}](', text)
+                self.assertIn(f'runtime/{name}/WORKFLOW.md)', text)
 
     def test_missing_or_duplicate_classification_fails(self):
         self.settings['bundles']['estate-quality']['entries'] = ['task']
@@ -117,6 +174,14 @@ class PluginTests(unittest.TestCase):
         first = plugins.build_plugins(self.root, ['estate-solutioning'], candidate=True)
         second = plugins.build_plugins(self.root, ['estate-solutioning'], candidate=True)
         self.assertEqual(first['packages'], second['packages'])
+
+    def test_identical_sources_in_different_roots_produce_identical_packages(self):
+        with tempfile.TemporaryDirectory() as other:
+            copy = Path(other) / 'different-root'
+            shutil.copytree(self.root, copy)
+            first = plugins.build_plugins(self.root, ['estate-solutioning'], candidate=True)
+            second = plugins.build_plugins(copy, ['estate-solutioning'], candidate=True)
+            self.assertEqual(first['packages'], second['packages'])
 
     def test_duplicate_json_keys_are_not_silently_replaced(self):
         (self.root / 'config/plugin-bundles.json').write_text('{"format":1,"format":1}')

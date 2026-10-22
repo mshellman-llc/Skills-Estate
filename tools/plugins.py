@@ -3,6 +3,7 @@
 import argparse
 import json
 from pathlib import Path
+import posixpath
 import re
 import shutil
 import tempfile
@@ -150,7 +151,6 @@ def router_text(root, item, targets, host):
     body = text[front.end():].split('## Available skills\n', 1)[0].rstrip()
     # Preserve the source's routing method and replace its list and control paths.
     base = Path('agents') if host == 'claude' else Path('skills') / name
-    import posixpath
     links = []
     for module in router_modules(root, item):
         target = posixpath.relpath(targets[module], str(base))
@@ -219,14 +219,17 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
                     target = package / ('agents/' + router + '.md' if host == 'claude' else 'skills/' + router + '/SKILL.md')
                     target.parent.mkdir(parents=True, exist_ok=True)
                     target.write_text(router_text(root, item, targets, host))
+                description = item['description']
+                if gaps:
+                    description = 'Unreviewed candidate for isolated testing. ' + description
                 portable = {'$schema': 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
-                            'name': name, 'version': settings['version'], 'description': item['description'],
+                            'name': name, 'version': settings['version'], 'description': description,
                             'author': {'name': 'Skills Estate'},
                             'repository': 'https://github.com/mshellman-llc/Skills-Estate'}
                 write_json(package / 'plugin.json', portable)
                 write_json(package / '.claude-plugin/plugin.json', {k: v for k, v in portable.items() if k != '$schema'})
                 write_json(package / '.codex-plugin/plugin.json', {'name': name, 'version': settings['version'],
-                           'description': item['description'], 'skills': './skills/'})
+                           'description': description, 'skills': './skills/'})
                 receipt = {'status': state, 'host_adapter': host, 'source_sha256': manifest['source_sha256'],
                            'entries': item['entries'], 'required_modules': required_modules(root, item, manifest),
                            'opt_in': item['opt_in'], 'review_gaps': gaps}
