@@ -71,8 +71,8 @@ Run `prose-pass` on the prose before shipping; it is a hard gate. In practice:
 
 ## Money and gaps
 
-Nothing in the guide is priced by the guide. Pricing authority is the scoping
-system (Sage). The pricing resolver demonstrates the client's own model against
+Nothing in the guide is priced by the guide. Pricing authority is the confirmed scoping
+system or supplied quote source. The pricing resolver demonstrates the client's own model against
 their own rate card; it is a teaching tool, not a quote. Do not invent list
 prices, dates, owners, or volumes. If a number is unknown, it goes in the
 open-decisions register as unknown, never as a placeholder.

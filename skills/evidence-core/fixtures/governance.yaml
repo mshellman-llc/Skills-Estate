@@ -69,9 +69,9 @@ efficiency:
 stewardship:
   steward: Estate evidence methods owners
   maintainers:
-    - Megan Shellman
+    - Evidence methods owner
     - Designated consulting methods co-owner
-  lifecycle_approver: Megan Shellman and the designated consulting methods co-owner
+  lifecycle_approver: Evidence methods owner and the designated consulting methods co-owner
   review_date: 2026-09-30
   stale_facts:
     - Source authority caps

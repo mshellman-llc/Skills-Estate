@@ -956,7 +956,7 @@
     {
       "viewType": "financial_reconciliation",
       "disposition": "omitted",
-      "reason": "The guide prices nothing. Sage owns every Estate number.",
+      "reason": "The guide prices nothing. Commercial figures come from the confirmed pricing source.",
       "confirmedInChat": true
     }
   ],

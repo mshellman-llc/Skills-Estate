@@ -50,7 +50,7 @@
       "fullOutput": "ROM estimate",
       "insufficientOutput": "Estimate readiness gap memo",
       "hardFails": ["fabricated precision", "range without basis", "arithmetic mismatch", "assumption hidden from range", "scenario comparison mislabeled as estimate"],
-      "referenceComponents": ["Brightline Materials ROM"]
+      "referenceComponents": ["Effort and cost range ROM pattern"]
     },
     {
       "artifactType": "business_case",
@@ -62,7 +62,7 @@
       "fullOutput": "Executive business case",
       "insufficientOutput": "Investment readiness gap memo",
       "hardFails": ["invented ROI", "benefits not tied to evidence", "case against omitted", "recommendation without conditions", "example-cloned structure"],
-      "referenceComponents": ["Approved subscription Business Case example", "Cascade Health Patient Access Business Case"]
+      "referenceComponents": ["Approved subscription Business Case example", "Patient access investment Business Case pattern"]
     },
     {
       "artifactType": "ddoc",
@@ -74,7 +74,7 @@
       "fullOutput": "Deal Decision Document in lean or rich mode",
       "insufficientOutput": "Decision readiness gap memo",
       "hardFails": ["false choice", "recommendation not earned", "criteria invented by vendor", "proposal substituted for decision analysis", "scope or price treated as committed without authority"],
-      "referenceComponents": ["Ask Helix DDOC", "OverDrive Contracts DDOC", "Pewag Foundation DDOC", "Kestrel Software DDOC"]
+      "referenceComponents": ["Platform choice DDOC pattern", "Contract renewal DDOC pattern", "Foundation scope DDOC pattern", "Software rollout DDOC pattern"]
     },
     {
       "artifactType": "deal_desk",
@@ -86,7 +86,7 @@
       "fullOutput": "Deal Desk approval readout",
       "insufficientOutput": "Not ready for Deal Desk approval memo",
       "hardFails": ["arithmetic mismatch", "real margin hidden behind point estimate", "delivery cosign missing", "risk smoothed over", "more than one approval ask"],
-      "referenceComponents": ["Brightline Materials Deal Desk"]
+      "referenceComponents": ["Commercial approval Deal Desk pattern"]
     },
     {
       "artifactType": "solution_brief",
