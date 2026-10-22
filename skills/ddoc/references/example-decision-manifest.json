@@ -1,9 +1,14 @@
 {
   "mode": "decision",
   "client": "Northwind Industrial Controls",
-  "title": "Three bands, one decision",
+  "title": "Three options, one decision",
   "date": "2026-08-14",
   "quote_number": "Q-000101",
+  "quote_snapshot": {
+    "quote.lift_and_shift_fee": 321100,
+    "quote.total_fixed_fee": 450900,
+    "quote.rearchitect_fee": 599900
+  },
   "options": [
     {
       "name": "Lift and shift",
@@ -39,9 +44,19 @@
   ],
   "figures": [
     {
-      "label": "Tier 2 investment",
-      "value": 412500,
+      "label": "Lift and shift investment",
+      "value": 321100,
+      "quote_field": "quote.lift_and_shift_fee"
+    },
+    {
+      "label": "Remediate and migrate investment",
+      "value": 450900,
       "quote_field": "quote.total_fixed_fee"
+    },
+    {
+      "label": "Re-architect and migrate investment",
+      "value": 599900,
+      "quote_field": "quote.rearchitect_fee"
     }
   ],
   "slides": [
@@ -63,11 +78,11 @@
     },
     {
       "kind": "recommendation",
-      "title": "We recommend Tier 2",
+      "title": "We recommend remediate and migrate",
       "subtitle": "It closes the quoting delay without taking on the order management rebuild in the same phase.",
       "bullets": [
-        "Tier 2 covers the two systems that produce the eleven day cycle.",
-        "Tier 1 leaves order management untouched, which is where the second delay sits."
+        "Remediate and migrate covers the two systems that produce the eleven day cycle.",
+        "Lift and shift leaves order management untouched, which is where the second delay sits."
       ]
     },
     {
@@ -90,7 +105,7 @@
           "One integration endpoint."
         ],
         "Timeline": [
-          "Eight weeks from kickoff."
+          "Twelve weeks from kickoff."
         ]
       }
     },
@@ -109,7 +124,7 @@
           "Two integration endpoints."
         ],
         "Timeline": [
-          "Fourteen weeks from kickoff."
+          "Seventeen weeks from kickoff."
         ]
       }
     },
@@ -128,7 +143,7 @@
           "Four integration endpoints."
         ],
         "Timeline": [
-          "Twenty two weeks from kickoff."
+          "Twenty four weeks from kickoff."
         ]
       }
     },
@@ -143,7 +158,7 @@
     },
     {
       "kind": "timeline",
-      "title": "Where the recommended band spends its time",
+      "title": "Where the recommended option spends its time",
       "phases": [
         {
           "name": "Mobilize",
@@ -174,7 +189,7 @@
       ],
       "bullets": [
         "Seventeen weeks for remediate and migrate, gated at Analyze and at cutover.",
-        "The other bands run the same shape at twelve and twenty four weeks."
+        "The other options run the same shape at twelve and twenty four weeks."
       ]
     },
     {
@@ -182,7 +197,7 @@
       "title": "What we need from you",
       "steps": [
         {
-          "text": "A sandbox provisioned and credentialed for the Estate team.",
+          "text": "A sandbox provisioned and credentialed for the delivery team.",
           "when": "5 days before"
         },
         {
@@ -200,11 +215,11 @@
       "title": "Decision and next step",
       "steps": [
         {
-          "text": "Confirm a band and the assumptions behind it.",
+          "text": "Confirm an option and the assumptions behind it.",
           "when": "By Aug 21"
         },
         {
-          "text": "We issue the Statement of Work for the selected band.",
+          "text": "We issue the Statement of Work for the selected option.",
           "when": "Within 3 days"
         },
         {

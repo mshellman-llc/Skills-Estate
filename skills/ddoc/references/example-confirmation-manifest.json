@@ -4,6 +4,9 @@
   "title": "Migrating off CPQ at functional parity",
   "date": "[Month YYYY]",
   "quote_number": "[Q-number]",
+  "quote_snapshot": {
+    "quote.timelineRevenue": 321100
+  },
   "deck_lead": "Salesforce has set an end-of-sale date on Salesforce CPQ. This document sets out one scoped path off it: what it covers, what it leaves out, and what it costs. Client-specific slides are marked and filled during the pursuit.",
   "meta": [
     {
@@ -373,7 +376,7 @@
         "name": "Commercials"
       },
       "title": "Investment",
-      "amount": "[$ from quote]",
+      "amount": "$321,100",
       "qualifier": "Time and materials against the hours in the quote. Figures come from the Pricing System, not from this document.",
       "terms": [
         {
@@ -454,8 +457,34 @@
       "subtitle": null
     },
     {
-      "kind": "confirm",
+      "kind": "need_from_you",
       "num": 13,
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "What we need from you",
+      "steps": [
+        {
+          "text": "Sandbox and production read access, credentialed for the delivery team.",
+          "owner": "[Client administrator]",
+          "when": "5 business days before kickoff"
+        },
+        {
+          "text": "A named decision owner with authority to accept deliverables.",
+          "owner": "[Client sponsor]",
+          "when": "Before kickoff"
+        },
+        {
+          "text": "Recurring calendar holds for the named stakeholders.",
+          "owner": "[Client sponsor]",
+          "when": "Before kickoff"
+        }
+      ]
+    },
+    {
+      "kind": "confirm",
+      "num": 14,
       "section": {
         "num": 3,
         "name": "Commercials"
@@ -468,7 +497,7 @@
           "when": "[Date]"
         },
         {
-          "text": "Estate issues the Statement of Work.",
+          "text": "We issue the Statement of Work.",
           "owner": "Client Services Executive",
           "when": "+3 business days"
         },

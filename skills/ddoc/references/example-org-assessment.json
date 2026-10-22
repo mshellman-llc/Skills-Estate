@@ -5,6 +5,9 @@
   "title": "A clear read on the health of your Salesforce org",
   "date": "[Month YYYY]",
   "quote_number": "[Q-number]",
+  "quote_snapshot": {
+    "quote.totalBuPrice": 35000
+  },
   "deck_lead": "A two week diagnostic that inventories the org, scores capability maturity, and returns a prioritised roadmap with rough investment ranges. Client-specific slides are marked and filled during the pursuit.",
   "meta": [
     {
@@ -36,7 +39,7 @@
   "figures": [
     {
       "label": "Investment",
-      "value": null,
+      "value": 35000,
       "quote_field": "quote.totalBuPrice"
     }
   ],
@@ -390,6 +393,32 @@
       "num": 12
     },
     {
+      "kind": "need_from_you",
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "What we need from you",
+      "steps": [
+        {
+          "text": "Read access to the org, granted for the assessment team.",
+          "owner": "[Client administrator]",
+          "when": "Before week 1"
+        },
+        {
+          "text": "Calendar holds for the named stakeholders inside the two weeks.",
+          "owner": "[Client sponsor]",
+          "when": "Before week 1"
+        },
+        {
+          "text": "The clouds and org in scope, agreed in writing.",
+          "owner": "[Client sponsor]",
+          "when": "At kickoff"
+        }
+      ],
+      "num": 13
+    },
+    {
       "kind": "confirm",
       "section": {
         "num": 3,
@@ -403,7 +432,7 @@
           "when": "[Date]"
         },
         {
-          "text": "Estate issues the Statement of Work.",
+          "text": "We issue the Statement of Work.",
           "owner": "Client Services Executive",
           "when": "+3 business days"
         },
@@ -418,7 +447,7 @@
           "when": "[Date]"
         }
       ],
-      "num": 13
+      "num": 14
     },
     {
       "kind": "closing",

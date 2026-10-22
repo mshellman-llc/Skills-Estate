@@ -5,6 +5,9 @@
   "title": "Deciding where AI is worth building",
   "date": "[Month YYYY]",
   "quote_number": "[Q-number]",
+  "quote_snapshot": {
+    "quote.totalBuPrice": 65000
+  },
   "deck_lead": "A three week assessment that produces a ranked set of AI use cases, a readiness score against the platform and data they already have, and a roadmap the executive team can fund. Client-specific slides are marked and filled during the pursuit.",
   "meta": [
     {
@@ -36,7 +39,7 @@
   "figures": [
     {
       "label": "Investment",
-      "value": null,
+      "value": 65000,
       "quote_field": "quote.totalBuPrice"
     }
   ],
@@ -377,6 +380,32 @@
       "num": 12
     },
     {
+      "kind": "need_from_you",
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "What we need from you",
+      "steps": [
+        {
+          "text": "Calendar holds for the stakeholder sessions inside the three weeks.",
+          "owner": "[Client sponsor]",
+          "when": "Before week 1"
+        },
+        {
+          "text": "Existing documentation on process and data.",
+          "owner": "[Client sponsor]",
+          "when": "Week 1"
+        },
+        {
+          "text": "Read access to the relevant systems.",
+          "owner": "[Client administrator]",
+          "when": "Before week 2"
+        }
+      ],
+      "num": 13
+    },
+    {
       "kind": "confirm",
       "section": {
         "num": 3,
@@ -390,7 +419,7 @@
           "when": "[Date]"
         },
         {
-          "text": "Estate issues the Statement of Work.",
+          "text": "We issue the Statement of Work.",
           "owner": "Client Services Executive",
           "when": "+3 business days"
         },
@@ -405,7 +434,7 @@
           "when": "[Date]"
         }
       ],
-      "num": 13
+      "num": 14
     },
     {
       "kind": "closing",

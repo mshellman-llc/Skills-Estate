@@ -12,11 +12,11 @@ Two authoring registers exist under the two DDOC modes. Decision mode (the clien
 
 The purpose of this slide is to make the client feel the cost of the status quo before they see the solution. Three beats:
 
-1. Name the specific problem. Not "visibility challenges" but "Pewag tracks chain wear in a spreadsheet that cannot send alerts."
-2. Name the consequence. Not "missed revenue" but "Jim estimates missed replacement revenue at 10–20%."
+1. Name the specific problem. Not "visibility challenges" but "Northwind tracks chain wear in a spreadsheet that cannot send alerts."
+2. Name the consequence. Not "missed revenue" but "The operations director estimates missed replacement revenue at 10–20%."
 3. Name what the engagement fixes, in one sentence, not a scope list.
 
-This slide fails when it is written from Estate's perspective ("We identified an opportunity to improve..."). Write from the client's perspective.
+This slide fails when it is written from the provider's perspective ("We identified an opportunity to improve..."). Write from the client's perspective.
 
 ---
 
@@ -25,7 +25,7 @@ This slide fails when it is written from Estate's perspective ("We identified an
 The "what we're building" slide presents the scope structure, not the scope line items.
 
 - **L1** is the section header from the quote (for example "Asset implementation," "Quoting," "Reporting"). Plain noun phrases.
-- **L2** is one sentence per node: what Estate does in that area, from the client's perspective, in plain English.
+- **L2** is one sentence per node: what the provider does in that area, from the client's perspective, in plain English.
   - Correct: "Salesforce tracks every chain set by customer, site, and install date."
   - Wrong: "TCS-001: Asset Object Configuration, 12 hours."
 - No item codes, hour counts, or pricing on this slide. Scope detail belongs in the SOW.
@@ -49,8 +49,8 @@ Required when the client is choosing scope or phasing. Typical structure is thre
 
 Used on persuasive decks where there is no SOW yet and the deck is the primary artifact driving the decision. Every differentiator claim must be specific and falsifiable:
 
-- Correct: "Estate has delivered 14 CPQ implementations on Revenue Cloud in the last 18 months."
-- Wrong: "Estate brings deep CPQ expertise and a proven delivery model."
+- Correct: "We have delivered 14 CPQ implementations on Revenue Cloud in the last 18 months." Use a figure the user supplies; this one is synthetic.
+- Wrong: "We bring deep CPQ expertise and a proven delivery model."
 
 If a specific fact is not available, do not write a generic claim. Flag it for the user to supply.
 
@@ -88,17 +88,17 @@ Do not restate the capability list. Do not add an "includes" bullet list of deli
 
 ## Next steps
 
-3–5 items, each with a named owner (Estate or Client) and a timeframe:
+3–5 items, each with a named owner (the provider, named only when the user supplies its name, or the client) and a timeframe:
 
 - Correct: "Client designates project sponsor and admin, by [date]."
-- Correct: "Estate sends countersigned SOW, within 2 business days of signature."
+- Correct: "We send the countersigned SOW within 2 business days of signature."
 - Wrong: "Schedule kickoff" (no owner, no timeframe).
 
 ---
 
 ## Anti-patterns
 
-**The passive-voice scope recitation:** three bullets of "We will configure... We will migrate... We will build..." Reframe as what the client gets, not what Estate does.
+**The passive-voice scope recitation:** three bullets of "We will configure... We will migrate... We will build..." Reframe as what the client gets, not what the provider does.
 
 **The hollow differentiator:** "Our team brings unmatched expertise." Remove it or replace it with a specific.
 
@@ -106,4 +106,4 @@ Do not restate the capability list. Do not add an "includes" bullet list of deli
 
 **The agenda that is also a table of contents:** "Section 1: Background, Section 2: Approach..." Write agenda items as the questions the meeting will answer.
 
-**The cover without a document type:** "Pewag USA, June 2026." Always include the document-type label ("Deal Decision deck," "Proposal," "Engagement overview").
+**The cover without a document type:** "Northwind Industrial Controls, June 2026." Always include the document-type label ("Deal Decision deck," "Proposal," "Engagement overview").

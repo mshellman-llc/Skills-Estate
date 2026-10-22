@@ -1,4 +1,5 @@
 """Exercise the deck gate with source values and inspect generated PPTX content."""
+import base64
 import copy
 import json
 import os
@@ -13,6 +14,9 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 BUILDER = ROOT / "skills/ddoc/scripts/build_ddoc.js"
 NODE = os.environ.get("ESTATE_NODE") or shutil.which("node")
+# A valid 1x1 PNG, so the synthetic logo is a real image.
+PNG = base64.b64decode(
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==")
 
 
 class DeckBehaviorTests(unittest.TestCase):
@@ -140,6 +144,142 @@ class DeckBehaviorTests(unittest.TestCase):
             slide_xml = "".join(archive.read(n).decode() for n in archive.namelist()
                                 if re.fullmatch(r"ppt/slides/slide\d+\.xml", n))
         self.assertNotIn("2F5D8A", slide_xml)
+
+    def profile_with_logo(self, name, logo):
+        """Write a synthetic profile in its own directory; return (profile file, directory)."""
+        text = (ROOT / "policies/brand.md").read_text()
+        profile = json.loads(re.search(r"```json\s*\n(.*?)\n```", text, re.S)[1])
+        profile["name"] = "Synthetic logo " + name
+        profile["source"] = "Synthetic fixture for logo preflight tests"
+        profile["logo"] = logo
+        directory = self.run_dir / name
+        directory.mkdir()
+        file = directory / "brand.md"
+        file.write_text("```json\n" + json.dumps(profile, indent=2) + "\n```\n")
+        return file, directory
+
+    def check_with_logo(self, name, logo, *, build=False):
+        file, directory = self.profile_with_logo(name, logo)
+        return directory, *self.invoke(self.base, name + "-deck", build=build,
+                                       extra_env={"SKILLS_BRAND_PROFILE": str(file)})
+
+    def test_null_logo_profile_passes_preflight(self):
+        result, _ = self.invoke(self.base, "null-logo")
+        self.assertEqual(0, result.returncode, result.stderr)
+
+    def test_missing_declared_logo_fails_check_with_asset_path(self):
+        directory, result, pptx = self.check_with_logo("missing-logo", "assets/absent.png")
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("declared logo does not exist", result.stderr)
+        self.assertIn(str(directory.resolve() / "assets/absent.png"), result.stderr)
+        self.assertFalse(pptx.exists())
+
+    def test_missing_declared_logo_fails_build_before_rendering(self):
+        directory, result, pptx = self.check_with_logo("missing-logo-build", "absent.png", build=True)
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn(str(directory.resolve() / "absent.png"), result.stderr)
+        self.assertNotIn("renderer is unavailable", result.stderr)
+        self.assertFalse(pptx.exists())
+
+    def test_logo_resolves_against_profile_directory_not_cwd(self):
+        other = self.run_dir / "elsewhere"
+        other.mkdir()
+        (other / "logo.png").write_bytes(PNG)
+        directory, result, _ = self.check_with_logo("relative-logo", "logo.png")
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn(str(directory.resolve() / "logo.png"), result.stderr)
+
+    def test_logo_directory_is_rejected(self):
+        file, directory = self.profile_with_logo("directory-logo", "logo.png")
+        (directory / "logo.png").mkdir()
+        result, _ = self.invoke(self.base, "directory-logo-deck",
+                                extra_env={"SKILLS_BRAND_PROFILE": str(file)})
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn(str(directory.resolve() / "logo.png"), result.stderr)
+
+    @unittest.skipIf(not hasattr(os, "geteuid") or os.geteuid() == 0, "permissions are not enforced")
+    def test_unreadable_declared_logo_fails_check(self):
+        file, directory = self.profile_with_logo("unreadable-logo", "logo.png")
+        logo = directory / "logo.png"
+        logo.write_bytes(PNG)
+        logo.chmod(0)
+        self.addCleanup(logo.chmod, 0o600)
+        result, _ = self.invoke(self.base, "unreadable-logo-deck",
+                                extra_env={"SKILLS_BRAND_PROFILE": str(file)})
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("cannot be read", result.stderr)
+        self.assertIn(str(directory.resolve() / "logo.png"), result.stderr)
+
+    def test_valid_synthetic_logo_passes_preflight_in_both_forms(self):
+        for name, declared in (("string-logo", "logo.png"), ("object-logo", {"path": "logo.png"})):
+            with self.subTest(form=name):
+                file, directory = self.profile_with_logo(name, declared)
+                (directory / "logo.png").write_bytes(PNG)
+                result, _ = self.invoke(self.base, name + "-deck",
+                                        extra_env={"SKILLS_BRAND_PROFILE": str(file)})
+                self.assertEqual(0, result.returncode, result.stderr)
+
+    def test_valid_synthetic_logo_is_embedded_in_built_deck(self):
+        file, directory = self.profile_with_logo("built-logo", "logo.png")
+        (directory / "logo.png").write_bytes(PNG)
+        result, pptx = self.invoke(self.base, "built-logo-deck", build=True,
+                                   extra_env={"SKILLS_BRAND_PROFILE": str(file)})
+        self.assertEqual(0, result.returncode, result.stderr)
+        with zipfile.ZipFile(pptx) as archive:
+            self.assertTrue([n for n in archive.namelist() if n.startswith("ppt/media/")])
+
+    def test_every_shipped_example_passes_preflight(self):
+        examples = sorted((ROOT / "skills/ddoc/references").glob("example-*.json"))
+        self.assertGreaterEqual(len(examples), 1)
+        for example in examples:
+            with self.subTest(example=example.name):
+                result, _ = self.invoke(json.loads(example.read_text()), "shipped-" + example.stem)
+                self.assertEqual(0, result.returncode, result.stderr)
+                self.assertIn("0 failures", result.stdout)
+
+    def test_decision_example_options_amounts_and_durations_match_its_quote(self):
+        example = json.loads((ROOT / "skills/ddoc/references/example-decision-manifest.json").read_text())
+        snapshot = set(example["quote_snapshot"].values())
+        weeks = {"12": "Twelve", "17": "Seventeen", "24": "Twenty four"}
+        blocks = {s["option"]: s for s in example["slides"] if s["kind"] == "option_block"}
+        for option in example["options"]:
+            with self.subTest(option=option["name"]):
+                self.assertIn(int(re.sub(r"\D", "", option["investment"])), snapshot)
+                number = option["duration"].split()[0]
+                self.assertTrue(blocks[option["name"]]["sections"]["Timeline"][0].startswith(weeks[number]))
+        recommended = next(o for o in example["options"] if o["recommended"])
+        text = json.dumps(example["slides"])
+        self.assertIn(("We recommend " + recommended["name"]).lower(), text.lower())
+        self.assertNotIn("Tier", text)
+
+    def test_confirmation_examples_carry_snapshot_values_for_their_investment(self):
+        for name in ("confirmation-manifest", "ai-readiness", "org-assessment"):
+            with self.subTest(example=name):
+                example = json.loads((ROOT / f"skills/ddoc/references/example-{name}.json").read_text())
+                figure = example["figures"][0]
+                self.assertEqual(figure["value"], example["quote_snapshot"][figure["quote_field"]])
+                amount = next(s for s in example["slides"] if s["kind"] == "investment")["amount"]
+                self.assertEqual(figure["value"], int(re.sub(r"\D", "", amount)))
+                self.assertIn("need_from_you", [s["kind"] for s in example["slides"]])
+
+    def test_documentation_matches_builder_order_and_checks(self):
+        patterns = (ROOT / "skills/ddoc/references/ddoc-patterns.md").read_text()
+        section = patterns.split("## Confirmation mode skeleton")[1].split("## Structural rules")[0]
+        order = [section.index(f"`{kind}`") for kind in
+                 ("investment", "assumptions", "need_from_you", "confirm")]
+        self.assertEqual(sorted(order), order)
+        skill = (ROOT / "skills/ddoc/SKILL.md").read_text()
+        self.assertNotIn("retired role", skill)
+        self.assertIn("declared profile logo", skill)
+
+    def test_touched_references_carry_no_private_names_or_placeholder_provider(self):
+        banned = ("Pewag", "Aleysian", "Meridian", "Estate issues", "Estate has", "Estate team",
+                  "Estate-Brand", "Jim ")
+        for file in (ROOT / "skills/ddoc/references").iterdir():
+            with self.subTest(file=file.name):
+                text = file.read_text()
+                for word in banned:
+                    self.assertNotIn(word, text)
 
     def inspect_deck(self, file, manifest, accent, font="Arial"):
         with zipfile.ZipFile(file) as archive:

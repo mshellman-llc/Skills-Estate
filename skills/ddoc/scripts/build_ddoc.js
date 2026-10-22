@@ -44,12 +44,13 @@ const LABELS = {
   timeline: "Timeline", team: "Team", investment: "Investment", confirm: "Next step",
 };
 
-// Slide skeletons. Order is fixed; the builder verifies presence and order.
+// Slide skeletons: the required slides. The builder verifies presence here and order
+// against PREFERRED_ORDER below, which is the default narrative order.
 const SKELETON_ALIASES = { scope: ["scope_in", "scope_out"], deliverables: ["outcomes"] };
 const SKELETON = {
   decision: ["heard", "recommendation", "comparison", "option_block", "outside_all", "need_from_you", "decision"],
-  confirmation: ["heard", "recommendation", "scope", "deliverables", "assumptions",
-                 "timeline", "team", "need_from_you", "investment", "confirm"],
+  confirmation: ["heard", "recommendation", "scope", "deliverables", "timeline", "team",
+                 "investment", "assumptions", "need_from_you", "confirm"],
 };
 const PREFERRED_ORDER = {
   decision: ["heard", "stats", "exec_summary", "recommendation", "comparison",
@@ -93,8 +94,32 @@ function allText(m) {
   return out;
 }
 
+/**
+ * Resolve the profile's declared logo with the rule render.js uses: a string or a
+ * {path} object, resolved against the directory of the selected profile file.
+ * Returns null when the profile declares no logo.
+ */
+function declaredLogoPath(brand = T) {
+  const value = typeof brand.logo === "string" ? brand.logo : brand.logo?.path;
+  return value ? path.resolve(path.dirname(brand.tokensPath), value) : null;
+}
+
+/** A declared logo that cannot be read is a hard failure, reported before rendering. */
+function logoErrors(brand = T) {
+  const file = declaredLogoPath(brand);
+  if (!file) return [];
+  try {
+    if (!fs.statSync(file).isFile()) return [`declared logo is not a file: ${file}`];
+    fs.closeSync(fs.openSync(file, "r"));
+  } catch (e) {
+    const why = e.code === "ENOENT" ? "does not exist" : `cannot be read (${e.code || e.message})`;
+    return [`declared logo ${why}: ${file}`];
+  }
+  return [];
+}
+
 function preflight(m) {
-  const errs = [];
+  const errs = [...logoErrors()];
   const warns = [];
 
   if (!m.mode || !SKELETON[m.mode]) errs.push(`mode must be "decision" or "confirmation", got ${m.mode}`);
@@ -271,4 +296,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { preflight, build, allText };
+module.exports = { preflight, build, allText, declaredLogoPath, logoErrors };

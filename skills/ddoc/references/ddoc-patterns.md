@@ -53,26 +53,30 @@ produce a warning and require a deliberate content review.
 
 ## Confirmation mode skeleton
 
+The default order is the builder's `PREFERRED_ORDER` in `scripts/build_ddoc.js`. All
+sections below are required; the builder checks presence, and warns when the order
+departs from this one.
+
 1. `heard`
 2. `recommendation`
 3. `outcomes` · what you get, as outcomes
 4. `scope_in`
 5. `scope_out` · each exclusion routed to a paid next step
-6. `assumptions`
-7. `timeline`
-8. `team`
-9. `need_from_you`
-10. `investment`
+6. `timeline`
+7. `team`
+8. `investment`
+9. `assumptions` · the conditions under which the price holds
+10. `need_from_you` · placed after assumptions so the asks answer them
 11. `confirm`
 
 Optional twelfth slide when the client is price-anchoring: what we deliberately left out and
 why. Name the excluded lower-cost option and the reason it does not meet the confirmed
 requirements. Keep that explanation tied to evidence.
 
-**Why slides 9 and 11 are load-bearing here.** Decision mode has built-in tension: the client
-must choose. Confirmation mode has none, so the check has to be manufactured. Slide 9 gives
+**Why slides 10 and 11 are load-bearing here.** Decision mode has built-in tension: the client
+must choose. Confirmation mode has none, so the check has to be manufactured. Slide 10 gives
 the client something to react to, and their reaction is what reveals whether the assumptions
-on slide 6 are real. A confirmation-mode DDOC that skips slide 9 is a proposal with a
+on slide 9 are real. A confirmation-mode DDOC that skips slide 10 is a proposal with a
 different cover.
 
 A combined `scope` slide can replace `scope_in` and `scope_out` when it contains

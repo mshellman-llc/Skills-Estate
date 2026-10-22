@@ -90,7 +90,7 @@ node scripts/build_ddoc.js manifest.json -o OUT.pptx      # build once the gate 
 
 Then rasterize and inspect every slide for overflow, leftover placeholder text, and figure drift. Report what was checked, not that it looks good. All three release gates need a written disposition before delivery.
 
-The builder refuses to render on a preflight failure. It checks skeleton presence and order, option count, exactly one recommended option, identical section sets across option blocks, word-count parity across options, evidence classes on the heard slide, figure-to-quote-field mapping, em dashes, the section symbol, retired role language, unresolved flags, and line budgets. Fix the manifest, not the deck.
+The builder refuses to render on a preflight failure. It checks skeleton presence and order, option count, exactly one recommended option, identical section sets across option blocks, word-count parity across options, evidence classes on the heard slide, figure-to-quote-field mapping against `quote_snapshot`, a declared profile logo that exists and is readable, em dashes, the section symbol, unresolved flags, and line budgets. Fix the manifest, not the deck.
 
 ## The heard slide carries evidence classes
 
@@ -107,6 +107,11 @@ profile. The Node renderer reads it through `brand_runtime.js`; set
 `SKILLS_BRAND_PROFILE` to select an explicit profile. Preserve identical geometry
 across options so the comparison follows scope. Logo and provider identity are
 optional inputs, never inherited from a former company.
+
+A profile with `logo` null needs no asset. A declared logo is resolved relative to the
+directory of the selected profile file, the same rule the renderer uses. `--check`
+fails with the resolved path when that file does not exist or cannot be read, before
+any rendering.
 
 ## Boundaries
 

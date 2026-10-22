@@ -50,7 +50,7 @@ Common on slides presenting a problem or an approach.
 > Header: Key takeaways
 
 **After (accepted):**
-> Header: Pewag cannot see when its chains are wearing out
+> Header: Northwind cannot see when its chains are wearing out
 > Header: A six-week path from spreadsheet to Salesforce alerts
 > Header: Three things to confirm before we start
 
@@ -70,7 +70,7 @@ Option cards fail when each one opens with the same construction and fills in a 
 **After (accepted):**
 > **Lift and shift.** Full asset lifecycle tracking. Chain sets are recorded by customer and site, wear state updates from field logs, alerts fire when a set approaches end of life, and Salesforce creates the replacement opportunity.
 >
-> **Remediate and migrate.** Everything above, plus a one-time migration of five years of spreadsheet history. Every chain Pewag has ever installed arrives in Salesforce with its install date, service records, and prior wear readings.
+> **Remediate and migrate.** Everything above, plus a one-time migration of five years of spreadsheet history. Every chain Northwind has ever installed arrives in Salesforce with its install date, service records, and prior wear readings.
 >
 > **Re-architect and migrate.** Everything above, plus Salesforce Maps. Field reps see account and asset locations on a map and plan service routes without switching tools.
 
@@ -87,12 +87,12 @@ Option cards fail when each one opens with the same construction and fills in a 
 Avoiding em dashes breeds "X: Y" on every line. A label earns a colon. A body line rarely does.
 
 **Before (flagged):**
-> Outcome: Pewag sees every chain set's wear state without opening a spreadsheet.
+> Outcome: Northwind sees every chain set's wear state without opening a spreadsheet.
 > Impact: Field reps receive an alert before the chain reaches end of life.
 > Benefit: Salesforce creates the replacement opportunity automatically.
 
 **After (accepted):**
-> Pewag sees every chain set's wear state without opening a spreadsheet.
+> Northwind sees every chain set's wear state without opening a spreadsheet.
 > Field reps receive an alert before a chain reaches end of life.
 > Salesforce creates the replacement opportunity automatically.
 

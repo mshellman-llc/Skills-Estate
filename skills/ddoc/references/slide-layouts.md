@@ -1,6 +1,6 @@
-# Slide layout line budgets, Estate brand template
+# Slide layout line budgets
 
-These budgets were originally measured from the retired `Estate-Brand-Template.pptx`. That template no longer ships; the budgets outlived it because they describe how much text fits, which the builder's own boxes reproduce. Verify by rendering when a slide changes shape. They are writing constraints, not design guidance. Every line budget assumes standard body font size (approximately 14–16pt) and standard text-frame margins. If a slide uses a non-standard font size, the budget changes, verify by rendering.
+These budgets were originally measured from a retired brand template. That template no longer ships; the budgets outlived it because they describe how much text fits, which the builder's own boxes reproduce. Verify by rendering when a slide changes shape. They are writing constraints, not design guidance. Every line budget assumes standard body font size (approximately 14–16pt) and standard text-frame margins. If a slide uses a non-standard font size, the budget changes, verify by rendering.
 
 **Rule:** when text runs to the edge of the budget, cut words. Preserve the complete sentence; cut modifiers and prepositions first.
 
@@ -25,7 +25,7 @@ Writing rule: the cover carries the client name and the document type only. No s
 | Section label per row | 1 line, ~5–7 words |
 | Number of agenda items | 5–7 typical; 8 is the hard max before the layout collapses |
 
-Writing rule: agenda labels are complete noun phrases, not sentences. They name what the slide covers, not what the audience will learn. "What pewag can't see today", not "We will discuss the current visibility gap."
+Writing rule: agenda labels are complete noun phrases, not sentences. They name what the slide covers, not what the audience will learn. "What Northwind can't see today", not "We will discuss the current visibility gap."
 
 No em dashes in agenda labels. Rephrase.
 
@@ -33,7 +33,7 @@ No em dashes in agenda labels. Rephrase.
 
 ## Vertical-step layout (numbered steps / process flow)
 
-This is the Estate template's single most constrained layout.
+This is the most constrained layout.
 
 | Element | Budget |
 |---------|--------|
