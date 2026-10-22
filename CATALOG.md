@@ -1,6 +1,6 @@
 # Skill catalog
 
-75 canonical packages. Generated packages include the shared policies.
+76 canonical packages. Generated packages include the shared policies.
 
 | Skill | Use |
 | --- | --- |
@@ -56,7 +56,8 @@
 | [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md) | Wording method for Megan's tailored resume copy under career-application tailor: stated and estimated figures, rounding, posting keyword placement, bullet shape, ATS layout. |
 | [rom](skills/rom/SKILL.md) | Prepare a rough order of magnitude estimate and its basis, with ranges, assumptions, reconciliation, and explicit conditions that would reopen it. |
 | [s2d-handoff](skills/s2d-handoff/SKILL.md) | Prepare a sales-to-delivery handoff from the executed agreement and deal record, and track the receiving delivery owner's acceptance. |
-| [sales-process-mapping](skills/sales-process-mapping/SKILL.md) | Turn source files into a map of sales business processes, triggers, ownership, handoffs, and systems of record. |
+| [sales-journey-critique](skills/sales-journey-critique/SKILL.md) | Review a sales journey, discovery demo or proposed workflow. Trace the customer’s task, compare current and proposed steps, and check systems, click paths and measures. Recommend specific corrections. |
+| [sales-process-mapping](skills/sales-process-mapping/SKILL.md) | Map sales processes from discovery files, workbooks, CRM or Jira exports and operating notes. Trace triggers, ownership, handoffs and systems of record, including territory assignment and opportunity creation when relevant. |
 | [scope-reference](skills/scope-reference/SKILL.md) | Produce a static scope comparison or option matrix with sourced inclusions, exclusions, hours, price, and timeline. Use for print-ready option summaries rather than interactive proposals. |
 | [scoping-agent](skills/scoping-agent/SKILL.md) | Develop or revise a project scope and its estimate with the user's pricing system or supplied quote model. Use for scope items, effort, staffing, and timeline planning. |
 | [session-handoff](skills/session-handoff/SKILL.md) | Prepare an end-of-session handoff that lets another agent resume the same task with its decisions, files, state, verification, and next action intact. |
@@ -77,5 +78,5 @@
 | [transcript-ingestion](skills/transcript-ingestion/SKILL.md) | Preserve, normalize, and index a supplied transcript for a confirmed project, client, opportunity, or engagement. |
 | [uat-validation](skills/uat-validation/SKILL.md) | Prepare and track acceptance testing, requirement traceability, defects, coverage, and the evidence for a go/no-go decision. |
 | [usability-testing](skills/usability-testing/SKILL.md) | Plan usability sessions, write neutral task scripts, or synthesize supplied participant observations. Use for explicit usability research requests; ordinary QA, code fixes, and agent walkthroughs do not establish participant evidence. |
-| [writing-integrity](skills/writing-integrity/SKILL.md) | Audit or improve human-facing writing and presentation patterns across messages, documents, decks, websites, and UI while preserving voice, facts, uncertainty, scope, and format. Use when the user asks to humanize, de-AI, remove slop, sound natural, or check generic output. Never guess authorship or promise detector evasion. |
+| [writing-integrity](skills/writing-integrity/SKILL.md) | Write and edit clear, specific prose in every response and deliverable. Remove formulaic AI writing while preserving facts, scope, uncertainty, and the author's voice. Also review existing drafts when asked. |
 | [writing-style-builder](skills/writing-style-builder/SKILL.md) | Build or revise a person's private writing-style profile from samples they explicitly authorize for that purpose. |
