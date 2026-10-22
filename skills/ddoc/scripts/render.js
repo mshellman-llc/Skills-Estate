@@ -286,58 +286,144 @@ function heard(pres, m, slide) {
   return s;
 }
 
+/* ------------------------------------------- slide minimum type, fit checks */
+// Comparison and option-detail text never drops below the selected profile's slide
+// minimum. Geometry follows the text; when finite content cannot fit at that size the
+// slide refuses with a message instead of shrinking or clipping.
+const MIN_PT = (() => {
+  const raw = BRAND.type.slide_min_pt;
+  if (raw == null) return 18;
+  const v = Number(raw);
+  if (!Number.isFinite(v) || v <= 0) throw new Error(`type.slide_min_pt must be a positive number of points, got ${raw}`);
+  return v;
+})();
+const TYPE_BOT = 6.88; // text on these two slides may use the band above the page number
+
+const NARROW = new Set(" .,;:'!|iljtfI()[]-/·");
+function charEm(ch, bold) {
+  let em = NARROW.has(ch) ? 0.28 : /[MW]/.test(ch) ? 0.88 : ch === "m" ? 0.83 : ch === "w" ? 0.72
+    : /[A-Z]/.test(ch) ? 0.7 : ch === "—" ? 1 : /[0-9●]/.test(ch) ? 0.58 : 0.53;
+  return bold ? em * 1.07 : em;
+}
+const textEm = (str, bold) => [...str].reduce((a, ch) => a + charEm(ch, bold), 0);
+
+/** Conservative greedy word-wrap estimate: the number of lines `text` needs in `widthIn`. */
+function wrapLines(text, size, widthIn, bold) {
+  const lineW = widthIn * 72 * 0.96;
+  const em = (str) => textEm(str, bold) * size;
+  const space = em(" ");
+  let lines = 0;
+  for (const para of String(text).split("\n")) {
+    let cur = 0, n = 1;
+    for (const word of para.split(/\s+/).filter(Boolean)) {
+      const ww = em(word);
+      if (ww > lineW) {
+        if (cur > 0) n++;
+        n += Math.ceil(ww / lineW) - 1;
+        cur = ww % lineW || lineW;
+      } else if (cur === 0) cur = ww;
+      else if (cur + space + ww <= lineW) cur += space + ww;
+      else { n++; cur = ww; }
+    }
+    lines += n;
+  }
+  return lines;
+}
+const textH = (text, size, widthIn, bold, mult) =>
+  (wrapLines(text, size, widthIn, bold) * size * 1.2 * (mult || 1)) / 72 + 0.04;
+const longestWordIn = (text, size, bold) =>
+  Math.max(0, ...String(text).split(/\s+/).map((w) => (textEm(w, bold) * size) / 72));
+const lineH = (size) => (size * 1.2) / 72;
+
+function fitError(what, detail) {
+  return new Error(`${what} cannot fit at the ${MIN_PT} pt slide minimum without dropping or shrinking text: ${detail}. ` +
+    "The selected profile's minimum governs: split the content across slides or obtain an approved copy revision.");
+}
+
+const cellText = (v) => (v === true || v === "yes" ? "●" : v === false || v === "no" ? "—" : String(v));
+
 function comparison(pres, m, slide) {
   const s = newSlide(pres);
   head(s, slide);
   const opts = m.options || [], rows = slide.rows || [];
-  const y0 = cTop(slide), labelW = 3.4;
-  const colW = (CW - labelW) / opts.length;
+  const sz = MIN_PT, padX = 0.18, padY = 0.08;
+  const y0 = cTop(slide);
   const rec = opts.findIndex((o) => o.recommended);
+  const subOf = (o) => [o.duration, o.investment].filter(Boolean).join("   ·   ");
+
+  // The label column is as narrow as its longest unbreakable word allows, so option
+  // columns get the width. Everything below is measured at the minimum size.
+  const labelW = Math.min(4.2, Math.max(1.9,
+    Math.max(0, ...rows.map((r) => longestWordIn(r.label, sz, true))) * 1.04 + 0.3));
+  const colW = (CW - labelW) / Math.max(opts.length, 1);
+  const cellW = colW - 2 * padX, labelTextW = labelW - 0.2;
+
+  const nameH = Math.max(0, ...opts.map((o) => textH(o.name, sz, cellW, true)));
+  const subH = Math.max(0, ...opts.map((o) => (subOf(o) ? textH(subOf(o), sz, cellW, true) : 0)));
+  const badgeW = (textEm("RECOMMENDED", true) * sz) / 72 + (11 * 0.5) / 72 + 0.3;
+  const badgeH = lineH(sz) + 0.14;
+  if (rec >= 0 && badgeW > cellW)
+    throw fitError(`comparison "${slide.title}"`, `the RECOMMENDED marker needs ${badgeW.toFixed(2)} in but a column offers ${cellW.toFixed(2)} in`);
+  const headerH = nameH + subH + (rec >= 0 ? badgeH + 0.08 : 0);
+  const ruleY = y0 + headerH + 0.12;
+  const rowsTop = ruleY + 0.08;
+
+  const heights = rows.map((r, ri) => {
+    const own = [textH(r.label, sz, labelTextW, true)];
+    (r.values || []).forEach((v, i) => own.push(textH(cellText(v), sz, cellW, i === rec)));
+    return Math.max(0.54, Math.max(...own) + 2 * padY);
+  });
+  const need = heights.reduce((a, b) => a + b, 0);
+  if (rowsTop + need > TYPE_BOT)
+    throw fitError(`comparison "${slide.title}"`,
+      `${rows.length} rows and ${opts.length} options need ${(rowsTop - y0 + need).toFixed(2)} in of height but ${(TYPE_BOT - y0).toFixed(2)} in is available`);
+
   if (rec >= 0) {
     s.addShape("rect", { x: PAD + labelW + rec * colW, y: y0 - 0.08, w: colW,
-      h: BOT - y0 + 0.08, fill: { color: C.tealPale } });
+      h: TYPE_BOT - y0 + 0.08, fill: { color: C.tealPale } });
   }
   opts.forEach((o, i) => {
     const x = PAD + labelW + i * colW, isRec = i === rec;
     s.addText(o.name, {
-      x: x + 0.18, y: y0, w: colW - 0.36, h: 0.34, fontFace: F, fontSize: 14, bold: true,
-      color: isRec ? C.teal : C.navy, margin: 0, valign: "middle",
+      x: x + padX, y: y0, w: cellW, h: nameH, fontFace: F, fontSize: sz, bold: true,
+      color: isRec ? C.teal : C.navy, margin: 0, valign: "top",
     });
-    const sub = [o.duration, o.investment].filter(Boolean).join("   ·   ");
+    const sub = subOf(o);
     if (sub) {
       s.addText(sub, {
-        x: x + 0.18, y: y0 + 0.34, w: colW - 0.36, h: 0.26, fontFace: F, fontSize: 10,
-        bold: true, color: isRec ? C.teal : C.muted, margin: 0, valign: "middle",
+        x: x + padX, y: y0 + nameH, w: cellW, h: subH, fontFace: F, fontSize: sz,
+        bold: true, color: isRec ? C.teal : C.muted, margin: 0, valign: "top",
       });
     }
     if (isRec) {
-      s.addShape("roundRect", { x: x + 0.18, y: y0 + 0.64, w: 1.3, h: 0.24,
+      const by = y0 + nameH + subH + 0.08;
+      s.addShape("roundRect", { x: x + padX, y: by, w: badgeW, h: badgeH,
         rectRadius: 0.04, fill: { color: C.teal } });
       s.addText("RECOMMENDED", {
-        x: x + 0.18, y: y0 + 0.64, w: 1.3, h: 0.24, fontFace: F, fontSize: 7, bold: true,
-        color: C.white, align: "center", valign: "middle", charSpacing: 0.9, margin: 0,
+        x: x + padX, y: by, w: badgeW, h: badgeH, fontFace: F, fontSize: sz, bold: true,
+        color: C.white, align: "center", valign: "middle", charSpacing: 0.5, margin: 0,
       });
     }
   });
-  let y = y0 + 1.02;
-  s.addShape("rect", { x: PAD, y: y - 0.08, w: CW, h: 0.012, fill: { color: C.navy } });
-  const rowH = Math.min(0.54, (BOT - y) / Math.max(rows.length, 1));
+  let y = rowsTop;
+  s.addShape("rect", { x: PAD, y: ruleY, w: CW, h: 0.012, fill: { color: C.navy } });
   rows.forEach((r, ri) => {
+    const rowH = heights[ri];
     if (ri % 2 === 1) {
       s.addShape("rect", { x: PAD, y, w: CW, h: rowH, fill: { color: C.stripe } });
       if (rec >= 0) s.addShape("rect", { x: PAD + labelW + rec * colW, y, w: colW, h: rowH,
         fill: { color: C.tealPale } });
     }
     s.addText(r.label, {
-      x: PAD + 0.1, y, w: labelW - 0.2, h: rowH, fontFace: F, fontSize: 11, bold: true,
+      x: PAD + 0.1, y, w: labelTextW, h: rowH, fontFace: F, fontSize: sz, bold: true,
       color: C.navy, valign: "middle", margin: 0,
     });
     (r.values || []).forEach((v, i) => {
       const x = PAD + labelW + i * colW, isRec = i === rec;
-      const yes = v === true || v === "yes", no = v === false || v === "no";
-      s.addText(yes ? "●" : no ? "—" : String(v), {
-        x: x + 0.18, y, w: colW - 0.36, h: rowH, fontFace: F,
-        fontSize: yes || no ? 13 : 10.5, bold: isRec,
+      const no = v === false || v === "no";
+      s.addText(cellText(v), {
+        x: x + padX, y, w: cellW, h: rowH, fontFace: F,
+        fontSize: sz, bold: isRec,
         color: no ? C.steel : isRec ? C.teal : C.fg2, valign: "middle", margin: 0,
       });
     });
@@ -418,33 +504,75 @@ function decisionMatrix(pres, m, slide) {
   return s;
 }
 
+const sectionItems = (v) =>
+  (Array.isArray(v) ? v : [v]).map((b) => (typeof b === "string" ? b : String(b.text)));
+
+/**
+ * One grid for every option block in the deck, chosen from the largest section set and
+ * the longest text across all of them, so the option boundary is the only visible
+ * difference. The default grid is tried first, then denser reflows.
+ */
+function optionGeometry(m, slide) {
+  const sz = MIN_PT, gap = 0.26, space = 7;
+  const blocks = (m.slides || []).filter((b) => b.kind === "option_block");
+  if (!blocks.includes(slide)) blocks.push(slide);
+  const y0 = cTop({ subtitle: blocks.some((b) => b.subtitle) });
+  const n = Math.max(1, ...blocks.map((b) => Object.keys(b.sections || {}).length));
+  const tries = [...new Set([n > 3 ? 2 : n, 2, 1, 3].filter((c) => c >= 1 && c <= n))];
+  const tail = 0.26;
+  let worst = null;
+  for (const cols of tries) {
+    const w = (CW - gap * (cols - 1)) / cols, rows = Math.ceil(n / cols);
+    const h = (TYPE_BOT - y0 - gap * (rows - 1)) / rows;
+    const textW = w - 0.52 - 14 / 72;
+    // Every card reserves the same label band, sized for the longest heading in the deck.
+    const labelLines = Math.max(1, ...blocks.flatMap((b) =>
+      Object.keys(b.sections || {}).map((k) => wrapLines(k.toUpperCase(), sz, w - 0.52, true))));
+    const labelH = labelLines * lineH(sz) + 0.04, lead = 0.26 + labelH + 0.14;
+    let ok = true;
+    for (const b of blocks) for (const [k, v] of Object.entries(b.sections || {})) {
+      const items = sectionItems(v);
+      const body = items.reduce((a, t) => a + textH(t, sz, textW, false, 1.18), 0)
+        + (items.length - 1) * (space / 72);
+      const needed = lead + body + tail;
+      if (needed > h) { ok = false; worst = { option: b.option || b.title, section: k, needed, h, cols }; }
+    }
+    if (ok) return { cols, rows, w, h, gap, y0, labelH, lead, space };
+  }
+  throw fitError(`option detail "${worst.option}"`,
+    `section "${worst.section}" needs ${worst.needed.toFixed(2)} in but its card offers ${worst.h.toFixed(2)} in with ${worst.cols} column(s)`);
+}
+
 function optionBlock(pres, m, slide) {
   const s = newSlide(pres);
   const opt = (m.options || []).find((o) => o.name === slide.option) || {};
+  const g = optionGeometry(m, slide);
   head(s, slide);
   if (opt.recommended) {
-    s.addShape("roundRect", { x: W - PAD - 1.5, y: 0.9, w: 1.5, h: 0.32, rectRadius: 0.04,
+    const bw = (textEm("RECOMMENDED", true) * MIN_PT) / 72 + (11 * 0.5) / 72 + 0.3;
+    const bh = lineH(MIN_PT) + 0.14;
+    if (bh > 0.74 || wrapLines(slide.title, T.title, CW - bw - 0.2, true) > 1)
+      throw fitError(`option detail "${slide.option}"`, "the title and the RECOMMENDED marker collide in the header");
+    const by = 0.82 + (0.56 - bh) / 2;
+    s.addShape("roundRect", { x: W - PAD - bw, y: by, w: bw, h: bh, rectRadius: 0.04,
       fill: { color: C.teal } });
     s.addText("RECOMMENDED", {
-      x: W - PAD - 1.5, y: 0.9, w: 1.5, h: 0.32, fontFace: F, fontSize: 7.6, bold: true,
-      color: C.white, align: "center", valign: "middle", charSpacing: 1.1, margin: 0,
+      x: W - PAD - bw, y: by, w: bw, h: bh, fontFace: F, fontSize: MIN_PT, bold: true,
+      color: C.white, align: "center", valign: "middle", charSpacing: 0.5, margin: 0,
     });
   }
   const sections = slide.sections || {};
-  const keys = Object.keys(sections);
-  const cols = keys.length > 3 ? 2 : keys.length;
-  const gap = 0.26;
-  const w = (CW - gap * (cols - 1)) / cols;
-  const rows = Math.ceil(keys.length / cols);
-  const y0 = cTop(slide);
-  const h = (BOT - y0 - gap * (rows - 1)) / rows;
-  keys.forEach((k, i) => {
-    const col = i % cols, row = Math.floor(i / cols);
-    const x = PAD + col * (w + gap), y = y0 + row * (h + gap);
-    card(s, x, y, w, h, { fill: C.sand });
-    label(s, k, x + 0.26, y + 0.26, w - 0.52);
-    const items = Array.isArray(sections[k]) ? sections[k] : [sections[k]];
-    bullets(s, items, x + 0.26, y + 0.62, w - 0.52, h - 0.9, { size: 11.5, space: 7 });
+  Object.keys(sections).forEach((k, i) => {
+    const col = i % g.cols, row = Math.floor(i / g.cols);
+    const x = PAD + col * (g.w + g.gap), y = g.y0 + row * (g.h + g.gap);
+    card(s, x, y, g.w, g.h, { fill: C.sand });
+    s.addText(String(k).toUpperCase(), {
+      x: x + 0.26, y: y + 0.26, w: g.w - 0.52, h: g.labelH, fontFace: F,
+      fontSize: MIN_PT, bold: true, color: C.teal, charSpacing: 0.6, margin: 0,
+      valign: "top",
+    });
+    bullets(s, sectionItems(sections[k]), x + 0.26, y + g.lead, g.w - 0.52,
+      g.h - g.lead - 0.26, { size: MIN_PT, space: g.space });
   });
   return s;
 }
