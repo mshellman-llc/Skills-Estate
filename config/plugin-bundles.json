@@ -1,0 +1,423 @@
+{
+  "format": 1,
+  "version": "0.1.0",
+  "marketplace": "skills-estate-private",
+  "bundles": {
+    "estate-pursuit": {
+      "description": "Skills Estate pursuit workflows and routing.",
+      "entries": [
+        "business-case",
+        "call-prep",
+        "deck-builder",
+        "discovery",
+        "sales-process-mapping"
+      ],
+      "internal": [
+        "jtbd-framing"
+      ],
+      "opt_in": false,
+      "router_source": "agents/pursuit-router.md",
+      "additional_routes": [
+        "sales-process-mapping",
+        "sales-journey-critique"
+      ],
+      "controls": [
+        "knowledge-hub",
+        "evidence-core",
+        "quality-gate"
+      ]
+    },
+    "estate-solutioning": {
+      "description": "Skills Estate solutioning workflows and routing.",
+      "entries": [
+        "feature-spec",
+        "journey-mapping",
+        "process-design",
+        "project-scoping",
+        "requirements-backlog",
+        "scope-options",
+        "solution-brief",
+        "statement-of-work",
+        "system-design"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/solutioning-router.md",
+      "additional_routes": [],
+      "controls": [
+        "knowledge-hub",
+        "evidence-core",
+        "quality-gate"
+      ]
+    },
+    "estate-commercial": {
+      "description": "Skills Estate commercial workflows and routing.",
+      "entries": [
+        "commercial-review",
+        "offering-fit",
+        "service-offering"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/commercial-router.md",
+      "additional_routes": [],
+      "controls": [
+        "knowledge-hub",
+        "evidence-core",
+        "quality-gate"
+      ]
+    },
+    "estate-delivery": {
+      "description": "Skills Estate delivery workflows and routing.",
+      "entries": [
+        "acceptance-testing",
+        "cutover-closeout",
+        "delivery-kickoff",
+        "delivery-status",
+        "sales-to-delivery-handoff",
+        "sf-change-delivery",
+        "sf-pipeline-operations",
+        "sf-project-setup",
+        "team-onboarding"
+      ],
+      "internal": [
+        "delivery-suite"
+      ],
+      "opt_in": false,
+      "router_source": "agents/delivery-router.md",
+      "additional_routes": [],
+      "controls": [
+        "knowledge-hub",
+        "evidence-core",
+        "quality-gate"
+      ]
+    },
+    "estate-quality": {
+      "description": "Skills Estate quality workflows and routing.",
+      "entries": [
+        "deliverable-review",
+        "knowledge-hub",
+        "session-handoff"
+      ],
+      "internal": [
+        "brand-renderer",
+        "evidence-core",
+        "org-preflight",
+        "prose-pass"
+      ],
+      "opt_in": false,
+      "router_source": "agents/quality-router.md",
+      "additional_routes": [],
+      "controls": []
+    },
+    "estate-governance": {
+      "description": "Skills Estate governance workflows and routing.",
+      "entries": [
+        "skill-authoring",
+        "skill-estate-sync"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/governance-router.md",
+      "additional_routes": [],
+      "controls": []
+    },
+    "estate-additional-skills": {
+      "description": "Optional remaining Skills Estate workflows.",
+      "entries": [
+        "accessibility-audit",
+        "analytics-strategy",
+        "beastmode-capture",
+        "beastmode-context",
+        "beastmode-health",
+        "beastmode-reconcile",
+        "brand-profile",
+        "career-application",
+        "career-decisions",
+        "code-simplify",
+        "fortunes-weave",
+        "independent-product",
+        "information-architecture",
+        "portfolio-case-study",
+        "product-development",
+        "sf-apex-patterns",
+        "sf-devops-center",
+        "sticker-sheets",
+        "usability-testing",
+        "writing-integrity",
+        "writing-profile"
+      ],
+      "internal": [
+        "brain-work-item",
+        "execution-truth",
+        "github-repository-work",
+        "megan-writing-style",
+        "personal-writing-style-runtime",
+        "sf-headless-screenshot",
+        "transcript-ingestion"
+      ],
+      "opt_in": true
+    }
+  },
+  "release": {
+    "shared": {
+      "status": "pending"
+    },
+    "modules": {
+      "accessibility-audit": {
+        "status": "pending"
+      },
+      "analytics-strategy": {
+        "status": "pending"
+      },
+      "architecture-doc": {
+        "status": "pending"
+      },
+      "beastmode-capture": {
+        "status": "pending"
+      },
+      "beastmode-context": {
+        "status": "pending"
+      },
+      "beastmode-health": {
+        "status": "pending"
+      },
+      "beastmode-reconcile": {
+        "status": "pending"
+      },
+      "brain-work-item": {
+        "status": "pending"
+      },
+      "brand-renderer": {
+        "status": "pending"
+      },
+      "business-case": {
+        "status": "pending"
+      },
+      "call-prep": {
+        "status": "pending"
+      },
+      "career-application": {
+        "status": "pending"
+      },
+      "career-materials-and-outreach": {
+        "status": "pending"
+      },
+      "career-progression-and-offers": {
+        "status": "pending"
+      },
+      "case-study-builder": {
+        "status": "pending"
+      },
+      "client-brand": {
+        "status": "pending"
+      },
+      "code-simplify": {
+        "status": "pending"
+      },
+      "cutover-closeout": {
+        "status": "pending"
+      },
+      "ddoc": {
+        "status": "pending"
+      },
+      "deal-desk": {
+        "status": "pending"
+      },
+      "deck-builder": {
+        "status": "pending"
+      },
+      "delivery-kickoff": {
+        "status": "pending"
+      },
+      "delivery-status": {
+        "status": "pending"
+      },
+      "delivery-suite": {
+        "status": "pending"
+      },
+      "discovery-brief": {
+        "status": "pending"
+      },
+      "discovery-synthesis": {
+        "status": "pending"
+      },
+      "dx-devops-promote": {
+        "status": "pending"
+      },
+      "dx-devops-work-item-manage": {
+        "status": "pending"
+      },
+      "evidence-core": {
+        "status": "pending"
+      },
+      "execution-truth": {
+        "status": "pending"
+      },
+      "fortunes-weave": {
+        "status": "pending"
+      },
+      "github-repository-work": {
+        "status": "pending"
+      },
+      "independent-product": {
+        "status": "pending"
+      },
+      "information-architecture": {
+        "status": "pending"
+      },
+      "interactive-proposal": {
+        "status": "pending"
+      },
+      "journey-mapping": {
+        "status": "pending"
+      },
+      "jtbd-framing": {
+        "status": "pending"
+      },
+      "knowledge-hub": {
+        "status": "pending"
+      },
+      "megan-writing-style": {
+        "status": "pending"
+      },
+      "org-preflight": {
+        "status": "pending"
+      },
+      "personal-writing-style-runtime": {
+        "status": "pending"
+      },
+      "playbook-builder": {
+        "status": "pending"
+      },
+      "playbook-fit-router": {
+        "status": "pending"
+      },
+      "playbook-onepager": {
+        "status": "pending"
+      },
+      "playbook-suite": {
+        "status": "pending"
+      },
+      "pm-spec-writing": {
+        "status": "pending"
+      },
+      "process": {
+        "status": "pending"
+      },
+      "product-development-pathway": {
+        "status": "pending"
+      },
+      "prose-pass": {
+        "status": "pending"
+      },
+      "quality-gate": {
+        "status": "pending"
+      },
+      "requirements-capture": {
+        "status": "pending"
+      },
+      "resume-numbers-and-keywords": {
+        "status": "pending"
+      },
+      "rom": {
+        "status": "pending"
+      },
+      "s2d-handoff": {
+        "status": "pending"
+      },
+      "sales-journey-critique": {
+        "status": "pending"
+      },
+      "sales-process-mapping": {
+        "status": "pending"
+      },
+      "scope-reference": {
+        "status": "pending"
+      },
+      "scoping-agent": {
+        "status": "pending"
+      },
+      "session-handoff": {
+        "status": "pending"
+      },
+      "sf-delivery-standards": {
+        "status": "pending"
+      },
+      "sf-deploy-engine": {
+        "status": "pending"
+      },
+      "sf-enterprise-patterns": {
+        "status": "pending"
+      },
+      "sf-headless-screenshot": {
+        "status": "pending"
+      },
+      "sf-solo-devops": {
+        "status": "pending"
+      },
+      "skill-creation-walkthrough": {
+        "status": "pending"
+      },
+      "skill-estate-sync": {
+        "status": "pending"
+      },
+      "solution-brief": {
+        "status": "pending"
+      },
+      "sow": {
+        "status": "pending"
+      },
+      "sow-quality": {
+        "status": "pending"
+      },
+      "spec-writer": {
+        "status": "pending"
+      },
+      "sticker-sheets": {
+        "status": "pending"
+      },
+      "system-design": {
+        "status": "pending"
+      },
+      "team-onboarding": {
+        "status": "pending"
+      },
+      "transcript-ingestion": {
+        "status": "pending"
+      },
+      "uat-validation": {
+        "status": "pending"
+      },
+      "usability-testing": {
+        "status": "pending"
+      },
+      "writing-integrity": {
+        "status": "pending"
+      },
+      "writing-style-builder": {
+        "status": "pending"
+      }
+    },
+    "routers": {
+      "pursuit-router": {
+        "status": "pending"
+      },
+      "solutioning-router": {
+        "status": "pending"
+      },
+      "commercial-router": {
+        "status": "pending"
+      },
+      "delivery-router": {
+        "status": "pending"
+      },
+      "quality-router": {
+        "status": "pending"
+      },
+      "governance-router": {
+        "status": "pending"
+      }
+    }
+  }
+}
