@@ -199,7 +199,8 @@ def validate(record: Any) -> GateVerdict:
     if not isinstance(hub, dict) or "status" not in hub:
         error("hub-update", "hub_update must record the Knowledge Hub write status")
 
-    return GateVerdict(released and not blockers, blockers, findings)
+    valid = not any(f.level == "error" for f in findings)
+    return GateVerdict(released and not blockers and valid, blockers, findings)
 
 
 def main(argv: Optional[List[str]] = None) -> int:

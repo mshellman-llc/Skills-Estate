@@ -77,6 +77,7 @@ for field in ("artifact", "controls_selected", "checks", "release", "hub_update"
 record = copy.deepcopy(GOOD)
 record["checks"][0]["citation"] = ""
 check("uncited pass is rejected", "uncited-pass" in codes(record), True)
+check("uncited pass cannot release", validate(record).released, False)
 record = copy.deepcopy(GOOD)
 del record["checks"][0]["citation"]
 check("absent citation is rejected", "uncited-pass" in codes(record), True)
@@ -174,6 +175,8 @@ record = copy.deepcopy(GOOD)
 record["artifact"]["brand_render"] = True
 check("declared brand render with not_applicable is rejected",
       "unrouted-control" in codes(record), True)
+check("declared brand render cannot release without its check",
+      validate(record).released, False)
 record = copy.deepcopy(GOOD)
 record["checks"][1]["verdict"] = "not_applicable"
 record["assertions"] = []
@@ -205,6 +208,7 @@ check("check with no control is rejected", "check-control" in codes(record), Tru
 record = copy.deepcopy(GOOD)
 record["hub_update"] = {}
 check("hub_update without status is rejected", "hub-update" in codes(record), True)
+check("invalid hub status cannot release", validate(record).released, False)
 record = copy.deepcopy(GOOD)
 record["artifact"] = "SOW-000181"
 check("artifact as a string is rejected", "artifact-shape" in codes(record), True)
