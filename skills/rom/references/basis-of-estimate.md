@@ -42,8 +42,9 @@ Confirmed, Estimated, Assumed. Translate on sight:
 - Estimated maps to **Inferred**: a value derived from a comparable engagement or
   current-knowledge scoping. State the derivation in the row's source field.
 - Assumed maps to **Unknown, flagged as an assumption**: the value depends on something the
-  client has not confirmed. It gets the confirming-phase flag, and it also appears in the
-  assumptions register with an ID, an owner, and the gate it blocks.
+  client has not confirmed. It gets a confirmation action (and a confirming phase only when
+  the source timeline evidences one), and it also appears in the assumptions register with
+  an ID, an owner, and the gate it blocks.
 
 Never present an Unknown row as if it carried Confirmed weight. The confidence column is
 what makes the range's width defensible.

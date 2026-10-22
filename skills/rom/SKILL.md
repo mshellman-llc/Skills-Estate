@@ -64,9 +64,9 @@ uses the evidence-core register, nothing else:
 - **Inferred**: derived from a comparable engagement or current-knowledge scoping, with its
   derivation stated. Keep derived effort labeled as estimated.
 - **Unknown**: depends on a footprint dimension the client has not confirmed. These are
-  flagged assumptions. They live in the basis-of-estimate table, each tagged with the
-  source-named phase in which it gets confirmed, and each appears in the assumptions register
-  with an owner and the gate it blocks.
+  flagged assumptions. They live in the basis-of-estimate table, each with a confirmation
+  action (and the source-named phase in which it gets confirmed, when the source timeline has
+  one), and each appears in the assumptions register with an owner and the gate it blocks.
 
 Map confidence to presentation: Confirmed renders as fact, Inferred renders with its
 derivation, Unknown renders as a flagged assumption, never as a settled figure. Conflicts
@@ -83,8 +83,8 @@ Derive the set from the ledger, not from an example. Read
 | Header | What engagement, which tier or option, what pricing model, which source revision or quote | A reader knows in five seconds what governs the page |
 | Metric strip | The range, hours, duration, and the model-specific card | Every figure traces to its estimate input or quote field; fixed-price and T&M cards never coexist |
 | Phase distribution | Hours across the source-stated phases | Phases come from the quote timeline; a heavy phase has a named reason |
-| Basis of estimate | The footprint dimensions the estimate rests on | Every row is countable and specific to this client; Unknowns are flagged with their confirming phase |
-| What moves the number | The range reopeners: scope conditions that are Change Orders regardless of size | Read from this deal's scope, never a generic list |
+| Basis of estimate | The footprint dimensions the estimate rests on | Every row is countable and specific to this client; Unknowns are flagged with a confirmation action, and a confirming phase when the source timeline evidences one |
+| What moves the number | The range reopeners: scope conditions that would require a revised estimating basis. Contractual consequences come from the actual agreement | Read from this deal's scope, never a generic list |
 | Reconciliation (deal-desk view) | The printed tie-out | Present verbatim from the gate output |
 | Footer | Confidentiality and status | Clear whether this is an internal draft or a client-ready range |
 
@@ -123,10 +123,11 @@ reconciliation goes on the deal-desk view verbatim; for the buyer view it stays 
 notes. Report the gate's counts, never an adjective. "Clean" is not a finding; "PASS, 0
 failures" is.
 
-**Discrepancy handling.** If a quoted figure fails to reconcile, retain the discrepancy and obtain a
-corrected source before presenting it as an approved quote. A separately labeled
-calculated scenario may support the decision; it cannot replace the source value. Never silently smooth,
-and never silently override the quote. Cascade: if any figure changes, regenerate from the
+**Discrepancy handling.** If a quoted figure fails to reconcile, preserve the quoted
+discrepancy, label it, and request a corrected authoritative source. Do not present it as an
+approved quote. A separately labeled calculated scenario may support the decision; it cannot
+replace the source value, and a derived figure never silently substitutes for a quoted one in
+a client-facing deliverable. Never silently smooth, and never silently override the quote. Cascade: if any figure changes, regenerate from the
 figures block so numbers cannot drift between the model and the markup.
 
 ## Rendering and voice
@@ -145,7 +146,7 @@ skip.
 
 ## Boundaries
 
-- Does not scope and does not create or edit quotes. That is **scoping-agent**.
+- Does not scope and does not create or edit quotes. That is the primary **project-scoping** workflow.
 - Does not build the SOW. That is **sow**.
 - Does not build the firm proposal. That is **interactive-proposal**.
 - Derives prospective effort or cost only from the supplied basis. Commercial approval remains a separate project decision; an estimate cannot overwrite an accepted quote.

@@ -1,9 +1,9 @@
 schema_version: 1
 name: rom
 display_name: ROM
-summary: 'Builds and gates the Estate ROM estimate: a defensible cost and effort
-  range around a scoping-app quote, plus the basis of estimate the client validates
-  before deep scoping.'
+summary: 'Builds a sourced rough-order-of-magnitude effort or cost range and its basis
+  of estimate from a supplied scope, comparables or quote, and gates quote-anchored
+  figures when a quote exists.'
 status: active
 tier: core
 version: 1.0.0
@@ -16,16 +16,16 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- 'Builds and gates the Estate ROM estimate: a defensible cost and effort range
-  around a scoping-app quote, plus the basis of estimate the client validates before
-  deep scoping. Buyer-facing or deal-desk-facing. Use when asked for a "ROM", "rough
-  order of magnitude", "early pricing range", "investment range", "ballpark for the
-  quote", or when a Q-number is paired with a range, sizing, or early-pricing request.
-  Also fires when deal desk wants the range and its basis before scope review, or
-  a playbook tier needs its ROM artifact. Do NOT use for scoping or quote creation
-  (that is scoping-agent), the SOW (sow), the firm proposal (interactive-proposal),
-  or a standalone ballpark-LOE request untied to a quote or playbook (say so and stop;
-  there is nothing defensible to render).'
+- 'Builds a sourced effort or cost range and its basis of estimate from a supplied
+  scope, comparables or quote. Buyer-facing or deal-desk-facing. Use when asked for
+  a "ROM", "rough order of magnitude", "early pricing range", "investment range",
+  "ballpark", "basis of estimate", or when a quote reference is paired with a range,
+  sizing, or early-pricing request. Also fires when deal desk wants the range and
+  its basis before scope review, or a playbook tier needs its ROM artifact. A quote
+  is not required: a standalone effort range is supported when its scope and estimating
+  basis are supplied, and a missing rate leaves cost unresolved. Do NOT use for scoping
+  or quote creation (that is project-scoping), the SOW (sow), or the firm proposal
+  (interactive-proposal).'
 exclusions: []
 inputs:
 - name: task_context
@@ -47,7 +47,7 @@ calls:
 - evidence-core
 - quality-gate
 knowledge_hub:
-  requirement: required
+  requirement: optional
   reads:
   - opportunity.front_door
   - opportunity.solution_scope

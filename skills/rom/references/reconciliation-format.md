@@ -80,6 +80,8 @@ RESULT: PASS (0 failures)
 On any failure the gate prints a `FLAG:` line per finding with the source values and the
 per-line delta, and exits nonzero. The response is never to smooth. Either fix the figures
 block at its source (a transcription error) and rerun, or, when the quote itself is
-internally inconsistent, render the internally consistent value, print the flag on the
-artifact framed as a decision for the SSL, and route it. Never silently carry a wrong
+internally inconsistent, preserve the quoted discrepancy, label it with the flag on the
+artifact, and request a corrected authoritative source from the quote owner. A separately
+labeled calculated scenario may accompany it, but a derived figure never silently
+substitutes for the quoted one in a client-facing deliverable. Never silently carry a wrong
 number, and never silently override the quote.

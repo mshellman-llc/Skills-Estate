@@ -10,7 +10,10 @@ With an existing quote, preserve that quote as a distinct commercial record.
 A range described as bracketing its total must contain that total. The
 quote-reconciliation tool checks this particular contract. A revised scope
 may produce a different estimate; identify the change and compare it with
-the original rather than silently moving the quoted value.
+the original rather than silently moving the quoted value. If quoted figures do not
+reconcile, preserve and label the discrepancy and request a corrected
+authoritative source; never substitute a derived figure into a
+client-facing deliverable.
 
 Without a quote, derive the effort range from the scoped items. Apply
 confirmed billing rates when available. A missing rate permits an effort
@@ -43,7 +46,8 @@ Preserve the actual scope and payment conditions.
 ## Name reopening conditions
 
 Identify the specific condition that would change the estimate and the
-work affected by it. A volume increase may require resizing an existing
+work affected by it. A reopener names the revised estimating basis it
+would require; it is not a contractual change-order trigger. A volume increase may require resizing an existing
 item. A new platform may add a workstream. Their contractual consequences
 come from the actual agreement; a rough estimate cannot establish them.
 
