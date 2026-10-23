@@ -94,8 +94,8 @@ const MAP = {
     {label: "Opportunities", style: "opp", cells: ["Set priority at intake", "One case timeline", "Read-only log view", "Carry context into the handoff", "Prompt for confirmation"]}
   ],
   blueprint: [
-    {label: "Front-stage", cells: ["Queue view", "", "", "Escalation form", "Reply template"]},
-    {label: "Back-stage", cells: ["Routing rule", "", "Manual log pull", "", "Status never updated"]},
+    {label: "Front-stage", cells: ["Queue view", null, null, "Escalation form", "Reply template"]},
+    {label: "Back-stage", cells: ["Routing rule", null, "Manual log pull", null, "Status never updated"]},
     {label: "Supporting", cells: ["CRM", "CRM, old ticket tool", "Logging service", "Engineering tracker", "CRM"]}
   ],
   friction: [
@@ -164,7 +164,7 @@ em.innerHTML = svg + "</svg>"; grid.append(em);
 const addRow = (r, extra) => {
   grid.append(labelCell(r.label));
   r.cells.forEach(t => {
-    const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" ? " hypothesis" : ""}`, t === null ? "Not captured" : t);
+    const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" && t !== null && t.trim() ? " hypothesis" : ""}`, t === null ? "Not captured" : t);
     if (r.basis) cell.append(el("span", "basis-tag", t === null ? "not captured" : r.basis));
     grid.append(cell);
   });

@@ -41,6 +41,7 @@ const {chromium} = require('playwright');
   const order=await page.locator('#grid > .lab, #grid > .vis').allTextContents();
   assert.deepEqual(order.slice(-5),['Front-stage','Line of visibility','Back-stage','Line of internal interaction','Supporting']);
   assert.equal(await page.locator('.card').count(),3);
+  assert.equal(await page.locator('.curve').getAttribute('points'),'50,66 150,91 250,66 350,116 450,41');
   assert.match(await page.locator('#basis').innerText(),/Synthetic example/);
   await page.screenshot({path:path.join(out,'desktop.png'),fullPage:true});
   results.push({case:'normal',passed:true});
@@ -55,12 +56,16 @@ const {chromium} = require('playwright');
   assert.equal(await page.locator('.curve.hyp, .hypothesis').count(),0);
   assert.equal(await page.locator('.curve').count(),1);
   results.push({case:'evidence',passed:true});
-  await render('unknown','MAP.emotion=null; MAP.emotionBasis="not captured"; MAP.blueprint[1].cells[0]=null;');
+  await render('unknown','MAP.emotion=null; MAP.emotionBasis="not captured"; MAP.blueprint[1].cells[0]=null; MAP.rows[2].cells[0]=null;');
   assert.equal(await page.locator('[role=alert]').count(),0);
   assert.equal(await page.locator('.curve').count(),0);
   assert.match(await page.locator('.emotion').innerText(),/Not captured/);
   assert.match(await page.locator('#grid').innerText(),/Not captured/);
+  assert.equal(await page.locator('.hypothesis').count(),9);
   results.push({case:'unknown',passed:true});
+  await render('boundaries','MAP.emotion=[1,5,2.5,1,5];');
+  assert.equal(await page.locator('.curve').getAttribute('points'),'50,116 150,16 250,78.5 350,116 450,16');
+  results.push({case:'boundaries',passed:true});
   for (const [name,mutation,expected] of [
    ['short-row','MAP.rows[0].cells.pop();','exactly one'],
    ['long-row','MAP.rows[0].cells.push("extra evidence");','exactly one'],
@@ -85,7 +90,7 @@ const {chromium} = require('playwright');
                                 text=True,capture_output=True,env=os.environ.copy())
         (out/'run.log').write_text(result.stdout+result.stderr)
         self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
-        self.assertEqual(len(json.loads(result.stdout)),11)
+        self.assertEqual(len(json.loads(result.stdout)),12)
 
 if __name__ == '__main__':
     unittest.main()
