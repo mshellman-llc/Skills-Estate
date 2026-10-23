@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journey map</title>
+<!--
+  Journey map starter. Edit the MAP object below; the board, curve, blueprint
+  rows and friction cards render from it. Colors are the estate neutral
+  profile. Replace the :root values with a confirmed project profile when one
+  applies, and keep the role names.
+-->
+<style>
+:root{
+  --bg:#FFFFFF;--text:#1A1A1A;--muted:#5F6368;--border:#D9DCE1;--surface:#F5F6F7;--accent:#2F5D8A;
+  --band:#1F2A36;--band-text:#FFFFFF;--pain:#FBF3EC;--opp:#EAF1F8;--bp:#F2F5F8;
+  --radius:4px;--font:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 var(--font)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+header{padding:40px 0 24px;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+h1{margin:8px 0;font-size:32px;line-height:1.2}
+.lead{max-width:70ch;color:var(--muted);margin:0}
+section{padding:32px 0}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;font-size:14px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border:1px solid var(--border);border-radius:var(--radius)}
+.board{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius)}
+.grid{display:grid;gap:1px;background:var(--border)}
+.grid>div{background:var(--bg)}
+.lab{position:sticky;left:0;z-index:2;background:var(--surface)!important;padding:12px;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:flex;align-items:center}
+.ph{background:var(--band)!important;color:var(--band-text);padding:12px}
+.ph b{display:block;font-size:12px;opacity:.75}
+.cell{padding:12px;font-size:14px;color:var(--muted)}
+.think{font-style:italic}
+.pain{background:var(--pain)!important}
+.opp{background:var(--opp)!important;color:var(--accent)}
+.bp{background:var(--bp)!important}
+.vis{background:var(--band)!important;color:var(--band-text);padding:6px 12px;font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em}
+.emotion svg{display:block;width:100%;height:132px}
+.curve{fill:none;stroke:var(--accent);stroke-width:2.5}
+.curve.hyp{stroke-dasharray:6 5}
+.dot{fill:var(--accent)}
+.gl{stroke:var(--border)}
+.note{font-size:14px;color:var(--muted);margin-top:12px;max-width:90ch}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.cards{grid-template-columns:1fr}h1{font-size:26px}}
+.card{border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.card .tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.card h3{margin:6px 0;font-size:18px}
+.card p{margin:0;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow" id="eyebrow"></div>
+  <h1 id="title"></h1>
+  <p class="lead" id="lead"></p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="legend" id="legend"></div>
+  <div class="board"><div class="grid" id="grid"></div></div>
+  <p class="note" id="basis"></p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Critical friction, where the curve drops</h2>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<script>
+// Example content is illustrative. Replace every value with sourced or labeled material.
+const MAP = {
+  eyebrow: "Journey map",
+  title: "The support agent's journey",
+  lead: "One escalated case, from arrival to a confirmed fix. Where the agent's path dips.",
+  emotionBasis: "hypothesis",          // "evidence" or "hypothesis"
+  basisNote: "Front-stage and back-stage are grounded in the built system. Thoughts, emotions, and pain are reasoned from the agent role, not from interviews. This is a first map to validate with agents.",
+  phases: ["Case arrives", "Read the history", "Diagnose", "Hand off", "Confirm the fix"],
+  emotion: [3, 2, 3, 1, 4],            // 1 to 5, one per phase
+  rows: [
+    {label: "Step and touchpoint", cells: ["Case lands · queue", "Prior tickets · CRM", "Logs · admin console", "Escalation · chat", "Customer reply · email"]},
+    {label: "Goal", cells: ["Know if it is mine", "See what was tried", "Find the cause", "Get engineering in", "Close it for good"]},
+    {label: "Thoughts", style: "think", cells: ["Is this urgent?", "What did they already try?", "Is it config or a bug?", "Will they pick it up today?", "Did it actually work?"]},
+    {label: "Pain points", style: "pain", cells: ["Priority not set", "History split across tools", "No log access", "Handoff restarts the story", "No confirmation step"]},
+    {label: "Opportunities", style: "opp", cells: ["Set priority at intake", "One case timeline", "Read-only log view", "Carry context into the handoff", "Prompt for confirmation"]}
+  ],
+  blueprint: [
+    {label: "Front-stage", cells: ["Queue view", "", "", "Escalation form", "Reply template"]},
+    {label: "Back-stage", cells: ["Routing rule", "", "Manual log pull", "", "Status never updated"]},
+    {label: "Supporting", cells: ["CRM", "CRM, old ticket tool", "Logging service", "Engineering tracker", "CRM"]}
+  ],
+  friction: [
+    {phase: "02", title: "History is split across two tools", body: "The agent rebuilds the case from the CRM and the old ticket tool before diagnosing."},
+    {phase: "04", title: "The handoff restarts the story", body: "The escalation form carries no case history, so engineering asks the same questions again."},
+    {phase: "05", title: "Nothing confirms the fix", body: "The status is never updated after the customer replies, so reopen rates cannot be measured."}
+  ]
+};
+
+const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+const n = MAP.phases.length;
+document.getElementById("eyebrow").textContent = MAP.eyebrow;
+document.getElementById("title").textContent = MAP.title;
+document.getElementById("lead").textContent = MAP.lead;
+document.getElementById("basis").textContent = MAP.basisNote;
+
+const legend = document.getElementById("legend");
+[["Phase", "var(--band)"], ["Pain point", "var(--pain)"], ["Opportunity", "var(--opp)"]].forEach(([t, c]) => {
+  const s = el("span"); const w = el("i", "sw"); w.style.background = c; s.append(w, t); legend.append(s);
+});
+legend.append(el("span", null, MAP.emotionBasis === "hypothesis" ? "Emotional curve, low to high (hypothesis, dashed)" : "Emotional curve, low to high"));
+
+const grid = document.getElementById("grid");
+grid.style.gridTemplateColumns = `190px repeat(${n}, minmax(150px, 1fr))`;
+grid.style.minWidth = `${190 + n * 150}px`;
+const labelCell = t => el("div", "lab", t);
+
+grid.append(labelCell("Phase"));
+MAP.phases.forEach((p, i) => { const c = el("div", "ph"); c.append(el("b", null, String(i + 1).padStart(2, "0")), p); grid.append(c); });
+
+grid.append(labelCell("Emotion"));
+const em = el("div", "emotion"); em.style.gridColumn = `2 / span ${n}`;
+const W = n * 100, H = 132, pad = 16, y = v => H - pad - (v - 1) / 4 * (H - 2 * pad);
+const pts = MAP.emotion.map((v, i) => [i * 100 + 50, y(v)]);
+let svg = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Emotional curve${MAP.emotionBasis === "hypothesis" ? ", hypothesis" : ""}">`;
+[1, 3, 5].forEach(v => svg += `<line class="gl" x1="0" x2="${W}" y1="${y(v)}" y2="${y(v)}"/>`);
+svg += `<polyline class="curve${MAP.emotionBasis === "hypothesis" ? " hyp" : ""}" vector-effect="non-scaling-stroke" points="${pts.map(p => p.join(",")).join(" ")}"/>`;
+pts.forEach(([cx, cy]) => svg += `<circle class="dot" cx="${cx}" cy="${cy}" r="4"/>`);
+em.innerHTML = svg + "</svg>"; grid.append(em);
+
+const addRow = (r, extra) => { grid.append(labelCell(r.label)); r.cells.forEach(t => grid.append(el("div", `cell ${extra || r.style || ""}`, t))); };
+MAP.rows.forEach(r => addRow(r));
+const vis = el("div", "vis", "Line of visibility"); vis.style.gridColumn = "1 / -1"; grid.append(vis);
+MAP.blueprint.forEach(r => addRow(r, "bp"));
+
+const cards = document.getElementById("cards");
+MAP.friction.forEach(f => { const c = el("div", "card"); c.append(el("div", "tag", `Phase ${f.phase}`), el("h3", null, f.title), el("p", null, f.body)); cards.append(c); });
+</script>
+</body>
+</html>
