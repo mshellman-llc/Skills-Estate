@@ -1,16 +1,20 @@
-# Journey Map Template (Estate)
+# Journey map template
 
-Fillable journey map, service blueprint, source ledger, and opportunity map. Customize phases to the real experience. Every substantive claim carries a source. If an input does not capture something, write "not captured" rather than filling it.
-
----
+This template has four parts to fill: the journey map, the service blueprint, the source ledger, and the opportunity map. Customize phases to the real experience. Every substantive claim carries a source or a hypothesis label. If an input does not capture something, write "not captured" rather than filling it.
 
 ## Map metadata
 
-**Orientation:** [Client deliverable | Estate internal lifecycle]
+**Orientation:** [Client deliverable | Product role journey | Internal lifecycle]
 
-**Persona / segment mapped:** [Specific. Not "users." Example: "Mid-market service managers renewing an existing support contract." Or for internal: "Enterprise prospect referred by partner, first AI advisory engagement."]
+**Actor / segment mapped:** [Specific. Not "users." Example: "Mid-market service managers renewing an existing support contract." For a product role: "Account executive working one pursuit." For an internal lifecycle: "Enterprise prospect referred by a partner, first advisory engagement."]
+
+**Scope sentence:** [One actor, one journey, from a starting event to an ending event. Example: "One pursuit, from a lead landing to a recorded win or loss."]
 
 **Time horizon:** [Pre-purchase to first 90 days? Full lifetime? A single flow?]
+
+**State:** [Current state | Proposed future state]
+
+**Evidence basis:** [Which layers are observed, reported, or hypothesis, in one or two sentences. Example: "Front-stage and back-stage are grounded in the built system. Thoughts, emotions, and pain are reasoned from the role and the system's failure modes, not from interviews. First map, to validate with real users."]
 
 **Map version:** [X.Y]
 
@@ -18,9 +22,9 @@ Fillable journey map, service blueprint, source ledger, and opportunity map. Cus
 
 **Owner:** [Person or team]
 
-**Source data:** [Transcripts, interviews, tickets, analytics, CRM records. List with counts, e.g., "9 discovery transcripts, 42 support tickets, Q3 funnel export."]
+**Source data:** [Transcripts, interviews, tickets, analytics, CRM records, built-system review. List with counts, e.g., "9 discovery transcripts, 42 support tickets, Q3 funnel export."]
 
----
+**Related maps:** [Other roles whose journeys share phases with this one, e.g., the specialist who receives a handoff at phase 07.]
 
 ## Map structure (at a glance)
 
@@ -28,62 +32,55 @@ Fillable journey map, service blueprint, source ledger, and opportunity map. Cus
 |---|---|---|---|---|---|---|---|
 | | | | | | | | |
 
----
-
 ## Phase 1: [Phase name]
 
 ### Step 1.1: [Step name]
 
-**Touchpoint:** [Where. Name the real system / channel / agent: web or portal, email or marketing automation, sales rep, support case, chatbot or AI agent, offline conversation. Salesforce prompt if it applies: Experience Cloud portal, Marketing Cloud email, Sales Cloud rep, Service Cloud case, Agentforce agent.]
+**Touchpoint:** [Where. Name the real system, channel, or agent: web or portal, email or marketing automation, chat workspace, sales rep, support case, chatbot or AI agent, offline conversation. Salesforce prompt if it applies: Experience Cloud portal, Marketing Cloud email, Sales Cloud rep, Service Cloud case, Agentforce agent.]
 
-**Goal:** [What the user is trying to accomplish here]
+**Goal:** [What the actor is trying to accomplish here]
 
 **Thoughts:**
 - "[Quote from a transcript where possible]" (source: [named source])
-- "[Thought]" (source: [named source])
+- [Hypothesized thought, written as the likely thought and not attributed to anyone] (hypothesis; basis: [role constraint, system behavior, or failure mode])
 
 **Emotion:** [confused | hopeful | frustrated | curious | anxious | confident | ...]
 
 **Emotional intensity:** [1 to 5, for the curve]
 
+**Emotion evidence basis:** [observed | reported (source) | hypothesis (basis)]
+
 **Pain points:**
-- [Specific pain] (source: [named source]; confidence: [high | medium | low | not captured])
+- [Specific pain] (source: [named source]; confidence: [high | medium | low | hypothesis | not captured])
 - [Specific pain] (source: [named source])
 
 **Opportunities:**
-- [Specific improvement, config or build noted where known]
+- [Specific improvement, configuration or build noted where known]
 
 **Time at this step:** [Average and range, or "not captured"]
-
----
 
 ### Step 1.2: [Step name]
 [Repeat structure]
 
----
-
 ## Phase 2: [Phase name]
 [Repeat structure]
 
----
-
 ## [Continue with the phases that actually appear in the experience]
 
-Phase presets to pull from. They are a starting point, not a mandate. Start from the real
-experience and let the phases emerge; a preset that does not match the experience is a lie that
-helps no one.
+Phase presets to pull from. They are a starting point, not a mandate. Start from the real experience and let the phases emerge; a preset that does not match the experience produces a map that describes nothing.
 
-- **Most products:** Awareness -> Consideration -> Decision -> Onboarding -> Active use -> Renewal -> Advocacy
-- **SaaS:** Trigger -> Discovery -> Evaluation -> Trial -> Onboarding -> Activation -> Habit -> Expansion -> Renewal -> Advocacy
-- **Service business:** Awareness -> Inquiry -> Quote -> Decision -> Delivery -> Resolution -> Follow-up -> Repeat
-- **CX engagement (client's customers):** Need -> Search -> Evaluate -> Buy -> Onboard -> Use / self-serve -> Get help -> Renew / expand -> Advocate  (name the real system or agent per touchpoint; on Salesforce, e.g., Sales Cloud at Buy, Service Cloud plus Agentforce at self-serve)
-- **Estate internal lifecycle:** First touch -> Discovery -> Qualification / fit -> Scoping -> Proposal / SOW -> Kickoff -> Delivery -> Value shown -> Grow / expand -> Advocacy  (the "user" is the prospect and then the client; the back-stage is Estate's own method, artifacts, and the people who run each stage)
-
----
+| Preset | Phases | Notes |
+|---|---|---|
+| Most products | Awareness -> Consideration -> Decision -> Onboarding -> Active use -> Renewal -> Advocacy | |
+| SaaS | Trigger -> Discovery -> Evaluation -> Trial -> Onboarding -> Activation -> Habit -> Expansion -> Renewal -> Advocacy | |
+| Service business | Awareness -> Inquiry -> Quote -> Decision -> Delivery -> Resolution -> Follow-up -> Repeat | |
+| CX engagement (client's customers) | Need -> Search -> Evaluate -> Buy -> Onboard -> Use / self-serve -> Get help -> Renew / expand -> Advocate | Name the real system or agent per touchpoint. On Salesforce, that might be Sales Cloud at Buy and Service Cloud plus Agentforce at self-serve. |
+| Consulting prospect-to-client lifecycle | First touch -> Discovery -> Qualification / fit -> Scoping -> Proposal / SOW -> Kickoff -> Delivery -> Value shown -> Grow / expand -> Advocacy | The actor is the prospect and then the client. The back-stage is the firm's own method and artifacts, plus the people who run each stage. |
+| Product role journey (one unit of work through a tool) | Work arrives -> Frame quickly -> Assess -> Interpret -> Qualify or route -> Act -> Hand off -> Record the outcome -> Return for the next one | Example: a seller working one lead through a recommendation tool. The Return phase shows whether the tool earns trust for the next unit of work. |
 
 ## Emotional curve
 
-Plot intensity across the journey. The peaks (highest joy) and troughs (highest frustration) are the most strategic points.
+Plot intensity across the journey. The troughs (highest frustration) are the critical friction; the peaks are what to protect. Draw a hypothesized curve with a dashed line or a "hypothesis" label.
 
 ```
 Emotion
@@ -98,52 +95,53 @@ intensity
         Phase / Step
 ```
 
-Note the peaks and troughs and what causes each. These are where a fix or a delight moment pays off most.
-
----
+Note each peak and trough and what causes it. These are where a fix or a delight moment pays off most.
 
 ## Service blueprint layers
 
-For each phase, document the back-stage. Name real systems where known.
+For each phase, document the back-stage. Name real systems where known. Front-stage and back-stage claims grounded in the built system are observed, even when the human layers are hypotheses.
+
+Place the line of visibility between front-stage and back-stage actions, and the line of internal interaction between back-stage actions and supporting systems. Mark unknown support as "not captured"; do not infer absence from a blank.
 
 ### Phase 1: [Phase name]
 
-**Front-stage actions** (staff, in user view):
-- [Action]
+**Front-stage actions** (staff or system, in the actor's view):
+- [Action or visible output, e.g., an abstain message, a recommended play with its fit band]
 
-**Back-stage actions** (staff, out of view):
-- [Action, e.g., manual case reassignment, approval, data cleanup]
+**Back-stage actions** (staff or system, out of view):
+- [Action, e.g., manual case reassignment, approval, data cleanup, a model or rules engine judging fit]
 
 **Supporting systems** (platform underneath):
-- System of record / CRM: [what the client actually runs]
-- Automation: [workflow / routing / validation rules]
+- System of record / CRM: [what the business actually runs]
+- Automation: [workflow, routing, or validation rules]
 - AI: [agents, models, or assistants in the loop]
-- Data model: [key entities and relationships involved]
-- Integrations: [middleware, external systems: billing, ERP, fulfillment]
-- Salesforce prompt (only if it applies): clouds [Sales | Service | Marketing | Experience | Data]; Flows, assignment / validation rules; Agentforce / Einstein; MuleSoft
+- Data model: [key entities and relationships involved, including tables that should hold outcomes and do not]
+- Integrations: [middleware, external systems: billing, ERP, fulfillment, chat]
+- Salesforce prompt (only if it applies): which clouds [Sales | Service | Marketing | Experience | Data]; which Flows and rules; whether Agentforce or Einstein is in the loop; whether MuleSoft carries the integration
 
-**Line-of-visibility issues** (back-stage failure surfacing as front-stage symptom):
-- [Symptom the user feels] <- [Back-stage cause, e.g., no routing rule, stale integration, data-quality gap]
-
----
+**Line-of-visibility issues** (back-stage failure surfacing as a front-stage symptom):
+- [Symptom the actor feels] <- [Back-stage cause, e.g., no routing rule, stale integration, data-quality gap, outcome never written]
 
 ### Phase 2: [Phase name]
 [Repeat]
 
----
-
 ## Source and confidence ledger
 
-Every load-bearing claim on the map lands here. Builds traceability and lets a reviewer challenge any point.
+Every load-bearing claim on the map lands here. It builds traceability and lets a reviewer challenge any point.
 
 | Claim | Phase / step | Source | Evidence | Confidence |
 |---|---|---|---|---|
 | [Pain at 2.1] | 2.1 | [9 of 9 discovery transcripts] | [Quote samples] | High |
 | [Drop-off at 1.2] | 1.2 | [Funnel export] | [73% exit] | High |
 | [Emotion at 3.1] | 3.1 | [Survey, 42 responses] | [Verbatims] | Medium |
-| [Behavior at 4.1] | 4.1 | [not captured] | [none] | Not captured |
+| [Emotion at 4.1] | 4.1 | [Reasoned from the role and a system fact] | [e.g., 5 of 35 items published, from the catalog record] | Hypothesis |
+| [Behavior at 5.1] | 5.1 | [not captured] | [none] | Not captured |
 
----
+## Validation questions (required for hypothesis layers)
+
+| Hypothesis | Phase / step | Question to ask | Whom to ask | Confirms or overturns |
+|---|---|---|---|---|
+| | | | | |
 
 ## Disconnects and gaps
 
@@ -167,8 +165,6 @@ The most valuable findings come from comparing the layers.
 |---|---|---|
 | | | |
 
----
-
 ## Persona context (for reference)
 
 **Persona:** [Name and one line]
@@ -176,7 +172,7 @@ The most valuable findings come from comparing the layers.
 **Context:**
 - Role / job:
 - Company size or segment:
-- Platform maturity / estate (client maps): [systems in use, integrations, known debt; on Salesforce, orgs and clouds in use]
+- Platform maturity / estate (client maps): [systems in use, integrations, known debt; on Salesforce, the orgs and clouds in use]
 - Tech savviness:
 
 **Goals:**
@@ -192,37 +188,35 @@ The most valuable findings come from comparing the layers.
 **Quote that captures them:**
 > "[Quote from a transcript]" (source: [named source])
 
----
-
 ## Opportunity map (the output that drives decisions)
 
-Effort and impact are labels, not prices. Anything that becomes a scoped, priced recommendation routes to the pricing / scoping path.
+Effort and impact are labels, not prices. Anything that becomes a scoped, priced recommendation routes to the scoping and pricing path.
 
 ### Critical friction (fix soon)
 
-| Friction | Phase / step | Evidence (source) | Recommended action | Effort | Owner |
-|---|---|---|---|---|---|
-| | | | | S/M/L | |
+One row per trough in the emotional curve, with the evidence that puts it there.
+
+| Friction | Phase / step | Evidence (source) | Recommended action | Expected outcome | Measure | Effort | Owner |
+|---|---|---|---|---|---|---|---|
+| | | | | | | S/M/L | |
 
 ### Quick wins (low effort, real impact)
 
-Often config, not build: routing rule, validation rule, workflow tweak, copy or layout fix.
+Often configuration, not build: a routing rule, validation rule, workflow change, copy or layout fix.
 
-| Opportunity | Phase / step | Recommended action | Effort | Impact |
-|---|---|---|---|---|
-| | | | S | M |
+| Opportunity | Phase / step | Recommended action | Dependencies | Effort | Impact |
+|---|---|---|---|---|---|
+| | | | | S | M |
 
-### Strategic bets (high effort, transformative)
+### Strategic bets (high effort, high impact)
 
-| Opportunity | Phase / step | Recommended action | Effort | Impact |
-|---|---|---|---|---|
-| | | | L | H |
+| Opportunity | Phase / step | Recommended action | Dependencies | Effort | Impact |
+|---|---|---|---|---|---|
+| | | | | L | H |
 
 ### Cross-team alignment opportunities
 
 - [Issue, teams involved, recommended approach]
-
----
 
 ## Action plan
 
@@ -235,45 +229,34 @@ Often config, not build: routing rule, validation rule, workflow tweak, copy or 
 ### Strategic (next 2 to 4 quarters)
 - [ ] [Action] - [Owner]
 
----
-
 ## Re-mapping schedule
 
-Maps decay. Re-map on:
-
-- **Triggering events:** major product or platform launch, new segment, business-model change, drop in NPS or retention, a re-platform or large release.
-- **Default cadence:** annual review, light quarterly updates.
-
----
+Maps decay. Re-map after a major product or platform launch, a new segment, a business-model change, a drop in NPS or retention, a re-platform or large release, or the first interviews that test a hypothesis map. Without a triggering event, review the map annually and update it lightly each quarter.
 
 ## Workshop outputs
 
 **Workshop 1: Validation**
 - Date / attendees:
 - Findings validated / disputed / newly surfaced:
+- Hypotheses confirmed / overturned:
 
 **Workshop 2: Prioritization**
 - Date / attendees:
 - Top opportunities agreed / decisions made / open questions:
 
----
-
 ## Pre-ship checklist (client-facing maps)
 
-- [ ] Every substantive claim has a source in the ledger
+- [ ] Every substantive claim has a source or a hypothesis label in the ledger
 - [ ] "Not captured" used wherever an input is silent (no fabricated fill)
+- [ ] Hypothesis layers are marked on the visual and the basis note is present
+- [ ] Validation questions exist for every hypothesis
 - [ ] Parity: all substance survived the render into the visual
-- [ ] Visual inspected by a human or model
-- [ ] Prose and voice pass run; no em dashes; plain language leads
-- [ ] Estate brand applied (palette, type, logo, footers)
+- [ ] Visual inspected by a person or a model
+- [ ] Prose review run; plain language leads
+- [ ] Confirmed brand profile applied, or the neutral profile with the substitution recorded
 - [ ] No internal IDs, stage codes, or method jargon on the client surface
-- [ ] Pricing left to the pricing path; map carries labeled effort and impact only
-
----
+- [ ] Pricing left to the scoping and pricing path; the map carries labeled effort and impact only
 
 ## Companion artifacts
 
-- **Persona document.** The detailed persona this map represents.
-- **Quote library.** Direct quotes organized by phase, sourced. Powerful in stakeholder readouts.
-- **Service blueprint (full).** When the back-stage is deep, it earns its own document.
-- **Opportunity backlog.** Every opportunity, labeled and queued for the delivery or scoping path.
+A persona document holds the detailed persona this map represents. A quote library organizes sourced quotes by phase for stakeholder readouts. A full service blueprint gets its own document when the back-stage is deep. Related role maps cover the roles that receive a handoff from this one and share phase IDs where the paths meet. An opportunity backlog holds every opportunity, labeled and queued for the delivery or scoping path.
