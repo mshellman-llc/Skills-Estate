@@ -32,7 +32,7 @@ These rules also appear in the local Codex and Claude Code writing instructions.
 8. Keep one term for one thing. Let sentence length follow the size of the idea.
 9. Write in paragraphs. Use a list, table, heading or bold only when the content is a list, a comparison or reference material. Headings in sentence case.
 10. Hedge once, at the point of real uncertainty.
-11. Keep every fact, number, scope limit and qualifier exactly. Never invent a detail to sound natural.
+11. Preserve the accuracy, scope and necessary qualifications of the claims you include. Keep required facts and exact literals. Never invent a detail to sound natural.
 12. When the user corrects a wording habit, fix every instance in the piece and keep it fixed for the session.
 
 ## Follow the requested task
@@ -50,6 +50,8 @@ Use the draft and sources already supplied. Ask for a missing source or decision
 
 Before drafting, identify the audience, purpose, intended reader action and author's voice. Infer them from the request where possible. Keep this brief in working notes.
 
+Source facts constrain what you can claim; they do not all belong in the finished copy. Select details for the audience’s understanding, decision or action and the requested scope. Keep unclaimed outcomes, drafting instructions and internal evidence notes in working records unless the reader needs them. Before adding a caveat, identify the claim or decision it qualifies. Retain material limits, required disclosures and correction notices the reader needs. When the task is an audit, evidence review or status report, report the relevant gaps directly.
+
 A routine internal update needs a check of its facts, privacy, clarity and requested action. Read hiring materials, public work, client proposals and other consequential documents closely from beginning to end. Check accuracy, fair representation of the author's work, writing and layout separately. A successful render or script cannot establish all four.
 
 For a résumé, read the person's career sources and relevant prior résumé before choosing examples. Preserve career progression, leadership scope, client decisions, commercial ownership and supported results. Record why you omit material for a particular audience. Choose length after deciding what the hiring reader needs. A short portfolio handout cannot silently replace the résumé.
@@ -64,7 +66,7 @@ The audience and content requirements above come from the user-authorized correc
 
 ## Preserve meaning and voice
 
-Before editing, note what must survive:
+Before editing, note what must survive within the requested scope. A summary may select source details; it must preserve required content and the meaning of every claim it retains:
 
 - names, dates, figures, money, hours, percentages, URLs, citations and quotations;
 - factual, legal and technical meaning, ownership, approval and completion state;
@@ -89,6 +91,18 @@ Use one edit that respects the applicable instructions, in this order:
 This skill supplies no house voice or employer style. Use a confirmed personal profile, such as `megan-writing-style`, for the author's voice. Client voice applies only to work for that client under a confirmed profile. Use `client-brand` for visual identity; keep brand values out of this skill. Never carry a former employer's voice into unrelated work. Legal, contractual and regulated wording takes precedence over personal style.
 
 The separation of general writing review, personal voice and confirmed client voice follows the user's October 2, 2026 decision.
+
+## Keep the reader’s purpose central after a correction
+
+Megan explicitly rejects copy that makes an AI’s earlier mistake the subject of the finished work. This applies everywhere: replies, documents, slides, diagrams, websites, UI text and interactions. A correction must restore the intended meaning and purpose for the audience.
+
+After a correction, return to the reader’s task and the supported facts. Rewrite the affected argument, title, labels and flow from that basis. Do not turn the mistaken identity, category, assumption or framing into a new theme, a defensive distinction, a disclaimer or repeated reassurance. Removing “I misunderstood” is insufficient if the content still revolves around disproving the old mistake. Do not replace the point with a description of what the document, review or experience includes.
+
+Read the result without the preceding conversation. Would this audience need each sentence to understand the subject, make a decision or act? If a sentence exists only because the AI previously got something wrong, remove it and write the useful point. Apply this check to the whole artifact, including navigation and interaction choices, not only the corrected sentence. A scanner cannot establish this.
+
+When the user asks what went wrong or what changed, answer directly in the accompanying conversation. Keep that explanation out of the finished audience-facing work unless the audience needs the correction itself, as in an erratum, change notice or safety warning. Preserve material facts and necessary qualifications; this rule does not authorize hiding an error that affects the reader.
+
+This standing preference was explicitly requested on October 22, 2026. See the correction examples in [examples.md](references/examples.md).
 
 ## Revise the argument before the wording
 
