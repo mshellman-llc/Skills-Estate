@@ -12,7 +12,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 JOBHUNT_ROOT = SKILL_ROOT.parents[1]
-AUTHORITATIVE_ROOT = Path("/Volumes/BeastMode/AIMemory/JobHunt")
+AUTHORITATIVE_ROOT = Path("/Volumes/BeastMode/Career")
 OUT_DIR = SKILL_ROOT.parent / "dist"
 BUNDLE_NAME = "career-application-private"
 
@@ -201,7 +201,7 @@ def verify_expanded(path: Path) -> None:
 
 
 def main() -> None:
-    canonical = Path("/Volumes/BeastMode/AI Workstreams/Knowledge Hub/src")
+    canonical = Path("/Volumes/BeastMode/Projects/Knowledge Hub/src")
     for name in ("content-review.ts", "content-review-cli.ts"):
         source = canonical / name
         if not source.is_file():
@@ -256,7 +256,7 @@ def main() -> None:
         legacy_zip = OUT_DIR / f"{BUNDLE_NAME}.zip"
         legacy_checksum = OUT_DIR / f"{BUNDLE_NAME}.zip.sha256"
         if legacy_zip.exists() or legacy_checksum.exists():
-            raise SystemExit("legacy .zip output remains; run the AIMemory no-ZIP cleanup first")
+            raise SystemExit("legacy .zip output remains; run the recorded no-ZIP cleanup first")
         # Directory renames and recursive replacement are unreliable on the mounted SMB
         # volume. The staged source is already verified through its manifest, so update
         # the generated expanded view in place and verify the destination afterward.

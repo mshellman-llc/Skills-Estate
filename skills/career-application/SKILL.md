@@ -16,7 +16,7 @@ Run one role at a time from current evidence without relying on conversation his
 
 Use the live source when it is available:
 
-`/Volumes/BeastMode/AIMemory/JobHunt/`
+`/Volumes/BeastMode/Career/`
 
 Read `00_Master/Career_Application_Operating_Context.md` first. Then load only:
 

@@ -16,7 +16,7 @@ The split is the point. Evidence control lives in the working copy. The publish 
 
 ## Before you start
 - Megan works independently through Live Laugh Code LLC. Use the current claims and rights ledger for reuse and publication decisions about Meridian, the Knowledge Hub, the skills architecture, and the playbooks. Client names, logos, client data, rate-card numbers, margins, and quote identifiers stay out.
-- Use the current career numbers from `/Volumes/BeastMode/AIMemory/JobHunt/` (the program records and evidence ledger). Don't invent or round past them.
+- Use the current career numbers from `/Volumes/BeastMode/Career/` (the program records and evidence ledger). Don't invent or round past them.
 - Never invent a fact, number, client, or quote to make a study read better. Missing detail: bracket it in the working copy and flag it to Megan in chat; do not fill the gap.
 
 ## Skeleton (fill for each study)
