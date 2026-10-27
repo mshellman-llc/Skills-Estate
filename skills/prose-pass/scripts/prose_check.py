@@ -497,12 +497,12 @@ def check(text: str, cfg=None):
                     parts.append('\n'.join(current))
                 current = [line[bullet.end():]]
                 in_item = True
-            elif stripped.startswith('#'):
+            elif in_item and stripped.startswith('#'):
                 if current:
                     parts.append('\n'.join(current))
                 current = []
                 in_item = False
-            elif marker or stripped.startswith('|'):
+            elif marker or stripped.startswith(('|', '#')):
                 current.append('')
             else:
                 if in_item and previous_blank and stripped and not line[:1].isspace():

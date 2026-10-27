@@ -58,7 +58,8 @@ absent report is a `blocked` verdict, never a `pass`.
    external sibling or a validator symlink that leaves that package. Relative
    paths resolve from the quality record's directory; newly emitted receipts
    store an absolute artifact path. Regenerate an older receipt with a relative
-   artifact path before final release. A blocked prose check can record the missing receipt while
+   artifact path before final release. A blocked prose check can record the
+   missing receipt while
    withholding release. Sound prose may pass unchanged only with a justified
    no-change assessment in the receipt.
 2. For a styled artifact, cite `brand-renderer` evidence: the preflight report
@@ -81,7 +82,8 @@ absent report is a `blocked` verdict, never a `pass`.
    as an assumption is an alternative only for lower-risk provisional analysis,
    as in Grade. Approvals, deployment or publication status, and unsupported
    committed financial figures stay fail-closed: find the source or remove the
-   claim, and never record an approval as an assumption. A generated file is not evidence that anyone approved,
+   claim, and never record an approval as an assumption. A generated file is not
+   evidence that anyone approved,
    sent, published or deployed it. When the request included a write, check the
    destination and state the layer reached: prepared locally, committed,
    published, or verified in the destination.

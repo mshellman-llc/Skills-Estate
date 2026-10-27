@@ -302,7 +302,10 @@ const ratio = (value - 1) / 4;'''
         for name,body in [('bad-next.md',prefix+'Priority not set. History split across tools.'),
                           ('bad-section.md',prefix+'## Status\nPriority not set. History split across tools.'),
                           ('bad-paragraphs.md','Priority not set.\n\nHistory split across tools.'),
-                          ('bad-indented.md',prefix+'  Priority not set. History split across tools.')]:
+                          ('bad-indented.md',prefix+'  Priority not set.'),
+                          ('body-heading.md','Priority not set.\n## Status\nHistory split across tools.'),
+                          ('body-tag.md','Priority not set.\n#tag\nHistory split across tools.'),
+                          ('body-number.md','Priority not set.\n#1\nHistory split across tools.')]:
             result=self.scan(name,body,1)
             self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/name)]['findings']])
 
