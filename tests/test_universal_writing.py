@@ -224,7 +224,23 @@ const ratio = (value - 1) / 4;'''
         self.scan('docstring.py','"""Fields:\n- Patron name.\n- Pickup date.\n"""',0)
         for kind in ['text/x-handlebars','text/x-jquery-tmpl','text/x-tmpl']:
             self.scan('legacy-template.html','<script type="'+kind+'">'+('<span class="plain" data-extra="value">Ready</span>'*2)+'</script>',0)
-        self.scan('optional-cell.html','<table><tr><td>Priority not set.</table><p>The audit recorded 24 reservations.</p>',0)
+        self.scan('optional-cell.html','<table><tr><td>Priority not set.</table><p>History split across tools.</p>',0)
+
+
+    def test_comment_decoration_and_docstring_indentation_preserve_prose(self):
+        comment = '/**\n * Priority not set.\n * History split across tools.\n */'
+        cases = [('decorated.js',comment), ('decorated.css',comment),
+                 ('wrapped.md','<!-- Priority not set. History split across tools. -->'),
+                 ('wrapped.js','const note = "<!-- Priority not set. History split across tools. -->";'),
+                 ('indented.py','def f():\n    """Fields:\n    - Patron name.\n    - Pickup date.\n\n    Priority not set. History split across tools.\n    """'),
+                 ('block-paragraph.js','/* Priority not set. */\n/* History split across tools. */'),
+                 ('nested-cell.html','<table><tr><td>Priority not set.<table><tr><td>The audit recorded 24 reservations.</td></tr></table>History split across tools.</td></tr></table>')]
+        for filename,body in cases:
+            result=self.scan(filename,body,1)
+            self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
+        self.scan('annotations.py','TIMEOUT = 30  # Request timeout in seconds.\nRETRIES = 3  # Maximum retry count.\n',0)
+        self.scan('comment-list.js','/**\n * Fields:\n * - Patron name.\n * - Pickup date.\n */',0)
+        self.scan('indented-list.py','def f():\n    """Fields:\n    - Patron name.\n    - Pickup date.\n    """',0)
 
 
 if __name__ == '__main__':

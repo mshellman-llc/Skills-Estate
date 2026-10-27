@@ -7,6 +7,7 @@ import argparse
 import ast
 import csv
 import io
+import inspect
 import json
 import re
 from pathlib import Path
@@ -82,7 +83,7 @@ class AuthoredText(str):
 def css_words(data):
     # CSS comments and string values can contain authored language. Selectors,
     # property names and repeated declarations are executable syntax.
-    return '\n'.join(match.group(0)[2:-2] if match.group(0).startswith('/*')
+    return '\n'.join(re.sub(r'(?m)^[ \t]*\*(?!/)[ \t]?', '', match.group(0)[2:-2]) if match.group(0).startswith('/*')
                      else match.group(0)[1:-1]
                      for match in re.finditer(r"/\*.*?\*/|\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'", data, re.S))
 
@@ -97,6 +98,7 @@ class HTMLWords(HTMLParser):
         self.script_type = None
         self.depth = depth
         self.cell = None
+        self.table_cells = []
 
     def handle_data(self, data):
         if self.script_type is not None:
@@ -129,10 +131,14 @@ class HTMLWords(HTMLParser):
                 self.parts.append(data)
 
     def handle_endtag(self, tag):
-        if self.cell is not None and tag in ('br', 'p', 'div', 'li'):
+        if self.cell is not None and tag in ('br', 'p', 'div', 'li', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'dt', 'dd', 'blockquote', 'pre'):
             self.cell.text += '\n'
-        if tag in ('tr', 'table'):
+        if tag == 'tr':
             self.cell = None
+        if tag == 'table':
+            self.cell = self.table_cells.pop() if self.table_cells else None
+            if self.cell is not None:
+                self.cell.text += '\n'
         if tag in ('td', 'th'):
             self.cell = None
         if tag == "style":
@@ -144,9 +150,14 @@ class HTMLWords(HTMLParser):
         self.parts.append(Block(data))
 
     def handle_starttag(self, tag, attrs):
-        if self.cell is not None and tag in ('br', 'p', 'div', 'li'):
+        if self.cell is not None and tag in ('br', 'p', 'div', 'li', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'dt', 'dd', 'blockquote', 'pre'):
             self.cell.text += '\n'
-        if tag in ('tr', 'table'):
+        if tag == 'table':
+            if self.cell is not None:
+                self.cell.text += '\n'
+            self.table_cells.append(self.cell)
+            self.cell = None
+        if tag == 'tr':
             self.cell = None
         if tag in ('td', 'th'):
             self.cell = Block('')
@@ -206,22 +217,25 @@ def authored_text(path):
         parts = []
         for node in nodes:
             if isinstance(node, ast.JoinedStr):
-                parts.append(Block(' '.join(value.value if isinstance(value, ast.Constant) and isinstance(value.value, str) else ' '
-                                            for value in node.values)))
+                parts.append(Block(inspect.cleandoc(' '.join(value.value if isinstance(value, ast.Constant) and isinstance(value.value, str) else ' '
+                                            for value in node.values))))
             elif isinstance(node, ast.Constant) and isinstance(node.value, str) and id(node) not in joined_pieces:
-                parts.append(Block(node.value))
+                parts.append(Block(inspect.cleandoc(node.value)))
         comment = None
         last_row = None
+        previous_alone = False
         for token in tokenize.generate_tokens(io.StringIO(raw).readline):
             if token.type != tokenize.COMMENT:
                 continue
             value = token.string.lstrip('#').strip()
-            if comment is not None and token.start[0] == last_row + 1:
+            alone = not token.line[:token.start[1]].strip()
+            if comment is not None and alone and previous_alone and token.start[0] == last_row + 1:
                 comment.text += '\n' + value
             else:
                 comment = Block(value)
                 parts.append(comment)
             last_row = token.end[0]
+            previous_alone = alone
         return AuthoredText(parts)
     if suffix in {'.html', '.htm'}:
         parser = HTMLWords()

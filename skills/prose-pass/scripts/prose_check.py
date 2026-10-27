@@ -485,14 +485,11 @@ def check(text: str, cfg=None):
     def fragment_body(block):
         fragment_lines = []
         in_list = False
-        in_comment = False
         for line in block.splitlines():
+            line = line.replace("<!--", "").replace("-->", "")
             stripped = line.strip()
-            if "<!--" in line:
-                in_comment = True
             structural = (
-                in_comment
-                or stripped.startswith("|")
+                stripped.startswith("|")
                 or stripped.startswith("#")
                 or bool(re.match(r"^\s*(?:[-*+] |\d+[.)] )", line))
                 or (in_list and (not stripped or line[:1].isspace()))
@@ -503,8 +500,6 @@ def check(text: str, cfg=None):
                 in_list = False
                 structural = False
             fragment_lines.append("" if structural else line)
-            if "-->" in line:
-                in_comment = False
         return '\n'.join(fragment_lines)
 
     fragment_blocks = [fragment_body(block) for block in getattr(text, 'fragment_blocks', [text])]
