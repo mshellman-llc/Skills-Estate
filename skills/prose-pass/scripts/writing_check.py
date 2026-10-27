@@ -114,7 +114,7 @@ class HTMLWords(HTMLParser):
                     else:
                         self.parts.append(item)
             else:
-                if 'template' in self.script_type or self.script_type == 'text/html':
+                if 'template' in self.script_type or self.script_type == 'text/html' or re.search(r'</?[A-Za-z][^>]*>', data):
                     nested = HTMLWords(self.depth + 1)
                     nested.feed(data)
                     self.parts.extend(Block(block) for block in AuthoredText(nested.parts).fragment_blocks)
@@ -129,6 +129,10 @@ class HTMLWords(HTMLParser):
                 self.parts.append(data)
 
     def handle_endtag(self, tag):
+        if self.cell is not None and tag in ('br', 'p', 'div', 'li'):
+            self.cell.text += '\n'
+        if tag in ('tr', 'table'):
+            self.cell = None
         if tag in ('td', 'th'):
             self.cell = None
         if tag == "style":
@@ -140,6 +144,10 @@ class HTMLWords(HTMLParser):
         self.parts.append(Block(data))
 
     def handle_starttag(self, tag, attrs):
+        if self.cell is not None and tag in ('br', 'p', 'div', 'li'):
+            self.cell.text += '\n'
+        if tag in ('tr', 'table'):
+            self.cell = None
         if tag in ('td', 'th'):
             self.cell = Block('')
             self.parts.append(self.cell)
@@ -149,7 +157,7 @@ class HTMLWords(HTMLParser):
             self.script_type = (dict(attrs).get('type') or '').lower()
         for name, value in attrs:
             if value and name == 'style':
-                self.parts.append(css_words(value))
+                self.parts.append(Block(css_words(value)))
             if value and name in {'alt', 'title', 'aria-label', 'placeholder', 'content', 'value'}:
                 self.parts.append(Block(value))
             if value and name.startswith('on'):
@@ -192,10 +200,29 @@ def authored_text(path):
         return AuthoredText(Block(cell) for row in csv.reader(io.StringIO(raw), delimiter='\t' if suffix == '.tsv' else ',') for cell in row)
     if suffix == '.py':
         tree = ast.parse(raw)
-        parts = [node.value for node in ast.walk(tree) if isinstance(node, ast.Constant) and isinstance(node.value, str)]
-        parts.extend(token.string.lstrip('#').strip() for token in tokenize.generate_tokens(io.StringIO(raw).readline)
-                     if token.type == tokenize.COMMENT)
-        return AuthoredText(Block(part) for part in parts)
+        nodes = list(ast.walk(tree))
+        joined_pieces = {id(value) for node in nodes if isinstance(node, ast.JoinedStr)
+                         for value in node.values if isinstance(value, ast.Constant)}
+        parts = []
+        for node in nodes:
+            if isinstance(node, ast.JoinedStr):
+                parts.append(Block(' '.join(value.value if isinstance(value, ast.Constant) and isinstance(value.value, str) else ' '
+                                            for value in node.values)))
+            elif isinstance(node, ast.Constant) and isinstance(node.value, str) and id(node) not in joined_pieces:
+                parts.append(Block(node.value))
+        comment = None
+        last_row = None
+        for token in tokenize.generate_tokens(io.StringIO(raw).readline):
+            if token.type != tokenize.COMMENT:
+                continue
+            value = token.string.lstrip('#').strip()
+            if comment is not None and token.start[0] == last_row + 1:
+                comment.text += '\n' + value
+            else:
+                comment = Block(value)
+                parts.append(comment)
+            last_row = token.end[0]
+        return AuthoredText(parts)
     if suffix in {'.html', '.htm'}:
         parser = HTMLWords()
         parser.feed(raw)

@@ -482,30 +482,32 @@ def check(text: str, cfg=None):
     # A Markdown list is an intentional list surface, not fragment-stacked body
     # prose. Keep list text in every lexical and construction check above, but
     # omit it from C6 so a valid checklist cannot block its own instruction file.
-    fragment_lines = []
-    in_list = False
-    in_comment = False
-    for line in lines:
-        stripped = line.strip()
-        if "<!--" in line:
-            in_comment = True
-        structural = (
-            in_comment
-            or stripped.startswith("|")
-            or stripped.startswith("#")
-            or bool(re.match(r"^\s*(?:[-*+] |\d+[.)] )", line))
-            or (in_list and (not stripped or line[:1].isspace()))
-        )
-        if re.match(r"^\s*(?:[-*+] |\d+[.)] )", line):
-            in_list = True
-        elif in_list and stripped and not line[:1].isspace():
-            in_list = False
-            structural = False
-        fragment_lines.append("" if structural else line)
-        if "-->" in line:
-            in_comment = False
-    fragment_text = "\n".join(fragment_lines)
-    fragment_blocks = getattr(text, 'fragment_blocks', [fragment_text])
+    def fragment_body(block):
+        fragment_lines = []
+        in_list = False
+        in_comment = False
+        for line in block.splitlines():
+            stripped = line.strip()
+            if "<!--" in line:
+                in_comment = True
+            structural = (
+                in_comment
+                or stripped.startswith("|")
+                or stripped.startswith("#")
+                or bool(re.match(r"^\s*(?:[-*+] |\d+[.)] )", line))
+                or (in_list and (not stripped or line[:1].isspace()))
+            )
+            if re.match(r"^\s*(?:[-*+] |\d+[.)] )", line):
+                in_list = True
+            elif in_list and stripped and not line[:1].isspace():
+                in_list = False
+                structural = False
+            fragment_lines.append("" if structural else line)
+            if "-->" in line:
+                in_comment = False
+        return '\n'.join(fragment_lines)
+
+    fragment_blocks = [fragment_body(block) for block in getattr(text, 'fragment_blocks', [text])]
     block_flags = [[(s, not has_finite_verb(s)) for s in sentences(block) if s not in heading_set]
                    for block in fragment_blocks]
     verbless_flags = [item for block in block_flags for item in block]

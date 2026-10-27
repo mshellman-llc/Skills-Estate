@@ -211,5 +211,21 @@ const ratio = (value - 1) / 4;'''
         self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/'inline-cell.html')]['findings']])
 
 
+    def test_fragment_paragraphs_survive_markup_and_python_extraction(self):
+        cases=[
+            ('breaks.html','<table><tr><td>Priority not set.<br>History split across tools.</td></tr></table>'),
+            ('paragraphs.html','<table><tr><td><p>Priority not set.</p><p>History split across tools.</p></td></tr></table>'),
+            ('comment-paragraph.py','# Priority not set.\n# History split across tools.\n'),
+            ('comment-paragraph.js','// Priority not set.\n// History split across tools.\n'),
+            ('fstring.py','msg = f"Priority not set. {owner} History split across tools."')]
+        for filename,body in cases:
+            result=self.scan(filename,body,1)
+            self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
+        self.scan('docstring.py','"""Fields:\n- Patron name.\n- Pickup date.\n"""',0)
+        for kind in ['text/x-handlebars','text/x-jquery-tmpl','text/x-tmpl']:
+            self.scan('legacy-template.html','<script type="'+kind+'">'+('<span class="plain" data-extra="value">Ready</span>'*2)+'</script>',0)
+        self.scan('optional-cell.html','<table><tr><td>Priority not set.</table><p>The audit recorded 24 reservations.</p>',0)
+
+
 if __name__ == '__main__':
     unittest.main()

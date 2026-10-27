@@ -64,6 +64,8 @@ def javascript_parts(source):
         nonlocal index
         depth = 1
         previous = ''
+        last_comment_end = None
+        last_comment_part = None
         while index < length:
             char = source[index]
             if char.isspace():
@@ -72,14 +74,28 @@ def javascript_parts(source):
             if source.startswith('//', index):
                 end = source.find('\n', index + 2)
                 end = length if end < 0 else end
-                parts.append(source[index + 2:end])
+                value = source[index + 2:end]
+                between = source[last_comment_end:index] if last_comment_end is not None else None
+                if between is not None and not between.strip() and between.count('\n') == 1:
+                    parts[last_comment_part] += '\n' + value
+                else:
+                    parts.append(value)
+                    last_comment_part = len(parts) - 1
+                last_comment_end = end
                 index = end
                 continue
             if source.startswith('/*', index):
                 end = source.find('*/', index + 2)
                 if end < 0:
                     raise SyntaxError('Unterminated JavaScript comment')
-                parts.append(source[index + 2:end])
+                value = source[index + 2:end]
+                between = source[last_comment_end:index] if last_comment_end is not None else None
+                if between is not None and not between.strip() and between.count('\n') == 1:
+                    parts[last_comment_part] += '\n' + value
+                else:
+                    parts.append(value)
+                    last_comment_part = len(parts) - 1
+                last_comment_end = end
                 index = end + 2
                 continue
             if char in "\"'`":
