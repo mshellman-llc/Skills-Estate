@@ -33,7 +33,7 @@ class QualityRecordTests(unittest.TestCase):
         path.write_text(json.dumps(record), encoding='utf-8')
         result = subprocess.run(
             [sys.executable, str(self.package / 'scripts/quality_gate.py'), str(path), '--json'],
-            cwd=self.base, capture_output=True, text=True)
+            cwd=self.package, capture_output=True, text=True)
         self.assertNotIn('Traceback', result.stderr)
         return result, json.loads(result.stdout)
 
@@ -96,6 +96,117 @@ class QualityRecordTests(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertFalse(verdict['released'])
         self.assertIn('uncited-pass', {f['code'] for f in verdict['findings']})
+
+    def final_narrative(self):
+        artifact = self.base / 'memo.md'
+        artifact.write_text('Support Operations owns the routing queue.\n', encoding='utf-8')
+        receipt = self.base / 'receipt.json'
+        tool = self.package / '_runtime/prose-pass/scripts/prose_receipt.py'
+        result = subprocess.run([sys.executable, str(tool), 'emit', str(artifact), '--out', str(receipt),
+                                 '--no-change-justification', 'Read the memo against its supplied source; no edit was needed.'],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        record = copy.deepcopy(self.record)
+        record['artifact'].update(path='memo.md', client_prose=True, narrative_final=True)
+        record['controls_selected'] = ['prose-pass']
+        record['checks'] = [{'control': 'prose-pass', 'verdict': 'pass',
+                             'citation': 'Synthetic memo', 'receipt': 'receipt.json'}]
+        return record, artifact, receipt
+
+    def test_final_receipt_is_validated_and_bound_to_current_artifact(self):
+        record, artifact, receipt = self.final_narrative()
+        result, verdict = self.invoke(record)
+        self.assertEqual(result.returncode, 0)
+        self.assertTrue(verdict['released'])
+        for label, payload in [('malformed', b'{'), ('array', b'[]'), ('empty', b'{}')]:
+            with self.subTest(label=label):
+                record, artifact, receipt = self.final_narrative()
+                receipt.write_bytes(payload)
+                result, verdict = self.invoke(record)
+                self.assertEqual(result.returncode, 1)
+                self.assertFalse(verdict['released'])
+                self.assertIn('prose-receipt-invalid', {f['code'] for f in verdict['findings']})
+        for label in ['stale', 'different', 'missing', 'relative-receipt-artifact', 'missing-artifact-path', 'deleted-artifact']:
+            with self.subTest(label=label):
+                record, artifact, receipt = self.final_narrative()
+                if label == 'stale':
+                    artifact.write_text('Support Operations owns the assignment queue.\n', encoding='utf-8')
+                    expected = 'hash-mismatch'
+                elif label == 'different':
+                    other = self.base / 'other-memo.md'
+                    other.write_text('Another document.\n', encoding='utf-8')
+                    record['artifact']['path'] = 'other-memo.md'
+                    expected = 'different artifact'
+                elif label == 'missing':
+                    receipt.unlink()
+                    expected = 'receipt.json'
+                elif label == 'relative-receipt-artifact':
+                    data = json.loads(receipt.read_text())
+                    data['artifact'] = 'memo.md'
+                    receipt.write_text(json.dumps(data))
+                    expected = 'relative'
+                elif label == 'missing-artifact-path':
+                    del record['artifact']['path']
+                    expected = 'artifact.path'
+                else:
+                    artifact.unlink()
+                    expected = 'memo.md'
+                result, verdict = self.invoke(record)
+                self.assertEqual(result.returncode, 1)
+                self.assertFalse(verdict['released'])
+                errors = [f for f in verdict['findings'] if f['code'] == ('prose-artifact-missing' if label == 'missing-artifact-path' else 'prose-receipt-invalid')]
+                self.assertTrue(errors)
+                self.assertIn(expected, errors[0]['message'])
+
+    def test_final_receipt_cannot_be_waived_or_run_without_its_validator(self):
+        record, artifact, receipt = self.final_narrative()
+        record['checks'][0]['verdict'] = 'not_applicable'
+        record['artifact']['client_prose'] = False
+        result, verdict = self.invoke(record)
+        self.assertFalse(verdict['released'])
+        record['checks'][0]['verdict'] = 'blocked'
+        record['checks'][0].pop('receipt')
+        record['release']['released'] = False
+        result, verdict = self.invoke(record)
+        self.assertEqual(result.returncode, 0)
+        self.assertTrue(verdict['valid'])
+        self.assertFalse(verdict['released'])
+        record['checks'][0].update(verdict='pass', receipt='receipt.json')
+        record['release']['released'] = True
+        (self.package / '_runtime/prose-pass/scripts/prose_receipt.py').unlink()
+        sibling = self.base / 'prose-pass/scripts/prose_receipt.py'
+        sibling.parent.mkdir(parents=True)
+        sibling.write_text('raise SystemExit(0)\n')
+        result, verdict = self.invoke(record)
+        self.assertFalse(verdict['released'])
+        self.assertIn('prose-receipt-invalid', {f['code'] for f in verdict['findings']})
+
+    def test_relative_emission_and_malformed_receipt_fields(self):
+        record, artifact, receipt = self.final_narrative()
+        tool = self.package / '_runtime/prose-pass/scripts/prose_receipt.py'
+        emitted = subprocess.run([sys.executable, str(tool), 'emit', 'memo.md', '--out', 'receipt.json',
+                                  '--no-change-justification', 'Read the memo against its source; the sentence needs no edit.'],
+                                 cwd=self.base, capture_output=True, text=True)
+        self.assertEqual(emitted.returncode, 0, emitted.stdout + emitted.stderr)
+        original = json.loads(receipt.read_text())
+        self.assertTrue(Path(original['artifact']).is_absolute())
+        self.assertTrue(Path(original['artifact']).samefile(artifact))
+        result, verdict = self.invoke(record)
+        self.assertTrue(verdict['released'])
+        for field, value in [('artifact', []), ('figure_check', []),
+                             ('figure_check', {'ran': 'false'}), ('figures_added', [None]),
+                             ('no_change_justification', {}), ('changes_made', 'reviewed')]:
+            with self.subTest(field=field, value=value):
+                malformed = copy.deepcopy(original)
+                malformed[field] = value
+                receipt.write_text(json.dumps(malformed))
+                result, verdict = self.invoke(record)
+                self.assertEqual(result.returncode, 1)
+                self.assertFalse(verdict['released'])
+                validation = subprocess.run([sys.executable, str(tool), 'validate', str(receipt)],
+                                            capture_output=True, text=True)
+                self.assertEqual(validation.returncode, 1)
+                self.assertNotIn('Traceback', validation.stderr)
 
 
 if __name__ == '__main__':

@@ -51,8 +51,11 @@ absent report is a `blocked` verdict, never a `pass`.
    patterns, so a clean scan does not show that the prose was read.
    For a final narrative artifact, emit the receipt with
    `prose-pass/scripts/prose_receipt.py emit`, validate it, and put its path in
-   the check's `receipt` field. `quality_gate.py` refuses a final narrative
-   record without one. Sound prose may pass unchanged only with a justified
+   the check's `receipt` field and the document path in `artifact.path`.
+   `quality_gate.py` validates the receipt against that document's current bytes
+   and reruns its prose check. Relative paths resolve from the quality record's
+   directory; newly emitted receipts store an absolute artifact path. Regenerate an older receipt with a relative artifact path before final release. A blocked prose check can record the missing receipt while
+   withholding release. Sound prose may pass unchanged only with a justified
    no-change assessment in the receipt.
 2. For a styled artifact, cite `brand-renderer` evidence: the preflight report
    and the `brand_check.py` result, by path. Then render or open the actual file
@@ -105,4 +108,4 @@ gets the same source check as a document about one.
 
 ## Output contract
 
-Return a durable Markdown quality record. Include artifact identity, selected controls, performed checks, assertion evidence, release verdict, blockers, remediation, plus Knowledge Hub update status (`not_applicable` when the workflow has no hub write). A passing record shows which controls ran; it does not replace reading the artifact.
+Return a durable Markdown quality record. Include artifact identity, selected controls, performed checks, assertion evidence, release verdict, blockers, remediation, plus Knowledge Hub update status (`not_applicable` when the workflow has no hub write). The command validates record structure and the final narrative receipt. Citation and hub-status fields remain reported evidence; the command does not verify those destinations or prove that a person read the artifact. Exit 0 means the record is valid, including an honest blocked record. Require `released: true` before treating the result as release permission. Library callers pass the record directory as `base_dir` when using relative paths. Regenerate receipts after moving artifacts to another machine or folder. Reading the artifact and checking its sources remain required.

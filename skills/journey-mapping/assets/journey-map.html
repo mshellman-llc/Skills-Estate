@@ -20,42 +20,41 @@
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 var(--font)}
 .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
 header{padding:40px 0 24px;border-bottom:1px solid var(--border)}
-.eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.eyebrow{font-size:16px;font-weight:600;color:var(--muted)}
 h1{margin:8px 0;font-size:32px;line-height:1.2}
 .lead{max-width:70ch;color:var(--muted);margin:0}
 section{padding:32px 0}
-.legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;font-size:14px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;font-size:16px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:6px}
 .sw{width:14px;height:14px;border:1px solid var(--border);border-radius:var(--radius)}
 .board{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius)}
 .grid{display:grid;gap:1px;background:var(--border)}
 .grid>div{background:var(--bg)}
-.lab{position:sticky;left:0;z-index:2;background:var(--surface)!important;padding:12px;font-size:12px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:flex;align-items:center}
+.lab{position:sticky;left:0;z-index:2;background:var(--surface)!important;padding:12px;font-size:16px;font-weight:700;
+  color:var(--muted);display:flex;align-items:center}
 .ph{background:var(--band)!important;color:var(--band-text);padding:12px}
-.ph b{display:block;font-size:12px;opacity:.75}
-.cell{padding:12px;font-size:14px;color:var(--muted)}
+.ph b{display:block;font-size:16px;opacity:.75}
+.cell{padding:12px;font-size:16px;color:var(--muted)}
 .think{font-style:italic}
 .hypothesis{border-bottom:1px dashed var(--muted)}
-.basis-tag{display:block;font-size:11px;font-style:normal;font-weight:600}
+.basis-tag{display:block;font-size:16px;font-style:normal;font-weight:600}
 .pain{background:var(--pain)!important}
 .opp{background:var(--opp)!important;color:var(--accent)}
 .bp{background:var(--bp)!important}
-.vis{background:var(--band)!important;color:var(--band-text);padding:6px 12px;font-size:12px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.06em}
+.vis{background:var(--band)!important;color:var(--band-text);padding:6px 12px;font-size:16px;font-weight:700}
 .vis span{position:sticky;left:12px}
 .emotion svg{display:block;width:100%;height:132px}
 .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
 .curve.hyp{stroke-dasharray:6 5}
 .dot{fill:var(--accent)}
 .gl{stroke:var(--border)}
-.note{font-size:14px;color:var(--muted);margin-top:12px;max-width:90ch}
+.note{font-size:16px;color:var(--muted);margin-top:12px;max-width:90ch}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:820px){.cards{grid-template-columns:1fr}h1{font-size:26px}}
 .card{border:1px solid var(--border);border-radius:var(--radius);padding:16px}
-.card .tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.card .tag{font-size:16px;font-weight:700;color:var(--accent)}
 .card h3{margin:6px 0;font-size:18px}
-.card p{margin:0;font-size:14px;color:var(--muted)}
+.card p{margin:0;font-size:16px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -65,6 +64,7 @@ section{padding:32px 0}
   <p class="lead" id="lead"></p>
 </div></header>
 
+<main>
 <section><div class="wrap">
   <div class="legend" id="legend"></div>
   <div class="board"><div class="grid" id="grid"></div></div>
@@ -75,6 +75,7 @@ section{padding:32px 0}
   <h2>Friction to address</h2>
   <div class="cards" id="cards"></div>
 </div></section>
+</main>
 
 <script>
 // Example content is illustrative. Replace every value with sourced or labeled material.
@@ -111,6 +112,8 @@ function validateMap(map) {
   const fail = message => { throw new Error(message); };
   if (!Array.isArray(map.phases) || !map.phases.length || map.phases.some(p => typeof p !== "string" || !p.trim())) fail("Provide at least one named phase.");
   const n = map.phases.length;
+  if (typeof map.title !== "string" || !map.title.trim()) fail("Provide a map title.");
+  if (map.visibilityUnknown !== undefined && (!Array.isArray(map.visibilityUnknown) || map.visibilityUnknown.length !== n || map.visibilityUnknown.some(v => v !== null && typeof v !== "string"))) fail("Unknown visibility needs one text or null cell per phase.");
   if (!["evidence", "hypothesis", "not captured"].includes(map.emotionBasis)) fail("State the emotional curve's evidence basis.");
   if (map.emotion == null) {
     if (map.emotionBasis !== "not captured") fail("Missing emotion values must be marked not captured.");
@@ -130,12 +133,15 @@ function validateMap(map) {
     for (const row of rows) {
       if (!Array.isArray(row.cells) || row.cells.length !== n || row.cells.some(v => v !== null && typeof v !== "string")) fail(`${row.label} needs exactly one text or null cell per phase.`);
       if (["Thoughts", "Pain points"].includes(row.label) && !["observed", "reported", "hypothesis", "not captured"].includes(row.basis)) fail(`${row.label} needs its own evidence basis.`);
+      if (row.basis !== undefined && !["observed", "reported", "hypothesis", "not captured"].includes(row.basis)) fail(`${row.label} has an invalid evidence basis.`);
+      if (row.basis === "not captured" && row.cells.some(v => v !== null && v.trim())) fail(`${row.label} has text marked not captured; provide its evidence basis.`);
     }
   }
   if (!Array.isArray(map.friction) || map.friction.some(f => !f || !/^\d+$/.test(f.phase) || Number(f.phase) < 1 || Number(f.phase) > n || typeof f.title !== "string" || typeof f.body !== "string")) fail("Each friction card needs a valid phase, title and explanation.");
 }
 try {
 validateMap(MAP);
+document.title = MAP.title;
 const n = MAP.phases.length;
 document.getElementById("eyebrow").textContent = MAP.eyebrow;
 document.getElementById("title").textContent = MAP.title;
@@ -143,7 +149,7 @@ document.getElementById("lead").textContent = MAP.lead;
 document.getElementById("basis").textContent = MAP.basisNote;
 
 const legend = document.getElementById("legend");
-[["Phase", "var(--band)"], ["Pain point", "var(--pain)"], ["Opportunity", "var(--opp)"]].forEach(([t, c]) => {
+[["Phase", "var(--band)"], ["Pain point", "var(--pain)"], ["Opportunity", "var(--accent)"]].forEach(([t, c]) => {
   const s = el("span"); const w = el("i", "sw"); w.style.background = c; s.append(w, t); legend.append(s);
 });
 legend.append(el("span", null, MAP.emotion == null ? "Emotion scores: not captured" : MAP.emotionBasis === "hypothesis" ? "Emotional curve, low to high (hypothesis, dashed)" : "Emotional curve, low to high"));
@@ -171,7 +177,7 @@ em.innerHTML = svg + "</svg>"; grid.append(em);
 const addRow = (r, extra) => {
   grid.append(labelCell(r.label));
   r.cells.forEach(t => {
-    const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" && t !== null && t.trim() ? " hypothesis" : ""}`, t === null ? "Not captured" : t);
+    const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" && t !== null && t.trim() ? " hypothesis" : ""}`, t === null ? (r.label === "Opportunities" ? "None proposed" : "Not captured") : t);
     if (r.basis && t !== null) cell.append(el("span", "basis-tag", r.basis));
     grid.append(cell);
   });
@@ -186,6 +192,7 @@ if (MAP.emotionLabels !== undefined) {
 }
 const divider = label => { const band = el("div", "vis"); band.append(el("span", null, label)); band.style.gridColumn = "1 / -1"; grid.append(band); };
 MAP.rows.forEach(r => addRow(r));
+if (MAP.visibilityUnknown?.some(t => t !== null && t.trim())) addRow({label:"Visibility not captured", cells:MAP.visibilityUnknown});
 addRow(MAP.blueprint[0], "bp");
 divider("Line of visibility");
 addRow(MAP.blueprint[1], "bp");

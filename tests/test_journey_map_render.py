@@ -47,6 +47,7 @@ const {chromium} = require('playwright');
   assert.match(await page.locator('#basis').innerText(),/Synthetic example/);
   await page.screenshot({path:path.join(out,'desktop.png'),fullPage:true});
   results.push({case:'normal',passed:true});
+  assert.equal(await page.locator('main').count(),1);
   await page.setViewportSize({width:390,height:844});
   await page.reload();
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
@@ -95,7 +96,33 @@ const {chromium} = require('playwright');
   await render('boundaries','MAP.emotion=[1,5,2.5,1,5];');
   assert.equal(await page.locator('.curve').getAttribute('points'),'50,116 150,16 250,78.5 350,116 450,16');
   results.push({case:'boundaries',passed:true});
+  await render('unknown-visibility','MAP.visibilityUnknown=["Warehouse scan",null,null,null,null]; MAP.rows[4].cells[0]=null; MAP.rows[1].basis="hypothesis";');
+  assert.equal(await page.title(),"The support agent's journey");
+  const labels = await page.locator('#grid .lab').allTextContents();
+  assert.ok(labels.indexOf('Visibility not captured') < labels.indexOf('Front-stage'));
+  assert.equal(await page.getByText('Warehouse scan',{exact:true}).count(),1);
+  assert.equal(await page.getByText('None proposed',{exact:true}).count(),1);
+  assert.ok(await page.locator('.hypothesis').count() >= 5);
+  const swatches=await page.locator('.sw').evaluateAll(nodes=>nodes.map(n=>getComputedStyle(n).backgroundColor));
+  assert.equal(new Set(swatches).size,3);
+  assert.equal(await page.locator('.cell').first().evaluate(n=>getComputedStyle(n).fontSize),'16px');
+  results.push({case:'unknown-visibility-and-empty-opportunity',passed:true});
   for (const [name,mutation,expected] of [
+   ['unknown-visibility-shape','MAP.visibilityUnknown=[4,null,null,null,null];','Unknown visibility'],
+   ['invalid-emotion-basis','MAP.emotionBasis="guessed";','evidence basis'],
+   ['blank-basis-note','MAP.basisNote=" ";','evidence-basis note'],
+   ['missing-basis-note','delete MAP.basisNote;','evidence-basis note'],
+   ['wrong-row-order','MAP.rows.reverse();','documented order'],
+   ['nontext-cell','MAP.rows[0].cells[0]={text:"note"};','text or null'],
+   ['empty-phases','MAP.phases=[];','named phase'],
+   ['nontext-phase','MAP.phases[0]=4;','named phase'],
+   ['nonarray-friction','MAP.friction={};','valid phase'],
+   ['zero-friction-phase','MAP.friction[0].phase="0";','valid phase'],
+   ['nontext-friction-title','MAP.friction[0].title=4;','valid phase'],
+   ['string-score','MAP.emotion[0]="3";','1 to 5'],
+   ['nan-score','MAP.emotion[0]=NaN;','1 to 5'],
+   ['invalid-row-basis','MAP.rows[2].basis="guessed";','own evidence basis'],
+   ['contradictory-row-basis','MAP.rows[2].basis="not captured";','text marked not captured'],
    ['long-feelings','MAP.emotionLabels=[null,null,null,null,null,null];','exactly one'],
    ['null-feelings','MAP.emotionLabels=null;','exactly one'],
    ['nonobject-feeling','MAP.emotionLabels=["reported",null,null,null,null];','source or hypothesis reason'],
@@ -129,7 +156,7 @@ const {chromium} = require('playwright');
         self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
         cases = json.loads(result.stdout)
         self.assertEqual(len({case['case'] for case in cases}), len(cases))
-        expected = {'normal', 'mobile-scroll', 'evidence', 'unknown', 'qualitative-without-scores',
+        expected = {'normal', 'mobile-scroll', 'evidence', 'unknown', 'unknown-visibility-and-empty-opportunity', 'qualitative-without-scores',
                     'feeling-text-escaped', 'boundaries', 'short-feelings', 'long-feelings',
                     'null-feelings', 'nonobject-feeling', 'blank-feeling-source', 'unbased-feeling',
                     'blank-feeling', 'invalid-feeling-basis', 'short-row', 'long-row', 'out-of-range',

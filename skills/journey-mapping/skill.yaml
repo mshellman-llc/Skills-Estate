@@ -33,13 +33,14 @@ connectors:
   required: []
   optional:
   - google-drive
-depends_on:
-- knowledge-hub
+depends_on: []
 calls:
 - evidence-core
+- knowledge-hub
+- client-brand
 - quality-gate
 knowledge_hub:
-  requirement: required
+  requirement: optional
   reads:
   - engagement.front_door
   - engagement.requirements_design
@@ -49,7 +50,8 @@ knowledge_hub:
   - deliverables.register
 evidence:
   required: true
-  control: evidence-core
+  control: source-and-confidence-ledger
+  governed_engagement_control: evidence-core
 quality:
   required: true
   control: quality-gate

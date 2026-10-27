@@ -1,12 +1,12 @@
 # Rendered map layout
 
-A rendered journey map puts the journey map and the service blueprint on one board, so a reader can follow a phase from what the actor feels down to the system that causes it. Friction callouts sit below the board; the separate opportunity map retains owners, dependencies, expected outcomes and measures. [The HTML starter](../assets/journey-map.html) implements this layout from one data object.
+A rendered journey map puts the journey map and the service blueprint on one board, so a reader can follow each phase from the actor’s experience to the staff and systems supporting it. Friction callouts sit below the board; the separate opportunity map retains owners, dependencies, expected outcomes and measures. [The HTML starter](../assets/journey-map.html) implements this layout from one data object.
 
 ## Page order
 
 The header names the actor and gives the scope sentence, for example "One pursuit, from a lead landing to a recorded win or loss." A one-line lead says where the journey dips. A legend follows with swatches for phase, pain point, and opportunity, plus the emotional curve and whether it is evidence or hypothesis.
 
-The board comes next. It scrolls horizontally on narrow screens, and the row labels stay pinned on the left.
+The browser tab uses `MAP.title`. The starter uses body and label text of at least 16 pixels. The board comes next. It scrolls horizontally on narrow screens, and the row labels stay pinned on the left.
 
 The evidence-basis note sits directly under the board. It says which layers come from the system or from participants and which are hypotheses, in the same words as the map metadata.
 
@@ -24,19 +24,20 @@ Operational friction outside a trough can also have a card; do not change an emo
 | Step and touchpoint | What happens and where, with the channel after a middle dot, e.g., "Handoff · chat" | Plain cell |
 | Goal | What the actor wants at this phase, in the actor's terms | Plain cell |
 | Thoughts | A sourced quote, or a hypothesized thought | Italic, muted; a hypothesis carries no attribution |
-| Pain points | The specific friction | Warm tint |
-| Opportunities | The intervention aimed at that friction, matched to the same column | Accent tint |
+| Pain points | The specific friction | Neutral shaded cells |
+| Opportunities | The intervention aimed at that friction, matched to the same column | Accent text; the legend uses the same accent |
+| Visibility not captured | Optional system actions whose visibility to the actor is unknown | Separate row above the classified blueprint; these actions belong in neither front-stage nor back-stage |
 | Front-stage | What the actor sees the system or staff do, e.g., an abstain message or a routed-away list | Cool tint |
 | Line of visibility | Divider between Front-stage and Back-stage | Dark band |
 | Back-stage | Work out of view, e.g., an assessor or a fit judge, or a table that is never written | Cool tint |
 | Line of internal interaction | Divider between Back-stage and Supporting | Dark band |
 | Supporting | Systems and records underneath, e.g., the catalog, the CRM, or a related role's view | Cool tint |
 
-Use an empty string only when evidence confirms that nothing happens in that layer. Use null for missing evidence; the renderer displays "Not captured". Missing evidence does not establish that support is absent. Thoughts and Pain points each carry their own basis: observed, reported, hypothesis, or not captured. Set emotion to null and emotionBasis to "not captured" when no defensible curve exists. This means scores are missing, not that reported feelings must be removed.
+Use an empty string only when evidence confirms that nothing happens in that layer. Use null for missing evidence; the renderer displays "Not captured". In Opportunities, null means "None proposed". Supply `visibilityUnknown` as one text or null entry per phase for system actions whose visibility has not been established. Do not place those actions below the line of visibility. `Goal` and `Opportunities` may also set a row `basis` to show hypothesis styling; a row marked `not captured` cannot contain known text. Missing evidence does not establish that support is absent. Thoughts and Pain points each carry their own basis: observed, reported, hypothesis, or not captured. Set emotion to null and emotionBasis to "not captured" when no defensible curve exists. This means scores are missing, not that reported feelings must be removed.
 
-To retain qualitative feelings, supply `emotionLabels` with exactly one entry per phase. Use null for a phase with no captured feeling. Each other entry is an object with `text`, `basis` (observed, reported or hypothesis), and `source` (source reference or the reasoning for a hypothesis). For example, `{"text":"Relieved after account confirmation","basis":"reported","source":"Agent A interview, 2026-10-21"}`. Keep the description at the phase where confirmation occurs. Labels work with or without the curve; do not derive scores from them.
+To retain qualitative feelings, supply `emotionLabels` with exactly one entry per phase. Use null for a phase with no captured feeling. Each other entry is an object with `text`, `basis` (observed, reported or hypothesis), and `source` (source reference or the reasoning for a hypothesis). For example, `{"text":"Anxious before boarding","basis":"reported","source":"Passenger interview, session 3"}`. Keep each description at the phase where that feeling occurred. Labels work with or without the curve; do not derive scores from them.
 
- Wrong-length arrays, out-of-range scores and incomplete row structures stop rendering with a visible error; correct the source data instead of truncating or clamping it.
+Wrong-length arrays, out-of-range scores and incomplete row structures stop rendering with a visible error; correct the source data instead of truncating or clamping it.
 
 ## Related roles
 

@@ -10,7 +10,9 @@ more than the acceptance one: a gate that cannot refuse is not a gate.
 from __future__ import annotations
 
 import copy
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -33,11 +35,30 @@ def codes(record):
     return {f.code for f in validate(record).findings}
 
 
+# Use a real artifact and independently generated receipt for the passing case.
+TEMP = tempfile.TemporaryDirectory()
+ARTIFACT = Path(TEMP.name) / "memo.md"
+ARTIFACT.write_text("Support Operations owns the routing queue.\n", encoding="utf-8")
+RECEIPT = Path(TEMP.name) / "receipt.json"
+MODULE = HERE.parent
+VALIDATOR = next((p for p in [MODULE / "_runtime/prose-pass/scripts/prose_receipt.py",
+                            MODULE.parent / "prose-pass/scripts/prose_receipt.py"] if p.is_file()), None)
+if VALIDATOR is None:
+    print("SELFTEST FAILED: receipt fixture validator is missing")
+    sys.exit(1)
+setup = subprocess.run([sys.executable, str(VALIDATOR), "emit", str(ARTIFACT), "--out", str(RECEIPT),
+                "--no-change-justification", "Read the memo against its supplied source; no edit was needed."],
+               capture_output=True, text=True)
+if setup.returncode:
+    print("SELFTEST FAILED: receipt fixture setup\n" + setup.stdout + setup.stderr)
+    sys.exit(1)
+
 # A complete, releasable record. Every other case is a mutation of this one, so a
 # failure points at the mutation rather than at incidental shape problems.
 GOOD = {
     "artifact": {
         "id": "SOW-000181",
+        "path": str(ARTIFACT),
         "type": "sow",
         "audience": "client",
         "client_prose": True,
@@ -48,7 +69,7 @@ GOOD = {
     "controls_selected": ["prose-pass", "sow-quality"],
     "checks": [
         {"control": "prose-pass", "verdict": "pass", "citation": "section 3, lines 40-58",
-         "receipt": "artifacts/sow-000181-prose-receipt.json"},
+         "receipt": str(RECEIPT)},
         {"control": "sow-quality", "verdict": "pass", "citation": "scope table, rows 1-9"},
         {"control": "deal-desk-tieout", "verdict": "pass", "citation": "quote Q-000181, role rollup"},
         {"control": "brand-renderer", "verdict": "not_applicable"},
@@ -65,6 +86,12 @@ verdict = validate(GOOD)
 check("complete record is valid", verdict.ok, True)
 check("complete record releases", verdict.released, True)
 check("complete record has no blockers", verdict.blockers, [])
+relative_record = copy.deepcopy(GOOD)
+relative_record["checks"][0]["receipt"] = RECEIPT.name
+check("library relative paths require an explicit base",
+      "prose-path-base" in codes(relative_record), True)
+check("library resolves a receipt with an explicit base",
+      validate(relative_record, Path(TEMP.name)).released, True)
 
 # Required fields.
 for field in ("artifact", "controls_selected", "checks", "release", "hub_update"):

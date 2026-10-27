@@ -42,7 +42,10 @@
     "brand-renderer"
   ],
   "journey-mapping": [
-    "brand-renderer"
+    "brand-renderer",
+    "client-brand",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "jtbd-framing": [
     "brand-renderer"

@@ -106,7 +106,7 @@ def numbers_in(text: str) -> set:
 
 
 def emit(args: argparse.Namespace) -> int:
-    artifact = Path(args.artifact)
+    artifact = Path(args.artifact).resolve()
     if not artifact.is_file():
         print("artifact not found: {}".format(artifact))
         return 2
@@ -169,9 +169,32 @@ def validate_receipt(receipt: dict, quiet: bool = True) -> list:
         if not quiet:
             print("FAIL {}: {}".format(code, message))
 
+    if not isinstance(receipt, dict):
+        fail("receipt-shape", "receipt must be an object")
+        return failures
     for field in REQUIRED_FIELDS:
         if field not in receipt:
             fail("missing-field", "required field absent: {}".format(field))
+    if failures:
+        return failures
+    for field in ("artifact", "before_sha256", "after_sha256", "generated_at"):
+        if not isinstance(receipt[field], str) or not receipt[field].strip():
+            fail("receipt-shape", "{} must be nonempty text".format(field))
+    for field in ("protected", "changes_made", "unresolved_flags"):
+        if not isinstance(receipt[field], list):
+            fail("receipt-shape", "{} must be a list".format(field))
+    if not isinstance(receipt["issues_found"], dict):
+        fail("receipt-shape", "issues_found must be an object")
+    if receipt.get("no_change_justification") is not None and not isinstance(receipt["no_change_justification"], str):
+        fail("receipt-shape", "no_change_justification must be text")
+    if "figure_check" in receipt and not isinstance(receipt["figure_check"], dict):
+        fail("receipt-shape", "figure_check must be an object")
+    added = receipt.get("figures_added", [])
+    if not isinstance(added, list) or any(not isinstance(item, dict) or not isinstance(item.get("value"), str) or not isinstance(item.get("source"), str) for item in added):
+        fail("receipt-shape", "figures_added must list values and sources as text")
+    figure = receipt.get("figure_check", {})
+    if isinstance(figure, dict) and (type(figure.get("ran", False)) is not bool or not isinstance(figure.get("invented_numbers", []), list) or any(not isinstance(v, str) for v in figure.get("invented_numbers", []))):
+        fail("receipt-shape", "figure_check needs a boolean ran flag and a list of number strings")
     if failures:
         return failures
 

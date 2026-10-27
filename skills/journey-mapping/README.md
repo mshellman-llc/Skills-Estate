@@ -4,4 +4,4 @@ Map one actor's experience across touchpoints, goals, thoughts, feelings and fri
 
 Start with [SKILL.md](SKILL.md), then read [the complete method](references/method.md) and [the template](references/journey-map-template.md) for the linked views. The [HTML starter](assets/journey-map.html) supports qualitative feelings without invented scores. Shared writing and branding rules are added by the estate build.
 
-The workflow works from supplied evidence. Use `knowledge-hub` when retrieving or saving durable project records, `evidence-core` for claim reconciliation, and `quality-gate` for the applicable delivery checks. Rendering requires inspection of the actual output.
+Use the template’s source ledger for a standalone research map. For shared project records, resolve storage through `knowledge-hub`; governed client maps also use `evidence-core`. Run `quality-gate` for the applicable delivery checks. Rendering requires inspection of the actual output.

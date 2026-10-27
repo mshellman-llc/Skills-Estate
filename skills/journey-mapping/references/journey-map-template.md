@@ -101,7 +101,7 @@ Describe changes in feelings with their sources. Do not infer a cause from the s
 
 For each phase, document the back-stage. Name real systems where known. Front-stage and back-stage claims grounded in the built system are observed, even when the human layers are hypotheses.
 
-Classify visibility from the mapped actor's perspective. The mapped actor's own actions belong in front-stage. Do not also list the same action as back-stage work. If the source does not establish visibility, keep the action and state that visibility is not captured; do not call it hidden.
+Classify visibility from the mapped actor's perspective. The mapped actor's own actions belong in front-stage. Do not also list the same action as back-stage work. If the source does not establish visibility, place the action in a separate Visibility not captured row; do not classify it as front-stage or back-stage.
 
 Place the line of visibility between front-stage and back-stage actions, and the line of internal interaction between back-stage actions and supporting systems. Mark unknown support as "not captured"; do not infer absence from a blank.
 
@@ -202,7 +202,7 @@ Use the captured feelings and operational evidence to identify friction. A curve
 |---|---|---|---|---|---|---|---|
 | | | | | | | S/M/L | |
 
-For each action, explain how it changes the step and when it acts. Match the measure to that change. An acknowledgement sent after receipt can be tested for time to account confirmation; it cannot change whether the original request contained an account ID. Mark proposed owners, effort and outcomes as proposals.
+For each action, explain how it changes the step and when it acts. Match the measure to that change. A dispatch alert can be tested for delivery readiness; it cannot change the packing time that preceded it. Mark proposed owners, effort and outcomes as proposals.
 
 ### Quick wins (low effort, real impact)
 

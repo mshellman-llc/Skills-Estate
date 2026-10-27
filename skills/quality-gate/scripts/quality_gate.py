@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -88,7 +89,9 @@ def _cited(check: Dict[str, Any]) -> bool:
     return isinstance(citation, str) and citation.strip() != ""
 
 
-def validate(record: Any) -> GateVerdict:
+def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
+    explicit_base = base_dir is not None
+    base_dir = Path(base_dir or Path.cwd()).resolve()
     findings: List[Finding] = []
     blockers: List[str] = []
 
@@ -173,10 +176,6 @@ def validate(record: Any) -> GateVerdict:
             error("selected-missing", "selected control has no check: {}".format(control))
 
     # Every routed control the artifact's content requires must appear.
-    artifact = record.get("artifact")
-    if not isinstance(artifact, dict):
-        error("artifact-shape", "artifact must be an object naming the thing graded")
-        return GateVerdict(False, blockers, findings)
     # not_applicable contradicts a declaration that the control is needed.
     ran = {c.get("control") for c in checks
            if isinstance(c, dict) and isinstance(c.get("control"), str)
@@ -187,8 +186,8 @@ def validate(record: Any) -> GateVerdict:
                   "artifact declares {} but no check ran {}".format(flag, control))
 
     # A narrative artifact marked final needs a prose-pass RECEIPT, not a
-    # mention. The checker alone is the floor; the receipt proves the rewrite
-    # pass ran and either changed the text or justified leaving it alone.
+    # mention. A receipt binds current bytes and reruns diagnostics; the
+    # recorded review declaration does not prove a person read the artifact.
     # prose_receipt.py (in the prose-pass skill) judges the receipt itself;
     # this gate refuses a record that claims finality without one.
     if artifact.get("narrative_final"):
@@ -198,13 +197,47 @@ def validate(record: Any) -> GateVerdict:
             error("prose-receipt-missing",
                   "artifact is narrative and final but no prose-pass check ran")
             blockers.append("prose-pass: no receipt")
-        else:
+        elif prose_checks[0].get("verdict") == "pass":
             receipt = prose_checks[0].get("receipt")
             if not (isinstance(receipt, str) and receipt.strip()):
                 error("prose-receipt-missing",
                       "prose-pass check carries no receipt; a pass without a "
                       "receipt is a mention, not enforcement")
                 blockers.append("prose-pass: no receipt")
+            else:
+                artifact_path = artifact.get("path")
+                if not isinstance(artifact_path, str) or not artifact_path.strip():
+                    error("prose-artifact-missing", "final narrative needs artifact.path to bind its receipt")
+                elif not explicit_base and (not Path(receipt).is_absolute() or not Path(artifact_path).is_absolute()):
+                    error("prose-path-base", "validate(record) needs base_dir when artifact or receipt paths are relative")
+                else:
+                    try:
+                        receipt_path = (base_dir / receipt).resolve()
+                        receipt_data = json.loads(receipt_path.read_text(encoding="utf-8"))
+                        covered = receipt_data.get("artifact") if isinstance(receipt_data, dict) else None
+                        if not isinstance(covered, str) or not covered.strip():
+                            raise ValueError("receipt names no artifact")
+                        if not Path(covered).is_absolute():
+                            raise ValueError("receipt artifact path is relative; regenerate the receipt with an absolute artifact path")
+                        if not Path(covered).samefile(base_dir / artifact_path):
+                            raise ValueError("receipt covers a different artifact")
+                        module = Path(__file__).resolve().parents[1]
+                        candidates = [module / "_runtime/prose-pass/scripts/prose_receipt.py"]
+                        if not (module / "references/estate/writing.md").is_file():
+                            candidates.append(module.parent / "prose-pass/scripts/prose_receipt.py")
+                        validator = next((p for p in candidates if p.is_file()), None)
+                        if validator is None:
+                            raise ValueError("bundled prose receipt validator is missing")
+                        result = subprocess.run([sys.executable, str(validator), "validate", str(receipt_path)],
+                                                cwd=base_dir, capture_output=True, text=True, timeout=30)
+                        if result.returncode:
+                            detail = (result.stdout.strip() + "\n" + result.stderr.strip()).strip()[-600:] or "validator returned exit {}".format(result.returncode)
+                            raise ValueError("prose receipt validation failed: " + detail)
+                    except (OSError, ValueError, RecursionError, subprocess.SubprocessError) as exc:
+                        error("prose-receipt-invalid", str(exc))
+                        blockers.append("prose-pass: invalid receipt")
+        elif prose_checks[0].get("verdict") not in ("fail", "blocked"):
+            error("prose-receipt-missing", "a final narrative requires a passing prose check or an explicit blocker")
 
     # The fail-closed rule.
     for assertion in assertions:
@@ -231,10 +264,6 @@ def validate(record: Any) -> GateVerdict:
               "record claims release while {} blocker(s) stand: {}".format(
                   len(blockers), "; ".join(blockers)))
 
-    hub = record.get("hub_update")
-    if not isinstance(hub, dict) or "status" not in hub:
-        error("hub-update", "hub_update must record the Knowledge Hub write status")
-
     valid = not any(f.level == "error" for f in findings)
     return GateVerdict(released and not blockers and valid, blockers, findings)
 
@@ -247,11 +276,11 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     try:
         record = json.loads(args.record.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, ValueError, RecursionError) as exc:
         print("{}: unreadable ({})".format(args.record, exc))
         return 2
 
-    verdict = validate(record)
+    verdict = validate(record, args.record.resolve().parent)
     if args.json:
         print(json.dumps(verdict.to_dict(), indent=2))
     else:

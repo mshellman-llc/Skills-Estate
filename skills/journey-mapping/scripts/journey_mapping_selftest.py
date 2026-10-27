@@ -45,8 +45,7 @@ for path in (MD, METHOD, REF, LAYOUT, HTML, SKILL / "LICENSE"):
         sys.exit(1)
 
 entry = MD.read_text(encoding="utf-8")
-method = METHOD
-text = entry + "\n" + method.read_text(encoding="utf-8")
+text = entry + "\n" + METHOD.read_text(encoding="utf-8")
 ref = REF.read_text(encoding="utf-8")
 layout = LAYOUT.read_text(encoding="utf-8")
 html = HTML.read_text(encoding="utf-8")
@@ -102,14 +101,17 @@ expect("starter dashes a hypothesis curve", "stroke-dasharray" in html and "hypo
 
 # --- links resolve and the identity stays out --------------------------------
 print()
-for doc in (MD, method, REF, LAYOUT):
+packaged = (SKILL / "references/estate/writing.md").is_file()
+for doc in (MD, METHOD, REF, LAYOUT):
     body = doc.read_text(encoding="utf-8")
     for target in re.findall(r"\]\(([^\s)]+)\)", body):
-        if target.startswith(("http:", "https:", "#", "references/estate/", "estate/")):
+        if target.startswith(("http:", "https:", "#")):
+            continue
+        if not packaged and target.startswith(("references/estate/", "estate/")):
             continue
         expect(f"{doc.name} link {target}", (doc.parent / target.split("#")[0]).exists(), True)
 
-for doc in (MD, method, REF, LAYOUT, HTML):
+for doc in (MD, METHOD, REF, LAYOUT, HTML):
     hits = re.findall(r"(?i)aleysian|meridian", doc.read_text(encoding="utf-8"))
     expect(f"no former identity in {doc.name}", hits, [])
 
