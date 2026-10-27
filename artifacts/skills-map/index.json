@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-27T18:06:47.255316+00:00",
+  "generatedAt": "2026-10-27T18:14:15.270846+00:00",
   "baseCommit": "5b44e8caf5cb79efaa512ec84fc6060958c98684",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -4196,9 +4196,9 @@
         },
         {
           "path": "references/surface-policy.md",
-          "sha256": "3e014a13a9b3711fd3a19b725ac8a1b9a221644c0d11c1984f08f6a66504f3d6",
-          "bytes": 2458,
-          "gitBlob": "ecef2e5583428e355adb1f4158d65b86883c2290"
+          "sha256": "b7249aaa4c4704d70835db2c522b9e67e066605cc58d7af5147d87d0a355c77d",
+          "bytes": 2475,
+          "gitBlob": "41f215c6de2174ec77da3caf12795597e26b6d0a"
         },
         {
           "path": "scripts/authored_code.py",
@@ -4256,9 +4256,9 @@
         },
         {
           "path": "scripts/writing_check.py",
-          "sha256": "9e4e170ec440ff3bcc1d25f9b57a4b245f47e97007685f59cc58ebdcc0bacedc",
-          "bytes": 10770,
-          "gitBlob": "40cab4db9c2ed86e7af280c239246476d9820b93"
+          "sha256": "653354c55c9c2431b3849e19b684d7091270530bd4e46756c75d61dc5dfecc23",
+          "bytes": 11320,
+          "gitBlob": "2bc01ceeb800895fa91f442b515eb5231f9c3190"
         },
         {
           "path": "skill.yaml",

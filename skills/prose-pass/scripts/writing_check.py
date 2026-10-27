@@ -27,7 +27,7 @@ class Block:
 
 def structured_parts(value, path=()):
     if isinstance(value, str):
-        yield Block(value)
+        yield Block(value, citation=path[-3:] == ('metadata', 'sourceLabels', '[]'))
     elif isinstance(value, list):
         for item in value:
             yield from structured_parts(item, (*path, '[]'))
@@ -96,6 +96,7 @@ class HTMLWords(HTMLParser):
         self.in_style = False
         self.script_type = None
         self.depth = depth
+        self.cell = None
 
     def handle_data(self, data):
         if self.script_type is not None:
@@ -113,16 +114,23 @@ class HTMLWords(HTMLParser):
                     else:
                         self.parts.append(item)
             else:
-                if self.script_type in ('text/template', 'text/html'):
+                if 'template' in self.script_type or self.script_type == 'text/html':
                     nested = HTMLWords(self.depth + 1)
                     nested.feed(data)
                     self.parts.extend(Block(block) for block in AuthoredText(nested.parts).fragment_blocks)
                 else:
-                    self.parts.append(data)
+                    self.parts.append(Block(data))
         else:
-            self.parts.append(css_words(data) if self.in_style else data)
+            if self.in_style:
+                self.parts.append(Block(css_words(data)))
+            elif self.cell is not None:
+                self.cell.text += data
+            else:
+                self.parts.append(data)
 
     def handle_endtag(self, tag):
+        if tag in ('td', 'th'):
+            self.cell = None
         if tag == "style":
             self.in_style = False
         if tag == 'script':
@@ -132,6 +140,9 @@ class HTMLWords(HTMLParser):
         self.parts.append(Block(data))
 
     def handle_starttag(self, tag, attrs):
+        if tag in ('td', 'th'):
+            self.cell = Block('')
+            self.parts.append(self.cell)
         if tag == "style":
             self.in_style = True
         if tag == 'script':
@@ -166,25 +177,25 @@ def authored_text(path):
                     tree = ET.fromstring(archive.read(name))
                     parts.extend(node.text for node in tree.iter()
                                  if node.tag.rsplit('}', 1)[-1] in {'t', 'v'} and node.text)
-        return '\n'.join(parts)
+        return AuthoredText([Block('\n'.join(parts))]) if suffix == '.xlsx' else '\n'.join(parts)
     raw = path.read_text(encoding='utf-8')
     if '\x00' in raw:
         raise ValueError('Binary content is not supported; extract the text and review it explicitly.')
     if suffix == '.css':
-        return css_words(raw)
+        return AuthoredText([Block(css_words(raw))])
     if suffix in {'.json', '.jsonl', '.ndjson'}:
         values = [json.loads(line) for line in raw.splitlines() if line.strip()] if suffix != '.json' else [json.loads(raw)]
         return AuthoredText(values)
     if suffix in {'.js', '.mjs', '.cjs'}:
         return AuthoredText(Block(item) if isinstance(item, str) else item for item in javascript_parts(raw))
     if suffix in {'.csv', '.tsv'}:
-        return '\n'.join(cell for row in csv.reader(io.StringIO(raw), delimiter='\t' if suffix == '.tsv' else ',') for cell in row)
+        return AuthoredText(Block(cell) for row in csv.reader(io.StringIO(raw), delimiter='\t' if suffix == '.tsv' else ',') for cell in row)
     if suffix == '.py':
         tree = ast.parse(raw)
         parts = [node.value for node in ast.walk(tree) if isinstance(node, ast.Constant) and isinstance(node.value, str)]
         parts.extend(token.string.lstrip('#').strip() for token in tokenize.generate_tokens(io.StringIO(raw).readline)
                      if token.type == tokenize.COMMENT)
-        return '\n'.join(parts)
+        return AuthoredText(Block(part) for part in parts)
     if suffix in {'.html', '.htm'}:
         parser = HTMLWords()
         parser.feed(raw)

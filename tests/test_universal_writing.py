@@ -4,6 +4,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -160,7 +161,8 @@ const ratio = (value - 1) / 4;'''
         self.scan('pipe-repeat.json', json.dumps({'note':'The library | updates the dispatch | queue overnight. The library | updates the dispatch | queue overnight.'}), 1)
         self.scan('regex-arrow.js', "const test = s => /'/.test(s); const other = typeof /'/;", 0)
         self.scan('templates.html', '<script>const first = `<td>No log access.</td>`; const next = `<td>Priority not set.</td>`;</script>', 0)
-        self.scan('inline-fragments.html', '<script>const first = `<p>Instant <b>progress</b>. Effortless success.</p>`;</script>', 1)
+        result = self.scan('inline-fragments.html', '<script>const first = `<p>Priority <b>not set</b>. History split across tools.</p>`;</script>', 1)
+        self.assertIn('C6-fragment-stacking', [f['rule'] for f in json.loads(result.stdout)[str(self.base/'inline-fragments.html')]['findings']])
         self.scan('bare-script.html', '<script type>const row = 12;</script>', 0)
         self.scan('html-template.html', '<script type="text/template"><p>'+BAD+'</p></script>', 1)
         self.scan('crlf.js', 'const label = "Row'+'\\'+'\r\n'+'saved";', 0)
@@ -181,6 +183,32 @@ const ratio = (value - 1) / 4;'''
         result = self.scan('only-fragments.json', json.dumps({'note':'Priority not set. History split across tools.'}), 1)
         self.assertIn('C6-fragment-stacking', [f['rule'] for f in json.loads(result.stdout)[str(self.base/'only-fragments.json')]['findings']])
         self.scan('template-syntax.html', '<script type="text/template">'+('<span class="plain" data-extra="value">Ready</span>'*2)+'</script>', 0)
+
+
+    def test_extracted_cells_and_comments_never_become_furniture(self):
+        reason = 'Inferred from the pickup task because no patron was interviewed'
+        cases = [
+            ('reasons.csv', 'feeling,basis,source\n'+''.join(name+',hypothesis,'+reason+'\n' for name in ['Annoyed','Unsure','Relieved'])),
+            ('reasons.tsv', 'feeling\tbasis\tsource\n'+''.join(name+'\thypothesis\t'+reason+'\n' for name in ['Annoyed','Unsure','Relieved'])),
+            ('strings.py', '\n'.join('reason%d = %s' % (n,json.dumps(reason)) for n in range(3))),
+            ('comments.py', ('# '+reason+'\n')*3),
+            ('cells.html', '<table><tr>'+''.join('<td>'+reason+'</td>' for n in range(3))+'</tr></table>'),
+            ('comments.css', ('/* '+reason+' */\n')*3)]
+        for filename,body in cases:
+            result = self.scan(filename,body,1)
+            self.assertIn('C12-verbatim-recycling', [f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
+        path=self.base/'cells.xlsx'
+        with zipfile.ZipFile(path,'w') as archive:
+            archive.writestr('xl/worksheets/sheet1.xml','<worksheet><sheetData>'+''.join('<row><c t="inlineStr"><is><t>'+reason+'</t></is></c></row>' for n in range(3))+'</sheetData></worksheet>')
+        result=subprocess.run([sys.executable,str(self.checker),'--json',str(path)],capture_output=True,text=True)
+        self.assertEqual(result.returncode,1,result.stdout+result.stderr)
+        self.assertIn('C12-verbatim-recycling',[f['rule'] for f in json.loads(result.stdout)[str(path)]['findings']])
+        citation='Synthetic Patron B interview, 23 October 2026'
+        self.scan('label-list.json',json.dumps({'emotionLabels':[{'text':'Annoyed','basis':'reported','source':citation},{'text':'Relieved','basis':'reported','source':citation}], 'metadata':{'sourceLabels':[citation]}}),0)
+        for kind in ['text/x-template','text/x-handlebars-template','text/ng-template']:
+            self.scan('other-template.html','<script type="'+kind+'">'+('<span class="plain" data-extra="value">Ready</span>'*2)+'</script>',0)
+        result=self.scan('inline-cell.html','<table><tr><td>Priority <b>not set</b>. History split across tools.</td></tr></table>',1)
+        self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/'inline-cell.html')]['findings']])
 
 
 if __name__ == '__main__':
