@@ -110,6 +110,38 @@ def validate(record: Any) -> GateVerdict:
                            "grades nothing")
         return GateVerdict(False, blockers, findings)
 
+    artifact = record.get("artifact")
+    if not isinstance(artifact, dict):
+        error("artifact-shape", "artifact must be an object naming the thing graded")
+    else:
+        for flag in (*ROUTED_CONTROLS, "narrative_final"):
+            if flag in artifact and type(artifact[flag]) is not bool:
+                error("artifact-flag", "artifact.{} must be a boolean".format(flag))
+    selected = record.get("controls_selected")
+    if (not isinstance(selected, list) or not selected
+            or any(not isinstance(c, str) or not c.strip() for c in selected)):
+        error("selected-shape", "controls_selected must list nonempty control names")
+    elif len(selected) != len(set(selected)):
+        error("selected-duplicate", "controls_selected repeats a control")
+    release = record.get("release")
+    if not isinstance(release, dict) or type(release.get("released")) is not bool:
+        error("release-shape", "release.released must be a boolean")
+    assertions = record.get("assertions", [])
+    if not isinstance(assertions, list):
+        error("assertions-shape", "assertions must be a list")
+    else:
+        for index, assertion in enumerate(assertions):
+            if (not isinstance(assertion, dict)
+                    or not isinstance(assertion.get("kind"), str)
+                    or not assertion["kind"].strip()):
+                error("assertion-shape", "assertions[{}] needs a named kind".format(index))
+    hub = record.get("hub_update")
+    if (not isinstance(hub, dict) or not isinstance(hub.get("status"), str)
+            or not hub["status"].strip()):
+        error("hub-update", "hub_update must record a nonempty write status")
+    if findings:
+        return GateVerdict(False, blockers, findings)
+
     seen = set()
     for index, check in enumerate(checks):
         where = "checks[{}]".format(index)
@@ -117,14 +149,14 @@ def validate(record: Any) -> GateVerdict:
             error("check-shape", "{} is not an object".format(where))
             continue
         control = check.get("control")
-        if not control:
+        if not isinstance(control, str) or not control.strip():
             error("check-control", "{} names no control".format(where))
             continue
         if control in seen:
             error("duplicate-check", "{} repeats control {}".format(where, control))
         seen.add(control)
         verdict = check.get("verdict")
-        if verdict not in VERDICTS:
+        if not isinstance(verdict, str) or verdict not in VERDICTS:
             error("check-verdict", "{}: verdict {!r} is not one of {}".format(
                 where, verdict, ", ".join(sorted(VERDICTS))))
             continue
@@ -136,6 +168,10 @@ def validate(record: Any) -> GateVerdict:
         if verdict in ("fail", "blocked"):
             blockers.append("{}: {}".format(control, verdict))
 
+    for control in selected:
+        if control not in seen:
+            error("selected-missing", "selected control has no check: {}".format(control))
+
     # Every routed control the artifact's content requires must appear.
     artifact = record.get("artifact")
     if not isinstance(artifact, dict):
@@ -143,7 +179,8 @@ def validate(record: Any) -> GateVerdict:
         return GateVerdict(False, blockers, findings)
     # not_applicable contradicts a declaration that the control is needed.
     ran = {c.get("control") for c in checks
-           if isinstance(c, dict) and c.get("verdict") in ("pass", "fail", "blocked")}
+           if isinstance(c, dict) and isinstance(c.get("control"), str)
+           and c.get("verdict") in ("pass", "fail", "blocked")}
     for flag, control in sorted(ROUTED_CONTROLS.items()):
         if artifact.get(flag) and control not in ran:
             error("unrouted-control",
@@ -170,7 +207,7 @@ def validate(record: Any) -> GateVerdict:
                 blockers.append("prose-pass: no receipt")
 
     # The fail-closed rule.
-    for assertion in record.get("assertions") or []:
+    for assertion in assertions:
         if not isinstance(assertion, dict):
             error("assertion-shape", "assertions entries must be objects")
             continue
@@ -188,8 +225,7 @@ def validate(record: Any) -> GateVerdict:
                       assertion.get("id") or assertion.get("text") or "?", kind))
             blockers.append("fail-closed: {}".format(kind))
 
-    released = bool(record.get("release", {}).get("released")) \
-        if isinstance(record.get("release"), dict) else False
+    released = release["released"]
     if released and blockers:
         error("released-with-blockers",
               "record claims release while {} blocker(s) stand: {}".format(

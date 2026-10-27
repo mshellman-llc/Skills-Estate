@@ -10,7 +10,7 @@ The board comes next. It scrolls horizontally on narrow screens, and the row lab
 
 The evidence-basis note sits directly under the board. It says which layers come from the system or from participants and which are hypotheses, in the same words as the map metadata.
 
-The friction section closes the page. Critical friction includes the troughs in the emotional curve. Each trough in the emotional curve gets one card with the phase number, a one-line finding, and one or two sentences on the cause, including a number from the record where one exists (for example, "5 of 35 playbooks are published" or "outcomes sit at 0").
+The friction section closes the page. Critical friction includes the troughs in the emotional curve. Each supported trough in the emotional curve can have a card with the phase number, a one-line finding, and one or two sentences on the cause, including a number from the record where one exists (for example, "5 of 35 playbooks are published" or "outcomes sit at 0").
 
 Operational friction outside a trough can also have a card; do not change an emotion score to fit a finding. The sample values are illustrative and are labeled as such.
 
@@ -19,7 +19,8 @@ Operational friction outside a trough can also have a card; do not change an emo
 | Row | Content | Styling |
 |---|---|---|
 | Phase | Two-digit phase number and a short phase name, one column per phase | Dark header band |
-| Emotion | One curve across all phases, intensity 1 to 5 | Solid line for evidence, dashed line and a "hypothesis" label for a hypothesis |
+| Emotion | Optional curve across phases, scores 1 to 5 with the scale defined in the evidence-basis note | Solid line for evidence, dashed line and a "hypothesis" label for a hypothesis |
+| Feelings | Optional qualitative description at each phase, even without scores | Source and evidence basis shown with each description |
 | Step and touchpoint | What happens and where, with the channel after a middle dot, e.g., "Handoff · chat" | Plain cell |
 | Goal | What the actor wants at this phase, in the actor's terms | Plain cell |
 | Thoughts | A sourced quote, or a hypothesized thought | Italic, muted; a hypothesis carries no attribution |
@@ -31,7 +32,11 @@ Operational friction outside a trough can also have a card; do not change an emo
 | Line of internal interaction | Divider between Back-stage and Supporting | Dark band |
 | Supporting | Systems and records underneath, e.g., the catalog, the CRM, or a related role's view | Cool tint |
 
-Use an empty string only when evidence confirms that nothing happens in that layer. Use null for missing evidence; the renderer displays "Not captured". Missing evidence does not establish that support is absent. Thoughts and Pain points each carry their own basis: observed, reported, hypothesis, or not captured. Set emotion to null and emotionBasis to "not captured" when no defensible curve exists. Wrong-length arrays, out-of-range scores and incomplete row structures stop rendering with a visible error; correct the source data instead of truncating or clamping it.
+Use an empty string only when evidence confirms that nothing happens in that layer. Use null for missing evidence; the renderer displays "Not captured". Missing evidence does not establish that support is absent. Thoughts and Pain points each carry their own basis: observed, reported, hypothesis, or not captured. Set emotion to null and emotionBasis to "not captured" when no defensible curve exists. This means scores are missing, not that reported feelings must be removed.
+
+To retain qualitative feelings, supply `emotionLabels` with exactly one entry per phase. Use null for a phase with no captured feeling. Each other entry is an object with `text`, `basis` (observed, reported or hypothesis), and `source` (source reference or the reasoning for a hypothesis). For example, `{"text":"Relieved after account confirmation","basis":"reported","source":"Agent A interview, 2026-10-21"}`. Keep the description at the phase where confirmation occurs. Labels work with or without the curve; do not derive scores from them.
+
+ Wrong-length arrays, out-of-range scores and incomplete row structures stop rendering with a visible error; correct the source data instead of truncating or clamping it.
 
 ## Related roles
 
@@ -39,4 +44,25 @@ When two roles share a journey, such as a seller who hands off to a technical sp
 
 ## Checks before sharing
 
-Every phase column has a value or an intentional blank in each row. The emotional curve has one point per phase, and its troughs have corresponding friction cards. The opportunity in each column addresses the pain point in the same column. The evidence-basis note matches the ledger, and hypothesis styling appears on every hypothesis layer. Render at phone width and confirm the board scrolls without the page scrolling sideways.
+Every phase column has a value or an intentional blank in each row. When scores exist, the emotional curve has one point per phase. Captured feelings appear in their phase columns even when scores do not exist. Friction cards follow the supported findings; do not invent a card to match a curve. The opportunity in each column addresses the pain point in the same column. The evidence-basis note matches the ledger, and hypothesis styling appears on every hypothesis layer. Render at phone width and confirm the board scrolls without the page scrolling sideways.
+
+## Keep one editable map source
+
+Author the map data as JSON, then embed that object in the HTML starter. Rebuild the HTML from the JSON after an edit. Do not maintain a JavaScript object and convert it back to JSON with regular expressions; that can change quotes or leave the two versions inconsistent.
+
+The following local build preserves the starter's rendering logic. Replace `STARTER` with the installed asset path and run it in the output folder. It escapes HTML-opening characters inside JSON so a quoted source cannot close the script element.
+
+```python
+import json
+from pathlib import Path
+
+starter = Path(STARTER).read_text(encoding="utf-8")
+data = json.loads(Path("map-data.json").read_text(encoding="utf-8"))
+start = starter.index("const MAP = {")
+end = starter.index("\n};", start) + 3
+body = json.dumps(data, ensure_ascii=False, indent=2).replace("<", "\\u003c")
+html = starter[:start] + "const MAP = " + body + ";" + starter[end:]
+Path("journey-map.html").write_text(html, encoding="utf-8")
+```
+
+Open the rebuilt HTML and check its visible errors, qualitative feelings, blueprint layers and opportunity text against the JSON and narrative. A source edit is not proof that the rendered output changed.

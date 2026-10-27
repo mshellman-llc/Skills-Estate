@@ -13,7 +13,7 @@
 <style>
 :root{
   --bg:#FFFFFF;--text:#1A1A1A;--muted:#5F6368;--border:#D9DCE1;--surface:#F5F6F7;--accent:#2F5D8A;
-  --band:#1F2A36;--band-text:#FFFFFF;--pain:#FBF3EC;--opp:#EAF1F8;--bp:#F2F5F8;
+  --band:var(--text);--band-text:var(--bg);--pain:var(--surface);--opp:var(--surface);--bp:var(--surface);
   --radius:4px;--font:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 *{box-sizing:border-box}
@@ -36,7 +36,7 @@ section{padding:32px 0}
 .ph b{display:block;font-size:12px;opacity:.75}
 .cell{padding:12px;font-size:14px;color:var(--muted)}
 .think{font-style:italic}
-.hypothesis{border-bottom:2px dashed var(--muted)}
+.hypothesis{border-bottom:1px dashed var(--muted)}
 .basis-tag{display:block;font-size:11px;font-style:normal;font-weight:600}
 .pain{background:var(--pain)!important}
 .opp{background:var(--opp)!important;color:var(--accent)}
@@ -116,6 +116,13 @@ function validateMap(map) {
     if (map.emotionBasis !== "not captured") fail("Missing emotion values must be marked not captured.");
   } else if (map.emotionBasis === "not captured") fail("Use null for an uncaptured emotional curve.");
   else if (!Array.isArray(map.emotion) || map.emotion.length !== n || map.emotion.some(v => !Number.isFinite(v) || v < 1 || v > 5)) fail("Emotion needs one number from 1 to 5 per phase; values have not been changed.");
+  if (map.emotionLabels !== undefined) {
+    if (!Array.isArray(map.emotionLabels) || map.emotionLabels.length !== n) fail("Feelings need exactly one description or null per phase.");
+    for (const item of map.emotionLabels) {
+      if (item === null) continue;
+      if (!item || typeof item !== "object" || Array.isArray(item) || typeof item.text !== "string" || !item.text.trim() || !["observed", "reported", "hypothesis"].includes(item.basis) || typeof item.source !== "string" || !item.source.trim()) fail("Each feeling needs text, an evidence basis and a source or hypothesis reason.");
+    }
+  }
   if (typeof map.basisNote !== "string" || !map.basisNote.trim()) fail("Provide the evidence-basis note.");
   for (const [key, labels] of [["rows", ["Step and touchpoint", "Goal", "Thoughts", "Pain points", "Opportunities"]], ["blueprint", ["Front-stage", "Back-stage", "Supporting"]]]) {
     const rows = map[key];
@@ -139,7 +146,7 @@ const legend = document.getElementById("legend");
 [["Phase", "var(--band)"], ["Pain point", "var(--pain)"], ["Opportunity", "var(--opp)"]].forEach(([t, c]) => {
   const s = el("span"); const w = el("i", "sw"); w.style.background = c; s.append(w, t); legend.append(s);
 });
-legend.append(el("span", null, MAP.emotion == null ? "Emotion: not captured" : MAP.emotionBasis === "hypothesis" ? "Emotional curve, low to high (hypothesis, dashed)" : "Emotional curve, low to high"));
+legend.append(el("span", null, MAP.emotion == null ? "Emotion scores: not captured" : MAP.emotionBasis === "hypothesis" ? "Emotional curve, low to high (hypothesis, dashed)" : "Emotional curve, low to high"));
 
 const grid = document.getElementById("grid");
 grid.style.gridTemplateColumns = `190px repeat(${n}, minmax(150px, 1fr))`;
@@ -149,7 +156,7 @@ const labelCell = t => el("div", "lab", t);
 grid.append(labelCell("Phase"));
 MAP.phases.forEach((p, i) => { const c = el("div", "ph"); c.append(el("b", null, String(i + 1).padStart(2, "0")), p); grid.append(c); });
 
-grid.append(labelCell("Emotion"));
+grid.append(labelCell("Emotion scores"));
 const em = el("div", "emotion"); em.style.gridColumn = `2 / span ${n}`;
 if (MAP.emotion == null) { em.textContent = "Not captured"; grid.append(em); } else {
 const W = n * 100, H = 132, pad = 16, y = v => H - pad - (v - 1) / 4 * (H - 2 * pad);
@@ -169,6 +176,14 @@ const addRow = (r, extra) => {
     grid.append(cell);
   });
 };
+if (MAP.emotionLabels !== undefined) {
+  grid.append(labelCell("Feelings"));
+  MAP.emotionLabels.forEach(item => {
+    const cell = el("div", `cell feeling${item && item.basis === "hypothesis" ? " hypothesis" : ""}`, item === null ? "Not captured" : item.text);
+    if (item) cell.append(el("span", "basis-tag", `${item.basis} · ${item.source}`));
+    grid.append(cell);
+  });
+}
 const divider = label => { const band = el("div", "vis"); band.append(el("span", null, label)); band.style.gridColumn = "1 / -1"; grid.append(band); };
 MAP.rows.forEach(r => addRow(r));
 addRow(MAP.blueprint[0], "bp");

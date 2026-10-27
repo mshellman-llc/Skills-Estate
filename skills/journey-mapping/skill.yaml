@@ -1,12 +1,11 @@
 schema_version: 1
 name: journey-mapping
 display_name: Journey Mapping
-summary: Build customer journey maps and service blueprints the Estate way, for
-  AI advisory and consulting work.
+summary: Map one actor's journey, the service behind it, and improvements to validate from supplied evidence.
 status: active
 tier: situational
-version: 1.0.0
-owner: Estate
+version: 1.1.0
+owner: Skills Estate
 category: solutioning-scope
 runtimes:
 - generic-agent-skills
@@ -15,18 +14,10 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- 'Build customer journey maps and service blueprints the Estate way, for AI advisory
-  and consulting work. Maps end-to-end experience across touchpoints, emotions, friction,
-  and the systems underneath, with every claim sourced and confidence-labeled. Stack-agnostic:
-  works on any platform, with Salesforce-specific prompts available when the engagement
-  is a Salesforce one. Use for two jobs: a client-facing consulting deliverable (map
-  a client''s customer journey across their channels, systems, and AI touchpoints)
-  or an internal map of Estate''s own prospect-to-client lifecycle. Triggers on
-  customer journey, journey map, service blueprint, user journey, experience map,
-  touchpoint analysis, friction map, journey audit, end-to-end experience, customer
-  experience map, CX blueprint, sell-to-deliver map. Also triggers when teams hold
-  different mental models of an experience and need one shared, evidence-grounded
-  view.'
+- Build a customer or role journey map, service blueprint, or opportunity map.
+- Map touchpoints, goals, thoughts, feelings, friction and supporting systems for one actor.
+- Compare evidence across teams that describe the same experience differently.
+- Journey audit, end-to-end experience, customer experience map, or sell-to-deliver map.
 exclusions: []
 inputs:
 - name: task_context

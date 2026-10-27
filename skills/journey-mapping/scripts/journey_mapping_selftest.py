@@ -7,7 +7,7 @@ what that cut removed:
 
   1. The template still carries the lanes, the blueprint layers, the ledger,
      the validation table, the opportunity map, and all six phase presets.
-  2. The labeled-hypothesis mode stays in SKILL.md with its basis note,
+  2. The labeled-hypothesis mode stays in the complete bundled method with its basis note,
      visible marking, and validation questions, and the template carries the
      Hypothesis confidence level.
   3. The render layout and HTML starter exist, and the starter draws the
@@ -25,6 +25,7 @@ from pathlib import Path
 
 SKILL = Path(__file__).resolve().parent.parent
 MD = SKILL / "SKILL.md"
+METHOD = SKILL / "references" / "method.md"
 REF = SKILL / "references" / "journey-map-template.md"
 LAYOUT = SKILL / "references" / "rendered-map-layout.md"
 HTML = SKILL / "assets" / "journey-map.html"
@@ -38,12 +39,14 @@ def expect(label: str, got, want):
         fail.append(f"{label}: got {got}, want {want}")
 
 
-for path in (MD, REF, LAYOUT, HTML, SKILL / "LICENSE"):
+for path in (MD, METHOD, REF, LAYOUT, HTML, SKILL / "LICENSE"):
     if not path.exists():
         print(f"  missing {path.relative_to(SKILL)}")
         sys.exit(1)
 
-text = MD.read_text(encoding="utf-8")
+entry = MD.read_text(encoding="utf-8")
+method = METHOD
+text = entry + "\n" + method.read_text(encoding="utf-8")
 ref = REF.read_text(encoding="utf-8")
 layout = LAYOUT.read_text(encoding="utf-8")
 html = HTML.read_text(encoding="utf-8")
@@ -85,7 +88,7 @@ expect("presets kept their sequences", ref.count("->") >= 40, True)
 
 # --- hypothesis mode ---------------------------------------------------------
 print()
-expect("SKILL.md has the labeled-hypothesis section", "## Labeled-hypothesis mode" in text, True)
+expect("workflow has the labeled-hypothesis section", "## Labeled-hypothesis mode" in text, True)
 for phrase in ("State the basis once", "Mark every hypothesized layer",
                "Never attribute a hypothesized thought", "validation questions"):
     expect(f"  hypothesis rule: {phrase}", phrase in text, True)
@@ -99,14 +102,14 @@ expect("starter dashes a hypothesis curve", "stroke-dasharray" in html and "hypo
 
 # --- links resolve and the identity stays out --------------------------------
 print()
-for doc in (MD, REF, LAYOUT):
+for doc in (MD, method, REF, LAYOUT):
     body = doc.read_text(encoding="utf-8")
     for target in re.findall(r"\]\(([^\s)]+)\)", body):
-        if target.startswith(("http:", "https:", "#", "references/estate/")):
+        if target.startswith(("http:", "https:", "#", "references/estate/", "estate/")):
             continue
         expect(f"{doc.name} link {target}", (doc.parent / target.split("#")[0]).exists(), True)
 
-for doc in (MD, REF, LAYOUT, HTML):
+for doc in (MD, method, REF, LAYOUT, HTML):
     hits = re.findall(r"(?i)aleysian|meridian", doc.read_text(encoding="utf-8"))
     expect(f"no former identity in {doc.name}", hits, [])
 

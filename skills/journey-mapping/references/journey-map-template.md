@@ -46,7 +46,7 @@ This template has four parts to fill: the journey map, the service blueprint, th
 
 **Emotion:** [confused | hopeful | frustrated | curious | anxious | confident | ...]
 
-**Emotional intensity:** [1 to 5, for the curve]
+**Emotional intensity:** [Source-supplied score and scale, an explained hypothesis score, or "not captured". Preserve the qualitative emotion above even when no score exists.]
 
 **Emotion evidence basis:** [observed | reported (source) | hypothesis (basis)]
 
@@ -80,7 +80,7 @@ Phase presets to pull from. They are a starting point, not a mandate. Start from
 
 ## Emotional curve
 
-Plot intensity across the journey. The troughs (highest frustration) are the critical friction; the peaks are what to protect. Draw a hypothesized curve with a dashed line or a "hypothesis" label.
+Use a curve only when scores and their scale are supported or explicitly hypothesized. Define which end of the scale means a better experience; emotional intensity alone does not distinguish strong relief from strong frustration. Keep qualitative feelings at their steps when scores are not captured. Draw a hypothesized curve with a dashed line or a "hypothesis" label. The illustration below shows layout only, not participant data.
 
 ```
 Emotion
@@ -95,11 +95,13 @@ intensity
         Phase / Step
 ```
 
-Note each peak and trough and what causes it. These are where a fix or a delight moment pays off most.
+Describe changes in feelings with their sources. Do not infer a cause from the shape of a curve.
 
 ## Service blueprint layers
 
 For each phase, document the back-stage. Name real systems where known. Front-stage and back-stage claims grounded in the built system are observed, even when the human layers are hypotheses.
+
+Classify visibility from the mapped actor's perspective. The mapped actor's own actions belong in front-stage. Do not also list the same action as back-stage work. If the source does not establish visibility, keep the action and state that visibility is not captured; do not call it hidden.
 
 Place the line of visibility between front-stage and back-stage actions, and the line of internal interaction between back-stage actions and supporting systems. Mark unknown support as "not captured"; do not infer absence from a blank.
 
@@ -194,11 +196,13 @@ Effort and impact are labels, not prices. Anything that becomes a scoped, priced
 
 ### Critical friction (fix soon)
 
-One row per trough in the emotional curve, with the evidence that puts it there.
+Use the captured feelings and operational evidence to identify friction. A curve is not required. Omit categories with no supported entries.
 
-| Friction | Phase / step | Evidence (source) | Recommended action | Expected outcome | Measure | Effort | Owner |
+| Friction | Phase / step | Evidence (source) | Recommended action and timing | Expected outcome | Measure | Effort basis | Owner |
 |---|---|---|---|---|---|---|---|
 | | | | | | | S/M/L | |
+
+For each action, explain how it changes the step and when it acts. Match the measure to that change. An acknowledgement sent after receipt can be tested for time to account confirmation; it cannot change whether the original request contained an account ID. Mark proposed owners, effort and outcomes as proposals.
 
 ### Quick wins (low effort, real impact)
 
@@ -250,6 +254,9 @@ Maps decay. Re-map after a major product or platform launch, a new segment, a bu
 - [ ] "Not captured" used wherever an input is silent (no fabricated fill)
 - [ ] Hypothesis layers are marked on the visual and the basis note is present
 - [ ] Validation questions exist for every hypothesis
+- [ ] Every captured feeling appears at the relevant step, including relief or other improvements
+- [ ] Blueprint visibility uses the mapped actor's perspective
+- [ ] Each proposed action can affect its measure at the point where it operates
 - [ ] Parity: all substance survived the render into the visual
 - [ ] Visual inspected by a person or a model
 - [ ] Prose review run; plain language leads
