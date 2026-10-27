@@ -27,11 +27,11 @@ Operational friction outside a trough can also have a card; do not change an emo
 | Pain points | The specific friction | Neutral shaded cells |
 | Opportunities | The intervention aimed at that friction, matched to the same column | Accent text; the legend uses the same accent |
 | Visibility not captured | Optional system actions whose visibility to the actor is unknown | Separate row above the classified blueprint; these actions belong in neither front-stage nor back-stage |
-| Front-stage | What the actor sees the system or staff do, e.g., an abstain message or a routed-away list | Cool tint |
+| Front-stage | What the actor sees the system or staff do, e.g., an abstain message or a routed-away list | Plain cell |
 | Line of visibility | Divider between Front-stage and Back-stage | Dark band |
-| Back-stage | Work out of view, e.g., an assessor or a fit judge, or a table that is never written | Cool tint |
+| Back-stage | Work out of view, e.g., an assessor or a fit judge, or a table that is never written | Plain cell |
 | Line of internal interaction | Divider between Back-stage and Supporting | Dark band |
-| Supporting | Systems and records underneath, e.g., the catalog, the CRM, or a related role's view | Cool tint |
+| Supporting | Systems and records underneath, e.g., the catalog, the CRM, or a related role's view | Plain cell |
 
 Use an empty string only when evidence confirms that nothing happens in that layer. Use null for missing evidence; the renderer displays "Not captured". In Opportunities, null means "None proposed". Supply `visibilityUnknown` as one text or null entry per phase for system actions whose visibility has not been established. Do not place those actions below the line of visibility. `Goal` and `Opportunities` may also set a row `basis` to show hypothesis styling; a row marked `not captured` cannot contain known text. Missing evidence does not establish that support is absent. Thoughts and Pain points each carry their own basis: observed, reported, hypothesis, or not captured. Set emotion to null and emotionBasis to "not captured" when no defensible curve exists. This means scores are missing, not that reported feelings must be removed.
 

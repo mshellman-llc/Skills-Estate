@@ -105,8 +105,20 @@ const {chromium} = require('playwright');
   assert.ok(await page.locator('.hypothesis').count() >= 5);
   const swatches=await page.locator('.sw').evaluateAll(nodes=>nodes.map(n=>getComputedStyle(n).backgroundColor));
   assert.equal(new Set(swatches).size,3);
+  const otherBackgrounds=await page.locator('.bp, .opp').evaluateAll(nodes=>nodes.map(n=>getComputedStyle(n).backgroundColor));
+  assert.ok(otherBackgrounds.every(color=>color!==swatches[1]));
+  const goalHypotheses=await page.getByText('Goal',{exact:true}).evaluate(label=>{
+    let cell=label.nextElementSibling, count=0;
+    while(cell && !cell.classList.contains('lab')) {if(cell.classList.contains('hypothesis')) count++; cell=cell.nextElementSibling;}
+    return count;
+  });
+  assert.equal(goalHypotheses,5);
   assert.equal(await page.locator('.cell').first().evaluate(n=>getComputedStyle(n).fontSize),'16px');
   results.push({case:'unknown-visibility-and-empty-opportunity',passed:true});
+  await render('uncaptured-opportunities','MAP.rows[4].basis="not captured"; MAP.rows[4].cells=Array(5).fill(null); MAP.visibilityUnknown=Array(5).fill(null);');
+  assert.equal(await page.getByText('None proposed',{exact:true}).count(),0);
+  assert.equal(await page.getByText('Visibility not captured',{exact:true}).count(),0);
+  results.push({case:'uncaptured-opportunities',passed:true});
   for (const [name,mutation,expected] of [
    ['unknown-visibility-shape','MAP.visibilityUnknown=[4,null,null,null,null];','Unknown visibility'],
    ['invalid-emotion-basis','MAP.emotionBasis="guessed";','evidence basis'],
@@ -122,6 +134,8 @@ const {chromium} = require('playwright');
    ['string-score','MAP.emotion[0]="3";','1 to 5'],
    ['nan-score','MAP.emotion[0]=NaN;','1 to 5'],
    ['invalid-row-basis','MAP.rows[2].basis="guessed";','own evidence basis'],
+   ['invalid-goal-basis','MAP.rows[1].basis="guessed";','invalid evidence basis'],
+   ['contradictory-goal-basis','MAP.rows[1].basis="not captured";','text marked not captured'],
    ['contradictory-row-basis','MAP.rows[2].basis="not captured";','text marked not captured'],
    ['long-feelings','MAP.emotionLabels=[null,null,null,null,null,null];','exactly one'],
    ['null-feelings','MAP.emotionLabels=null;','exactly one'],

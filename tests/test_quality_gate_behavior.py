@@ -208,6 +208,19 @@ class QualityRecordTests(unittest.TestCase):
                 self.assertEqual(validation.returncode, 1)
                 self.assertNotIn('Traceback', validation.stderr)
 
+    def test_unreadable_standalone_receipt_returns_input_error(self):
+        record, artifact, receipt = self.final_narrative()
+        tool = self.package / '_runtime/prose-pass/scripts/prose_receipt.py'
+        for payload in [b'\xff\xfe', b'[' * 2000 + b']' * 2000]:
+            with self.subTest(payload_size=len(payload)):
+                receipt.write_bytes(payload)
+                result = subprocess.run([sys.executable, str(tool), 'validate', str(receipt)],
+                                        capture_output=True, text=True)
+                # Runtime recursion limits differ. A parsed array is an invalid
+                # receipt (1); a decoder refusal is unusable input (2).
+                self.assertIn(result.returncode, (1, 2) if len(payload) > 2 else (2,))
+                self.assertNotIn('Traceback', result.stderr)
+
 
 if __name__ == '__main__':
     unittest.main()

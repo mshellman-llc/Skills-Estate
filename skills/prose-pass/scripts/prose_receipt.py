@@ -255,7 +255,7 @@ def validate(args: argparse.Namespace) -> int:
     path = Path(args.receipt)
     try:
         receipt = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, ValueError, RecursionError) as exc:
         print("unreadable receipt {}: {}".format(path, exc))
         return 2
     failures = validate_receipt(receipt, quiet=False)

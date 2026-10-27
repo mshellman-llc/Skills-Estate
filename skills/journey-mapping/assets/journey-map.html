@@ -13,7 +13,7 @@
 <style>
 :root{
   --bg:#FFFFFF;--text:#1A1A1A;--muted:#5F6368;--border:#D9DCE1;--surface:#F5F6F7;--accent:#2F5D8A;
-  --band:var(--text);--band-text:var(--bg);--pain:var(--surface);--opp:var(--surface);--bp:var(--surface);
+  --band:var(--text);--band-text:var(--bg);--pain:var(--surface);--opp:var(--bg);--bp:var(--bg);
   --radius:4px;--font:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 *{box-sizing:border-box}
@@ -177,7 +177,7 @@ em.innerHTML = svg + "</svg>"; grid.append(em);
 const addRow = (r, extra) => {
   grid.append(labelCell(r.label));
   r.cells.forEach(t => {
-    const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" && t !== null && t.trim() ? " hypothesis" : ""}`, t === null ? (r.label === "Opportunities" ? "None proposed" : "Not captured") : t);
+    const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" && t !== null && t.trim() ? " hypothesis" : ""}`, t === null ? (r.label === "Opportunities" && r.basis !== "not captured" ? "None proposed" : "Not captured") : t);
     if (r.basis && t !== null) cell.append(el("span", "basis-tag", r.basis));
     grid.append(cell);
   });
