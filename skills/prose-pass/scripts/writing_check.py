@@ -30,10 +30,10 @@ def structured_parts(value, path=()):
         yield Block(value)
     elif isinstance(value, list):
         for item in value:
-            yield from structured_parts(item, path)
+            yield from structured_parts(item, (*path, '[]'))
     elif isinstance(value, dict):
         for key, item in value.items():
-            citation = (path[-1:] == ('emotionLabels',) and key == 'source' and value.get('basis') in ('observed', 'reported')) or path[-2:] == ('metadata', 'sourceLabels')
+            citation = (path[-2:] == ('emotionLabels', '[]') and key == 'source' and value.get('basis') in ('observed', 'reported')) or path[-2:] == ('metadata', 'sourceLabels')
             if citation and isinstance(item, str):
                 yield Block(item, citation=True)
             else:
@@ -42,7 +42,8 @@ def structured_parts(value, path=()):
 
 class AuthoredText(str):
     def __new__(cls, parts):
-        blocks, repetition, all_text, body = [], [], [], []
+        blocks, repetition, all_text, body, furniture = [], [], [], [], []
+        repetition_lines = []
         citations = set()
 
         def flush():
@@ -59,17 +60,22 @@ class AuthoredText(str):
                     blocks.append(text)
                     if not item.citation or text not in citations:
                         repetition.append(text)
+                        repetition_lines.extend((line, False) for line in text.splitlines())
                     if item.citation:
                         citations.add(text)
                 else:
                     text = item
                     body.append(text)
                     repetition.append(text)
+                    furniture.append(text)
+                    repetition_lines.extend((line, True) for line in text.splitlines())
                 all_text.append(text)
         flush()
         result = super().__new__(cls, '\n'.join(all_text))
         result.fragment_blocks = blocks
         result.repetition_text = '\n'.join(repetition)
+        result.furniture_text = '\n'.join(furniture)
+        result.repetition_lines = repetition_lines
         return result
 
 
@@ -123,7 +129,7 @@ class HTMLWords(HTMLParser):
             self.script_type = None
 
     def handle_comment(self, data):
-        self.parts.append(data)
+        self.parts.append(Block(data))
 
     def handle_starttag(self, tag, attrs):
         if tag == "style":

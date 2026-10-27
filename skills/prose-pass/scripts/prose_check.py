@@ -567,18 +567,19 @@ def check(text: str, cfg=None):
     # boundary. Lines that recur three or more times are page furniture
     # (footers, confidentiality labels, page numbers) and are excluded.
     repetition_lines = getattr(text, 'repetition_text', text).splitlines()
-    line_counts = Counter(ln.strip().lower() for ln in repetition_lines if ln.strip())
+    furniture_lines = getattr(text, 'furniture_text', text).splitlines()
+    line_counts = Counter(ln.strip().lower() for ln in furniture_lines if ln.strip())
     furniture = {ln for ln, n in line_counts.items() if n >= 3}
 
     grams = Counter()
     dates = re.compile(r'\b(?:\d{4}-\d{2}-\d{2}|\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})\b', re.I)
-    for ln in repetition_lines:
+    for ln, furniture_allowed in getattr(text, 'repetition_lines', [(line, True) for line in repetition_lines]):
         stripped = ln.strip()
-        if not stripped or stripped.lower() in furniture:
+        if not stripped or (furniture_allowed and stripped.lower() in furniture):
             continue
         # A date occupies one token; table columns remain separate fields.
         for field in (re.split(r'(?<!\\)\|', stripped) if stripped.startswith('|') else [stripped]):
-            for span in [dates.sub('DATE', field)]:
+            for span in [dates.sub(lambda match: '-'.join(match.group().split()), field)]:
                 toks = [t.lower() for t in re.findall(r"[A-Za-z0-9][A-Za-z0-9'’%$.-]*", span)]
                 for i in range(len(toks) - 3):
                     grams[" ".join(toks[i:i + 4])] += 1

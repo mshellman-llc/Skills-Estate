@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-27T17:57:42.216210+00:00",
+  "generatedAt": "2026-10-27T18:06:47.255316+00:00",
   "baseCommit": "5b44e8caf5cb79efaa512ec84fc6060958c98684",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -3007,9 +3007,9 @@
         },
         {
           "path": "assets/journey-map.html",
-          "sha256": "a16427eb84fc3ccec72e159a8cef6c0e7c615d1833783eda6e90f92643b85145",
-          "bytes": 13491,
-          "gitBlob": "dadfa910610e63d11352b3762a93ac0c12e99093"
+          "sha256": "f2f37a5a37ffca4f5757478c72cfa188444e0b105d2066e886eaac0b114d8cb7",
+          "bytes": 14259,
+          "gitBlob": "77387e4852cf3d62e54701869a705f76e0237799"
         },
         {
           "path": "references/journey-map-template.md",
@@ -4196,21 +4196,21 @@
         },
         {
           "path": "references/surface-policy.md",
-          "sha256": "151f3526044f390c2d682cf565e4633d76590ff12d20ddd14f55ccead4d39bd0",
-          "bytes": 2183,
-          "gitBlob": "8610df6a922ebda131d3b356065471fa9fb4c402"
+          "sha256": "3e014a13a9b3711fd3a19b725ac8a1b9a221644c0d11c1984f08f6a66504f3d6",
+          "bytes": 2458,
+          "gitBlob": "ecef2e5583428e355adb1f4158d65b86883c2290"
         },
         {
           "path": "scripts/authored_code.py",
-          "sha256": "51e681626279cfa221872250dcbd7212dedd39851bdd8c95404b3e43b04d54d0",
-          "bytes": 5601,
-          "gitBlob": "fa794b0f454adc881cb5bf735288b4db822cbd2d"
+          "sha256": "09912316b54a4910a01f43935b226217d552338dd3b5c2255abcf08b1c4838e7",
+          "bytes": 5857,
+          "gitBlob": "54e2d1387ad77da578408f213ab687cf725ae8e3"
         },
         {
           "path": "scripts/prose_check.py",
-          "sha256": "80e74924413bb1c420c26856f9477238951a91c85d14ddcc8f6dccd5228b8c00",
-          "bytes": 30600,
-          "gitBlob": "6b3acca0c67113cc970952e623370c25b7cc1525"
+          "sha256": "f0d9fd9316930e9f4c21ec7d34e32003d20e0d62818e36beb2eee7f5c20dd6b5",
+          "bytes": 30816,
+          "gitBlob": "8810cee146517cb3b54c67a3d946dcc22f12dec8"
         },
         {
           "path": "scripts/prose_check_selftest.py",
@@ -4256,9 +4256,9 @@
         },
         {
           "path": "scripts/writing_check.py",
-          "sha256": "98e94daa9e58175bfb1a6cea9249e52aea32bec71e399ff165cb62d7b6359882",
-          "bytes": 10376,
-          "gitBlob": "2116d3f9805438e8360f433588cfcab4acf6a27d"
+          "sha256": "9e4e170ec440ff3bcc1d25f9b57a4b245f47e97007685f59cc58ebdcc0bacedc",
+          "bytes": 10770,
+          "gitBlob": "40cab4db9c2ed86e7af280c239246476d9820b93"
         },
         {
           "path": "skill.yaml",

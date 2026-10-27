@@ -166,5 +166,22 @@ const ratio = (value - 1) / 4;'''
         self.scan('crlf.js', 'const label = "Row'+'\\'+'\r\n'+'saved";', 0)
 
 
+    def test_extracted_reasons_cannot_be_page_furniture(self):
+        reason = 'Inferred from the pickup task because no patron was interviewed'
+        rows = [{'text':name, 'basis':'hypothesis', 'source':reason} for name in ['Annoyed', 'Unsure', 'Relieved']]
+        for filename,body in [('three.json', json.dumps({'emotionLabels':rows})),
+                              ('three.html', '<script>const MAP = { emotionLabels: '+json.dumps(rows)+'};</script>')]:
+            result = self.scan(filename, body, 1)
+            self.assertIn('C12-verbatim-recycling', [f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
+        self.scan('label-notes.json', json.dumps({'metadata':{'sourceLabels':[{'note':reason},{'note':reason}]}}), 1)
+        self.scan('distinct-dates.md', 'Patron A was interviewed on 21 October 2026. Patron B was interviewed on 22 October 2026.', 0)
+        self.scan('increment.js', 'n=i++/2;t='+json.dumps(BAD)+';r=a/b;', 1)
+        self.scan('decrement.js', 'n=i--/2;t='+json.dumps(BAD)+';r=a/b;', 1)
+        self.scan('prefix.js', 'n=++i/2;t='+json.dumps(BAD)+';r=a/b;', 1)
+        result = self.scan('only-fragments.json', json.dumps({'note':'Priority not set. History split across tools.'}), 1)
+        self.assertIn('C6-fragment-stacking', [f['rule'] for f in json.loads(result.stdout)[str(self.base/'only-fragments.json')]['findings']])
+        self.scan('template-syntax.html', '<script type="text/template">'+('<span class="plain" data-extra="value">Ready</span>'*2)+'</script>', 0)
+
+
 if __name__ == '__main__':
     unittest.main()

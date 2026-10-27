@@ -133,6 +133,10 @@ def javascript_parts(source):
                     if depth == 0:
                         index += 1
                         return
+            if source[index:index + 2] in ('++', '--'):
+                previous = 'value' if previous not in ('', '=', '(', '[', '{', ',', ':', ';', 'return', 'throw', '=>') else source[index:index + 2]
+                index += 2
+                continue
             if source.startswith('=>', index):
                 previous = '=>'
                 index += 2
