@@ -5,6 +5,20 @@ The caller checks every returned text value, including UI text inside templates.
 """
 import json
 import re
+import inspect
+
+
+def comment_words(value):
+    lines = value.splitlines()
+    margins = [line for line in lines[1:] if line.strip()]
+    if margins and all(line.lstrip().startswith('*') for line in margins):
+        value = re.sub(r'(?m)^[ \t]*\*(?!/)[ \t]?', '', value)
+    return inspect.cleandoc(value)
+
+
+def interpolated_words(value):
+    value = inspect.cleandoc(value)
+    return re.sub(r'(?m)^[ \t]*(?:\x00[ \t]*)+', '', value).replace('\x00', ' ')
 
 
 def javascript_parts(source):
@@ -20,7 +34,7 @@ def javascript_parts(source):
             char = source[index]
             if char == quote:
                 index += 1
-                parts.append(''.join(text))
+                parts.append(interpolated_words(''.join(text)) if quote == '`' else ''.join(text))
                 return
             if char == '\\':
                 index += 1
@@ -52,7 +66,7 @@ def javascript_parts(source):
             if quote == '`' and source[index:index + 2] == '${':
                 index += 2
                 code(True)
-                text.append(' ')
+                text.append('\x00')
                 continue
             if char in ('\n', '\r') and quote != '`':
                 raise SyntaxError('Unterminated JavaScript string')
@@ -66,6 +80,7 @@ def javascript_parts(source):
         previous = ''
         last_comment_end = None
         last_comment_part = None
+        last_comment_alone = False
         while index < length:
             char = source[index]
             if char.isspace():
@@ -76,11 +91,13 @@ def javascript_parts(source):
                 end = length if end < 0 else end
                 value = source[index + 2:end]
                 between = source[last_comment_end:index] if last_comment_end is not None else None
-                if between is not None and not between.strip() and between.count('\n') == 1:
+                alone = not source[source.rfind('\n', 0, index) + 1:index].strip()
+                if alone and last_comment_alone and between is not None and not between.strip() and between.count('\n') == 1:
                     parts[last_comment_part] += '\n' + value
                 else:
                     parts.append(value)
                     last_comment_part = len(parts) - 1
+                last_comment_alone = alone
                 last_comment_end = end
                 index = end
                 continue
@@ -88,13 +105,15 @@ def javascript_parts(source):
                 end = source.find('*/', index + 2)
                 if end < 0:
                     raise SyntaxError('Unterminated JavaScript comment')
-                value = re.sub(r'(?m)^[ \t]*\*(?!/)[ \t]?', '', source[index + 2:end])
+                value = comment_words(source[index + 2:end])
                 between = source[last_comment_end:index] if last_comment_end is not None else None
-                if between is not None and not between.strip() and between.count('\n') == 1:
+                alone = not source[source.rfind('\n', 0, index) + 1:index].strip()
+                if alone and last_comment_alone and between is not None and not between.strip() and between.count('\n') == 1:
                     parts[last_comment_part] += '\n' + value
                 else:
                     parts.append(value)
                     last_comment_part = len(parts) - 1
+                last_comment_alone = alone
                 last_comment_end = end + 2
                 index = end + 2
                 continue

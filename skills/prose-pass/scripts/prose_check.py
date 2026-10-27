@@ -24,6 +24,7 @@ Supports .md, .txt, .html, .docx, .pptx. No third-party dependencies.
 import argparse
 import json
 import re
+import inspect
 import sys
 import zipfile
 from collections import Counter
@@ -484,22 +485,24 @@ def check(text: str, cfg=None):
     # omit it from C6 so a valid checklist cannot block its own instruction file.
     def fragment_body(block):
         fragment_lines = []
-        in_list = False
-        for line in block.splitlines():
-            line = line.replace("<!--", "").replace("-->", "")
+        list_indent = None
+        for raw_line in inspect.cleandoc(block).splitlines():
+            removed_marker = '<!--' in raw_line or '-->' in raw_line
+            line = raw_line.replace('<!--', '').replace('-->', '')
             stripped = line.strip()
-            structural = (
-                stripped.startswith("|")
-                or stripped.startswith("#")
-                or bool(re.match(r"^\s*(?:[-*+] |\d+[.)] )", line))
-                or (in_list and (not stripped or line[:1].isspace()))
-            )
-            if re.match(r"^\s*(?:[-*+] |\d+[.)] )", line):
-                in_list = True
-            elif in_list and stripped and not line[:1].isspace():
-                in_list = False
-                structural = False
-            fragment_lines.append("" if structural else line)
+            expanded = line.expandtabs(4)
+            indent = len(expanded) - len(expanded.lstrip())
+            bullet = re.match(r'^\s*(?:[-*+] |\d+[.)] )', line)
+            if bullet:
+                list_indent = indent if list_indent is None else min(list_indent, indent)
+                structural = True
+            else:
+                continuation = list_indent is not None and (not stripped or indent > list_indent)
+                if stripped and not continuation:
+                    list_indent = None
+                marker = removed_marker and re.fullmatch(r'[A-Z][A-Z0-9_-]*:(?:BEGIN|END)', stripped)
+                structural = bool(continuation or marker or stripped.startswith(('|', '#')))
+            fragment_lines.append('' if structural else line)
         return '\n'.join(fragment_lines)
 
     fragment_blocks = [fragment_body(block) for block in getattr(text, 'fragment_blocks', [text])]

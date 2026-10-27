@@ -243,5 +243,26 @@ const ratio = (value - 1) / 4;'''
         self.scan('indented-list.py','def f():\n    """Fields:\n    - Patron name.\n    - Pickup date.\n    """',0)
 
 
+    def test_paragraphs_after_lists_remain_visible_in_every_extracted_context(self):
+        cases=[
+            ('list-comments.js','// Fields:\n// - Patron name.\n// - Pickup date.\n//\n// Priority not set. History split across tools.'),
+            ('list-template.js','const help = `Fields:\n  - Patron name.\n\n  Priority not set. History split across tools.`;'),
+            ('placeholder-template.js','const help = `Fields:\n  - Patron name.\n\n  ${status}${owner}. Priority not set. History split across tools.`;'),
+            ('list-block.js','/* Fields:\n  - Patron name.\n\n  Priority not set. History split across tools. */'),
+            ('list-comment.html','<!-- Fields:\n  - Patron name.\n\n  Priority not set. History split across tools. -->'),
+            ('list-comments.css','/* Fields:\n- Patron name. */\n/* Priority not set. History split across tools. */'),
+            ('placeholder.py','def f():\n    return f"""Fields:\n    - Patron name.\n\n    {status}. Priority not set. History split across tools.\n    """'),
+            ('placeholders.py','def f():\n    return f"""Fields:\n    - Patron name.\n\n    {status}{owner}. Priority not set. History split across tools.\n    """')]
+        for filename,body in cases:
+            result=self.scan(filename,body,1)
+            self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
+        self.scan('list-only.js','// Fields:\n// - Patron name.\n// - Pickup date.',0)
+        self.scan('star-list.js','/*\n  Fields:\n  * Patron name.\n  * Pickup date.\n*/',0)
+        self.scan('star-list.css','/*\n  Fields:\n  * Patron name.\n  * Pickup date.\n*/',0)
+        self.scan('trailing.js','const T = 30; // Request timeout in seconds.\n// Maximum retry count.',0)
+        self.scan('marker.md','<!-- ESTATE-WRITING:BEGIN -->\nPriority not set.',0)
+        self.scan('marker-prose.md','<!-- ESTATE-WRITING:BEGIN -->\nPriority not set. History split across tools.',1)
+
+
 if __name__ == '__main__':
     unittest.main()

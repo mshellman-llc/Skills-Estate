@@ -18,7 +18,7 @@ from html.parser import HTMLParser
 import xml.etree.ElementTree as ET
 
 from prose_check import check, load_config
-from authored_code import javascript_parts
+from authored_code import javascript_parts, comment_words, interpolated_words
 
 
 class Block:
@@ -83,7 +83,7 @@ class AuthoredText(str):
 def css_words(data):
     # CSS comments and string values can contain authored language. Selectors,
     # property names and repeated declarations are executable syntax.
-    return '\n'.join(re.sub(r'(?m)^[ \t]*\*(?!/)[ \t]?', '', match.group(0)[2:-2]) if match.group(0).startswith('/*')
+    return '\n'.join(comment_words(match.group(0)[2:-2]) if match.group(0).startswith('/*')
                      else match.group(0)[1:-1]
                      for match in re.finditer(r"/\*.*?\*/|\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'", data, re.S))
 
@@ -217,8 +217,9 @@ def authored_text(path):
         parts = []
         for node in nodes:
             if isinstance(node, ast.JoinedStr):
-                parts.append(Block(inspect.cleandoc(' '.join(value.value if isinstance(value, ast.Constant) and isinstance(value.value, str) else ' '
-                                            for value in node.values))))
+                joined = ''.join(value.value if isinstance(value, ast.Constant) and isinstance(value.value, str) else '\x00'
+                                 for value in node.values)
+                parts.append(Block(interpolated_words(joined)))
             elif isinstance(node, ast.Constant) and isinstance(node.value, str) and id(node) not in joined_pieces:
                 parts.append(Block(inspect.cleandoc(node.value)))
         comment = None
