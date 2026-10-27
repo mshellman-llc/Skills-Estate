@@ -257,11 +257,26 @@ const ratio = (value - 1) / 4;'''
             result=self.scan(filename,body,1)
             self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
         self.scan('list-only.js','// Fields:\n// - Patron name.\n// - Pickup date.',0)
-        self.scan('star-list.js','/*\n  Fields:\n  * Patron name.\n  * Pickup date.\n*/',0)
-        self.scan('star-list.css','/*\n  Fields:\n  * Patron name.\n  * Pickup date.\n*/',0)
+        self.scan('star-list.js','/*\n  Fields:\n  * Pickup date.\n  * Branch code.\n*/',0)
+        self.scan('star-list.css','/*\n  Fields:\n  * Pickup date.\n  * Branch code.\n*/',0)
         self.scan('trailing.js','const T = 30; // Request timeout in seconds.\n// Maximum retry count.',0)
-        self.scan('marker.md','<!-- ESTATE-WRITING:BEGIN -->\nPriority not set.',0)
+        self.scan('marker.md','<!-- ESTATE-WRITING:BEGIN -->\n\nPriority not set.',0)
         self.scan('marker-prose.md','<!-- ESTATE-WRITING:BEGIN -->\nPriority not set. History split across tools.',1)
+
+
+    def test_mixed_comment_styles_preserve_relative_indent(self):
+        bad='/* Fields:\n   - Patron name. */\n// Priority not set. History split across tools.'
+        cases=[('mixed.js',bad),('mixed.html','<script>'+bad+'</script>'),
+               ('uneven.js','/**\n * Priority not set.\n * History split across tools.\n   See ticket 12.\n */'),
+               ('uneven.css','/**\n * Priority not set.\n * History split across tools.\n   See ticket 12.\n */')]
+        for filename,body in cases:
+            result=self.scan(filename,body,1)
+            self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
+        self.scan('first-bullet.js','/* - Patron name.\n     Optional. Not shown. */',0)
+        self.scan('first-bullet.css','/* - Patron name.\n     Optional. Not shown. */',0)
+        self.scan('first-template.js','const help = `- Patron name.\n     Optional. Not shown.`;',0)
+        self.scan('first-python.py','help = """- Patron name.\n     Optional. Not shown."""',0)
+        self.scan('python-wrap.py','# - Patron name.\n#     Optional. Not shown.',0)
 
 
 if __name__ == '__main__':

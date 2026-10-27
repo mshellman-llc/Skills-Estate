@@ -7,7 +7,7 @@ import argparse
 import ast
 import csv
 import io
-import inspect
+import textwrap
 import json
 import re
 from pathlib import Path
@@ -83,7 +83,7 @@ class AuthoredText(str):
 def css_words(data):
     # CSS comments and string values can contain authored language. Selectors,
     # property names and repeated declarations are executable syntax.
-    return '\n'.join(comment_words(match.group(0)[2:-2]) if match.group(0).startswith('/*')
+    return '\n'.join(comment_words(match.group(0)[2:-2], decorated=match.group(0).startswith('/**')) if match.group(0).startswith('/*')
                      else match.group(0)[1:-1]
                      for match in re.finditer(r"/\*.*?\*/|\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'", data, re.S))
 
@@ -221,14 +221,15 @@ def authored_text(path):
                                  for value in node.values)
                 parts.append(Block(interpolated_words(joined)))
             elif isinstance(node, ast.Constant) and isinstance(node.value, str) and id(node) not in joined_pieces:
-                parts.append(Block(inspect.cleandoc(node.value)))
+                parts.append(Block(textwrap.dedent(node.value).strip('\n')))
         comment = None
         last_row = None
         previous_alone = False
         for token in tokenize.generate_tokens(io.StringIO(raw).readline):
             if token.type != tokenize.COMMENT:
                 continue
-            value = token.string.lstrip('#').strip()
+            value = token.string[1:]
+            value = value[1:] if value.startswith(' ') else value
             alone = not token.line[:token.start[1]].strip()
             if comment is not None and alone and previous_alone and token.start[0] == last_row + 1:
                 comment.text += '\n' + value

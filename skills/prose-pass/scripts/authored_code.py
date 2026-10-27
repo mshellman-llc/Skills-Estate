@@ -5,19 +5,19 @@ The caller checks every returned text value, including UI text inside templates.
 """
 import json
 import re
-import inspect
+import textwrap
 
 
-def comment_words(value):
+def comment_words(value, decorated=False):
     lines = value.splitlines()
     margins = [line for line in lines[1:] if line.strip()]
-    if margins and all(line.lstrip().startswith('*') for line in margins):
+    if decorated or (margins and all(line.lstrip().startswith('*') for line in margins)):
         value = re.sub(r'(?m)^[ \t]*\*(?!/)[ \t]?', '', value)
-    return inspect.cleandoc(value)
+    return textwrap.dedent(value).strip('\n')
 
 
 def interpolated_words(value):
-    value = inspect.cleandoc(value)
+    value = textwrap.dedent(value).strip('\n')
     return re.sub(r'(?m)^[ \t]*(?:\x00[ \t]*)+', '', value).replace('\x00', ' ')
 
 
@@ -90,6 +90,7 @@ def javascript_parts(source):
                 end = source.find('\n', index + 2)
                 end = length if end < 0 else end
                 value = source[index + 2:end]
+                value = value[1:] if value.startswith(' ') else value
                 between = source[last_comment_end:index] if last_comment_end is not None else None
                 alone = not source[source.rfind('\n', 0, index) + 1:index].strip()
                 if alone and last_comment_alone and between is not None and not between.strip() and between.count('\n') == 1:
@@ -105,7 +106,7 @@ def javascript_parts(source):
                 end = source.find('*/', index + 2)
                 if end < 0:
                     raise SyntaxError('Unterminated JavaScript comment')
-                value = comment_words(source[index + 2:end])
+                value = comment_words(source[index + 2:end], decorated=source.startswith('/**', index))
                 between = source[last_comment_end:index] if last_comment_end is not None else None
                 alone = not source[source.rfind('\n', 0, index) + 1:index].strip()
                 if alone and last_comment_alone and between is not None and not between.strip() and between.count('\n') == 1:

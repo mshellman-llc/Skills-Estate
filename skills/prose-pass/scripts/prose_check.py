@@ -24,7 +24,7 @@ Supports .md, .txt, .html, .docx, .pptx. No third-party dependencies.
 import argparse
 import json
 import re
-import inspect
+import textwrap
 import sys
 import zipfile
 from collections import Counter
@@ -486,7 +486,7 @@ def check(text: str, cfg=None):
     def fragment_body(block):
         fragment_lines = []
         list_indent = None
-        for raw_line in inspect.cleandoc(block).splitlines():
+        for raw_line in textwrap.dedent(block).strip('\n').splitlines():
             removed_marker = '<!--' in raw_line or '-->' in raw_line
             line = raw_line.replace('<!--', '').replace('-->', '')
             stripped = line.strip()
