@@ -265,7 +265,7 @@ const ratio = (value - 1) / 4;'''
 
 
     def test_mixed_comment_styles_preserve_relative_indent(self):
-        bad='/* Fields:\n   - Patron name. */\n// Priority not set. History split across tools.'
+        bad='/*\nFields:\n- Patron name.\n*/\n// Priority not set. History split across tools.'
         cases=[('mixed.js',bad),('mixed.html','<script>'+bad+'</script>'),
                ('uneven.js','/**\n * Priority not set.\n * History split across tools.\n   See ticket 12.\n */'),
                ('uneven.css','/**\n * Priority not set.\n * History split across tools.\n   See ticket 12.\n */')]
@@ -277,6 +277,34 @@ const ratio = (value - 1) / 4;'''
         self.scan('first-template.js','const help = `- Patron name.\n     Optional. Not shown.`;',0)
         self.scan('first-python.py','help = """- Patron name.\n     Optional. Not shown."""',0)
         self.scan('python-wrap.py','# - Patron name.\n#     Optional. Not shown.',0)
+
+
+    def test_list_items_cannot_hide_prose_and_hash_comments_are_checked(self):
+        bad='- Pickup date.\n  - Branch code.\n\n  Priority not set. History split across tools.'
+        cases=[('first-list.js','/* '+bad+' */'),
+               ('first-list-template.js','const help = `'+bad+'`;'),
+               ('first-list.py','help = """'+bad+'"""'),
+               ('hashes.py','## Priority not set.\n## History split across tools.'),
+               ('bullet-prose.md','- Priority not set. History split across tools.'),
+               ('continuation.md','- Pickup date.\n  Priority not set. History split across tools.'),
+               ('paragraph-after.md','- Pickup date.\n\nPriority not set. History split across tools.')]
+        for filename,body in cases:
+            result=self.scan(filename,body,1)
+            self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/filename)]['findings']])
+        self.scan('nested-labels.md','- Pickup date.\n  - Branch code.\n- Counter number.',0)
+        self.scan('good-continuation.md','- Pickup date.\n  The date is optional and stays hidden until the patron requests collection.',0)
+
+
+    def test_list_label_and_following_paragraph_have_separate_contexts(self):
+        prefix='- Patron name.\n- Pickup date.\n\n'
+        self.scan('next-step.md',prefix+'Next step. The branch confirms the date by email.',0)
+        self.scan('next-section.md',prefix+'## Status\nNext step. The branch confirms the date by email.',0)
+        for name,body in [('bad-next.md',prefix+'Priority not set. History split across tools.'),
+                          ('bad-section.md',prefix+'## Status\nPriority not set. History split across tools.'),
+                          ('bad-paragraphs.md','Priority not set.\n\nHistory split across tools.'),
+                          ('bad-indented.md',prefix+'  Priority not set. History split across tools.')]:
+            result=self.scan(name,body,1)
+            self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/name)]['findings']])
 
 
 if __name__ == '__main__':

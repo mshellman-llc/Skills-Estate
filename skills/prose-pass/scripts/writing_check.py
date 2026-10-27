@@ -228,7 +228,7 @@ def authored_text(path):
         for token in tokenize.generate_tokens(io.StringIO(raw).readline):
             if token.type != tokenize.COMMENT:
                 continue
-            value = token.string[1:]
+            value = token.string.lstrip('#')
             value = value[1:] if value.startswith(' ') else value
             alone = not token.line[:token.start[1]].strip()
             if comment is not None and alone and previous_alone and token.start[0] == last_row + 1:

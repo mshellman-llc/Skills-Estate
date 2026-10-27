@@ -89,6 +89,29 @@ def _cited(check: Dict[str, Any]) -> bool:
     return isinstance(citation, str) and citation.strip() != ""
 
 
+def _receipt_validator(module: Path) -> Optional[Path]:
+    outer = module.parent.parent
+    nested = (module.parent.name == '_runtime'
+              and (outer / 'references/estate/writing.md').is_file())
+    packaged = module.parent.name == '_runtime' or (module / 'references/estate/writing.md').is_file()
+    package_root = outer if nested else module
+    candidates = [module / '_runtime/prose-pass/scripts/prose_receipt.py']
+    if nested:
+        candidates.append(outer / '_runtime/prose-pass/scripts/prose_receipt.py')
+    elif not packaged:
+        candidates.append(module.parent / 'prose-pass/scripts/prose_receipt.py')
+    for candidate in candidates:
+        if not candidate.is_file():
+            continue
+        if packaged:
+            try:
+                candidate.resolve().relative_to(package_root.resolve())
+            except ValueError:
+                continue
+        return candidate
+    return None
+
+
 def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
     explicit_base = base_dir is not None
     base_dir = Path(base_dir or Path.cwd()).resolve()
@@ -222,10 +245,7 @@ def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
                         if not Path(covered).samefile(base_dir / artifact_path):
                             raise ValueError("receipt covers a different artifact")
                         module = Path(__file__).resolve().parents[1]
-                        candidates = [module / "_runtime/prose-pass/scripts/prose_receipt.py"]
-                        if not (module / "references/estate/writing.md").is_file():
-                            candidates.append(module.parent / "prose-pass/scripts/prose_receipt.py")
-                        validator = next((p for p in candidates if p.is_file()), None)
+                        validator = _receipt_validator(module)
                         if validator is None:
                             raise ValueError("bundled prose receipt validator is missing")
                         result = subprocess.run([sys.executable, str(validator), "validate", str(receipt_path)],

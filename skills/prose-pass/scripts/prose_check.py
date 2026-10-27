@@ -480,32 +480,43 @@ def check(text: str, cfg=None):
     # Headings, slide titles, and table cells are legitimately verbless. Only
     # body sentences count toward the fragment budget.
     heading_set = {h for h in heads}
-    # A Markdown list is an intentional list surface, not fragment-stacked body
-    # prose. Keep list text in every lexical and construction check above, but
-    # omit it from C6 so a valid checklist cannot block its own instruction file.
-    def fragment_body(block):
-        fragment_lines = []
-        list_indent = None
+    # Separate list items are separate contexts. Check prose within an item
+    # and its continuation instead of blanking the whole list.
+    def fragment_parts(block):
+        parts, current = [], []
+        in_item = False
+        previous_blank = False
         for raw_line in textwrap.dedent(block).strip('\n').splitlines():
             removed_marker = '<!--' in raw_line or '-->' in raw_line
             line = raw_line.replace('<!--', '').replace('-->', '')
             stripped = line.strip()
-            expanded = line.expandtabs(4)
-            indent = len(expanded) - len(expanded.lstrip())
             bullet = re.match(r'^\s*(?:[-*+] |\d+[.)] )', line)
+            marker = removed_marker and re.fullmatch(r'[A-Z][A-Z0-9_-]*:(?:BEGIN|END)', stripped)
             if bullet:
-                list_indent = indent if list_indent is None else min(list_indent, indent)
-                structural = True
+                if current:
+                    parts.append('\n'.join(current))
+                current = [line[bullet.end():]]
+                in_item = True
+            elif stripped.startswith('#'):
+                if current:
+                    parts.append('\n'.join(current))
+                current = []
+                in_item = False
+            elif marker or stripped.startswith('|'):
+                current.append('')
             else:
-                continuation = list_indent is not None and (not stripped or indent > list_indent)
-                if stripped and not continuation:
-                    list_indent = None
-                marker = removed_marker and re.fullmatch(r'[A-Z][A-Z0-9_-]*:(?:BEGIN|END)', stripped)
-                structural = bool(continuation or marker or stripped.startswith(('|', '#')))
-            fragment_lines.append('' if structural else line)
-        return '\n'.join(fragment_lines)
+                if in_item and previous_blank and stripped and not line[:1].isspace():
+                    parts.append('\n'.join(current))
+                    current = []
+                    in_item = False
+                current.append(line)
+            previous_blank = not stripped
+        if current:
+            parts.append('\n'.join(current))
+        return parts
 
-    fragment_blocks = [fragment_body(block) for block in getattr(text, 'fragment_blocks', [text])]
+    fragment_blocks = [part for block in getattr(text, 'fragment_blocks', [text])
+                       for part in fragment_parts(block)]
     block_flags = [[(s, not has_finite_verb(s)) for s in sentences(block) if s not in heading_set]
                    for block in fragment_blocks]
     verbless_flags = [item for block in block_flags for item in block]

@@ -53,8 +53,12 @@ absent report is a `blocked` verdict, never a `pass`.
    `prose-pass/scripts/prose_receipt.py emit`, validate it, and put its path in
    the check's `receipt` field and the document path in `artifact.path`.
    `quality_gate.py` validates the receipt against that document's current bytes
-   and reruns its prose check. Relative paths resolve from the quality record's
-   directory; newly emitted receipts store an absolute artifact path. Regenerate an older receipt with a relative artifact path before final release. A blocked prose check can record the missing receipt while
+   and reruns its prose check. A bundled gate uses the prose validator inside its
+   containing package, including a shared `_runtime` folder. It refuses an
+   external sibling or a validator symlink that leaves that package. Relative
+   paths resolve from the quality record's directory; newly emitted receipts
+   store an absolute artifact path. Regenerate an older receipt with a relative
+   artifact path before final release. A blocked prose check can record the missing receipt while
    withholding release. Sound prose may pass unchanged only with a justified
    no-change assessment in the receipt.
 2. For a styled artifact, cite `brand-renderer` evidence: the preflight report

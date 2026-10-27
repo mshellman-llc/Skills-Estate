@@ -222,5 +222,44 @@ class QualityRecordTests(unittest.TestCase):
                 self.assertNotIn('Traceback', result.stderr)
 
 
+    def test_nested_quality_runtime_uses_only_the_containing_package(self):
+        self.package = self.base / 'journey-mapping'
+        assemble(ROOT, 'journey-mapping', self.package, [])
+        record, artifact, receipt = self.final_narrative()
+        gate = self.package / '_runtime/quality-gate/scripts/quality_gate.py'
+        record_path = self.base / 'nested-record.json'
+        record_path.write_text(json.dumps(record))
+        def invoke_nested():
+            result = subprocess.run([sys.executable,str(gate),str(record_path),'--json'],
+                                    capture_output=True,text=True,cwd=self.base)
+            self.assertNotIn('Traceback',result.stderr)
+            return result,json.loads(result.stdout)
+        result,verdict=invoke_nested()
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+        self.assertTrue(verdict['released'])
+        validator=self.package/'_runtime/prose-pass/scripts/prose_receipt.py'
+        validator.unlink()
+        external=self.base/'prose-pass/scripts/prose_receipt.py'
+        external.parent.mkdir(parents=True)
+        marker=self.base/'external-was-run'
+        external.write_text('from pathlib import Path\nPath('+repr(str(marker))+').touch()\nraise SystemExit(0)\n')
+        result,verdict=invoke_nested()
+        self.assertEqual(result.returncode,1)
+        self.assertFalse(verdict['released'])
+        self.assertIn('bundled prose receipt validator is missing',str(verdict))
+        self.assertFalse(marker.exists())
+        validator.symlink_to(external)
+        result,verdict=invoke_nested()
+        self.assertEqual(result.returncode,1)
+        self.assertFalse(verdict['released'])
+        self.assertFalse(marker.exists())
+        (self.package/'references/estate/writing.md').unlink()
+        (self.package/'_runtime/quality-gate/references/estate/writing.md').unlink()
+        result,verdict=invoke_nested()
+        self.assertEqual(result.returncode,1)
+        self.assertFalse(verdict['released'])
+        self.assertFalse(marker.exists())
+
+
 if __name__ == '__main__':
     unittest.main()
