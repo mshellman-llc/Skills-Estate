@@ -172,7 +172,7 @@ const addRow = (r, extra) => {
   grid.append(labelCell(r.label));
   r.cells.forEach(t => {
     const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" && t !== null && t.trim() ? " hypothesis" : ""}`, t === null ? "Not captured" : t);
-    if (r.basis) cell.append(el("span", "basis-tag", t === null ? "not captured" : r.basis));
+    if (r.basis && t !== null) cell.append(el("span", "basis-tag", r.basis));
     grid.append(cell);
   });
 };
