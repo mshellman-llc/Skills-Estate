@@ -9,3 +9,7 @@ Preserve exact source evidence and required executable syntax. Protect only the 
 For a substantive rewrite, retain the original and revised files. Check the required meaning against the source after editing. A consequential decision requires deeper factual review; it does not create a separate writing standard for routine work.
 
 A missing tool or unsupported format requires a reading pass. Do not report a scanner pass for an unscanned artifact. Repair detected writing patterns rather than lowering the checker settings or relabeling the text.
+
+The extractor reads JavaScript strings, template text, comments and embedded JSON without executing the script. Operators, variable names and regular-expression syntax are code. Text in UI attributes and event-handler strings remains under review. An incomplete string, template or comment returns an extraction error.
+
+Structured values keep their boundaries for fragment checks. Two labels in different cells are not consecutive body sentences; stacked fragments inside either cell still fail. Repetition checks count an exact citation once when it is a feeling's `source` paired with an `observed` or `reported` basis, or an entry in `metadata.sourceLabels`. Every occurrence remains subject to the other writing checks. Dates count as one token in repetition checks. Markdown table-column boundaries do not join unrelated fields into a repeated phrase. Hypothesis reasons remain authored prose. Authored claims and repeated explanations remain subject to the repetition check.

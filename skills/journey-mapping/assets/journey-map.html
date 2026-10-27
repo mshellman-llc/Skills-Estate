@@ -107,13 +107,14 @@ const MAP = {
 };
 
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+const requiredCells = label => `${label} needs exactly one text or null cell per phase.`;
 // Fail visibly instead of changing, truncating or inventing supplied values.
 function validateMap(map) {
   const fail = message => { throw new Error(message); };
   if (!Array.isArray(map.phases) || !map.phases.length || map.phases.some(p => typeof p !== "string" || !p.trim())) fail("Provide at least one named phase.");
   const n = map.phases.length;
   if (typeof map.title !== "string" || !map.title.trim()) fail("Provide a map title.");
-  if (map.visibilityUnknown !== undefined && (!Array.isArray(map.visibilityUnknown) || map.visibilityUnknown.length !== n || map.visibilityUnknown.some(v => v !== null && typeof v !== "string"))) fail("Unknown visibility needs one text or null cell per phase.");
+  if (map.visibilityUnknown !== undefined && (!Array.isArray(map.visibilityUnknown) || map.visibilityUnknown.length !== n || map.visibilityUnknown.some(v => v !== null && typeof v !== "string"))) fail(requiredCells("Unknown visibility"));
   if (!["evidence", "hypothesis", "not captured"].includes(map.emotionBasis)) fail("State the emotional curve's evidence basis.");
   if (map.emotion == null) {
     if (map.emotionBasis !== "not captured") fail("Missing emotion values must be marked not captured.");
@@ -131,7 +132,7 @@ function validateMap(map) {
     const rows = map[key];
     if (!Array.isArray(rows) || rows.length !== labels.length || rows.some((row, i) => !row || row.label !== labels[i])) fail(`Provide the ${key} rows in the documented order.`);
     for (const row of rows) {
-      if (!Array.isArray(row.cells) || row.cells.length !== n || row.cells.some(v => v !== null && typeof v !== "string")) fail(`${row.label} needs exactly one text or null cell per phase.`);
+      if (!Array.isArray(row.cells) || row.cells.length !== n || row.cells.some(v => v !== null && typeof v !== "string")) fail(requiredCells(row.label));
       if (["Thoughts", "Pain points"].includes(row.label) && !["observed", "reported", "hypothesis", "not captured"].includes(row.basis)) fail(`${row.label} needs its own evidence basis.`);
       if (row.basis !== undefined && !["observed", "reported", "hypothesis", "not captured"].includes(row.basis)) fail(`${row.label} has an invalid evidence basis.`);
       if (row.basis === "not captured" && row.cells.some(v => v !== null && v.trim())) fail(`${row.label} has text marked not captured; provide its evidence basis.`);
@@ -152,7 +153,8 @@ const legend = document.getElementById("legend");
 [["Phase", "var(--band)"], ["Pain point", "var(--pain)"], ["Opportunity", "var(--accent)"]].forEach(([t, c]) => {
   const s = el("span"); const w = el("i", "sw"); w.style.background = c; s.append(w, t); legend.append(s);
 });
-legend.append(el("span", null, MAP.emotion == null ? "Emotion scores: not captured" : MAP.emotionBasis === "hypothesis" ? "Emotional curve, low to high (hypothesis, dashed)" : "Emotional curve, low to high"));
+const curveLegend = "Emotional curve, low to high";
+legend.append(el("span", null, MAP.emotion == null ? "Emotion scores: not captured" : curveLegend + (MAP.emotionBasis === "hypothesis" ? " (hypothesis, dashed)" : "")));
 
 const grid = document.getElementById("grid");
 grid.style.gridTemplateColumns = `190px repeat(${n}, minmax(150px, 1fr))`;

@@ -33,7 +33,7 @@ class UniversalWritingTests(unittest.TestCase):
             'file':filename, 'input':body, 'exit':result.returncode,
             'stdout':result.stdout, 'stderr':result.stderr}, indent=2))
         self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
-        self.assertEqual(path.read_text(), body)
+        self.assertEqual(path.read_bytes(), body.encode())
         return result
 
     def test_all_entries_require_both_writing_runtimes_and_policy(self):
@@ -113,6 +113,57 @@ class UniversalWritingTests(unittest.TestCase):
     def test_unreadable_content_returns_error_not_clean(self):
         self.scan('bad.json', '{broken', 2)
         self.scan('binary.bin', '\x00raw', 2)
+
+    def test_javascript_code_is_separate_from_strings_templates_and_comments(self):
+        syntax = '''const re = /["']/g;
+const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" ? " hypothesis" : ""}`, t === null ? (r.label === "Opportunities" ? "None proposed" : "Not captured") : t);
+const ratio = (value - 1) / 4;'''
+        self.scan('syntax.html', '<script>'+syntax+'</script>', 0)
+        self.scan('string.js', 'const label = '+json.dumps(BAD)+';', 1)
+        self.scan('comment.js', '// '+BAD+'\nconst row=12;', 1)
+        self.scan('template.js', 'const label = `<p>'+BAD+' ${name}</p>`;', 1)
+        self.scan('expression.js', 'const label = `${ok ? '+json.dumps(BAD)+' : "Ready"}`;', 1)
+        self.scan('json-data.html', '<script>const MAP = '+json.dumps({'note': BAD})+';</script>', 1)
+        self.scan('event.html', '<button onclick=\'alert('+json.dumps(BAD)+')\'>Open</button>', 1)
+        self.scan('broken.js', 'const label = `unfinished ${name;', 2)
+
+    def test_structured_cells_keep_boundaries_and_citations_keep_all_other_checks(self):
+        self.scan('cells.json', json.dumps({'cells': ['Identify the account.', 'Obtain the ID.']}), 0)
+        self.scan('fragments.json', json.dumps({'cells': ['Instant progress. Effortless success.']}), 1)
+        citation = 'Patron B interview concerning reserved library books, 23 October 2026'
+        data = {'emotionLabels': [{'text':'Annoyed at the counter', 'basis':'reported', 'source':citation},
+                                  {'text':'Relieved at handover', 'basis':'reported', 'source':citation}]}
+        self.scan('citations.json', json.dumps(data), 0)
+        data['emotionLabels'][0]['source'] = BAD
+        data['emotionLabels'][1]['source'] = BAD
+        self.scan('bad-citation.json', json.dumps(data), 1)
+        self.scan('redundancy.json', json.dumps({'cells': ['Collect the parcel; inferred from the pickup task',
+                                                        'Confirm delivery; inferred from the pickup task']}), 1)
+
+    def test_repetition_does_not_bridge_dates_or_table_columns(self):
+        self.scan('questions.md', 'Ask whether the book can be collected. Check whether the book can be found.', 1)
+        self.scan('ledger.md', '| L2, interview, 23 October 2026 | reported |\n| L3, walkthrough, 23 October 2026 | reported |', 0)
+        self.scan('repeat.md', 'The library updates the dispatch queue overnight. The library updates the dispatch queue overnight.', 1)
+        self.scan('dates.md', 'The audit is dated 2026-10-23. Scores use 1 to 5.', 0)
+
+
+    def test_review_regressions_preserve_repetition_and_template_boundaries(self):
+        repeated = 'Check whether it has been returned.'
+        self.scan('aux-repeat.md', repeated+' '+repeated, 1)
+        reason = 'Inferred from the pickup task because no patron was interviewed'
+        self.scan('hypothesis.json', json.dumps({'emotionLabels': [
+            {'text':'Annoyed', 'basis':'hypothesis', 'source':reason},
+            {'text':'Relieved', 'basis':'hypothesis', 'source':reason}]}), 1)
+        self.scan('unrelated-source.json', json.dumps({'rows': [
+            {'basis':'reported', 'source':reason}, {'basis':'reported', 'source':reason}]}), 1)
+        self.scan('dated-repeat.md', 'Interviewed 23 October 2026 at the counter. Interviewed 23 October 2026 at the counter.', 1)
+        self.scan('pipe-repeat.json', json.dumps({'note':'The library | updates the dispatch | queue overnight. The library | updates the dispatch | queue overnight.'}), 1)
+        self.scan('regex-arrow.js', "const test = s => /'/.test(s); const other = typeof /'/;", 0)
+        self.scan('templates.html', '<script>const first = `<td>No log access.</td>`; const next = `<td>Priority not set.</td>`;</script>', 0)
+        self.scan('inline-fragments.html', '<script>const first = `<p>Instant <b>progress</b>. Effortless success.</p>`;</script>', 1)
+        self.scan('bare-script.html', '<script type>const row = 12;</script>', 0)
+        self.scan('html-template.html', '<script type="text/template"><p>'+BAD+'</p></script>', 1)
+        self.scan('crlf.js', 'const label = "Row'+'\\'+'\r\n'+'saved";', 0)
 
 
 if __name__ == '__main__':

@@ -505,12 +505,15 @@ def check(text: str, cfg=None):
         if "-->" in line:
             in_comment = False
     fragment_text = "\n".join(fragment_lines)
-    body_sents = [s for s in sentences(fragment_text) if s not in heading_set]
-    verbless_flags = [(s, not has_finite_verb(s)) for s in body_sents]
+    fragment_blocks = getattr(text, 'fragment_blocks', [fragment_text])
+    block_flags = [[(s, not has_finite_verb(s)) for s in sentences(block) if s not in heading_set]
+                   for block in fragment_blocks]
+    verbless_flags = [item for block in block_flags for item in block]
     verbless = [s for s, flag in verbless_flags if flag and 2 <= len(words(s)) <= 7]
     consecutive = [
         f"{a} / {b}"
-        for (a, fa), (b, fb) in zip(verbless_flags, verbless_flags[1:])
+        for block in block_flags
+        for (a, fa), (b, fb) in zip(block, block[1:])
         if fa and fb and 2 <= len(words(a)) <= 7 and 2 <= len(words(b)) <= 7
     ]
     if consecutive:
@@ -563,17 +566,22 @@ def check(text: str, cfg=None):
     # N-grams are built per line so a phrase never spans a slide or table-cell
     # boundary. Lines that recur three or more times are page furniture
     # (footers, confidentiality labels, page numbers) and are excluded.
-    line_counts = Counter(ln.strip().lower() for ln in lines if ln.strip())
+    repetition_lines = getattr(text, 'repetition_text', text).splitlines()
+    line_counts = Counter(ln.strip().lower() for ln in repetition_lines if ln.strip())
     furniture = {ln for ln, n in line_counts.items() if n >= 3}
 
     grams = Counter()
-    for ln in lines:
+    dates = re.compile(r'\b(?:\d{4}-\d{2}-\d{2}|\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})\b', re.I)
+    for ln in repetition_lines:
         stripped = ln.strip()
         if not stripped or stripped.lower() in furniture:
             continue
-        toks = [t.lower() for t in re.findall(r"[A-Za-z0-9][A-Za-z0-9'’%$.-]*", stripped)]
-        for i in range(len(toks) - 3):
-            grams[" ".join(toks[i:i + 4])] += 1
+        # A date occupies one token; table columns remain separate fields.
+        for field in (re.split(r'(?<!\\)\|', stripped) if stripped.startswith('|') else [stripped]):
+            for span in [dates.sub('DATE', field)]:
+                toks = [t.lower() for t in re.findall(r"[A-Za-z0-9][A-Za-z0-9'’%$.-]*", span)]
+                for i in range(len(toks) - 3):
+                    grams[" ".join(toks[i:i + 4])] += 1
 
     exempt = [p.lower() for p in cfg["allowed_repeated_phrases"]]
     repeats = [
@@ -602,7 +610,7 @@ def check(text: str, cfg=None):
         ))
 
     # --- C16 notation drift ----------------------------------------------
-    used_ranges = [name for name, p in RANGE_NOTATIONS.items() if p.search(text)]
+    used_ranges = [name for name, p in RANGE_NOTATIONS.items() if p.search(dates.sub(' ', text))]
     if len(used_ranges) > 1:
         findings.append(Finding(
             "C16-notation-drift", "WARN",
