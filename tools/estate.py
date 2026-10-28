@@ -295,6 +295,7 @@ def lock(root=ROOT):
 
 
 def build(root=ROOT, home=None):
+    root = Path(root).resolve()
     homes = {Path.home().resolve(), Path(home or Path.home()).expanduser().resolve()}
     parents = [parent for destination in homes for parent in [*local_targets(destination).values(), destination / '.codex/skills']]
     for parent in parents:
@@ -467,6 +468,7 @@ def restore(receipt_path):
 
 
 def bundle(root=ROOT):
+    root = Path(root).resolve()
     manifest = current_build(root)
     stage = Path(tempfile.mkdtemp(prefix='estate-dist-')).resolve()
     entries = {}
