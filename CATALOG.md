@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 78 source modules and 52 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 79 source modules and 53 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 ## Proposed task entrypoints
 
@@ -52,6 +52,7 @@ This candidate contains 78 source modules and 52 proposed task entrypoints. Cons
 | skill-estate-sync | [skill-estate-sync](skills/skill-estate-sync/SKILL.md) |  |
 | solution-brief | [solution-brief](skills/solution-brief/SKILL.md) |  |
 | statement-of-work | [sow](skills/sow/SKILL.md) | sow-quality |
+| sticker-art-direction | [sticker-art-direction](skills/sticker-art-direction/SKILL.md) |  |
 | sticker-sheets | [sticker-sheets](skills/sticker-sheets/SKILL.md) |  |
 | system-design | [system-design](skills/system-design/SKILL.md) | architecture-doc |
 | team-onboarding | [team-onboarding](skills/team-onboarding/SKILL.md) |  |
@@ -133,6 +134,7 @@ Each module needs a reviewed capability disposition before release.
 - [sow](skills/sow/SKILL.md)
 - [sow-quality](skills/sow-quality/SKILL.md)
 - [spec-writer](skills/spec-writer/SKILL.md)
+- [sticker-art-direction](skills/sticker-art-direction/SKILL.md)
 - [sticker-sheets](skills/sticker-sheets/SKILL.md)
 - [system-design](skills/system-design/SKILL.md)
 - [team-onboarding](skills/team-onboarding/SKILL.md)

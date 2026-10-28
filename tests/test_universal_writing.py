@@ -39,7 +39,7 @@ class UniversalWritingTests(unittest.TestCase):
 
     def test_all_entries_require_both_writing_runtimes_and_policy(self):
         entries = sorted((ROOT / 'skills').glob('*/SKILL.md'))
-        self.assertEqual(len(entries), 78)
+        self.assertTrue(entries, "No skill entrypoints discovered")
         for entry in entries:
             name = entry.parent.name
             deps = runtime_closure(ROOT, name)

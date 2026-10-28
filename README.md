@@ -2,7 +2,7 @@
 
 Private source of truth for Megan's reusable skills across Claude Code and Codex. Author each skill once in `skills/`. Branding belongs in [policies/brand.md](policies/brand.md); the build includes the current policy in every portable package.
 
-The restoration candidate contains 78 source modules and 52 proposed task entrypoints. [CATALOG.md](CATALOG.md) records both inventories. Capability review and host verification remain open; this branch is not an accepted release. Private project records and credentials stay outside the repository.
+The restoration candidate contains 79 source modules and 53 proposed task entrypoints. [CATALOG.md](CATALOG.md) records both inventories. Capability review and host verification remain open; this branch is not an accepted release. Private project records and credentials stay outside the repository.
 
 ## Install on a Mac or Linux machine
 

@@ -12,7 +12,7 @@ FAMILIES = [
  ('Product and experience', 'Research needs, define products, and review the experience people use.', 'accessibility-audit analytics-strategy independent-product information-architecture journey-mapping pm-spec-writing process product-development-pathway spec-writer system-design usability-testing'),
  ('Knowledge and context', 'Find the current record, preserve evidence, and carry work between sessions.', 'beastmode-capture beastmode-context beastmode-health beastmode-reconcile brain-work-item evidence-core knowledge-hub session-handoff transcript-ingestion'),
  ('Writing and presentation', 'Shape the words, visual structure, and author voice of an artifact.', 'brand-renderer prose-pass client-brand deck-builder editorial-design megan-writing-style personal-writing-style-runtime writing-integrity writing-style-builder'),
- ('Career and personal', 'Prepare career materials and work with the private planning and creative tools.', 'career-application career-materials-and-outreach career-progression-and-offers case-study-builder resume-numbers-and-keywords fortunes-weave sticker-sheets'),
+ ('Career and personal', 'Prepare career materials and work with the private planning and creative tools.', 'career-application career-materials-and-outreach career-progression-and-offers case-study-builder resume-numbers-and-keywords fortunes-weave sticker-art-direction sticker-sheets'),
  ('Estate and engineering controls', 'Maintain skills, review changes, and verify where a result actually exists.', 'code-simplify execution-truth github-repository-work quality-gate skill-creation-walkthrough skill-estate-sync'),
 ]
 DEFAULT_PUBLISHED_REF = 'refs/remotes/origin/main'

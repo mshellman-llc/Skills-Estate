@@ -264,6 +264,11 @@
       },
       "description": "Draft or review a statement of work from confirmed scope, commercial data and a selected contract profile. Preserve clause coverage, estimate assumptions and obligations; no default employer terms apply."
     },
+    "sticker-art-direction": {
+      "source": "sticker-art-direction",
+      "pack": "core",
+      "modes": {}
+    },
     "sticker-sheets": {
       "source": "sticker-sheets",
       "pack": "personal-projects",

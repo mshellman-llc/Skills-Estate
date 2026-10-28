@@ -142,6 +142,7 @@
         "product-development",
         "sf-apex-patterns",
         "sf-devops-center",
+        "sticker-art-direction",
         "sticker-sheets",
         "usability-testing",
         "writing-integrity",
@@ -372,6 +373,9 @@
         "status": "pending"
       },
       "spec-writer": {
+        "status": "pending"
+      },
+      "sticker-art-direction": {
         "status": "pending"
       },
       "sticker-sheets": {
