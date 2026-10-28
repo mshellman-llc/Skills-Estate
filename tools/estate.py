@@ -3,6 +3,7 @@
 import argparse
 import contextlib
 import datetime as dt
+import errno
 import fcntl
 import hashlib
 import json
@@ -60,6 +61,157 @@ def write_json(path, value):
     tmp = path.with_name(path.name + '.tmp-' + uuid.uuid4().hex)
     tmp.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n')
     os.replace(tmp, path)
+
+
+def output_inventory(folder, server_metadata=False):
+    """Read every generated file; reject links and special files before mutation."""
+    releases.safe_parents(folder)
+    result = {}
+    if not folder.exists():
+        return result
+    for parent, dirs, names in os.walk(folder, followlinks=False):
+        for name in dirs + names:
+            path = Path(parent) / name
+            if path.is_symlink() or not (path.is_file() or path.is_dir()):
+                raise ValueError(f'Unsupported generated output: {path}')
+        for name in names:
+            p = Path(parent) / name
+            if Path(parent) == folder and re.fullmatch(r'\.smbdelete[A-Za-z0-9]+', name):
+                if server_metadata:
+                    continue  # SMB owns this open-file deletion placeholder.
+                raise ValueError(f'Server-reserved name in staged output: {p}')
+            result[str(p.relative_to(folder))] = {'sha256': sha(p.read_bytes()), 'mode': p.stat().st_mode & 0o777}
+    return result
+
+
+def output_modes(root, stage, cache):
+    """Plan actual destination permissions before hashing, including SMB mode emulation."""
+    for path in files(stage):
+        requested = path.stat().st_mode & 0o777
+        if requested not in cache:
+            fd, name = tempfile.mkstemp(prefix='mode-probe-', dir=root / '.local')
+            os.close(fd)
+            probe = Path(name)
+            try:
+                probe.chmod(requested)
+                cache[requested] = probe.stat().st_mode & 0o777
+            finally:
+                probe.unlink()
+        if cache[requested] != requested:
+            path.chmod(cache[requested])
+
+
+def replace_outputs(root, stage, destination):
+    """Publish generated files under the estate lock, including on SMB shares."""
+    local = root / '.local'
+    pending = local / ('pending-' + destination.name + '.json')
+    if pending.exists():
+        raise ValueError(f'Interrupted output replacement requires review: {pending}')
+    expected = output_inventory(stage)
+    before = output_inventory(destination, server_metadata=True)
+    previous = local / ('previous-' + destination.name + '-' + uuid.uuid4().hex)
+    # Prefer a directory switch when both paths share a filesystem and it permits rename.
+    if stage.stat().st_dev == destination.parent.stat().st_dev:
+        moved = False
+        try:
+            if destination.exists():
+                destination.rename(previous)
+                moved = True
+            stage.rename(destination)
+        except OSError as exc:
+            if moved:
+                previous.rename(destination)
+            if exc.errno not in (errno.EACCES, errno.EPERM, errno.EBUSY, errno.EXDEV):
+                raise
+            if previous.exists():
+                raise ValueError(f'Ambiguous directory replacement; inspect {previous}') from exc
+        else:
+            if previous.exists():
+                shutil.rmtree(previous)
+            return
+    # Network shares can deny directory rename while permitting file writes. Back up
+    # only changed files, retain a journal, publish the manifest last, then verify.
+    changed = sorted(name for name in set(before) | set(expected) if before.get(name) != expected.get(name))
+    if not changed:
+        return
+    previous.mkdir()
+    record = {'destination': str(destination), 'backup': str(previous), 'before': before,
+              'expected': expected, 'changed': changed, 'state': 'preparing'}
+    try:
+        for name in changed:
+            if name in before:
+                target = previous / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(destination / name, target)
+        saved = output_inventory(previous)
+        if saved != {name: before[name] for name in changed if name in before}:
+            raise ValueError('Generated-output backup verification failed')
+        if output_inventory(destination, server_metadata=True) != before or output_inventory(stage) != expected:
+            raise ValueError('Generated output changed during replacement preparation')
+        record['state'] = 'replacing'
+        write_json(pending, record)
+        applied = []
+        try:
+            # File/dir shape changes are refused; never recursively remove a destination.
+            for name in changed:
+                p = destination / name
+                releases.safe_parents(p)
+                if p.exists() and not p.is_file():
+                    raise ValueError(f'Output shape changed: {p}')
+                if any(parent.is_file() for parent in p.parents if parent != destination.parent):
+                    raise ValueError(f'Output parent is a file: {p}')
+            order = sorted(changed, key=lambda name: (name in ('manifest.json', 'release.json'), name))
+            for name in order:
+                p = destination / name
+                observed = {'sha256': sha(p.read_bytes()), 'mode': p.stat().st_mode & 0o777} if p.is_file() else None
+                if observed != before.get(name):
+                    raise ValueError(f'Output changed after preflight: {p}')
+                applied.append(name)  # Include a partially written file in recovery.
+                if name in expected:
+                    p.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(stage / name, p)
+                else:
+                    p.unlink()
+            if output_inventory(destination, server_metadata=True) != expected:
+                raise ValueError('Published generated output failed verification')
+        except BaseException:
+            record['state'] = 'failed; restoring'
+            write_json(pending, record)
+            # Preserve a later edit or an indeterminate partial write for explicit recovery.
+            for name in applied:
+                p = destination / name
+                observed = {'sha256': sha(p.read_bytes()), 'mode': p.stat().st_mode & 0o777} if p.is_file() else None
+                if observed not in (before.get(name), expected.get(name)):
+                    raise ValueError(f'Output changed or partially written; preserve {pending} for recovery: {p}')
+            for name in reversed(applied):
+                p = destination / name
+                releases.safe_parents(p)
+                if name in before:
+                    p.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(previous / name, p)
+                else:
+                    p.unlink(missing_ok=True)
+            if output_inventory(destination, server_metadata=True) != before:
+                raise ValueError(f'Output restoration incomplete; preserve {pending} and {previous}')
+            record['state'] = 'failed; prior files restored'
+            write_json(previous / 'replacement-receipt.json', record)
+            pending.unlink()
+            raise
+        pending.unlink()
+        shutil.rmtree(previous)
+        # Remove only empty generated directories left after obsolete files were removed.
+        for parent, dirs, _ in os.walk(destination, topdown=False):
+            for name in dirs:
+                try:
+                    (Path(parent) / name).rmdir()
+                except OSError:
+                    pass
+    except BaseException:
+        # A prepared backup is retained for diagnosis; a pending journal blocks reuse.
+        if not pending.exists() and not (previous / 'replacement-receipt.json').exists():
+            record['state'] = 'preparation failed; destination unchanged'
+            write_json(previous / 'replacement-receipt.json', record)
+        raise
 
 
 def source_hash(root=ROOT):
@@ -157,10 +309,11 @@ def build(root=ROOT, home=None):
         return current_build(root)
     except ValueError:
         pass
-    stage = Path(tempfile.mkdtemp(prefix='.estate-build-', dir=root / '.local'))
+    stage = Path(tempfile.mkdtemp(prefix='estate-build-')).resolve()
     package_dir = stage / 'skills'
     package_dir.mkdir()
     entries = {}
+    mode_cache = {}
     try:
         for name, item in catalog_entries(root).items():
             target = package_dir / name
@@ -168,6 +321,7 @@ def build(root=ROOT, home=None):
             dependencies = catalog_dependencies(root, item, runtime_closure)
             mapping = assemble(root, source, target, dependencies)
             apply_entrypoint(target, name, item)
+            output_modes(root, target, mode_cache)
             entries[name] = {'sha256': tree_hash(target), 'runtime_dependencies': dependencies,
                              'source_files': len(mapping), 'source_module': source,
                              'pack': item['pack'], 'modes': item.get('modes', {})}
@@ -175,18 +329,9 @@ def build(root=ROOT, home=None):
             raise ValueError('Sources changed during the build; rerun from a stable source tree')
         manifest = {**result, 'packages': entries, 'format': 2}
         write_json(stage / 'manifest.json', manifest)
+        output_modes(root, stage, mode_cache)
         destination = root / 'build'
-        previous = root / '.local' / ('previous-build-' + uuid.uuid4().hex)
-        if destination.exists():
-            destination.rename(previous)
-        try:
-            stage.rename(destination)
-        except BaseException:
-            if previous.exists():
-                previous.rename(destination)
-            raise
-        if previous.exists():
-            shutil.rmtree(previous)
+        replace_outputs(root, stage, destination)
         return manifest
     finally:
         if stage.exists():
@@ -194,6 +339,8 @@ def build(root=ROOT, home=None):
 
 
 def current_build(root=ROOT):
+    if (root / '.local/pending-build.json').exists():
+        raise ValueError('Interrupted build replacement requires review before use')
     path = root / 'build' / 'manifest.json'
     if not path.exists():
         raise ValueError('No build. Run build first.')
@@ -321,7 +468,7 @@ def restore(receipt_path):
 
 def bundle(root=ROOT):
     manifest = current_build(root)
-    stage = Path(tempfile.mkdtemp(prefix='.estate-dist-', dir=root / '.local'))
+    stage = Path(tempfile.mkdtemp(prefix='estate-dist-')).resolve()
     entries = {}
     try:
         for name, entry in manifest['packages'].items():
@@ -336,18 +483,9 @@ def bundle(root=ROOT):
             entries[name] = {'file': path.name, 'sha256': sha(path.read_bytes()), 'content_sha256': entry['sha256']}
         release = {'format': 1, 'source_sha256': manifest['source_sha256'], 'packages': entries}
         write_json(stage / 'release.json', release)
+        output_modes(root, stage, {})
         destination = root / 'dist'
-        previous = root / '.local' / ('previous-dist-' + uuid.uuid4().hex)
-        if destination.exists():
-            destination.rename(previous)
-        try:
-            stage.rename(destination)
-        except BaseException:
-            if previous.exists():
-                previous.rename(destination)
-            raise
-        if previous.exists():
-            shutil.rmtree(previous)
+        replace_outputs(root, stage, destination)
         return release
     finally:
         if stage.exists():
