@@ -10,7 +10,7 @@ Before writing, read the [writing standard](references/estate/writing.md). Apply
 
 # Skill estate sync
 
-Keep one canonical Git checkout. Edit its `skills/`, `policies/`, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same generated packages locally. A package includes the workflow, scripts, references, templates, and shared policies it needs.
+Keep one canonical Git checkout. Edit its `skills/`, `policies/`, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same accepted versioned packages locally. Candidate builds and ZIPs remain separate from installed releases. A package includes the workflow, scripts, references, templates, and shared policies it needs.
 
 Read [the skill standard](references/estate/skill-standard.md) before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.
 
@@ -43,22 +43,24 @@ The current canonical CLI does not automatically run every behavioral test befor
 
 ## Install and keep local hosts consistent
 
-After the requested repairs and release checks pass:
+Before rebuilding a legacy checkout whose installed links point into `build/`, run `pin-installed`. It preserves only the existing managed inventory and exact bytes in a versioned directory; it does not promote new source or change vendor installations.
+
+After the requested repairs, independent review, and release checks pass, use the exact reviewed source hash:
 
 ```sh
-python3 scripts/manage_estate.py --repo /path/to/Skills-Estate install
+python3 scripts/manage_estate.py --repo /path/to/Skills-Estate install --expected-source REVIEWED_SOURCE_HASH
 python3 scripts/manage_estate.py --repo /path/to/Skills-Estate status
 ```
 
-Installation links each managed package into `~/.claude/skills` and `~/.agents/skills`. Existing matching legacy entries in `~/.codex/skills` are reconciled as well. Unrelated installed skills remain separate. The repository pointer lets this skill find the same checkout from either host.
+Installation copies packages into a verified version under `~/.local/share/skills-estate/releases/` and links that version into `~/.claude/skills` and `~/.agents/skills`. Existing matching legacy entries in `~/.codex/skills` are reconciled as well. Unrelated installed skills remain separate. The repository pointer lets this skill find the same checkout from either host.
 
 An existing divergent file, directory, or link is a conflict. Inspect its unique work first. If replacement is authorized, `adopt` backs it up and records a restore receipt before linking. A failed install rolls back its changes. Never discard a divergent installation to force a green status.
 
 `restore /absolute/path/to/receipt.json` reverses a recorded install only if its destinations still match what the installer wrote. It refuses to overwrite a subsequent user change.
 
-`sync` runs build, bundle, install, and status together. Use it only after the applicable capability tests; it has the same installation effects as the separate commands. Do not schedule it to overwrite conflicts automatically. For a test run, put `--home /absolute/path/to/test-home` before the command. This changes the install destination and repository pointer; build output still belongs to the selected checkout.
+`sync` runs build and bundle only. It refreshes candidates without changing installed versions. Git commit, checkout, and merge hooks never install or rebuild. Everyday promotion requires the reviewed source hash and completed release gates. `rollback RELEASE_ID` can reactivate a previously installed version after checking its integrity and the current destinations. For a test run, put `--home /absolute/path/to/test-home` before the command. This changes the install destination and repository pointer; build output still belongs to the selected checkout.
 
-Status reports `linked-current`, `copy-current`, drift, missing, or broken entries. Its overall success requires the managed links to match. A copied package can match today's bytes while remaining disconnected from future updates. Open the updated skill in a fresh host session when discovery requires a reload, then run a representative task there and retain its output. Do not claim Claude Code execution based on a Codex run, or the reverse.
+Status inspects the current source, build, ZIP hashes, installed release, local links, and reported account uploads. It continues to inspect ZIPs when the build is stale. Local states include `linked-current`, `pinned-older`, `legacy-mutable`, drift, missing, and broken entries. Overall success requires current build and ZIPs plus matching managed installations. An older pinned installation remains usable but is not the current candidate. A copied package remains outside managed release ownership. Open the updated skill in a fresh host session when discovery requires a reload, then run a representative task there and retain its output. Do not claim Claude Code execution based on a Codex run, or the reverse.
 
 ## Shared brand and dependency changes
 
@@ -77,7 +79,7 @@ python3 scripts/manage_estate.py --repo /path/to/Skills-Estate record-publicatio
   --surface claude-account --skill knowledge-hub --reference 'account and upload record'
 ```
 
-The canonical ledger currently accepts `claude-account` and `codex-account`. A ledger row remains `verified_live: false`: it records the reported upload hash, not a readback or execution. Retain a separate receipt for a destination readback or task invocation. For another destination, retain its actual receipt and extend the adapter explicitly before claiming managed synchronization.
+The canonical ledger accepts `claude-account`, `codex-account`, `cowork`, and `chatgpt-personal`. A ledger row remains `verified_live: false`: it records the reported upload hash, not a readback or execution. Retain a separate receipt for a destination readback or task invocation. For another destination, retain its actual receipt and extend the adapter explicitly before claiming managed synchronization.
 
 ## Retained standalone audit tools
 

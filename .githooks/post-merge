@@ -1,5 +1,4 @@
 #!/bin/sh
-set -eu
-cd "$(git rev-parse --show-toplevel)"
-mkdir -p .local
-python3 tools/estate.py sync > .local/last-sync.json
+# Git operations never build or install into an everyday host.
+# Run estate.py sync for candidate packages; promote separately after review.
+exit 0

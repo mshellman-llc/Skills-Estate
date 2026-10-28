@@ -29,7 +29,7 @@ def main():
     parser.add_argument("--home", type=Path, default=Path.home(), help="Installation home; use an isolated home for tests")
     parser.add_argument("command", choices=[
         "validate", "build", "bundle", "install", "adopt", "sync", "status",
-        "restore", "record-publication",
+        "restore", "record-publication", "pin-installed", "rollback",
     ])
     parser.add_argument("arguments", nargs=argparse.REMAINDER)
     args = parser.parse_args()

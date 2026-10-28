@@ -17,6 +17,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import releases
 from portable import assemble, runtime_closure
 from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint
 
@@ -141,7 +142,14 @@ def lock(root=ROOT):
             fcntl.flock(f, fcntl.LOCK_UN)
 
 
-def build(root=ROOT):
+def build(root=ROOT, home=None):
+    homes = {Path.home().resolve(), Path(home or Path.home()).expanduser().resolve()}
+    parents = [parent for destination in homes for parent in [*local_targets(destination).values(), destination / '.codex/skills']]
+    for parent in parents:
+        if parent.is_dir():
+            for dest in parent.iterdir():
+                if dest.is_symlink() and dest.resolve() == Path(root).resolve() / 'build/skills' / dest.name:
+                    raise ValueError('Build would change a legacy installation; run pin-installed first')
     result = validate(root)
     # Keep unchanged packages in place, especially on mounted volumes. Verify
     # their bytes before accepting the existing build; repair damaged builds.
@@ -203,77 +211,112 @@ def local_targets(home):
     return {'claude-code': home / '.claude' / 'skills', 'codex': home / '.agents' / 'skills'}
 
 
-def install(root=ROOT, home=None, adopt=False):
-    home = (home or Path.home()).expanduser().absolute()
+def install(root=ROOT, home=None, adopt=False, expected_source=None):
+    home = Path(home or Path.home()).expanduser().resolve()
     manifest = current_build(root)
-    operations = []
-    conflicts = []
-    targets = [(target, list(manifest['packages'])) for target in local_targets(home).values()]
-    legacy = home / '.codex' / 'skills'
-    targets.append((legacy, [name for name in manifest['packages'] if os.path.lexists(legacy / name)]))
-    for target, selected in targets:
-        if target.is_symlink():
-            raise ValueError(f'Refusing a symlinked install root: {target}')
-        for name in selected:
-            dest = target / name
-            source = root / 'build' / 'skills' / name
-            if dest.is_symlink() and dest.resolve() == source.resolve():
+    if home == Path.home().resolve():
+        if expected_source != manifest['source_sha256']:
+            raise ValueError('Everyday promotion requires --expected-source with the reviewed source hash')
+        import plugins
+        settings = plugins.config(root)
+        gaps = plugins.release_gaps(root, settings, settings['bundles'], manifest)
+        if gaps:
+            raise ValueError('Everyday release review pending: ' + ', '.join(x['subject'] for x in gaps))
+    with releases.home_lock(home):
+        release_id = releases.snapshot(root, home,
+            {name: root / 'build/skills' / name for name in manifest['packages']},
+            manifest['source_sha256'], 'reviewed' if home == Path.home().resolve() else 'isolated-candidate', tree_hash)
+        _, record = releases.load(home, release_id, tree_hash)
+        if any(record['packages'][name]['sha256'] != entry['sha256'] for name, entry in manifest['packages'].items()):
+            raise ValueError('Build changed after verification; refusing promotion')
+        if source_hash(root) != manifest['source_sha256']:
+            raise ValueError('Source changed after verification; refusing promotion')
+        return releases.activate(root, home, release_id, tree_hash, adopt=adopt)
+
+
+def pin_installed(root=ROOT, home=None):
+    """Preserve existing managed bytes; do not promote the candidate source."""
+    home = Path(home or Path.home()).expanduser().resolve()
+    with releases.home_lock(home):
+        current = releases.inspect(home, tree_hash)
+        if current['ok']:
+            return {'release_id': current['release_id'], 'links_changed': 0, 'backup': None}
+        if current['state'] != 'legacy-or-unmanaged':
+            raise ValueError('Repair the existing pinned installation before migrating')
+        packages, destinations = {}, {}
+        for parent in [*local_targets(home).values(), home / '.codex/skills']:
+            releases.safe_parents(parent)
+            if not parent.exists():
                 continue
-            if os.path.lexists(dest) and not adopt:
-                conflicts.append(str(dest))
-            else:
-                operations.append((dest, source))
-    pointer = home / '.config' / 'skills-estate' / 'repository'
-    if not (pointer.is_symlink() and pointer.resolve() == root.resolve()):
-        if os.path.lexists(pointer) and not adopt:
-            conflicts.append(str(pointer))
-        else:
-            operations.append((pointer, root))
-    if conflicts:
-        raise ValueError('Existing skills preserved. Review before adopt:\n' + '\n'.join(conflicts))
-    backup = home / '.local' / 'state' / 'skills-estate' / ('backup-' + dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8])
-    journal = []
-    try:
-        for dest, source in operations:
-            dest.parent.mkdir(parents=True, exist_ok=True)
-            saved = None
-            if os.path.lexists(dest):
-                saved = backup / dest.relative_to(home)
-                saved.parent.mkdir(parents=True, exist_ok=True)
-                dest.rename(saved)
-            # Journal before linking so a link failure can restore the original.
-            journal.append({'destination': str(dest), 'backup': str(saved) if saved else None, 'source': str(source)})
-            dest.symlink_to(source, target_is_directory=True)
-        receipt = {'source_sha256': manifest['source_sha256'], 'home': str(home), 'operations': journal}
-        if journal:
-            write_json(backup / 'receipt.json', receipt)
-        write_json(root / '.local' / 'install-receipt.json', receipt)
-        return {'links_changed': len(journal), 'backup': str(backup) if journal else None}
-    except BaseException:
-        for op in reversed(journal):
-            dest = Path(op['destination'])
-            if dest.is_symlink() and dest.resolve() == Path(op['source']).resolve():
-                dest.unlink()
-            if op['backup'] and os.path.lexists(op['backup']):
-                Path(op['backup']).rename(dest)
-        raise
+            for dest in parent.iterdir():
+                source = Path(root).resolve() / 'build/skills' / dest.name
+                if dest.is_symlink() and dest.resolve() == source and source.is_dir():
+                    packages[dest.name] = source
+                    destinations[dest] = dest.name
+        if not packages:
+            raise ValueError('No legacy managed links found; unrelated installations preserved')
+        release_id = releases.snapshot(root, home, packages, None, 'preserved-existing', tree_hash)
+        # Verify every original again before replacing any link.
+        for dest, name in destinations.items():
+            if dest.resolve() != packages[name]:
+                raise ValueError('Installation changed during migration')
+        return releases.activate(root, home, release_id, tree_hash, destinations=destinations)
+
+
+def rollback(root, home, release_id):
+    home = Path(home or Path.home()).expanduser().resolve()
+    with releases.home_lock(home):
+        active = releases.inspect(home, tree_hash)
+        if not active['ok']:
+            raise ValueError('Current installation drift must be resolved before rollback')
+        # Only a previously activated version can be a rollback target.
+        history = releases.state(home)
+        receipts = [json.loads(p.read_text()) for p in sorted(history.glob('backup-*/receipt.json'), key=lambda p: p.stat().st_mtime_ns, reverse=True)]
+        prior = next((r['active'] for r in receipts if r.get('phase') == 'committed' and r.get('active', {}).get('release_id') == release_id), None)
+        if prior is None:
+            raise ValueError('Rollback target was never activated')
+        destinations = {Path(dest): Path(target).name for dest, target in prior['links'].items()
+                        if Path(dest).parent != home / '.config/skills-estate'}
+        return releases.activate(root, home, release_id, tree_hash, destinations=destinations)
 
 
 def restore(receipt_path):
     receipt = json.loads(receipt_path.read_text())
-    operations = receipt['operations']
-    for op in operations:
-        dest = Path(op['destination'])
-        if not dest.is_symlink() or dest.resolve() != Path(op['source']).resolve():
-            raise ValueError(f'Changed since installation; refusing restore: {dest}')
-        if op['backup'] and not os.path.lexists(op['backup']):
-            raise ValueError(f'Missing backup: {op["backup"]}')
-    for op in reversed(operations):
-        dest = Path(op['destination'])
-        dest.unlink()
-        if op['backup']:
-            Path(op['backup']).rename(dest)
-    return {'restored': len(operations)}
+    home = Path(receipt['home']).resolve()
+    with releases.home_lock(home):
+        operations = receipt['operations']
+        active_file = releases.state(home) / 'active.json'
+        if receipt.get('format') == 2:
+            if not active_file.exists() or json.loads(active_file.read_text()) != receipt['active']:
+                raise ValueError('Changed active installation; refusing restore')
+        for op in operations:
+            dest = Path(op['destination'])
+            if receipt.get('format') == 2 and op['backup']:
+                saved = Path(op['backup'])
+                legacy = Path(receipt['active']['repository']) / 'build/skills' / dest.name
+                if saved.is_symlink() and saved.resolve() == legacy:
+                    _, pinned = releases.load(home, receipt['active']['release_id'], tree_hash)
+                    if not legacy.is_dir() or tree_hash(legacy) != pinned['packages'][dest.name]['sha256']:
+                        raise ValueError('Legacy build changed; keep the pinned release instead of restoring mutable links')
+            if op['source']:
+                if not dest.is_symlink() or dest.resolve() != Path(op['source']).resolve():
+                    raise ValueError(f'Changed since installation; refusing restore: {dest}')
+            elif os.path.lexists(dest):
+                raise ValueError(f'Changed retired destination; refusing restore: {dest}')
+            if op['backup'] and not os.path.lexists(op['backup']):
+                raise ValueError(f'Missing backup: {op["backup"]}')
+        for op in reversed(operations):
+            dest = Path(op['destination'])
+            if op['source']:
+                dest.unlink()
+            if op['backup']:
+                Path(op['backup']).rename(dest)
+        if receipt.get('format') == 2:
+            if receipt['previous_active']:
+                write_json(active_file, receipt['previous_active'])
+            else:
+                active_file.unlink()
+        return {'restored': len(operations)}
 
 
 def bundle(root=ROOT):
@@ -312,70 +355,117 @@ def bundle(root=ROOT):
 
 
 def status(root=ROOT, home=None):
-    home = (home or Path.home()).expanduser().absolute()
-    try:
-        manifest = current_build(root)
-        build_state = 'current'
-    except ValueError as e:
-        return {'build': str(e), 'ok': False}
-    surfaces = {}
+    home = Path(home or Path.home()).expanduser().resolve()
     inspection_errors = {}
-    ok = True
+    try:
+        desired_source = source_hash(root)
+    except (ValueError, OSError) as exc:
+        desired_source = None
+        inspection_errors['source'] = str(exc)
+    def read_manifest(path, label):
+        if not path.exists():
+            return {'packages': {}}
+        try:
+            data = json.loads(path.read_text())
+            if not isinstance(data, dict) or not isinstance(data.get('packages'), dict):
+                raise ValueError('Invalid package manifest')
+            return data
+        except (ValueError, OSError) as exc:
+            inspection_errors[label] = str(exc)
+            return {'packages': {}}
+    manifest = read_manifest(root / 'build/manifest.json', 'build')
+    release = read_manifest(root / 'dist/release.json', 'dist')
+    try:
+        current_build(root)
+        build_state = 'current'
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        build_state = str(exc)
+    installed = releases.inspect(home, tree_hash)
+    try:
+        catalog_names = set(catalog_entries(root))
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        inspection_errors['catalog'] = str(exc)
+        catalog_names = set()
+    public_names = catalog_names | set(manifest['packages']) | set(installed.get('packages', {})) | set(release['packages'])
+    surfaces = {}
+    verified_releases = {}
+    ok = build_state == 'current' and installed['ok']
+    content_cache = {}
     for surface, target in local_targets(home).items():
         rows = {}
-        for name, entry in manifest['packages'].items():
+        for name in sorted(public_names):
             dest = target / name
+            entry = manifest['packages'].get(name)
             if not dest.is_dir():
-                state = 'broken-link' if dest.is_symlink() else 'missing'
+                value = 'broken-link' if dest.is_symlink() else 'missing'
             else:
                 try:
-                    same = tree_hash(dest.resolve()) == entry['sha256']
+                    resolved = dest.resolve()
+                    if resolved not in content_cache:
+                        content_cache[resolved] = tree_hash(resolved)
+                    actual = content_cache[resolved]
+                    same = bool(entry and actual == entry['sha256'])
+                    pinned = releases.managed_link(dest, home, root, tree_hash, verified_releases) and '/releases/' in str(dest.resolve())
+                    value = ('linked-current' if pinned else 'legacy-mutable') if same and build_state == 'current' else ('pinned-older' if pinned else 'drift')
                 except (ValueError, OSError) as exc:
                     inspection_errors[str(dest)] = str(exc)
-                    same = False
-                linked = dest.is_symlink() and dest.resolve() == (root / 'build' / 'skills' / name).resolve()
-                state = 'linked-current' if same and linked else ('copy-current' if same else 'drift')
-            rows[name] = state
-            ok &= state == 'linked-current'
+                    value = 'drift'
+            rows[name] = value
+            ok &= value == 'linked-current'
         surfaces[surface] = rows
-    # Account downloads and vendor plugins have a separate lifecycle. Inventory
-    # duplicate entrypoint names without mutating those roots.
-    external = []
-    for base in [home / '.codex' / 'skills', home / '.agents' / 'skills' / 'synced', home / '.claude' / 'skills' / 'synced']:
-        if not base.exists():
-            continue
-        for parent, dirs, fs in os.walk(base, followlinks=False):
-            dirs[:] = [d for d in dirs if not d.startswith('.')]
-            if 'SKILL.md' in fs:
-                external.append({'path': str(Path(parent)), 'name': Path(parent).name})
-        for p in base.iterdir():
-            if p.is_symlink() and (p / 'SKILL.md').exists():
-                external.append({'path': str(p), 'name': p.name})
-    ledger_path = root / '.local' / 'cloud-publications.json'
+    dist_rows = {}
+    for name in sorted(public_names):
+        entry = (release or {}).get('packages', {}).get(name)
+        value = 'missing'
+        if entry:
+            try:
+                file = root / 'dist' / entry['file']
+                if file.parent != root / 'dist' or file.is_symlink():
+                    value = 'invalid-path'
+                elif not file.is_file():
+                    value = 'missing'
+                elif sha(file.read_bytes()) != entry['sha256']:
+                    value = 'modified'
+                else:
+                    value = 'current' if desired_source and release.get('source_sha256') == desired_source else 'stale-source'
+            except (OSError, KeyError, TypeError) as exc:
+                inspection_errors['dist/' + name] = str(exc)
+                value = 'invalid-metadata'
+        dist_rows[name] = value
+    ok &= bool(dist_rows) and all(value == 'current' for value in dist_rows.values())
+    ledger_path = root / '.local/cloud-publications.json'
     ledger = json.loads(ledger_path.read_text()) if ledger_path.exists() else {}
-    release_path = root / 'dist' / 'release.json'
-    release = json.loads(release_path.read_text()) if release_path.exists() else None
     cloud = {}
-    for surface in ['claude-account', 'codex-account']:
+    for surface in ['claude-account', 'cowork', 'codex-account', 'chatgpt-personal']:
         rows = {}
-        for name in manifest['packages']:
+        for name in sorted(public_names):
             recorded = ledger.get(surface, {}).get(name)
-            desired = release['packages'].get(name, {}).get('sha256') if release else None
-            fresh = release and release['source_sha256'] == manifest['source_sha256']
-            rows[name] = 'reported-current' if fresh and recorded and recorded['sha256'] == desired else 'pending'
+            expected = (release or {}).get('packages', {}).get(name, {}).get('sha256')
+            rows[name] = 'reported-current' if dist_rows[name] == 'current' and recorded and recorded['sha256'] == expected else 'pending'
         cloud[surface] = {'packages': rows, 'verified_live': False}
+    external = []
+    for base in [home / '.codex/skills', home / '.agents/skills/synced', home / '.claude/skills/synced']:
+        if base.exists():
+            for parent, dirs, fs in os.walk(base, followlinks=False):
+                dirs[:] = [d for d in dirs if not d.startswith('.')]
+                if 'SKILL.md' in fs:
+                    external.append({'path': parent, 'name': Path(parent).name})
     legacy_rows = {}
-    for name, entry in manifest['packages'].items():
-        dest = home / '.codex' / 'skills' / name
+    for name in sorted(public_names):
+        dest = home / '.codex/skills' / name
         if os.path.lexists(dest):
             try:
-                same = dest.is_dir() and tree_hash(dest.resolve()) == entry['sha256']
+                expected = manifest['packages'].get(name, {}).get('sha256')
+                same = dest.is_dir() and tree_hash(dest.resolve()) == expected and build_state == 'current'
+                legacy_rows[name] = 'current' if same else 'drift'
             except (ValueError, OSError) as exc:
                 inspection_errors[str(dest)] = str(exc)
-                same = False
-            legacy_rows[name] = 'current' if same else 'drift'
-            ok &= same
-    return {'build': build_state, 'source_sha256': manifest['source_sha256'], 'local': surfaces, 'legacy_codex_aliases': legacy_rows, 'external_skill_locations': external, 'inspection_errors': inspection_errors, 'cloud': cloud, 'ok': ok}
+                legacy_rows[name] = 'drift'
+            ok &= legacy_rows[name] == 'current'
+    return {'build': build_state, 'source_sha256': desired_source, 'dist': dist_rows,
+            'installed_release': installed, 'local': surfaces, 'legacy_codex_aliases': legacy_rows,
+            'external_skill_locations': external, 'inspection_errors': inspection_errors,
+            'cloud': cloud, 'ok': bool(ok and not inspection_errors)}
 
 
 def record_publication(root, surface, skill, reference):
@@ -399,27 +489,32 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--home', type=Path, default=Path.home(), help='Local install root; use a temporary home for tests')
     sub = ap.add_subparsers(dest='command', required=True)
-    for command in ['validate', 'build', 'bundle', 'install', 'adopt', 'sync', 'status']:
+    for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed']:
         sub.add_parser(command)
+    for command in ['install', 'adopt']:
+        sub.add_parser(command).add_argument('--expected-source')
+    sub.add_parser('rollback').add_argument('release_id')
     rp = sub.add_parser('restore')
     rp.add_argument('receipt', type=Path)
     pub = sub.add_parser('record-publication')
-    pub.add_argument('--surface', choices=['claude-account', 'codex-account'], required=True)
+    pub.add_argument('--surface', choices=['claude-account', 'cowork', 'codex-account', 'chatgpt-personal'], required=True)
     pub.add_argument('--skill', required=True)
     pub.add_argument('--reference', required=True, help='Account and upload record; a report, not independent verification')
     args = ap.parse_args()
     try:
         with lock():
             if args.command == 'validate': result = validate()
-            elif args.command == 'build': result = build()
+            elif args.command == 'build': result = build(home=args.home)
             elif args.command == 'bundle': result = bundle()
-            elif args.command in {'install', 'adopt'}: result = install(home=args.home, adopt=args.command == 'adopt')
+            elif args.command in {'install', 'adopt'}: result = install(home=args.home, adopt=args.command == 'adopt', expected_source=args.expected_source)
+            elif args.command == 'pin-installed': result = pin_installed(home=args.home)
+            elif args.command == 'rollback': result = rollback(ROOT, args.home, args.release_id)
             elif args.command == 'restore': result = restore(args.receipt)
             elif args.command == 'status': result = status(home=args.home)
             elif args.command == 'record-publication': result = record_publication(ROOT, args.surface, args.skill, args.reference)
             elif args.command == 'sync':
-                build(); bundle(); install(home=args.home)
-                result = status(home=args.home)
+                build(home=args.home); bundle()
+                result = {'build': 'current', 'dist': 'current', 'installed': 'unchanged', 'ok': True}
         print(json.dumps(result, indent=2, sort_keys=True))
         return 1 if args.command in {'status', 'sync'} and not result['ok'] else 0
     except (ValueError, OSError, KeyError, json.JSONDecodeError) as e:
