@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v7.0.0
         with:
           python-version: '3.12'
@@ -26,10 +28,27 @@ jobs:
           echo "ESTATE_NODE_MODULES=$GITHUB_WORKSPACE/node_modules" >> "$GITHUB_ENV"
           echo "NODE_PATH=$GITHUB_WORKSPACE/node_modules" >> "$GITHUB_ENV"
           echo "PW_MODULE=file://$GITHUB_WORKSPACE/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
+      - name: Rebuild map from this GitHub revision
+        shell: bash
+        run: |
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+            map_baseline="$GITHUB_SHA"
+          else
+            map_baseline="$(git rev-parse refs/remotes/origin/main)"
+          fi
+          python3 artifacts/skills-map/build.py --base "$map_baseline"
+          python3 tools/browse.py --check
       - run: python3 tools/estate.py validate
       - run: python3 -m unittest discover -s tests -v
       - run: python3 tools/estate.py build
       - run: python3 tools/estate.py bundle
+      - run: python3 tools/browse.py --bundle
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: skill-collections
+          path: dist/groups/*.zip
+          if-no-files-found: error
       - uses: actions/upload-artifact@v7.0.2
         with:
           name: skills-estate-bundles
@@ -41,4 +60,7 @@ jobs:
           path: |
             artifacts/skills-map/index.html
             artifacts/skills-map/index.json
+            artifacts/skills-map/viewer.py
+            artifacts/skills-map/open-map.command
+            artifacts/skills-map/assets/fonts/OFL.txt
           if-no-files-found: error

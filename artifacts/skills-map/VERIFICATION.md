@@ -1,6 +1,18 @@
 # Skills map verification
 
-## Current candidate: October 23, 2026
+## GitHub updates and groups: October 28, 2026
+
+The map compares all 79 source workflows against published main commit `a9424d7e1635832e4a60b5d1037e03324a75bd04`. The eight groups in `config/skill-groups.json` generate both the map and GitHub browse pages. All 53 task packages appear in the collections. Cross-group modes include their complete parent package.
+
+All 305 repository tests passed in 54.100 seconds using the declared Python dependencies and installed browser renderer. Source validation, candidate build, package ZIPs, and all eight collection archives passed. Nested package hashes were checked against the release manifest. The design checker reported zero findings.
+
+Browser checks opened all 79 instruction views. Additional checks covered descending sort, empty/reset, the selected GitHub group URL, link-copy feedback, updated task invocations, and supporting workflows. The 390px layout fit without page overflow. The navy, teal, sand, and embedded Plus Jakarta Sans styling was retained.
+
+Updater tests cover exact-main workflow selection, expired and stale downloads, HTML/JSON agreement, skill hashes, GitHub changing during download, and same-origin localhost requests. The local viewer keeps its previous HTML when those checks fail. Live download verification is recorded after the main build completes.
+
+These changes affect browsing and map downloads. Skill instructions, task consolidation, plugin routing, package acceptance gates, and installed releases are unchanged.
+
+## Previous candidate: October 23, 2026
 
 The restored candidate has 78 source modules and 52 standalone entrypoints. The generated map was refreshed after the journey-mapping and JTBD restoration and the current writing-policy merge. Validation, standalone packaging and the solutioning/quality plugin candidate build passed with source hash `a19d7ce5933fca9dde1d35924fa8bf9f89760da46a529980b9b45ea3c1eba97d`.
 

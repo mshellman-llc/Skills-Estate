@@ -1,68 +1,61 @@
-# Interactive Skills Estate map
+# Skills Estate map
 
-Open `index.html` in a browser. The file works offline and contains the canonical skill snapshot, searchable families, suggested workflows, source instructions, connections, and package-file inventories.
+Open `open-map.command` to browse the map with GitHub updates enabled. The launcher uses Python 3 and your existing GitHub CLI login. Keep `viewer.py`, `index.html`, and `index.json` beside it. Opening `index.html` directly still works as an offline reference.
 
-The checked-in map is generated from repository sources. A personal snapshot can also include a local authoring checkout and explicitly selected additional skill folders. Local revisions and additions remain labeled; building the map does not install, publish, or change a skill.
+The viewer checks GitHub when it starts. Use **Update from GitHub** to refresh it while it is open. The status line shows the source commit and build date. If GitHub is still building the latest main commit, the viewer retains the saved version and explains when to retry.
 
-## Rebuild
+[Browse the same groups on GitHub](../../browse/README.md). Each group has a shareable page and a collection of its complete task packages. Name sorting, group links, and filtered CSV export are available in the map.
 
-Python 3.9 or later, with no third-party dependencies:
+## Get the current map and collections
 
-`--base` is required; the builder never defaults to the checkout's `HEAD`. Pass the published commit to compare against:
+Open the latest successful main run of [Verify skills estate](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml). Download `skills-estate-map` for the map and launcher, or `skill-collections` for the eight group ZIPs. Repository access is required.
+
+The viewer downloads only a successful workflow artifact for the current GitHub main commit. It checks the embedded map data and skill hashes before replacing the local HTML and JSON. It does not update skill installations. If an artifact has expired, run the workflow again on main.
+
+From a terminal, the equivalent commands are:
 
 ```sh
+python3 artifacts/skills-map/viewer.py --open
+python3 artifacts/skills-map/viewer.py --once --output /path/to/skills-estate-map.html
+```
+
+The first command keeps the local viewer running until you close its terminal. The second updates one saved copy and exits.
+
+## Maintain the groups
+
+`config/skill-groups.json` is the shared source for the map and GitHub browse pages. Each source workflow has one group. Optional local skills are declared separately. `config/skill-catalog.json` continues to control task packaging and merged modes.
+
+After adding or moving a workflow between groups, run:
+
+```sh
+python3 tools/browse.py
 python3 artifacts/skills-map/build.py --base PUBLISHED_COMMIT
 ```
 
-The builder checks that the base commit is reachable from a published ref (`--published-ref`, default `refs/remotes/origin/main`) in the baseline repository. Unpublished commits, a missing or non-remote-tracking published ref, and malformed refs are rejected before any output is written. Older published ancestors remain valid bases.
+Commit the group configuration and generated browse pages with the source change. CI rejects missing or duplicate group assignments and stale browse pages. The workflow rebuilds the map before testing and uploading it on every main update. It also supports manual runs.
 
-The published ref is a remote-tracking ref as last observed locally. It is not a live GitHub check, and the builder does no network work. Before building, refresh it yourself (for example, fetch the remote) and confirm that `--published-ref` names the branch that actually represents published history.
+## Source and build
 
-The output includes `index.html` and `index.json`. Rebuild after source changes; an existing map does not refresh itself.
-
-To create a personal snapshot without overwriting the canonical artifact:
+The builder requires an explicit published base commit reachable from `--published-ref` (default `refs/remotes/origin/main`). Fetch that ref before building locally. For branch previews, compare with the published main baseline; local changes remain labeled. The builder does no network work.
 
 ```sh
-python3 artifacts/skills-map/build.py \
-  --repo /path/to/local-authoring-checkout \
-  --baseline-repo /path/to/verified-checkout \
-  --base PUBLISHED_COMMIT \
-  --published-ref refs/remotes/origin/main \
-  --extra /path/to/local-skill \
-  --output /path/to/personal-skills-map.html
-```
-
-Repeat `--extra` for each additional skill. The builder refuses duplicate names, missing frontmatter, and skills without an explicit family assignment. `--baseline-repo` lets the comparison use a published commit and ref from a separate checkout without modifying a dirty authoring checkout.
-
-## Source model
-
-- Each package retains its exact entrypoint Markdown and SHA-256. The readable view supports the Markdown constructs used here; the exact source is also available for inspection and download.
-- The initial excerpt uses the first three body blocks after the title, excluding shared-policy routing, subheadings, code blocks, and tables. It is an excerpt, not a replacement for the complete instructions.
-- Connections are literal references to mapped skills found in an entrypoint. Single-word names require an explicit code span, link label, or skill reference to avoid mistaking ordinary words for skill names. The surrounding source paragraph is included. A mention is not automatically a dependency or an execution trace.
-- Package status compares every included file with its Git blob at the selected baseline. Hidden files, Python caches, and bytecode are excluded from both the current package and the baseline by one shared rule. A supporting-file change can produce a local revision even when SKILL.md matches.
-- Supporting files are inventoried and hashed, not embedded. Private project records, installed-runtime discovery, external connectors, and account publication are not inspected by the map builder.
-- Families and routes are editorial navigation aids. Current source instructions govern invocation, prerequisites, sequence, and authorization.
-
-## Continuity with the prior artifact
-
-The September 1 architecture map supplied the interaction model. This edition preserves search, skill families, detailed purpose and trigger descriptions, execution instructions, relationships, source references, and file inventories. The neutral estate policy replaces the historical company styling.
-
-Subjective quality and cost ratings were deliberately omitted because no current benchmark supports them. Historical platform connector assertions and role tiers were not copied. Source status and the checks written in each skill replace those assumptions. Outputs, required inputs, failure paths, and constraints remain in the complete instructions rather than being forced into fields that some entrypoints do not define.
-
-## Verification
-
-Run the repository checks and the map's source integrity tests:
-
-```sh
+git fetch origin main
+python3 artifacts/skills-map/build.py --base PUBLISHED_COMMIT
+python3 tools/browse.py --check
 python3 tools/estate.py validate
 python3 -m unittest discover -s tests -v
-python3 tools/estate.py build
+python3 tools/estate.py sync
+python3 tools/browse.py --bundle
 ```
 
-Browser verification uses Playwright supplied by the local workspace runtime and an isolated headless Chrome session. Set PLAYWRIGHT_CHANNEL to select a different installed channel. `verify.cjs` accepts the artifact HTML path and a directory for screenshots, its report, and a print PDF:
+`sync` refreshes candidate build and package ZIPs. The group bundler uses those complete task ZIPs, including their existing dependencies and modes. Collection manifests record the source hash and ZIP hashes. Package readiness follows the current catalog and release gates.
 
-```sh
-NODE_PATH=/path/to/node_modules node artifacts/skills-map/verify.cjs /path/to/index.html /path/to/qa
-```
+Each mapped workflow retains its exact entrypoint Markdown and hash. Connections quote literal skill-name references from those instructions. Supporting files are inventoried; their contents remain in the skill packages. Families and suggested routes support navigation; the instructions determine which workflow applies.
 
-Inspect the rendered desktop, narrow-screen, detail, and print views. Automated interaction tests do not establish the quality of a skill's workflow or prove it ran successfully.
+The map retains the navy, teal, sand, and embedded Plus Jakarta Sans design of the current artifact. The fonts' SIL Open Font License is included. The artifact-specific design leaves the global brand policy unchanged.
+
+## Verify updates
+
+`tests/test_map_updates.py` covers current-head selection, stale and expired artifacts, changed data, interrupted update eligibility, and localhost request checks. `tests/test_skill_groups.py` covers complete group assignment and package-mode links. Browser checks cover sorting, group-link copying, search, details, updates, and narrow screens.
+
+The local viewer binds only to loopback. Update requests require the same origin and a per-run token. GitHub authentication remains in `gh`; no credentials are embedded in the HTML.

@@ -1,20 +1,14 @@
 #!/usr/bin/env python3
 """Build a portable, offline map from complete SKILL.md entrypoints (stdlib only)."""
-import argparse, hashlib, html, json, re, subprocess
+import argparse, base64, hashlib, html, json, re, subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-FAMILIES = [
- ('Pursuit and discovery', 'Understand the account, the customer journey, and the next conversation.', 'call-prep discovery-brief discovery-synthesis jtbd-framing playbook-fit-router sales-process-mapping sales-journey-critique live-meeting-synthesis'),
- ('Scope and proposals', 'Define an offer, compare options, and put scope and commercials in writing.', 'architecture-doc business-case ddoc deal-desk interactive-proposal playbook-builder playbook-onepager playbook-suite rom scope-reference scoping-agent solution-brief sow sow-quality'),
- ('Delivery and Salesforce', 'Move from an accepted handoff through implementation, testing, and closeout.', 'cutover-closeout delivery-kickoff delivery-status delivery-suite dx-devops-promote dx-devops-work-item-manage org-preflight requirements-capture s2d-handoff sf-delivery-standards sf-deploy-engine sf-enterprise-patterns sf-headless-screenshot sf-solo-devops team-onboarding uat-validation'),
- ('Product and experience', 'Research needs, define products, and review the experience people use.', 'accessibility-audit analytics-strategy independent-product information-architecture journey-mapping pm-spec-writing process product-development-pathway spec-writer system-design usability-testing'),
- ('Knowledge and context', 'Find the current record, preserve evidence, and carry work between sessions.', 'beastmode-capture beastmode-context beastmode-health beastmode-reconcile brain-work-item evidence-core knowledge-hub session-handoff transcript-ingestion'),
- ('Writing and presentation', 'Shape the words, visual structure, and author voice of an artifact.', 'brand-renderer prose-pass client-brand deck-builder editorial-design megan-writing-style personal-writing-style-runtime writing-integrity writing-style-builder'),
- ('Career and personal', 'Prepare career materials and work with the private planning and creative tools.', 'career-application career-materials-and-outreach career-progression-and-offers case-study-builder resume-numbers-and-keywords fortunes-weave sticker-art-direction sticker-sheets'),
- ('Estate and engineering controls', 'Maintain skills, review changes, and verify where a result actually exists.', 'code-simplify execution-truth github-repository-work quality-gate skill-creation-walkthrough skill-estate-sync'),
-]
+import sys
+sys.path.insert(0,str(HERE.parents[1]/'tools'))
+from browse import load_groups
+FAMILIES = [(g['title'],g['description'],' '.join(g['skills'])) for g in load_groups(HERE.parents[1],check_coverage=False)]
 DEFAULT_PUBLISHED_REF = 'refs/remotes/origin/main'
 GROUPS = {name: i for i, (_, _, members) in enumerate(FAMILIES) for name in members.split()}
 
@@ -139,6 +133,18 @@ def verified_base(baseline, base, published_ref):
         raise ValueError('Could not check base ancestry against '+published_ref)
     return commit
 
+def render_snapshot(data,output):
+    encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
+    template=(HERE/'template.html').read_text()
+    faces=[]
+    for weight,name in [(400,'Regular'),(600,'SemiBold'),(700,'Bold')]:
+        font=base64.b64encode((HERE/f'assets/fonts/PlusJakartaSans-{name}.ttf').read_bytes()).decode()
+        faces.append('@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:'+str(weight)+';font-display:swap;src:url(data:font/ttf;base64,'+font+') format("truetype")}')
+    notice=html.escape((HERE/'assets/fonts/OFL.txt').read_text())
+    result=template.replace('__MAP_FONT_FACES__','\n'.join(faces)).replace('__ESTATE_DATA__',encoded)
+    result=result.replace('</head>','<script type="text/plain" id="font-license">'+notice+'</script>\n</head>')
+    Path(output).write_text(result)
+
 def build(args):
     root = args.repo.resolve(); baseline = (args.baseline_repo or root).resolve()
     ref = verified_base(baseline, args.base, args.published_ref)
@@ -158,6 +164,8 @@ def build(args):
         if name in folders: raise ValueError('Extra shadows canonical skill: '+name)
         if not (folder/'SKILL.md').is_file(): raise ValueError('Missing extra SKILL.md: '+str(folder))
         folders[name] = (folder, True)
+    from catalog import entries as task_entries
+    task_catalog=task_entries(root)
     skills = []
     for name, (folder, extra) in sorted(folders.items()):
         if name not in GROUPS: raise ValueError('Assign a family before building: '+name)
@@ -196,17 +204,17 @@ def build(args):
             'entrypointChanged': base_blob is not None and blob_digest(raw) != base_blob,
             'sourcePath':repo_path if not extra else f'local-skills/{name}/SKILL.md',
             'sourceSha256':digest(raw), 'githubUrl': f'https://github.com/mshellman-llc/Skills-Estate/blob/{ref}/{repo_path}' if base_blob is not None else None,
+            'taskPackages':[{'name':task,'mode':None} for task,item in task_catalog.items() if item['source']==name]+[{'name':task,'mode':mode} for task,item in task_catalog.items() for mode,module in item.get('modes',{}).items() if module==name],
             'markdown':source, 'html':markdown(body), 'excerptHtml':''.join(markdown(p) for p in excerpt),
             'headings':headings, 'mentions':links, 'resources':resources})
     data={'schemaVersion':1, 'generatedAt':datetime.now(timezone.utc).isoformat(), 'baseCommit':ref,
-          'repository':'mshellman-llc/Skills-Estate', 'families':[{'title':x[0],'description':x[1]} for x in FAMILIES], 'skills':skills}
+          'repository':'mshellman-llc/Skills-Estate', 'families':[{'id':g['id'],'title':g['title'],'description':g['description']} for g in load_groups(HERE.parents[1],check_coverage=False)], 'skills':skills}
     data['counts']={s:sum(x['status']==s for x in skills) for s in ['github','local-revision','local-addition']}
     data['counts']['canonical']=sum(x['id'] in base_skills for x in skills)
     data['counts']['total']=len(skills)
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     output=args.output.resolve(); output.parent.mkdir(parents=True,exist_ok=True)
-    template=(HERE/'template.html').read_text()
-    output.write_text(template.replace('__ESTATE_DATA__',encoded))
+    render_snapshot(data,output)
     output.with_suffix('.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'output':str(output),'base':ref,'counts':data['counts']}))
     return data
