@@ -2,6 +2,22 @@
 
 This candidate contains 79 source modules and 53 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
+
+<!-- SKILL-GROUPS:BEGIN -->
+## Browse by work
+
+| Group | Source workflows | Task packages |
+| --- | ---: | ---: |
+| [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 4 |
+| [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
+| [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 16 | 12 |
+| [Product and experience](browse/product-and-experience/README.md) | 11 | 10 |
+| [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
+| [Writing and presentation](browse/writing-and-presentation/README.md) | 8 | 4 |
+| [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
+| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 6 | 4 |
+<!-- SKILL-GROUPS:END -->
+
 ## Proposed task entrypoints
 
 | Entrypoint | Primary source | Included modes |

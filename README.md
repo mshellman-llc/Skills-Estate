@@ -4,6 +4,22 @@ Private source of truth for Megan's reusable skills across Claude Code and Codex
 
 The restoration candidate contains 79 source modules and 53 proposed task entrypoints. [CATALOG.md](CATALOG.md) records both inventories. Capability review and host verification remain open; this branch is not an accepted release. Private project records and credentials stay outside the repository.
 
+
+<!-- SKILL-GROUPS:BEGIN -->
+## Browse by work
+
+| Group | Source workflows | Task packages |
+| --- | ---: | ---: |
+| [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 4 |
+| [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
+| [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 16 | 12 |
+| [Product and experience](browse/product-and-experience/README.md) | 11 | 10 |
+| [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
+| [Writing and presentation](browse/writing-and-presentation/README.md) | 8 | 4 |
+| [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
+| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 6 | 4 |
+<!-- SKILL-GROUPS:END -->
+
 ## Prepare and install on a Mac or Linux machine
 
 Python 3.9 or later and Git are required. Authenticate GitHub CLI as the intended account and clone the private repository:
@@ -86,4 +102,4 @@ This private repository has no blanket distribution license. Preserve included t
 
 ## Interactive skills map
 
-Open [the skills map](artifacts/skills-map/index.html) in a browser to search the estate, follow suggested workflows, and inspect each skill’s instructions and connections. [Build instructions](artifacts/skills-map/README.md) cover canonical and personal snapshots.
+Open the [skills map and GitHub updater](artifacts/skills-map/README.md) to search workflows, sort by name, and copy group links. GitHub builds the current map and eight shareable collections after every main update. The [browse pages](browse/README.md) use the same groups.
