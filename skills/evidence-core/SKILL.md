@@ -14,3 +14,7 @@ Represent each claim separately with its evidence location, subject, time range,
 Preserve contradictory records and describe the unresolved conflict. Refresh volatile facts at the live destination. Missing evidence does not prove an event never occurred. An archive is dated evidence and does not silently replace the current authority.
 
 Before handing evidence to an artifact skill, check that it supports the requested decision, including important omissions and qualifications. Keep private evidence out of public deliverables. Update synchronized stores through their revision-safe interface; do not bypass governance by editing a database or mirrored file directly.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

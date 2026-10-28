@@ -14,3 +14,7 @@ Use the same source definition for both pages while respecting audience differen
 Apply the shared brand policy through the available document or PDF tool. Keep the page legible at its real physical size. A one-page request does not justify unreadable type or dropping material scope limits.
 
 Render and inspect each page, compare facts across versions, and check links and metadata. For a catalog batch, reconcile the output count and every offering ID. Generating handouts does not publish the catalog.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

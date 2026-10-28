@@ -14,3 +14,7 @@ Implement the scoped change, run relevant static and unit checks, review the dif
 Deploy only the authorized revision and track the deployment job ID. Verify its final result and the affected behavior in the organization. If a merge succeeds but deployment fails, report the divergence and recovery action; never claim an atomic transaction across Git and Salesforce.
 
 Update the issue with the commit, review, validation, deployment, and acceptance evidence. Close it only when its completion criteria are met. Remove temporary worktrees only after preserving needed work. Pipeline-based releases belong to sf-deploy-engine or DevOps Center.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

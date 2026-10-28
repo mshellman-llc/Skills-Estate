@@ -14,3 +14,7 @@ Route definition to playbook-builder, qualification to playbook-fit-router, one-
 After each artifact, compare it with the same offering and quote revision. Record content review, rendering review when relevant, and any unresolved dependency. Update the manifest only for states actually reached. A file's presence is not approval or publication.
 
 Continue authorized ready work and name decisions that block the rest. Publishing the suite is a separate destination action. Report completion by required artifact and actual state rather than by a count of files in the folder.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

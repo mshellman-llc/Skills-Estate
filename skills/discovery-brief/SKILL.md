@@ -14,3 +14,7 @@ The ledger has supported findings with source locations and open questions with 
 When ingesting a call, match answers to existing question IDs. Close a question only when evidence answers it; narrow partial questions. Capture new findings and decisions with speaker, date, and transcript location. A suggestion is not a decision, and a request is not agreed scope.
 
 Update the discovery record using the available revision-safe storage tool. Feed supported account facts back to the account record. Send proposed scope changes to scoping-agent with their evidence; do not silently change a quote. Re-rank remaining questions and show what changed, what remains open, and who can resolve it.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

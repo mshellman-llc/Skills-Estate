@@ -1,142 +1,51 @@
-# Pattern Reference
+# Sentence patterns
 
-These are diagnostic signals, not forbidden strings. Context, density, and purpose decide whether a construction is a problem. Preserve quotations, required language, intentional parody, and a writer's genuine habits.
+Use this reference with [expanded-writing-review.md](expanded-writing-review.md). Check what a phrase does in its sentence and how often the pattern repeats. Keep quotations, required language, intentional parody and the author's own habits when they serve the piece. These patterns cannot establish who wrote it.
 
-## Manufactured drama
+## Drama added to an ordinary claim
 
-### Staged reversal
+| Pattern | Example and repair |
+| --- | --- |
+| Staged reversal | “This is not X. It is Y,” “not just X, it’s Y,” “not only... but,” “The question is not X,” or “Not X. Not Y. Z.” State the claim directly. Keep a contrast when the reader needs both sides. |
+| Insider reveal | Phrases such as “What everyone misses,” “Nobody tells you,” “The uncomfortable truth,” or “Here’s the thing” announce insight before supplying it. Remove the announcement and give the evidence or experience already in the source. |
+| Label and reveal | “The real problem: adoption.” Write the claim as a sentence. Keep colons that introduce an actual list, quotation, definition or label. |
+| Scripted question and answer | “The result? Faster delivery.” “Why does this matter? Because...” State the answer unless the question is one the reader needs addressed. |
+| Slogan ending | A slogan, metaphor, fragment or prediction replaces the final fact. End with the supported decision, consequence or next action. |
 
-**Signal:** “This is not X. It is Y,” “The question is not X,” or a chain such as “Not X. Not Y. Z.”
+## Claims of authority or importance
 
-**Repair:** State the actual claim. Keep a contrast only when both sides carry necessary meaning.
+| Pattern | Example and repair |
+| --- | --- |
+| Unnamed consensus | “Experts agree,” “research shows,” “many believe,” or “the industry knows” has no source. Name the source, state the author's own judgment or remove the claim. |
+| Importance labels | “Pivotal,” “transformative,” “a testament to,” “critical,” “marks a shift,” or “game-changing” asserts importance without showing what changed. Give the supported change, affected person or decision. |
+| Telling the reader what matters | “The key point is,” “this distinction matters,” “as you can see,” or “it is worth noting.” State the point. Keep directions that help readers navigate a complex document. |
+| Unsupported significance at the end | A clause beginning with “highlighting,” “showcasing,” “underscoring,” or “reflecting” adds significance without evidence. Give a supported cause or consequence its own sentence; cut the clause otherwise. |
 
-### Insider reveal
+## Words that obscure the subject
 
-**Signal:** The writer claims privileged insight before making an ordinary point: “What everyone misses,” “Nobody tells you,” or “The uncomfortable truth.”
+| Pattern | Example and repair |
+| --- | --- |
+| Filler that fits any subject | A sentence could move unchanged to another company, person or product. Replace it with a supported fact, judgment or consequence. Delete it if there is nothing specific to say. |
+| Inflated verbs | Verbs such as “leverage,” “utilize,” “empower,” “facilitate,” “streamline,” “serve as,” “stand as,” or “boast” can obscure the action. Name what the subject does. Keep a word when it is the precise domain term. |
+| Changing names for the same thing | Several labels refer to one actor or concept just to avoid repetition. Use the clearest accurate term consistently. |
+| Performed enthusiasm | Generic praise, ceremonial greetings, “thrilled to announce,” or an unsupported mission statement. Remove automatic chat phrases such as “Great question,” “I hope this helps,” and “Let me know if.” Express warmth through a real detail when the relationship warrants it; otherwise begin with the subject. |
+| Repeated hedging | “I think we might maybe want to consider...” Keep one qualification at the actual uncertainty and state the recommendation. |
 
-**Repair:** Remove the self-congratulating setup and support the claim with evidence or experience already in the source.
+## Repeated sentence and formatting choices
 
-### Label-and-reveal
+| Pattern | Example and repair |
+| --- | --- |
+| Stacked fragments | “Fast. Simple. Proven.” Join related ideas. Keep a fragment when it fits the author's voice and carries meaning. |
+| Repeated rhythm | Sentences use the same grammar and length, or every paragraph repeats claim, explanation and summary. Reorganize around the ideas. Do not vary sentences arbitrarily. |
+| Forced groups of three | The writing repeatedly supplies three items regardless of the subject. Use the actual number; keep a real three-part set. |
+| Stock transitions | Paragraphs repeatedly begin with “Moreover,” “Furthermore,” “Additionally,” or “Ultimately.” Make the logical connection clear and use a plain connector when needed. |
+| Decorative formatting | Emoji or title-case headings, bold labels on every bullet, rules before every heading, tiny sections or a list where one sentence would do. Use formatting to help readers compare, follow a sequence or find a detail. |
+| Punctuation used to imitate a voice | Repeated dashes, colons, semicolons or parentheses impose a rhythm. Use the punctuation the sentence and author's voice need. Do not replace every dash with another repeated construction. |
 
-**Signal:** A dramatic label followed by a colon and a short reveal: “The real problem: adoption.”
+Repeated clusters of words such as “delve,” “tapestry,” “pivotal,” “crucial,” “robust,” “seamless,” “leverage,” “landscape,” “foster,” “underscore” and “showcase” warrant a closer reading. Replace vague claims with plain words and supported details. Keep any word that is the accurate term in context.
 
-**Repair:** Write a direct sentence or use the colon only when it genuinely introduces a list, quotation, definition, or label.
+## Repairs that cause more problems
 
-### Scripted question and answer
+Changing words leaves a formula intact when the sentence still makes the same empty claim. Rewrite the thought first. Do not add typos, odd punctuation, invented anecdotes, numbers, citations or feelings to sound human.
 
-**Signal:** “The result? Faster delivery.” “Why does this matter? Because...”
-
-**Repair:** Use a declarative sentence unless the question reflects a real question the reader is likely to ask.
-
-### Mic-drop close
-
-**Signal:** A slogan, metaphor, fragment, or sweeping prediction replaces the final concrete point.
-
-**Repair:** End on the decision, consequence, evidence, or next action. Do not replace one slogan with a better slogan.
-
-## Empty authority and interpretation
-
-### Unnamed consensus
-
-**Signal:** “Experts agree,” “research shows,” “many believe,” or “the industry knows” without a source.
-
-**Repair:** Name the source, narrow the claim to the writer's own view, or remove it.
-
-### Importance labels
-
-**Signal:** “Pivotal,” “transformative,” “a testament to,” “critical,” or “game-changing” tells the reader how important something is without showing the consequence.
-
-**Repair:** Give the observable change, affected person, mechanism, or decision supported by the source.
-
-### Reader direction
-
-**Signal:** “The key point is,” “this distinction matters,” “as you can see,” or “it is worth noting.”
-
-**Repair:** Make the point clear enough that the direction is unnecessary. Keep it only when it performs a real navigation job in a complex document.
-
-### Decorative inference
-
-**Signal:** A trailing clause beginning with “highlighting,” “showcasing,” “underscoring,” or “reflecting” assigns significance that the sentence has not earned.
-
-**Repair:** State a supported cause, consequence, or user impact. Otherwise cut the clause.
-
-## Generic language
-
-### Portable filler
-
-**Signal:** A sentence could move unchanged to another company, person, product, or topic.
-
-**Repair:** Replace it with a supported fact, mechanism, judgment, boundary, or consequence. Delete it if none exists.
-
-### Inflated helper verbs
-
-**Signal:** “Leverage,” “utilize,” “empower,” “facilitate,” “streamline,” or “serve as” hides a simpler action.
-
-**Repair:** Name what the subject actually does. Do not ban a word when it is the precise term in that domain.
-
-### Synonym rotation
-
-**Signal:** The same actor or concept receives several labels merely to avoid repetition.
-
-**Repair:** Repeat the clearest accurate term. Terminology consistency beats cosmetic variety.
-
-### Performed warmth or enthusiasm
-
-**Signal:** Generic praise, ceremonial greetings, “thrilled to announce,” or a mission statement with no specific reason.
-
-**Repair:** Use one genuine detail when the relationship supports warmth. Otherwise open on the substance.
-
-### Hedge pile
-
-**Signal:** Several softeners surround one claim: “I think we might maybe want to consider...”
-
-**Repair:** Keep one hedge when uncertainty is real. State the recommendation plainly.
-
-## Mechanical shape
-
-### Fragment stack
-
-**Signal:** Several short fragments manufacture intensity: “Fast. Simple. Proven.”
-
-**Repair:** Join related ideas or keep one fragment that genuinely matches the writer's voice.
-
-### Repeated cadence
-
-**Signal:** Consecutive sentences share the same length and grammar, or every paragraph follows claim-explanation-summary.
-
-**Repair:** Rebuild the thought at the structural level. Vary form because the ideas need different forms, not to add random noise.
-
-### Automatic triads
-
-**Signal:** Ideas repeatedly arrive in groups of three regardless of content.
-
-**Repair:** Use the number of items the substance requires. A real three-part set is not a defect.
-
-### Template transitions
-
-**Signal:** Paragraphs repeatedly begin with “Moreover,” “Additionally,” “Ultimately,” or similar scaffolding.
-
-**Repair:** Let the logical relationship carry the transition, or use a plain connector when the relationship needs to be explicit.
-
-### Decorative formatting
-
-**Signal:** Emoji headings, bold emphasis in every bullet, tiny sections under multiple headings, or lists that hide a simple sentence.
-
-**Repair:** Match the format to the information. Keep tables, bullets, and headings when they make ownership, comparison, sequence, or scanning easier.
-
-### Punctuation as a voice substitute
-
-**Signal:** Em-dash clusters, repeated colons, semicolons, or parentheses create a borrowed rhythm.
-
-**Repair:** Prefer the punctuation the writer naturally uses and the sentence logic requires. Do not convert every dash into the same replacement construction.
-
-## False fixes
-
-Avoid these repairs:
-
-- swapping in rarer synonyms while leaving the same template underneath;
-- inserting typos, randomness, fragments, or odd punctuation to look human;
-- inventing anecdotes, numbers, citations, or feelings;
-- making the prose choppy or less capable;
-- deleting genuine uncertainty, edge, humor, or context; and
-- optimizing for an AI-detector score instead of the reader and the truth.
+Preserve uncertainty, humor, context and the author's edge. Avoid choppy sentences and needless simplification. A detector score is not evidence that an edit helps the reader.

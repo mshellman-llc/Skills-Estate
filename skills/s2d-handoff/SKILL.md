@@ -14,3 +14,7 @@ Assemble the business outcomes, promised deliverables, scope boundaries, accepta
 Explain the delivery implications of each material assumption and unresolved dependency. Record owner and closure condition for gaps. Do not convert a sales suggestion into an obligation or a handoff meeting into acceptance.
 
 Prepare the transfer agenda and package. Record the receiving owner's actual acceptance, date, and any conditions only when supported. Seed the delivery state record with the accepted baseline and next gate when authorized. Keep preparation, transfer, acceptance, kickoff, and delivery completion as separate states.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

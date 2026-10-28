@@ -14,3 +14,7 @@ Review factual support and scope, representation of the author's work, writing c
 Use available deterministic checks for structural defects and inspect rendered output when presentation matters. Record the checks actually performed and their result. Never manufacture a receipt, reviewer, approval, visual inspection, or passing test.
 
 Fix authorized defects and rerun affected checks. For an unresolved issue, state its effect and the exact next action. Keep local preparation, saved destination, publication, acceptance, and runtime behavior distinct. Do not call a source or artifact fully reviewed if any required part was clipped or inaccessible.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

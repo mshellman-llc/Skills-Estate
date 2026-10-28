@@ -14,3 +14,9 @@ A tool label, alias, browser title, or previously used login does not establish 
 Check that the requested operation and its scope are authorized. Reuse existing authorization for that operation; ask only when the proposed write changes the agreed target or impact. Confirm the relevant records or metadata and the recovery path before executing.
 
 Return the verified target identity and operation scope without credentials or tokens. After the write, verify the result in that same organization. A sandbox success does not prove production deployment.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.
+
+Use `scripts/preflight.py` for an exact intended-org check; `scripts/orgs.json` ships with an empty registry.

@@ -14,3 +14,7 @@ Update stable IDs for risks, assumptions, issues, dependencies, and decisions. K
 Compare new asks with the scope baseline. Describe potential change, affected obligation, evidence, impact needing analysis, and owner of the disposition. Do not price or approve the change. Carry unresolved candidates forward without duplicating their IDs.
 
 Write status in terms of actual progress, milestones, supported financial or effort data, blockers, decisions, and next actions. Compute deltas and reconcile any burn figures to their source. Verify every completed claim against delivered work or acceptance evidence. Save the report and logs when authorized; preparing an update does not send it.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

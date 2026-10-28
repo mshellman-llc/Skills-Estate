@@ -14,3 +14,7 @@ For each cutover step, specify owner, prerequisites, action, expected result, va
 Track go-live acceptance against the agreement's actual criteria. Record open defects and agreed dispositions. Deemed acceptance applies only if the governing agreement contains it and its conditions are evidenced; elapsed time alone is insufficient.
 
 During hypercare, track impact, severity, owner, workaround, resolution, and confirmation. Closeout covers deliverables, acceptance, access and support transition, remaining obligations, operational documentation, and lessons. Distinguish technical deployment, business acceptance, support handover, and project closure in the final record.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

@@ -14,3 +14,7 @@ Use the actual pricing source or an approved export. Reconcile scope, option nam
 Build the narrative around what was heard, the business consequence, the proposed direction, the options and trade-offs, included scope and exclusions, delivery approach, investment, assumptions, and the decision requested. Earn each slide through its relevance. Keep client statements, observed facts, and your recommendations distinct.
 
 Make option comparisons use the same dimensions. A lower price alone does not explain the delivery trade-off. Confirm material copy decisions before rendering when the user requested review. Use the available presentation tool and the shared brand policy. Inspect all slides and tie every displayed commercial number back to the same quote revision. A confirmation deck does not execute a contract or approve a quote.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

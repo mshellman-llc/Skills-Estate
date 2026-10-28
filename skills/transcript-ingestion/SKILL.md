@@ -14,3 +14,7 @@ Preserve the raw input and its hash. Normalize a separate copy for encoding, spe
 Check for an existing source ID or hash before ingestion. Make repeated ingestion idempotent and preserve revisions when the source changes. Record the raw and normalized locations, provenance, and index entry.
 
 Use the storage system's authorized write path and verify the indexed record can be retrieved. Pass findings to discovery-synthesis or discovery-brief when requested; ingestion alone does not approve claims or update scope.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

@@ -14,3 +14,11 @@ Separate architecture intent from implementation design. The architecture explai
 Tie substantive factual claims to sources. Present a design choice as a proposal with alternatives considered, the trade-off, and conditions for revisiting it. Do not describe a planned control as operating or a projected cost as measured. State material open decisions where the reader needs them.
 
 Use diagrams only where they clarify boundaries or flows. Apply the shared brand policy when rendering a formal artifact. Verify that diagrams, tables, prose, and source revisions agree and that no assumption turned into an assertion during rendering. Deliver the requested editable format and identify the next design decision or implementation step.
+
+## Document skeletons and visual acceptance
+
+Before drafting, read [the architecture and engineering skeletons](references/architecture-templates.md). Select the sections needed by the actual system. Use descriptive names and put detailed traceability in a reference section; do not fill the reading flow with IDs.
+
+A system map must show labeled relationships, trust or ownership boundaries, and flow direction. For a load-bearing interaction, show ordered requests, responses, state changes, and failure handling. A collection of prose boxes is not an architecture diagram.
+
+Before delivery, render and inspect the requested format. Check that diagrams, tables, claims, caveats, numbers, and source revisions survived; inspect print output when a printable artifact is requested. Resolve stale framing throughout the document set rather than placing a correction banner over contradictory content. Use the current design system without former-employer branding.

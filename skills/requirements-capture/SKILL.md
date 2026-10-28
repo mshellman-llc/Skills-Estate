@@ -14,3 +14,7 @@ Build a hierarchy of epic, capability, business need, and user story with stable
 Write stories with actor, action, and value. Acceptance criteria specify observable outcomes and relevant negative cases. Use Given/When/Then when it makes conditions clearer; do not turn vague goals into invented thresholds. Include permissions, data validation, errors, and integration behavior where the requirement needs them.
 
 For a workbook, use the available spreadsheet tool. Keep the delivery hierarchy and detailed stories/acceptance criteria in separate linked tabs unless the user supplies a different structure. Verify unique IDs, valid parent references, filters, usable column widths, and source coverage. Surface only the material questions that prevent a workable draft. Deliver an editable artifact and identify which decisions still need an owner.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

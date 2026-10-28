@@ -14,3 +14,7 @@ Compute revenue, delivery cost, gross margin, discounts, and other requested mea
 Identify exceptions, risks, missing inputs, contractual deviations, capacity assumptions, and the decision needed. Route each exception to the actual approval owner. If a threshold or cost basis is unavailable, report the missing input and do not invent a pass.
 
 Deliver the review packet and exact figure differences. A reviewer-ready packet is not commercial approval. Changing a quote or issuing a client proposal requires the user's authorization for that action.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

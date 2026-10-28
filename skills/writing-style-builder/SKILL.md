@@ -14,3 +14,7 @@ Identify repeated choices in structure, vocabulary, cadence, directness, humor, 
 Create a concise draft profile with evidence-backed patterns, applicable contexts, protected meaning, and examples drawn only from authorized material. Use an insufficient-evidence outcome when the sample cannot support a stable rule. Have the person confirm the profile before treating it as their governing voice.
 
 For updates, preserve the prior version and record what changed and why. Revocation removes the profile from active use through the agreed storage process. Do not put raw personal samples into the shared skills repository. Applying an approved profile belongs to personal-writing-style-runtime.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

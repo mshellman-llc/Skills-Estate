@@ -14,3 +14,7 @@ Evaluate each candidate against its actual fit criteria. Every positive signal a
 Rank the plausible options using the catalog's defined method. If no scoring method exists, provide a qualitative comparison with explicit reasoning instead of invented numeric precision. Explain the strongest match and credible alternatives.
 
 Return the fit recommendation, supporting citations, unanswered questions, and any tier hypothesis. Do not lock a tier, price an offering, create a quote, or claim complete routing when catalog coverage is incomplete.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

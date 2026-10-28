@@ -14,3 +14,7 @@ Separate stated inputs, computed figures, and estimates. Explain the range throu
 Reconcile hours by work package, role, and phase. Compute hours times rates and explain any difference from a fixed quoted fee using the quote's actual commercial rules. Check that dates and staffing capacity support the timeline. Tie the strongest cost drivers to observable dimensions.
 
 Deliver the range, scope basis, dependencies, exclusions, confidence limits, and specific events that reopen the estimate. Distinguish fixed-fee commitments from time-and-materials assumptions. A ROM is a planning estimate until the pricing source and authorized owner establish a firm offer.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

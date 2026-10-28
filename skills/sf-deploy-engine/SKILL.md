@@ -14,3 +14,7 @@ Resolve source commit, ticket set, target environment, route, validations, test 
 For a release, verify the selected changes and dependencies, run the required validation, and preserve the exact result associated with the source revision. Execute only the authorized stage. Re-query status until completion or a concrete failure; a queued request is not a completed deployment.
 
 For rollback or freeze recovery, inspect the failure and the engine's supported recovery operation. State affected changes and recovery limits before an action not already authorized. Report commit, environment, operation ID, test result, and final observed state. Do not skip tests or bypass a freeze based on stale instructions.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

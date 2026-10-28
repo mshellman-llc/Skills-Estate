@@ -14,3 +14,7 @@ Prepare a charter covering outcomes, scope, boundaries, deliverables, responsibi
 Build internal and client kickoff materials for their distinct audiences. Create the initial plan or Sprint 0 backlog with prerequisites, access dependencies, environments, test preparation, and early validation. Separate planned setup from completed setup.
 
 Track access and sandbox provisioning without claiming it happened. Perform an operational setup only when that action is authorized and the target is verified. Save the governance baseline and report the next gate and its owner. A draft charter is not a signature or kickoff acceptance.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.

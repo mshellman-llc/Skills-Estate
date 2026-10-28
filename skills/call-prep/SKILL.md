@@ -14,3 +14,7 @@ For the pursuit brief, record the client's situation, desired outcomes, qualific
 For an upcoming call, state the objective and decisions, attendees and roles, known context, timed agenda, ranked questions, sensitivities, and follow-up plan. Link it to the pursuit brief. Reuse the discovery ledger's open questions; add only questions specific to this meeting.
 
 Verify company and attendee facts in current sources when the task depends on them. Distinguish the client's words from sales hypotheses. Do not infer budget, buying authority, attendance, or commitment. Save updates to the agreed record and identify the evidence that should return after the call. Preparing the agenda does not schedule or send it.
+
+## Working contracts and validation
+
+Read [restored workflow and checks](references/restored-workflow.md) when preparing this artifact or running its deterministic checks. Preserve the current instructions above; the adapter contract states its supported format and limits.
