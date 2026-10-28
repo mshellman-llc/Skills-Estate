@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import subprocess
+from urllib.parse import urljoin
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -87,23 +89,28 @@ def write_pages(root=ROOT, check=False):
     if check and changed: raise ValueError('Regenerate group pages: '+', '.join(changed))
     return changed
 
+def portable_readme(text,group,revision):
+    base=f'https://github.com/mshellman-llc/Skills-Estate/blob/{revision}/browse/{group}/'
+    return re.sub(r'\]\(([^)]+)\)',lambda m:']('+urljoin(base,m[1])+')',text)
+
 def collections(root=ROOT):
     from catalog import entries
     import estate
     root=Path(root);public=entries(root);estate.current_build(root)
+    revision=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
     release=json.loads((root/'dist/release.json').read_text())
     if release['source_sha256']!=estate.source_hash(root):raise ValueError('Package ZIPs are stale; run sync first')
     output=root/'dist/groups';output.mkdir(exist_ok=True)
     result=[]
     for g in load_groups(root):
         packages=sorted(n for n,item in public.items() if item['source'] in g['skills'] or set(item.get('modes',{}).values()) & set(g['skills']))
-        manifest={'group':g['id'],'title':g['title'],'source_sha256':release['source_sha256'],'packages':[]}
+        manifest={'group':g['id'],'title':g['title'],'source_sha256':release['source_sha256'],'source_commit':revision,'packages':[]}
         payloads={}
         for name in packages:
             path=root/'dist'/f'{name}.zip';raw=path.read_bytes();digest=hashlib.sha256(raw).hexdigest()
             if digest!=release['packages'][name]['sha256']:raise ValueError('Task ZIP changed: '+name)
             payloads[f'skills/{name}.zip']=raw;manifest['packages'].append({'name':name,'sha256':digest})
-        payloads['README.md']=(root/f"browse/{g['id']}/README.md").read_bytes()
+        payloads['README.md']=portable_readme((root/f"browse/{g['id']}/README.md").read_text(),g['id'],revision).encode()
         payloads['manifest.json']=(json.dumps(manifest,indent=2)+'\n').encode()
         path=output/f"{g['id']}.zip"
         with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as z:

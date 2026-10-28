@@ -44,3 +44,10 @@ class SkillGroupTests(unittest.TestCase):
                 if item['source'] not in g['skills'] and not set(item.get('modes',{}).values()) & set(g['skills']):continue
                 self.assertIn('`'+n+'`',page)
                 for module in item.get('modes',{}).values():self.assertIn('/'+module+'/SKILL.md)',page)
+
+    def test_collection_readme_links_work_outside_the_repository(self):
+        source='[Scope](../../skills/ddoc/SKILL.md) and [All groups](../README.md)'
+        rendered=browse.portable_readme(source,'scope-and-proposals','a'*40)
+        self.assertIn('/blob/'+('a'*40)+'/skills/ddoc/SKILL.md',rendered)
+        self.assertIn('/blob/'+('a'*40)+'/browse/README.md',rendered)
+        self.assertNotIn('](../',rendered)
