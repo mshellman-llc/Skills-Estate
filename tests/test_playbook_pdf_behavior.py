@@ -45,6 +45,9 @@ class PlaybookPdfTests(unittest.TestCase):
             pdf=out/f'service-intake-review-{kind}.pdf'
             reader=PdfReader(pdf);self.assertEqual(count,len(reader.pages))
             text=' '.join(' '.join(p.extract_text().split()) for p in reader.pages)
+            # Linux PDF fonts may extract presentation ligatures as single characters.
+            text=text.translate(str.maketrans({'ﬀ':'ff', 'ﬁ':'fi', 'ﬂ':'fl',
+                                             'ﬃ':'ffi', 'ﬄ':'ffl', 'ﬅ':'st', 'ﬆ':'st'}))
             selected=self.spec['internal' if count==2 else 'external']
             for key in (('s1','s2','s3','s4') if count==2 else ('intro','how')):
                 self.assertIn(selected[key],text)
