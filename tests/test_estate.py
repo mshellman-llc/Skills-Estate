@@ -331,5 +331,32 @@ class EstateTests(unittest.TestCase):
         self.assertEqual(list(outside.iterdir()), [])
 
 
+    def test_linked_lock_file_is_refused_without_truncating_target(self):
+        outside = self.base / 'private.txt'; outside.write_text('Keep private bytes')
+        (self.root / '.local/estate.lock').symlink_to(outside)
+        with self.assertRaisesRegex(ValueError, 'symlinked managed'):
+            with estate.lock(self.root):
+                self.fail('Linked lock was acquired')
+        self.assertEqual(outside.read_text(), 'Keep private bytes')
+
+    def test_backup_cleanup_failure_reports_already_published_output(self):
+        estate.build(self.root)
+        (self.root / 'policies/brand.md').write_text('Changed source')
+        self.original_rename = Path.rename
+        original_remove = estate.shutil.rmtree
+        def fail_cleanup(path, *args, **kwargs):
+            if Path(path).name.startswith('previous-build-'):
+                raise OSError('Injected backup cleanup failure')
+            return original_remove(path, *args, **kwargs)
+        with patch.object(Path, 'rename', lambda path, target: self.denied_output_rename(path, target)), patch.object(estate.shutil, 'rmtree', side_effect=fail_cleanup):
+            with self.assertRaisesRegex(OSError, 'cleanup failure'):
+                estate.build(self.root)
+        self.assertEqual((self.root / 'build/skills/demo/references/estate/brand.md').read_text(), 'Changed source')
+        receipt = next((self.root / '.local').glob('previous-build-*/replacement-receipt.json'))
+        self.assertEqual(json.loads(receipt.read_text())['state'], 'published; backup cleanup failed')
+        self.assertFalse((self.root / '.local/pending-build.json').exists())
+        estate.current_build(self.root)
+
+
 if __name__ == '__main__':
     unittest.main()

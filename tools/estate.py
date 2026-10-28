@@ -199,6 +199,7 @@ def replace_outputs(root, stage, destination):
             write_json(previous / 'replacement-receipt.json', record)
             pending.unlink()
             raise
+        record['state'] = 'published; generated output verified'
         pending.unlink()
         shutil.rmtree(previous)
         # Remove only empty generated directories left after obsolete files were removed.
@@ -211,7 +212,8 @@ def replace_outputs(root, stage, destination):
     except BaseException:
         # A prepared backup is retained for diagnosis; a pending journal blocks reuse.
         if not pending.exists() and not (previous / 'replacement-receipt.json').exists():
-            record['state'] = 'preparation failed; destination unchanged'
+            record['state'] = ('published; backup cleanup failed' if record['state'].startswith('published;')
+                               else 'preparation failed; destination unchanged')
             write_json(previous / 'replacement-receipt.json', record)
         raise
 
@@ -284,6 +286,7 @@ def validate(root=ROOT):
 @contextlib.contextmanager
 def lock(root=ROOT):
     local = root / '.local'
+    releases.safe_parents(local / 'estate.lock')
     local.mkdir(exist_ok=True)
     with (local / 'estate.lock').open('w') as f:
         try:
