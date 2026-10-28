@@ -131,6 +131,7 @@
       "description": "Maintain skills, review changes, and verify where a result actually exists.",
       "skills": [
         "code-simplify",
+        "cross-platform-skill-release",
         "execution-truth",
         "github-repository-work",
         "quality-gate",

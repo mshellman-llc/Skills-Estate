@@ -113,6 +113,7 @@
     "estate-governance": {
       "description": "Skills Estate governance workflows and routing.",
       "entries": [
+        "cross-platform-skill-release",
         "skill-authoring",
         "skill-estate-sync"
       ],
@@ -214,6 +215,9 @@
         "status": "pending"
       },
       "code-simplify": {
+        "status": "pending"
+      },
+      "cross-platform-skill-release": {
         "status": "pending"
       },
       "cutover-closeout": {

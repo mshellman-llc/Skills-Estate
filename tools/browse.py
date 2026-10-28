@@ -74,8 +74,24 @@ def documents(root=ROOT):
         result[f"browse/{g['id']}/README.md"]='\n'.join(lines)
     table='\n'.join(summary)+'\n'
     result['browse/README.md']='# Skills by work\n\nOpen a group to find its workflows and task packages. The interactive map uses these same groups.\n\n'+table.replace('(browse/','(')+'\n[Open the interactive map](../artifacts/skills-map/README.md) · [Get the collections](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml)\n'
+    counts=f'{len(actual)} source modules and {len(public)} proposed task entrypoints'
     for name in ['README.md','CATALOG.md']:
-        result[name]=region((root/name).read_text(),table)
+        body=region((root/name).read_text(),table)
+        body,count=re.subn(r'\b\d+ source modules and \d+ proposed task entrypoints',counts,body)
+        if count!=1:raise ValueError('Expected one inventory count in '+name)
+        result[name]=body
+    inventories={
+        'Proposed task entrypoints':['| Entrypoint | Primary source | Included modes |','| --- | --- | --- |']+
+            [f"| {name} | [{item['source']}](skills/{item['source']}/SKILL.md) | {', '.join(item.get('modes',{}).values())} |" for name,item in public.items()],
+        'Source modules':['Each module needs a reviewed capability disposition before release.','']+
+            [f'- [{name}](skills/{name}/SKILL.md)' for name in sorted(actual)],
+        'Routing agents':[f'- [{p.stem}](agents/{p.name})' for p in sorted((root/'agents').glob('*.md'))]}
+    for title,lines in inventories.items():
+        pattern=r'(?ms)^## '+re.escape(title)+r'\n.*?(?=^## |\Z)'
+        body,count=re.subn(pattern,lambda _: '## '+title+'\n\n'+'\n'.join(lines)+'\n\n',result['CATALOG.md'])
+        if count!=1:raise ValueError('Expected one catalog section: '+title)
+        result['CATALOG.md']=body
+    result['CATALOG.md']=result['CATALOG.md'].rstrip()+'\n'
     return result
 
 def write_pages(root=ROOT, check=False):

@@ -45,6 +45,28 @@ class SkillGroupTests(unittest.TestCase):
                 self.assertIn('`'+n+'`',page)
                 for module in item.get('modes',{}).values():self.assertIn('/'+module+'/SKILL.md)',page)
 
+    def test_catalog_regenerates_counts_primary_modes_and_source_inventory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'config').mkdir();(root/'agents').mkdir()
+            for name in ['sample','detail']:
+                (root/'skills'/name).mkdir(parents=True);(root/'skills'/name/'SKILL.md').write_text(name)
+            (root/'agents/test-router.md').write_text('Route sample tasks.')
+            (root/'config/skill-groups.json').write_text(json.dumps({'format':1,'groups':[{'id':'test','title':'Test','description':'Test work.','skills':['sample','detail']}]}))
+            (root/'config/skill-catalog.json').write_text(json.dumps({'format':1,'entries':{'sample':{'source':'sample','pack':'core','modes':{'Details':'detail'}}}}))
+            note='Keep this editorial note. 99 source modules and 88 proposed task entrypoints.\n'
+            (root/'README.md').write_text('# Example\n\n'+note)
+            (root/'CATALOG.md').write_text('# Catalog\n\n'+note+'\n## Proposed task entrypoints\n\nOld table.\n\n## Source modules\n\nOld sources.\n\n## Routing agents\n\nOld routes.\n')
+            with self.assertRaises(ValueError):browse.write_pages(root,check=True)
+            browse.write_pages(root)
+            catalog=(root/'CATALOG.md').read_text()
+            self.assertIn('2 source modules and 1 proposed task entrypoints',catalog)
+            self.assertIn('| sample | [sample](skills/sample/SKILL.md) | detail |',catalog)
+            self.assertIn('- [detail](skills/detail/SKILL.md)',catalog)
+            self.assertIn('- [test-router](agents/test-router.md)',catalog)
+            self.assertIn('Keep this editorial note.',catalog)
+            self.assertNotIn('Old sources.',catalog)
+            self.assertEqual(browse.write_pages(root,check=True),[])
+
     def test_collection_readme_links_work_outside_the_repository(self):
         source='[Scope](../../skills/ddoc/SKILL.md) and [All groups](../README.md)'
         rendered=browse.portable_readme(source,'scope-and-proposals','a'*40)
