@@ -3,6 +3,11 @@ name: career-application
 description: Assess, tailor, prepare interviews, fill, or resume Megan's leadership-level applications using current postings and private career evidence. Never submit without explicit authorization.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Career application
 
 Run one role at a time from current evidence without relying on conversation history.
@@ -11,7 +16,7 @@ Run one role at a time from current evidence without relying on conversation his
 
 Use the live source when it is available:
 
-`/Volumes/BeastMode/AIMemory/JobHunt/`
+`/Volumes/BeastMode/Career/`
 
 Read `00_Master/Career_Application_Operating_Context.md` first. Then load only:
 

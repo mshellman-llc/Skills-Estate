@@ -1,0 +1,57 @@
+schema_version: 1
+name: journey-mapping
+display_name: Journey Mapping
+summary: Map one actor's journey, the service behind it, and improvements to validate from supplied evidence.
+status: active
+tier: situational
+version: 1.1.0
+owner: Skills Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Build a customer or role journey map, service blueprint, or opportunity map.
+- Map touchpoints, goals, thoughts, feelings, friction and supporting systems for one actor.
+- Compare evidence across teams that describe the same experience differently.
+- Journey audit, end-to-end experience, customer experience map, or sell-to-deliver map.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on: []
+calls:
+- evidence-core
+- knowledge-hub
+- client-brand
+- quality-gate
+knowledge_hub:
+  requirement: optional
+  reads:
+  - engagement.front_door
+  - engagement.requirements_design
+  - evidence.claims
+  writes:
+  - engagement.requirements_design
+  - deliverables.register
+evidence:
+  required: true
+  control: source-and-confidence-ledger
+  governed_engagement_control: evidence-core
+quality:
+  required: true
+  control: quality-gate

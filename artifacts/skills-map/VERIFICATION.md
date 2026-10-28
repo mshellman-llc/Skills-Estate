@@ -1,6 +1,16 @@
 # Skills map verification
 
-Verified October 22, 2026 against the canonical baseline `e0d71e32db970e6b7fcc31d4c06a9130df8333da`.
+## Current candidate: October 23, 2026
+
+The restored candidate has 78 source modules and 52 standalone entrypoints. The generated map was refreshed after the journey-mapping and JTBD restoration and the current writing-policy merge. Validation, standalone packaging and the solutioning/quality plugin candidate build passed with source hash `a19d7ce5933fca9dde1d35924fa8bf9f89760da46a529980b9b45ea3c1eba97d`.
+
+The repository suite reported 251 passing tests in 58.172 seconds at source commit `14f160323215bd7f489fb75be413f97f277b881e`. Private coordination records retain the logs and fixtures. A follow-up receipt binds verification to the exact candidate commit and tracked tree. This documentation update does not establish a new whole-map visual or prose review.
+
+Plugin packages remain candidates. Whole-skill capability review, fresh native-host execution and account distribution are pending.
+
+## Historical verification: October 22, 2026
+
+The following observations describe baseline `e0d71e32db970e6b7fcc31d4c06a9130df8333da`. They do not establish the current candidate's inventory or current rendered output.
 
 ## Source and behavior
 

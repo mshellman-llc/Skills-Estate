@@ -1,0 +1,322 @@
+{
+  "format": 1,
+  "entries": {
+    "acceptance-testing": {
+      "source": "uat-validation",
+      "pack": "core",
+      "modes": {}
+    },
+    "accessibility-audit": {
+      "source": "accessibility-audit",
+      "pack": "core",
+      "modes": {}
+    },
+    "analytics-strategy": {
+      "source": "analytics-strategy",
+      "pack": "core",
+      "modes": {}
+    },
+    "beastmode-capture": {
+      "source": "beastmode-capture",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "beastmode-context": {
+      "source": "beastmode-context",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "beastmode-health": {
+      "source": "beastmode-health",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "beastmode-reconcile": {
+      "source": "beastmode-reconcile",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "brand-profile": {
+      "source": "client-brand",
+      "pack": "core",
+      "modes": {}
+    },
+    "business-case": {
+      "source": "business-case",
+      "pack": "core",
+      "modes": {}
+    },
+    "call-prep": {
+      "source": "call-prep",
+      "pack": "core",
+      "modes": {}
+    },
+    "career-application": {
+      "source": "career-application",
+      "pack": "career",
+      "modes": {
+        "supporting application materials": "career-materials-and-outreach",
+        "resume figures and ATS wording": "resume-numbers-and-keywords"
+      },
+      "description": "Prepare a role-specific application, supporting materials or interview work from current career authority. Preserve sourced resume figures, ATS methods and submission boundaries."
+    },
+    "career-decisions": {
+      "source": "career-progression-and-offers",
+      "pack": "career",
+      "modes": {}
+    },
+    "code-simplify": {
+      "source": "code-simplify",
+      "pack": "core",
+      "modes": {}
+    },
+    "commercial-review": {
+      "source": "deal-desk",
+      "pack": "core",
+      "modes": {},
+      "description": "Review provider economics, risks and commercial conditions, and reconcile figures across a quote, proposal or statement of work. Use current project policy; do not change pricing or infer approval."
+    },
+    "cutover-closeout": {
+      "source": "cutover-closeout",
+      "pack": "core",
+      "modes": {}
+    },
+    "deck-builder": {
+      "source": "deck-builder",
+      "pack": "core",
+      "modes": {
+        "scope decision deck": "ddoc"
+      },
+      "description": "Build or repair a pitch, briefing or scope decision deck around the audience decision, supported claims and explanatory visuals. Preserve editable output and inspect the rendered slides."
+    },
+    "deliverable-review": {
+      "source": "quality-gate",
+      "pack": "core",
+      "modes": {},
+      "description": "Review a finished artifact against its sources, requested task, writing, format and actual completion state. Inspect meaningful content and rendered output; receipts do not replace review."
+    },
+    "delivery-kickoff": {
+      "source": "delivery-kickoff",
+      "pack": "core",
+      "modes": {}
+    },
+    "delivery-status": {
+      "source": "delivery-status",
+      "pack": "core",
+      "modes": {}
+    },
+    "discovery": {
+      "source": "discovery-synthesis",
+      "pack": "core",
+      "modes": {
+        "maintain pursuit findings": "discovery-brief"
+      },
+      "description": "Synthesize supplied interviews and meeting notes into supported findings, or maintain a pursuit discovery ledger and ranked unanswered questions. Preserve exact quotations and distinguish research from proposed actions."
+    },
+    "feature-spec": {
+      "source": "pm-spec-writing",
+      "pack": "core",
+      "modes": {
+        "detailed UI and API specification": "spec-writer"
+      },
+      "description": "Write a feature specification, PRD or implementation brief from supplied product evidence. Include relevant user flows, UI states, APIs, data changes and testable acceptance criteria. Use for requested specifications; ordinary bug fixes do not require a separate spec."
+    },
+    "fortunes-weave": {
+      "source": "fortunes-weave",
+      "pack": "personal-projects",
+      "modes": {}
+    },
+    "independent-product": {
+      "source": "independent-product",
+      "pack": "personal-projects",
+      "modes": {}
+    },
+    "information-architecture": {
+      "source": "information-architecture",
+      "pack": "core",
+      "modes": {}
+    },
+    "journey-mapping": {
+      "source": "journey-mapping",
+      "pack": "core",
+      "modes": {}
+    },
+    "knowledge-hub": {
+      "source": "knowledge-hub",
+      "pack": "core",
+      "modes": {}
+    },
+    "offering-fit": {
+      "source": "playbook-fit-router",
+      "pack": "core",
+      "modes": {}
+    },
+    "portfolio-case-study": {
+      "source": "case-study-builder",
+      "pack": "career",
+      "modes": {}
+    },
+    "process-design": {
+      "source": "process",
+      "pack": "core",
+      "modes": {}
+    },
+    "product-development": {
+      "source": "product-development-pathway",
+      "pack": "core",
+      "modes": {}
+    },
+    "project-scoping": {
+      "source": "scoping-agent",
+      "pack": "core",
+      "modes": {
+        "rough estimate": "rom"
+      },
+      "description": "Develop project scope, effort, staffing and timelines, including rough estimates and confirmed quote models. Use supplied exports, rate cards and comparables; use a CRM connector only when configured for the project."
+    },
+    "requirements-backlog": {
+      "source": "requirements-capture",
+      "pack": "core",
+      "modes": {}
+    },
+    "sales-process-mapping": {
+      "source": "sales-process-mapping",
+      "pack": "core",
+      "modes": {
+        "review a sales journey or demo": "sales-journey-critique"
+      }
+    },
+    "sales-to-delivery-handoff": {
+      "source": "s2d-handoff",
+      "pack": "core",
+      "modes": {}
+    },
+    "scope-options": {
+      "source": "scope-reference",
+      "pack": "core",
+      "modes": {
+        "interactive proposal or explorer": "interactive-proposal"
+      },
+      "description": "Compare sourced scope options as a static document or an interactive proposal. Preserve inclusions, exclusions, hours, price, timeline and assumptions from the same versioned input."
+    },
+    "service-offering": {
+      "source": "playbook-builder",
+      "pack": "core",
+      "modes": {
+        "offering package planning": "playbook-suite",
+        "internal brief or external handout": "playbook-onepager"
+      },
+      "description": "Define, compare and maintain productized service offerings; plan their artifact packages or render internal briefs and external handouts. Use for an offering catalog, not an operational SOP."
+    },
+    "session-handoff": {
+      "source": "session-handoff",
+      "pack": "core",
+      "modes": {}
+    },
+    "sf-apex-patterns": {
+      "source": "sf-enterprise-patterns",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "sf-change-delivery": {
+      "source": "sf-solo-devops",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "sf-devops-center": {
+      "source": "dx-devops-work-item-manage",
+      "pack": "salesforce",
+      "modes": {
+        "promote work items or stages": "dx-devops-promote"
+      },
+      "description": "Manage configured Salesforce DevOps Center work items or perform authorized promotion. Select the operation before mutation and retain distinct target, capability, dependency and promotion checks."
+    },
+    "sf-pipeline-operations": {
+      "source": "sf-deploy-engine",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "sf-project-setup": {
+      "source": "sf-delivery-standards",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "skill-authoring": {
+      "source": "skill-creation-walkthrough",
+      "pack": "core",
+      "modes": {}
+    },
+    "skill-estate-sync": {
+      "source": "skill-estate-sync",
+      "pack": "core",
+      "modes": {}
+    },
+    "solution-brief": {
+      "source": "solution-brief",
+      "pack": "core",
+      "modes": {}
+    },
+    "statement-of-work": {
+      "source": "sow",
+      "pack": "core",
+      "modes": {
+        "contract scope and obligation review": "sow-quality"
+      },
+      "description": "Draft or review a statement of work from confirmed scope, commercial data and a selected contract profile. Preserve clause coverage, estimate assumptions and obligations; no default employer terms apply."
+    },
+    "sticker-art-direction": {
+      "source": "sticker-art-direction",
+      "pack": "core",
+      "modes": {}
+    },
+    "sticker-sheets": {
+      "source": "sticker-sheets",
+      "pack": "personal-projects",
+      "modes": {}
+    },
+    "system-design": {
+      "source": "system-design",
+      "pack": "core",
+      "modes": {
+        "formal architecture reference": "architecture-doc"
+      },
+      "description": "Explore a service or product design, or write its formal architecture reference. Cover the requirements, components, interfaces, data, security, operations and trade-offs relevant to the requested decision."
+    },
+    "team-onboarding": {
+      "source": "team-onboarding",
+      "pack": "management",
+      "modes": {}
+    },
+    "usability-testing": {
+      "source": "usability-testing",
+      "pack": "core",
+      "modes": {}
+    },
+    "writing-integrity": {
+      "source": "writing-integrity",
+      "pack": "core",
+      "modes": {},
+      "description": "Write and edit clear, specific prose in every reply and deliverable. Preserve facts, scope, uncertainty and confirmed author voice. Use the bundled diagnostic and figure checks as tools under this standard."
+    },
+    "writing-profile": {
+      "source": "writing-style-builder",
+      "pack": "writing-profiles",
+      "modes": {}
+    }
+  },
+  "internal": [
+    "brain-work-item",
+    "brand-renderer",
+    "delivery-suite",
+    "evidence-core",
+    "execution-truth",
+    "github-repository-work",
+    "jtbd-framing",
+    "megan-writing-style",
+    "org-preflight",
+    "personal-writing-style-runtime",
+    "prose-pass",
+    "sf-headless-screenshot",
+    "transcript-ingestion"
+  ]
+}

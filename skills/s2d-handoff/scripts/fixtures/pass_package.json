@@ -1,0 +1,71 @@
+{
+  "client": "Fixture Manufacturing Co",
+  "engagement": "Quote-to-cash foundation, phase 1",
+  "moment": "package",
+  "as_of": "2026-08-02",
+  "source_snapshot": {"sow": "SOW-FIX-001 executed 2026-08-01", "quote": "Q-000999"},
+  "sections": {
+    "01": {
+      "content": ["Replace the spreadsheet quoting process with Sales Cloud quoting; success spine: quote turnaround from 9 days to 2."],
+      "sources": [{"name": "SOW-FIX-001 section 2", "date": "2026-08-01"}]
+    },
+    "02": {
+      "content": ["A June assessment settled the CRM platform decision; pricing model design was left deliberately open."],
+      "sources": [{"name": "Assessment readout deck, Drive", "date": "2026-06-20"}]
+    },
+    "03": {
+      "content": ["Quotes are built in a 14-tab spreadsheet owned by one analyst; the approval step is a manual email chain."],
+      "sources": [{"name": "Discovery call transcript", "date": "2026-05-14"}]
+    },
+    "04": {
+      "content": ["ERP (keep, owner: client IT director), legacy CRM (replace), tax engine (connect)."],
+      "sources": [{"name": "System inventory, Drive", "date": "2026-06-02"}]
+    },
+    "05": {
+      "content": ["Sales Cloud owns quoting; ERP keeps order fulfillment; one nightly sync crosses the seam."],
+      "sources": [{"name": "Solution Brief v1.2", "date": "2026-07-10"}]
+    },
+    "06": {
+      "content": ["Two-phase rollout chosen over big bang (settled, Pursuit Lead, 2026-07-08). Maturity-gap flag carried: ERP integration."],
+      "sources": [{"name": "Deal desk notes", "date": "2026-07-08"}]
+    },
+    "07": {
+      "content": ["AE told the sponsor a report pack would be included; not in the SOW. Flagged, owner: Pursuit Lead."],
+      "sources": [{"name": "Call transcript, 2026-07-15, 00:41:20", "date": "2026-07-15"}]
+    },
+    "08": {
+      "content": ["Assumption: under 50,000 records migrate from a clean source; if false, the migration estimate reopens."],
+      "sources": [{"name": "SOW-FIX-001 exhibit A", "date": "2026-08-01"}]
+    },
+    "09": {
+      "content": ["Economic buyer (CFO) was in the deal cycle but is not on the delivery roster: flagged mismatch."],
+      "sources": [{"name": "Salesforce contact roles", "date": "2026-08-01"}]
+    },
+    "10": {
+      "content": ["The 2025 distributor build's approval-matrix template applies; lives in the prior-engagement Drive folder."],
+      "sources": [{"name": "Prior engagement record", "date": "2026-08-01"}]
+    },
+    "11": {
+      "gaps": [{"question": "Shape the week-one validation sessions with the incoming team", "owner": "Solution Lead", "resolve_by": "2026-08-14", "gate_blocked": "delivery acceptance"}]
+    },
+    "12": {
+      "gaps": [{"question": "Draft the readiness checklist and definition of done from the SOW acceptance methods", "owner": "Program Lead", "resolve_by": "2026-08-14", "gate_blocked": "delivery acceptance"}]
+    }
+  },
+  "scope": [
+    {"item": "Sales Cloud quoting configuration", "in_or_out": "in", "source": "SOW-FIX-001 section 3.1"},
+    {"item": "ERP-side customization", "in_or_out": "out", "source": "SOW-FIX-001 section 3.4 exclusions"}
+  ],
+  "promises": [
+    {
+      "text": "A management report pack will be included at no charge",
+      "said_where": "Call transcript 2026-07-15, 00:41:20",
+      "by": "AE",
+      "in_sow": false,
+      "owner": "Pursuit Lead"
+    }
+  ],
+  "figures": [
+    {"label": "total fee", "value": "as stated in the contract", "source": "SOW-FIX-001 section 4 / Q-000999"}
+  ]
+}

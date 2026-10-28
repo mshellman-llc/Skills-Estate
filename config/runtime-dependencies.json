@@ -1,0 +1,131 @@
+{
+  "architecture-doc": [
+    "brand-renderer"
+  ],
+  "brand-renderer": [
+    "prose-pass",
+    "quality-gate"
+  ],
+  "business-case": [
+    "brand-renderer"
+  ],
+  "call-prep": [
+    "brand-renderer"
+  ],
+  "cutover-closeout": [
+    "brand-renderer",
+    "delivery-suite"
+  ],
+  "ddoc": [
+    "brand-renderer"
+  ],
+  "deck-builder": [
+    "brand-renderer"
+  ],
+  "delivery-status": [
+    "brand-renderer",
+    "delivery-suite"
+  ],
+  "delivery-suite": [
+    "brand-renderer"
+  ],
+  "discovery-brief": [
+    "brand-renderer"
+  ],
+  "discovery-synthesis": [
+    "brand-renderer"
+  ],
+  "evidence-core": [
+    "brand-renderer"
+  ],
+  "interactive-proposal": [
+    "brand-renderer"
+  ],
+  "journey-mapping": [
+    "brand-renderer",
+    "client-brand",
+    "evidence-core",
+    "knowledge-hub"
+  ],
+  "jtbd-framing": [
+    "brand-renderer"
+  ],
+  "personal-writing-style-runtime": [
+    "brand-renderer"
+  ],
+  "playbook-builder": [
+    "brand-renderer"
+  ],
+  "playbook-fit-router": [
+    "brand-renderer"
+  ],
+  "playbook-onepager": [
+    "brand-renderer"
+  ],
+  "playbook-suite": [
+    "brand-renderer"
+  ],
+  "process": [
+    "brand-renderer"
+  ],
+  "quality-gate": [
+    "prose-pass"
+  ],
+  "requirements-capture": [
+    "brand-renderer",
+    "delivery-suite"
+  ],
+  "rom": [
+    "brand-renderer"
+  ],
+  "s2d-handoff": [
+    "brand-renderer",
+    "delivery-suite"
+  ],
+  "scope-reference": [
+    "brand-renderer"
+  ],
+  "session-handoff": [
+    "brand-renderer"
+  ],
+  "sf-delivery-standards": [
+    "brand-renderer"
+  ],
+  "skill-creation-walkthrough": [
+    "brand-renderer"
+  ],
+  "solution-brief": [
+    "brand-renderer",
+    "evidence-core"
+  ],
+  "sow": [
+    "brand-renderer"
+  ],
+  "sow-quality": [
+    "brand-renderer"
+  ],
+  "spec-writer": [
+    "brand-renderer"
+  ],
+  "system-design": [
+    "brand-renderer"
+  ],
+  "team-onboarding": [
+    "brand-renderer"
+  ],
+  "writing-style-builder": [
+    "brand-renderer"
+  ],
+  "sf-solo-devops": [
+    "org-preflight"
+  ],
+  "pm-spec-writing": [
+    "spec-writer"
+  ],
+  "delivery-kickoff": [
+    "delivery-suite"
+  ],
+  "uat-validation": [
+    "delivery-suite"
+  ]
+}

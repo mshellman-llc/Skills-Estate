@@ -1,82 +1,154 @@
-# Skill catalog
+# Skills catalog
 
-76 canonical packages. Generated packages include the shared policies.
+This candidate contains 79 source modules and 53 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
-| Skill | Use |
-| --- | --- |
-| [accessibility-audit](skills/accessibility-audit/SKILL.md) | Audit a specified interface against WCAG or verify requested accessibility fixes. Use for explicit accessibility reviews and remediation checks; routine QA and copy edits do not require this audit. Default target is WCAG 2.2 AA. |
-| [analytics-strategy](skills/analytics-strategy/SKILL.md) | Design a measurement strategy, event tracking plan, metric definitions, or a decision-focused analytics dashboard. Use for explicit measurement design and tracking audits; calculating known metrics or drawing an existing dataset's chart does not need this workflow. |
-| [architecture-doc](skills/architecture-doc/SKILL.md) | Write a formal, sourced architecture or technical design reference covering intent, components, data, interfaces, security, operations, and trade-offs. |
-| [beastmode-capture](skills/beastmode-capture/SKILL.md) | Save a BeastMode decision, discovery, or factual correction with evidence and review state. Use when Megan says remember this, correct the hub, or capture a decision. Do not treat brainstorming as confirmed fact or claim a proposal is accepted. |
-| [beastmode-context](skills/beastmode-context/SKILL.md) | Start or resume BeastMode work from current hub context and subject authorities. Use when Megan asks to get oriented, resume a project, or use her current context. Route career drafting to career-application; do not run a whole-drive audit for an ordinary task. |
-| [beastmode-health](skills/beastmode-health/SKILL.md) | Check whether BeastMode context, connections, ingestion, maintenance, budgets, and recovery are working, with scoped evidence. Use for a hub health check or troubleshooting stale context. A check is read-only unless Megan also requests repair; it does not start new recurring jobs. |
-| [beastmode-reconcile](skills/beastmode-reconcile/SKILL.md) | Compare a named BeastMode or Meridian folder with current authorities, preserve unique evidence, and archive verified duplicates reversibly. Use for new intake or continued cleanup. Do not trigger for simple retrieval, or equate similar filenames, age, or inactivity with obsolescence. |
-| [brain-work-item](skills/brain-work-item/SKILL.md) | Start, continue, or close Megan's Brain-linked Codex work item. Use when a Brain task ID or daily ready item is the work source, or when finishing a linked task. |
-| [business-case](skills/business-case/SKILL.md) | Build an executive investment case with supported benefits, costs, alternatives, risks, and a bounded funding decision. |
-| [call-prep](skills/call-prep/SKILL.md) | Plan a sales pursuit or prepare an upcoming call from current account evidence. Use for pursuit briefs, call objectives, agendas, stakeholder plans, and ranked questions; route completed-call findings to discovery-brief. |
-| [career-application](skills/career-application/SKILL.md) | Assess, tailor, prepare interviews, fill, or resume Megan's leadership-level applications using current postings and private career evidence. Never submit without explicit authorization. |
-| [career-materials-and-outreach](skills/career-materials-and-outreach/SKILL.md) | Draft the pieces around Megan's tailored resume (cover letter, form answers, outreach, LinkedIn sections, reference packets) from the role work record and current evidence, in her voice, as drafts only. |
-| [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md) | Assess a role, the whole tracker or an offer against Megan's VP-to-ELT path and her gates; prepare salary negotiation; compare offers side by side. Megan decides. |
-| [case-study-builder](skills/case-study-builder/SKILL.md) | Turn a piece of Megan's work into a sanitized, evidence-checked portfolio case study (working + publish copy) using her template and publish gate. |
-| [client-brand](skills/client-brand/SKILL.md) | Apply a confirmed project or client brand to an artifact, or use the estate neutral profile. Use for branded deliverables and brand profile creation or updates. |
-| [code-simplify](skills/code-simplify/SKILL.md) | Review and refine the current code change for reuse, clarity, maintainability, and efficiency without changing behavior. Use when a delivery workflow requires a simplify pass, when the user asks to simplify or clean up a diff, or before committing a non-trivial implementation. Scope work to the current branch diff or an explicit target, preserve public behavior and project conventions, apply only high-confidence edits, and verify the result with focused tests. This is the Codex-native equivalent of Claude Code review with fixes, not a prose-style pass. |
-| [cutover-closeout](skills/cutover-closeout/SKILL.md) | Prepare a cutover runbook, go-live acceptance record, hypercare plan, and delivery closeout from the approved release and executed scope. |
-| [ddoc](skills/ddoc/SKILL.md) | Prepare a deal decision deck that compares scoped options or confirms a single proposal direction. Use for options decks presented before a proposal or SOW. |
-| [deal-desk](skills/deal-desk/SKILL.md) | Prepare an internal commercial review and reconcile quote figures across a proposal, estimate, or SOW without changing pricing. |
-| [deck-builder](skills/deck-builder/SKILL.md) | Build a multi-slide pitch, proposal, or briefing from a clear audience decision through copy, rendering, and visual review. Use ddoc for a deal-options decision deck. |
-| [delivery-kickoff](skills/delivery-kickoff/SKILL.md) | Mobilize a signed engagement with a project charter, governance logs, kickoff materials, and initial delivery plan. |
-| [delivery-status](skills/delivery-status/SKILL.md) | Prepare a delivery status report, maintain risk and decision logs, and identify potential scope changes against an executed baseline. |
-| [delivery-suite](skills/delivery-suite/SKILL.md) | Route a signed delivery engagement through handoff, planning, requirements, build, validation, cutover, and closeout using its actual state and gate owners. |
-| [discovery-brief](skills/discovery-brief/SKILL.md) | Maintain a pursuit discovery ledger of supported findings and ranked unanswered questions. Use to prepare discovery, ingest completed calls, log decisions, and identify gaps affecting scope or price. |
-| [discovery-synthesis](skills/discovery-synthesis/SKILL.md) | Turn supplied interviews, meeting notes, or transcripts into sourced research findings, jobs to be done, pain points, verbatims, and next steps. Use for research synthesis rather than maintenance of a deal ledger. |
-| [dx-devops-promote](skills/dx-devops-promote/SKILL.md) | Promote authorized Salesforce DevOps Center work items or pipeline stages after capability, target, dependency, and validation checks. |
-| [dx-devops-work-item-manage](skills/dx-devops-work-item-manage/SKILL.md) | Manage Salesforce DevOps Center work items, branches, changes, and review requests through the installed integration. Use for work item lifecycle operations, not promotion. |
-| [evidence-core](skills/evidence-core/SKILL.md) | Maintain source records and atomic claims with exact provenance, authority, freshness, conflicts, and evidence sufficiency for a project artifact. |
-| [execution-truth](skills/execution-truth/SKILL.md) | Establish and verify the actual completion state of work that changes repositories, files, cloud documents, deployments, client data, publications, installations, or automations. Use before material implementation and at handoff. Do not use for ordinary questions, explanations, or read-only analysis with no produced artifact or state change. |
-| [fortunes-weave](skills/fortunes-weave/SKILL.md) | Answer Megan's Fire Emblem Fortune's Weave questions or update her planner using the current route, roster, project notes, and live planner state. |
-| [github-repository-work](skills/github-repository-work/SKILL.md) | Work with repositories owned by mshellman-llc using the shared authenticated GitHub CLI and Git. Use for repository access, commits, pushes, pull requests, releases, and repository deployment workflows. |
-| [independent-product](skills/independent-product/SKILL.md) | Translate an existing employer-era project into Megan's independent, company-neutral product, consulting offer, or portfolio example. Use for Linky, playbooks, assessments, AI 201, Meridian derivatives, and related migrations. |
-| [information-architecture](skills/information-architecture/SKILL.md) | Design or review a website or product's navigation, sitemap, labels, content taxonomy, or URL structure. Use for findability and structural design requests; file cleanup, private source routing, and database schemas are outside this skill. |
-| [interactive-proposal](skills/interactive-proposal/SKILL.md) | Build an interactive proposal or scope explorer with selectable fixed options, sourced scope, timelines, assumptions, and a clear next decision. |
-| [journey-mapping](skills/journey-mapping/SKILL.md) | Map a customer journey or service blueprint from observed touchpoints, needs, friction, and supporting operations. Use for evidence-based experience and opportunity analysis. |
-| [jtbd-framing](skills/jtbd-framing/SKILL.md) | Use jobs-to-be-done evidence to clarify customer progress, switching decisions, positioning, or discovery priorities. |
-| [knowledge-hub](skills/knowledge-hub/SKILL.md) | Retrieve, organize, and update a project's durable client, opportunity, engagement, and evidence records using the actual available storage system. |
-| [megan-writing-style](skills/megan-writing-style/SKILL.md) | Use when drafting or editing prose in Megan's own voice — portfolio, About, bio, case studies, cover letters, LinkedIn, or emails she sends as herself. Enforces her anti-slop rules. |
-| [org-preflight](skills/org-preflight/SKILL.md) | Verify the Salesforce organization and environment before a write, DML operation, deployment, or metadata change. |
-| [personal-writing-style-runtime](skills/personal-writing-style-runtime/SKILL.md) | Apply a supplied or project-configured confirmed writing-style profile when that person is the intended author. Use for writing in a specific person's voice without rebuilding their profile. |
-| [playbook-builder](skills/playbook-builder/SKILL.md) | Define, compare, or maintain productized offerings and service playbooks in a coherent catalog. |
-| [playbook-fit-router](skills/playbook-fit-router/SKILL.md) | Match a prospect's evidenced needs to the current offering catalog and explain fit, disqualifiers, missing information, and the next discovery question. |
-| [playbook-onepager](skills/playbook-onepager/SKILL.md) | Produce an internal enablement brief or external one-page handout from a defined offering using the selected brand profile. |
-| [playbook-suite](skills/playbook-suite/SKILL.md) | Coordinate the artifacts needed to define, qualify, sell, and deliver a productized offering, using a current manifest and explicit readiness evidence. |
-| [pm-spec-writing](skills/pm-spec-writing/SKILL.md) | Write a feature spec, PRD, development brief, or testable acceptance criteria from supplied product context. Use for explicit specification and scoping requests; routine code edits and bug fixes do not require a separate spec. |
-| [process](skills/process/SKILL.md) | Document a business process as an SOP or analyze a process for improvements in time, cost, quality, and ownership. |
-| [product-development-pathway](skills/product-development-pathway/SKILL.md) | Develop or resume a product through evidence review, product definition, release decisions, journey design, and delivery readiness. Use for historical product reconstruction, a new product, or continuation at a requested stage with durable progress. A standalone bug fix or one-off specification does not require this pathway. |
-| [quality-gate](skills/quality-gate/SKILL.md) | Review an artifact against its sources, requested outcome, format, and actual completion state. Use for a requested final quality review or a material delivery checkpoint. |
-| [requirements-capture](skills/requirements-capture/SKILL.md) | Capture epics, capabilities, business needs, user stories, and testable acceptance criteria from project sources. Use for requirements workbooks, backlog preparation, and SOW-to-backlog analysis. |
-| [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md) | Wording method for Megan's tailored resume copy under career-application tailor: stated and estimated figures, rounding, posting keyword placement, bullet shape, ATS layout. |
-| [rom](skills/rom/SKILL.md) | Prepare a rough order of magnitude estimate and its basis, with ranges, assumptions, reconciliation, and explicit conditions that would reopen it. |
-| [s2d-handoff](skills/s2d-handoff/SKILL.md) | Prepare a sales-to-delivery handoff from the executed agreement and deal record, and track the receiving delivery owner's acceptance. |
-| [sales-journey-critique](skills/sales-journey-critique/SKILL.md) | Review a sales journey, discovery demo or proposed workflow. Trace the customer’s task, compare current and proposed steps, and check systems, click paths and measures. Recommend specific corrections. |
-| [sales-process-mapping](skills/sales-process-mapping/SKILL.md) | Map sales processes from discovery files, workbooks, CRM or Jira exports and operating notes. Trace triggers, ownership, handoffs and systems of record, including territory assignment and opportunity creation when relevant. |
-| [scope-reference](skills/scope-reference/SKILL.md) | Produce a static scope comparison or option matrix with sourced inclusions, exclusions, hours, price, and timeline. Use for print-ready option summaries rather than interactive proposals. |
-| [scoping-agent](skills/scoping-agent/SKILL.md) | Develop or revise a project scope and its estimate with the user's pricing system or supplied quote model. Use for scope items, effort, staffing, and timeline planning. |
-| [session-handoff](skills/session-handoff/SKILL.md) | Prepare an end-of-session handoff that lets another agent resume the same task with its decisions, files, state, verification, and next action intact. |
-| [sf-delivery-standards](skills/sf-delivery-standards/SKILL.md) | Set up, audit, or repair a Salesforce project's delivery checks and operating instructions. Use for delivery tooling setup and hook troubleshooting rather than an ordinary deployment. |
-| [sf-deploy-engine](skills/sf-deploy-engine/SKILL.md) | Operate an existing Salesforce deployment pipeline using its current configuration, documented commands, release state, and authorization controls. |
-| [sf-enterprise-patterns](skills/sf-enterprise-patterns/SKILL.md) | Apply a project's Salesforce service, selector, unit-of-work, and controller conventions when designing or reviewing Apex and LWC code. |
-| [sf-headless-screenshot](skills/sf-headless-screenshot/SKILL.md) | Capture Salesforce UI evidence and run authorized clickpath checks with an available authenticated browser or screenshot tool. |
-| [sf-solo-devops](skills/sf-solo-devops/SKILL.md) | Deliver an authorized change to a single-org Salesforce project using its issue, branch, validation, review, deployment, and acceptance process. |
-| [skill-creation-walkthrough](skills/skill-creation-walkthrough/SKILL.md) | Create or improve a focused cross-platform skill with clear triggers, progressive references, useful resources, and observable validation. |
-| [skill-estate-sync](skills/skill-estate-sync/SKILL.md) | Validate, build, package, install, and audit the canonical Skills Estate across Claude Code and Codex. Use for skill changes, local drift, release bundles, and account upload tracking. |
-| [solution-brief](skills/solution-brief/SKILL.md) | Assess whether a proposed solution can be delivered and explain its systems, interfaces, scope, ownership, risks, and implementation decisions. Use for solution approval, build references, and internal scoping guides. |
-| [sow](skills/sow/SKILL.md) | Draft a statement of work from confirmed scope, quote data, and the project's approved legal template. Use for fixed-scope, adaptive, and assessment engagements. |
-| [sow-quality](skills/sow-quality/SKILL.md) | Review a statement of work or contractual scope document for scope consistency, estimate assumptions, cross-references, and duplicated or ambiguous obligations. |
-| [spec-writer](skills/spec-writer/SKILL.md) | Write an implementation-ready feature specification with user flows, UI states, affected files, data changes, and testable acceptance criteria. Use for explicit feature specification work. |
-| [sticker-sheets](skills/sticker-sheets/SKILL.md) | Lay out Megan's PNG designs as Cricut Print Then Cut sheets using the current project generator. Use for sticker sizes, exact counts, sheet rebuilding, and physical print layouts. |
-| [system-design](skills/system-design/SKILL.md) | Explore a working design for a service, API, data platform, or product, including requirements, components, capacity, reliability, and trade-offs. |
-| [team-onboarding](skills/team-onboarding/SKILL.md) | Design a role-specific 30/60/90-day onboarding plan for an employee, contractor, or partner, with responsibilities, learning, contribution, and feedback milestones. |
-| [transcript-ingestion](skills/transcript-ingestion/SKILL.md) | Preserve, normalize, and index a supplied transcript for a confirmed project, client, opportunity, or engagement. |
-| [uat-validation](skills/uat-validation/SKILL.md) | Prepare and track acceptance testing, requirement traceability, defects, coverage, and the evidence for a go/no-go decision. |
-| [usability-testing](skills/usability-testing/SKILL.md) | Plan usability sessions, write neutral task scripts, or synthesize supplied participant observations. Use for explicit usability research requests; ordinary QA, code fixes, and agent walkthroughs do not establish participant evidence. |
-| [writing-integrity](skills/writing-integrity/SKILL.md) | Write and edit clear, specific prose in every response and deliverable. Remove formulaic AI writing while preserving facts, scope, uncertainty, and the author's voice. Also review existing drafts when asked. |
-| [writing-style-builder](skills/writing-style-builder/SKILL.md) | Build or revise a person's private writing-style profile from samples they explicitly authorize for that purpose. |
+## Proposed task entrypoints
+
+| Entrypoint | Primary source | Included modes |
+| --- | --- | --- |
+| acceptance-testing | [uat-validation](skills/uat-validation/SKILL.md) |  |
+| accessibility-audit | [accessibility-audit](skills/accessibility-audit/SKILL.md) |  |
+| analytics-strategy | [analytics-strategy](skills/analytics-strategy/SKILL.md) |  |
+| beastmode-capture | [beastmode-capture](skills/beastmode-capture/SKILL.md) |  |
+| beastmode-context | [beastmode-context](skills/beastmode-context/SKILL.md) |  |
+| beastmode-health | [beastmode-health](skills/beastmode-health/SKILL.md) |  |
+| beastmode-reconcile | [beastmode-reconcile](skills/beastmode-reconcile/SKILL.md) |  |
+| brand-profile | [client-brand](skills/client-brand/SKILL.md) |  |
+| business-case | [business-case](skills/business-case/SKILL.md) |  |
+| call-prep | [call-prep](skills/call-prep/SKILL.md) |  |
+| career-application | [career-application](skills/career-application/SKILL.md) | career-materials-and-outreach, resume-numbers-and-keywords |
+| career-decisions | [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md) |  |
+| code-simplify | [code-simplify](skills/code-simplify/SKILL.md) |  |
+| commercial-review | [deal-desk](skills/deal-desk/SKILL.md) |  |
+| cutover-closeout | [cutover-closeout](skills/cutover-closeout/SKILL.md) |  |
+| deck-builder | [deck-builder](skills/deck-builder/SKILL.md) | ddoc |
+| deliverable-review | [quality-gate](skills/quality-gate/SKILL.md) |  |
+| delivery-kickoff | [delivery-kickoff](skills/delivery-kickoff/SKILL.md) |  |
+| delivery-status | [delivery-status](skills/delivery-status/SKILL.md) |  |
+| discovery | [discovery-synthesis](skills/discovery-synthesis/SKILL.md) | discovery-brief |
+| feature-spec | [pm-spec-writing](skills/pm-spec-writing/SKILL.md) | spec-writer |
+| fortunes-weave | [fortunes-weave](skills/fortunes-weave/SKILL.md) |  |
+| independent-product | [independent-product](skills/independent-product/SKILL.md) |  |
+| information-architecture | [information-architecture](skills/information-architecture/SKILL.md) |  |
+| journey-mapping | [journey-mapping](skills/journey-mapping/SKILL.md) |  |
+| knowledge-hub | [knowledge-hub](skills/knowledge-hub/SKILL.md) |  |
+| offering-fit | [playbook-fit-router](skills/playbook-fit-router/SKILL.md) |  |
+| portfolio-case-study | [case-study-builder](skills/case-study-builder/SKILL.md) |  |
+| process-design | [process](skills/process/SKILL.md) |  |
+| product-development | [product-development-pathway](skills/product-development-pathway/SKILL.md) |  |
+| project-scoping | [scoping-agent](skills/scoping-agent/SKILL.md) | rom |
+| requirements-backlog | [requirements-capture](skills/requirements-capture/SKILL.md) |  |
+| sales-process-mapping | [sales-process-mapping](skills/sales-process-mapping/SKILL.md) | sales-journey-critique |
+| sales-to-delivery-handoff | [s2d-handoff](skills/s2d-handoff/SKILL.md) |  |
+| scope-options | [scope-reference](skills/scope-reference/SKILL.md) | interactive-proposal |
+| service-offering | [playbook-builder](skills/playbook-builder/SKILL.md) | playbook-suite, playbook-onepager |
+| session-handoff | [session-handoff](skills/session-handoff/SKILL.md) |  |
+| sf-apex-patterns | [sf-enterprise-patterns](skills/sf-enterprise-patterns/SKILL.md) |  |
+| sf-change-delivery | [sf-solo-devops](skills/sf-solo-devops/SKILL.md) |  |
+| sf-devops-center | [dx-devops-work-item-manage](skills/dx-devops-work-item-manage/SKILL.md) | dx-devops-promote |
+| sf-pipeline-operations | [sf-deploy-engine](skills/sf-deploy-engine/SKILL.md) |  |
+| sf-project-setup | [sf-delivery-standards](skills/sf-delivery-standards/SKILL.md) |  |
+| skill-authoring | [skill-creation-walkthrough](skills/skill-creation-walkthrough/SKILL.md) |  |
+| skill-estate-sync | [skill-estate-sync](skills/skill-estate-sync/SKILL.md) |  |
+| solution-brief | [solution-brief](skills/solution-brief/SKILL.md) |  |
+| statement-of-work | [sow](skills/sow/SKILL.md) | sow-quality |
+| sticker-art-direction | [sticker-art-direction](skills/sticker-art-direction/SKILL.md) |  |
+| sticker-sheets | [sticker-sheets](skills/sticker-sheets/SKILL.md) |  |
+| system-design | [system-design](skills/system-design/SKILL.md) | architecture-doc |
+| team-onboarding | [team-onboarding](skills/team-onboarding/SKILL.md) |  |
+| usability-testing | [usability-testing](skills/usability-testing/SKILL.md) |  |
+| writing-integrity | [writing-integrity](skills/writing-integrity/SKILL.md) |  |
+| writing-profile | [writing-style-builder](skills/writing-style-builder/SKILL.md) |  |
+
+## Source modules
+
+Each module needs a reviewed capability disposition before release.
+
+- [accessibility-audit](skills/accessibility-audit/SKILL.md)
+- [analytics-strategy](skills/analytics-strategy/SKILL.md)
+- [architecture-doc](skills/architecture-doc/SKILL.md)
+- [beastmode-capture](skills/beastmode-capture/SKILL.md)
+- [beastmode-context](skills/beastmode-context/SKILL.md)
+- [beastmode-health](skills/beastmode-health/SKILL.md)
+- [beastmode-reconcile](skills/beastmode-reconcile/SKILL.md)
+- [brain-work-item](skills/brain-work-item/SKILL.md)
+- [brand-renderer](skills/brand-renderer/SKILL.md)
+- [business-case](skills/business-case/SKILL.md)
+- [call-prep](skills/call-prep/SKILL.md)
+- [career-application](skills/career-application/SKILL.md)
+- [career-materials-and-outreach](skills/career-materials-and-outreach/SKILL.md)
+- [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md)
+- [case-study-builder](skills/case-study-builder/SKILL.md)
+- [client-brand](skills/client-brand/SKILL.md)
+- [code-simplify](skills/code-simplify/SKILL.md)
+- [cutover-closeout](skills/cutover-closeout/SKILL.md)
+- [ddoc](skills/ddoc/SKILL.md)
+- [deal-desk](skills/deal-desk/SKILL.md)
+- [deck-builder](skills/deck-builder/SKILL.md)
+- [delivery-kickoff](skills/delivery-kickoff/SKILL.md)
+- [delivery-status](skills/delivery-status/SKILL.md)
+- [delivery-suite](skills/delivery-suite/SKILL.md)
+- [discovery-brief](skills/discovery-brief/SKILL.md)
+- [discovery-synthesis](skills/discovery-synthesis/SKILL.md)
+- [dx-devops-promote](skills/dx-devops-promote/SKILL.md)
+- [dx-devops-work-item-manage](skills/dx-devops-work-item-manage/SKILL.md)
+- [evidence-core](skills/evidence-core/SKILL.md)
+- [execution-truth](skills/execution-truth/SKILL.md)
+- [fortunes-weave](skills/fortunes-weave/SKILL.md)
+- [github-repository-work](skills/github-repository-work/SKILL.md)
+- [independent-product](skills/independent-product/SKILL.md)
+- [information-architecture](skills/information-architecture/SKILL.md)
+- [interactive-proposal](skills/interactive-proposal/SKILL.md)
+- [journey-mapping](skills/journey-mapping/SKILL.md)
+- [jtbd-framing](skills/jtbd-framing/SKILL.md)
+- [knowledge-hub](skills/knowledge-hub/SKILL.md)
+- [megan-writing-style](skills/megan-writing-style/SKILL.md)
+- [org-preflight](skills/org-preflight/SKILL.md)
+- [personal-writing-style-runtime](skills/personal-writing-style-runtime/SKILL.md)
+- [playbook-builder](skills/playbook-builder/SKILL.md)
+- [playbook-fit-router](skills/playbook-fit-router/SKILL.md)
+- [playbook-onepager](skills/playbook-onepager/SKILL.md)
+- [playbook-suite](skills/playbook-suite/SKILL.md)
+- [pm-spec-writing](skills/pm-spec-writing/SKILL.md)
+- [process](skills/process/SKILL.md)
+- [product-development-pathway](skills/product-development-pathway/SKILL.md)
+- [prose-pass](skills/prose-pass/SKILL.md)
+- [quality-gate](skills/quality-gate/SKILL.md)
+- [requirements-capture](skills/requirements-capture/SKILL.md)
+- [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md)
+- [rom](skills/rom/SKILL.md)
+- [s2d-handoff](skills/s2d-handoff/SKILL.md)
+- [sales-journey-critique](skills/sales-journey-critique/SKILL.md)
+- [sales-process-mapping](skills/sales-process-mapping/SKILL.md)
+- [scope-reference](skills/scope-reference/SKILL.md)
+- [scoping-agent](skills/scoping-agent/SKILL.md)
+- [session-handoff](skills/session-handoff/SKILL.md)
+- [sf-delivery-standards](skills/sf-delivery-standards/SKILL.md)
+- [sf-deploy-engine](skills/sf-deploy-engine/SKILL.md)
+- [sf-enterprise-patterns](skills/sf-enterprise-patterns/SKILL.md)
+- [sf-headless-screenshot](skills/sf-headless-screenshot/SKILL.md)
+- [sf-solo-devops](skills/sf-solo-devops/SKILL.md)
+- [skill-creation-walkthrough](skills/skill-creation-walkthrough/SKILL.md)
+- [skill-estate-sync](skills/skill-estate-sync/SKILL.md)
+- [solution-brief](skills/solution-brief/SKILL.md)
+- [sow](skills/sow/SKILL.md)
+- [sow-quality](skills/sow-quality/SKILL.md)
+- [spec-writer](skills/spec-writer/SKILL.md)
+- [sticker-art-direction](skills/sticker-art-direction/SKILL.md)
+- [sticker-sheets](skills/sticker-sheets/SKILL.md)
+- [system-design](skills/system-design/SKILL.md)
+- [team-onboarding](skills/team-onboarding/SKILL.md)
+- [transcript-ingestion](skills/transcript-ingestion/SKILL.md)
+- [uat-validation](skills/uat-validation/SKILL.md)
+- [usability-testing](skills/usability-testing/SKILL.md)
+- [writing-integrity](skills/writing-integrity/SKILL.md)
+- [writing-style-builder](skills/writing-style-builder/SKILL.md)
+
+## Routing agents
+
+- [commercial-router](agents/commercial-router.md)
+- [delivery-router](agents/delivery-router.md)
+- [governance-router](agents/governance-router.md)
+- [pursuit-router](agents/pursuit-router.md)
+- [quality-router](agents/quality-router.md)
+- [solutioning-router](agents/solutioning-router.md)

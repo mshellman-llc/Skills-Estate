@@ -3,6 +3,11 @@ name: product-development-pathway
 description: Develop or resume a product through evidence review, product definition, release decisions, journey design, and delivery readiness. Use for historical product reconstruction, a new product, or continuation at a requested stage with durable progress. A standalone bug fix or one-off specification does not require this pathway.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Product development pathway
 
 Continue the requested product stage from its current evidence and decisions. Keep completed artifacts and open work accessible through one product home. Save the next executable action there.

@@ -3,6 +3,11 @@ name: "case-study-builder"
 description: "Turn a piece of Megan's work into a sanitized, evidence-checked portfolio case study (working + publish copy) using her template and publish gate."
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Case Study Builder
 
 Turn any project, product, or engagement of Megan's into a portfolio case study that is consistent, sanitized, and safe to publish. Produce two copies every time: a **working copy** (evidence labels and proof notes visible, for Megan) and a **publish copy** (clean first-person prose, for the site).
@@ -11,7 +16,7 @@ The split is the point. Evidence control lives in the working copy. The publish 
 
 ## Before you start
 - Megan works independently through Live Laugh Code LLC. Use the current claims and rights ledger for reuse and publication decisions about Meridian, the Knowledge Hub, the skills architecture, and the playbooks. Client names, logos, client data, rate-card numbers, margins, and quote identifiers stay out.
-- Use the current career numbers from `/Volumes/BeastMode/AIMemory/JobHunt/` (the program records and evidence ledger). Don't invent or round past them.
+- Use the current career numbers from `/Volumes/BeastMode/Career/` (the program records and evidence ledger). Don't invent or round past them.
 - Never invent a fact, number, client, or quote to make a study read better. Missing detail: bracket it in the working copy and flag it to Megan in chat; do not fill the gap.
 
 ## Skeleton (fill for each study)

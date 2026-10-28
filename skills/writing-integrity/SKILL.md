@@ -3,6 +3,11 @@ name: "writing-integrity"
 description: "Write and edit clear, specific prose in every response and deliverable. Remove formulaic AI writing while preserving facts, scope, uncertainty, and the author's voice. Also review existing drafts when asked."
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Writing integrity
 
 Apply this skill whenever you write for a person. That includes brief replies, questions, progress updates, research, critiques, emails, documents, slides, captions, UI text, commits and PR descriptions. Review skill descriptions, prompts and instruction files too.
@@ -119,6 +124,14 @@ Read the revision against the original. Check for lost conditions, softened obje
 | Technical explanation, commit or PR | Describe the behavior, how it works and relevant evidence. Preserve identifiers, conditions and limits. |
 
 When a factual claim is challenged, inspect the records before agreeing, denying, assigning responsibility or explaining a cause. Attribute actions only when the records support that attribution. Never invent authorship, memory, motive or familiarity. The user's preferences need no historical verification.
+
+## Use the bundled diagnostic tools
+
+Read [the diagnostic toolkit](../prose-pass/SKILL.md) when checking saved files.
+It includes document text extraction and construction checks. The same module
+also preserves figure comparisons and required review records. These are tools
+under this writing standard; they supply no separate house voice. Apply the
+confirmed author profile and preserve every material source condition.
 
 ## Use the scanner when available
 

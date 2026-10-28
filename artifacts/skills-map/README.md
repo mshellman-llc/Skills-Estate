@@ -8,11 +8,17 @@ The checked-in map is generated from repository sources. A personal snapshot can
 
 Python 3.9 or later, with no third-party dependencies:
 
+`--base` is required; the builder never defaults to the checkout's `HEAD`. Pass the published commit to compare against:
+
 ```sh
-python3 artifacts/skills-map/build.py
+python3 artifacts/skills-map/build.py --base PUBLISHED_COMMIT
 ```
 
-The default baseline is the checkout's current Git commit. The output includes `index.html` and `index.json`. Rebuild after source changes; an existing map does not refresh itself.
+The builder checks that the base commit is reachable from a published ref (`--published-ref`, default `refs/remotes/origin/main`) in the baseline repository. Unpublished commits, a missing or non-remote-tracking published ref, and malformed refs are rejected before any output is written. Older published ancestors remain valid bases.
+
+The published ref is a remote-tracking ref as last observed locally. It is not a live GitHub check, and the builder does no network work. Before building, refresh it yourself (for example, fetch the remote) and confirm that `--published-ref` names the branch that actually represents published history.
+
+The output includes `index.html` and `index.json`. Rebuild after source changes; an existing map does not refresh itself.
 
 To create a personal snapshot without overwriting the canonical artifact:
 
@@ -20,19 +26,20 @@ To create a personal snapshot without overwriting the canonical artifact:
 python3 artifacts/skills-map/build.py \
   --repo /path/to/local-authoring-checkout \
   --baseline-repo /path/to/verified-checkout \
-  --base VERIFIED_COMMIT \
+  --base PUBLISHED_COMMIT \
+  --published-ref refs/remotes/origin/main \
   --extra /path/to/local-skill \
   --output /path/to/personal-skills-map.html
 ```
 
-Repeat `--extra` for each additional skill. The builder refuses duplicate names, missing frontmatter, and skills without an explicit family assignment. `--baseline-repo` lets the comparison use a verified commit without fetching into or modifying a dirty authoring checkout.
+Repeat `--extra` for each additional skill. The builder refuses duplicate names, missing frontmatter, and skills without an explicit family assignment. `--baseline-repo` lets the comparison use a published commit and ref from a separate checkout without modifying a dirty authoring checkout.
 
 ## Source model
 
 - Each package retains its exact entrypoint Markdown and SHA-256. The readable view supports the Markdown constructs used here; the exact source is also available for inspection and download.
 - The initial excerpt uses the first three body blocks after the title, excluding shared-policy routing, subheadings, code blocks, and tables. It is an excerpt, not a replacement for the complete instructions.
 - Connections are literal references to mapped skills found in an entrypoint. Single-word names require an explicit code span, link label, or skill reference to avoid mistaking ordinary words for skill names. The surrounding source paragraph is included. A mention is not automatically a dependency or an execution trace.
-- Package status compares every included file with its Git blob at the selected baseline. Hidden files, Python caches, and bytecode are excluded. A supporting-file change can produce a local revision even when SKILL.md matches.
+- Package status compares every included file with its Git blob at the selected baseline. Hidden files, Python caches, and bytecode are excluded from both the current package and the baseline by one shared rule. A supporting-file change can produce a local revision even when SKILL.md matches.
 - Supporting files are inventoried and hashed, not embedded. Private project records, installed-runtime discovery, external connectors, and account publication are not inspected by the map builder.
 - Families and routes are editorial navigation aids. Current source instructions govern invocation, prerequisites, sequence, and authorization.
 

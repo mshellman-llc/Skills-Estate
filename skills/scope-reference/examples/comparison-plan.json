@@ -1,0 +1,271 @@
+{
+  "title": "Nightly reconciliation: scope and price",
+  "client": "Northstar Finance · demonstration",
+  "intro": "All options include a batch reader, matching, receipt recovery and an operating runbook. Exception handling, alerts and training vary by option.",
+  "rounding": 1,
+  "options": [
+    {
+      "quote_id": "Q-DEMO-001",
+      "name": "Matching and recovery",
+      "summary": "Test matching and recovery from a lost ledger response before production posting.",
+      "snapshots": [
+        {
+          "id": "Q-DEMO-001-primary",
+          "label": "Primary team",
+          "revenue": 34950.25,
+          "weeks": 5,
+          "hours": 210,
+          "currency": "USD"
+        },
+        {
+          "id": "Q-DEMO-001-distributed",
+          "label": "Distributed team",
+          "revenue": 31200,
+          "weeks": 6,
+          "hours": 230,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "quote_id": "Q-DEMO-002",
+      "name": "Daily finance review",
+      "summary": "Include an exception queue and alerts for daily finance review.",
+      "snapshots": [
+        {
+          "id": "Q-DEMO-002-primary",
+          "label": "Primary team",
+          "revenue": 61750,
+          "weeks": 8,
+          "hours": 360,
+          "currency": "USD"
+        },
+        {
+          "id": "Q-DEMO-002-distributed",
+          "label": "Distributed team",
+          "revenue": 56400,
+          "weeks": 9,
+          "hours": 390,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "quote_id": "Q-DEMO-003",
+      "name": "Finance team rollout",
+      "summary": "Allow more time for matching and include training for the wider finance team.",
+      "snapshots": [
+        {
+          "id": "Q-DEMO-003-primary",
+          "label": "Primary team",
+          "revenue": 92350,
+          "weeks": 11,
+          "hours": 520,
+          "currency": "USD"
+        },
+        {
+          "id": "Q-DEMO-003-distributed",
+          "label": "Distributed team",
+          "revenue": 85100,
+          "weeks": 12,
+          "hours": 560,
+          "currency": "USD"
+        }
+      ]
+    }
+  ],
+  "matrix": [
+    {
+      "id": "batch-reader",
+      "name": "Batch reader",
+      "category": "Matching",
+      "description": "Read the completed billing export and retain its source identifiers.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-001",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": 24,
+          "state": "in"
+        },
+        "Q-DEMO-002": {
+          "hours": 24,
+          "state": "in"
+        },
+        "Q-DEMO-003": {
+          "hours": 32,
+          "state": "in"
+        }
+      }
+    },
+    {
+      "id": "match-rules",
+      "name": "Matching rules",
+      "category": "Matching",
+      "description": "Compare account, order, amount and currency using approved rules.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-001",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": 32,
+          "state": "in"
+        },
+        "Q-DEMO-002": {
+          "hours": 40,
+          "state": "in"
+        },
+        "Q-DEMO-003": {
+          "hours": 48,
+          "state": "in"
+        }
+      }
+    },
+    {
+      "id": "receipt-recovery",
+      "name": "Receipt recovery",
+      "category": "Posting",
+      "description": "Check whether the ledger accepted the original posting before retrying.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-001",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": 40,
+          "state": "in"
+        },
+        "Q-DEMO-002": {
+          "hours": 40,
+          "state": "in"
+        },
+        "Q-DEMO-003": {
+          "hours": 48,
+          "state": "in"
+        }
+      }
+    },
+    {
+      "id": "exception-record",
+      "name": "Exception record",
+      "category": "Operations",
+      "description": "Show the conflicting values, owner and correction history.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-001",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": 24,
+          "state": "optional"
+        },
+        "Q-DEMO-002": {
+          "hours": 32,
+          "state": "in"
+        },
+        "Q-DEMO-003": {
+          "hours": 40,
+          "state": "in"
+        }
+      }
+    },
+    {
+      "id": "alerts",
+      "name": "Operational alerts",
+      "category": "Operations",
+      "description": "Notify finance when a batch stalls or held items remain.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-001",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": 12,
+          "state": "available"
+        },
+        "Q-DEMO-002": {
+          "hours": 16,
+          "state": "in"
+        },
+        "Q-DEMO-003": {
+          "hours": 20,
+          "state": "in"
+        }
+      }
+    },
+    {
+      "id": "runbook",
+      "name": "Operating runbook",
+      "category": "Operations",
+      "description": "Name who can stop posting and explain how to check requests already sent to the ledger.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-001",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": 16,
+          "state": "in"
+        },
+        "Q-DEMO-002": {
+          "hours": 20,
+          "state": "in"
+        },
+        "Q-DEMO-003": {
+          "hours": 24,
+          "state": "in"
+        }
+      }
+    },
+    {
+      "id": "training",
+      "name": "Finance training",
+      "category": "Handoff",
+      "description": "Teach the finance team how to review held records and rerun them after correction.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-001",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": 8,
+          "state": "optional"
+        },
+        "Q-DEMO-002": {
+          "hours": 12,
+          "state": "optional"
+        },
+        "Q-DEMO-003": {
+          "hours": 16,
+          "state": "in"
+        }
+      }
+    },
+    {
+      "id": "historical-load",
+      "name": "Historical load",
+      "category": "Handoff",
+      "description": "Load the agreed historical invoices after their source mapping is approved.",
+      "description_basis": {
+        "quote_id": "Q-DEMO-002",
+        "field": "description"
+      },
+      "cells": {
+        "Q-DEMO-001": {
+          "hours": null,
+          "state": "out"
+        },
+        "Q-DEMO-002": {
+          "hours": 40,
+          "state": "available"
+        },
+        "Q-DEMO-003": {
+          "hours": 56,
+          "state": "optional"
+        }
+      }
+    }
+  ]
+}

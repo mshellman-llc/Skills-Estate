@@ -3,9 +3,14 @@ name: fortunes-weave
 description: Answer Megan's Fire Emblem Fortune's Weave questions or update her planner using the current route, roster, project notes, and live planner state.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Fortune's Weave
 
-Start from the current project router under `/Volumes/BeastMode/AI Workstreams/MeganOS/megan-os-fw/fortunes-weave/` when available. Read `CAI-START.md` and follow its current route-specific source. The filename does not mean every request concerns the Cai route.
+Start from the current project router under `/Volumes/BeastMode/Projects/MeganOS/megan-os-fw/fortunes-weave/` when available. Read `CAI-START.md` and follow its current route-specific source. The filename does not mean every request concerns the Cai route.
 
 Read the live roster and planner state through an available supported tool before recommending a team or changing a build. Resolve the actual planner from the project or user context; never manufacture a different host's URL by replacing its domain. Preserve route, chapter, levels, classes, ranks, equipment, and user-entered notes. If access is unavailable, ask for the planner's current roster export.
 
