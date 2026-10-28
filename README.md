@@ -4,7 +4,7 @@ Private source of truth for Megan's reusable skills across Claude Code and Codex
 
 The restoration candidate contains 79 source modules and 53 proposed task entrypoints. [CATALOG.md](CATALOG.md) records both inventories. Capability review and host verification remain open; this branch is not an accepted release. Private project records and credentials stay outside the repository.
 
-## Install on a Mac or Linux machine
+## Prepare and install on a Mac or Linux machine
 
 Python 3.9 or later and Git are required. Authenticate GitHub CLI as the intended account and clone the private repository:
 
@@ -15,13 +15,15 @@ gh repo clone mshellman-llc/Skills-Estate
 cd Skills-Estate
 python3 tools/estate.py build
 python3 tools/estate.py bundle
-python3 tools/estate.py install
+python3 tools/estate.py --home /absolute/path/to/isolated-home install
 git config core.hooksPath .githooks
 ```
 
+The example installs a candidate into an isolated home. Everyday installation requires completed release gates and `install --expected-source REVIEWED_SOURCE_HASH`, where the hash comes from the reviewed build manifest. This restoration candidate has open review gates.
+
 `install` refuses existing conflicting entries before changing any skill. Inspect those entries, then use `python3 tools/estate.py adopt` for an intended migration. Adoption moves originals into `~/.local/state/skills-estate/backup-*/` and records a restore receipt. Keep those backups until the migration is accepted.
 
-The installer links generated packages into `~/.claude/skills` and `~/.agents/skills`. Existing matching names under `~/.codex/skills` are reconciled as legacy aliases. It also creates `~/.config/skills-estate/repository` so either assistant can find the checkout. Keep the checkout at a stable path on an available volume. Start a fresh session when a host has cached its skill list.
+The installer copies packages into a verified, versioned directory under `~/.local/share/skills-estate/releases/` and links that version into `~/.claude/skills` and `~/.agents/skills`. Existing matching names under `~/.codex/skills` are reconciled as legacy aliases. It also creates `~/.config/skills-estate/repository` so either assistant can find the checkout. Installed files remain available when the source volume is unavailable. Keep the repository pointer valid for maintenance. Start a fresh session when a host has cached its skill list.
 
 ## Change and sync skills
 
@@ -34,9 +36,13 @@ python3 tools/estate.py sync
 python3 tools/estate.py status
 ```
 
-`sync` validates, builds, packages, and installs managed links. Builds reject changes made while packaging, and installation rejects stale or edited generated files. Both local assistants read the same generated files. Do not edit `build/`, installed links, vendor caches, or `synced/` downloads as authoring sources.
+`sync` validates, builds, and packages candidates; it leaves installed releases unchanged. Builds reject source changes during assembly. Installation rejects stale or edited generated files. Both local assistants link to the same verified release. `status` reports source, build, ZIP, and installed drift separately, even when the build is stale. A green build does not establish a current ZIP or installation. Do not edit `build/`, installed links, vendor caches, or `synced/` downloads as authoring sources.
 
-With the repository hooks enabled, commit, merge, and checkout rebuild the local installation; pre-push runs validation and tests. Hooks do not fetch or push. On another machine, pull the reviewed changes and run `sync`. GitHub Actions validates every push and pull request and publishes the generated ZIPs as a workflow artifact.
+Commit, merge, and checkout hooks do not build or install. Pre-push runs validation and tests. On another machine, pull the reviewed changes and run `sync`, review the resulting source hash, then explicitly install the accepted release. GitHub Actions validates every push and pull request and publishes the generated ZIPs as a workflow artifact.
+
+For an existing installation linked into `build/`, first run `python3 tools/estate.py pin-installed`. This preserves its current inventory and bytes in a versioned directory, without accepting new source. Builds refuse to overwrite a directory still serving everyday host links. Vendor and account-managed installations are excluded.
+
+To return to a previously activated version, run `python3 tools/estate.py rollback RELEASE_ID`. Release IDs and backup receipts are under `~/.local/state/skills-estate/`. No automatic retention deletes the only rollback copy. Review obsolete releases before removing them.
 
 To reverse an adoption:
 
@@ -44,7 +50,7 @@ To reverse an adoption:
 python3 tools/estate.py restore /absolute/path/to/backup/receipt.json
 ```
 
-Restore refuses if an installed destination has changed since that receipt. It restores the recorded local entries; it does not revert Git history or account uploads.
+Restore refuses if an installed destination has changed since that receipt. A migration receipt also refuses to restore legacy links after their mutable build has changed; keep the pinned version instead. Interrupted activation plans remain beside the backup originals for recovery; an unfinished plan is not an activated release. It restores the recorded local entries; it does not revert Git history or account uploads.
 
 ## Select a brand once
 
@@ -64,7 +70,7 @@ After an upload actually succeeds, record its evidence:
 python3 tools/estate.py record-publication --surface claude-account --skill client-brand --reference 'Account, date, and upload result'
 ```
 
-Use `codex-account` for that account surface. Records are reported upload state, not runtime proof. `status` shows pending packages after content changes and inventories other skill locations that may contain duplicates. There is no unattended account uploader in this repository.
+The other ledger destinations are `codex-account`, `cowork`, and `chatgpt-personal`. Records are reported upload state, not runtime proof. `status` shows pending packages after content changes and inventories other skill locations that may contain duplicates. There is no unattended account uploader in this repository.
 
 ## GitHub access for both assistants
 

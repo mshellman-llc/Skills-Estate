@@ -14,7 +14,7 @@ SPEC.loader.exec_module(estate)
 class EstateTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.base = Path(self.tmp.name)
+        self.base = Path(self.tmp.name).resolve()
         self.root = self.base / 'repo'
         self.home = self.base / 'home'
         self.root.mkdir(); self.home.mkdir()
@@ -52,6 +52,7 @@ class EstateTests(unittest.TestCase):
         estate.build(self.root)
         self.assertEqual(estate.install(self.root, self.home)['links_changed'], 3)
         self.assertEqual(estate.install(self.root, self.home)['links_changed'], 0)
+        estate.bundle(self.root)
         self.assertTrue(estate.status(self.root, self.home)['ok'])
 
     def test_conflict_is_detected_before_any_install(self):
@@ -70,6 +71,7 @@ class EstateTests(unittest.TestCase):
         claude = self.home / '.claude/skills/demo'
         claude.parent.mkdir(parents=True); claude.symlink_to(original)
         result = estate.install(self.root, self.home, adopt=True)
+        estate.bundle(self.root)
         self.assertTrue(estate.status(self.root, self.home)['ok'])
         estate.restore(Path(result['backup']) / 'receipt.json')
         self.assertFalse(original.is_symlink())

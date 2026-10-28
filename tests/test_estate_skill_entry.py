@@ -23,7 +23,7 @@ class EntryTests(unittest.TestCase):
         self.home.mkdir()
         for directory in ("tools", "policies", "skills/demo/scripts"):
             (self.repo / directory).mkdir(parents=True)
-        for name in ("estate.py", "portable.py", "catalog.py"):
+        for name in ("estate.py", "portable.py", "catalog.py", "releases.py"):
             shutil.copy2(ROOT / "tools" / name, self.repo / "tools" / name)
         (self.repo / "policies/skill-standard.md").write_text("# Test skill standard\n")
         (self.repo / "skills/demo/SKILL.md").write_text(
@@ -95,10 +95,13 @@ class EntryTests(unittest.TestCase):
 
     def test_source_change_requires_rebuild_and_copied_drift_fails_status(self):
         self.run_cli("sync")
+        self.assertFalse((self.home / ".agents/skills/demo").exists())
+        self.run_cli("install")
         dest = self.home / ".agents/skills/demo"
         source = dest.resolve()
         dest.unlink()
         shutil.copytree(source, dest)
+        (dest / "scripts/work.py").chmod(0o644)
         (dest / "scripts/work.py").write_text("print('changed')\n")
         status = json.loads(self.run_cli("status", expected=1).stdout)
         self.assertIn("drift", [rows["demo"] for rows in status["local"].values()])
