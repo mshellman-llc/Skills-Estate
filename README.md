@@ -102,4 +102,4 @@ This private repository has no blanket distribution license. Preserve included t
 
 ## Interactive skills map
 
-Open the [skills map and GitHub updater](artifacts/skills-map/README.md) to search workflows, sort by name, and copy group links. GitHub builds the current map and eight shareable collections after every main update. The [browse pages](browse/README.md) use the same groups.
+Open the [Skills Estate site](https://megan-skills-estate.livelaughcod-8893.chatgpt.site) to browse workflows, sort by name, and copy group links. Ask Codex to refresh the site from GitHub when needed. The [browse pages](browse/README.md) use the same eight groups; GitHub also builds their shareable collections.

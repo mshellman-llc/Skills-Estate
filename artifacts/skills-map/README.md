@@ -1,25 +1,20 @@
 # Skills Estate map
 
-Open `open-map.command` to browse the map with GitHub updates enabled. The launcher uses Python 3 and your existing GitHub CLI login. Keep `viewer.py`, `index.html`, and `index.json` beside it. Opening `index.html` directly still works as an offline reference.
+[Open the private Skills Estate site](https://megan-skills-estate.livelaughcod-8893.chatgpt.site).
 
-The viewer checks GitHub when it starts. Use **Update from GitHub** to refresh it while it is open. The status line shows the source commit and build date. If GitHub is still building the latest main commit, the viewer retains the saved version and explains when to retry.
+Browse the workflows by work group, sort their names, and copy links to the matching GitHub groups. The site opens directly in a browser.
 
-[Browse the same groups on GitHub](../../browse/README.md). Each group has a shareable page and a collection of its complete task packages. Name sorting, group links, and filtered CSV export are available in the map.
+## Refresh the site
 
-## Get the current map and collections
+Ask Codex to refresh the Skills Estate site from GitHub. The refresh must retrieve a passing build for current main, verify the workflow and group data, update the existing Site, and confirm the deployed GitHub revision.
 
-Open the latest successful main run of [Verify skills estate](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml). Download `skills-estate-map` for the map and launcher, or `skill-collections` for the eight group ZIPs. Repository access is required.
+Site identity: `appgprj_6ae246ca64f88191af4dfb318b704b65`. Preserve its owner-private audience. Read the Site source README and `.openai/hosting.json` before updating it. Reuse this identity rather than creating another Site. The local checkout is `/Volumes/BeastMode/Codex/skills/work/sales-process-and-skills-map/site/`.
 
-The viewer downloads only a successful workflow artifact for the current GitHub main commit. It checks the embedded map data and skill hashes before replacing the local HTML and JSON. It does not update skill installations. If an artifact has expired, run the workflow again on main.
+GitHub main at `mshellman-llc/Skills-Estate` remains the source of truth. The Site is a published snapshot refreshed on request. GitHub Actions rebuilds the downloadable map and group collections on every main update.
 
-From a terminal, the equivalent commands are:
+## Share a group
 
-```sh
-python3 artifacts/skills-map/viewer.py --open
-python3 artifacts/skills-map/viewer.py --once --output /path/to/skills-estate-map.html
-```
-
-The first command keeps the local viewer running until you close its terminal. The second updates one saved copy and exits.
+[Browse the groups on GitHub](../../browse/README.md). Each group has a link and a collection of complete task packages. Download `skill-collections` from the [latest successful main workflow](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml). Repository access is required for GitHub links.
 
 ## Maintain the groups
 
