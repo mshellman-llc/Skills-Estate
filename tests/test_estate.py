@@ -233,5 +233,130 @@ class EstateTests(unittest.TestCase):
             estate.build(self.root)
 
 
+    def denied_output_rename(self, path, target):
+        import errno
+        if path in (self.root / 'build', self.root / 'dist'):
+            raise PermissionError(errno.EACCES, 'Simulated SMB directory rename refusal')
+        return self.original_rename(path, target)
+
+    def test_smb_refresh_updates_build_and_dist_without_changing_installed_release(self):
+        estate.build(self.root); estate.bundle(self.root)
+        estate.install(self.root, self.home)
+        installed = (self.home / '.agents/skills/demo').resolve()
+        installed_hash = estate.tree_hash(installed)
+        (self.root / 'dist/obsolete.zip').write_text('Old generated output')
+        (self.root / 'policies/brand.md').write_text('New reviewed source')
+        self.original_rename = Path.rename
+        with patch.object(Path, 'rename', lambda path, target: self.denied_output_rename(path, target)):
+            estate.build(self.root); estate.bundle(self.root)
+        self.assertEqual(estate.tree_hash(installed), installed_hash)
+        self.assertEqual((self.root / 'build/skills/demo/references/estate/brand.md').read_text(), 'New reviewed source')
+        self.assertFalse((self.root / 'dist/obsolete.zip').exists())
+        self.assertEqual(estate.status(self.root, self.home)['dist']['demo'], 'current')
+        self.assertEqual(list((self.root / '.local').glob('previous-*')), [])
+        self.assertEqual(list((self.root / '.local').glob('pending-*')), [])
+
+    def test_smb_failed_copy_restores_previous_files_and_retains_failure_receipt(self):
+        estate.build(self.root)
+        before = estate.output_inventory(self.root / 'build')
+        (self.root / 'policies/brand.md').write_text('Changed source')
+        self.original_rename = Path.rename
+        original_copy = estate.shutil.copy2
+        failed = []
+        def fail_once(source, target, *args, **kwargs):
+            if Path(target) == self.root / 'build/manifest.json' and not failed:
+                failed.append(True)
+                raise OSError('Injected manifest write failure')
+            return original_copy(source, target, *args, **kwargs)
+        with patch.object(Path, 'rename', lambda path, target: self.denied_output_rename(path, target)), patch.object(estate.shutil, 'copy2', side_effect=fail_once):
+            with self.assertRaisesRegex(OSError, 'Injected'):
+                estate.build(self.root)
+        self.assertEqual(estate.output_inventory(self.root / 'build'), before)
+        receipts = list((self.root / '.local').glob('previous-build-*/replacement-receipt.json'))
+        self.assertEqual(len(receipts), 1)
+        self.assertEqual(json.loads(receipts[0].read_text())['state'], 'failed; prior files restored')
+        self.assertFalse((self.root / '.local/pending-build.json').exists())
+
+    def test_smb_uncertain_partial_write_keeps_backup_and_blocks_reuse(self):
+        estate.build(self.root)
+        (self.root / 'policies/brand.md').write_text('Changed source')
+        self.original_rename = Path.rename
+        original_copy = estate.shutil.copy2
+        target_path = self.root / 'build/skills/demo/references/estate/brand.md'
+        def partial(source, target, *args, **kwargs):
+            if Path(target) == target_path:
+                target_path.write_text('Uncertain partial bytes')
+                raise OSError('Interrupted write')
+            return original_copy(source, target, *args, **kwargs)
+        with patch.object(Path, 'rename', lambda path, target: self.denied_output_rename(path, target)), patch.object(estate.shutil, 'copy2', side_effect=partial):
+            with self.assertRaisesRegex(ValueError, 'partially written'):
+                estate.build(self.root)
+        self.assertTrue((self.root / '.local/pending-build.json').exists())
+        with self.assertRaisesRegex(ValueError, 'Interrupted build'):
+            estate.current_build(self.root)
+        backups = list((self.root / '.local').glob('previous-build-*/skills/demo/references/estate/brand.md'))
+        self.assertEqual(backups[0].read_text(), 'Shared brand revision one\n')
+
+    def test_generated_output_links_are_refused_before_replacement(self):
+        estate.build(self.root)
+        outside = self.base / 'private.txt'; outside.write_text('Keep')
+        (self.root / 'build/linked').symlink_to(outside)
+        (self.root / 'policies/brand.md').write_text('New source')
+        with self.assertRaisesRegex(ValueError, 'Unsupported generated output'):
+            estate.build(self.root)
+        self.assertEqual(outside.read_text(), 'Keep')
+
+
+    def test_smb_root_placeholders_are_preserved_but_never_accepted_as_packages(self):
+        estate.build(self.root); estate.bundle(self.root)
+        placeholder = self.root / 'dist/.smbdeleteABC123'
+        placeholder.write_text('Server-owned open handle')
+        (self.root / 'policies/brand.md').write_text('New source')
+        estate.build(self.root)
+        self.original_rename = Path.rename
+        with patch.object(Path, 'rename', lambda path, target: self.denied_output_rename(path, target)):
+            estate.bundle(self.root)
+        self.assertEqual(placeholder.read_text(), 'Server-owned open handle')
+        with self.assertRaisesRegex(ValueError, 'Server-reserved'):
+            estate.output_inventory(self.root / 'dist')
+        self.assertEqual(estate.status(self.root, self.home)['dist']['demo'], 'current')
+
+
+    def test_linked_private_build_state_is_refused_before_permission_probe(self):
+        (self.root / '.local').rmdir()
+        outside = self.base / 'private-state'; outside.mkdir()
+        (self.root / '.local').symlink_to(outside, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, 'symlinked managed'):
+            estate.build(self.root)
+        self.assertEqual(list(outside.iterdir()), [])
+
+
+    def test_linked_lock_file_is_refused_without_truncating_target(self):
+        outside = self.base / 'private.txt'; outside.write_text('Keep private bytes')
+        (self.root / '.local/estate.lock').symlink_to(outside)
+        with self.assertRaisesRegex(ValueError, 'symlinked managed'):
+            with estate.lock(self.root):
+                self.fail('Linked lock was acquired')
+        self.assertEqual(outside.read_text(), 'Keep private bytes')
+
+    def test_backup_cleanup_failure_reports_already_published_output(self):
+        estate.build(self.root)
+        (self.root / 'policies/brand.md').write_text('Changed source')
+        self.original_rename = Path.rename
+        original_remove = estate.shutil.rmtree
+        def fail_cleanup(path, *args, **kwargs):
+            if Path(path).name.startswith('previous-build-'):
+                raise OSError('Injected backup cleanup failure')
+            return original_remove(path, *args, **kwargs)
+        with patch.object(Path, 'rename', lambda path, target: self.denied_output_rename(path, target)), patch.object(estate.shutil, 'rmtree', side_effect=fail_cleanup):
+            with self.assertRaisesRegex(OSError, 'cleanup failure'):
+                estate.build(self.root)
+        self.assertEqual((self.root / 'build/skills/demo/references/estate/brand.md').read_text(), 'Changed source')
+        receipt = next((self.root / '.local').glob('previous-build-*/replacement-receipt.json'))
+        self.assertEqual(json.loads(receipt.read_text())['state'], 'published; backup cleanup failed')
+        self.assertFalse((self.root / '.local/pending-build.json').exists())
+        estate.current_build(self.root)
+
+
 if __name__ == '__main__':
     unittest.main()
