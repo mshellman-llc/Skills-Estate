@@ -148,7 +148,7 @@ def build(root=ROOT, home=None):
     for parent in parents:
         if parent.is_dir():
             for dest in parent.iterdir():
-                if dest.is_symlink() and dest.resolve() == Path(root).resolve() / 'build/skills' / dest.name:
+                if dest.is_symlink() and dest.exists() and dest.resolve().parent == Path(root).resolve() / 'build/skills':
                     raise ValueError('Build would change a legacy installation; run pin-installed first')
     result = validate(root)
     # Keep unchanged packages in place, especially on mounted volumes. Verify
@@ -249,10 +249,10 @@ def pin_installed(root=ROOT, home=None):
             if not parent.exists():
                 continue
             for dest in parent.iterdir():
-                source = Path(root).resolve() / 'build/skills' / dest.name
-                if dest.is_symlink() and dest.resolve() == source and source.is_dir():
-                    packages[dest.name] = source
-                    destinations[dest] = dest.name
+                source = dest.resolve()
+                if dest.is_symlink() and source.parent == Path(root).resolve() / 'build/skills' and source.is_dir():
+                    packages[source.name] = source
+                    destinations[dest] = source.name
         if not packages:
             raise ValueError('No legacy managed links found; unrelated installations preserved')
         release_id = releases.snapshot(root, home, packages, None, 'preserved-existing', tree_hash)
@@ -293,10 +293,10 @@ def restore(receipt_path):
             dest = Path(op['destination'])
             if receipt.get('format') == 2 and op['backup']:
                 saved = Path(op['backup'])
-                legacy = Path(receipt['active']['repository']) / 'build/skills' / dest.name
-                if saved.is_symlink() and saved.resolve() == legacy:
+                legacy = saved.resolve()
+                if saved.is_symlink() and legacy.parent == Path(receipt['active']['repository']) / 'build/skills':
                     _, pinned = releases.load(home, receipt['active']['release_id'], tree_hash)
-                    if not legacy.is_dir() or tree_hash(legacy) != pinned['packages'][dest.name]['sha256']:
+                    if not legacy.is_dir() or tree_hash(legacy) != pinned['packages'][legacy.name]['sha256']:
                         raise ValueError('Legacy build changed; keep the pinned release instead of restoring mutable links')
             if op['source']:
                 if not dest.is_symlink() or dest.resolve() != Path(op['source']).resolve():
@@ -407,7 +407,7 @@ def status(root=ROOT, home=None):
                     same = bool(entry and actual == entry['sha256'])
                     pinned = releases.managed_link(dest, home, root, tree_hash, verified_releases) and '/releases/' in str(dest.resolve())
                     value = ('linked-current' if pinned else 'legacy-mutable') if same and build_state == 'current' else ('pinned-older' if pinned else 'drift')
-                except (ValueError, OSError) as exc:
+                except (ValueError, OSError, KeyError, TypeError) as exc:
                     inspection_errors[str(dest)] = str(exc)
                     value = 'drift'
             rows[name] = value
@@ -434,7 +434,13 @@ def status(root=ROOT, home=None):
         dist_rows[name] = value
     ok &= bool(dist_rows) and all(value == 'current' for value in dist_rows.values())
     ledger_path = root / '.local/cloud-publications.json'
-    ledger = json.loads(ledger_path.read_text()) if ledger_path.exists() else {}
+    try:
+        ledger = json.loads(ledger_path.read_text()) if ledger_path.exists() else {}
+        if not isinstance(ledger, dict):
+            raise ValueError('Invalid publication ledger')
+    except (OSError, ValueError) as exc:
+        ledger = {}
+        inspection_errors['publication_ledger'] = str(exc)
     cloud = {}
     for surface in ['claude-account', 'cowork', 'codex-account', 'chatgpt-personal']:
         rows = {}

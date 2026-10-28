@@ -109,11 +109,15 @@ def snapshot(root, home, packages, source_hash, kind, tree_hash):
         (temp / 'release.json').write_text(json.dumps(record, indent=2, sort_keys=True) + '\n')
         for p in temp.rglob('*'):
             if p.is_file():
-                p.chmod(0o555 if p.stat().st_mode & 0o111 else 0o444)
+                p.chmod(p.stat().st_mode & 0o555)
         # Keep directories writable for explicit restoration/retention tools;
         # package files are read-only and integrity is checked before use.
         temp.rename(target)
-        load(home, release_id, tree_hash)
+        try:
+            load(home, release_id, tree_hash)
+        except BaseException:
+            shutil.rmtree(target)
+            raise
         return release_id
     finally:
         if temp.exists():
@@ -125,13 +129,13 @@ def managed_link(path, home, root, tree_hash, verified=None):
         return False
     resolved = path.resolve()
     legacy = Path(root).resolve() / 'build/skills' / path.name
-    if resolved == legacy:
+    if resolved.parent == legacy.parent:
         return True
     try:
         relative = resolved.relative_to(store(home))
     except ValueError:
         return False
-    if len(relative.parts) != 3 or relative.parts[1:] != ('skills', path.name):
+    if len(relative.parts) != 3 or relative.parts[1] != 'skills':
         return False
     verified = {} if verified is None else verified
     if relative.parts[0] not in verified:

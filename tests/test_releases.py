@@ -21,6 +21,33 @@ class ReleaseTests(unittest.TestCase):
         estate.build(self.root)
         estate.bundle(self.root)
 
+    def test_snapshot_preserves_partial_executable_modes(self):
+        script = self.root / 'skills/demo/scripts/run.py'
+        script.parent.mkdir(); script.write_text('print(1)\n'); script.chmod(0o744)
+        estate.build(self.root)
+        before = estate.tree_hash(self.root / 'build/skills/demo')
+        estate.install(self.root, self.home)
+        target = self.home / '.claude/skills/demo'
+        self.assertEqual(estate.tree_hash(target.resolve()), before)
+        self.assertEqual((target / 'scripts/run.py').stat().st_mode & 0o111, 0o100)
+
+    def test_dangling_legacy_link_does_not_block_build(self):
+        dest = self.home / '.claude/skills/retired'
+        dest.parent.mkdir(parents=True); dest.symlink_to(self.root / 'build/skills/retired')
+        estate.build(self.root, home=self.home)
+        self.assertTrue(dest.is_symlink())
+
+    def test_renamed_legacy_alias_is_pinned_before_rebuild(self):
+        dest = self.home / '.claude/skills/my-alias'
+        dest.parent.mkdir(parents=True); dest.symlink_to(self.root / 'build/skills/demo')
+        with self.assertRaisesRegex(ValueError, 'pin-installed'):
+            estate.build(self.root, home=self.home)
+        before = estate.tree_hash(dest.resolve())
+        estate.pin_installed(self.root, self.home)
+        (self.root / 'policies/brand.md').write_text('Changed')
+        estate.build(self.root, home=self.home)
+        self.assertEqual(estate.tree_hash(dest.resolve()), before)
+
     def test_deleted_legacy_alias_does_not_block_next_install(self):
         alias = self.home / '.codex/skills/demo'
         alias.parent.mkdir(parents=True); alias.symlink_to(self.root / 'build/skills/demo')
