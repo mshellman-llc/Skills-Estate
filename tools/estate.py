@@ -86,6 +86,7 @@ def output_inventory(folder, server_metadata=False):
 
 def output_modes(root, stage, cache):
     """Plan actual destination permissions before hashing, including SMB mode emulation."""
+    releases.safe_parents(root / '.local')
     for path in files(stage):
         requested = path.stat().st_mode & 0o777
         if requested not in cache:
@@ -104,6 +105,7 @@ def output_modes(root, stage, cache):
 def replace_outputs(root, stage, destination):
     """Publish generated files under the estate lock, including on SMB shares."""
     local = root / '.local'
+    releases.safe_parents(local)
     pending = local / ('pending-' + destination.name + '.json')
     if pending.exists():
         raise ValueError(f'Interrupted output replacement requires review: {pending}')

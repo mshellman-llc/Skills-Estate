@@ -322,5 +322,14 @@ class EstateTests(unittest.TestCase):
         self.assertEqual(estate.status(self.root, self.home)['dist']['demo'], 'current')
 
 
+    def test_linked_private_build_state_is_refused_before_permission_probe(self):
+        (self.root / '.local').rmdir()
+        outside = self.base / 'private-state'; outside.mkdir()
+        (self.root / '.local').symlink_to(outside, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, 'symlinked managed'):
+            estate.build(self.root)
+        self.assertEqual(list(outside.iterdir()), [])
+
+
 if __name__ == '__main__':
     unittest.main()
