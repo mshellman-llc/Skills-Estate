@@ -76,6 +76,11 @@
       "modes": {},
       "description": "Review provider economics, risks and commercial conditions, and reconcile figures across a quote, proposal or statement of work. Use current project policy; do not change pricing or infer approval."
     },
+    "cross-platform-skill-release": {
+      "source": "cross-platform-skill-release",
+      "pack": "maintainer",
+      "modes": {}
+    },
     "cutover-closeout": {
       "source": "cutover-closeout",
       "pack": "core",
@@ -296,7 +301,7 @@
       "source": "writing-integrity",
       "pack": "core",
       "modes": {},
-      "description": "Write and edit clear, specific prose in every reply and deliverable. Preserve facts, scope, uncertainty and confirmed author voice. Use the bundled diagnostic and figure checks as tools under this standard."
+      "description": "Review prose, preserve meaning and voice, and learn from writing corrections through a compact private profile. Use for replies, documents, instructions and UI text."
     },
     "writing-profile": {
       "source": "writing-style-builder",

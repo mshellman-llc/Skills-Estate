@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 79 source modules and 53 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 80 source modules and 54 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -15,7 +15,7 @@ This candidate contains 79 source modules and 53 proposed task entrypoints. Cons
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 8 | 4 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
-| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 6 | 4 |
+| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 5 |
 <!-- SKILL-GROUPS:END -->
 
 ## Proposed task entrypoints
@@ -36,6 +36,7 @@ This candidate contains 79 source modules and 53 proposed task entrypoints. Cons
 | career-decisions | [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md) |  |
 | code-simplify | [code-simplify](skills/code-simplify/SKILL.md) |  |
 | commercial-review | [deal-desk](skills/deal-desk/SKILL.md) |  |
+| cross-platform-skill-release | [cross-platform-skill-release](skills/cross-platform-skill-release/SKILL.md) |  |
 | cutover-closeout | [cutover-closeout](skills/cutover-closeout/SKILL.md) |  |
 | deck-builder | [deck-builder](skills/deck-builder/SKILL.md) | ddoc |
 | deliverable-review | [quality-gate](skills/quality-gate/SKILL.md) |  |
@@ -97,6 +98,7 @@ Each module needs a reviewed capability disposition before release.
 - [case-study-builder](skills/case-study-builder/SKILL.md)
 - [client-brand](skills/client-brand/SKILL.md)
 - [code-simplify](skills/code-simplify/SKILL.md)
+- [cross-platform-skill-release](skills/cross-platform-skill-release/SKILL.md)
 - [cutover-closeout](skills/cutover-closeout/SKILL.md)
 - [ddoc](skills/ddoc/SKILL.md)
 - [deal-desk](skills/deal-desk/SKILL.md)

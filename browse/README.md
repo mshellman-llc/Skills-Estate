@@ -13,6 +13,6 @@ Open a group to find its workflows and task packages. The interactive map uses t
 | [Knowledge and context](knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](writing-and-presentation/README.md) | 8 | 4 |
 | [Career and personal](career-and-personal/README.md) | 8 | 6 |
-| [Estate and engineering controls](estate-and-engineering-controls/README.md) | 6 | 4 |
+| [Estate and engineering controls](estate-and-engineering-controls/README.md) | 7 | 5 |
 
 [Open the interactive map](../artifacts/skills-map/README.md) · [Get the collections](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml)
