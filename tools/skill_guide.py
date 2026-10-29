@@ -78,13 +78,13 @@ def assessment(root, name, guide, resources):
 
 def report(root):
     guides = load(root)
-    rows = []
+    rows = []; counts={'general':0,'megan':0,'review':0}
     for name, guide in sorted(guides.items()):
         a = assessment(root, name, guide, [])
+        counts[a['audience']]+=1
         links = sorted({f'[{h["path"]}:{h["line"]}](../{h["path"]}#L{h["line"]})' for h in a['references'] if h['kind'] != 'example-or-test'})
         rows.append(f'| `{name}` | {a["label"]} | {a["setup"] or "Supply the task inputs and its supported runtime."} | {"; ".join(links) or "No named personal reference detected in workflow text."} |')
-    general = sum(n not in PERSONAL_SKILLS for n in guides)
-    lines = ['# Skill reuse review', '', f'{general} general-use methods and {len(guides)-general} Megan-specific workflows.', '',
+    lines = ['# Skill reuse review', '', f"{counts['general']} general-use methods, {counts['megan']} Megan-specific workflows, and {counts['review']} awaiting source review.", '',
              'Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.', '',
              'Every assembled task package receives the shared policies. `policies/workflow.md` names Megan; generalize that wording before distributing general-use packages. This shared cleanup applies even when a workflow has no personal references of its own.', '',
              'The discovery-synthesis entrypoint assigns follow-ups to Megan or her team. Sales process mapping and sales journey critique include conditional Megan voice routes. Writing-integrity uses Megan as an optional author-profile example; its main workflow resolves an explicitly configured owner. Fixture names and selftest checks are listed separately in the map and do not make a method personal.', '',
@@ -108,7 +108,30 @@ if __name__ == '__main__':
     elif args.report:
         target.write_text(rendered)
 
+def readable_body(body):
+    """Keep task instructions readable while retaining the exact source separately."""
+    chunks=re.split(r'(?ms)(^```[^\n]*\n.*?^```\s*$)',body)
+    title_removed=False
+    for i in range(0,len(chunks),2):
+        text=re.sub(r'<!--\s*ESTATE-WRITING:BEGIN\s*-->.*?<!--\s*ESTATE-WRITING:END\s*-->','',chunks[i],flags=re.S)
+        # Comments outside code are source annotations, never executable HTML.
+        text=re.sub(r'<!--.*?-->','',text,flags=re.S)
+        if not title_removed and re.search(r'^#\s+.+$',text,re.M):
+            text=re.sub(r'^#\s+.+(?:\n|$)','',text,count=1,flags=re.M);title_removed=True
+        kept=[]
+        for paragraph in re.split(r'\n\s*\n',text):
+            p=paragraph.strip()
+            if re.match(r'^Read \[shared workflow\]',p):continue
+            if ('build-card.md' in p or 'readout-brief.md' in p) and re.match(r'^(?:>\s*)?(?:\*\*)?Before writing',p):continue
+            if re.match(r'^>\s*\[?`?readout-brief\.md',p):continue
+            if re.match(r'^(?:Before drafting,\s*)?[Rr]ead\b',p):
+                end=re.search(r'\.(?=\s|$)',p)
+                if end and 'build-card.md' in p[:end.end()]:p=p[end.end():].lstrip()
+            if p:kept.append(p)
+        chunks[i]='\n\n'.join(kept)
+    return '\n\n'.join(c.strip() for c in chunks if c.strip())
+
 def overview_excerpt(body):
-    body = re.sub(r'<!--\s*ESTATE-WRITING:BEGIN\s*-->.*?<!--\s*ESTATE-WRITING:END\s*-->', '', body, flags=re.S)
-    paragraphs = re.split(r'\n\s*\n', re.sub(r'^#\s+.+\n', '', body, count=1).strip())
+    body = readable_body(body)
+    paragraphs = re.split(r'\n\s*\n', body.strip())
     return [p for p in paragraphs if not re.match(r'^(Read \[shared workflow\]|#{1,6} |```|\||>\s*\*\*Before writing:|<!--)', p)][:3]

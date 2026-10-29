@@ -6,7 +6,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
-from skill_guide import load, assessment, overview_excerpt, report
+from skill_guide import load, assessment, overview_excerpt, readable_body, report
 
 class ReaderGuideTests(unittest.TestCase):
     def test_every_workflow_has_a_hash_bound_guide(self):
@@ -48,6 +48,26 @@ class ReaderGuideTests(unittest.TestCase):
         self.assertEqual(a['audience'],'review')
         self.assertEqual(a['readiness'],'review')
         self.assertEqual(a['label'],'Needs review')
+
+    def test_readable_instructions_hide_policy_blocks_and_keep_task_rules(self):
+        source='<!-- ESTATE-WRITING:BEGIN -->\nRead the standard.\n<!-- ESTATE-WRITING:END -->\n\n# Task\n\n> **Before writing: build-card.md plus\n> readout-brief.md.**\n\nPreserve the customer’s approval conditions.\n\n```text\n<!-- a literal code example -->\n```'
+        view=readable_body(source)
+        self.assertNotIn('ESTATE-WRITING',view)
+        self.assertNotIn('build-card.md',view)
+        self.assertNotIn('# Task',view)
+        self.assertIn('Preserve the customer’s approval conditions.',view)
+        self.assertIn('<!-- a literal code example -->',view)
+
+    def test_removing_a_route_preserves_the_substantive_rule_after_it(self):
+        text='Before drafting, read [the build card](../_shared/build-card.md). Preserve exact scope and reconcile the authorized price.'
+        self.assertEqual(readable_body(text),'Preserve exact scope and reconcile the authorized price.')
+
+    def test_every_readable_entrypoint_omits_the_managed_preamble(self):
+        for source in (ROOT/'skills').glob('*/SKILL.md'):
+            with self.subTest(skill=source.parent.name):
+                view=readable_body(source.read_text())
+                self.assertNotIn('ESTATE-WRITING:',view)
+                self.assertNotIn('> **Before writing:',view)
 
     def test_report_matches_current_sources(self):
         self.assertEqual((ROOT/'browse/reuse-review.md').read_text(),report(ROOT))

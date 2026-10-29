@@ -69,6 +69,21 @@ class SkillsMapTests(unittest.TestCase):
         self.assertIn('<td>Draft</td>', rendered)
         self.assertIn('echo &quot;safe&quot;', rendered)
 
+    def test_readable_views_hide_shared_preambles_but_raw_sources_retain_them(self):
+        for skill in self.data['skills']:
+            with self.subTest(skill=skill['id']):
+                self.assertNotIn('ESTATE-WRITING:',skill['html'])
+                self.assertNotIn('build-card.md',skill['excerptHtml'])
+                self.assertIn('ESTATE-WRITING:BEGIN',skill['markdown'])
+
+    def test_catalog_roles_match_primary_mode_and_internal_ownership(self):
+        catalog=json.loads((ROOT/'config/skill-catalog.json').read_text())
+        primary={item['source'] for item in catalog['entries'].values()}
+        modes={module for item in catalog['entries'].values() for module in item.get('modes',{}).values()}
+        for skill in self.data['skills']:
+            expected='task' if skill['id'] in primary else 'mode' if skill['id'] in modes else 'support'
+            self.assertEqual(skill['catalogRole']['kind'],expected)
+
 GIT_ENV = {'GIT_AUTHOR_NAME': 't', 'GIT_AUTHOR_EMAIL': 't@example.invalid',
            'GIT_COMMITTER_NAME': 't', 'GIT_COMMITTER_EMAIL': 't@example.invalid',
            'GIT_CONFIG_GLOBAL': os.devnull, 'GIT_CONFIG_SYSTEM': os.devnull}
