@@ -70,7 +70,7 @@ Megan-specific workflows retain their current sources and permissions. Generaliz
 | `sales-journey-critique` | General use | Supply the task inputs and its supported runtime. | [skills/sales-journey-critique/SKILL.md:68](../skills/sales-journey-critique/SKILL.md#L68); [skills/sales-journey-critique/SKILL.md:72](../skills/sales-journey-critique/SKILL.md#L72) |
 | `sales-process-mapping` | General use | Supply the task inputs and its supported runtime. | [skills/sales-process-mapping/SKILL.md:72](../skills/sales-process-mapping/SKILL.md#L72) |
 | `scope-reference` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `scoping-agent` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `scoping-agent` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `session-handoff` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `sf-delivery-standards` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
 | `sf-deploy-engine` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
