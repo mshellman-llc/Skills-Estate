@@ -12,8 +12,9 @@ const {chromium}=require('playwright');
  const context=await browser.newContext({viewport:{width:1440,height:1100},acceptDownloads:true});
  const page=await context.newPage();const errors=[], requests=[];
  page.on('pageerror',e=>errors.push(e.message));
- page.on('request',r=>{if(/^https?:/.test(r.url()))requests.push(r.url())});
- await page.goto(pathToFileURL(input).href);await page.evaluate(()=>document.fonts.ready);
+ const preview=process.env.MAP_PREVIEW_URL;
+ page.on('request',r=>{if(/^https?:/.test(r.url())&&(!preview||new URL(r.url()).origin!==new URL(preview).origin))requests.push(r.url())});
+ await page.goto(preview||pathToFileURL(input).href);await page.evaluate(()=>document.fonts.ready);
  assert.equal(await page.locator('.skill-row').count(),data.skills.length);
  await page.screenshot({path:path.join(output,'desktop.png')});
  fs.writeFileSync(path.join(output,'rendered.html'),await page.content());
@@ -23,6 +24,12 @@ const {chromium}=require('playwright');
  for(const skill of data.skills){
   await page.locator(`.skill-row[data-skill="${skill.id}"]`).click();
   assert.equal(await page.locator('#detail-title').textContent(),skill.title);
+  if(skill.guide){
+   const overview=await page.locator('#panel-overview').innerText();
+   for(const phrase of ['What it does','When to use it','What to give it','What you get','How to start','Built for'])assert(overview.includes(phrase));
+   assert(!overview.includes('ESTATE-WRITING'));
+   assert(overview.includes(skill.reuse.label));
+  }
   await page.locator('#tab-instructions').click();
   assert((await page.locator('#panel-instructions .instructions').innerText()).length>100);
   await page.locator('#tab-files').click();
@@ -54,8 +61,15 @@ const {chromium}=require('playwright');
  await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),6);await page.screenshot({path:path.join(output,'workflows.png')});
  await page.locator('.route [data-skill]').first().click();assert(await page.locator('#detail').evaluate(e=>e.open));await page.keyboard.press('Escape');await page.locator('#browse-view').click();
  // Full instruction search and status counts.
- await page.locator('#full-search').check();await page.locator('#search').fill('vendors');assert((await page.locator('.skill-row').count())>0);await page.locator('#reset').click();
+ await page.locator('#full-search').check();await page.locator('#search').fill('ESTATE-WRITING');assert((await page.locator('.skill-row').count())>0);await page.locator('#reset').click();
  for(const status of ['github','local-revision','local-addition']){await page.locator('#source-filter').selectOption(status);assert.equal(await page.locator('.skill-row').count(),data.counts[status])}
+ await page.locator('#reset').click();
+ // Intent, required setup, and sharing cleanup remain separate from source parity.
+ for(const audience of ['general','megan','cleanup','setup']){
+  await page.locator('#audience-filter').selectOption(audience);
+  const expected=data.skills.filter(s=>audience==='cleanup'?s.reuse.audience==='general'&&s.reuse.cleanup.length:audience==='setup'?s.reuse.audience==='general'&&s.reuse.setup:s.reuse.audience===audience);
+  assert.equal(await page.locator('.skill-row').count(),expected.length);
+ }
  await page.locator('#reset').click();
  // No external requests, mobile overflow, detail layout, and print media.
  await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(output,'mobile.png'),fullPage:false});

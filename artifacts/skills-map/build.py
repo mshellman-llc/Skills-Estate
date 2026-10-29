@@ -8,6 +8,7 @@ HERE = Path(__file__).resolve().parent
 import sys
 sys.path.insert(0,str(HERE.parents[1]/'tools'))
 from browse import load_groups
+from skill_guide import load as load_guides, assessment, overview_excerpt, scan
 FAMILIES = [(g['title'],g['description'],' '.join(g['skills'])) for g in load_groups(HERE.parents[1],check_coverage=False)]
 DEFAULT_PUBLISHED_REF = 'refs/remotes/origin/main'
 GROUPS = {name: i for i, (_, _, members) in enumerate(FAMILIES) for name in members.split()}
@@ -147,6 +148,7 @@ def render_snapshot(data,output):
 
 def build(args):
     root = args.repo.resolve(); baseline = (args.baseline_repo or root).resolve()
+    guides = load_guides(HERE.parents[1])
     ref = verified_base(baseline, args.base, args.published_ref)
     tree = [e for e in git(baseline, 'ls-tree', '-r', '-z', ref, 'skills').decode().split('\0') if e]
     base_blobs = {}
@@ -187,10 +189,10 @@ def build(args):
         title = re.search(r'^#\s+(.+)', body, re.M)
         title = title[1] if title else name.replace('-', ' ').capitalize()
         title = {'jtbd-framing': 'JTBD framing', 'ddoc': 'Deal decision deck', 'rom': 'Rough order of magnitude', 'sow': 'Statement of work', 'sow-quality': 'SOW quality', 's2d-handoff': 'Sales-to-delivery handoff'}.get(name, title)
-        paragraphs = re.split(r'\n\s*\n', re.sub(r'^#\s+.+\n', '', body, count=1).strip())
-        # Show source paragraphs in their original order. Shared policy routing remains in the runbook.
-        work = [p for p in paragraphs if not re.match(r'^(Read \[shared workflow\]|#{1,6} |```|\|)', p)]
-        excerpt = work[:3]
+        excerpt = overview_excerpt(body)
+        guide = guides.get(name, {})
+        guide_current = guide.get('reviewedEntrypointSha256') == digest(raw)
+        reuse = assessment(root, name, guide, resources) if (root/'config/runtime-dependencies.json').is_file() else None
         headings = re.findall(r'^#{2,3}\s+(.+)', body, re.M)
         links = []
         for other in folders:
@@ -205,6 +207,7 @@ def build(args):
             'sourcePath':repo_path if not extra else f'local-skills/{name}/SKILL.md',
             'sourceSha256':digest(raw), 'githubUrl': f'https://github.com/mshellman-llc/Skills-Estate/blob/{ref}/{repo_path}' if base_blob is not None else None,
             'taskPackages':[{'name':task,'mode':None} for task,item in task_catalog.items() if item['source']==name]+[{'name':task,'mode':mode} for task,item in task_catalog.items() for mode,module in item.get('modes',{}).items() if module==name],
+            'guide':guide if guide_current else None, 'guideStatus':'current' if guide_current else 'needs-review', 'reuse':reuse,
             'markdown':source, 'html':markdown(body), 'excerptHtml':''.join(markdown(p) for p in excerpt),
             'headings':headings, 'mentions':links, 'resources':resources})
     data={'schemaVersion':1, 'generatedAt':datetime.now(timezone.utc).isoformat(), 'baseCommit':ref,

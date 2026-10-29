@@ -4,6 +4,16 @@
 
 Browse the workflows by work group, sort their names, and copy links to the matching GitHub groups. The site opens directly in a browser.
 
+Each overview explains the task, when to use it, required inputs, expected outputs, and an example request. Filter by intended audience or required setup. [The reuse review](../../browse/reuse-review.md) separates general-use methods from Megan-specific workflows and lists personal references that need attention before sharing.
+
+## Maintain the reader guides
+
+`config/skill-guide.json` holds the reader-facing summaries and the reviewed entrypoint hashes. Review a guide against its source after changing the entrypoint. An unmatched hash makes the map show current source excerpts and a review notice instead of the old guide. Keep the full instructions and downloads unchanged when editing a summary.
+
+`tools/skill_guide.py` scans workflow text, supporting files, declared runtime dependencies, and shared policies for named personal references. It separates examples and tests from workflow text. The audience classification describes intended use; it does not certify that a package works in another environment. The sharing review also identifies shared policy wording copied into every assembled package.
+
+Regenerate the GitHub review with `python3 tools/skill_guide.py --report`. Source or policy changes require reviewing the findings. Changing the catalog does not install, promote, or generalize the working skills.
+
 ## Refresh the site
 
 Ask Codex to refresh the Skills Estate site from GitHub. The refresh must retrieve a passing build for current main, verify the workflow and group data, update the existing Site, and confirm the deployed GitHub revision.
