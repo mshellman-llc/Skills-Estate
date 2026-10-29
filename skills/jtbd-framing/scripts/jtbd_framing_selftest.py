@@ -44,7 +44,7 @@ if fm:
     print(f"  description is {n} chars (surface limit 1024)")
     expect("description under the surface limit", 0 < n <= 1024, True)
     expect("description says when to trigger", bool(desc and re.search(r"triggers? on|use it", desc.group(1), re.I)), True)
-    expect("upstream attribution kept", "rampstackco/claude-skills" in fm.group(1), True)
+    expect("no upstream name outside LICENSE", "rampstack" in fm.group(1).lower(), False)
 expect("license file present", (SKILL / "LICENSE").exists(), True)
 
 # --- references cited, present, substantive ----------------------------------

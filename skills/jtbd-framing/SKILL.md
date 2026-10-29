@@ -2,10 +2,6 @@
 name: jtbd-framing
 description: "Apply Jobs-to-be-Done as product methodology: job statements, struggling moments, hire and fire criteria, functional, emotional, and social dimensions, and the difference between feature-thinking and job-thinking. Use it in discovery, prioritization, positioning, or an audit of existing JTBD work, and for spotting where JTBD has become ritual. Triggers on jobs-to-be-done, JTBD, job statements, struggling moments, hire or fire criteria, switch triggers, outcome-driven innovation, and on teams that lean on feature-request lists or persona archetypes that do not drive decisions. Do not trigger for generic prioritization or research synthesis with no JTBD angle."
 license: MIT
-metadata:
-  upstream: "rampstackco/claude-skills"
-  upstream-commit: "98d8cfe773f975a465f11c56d8fb2ae618307805"
-  adapted: "2026-10-22"
 ---
 
 Before drafting, read the [build card](../_shared/build-card.md) and [readout brief](../prose-pass/references/registers/readout-brief.md).
@@ -105,5 +101,3 @@ Return the job framing that would change a decision, its evidence or hypothesis 
 - [Applying JTBD to prioritization](references/applying-jtbd-to-prioritization.md): prioritizing candidates by job.
 - [Applying JTBD to positioning](references/applying-jtbd-to-positioning.md): job-led versus feature-led positioning.
 - [Common JTBD failures](references/common-jtbd-failures.md): eleven patterns with diagnoses and cures.
-
-Adapted from [RampStack's jtbd-framing](https://github.com/rampstackco/claude-skills/tree/98d8cfe773f975a465f11c56d8fb2ae618307805/skills/jtbd-framing). The original MIT notice is in [LICENSE](LICENSE).

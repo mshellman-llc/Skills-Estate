@@ -58,7 +58,7 @@ if fm:
     n = len(desc.group(1)) if desc else 0
     print(f"  description is {n} chars (surface limit 1024)")
     expect("description under the surface limit", 0 < n <= 1024, True)
-    expect("upstream attribution kept", "rampstackco/claude-skills" in fm.group(1), True)
+    expect("no upstream name outside LICENSE", "rampstack" in fm.group(1).lower(), False)
 
 # --- template carries the structure ------------------------------------------
 print()
