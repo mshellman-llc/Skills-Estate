@@ -1,6 +1,6 @@
 # Skill reuse review
 
-65 general-use methods and 15 Megan-specific workflows.
+65 general-use methods, 15 Megan-specific workflows, and 0 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -70,7 +70,7 @@ Megan-specific workflows retain their current sources and permissions. Generaliz
 | `sales-journey-critique` | General use | Supply the task inputs and its supported runtime. | [skills/sales-journey-critique/SKILL.md:68](../skills/sales-journey-critique/SKILL.md#L68); [skills/sales-journey-critique/SKILL.md:72](../skills/sales-journey-critique/SKILL.md#L72) |
 | `sales-process-mapping` | General use | Supply the task inputs and its supported runtime. | [skills/sales-process-mapping/SKILL.md:72](../skills/sales-process-mapping/SKILL.md#L72) |
 | `scope-reference` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `scoping-agent` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `scoping-agent` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `session-handoff` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `sf-delivery-standards` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
 | `sf-deploy-engine` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |

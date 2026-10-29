@@ -4,7 +4,11 @@
 
 Browse the workflows by work group, sort their names, and copy links to the matching GitHub groups. The site opens directly in a browser.
 
-Each overview explains the task, when to use it, required inputs, expected outputs, and an example request. Filter by intended audience or required setup. [The reuse review](../../browse/reuse-review.md) separates general-use methods from Megan-specific workflows and lists personal references that need attention before sharing.
+Each overview explains the task and when to use it. It lists what to provide and what the skill produces, followed by an example request. Filter by intended audience or required setup. [The reuse review](../../browse/reuse-review.md) separates general-use methods from Megan-specific workflows and lists personal references that need attention before sharing.
+
+The catalog distinguishes primary task packages, their included modes, and supporting modules. Its [maintenance review](../../docs/skill-maintenance-review.md) identifies consolidation candidates, conflicting older guidance, and capabilities to preserve before retirement.
+
+The readable instructions omit managed policy blocks, source comments outside code, the repeated title, and the generic build-card preamble. Connection excerpts and print views use the same cleaned text. Exact Markdown remains in Source and files and in downloaded packages. Rendering never executes source HTML.
 
 ## Maintain the reader guides
 
@@ -61,7 +65,7 @@ The map retains the navy, teal, sand, and embedded Plus Jakarta Sans design of t
 
 ## Verify updates
 
-`tests/test_map_updates.py` covers current-head selection, stale and expired artifacts, changed data, interrupted update eligibility, and localhost request checks. `tests/test_skill_groups.py` covers complete group assignment and package-mode links. Browser checks cover sorting, group-link copying, search, details, complete package downloads, updates, and narrow screens.
+`tests/test_map_updates.py` checks whether an artifact matches current main. It rejects stale or expired artifacts and changed data, and covers interrupted updates and localhost request checks. `tests/test_skill_groups.py` verifies complete group assignment and package-mode links. Browser checks open every readable view and verify exact source downloads. They exercise filters, keyboard behavior and complete package downloads. They also inspect narrow screens and print output.
 
 The local viewer binds only to loopback. Update requests require the same origin and a per-run token. GitHub authentication remains in `gh`; no credentials are embedded in the HTML.
 

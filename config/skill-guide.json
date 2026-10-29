@@ -483,9 +483,9 @@
       "what": "Develop scope, effort, staffing, and timeline estimates.",
       "when": "A project needs a rough range or a confirmed quote revision.",
       "inputs": "The brief, scope model, comparables, rate card, and relevant constraints.",
-      "outputs": "A scope and estimate with shown calculations, staffing, and assumptions.",
+      "outputs": "Scope items and estimates with shown calculations. Unknown effort remains visible as unestimated. Staffing and schedule bounds follow the supplied capacity and dependencies.",
       "example": "Estimate effort, staffing, and timing for this scope using the supplied rate card.",
-      "reviewedEntrypointSha256": "b47e8eeb86b8d6f7a8cd76f2b8f31c078f5b4d38d4b65609fcede479603d35c4"
+      "reviewedEntrypointSha256": "5eab458a8afd0a1583a2653f410a37c5fc2bcff1b75ef796b047bdf65b81cf79"
     },
     "session-handoff": {
       "what": "Prepare another session to resume the same work.",

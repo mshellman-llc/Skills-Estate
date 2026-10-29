@@ -8,7 +8,7 @@ HERE = Path(__file__).resolve().parent
 import sys
 sys.path.insert(0,str(HERE.parents[1]/'tools'))
 from browse import load_groups
-from skill_guide import load as load_guides, assessment, overview_excerpt, scan
+from skill_guide import load as load_guides, assessment, overview_excerpt, readable_body, scan
 FAMILIES = [(g['title'],g['description'],' '.join(g['skills'])) for g in load_groups(HERE.parents[1],check_coverage=False)]
 DEFAULT_PUBLISHED_REF = 'refs/remotes/origin/main'
 GROUPS = {name: i for i, (_, _, members) in enumerate(FAMILIES) for name in members.split()}
@@ -196,15 +196,19 @@ def build(args):
         guide = guides.get(name, {})
         guide_current = guide.get('reviewedEntrypointSha256') == digest(raw)
         reuse = assessment(root, name, guide, resources) if (root/'config/runtime-dependencies.json').is_file() else None
+        primary=[task for task,item in task_catalog.items() if item['source']==name]
+        modes=[{'task':task,'mode':mode} for task,item in task_catalog.items() for mode,module in item.get('modes',{}).items() if module==name]
+        role={'kind':'task' if primary else 'mode' if modes else 'support','tasks':primary,'modes':modes}
         headings = re.findall(r'^#{2,3}\s+(.+)', body, re.M)
+        link_body = readable_body(body)
         links = []
         for other in folders:
             if other == name: continue
             pattern = r'(?<![\w-])'+re.escape(other)+r'(?![\w-])' if '-' in other else r'(?:`'+re.escape(other)+r'`|\['+re.escape(other)+r'\]|'+re.escape(other)+r' skill)'
-            matches = list(re.finditer(pattern, body))
+            matches = list(re.finditer(pattern, link_body))
             if matches:
-                m=matches[0]; start=max(0,body.rfind('\n\n',0,m.start())+2); end=body.find('\n\n',m.end())
-                links.append({'name': other, 'context': body[start:end if end != -1 else len(body)].strip()})
+                m=matches[0]; start=max(0,link_body.rfind('\n\n',0,m.start())+2); end=link_body.find('\n\n',m.end())
+                links.append({'name': other, 'context': link_body[start:end if end != -1 else len(link_body)].strip()})
         skills.append({'id':name, 'title':title, 'family':GROUPS[name], 'description':meta['description'], 'status':status,
             'entrypointChanged': base_blob is not None and blob_digest(raw) != base_blob,
             'sourcePath':repo_path if not extra else f'local-skills/{name}/SKILL.md',
@@ -212,7 +216,8 @@ def build(args):
             'taskPackages':[{'name':task,'mode':None} for task,item in task_catalog.items() if item['source']==name]+[{'name':task,'mode':mode} for task,item in task_catalog.items() for mode,module in item.get('modes',{}).items() if module==name],
             'downloadPackages':[task for task,members in package_members.items() if name in members],
             'guide':guide if guide_current else None, 'guideStatus':'current' if guide_current else 'needs-review', 'reuse':reuse,
-            'markdown':source, 'html':markdown(body), 'excerptHtml':''.join(markdown(p) for p in excerpt),
+            'catalogRole':role,
+            'markdown':source, 'html':markdown(readable_body(body)), 'excerptHtml':''.join(markdown(p) for p in excerpt),
             'headings':headings, 'mentions':links, 'resources':resources})
     data={'schemaVersion':1, 'generatedAt':datetime.now(timezone.utc).isoformat(), 'baseCommit':ref,
           'repository':'mshellman-llc/Skills-Estate', 'families':[{'id':g['id'],'title':g['title'],'description':g['description']} for g in load_groups(HERE.parents[1],check_coverage=False)], 'skills':skills}

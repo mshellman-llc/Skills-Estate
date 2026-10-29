@@ -32,6 +32,13 @@ const {chromium}=require('playwright');
   }
   await page.locator('#tab-instructions').click();
   assert((await page.locator('#panel-instructions .instructions').innerText()).length>100);
+  assert(!(await page.locator('#panel-instructions').innerText()).includes('ESTATE-WRITING:'));
+  assert(!(await page.locator('#panel-instructions').innerText()).includes('Before writing:'));
+  if(skill.id==='writing-integrity')await page.screenshot({path:path.join(output,'writing-instructions.png')});
+  await page.locator('#tab-connections').click();
+  const connections=await page.locator('#panel-connections').innerText();
+  assert(!connections.includes('ESTATE-WRITING:'));
+  assert(!connections.includes('Before writing:'));
   await page.locator('#tab-files').click();
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
   await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').evaluate(e=>e.open),false);
@@ -69,11 +76,13 @@ const {chromium}=require('playwright');
  for(const status of ['github','local-revision','local-addition']){await page.locator('#source-filter').selectOption(status);assert.equal(await page.locator('.skill-row').count(),data.counts[status])}
  await page.locator('#reset').click();
  // Intent, required setup, and sharing cleanup remain separate from source parity.
- for(const audience of ['general','megan','cleanup','setup']){
+ for(const audience of ['general','megan','review','cleanup','setup']){
   await page.locator('#audience-filter').selectOption(audience);
   const expected=data.skills.filter(s=>audience==='cleanup'?s.reuse.audience==='general'&&s.reuse.cleanup.length:audience==='setup'?s.reuse.audience==='general'&&s.reuse.setup:s.reuse.audience===audience);
   assert.equal(await page.locator('.skill-row').count(),expected.length);
  }
+ await page.locator('#reset').click();
+ for(const role of ['task','mode','support']){await page.locator('#role-filter').selectOption(role);assert.equal(await page.locator('.skill-row').count(),data.skills.filter(s=>s.catalogRole.kind===role).length)}
  await page.locator('#reset').click();
  // No external requests, mobile overflow, detail layout, and print media.
  await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(output,'mobile.png'),fullPage:false});
