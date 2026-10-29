@@ -93,6 +93,23 @@ def markdown(text):
     if code is not None: out.append('<pre><code>'+html.escape('\n'.join(code))+'</code></pre>')
     return ''.join(out)
 
+def connection_excerpt(body, match):
+    """Render the relevant source row or paragraph without exposing Markdown syntax."""
+    previous_break=body.rfind('\n\n',0,match.start())
+    start=previous_break+2 if previous_break>=0 else 0
+    end=body.find('\n\n',match.end())
+    context=body[start:end if end!=-1 else len(body)].strip()
+    line_start=body.rfind('\n',0,match.start())+1
+    line_end=body.find('\n',match.end())
+    row=body[line_start:line_end if line_end!=-1 else len(body)].strip()
+    if row.startswith('|'):
+        lines=context.splitlines()
+        for i in range(len(lines)-1):
+            if lines[i].strip().startswith('|') and re.fullmatch(r'\s*\|[\s:|\-]+\|\s*',lines[i+1]):
+                # Preserve the exact matching row and its original column labels.
+                return {'context':row,'contextHtml':markdown('\n'.join([lines[i],lines[i+1],row]))}
+    return {'context':context,'contextHtml':markdown(context)}
+
 def included(parts):
     """Single inclusion rule for package files, given path parts relative to the skill folder."""
     return not any(x.startswith('.') or x == '__pycache__' for x in parts) and Path(parts[-1]).suffix != '.pyc'
@@ -207,8 +224,7 @@ def build(args):
             pattern = r'(?<![\w-])'+re.escape(other)+r'(?![\w-])' if '-' in other else r'(?:`'+re.escape(other)+r'`|\['+re.escape(other)+r'\]|'+re.escape(other)+r' skill)'
             matches = list(re.finditer(pattern, link_body))
             if matches:
-                m=matches[0]; start=max(0,link_body.rfind('\n\n',0,m.start())+2); end=link_body.find('\n\n',m.end())
-                links.append({'name': other, 'context': link_body[start:end if end != -1 else len(link_body)].strip()})
+                links.append({'name':other,**connection_excerpt(link_body,matches[0])})
         skills.append({'id':name, 'title':title, 'family':GROUPS[name], 'description':meta['description'], 'status':status,
             'entrypointChanged': base_blob is not None and blob_digest(raw) != base_blob,
             'sourcePath':repo_path if not extra else f'local-skills/{name}/SKILL.md',

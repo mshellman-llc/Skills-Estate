@@ -69,6 +69,24 @@ class SkillsMapTests(unittest.TestCase):
         self.assertIn('<td>Draft</td>', rendered)
         self.assertIn('echo &quot;safe&quot;', rendered)
 
+    def test_connection_tables_show_only_the_matching_row(self):
+        source='| Need | Reference |\n| --- | --- |\n| General advice | Other reference |\n| Saved files | [Diagnostic toolkit](../prose-pass/SKILL.md) |\n| Another topic | Unrelated reference |'
+        excerpt=builder.connection_excerpt(source,re.search('prose-pass',source))
+        self.assertEqual(excerpt['context'],'| Saved files | [Diagnostic toolkit](../prose-pass/SKILL.md) |')
+        self.assertIn('<table>',excerpt['contextHtml'])
+        self.assertIn('<th scope="col">Need</th>',excerpt['contextHtml'])
+        self.assertIn('<td>Saved files</td>',excerpt['contextHtml'])
+        self.assertNotIn('Other reference',excerpt['contextHtml'])
+        self.assertNotIn('Unrelated reference',excerpt['contextHtml'])
+
+    def test_connection_prose_renders_links_lists_and_escapes_source_html(self):
+        source='Use **prose-pass** for diagnostics.\n\n<script>prose-pass</script>'
+        excerpt=builder.connection_excerpt(source,re.search('prose-pass',source))
+        self.assertTrue(excerpt['context'].startswith('Use '))
+        self.assertIn('<strong>prose-pass</strong>',excerpt['contextHtml'])
+        unsafe=builder.connection_excerpt(source,list(re.finditer('prose-pass',source))[1])
+        self.assertNotIn('<script>',unsafe['contextHtml'])
+
     def test_readable_views_hide_shared_preambles_but_raw_sources_retain_them(self):
         for skill in self.data['skills']:
             with self.subTest(skill=skill['id']):
