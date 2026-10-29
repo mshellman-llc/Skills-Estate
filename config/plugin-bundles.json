@@ -113,8 +113,6 @@
     "estate-governance": {
       "description": "Skills Estate governance workflows and routing.",
       "entries": [
-        "cross-platform-skill-release",
-        "skill-authoring",
         "skill-estate-sync"
       ],
       "internal": [],

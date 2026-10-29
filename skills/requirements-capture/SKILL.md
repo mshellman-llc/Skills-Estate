@@ -3,10 +3,6 @@ name: requirements-capture
 description: 'Capture and structure business requirements in the Estate approved format: epics, capabilities, business needs, user stories, and Gherkin acceptance criteria, delivered as a branded two-tab Excel workbook. Use to define, write, organize, or refine requirements, to extract them from an uploaded deck, PRD, brief, spec, or transcript, or to turn a Salesforce SOW into a backlog (BA mode: analyze this SOW, SOW to backlog, Salesforce BA). Triggers on capture requirements, write user stories, define epics, requirements gathering, BRD, acceptance criteria, requirements CSV. Always read the host spreadsheet skill before generating the workbook.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate Requirements Capture
 

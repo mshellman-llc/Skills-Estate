@@ -6,10 +6,6 @@ metadata:
   canon_exempt_reason: 'auth contract, API payloads and the refusal matrix must be in hand before the agent acts on an org'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # sf-deploy-engine — operating the pipeline
 

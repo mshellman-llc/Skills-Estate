@@ -3,10 +3,6 @@ name: uat-validation
 description: 'Runs the validation stage (05 Validate) of an Estate delivery engagement: test scripts traced one-to-one to the requirements workbook, the defect log with triage, the UAT execution tracker with coverage math, the cutover readiness checklist, and the go/no-go evidence pack the humans co-sign against. Use when a build reaches sandbox-complete and testing starts, and whenever someone asks for test scripts, SIT or UAT planning, a traceability matrix, test coverage, a defect log, defect triage, a UAT tracker, "are we ready for UAT", "what''s our test coverage", cutover readiness, a go/no-go pack, or "can we go live". Trigger even on implicit phrasings like "UAT starts Monday, get us set up" or "the client wants to see where testing stands". Do NOT use for authoring requirements (that is estate-requirements-capture), executing cutover or hypercare (that is estate-cutover-closeout), weekly status cadence or RAID upkeep (that is estate-delivery-status), or build work.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate UAT validation
 

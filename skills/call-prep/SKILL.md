@@ -3,10 +3,6 @@ name: call-prep
 description: 'Plan an Estate sales pursuit in two modes: maintain its canonical Pursuit Brief or prepare one upcoming call. Use for a pursuit overview, recommended call sequence, objective, attendee plan, agenda, tailored questions, talk track, negotiation preparation, or prospect, account, and competitor research before a sales conversation. Route post-call discovery and transcript ingestion to discovery-brief, scope and pricing to scoping-agent, and signed work to delivery skills.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate call prep
 

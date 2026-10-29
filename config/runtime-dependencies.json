@@ -127,5 +127,9 @@
   ],
   "uat-validation": [
     "delivery-suite"
+  ],
+  "skill-estate-sync": [
+    "skill-creation-walkthrough",
+    "cross-platform-skill-release"
   ]
 }

@@ -73,7 +73,7 @@ const {chromium}=require('playwright');
  await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),6);await page.screenshot({path:path.join(output,'workflows.png')});
  await page.locator('.route [data-skill]').first().click();assert(await page.locator('#detail').evaluate(e=>e.open));await page.keyboard.press('Escape');await page.locator('#browse-view').click();
  // Full instruction search and status counts.
- await page.locator('#full-search').check();await page.locator('#search').fill('ESTATE-WRITING');assert((await page.locator('.skill-row').count())>0);await page.locator('#reset').click();
+ await page.locator('#full-search').check();await page.locator('#search').fill('ESTATE-WRITING');assert.equal(await page.locator('.skill-row').count(),0);await page.locator('#search').fill('expected-source');assert((await page.locator('.skill-row').count())>0);await page.locator('#reset').click();
  for(const status of ['github','local-revision','local-addition']){await page.locator('#source-filter').selectOption(status);assert.equal(await page.locator('.skill-row').count(),data.counts[status])}
  await page.locator('#reset').click();
  // Intent, required setup, and sharing cleanup remain separate from source parity.

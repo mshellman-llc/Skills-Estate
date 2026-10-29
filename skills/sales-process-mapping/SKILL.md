@@ -3,10 +3,6 @@ name: sales-process-mapping
 description: Map sales processes from discovery files, workbooks, CRM or Jira exports and operating notes. Trace triggers, ownership, handoffs and systems of record, including territory assignment and opportunity creation when relevant.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Sales process mapping
 
 Explain the business process first: what the customer is trying to accomplish, what starts the work, who moves it forward, and what counts as finished. Connect that explanation to the records and systems used along the way.
@@ -69,7 +65,7 @@ Include source locators for rules and a short decision list for consequential ga
 
 Walk one representative case from trigger through completion and one material exception using the supplied evidence. Confirm that the diagram and tables agree about owners, sequence, record grain, and system authority. Check that every supported rule has a locator and every unresolved rule stays unresolved in both views. Ensure that a generated explanation has not become its own factual source.
 
-Apply `writing-integrity` to the complete map and accompanying replies. Read its full pattern references, preserve the source facts and qualifications, and review manually if its scanner is unavailable. For text sent under Megan’s name, also apply her current `megan-writing-style` profile.
+Apply `writing-integrity` to the complete map and accompanying replies. Read its full pattern references, preserve the source facts and qualifications, and review manually if its scanner is unavailable. When writing as a named person, apply their confirmed writing profile if supplied.
 
 Read the finished map for business meaning: a reader should be able to say what happens, why it starts, who acts next, and where the result is recorded. A diagram render or schema check cannot establish those facts.
 

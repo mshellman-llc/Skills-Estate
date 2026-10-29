@@ -3,10 +3,6 @@ name: s2d-handoff
 description: 'Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (solution-brief), the kickoff meeting or project charter (estate-delivery-kickoff), requirements extraction (requirements-capture), or pre-sale research and call prep (call-prep).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate sales-to-delivery handoff
 

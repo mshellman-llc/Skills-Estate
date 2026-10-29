@@ -3,10 +3,6 @@ name: "career-progression-and-offers"
 description: "Assess a role, the whole tracker or an offer against Megan's VP-to-ELT path and her gates; prepare salary negotiation; compare offers side by side. Megan decides."
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Career progression and offers
 

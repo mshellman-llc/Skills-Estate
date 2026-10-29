@@ -6,10 +6,6 @@ metadata:
   canon_exempt_reason: 'Enforcement-stack reference an agent must hold in full: rule IDs, exit codes, suppression contract, and engine semantics, punctuation included.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Salesforce Enterprise Patterns (Estate House Architecture)
 

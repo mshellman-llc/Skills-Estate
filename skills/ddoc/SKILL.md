@@ -3,10 +3,6 @@ name: ddoc
 description: 'Authors, gates, and builds the DDOC, the client-facing Deal Decision deck presented immediately before the proposal: interactive copy approval first, then the PPTX build. Two modes: decision mode when the client chooses between options, confirmation mode when there is one option. build_ddoc.js --check gates a manifest without rendering, so copy can be gated where the renderer cannot be installed. Use when asked to build, review, de-slop, gate, or rebuild a DDOC, deal decision deck, options deck, scope deck, or the deck presented before the proposal. Trigger on DDOC, options deck, version slide, discussion document, the deck that goes with the SOW, or a Q-number paired with a deck request. Do NOT use for SOW review (sow-quality), prose editing (prose-pass), PPTX mechanics (pptx), or a generic multi-slide proposal deck (deck-builder).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Deal Decision deck
 

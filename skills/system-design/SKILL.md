@@ -3,10 +3,6 @@ name: system-design
 description: 'Produce a fast, unbranded working design for a new system, service, API, or data architecture, usually inline. Covers requirements, components, data flow, data model, API contracts, storage, caching, queues, scaling, reliability, capacity, and explicit trade-offs. Use when someone asks how to build or structure a new product or service, how it will scale, which database, cache, queue, or API style fits, or wants component boundaries explored before decisions are formalized. Do NOT use for reviewing existing code, capturing one already-made decision as a short ADR, or a formal, sourced, client-facing, Estate-branded architecture document (that is architecture-doc).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # System Design
 

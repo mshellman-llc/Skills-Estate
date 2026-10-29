@@ -8,10 +8,6 @@ metadata:
   adapted: "2026-10-27"
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Journey mapping
 
 Map one actor's experience and choose an improvement to validate. Produce the journey, its service blueprint and a prioritized opportunity map from supplied evidence.

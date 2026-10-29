@@ -1,9 +1,7 @@
 schema_version: 1
 name: skill-creation-walkthrough
-display_name: Skill Creation Walkthrough
-summary: Step-by-step guide for creating reusable agent skills, from deciding whether
-  a skill is the right tool to writing the SKILL.md file, structuring reference material,
-  and making it trigger reliably.
+display_name: Estate skill authoring
+summary: Create or repair a governed estate workflow, preserving its resources and validating task selection and output.
 status: active
 tier: maintainer
 version: 1.0.1
@@ -16,14 +14,7 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- Step-by-step guide for creating reusable agent skills, from deciding whether a
-  skill is the right tool to writing the SKILL.md file, structuring reference material,
-  and making it trigger reliably. Use when you want to package a workflow, framework,
-  or repeated task into a reusable Skill, when an existing skill is not triggering
-  or not loading the right context, when you are auditing a skill that is underperforming,
-  or when you want to publish a skill for others. Also triggers when someone asks
-  "how do I make a skill" or "what makes a good skill". Useful for individuals, teams,
-  and anyone publishing skills publicly.
+- Create or repair a governed estate workflow, preserving its resources and validating task selection and output.
 exclusions: []
 inputs:
 - name: task_context

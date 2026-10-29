@@ -3,10 +3,6 @@ name: team-onboarding
 description: 'Design a structured first-three-month ramp for employees, contractors, and agency partners. Use for a new starter, team restructure, inconsistent onboarding process, or knowledge transfer from one critical person. Covers engineering, design, product, marketing, and operations roles. Do not use for performance management, technology-specific training, hiring, or commercial offering design.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
 > [`readout-brief.md`](../prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**

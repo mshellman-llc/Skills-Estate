@@ -2,6 +2,8 @@
 
 Author skills in `skills/` and shared rules in `policies/`. `build/` and `dist/` are generated. Never edit installed or account-synced copies as the source of truth.
 
+Apply [the shared workflow](policies/workflow.md) and [writing standard](policies/writing.md) while authoring. These policies apply across source modules; portable packages link them once from their top-level entrypoint.
+
 Read the requested skill and its referenced files before changing it. Preserve specialized workflow decisions and supported resources. Keep company identities, private client records, credentials, legal clauses, and payment details out of reusable skills. Branding comes from `policies/brand.md` and the current project's confirmed profile.
 
 Use separate checkouts for concurrent workers and assign one owner per source path. Preserve dirty work. Keep temporary run evidence outside distributable packages; reuse the existing task record rather than creating another folder.

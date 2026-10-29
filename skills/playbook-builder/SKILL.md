@@ -3,10 +3,6 @@ name: playbook-builder
 description: 'Define, add, replace, deduplicate, audit, or maintain a productized offering, service, play, or playbook in a consistent catalog format. Use it to turn a rough idea into a sellable playbook, write internal and external one-pagers, settle scope, deliverables, value and buyer, audit a catalog against research findings, or keep a family of plays consistent when one entry changes. Works for any consulting, product, or service catalog, not just AI.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Playbook Builder
 

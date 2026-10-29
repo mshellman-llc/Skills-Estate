@@ -3,10 +3,6 @@ name: business-case
 description: 'Authors and gates the Estate executive business case, the artifact for the approver who funds the deal: should we invest, why now, and what exactly is being asked. Argues the case for and against the investment honestly, prices the cost of waiting in shown arithmetic, and bounds the ask so no approval is a blank check. Use when asked for a business case, investment case, exec case, value case, cost-benefit, "the case for", "why now memo", "should we fund this", "help me get the CFO to yes", or when a pursuit needs the document the economic buyer reads before signing off. Trigger on any client name or Q-number paired with "business case" or "funding". Do NOT use for the deal decision deck (that is estate-ddoc), the priced clickable proposal (that is estate-interactive-proposal), the internal margin gate (that is the Deal Desk readout under estate-evidence-core''s deal_desk contract), or prospect research (that is estate-call-prep).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate business case
 

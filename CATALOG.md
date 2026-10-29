@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 80 source modules and 54 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 80 source modules and 52 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -15,7 +15,7 @@ This candidate contains 80 source modules and 54 proposed task entrypoints. Cons
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 8 | 4 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
-| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 5 |
+| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
 <!-- SKILL-GROUPS:END -->
 
 ## Proposed task entrypoints
@@ -36,7 +36,6 @@ This candidate contains 80 source modules and 54 proposed task entrypoints. Cons
 | career-decisions | [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md) |  |
 | code-simplify | [code-simplify](skills/code-simplify/SKILL.md) |  |
 | commercial-review | [deal-desk](skills/deal-desk/SKILL.md) |  |
-| cross-platform-skill-release | [cross-platform-skill-release](skills/cross-platform-skill-release/SKILL.md) |  |
 | cutover-closeout | [cutover-closeout](skills/cutover-closeout/SKILL.md) |  |
 | deck-builder | [deck-builder](skills/deck-builder/SKILL.md) | ddoc |
 | deliverable-review | [quality-gate](skills/quality-gate/SKILL.md) |  |
@@ -65,8 +64,7 @@ This candidate contains 80 source modules and 54 proposed task entrypoints. Cons
 | sf-devops-center | [dx-devops-work-item-manage](skills/dx-devops-work-item-manage/SKILL.md) | dx-devops-promote |
 | sf-pipeline-operations | [sf-deploy-engine](skills/sf-deploy-engine/SKILL.md) |  |
 | sf-project-setup | [sf-delivery-standards](skills/sf-delivery-standards/SKILL.md) |  |
-| skill-authoring | [skill-creation-walkthrough](skills/skill-creation-walkthrough/SKILL.md) |  |
-| skill-estate-sync | [skill-estate-sync](skills/skill-estate-sync/SKILL.md) |  |
+| skill-estate-sync | [skill-estate-sync](skills/skill-estate-sync/SKILL.md) | skill-creation-walkthrough, cross-platform-skill-release |
 | solution-brief | [solution-brief](skills/solution-brief/SKILL.md) |  |
 | statement-of-work | [sow](skills/sow/SKILL.md) | sow-quality |
 | sticker-art-direction | [sticker-art-direction](skills/sticker-art-direction/SKILL.md) |  |

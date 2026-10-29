@@ -3,10 +3,6 @@ name: brand-renderer
 description: 'Render and check branded artifacts using a confirmed project profile or the shared neutral policy. Use for documents, decks, workbooks, PDFs, HTML, or brand-sensitive copy when the task needs visual identity applied without losing source meaning. Resolves required assets, preserves claims through export, and combines executable checks with inspection of the rendered result.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Brand renderer
 

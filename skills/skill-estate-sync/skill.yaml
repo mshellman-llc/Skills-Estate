@@ -1,7 +1,7 @@
 schema_version: 1
 name: skill-estate-sync
-display_name: Skill Estate Sync
-summary: Build and reconcile complete portable packages for local Claude Code and Codex, with separate publication records.
+display_name: Skill maintenance
+summary: Author, validate, package and release workflows through the estate maintenance tools.
 status: active
 tier: maintainer
 version: 1.3.0
@@ -14,8 +14,7 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- A canonical skill or shared policy changed and needs testing, packaging, or local installation.
-- Installed skill resources differ between hosts or an account upload needs a recorded receipt.
+- Author, validate, package and release workflows through the estate maintenance tools.
 exclusions: []
 inputs:
 - name: task_context

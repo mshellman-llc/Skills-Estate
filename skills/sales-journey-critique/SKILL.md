@@ -3,10 +3,6 @@ name: sales-journey-critique
 description: Review a sales journey, discovery demo or proposed workflow. Trace the customer’s task, compare current and proposed steps, and check systems, click paths and measures. Recommend specific corrections.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Sales journey critique
 
 Trace a specific person's task through the sales journey. Check what changes, which systems support each step and how success will be measured. Identify useful parts of the artifact and the behavior it still needs to explain.
@@ -65,10 +61,10 @@ Before delivery, check that every material finding has a source location and an 
 
 ## Required writing review
 
-Apply `writing-integrity` to every critique and accompanying reply. Load its complete pattern references on first use in the session. Prefer the maintained `~/.agents/skills/writing-integrity/SKILL.md` when available. For text sent under Megan's name, also apply her current `megan-writing-style` profile.
+Apply `writing-integrity` to every critique and accompanying reply. Load its complete pattern references on first use in the session. Use the maintained writing-integrity installation available in the current host. When writing as a named person, apply their confirmed writing profile if supplied.
 
 Read [expanded-writing-review.md](references/expanded-writing-review.md) on each use. It also supplies the pattern checks if writing-integrity is unavailable. Review the entire output, including captions, examples and closing lines. Repair the sentence or argument; changing a few words is insufficient. Use paragraphs for connected reasoning and lists or tables for comparison or sequence. Keep real three-item sets.
 
-If `~/.agents/humanize/tellscan.py` is available, scan finished prose files. Use `--profile megan` for Megan-authored copy. For a chat reply, save a temporary Markdown file when local execution is available. Inspect every flag, repair actual defects and rerun after editing. Read the finished text even when the scan passes. Review manually when the skill or scanner is unavailable, and report a tool limit only when it affects a verification the user requested.
+Use the bundled writing diagnostic tools to scan finished prose files when available. Select a personal profile only when configured for the intended author. For a chat reply, save a temporary Markdown file when local execution is available. Inspect every flag, repair actual defects and rerun after editing. Read the finished text even when the scan passes. Review manually when the skill or scanner is unavailable, and report a tool limit only when it affects a verification the user requested.
 
 Compare the revision with its evidence. Preserve facts, uncertainty, sources, scope, ownership and required terms. Keep quotations and mandated wording exact. Do not invent details or errors, remove necessary qualifications, or deliver unresolved formulaic writing in authored prose. Keep routine editing commentary out of the critique. Never promise detector evasion or detection of every pattern.

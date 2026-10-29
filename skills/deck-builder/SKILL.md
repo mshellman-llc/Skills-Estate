@@ -3,10 +3,6 @@ name: deck-builder
 description: 'Build or repair a presentation or reading deck around an audience decision, supported claims and explanatory visuals. Plans the narrative before rendering, chooses diagrams or charts for the relationships they explain, and verifies the finished artifact. Use for proposals, pitches and technical briefings. Route the specific Deal Decision deck to ddoc and an interactive proposal page to interactive-proposal.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Deck Builder
 

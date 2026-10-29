@@ -2,7 +2,7 @@
 
 Private source of truth for Megan's reusable skills across Claude Code and Codex. Author each skill once in `skills/`. Branding belongs in [policies/brand.md](policies/brand.md); the build includes the current policy in every portable package.
 
-The restoration candidate contains 80 source modules and 54 proposed task entrypoints. [CATALOG.md](CATALOG.md) records both inventories. Capability review and host verification remain open; this branch is not an accepted release. Private project records and credentials stay outside the repository.
+The restoration candidate contains 80 source modules and 52 proposed task entrypoints. [CATALOG.md](CATALOG.md) records both inventories. Capability review and host verification remain open; this branch is not an accepted release. Private project records and credentials stay outside the repository.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -17,7 +17,7 @@ The restoration candidate contains 80 source modules and 54 proposed task entryp
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 8 | 4 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
-| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 5 |
+| [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
 <!-- SKILL-GROUPS:END -->
 
 ## Prepare and install on a Mac or Linux machine

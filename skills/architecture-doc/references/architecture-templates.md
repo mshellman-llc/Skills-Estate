@@ -1,6 +1,6 @@
-# Architecture templates (Estate)
+# Architecture templates
 
-Fillable skeletons for the two altitudes, the source-line convention, the systems-map and trade-offs patterns, the HTML build pattern, and the pre-ship checklist. Customize the sections to the real system. Every substantive claim carries a source line. If a source does not cover something, it is a gap: raise it with the operator in chat, do not fill it here.
+Fillable skeletons for the two altitudes, the source-line convention, the systems-map and trade-offs patterns, the HTML build pattern, and the pre-ship checklist. Customize the sections to the real system. Every substantive factual claim carries a source locator. Raise missing evidence with the user. Retain an unresolved condition in the reference when readers need it for a decision; never invent a fact.
 
 ---
 
@@ -80,7 +80,7 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 - Roles. [The product roles, and the build roles if they differ.] `Source: ...`
 
 ### Footer
-- Color mark, brandline, rev line naming the sources and the date.
+- Revision, sources and date. Add a mark or brandline only when the selected profile calls for one.
 
 ---
 
@@ -139,13 +139,13 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 - What to revisit as it grows. [A short list.]
 
 ### Footer
-- Color mark, brandline, rev line.
+- Revision and source references; profile-specific assets only when required.
 
 ---
 
 ## Systems-map pattern
 
-Draw the map inline with the Estate diagram classes (`.diagram`, `.drow`, `.dbox`, `.dseam`, `.dcap`). One row per layer, seams for the connectors, a caption that carries the source. Keep boxes to a title and one line. Example layers for a hosted app:
+Draw the map using the selected renderer and project profile. Existing diagram classes (`.diagram`, `.drow`, `.dbox`, `.dseam`, `.dcap`) may be reused when available. One row per layer, seams for the connectors, a caption that carries the source. Keep boxes to a title and one line. Example layers for a hosted app:
 
 ```
 row 1:  [source and deploy]  --deploy on push-->  [the app, dark box]
@@ -154,13 +154,13 @@ row 3:  [datastore]   [render or compute]   [identity]
 caption: the two-kinds-of-change note, plus the source line.
 ```
 
-Do not use color-coded left borders. Use full 1px borders and the token palette.
+Use the selected profile’s borders and palette, and provide labels that remain understandable without color.
 
 ---
 
 ## Schema-block pattern
 
-Present an illustrative schema in a monospace block styled with the token palette (frost background, 1px border, 8px radius, muted comments, teal table names). Keep it illustrative, not exhaustive.
+Present an illustrative schema in a readable monospace block using the selected profile. Check contrast for code and comments. Keep it illustrative, not exhaustive.
 
 ```
 -- every table carries [the isolation key]. the enforcement keys on it.
@@ -184,24 +184,23 @@ Every real decision gets a row. The point is that each choice names what it gave
 
 ## HTML build pattern
 
-1. Author the body HTML with three placeholders: `{{STYLE}}` in the head, `{{LOGO_WHITE_B64}}` in the hero, `{{MARK_COLOR_B64}}` in the footer.
-2. Inject the Estate stylesheet (from `_shared/estate-brand`) into `{{STYLE}}`, and the two logos as `data:image/png;base64,<contents>` into the logo placeholders.
-3. Assert no `{{` remains.
-4. Run the gates. Fix a C1 balanced-clause fail by splitting the true two-clause sentences ("X, so Y") into sentences of unequal length. Leave the serial-comma lists, which also match the pattern but are correct.
-5. Render and inspect. Confirm parity.
+1. Build the document with the selected profile's stylesheet and available assets. A neutral profile requires no logo placeholders.
+2. If a template uses placeholders, inject only the selected profile's declared values and reject unresolved placeholders.
+3. Run the configured brand and prose checks. Review findings in context and preserve required technical meaning.
+4. Render and inspect the output. Compare every diagram, table, source locator and substantive claim with the editable source.
 
-Supplemental styles (code blocks, pill labels) stay on the token palette: frost or white backgrounds, 1px token borders, radii of 4px or 8px, teal as the one accent.
+Supplemental styles for code blocks and labels use the selected profile. Inspect readable contrast and layout in the requested export format.
 
 ---
 
 ## Pre-ship checklist
 
 - [ ] Every substantive claim has a source line.
-- [ ] No gap-flags, no "TBD", no "to confirm" in the document. Gaps raised with the operator in chat instead.
+- [ ] Missing evidence and decisions are reported to the user; the reference retains conditions its readers need.
 - [ ] Superseded framing removed, not annotated. The authoritative source's precedence is honored.
 - [ ] Design proposals are framed as proposals, each with its trade-off. Genuine forks defaulted in the doc and flagged in chat.
 - [ ] Brand gate: `PASS: 0 failure(s)`.
-- [ ] Prose gate (documents only): exit 0. C1 balanced-clause sentences split where they were true two-clause joins.
+- [ ] Prose and interface labels reviewed; applicable diagnostic findings resolved without changing the meaning.
 - [ ] Parity: all substance survived the render. A human or model looked at it.
-- [ ] House voice: no em dashes, no en-dash ranges, no section sign, no emoji, no forbidden words, sentence case, digits.
+- [ ] The confirmed author voice and selected project profile apply; no unrelated brand or personal voice remains.
 - [ ] Numbers cascaded to the rest of the set.

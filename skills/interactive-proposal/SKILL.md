@@ -3,10 +3,6 @@ name: interactive-proposal
 description: 'Builds a single-file interactive proposal page that a prospect can click through. The page lets a prospect switch among scoped versions. Each version carries its team, timeline, assumptions, boundaries, and call to action. Proposal mode renders a priced scoping-app quote (Q-number) with every number tied to a quote field and reconciled by tie-out. Explorer mode covers pre-quote qualification with the same page and gates, scope and open decisions only, and zero currency on the surface. Use when asked for an interactive proposal, proposal page, quote page, clickable proposal, web version of the DDOC, scope explorer, or option explorer for a pursuit. Trigger on a Q-number or client name paired with interactive, page, site, explorer, or clickable. Do NOT use for the PPTX Deal Decision deck itself (that is ddoc) or a generic slide proposal deck (deck-builder).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Interactive Proposal
 

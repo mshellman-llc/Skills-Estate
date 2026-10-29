@@ -3,10 +3,6 @@ name: fortunes-weave
 description: Answer Megan's Fire Emblem Fortune's Weave questions or update her planner using the current route, roster, project notes, and live planner state.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Fortune's Weave
 

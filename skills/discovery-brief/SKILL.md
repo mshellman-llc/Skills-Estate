@@ -3,10 +3,6 @@ name: discovery-brief
 description: 'Maintain the discovery record for a pursuit: supported facts and ranked open questions tied to the scope they unblock. Use to prepare discovery content, identify questions that affect scope or price, ingest a post-call transcript, close answered questions, log decisions, or propose scope revisions. Route company research and a packaged call brief to call-prep, scope and pricing changes to scoping-agent, and signed-engagement requirements to requirements-capture.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate discovery brief
 

@@ -3,10 +3,6 @@ name: sow-quality
 description: 'Quality gate for Estate client-facing Statements of Work and other contract-class deliverables (MSAs, Change Orders, proposals with contractual scope). Use to review, audit, de-slop, tighten, or finalize a SOW or contract, as the final authoring pass after a SOW is generated and before scope review, or to apply the Basis of Estimate framework to a new tier. It audits structure and language: structural de-slop, Basis of Estimate (volumetric assumptions into Exhibit A with soft and hard Change Order triggers), and cross-reference discipline. It does not compute pricing (the Pricing System does) or author or render the SOW itself (that is sow).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate SOW Quality Gate
 

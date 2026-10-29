@@ -3,10 +3,6 @@ name: scoping-agent
 description: Develop project scope and effort estimates from the user's brief, supplied models or configured pricing system. Support rough ranges and confirmed quote revisions. Produce usable local scope and calculations without requiring a CRM connection.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Project scoping
 
 Build the requested scope from current project evidence. Use a supplied export

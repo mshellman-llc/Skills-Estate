@@ -3,10 +3,6 @@ name: sticker-art-direction
 description: Develop and critique typography-led stickers through visual references, distinct compositions, type auditions, optical refinement, and print-scale proofing.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Sticker art direction
 

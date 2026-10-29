@@ -3,10 +3,6 @@ name: delivery-suite
 description: 'Orchestrates the delivery half of the Estate sell-to-deliver lifecycle from signed SOW through hypercare closeout. It owns the Handoff-through-closeout stage map and its human gates. Named skills own the artifacts and the per-engagement DELIVERY-STATE.md records their state. Use when a request concerns a live delivery engagement and the owning skill is not obvious. Do not use for pre-signature work; route directly to the named sales artifact owner.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate delivery suite
 

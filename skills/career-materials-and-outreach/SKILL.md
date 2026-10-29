@@ -3,10 +3,6 @@ name: "career-materials-and-outreach"
 description: "Draft the pieces around Megan's tailored resume (cover letter, form answers, outreach, LinkedIn sections, reference packets) from the role work record and current evidence, in her voice, as drafts only."
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Career materials and outreach
 

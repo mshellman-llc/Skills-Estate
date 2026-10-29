@@ -3,10 +3,6 @@ name: prose-pass
 description: Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Writing diagnostic tools
 
 Read [writing-integrity](../writing-integrity/SKILL.md) before using these tools.

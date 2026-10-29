@@ -6,11 +6,7 @@ import re
 
 PERSONAL = re.compile(r"\bMegan\b|meganshellman|mshellman|BeastMode|JobHunt|GoGuardian|NeuraFlash|/Volumes/(?:BeastMode|Stickers|Meridian)", re.I)
 PERSONAL_SKILLS = set('beastmode-capture beastmode-context beastmode-health beastmode-reconcile brain-work-item career-application career-materials-and-outreach career-progression-and-offers case-study-builder fortunes-weave github-repository-work independent-product megan-writing-style resume-numbers-and-keywords sticker-sheets'.split())
-LOCAL_CLEANUP = {
-    'discovery-synthesis': 'Replace the instruction that assigns follow-ups to Megan or her team with the actual project owner.',
-    'sales-process-mapping': 'Move the conditional Megan writing-profile route into personal configuration.',
-    'sales-journey-critique': 'Move the conditional Megan writing-profile and scanner settings into personal configuration.',
-}
+LOCAL_CLEANUP = {}
 SETUP = {
     **{n: 'Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization.' for n in 'dx-devops-promote dx-devops-work-item-manage org-preflight sf-delivery-standards sf-deploy-engine sf-enterprise-patterns sf-headless-screenshot sf-solo-devops'.split()},
     'skill-estate-sync': 'Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths.',
@@ -86,8 +82,8 @@ def report(root):
         rows.append(f'| `{name}` | {a["label"]} | {a["setup"] or "Supply the task inputs and its supported runtime."} | {"; ".join(links) or "No named personal reference detected in workflow text."} |')
     lines = ['# Skill reuse review', '', f"{counts['general']} general-use methods, {counts['megan']} Megan-specific workflows, and {counts['review']} awaiting source review.", '',
              'Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.', '',
-             'Every assembled task package receives the shared policies. `policies/workflow.md` names Megan; generalize that wording before distributing general-use packages. This shared cleanup applies even when a workflow has no personal references of its own.', '',
-             'The discovery-synthesis entrypoint assigns follow-ups to Megan or her team. Sales process mapping and sales journey critique include conditional Megan voice routes. Writing-integrity uses Megan as an optional author-profile example; its main workflow resolves an explicitly configured owner. Fixture names and selftest checks are listed separately in the map and do not make a method personal.', '',
+             'Every assembled task package receives the shared policies. The shared workflow uses project roles and contains no named personal owner.', '',
+             'Discovery synthesis and sales mapping use the current project owner and the intended author’s confirmed profile. Writing-integrity resolves an explicitly configured profile owner. Fixture names and selftest checks are listed separately in the map and do not make a method personal.', '',
              'Megan-specific workflows retain their current sources and permissions. Generalizing those methods requires replacing personal records, decisions, paths, identity, and permissions; deleting a name alone would be insufficient.', '',
              '| Workflow | Built for | Setup | Personal references in source |', '| --- | --- | --- | --- |', *rows, '',
              'Refresh this review with `python3 tools/skill_guide.py --report`. The map recomputes reference findings on each build. Reader-guide copy is bound to its reviewed entrypoint hash; a changed entrypoint shows current instructions until the guide is reviewed again.', '']

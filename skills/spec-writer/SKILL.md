@@ -3,10 +3,6 @@ name: spec-writer
 description: Detailed UI, API and data-design reference used by feature-spec. Read for a requested implementation specification involving interfaces, persistence or interactive states. This module does not require a separate approval before an already authorized code change.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Detailed feature specification
 
 Use this reference with the product specification workflow. Select the sections

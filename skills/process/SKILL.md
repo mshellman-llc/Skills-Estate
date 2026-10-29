@@ -3,10 +3,6 @@ name: process
 description: 'Work with a business or operational process in two modes: document it as an SOP, or optimize it. Use Document mode to formalize a process into an SOP with purpose, scope, a RACI matrix, process flow, step detail, exceptions, and metrics for a handoff, audit, onboarding, or to standardize inconsistent work. Use Optimize mode to make a process, workflow, pipeline, or hand-off faster, cheaper, or more reliable. Triggers on write an SOP, document this process, build a RACI, this process is slow, too many steps or approvals, streamline this, remove the bottleneck, cut cycle time, reduce hand-offs. Not for one-off project plans, org charts, product requirements, incident runbooks, or code and query performance tuning.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # process
 

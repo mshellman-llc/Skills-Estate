@@ -1,74 +1,35 @@
-# Skills to consolidate or maintain
+# Skill maintenance decisions
 
-The catalog has 54 task packages, 13 task modes, and 13 supporting modules. The map previously presented all 80 source workflows as peers. Modes and supporting modules usually arrive inside a task package; they are not 26 additional tasks to install.
+The catalog has 52 task packages, 15 task modes and 13 supporting modules across 80 source workflows. Two overlapping task entrypoints are now modes of skill maintenance. Each mode retains its complete resources inside the downloadable maintenance package.
 
-This is a focused source review of overlapping workflows and stale guidance. The findings below are recommendations. No skill has been deleted or replaced, and no cross-host replacement benchmark has been run.
+## Applied cleanup
 
-## Consolidation candidates
+| Area | Change | Preserved capability |
+| --- | --- | --- |
+| Shared writing instructions | Removed the repeated `ESTATE-WRITING` block from all 80 authored entrypoints. Source authoring loads the shared policies through repository guidance. Portable assembly adds one short standards link at the package root. Supporting runtime copies do not repeat it. | The writing standard, writing-integrity workflow, diagnostics and review requirements remain bundled. |
+| Skill maintenance | Authoring and cross-platform release are modes of `skill-estate-sync`. The catalog no longer offers them as separate task downloads. | Governed intake, collision review, scaffolder, generic non-estate release, archive inspection, private-account replacement, ambiguous-upload handling, rollback and destination verification. |
+| Estate authoring | Replaced the general tutorial with the estate intake and scaffolding adapter. Use the installed Codex creator for general authoring when available; other hosts retain a self-contained authoring method. Removed arbitrary repetition, word-count and reference-file quotas. | Focused descriptions, progressive references, metadata, supplied workflows, realistic selection checks, output checks and cross-host packaging. |
+| Formal architecture | Uses the selected project brand or neutral defaults. Removed the mandatory Estate logo, footer, fixed house voice and UI review exemption. Missing evidence stays visible where readers need it for a decision. | Architecture and engineering section templates, systems map, schemas, source locators, security, costs, interfaces, trade-offs and rendered-content review. |
+| Personal voice runtime | Describes writing-integrity as prose review, prose-pass as diagnostic tools, and brand-renderer as the selected-profile renderer. | Author selection, scope, revocation, private profile storage and precedence. |
+| Reusable discovery and sales methods | Discovery uses project roles and supported output locations. Sales mapping and critique use the intended author's configured profile and available diagnostic tools. The shared workflow no longer names a personal owner. | Synthesis, speaker attribution, ownership, triggers, systems of record, exception paths and evidence checks. |
+| Shared retention guidance | Keeps the current deliverable, sources, command results and minimal failure reproduction. | Meaningful source history and failure evidence; no requirement to retain every generated attempt. |
 
-| Candidate | Recommendation | Capabilities to preserve | Evidence |
-| --- | --- | --- | --- |
-| Cross-platform skill release and Skill estate sync | Within Skills Estate, make account replacement and destination verification a maintainer mode. Preserve the generic release method for projects outside this estate. Retire the extra local front door only after both paths pass parity checks. | Non-estate source folders, private-account checks, complete ZIP inspection, prior-version recovery, ambiguous-upload handling, and invocation in each requested host. | [Release workflow](../skills/cross-platform-skill-release/SKILL.md), its [estate adapter](../skills/cross-platform-skill-release/references/estate-release.md), and [estate maintenance](../skills/skill-estate-sync/SKILL.md). The adapter delegates build and install mechanics to the same estate CLI. |
-| Skill creation walkthrough | In Codex, use the installed system skill-creator for ordinary authoring. Keep the estate’s intake, scaffolder, and release-specific guidance as a maintainer adapter. Review other hosts before retiring their authoring entrypoint. | Governed intake, collision review, metadata scaffolding, supplied workflow preservation, and cross-platform packaging. | The [walkthrough](../skills/skill-creation-walkthrough/SKILL.md) repeats general skill anatomy and description guidance covered by the installed Codex creator. It also adds universal thresholds such as five repetitions and 200 words, and requires a first reference file regardless of the task. Its [scaffolder](../skills/skill-creation-walkthrough/scripts/scaffold_skill.py) and [intake](../skills/skill-creation-walkthrough/references/governed-intake.md) have estate-specific roles. |
-| Code simplify | Consider moving the checklist into the development workflow if a separate invocation is not useful. This is a lower-priority convenience decision. | Behavior preservation, focused diff review, and relevant tests. | [Code simplify](../skills/code-simplify/SKILL.md) describes a code-review method and carries no separate implementation runtime. Source inspection does not establish that another host’s command produces equivalent results. |
+## Workflows retained
 
-## Repair stale guidance
+Keep `process`, `sales-process-mapping` and `journey-mapping`: an SOP or improvement analysis, sales ownership and record authority, and a person's experience or service blueprint answer different questions.
 
-**Formal architecture mode needs a wording and policy update.** It is already part of the `system-design` task package. Its entrypoint still requires an Estate logo, footer, fixed house voice, and a UI prose-check exemption. The current brand policy selects the project profile or neutral defaults, and the current writing standard covers UI text. Preserve its architecture templates and sourced technical-reference method while replacing those conflicting directions. See [architecture instructions](../skills/architecture-doc/SKILL.md), [brand policy](../policies/brand.md), and [writing standard](../policies/writing.md).
+Keep `solution-brief` and `system-design`: delivery feasibility and architecture exploration support different decisions. The formal architecture workflow remains a mode of system design.
 
-**The personal voice runtime contains an old description of prose-pass as house voice.** The current diagnostic module explicitly supplies tools and does not choose an author’s voice. Update that relationship wording; retain author selection, revocation, privacy, and scope rules. See [voice routing](../skills/personal-writing-style-runtime/SKILL.md) and [writing diagnostics](../skills/prose-pass/SKILL.md).
+Keep writing-integrity, its executable diagnostics, the profile builder and the personal profile adapter. They perform prose review, mechanical checks, profile creation and author selection respectively. Megan-specific career and context workflows remain personal; this cleanup does not replace their private authorities or permissions.
 
-**The shared writing block is runtime guidance.** `tools/portable.py` inserts and validates the `ESTATE-WRITING` directive so packaged skills load the shared standard. It appears in the restored repository checkpoint `5095879`; that checkpoint alone does not establish its original author. The readable map now omits that block, source comments outside code, the repeated title, and the generic build-card preamble. Exact source and installable packages retain the runtime instructions.
+Keep code-simplify as an optional task. Its focused behavior-preserving diff review is distinct from deliverable review. No demonstrated replacement justifies retiring it.
 
-## Already combined
+Keep the separate Salesforce operations. They address different targets and authorization checks, and this review did not establish a complete replacement for any one of them.
 
-The catalog already packages these as modes. They should remain visible as modes rather than competing installs:
+## Verification and release state
 
-| Task package | Included modes |
-| --- | --- |
-| `career-application` | Supporting application materials; resume figures and ATS wording |
-| `deck-builder` | Scope decision deck |
-| `discovery` | Maintain pursuit findings |
-| `feature-spec` | Detailed UI and API specification |
-| `project-scoping` | Rough estimate |
-| `sales-process-mapping` | Review a sales journey or demo |
-| `scope-options` | Interactive proposal or explorer |
-| `service-offering` | Offering package planning; internal brief or external handout |
-| `sf-devops-center` | Promote work items or stages |
-| `statement-of-work` | Contract scope and obligation review |
-| `system-design` | Formal architecture reference |
+The cleanup compares unchanged workflows with the previous GitHub revision after exact removal of the shared block. Seven entrypoints have additional documented edits. The maintenance package must retain both complete modes and execute its scaffolder outside the source checkout; an occupied destination must preserve its existing files. Assembly must include the standards and executable resources once, with one discoverable `SKILL.md` per task package.
 
-The source of this ownership is [the task catalog](../config/skill-catalog.json). Preserve complete mode workflows and their resources when simplifying the user-facing choice.
+Run source validation, the complete test suite, candidate assembly, ZIP extraction checks and the map's browser checks. Keep pending module acceptance records pending. Candidate package creation does not override the existing installation gates or establish execution in Claude, Cowork or a private account.
 
-The current project-scoping workflow has a recent completeness repair: it preserves unestimated work and distinguishes estimated subtotals from complete project totals. Its reader guide was checked against that current entrypoint during this review. Its rough-estimate mode remains part of the same task package.
-
-## Keep the distinct capabilities
-
-| Workflows | Reason to keep them |
-| --- | --- |
-| Writing integrity and prose-pass | Writing integrity owns drafting and review. Prose-pass supplies executable diagnostics, figure tie-out, and review records. Keep its executable tools under the writing workflow. |
-| Writing profile builder and personal voice runtime | One builds and confirms a private profile; the other chooses when that profile applies. The runtime template needs an author-specific installation adapter. |
-| Megan’s writing style and generic writing review | The former is a personal profile. Retire its separate representation only after the replacement private profile preserves her confirmed rules and examples. |
-| Product spec and detailed feature specification | They are already one task package. The detailed module preserves UI states, API contracts, persistence, and acceptance checks. |
-| Process, sales process mapping, and journey mapping | An SOP or process improvement, sales ownership and record authority, and a person’s experience or service blueprint answer different questions. A newer map format does not replace all three methods. |
-| Solution brief and system design | Solution brief assesses delivery feasibility through a validated solution graph and technical readiness path. System design explores architecture. Retain the different decisions and outputs. |
-| Brand profile and brand renderer | One selects confirmed identity; the other implements rendering and checks the exported result. |
-| Execution truth, org preflight, and quality gate | They check destination state, the Salesforce target, and deliverable readiness respectively. Shared wording can be shortened without removing those checks. |
-
-The Salesforce deployment, DevOps Center, screenshot, and project-setup tasks belong in an optional domain group for people who need that stack. Their different targets and tools prevent a source-only conclusion that one supersedes the others. No live Salesforce host comparison was performed in this review.
-
-## Internal workflows without a task package
-
-Eight internal source modules have no containing task ZIP in the current dependency graph: `brain-work-item`, `execution-truth`, `github-repository-work`, `jtbd-framing`, `megan-writing-style`, `personal-writing-style-runtime`, `sf-headless-screenshot`, and `transcript-ingestion`. Their source descriptions and references do not establish whether a current host supplies them separately. Review their callers and actual host installation before treating them as redundant or promising their inclusion in a download.
-
-For example, the current workspace routes material work to execution-truth, while the profile and project adapters have personal or host-specific roles. JTBD framing carries a methodology that a general process map does not supply. Keep these distinctions during any retirement decision.
-
-## Recommended order
-
-1. Keep the catalog’s task, mode, and supporting-module labels visible.
-2. Repair the stale architecture and voice-runtime directions without removing their methods.
-3. Combine release and estate-maintenance entrypoints after checking local installation, private account replacement, and failure recovery.
-4. Reduce the general authoring tutorial to the estate-specific adapter after comparing representative creation, repair, and packaging tasks on each supported host.
-5. Consider the code-review convenience entrypoint after the higher-overlap work.
-
-Removal requires an inventory of callers, scripts, references, templates, failure handling, and accepted outputs. Check representative requests and one consequential failure path with the proposed replacement before retiring the old entrypoint. Preserve migration and rollback records.
+Earlier task names remain source module paths and deep links. Git history preserves their prior versions. Existing installed copies require the managed release process and a restore receipt; never delete a divergent installation merely to match the catalog.

@@ -1,11 +1,7 @@
 ---
 name: skill-estate-sync
-description: Validate, assemble, package, install, and audit the canonical Skills Estate across local Claude Code and Codex installations. Use after changing a skill or shared policy, when installed resources drift, or when preparing an account upload. Preserves scripts and runtime dependencies, backs up adopted installs, and distinguishes local file checks from actual host execution and cloud publication.
+description: Maintain a Skills Estate checkout by authoring or repairing workflows, validating and packaging them, installing reviewed releases, or replacing a skill in another host or account. Use for estate maintenance and select only the requested operation.
 ---
-
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
 
 
 # Skill estate sync
@@ -13,6 +9,14 @@ Before writing, read the [writing standard](references/estate/writing.md). Apply
 Keep one canonical Git checkout. Edit its `skills/`, `policies/`, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same accepted versioned packages locally. Candidate builds and ZIPs remain separate from installed releases. A package includes the workflow, scripts, references, templates, and shared policies it needs.
 
 Read [the skill standard](references/estate/skill-standard.md) before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.
+
+## Choose the maintenance operation
+
+- For an estate addition or behavioral repair, read [estate authoring](../skill-creation-walkthrough/SKILL.md). It carries the governed intake and scaffolder; use the host's general authoring tools when available.
+- For build, package, local installation, drift or rollback, follow the procedures below.
+- For another host or account, read [cross-platform release](../cross-platform-skill-release/SKILL.md). It preserves archive inspection, private-account replacement, ambiguous-upload recovery and destination invocation checks. Its generic method also supports sources outside this estate; do not require an estate checkout for that branch.
+
+Read only the requested mode. A creation request does not authorize installation or account publication.
 
 ## Select the estate
 
