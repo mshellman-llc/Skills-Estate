@@ -120,12 +120,14 @@ def required_modules(root, item, manifest):
     return sorted(required)
 
 
-def release_gaps(root, settings, selected, manifest):
+def release_gaps(root, settings, selected, manifest, entrypoints=None):
     gaps = []
     release = settings['release']
     checks = [('shared assembly', release['shared'], shared_hash(root, settings))]
     required = set()
-    for name in selected:
+    if entrypoints is not None:
+        required.update(required_modules(root, {'entries': entrypoints, 'internal': []}, manifest))
+    for name in selected if entrypoints is None else []:
         item = settings['bundles'][name]
         required.update(required_modules(root, item, manifest))
         if item.get('router_source'):

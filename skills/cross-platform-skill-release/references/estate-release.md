@@ -17,7 +17,7 @@ python3 tools/estate.py bundle
 
 Read the results before continuing. The build incorporates catalog entrypoints, shared policies, and declared runtime dependencies. Inspect `build/skills/<name>/`, `dist/<name>.zip`, and the matching entry in `dist/release.json`. Compare the ZIP's SHA-256 with that entry, then inspect the extracted files. Generated policy and runtime files belong in the comparison even when absent from the authored skill folder.
 
-The estate commands operate across the catalog. Before rebuilding a legacy installation linked into `build/`, use `pin-installed` to preserve its existing bytes and inventory in a verified versioned directory. Builds refuse to overwrite packages still serving those links. Use an isolated snapshot when another worker is editing the source; a build rejects source changes during assembly. Do not invent a single-skill flag. Keep the existing catalog entries when registering a new skill.
+Validation and candidate builds operate across the catalog. Before rebuilding a legacy installation linked into `build/`, use `pin-installed` to preserve its existing bytes and inventory in a verified versioned directory. Builds refuse to overwrite packages still serving those links. Use an isolated snapshot when another worker is editing the source; a build rejects source changes during assembly. Use the repeatable `--skill` option on `install` or `adopt` for targeted promotion; it does not narrow candidate builds. Keep the existing catalog entries when registering a new skill.
 
 ## Install and inspect locally
 
@@ -33,6 +33,8 @@ python3 tools/estate.py status
 Local destinations normally include `~/.agents/skills` for Codex and `~/.claude/skills` for Claude Code. Verify the current installer and resolve the actual paths. A legacy `~/.codex/skills` entry may coexist; inspect it before making another copy. Installed links should resolve to a version under `~/.local/share/skills-estate/releases/`. Compare package bytes and the source, build, and ZIP states reported by `status`; an older pinned version remains usable but is not the current candidate.
 
 `install` refuses conflicting entries. Inspect a conflict and use `adopt` only for an authorized migration; it keeps backups and a restore receipt. `restore <receipt.json>` is conditional on the destination remaining unchanged. Avoid broad adoption to fix one skill. Preserve `synced/` and platform-managed plugin directories.
+
+To promote a reviewed task package without changing other installed skills, use `install --skill writing-integrity --expected-source REVIEWED_SOURCE_HASH`; repeat `--skill` to select more packages. The selected workflows, their runtime dependencies and shared assembly must pass the existing release gates. Other installed links keep their exact versions. Status verifies every retained release and reports a mixed installation without claiming one shared source hash. `rollback RELEASE_ID` restores the complete inventory from the most recent activation of that release ID; use its `restore` receipt to recover originals from an adoption. A conflicting older installation still needs explicit, scoped `adopt --skill NAME --expected-source REVIEWED_SOURCE_HASH` after inspecting its files.
 
 ## Record account replacement
 
