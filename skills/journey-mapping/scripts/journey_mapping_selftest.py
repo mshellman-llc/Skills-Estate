@@ -88,7 +88,7 @@ expect("presets kept their sequences", ref.count("->") >= 40, True)
 # --- hypothesis mode ---------------------------------------------------------
 print()
 expect("workflow has the labeled-hypothesis section", "## Labeled-hypothesis mode" in text, True)
-for phrase in ("State the basis once", "Mark every hypothesized layer",
+for phrase in ("State the basis once", "Name the hypothesized layers",
                "Never attribute a hypothesized thought", "validation questions"):
     expect(f"  hypothesis rule: {phrase}", phrase in text, True)
 
@@ -98,6 +98,7 @@ for row in ("Emotion", "Line of visibility", "Front-stage", "Back-stage", "Suppo
     expect(f"layout names {row}", row.lower() in layout.lower(), True)
 expect("starter draws the line of visibility", "Line of visibility" in html, True)
 expect("starter dashes a hypothesis curve", "stroke-dasharray" in html and "hypothesis" in html, True)
+expect("starter lists evidence once instead of tagging cells", 'id="evidence"' in html and "basis-tag" not in html, True)
 
 # --- links resolve and the identity stays out --------------------------------
 print()

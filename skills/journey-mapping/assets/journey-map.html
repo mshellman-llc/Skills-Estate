@@ -14,7 +14,7 @@
 :root{
   --bg:#FFFFFF;--text:#1A1A1A;--muted:#5F6368;--border:#D9DCE1;--surface:#F5F6F7;--accent:#2F5D8A;
   --band:var(--text);--band-text:var(--bg);--pain:var(--surface);--opp:var(--bg);--bp:var(--bg);
-  --radius:4px;--font:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --radius:8px;--font:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 var(--font)}
@@ -26,7 +26,7 @@ h1{margin:8px 0;font-size:32px;line-height:1.2}
 section{padding:32px 0}
 .legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;font-size:16px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:6px}
-.sw{width:14px;height:14px;border:1px solid var(--border);border-radius:var(--radius)}
+.sw{width:14px;height:14px;border:1px solid var(--border);border-radius:4px}
 .board{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius)}
 .grid{display:grid;gap:1px;background:var(--border)}
 .grid>div{background:var(--bg)}
@@ -36,8 +36,10 @@ section{padding:32px 0}
 .ph b{display:block;font-size:16px;opacity:.75}
 .cell{padding:12px;font-size:16px;color:var(--muted)}
 .think{font-style:italic}
-.hypothesis{border-bottom:1px dashed var(--muted)}
-.basis-tag{display:block;font-size:16px;font-style:normal;font-weight:600}
+.ref{font-size:12px;font-weight:600;font-style:normal;color:var(--accent);text-decoration:none;margin-left:3px;vertical-align:super;line-height:0}
+.ref:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.evidence{font-size:16px;color:var(--muted);margin:8px 0 0;padding-left:24px;max-width:90ch}
+.evidence li{margin:2px 0}
 .pain{background:var(--pain)!important}
 .opp{background:var(--opp)!important;color:var(--accent)}
 .bp{background:var(--bp)!important}
@@ -69,6 +71,7 @@ section{padding:32px 0}
   <div class="legend" id="legend"></div>
   <div class="board"><div class="grid" id="grid"></div></div>
   <p class="note" id="basis"></p>
+  <ol class="evidence" id="evidence" aria-label="Evidence"></ol>
 </div></section>
 
 <section><div class="wrap">
@@ -85,7 +88,7 @@ const MAP = {
   "title": "The support agent's journey",
   "lead": "One escalated case, from arrival to a confirmed fix. Where the agent's path dips.",
   "emotionBasis": "hypothesis",
-  "basisNote": "Synthetic example for adapting the template. No participant research or system inspection supports these sample values. Replace them with your evidence and labeled hypotheses before sharing a map.",
+  "basisNote": "Synthetic example for adapting the template. No participant research or system inspection supports these sample values. Replace them with your evidence, and list any hypotheses in the evidence list, before sharing a map.",
   "phases": [
     "Case arrives",
     "Read the history",
@@ -278,19 +281,28 @@ pts.forEach(([cx, cy]) => svg += `<circle class="dot" cx="${cx}" cy="${cy}" r="4
 em.innerHTML = svg + "</svg>"; grid.append(em);
 }
 
+// Evidence shows as reference numbers that point to one list under the board, not as labels in every cell.
+const evidence = document.getElementById("evidence");
+const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
+const ref = text => {
+  const k = evidence.children.length + 1;
+  const li = el("li", null, text); li.id = `ev-${k}`; evidence.append(li);
+  const a = el("a", "ref", String(k)); a.href = `#ev-${k}`; a.setAttribute("aria-label", `Evidence ${k}`);
+  return a;
+};
 const addRow = (r, extra) => {
-  grid.append(labelCell(r.label));
+  const lab = labelCell(r.label);
+  if (r.basis && r.basis !== "not captured" && r.cells.some(t => t !== null && t.trim())) lab.append(ref(`${r.label}: ${cap(r.basis)}${r.source ? ` · ${r.source}` : ""}`));
+  grid.append(lab);
   r.cells.forEach(t => {
-    const cell = el("div", `cell ${extra || r.style || ""}${r.basis === "hypothesis" && t !== null && t.trim() ? " hypothesis" : ""}`, t === null ? (r.label === "Opportunities" && r.basis !== "not captured" ? "None proposed" : "Not captured") : t);
-    if (r.basis && t !== null) cell.append(el("span", "basis-tag", r.basis));
-    grid.append(cell);
+    grid.append(el("div", `cell ${extra || r.style || ""}`, t === null ? (r.label === "Opportunities" && r.basis !== "not captured" ? "None proposed" : "Not captured") : t));
   });
 };
 if (MAP.emotionLabels !== undefined) {
   grid.append(labelCell("Feelings"));
-  MAP.emotionLabels.forEach(item => {
-    const cell = el("div", `cell feeling${item && item.basis === "hypothesis" ? " hypothesis" : ""}`, item === null ? "Not captured" : item.text);
-    if (item) cell.append(el("span", "basis-tag", `${item.basis} · ${item.source}`));
+  MAP.emotionLabels.forEach((item, i) => {
+    const cell = el("div", "cell feeling", item === null ? "Not captured" : item.text);
+    if (item) cell.append(ref(`Feeling, phase ${String(i + 1).padStart(2, "0")}: ${cap(item.basis)} · ${item.source}`));
     grid.append(cell);
   });
 }
@@ -308,6 +320,7 @@ MAP.friction.forEach(f => { const c = el("div", "card"); c.append(el("div", "tag
 } catch (error) {
   document.getElementById("grid").replaceChildren();
   document.getElementById("cards").replaceChildren();
+  document.getElementById("evidence").replaceChildren();
   const message = el("p", "note", `Map cannot be rendered: ${error.message}`);
   message.setAttribute("role", "alert");
   document.querySelector(".board").replaceChildren(message);

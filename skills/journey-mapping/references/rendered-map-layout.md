@@ -10,6 +10,8 @@ The browser tab uses `MAP.title`. The starter uses body and label text of at lea
 
 The evidence-basis note sits directly under the board. It says which layers come from the system or from participants and which are hypotheses, in the same words as the map metadata.
 
+An evidence list follows the note. Row labels and feeling cells carry a small reference number; each number points to one entry giving the basis and source, or the reasoning for a hypothesis. Cells do not repeat "hypothesis", "reported" or source names, so the board stays readable.
+
 The friction section closes the page. Critical friction includes the troughs in the emotional curve. Each supported trough in the emotional curve can have a card with the phase number, a one-line finding, and one or two sentences on the cause, including a number from the record where one exists (for example, "5 of 35 playbooks are published" or "outcomes sit at 0").
 
 Operational friction outside a trough can also have a card; do not change an emotion score to fit a finding. The sample values are illustrative and are labeled as such.
@@ -19,8 +21,8 @@ Operational friction outside a trough can also have a card; do not change an emo
 | Row | Content | Styling |
 |---|---|---|
 | Phase | Two-digit phase number and a short phase name, one column per phase | Dark header band |
-| Emotion | Optional curve across phases, scores 1 to 5 with the scale defined in the evidence-basis note | Solid line for evidence, dashed line and a "hypothesis" label for a hypothesis |
-| Feelings | Optional qualitative description at each phase, even without scores | Source and evidence basis shown with each description |
+| Emotion | Optional curve across phases, scores 1 to 5 with the scale defined in the evidence-basis note | Solid line for evidence, dashed line for a hypothesis; the legend explains the dash once |
+| Feelings | Optional qualitative description at each phase, even without scores | A reference number per description, pointing to its basis and source in the evidence list |
 | Step and touchpoint | What happens and where, with the channel after a middle dot, e.g., "Handoff · chat" | Plain cell |
 | Goal | What the actor wants at this phase, in the actor's terms | Plain cell |
 | Thoughts | A sourced quote, or a hypothesized thought | Italic, muted; a hypothesis carries no attribution |
@@ -33,7 +35,7 @@ Operational friction outside a trough can also have a card; do not change an emo
 | Line of internal interaction | Divider between Back-stage and Supporting | Dark band |
 | Supporting | Systems and records underneath, e.g., the catalog, the CRM, or a related role's view | Plain cell |
 
-Use an empty string only when evidence confirms that nothing happens in that layer. Use null for missing evidence; the renderer displays "Not captured". In Opportunities, null means "None proposed". Supply `visibilityUnknown` as one text or null entry per phase for system actions whose visibility has not been established. Do not place those actions below the line of visibility. `Goal` and `Opportunities` may also set a row `basis` to show hypothesis styling; a row marked `not captured` cannot contain known text. Missing evidence does not establish that support is absent. Thoughts and Pain points each carry their own basis: observed, reported, hypothesis, or not captured. Set emotion to null and emotionBasis to "not captured" when no defensible curve exists. This means scores are missing, not that reported feelings must be removed.
+Use an empty string only when evidence confirms that nothing happens in that layer. Use null for missing evidence; the renderer displays "Not captured". In Opportunities, null means "None proposed". Supply `visibilityUnknown` as one text or null entry per phase for system actions whose visibility has not been established. Do not place those actions below the line of visibility. `Goal` and `Opportunities` may also set a row `basis`, which adds the row to the evidence list; a row marked `not captured` cannot contain known text. Missing evidence does not establish that support is absent. Thoughts and Pain points each carry their own basis: observed, reported, hypothesis, or not captured. Set emotion to null and emotionBasis to "not captured" when no defensible curve exists. This means scores are missing, not that reported feelings must be removed.
 
 To retain qualitative feelings, supply `emotionLabels` with exactly one entry per phase. Use null for a phase with no captured feeling. Each other entry is an object with `text`, `basis` (observed, reported or hypothesis), and `source` (source reference or the reasoning for a hypothesis). For example, `{"text":"Anxious before boarding","basis":"reported","source":"Passenger interview, session 3"}`. Keep each description at the phase where that feeling occurred. Labels work with or without the curve; do not derive scores from them.
 
@@ -45,7 +47,7 @@ When two roles share a journey, such as a seller who hands off to a technical sp
 
 ## Checks before sharing
 
-Every phase column has a value or an intentional blank in each row. When scores exist, the emotional curve has one point per phase. Captured feelings appear in their phase columns even when scores do not exist. Friction cards follow the supported findings; do not invent a card to match a curve. The opportunity in each column addresses the pain point in the same column. The evidence-basis note matches the ledger, and hypothesis styling appears on every hypothesis layer. Render at phone width and confirm the board scrolls without the page scrolling sideways.
+Every phase column has a value or an intentional blank in each row. When scores exist, the emotional curve has one point per phase. Captured feelings appear in their phase columns even when scores do not exist. Friction cards follow the supported findings; do not invent a card to match a curve. The opportunity in each column addresses the pain point in the same column. The evidence-basis note matches the ledger, and every hypothesis layer appears in the evidence list. Render at phone width and confirm the board scrolls without the page scrolling sideways.
 
 ## Keep one editable map source
 

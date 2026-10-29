@@ -25,7 +25,7 @@ Identify the actor, scenario, journey boundary, outcome, and intended decision b
 
 Source every claim. Each pain point, emotion, drop-off, and behavior traces to a named transcript, interview, ticket set, analytics query, system record, or built-system behavior. When an input does not capture something, write "not captured" rather than a plausible fill.
 
-Give every claim an evidence basis: observed (system records, analytics, built behavior), reported (what a participant said), or hypothesis (reasoned without participant evidence). Do not label one interview as universal behavior.
+Give every claim an evidence basis: observed (system records, analytics, built behavior), reported (what a participant said), or hypothesis (reasoned without participant evidence). Record the basis in the map data and the source ledger. On the map itself, show it as a short reference that points to one evidence list under the board, not as a label on every cell. Do not present one interview as universal behavior.
 
 Use one map per segment. Merging two buyer types into one map produces a map that describes neither.
 
@@ -40,7 +40,7 @@ Plain language leads. Method labels, stage codes, and internal IDs stay off a cl
 The human layers (thoughts, emotions, and the pain the actor feels) may be drafted as hypotheses when no interviews exist yet. This is useful for a first map of a new product role, where the front-stage and back-stage can be grounded in the built system while the human read cannot. The hypothesis mode has five conditions:
 
 1. State the basis once, next to the map, in plain words. Example: "Front-stage and back-stage are grounded in the built system. Thoughts, emotions, and pain are reasoned from the role and the system's known failure modes, not from interviews. This is a first map to validate with real users."
-2. Mark every hypothesized layer visibly. In a rendered map, draw a hypothesized emotional curve with a dashed line or a "hypothesis" label, and style hypothesized thoughts differently from sourced quotes. In the source ledger, the confidence column reads "Hypothesis".
+2. Name the hypothesized layers in the basis note and list them in the evidence list. Do not repeat "hypothesis" in every cell. In a rendered map, draw a hypothesized emotional curve as a dashed line; the legend says once what the dash means. In the source ledger, the confidence column reads "Hypothesis".
 3. Name the reasoning for each hypothesis: the role's constraints, a measured system behavior, or a known failure mode. A process diagram alone is not a basis for an emotion.
 4. Never attribute a hypothesized thought to a person, transcript, or count of participants. Hypothesized thoughts are written as the likely thought, not as a quote from someone.
 5. Pair the map with validation questions: what to ask, whom to ask, and which hypothesis each answer confirms or overturns.
@@ -94,7 +94,7 @@ Cross-validate what the user says happens, what the data says happened, and what
 1. Scope: one actor, one journey, one timeframe, written down before mapping.
 2. Gather transcripts, interviews, operational data, and the system inventory.
 3. Draft the spine: phases, steps, and touchpoints. Get to a rough draft fast, then iterate.
-4. Add the human layers: goals, thoughts, emotions, and pain points, each with a source or a hypothesis label.
+4. Add the human layers: goals, thoughts, emotions, and pain points, each with a source or a hypothesis entry in the evidence list.
 5. Blueprint the back-stage: front-stage, back-stage, supporting systems, and the visibility lines.
 6. Find the opportunities from friction and disconnects, not from a wish list. Use reported feelings and operational evidence to identify friction; a numerical curve is optional.
 7. Validate with the actors. Correct the map and convert hypotheses to evidence.
@@ -110,7 +110,7 @@ For a visual map, read [the rendered map layout](rendered-map-layout.md). It des
 
 ## Failure patterns
 
-- Mapped from assumptions that are presented as findings. A hypothesis map is allowed only when it is labeled as one.
+- Mapped from assumptions that are presented as findings. A hypothesis map is allowed only when its basis note and evidence list say so.
 - One map for every user. Different buyers have different journeys.
 - No back-stage. Symptoms appear without causes because the map never reaches the workflow or integration that broke.
 - Beautiful and inert. Production value was spent and no decision came out.
