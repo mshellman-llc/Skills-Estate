@@ -39,6 +39,7 @@ const {chromium}=require('playwright');
   const connections=await page.locator('#panel-connections').innerText();
   assert(!connections.includes('ESTATE-WRITING:'));
   assert(!connections.includes('Before writing:'));
+  if(skill.id==='writing-integrity'){assert.equal(await page.locator('#panel-connections .connection-context table tbody tr').count(),1);assert(!connections.includes('| ---'));assert(!connections.includes('[Diagnostic toolkit]'));await page.screenshot({path:path.join(output,'writing-connections.png')});}
   await page.locator('#tab-files').click();
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
   await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').evaluate(e=>e.open),false);
