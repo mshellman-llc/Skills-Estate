@@ -3,10 +3,6 @@ name: brain-work-item
 description: Start, continue, or close Megan's Brain-linked Codex work item. Use when a Brain task ID or daily ready item is the work source, or when finishing a linked task.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Brain work item
 

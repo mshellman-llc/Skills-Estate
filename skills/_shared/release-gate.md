@@ -38,8 +38,8 @@ output and retain their results.
 
 ## Release evidence
 
-Follow [the output contract](output-contract.md). Retain generated test outputs,
-including failed attempts, and record the exact package or source version used.
+Follow [the output contract](output-contract.md). Retain the current test outputs and minimal failure evidence, and record the
+exact package or source version used.
 Verify the installed candidate through realistic tasks before publishing a
 corrected release. If a workflow needs manual rescue, fix the skill or its
 dependencies and repeat the task.

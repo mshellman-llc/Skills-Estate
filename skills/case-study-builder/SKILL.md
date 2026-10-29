@@ -3,10 +3,6 @@ name: "case-study-builder"
 description: "Turn a piece of Megan's work into a sanitized, evidence-checked portfolio case study (working + publish copy) using her template and publish gate."
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Case Study Builder
 

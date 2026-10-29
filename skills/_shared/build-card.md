@@ -40,8 +40,9 @@ supporting record when they help reproduce or verify it. A generic Markdown
 report is not a substitute for the requested output.
 
 Keep client facts and confirmed figures tied to their sources. Label synthetic
-examples and estimates. Retain every generated verification output, input,
-preview, and log, including failed attempts, in separate attempt directories.
+examples and estimates. Keep the current deliverable, its source inputs, command results and the
+smallest reproduction needed to explain a failure. Preserve distinct source
+revisions; remove superseded generated attempts after checking their consumers.
 
 ## Write for the audience
 

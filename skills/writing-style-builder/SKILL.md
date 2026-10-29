@@ -3,10 +3,6 @@ name: writing-style-builder
 description: 'Build, confirm, update, correct, or revoke one person''s private writing-style profile from material they intentionally supply or authorize. Use when someone wants a personal voice profile created or changed, when connector access to their messages or documents is available but unconfirmed for this purpose, or when an existing profile needs correction, evolution, or deletion. Requires explicit authorization before analyzing any personal material; connector access alone is never consent. Does not apply anyone''s voice to output, which is personal-writing-style-runtime''s job.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Writing Style Builder
 

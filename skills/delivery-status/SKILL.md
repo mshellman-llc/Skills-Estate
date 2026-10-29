@@ -3,10 +3,6 @@ name: delivery-status
 description: 'Continuous delivery documentation for Estate engagements: the weekly client status report, stewardship of the RAID and decision logs with stable IDs, and scope-drift detection against the SOW baseline that raises change-order candidates with an evidence trail. Use for a weekly or project status report, delivery update, what moved this week, logging a decision or risk from a meeting, updating the RAID log, or checking did we agree to that in scope. Do NOT use for authoring change orders or SOWs (sow-quality, sow), kickoff or charter (estate-delivery-kickoff), UAT tracking (estate-uat-validation), pricing (the Estate Pricing System), or sales pursuits (call-prep).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate delivery status
 

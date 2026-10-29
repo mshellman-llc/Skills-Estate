@@ -3,10 +3,6 @@ name: sf-headless-screenshot
 description: 'Drive the sfqa CLI to capture headless screenshots and run clickpath assertions against a Salesforce org. No interactive login, no credential exposure. Trigger when you need to capture what a Salesforce page looks like without a human watching: after deploying UI-affecting metadata and needing verification evidence, when estate-ac-qa needs its browser driver, or when a ticket needs screenshot proof of a rendered page. Do not trigger for interactive browser exploration (use sf-browser-automation) or for non-Salesforce pages.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Salesforce Headless Screenshot
 

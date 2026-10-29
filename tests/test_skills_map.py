@@ -87,12 +87,12 @@ class SkillsMapTests(unittest.TestCase):
         unsafe=builder.connection_excerpt(source,list(re.finditer('prose-pass',source))[1])
         self.assertNotIn('<script>',unsafe['contextHtml'])
 
-    def test_readable_views_hide_shared_preambles_but_raw_sources_retain_them(self):
+    def test_removed_blocks_stay_absent_from_readable_and_raw_sources(self):
         for skill in self.data['skills']:
             with self.subTest(skill=skill['id']):
                 self.assertNotIn('ESTATE-WRITING:',skill['html'])
                 self.assertNotIn('build-card.md',skill['excerptHtml'])
-                self.assertIn('ESTATE-WRITING:BEGIN',skill['markdown'])
+                self.assertNotIn('ESTATE-WRITING:',skill['markdown'])
 
     def test_catalog_roles_match_primary_mode_and_internal_ownership(self):
         catalog=json.loads((ROOT/'config/skill-catalog.json').read_text())

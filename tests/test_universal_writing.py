@@ -45,10 +45,15 @@ class UniversalWritingTests(unittest.TestCase):
             deps = runtime_closure(ROOT, name)
             for required in ('writing-integrity', 'prose-pass'):
                 self.assertIn(required, [name, *deps], name)
-            self.assertIn('<!-- ESTATE-WRITING:BEGIN -->', entry.read_text(), name)
+            self.assertNotIn('<!-- ESTATE-WRITING:BEGIN -->', entry.read_text(), name)
         self.assertTrue((self.package / 'references/estate/writing.md').is_file())
         self.assertTrue((self.package / '_runtime/writing-integrity/WORKFLOW.md').is_file())
         self.assertEqual(len(list(self.package.rglob('SKILL.md'))), 1)
+        standards = 'Apply the [shared workflow](references/estate/workflow.md)'
+        self.assertEqual((self.package/'SKILL.md').read_text().count(standards), 1)
+        for module in (self.package/'_runtime').rglob('WORKFLOW.md'):
+            self.assertNotIn(standards, module.read_text())
+            self.assertNotIn('ESTATE-WRITING:', module.read_text())
 
     def test_internal_names_and_markdown_wrappers_cannot_hide_prose(self):
         for name, text in [('AGENTS.md', BAD), ('SKILL.md', BAD), ('internal-audit.md', BAD),

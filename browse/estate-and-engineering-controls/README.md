@@ -11,10 +11,8 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | Task | Primary workflow | Additional modes |
 | --- | --- | --- |
 | `code-simplify` | [code-simplify](../../skills/code-simplify/SKILL.md) |  |
-| `cross-platform-skill-release` | [cross-platform-skill-release](../../skills/cross-platform-skill-release/SKILL.md) |  |
 | `deliverable-review` | [quality-gate](../../skills/quality-gate/SKILL.md) |  |
-| `skill-authoring` | [skill-creation-walkthrough](../../skills/skill-creation-walkthrough/SKILL.md) |  |
-| `skill-estate-sync` | [skill-estate-sync](../../skills/skill-estate-sync/SKILL.md) |  |
+| `skill-estate-sync` | [skill-estate-sync](../../skills/skill-estate-sync/SKILL.md) | [create or repair an estate skill](../../skills/skill-creation-walkthrough/SKILL.md), [release to another host or account](../../skills/cross-platform-skill-release/SKILL.md) |
 
 ## Source workflows
 

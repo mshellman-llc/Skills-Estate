@@ -3,10 +3,6 @@ name: session-handoff
 description: 'Produce a structured end-of-session handoff so a fresh agent can resume without re-explanation. Use when the user says session handoff, wrap up session, hand off, or summarize before I clear, or signals a /clear or new chat. Also use proactively under context pressure: an auto-compact warning, running low on context, or a long session about to be interrupted. Covers provenance, decisions, shipped changes, rejected approaches, user corrections, key files, running state, and open questions. Do not use for status reports written for humans, retrospectives, PR descriptions, commit messages, or memory consolidation.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Session Handoff
 

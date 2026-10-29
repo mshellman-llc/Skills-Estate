@@ -3,10 +3,6 @@ name: playbook-suite
 description: 'Orchestrates the full Estate playbook artifact suite. Knows what a complete playbook is, what order the artifacts get built in, which skill builds each one, and what has to pass before anything ships. Use whenever someone wants to build, complete, audit, conform, or publish an Estate playbook, or asks what is left on one. Trigger on "build the playbook", "what''s left on PB-CPQ", "conform this playbook", "playbook artifacts", "is this playbook ready", "run the playbook suite", or any PB-code paired with build, audit, gate, or ship. Do NOT trigger for a single artifact when the user named that artifact directly; call the owning skill instead.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate Playbook Suite
 

@@ -3,10 +3,6 @@ name: solution-brief
 description: 'Produce and validate Solution Briefs from an evidence-governed solution graph: judge whether a proposed solution is technically deliverable and make the delivery logic inspectable across systems, interfaces, failure paths, ADRs, scope, risks, assumptions, dependencies, staffing, phases, milestones, and financial reconciliation. Stops at a Technical Readiness Memo when load-bearing evidence is insufficient. Field guide mode builds the internal pursuit-team guide off the same graph for holding a scoping call or answering the in-house build we are up against. Requires evidence-core first. Do NOT use for the sourced client-facing architecture document (architecture-doc) or the SOW (sow).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Solution Brief
 

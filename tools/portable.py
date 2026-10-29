@@ -12,11 +12,9 @@ import shutil
 IGNORED = {".git", ".DS_Store", "__pycache__", ".venv", "node_modules", "_runtime"}
 IDENTITY = {"SKILL.md", "skill.yaml", "skill.json", "agent.yaml", "agent.json", "AGENTS.md"}
 
-WRITING_DIRECTIVE = ('<!-- ESTATE-WRITING:BEGIN -->\n'
-    'Before writing, read the [writing standard](references/estate/writing.md). '
-    'Apply it to every authored sentence. Review instructions and internal records too. '
-    'Audience labels and file formats do not exempt prose from review.\n'
-    '<!-- ESTATE-WRITING:END -->\n\n')
+PACKAGE_STANDARDS = ('\n## Shared standards\n\n'
+    'Apply the [shared workflow](references/estate/workflow.md) and '
+    '[writing standard](references/estate/writing.md).\n')
 
 
 def runtime_closure(root, name, extra=()):
@@ -55,16 +53,6 @@ def runtime_closure(root, name, extra=()):
     return sorted(result)
 
 
-def with_writing_directive(text):
-    if '<!-- ESTATE-WRITING:BEGIN -->' in text:
-        if WRITING_DIRECTIVE.rstrip() not in text:
-            raise ValueError('Writing directive differs from the canonical requirement')
-        return text
-    match = re.match(r'\A---\n.*?\n---(?:\n|$)', text, re.S)
-    at = match.end() if match else 0
-    return text[:at] + '\n' + WRITING_DIRECTIVE + text[at:]
-
-
 def source_files(directory):
     for parent, dirs, files in os.walk(directory, followlinks=False):
         dirs[:] = sorted(d for d in dirs if d not in IGNORED)
@@ -88,8 +76,10 @@ def assemble(root, name, destination, dependencies):
         raise ValueError("Runtime dependencies must be unique and cannot include the entrypoint")
     dependencies = runtime_closure(root, name, dependencies)
     writing_required = (root / 'config/required-runtimes.json').exists()
-    if writing_required and not (root / 'policies/writing.md').is_file():
-        raise ValueError('Missing required writing policy')
+    if writing_required:
+        for policy in ('writing.md', 'workflow.md'):
+            if not (root / 'policies' / policy).is_file():
+                raise ValueError('Missing required shared policy: ' + policy)
     selected = [name, *dependencies]
     for skill in selected:
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", skill):
@@ -143,8 +133,8 @@ def assemble(root, name, destination, dependencies):
             target.parent.mkdir(parents=True, exist_ok=True)
             if source.suffix == ".md":
                 text = source.read_text()
-                if writing_required and source.name == 'SKILL.md':
-                    text = with_writing_directive(text)
+                if writing_required and source == root / 'skills' / name / 'SKILL.md':
+                    text = text.rstrip() + '\n' + PACKAGE_STANDARDS
                 if source.name == 'SKILL.md' and relative.name == 'WORKFLOW.md':
                     header = re.match(r'\A---\n.*?\n---(?:\n|$)', text, re.S)
                     at = header.end() if header else 0

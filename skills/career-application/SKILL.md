@@ -3,10 +3,6 @@ name: career-application
 description: Assess, tailor, prepare interviews, fill, or resume Megan's leadership-level applications using current postings and private career evidence. Never submit without explicit authorization.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Career application
 

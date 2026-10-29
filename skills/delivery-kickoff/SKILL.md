@@ -3,10 +3,6 @@ name: delivery-kickoff
 description: 'Mobilizes an Estate delivery engagement: turns an accepted sales-to-delivery handoff brief and a signed SOW into a draft Project Charter (scope, team, RACI, cadence, ready for client signature), a live governance pack (RAID log, decision log, weekly status template with stable IDs), internal and client kickoff decks in the correct waterfall or agile variant, a Sprint 0 plan with a seeded backlog, and tracked (never performed) sandbox and access setup. Use when a deal has closed and delivery is starting: "kick off the project", "mobilize the engagement", "draft the charter", "set up the RAID log", "build the kickoff deck", "help me get ready for kickoff", "the handoff is accepted, what now", "stand up governance", "Sprint 0 plan", or any Mobilize-phase request. Do NOT use for the handoff itself (that is estate-s2d-handoff), ongoing status reports or RAID upkeep after kickoff (estate-delivery-status), requirements sessions (estate-requirements-capture), or scoping and pricing (the SOW is fixed input).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate delivery kickoff
 

@@ -3,17 +3,13 @@ name: discovery-synthesis
 description: 'Transforms raw discovery call content, notes, transcripts, Granola/Fathom recordings, or uploaded files into structured research outputs: JTBD statements, pain points with severity, opportunity areas, key verbatims, speaker-attributed insights, a TL;DR, and next steps. Outputs Markdown and .docx ready for NotebookLM, Claude Projects, or stakeholder sharing. Trigger when the user shares meeting content or says synthesize this call, pull insights from this transcript, map the pain points, extract JTBDs, or what did we learn; offer proactively when a transcript or discovery notes appear in context. Do NOT use to maintain the deal discovery record, its ranked ledger, or open questions (that is discovery-brief).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Discovery Synthesis
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
 > [`readout-brief.md`](../prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
 
-Converts raw client discovery call content into structured, reusable research artifacts. Designed for Estate consulting engagements, primarily ETO manufacturers and Revenue Cloud / CPQ clients, but works for any B2B discovery context.
+Turn discovery calls into sourced research artifacts for the current project. Use its industry, participants and terminology.
 
 ## Boundary with the discovery brief
 
@@ -45,7 +41,7 @@ Before synthesizing, gather the following context, quickly, in one message if po
 
 1. **Client name / industry** (if not in the transcript)
 2. **Meeting type.** Discovery, assessment, stakeholder interview, etc.
-3. **Who was in the room?.** Roles on both sides (Estate vs. client)
+3. **Who was in the room?.** Roles on both sides (consulting team and client)
 4. **Any known focus area?.** E.g., CPQ, quoting process, order management, pricing
 
 If the user is in a hurry, proceed with what you have and flag assumptions at the top of the output.
@@ -56,7 +52,7 @@ If the user is in a hurry, proceed with what you have and flag assumptions at th
 
 Read the full content carefully. Before generating output, internally map:
 
-- **Speaker attribution.** Identify who is an Estate voice vs. a client voice. Client voices are the research signal. Consultant voices provide context and questions.
+- **Speaker attribution.** Identify who is a consulting-team voice vs. a client voice. Client voices are the research signal. Consultant voices provide context and questions.
 - **Signal types.** Distinguish between explicit pain statements ("we can't do X"), implicit friction ("it takes us 3 days to..."), aspirational statements ("what we really want is..."), and workarounds ("so we built a spreadsheet that...").
 - **JTBD signals.** Look for statements about outcomes the client is trying to achieve, not features they want. Use the format: *When [situation], I want to [motivation], so I can [outcome].*
 - **Severity indicators.** Words like "always", "never", "every time", "manual", "hours", "days", "can't", "broken", "nightmare" signal high severity. Vague frustration or one-off mentions signal low severity.
@@ -75,7 +71,7 @@ Produce the full artifact in this exact structure:
 **Date:** [Date if available, otherwise "Not specified"]
 **Meeting Type:** [Discovery / Assessment / Stakeholder Interview]
 **Participants:** [Roles, flag if inferred]
-**Synthesized by:** Claude (Discovery Synthesis)
+**Synthesized by:** [Actual assistant or author]
 
 **TL;DR:**
 2–4 sentences. What is the core problem this client is trying to solve? What is the biggest opportunity? What is the most urgent pain?
@@ -115,7 +111,7 @@ Severity rubric:
 
 ### 💡 OPPORTUNITY AREAS
 
-Synthesized themes where Estate could create value. These are NOT feature requests, they are strategic opportunity spaces inferred from the pain points and JTBDs.
+Synthesized themes where the project team could create value. These are NOT feature requests, they are strategic opportunity spaces inferred from the pain points and JTBDs.
 
 For each opportunity:
 - **Opportunity:** [Name it concisely]
@@ -134,7 +130,7 @@ Format:
 > *"[Exact or near-exact quote]"*
 > [Speaker role], [context if helpful]
 
-Do not include Estate consultant quotes here unless they directly provoked a revealing client response.
+Do not include consultant quotes here unless they directly provoked a revealing client response.
 
 ---
 
@@ -152,7 +148,7 @@ Brief profiles of each distinct client voice. Useful for stakeholder mapping.
 
 ### ✅ RECOMMENDED NEXT STEPS
 
-Specific, actionable follow-ups based on what was learned. These should feel like things Megan or her team would actually do, not generic advice.
+Recommend specific follow-ups supported by the findings. Name the responsible project role when the source identifies it; otherwise leave ownership open.
 
 Examples:
 - "Follow up with [role] on [specific topic]. They seemed most receptive."
@@ -166,13 +162,13 @@ Examples:
 
 **Always produce:**
 1. The full structured artifact above, rendered in clean Markdown in-chat
-2. A downloadable `.md` file saved to `/mnt/user-data/outputs/[ClientName]-discovery-synthesis-[date].md`
+2. A Markdown file in the project’s existing output folder when files can be saved; otherwise provide the complete content in chat.
 
 **Also produce a .docx if the user requested it** (or offer it proactively):
 - Use the `docx` skill to render the artifact as a formatted Word document. Find it in your available skills rather than assuming an install path.
 - Apply clean heading hierarchy: H1 for section names, H2 for individual items
-- Save to `/mnt/user-data/outputs/[ClientName]-discovery-synthesis-[date].docx`
-- Present both files using `present_files`
+- Save the Word document beside the Markdown output in the project’s output folder.
+- Link the saved files using the host’s supported attachment or file-link mechanism.
 
 ---
 
@@ -193,7 +189,7 @@ Examples:
 
 **For Claude Projects:** Save the Markdown output as a project file. Future sessions in the same project will have the synthesis in context automatically.
 
-**For Estate deliverables:** The .docx can be dropped directly into assessment decks or handed to stakeholders as a leave-behind. Opportunity areas map directly to Estate's capability assessment framework.
+**For project deliverables:** Use the requested document or research format. Connect opportunity areas to the project’s confirmed assessment framework when one exists.
 
 ## Release gate (required)
 

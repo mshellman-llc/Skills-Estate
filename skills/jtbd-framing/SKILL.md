@@ -8,10 +8,6 @@ metadata:
   adapted: "2026-10-22"
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 Before drafting, read the [build card](../_shared/build-card.md) and [readout brief](../prose-pass/references/registers/readout-brief.md).
 
 # Jobs-to-be-done framing

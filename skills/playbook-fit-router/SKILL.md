@@ -3,10 +3,6 @@ name: playbook-fit-router
 description: 'Matches a prospect to an Estate playbook from discovery notes, transcripts, or a filled Qualifier, and returns a ranked fit with the evidence behind every point scored. Use when asked "which playbook fits this client", "is this a playbook deal", "route this prospect", "what play do we run here", or when discovery material arrives and the next question is which offering applies. It routes and it cites. It does not price, does not lock a tier, and does not create client artifacts; artifact instantiation is a later capability, not built yet.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Playbook fit router
 

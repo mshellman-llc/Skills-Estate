@@ -3,10 +3,6 @@ name: cutover-closeout
 description: 'Run stage 06 Deploy and Closeout after an approved go or no-go: build the cutover runbook, track Go-Live Acceptance against the executed SOW, manage hypercare triage, prepare transition records, and capture outcomes and reusable assets. Use for cutover, go-live, runbooks, hypercare, deemed acceptance, closeout, support transition, or lessons learned. Route UAT to estate-uat-validation, ongoing status and changes to delivery-status, managed operations to their service owner, and contract authoring to sow.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Estate cutover and closeout
 

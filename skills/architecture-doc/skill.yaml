@@ -1,9 +1,7 @@
 schema_version: 1
 name: architecture-doc
-display_name: Architecture Doc
-summary: Build formal Estate-branded architecture and system-design artifacts for
-  a client, grounded in source material with every claim sourced and brand and prose
-  gates applied.
+display_name: Architecture reference
+summary: Write a sourced architecture or technical design reference using the selected project profile or neutral defaults.
 status: active
 tier: situational
 version: 1.0.0
@@ -16,16 +14,7 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- Build formal Estate-branded architecture and system-design artifacts for a client,
-  grounded in source material with every claim sourced and brand and prose gates applied.
-  Covers architecture intent plus engineering views such as components, interfaces,
-  data model, APIs, serving path, deployment, and trade-offs. Use for a client-facing
-  architecture document, formal system architecture, platform architecture, architecture
-  reference, sourced technical design document, or when confirmed decisions must become
-  a clean architecture set. Trigger when the user asks for a branded, sourced, polished,
-  or deliverable architecture artifact even if they do not say Estate. Do not use
-  for a fast, unbranded, inline working design or exploratory architecture discussion;
-  use system-design for that.
+- Write a sourced architecture or technical design reference using the selected project profile or neutral defaults.
 exclusions: []
 inputs:
 - name: task_context

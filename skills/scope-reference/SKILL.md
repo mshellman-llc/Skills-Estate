@@ -3,10 +3,6 @@ name: scope-reference
 description: Build a static scope summary or side-by-side option comparison from current quotes or a dated quote export. Reconciles every scope item, per-option hour value, status and staffing-snapshot price before producing a complete HTML reference. Use for scope matrices, tier comparisons and client leave-behinds. Route selectable proposal experiences to interactive-proposal, deal decision decks to ddoc, contracts to sow and quote changes to scoping-agent.
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Scope reference
 
 Produce the reference itself: one self-contained HTML file with the scope matrix visible, plus a printable version when requested. A reader should be able to identify the difference between options and see what each price covers.

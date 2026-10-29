@@ -3,10 +3,6 @@ name: playbook-onepager
 description: 'Render a defined offering into a two-page internal sales brief and one-page external PDF. Use for playbook handouts, sales enablement sheets, or a catalog of offering PDFs. Accepts structured Markdown or rich JSON with qualification criteria, talking tracks, delivery steps, and scope boundaries. Applies the project brand profile or neutral estate profile, checks actual PDF page counts and browser layout, and retains outputs for review.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Playbook One-pager
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus

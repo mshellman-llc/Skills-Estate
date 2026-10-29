@@ -20,11 +20,11 @@ class ReaderGuideTests(unittest.TestCase):
                     self.assertNotIn('ESTATE-WRITING', guide[field])
                 self.assertRegex(guide['reviewedEntrypointSha256'], r'^[a-f0-9]{64}$')
 
-    def test_shared_cleanup_is_visible_on_general_methods(self):
+    def test_shared_workflow_no_longer_assigns_personal_ownership(self):
         a = assessment(ROOT, 'journey-mapping', load(ROOT)['journey-mapping'], [])
         self.assertEqual(a['audience'], 'general')
-        self.assertEqual(a['readiness'], 'cleanup')
-        self.assertTrue(any(h['path']=='policies/workflow.md' and 'Megan' in h['text'] for h in a['sharedReferences']))
+        self.assertNotEqual(a['readiness'], 'review')
+        self.assertFalse(any(h['path']=='policies/workflow.md' for h in a['sharedReferences']))
         self.assertIn('brand-renderer', json.loads((ROOT/'config/runtime-dependencies.json').read_text())['journey-mapping'])
 
     def test_examples_and_personal_dependencies_are_distinct(self):

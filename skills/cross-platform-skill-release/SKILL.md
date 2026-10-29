@@ -3,10 +3,6 @@ name: cross-platform-skill-release
 description: "Package, replace, and inspect a shared skill across Codex and Claude. Use when preparing a portable release, replacing an account skill, or checking that both hosts received the intended files."
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 # Cross-platform skill release
 
 Release one shared skill from its maintained source and verify each requested destination. Carry its instructions, references, scripts, templates, assets, and runtime dependencies together.

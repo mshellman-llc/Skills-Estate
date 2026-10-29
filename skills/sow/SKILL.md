@@ -3,10 +3,6 @@ name: sow
 description: 'Generate Statements of Work (.docx) from a confirmed quote JSON and a selected contract profile, in Waterfall (fixed scope), Agile (adaptive scope), and Assess (advisory, readout-gated) variants. Use when asked to generate the SOW, draft the SOW from the quote, build the SOW for a Q-number, or turn a quote into a Statement of Work. The quote is the source of truth; this skill renders it, does not price (the Pricing System prices), and does not author scope language (scoping-agent does). It builds the .docx, resolves placeholders with an audit trail, verifies the required-clause gate, and hands off to sow-quality. Do NOT use for the authoring quality pass (sow-quality) or the DDOC (ddoc).'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Statement of work
 

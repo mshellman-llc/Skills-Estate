@@ -82,6 +82,34 @@ class CatalogBuildTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Duplicate catalog owner'):
                     estate.validate(self.root)
 
+    def test_maintenance_package_scaffolds_a_mode_and_preserves_existing_destination(self):
+        item = entries(ROOT)['skill-estate-sync']
+        package = self.root / 'maintenance'
+        assemble(ROOT, item['source'], package, dependencies(ROOT, item, runtime_closure))
+        apply_entrypoint(package, 'skill-estate-sync', item)
+        self.assertEqual(len(list(package.rglob('SKILL.md'))), 1)
+        mode = package / '_runtime/skill-creation-walkthrough'
+        release = package / '_runtime/cross-platform-skill-release'
+        self.assertTrue((release / 'references/estate-release.md').is_file())
+        self.assertTrue((mode / 'references/governed-intake.md').is_file())
+        workflow = self.root / 'workflow.md'
+        workflow.write_text('Read the supplied rows. Write a CSV retaining each row and its source line.\n')
+        project = self.root / 'project'
+        project.mkdir()
+        command = [sys.executable, str(mode / 'scripts/scaffold_skill.py'), 'source-rows',
+            '--root', str(project), '--display-name', 'Source rows',
+            '--description', 'Extract supplied source rows into a CSV.',
+            '--owner', 'Project maintainer', '--category', 'analysis', '--runtime', 'codex',
+            '--workflow', str(workflow)]
+        created = subprocess.run(command, cwd=self.root, capture_output=True, text=True)
+        self.assertEqual(created.returncode, 0, created.stderr)
+        entry = project / 'skills/source-rows/SKILL.md'
+        self.assertIn(workflow.read_text().strip(), entry.read_text())
+        original = entry.read_bytes()
+        refused = subprocess.run(command, cwd=self.root, capture_output=True, text=True)
+        self.assertEqual(refused.returncode, 2)
+        self.assertEqual(entry.read_bytes(), original)
+
     def test_real_scope_package_runs_both_output_modes_without_siblings(self):
         item = entries(ROOT)['scope-options']
         package = self.root / 'scope-options'

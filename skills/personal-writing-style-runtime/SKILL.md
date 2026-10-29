@@ -3,10 +3,6 @@ name: personal-writing-style-runtime
 description: 'Generic template that applies one person''s confirmed private writing-style profile when they are the intended author or speaker. Not a runnable skill on its own; an install names a specific profile path and person, producing a thin per-person adapter. Does not build or change a profile; that is writing-style-builder. Do not apply a personal profile to output written on behalf of another person, to quoted or verbatim material, or where organizational, legal, or contractual voice governs.'
 ---
 
-<!-- ESTATE-WRITING:BEGIN -->
-Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
-<!-- ESTATE-WRITING:END -->
-
 
 # Personal Writing Style Runtime
 
@@ -15,10 +11,7 @@ confirmed profile (see [writing-style-builder](../writing-style-builder/SKILL.md
 schema) and one person. This file describes the routing and precedence logic
 every such adapter runs; it carries no one's actual voice.
 
-Before writing an Estate artifact, read
-[`_shared/build-card.md`](../_shared/build-card.md). For personal output that is
-not an Estate artifact, use the confirmed profile and the precedence rules
-below without importing Estate organizational voice.
+Use the confirmed author profile and the current project’s brand requirements.
 
 ## Route before applying anything
 
@@ -90,8 +83,6 @@ produced. See [references/install-checklist.md](references/install-checklist.md)
 
 ## Relationship to other skills
 
-Does not duplicate `prose-pass` (house voice, banned patterns, structural
-gates), `brand-renderer` (Estate brand and artifact release
-gates), or `quality-gate` (release checks). This skill decides whether and
-how to apply one person's voice; those skills govern everything else about
-the artifact and still run afterward per the precedence order above.
+This adapter selects the intended author's confirmed profile. `writing-integrity` reviews meaning and prose; `prose-pass` supplies executable diagnostics and review records. `brand-renderer` applies the selected project profile or neutral defaults, and `quality-gate` reviews deliverable readiness. These tools do not supply a person's voice. Apply the precedence above when their requirements overlap.
+
+For a styled artifact, read [the build card](../_shared/build-card.md).
