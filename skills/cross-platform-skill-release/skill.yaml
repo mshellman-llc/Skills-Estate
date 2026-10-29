@@ -2,7 +2,7 @@ schema_version: 1
 name: cross-platform-skill-release
 display_name: Cross-platform skill release
 summary: Package, replace, and inspect a shared skill across Codex and Claude.
-status: draft
+status: active
 tier: maintainer
 version: 1.0.0
 owner: Estate maintainer
