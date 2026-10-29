@@ -73,7 +73,7 @@ def documents(root=ROOT):
                   '', 'Package readiness follows the current [catalog](../../CATALOG.md).', '']
         result[f"browse/{g['id']}/README.md"]='\n'.join(lines)
     table='\n'.join(summary)+'\n'
-    result['browse/README.md']='# Skills by work\n\nOpen a group to find its workflows and task packages. The interactive map uses these same groups.\n\n'+table.replace('(browse/','(')+'\n[Open the interactive map](../artifacts/skills-map/README.md) · [Get the collections](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml)\n'
+    result['browse/README.md']='# Skills by work\n\nOpen a group to find its workflows and task packages. The interactive map uses these same groups.\n\n[Review intended audiences and sharing cleanup](reuse-review.md).\n\n'+table.replace('(browse/','(')+'\n[Open the interactive map](../artifacts/skills-map/README.md) · [Get the collections](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml)\n'
     counts=f'{len(actual)} source modules and {len(public)} proposed task entrypoints'
     for name in ['README.md','CATALOG.md']:
         body=region((root/name).read_text(),table)
