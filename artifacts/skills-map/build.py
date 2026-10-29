@@ -166,8 +166,10 @@ def build(args):
         if name in folders: raise ValueError('Extra shadows canonical skill: '+name)
         if not (folder/'SKILL.md').is_file(): raise ValueError('Missing extra SKILL.md: '+str(folder))
         folders[name] = (folder, True)
-    from catalog import entries as task_entries
+    from catalog import entries as task_entries, dependencies as task_dependencies
+    from portable import runtime_closure
     task_catalog=task_entries(root)
+    package_members={task:{item['source'],*task_dependencies(root,item,runtime_closure)} for task,item in task_catalog.items()}
     skills = []
     for name, (folder, extra) in sorted(folders.items()):
         if name not in GROUPS: raise ValueError('Assign a family before building: '+name)
@@ -189,6 +191,7 @@ def build(args):
         title = re.search(r'^#\s+(.+)', body, re.M)
         title = title[1] if title else name.replace('-', ' ').capitalize()
         title = {'jtbd-framing': 'JTBD framing', 'ddoc': 'Deal decision deck', 'rom': 'Rough order of magnitude', 'sow': 'Statement of work', 'sow-quality': 'SOW quality', 's2d-handoff': 'Sales-to-delivery handoff'}.get(name, title)
+        title = title[:1].upper()+title[1:]
         excerpt = overview_excerpt(body)
         guide = guides.get(name, {})
         guide_current = guide.get('reviewedEntrypointSha256') == digest(raw)
@@ -207,6 +210,7 @@ def build(args):
             'sourcePath':repo_path if not extra else f'local-skills/{name}/SKILL.md',
             'sourceSha256':digest(raw), 'githubUrl': f'https://github.com/mshellman-llc/Skills-Estate/blob/{ref}/{repo_path}' if base_blob is not None else None,
             'taskPackages':[{'name':task,'mode':None} for task,item in task_catalog.items() if item['source']==name]+[{'name':task,'mode':mode} for task,item in task_catalog.items() for mode,module in item.get('modes',{}).items() if module==name],
+            'downloadPackages':[task for task,members in package_members.items() if name in members],
             'guide':guide if guide_current else None, 'guideStatus':'current' if guide_current else 'needs-review', 'reuse':reuse,
             'markdown':source, 'html':markdown(body), 'excerptHtml':''.join(markdown(p) for p in excerpt),
             'headings':headings, 'mentions':links, 'resources':resources})

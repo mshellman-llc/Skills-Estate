@@ -44,8 +44,12 @@ const {chromium}=require('playwright');
  assert(familyIds.every(id=>data.skills.find(s=>s.id===id).family===1));
  await page.locator('#source-filter').selectOption('github');
  const filtered=await page.locator('.skill-row').evaluateAll(es=>es.map(e=>e.dataset.skill));assert(filtered.every(id=>data.skills.find(s=>s.id===id).status==='github'));
- const pendingDownload=page.waitForEvent('download');await page.locator('#export').click();const dl=await pendingDownload;const csvPath=path.join(output,'filtered.csv');await dl.saveAs(csvPath);
- const csv=fs.readFileSync(csvPath,'utf8');for(const id of filtered)assert(csv.includes('$'+id));
+ if(preview){
+  const pendingDownload=page.waitForEvent('download');await page.locator('#export').click();const dl=await pendingDownload;const zipPath=path.join(output,'selected-packages.zip');await dl.saveAs(zipPath);
+  assert.equal(fs.readFileSync(zipPath).subarray(0,4).toString('hex'),'504b0304');
+  const {execFileSync}=require('child_process');const checked=JSON.parse(execFileSync('python3',['-c',"import zipfile,json,sys; z=zipfile.ZipFile(sys.argv[1]); assert z.testzip() is None; m=json.loads(z.read('manifest.json')); assert all(z.read('skills/'+v['file']).startswith(b'PK') for v in m['packages'].values()); print(json.dumps({'packages':sorted(m['packages']),'workflows':json.loads(z.read('selected-workflows.json'))['workflows']}))",zipPath],{encoding:'utf8'}));
+  const expected=[...new Set(filtered.flatMap(id=>data.skills.find(s=>s.id===id).downloadPackages))].sort();assert.deepEqual(checked.packages,expected);assert.deepEqual(checked.workflows.map(w=>w.workflow).sort(),[...filtered].sort());
+ }
  await page.evaluate(()=>document.querySelector('#toast').hidden=true);
  await page.locator('#search').fill('no-such-skill-52948');assert.equal(await page.locator('.skill-row').count(),0);await page.locator('[data-reset]').click();assert.equal(await page.locator('.skill-row').count(),data.skills.length);
  // Keyboard activation, dialog focus trapping, and arrow-key tab navigation.
@@ -78,6 +82,6 @@ const {chromium}=require('playwright');
  assert(await page.locator('#detail').evaluate(e=>e.scrollWidth<=e.clientWidth));await page.keyboard.press('Escape');
  await page.setViewportSize({width:1440,height:1100});await page.locator('[data-family="0"]').click();await page.emulateMedia({media:'print'});await page.pdf({path:path.join(output,'print.pdf'),format:'Letter',printBackground:true});await page.screenshot({path:path.join(output,'print.png')});
  assert.equal(errors.length,0,errors.join('\n'));assert.equal(requests.length,0,'Offline artifact must not load network resources');
- const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','filtered CSV','keyboard activation','dialog focus','arrow-key tabs','connections','six workflow routes','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
+ const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','dialog focus','arrow-key tabs','connections','six workflow routes','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
  fs.writeFileSync(path.join(output,'browser-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

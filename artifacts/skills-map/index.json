@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-29T13:58:57.799391+00:00",
+  "generatedAt": "2026-10-29T14:05:33.337183+00:00",
   "baseCommit": "dfbf95e1dabed6177fdbf55db22f7c7bca14f655",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -61,6 +61,9 @@
           "name": "accessibility-audit",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "accessibility-audit"
       ],
       "guide": {
         "what": "Review an interface for accessibility barriers.",
@@ -142,6 +145,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "analytics-strategy"
+      ],
       "guide": {
         "what": "Define what to measure and how to collect it.",
         "when": "A measurement plan, event taxonomy, or decision-focused dashboard.",
@@ -221,6 +227,9 @@
           "name": "system-design",
           "mode": "formal architecture reference"
         }
+      ],
+      "downloadPackages": [
+        "system-design"
       ],
       "guide": {
         "what": "Explain a system’s architecture in a sourced reference document.",
@@ -361,6 +370,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "beastmode-capture"
+      ],
       "guide": {
         "what": "Save a decision or correction in Megan’s knowledge system.",
         "when": "Megan asks to retain a supported decision, discovery, or correction.",
@@ -485,6 +497,9 @@
           "name": "beastmode-context",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "beastmode-context"
       ],
       "guide": {
         "what": "Resume Megan’s work from the current subject sources.",
@@ -634,6 +649,9 @@
           "name": "beastmode-health",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "beastmode-health"
       ],
       "guide": {
         "what": "Check Megan’s context and knowledge infrastructure.",
@@ -802,6 +820,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "beastmode-reconcile"
+      ],
       "guide": {
         "what": "Compare Megan’s source folders and preserve unique evidence.",
         "when": "A named intake, reconciliation, or authorized cleanup task.",
@@ -922,6 +943,7 @@
       "sourceSha256": "97d4301054811f22759b713dd031c60db07ceefac0d2ea00e667a09ea0144a77",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/brain-work-item/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Connect a Codex work item to Megan’s Brain task record.",
         "when": "Starting, continuing, or completing a Brain-linked task.",
@@ -1020,6 +1042,33 @@
       "sourceSha256": "19cc56e3b103f7289bab5d82fb406bffcebb86bb8367f5b26fa5e958d87b4b46",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [
+        "acceptance-testing",
+        "business-case",
+        "call-prep",
+        "cutover-closeout",
+        "deck-builder",
+        "delivery-kickoff",
+        "delivery-status",
+        "discovery",
+        "feature-spec",
+        "journey-mapping",
+        "offering-fit",
+        "process-design",
+        "project-scoping",
+        "requirements-backlog",
+        "sales-to-delivery-handoff",
+        "scope-options",
+        "service-offering",
+        "session-handoff",
+        "sf-project-setup",
+        "skill-authoring",
+        "solution-brief",
+        "statement-of-work",
+        "system-design",
+        "team-onboarding",
+        "writing-profile"
+      ],
       "guide": {
         "what": "Render an artifact using the selected visual identity.",
         "when": "A document, deck, workbook, PDF, or page needs branded rendering.",
@@ -1263,6 +1312,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "business-case"
+      ],
       "guide": {
         "what": "Build the case for an investment decision.",
         "when": "An approver needs to decide whether to fund an initiative.",
@@ -1405,6 +1457,9 @@
           "name": "call-prep",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "call-prep"
       ],
       "guide": {
         "what": "Prepare a pursuit or an upcoming sales conversation.",
@@ -1636,6 +1691,9 @@
           "name": "career-application",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "career-application"
       ],
       "guide": {
         "what": "Prepare Megan’s application and interview work for a selected role.",
@@ -2434,6 +2492,9 @@
           "mode": "supporting application materials"
         }
       ],
+      "downloadPackages": [
+        "career-application"
+      ],
       "guide": {
         "what": "Draft supporting application materials in Megan’s voice.",
         "when": "A cover letter, form answer, outreach draft, or LinkedIn section is needed.",
@@ -2554,6 +2615,9 @@
           "name": "career-decisions",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "career-decisions"
       ],
       "guide": {
         "what": "Compare roles and offers against Megan’s career direction.",
@@ -2686,6 +2750,9 @@
           "name": "portfolio-case-study",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "portfolio-case-study"
       ],
       "guide": {
         "what": "Turn Megan’s work into a portfolio case study.",
@@ -2843,6 +2910,10 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "brand-profile",
+        "journey-mapping"
+      ],
       "guide": {
         "what": "Apply the confirmed project or client identity.",
         "when": "An artifact needs a brand profile or existing profile applied.",
@@ -2904,6 +2975,9 @@
           "name": "code-simplify",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "code-simplify"
       ],
       "guide": {
         "what": "Improve code clarity while preserving its behavior.",
@@ -2972,6 +3046,9 @@
           "name": "cross-platform-skill-release",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "cross-platform-skill-release"
       ],
       "guide": {
         "what": "Package a skill for Codex and Claude destinations.",
@@ -3057,6 +3134,9 @@
           "name": "cutover-closeout",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "cutover-closeout"
       ],
       "guide": {
         "what": "Prepare cutover, hypercare, and delivery closeout.",
@@ -3208,6 +3288,9 @@
           "name": "deck-builder",
           "mode": "scope decision deck"
         }
+      ],
+      "downloadPackages": [
+        "deck-builder"
       ],
       "guide": {
         "what": "Build a deck for a scope or proposal decision.",
@@ -3402,6 +3485,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "commercial-review"
+      ],
       "guide": {
         "what": "Review a deal’s commercial figures and approval conditions.",
         "when": "An internal commercial review or quote tie-out is needed.",
@@ -3558,6 +3644,9 @@
           "name": "deck-builder",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "deck-builder"
       ],
       "guide": {
         "what": "Build a presentation around the audience’s decision.",
@@ -3721,6 +3810,9 @@
           "name": "delivery-kickoff",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "delivery-kickoff"
       ],
       "guide": {
         "what": "Mobilize a signed delivery engagement.",
@@ -3910,6 +4002,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "delivery-status"
+      ],
       "guide": {
         "what": "Report delivery progress against the agreed scope.",
         "when": "A status report, risk update, decision log, or scope check is needed.",
@@ -4070,6 +4165,14 @@
       "sourceSha256": "00b02e677f2089698d62a83ba83ecd9ee0b4b7155f9bf2669ed8ce07a910b2dd",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/delivery-suite/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [
+        "acceptance-testing",
+        "cutover-closeout",
+        "delivery-kickoff",
+        "delivery-status",
+        "requirements-backlog",
+        "sales-to-delivery-handoff"
+      ],
       "guide": {
         "what": "Route delivery work to the appropriate stage and owner.",
         "when": "A signed engagement needs coordination across delivery stages.",
@@ -4241,6 +4344,9 @@
           "name": "discovery",
           "mode": "maintain pursuit findings"
         }
+      ],
+      "downloadPackages": [
+        "discovery"
       ],
       "guide": {
         "what": "Maintain the findings and open questions for a pursuit.",
@@ -4420,6 +4526,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "discovery"
+      ],
       "guide": {
         "what": "Turn interviews and meeting notes into research findings.",
         "when": "Supplied discovery content needs synthesis.",
@@ -4541,6 +4650,9 @@
           "name": "sf-devops-center",
           "mode": "promote work items or stages"
         }
+      ],
+      "downloadPackages": [
+        "sf-devops-center"
       ],
       "guide": {
         "what": "Prepare and perform an authorized DevOps Center promotion.",
@@ -4696,6 +4808,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "sf-devops-center"
+      ],
       "guide": {
         "what": "Manage DevOps Center work items and review requests.",
         "when": "Creating, updating, committing, or reviewing a work item.",
@@ -4800,6 +4915,10 @@
       "sourceSha256": "c22dd3239f7129a8d7c5628c7a7b454911e21133beea86370755d4e3a456caee",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/evidence-core/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [
+        "journey-mapping",
+        "solution-brief"
+      ],
       "guide": {
         "what": "Track source records and the claims an artifact can support.",
         "when": "A material client artifact needs evidence review.",
@@ -4967,6 +5086,7 @@
       "sourceSha256": "250c46f4d89a5f5daf226a124e0eadff41eef4fa3548203181679cf8619e0fe0",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/execution-truth/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Verify what changed and where the result exists.",
         "when": "Work changes files, repositories, deployments, installations, or cloud records.",
@@ -5083,6 +5203,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "fortunes-weave"
+      ],
       "guide": {
         "what": "Answer questions and maintain Megan’s Fortune’s Weave planner.",
         "when": "A question concerns her current route, roster, or planner.",
@@ -5154,6 +5277,7 @@
       "sourceSha256": "5b26b99bd41ea3c3feaf5ffed8bf75d7e144820ffdc47cafeed3377bc98ae7ea",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/github-repository-work/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Work with Megan’s GitHub repositories.",
         "when": "A repository needs inspection, a commit, a PR, or release work.",
@@ -5229,6 +5353,9 @@
           "name": "independent-product",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "independent-product"
       ],
       "guide": {
         "what": "Develop Megan’s independent work from supplied historical projects.",
@@ -5312,6 +5439,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "information-architecture"
+      ],
       "guide": {
         "what": "Organize navigation, content labels, and site structure.",
         "when": "A website or product needs better findability.",
@@ -5391,6 +5521,9 @@
           "name": "scope-options",
           "mode": "interactive proposal or explorer"
         }
+      ],
+      "downloadPackages": [
+        "scope-options"
       ],
       "guide": {
         "what": "Build a page for exploring scope options.",
@@ -5571,6 +5704,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "journey-mapping"
+      ],
       "guide": {
         "what": "Map a customer or role’s experience and the service underneath.",
         "when": "A journey map, service blueprint, or opportunity map is needed.",
@@ -5676,6 +5812,7 @@
       "sourceSha256": "18cfba0735c269cff71461171cfb9213c60626ac4aa00d4145e6181a63fd19c6",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/jtbd-framing/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Frame the job a person is trying to accomplish.",
         "when": "Job statements, hire criteria, or switching triggers need analysis.",
@@ -5829,6 +5966,10 @@
           "name": "knowledge-hub",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "journey-mapping",
+        "knowledge-hub"
       ],
       "guide": {
         "what": "Retrieve and maintain a project’s durable knowledge.",
@@ -6045,6 +6186,7 @@
       "sourceSha256": "3d605da98b5011865e0d3c74956a481715facd3c68d7562bdc7ff18c221de86b",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/megan-writing-style/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Write prose in Megan’s personal voice.",
         "when": "Megan is the intended author of the finished text.",
@@ -6172,6 +6314,9 @@
       "sourceSha256": "8374725b79befbea9dbcd0b317853c880e895ab4c09cc03c2a8c46a20816b8d2",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/org-preflight/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [
+        "sf-change-delivery"
+      ],
       "guide": {
         "what": "Verify the Salesforce organization before a write.",
         "when": "A Salesforce record change, upload, or deployment is about to occur.",
@@ -6265,6 +6410,7 @@
       "sourceSha256": "b785d895cb4e9ba4db6767081e16762487e097808b2573bd53db1b08a2f2a9ae",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/personal-writing-style-runtime/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Apply one person’s confirmed writing profile.",
         "when": "The intended author has an approved private style profile.",
@@ -6386,6 +6532,9 @@
           "name": "service-offering",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "service-offering"
       ],
       "guide": {
         "what": "Define and maintain a productized service offering.",
@@ -6513,6 +6662,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "offering-fit"
+      ],
       "guide": {
         "what": "Match a prospect’s needs to an offering.",
         "when": "Discovery needs to become an offering-fit decision.",
@@ -6606,6 +6758,9 @@
           "name": "service-offering",
           "mode": "internal brief or external handout"
         }
+      ],
+      "downloadPackages": [
+        "service-offering"
       ],
       "guide": {
         "what": "Render an offering into sales handouts.",
@@ -6764,6 +6919,9 @@
           "mode": "offering package planning"
         }
       ],
+      "downloadPackages": [
+        "service-offering"
+      ],
       "guide": {
         "what": "Plan and track the artifacts for an offering.",
         "when": "An offering needs a complete artifact package or readiness review.",
@@ -6884,6 +7042,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "feature-spec"
+      ],
       "guide": {
         "what": "Write a testable feature specification.",
         "when": "A feature needs a PRD, development brief, or acceptance criteria.",
@@ -6955,7 +7116,7 @@
     },
     {
       "id": "process",
-      "title": "process",
+      "title": "Process",
       "family": 3,
       "description": "Work with a business or operational process in two modes: document it as an SOP, or optimize it. Use Document mode to formalize a process into an SOP with purpose, scope, a RACI matrix, process flow, step detail, exceptions, and metrics for a handoff, audit, onboarding, or to standardize inconsistent work. Use Optimize mode to make a process, workflow, pipeline, or hand-off faster, cheaper, or more reliable. Triggers on write an SOP, document this process, build a RACI, this process is slow, too many steps or approvals, streamline this, remove the bottleneck, cut cycle time, reduce hand-offs. Not for one-off project plans, org charts, product requirements, incident runbooks, or code and query performance tuning.",
       "status": "github",
@@ -6968,6 +7129,9 @@
           "name": "process-design",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "process-design"
       ],
       "guide": {
         "what": "Document a process or identify improvements.",
@@ -7081,6 +7245,9 @@
           "name": "product-development",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "product-development"
       ],
       "guide": {
         "what": "Develop a product from its current evidence and release state.",
@@ -7220,6 +7387,62 @@
       "sourceSha256": "d763685eb6e7488beff6d8c233d11aab6fb73790a426dd31cd24bb94e3b2fd55",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/prose-pass/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [
+        "acceptance-testing",
+        "accessibility-audit",
+        "analytics-strategy",
+        "beastmode-capture",
+        "beastmode-context",
+        "beastmode-health",
+        "beastmode-reconcile",
+        "brand-profile",
+        "business-case",
+        "call-prep",
+        "career-application",
+        "career-decisions",
+        "code-simplify",
+        "commercial-review",
+        "cross-platform-skill-release",
+        "cutover-closeout",
+        "deck-builder",
+        "deliverable-review",
+        "delivery-kickoff",
+        "delivery-status",
+        "discovery",
+        "feature-spec",
+        "fortunes-weave",
+        "independent-product",
+        "information-architecture",
+        "journey-mapping",
+        "knowledge-hub",
+        "offering-fit",
+        "portfolio-case-study",
+        "process-design",
+        "product-development",
+        "project-scoping",
+        "requirements-backlog",
+        "sales-process-mapping",
+        "sales-to-delivery-handoff",
+        "scope-options",
+        "service-offering",
+        "session-handoff",
+        "sf-apex-patterns",
+        "sf-change-delivery",
+        "sf-devops-center",
+        "sf-pipeline-operations",
+        "sf-project-setup",
+        "skill-authoring",
+        "skill-estate-sync",
+        "solution-brief",
+        "statement-of-work",
+        "sticker-art-direction",
+        "sticker-sheets",
+        "system-design",
+        "team-onboarding",
+        "usability-testing",
+        "writing-integrity",
+        "writing-profile"
+      ],
       "guide": {
         "what": "Run writing diagnostics and preserve figures during revision.",
         "when": "Writing-integrity needs a scanner or a review record.",
@@ -7455,6 +7678,34 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "acceptance-testing",
+        "business-case",
+        "call-prep",
+        "cutover-closeout",
+        "deck-builder",
+        "deliverable-review",
+        "delivery-kickoff",
+        "delivery-status",
+        "discovery",
+        "feature-spec",
+        "journey-mapping",
+        "offering-fit",
+        "process-design",
+        "project-scoping",
+        "requirements-backlog",
+        "sales-to-delivery-handoff",
+        "scope-options",
+        "service-offering",
+        "session-handoff",
+        "sf-project-setup",
+        "skill-authoring",
+        "solution-brief",
+        "statement-of-work",
+        "system-design",
+        "team-onboarding",
+        "writing-profile"
+      ],
       "guide": {
         "what": "Review a finished artifact against the request and sources.",
         "when": "A material deliverable is approaching release.",
@@ -7564,6 +7815,9 @@
           "name": "requirements-backlog",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "requirements-backlog"
       ],
       "guide": {
         "what": "Turn source material into a structured requirements backlog.",
@@ -7700,6 +7954,9 @@
           "mode": "resume figures and ATS wording"
         }
       ],
+      "downloadPackages": [
+        "career-application"
+      ],
       "guide": {
         "what": "Apply Megan’s resume methods for figures and ATS wording.",
         "when": "Her tailored resume needs quantified bullets or keyword placement.",
@@ -7835,6 +8092,9 @@
           "name": "project-scoping",
           "mode": "rough estimate"
         }
+      ],
+      "downloadPackages": [
+        "project-scoping"
       ],
       "guide": {
         "what": "Estimate a rough effort or cost range.",
@@ -7993,6 +8253,9 @@
           "name": "sales-to-delivery-handoff",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "sales-to-delivery-handoff"
       ],
       "guide": {
         "what": "Prepare the handoff from sales to delivery.",
@@ -8176,6 +8439,9 @@
           "mode": "review a sales journey or demo"
         }
       ],
+      "downloadPackages": [
+        "sales-process-mapping"
+      ],
       "guide": {
         "what": "Review a sales journey, demo, or proposed workflow.",
         "when": "A journey needs specific corrections to steps, systems, or measures.",
@@ -8285,6 +8551,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "sales-process-mapping"
+      ],
       "guide": {
         "what": "Map a sales process from its source files.",
         "when": "Ownership, triggers, handoffs, or systems of record need clarification.",
@@ -8382,6 +8651,9 @@
           "name": "scope-options",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "scope-options"
       ],
       "guide": {
         "what": "Compare scope options in a static document.",
@@ -8553,6 +8825,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "project-scoping"
+      ],
       "guide": {
         "what": "Develop scope, effort, staffing, and timeline estimates.",
         "when": "A project needs a rough range or a confirmed quote revision.",
@@ -8675,6 +8950,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "session-handoff"
+      ],
       "guide": {
         "what": "Prepare another session to resume the same work.",
         "when": "The current session is ending or needs a handoff.",
@@ -8774,6 +9052,9 @@
           "name": "sf-project-setup",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "sf-project-setup"
       ],
       "guide": {
         "what": "Set up or repair a Salesforce project’s delivery checks.",
@@ -9424,7 +9705,7 @@
     },
     {
       "id": "sf-deploy-engine",
-      "title": "sf-deploy-engine — operating the pipeline",
+      "title": "Sf-deploy-engine — operating the pipeline",
       "family": 2,
       "description": "Operate an sf-deploy-engine Salesforce CI/CD pipeline: engine-managed validation and deploy to pipeline environments (preprod, staging, production), selective and multi-source releases, rollback by ticket or SHA, re-validation, freeze recovery, pause/resume, route topology and hotfix entry gates, smart test skip, pre/post-deploy Apex hooks, GitHub or Jira ticket providers, and provisioning a new engine instance. Use whenever the repo has a pipeline.yml. Trigger on: ''deploy to prod'', ''promote'', ''release'', ''cut a release'', ''what needs to ship'', ''rollback'', ''revert ticket'', ''retry'', ''engine status'', ''validation failed'', ''environment frozen'', ''pause the engine'', ''revalidate'', pipeline.yml, deploy engine, deploy_hooks, back_merge, entry_requires_label, smart_tests, provision the engine, engine init. Also when a PR targets an environment branch. Do NOT trigger for the local loop against your own dev sandbox — worktrees, feature branches, local deploys, git hooks — that is sf-delivery-standards.",
       "status": "github",
@@ -9437,6 +9718,9 @@
           "name": "sf-pipeline-operations",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "sf-pipeline-operations"
       ],
       "guide": {
         "what": "Operate an existing Salesforce deployment pipeline.",
@@ -9617,6 +9901,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "sf-apex-patterns"
+      ],
       "guide": {
         "what": "Apply the project’s Salesforce code architecture.",
         "when": "Apex or LWC work needs service, selector, or unit-of-work conventions.",
@@ -9779,6 +10066,7 @@
       "sourceSha256": "9ce1dbd5c7b9ea6128db08d3b3fe31cc572c84e229cc8925b2042b8b05ab5fb7",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sf-headless-screenshot/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Capture Salesforce UI evidence and run clickpath checks.",
         "when": "An authorized UI path needs screenshots or assertions.",
@@ -9872,6 +10160,9 @@
           "name": "sf-change-delivery",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "sf-change-delivery"
       ],
       "guide": {
         "what": "Deliver a change to a single-org Salesforce project.",
@@ -10170,6 +10461,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "skill-authoring"
+      ],
       "guide": {
         "what": "Create a focused skill for a repeatable task.",
         "when": "A workflow needs packaging, clearer triggers, or a skill review.",
@@ -10327,6 +10621,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "skill-estate-sync"
+      ],
       "guide": {
         "what": "Build and audit portable skill packages.",
         "when": "Skill source changed, an installation drifted, or a release is being prepared.",
@@ -10471,6 +10768,9 @@
           "name": "solution-brief",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "solution-brief"
       ],
       "guide": {
         "what": "Explain whether a proposed solution can be delivered.",
@@ -10768,6 +11068,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "statement-of-work"
+      ],
       "guide": {
         "what": "Draft a statement of work from confirmed scope.",
         "when": "A fixed-scope, adaptive, or assessment agreement needs drafting.",
@@ -10982,6 +11285,9 @@
           "mode": "contract scope and obligation review"
         }
       ],
+      "downloadPackages": [
+        "statement-of-work"
+      ],
       "guide": {
         "what": "Review a statement of work and its obligations.",
         "when": "A SOW or contractual scope needs a quality review.",
@@ -11112,6 +11418,9 @@
           "mode": "detailed UI and API specification"
         }
       ],
+      "downloadPackages": [
+        "feature-spec"
+      ],
       "guide": {
         "what": "Specify detailed UI, API, and data behavior.",
         "when": "A feature specification needs implementation detail.",
@@ -11199,6 +11508,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "sticker-art-direction"
+      ],
       "guide": {
         "what": "Develop and critique typography-led sticker designs.",
         "when": "A sticker concept needs composition, type exploration, or print-scale review.",
@@ -11284,6 +11596,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "sticker-sheets"
+      ],
       "guide": {
         "what": "Lay out Megan’s sticker designs for Cricut printing.",
         "when": "Her PNG designs need exact-count Print Then Cut sheets.",
@@ -11359,6 +11674,9 @@
           "name": "system-design",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "system-design"
       ],
       "guide": {
         "what": "Explore a system or service design.",
@@ -11467,6 +11785,9 @@
           "name": "team-onboarding",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "team-onboarding"
       ],
       "guide": {
         "what": "Plan a role’s first 30, 60, and 90 days.",
@@ -11581,6 +11902,7 @@
       "sourceSha256": "a3ab7718877064857b6a7eed832563c0e12053864375f15364cbce98b1b5f74b",
       "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/transcript-ingestion/SKILL.md",
       "taskPackages": [],
+      "downloadPackages": [],
       "guide": {
         "what": "Preserve and index a meeting transcript.",
         "when": "A transcript or recording export needs a durable project record.",
@@ -11695,6 +12017,9 @@
           "name": "acceptance-testing",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "acceptance-testing"
       ],
       "guide": {
         "what": "Track acceptance testing and release readiness.",
@@ -11849,6 +12174,9 @@
           "mode": null
         }
       ],
+      "downloadPackages": [
+        "usability-testing"
+      ],
       "guide": {
         "what": "Plan usability research or synthesize observations.",
         "when": "A team needs participant tasks, sessions, or findings.",
@@ -11928,6 +12256,62 @@
           "name": "writing-integrity",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "acceptance-testing",
+        "accessibility-audit",
+        "analytics-strategy",
+        "beastmode-capture",
+        "beastmode-context",
+        "beastmode-health",
+        "beastmode-reconcile",
+        "brand-profile",
+        "business-case",
+        "call-prep",
+        "career-application",
+        "career-decisions",
+        "code-simplify",
+        "commercial-review",
+        "cross-platform-skill-release",
+        "cutover-closeout",
+        "deck-builder",
+        "deliverable-review",
+        "delivery-kickoff",
+        "delivery-status",
+        "discovery",
+        "feature-spec",
+        "fortunes-weave",
+        "independent-product",
+        "information-architecture",
+        "journey-mapping",
+        "knowledge-hub",
+        "offering-fit",
+        "portfolio-case-study",
+        "process-design",
+        "product-development",
+        "project-scoping",
+        "requirements-backlog",
+        "sales-process-mapping",
+        "sales-to-delivery-handoff",
+        "scope-options",
+        "service-offering",
+        "session-handoff",
+        "sf-apex-patterns",
+        "sf-change-delivery",
+        "sf-devops-center",
+        "sf-pipeline-operations",
+        "sf-project-setup",
+        "skill-authoring",
+        "skill-estate-sync",
+        "solution-brief",
+        "statement-of-work",
+        "sticker-art-direction",
+        "sticker-sheets",
+        "system-design",
+        "team-onboarding",
+        "usability-testing",
+        "writing-integrity",
+        "writing-profile"
       ],
       "guide": {
         "what": "Review prose for clarity, meaning, and the intended voice.",
@@ -12115,6 +12499,9 @@
           "name": "writing-profile",
           "mode": null
         }
+      ],
+      "downloadPackages": [
+        "writing-profile"
       ],
       "guide": {
         "what": "Build or revise a person’s private writing profile.",

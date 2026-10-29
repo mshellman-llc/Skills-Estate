@@ -61,6 +61,10 @@ The map retains the navy, teal, sand, and embedded Plus Jakarta Sans design of t
 
 ## Verify updates
 
-`tests/test_map_updates.py` covers current-head selection, stale and expired artifacts, changed data, interrupted update eligibility, and localhost request checks. `tests/test_skill_groups.py` covers complete group assignment and package-mode links. Browser checks cover sorting, group-link copying, search, details, updates, and narrow screens.
+`tests/test_map_updates.py` covers current-head selection, stale and expired artifacts, changed data, interrupted update eligibility, and localhost request checks. `tests/test_skill_groups.py` covers complete group assignment and package-mode links. Browser checks cover sorting, group-link copying, search, details, complete package downloads, updates, and narrow screens.
 
 The local viewer binds only to loopback. Update requests require the same origin and a per-run token. GitHub authentication remains in `gh`; no credentials are embedded in the HTML.
+
+## Download task packages
+
+The hosted map downloads the complete task ZIPs for the filtered workflows. Shared runtime modules travel inside their owning tasks; workflows without a catalog task package are listed in the download notes. Each package is checked against the release manifest from the same successful GitHub run as the map. The outer ZIP includes installation notes, the selected workflow inventory, and package hashes. Downloading candidates does not install or promote them.
