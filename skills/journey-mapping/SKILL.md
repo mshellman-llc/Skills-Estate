@@ -2,10 +2,6 @@
 name: journey-mapping
 description: "Build a customer or role journey map, service blueprint, and opportunity map from touchpoints, goals, thoughts, emotions, friction, and the systems underneath, with every claim sourced or labeled as a hypothesis. Use for a client deliverable, a product's user or seller journey, or an internal lifecycle map. Triggers on customer journey, journey map, service blueprint, user journey, experience map, touchpoint analysis, friction map, emotional curve, line of visibility, CX blueprint, and on teams that hold different mental models of one experience. Testing one screen is a usability test; generative research comes first when no map exists."
 license: MIT
-metadata:
-  upstream: "rampstackco/claude-skills"
-  upstream-commit: "98d8cfe773f975a465f11c56d8fb2ae618307805"
-  adapted: "2026-10-27"
 ---
 
 # Journey mapping
