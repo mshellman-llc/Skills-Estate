@@ -2,6 +2,8 @@
 
 Open a group to find its workflows and task packages. The interactive map uses these same groups.
 
+[Review intended audiences and sharing cleanup](reuse-review.md).
+
 ## Browse by work
 
 | Group | Source workflows | Task packages |

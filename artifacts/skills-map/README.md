@@ -4,6 +4,16 @@
 
 Browse the workflows by work group, sort their names, and copy links to the matching GitHub groups. The site opens directly in a browser.
 
+Each overview explains the task, when to use it, required inputs, expected outputs, and an example request. Filter by intended audience or required setup. [The reuse review](../../browse/reuse-review.md) separates general-use methods from Megan-specific workflows and lists personal references that need attention before sharing.
+
+## Maintain the reader guides
+
+`config/skill-guide.json` holds the reader-facing summaries and the reviewed entrypoint hashes. Review a guide against its source after changing the entrypoint. An unmatched hash makes the map show current source excerpts and a review notice instead of the old guide. Keep the full instructions and downloads unchanged when editing a summary.
+
+`tools/skill_guide.py` scans workflow text, supporting files, declared runtime dependencies, and shared policies for named personal references. It separates examples and tests from workflow text. The audience classification describes intended use; it does not certify that a package works in another environment. The sharing review also identifies shared policy wording copied into every assembled package.
+
+Regenerate the GitHub review with `python3 tools/skill_guide.py --report`. Source or policy changes require reviewing the findings. Changing the catalog does not install, promote, or generalize the working skills.
+
 ## Refresh the site
 
 Ask Codex to refresh the Skills Estate site from GitHub. The refresh must retrieve a passing build for current main, verify the workflow and group data, update the existing Site, and confirm the deployed GitHub revision.
@@ -51,6 +61,10 @@ The map retains the navy, teal, sand, and embedded Plus Jakarta Sans design of t
 
 ## Verify updates
 
-`tests/test_map_updates.py` covers current-head selection, stale and expired artifacts, changed data, interrupted update eligibility, and localhost request checks. `tests/test_skill_groups.py` covers complete group assignment and package-mode links. Browser checks cover sorting, group-link copying, search, details, updates, and narrow screens.
+`tests/test_map_updates.py` covers current-head selection, stale and expired artifacts, changed data, interrupted update eligibility, and localhost request checks. `tests/test_skill_groups.py` covers complete group assignment and package-mode links. Browser checks cover sorting, group-link copying, search, details, complete package downloads, updates, and narrow screens.
 
 The local viewer binds only to loopback. Update requests require the same origin and a per-run token. GitHub authentication remains in `gh`; no credentials are embedded in the HTML.
+
+## Download task packages
+
+The hosted map downloads the complete task ZIPs for the filtered workflows. Shared runtime modules travel inside their owning tasks; workflows without a catalog task package are listed in the download notes. Each package is checked against the release manifest from the same successful GitHub run as the map. The outer ZIP includes installation notes, the selected workflow inventory, and package hashes. Downloading candidates does not install or promote them.
