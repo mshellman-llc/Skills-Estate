@@ -41,6 +41,8 @@ The example installs a candidate into an isolated home. Everyday installation re
 
 The installer copies packages into a verified, versioned directory under `~/.local/share/skills-estate/releases/` and links that version into `~/.claude/skills` and `~/.agents/skills`. Existing matching names under `~/.codex/skills` are reconciled as legacy aliases. It also creates `~/.config/skills-estate/repository` so either assistant can find the checkout. Installed files remain available when the source volume is unavailable. Keep the repository pointer valid for maintenance. Start a fresh session when a host has cached its skill list.
 
+To promote a reviewed task package without changing other installed skills, use `install --skill writing-integrity --expected-source REVIEWED_SOURCE_HASH`; repeat `--skill` to select more packages. The selected workflows, their runtime dependencies and shared assembly must pass the existing release gates. Other installed links keep their exact versions. Status verifies every retained release and reports a mixed installation without claiming one shared source hash. `rollback RELEASE_ID` restores the complete inventory from the most recent activation of that release ID; use its `restore` receipt to recover originals from an adoption. A conflicting older installation still needs explicit, scoped `adopt --skill NAME --expected-source REVIEWED_SOURCE_HASH` after inspecting its files.
+
 ## Change and sync skills
 
 Edit `skills/<name>/SKILL.md` and its supporting resources. Edit shared rules only in `policies/`. Then run:
@@ -52,7 +54,7 @@ python3 tools/estate.py sync
 python3 tools/estate.py status
 ```
 
-`sync` validates, builds, and packages candidates; it leaves installed releases unchanged. Builds reject source changes during assembly. Installation rejects stale or edited generated files. Both local assistants link to the same verified release. `status` reports source, build, ZIP, and installed drift separately, even when the build is stale. A green build does not establish a current ZIP or installation. Do not edit `build/`, installed links, vendor caches, or `synced/` downloads as authoring sources.
+`sync` validates, builds, and packages candidates; it leaves installed releases unchanged. Builds reject source changes during assembly. Installation rejects stale or edited generated files. Both local assistants link to the same verified version of each promoted package. `status` reports source, build, ZIP, and installed drift separately, even when the build is stale. A green build does not establish a current ZIP or installation. Do not edit `build/`, installed links, vendor caches, or `synced/` downloads as authoring sources.
 
 Commit, merge, and checkout hooks do not build or install. Pre-push runs validation and tests. On another machine, pull the reviewed changes and run `sync`, review the resulting source hash, then explicitly install the accepted release. GitHub Actions validates every push and pull request and publishes the generated ZIPs as a workflow artifact.
 

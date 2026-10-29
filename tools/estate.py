@@ -364,27 +364,30 @@ def local_targets(home):
     return {'claude-code': home / '.claude' / 'skills', 'codex': home / '.agents' / 'skills'}
 
 
-def install(root=ROOT, home=None, adopt=False, expected_source=None):
+def install(root=ROOT, home=None, adopt=False, expected_source=None, skills=None):
     home = Path(home or Path.home()).expanduser().resolve()
     manifest = current_build(root)
+    selected = set(manifest['packages']) if skills is None else set(skills)
+    if not selected or not selected <= set(manifest['packages']):
+        raise ValueError('Select existing task package names for targeted promotion')
     if home == Path.home().resolve():
         if expected_source != manifest['source_sha256']:
             raise ValueError('Everyday promotion requires --expected-source with the reviewed source hash')
         import plugins
         settings = plugins.config(root)
-        gaps = plugins.release_gaps(root, settings, settings['bundles'], manifest)
+        gaps = plugins.release_gaps(root, settings, settings['bundles'], manifest, entrypoints=sorted(selected) if skills is not None else None)
         if gaps:
             raise ValueError('Everyday release review pending: ' + ', '.join(x['subject'] for x in gaps))
     with releases.home_lock(home):
         release_id = releases.snapshot(root, home,
-            {name: root / 'build/skills' / name for name in manifest['packages']},
+            {name: root / 'build/skills' / name for name in sorted(selected)},
             manifest['source_sha256'], 'reviewed' if home == Path.home().resolve() else 'isolated-candidate', tree_hash)
         _, record = releases.load(home, release_id, tree_hash)
-        if any(record['packages'][name]['sha256'] != entry['sha256'] for name, entry in manifest['packages'].items()):
+        if any(record['packages'][name]['sha256'] != entry['sha256'] for name, entry in manifest['packages'].items() if name in selected):
             raise ValueError('Build changed after verification; refusing promotion')
         if source_hash(root) != manifest['source_sha256']:
             raise ValueError('Source changed after verification; refusing promotion')
-        return releases.activate(root, home, release_id, tree_hash, adopt=adopt)
+        return releases.activate(root, home, release_id, tree_hash, adopt=adopt, preserve_existing=skills is not None)
 
 
 def pin_installed(root=ROOT, home=None):
@@ -428,9 +431,7 @@ def rollback(root, home, release_id):
         prior = next((r['active'] for r in receipts if r.get('phase') == 'committed' and r.get('active', {}).get('release_id') == release_id), None)
         if prior is None:
             raise ValueError('Rollback target was never activated')
-        destinations = {Path(dest): Path(target).name for dest, target in prior['links'].items()
-                        if Path(dest).parent != home / '.config/skills-estate'}
-        return releases.activate(root, home, release_id, tree_hash, destinations=destinations)
+        return releases.activate(root, home, release_id, tree_hash, links=prior['links'])
 
 
 def restore(receipt_path):
@@ -643,7 +644,9 @@ def main():
     for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed']:
         sub.add_parser(command)
     for command in ['install', 'adopt']:
-        sub.add_parser(command).add_argument('--expected-source')
+        install_parser = sub.add_parser(command)
+        install_parser.add_argument('--expected-source')
+        install_parser.add_argument('--skill', action='append', help='Promote only this task package; repeat to select more')
     sub.add_parser('rollback').add_argument('release_id')
     rp = sub.add_parser('restore')
     rp.add_argument('receipt', type=Path)
@@ -657,7 +660,7 @@ def main():
             if args.command == 'validate': result = validate()
             elif args.command == 'build': result = build(home=args.home)
             elif args.command == 'bundle': result = bundle()
-            elif args.command in {'install', 'adopt'}: result = install(home=args.home, adopt=args.command == 'adopt', expected_source=args.expected_source)
+            elif args.command in {'install', 'adopt'}: result = install(home=args.home, adopt=args.command == 'adopt', expected_source=args.expected_source, skills=args.skill)
             elif args.command == 'pin-installed': result = pin_installed(home=args.home)
             elif args.command == 'rollback': result = rollback(ROOT, args.home, args.release_id)
             elif args.command == 'restore': result = restore(args.receipt)

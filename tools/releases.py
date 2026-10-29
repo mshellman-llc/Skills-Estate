@@ -144,7 +144,37 @@ def managed_link(path, home, root, tree_hash, verified=None):
     return record['repository'] == str(Path(root).resolve())
 
 
-def activate(root, home, release_id, tree_hash, adopt=False, destinations=None):
+def linked_inventory(home, repository, links, tree_hash):
+    """Verify every immutable version referenced by an activation's exact links."""
+    home, root = Path(home).absolute(), Path(repository).resolve()
+    pointer = home / '.config/skills-estate/repository'
+    allowed = {home / name for name in ['.claude/skills', '.agents/skills', '.codex/skills']}
+    versions, packages = {}, {}
+    for destination, target in links.items():
+        dest, source = Path(destination), Path(target)
+        if dest == pointer:
+            if source != root:
+                raise ValueError('Repository pointer differs from activation')
+            continue
+        if dest.parent not in allowed or dest.name in ('', '.', '..'):
+            raise ValueError('Destination outside managed skill directories')
+        relative = source.relative_to(store(home))
+        if len(relative.parts) != 3 or relative.parts[1] != 'skills':
+            raise ValueError('Activation target is outside an immutable package')
+        version, _, name = relative.parts
+        if version not in versions:
+            versions[version] = load(home, version, tree_hash)[1]
+        record = versions[version]
+        if record['repository'] != str(root) or name not in record['packages']:
+            raise ValueError('Activation target belongs to another repository or package')
+        entry = record['packages'][name]
+        if name in packages and packages[name] != entry:
+            raise ValueError('Managed hosts disagree on package version: ' + name)
+        packages[name] = entry
+    return versions, packages
+
+
+def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, preserve_existing=False, links=None):
     root, home = Path(root).resolve(), Path(home).absolute()
     folder, record = load(home, release_id, tree_hash)
     if record['repository'] != str(root):
@@ -153,8 +183,12 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None):
     previous = json.loads(active_file.read_text()) if active_file.exists() else None
     if previous and previous['repository'] != str(root):
         raise ValueError('This home already has another managed repository')
-    desired = {}
-    if destinations is None:
+    if preserve_existing and previous and not inspect(home, tree_hash)['ok']:
+        raise ValueError('Current installation drift must be resolved before targeted promotion')
+    desired = dict(previous['links']) if preserve_existing and previous else {}
+    if links is not None:
+        desired = dict(links)
+    elif destinations is None:
         for name in record['packages']:
             for parent in ['.claude/skills', '.agents/skills']:
                 desired[str(home / parent / name)] = str(folder / 'skills' / name)
@@ -166,8 +200,14 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None):
             if name not in record['packages']:
                 raise ValueError('Destination package absent from release')
             desired[str(dest)] = str(folder / 'skills' / name)
+    if preserve_existing:
+        # Keep owned aliases for selected packages aligned with their native-host entries.
+        for destination, target in (previous or {}).get('links', {}).items():
+            if Path(target).name in record['packages']:
+                desired[destination] = str(folder / 'skills' / Path(target).name)
     pointer = home / '.config/skills-estate/repository'
     desired[str(pointer)] = str(root)
+    versions, _ = linked_inventory(home, root, desired, tree_hash)
     operations = []
     verified_releases = {}
     for name, target in desired.items():
@@ -210,7 +250,7 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None):
             journal.append({'destination': str(dest), 'backup': str(saved) if saved else None, 'source': target})
             if target:
                 dest.symlink_to(target, target_is_directory=True)
-        current = {'format': 1, 'release_id': release_id, 'repository': str(root), 'links': desired}
+        current = {'format': 2 if len(versions) > 1 else 1, 'release_id': release_id, 'repository': str(root), 'links': desired}
         receipt = {'format': 2, 'phase': 'committed', 'home': str(home), 'operations': journal, 'previous_active': previous, 'active': current}
         write_json(active_file, current)
         active_written = True
@@ -242,10 +282,14 @@ def inspect(home, tree_hash):
     try:
         active = json.loads(active_file.read_text())
         _, record = load(home, active['release_id'], tree_hash)
+        if record['repository'] != active['repository']:
+            raise ValueError('Active release belongs to another repository')
+        versions, packages = linked_inventory(home, active['repository'], active['links'], tree_hash)
         changed = [name for name, target in active['links'].items()
                    if not Path(name).is_symlink() or Path(name).resolve() != Path(target).resolve()]
         return {'state': 'modified-links' if changed else 'pinned', 'ok': not changed,
-                'release_id': active['release_id'], 'source_sha256': record['source_sha256'],
-                'kind': record['kind'], 'changed_links': changed, 'packages': record['packages']}
+                'release_id': active['release_id'], 'source_sha256': record['source_sha256'] if len(versions) <= 1 else None,
+                'kind': record['kind'] if len(versions) <= 1 else 'mixed-pinned',
+                'release_ids': sorted(versions), 'changed_links': changed, 'packages': packages}
     except (OSError, ValueError, KeyError) as exc:
         return {'state': 'damaged', 'ok': False, 'error': str(exc)}

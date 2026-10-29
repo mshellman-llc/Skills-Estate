@@ -266,3 +266,146 @@ class ReleaseTests(unittest.TestCase):
         self.assertFalse((self.home / '.claude/skills/other').exists())
         estate.rollback(self.root, self.home, first['release_id'])
         self.assertTrue((self.home / '.claude/skills/other/SKILL.md').exists())
+
+
+class TargetedReleaseTests(unittest.TestCase):
+    setUp = ReleaseTests.setUp
+    def add_other(self):
+        other = self.root / 'skills/other'
+        shutil.copytree(self.root / 'skills/demo', other)
+        p = other / 'SKILL.md'
+        p.write_text(p.read_text().replace('name: demo', 'name: other'))
+        estate.build(self.root)
+
+    def test_targeted_promotion_keeps_unselected_paths_and_rollback_inventory(self):
+        self.add_other()
+        first = estate.install(self.root, self.home)
+        other = self.home / '.claude/skills/other'
+        original_other = other.readlink()
+        original_other_bytes = (other / 'SKILL.md').read_bytes()
+        (self.root / 'skills/demo/references/detail.md').write_text('Selected update')
+        estate.build(self.root)
+        selected = estate.install(self.root, self.home, skills=['demo'])
+        self.assertEqual(other.readlink(), original_other)
+        self.assertEqual((other / 'SKILL.md').read_bytes(), original_other_bytes)
+        self.assertEqual(selected['links_changed'], 2)
+        report = releases.inspect(self.home, estate.tree_hash)
+        self.assertTrue(report['ok']); self.assertEqual(report['kind'], 'mixed-pinned')
+        self.assertIsNone(report['source_sha256'])
+        self.assertEqual(set(report['packages']), {'demo', 'other'})
+        self.assertEqual(estate.install(self.root, self.home, skills=['demo'])['links_changed'], 0)
+        (self.root / 'skills/other/references/detail.md').write_text('Second selected update')
+        estate.build(self.root)
+        estate.install(self.root, self.home, skills=['other'])
+        estate.rollback(self.root, self.home, selected['release_id'])
+        self.assertEqual(other.readlink(), original_other)
+        self.assertEqual((self.home / '.agents/skills/demo/references/detail.md').read_text(), 'Selected update')
+        estate.rollback(self.root, self.home, first['release_id'])
+        self.assertEqual((self.home / '.agents/skills/demo/references/detail.md').read_text(), 'Meaningful detail\n')
+
+    def test_damaged_retained_version_blocks_targeted_promotion(self):
+        self.add_other(); estate.install(self.root, self.home)
+        old = self.home / '.agents/skills/other/SKILL.md'
+        old.chmod(0o644); old.write_text('Modified installed content')
+        (self.root / 'skills/demo/references/detail.md').write_text('Update')
+        estate.build(self.root)
+        before = (releases.state(self.home) / 'active.json').read_bytes()
+        with self.assertRaisesRegex(ValueError, 'drift'):
+            estate.install(self.root, self.home, skills=['demo'])
+        self.assertEqual((releases.state(self.home) / 'active.json').read_bytes(), before)
+
+    def test_targeted_adoption_restores_legacy_link_and_retains_other_skills(self):
+        self.add_other(); estate.install(self.root, self.home, skills=['other'])
+        legacy = self.home / 'legacy-writing'; legacy.mkdir(); (legacy / 'SKILL.md').write_text('Previous local text')
+        dest = self.home / '.agents/skills/demo'; dest.symlink_to(legacy)
+        retained = (self.home / '.agents/skills/other').readlink()
+        with self.assertRaisesRegex(ValueError, 'preserved'):
+            estate.install(self.root, self.home, skills=['demo'])
+        result = estate.install(self.root, self.home, adopt=True, skills=['demo'])
+        self.assertEqual((self.home / '.agents/skills/other').readlink(), retained)
+        estate.restore(Path(result['backup']) / 'receipt.json')
+        self.assertEqual(dest.resolve(), legacy)
+        self.assertEqual((dest / 'SKILL.md').read_text(), 'Previous local text')
+        self.assertEqual((self.home / '.agents/skills/other').readlink(), retained)
+
+    def test_targeted_failure_restores_mixed_activation(self):
+        self.add_other(); estate.install(self.root, self.home)
+        (self.root / 'skills/demo/references/detail.md').write_text('Selected update'); estate.build(self.root)
+        estate.install(self.root, self.home, skills=['demo'])
+        before = (releases.state(self.home) / 'active.json').read_bytes()
+        old = (self.home / '.agents/skills/other').readlink()
+        (self.root / 'skills/other/references/detail.md').write_text('Second update'); estate.build(self.root)
+        original = Path.symlink_to; calls = []
+        def fail_second(path, *args, **kwargs):
+            calls.append(path)
+            if len(calls) == 2: raise OSError('Second host failed')
+            return original(path, *args, **kwargs)
+        with patch.object(Path, 'symlink_to', fail_second), self.assertRaises(OSError):
+            estate.install(self.root, self.home, skills=['other'])
+        self.assertEqual((releases.state(self.home) / 'active.json').read_bytes(), before)
+        self.assertEqual((self.home / '.agents/skills/other').readlink(), old)
+        self.assertTrue(releases.inspect(self.home, estate.tree_hash)['ok'])
+
+    def test_targeted_promotion_checks_shared_and_selected_review_gates(self):
+        import plugins
+        self.add_other(); manifest = estate.current_build(self.root)
+        settings = {'bundles': {'all': {'entries': ['demo', 'other'], 'internal': []}},
+                    'release': {'shared': {}, 'modules': {'demo': {}, 'other': {'status': 'pending'}}, 'routers': {}}}
+        settings['release']['shared'] = {'status': 'accepted', 'evidence': 'synthetic independent review', 'reviewed_sha256': plugins.shared_hash(self.root, settings)}
+        settings['release']['modules']['demo'] = {'status': 'accepted', 'evidence': 'synthetic task review', 'reviewed_sha256': estate.tree_hash(self.root / 'skills/demo')}
+        with patch.object(Path, 'home', return_value=self.home), patch.object(plugins, 'config', return_value=settings):
+            with self.assertRaisesRegex(ValueError, 'expected-source'):
+                estate.install(self.root, skills=['demo'])
+            estate.install(self.root, expected_source=manifest['source_sha256'], skills=['demo'])
+            self.assertFalse((self.home / '.agents/skills/other').exists())
+            with self.assertRaisesRegex(ValueError, 'other'):
+                estate.install(self.root, expected_source=manifest['source_sha256'], skills=['other'])
+            settings['release']['shared']['status'] = 'pending'
+            with self.assertRaisesRegex(ValueError, 'shared assembly'):
+                estate.install(self.root, expected_source=manifest['source_sha256'], skills=['demo'])
+
+    def test_unknown_or_empty_selection_never_installs(self):
+        for selection in [[], ['missing']]:
+            with self.assertRaises(ValueError): estate.install(self.root, self.home, skills=selection)
+        self.assertFalse((self.home / '.agents/skills').exists())
+
+
+    def test_owned_alias_moves_with_selected_package(self):
+        alias = self.home / '.codex/skills/my-alias'
+        alias.parent.mkdir(parents=True); alias.symlink_to(self.root / 'build/skills/demo')
+        estate.pin_installed(self.root, self.home)
+        (self.root / 'skills/demo/references/detail.md').write_text('Alias update')
+        estate.build(self.root)
+        estate.install(self.root, self.home, skills=['demo'])
+        self.assertEqual(alias.resolve(), (self.home / '.agents/skills/demo').resolve())
+        self.assertEqual((alias / 'references/detail.md').read_text(), 'Alias update')
+
+    def test_selected_dependency_still_needs_its_own_review(self):
+        import plugins
+        self.add_other(); (self.root / 'config').mkdir()
+        (self.root / 'config/runtime-dependencies.json').write_text(json.dumps({'demo':['other']}))
+        manifest = estate.build(self.root)
+        settings = {'bundles': {}, 'release': {'shared': {}, 'modules': {'demo': {}, 'other': {'status':'pending'}}, 'routers': {}}}
+        settings['release']['shared'] = {'status':'accepted','evidence':'synthetic review','reviewed_sha256':plugins.shared_hash(self.root,settings)}
+        settings['release']['modules']['demo'] = {'status':'accepted','evidence':'synthetic review','reviewed_sha256':estate.tree_hash(self.root/'skills/demo')}
+        gaps=plugins.release_gaps(self.root,settings,[],manifest,entrypoints=['demo'])
+        self.assertEqual([g['subject'] for g in gaps],['other'])
+
+
+    def test_repeated_release_id_rolls_back_to_its_latest_inventory(self):
+        self.add_other(); estate.install(self.root, self.home)
+        (self.root / 'skills/demo/references/detail.md').write_text('Selected update')
+        (self.root / 'skills/other/references/detail.md').write_text('Neighbour update')
+        estate.build(self.root)
+        first = estate.install(self.root, self.home, skills=['demo'])
+        old_other = (self.home / '.agents/skills/other').readlink()
+        estate.install(self.root, self.home, skills=['other'])
+        new_other = (self.home / '.agents/skills/other').readlink()
+        again = estate.install(self.root, self.home, skills=['demo'])
+        self.assertEqual(first['release_id'], again['release_id'])
+        self.assertNotEqual(old_other, new_other)
+        expected = json.loads((releases.state(self.home) / 'active.json').read_text())['links']
+        (self.root / 'skills/demo/references/detail.md').write_text('Later update')
+        estate.build(self.root); estate.install(self.root, self.home, skills=['demo'])
+        estate.rollback(self.root, self.home, first['release_id'])
+        self.assertEqual(json.loads((releases.state(self.home) / 'active.json').read_text())['links'], expected)
