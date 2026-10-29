@@ -122,6 +122,94 @@ class PortableScopingTests(unittest.TestCase):
         self.assertEqual(sum(Decimal(item['scenarios']['expected']['fee']) for item in data['items']),
                          Decimal(data['totals']['expected']['fee']))
 
+    def unestimated_item(self):
+        return {'id': 'migration', 'name': 'Data migration',
+                'description': 'Move the agreed historical records.',
+                'source': 'Fictional brief, migration question',
+                'status': 'unestimated',
+                'discovery_needed': 'Confirm record volume and required transformations.'}
+
+    def test_unestimated_scope_remains_visible_and_withholds_project_totals(self):
+        model = copy.deepcopy(self.model)
+        model['items'].append(self.unestimated_item())
+        result, output, _ = self.calculate(model)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        data = json.loads(output.read_text())
+        self.assertEqual(data['format'], 2)
+        self.assertEqual(data['status'], 'incomplete-estimate')
+        self.assertFalse(data['totals_complete'])
+        self.assertIsNone(data['totals'])
+        self.assertEqual(data['estimated_subtotal']['expected'], {'hours': '52', 'fee': '5700'})
+        unknown = data['items'][-1]
+        self.assertEqual(unknown['source'], model['items'][-1]['source'])
+        self.assertEqual(unknown['discovery_needed'], model['items'][-1]['discovery_needed'])
+        self.assertIsNone(unknown['scenarios'])
+        document = output.with_suffix('.md').read_text()
+        for phrase in ['Estimated work subtotal', 'Full-project hours and price are withheld.',
+                       'Data migration', 'Status: unestimated', unknown['discovery_needed'],
+                       'estimated items only']:
+            self.assertIn(phrase, document)
+        self.assertNotIn('## Scenario totals', document)
+
+    def test_all_unestimated_scope_cannot_look_like_a_zero_price_project(self):
+        model = copy.deepcopy(self.model)
+        model['items'] = [self.unestimated_item()]
+        model.pop('capacity')
+        for priced in [True, False]:
+            if not priced:
+                model.pop('rates')
+                model.pop('currency')
+            result, output, _ = self.calculate(model)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            data = json.loads(output.read_text())
+            self.assertIsNone(data['totals'])
+            self.assertIsNone(data['estimated_subtotal'])
+            self.assertIsNone(data['capacity_lower_bound_weeks'])
+            document = output.with_suffix('.md').read_text()
+            self.assertIn('No work has an effort estimate yet.', document)
+            self.assertNotIn('| Expected | 0 |', document)
+
+    def test_unestimated_contract_rejects_ambiguous_or_contradictory_inputs(self):
+        mutations = []
+        for status in ['unknown', '', False, None, []]:
+            item = self.unestimated_item()
+            item['status'] = status
+            mutations.append(item)
+        item = self.unestimated_item()
+        item.pop('discovery_needed')
+        mutations.append(item)
+        for allocations in [self.model['items'][0]['allocations'], {}, None]:
+            item = self.unestimated_item()
+            item['allocations'] = allocations
+            mutations.append(item)
+        for item in mutations:
+            model = copy.deepcopy(self.model)
+            model['items'].append(item)
+            result, output, _ = self.calculate(model)
+            self.assertEqual(result.returncode, 2, result.stderr)
+            self.assertFalse(output.exists())
+            self.assertFalse(output.with_suffix('.md').exists())
+
+    def test_document_exposes_calculations_and_escapes_table_text(self):
+        model = copy.deepcopy(self.model)
+        model['rates'][0]['source'] = 'Fictional card | revision 1\nSecond line'
+        result, output, _ = self.calculate(model)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        data = json.loads(output.read_text())
+        self.assertTrue(data['totals_complete'])
+        self.assertEqual(data['totals'], data['estimated_subtotal'])
+        document = output.with_suffix('.md').read_text()
+        for item in data['items']:
+            section = document.split('### ' + item['name'] + '\n', 1)[1].split('\n##', 1)[0]
+            for key in ['low', 'expected', 'high']:
+                values = item['scenarios'][key]
+                self.assertIn('| ' + key.capitalize() + ' | ' + values['hours'] + ' | ' + values['fee'] + ' |', section)
+        self.assertIn('| Developer | 28 | 42 | 60 |', document)
+        self.assertIn('| Architect | 6 | 10 | 16 |', document)
+        self.assertIn('Fictional card \\| revision 1 Second line', document)
+        for key, weeks in data['capacity_lower_bound_weeks'].items():
+            self.assertIn('| ' + key.capitalize() + ' | ' + weeks + ' |', document)
+
 
 if __name__ == '__main__':
     unittest.main()

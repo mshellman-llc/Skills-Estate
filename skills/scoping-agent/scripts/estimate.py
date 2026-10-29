@@ -74,8 +74,20 @@ def estimate(model):
         seen.add(item_id)
         name = text(item.get('name'), item_id + ' name')
         description = text(item.get('description'), item_id + ' description')
-        basis = text(item.get('basis'), item_id + ' estimate basis')
         item_source = text(item.get('source'), item_id + ' source')
+        status = item.get('status', 'estimated')
+        if status not in ('estimated', 'unestimated'):
+            raise ValueError(item_id + ' status must be estimated or unestimated')
+        if status == 'unestimated':
+            if 'allocations' in item and item['allocations'] != []:
+                raise ValueError(item_id + ' is unestimated and cannot carry allocations')
+            discovery = text(item.get('discovery_needed'), item_id + ' discovery_needed')
+            basis = text(item['basis'], item_id + ' estimate basis') if 'basis' in item else None
+            output.append({'id': item_id, 'name': name, 'description': description,
+                           'source': item_source, 'status': status, 'basis': basis,
+                           'discovery_needed': discovery, 'scenarios': None})
+            continue
+        basis = text(item.get('basis'), item_id + ' estimate basis')
         allocations = item.get('allocations')
         if not isinstance(allocations, list) or not allocations:
             raise ValueError(item_id + ' needs role-hour allocations')
@@ -104,7 +116,7 @@ def estimate(model):
             for field in ('hours', 'fee'):
                 totals[key][field] += scenarios[key][field]
         output.append({'id': item_id, 'name': name, 'description': description,
-                       'basis': basis, 'source': item_source,
+                       'basis': basis, 'source': item_source, 'status': status,
                        'scenarios': {key: {'hours': decimal_text(v['hours']), 'fee': decimal_text(v['fee']) if rates else None}
                                      for key, v in scenarios.items()}})
     capacity = {}
@@ -125,40 +137,74 @@ def estimate(model):
             raise ValueError('Capacity does not cover scoped roles: ' + ', '.join(sorted(missing)))
         bounds = {key: decimal_text(max(by_role[role][key] / capacity[role] for role in by_role))
                   for key in SCENARIOS}
-    return {'format': 1, 'status': 'working-estimate',
+    complete = all(item['status'] == 'estimated' for item in output)
+    subtotal = ({key: {'hours': decimal_text(v['hours']), 'fee': decimal_text(v['fee']) if rates else None}
+                 for key, v in totals.items()} if by_role else None)
+    return {'format': 2, 'status': 'working-estimate' if complete else 'incomplete-estimate',
             'source': {'reference': reference, 'revision': revision}, 'currency': currency,
-            'items': output,
-            'totals': {key: {'hours': decimal_text(v['hours']), 'fee': decimal_text(v['fee']) if rates else None}
-                       for key, v in totals.items()},
+            'items': output, 'totals_complete': complete,
+            'totals': subtotal if complete else None, 'estimated_subtotal': subtotal,
             'role_hours': {role: {key: decimal_text(v) for key, v in values.items()}
                            for role, values in by_role.items()},
             'rates': [{'role': role, 'rate': decimal_text(v['rate']), 'source': v['source']}
                       for role, v in rates.items()],
-            'capacity_lower_bound_weeks': bounds, 'rounding': 'unrounded decimal amounts',
+            'capacity_lower_bound_weeks': bounds, 'capacity_scope': 'estimated-items',
+            'rounding': 'unrounded decimal amounts',
             'assumptions': model.get('assumptions', []), 'exclusions': model.get('exclusions', [])}
 
 
 def markdown(result):
     def cell(value):
         return str(value).replace('|', '\\|').replace('\n', ' ')
-    total = result['totals']
+    total = result['estimated_subtotal']
     priced = result['currency'] is not None
     columns = '| Scenario | Hours |' + (' Fee (' + cell(result['currency']) + ') |' if priced else '')
     divider = '| --- | ---: |' + (' ---: |' if priced else '')
     lines = ['# Project estimate', '',
-        'Working estimate from ' + result['source']['reference'] + ', revision ' + result['source']['revision'] + '.', '',
-        columns, divider]
-    for key in SCENARIOS:
-        lines.append('| ' + key.capitalize() + ' | ' + total[key]['hours'] + ' |' +
-                     (' ' + total[key]['fee'] + ' |' if priced else ''))
+        'Working estimate from ' + result['source']['reference'] + ', revision ' + result['source']['revision'] + '.', '']
+    if not result['totals_complete']:
+        lines += ['Some scope remains unestimated. Full-project hours and price are withheld.', '']
+    if total is not None:
+        lines += ['## ' + ('Scenario totals' if result['totals_complete'] else 'Estimated work subtotal'), '', columns, divider]
+        for key in SCENARIOS:
+            lines.append('| ' + key.capitalize() + ' | ' + total[key]['hours'] + ' |' +
+                         (' ' + total[key]['fee'] + ' |' if priced else ''))
+    else:
+        lines += ['No work has an effort estimate yet.', '']
     lines += ['', '## Scope and estimate basis', '']
     for item in result['items']:
         lines += ['### ' + item['name'], '', item['description'], '',
-                  'Estimate basis: ' + item['basis'], 'Source: ' + item['source'], '']
+                  '- Item ID: ' + item['id'], '- Source: ' + item['source']]
+        if item['basis'] is not None:
+            lines.append('- Estimate basis: ' + item['basis'])
+        if item['status'] == 'unestimated':
+            lines += ['- Status: unestimated', '- Discovery needed: ' + item['discovery_needed'], '']
+            continue
+        lines += ['', columns, divider]
+        for key in SCENARIOS:
+            values = item['scenarios'][key]
+            lines.append('| ' + key.capitalize() + ' | ' + values['hours'] + ' |' +
+                         (' ' + values['fee'] + ' |' if priced else ''))
+        lines.append('')
+    if result['role_hours']:
+        lines += ['## Role effort', '', '| Role | Low hours | Expected hours | High hours |',
+                  '| --- | ---: | ---: | ---: |']
+        for role, hours in result['role_hours'].items():
+            lines.append('| ' + cell(role) + ' | ' + ' | '.join(hours[key] for key in SCENARIOS) + ' |')
+        lines.append('')
+    if result['rates']:
+        lines += ['## Supplied rates', '', '| Role | Rate (' + cell(result['currency']) + '/hour) | Source |',
+                  '| --- | ---: | --- |']
+        for rate in result['rates']:
+            lines.append('| ' + cell(rate['role']) + ' | ' + rate['rate'] + ' | ' + cell(rate['source']) + ' |')
+        lines.append('')
     if result['capacity_lower_bound_weeks']:
         lines += ['## Capacity', '',
-            'The expected workload needs at least ' + result['capacity_lower_bound_weeks']['expected'] +
-            ' weeks at the supplied role capacity. Dependencies and waiting time may extend the schedule.', '']
+            'These workload bounds cover estimated items only. Dependencies and waiting time may extend the schedule.', '',
+            '| Scenario | Minimum weeks at supplied capacity |', '| --- | ---: |']
+        for key in SCENARIOS:
+            lines.append('| ' + key.capitalize() + ' | ' + result['capacity_lower_bound_weeks'][key] + ' |')
+        lines.append('')
     for key in ('assumptions', 'exclusions'):
         if result[key]:
             lines += ['## ' + key.capitalize(), '']

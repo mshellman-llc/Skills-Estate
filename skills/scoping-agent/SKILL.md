@@ -87,7 +87,9 @@ Its rates and effort are test data, with no authority for a real project.
 | `source` | Reference and revision of the scope model |
 | `currency` | Currency supplied for this estimate |
 | `rates` | Role and rate, with the source of that rate |
-| `items` | Unique ID and name; description, source and estimating basis; role allocations |
+| `items` | Unique ID and name; description and source; estimated items also need a basis and role allocations |
+| `items[].status`, when used | `estimated` (the default) or `unestimated`; other values are refused |
+| `items[].discovery_needed` | Required for an unestimated item; explain what must be learned before estimating it |
 | `allocations[].hours` | Nonnegative `low`, `expected` and `high` values in that order |
 | `capacity`, when used | Role count and weekly hours per person, with availability from 0 to 1 |
 | `assumptions` and `exclusions` | Conditions and work boundaries preserved in the result |
@@ -96,6 +98,20 @@ The result includes item calculations and role-hour totals. It also gives the
 aggregate hours and fee for each scenario. Amounts retain their decimal value;
 the calculator applies no implicit commercial rounding or contingency uplift.
 It records the input hash and calculator hash.
+
+For work with no effort basis, set `status` to `unestimated`, retain its source
+and description, and supply `discovery_needed`. Omit allocations or use an empty
+list. The calculator rejects allocations on an unestimated item so hours cannot
+be silently discarded.
+
+Output format 2 retains every item. When any item is unestimated, the status is
+`incomplete-estimate`, `totals_complete` is false, and full-project `totals` is
+null. `estimated_subtotal` contains only the estimated work; it is null when no
+item has an estimate. For fully estimated scope, `totals` keeps the scenario
+calculations. Fees remain null without rates. Consumers must check completeness
+before using totals. The Markdown shows item calculations, role hours, supplied
+rate sources, and all three capacity scenarios. Capacity covers estimated work
+only, so unknown work cannot acquire an implied delivery date.
 
 Capacity produces a workload lower bound in weeks. Dependencies and waiting
 time can extend the schedule. A capacity bound cannot establish a delivery date.

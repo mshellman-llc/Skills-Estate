@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-29T14:05:33.337183+00:00",
-  "baseCommit": "dfbf95e1dabed6177fdbf55db22f7c7bca14f655",
+  "generatedAt": "2026-10-29T14:11:23.485905+00:00",
+  "baseCommit": "e83189535d53750b120f1d25dd35eb5f8b61fd67",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -55,7 +55,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/accessibility-audit/SKILL.md",
       "sourceSha256": "5de8370781b69e876ef5e218a86ec0c61a55a1a2eb041b66bb7443b02cf185f4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/accessibility-audit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/accessibility-audit/SKILL.md",
       "taskPackages": [
         {
           "name": "accessibility-audit",
@@ -138,7 +138,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/analytics-strategy/SKILL.md",
       "sourceSha256": "9ce5ec96f381e054ab19e81ec51d447bdb30106569aa1646f6e1a1c697493a03",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/analytics-strategy/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/analytics-strategy/SKILL.md",
       "taskPackages": [
         {
           "name": "analytics-strategy",
@@ -221,7 +221,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/architecture-doc/SKILL.md",
       "sourceSha256": "5fbf58618b016ef28e80701b67af77a842c8bf9ef0e82f35b80bc746998b13af",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/architecture-doc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/architecture-doc/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -363,7 +363,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-capture/SKILL.md",
       "sourceSha256": "5c4c6b561012b4b8a06b35d2a758e55bfcf4fcab61af49dd254e46d7d8336772",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/beastmode-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/beastmode-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-capture",
@@ -491,7 +491,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-context/SKILL.md",
       "sourceSha256": "c6b3c39541b21a3fe91ac095187b3e0655015848630d703c90082371e70028d0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/beastmode-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/beastmode-context/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-context",
@@ -643,7 +643,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-health/SKILL.md",
       "sourceSha256": "5a623db744b8699d582aa23c3d510e153724221f76c9ac7c3591d6e88fcd4178",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/beastmode-health/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/beastmode-health/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-health",
@@ -813,7 +813,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-reconcile/SKILL.md",
       "sourceSha256": "295ac5af02c465c675c066d3a71bdd71f83eb12d01b870ee31ca18d9d6a342a7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/beastmode-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/beastmode-reconcile/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-reconcile",
@@ -941,7 +941,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brain-work-item/SKILL.md",
       "sourceSha256": "97d4301054811f22759b713dd031c60db07ceefac0d2ea00e667a09ea0144a77",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/brain-work-item/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/brain-work-item/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1040,7 +1040,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "19cc56e3b103f7289bab5d82fb406bffcebb86bb8367f5b26fa5e958d87b4b46",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -1305,7 +1305,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/business-case/SKILL.md",
       "sourceSha256": "eb4ffd6ac95bbaba5887e2454bd4bfb406758bb032d1f3a174fadd95481ccacd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "business-case",
@@ -1451,7 +1451,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/call-prep/SKILL.md",
       "sourceSha256": "1f7b57f2c5107d2f685413926208a57a126005b61ccebf19c311796118f6cb00",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/call-prep/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/call-prep/SKILL.md",
       "taskPackages": [
         {
           "name": "call-prep",
@@ -1685,7 +1685,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-application/SKILL.md",
       "sourceSha256": "3dc9a1d731f23aa659abf35b600cea12e4e749605600e3aae227167b242cd373",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/career-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/career-application/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2485,7 +2485,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-materials-and-outreach/SKILL.md",
       "sourceSha256": "971e1b3412525d0c67d5dbf6ec812f7bb1f183c3ce015703c5d82bbe66c83020",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/career-materials-and-outreach/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/career-materials-and-outreach/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2609,7 +2609,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-progression-and-offers/SKILL.md",
       "sourceSha256": "36199a1c7a884769c93b815f165b05fe44718d52655ae443ea9390661872b87a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/career-progression-and-offers/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/career-progression-and-offers/SKILL.md",
       "taskPackages": [
         {
           "name": "career-decisions",
@@ -2744,7 +2744,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/case-study-builder/SKILL.md",
       "sourceSha256": "b4f3f791c7cbadc8dbc76c3cffdc17d9d42370ba07d4fe80f63636ab9a22e306",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/case-study-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/case-study-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "portfolio-case-study",
@@ -2903,7 +2903,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/client-brand/SKILL.md",
       "sourceSha256": "ab1004c52509f2bd6b1c8bb262ea72ccc36ae602f3fc499d6c09aa79aacdc68c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/client-brand/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/client-brand/SKILL.md",
       "taskPackages": [
         {
           "name": "brand-profile",
@@ -2969,7 +2969,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/code-simplify/SKILL.md",
       "sourceSha256": "e44c1b41ecc7c643592df61b66d584d1f97f8e320b354a9ccebb12377e760bf4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/code-simplify/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/code-simplify/SKILL.md",
       "taskPackages": [
         {
           "name": "code-simplify",
@@ -3040,7 +3040,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cross-platform-skill-release/SKILL.md",
       "sourceSha256": "29d3488cbb670ae0113ec864c022cea33a1a0b5d0a2d3d7f9828646236d7e611",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/cross-platform-skill-release/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/cross-platform-skill-release/SKILL.md",
       "taskPackages": [
         {
           "name": "cross-platform-skill-release",
@@ -3128,7 +3128,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cutover-closeout/SKILL.md",
       "sourceSha256": "240fb2f31c55381a16ddfe911ee32cd3279ba87a0fd5de17abc25d45bd6f6fdf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "cutover-closeout",
@@ -3282,7 +3282,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ddoc/SKILL.md",
       "sourceSha256": "c8a0b7d4cc56da6e069cf206c2a185551fcfd4cc4ef38fc2d9e193258434df78",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/ddoc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/ddoc/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3478,7 +3478,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deal-desk/SKILL.md",
       "sourceSha256": "2e8a068b3ce86529ad881a5db2eb46638db5ea95921ba503cada1f79f99c7e7c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/deal-desk/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/deal-desk/SKILL.md",
       "taskPackages": [
         {
           "name": "commercial-review",
@@ -3638,7 +3638,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deck-builder/SKILL.md",
       "sourceSha256": "6ca519203190c0a2885b8acc63aef5734fe44170a12f4ecc4750ebc301f59596",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/deck-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/deck-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3804,7 +3804,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-kickoff/SKILL.md",
       "sourceSha256": "1163205356b73b7b31ea047e692074032c8795596b74695271db65bd150dacce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/delivery-kickoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/delivery-kickoff/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-kickoff",
@@ -3995,7 +3995,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-status/SKILL.md",
       "sourceSha256": "184ece22c703648bcd2fb2aecea13587ae17e3cc75dd4bf95e5de4b6e8348df9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/delivery-status/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/delivery-status/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-status",
@@ -4163,7 +4163,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-suite/SKILL.md",
       "sourceSha256": "00b02e677f2089698d62a83ba83ecd9ee0b4b7155f9bf2669ed8ce07a910b2dd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/delivery-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/delivery-suite/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -4338,7 +4338,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-brief/SKILL.md",
       "sourceSha256": "4666a3c2d1167433e739a3af72b3a72b88d52a996b00ca1ed707851820fc452e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/discovery-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/discovery-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4519,7 +4519,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-synthesis/SKILL.md",
       "sourceSha256": "e66c16fdc4348345652124164356093ce5b079047bcd5d1c39f661b641e75a27",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/discovery-synthesis/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/discovery-synthesis/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4644,7 +4644,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-promote/SKILL.md",
       "sourceSha256": "43456848237b1d370fcf1c6fe021c8136a0a2554bb7d3b207875c517b0deb405",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/dx-devops-promote/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/dx-devops-promote/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4801,7 +4801,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-work-item-manage/SKILL.md",
       "sourceSha256": "91aa03c8872c0e44002d44f46c1f24b613f977d098cda11d5c5c5d324e35c161",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/dx-devops-work-item-manage/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/dx-devops-work-item-manage/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4913,7 +4913,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "c22dd3239f7129a8d7c5628c7a7b454911e21133beea86370755d4e3a456caee",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "journey-mapping",
@@ -5084,7 +5084,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/execution-truth/SKILL.md",
       "sourceSha256": "250c46f4d89a5f5daf226a124e0eadff41eef4fa3548203181679cf8619e0fe0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/execution-truth/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/execution-truth/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -5196,7 +5196,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/fortunes-weave/SKILL.md",
       "sourceSha256": "5c61a7cc89c169243f52747ae4eacdba4cb36402381d51dda9b592e7525628b1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "fortunes-weave",
@@ -5275,7 +5275,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/github-repository-work/SKILL.md",
       "sourceSha256": "5b26b99bd41ea3c3feaf5ffed8bf75d7e144820ffdc47cafeed3377bc98ae7ea",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/github-repository-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/github-repository-work/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -5347,7 +5347,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/independent-product/SKILL.md",
       "sourceSha256": "52ea656665f9e404e8394428cb58fbb08887fbe799a395123ff63f0f5e4e5307",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "independent-product",
@@ -5432,7 +5432,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/information-architecture/SKILL.md",
       "sourceSha256": "cb853f164805cc2f52652f52619b237e20c0db7cecddc815033c057fd9caa0c7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "information-architecture",
@@ -5515,7 +5515,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/interactive-proposal/SKILL.md",
       "sourceSha256": "e978032e6cd8b6f5a7fdeb5d97fda3ea9ee6450ba10b5a34b4ffa612c0fce86f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -5697,7 +5697,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/journey-mapping/SKILL.md",
       "sourceSha256": "bdb2d78f9422bf383aba6d49c7d863f96177c00a9a2c98649d653f9c26878b8f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/journey-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/journey-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "journey-mapping",
@@ -5810,7 +5810,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/jtbd-framing/SKILL.md",
       "sourceSha256": "18cfba0735c269cff71461171cfb9213c60626ac4aa00d4145e6181a63fd19c6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/jtbd-framing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/jtbd-framing/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -5960,7 +5960,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/knowledge-hub/SKILL.md",
       "sourceSha256": "e099704a5229492305e3bd6b766f180284000ad557056a8fa52a22ef8f1a7bfb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "knowledge-hub",
@@ -6184,7 +6184,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/megan-writing-style/SKILL.md",
       "sourceSha256": "3d605da98b5011865e0d3c74956a481715facd3c68d7562bdc7ff18c221de86b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/megan-writing-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/megan-writing-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6312,7 +6312,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/org-preflight/SKILL.md",
       "sourceSha256": "8374725b79befbea9dbcd0b317853c880e895ab4c09cc03c2a8c46a20816b8d2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/org-preflight/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/org-preflight/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "sf-change-delivery"
@@ -6408,7 +6408,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/personal-writing-style-runtime/SKILL.md",
       "sourceSha256": "b785d895cb4e9ba4db6767081e16762487e097808b2573bd53db1b08a2f2a9ae",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/personal-writing-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/personal-writing-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6526,7 +6526,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-builder/SKILL.md",
       "sourceSha256": "f05482322cb84e6cbb0505bea08685c59b7c773663f13f93123b6b7c62d94c11",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/playbook-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/playbook-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6655,7 +6655,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-fit-router/SKILL.md",
       "sourceSha256": "2b9248449935ae4bc1b76bd8c62aa46beac4d8582d49c25de5c175066efd2881",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/playbook-fit-router/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/playbook-fit-router/SKILL.md",
       "taskPackages": [
         {
           "name": "offering-fit",
@@ -6752,7 +6752,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-onepager/SKILL.md",
       "sourceSha256": "afe18a020ca874d596409618e458f5610feef1bae52072646aac70fe55c3c968",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/playbook-onepager/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/playbook-onepager/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6912,7 +6912,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-suite/SKILL.md",
       "sourceSha256": "4f9290696f7709bd96f3ba1210efccd757230f1b74ee984c5aee82362adf03bc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/playbook-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/playbook-suite/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -7035,7 +7035,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/pm-spec-writing/SKILL.md",
       "sourceSha256": "e254c645eaa17d5c7c48b8f497e041b98e7e48aae248e9aa4b024009aed34434",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/pm-spec-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/pm-spec-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -7123,7 +7123,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/process/SKILL.md",
       "sourceSha256": "e198c87447063eb08b39e25468d0cd2bfc031ba5362061df93b06eb0429ad9f2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/process/SKILL.md",
       "taskPackages": [
         {
           "name": "process-design",
@@ -7239,7 +7239,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/product-development-pathway/SKILL.md",
       "sourceSha256": "abb342d3417d137537c0138bc0faf9507625b137247f275dfadc39f49da5a973",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/product-development-pathway/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/product-development-pathway/SKILL.md",
       "taskPackages": [
         {
           "name": "product-development",
@@ -7385,7 +7385,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prose-pass/SKILL.md",
       "sourceSha256": "d763685eb6e7488beff6d8c233d11aab6fb73790a426dd31cd24bb94e3b2fd55",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/prose-pass/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/prose-pass/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -7671,7 +7671,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/quality-gate/SKILL.md",
       "sourceSha256": "af8ba674dbd6fcaed550bbd00816b6e613706cb328d37457ab4e2fe632885c8e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/quality-gate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/quality-gate/SKILL.md",
       "taskPackages": [
         {
           "name": "deliverable-review",
@@ -7809,7 +7809,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/requirements-capture/SKILL.md",
       "sourceSha256": "9a072a1cedc098829c0aa7272df33083441f379db3f59c36bd6cad16dd3f2b37",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/requirements-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/requirements-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "requirements-backlog",
@@ -7947,7 +7947,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/resume-numbers-and-keywords/SKILL.md",
       "sourceSha256": "bc7d3e8a5d7f3900aaf2319cdcbdcf46828c16de9c635d3850ee7419215e2797",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/resume-numbers-and-keywords/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/resume-numbers-and-keywords/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -8086,7 +8086,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/rom/SKILL.md",
       "sourceSha256": "ad619afcb8fda9b78eb90aeb4996c8ad75f84b764d4c2821b35214f93c8a0dca",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/rom/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/rom/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -8247,7 +8247,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/s2d-handoff/SKILL.md",
       "sourceSha256": "fceb4773e5e9046eace1e1125d7e808844c5e004b105cb1bd7dae71a459fe9dc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/s2d-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/s2d-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-to-delivery-handoff",
@@ -8432,7 +8432,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-journey-critique/SKILL.md",
       "sourceSha256": "de547bd79ab064c90e8fc8cf2aad21c6110f35e01b01dc8ee87f0034c73b66e0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sales-journey-critique/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sales-journey-critique/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -8544,7 +8544,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-process-mapping/SKILL.md",
       "sourceSha256": "e155d5363b752865eb5ddc19e389c508ccf46b41ca13d669b855599d3372bf21",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sales-process-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sales-process-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -8645,7 +8645,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-reference/SKILL.md",
       "sourceSha256": "fa2814c3671e633ab91f6081bacb1700dda898be6626aa0a315f4895ef8afaf3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/scope-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/scope-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -8814,11 +8814,11 @@
       "title": "Project scoping",
       "family": 1,
       "description": "Develop project scope and effort estimates from the user's brief, supplied models or configured pricing system. Support rough ranges and confirmed quote revisions. Produce usable local scope and calculations without requiring a CRM connection.",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/scoping-agent/SKILL.md",
-      "sourceSha256": "b47e8eeb86b8d6f7a8cd76f2b8f31c078f5b4d38d4b65609fcede479603d35c4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/scoping-agent/SKILL.md",
+      "sourceSha256": "5eab458a8afd0a1583a2653f410a37c5fc2bcff1b75ef796b047bdf65b81cf79",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/scoping-agent/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -8828,24 +8828,17 @@
       "downloadPackages": [
         "project-scoping"
       ],
-      "guide": {
-        "what": "Develop scope, effort, staffing, and timeline estimates.",
-        "when": "A project needs a rough range or a confirmed quote revision.",
-        "inputs": "The brief, scope model, comparables, rate card, and relevant constraints.",
-        "outputs": "A scope and estimate with shown calculations, staffing, and assumptions.",
-        "example": "Estimate effort, staffing, and timing for this scope using the supplied rate card.",
-        "reviewedEntrypointSha256": "b47e8eeb86b8d6f7a8cd76f2b8f31c078f5b4d38d4b65609fcede479603d35c4"
-      },
-      "guideStatus": "current",
+      "guide": null,
+      "guideStatus": "needs-review",
       "reuse": {
-        "audience": "general",
-        "label": "General use",
-        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
+        "audience": "review",
+        "label": "Needs review",
+        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "cleanup",
+        "readiness": "review",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -8857,11 +8850,11 @@
           }
         ],
         "textFilesScanned": 9,
-        "packageFingerprint": "20a0b30fb20948ab268d963a6890c531af15bd1e5bbf386847ced300d0adb57c",
+        "packageFingerprint": "c3f5e0e456a722c3c662dbac2ed586de8323400cf745c1e4ea25bc0cb161df07",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
-      "markdown": "---\nname: scoping-agent\ndescription: Develop project scope and effort estimates from the user's brief, supplied models or configured pricing system. Support rough ranges and confirmed quote revisions. Produce usable local scope and calculations without requiring a CRM connection.\n---\n\n<!-- ESTATE-WRITING:BEGIN -->\nBefore writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.\n<!-- ESTATE-WRITING:END -->\n\n# Project scoping\n\nBuild the requested scope from current project evidence. Use a supplied export\nor the local model below when no pricing integration is configured. A rough\nestimate does not require an existing quote. Keep accepted commitments separate\nfrom draft scope and estimate assumptions.\n\n## Select the work\n\n| Request | Output |\n| --- | --- |\n| Define scope | Work items with supported boundaries and acceptance conditions |\n| Estimate effort | Sourced role-hour ranges and their basis |\n| Estimate cost | The effort model with an explicit rate source and currency |\n| Plan staffing | Role capacity and a schedule constrained by dependencies |\n| Revise a quote | A comparison against the confirmed quote revision; authorized changes only |\n\nRead the supplied brief and existing decisions before asking a question. Find\nthe constraints affecting scope or price. Preserve contradictory evidence as\nan unresolved decision. Ask only when a missing choice materially changes the\nwork; continue the supported parts while it is pending.\n\n## Define the deliverable scope\n\nOrganize items around the behavior or deliverable being supplied. An item can\ncarry its requirements work through validation and deployment. Avoid counting\nthe same lifecycle effort again in a separate overhead row. A standalone test\nor assessment engagement may have its own deliverable; follow the actual brief.\n\nGive each item a stable ID and descriptive name. Explain its behavior and the\ncondition that bounds it. Link it to its source and acceptance check. Keep\ndependencies and exclusions where they affect that item. Use the project's\ncapability taxonomy if one exists; a local draft needs no custom CRM taxonomy.\n\nDistinguish explicitly requested work from a necessary implication. Keep an\ninferred addition proposed until its scope owner accepts it. Do not turn an\nunanswered question into a statement that documentation or access is absent.\nAn assumption is a proposed estimating condition, with its consequence if it\nchanges. It is never a substitute for a fact.\n\nRead [the estimation method](references/methodology.md) for calibration and\nstaffing decisions. Use meaningful item names in cross-references; retain IDs\nfor traceability rather than making the reader decode abbreviations.\n\n## Estimate with available sources\n\nUse current scope decomposition or relevant comparables. Describe differences\nin volume and complexity when adapting another engagement. A user-supplied\nanchor can support an estimate when its working hours and scope are explicit.\nDo not assume a working week, a phase split or a staffing ratio.\n\nKeep a low and high bound around the expected effort where the source supports\na range. Explain which condition moves each bound. Do not invent a confidence\npercentage or treat the expected value as a statistical median without data.\nIf effort remains unknown, retain the item as unestimated and identify the\ndiscovery needed. Do not present a priced subset as the complete project cost.\n\nUse the supplied rate card or confirmed quote for rates. Preserve its revision\nand distinguish cost rates from client billing rates. Without rates, deliver\nthe effort estimate and the missing pricing input. Do not import old rates\nfrom this estate or another engagement.\n\n## Run the local calculator\n\nThe calculator requires Python 3 and no external service:\n\n```bash\npython3 scripts/estimate.py scope.json --output attempts/001/estimate.json\n```\n\nIt writes the exact decimal calculations and a readable Markdown estimate.\nExisting outputs are preserved. Use another attempt path after a revision.\nThe [fictional input](fixtures/estimate.example.json) shows the full contract.\nIts rates and effort are test data, with no authority for a real project.\n\n| Input | Required content |\n| --- | --- |\n| `source` | Reference and revision of the scope model |\n| `currency` | Currency supplied for this estimate |\n| `rates` | Role and rate, with the source of that rate |\n| `items` | Unique ID and name; description, source and estimating basis; role allocations |\n| `allocations[].hours` | Nonnegative `low`, `expected` and `high` values in that order |\n| `capacity`, when used | Role count and weekly hours per person, with availability from 0 to 1 |\n| `assumptions` and `exclusions` | Conditions and work boundaries preserved in the result |\n\nThe result includes item calculations and role-hour totals. It also gives the\naggregate hours and fee for each scenario. Amounts retain their decimal value;\nthe calculator applies no implicit commercial rounding or contingency uplift.\nIt records the input hash and calculator hash.\n\nCapacity produces a workload lower bound in weeks. Dependencies and waiting\ntime can extend the schedule. A capacity bound cannot establish a delivery date.\nFor a schedule, place the actual work against dependencies and agreed resource\navailability. Preserve phase names and staffing increments from the project.\n\nInspect the generated estimate against the input. Recompute a representative\nitem and reconcile the totals. Check the range drivers and the meaning of each\nassumption. Apply writing-integrity to the generated prose, including text\ncarried from a draft input. Calculation success does not establish scope quality.\n\n## Use a configured CRM adapter\n\nRead [CRM scoping](references/crm-scoping.md) only when the project uses the\ndocumented custom integration. Inspect the tools actually available and confirm\nthe org before a write. Read [payloads](references/payloads.md) before preparing\na supported mutation. Use the target's actual metadata and schema version.\n\nCreate or update a record only within the user's authorized request. Show the\naffected quote and scope before a material change. Never add team membership,\nreplace a tag catalog or activate a timeline merely to make local estimation\npossible. Read back changed records and report what the system accepted.\n\n## Deliver the result\n\nReturn the usable scope and requested calculations. Retain assumptions with the\nestimate and name the conditions that would reopen it. Save actual generated\nfiles and failed attempts. A hub update is optional and needs an available,\nauthorized project destination; local work remains usable without it.\n\nUse scope-options for a comparison or interactive proposal. Use the\nstatement-of-work workflow for the contract. A new estimate does not replace an\naccepted quote, authorize a production operation or establish client approval.\n",
-      "html": "<p>&lt;!-- ESTATE-WRITING:BEGIN --&gt; Before writing, read the writing standard <span class=\"ref\">(references/estate/writing.md)</span>. Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review. &lt;!-- ESTATE-WRITING:END --&gt;</p><h2>Project scoping</h2><p>Build the requested scope from current project evidence. Use a supplied export or the local model below when no pricing integration is configured. A rough estimate does not require an existing quote. Keep accepted commitments separate from draft scope and estimate assumptions.</p><h3>Select the work</h3><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Request</th><th scope=\"col\">Output</th></tr></thead><tbody><tr><td>Define scope</td><td>Work items with supported boundaries and acceptance conditions</td></tr><tr><td>Estimate effort</td><td>Sourced role-hour ranges and their basis</td></tr><tr><td>Estimate cost</td><td>The effort model with an explicit rate source and currency</td></tr><tr><td>Plan staffing</td><td>Role capacity and a schedule constrained by dependencies</td></tr><tr><td>Revise a quote</td><td>A comparison against the confirmed quote revision; authorized changes only</td></tr></tbody></table></div><p>Read the supplied brief and existing decisions before asking a question. Find the constraints affecting scope or price. Preserve contradictory evidence as an unresolved decision. Ask only when a missing choice materially changes the work; continue the supported parts while it is pending.</p><h3>Define the deliverable scope</h3><p>Organize items around the behavior or deliverable being supplied. An item can carry its requirements work through validation and deployment. Avoid counting the same lifecycle effort again in a separate overhead row. A standalone test or assessment engagement may have its own deliverable; follow the actual brief.</p><p>Give each item a stable ID and descriptive name. Explain its behavior and the condition that bounds it. Link it to its source and acceptance check. Keep dependencies and exclusions where they affect that item. Use the project&#x27;s capability taxonomy if one exists; a local draft needs no custom CRM taxonomy.</p><p>Distinguish explicitly requested work from a necessary implication. Keep an inferred addition proposed until its scope owner accepts it. Do not turn an unanswered question into a statement that documentation or access is absent. An assumption is a proposed estimating condition, with its consequence if it changes. It is never a substitute for a fact.</p><p>Read the estimation method <span class=\"ref\">(references/methodology.md)</span> for calibration and staffing decisions. Use meaningful item names in cross-references; retain IDs for traceability rather than making the reader decode abbreviations.</p><h3>Estimate with available sources</h3><p>Use current scope decomposition or relevant comparables. Describe differences in volume and complexity when adapting another engagement. A user-supplied anchor can support an estimate when its working hours and scope are explicit. Do not assume a working week, a phase split or a staffing ratio.</p><p>Keep a low and high bound around the expected effort where the source supports a range. Explain which condition moves each bound. Do not invent a confidence percentage or treat the expected value as a statistical median without data. If effort remains unknown, retain the item as unestimated and identify the discovery needed. Do not present a priced subset as the complete project cost.</p><p>Use the supplied rate card or confirmed quote for rates. Preserve its revision and distinguish cost rates from client billing rates. Without rates, deliver the effort estimate and the missing pricing input. Do not import old rates from this estate or another engagement.</p><h3>Run the local calculator</h3><p>The calculator requires Python 3 and no external service:</p><pre><code>python3 scripts/estimate.py scope.json --output attempts/001/estimate.json</code></pre><p>It writes the exact decimal calculations and a readable Markdown estimate. Existing outputs are preserved. Use another attempt path after a revision. The fictional input <span class=\"ref\">(fixtures/estimate.example.json)</span> shows the full contract. Its rates and effort are test data, with no authority for a real project.</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Input</th><th scope=\"col\">Required content</th></tr></thead><tbody><tr><td><code>source</code></td><td>Reference and revision of the scope model</td></tr><tr><td><code>currency</code></td><td>Currency supplied for this estimate</td></tr><tr><td><code>rates</code></td><td>Role and rate, with the source of that rate</td></tr><tr><td><code>items</code></td><td>Unique ID and name; description, source and estimating basis; role allocations</td></tr><tr><td><code>allocations[].hours</code></td><td>Nonnegative <code>low</code>, <code>expected</code> and <code>high</code> values in that order</td></tr><tr><td><code>capacity</code>, when used</td><td>Role count and weekly hours per person, with availability from 0 to 1</td></tr><tr><td><code>assumptions</code> and <code>exclusions</code></td><td>Conditions and work boundaries preserved in the result</td></tr></tbody></table></div><p>The result includes item calculations and role-hour totals. It also gives the aggregate hours and fee for each scenario. Amounts retain their decimal value; the calculator applies no implicit commercial rounding or contingency uplift. It records the input hash and calculator hash.</p><p>Capacity produces a workload lower bound in weeks. Dependencies and waiting time can extend the schedule. A capacity bound cannot establish a delivery date. For a schedule, place the actual work against dependencies and agreed resource availability. Preserve phase names and staffing increments from the project.</p><p>Inspect the generated estimate against the input. Recompute a representative item and reconcile the totals. Check the range drivers and the meaning of each assumption. Apply writing-integrity to the generated prose, including text carried from a draft input. Calculation success does not establish scope quality.</p><h3>Use a configured CRM adapter</h3><p>Read CRM scoping <span class=\"ref\">(references/crm-scoping.md)</span> only when the project uses the documented custom integration. Inspect the tools actually available and confirm the org before a write. Read payloads <span class=\"ref\">(references/payloads.md)</span> before preparing a supported mutation. Use the target&#x27;s actual metadata and schema version.</p><p>Create or update a record only within the user&#x27;s authorized request. Show the affected quote and scope before a material change. Never add team membership, replace a tag catalog or activate a timeline merely to make local estimation possible. Read back changed records and report what the system accepted.</p><h3>Deliver the result</h3><p>Return the usable scope and requested calculations. Retain assumptions with the estimate and name the conditions that would reopen it. Save actual generated files and failed attempts. A hub update is optional and needs an available, authorized project destination; local work remains usable without it.</p><p>Use scope-options for a comparison or interactive proposal. Use the statement-of-work workflow for the contract. A new estimate does not replace an accepted quote, authorize a production operation or establish client approval.</p>",
+      "markdown": "---\nname: scoping-agent\ndescription: Develop project scope and effort estimates from the user's brief, supplied models or configured pricing system. Support rough ranges and confirmed quote revisions. Produce usable local scope and calculations without requiring a CRM connection.\n---\n\n<!-- ESTATE-WRITING:BEGIN -->\nBefore writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.\n<!-- ESTATE-WRITING:END -->\n\n# Project scoping\n\nBuild the requested scope from current project evidence. Use a supplied export\nor the local model below when no pricing integration is configured. A rough\nestimate does not require an existing quote. Keep accepted commitments separate\nfrom draft scope and estimate assumptions.\n\n## Select the work\n\n| Request | Output |\n| --- | --- |\n| Define scope | Work items with supported boundaries and acceptance conditions |\n| Estimate effort | Sourced role-hour ranges and their basis |\n| Estimate cost | The effort model with an explicit rate source and currency |\n| Plan staffing | Role capacity and a schedule constrained by dependencies |\n| Revise a quote | A comparison against the confirmed quote revision; authorized changes only |\n\nRead the supplied brief and existing decisions before asking a question. Find\nthe constraints affecting scope or price. Preserve contradictory evidence as\nan unresolved decision. Ask only when a missing choice materially changes the\nwork; continue the supported parts while it is pending.\n\n## Define the deliverable scope\n\nOrganize items around the behavior or deliverable being supplied. An item can\ncarry its requirements work through validation and deployment. Avoid counting\nthe same lifecycle effort again in a separate overhead row. A standalone test\nor assessment engagement may have its own deliverable; follow the actual brief.\n\nGive each item a stable ID and descriptive name. Explain its behavior and the\ncondition that bounds it. Link it to its source and acceptance check. Keep\ndependencies and exclusions where they affect that item. Use the project's\ncapability taxonomy if one exists; a local draft needs no custom CRM taxonomy.\n\nDistinguish explicitly requested work from a necessary implication. Keep an\ninferred addition proposed until its scope owner accepts it. Do not turn an\nunanswered question into a statement that documentation or access is absent.\nAn assumption is a proposed estimating condition, with its consequence if it\nchanges. It is never a substitute for a fact.\n\nRead [the estimation method](references/methodology.md) for calibration and\nstaffing decisions. Use meaningful item names in cross-references; retain IDs\nfor traceability rather than making the reader decode abbreviations.\n\n## Estimate with available sources\n\nUse current scope decomposition or relevant comparables. Describe differences\nin volume and complexity when adapting another engagement. A user-supplied\nanchor can support an estimate when its working hours and scope are explicit.\nDo not assume a working week, a phase split or a staffing ratio.\n\nKeep a low and high bound around the expected effort where the source supports\na range. Explain which condition moves each bound. Do not invent a confidence\npercentage or treat the expected value as a statistical median without data.\nIf effort remains unknown, retain the item as unestimated and identify the\ndiscovery needed. Do not present a priced subset as the complete project cost.\n\nUse the supplied rate card or confirmed quote for rates. Preserve its revision\nand distinguish cost rates from client billing rates. Without rates, deliver\nthe effort estimate and the missing pricing input. Do not import old rates\nfrom this estate or another engagement.\n\n## Run the local calculator\n\nThe calculator requires Python 3 and no external service:\n\n```bash\npython3 scripts/estimate.py scope.json --output attempts/001/estimate.json\n```\n\nIt writes the exact decimal calculations and a readable Markdown estimate.\nExisting outputs are preserved. Use another attempt path after a revision.\nThe [fictional input](fixtures/estimate.example.json) shows the full contract.\nIts rates and effort are test data, with no authority for a real project.\n\n| Input | Required content |\n| --- | --- |\n| `source` | Reference and revision of the scope model |\n| `currency` | Currency supplied for this estimate |\n| `rates` | Role and rate, with the source of that rate |\n| `items` | Unique ID and name; description and source; estimated items also need a basis and role allocations |\n| `items[].status`, when used | `estimated` (the default) or `unestimated`; other values are refused |\n| `items[].discovery_needed` | Required for an unestimated item; explain what must be learned before estimating it |\n| `allocations[].hours` | Nonnegative `low`, `expected` and `high` values in that order |\n| `capacity`, when used | Role count and weekly hours per person, with availability from 0 to 1 |\n| `assumptions` and `exclusions` | Conditions and work boundaries preserved in the result |\n\nThe result includes item calculations and role-hour totals. It also gives the\naggregate hours and fee for each scenario. Amounts retain their decimal value;\nthe calculator applies no implicit commercial rounding or contingency uplift.\nIt records the input hash and calculator hash.\n\nFor work with no effort basis, set `status` to `unestimated`, retain its source\nand description, and supply `discovery_needed`. Omit allocations or use an empty\nlist. The calculator rejects allocations on an unestimated item so hours cannot\nbe silently discarded.\n\nOutput format 2 retains every item. When any item is unestimated, the status is\n`incomplete-estimate`, `totals_complete` is false, and full-project `totals` is\nnull. `estimated_subtotal` contains only the estimated work; it is null when no\nitem has an estimate. For fully estimated scope, `totals` keeps the scenario\ncalculations. Fees remain null without rates. Consumers must check completeness\nbefore using totals. The Markdown shows item calculations, role hours, supplied\nrate sources, and all three capacity scenarios. Capacity covers estimated work\nonly, so unknown work cannot acquire an implied delivery date.\n\nCapacity produces a workload lower bound in weeks. Dependencies and waiting\ntime can extend the schedule. A capacity bound cannot establish a delivery date.\nFor a schedule, place the actual work against dependencies and agreed resource\navailability. Preserve phase names and staffing increments from the project.\n\nInspect the generated estimate against the input. Recompute a representative\nitem and reconcile the totals. Check the range drivers and the meaning of each\nassumption. Apply writing-integrity to the generated prose, including text\ncarried from a draft input. Calculation success does not establish scope quality.\n\n## Use a configured CRM adapter\n\nRead [CRM scoping](references/crm-scoping.md) only when the project uses the\ndocumented custom integration. Inspect the tools actually available and confirm\nthe org before a write. Read [payloads](references/payloads.md) before preparing\na supported mutation. Use the target's actual metadata and schema version.\n\nCreate or update a record only within the user's authorized request. Show the\naffected quote and scope before a material change. Never add team membership,\nreplace a tag catalog or activate a timeline merely to make local estimation\npossible. Read back changed records and report what the system accepted.\n\n## Deliver the result\n\nReturn the usable scope and requested calculations. Retain assumptions with the\nestimate and name the conditions that would reopen it. Save actual generated\nfiles and failed attempts. A hub update is optional and needs an available,\nauthorized project destination; local work remains usable without it.\n\nUse scope-options for a comparison or interactive proposal. Use the\nstatement-of-work workflow for the contract. A new estimate does not replace an\naccepted quote, authorize a production operation or establish client approval.\n",
+      "html": "<p>&lt;!-- ESTATE-WRITING:BEGIN --&gt; Before writing, read the writing standard <span class=\"ref\">(references/estate/writing.md)</span>. Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review. &lt;!-- ESTATE-WRITING:END --&gt;</p><h2>Project scoping</h2><p>Build the requested scope from current project evidence. Use a supplied export or the local model below when no pricing integration is configured. A rough estimate does not require an existing quote. Keep accepted commitments separate from draft scope and estimate assumptions.</p><h3>Select the work</h3><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Request</th><th scope=\"col\">Output</th></tr></thead><tbody><tr><td>Define scope</td><td>Work items with supported boundaries and acceptance conditions</td></tr><tr><td>Estimate effort</td><td>Sourced role-hour ranges and their basis</td></tr><tr><td>Estimate cost</td><td>The effort model with an explicit rate source and currency</td></tr><tr><td>Plan staffing</td><td>Role capacity and a schedule constrained by dependencies</td></tr><tr><td>Revise a quote</td><td>A comparison against the confirmed quote revision; authorized changes only</td></tr></tbody></table></div><p>Read the supplied brief and existing decisions before asking a question. Find the constraints affecting scope or price. Preserve contradictory evidence as an unresolved decision. Ask only when a missing choice materially changes the work; continue the supported parts while it is pending.</p><h3>Define the deliverable scope</h3><p>Organize items around the behavior or deliverable being supplied. An item can carry its requirements work through validation and deployment. Avoid counting the same lifecycle effort again in a separate overhead row. A standalone test or assessment engagement may have its own deliverable; follow the actual brief.</p><p>Give each item a stable ID and descriptive name. Explain its behavior and the condition that bounds it. Link it to its source and acceptance check. Keep dependencies and exclusions where they affect that item. Use the project&#x27;s capability taxonomy if one exists; a local draft needs no custom CRM taxonomy.</p><p>Distinguish explicitly requested work from a necessary implication. Keep an inferred addition proposed until its scope owner accepts it. Do not turn an unanswered question into a statement that documentation or access is absent. An assumption is a proposed estimating condition, with its consequence if it changes. It is never a substitute for a fact.</p><p>Read the estimation method <span class=\"ref\">(references/methodology.md)</span> for calibration and staffing decisions. Use meaningful item names in cross-references; retain IDs for traceability rather than making the reader decode abbreviations.</p><h3>Estimate with available sources</h3><p>Use current scope decomposition or relevant comparables. Describe differences in volume and complexity when adapting another engagement. A user-supplied anchor can support an estimate when its working hours and scope are explicit. Do not assume a working week, a phase split or a staffing ratio.</p><p>Keep a low and high bound around the expected effort where the source supports a range. Explain which condition moves each bound. Do not invent a confidence percentage or treat the expected value as a statistical median without data. If effort remains unknown, retain the item as unestimated and identify the discovery needed. Do not present a priced subset as the complete project cost.</p><p>Use the supplied rate card or confirmed quote for rates. Preserve its revision and distinguish cost rates from client billing rates. Without rates, deliver the effort estimate and the missing pricing input. Do not import old rates from this estate or another engagement.</p><h3>Run the local calculator</h3><p>The calculator requires Python 3 and no external service:</p><pre><code>python3 scripts/estimate.py scope.json --output attempts/001/estimate.json</code></pre><p>It writes the exact decimal calculations and a readable Markdown estimate. Existing outputs are preserved. Use another attempt path after a revision. The fictional input <span class=\"ref\">(fixtures/estimate.example.json)</span> shows the full contract. Its rates and effort are test data, with no authority for a real project.</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Input</th><th scope=\"col\">Required content</th></tr></thead><tbody><tr><td><code>source</code></td><td>Reference and revision of the scope model</td></tr><tr><td><code>currency</code></td><td>Currency supplied for this estimate</td></tr><tr><td><code>rates</code></td><td>Role and rate, with the source of that rate</td></tr><tr><td><code>items</code></td><td>Unique ID and name; description and source; estimated items also need a basis and role allocations</td></tr><tr><td><code>items[].status</code>, when used</td><td><code>estimated</code> (the default) or <code>unestimated</code>; other values are refused</td></tr><tr><td><code>items[].discovery_needed</code></td><td>Required for an unestimated item; explain what must be learned before estimating it</td></tr><tr><td><code>allocations[].hours</code></td><td>Nonnegative <code>low</code>, <code>expected</code> and <code>high</code> values in that order</td></tr><tr><td><code>capacity</code>, when used</td><td>Role count and weekly hours per person, with availability from 0 to 1</td></tr><tr><td><code>assumptions</code> and <code>exclusions</code></td><td>Conditions and work boundaries preserved in the result</td></tr></tbody></table></div><p>The result includes item calculations and role-hour totals. It also gives the aggregate hours and fee for each scenario. Amounts retain their decimal value; the calculator applies no implicit commercial rounding or contingency uplift. It records the input hash and calculator hash.</p><p>For work with no effort basis, set <code>status</code> to <code>unestimated</code>, retain its source and description, and supply <code>discovery_needed</code>. Omit allocations or use an empty list. The calculator rejects allocations on an unestimated item so hours cannot be silently discarded.</p><p>Output format 2 retains every item. When any item is unestimated, the status is <code>incomplete-estimate</code>, <code>totals_complete</code> is false, and full-project <code>totals</code> is null. <code>estimated_subtotal</code> contains only the estimated work; it is null when no item has an estimate. For fully estimated scope, <code>totals</code> keeps the scenario calculations. Fees remain null without rates. Consumers must check completeness before using totals. The Markdown shows item calculations, role hours, supplied rate sources, and all three capacity scenarios. Capacity covers estimated work only, so unknown work cannot acquire an implied delivery date.</p><p>Capacity produces a workload lower bound in weeks. Dependencies and waiting time can extend the schedule. A capacity bound cannot establish a delivery date. For a schedule, place the actual work against dependencies and agreed resource availability. Preserve phase names and staffing increments from the project.</p><p>Inspect the generated estimate against the input. Recompute a representative item and reconcile the totals. Check the range drivers and the meaning of each assumption. Apply writing-integrity to the generated prose, including text carried from a draft input. Calculation success does not establish scope quality.</p><h3>Use a configured CRM adapter</h3><p>Read CRM scoping <span class=\"ref\">(references/crm-scoping.md)</span> only when the project uses the documented custom integration. Inspect the tools actually available and confirm the org before a write. Read payloads <span class=\"ref\">(references/payloads.md)</span> before preparing a supported mutation. Use the target&#x27;s actual metadata and schema version.</p><p>Create or update a record only within the user&#x27;s authorized request. Show the affected quote and scope before a material change. Never add team membership, replace a tag catalog or activate a timeline merely to make local estimation possible. Read back changed records and report what the system accepted.</p><h3>Deliver the result</h3><p>Return the usable scope and requested calculations. Retain assumptions with the estimate and name the conditions that would reopen it. Save actual generated files and failed attempts. A hub update is optional and needs an available, authorized project destination; local work remains usable without it.</p><p>Use scope-options for a comparison or interactive proposal. Use the statement-of-work workflow for the contract. A new estimate does not replace an accepted quote, authorize a production operation or establish client approval.</p>",
       "excerptHtml": "<p>Build the requested scope from current project evidence. Use a supplied export or the local model below when no pricing integration is configured. A rough estimate does not require an existing quote. Keep accepted commitments separate from draft scope and estimate assumptions.</p><p>Read the supplied brief and existing decisions before asking a question. Find the constraints affecting scope or price. Preserve contradictory evidence as an unresolved decision. Ask only when a missing choice materially changes the work; continue the supported parts while it is pending.</p><p>Organize items around the behavior or deliverable being supplied. An item can carry its requirements work through validation and deployment. Avoid counting the same lifecycle effort again in a separate overhead row. A standalone test or assessment engagement may have its own deliverable; follow the actual brief.</p>",
       "headings": [
         "Select the work",
@@ -8886,9 +8879,9 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "b47e8eeb86b8d6f7a8cd76f2b8f31c078f5b4d38d4b65609fcede479603d35c4",
-          "bytes": 7021,
-          "gitBlob": "6640121d64d387c4416815fb4f00221226589e81"
+          "sha256": "5eab458a8afd0a1583a2653f410a37c5fc2bcff1b75ef796b047bdf65b81cf79",
+          "bytes": 8146,
+          "gitBlob": "49659ba1c3a5bc3a1a6fae497d57264d5608ffd7"
         },
         {
           "path": "fixtures/estimate.example.json",
@@ -8916,9 +8909,9 @@
         },
         {
           "path": "scripts/estimate.py",
-          "sha256": "e517e0dd89604b2d355c88e4853d6cda89aaee933b8ef5e577845b550ecbcf03",
-          "bytes": 9902,
-          "gitBlob": "c19fbd146e47a726454fa5dcfd7cadb9fb7130ce"
+          "sha256": "3358b69cdd07c0b126daae32cb3ed405ea19253a08db04b06e6313fc472f34b8",
+          "bytes": 12820,
+          "gitBlob": "d3c40c58a47dc89b94a24dbb3865380c6d3a43dd"
         },
         {
           "path": "scripts/scoping_agent_selftest.py",
@@ -8943,7 +8936,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/session-handoff/SKILL.md",
       "sourceSha256": "8bf8ced94abceeb15826e204f2b13069fb981063d2d59c8997065d7602c6b523",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "session-handoff",
@@ -9046,7 +9039,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-delivery-standards/SKILL.md",
       "sourceSha256": "035e3f3d144a26e7e2e189f4fef679b237e5f0a1be193d0050f4a5ac473f4de7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sf-delivery-standards/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sf-delivery-standards/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-project-setup",
@@ -9712,7 +9705,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-deploy-engine/SKILL.md",
       "sourceSha256": "2d033aaf4e5f8b6f732fd1520a31ce4c9e545b4b0c268c61b076766c7eac39cd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sf-deploy-engine/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sf-deploy-engine/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-pipeline-operations",
@@ -9894,7 +9887,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-enterprise-patterns/SKILL.md",
       "sourceSha256": "4ede13bcdad104b26bae21aaf6aab7e2cccb2e31557eae7621fff98a0025edc6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sf-enterprise-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sf-enterprise-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-apex-patterns",
@@ -10064,7 +10057,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-headless-screenshot/SKILL.md",
       "sourceSha256": "9ce1dbd5c7b9ea6128db08d3b3fe31cc572c84e229cc8925b2042b8b05ab5fb7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sf-headless-screenshot/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sf-headless-screenshot/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -10154,7 +10147,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-solo-devops/SKILL.md",
       "sourceSha256": "86b39853831c0d748d282ddee8e3562cab27f1b3cbc03f0dc323bb12b6de7d8d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sf-solo-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sf-solo-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-change-delivery",
@@ -10454,7 +10447,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-creation-walkthrough/SKILL.md",
       "sourceSha256": "44bcc37f97d341869e6010174f1891f27b1299ef0512d62c824d41b1d6f71683",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/skill-creation-walkthrough/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/skill-creation-walkthrough/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-authoring",
@@ -10614,7 +10607,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-estate-sync/SKILL.md",
       "sourceSha256": "29a383be45f290e4f2bb1218956083b3f29c57dcb1bcc2dc48dc9b88ec90e24f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/skill-estate-sync/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/skill-estate-sync/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -10762,7 +10755,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/solution-brief/SKILL.md",
       "sourceSha256": "5f9ed9201f631cbcec604fbc8ec6350f95dccca16f6741279f4ea3cb5c6bb7a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/solution-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/solution-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "solution-brief",
@@ -11061,7 +11054,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow/SKILL.md",
       "sourceSha256": "cad4b6820f972f2f574fecd3326f9e975df3519ca87640cb6a33d6e181b079c2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sow/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sow/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -11278,7 +11271,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow-quality/SKILL.md",
       "sourceSha256": "7dd421f1ccfc1bfa84253db7d31b23fd9e8519fcc0e6ba94d31b10d34b3c6433",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sow-quality/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sow-quality/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -11411,7 +11404,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/spec-writer/SKILL.md",
       "sourceSha256": "ee6852bd15370746f8a73c794345171d3d0253193980fd1996c09521bcbccc1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/spec-writer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/spec-writer/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -11501,7 +11494,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-art-direction/SKILL.md",
       "sourceSha256": "8fcf8c24a00e7cdc8705703ff059b440ab9cd3e3c6d5ea4c83926c7e05cfbca5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sticker-art-direction/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sticker-art-direction/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-art-direction",
@@ -11589,7 +11582,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-sheets/SKILL.md",
       "sourceSha256": "163d994ec51c5bd6c5535d3233f4c2148a3d35bfc2a21088d74b5311431f390f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-sheets",
@@ -11668,7 +11661,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/system-design/SKILL.md",
       "sourceSha256": "063702b3b01ec489181d4233fd97b98323b754044ea7e84c2d07c8813a8164c3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/system-design/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/system-design/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -11779,7 +11772,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/team-onboarding/SKILL.md",
       "sourceSha256": "a38e3a3893d06443da9fad155b84d092b4a56d21698fe5e26ed29c51606c975d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "team-onboarding",
@@ -11900,7 +11893,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/transcript-ingestion/SKILL.md",
       "sourceSha256": "a3ab7718877064857b6a7eed832563c0e12053864375f15364cbce98b1b5f74b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/transcript-ingestion/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/transcript-ingestion/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -12011,7 +12004,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/uat-validation/SKILL.md",
       "sourceSha256": "cf6563537ca1a0f7e2d2630b909ff4bd032486057c95d4c7fc8c2b7136546a79",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/uat-validation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/uat-validation/SKILL.md",
       "taskPackages": [
         {
           "name": "acceptance-testing",
@@ -12167,7 +12160,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/usability-testing/SKILL.md",
       "sourceSha256": "aa1791b8195872a423ef873cb44082f77f2747f55acc9f34941453cbe0fce810",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/usability-testing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/usability-testing/SKILL.md",
       "taskPackages": [
         {
           "name": "usability-testing",
@@ -12250,7 +12243,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-integrity/SKILL.md",
       "sourceSha256": "c4dbb6dcba2f9dd0d4cb4721468ba21ffdd6aa5604be6aea0791e2d998be4f46",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/writing-integrity/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/writing-integrity/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-integrity",
@@ -12493,7 +12486,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-style-builder/SKILL.md",
       "sourceSha256": "116d026bcec055f741461912dd0ede63bef9da381c3e67b827598f5a4067950a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/dfbf95e1dabed6177fdbf55db22f7c7bca14f655/skills/writing-style-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e83189535d53750b120f1d25dd35eb5f8b61fd67/skills/writing-style-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-profile",
@@ -12602,8 +12595,8 @@
     }
   ],
   "counts": {
-    "github": 80,
-    "local-revision": 0,
+    "github": 79,
+    "local-revision": 1,
     "local-addition": 0,
     "canonical": 80,
     "total": 80
