@@ -54,7 +54,7 @@ class HtmlBehaviorTests(unittest.TestCase):
         html=output.read_text()
         self.assertNotIn('Aleysian',html)
         self.assertNotIn('__LOGO__',html)
-        self.assertIn('--brand-accent:#2F5D8A',html)
+        self.assertIn('--brand-accent:#37437D',html)
         self.assertIn('var rates=',html)
         colors={'background':'#FFFFFF','text':'#202020','muted':'#555555',
                 'border':'#CCCCCC','surface':'#FAF4EC','accent':'#7B321A'}

@@ -14,32 +14,34 @@ Read exact values from the selected profile. Do not infer colors from a company 
 
 ```json
 {
-  "name": "Neutral",
+  "name": "Baseline",
   "status": "confirmed",
-  "source": "Estate neutral defaults, established 2026-10-19",
+  "source": "Baseline palette F, chosen by Megan as the default on 2026-10-30",
   "colors": {
     "background": "#FFFFFF",
-    "text": "#1A1A1A",
-    "muted": "#5F6368",
-    "border": "#D9DCE1",
-    "surface": "#F5F6F7",
-    "accent": "#2F5D8A"
+    "text": "#11141A",
+    "muted": "#535559",
+    "border": "#E2E2E3",
+    "surface": "#F5F5F5",
+    "accent": "#37437D"
   },
   "type": {
-    "body": "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
-    "headings": "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
+    "body": "Inter, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
+    "headings": "Inter, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
     "office": "Arial",
     "body_min_pt": 11,
     "screen_min_px": 16,
     "slide_min_pt": 18
   },
   "logo": null,
-  "layout": {"border_px": 1, "radius_px": 4, "heading_case": "sentence"},
+  "layout": {"border_px": 1, "radius_px": 6, "heading_case": "sentence"},
   "voice": "Use the author's confirmed voice profile when supplied; otherwise write plainly and preserve meaning."
 }
 ```
 
-The neutral profile has no logo, footer mark, cover imagery, gradients, decorative icons, or bundled fonts. Add a title, date, and author when the format needs them. Data charts may need additional distinguishable series colors; use an accessible palette and identify it as a chart palette instead of pretending those colors belong to a client brand.
+The neutral profile is Baseline, Megan's default design system. Web pages, dashboards and interactive artifacts use its component kit in the `client-brand` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
+
+The neutral profile has no logo, footer mark, cover imagery, gradients, or bundled fonts. Add a title, date, and author when the format needs them. Data charts use a dark-to-light ramp of the profile's own color: #24265B, #434D90, #6577BD, #8BA1DE, #B5CAFA. Do not use mixed hues, and keep a legend and a fixed series order. Do not add colored side accents to cards, rows, badges or callouts.
 
 ## Review the result
 
