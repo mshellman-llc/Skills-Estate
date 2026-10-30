@@ -20,6 +20,14 @@ The restoration candidate contains 82 source modules and 55 proposed task entryp
 | [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
 <!-- SKILL-GROUPS:END -->
 
+## Use the skills
+
+Claude Code and Cowork install the skills as plugins from this repository's marketplace. GitHub Actions rebuilds the `marketplace` branch from every push to `main`, and `.claude-plugin/marketplace.json` on `main` points each plugin there.
+
+- Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, then `/plugin install estate-solutioning@skills-estate` and the other six `estate-` plugins. Turn on auto-update for the marketplace in `/plugin`.
+- Cowork and claude.ai: Customize, Plugins, Add, Add marketplace, `mshellman-llc/Skills-Estate`.
+- Codex and cleanup on the Mac: run `python3 tools/estate.py update` from this folder. It pulls `main`, rebuilds, links every public skill for Codex, and moves other copies of those skills out of `~/.claude/skills` into a dated backup under `~/.local/state/skills-estate/`.
+
 ## Prepare and install on a Mac or Linux machine
 
 Python 3.9 or later and Git are required. Authenticate GitHub CLI as the intended account and clone the private repository:

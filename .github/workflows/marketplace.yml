@@ -1,0 +1,38 @@
+name: Publish plugin marketplace
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: marketplace
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Build the plugins from main
+        run: |
+          mkdir -p .local
+          python3 tools/plugins.py --root-marketplace
+          git diff --exit-code .claude-plugin/marketplace.json
+          python3 tools/plugins.py --owner
+      - name: Publish to the marketplace branch
+        shell: bash
+        run: |
+          out="$(mktemp -d)"
+          cp -R dist/plugins/claude/plugins "$out/plugins"
+          mkdir -p "$out/.claude-plugin"
+          cp dist/plugins/claude/.claude-plugin/marketplace.json "$out/.claude-plugin/marketplace.json"
+          cp dist/plugins/release.json "$out/release.json"
+          printf 'Generated from main at %s by .github/workflows/marketplace.yml. Do not edit; change main instead.\n' "$GITHUB_SHA" > "$out/README.md"
+          cd "$out"
+          git init -q -b marketplace
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Publish plugins from main ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" marketplace
