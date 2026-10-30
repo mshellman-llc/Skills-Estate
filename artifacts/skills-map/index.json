@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T17:59:34.774468+00:00",
+  "generatedAt": "2026-10-30T18:34:14.044701+00:00",
   "baseCommit": "57d1c95dff004edb92437e878fcb7ef444b5d568",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -3287,20 +3287,7 @@
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
         "readiness": "review",
-        "references": [
-          {
-            "path": "skills/client-brand/baseline/GUIDE.md",
-            "line": 3,
-            "text": "Baseline is Megan's default design system for skills and artifacts when no other brand is selected. Load `baseline.css`, put `class=\"bl\"` on the page root, and build from its `--bl-*` tokens and component classes. Icons are in `baseline-icons.svg` and `baseline-icons.json`.",
-            "kind": "workflow-or-reference"
-          },
-          {
-            "path": "skills/client-brand/baseline/GUIDE.md",
-            "line": 26,
-            "text": "The canvas is https://claude.ai/artifact/Q8piCBVTHC3qrdKsRiX7E6. Megan reported on 2026-10-30 that Stockholm's use here is cleared. Other icon packs on the canvas are not in this kit, and the CRM Dashboard license bars redistribution.",
-            "kind": "workflow-or-reference"
-          }
-        ],
+        "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
           {
@@ -3317,7 +3304,7 @@
           }
         ],
         "textFilesScanned": 6,
-        "packageFingerprint": "88ad83e780a0723575dc6e72d13c66a38f532964ba49c53c2d10fd5d53c3fc9c",
+        "packageFingerprint": "172990b118afb6b5f408d8a2524d03d30cfdf13f5b66b6a21a8a7cef5f838533",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -3341,9 +3328,9 @@
         },
         {
           "path": "baseline/GUIDE.md",
-          "sha256": "5ef73e8bfd9f0694dc2916d52e1f38836397146063c6316ac728121134ac01e5",
-          "bytes": 1827,
-          "gitBlob": "8f0a1052c7990988adcb0b03642c89e27eca770a"
+          "sha256": "0cf97a84b71f40b83f47f6198b85326739207403d4379c986b2d6d111da5141c",
+          "bytes": 1762,
+          "gitBlob": "7b21537016f095340ec74aeefd8844a95e4ec596"
         },
         {
           "path": "baseline/baseline-icons.json",
@@ -6397,27 +6384,11 @@
         "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
-          "Review the named personal references before sharing this workflow.",
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
         "readiness": "cleanup",
         "references": [],
-        "dependencyReferences": [
-          {
-            "path": "skills/client-brand/baseline/GUIDE.md",
-            "line": 3,
-            "text": "Baseline is Megan's default design system for skills and artifacts when no other brand is selected. Load `baseline.css`, put `class=\"bl\"` on the page root, and build from its `--bl-*` tokens and component classes. Icons are in `baseline-icons.svg` and `baseline-icons.json`.",
-            "kind": "workflow-or-reference",
-            "via": "client-brand"
-          },
-          {
-            "path": "skills/client-brand/baseline/GUIDE.md",
-            "line": 26,
-            "text": "The canvas is https://claude.ai/artifact/Q8piCBVTHC3qrdKsRiX7E6. Megan reported on 2026-10-30 that Stockholm's use here is cleared. Other icon packs on the canvas are not in this kit, and the CRM Dashboard license bars redistribution.",
-            "kind": "workflow-or-reference",
-            "via": "client-brand"
-          }
-        ],
+        "dependencyReferences": [],
         "sharedReferences": [
           {
             "path": "policies/brand.md",

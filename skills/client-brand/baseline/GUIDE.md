@@ -1,6 +1,6 @@
 # Baseline guide
 
-Baseline is Megan's default design system for skills and artifacts when no other brand is selected. Load `baseline.css`, put `class="bl"` on the page root, and build from its `--bl-*` tokens and component classes. Icons are in `baseline-icons.svg` and `baseline-icons.json`.
+Baseline is the default design system for skills and artifacts when no other brand is selected. Load `baseline.css`, put `class="bl"` on the page root, and build from its `--bl-*` tokens and component classes. Icons are in `baseline-icons.svg` and `baseline-icons.json`.
 
 ## Palette
 
@@ -23,4 +23,4 @@ F, navy and pastel, is the default and needs no class. E, ink and amber, is the 
 
 ## Status and licensing
 
-The canvas is https://claude.ai/artifact/Q8piCBVTHC3qrdKsRiX7E6. Megan reported on 2026-10-30 that Stockholm's use here is cleared. Other icon packs on the canvas are not in this kit, and the CRM Dashboard license bars redistribution.
+The owner reported on 2026-10-30 that Stockholm's use here is cleared. Other icon packs on the canvas are not in this kit, and the CRM Dashboard license bars redistribution.
