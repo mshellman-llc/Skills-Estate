@@ -81,6 +81,25 @@ class PluginTests(unittest.TestCase):
             plugins.build_plugins(self.root, ['estate-solutioning'])
         self.assertFalse((self.root / 'dist/plugins').exists())
 
+    def test_owner_build_publishes_with_gaps_recorded_and_no_candidate_label(self):
+        result = plugins.build_plugins(self.root, ['estate-solutioning'], owner=True)
+        self.assertEqual(result['status'], 'owner-published')
+        self.assertTrue(result['review_gaps'])
+        manifest = json.loads((self.root / 'dist/plugins/claude/plugins/estate-solutioning/.claude-plugin/plugin.json').read_text())
+        self.assertEqual(manifest['description'], 'Synthetic plugin fixture.')
+
+    def test_main_marketplace_points_each_bundle_at_the_published_branch(self):
+        market = plugins.root_marketplace(self.root)
+        self.assertEqual({p['name'] for p in market['plugins']}, plugins.BUNDLES)
+        for item in market['plugins']:
+            self.assertEqual(item['source'], {'source': 'git-subdir', 'url': 'mshellman-llc/Skills-Estate',
+                                              'path': 'plugins/' + item['name'], 'ref': 'marketplace'})
+        self.assertEqual(plugins.write_root_marketplace(self.root), ['.claude-plugin/marketplace.json'])
+        self.assertEqual(plugins.write_root_marketplace(self.root, check=True), [])
+
+    def test_repository_marketplace_is_current(self):
+        self.assertEqual(plugins.write_root_marketplace(Path(__file__).resolve().parents[1], check=True), [])
+
     def accept_fixture_reviews(self):
         settings = self.settings
         settings['release']['shared'] = {'status': 'accepted', 'reviewed_sha256': plugins.shared_hash(self.root, settings), 'evidence': 'synthetic-review'}

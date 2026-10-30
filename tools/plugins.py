@@ -173,7 +173,7 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n')
 
 
-def build_plugins(root=estate.ROOT, selected=None, candidate=False):
+def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False):
     root = Path(root)
     settings = config(root)
     selected = sorted(set(selected or settings['bundles']))
@@ -181,9 +181,10 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
         raise ValueError('Unknown selected bundle')
     manifest = estate.build(root)
     gaps = release_gaps(root, settings, selected, manifest)
-    if gaps and not candidate:
+    if gaps and not (candidate or owner):
         raise ValueError('Release blocked: ' + ', '.join(x['subject'] for x in gaps))
-    state = 'candidate-unreviewed' if gaps else 'reviewed'
+    # The owner publishes their own marketplace from main; gaps are recorded, not enforced.
+    state = 'reviewed' if not gaps else 'owner-published' if owner else 'candidate-unreviewed'
     stage = Path(tempfile.mkdtemp(prefix='plugin-build-', dir=root / '.local'))
     destination = root / 'dist/plugins'
     outputs = {}
@@ -222,7 +223,7 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
                     target.parent.mkdir(parents=True, exist_ok=True)
                     target.write_text(router_text(root, item, targets, host))
                 description = item['description']
-                if gaps:
+                if gaps and not owner:
                     description = 'Unreviewed candidate for isolated testing. ' + description
                 portable = {'$schema': 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
                             'name': name, 'version': settings['version'], 'description': description,
@@ -284,13 +285,45 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
             shutil.rmtree(stage)
 
 
+MARKETPLACE_BRANCH = 'marketplace'
+
+
+def root_marketplace(root):
+    """The marketplace file on main. Claude Code and Cowork read it from the default branch;
+    each plugin comes from the generated `marketplace` branch that CI publishes from main."""
+    settings = config(root)
+    plugins = [{'name': name, 'description': item['description'],
+                'source': {'source': 'git-subdir', 'url': 'mshellman-llc/Skills-Estate',
+                           'path': 'plugins/' + name, 'ref': MARKETPLACE_BRANCH}}
+               for name, item in sorted(settings['bundles'].items())]
+    return {'name': 'skills-estate', 'owner': {'name': 'Megan Shellman'},
+            'metadata': {'description': "Megan's Skills Estate skills, published from main."}, 'plugins': plugins}
+
+
+def write_root_marketplace(root=estate.ROOT, check=False):
+    path = Path(root) / '.claude-plugin/marketplace.json'
+    text = json.dumps(root_marketplace(root), indent=2) + '\n'
+    if path.exists() and path.read_text() == text:
+        return []
+    if check:
+        raise ValueError('Regenerate .claude-plugin/marketplace.json with tools/plugins.py --root-marketplace')
+    path.parent.mkdir(exist_ok=True)
+    path.write_text(text)
+    return [str(path.relative_to(root))]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bundle', action='append')
     parser.add_argument('--candidate', action='store_true', help='Build unreviewed candidates for isolated verification only')
+    parser.add_argument('--owner', action='store_true', help="Build the owner's marketplace from main; review gaps are recorded, not enforced")
+    parser.add_argument('--root-marketplace', action='store_true', help='Write the marketplace file that lives on main')
     args = parser.parse_args()
+    if args.root_marketplace:
+        print(json.dumps({'written': write_root_marketplace()}))
+        return
     with estate.lock():
-        result = build_plugins(selected=args.bundle, candidate=args.candidate)
+        result = build_plugins(selected=args.bundle, candidate=args.candidate, owner=args.owner)
     print(json.dumps(result, indent=2))
 
 

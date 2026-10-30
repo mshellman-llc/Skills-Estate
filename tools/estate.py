@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import uuid
@@ -379,13 +380,13 @@ def local_targets(home):
     return {'claude-code': home / '.claude' / 'skills', 'codex': home / '.agents' / 'skills'}
 
 
-def install(root=ROOT, home=None, adopt=False, expected_source=None, skills=None):
+def install(root=ROOT, home=None, adopt=False, expected_source=None, skills=None, owner=False, claude_code=True):
     home = Path(home or Path.home()).expanduser().resolve()
     manifest = current_build(root)
     selected = set(manifest['packages']) if skills is None else set(skills)
     if not selected or not selected <= set(manifest['packages']):
         raise ValueError('Select existing task package names for targeted promotion')
-    if home == Path.home().resolve():
+    if home == Path.home().resolve() and not owner:
         if expected_source != manifest['source_sha256']:
             raise ValueError('Everyday promotion requires --expected-source with the reviewed source hash')
         import plugins
@@ -396,14 +397,50 @@ def install(root=ROOT, home=None, adopt=False, expected_source=None, skills=None
     with releases.home_lock(home):
         release_id = releases.snapshot(root, home,
             {name: root / 'build/skills' / name for name in sorted(selected)},
-            manifest['source_sha256'], 'reviewed' if home == Path.home().resolve() else 'isolated-candidate', tree_hash)
+            manifest['source_sha256'], 'owner' if owner else 'reviewed' if home == Path.home().resolve() else 'isolated-candidate', tree_hash)
         _, record = releases.load(home, release_id, tree_hash)
         if any(record['packages'][name]['sha256'] != entry['sha256'] for name, entry in manifest['packages'].items() if name in selected):
             raise ValueError('Build changed after verification; refusing promotion')
         if source_hash(root) != manifest['source_sha256']:
             raise ValueError('Source changed after verification; refusing promotion')
+        # Skills Claude Code already gets elsewhere (the account, or the marketplace plugins) are linked for Codex only.
+        provided = account_skills(home) | (set() if claude_code else set(manifest['packages']))
         return releases.activate(root, home, release_id, tree_hash, adopt=adopt, preserve_existing=skills is not None,
-                                 account_provided=account_skills(home))
+                                 account_provided=provided)
+
+
+def clear_claude_copies(home, names):
+    """Move other copies of estate skills out of ~/.claude/skills into a dated backup with a receipt."""
+    moved = {}
+    backup = releases.state(home) / ('claude-copies-' + dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
+    for name in names:
+        dest = home / '.claude/skills' / name
+        if os.path.lexists(dest):
+            backup.mkdir(parents=True, exist_ok=True)
+            os.rename(dest, backup / name)
+            moved[str(dest)] = str(backup / name)
+    if moved:
+        write_json(backup / 'receipt.json', {'moved': moved})
+    return moved
+
+
+def update(root=ROOT, home=None, pull=True):
+    """The owner's one-step refresh from GitHub main.
+
+    Gets the latest skills, rebuilds, links every public skill for Codex, and moves other
+    copies of the same skills out of Claude Code, which uses the marketplace plugins instead.
+    """
+    home = Path(home or Path.home()).expanduser().resolve()
+    if pull:
+        pulled = subprocess.run(['git', '-C', str(root), 'pull', '--ff-only', 'origin', 'main'], capture_output=True, text=True)
+        if pulled.returncode:
+            raise ValueError('Could not get the latest skills from GitHub: ' + (pulled.stderr or pulled.stdout).strip())
+    build(root, home=home)
+    bundle(root)
+    cleared = clear_claude_copies(home, sorted(current_build(root)['packages']))
+    result = install(root, home, adopt=True, owner=True, claude_code=False)
+    return {**result, 'cleared_from_claude_code': cleared,
+            'next': 'Claude Code and Cowork: install the plugins from the skills-estate marketplace.'}
 
 
 def pin_installed(root=ROOT, home=None):
@@ -552,6 +589,7 @@ def status(root=ROOT, home=None):
     surfaces = {}
     verified_releases = {}
     account = account_skills(home)
+    owner_release = installed.get('kind') == 'owner'
     ok = build_state == 'current' and installed['ok']
     content_cache = {}
     for surface, target in local_targets(home).items():
@@ -559,10 +597,10 @@ def status(root=ROOT, home=None):
         for name in sorted(public_names):
             dest = target / name
             entry = manifest['packages'].get(name)
-            if surface == 'claude-code' and name in account:
-                # One copy per skill in Claude Code: the account's.
-                rows[name] = 'duplicate' if os.path.lexists(dest) else 'account-provided'
-                ok &= rows[name] == 'account-provided'
+            if surface == 'claude-code' and (name in account or (owner_release and name in manifest['packages'])):
+                # One copy per skill in Claude Code: the account's, or after `update` the marketplace plugin's.
+                rows[name] = 'duplicate' if os.path.lexists(dest) else 'account-provided' if name in account else 'marketplace'
+                ok &= rows[name] != 'duplicate'
                 continue
             if not dest.is_dir():
                 value = 'broken-link' if dest.is_symlink() else 'missing'
@@ -669,7 +707,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--home', type=Path, default=Path.home(), help='Local install root; use a temporary home for tests')
     sub = ap.add_subparsers(dest='command', required=True)
-    for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed']:
+    for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed', 'update']:
         sub.add_parser(command)
     for command in ['install', 'adopt']:
         install_parser = sub.add_parser(command)
@@ -690,6 +728,7 @@ def main():
             elif args.command == 'bundle': result = bundle()
             elif args.command in {'install', 'adopt'}: result = install(home=args.home, adopt=args.command == 'adopt', expected_source=args.expected_source, skills=args.skill)
             elif args.command == 'pin-installed': result = pin_installed(home=args.home)
+            elif args.command == 'update': result = update(home=args.home)
             elif args.command == 'rollback': result = rollback(ROOT, args.home, args.release_id)
             elif args.command == 'restore': result = restore(args.receipt)
             elif args.command == 'status': result = status(home=args.home)
