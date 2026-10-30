@@ -116,13 +116,13 @@ function select(index){
 function drawTimeline(v){
   const chart=byId('timeline-chart'),DAY=86400000,base=Date.UTC(2001,0,1);
   const iso=t=>new Date(t).toISOString().slice(0,10);
-  const spans=v.timeline.map(t=>String(t.weeks).trim().match(/^(\d+)(?:\s*[-\u2013]\s*(\d+))?$/));
-  if(!window.RoadmapKit||spans.some(m=>!m||Number(m[1])<1||Number(m[2]||m[1])<Number(m[1]))){chart.hidden=true;return;}
-  const last=Math.max(...spans.map(m=>Number(m[2]||m[1])));
+  const spans=v.timeline.map(t=>{const m=String(t.weeks).trim().match(/^(\d+)(?:\s*[-\u2013]\s*(\d+))?$/);return m&&[Number(m[1]),Number(m[2]||m[1])];});
+  if(!window.RoadmapKit||spans.some(s=>!s||s[0]<1||s[1]<s[0])){chart.hidden=true;return;}
+  const last=Math.max(...spans.map(s=>s[1]));
   const plan={kit:1,id:'proposal-'+v.key,persist:false,meta:{title:v.name+' timeline'},
     legend:{items:v.timeline.map((t,i)=>({key:'p'+i,label:t.phase,c:i%6+1}))},
     blocks:[{type:'timeline',relative:'week',labelHeader:'Phase',start:iso(base),end:iso(base+(last*7-1)*DAY),unitWidth:last>12?48:68,
-      rows:v.timeline.map((t,i)=>({id:'p'+i,label:t.phase,group:'p'+i,start:iso(base+(Number(spans[i][1])-1)*7*DAY),end:iso(base+(Number(spans[i][2]||spans[i][1])*7-1)*DAY)}))}]};
+      rows:v.timeline.map((t,i)=>({id:'p'+i,label:t.phase,group:'p'+i,start:iso(base+(spans[i][0]-1)*7*DAY),end:iso(base+(spans[i][1]*7-1)*DAY)}))}]};
   chart.hidden=false;
   RoadmapKit.mount(plan,chart,{embed:true,live:false,parts:['blocks']});
   byId('timeline').closest('div').hidden=true;
