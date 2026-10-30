@@ -2,10 +2,6 @@
 name: analytics-strategy
 description: "Design a measurement strategy, event tracking plan, metric definitions, or a decision-focused analytics dashboard. Use for explicit measurement design and tracking audits; calculating known metrics or drawing an existing dataset's chart does not need this workflow."
 license: MIT
-metadata:
-  upstream: "rampstackco/claude-skills"
-  upstream-commit: "98d8cfe773f975a465f11c56d8fb2ae618307805"
-  adapted: "2026-10-06"
 ---
 
 
@@ -26,5 +22,3 @@ Distinguish a proposed event from an implemented one and from delivery verified 
 Describe observational patterns as observations. Attribution assigns credit under a model; it does not establish causality. Claims about lift or intervention impact need evidence appropriate to that claim.
 
 Deliver the requested plan with the decisions it supports and the evidence still needed. Existing privacy, source, writing, brand, and completion rules govern implementation and handoff.
-
-Adapted from [RampStack's analytics-strategy](https://github.com/rampstackco/claude-skills/tree/98d8cfe773f975a465f11c56d8fb2ae618307805/skills/analytics-strategy). The original MIT notice is in [LICENSE](LICENSE).

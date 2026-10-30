@@ -23,7 +23,16 @@ Read exact values from the selected profile. Do not infer colors from a company 
     "muted": "#5F6368",
     "border": "#D9DCE1",
     "surface": "#F5F6F7",
-    "accent": "#2F5D8A"
+    "accent": "#2F5D8A",
+    "chart-1": "#2A78D6",
+    "chart-2": "#EB6834",
+    "chart-3": "#1BAF7A",
+    "chart-4": "#EDA100",
+    "chart-5": "#E87BA4",
+    "chart-6": "#008300",
+    "status-good": "#0CA30C",
+    "status-warning": "#FAB219",
+    "status-critical": "#D03B3B"
   },
   "type": {
     "body": "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
@@ -39,7 +48,11 @@ Read exact values from the selected profile. Do not infer colors from a company 
 }
 ```
 
-The neutral profile has no logo, footer mark, cover imagery, gradients, decorative icons, or bundled fonts. Add a title, date, and author when the format needs them. Data charts may need additional distinguishable series colors; use an accessible palette and identify it as a chart palette instead of pretending those colors belong to a client brand.
+The neutral profile has no logo, footer mark, cover imagery, gradients, decorative icons, or bundled fonts. Add a title, date, and author when the format needs them.
+
+`chart-1` to `chart-6` are a chart palette, not brand colors. They color data series and the groups on boards, in that fixed order. They are the first six categorical colors of the colorblind-checked data visualization palette (light theme), and they are never used for text, buttons or page chrome. A client profile replaces them with its own recorded chart colors; it does not inherit these.
+
+`status-good`, `status-warning` and `status-critical` mark state (on track, at risk, blocked), never a group. They are the data visualization palette's status steps. Warning and good sit under 3:1 on white, so a status color always appears with its text label, and renderers darken status text toward the text color. A client profile that records no status roles shows state through labels and neutral colors.
 
 ## Review the result
 

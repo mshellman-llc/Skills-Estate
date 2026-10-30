@@ -2,10 +2,6 @@
 name: information-architecture
 description: "Design or review a website or product's navigation, sitemap, labels, content taxonomy, or URL structure. Use for findability and structural design requests; file cleanup, private source routing, and database schemas are outside this skill."
 license: MIT
-metadata:
-  upstream: "rampstackco/claude-skills"
-  upstream-commit: "98d8cfe773f975a465f11c56d8fb2ae618307805"
-  adapted: "2026-10-06"
 ---
 
 
@@ -22,5 +18,3 @@ Preserve existing public URLs unless a change is necessary and authorized. If a 
 Treat card sorting, tree tests, and first-click studies as participant research. Report validation only when actual observations support it. An agent review can identify ambiguity or inconsistent labels; it cannot stand in for users. Without research, label the structure provisional and give a focused validation plan.
 
 Deliver the requested sitemap or structural recommendations with reasons tied to the audience and inventory. Show content gaps that affect the paths. Preserve confirmed names and labels unless the user requested changing them. Existing brand, source, writing, and completion rules govern any finished artifact.
-
-Adapted from [RampStack's information-architecture](https://github.com/rampstackco/claude-skills/tree/98d8cfe773f975a465f11c56d8fb2ae618307805/skills/information-architecture). The original MIT notice is in [LICENSE](LICENSE).

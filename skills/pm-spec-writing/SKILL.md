@@ -2,10 +2,6 @@
 name: pm-spec-writing
 description: "Write a feature spec, PRD, development brief, or testable acceptance criteria from supplied product context. Use for explicit specification and scoping requests; routine code edits and bug fixes do not require a separate spec."
 license: MIT
-metadata:
-  upstream: "rampstackco/claude-skills"
-  upstream-commit: "98d8cfe773f975a465f11c56d8fb2ae618307805"
-  adapted: "2026-10-06"
 ---
 
 
@@ -26,5 +22,3 @@ Ask only for a missing decision that materially changes the spec or blocks usefu
 Use an existing work item when supplied. Preserve its ID and current state; drafting a spec does not close a Brain task or create a competing task system. Keep implementation and external release separate from specification unless the user requested those actions too.
 
 Deliver the requested document at the depth its reader needs. Identify the decisions still needed to make its acceptance criteria executable. Existing source authority, claim checks, voice, brand, and completion rules govern the result.
-
-Adapted from [RampStack's pm-spec-writing](https://github.com/rampstackco/claude-skills/tree/98d8cfe773f975a465f11c56d8fb2ae618307805/skills/pm-spec-writing). The original MIT notice is in [LICENSE](LICENSE).

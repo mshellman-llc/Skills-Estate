@@ -1,6 +1,6 @@
 # Skill reuse review
 
-65 general-use methods, 15 Megan-specific workflows, and 0 awaiting source review.
+63 general-use methods, 15 Megan-specific workflows, and 3 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -47,9 +47,9 @@ Megan-specific workflows retain their current sources and permissions. Generaliz
 | `github-repository-work` | Megan-specific | Supply the task inputs and its supported runtime. | [skills/github-repository-work/SKILL.md:11](../skills/github-repository-work/SKILL.md#L11); [skills/github-repository-work/SKILL.md:3](../skills/github-repository-work/SKILL.md#L3) |
 | `independent-product` | Megan-specific | Supply the task inputs and its supported runtime. | [skills/independent-product/SKILL.md:13](../skills/independent-product/SKILL.md#L13); [skills/independent-product/SKILL.md:3](../skills/independent-product/SKILL.md#L3); [skills/independent-product/SKILL.md:9](../skills/independent-product/SKILL.md#L9) |
 | `information-architecture` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `interactive-proposal` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `interactive-proposal` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `journey-mapping` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `jtbd-framing` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `jtbd-framing` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `knowledge-hub` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `megan-writing-style` | Megan-specific | Supply the task inputs and its supported runtime. | [skills/megan-writing-style/SKILL.md:2](../skills/megan-writing-style/SKILL.md#L2); [skills/megan-writing-style/SKILL.md:3](../skills/megan-writing-style/SKILL.md#L3); [skills/megan-writing-style/SKILL.md:49](../skills/megan-writing-style/SKILL.md#L49); [skills/megan-writing-style/SKILL.md:51](../skills/megan-writing-style/SKILL.md#L51); [skills/megan-writing-style/SKILL.md:56](../skills/megan-writing-style/SKILL.md#L56); [skills/megan-writing-style/SKILL.md:59](../skills/megan-writing-style/SKILL.md#L59); [skills/megan-writing-style/SKILL.md:61](../skills/megan-writing-style/SKILL.md#L61); [skills/megan-writing-style/SKILL.md:7](../skills/megan-writing-style/SKILL.md#L7); [skills/megan-writing-style/SKILL.md:9](../skills/megan-writing-style/SKILL.md#L9) |
 | `org-preflight` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
@@ -65,6 +65,7 @@ Megan-specific workflows retain their current sources and permissions. Generaliz
 | `quality-gate` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `requirements-capture` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `resume-numbers-and-keywords` | Megan-specific | Supply the task inputs and its supported runtime. | [skills/resume-numbers-and-keywords/SKILL.md:15](../skills/resume-numbers-and-keywords/SKILL.md#L15); [skills/resume-numbers-and-keywords/SKILL.md:16](../skills/resume-numbers-and-keywords/SKILL.md#L16); [skills/resume-numbers-and-keywords/SKILL.md:24](../skills/resume-numbers-and-keywords/SKILL.md#L24); [skills/resume-numbers-and-keywords/SKILL.md:30](../skills/resume-numbers-and-keywords/SKILL.md#L30); [skills/resume-numbers-and-keywords/SKILL.md:36](../skills/resume-numbers-and-keywords/SKILL.md#L36); [skills/resume-numbers-and-keywords/SKILL.md:3](../skills/resume-numbers-and-keywords/SKILL.md#L3); [skills/resume-numbers-and-keywords/SKILL.md:49](../skills/resume-numbers-and-keywords/SKILL.md#L49); [skills/resume-numbers-and-keywords/SKILL.md:55](../skills/resume-numbers-and-keywords/SKILL.md#L55) |
+| `roadmap-artifacts` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `rom` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `s2d-handoff` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `sales-journey-critique` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |

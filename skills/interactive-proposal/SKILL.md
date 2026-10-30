@@ -65,6 +65,8 @@ Same page, same brand, same gates. The differences:
 
 **Structure.** Keep the `<main>` landmark in the skeleton. The parity gate requires it.
 
+**Timeline.** In Proposal mode the builder draws each version's quoted phases with the timeline from `roadmap-artifacts`, on a Week 1, Week 2 axis, and redraws it when the version changes. The phase list stays as the fallback when a phase's `weeks` value is not `N` or `N-M`. The components are inlined, take their colors from the selected profile, and add no network request.
+
 **Voice.** Apply the confirmed author profile and `prose-pass` while writing, not as a pass afterwards. The test for
 every sentence is whether it carries a specific: a number, a named system, a named owner, or a
 consequence. Scrubbing buzzwords without adding specifics fails the standard that matters even

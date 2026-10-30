@@ -2,10 +2,6 @@
 name: usability-testing
 description: "Plan usability sessions, write neutral task scripts, or synthesize supplied participant observations. Use for explicit usability research requests; ordinary QA, code fixes, and agent walkthroughs do not establish participant evidence."
 license: MIT
-metadata:
-  upstream: "rampstackco/claude-skills"
-  upstream-commit: "98d8cfe773f975a465f11c56d8fb2ae618307805"
-  adapted: "2026-10-06"
 ---
 
 
@@ -26,5 +22,3 @@ Use participant codes and omit unnecessary identifying details. Record consent r
 Deliver the requested plan or findings with the decision each finding informs. Recommend a repair and a focused retest when supported. A recommendation is not a verified fix.
 
 This skill adds research methods to the existing setup. Its source authority, voice, brand, and completion rules remain with the governing instructions and their existing skills.
-
-Adapted from [RampStack's usability-testing](https://github.com/rampstackco/claude-skills/tree/98d8cfe773f975a465f11c56d8fb2ae618307805/skills/usability-testing). The original MIT notice is in [LICENSE](LICENSE).
