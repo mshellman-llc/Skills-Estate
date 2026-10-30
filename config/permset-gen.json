@@ -1,0 +1,20 @@
+{
+  "api_name": "Fixture_Admin",
+  "label": "Fixture Admin",
+  "description": "Generated from source. Do not hand-edit.",
+  "standard_object_access": [
+    "Account"
+  ],
+  "standard_tabs": [
+    "standard-Contact"
+  ],
+  "no_delete": [
+    "Gadget__c"
+  ],
+  "read_only": [
+    "Widget__c.Stamp__c"
+  ],
+  "user_permissions": [
+    "ViewSetup"
+  ]
+}
