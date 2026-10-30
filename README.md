@@ -22,83 +22,37 @@ The restoration candidate contains 82 source modules and 55 proposed task entryp
 
 ## Use the skills
 
-Claude Code and Cowork install the skills as plugins from this repository's marketplace. After every push to `main`, GitHub Actions rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the `plugins-latest` release. Do not edit `plugins/`; it is generated.
+The skills reach every app as plugins from this repository's marketplace. Merge a change to `main` and GitHub does the rest: it rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the [Plugins (latest)](https://github.com/mshellman-llc/Skills-Estate/releases/tag/plugins-latest) release. An hourly run repeats this in case GitHub skipped a push. Do not edit `plugins/`; it is generated.
 
-- Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, then `/plugin install estate-solutioning@skills-estate` and the other six `estate-` plugins. Turn on auto-update for the marketplace in `/plugin`.
-- Cowork and claude.ai: Customize, Plugins, Add, Add marketplace, `mshellman-llc/Skills-Estate`.
-- Codex and cleanup on the Mac: run `python3 tools/estate.py update` from this folder. It pulls `main`, rebuilds, links every public skill for Codex, and moves other copies of those skills out of `~/.claude/skills` into a dated backup under `~/.local/state/skills-estate/`.
+- Cowork and claude.ai: Customize, Plugins, Add, Add marketplace, `mshellman-llc/Skills-Estate`, with automatic sync on.
+- Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, install the seven `estate-` plugins, and turn on auto-update for the marketplace in `/plugin`.
+- Codex on the Mac: run `python3 tools/estate.py update` from this folder. It pulls `main`, links every public skill for Codex, and moves other copies of those skills out of `~/.claude/skills` into a dated backup under `~/.local/state/skills-estate/`.
 
-## Prepare and install on a Mac or Linux machine
+Merged pull request branches are deleted automatically.
 
-Python 3.9 or later and Git are required. Authenticate GitHub CLI as the intended account and clone the private repository:
+## Change skills
 
-```sh
-gh auth login --hostname github.com --git-protocol https --web
-gh auth setup-git --hostname github.com
-gh repo clone mshellman-llc/Skills-Estate
-cd Skills-Estate
-python3 tools/estate.py build
-python3 tools/estate.py bundle
-python3 tools/estate.py --home /absolute/path/to/isolated-home install
-git config core.hooksPath .githooks
-```
-
-The example installs a candidate into an isolated home. Everyday installation requires completed release gates and `install --expected-source REVIEWED_SOURCE_HASH`, where the hash comes from the reviewed build manifest. This restoration candidate has open review gates.
-
-`install` refuses existing conflicting entries before changing any skill. Inspect those entries, then use `python3 tools/estate.py adopt` for an intended migration. Adoption moves originals into `~/.local/state/skills-estate/backup-*/` and records a restore receipt. Keep those backups until the migration is accepted.
-
-The installer copies packages into a verified, versioned directory under `~/.local/share/skills-estate/releases/` and links that version into `~/.claude/skills` and `~/.agents/skills`. Existing matching names under `~/.codex/skills` are reconciled as legacy aliases. It also creates `~/.config/skills-estate/repository` so either assistant can find the checkout. Installed files remain available when the source volume is unavailable. Keep the repository pointer valid for maintenance. Start a fresh session when a host has cached its skill list.
-
-Each skill appears once per app. Claude Code, Cowork and claude.ai read the skills stored in the Claude account; Claude Code lists them as `anthropic-skills:<name>` from `~/.claude/skills/synced/`. When the account already has a skill, `install` links only the Codex copy and retires an earlier Claude Code link it made, so Claude Code never shows the same skill twice. Upload account skills under their package names from `dist/`. `status` reports `account-provided` for those Claude Code rows, `duplicate` when a second copy remains in `~/.claude/skills`, and `account.replace_with_package` for account skills still stored under an older module name. After uploading a new skill to the account, run `install` again so its Claude Code link is retired.
-
-To promote a reviewed task package without changing other installed skills, use `install --skill writing-integrity --expected-source REVIEWED_SOURCE_HASH`; repeat `--skill` to select more packages. The selected workflows, their runtime dependencies and shared assembly must pass the existing release gates. Other installed links keep their exact versions. Status verifies every retained release and reports a mixed installation without claiming one shared source hash. `rollback RELEASE_ID` restores the complete inventory from the most recent activation of that release ID; use its `restore` receipt to recover originals from an adoption. A conflicting older installation still needs explicit, scoped `adopt --skill NAME --expected-source REVIEWED_SOURCE_HASH` after inspecting its files.
-
-## Change and sync skills
-
-Edit `skills/<name>/SKILL.md` and its supporting resources. Edit shared rules only in `policies/`. Then run:
+Edit `skills/<name>/SKILL.md` and its supporting resources. Edit shared rules only in `policies/`. Before opening a pull request, run:
 
 ```sh
 python3 tools/estate.py validate
 python3 -m unittest discover -s tests -v
 python3 tools/estate.py sync
-python3 tools/estate.py status
 ```
 
-`sync` validates, builds, and packages candidates; it leaves installed releases unchanged. Builds reject source changes during assembly. Installation rejects stale or edited generated files. Both local assistants link to the same verified version of each promoted package. `status` reports source, build, ZIP, and installed drift separately, even when the build is stale. A green build does not establish a current ZIP or installation. Do not edit `build/`, installed links, vendor caches, or `synced/` downloads as authoring sources.
+`build/`, `dist/` and `.local/` are generated and ignored by Git. Do not edit them, installed links, or `synced/` account downloads as sources.
 
-Commit, merge, and checkout hooks do not build or install. Pre-push runs validation and tests. On another machine, pull the reviewed changes and run `sync`, review the resulting source hash, then explicitly install the accepted release. GitHub Actions validates every push and pull request and publishes the generated ZIPs as a workflow artifact.
+## If something breaks
 
-For an existing installation linked into `build/`, first run `python3 tools/estate.py pin-installed`. This preserves its current inventory and bytes in a versioned directory, without accepting new source. Builds refuse to overwrite a directory still serving everyday host links. Vendor and account-managed installations are excluded.
-
-To return to a previously activated version, run `python3 tools/estate.py rollback RELEASE_ID`. Release IDs and backup receipts are under `~/.local/state/skills-estate/`. No automatic retention deletes the only rollback copy. Review obsolete releases before removing them.
-
-To reverse an adoption:
-
-```sh
-python3 tools/estate.py restore /absolute/path/to/backup/receipt.json
-```
-
-Restore refuses if an installed destination has changed since that receipt. A migration receipt also refuses to restore legacy links after their mutable build has changed; keep the pinned version instead. Interrupted activation plans remain beside the backup originals for recovery; an unfinished plan is not an activated release. It restores the recorded local entries; it does not revert Git history or account uploads.
+- A plugin did not update: run the "Publish plugin marketplace" workflow from the Actions tab, or wait for the hourly run.
+- The app cannot add the marketplace: download the ZIPs from the Plugins (latest) release and use Customize, Plugins, Add, Upload plugin.
+- A local install needs undoing: `python3 tools/estate.py rollback RELEASE_ID` restores an earlier version, and `python3 tools/estate.py restore RECEIPT` returns originals moved during an adoption. Release IDs and receipts are under `~/.local/state/skills-estate/`. `python3 tools/estate.py --help` lists the remaining maintenance commands.
 
 ## Select a brand once
 
 Use the profile the user explicitly names, otherwise the current project's `brand.md`, otherwise the neutral profile in `policies/brand.md`. Project profiles use the documented JSON structure. They stay with their project. The neutral profile uses system fonts and has no logo. `tools/brand.py` validates a profile and can produce CSS variables; a renderer still needs to apply those values and the result needs visual review.
 
 No skill needs its own color palette, logo, or font list. The build includes a snapshot at `references/estate/brand.md` for hosts that cannot read another skill's files. A policy change therefore changes package hashes and marks earlier account uploads pending.
-
-## Account and web skills
-
-Local installation covers Claude Code and Codex on this machine. Claude account uploads, Cowork discovery, Codex account skills, and hosted execution are separate surfaces. Local symlinks do not verify any of those surfaces.
-
-`dist/` contains one self-contained ZIP per skill and `release.json` with package hashes. Upload the chosen ZIPs through the account's supported skill interface. Inspect existing names before replacing them. Test discovery and an actual invocation in that host. Claude account downloads and platform-managed plugins remain outside this installer's ownership.
-
-After an upload actually succeeds, record its evidence:
-
-```sh
-python3 tools/estate.py record-publication --surface claude-account --skill client-brand --reference 'Account, date, and upload result'
-```
-
-The other ledger destinations are `codex-account`, `cowork`, and `chatgpt-personal`. Records are reported upload state, not runtime proof. `status` shows pending packages after content changes and inventories other skill locations that may contain duplicates. There is no unattended account uploader in this repository.
 
 ## GitHub access for both assistants
 

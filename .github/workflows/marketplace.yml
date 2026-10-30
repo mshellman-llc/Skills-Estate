@@ -3,6 +3,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # GitHub occasionally skips a push run; the hourly run publishes anything it missed.
+  schedule:
+    - cron: '17 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -22,12 +25,14 @@ jobs:
           python3 tools/plugins.py --root-marketplace
           python3 tools/plugins.py --owner
       - name: Commit the plugin folders to main
+        id: commit
         shell: bash
         run: |
           rm -rf plugins
           cp -R dist/plugins/claude/plugins plugins
           git add -A plugins .claude-plugin/marketplace.json
           if git diff --cached --quiet; then echo "Plugins unchanged"; exit 0; fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "Publish plugins from ${GITHUB_SHA::7} [skip ci]"
           for attempt in 1 2 3; do
@@ -36,6 +41,7 @@ jobs:
           done
           exit 1
       - name: Attach plugin ZIPs to the latest release
+        if: steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
