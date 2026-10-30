@@ -12,6 +12,14 @@
     "0.2.2": {
       "content_sha256": "9f015d88eee44d038d36c6a0525dff50a9848b986739409f7be178c6f0349926",
       "note": "Complete declared evidence and knowledge dependencies; keep separate delivery-stage calls readable without broken package links."
+    },
+    "0.2.3": {
+      "content_sha256": "30d864017427f582c98c478da3d618242f3a6c6bf2dd935cf9ecb00b7689ec51",
+      "note": "Make release inputs reproducible from Git checkout permissions; preserve portable skills and retired entrypoints."
+    },
+    "0.2.4": {
+      "content_sha256": "8c448317b94e94975e33958ccaa96e61fcc0f3a3a391264be5fc8e1ee4ccd9e2",
+      "note": "Keep Git checkout modes reproducible and invoke portable career helpers explicitly with Python."
     }
   }
 }

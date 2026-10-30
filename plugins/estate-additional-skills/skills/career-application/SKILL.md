@@ -76,7 +76,7 @@ If the request does not specify a mode, use `assess` for a new URL and `continue
 12. Keep private evidence notes separate from employer-facing materials. Do not place client-sensitive facts, internal identifiers, repositories, or unsupported metrics in application files.
 13. Apply the candidate's `author-writing-style` with an explicitly supplied confirmed profile and `writing-integrity` rules. Run the bundled writing diagnostics as a deterministic gate where it is installed, not as permission to flatten real resume lists.
 14. Render and inspect every changed DOCX. Verify accessibility and document integrity. Separately read the finished copy against the role mandate and evidence map; layout review does not prove content quality.
-15. Complete the `Resume source review` receipt in the role work record and run `scripts/check_role_resume_readiness.py` against that record before calling a tailored resume prepared locally. The checker verifies a completed receipt and readable files, not the truth or quality of its prose; perform the content review yourself.
+15. Complete the `Resume source review` receipt in the role work record and run `python3 scripts/check_role_resume_readiness.py` against that record before calling a tailored resume prepared locally. The checker verifies a completed receipt and readable files, not the truth or quality of its prose; perform the content review yourself.
 16. Update the role work record and tracker with the exact local state. When the source is unavailable, use a supplied role-work-record template or clearly label a new draft record and return it for the user to save.
 
 ## Prepare for interviews
@@ -136,7 +136,7 @@ The source-review section must include `Content review` pointing to an absolute 
 
 ## Explicit private evidence export
 
-The reusable plugin contains methods and validators, not a candidate's records. If a private evidence snapshot is requested, run `scripts/build_portable_bundle.py --source-map /approved/private/sources.json --output /approved/private/new-export`. Both paths must be explicitly selected; there is no automatic career-folder discovery. The new output must be outside all source skills trees and enclosing plugin packages.
+The reusable plugin contains methods and validators, not a candidate's records. If a private evidence snapshot is requested, run `python3 scripts/build_portable_bundle.py --source-map /approved/private/sources.json --output /approved/private/new-export`. Both paths must be explicitly selected; there is no automatic career-folder discovery. The new output must be outside all source skills trees and enclosing plugin packages.
 
 The JSON source map has `format: 1`, an authorized `owner`, and a nonempty `files` array. Each entry supplies an absolute `source`, a safe relative `destination`, and its exact `sha256`; optional `required` lists mandatory destinations. Pin only evidence authorized for this export. A stale hash, missing required source, path escape or existing output blocks it. The resulting `career-evidence.zip` is a private evidence snapshot with workflow copies for provenance; it is not an independently installable skill and requires the separately installed workflow and dependencies. The helper neither installs nor uploads it.
 

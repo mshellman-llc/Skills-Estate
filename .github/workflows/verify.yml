@@ -40,6 +40,8 @@ jobs:
           python3 artifacts/skills-map/build.py --base "$map_baseline"
           python3 tools/browse.py --check
       - run: python3 tools/estate.py validate
+      - name: Verify the recorded plugin version against this checkout
+        run: python3 tools/plugin_version.py
       - run: python3 tools/run_tests.py --all-integrations --report .local/test-results.json
       - name: Verify and capture the synthetic field guide
         run: |
