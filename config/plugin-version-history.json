@@ -24,6 +24,10 @@
     "0.2.5": {
       "content_sha256": "703dcbccb02d76d1de4fa631e05d30a97858dbc6ad0b995c9ebeae1321031b97",
       "note": "Bind the independently reviewed Python command clarification to its current reader guide."
+    },
+    "0.2.6": {
+      "content_sha256": "68323451fcdc24ed72e99de7240dd77f1a19313cf33a53b79af845566de69399",
+      "note": "Make Baseline palette F the neutral brand profile"
     }
   }
 }

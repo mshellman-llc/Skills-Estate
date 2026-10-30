@@ -29,8 +29,8 @@ Never paste Figma hex values, font names or pixel values directly into a templat
   "name": "Neutral",
   "status": "confirmed",
   "source": "Estate neutral defaults, established 2026-10-19",
-  "colors": { "background": "#FFFFFF", "text": "#1A1A1A", "muted": "#5F6368",
-              "border": "#D9DCE1", "surface": "#F5F6F7", "accent": "#2F5D8A" },
+  "colors": { "background": "#FFFFFF", "text": "#11141A", "muted": "#535559",
+              "border": "#E2E2E3", "surface": "#F5F5F5", "accent": "#37437D" },
   "type": { "body": "system-ui, …", "headings": "system-ui, …", "office": "Arial",
             "body_min_pt": 11, "screen_min_px": 16, "slide_min_pt": 18 },
   "logo": null,
@@ -44,8 +44,8 @@ Never paste Figma hex values, font names or pixel values directly into a templat
 
 ```css
 :root {
-  --brand-background: #FFFFFF;  --brand-text: #1A1A1A;  --brand-muted: #5F6368;
-  --brand-border: #D9DCE1;      --brand-surface: #F5F6F7; --brand-accent: #2F5D8A;
+  --brand-background: #FFFFFF;  --brand-text: #11141A;  --brand-muted: #535559;
+  --brand-border: #E2E2E3;      --brand-surface: #F5F5F5; --brand-accent: #37437D;
   --brand-font-body: system-ui, …;  --brand-font-headings: system-ui, …;
 }
 ```
