@@ -360,6 +360,21 @@ def current_build(root=ROOT):
     return manifest
 
 
+def account_skills(home):
+    """Skill names the Claude account syncs into Claude Code, under ~/.claude/skills/synced/<account>/<name>."""
+    return {path.parent.name for path in (home / '.claude/skills/synced').glob('*/*/SKILL.md')}
+
+
+def account_renames(root, names):
+    """Account skills uploaded under a module name that a public package now carries under its own name."""
+    owners = {}
+    for entry, item in catalog_entries(root).items():
+        for module in [item['source'], *item.get('modes', {}).values()]:
+            if module != entry:
+                owners.setdefault(module, entry)
+    return {name: owners[name] for name in sorted(names) if name in owners and name not in owners.values()}
+
+
 def local_targets(home):
     return {'claude-code': home / '.claude' / 'skills', 'codex': home / '.agents' / 'skills'}
 
@@ -387,7 +402,8 @@ def install(root=ROOT, home=None, adopt=False, expected_source=None, skills=None
             raise ValueError('Build changed after verification; refusing promotion')
         if source_hash(root) != manifest['source_sha256']:
             raise ValueError('Source changed after verification; refusing promotion')
-        return releases.activate(root, home, release_id, tree_hash, adopt=adopt, preserve_existing=skills is not None)
+        return releases.activate(root, home, release_id, tree_hash, adopt=adopt, preserve_existing=skills is not None,
+                                 account_provided=account_skills(home))
 
 
 def pin_installed(root=ROOT, home=None):
@@ -535,6 +551,7 @@ def status(root=ROOT, home=None):
     public_names = catalog_names | set(manifest['packages']) | set(installed.get('packages', {})) | set(release['packages'])
     surfaces = {}
     verified_releases = {}
+    account = account_skills(home)
     ok = build_state == 'current' and installed['ok']
     content_cache = {}
     for surface, target in local_targets(home).items():
@@ -542,6 +559,11 @@ def status(root=ROOT, home=None):
         for name in sorted(public_names):
             dest = target / name
             entry = manifest['packages'].get(name)
+            if surface == 'claude-code' and name in account:
+                # One copy per skill in Claude Code: the account's.
+                rows[name] = 'duplicate' if os.path.lexists(dest) else 'account-provided'
+                ok &= rows[name] == 'account-provided'
+                continue
             if not dest.is_dir():
                 value = 'broken-link' if dest.is_symlink() else 'missing'
             else:
@@ -614,7 +636,13 @@ def status(root=ROOT, home=None):
                 inspection_errors[str(dest)] = str(exc)
                 legacy_rows[name] = 'drift'
             ok &= legacy_rows[name] == 'current'
+    try:
+        renamed = account_renames(root, account)
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        inspection_errors['account_renames'] = str(exc)
+        renamed = {}
     return {'build': build_state, 'source_sha256': desired_source, 'dist': dist_rows,
+            'account': {'skills': sorted(account), 'replace_with_package': renamed},
             'installed_release': installed, 'local': surfaces, 'legacy_codex_aliases': legacy_rows,
             'external_skill_locations': external, 'inspection_errors': inspection_errors,
             'cloud': cloud, 'ok': bool(ok and not inspection_errors)}
