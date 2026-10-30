@@ -10,72 +10,37 @@
     {
       "name": "estate-additional-skills",
       "description": "Optional remaining Skills Estate workflows.",
-      "source": {
-        "source": "git-subdir",
-        "url": "mshellman-llc/Skills-Estate",
-        "path": "plugins/estate-additional-skills",
-        "ref": "marketplace"
-      }
+      "source": "./plugins/estate-additional-skills"
     },
     {
       "name": "estate-commercial",
       "description": "Skills Estate commercial workflows and routing.",
-      "source": {
-        "source": "git-subdir",
-        "url": "mshellman-llc/Skills-Estate",
-        "path": "plugins/estate-commercial",
-        "ref": "marketplace"
-      }
+      "source": "./plugins/estate-commercial"
     },
     {
       "name": "estate-delivery",
       "description": "Skills Estate delivery workflows and routing.",
-      "source": {
-        "source": "git-subdir",
-        "url": "mshellman-llc/Skills-Estate",
-        "path": "plugins/estate-delivery",
-        "ref": "marketplace"
-      }
+      "source": "./plugins/estate-delivery"
     },
     {
       "name": "estate-governance",
       "description": "Skills Estate governance workflows and routing.",
-      "source": {
-        "source": "git-subdir",
-        "url": "mshellman-llc/Skills-Estate",
-        "path": "plugins/estate-governance",
-        "ref": "marketplace"
-      }
+      "source": "./plugins/estate-governance"
     },
     {
       "name": "estate-pursuit",
       "description": "Skills Estate pursuit workflows and routing.",
-      "source": {
-        "source": "git-subdir",
-        "url": "mshellman-llc/Skills-Estate",
-        "path": "plugins/estate-pursuit",
-        "ref": "marketplace"
-      }
+      "source": "./plugins/estate-pursuit"
     },
     {
       "name": "estate-quality",
       "description": "Skills Estate quality workflows and routing.",
-      "source": {
-        "source": "git-subdir",
-        "url": "mshellman-llc/Skills-Estate",
-        "path": "plugins/estate-quality",
-        "ref": "marketplace"
-      }
+      "source": "./plugins/estate-quality"
     },
     {
       "name": "estate-solutioning",
       "description": "Skills Estate solutioning workflows and routing.",
-      "source": {
-        "source": "git-subdir",
-        "url": "mshellman-llc/Skills-Estate",
-        "path": "plugins/estate-solutioning",
-        "ref": "marketplace"
-      }
+      "source": "./plugins/estate-solutioning"
     }
   ]
 }

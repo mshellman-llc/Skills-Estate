@@ -88,12 +88,11 @@ class PluginTests(unittest.TestCase):
         manifest = json.loads((self.root / 'dist/plugins/claude/plugins/estate-solutioning/.claude-plugin/plugin.json').read_text())
         self.assertEqual(manifest['description'], 'Synthetic plugin fixture.')
 
-    def test_main_marketplace_points_each_bundle_at_the_published_branch(self):
+    def test_main_marketplace_points_each_bundle_at_its_plugins_folder(self):
         market = plugins.root_marketplace(self.root)
         self.assertEqual({p['name'] for p in market['plugins']}, plugins.BUNDLES)
         for item in market['plugins']:
-            self.assertEqual(item['source'], {'source': 'git-subdir', 'url': 'mshellman-llc/Skills-Estate',
-                                              'path': 'plugins/' + item['name'], 'ref': 'marketplace'})
+            self.assertEqual(item['source'], './plugins/' + item['name'])
         self.assertEqual(plugins.write_root_marketplace(self.root), ['.claude-plugin/marketplace.json'])
         self.assertEqual(plugins.write_root_marketplace(self.root, check=True), [])
 
