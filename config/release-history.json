@@ -364,6 +364,87 @@
       "source_sha256": "a830ca10d466788810b7432aaaa95abbba04af7b4c6c745b31df2675aa8a04fe",
       "status": "candidate",
       "version": "0.1.4"
+    },
+    {
+      "installed": false,
+      "packages": {
+        "claude/estate-personal": {
+          "tree_sha256": "7ca077dfdb3171e8b75bf0896e4ce23786ac31bde2a5295918b0e208c206d53c",
+          "zip_sha256": "a31e32c6c941019c98bc33ad7e791ddff7a85026d0cf7523272715ad14f88e40"
+        },
+        "codex/estate-personal": {
+          "tree_sha256": "b61292164c1fa49d67b64c74207a043520bb1fb476bb3c71e554daaf6d0bd9f6",
+          "zip_sha256": "dc9f3a393b88e5706d47e9aef29f476c7735c67c8f6ac2f8c01dfff6ec31fb6d"
+        }
+      },
+      "prepared_at": "2026-10-30T17:12:33.437808+00:00",
+      "previous_prepared": {
+        "profile": "personal",
+        "source_sha256": "a830ca10d466788810b7432aaaa95abbba04af7b4c6c745b31df2675aa8a04fe",
+        "version": "0.1.4"
+      },
+      "profile": "personal",
+      "published": false,
+      "ready_for_distribution": false,
+      "remaining": [
+        "Review exact candidate behavior and content.",
+        "Verify the intended host before distribution."
+      ],
+      "review_gaps": [
+        {
+          "required_sha256": "d9a037f0561513ff112e98d4fcd76aa33fb30bca1617214b13ac97475a2b21fa",
+          "status": "review required",
+          "subject": "shared assembly"
+        },
+        {
+          "required_sha256": "1a99ed4304859acfd453d757006deb6feb55bbfd396ab1425f92735d4bd349fa",
+          "status": "review required",
+          "subject": "brand-renderer"
+        },
+        {
+          "required_sha256": "5c492acc4249b8a42a9fc4ea1911dad5251222ec4796531010e23c8c4bb3aad9",
+          "status": "review required",
+          "subject": "code-simplify"
+        },
+        {
+          "required_sha256": "d6411c0231c6280eafc1417b58c818c2e9d9e4073b335be918b53407d1278388",
+          "status": "review required",
+          "subject": "cross-platform-skill-release"
+        },
+        {
+          "required_sha256": "154d5cc1210a20df0e7927c512e37bb3f91366ee5c259d3ed025ed7c457295db",
+          "status": "review required",
+          "subject": "information-architecture"
+        },
+        {
+          "required_sha256": "b90459241e302d9cd77de6db21c1c0ff07e1d7abdb0c7d2fd75ee7b089a438a1",
+          "status": "review required",
+          "subject": "prose-pass"
+        },
+        {
+          "required_sha256": "5870587f309b144d66d66c4ba72a8164e3d728a9f8b56aa5acef16c87b0513b5",
+          "status": "review required",
+          "subject": "quality-gate"
+        },
+        {
+          "required_sha256": "e6307e589a0abcd867ba6cc5912ec4097a0ae9843e4dc9f3140a04197cef2782",
+          "status": "review required",
+          "subject": "skill-creation-walkthrough"
+        },
+        {
+          "required_sha256": "b297e596d900889ef4e8b36de13909f6ae2d5d1d6be35fda8e5b7a2bde9f12e1",
+          "status": "review required",
+          "subject": "skill-estate-sync"
+        },
+        {
+          "required_sha256": "2357d81228b056aa7769f02128c076dc986b75ebeac9dd27b5083ee547d9c61b",
+          "status": "review required",
+          "subject": "writing-integrity"
+        }
+      ],
+      "source_sha256": "787c5b373b97ed7df7c30b869847b54fef82931e4510693b7e8ca0587986bf81",
+      "status": "candidate",
+      "version": "0.1.5"
     }
   ]
 }
