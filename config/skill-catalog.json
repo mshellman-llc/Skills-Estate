@@ -41,6 +41,11 @@
       "pack": "core",
       "modes": {}
     },
+    "build-interactive-explorer": {
+      "source": "build-interactive-explorer",
+      "pack": "core",
+      "modes": {}
+    },
     "business-case": {
       "source": "business-case",
       "pack": "core",

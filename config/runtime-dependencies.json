@@ -137,5 +137,8 @@
   ],
   "roadmap-artifacts": [
     "brand-renderer"
+  ],
+  "build-interactive-explorer": [
+    "roadmap-artifacts"
   ]
 }
