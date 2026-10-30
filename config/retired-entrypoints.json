@@ -96,8 +96,5 @@
       "allowed_as_mode": true,
       "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
     }
-  },
-  "excluded_sources": [
-    "build-interactive-explorer"
-  ]
+  }
 }

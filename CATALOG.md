@@ -84,7 +84,7 @@ Each module needs a reviewed capability disposition before release.
 
 - [accessibility-audit](skills/accessibility-audit/SKILL.md)
 - [analytics-strategy](skills/analytics-strategy/SKILL.md)
-- [architecture-doc](skills/architecture-doc/SKILL.md)
+- [architecture-doc](skills/architecture-doc/SKILL.md) — embedded workflow; standalone skill retired, use `system-design`
 - [beastmode-capture](skills/beastmode-capture/SKILL.md)
 - [beastmode-context](skills/beastmode-context/SKILL.md)
 - [beastmode-health](skills/beastmode-health/SKILL.md)
@@ -95,22 +95,22 @@ Each module needs a reviewed capability disposition before release.
 - [business-case](skills/business-case/SKILL.md)
 - [call-prep](skills/call-prep/SKILL.md)
 - [career-application](skills/career-application/SKILL.md)
-- [career-materials-and-outreach](skills/career-materials-and-outreach/SKILL.md)
+- [career-materials-and-outreach](skills/career-materials-and-outreach/SKILL.md) — embedded workflow; standalone skill retired, use `career-application`
 - [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md)
 - [case-study-builder](skills/case-study-builder/SKILL.md)
 - [client-brand](skills/client-brand/SKILL.md)
 - [code-simplify](skills/code-simplify/SKILL.md)
-- [cross-platform-skill-release](skills/cross-platform-skill-release/SKILL.md)
+- [cross-platform-skill-release](skills/cross-platform-skill-release/SKILL.md) — embedded workflow; standalone skill retired, use `skill-estate-sync`
 - [cutover-closeout](skills/cutover-closeout/SKILL.md)
-- [ddoc](skills/ddoc/SKILL.md)
+- [ddoc](skills/ddoc/SKILL.md) — embedded workflow; standalone skill retired, use `deck-builder`
 - [deal-desk](skills/deal-desk/SKILL.md)
 - [deck-builder](skills/deck-builder/SKILL.md)
 - [delivery-kickoff](skills/delivery-kickoff/SKILL.md)
 - [delivery-status](skills/delivery-status/SKILL.md)
 - [delivery-suite](skills/delivery-suite/SKILL.md)
-- [discovery-brief](skills/discovery-brief/SKILL.md)
+- [discovery-brief](skills/discovery-brief/SKILL.md) — embedded workflow; standalone skill retired, use `discovery`
 - [discovery-synthesis](skills/discovery-synthesis/SKILL.md)
-- [dx-devops-promote](skills/dx-devops-promote/SKILL.md)
+- [dx-devops-promote](skills/dx-devops-promote/SKILL.md) — embedded workflow; standalone skill retired, use `sf-devops-center`
 - [dx-devops-work-item-manage](skills/dx-devops-work-item-manage/SKILL.md)
 - [evidence-core](skills/evidence-core/SKILL.md)
 - [execution-truth](skills/execution-truth/SKILL.md)
@@ -118,7 +118,7 @@ Each module needs a reviewed capability disposition before release.
 - [github-repository-work](skills/github-repository-work/SKILL.md)
 - [independent-product](skills/independent-product/SKILL.md)
 - [information-architecture](skills/information-architecture/SKILL.md)
-- [interactive-proposal](skills/interactive-proposal/SKILL.md)
+- [interactive-proposal](skills/interactive-proposal/SKILL.md) — embedded workflow; standalone skill retired, use `scope-options`
 - [journey-mapping](skills/journey-mapping/SKILL.md)
 - [jtbd-framing](skills/jtbd-framing/SKILL.md)
 - [knowledge-hub](skills/knowledge-hub/SKILL.md)
@@ -127,19 +127,19 @@ Each module needs a reviewed capability disposition before release.
 - [personal-writing-style-runtime](skills/personal-writing-style-runtime/SKILL.md)
 - [playbook-builder](skills/playbook-builder/SKILL.md)
 - [playbook-fit-router](skills/playbook-fit-router/SKILL.md)
-- [playbook-onepager](skills/playbook-onepager/SKILL.md)
-- [playbook-suite](skills/playbook-suite/SKILL.md)
+- [playbook-onepager](skills/playbook-onepager/SKILL.md) — embedded workflow; standalone skill retired, use `service-offering`
+- [playbook-suite](skills/playbook-suite/SKILL.md) — embedded workflow; standalone skill retired, use `service-offering`
 - [pm-spec-writing](skills/pm-spec-writing/SKILL.md)
 - [process](skills/process/SKILL.md)
 - [product-development-pathway](skills/product-development-pathway/SKILL.md)
-- [prose-pass](skills/prose-pass/SKILL.md)
+- [prose-pass](skills/prose-pass/SKILL.md) — internal diagnostics; standalone skill retired, use `writing-integrity`
 - [quality-gate](skills/quality-gate/SKILL.md)
 - [requirements-capture](skills/requirements-capture/SKILL.md)
-- [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md)
+- [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md) — embedded workflow; standalone skill retired, use `career-application`
 - [roadmap-artifacts](skills/roadmap-artifacts/SKILL.md)
-- [rom](skills/rom/SKILL.md)
+- [rom](skills/rom/SKILL.md) — embedded workflow; standalone skill retired, use `project-scoping`
 - [s2d-handoff](skills/s2d-handoff/SKILL.md)
-- [sales-journey-critique](skills/sales-journey-critique/SKILL.md)
+- [sales-journey-critique](skills/sales-journey-critique/SKILL.md) — embedded workflow; standalone skill retired, use `sales-process-mapping`
 - [sales-process-mapping](skills/sales-process-mapping/SKILL.md)
 - [scope-reference](skills/scope-reference/SKILL.md)
 - [scoping-agent](skills/scoping-agent/SKILL.md)
@@ -149,12 +149,12 @@ Each module needs a reviewed capability disposition before release.
 - [sf-enterprise-patterns](skills/sf-enterprise-patterns/SKILL.md)
 - [sf-headless-screenshot](skills/sf-headless-screenshot/SKILL.md)
 - [sf-solo-devops](skills/sf-solo-devops/SKILL.md)
-- [skill-creation-walkthrough](skills/skill-creation-walkthrough/SKILL.md)
+- [skill-creation-walkthrough](skills/skill-creation-walkthrough/SKILL.md) — embedded workflow; standalone skill retired, use `skill-estate-sync`
 - [skill-estate-sync](skills/skill-estate-sync/SKILL.md)
 - [solution-brief](skills/solution-brief/SKILL.md)
 - [sow](skills/sow/SKILL.md)
-- [sow-quality](skills/sow-quality/SKILL.md)
-- [spec-writer](skills/spec-writer/SKILL.md)
+- [sow-quality](skills/sow-quality/SKILL.md) — embedded workflow; standalone skill retired, use `statement-of-work`
+- [spec-writer](skills/spec-writer/SKILL.md) — embedded workflow; standalone skill retired, use `feature-spec`
 - [sticker-art-direction](skills/sticker-art-direction/SKILL.md)
 - [sticker-sheets](skills/sticker-sheets/SKILL.md)
 - [system-design](skills/system-design/SKILL.md)
