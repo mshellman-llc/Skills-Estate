@@ -141,6 +141,11 @@
       "pack": "core",
       "modes": {}
     },
+    "jtbd-framing": {
+      "source": "jtbd-framing",
+      "pack": "core",
+      "modes": {}
+    },
     "knowledge-hub": {
       "source": "knowledge-hub",
       "pack": "core",
@@ -315,7 +320,6 @@
     "evidence-core",
     "execution-truth",
     "github-repository-work",
-    "jtbd-framing",
     "megan-writing-style",
     "org-preflight",
     "personal-writing-style-runtime",
