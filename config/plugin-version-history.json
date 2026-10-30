@@ -20,6 +20,10 @@
     "0.2.4": {
       "content_sha256": "8c448317b94e94975e33958ccaa96e61fcc0f3a3a391264be5fc8e1ee4ccd9e2",
       "note": "Keep Git checkout modes reproducible and invoke portable career helpers explicitly with Python."
+    },
+    "0.2.5": {
+      "content_sha256": "703dcbccb02d76d1de4fa631e05d30a97858dbc6ad0b995c9ebeae1321031b97",
+      "note": "Bind the independently reviewed Python command clarification to its current reader guide."
     }
   }
 }

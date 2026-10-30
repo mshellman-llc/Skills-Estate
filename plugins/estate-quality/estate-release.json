@@ -18,7 +18,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "3bceda83525afedd9ac8cdf868b1de7837a9595649f6d801fdcd6bd91ce306f9",
+      "required_sha256": "aa925e814aea50f3910a1a12f9f9ab504323b0d47bf1f4273015c5245c53a9bb",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -448,6 +448,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "78df7ef8a241f313fdc1337959e0898396415e1cf4f9a27610ec49a6912b17f1",
+  "source_sha256": "c4e5c42a0a79588ae2c30c9669602f882bf13c5e37e71fb7a93e31952b771c57",
   "status": "candidate-unreviewed"
 }

@@ -108,7 +108,7 @@
       "inputs": "The current posting, the user’s career sources, and the role work record.",
       "outputs": "Role assessment, tailored materials, interview preparation, or authorized form work.",
       "example": "Assess this posting against my current career direction and prepare the selected application materials.",
-      "reviewedEntrypointSha256": "dc4aeb6124b5f26cbcc5b5c912fc5b62c43d5f2494fb2df15ac52807f057e2dc",
+      "reviewedEntrypointSha256": "f445e838915a95dcf79bcf8a5fe4751ebe44f1201cd4943390c6e010c898b70e",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "career-materials-and-outreach": {
