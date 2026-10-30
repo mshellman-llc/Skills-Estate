@@ -1,5 +1,5 @@
 {
-  "description": "Unreviewed candidate for isolated testing. Skills Estate quality workflows and routing.",
+  "description": "Skills Estate quality workflows and routing.",
   "name": "estate-quality",
   "skills": "./skills/",
   "version": "0.2.5"

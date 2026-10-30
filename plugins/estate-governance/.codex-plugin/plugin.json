@@ -1,5 +1,5 @@
 {
-  "description": "Unreviewed candidate for isolated testing. Skills Estate governance workflows and routing.",
+  "description": "Skills Estate governance workflows and routing.",
   "name": "estate-governance",
   "skills": "./skills/",
   "version": "0.2.5"
