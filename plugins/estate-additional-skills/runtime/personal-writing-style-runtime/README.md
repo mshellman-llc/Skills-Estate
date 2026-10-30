@@ -7,6 +7,6 @@
 
 **Not for.** Do not apply a personal profile to output written on behalf of another person, to quoted or verbatim material, or where organizational, legal, or contractual voice governs.
 
-**Related.** Depends on [`writing-style-builder`](../writing-style-builder/README.md).
+**Related.** Depends on [`writing-style-builder`](_runtime/writing-style-builder/README.md).
 
-**Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `situational`
+**Full trigger logic and boundaries:** [SKILL.md](WORKFLOW.md) · tier `situational`

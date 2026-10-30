@@ -17,7 +17,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
-MD = SKILL / "SKILL.md"
+MD = SKILL / ("WORKFLOW.md" if SKILL.parent.name == "_runtime" else "SKILL.md")
 
 
 def _resolves(rel: str) -> bool:
@@ -92,9 +92,12 @@ for verb in ("CREATE", "UPDATE", "DELETE", "READ"):
         fail.append(f"the {verb} manifest verb is gone")
 print("  manifest verbs present")
 has("requires all UI states", r"UI states|empty|loading|error")
-has("requires verifiable done criteria", r"done criteria|verifiable")
+has("requires observable acceptance", r"observable result")
+has("requires a verification method", r"verification method")
 has("produces a self-contained artifact", r"self-contained")
-has("says to spec before coding", r"before writing any code|before you code|before touching code")
+has("keeps specification proportional to the request", r"does not automatically require")
+has("retains requested delivery form", r"requested form")
+has("does not restore mandatory pre-code gate", r"Use before writing any code|Use before you code|Use before touching code", want=False)
 
 if fail:
     print("\nSELFTEST FAILED")

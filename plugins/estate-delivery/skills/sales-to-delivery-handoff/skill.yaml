@@ -27,7 +27,7 @@ triggers:
   or a kickoff brief for a signed engagement. Trigger on any signed SOW paired with
   a transfer-to-delivery request, even when no deliverable is named. Do NOT use for
   technical deliverability judgment (that is solution-brief), the kickoff
-  meeting or project charter (estate-delivery-kickoff), requirements extraction
+  meeting or project charter (delivery-kickoff), requirements extraction
   (requirements-capture), or pre-sale research and call prep (call-prep).'
 exclusions: []
 inputs:

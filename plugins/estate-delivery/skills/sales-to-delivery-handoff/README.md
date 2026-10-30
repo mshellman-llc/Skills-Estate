@@ -7,8 +7,8 @@
 
 **Use it when.** A deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal.
 
-**Not for.** Do NOT use for technical deliverability judgment (solution-brief), the kickoff meeting or project charter (estate-delivery-kickoff), requirements extraction (requirements-capture), or pre-sale research and call prep (call-prep).
+**Not for.** Do NOT use for technical deliverability judgment (solution-brief), the kickoff meeting or project charter (delivery-kickoff), requirements extraction (requirements-capture), or pre-sale research and call prep (call-prep).
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md); Used by [`delivery-suite`](_runtime/delivery-suite/README.md).
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md); Used by [`delivery-suite`](_runtime/delivery-suite/README.md).
 
 **Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `situational`

@@ -1,8 +1,8 @@
 schema_version: 1
 name: prose-pass
-display_name: Prose Pass
-summary: Apply the shared writing standard to all authored language.
-status: active
+display_name: Writing diagnostics (internal runtime)
+summary: Supply diagnostic tools and figure checks to Writing Integrity; the standalone Prose Pass skill is retired.
+status: internal
 tier: core
 version: 1.5.0
 owner: Estate maintainer
@@ -14,7 +14,7 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- Draft, revise, or check any authored text, including instructions and internal records.
+- Internal invocation by Writing Integrity for saved-file diagnostics or required review receipts.
 exclusions: []
 inputs:
 - name: task_context

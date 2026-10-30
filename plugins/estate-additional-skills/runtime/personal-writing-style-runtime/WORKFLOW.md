@@ -3,11 +3,14 @@ name: personal-writing-style-runtime
 description: 'Generic template that applies one person''s confirmed private writing-style profile when they are the intended author or speaker. Not a runnable skill on its own; an install names a specific profile path and person, producing a thin per-person adapter. Does not build or change a profile; that is writing-style-builder. Do not apply a personal profile to output written on behalf of another person, to quoted or verbatim material, or where organizational, legal, or contractual voice governs.'
 ---
 
+Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
+
+
 
 # Personal Writing Style Runtime
 
 A routing template, not a voice. Every install points it at exactly one
-confirmed profile (see [writing-style-builder](../writing-style-builder/SKILL.md)
+confirmed profile (see [writing-style-builder](_runtime/writing-style-builder/WORKFLOW.md)
 schema) and one person. This file describes the routing and precedence logic
 every such adapter runs; it carries no one's actual voice.
 

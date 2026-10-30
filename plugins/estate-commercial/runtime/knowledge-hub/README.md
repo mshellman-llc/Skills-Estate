@@ -7,4 +7,4 @@
 
 **Use it when.** Work needs bounded account, pursuit, delivery, evidence, transcript, outcome, or deliverable context from local files, Google Drive, or supplied files, or when a pursuit needs its workspace created, audited, repaired, or gated against the workspace standards.
 
-**Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `core`
+**Full trigger logic and boundaries:** [SKILL.md](WORKFLOW.md) · tier `core`

@@ -1,7 +1,7 @@
 # Decision log: {{ENGAGEMENT_NAME}} ({{SOW_ID}})
 
-Opened at Mobilize by estate-delivery-kickoff, as of {{SEED_DATE}}.
-Stewarded from here by estate-delivery-status. IDs are permanent: never renumber, never reuse.
+Opened at Mobilize by delivery-kickoff, as of {{SEED_DATE}}.
+Stewarded from here by delivery-status. IDs are permanent: never renumber, never reuse.
 
 ID convention: DEC-### in creation order, zero-padded to three digits. DEC, not D, so decision IDs
 never collide with the RAID log's dependency IDs.

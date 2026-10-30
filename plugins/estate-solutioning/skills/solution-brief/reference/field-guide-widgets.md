@@ -6,11 +6,11 @@ no dependencies. Copy a block into a section and edit its data. The script at th
 bottom drives all four by class and `data-` attribute, so edit the data arrays
 rather than the wiring.
 
-Every widget obeys the brand: Plus Jakarta Sans only, no monospace anywhere, radii
-at or below 8px, and no pill or circle shapes on buttons or tags. Numbers use
-`font-variant-numeric: tabular-nums` for alignment, never a mono font. The palette
-arrives from `_shared/estate-brand/colors_and_type.css` through
-`scripts/build_field_guide.py`; no hex code belongs in a body template.
+Every widget uses the caller-selected brand profile, or the documented neutral
+profile when none is selected. `scripts/build_field_guide.py` applies the bundled
+brand runtime's font, color and shape variables. Do not import a former employer's
+font or palette as a default. Numbers use `font-variant-numeric: tabular-nums` for
+alignment; retain accessible labels and sufficient contrast with any profile.
 
 ## When an interaction earns its place
 
@@ -26,21 +26,21 @@ and a viewBox-overflow check on every `<text>`.
 Resolves a live value from the client's own rate table: a category toggle, a row,
 a range, then the result and a comparison against the other toggle state. Built
 for `A x B x C` models where trying values teaches the reader something. In the
-reference build it is membership tier by equipment class by days out.
+reference build uses a newly invented review tier, review step and day range.
 
 Edit the `rates` object and `order` array in the script:
 
 ```js
-var rates = {"Combine harvester":[480,648], "Grain cart":[165,223]}; // [stateA, stateB]
-var order = ["Combine harvester","Grain cart"];                      // display order
+var rates = {"Sample intake":[12,18], "Technical review":[24,36]}; // synthetic [stateA, stateB]
+var order = ["Sample intake","Technical review"];                 // display order
 ```
 
 Toggle labels live in the two `.pr-tb[data-status]` buttons. The compare line names
 the opposite state automatically. If the client's model is not a rate lookup, do
 not force it into this widget.
 
-This resolves the client's own published model. It is a teaching tool. Pricing
-authority is the scoping system, and no Estate number belongs in it.
+For real work, use the caller's confirmed model and source its figures. The
+synthetic example is a teaching tool, not a rate card or an authorized price.
 
 ## 2. Clickable flow (`.ifl-steps` + `.ifl-detail`)
 
@@ -74,26 +74,26 @@ included scope item with no `buildDisposition`.
 
 One dataset in two representations, switched by a toggle: the messy current state
 and the target. Built for greenfield and migration stories. Two `.ct-view[data-view]`
-panels, `flat` and `struct`. Keep the same underlying items in both so the
+panels, `current` and `target`. Keep the same underlying items in both so the
 transform stays honest.
 
 ## Disposition pills (`.disp`)
 
-Four colours with fixed meaning. Reuse the vocabulary so it reads the same across
+Four labelled categories with consistent meaning. Reuse the vocabulary across
 every guide, and keep it aligned with `buildDisposition` on the scope item.
 
-- `d-native` (teal): the platform does it out of the box
-- `d-config` (teal wash): declarative configuration, low risk
-- `d-custom` (navy): a real build, meaning code, an integration, or a custom object
-- `d-dep` (neutral): a dependency the client owns, not a build
+- `d-native`: the platform supports it out of the box
+- `d-config`: declarative configuration; assess its actual risk
+- `d-custom`: a build, such as code, an integration, or a custom object
+- `d-dep`: a dependency with a confirmed owner
 
 ## Callouts (`.call`, `.call.warn`)
 
-- `.call` (teal left border on sand): a point to land, or a recommendation
-- `.call.warn` (navy-blue left border on frost): a correction or a risk to raise
+- `.call`: a point to land, or a recommendation
+- `.call.warn`: a correction or a risk to raise
 
-Navy, never amber. The brand has no warm accent. Label each callout with a short
-`.lbl` and keep it to a single beat. A callout is not a place to dump prose.
+Use the selected profile's semantic colors and include a text label so color is
+not the only signal. Label each callout with a short `.lbl` and keep it to one point.
 
 ## Class-name hygiene
 

@@ -27,11 +27,11 @@ for filename, artifact_type, status, output in cases:
 opportunity = json.loads((ROOT / "fixtures" / "rich-solution-ledger.json").read_text(encoding="utf-8"))
 opportunity.pop("engagement")
 opportunity["context"] = {
-    "clientId": "client-allison",
-    "clientName": "Allison Transmission",
+    "clientId": "client-example",
+    "clientName": "Example Manufacturing (synthetic)",
     "scopeType": "opportunity",
-    "contextId": "opp-2026-allison",
-    "opportunityId": "opp-2026-allison",
+    "contextId": "opp-2026-example",
+    "opportunityId": "opp-2026-example",
     "engagementId": None,
     "contractId": None,
 }

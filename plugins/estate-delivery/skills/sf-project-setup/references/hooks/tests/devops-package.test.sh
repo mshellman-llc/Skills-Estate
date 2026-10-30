@@ -15,7 +15,7 @@ printf '<b>base</b>\n' > "$R/force-app/main/default/b.xml"
 printf '{"packageDirectories":[{"path":"force-app","default":true}],"sourceApiVersion":"65.0"}\n' > "$R/sfdx-project.json"
 git -C "$R" add force-app sfdx-project.json && git -C "$R" commit -qm base
 BASE=$(git -C "$R" rev-parse HEAD)
-git -C "$R" branch stevenc
+git -C "$R" branch integration-dev
 git -C "$R" branch WI-000001
 git -C "$R" checkout -qb dev/WI-000001
 printf '<a>wi1</a>\n' > "$R/force-app/main/default/a.xml"
@@ -24,27 +24,27 @@ DEV_HEAD=$(git -C "$R" rev-parse HEAD)
 
 # Simulate the accepted squash on the integration branch. An unrelated file may
 # differ; the owned WI file must remain byte-identical.
-git -C "$R" checkout -q stevenc
+git -C "$R" checkout -q integration-dev
 printf '<a>wi1</a>\n' > "$R/force-app/main/default/a.xml"
 printf '<b>another wi</b>\n' > "$R/force-app/main/default/b.xml"
 git -C "$R" add force-app && git -C "$R" commit -qm 'accepted shared state'
 git -C "$R" remote add origin "$O"
-git -C "$R" push -q origin staging stevenc WI-000001 dev/WI-000001
-git -C "$R" rev-parse stevenc > "$RECEIPT"
+git -C "$R" push -q origin staging integration-dev WI-000001 dev/WI-000001
+git -C "$R" rev-parse integration-dev > "$RECEIPT"
 
 git -C "$R" config estate.mode native
 git -C "$R" config estate.delivery devops-center
 git -C "$R" config estate.host github
 git -C "$R" config estate.trunk staging
 git -C "$R" config estate.devops.workmodel shared
-git -C "$R" config estate.devops.integrationbranch stevenc
-git -C "$R" config estate.devops.environment StevenC
+git -C "$R" config estate.devops.integrationbranch integration-dev
+git -C "$R" config estate.devops.environment ExampleDevelopment
 
 cat > "$BIN/gh" <<'SH'
 #!/bin/bash
 if [ "$1 $2" = "repo view" ]; then printf 'Estate/Test\n'; exit 0; fi
 case "$*" in
-  *'/deployments -f environment=StevenC'*) printf '[{"id":42,"sha":"%s"}]\n' "$(cat "$RECEIPT")" ;;
+  *'/deployments -f environment=ExampleDevelopment'*) printf '[{"id":42,"sha":"%s"}]\n' "$(cat "$RECEIPT")" ;;
   *'/deployments/42/statuses'*) printf '[{"state":"success"}]\n' ;;
   *) exit 1 ;;
 esac
@@ -89,11 +89,11 @@ jq -e --arg base "$BASE" --arg head "$DEV_HEAD" \
 echo "== same-file overlap fails closed =="
 git -C "$R" reset -q --hard HEAD
 rm -rf "$R/.estate"
-git -C "$R" checkout -q stevenc
+git -C "$R" checkout -q integration-dev
 printf '<a>later wi</a>\n' > "$R/force-app/main/default/a.xml"
 git -C "$R" add force-app && git -C "$R" commit -qm 'later overlap'
-git -C "$R" push -q origin stevenc
-git -C "$R" rev-parse stevenc > "$RECEIPT"
+git -C "$R" push -q origin integration-dev
+git -C "$R" rev-parse integration-dev > "$RECEIPT"
 git -C "$R" checkout -q WI-000001
 if (cd "$R" && "$PACKAGE" --development-branch dev/WI-000001) > "$OUT" 2>&1; then
   fail "overlap should block"

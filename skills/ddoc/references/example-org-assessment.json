@@ -6,7 +6,7 @@
   "date": "[Month YYYY]",
   "quote_number": "[Q-number]",
   "quote_snapshot": {
-    "quote.totalBuPrice": 35000
+    "quote.totalBuPrice": 18000
   },
   "deck_lead": "A two week diagnostic that inventories the org, scores capability maturity, and returns a prioritised roadmap with rough investment ranges. Client-specific slides are marked and filled during the pursuit.",
   "meta": [
@@ -27,19 +27,19 @@
       "v": "[Q-number]"
     }
   ],
-  "_source": "PB-07 Org Health Assessment (illustrative example)",
+  "_source": "Synthetic training-studio scenario: test figures and interview statements created for renderer regression; no real quote or engagement.",
   "options": [
     {
       "name": "Org health assessment",
       "recommended": true,
       "duration": "2 weeks",
-      "investment": "$35,000"
+      "investment": "$18,000"
     }
   ],
   "figures": [
     {
       "label": "Investment",
-      "value": 35000,
+      "value": 18000,
       "quote_field": "quote.totalBuPrice"
     }
   ],
@@ -332,7 +332,7 @@
         "name": "Commercials"
       },
       "title": "Investment",
-      "amount": "$35,000",
+      "amount": "$18,000",
       "qualifier": "Fixed fee. Figures come from the Pricing System, not from this document.",
       "terms": [
         {
@@ -454,5 +454,6 @@
       "title": "Two weeks to an evidenced baseline.",
       "subtitle": "A ranked set of findings with a roadmap the sponsor group can act on."
     }
-  ]
+  ],
+  "_fixture": true
 }

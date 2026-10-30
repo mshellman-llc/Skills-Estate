@@ -102,8 +102,7 @@ The directory is whichever of these the environment actually provides, in order.
 not assume it:
 
 1. A handoffs directory the user or the project has already named. If one exists, it wins.
-2. The harness's own config directory, if there is one. In Claude Code that is
-   `~/.claude/handoffs/` on Claude Code or `~/.codex/handoffs/` on Codex.
+2. A persistent handoffs location explicitly supplied by the current harness or its configuration. Do not derive one from a host name, a conventional home directory, or another account's previous session.
 3. No persistent location. Then write nothing and say so in one line.
 
 Create the directory if it does not exist. Say the resolved path in one line after the chat

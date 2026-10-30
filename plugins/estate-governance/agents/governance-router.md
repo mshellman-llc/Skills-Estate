@@ -15,6 +15,5 @@ description: Route authoring, normalizing and validating the Skills Estate itsel
 ## Available workflows
 
 - [skill-estate-sync](../skills/skill-estate-sync/SKILL.md)
-- [skill-creation-walkthrough](../skills/skill-estate-sync/_runtime/skill-creation-walkthrough/WORKFLOW.md)
 
 Select the smallest workflow that fits the request, then read its complete instructions and required references.

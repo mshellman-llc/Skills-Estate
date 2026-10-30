@@ -3,6 +3,9 @@ name: transcript-ingestion
 description: 'Preserve, normalize, identify, and index a consulting meeting transcript for a confirmed client opportunity or engagement. Use when a transcript, call recording export, meeting notes file, VTT, or plain-text conversation must enter the Knowledge Hub. Do not use for call preparation, general meeting summarization, or unsupported promotion of an AI summary into canonical truth.'
 ---
 
+Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
+
+
 
 # Transcript ingestion
 

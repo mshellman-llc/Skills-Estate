@@ -77,3 +77,5 @@ and broken controls before delivery.
 
 A hook is available only when its installation and invocation were verified.
 Run the finished-output checks explicitly regardless of hook configuration.
+
+Writing Integrity owns writing review. The `prose-pass` paths above refer to its retained internal diagnostics; Prose Pass is retired as a standalone skill.

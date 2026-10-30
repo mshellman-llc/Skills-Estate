@@ -1,43 +1,25 @@
-# Basis of Estimate framework
+# Basis of Estimate review
 
-The standard for handling volumetric assumptions in any Estate playbook SOW. It plugs into the SOW Assumptions sub-component and the DDOC Assumptions slide defined in the Playbook Process Guidelines. A SOW that states counts inline ("up to 1,000 product records") in the scope body reads as a commitment to that exact number, which is wrong for a Time-and-Materials engagement and dangerous if the real count differs.
+The controlling agreement, quote and current project policy determine whether a quantity is an estimate, fixed commitment, cap, or acceptance threshold. Preserve that distinction. This review method supplies no billing policy, legal clause, approval threshold or default section numbers.
 
-## The core move
+## Establish the meaning of each quantity
 
-Move every volumetric number out of the scope body and into **Exhibit A: Basis of Estimate**, appended after the signature block and incorporated by reference. The scope body says what is in scope qualitatively ("product and pricing records are migrated and validated against source"); Exhibit A holds the quantitative footprint the estimate was built on.
+Inventory counts, record volumes, automation complexity, integration boundaries, staffing and dates. For each, record its source, date, owner, confidence and contractual status. Distinguish observed quantities from estimation assumptions. Do not turn a fixed commitment into a nonbinding estimate, or infer that a T&M label changes a separately agreed cap.
 
-Exhibit A is framed as the basis of the estimate, not a fixed quantity of work and not a guarantee of the client's current state. Because the engagement is T&M, effort below the assumed footprint bills as the lower actual effort. This framing protects both sides: the client is not overbilled for work that comes in light, and Estate is not locked to a count that discovery may contradict.
+Keep an agreed quantitative baseline in its authoritative schedule or exhibit when the contract provides one. Other sections can reference it. Move a number only after verifying that relocation does not change incorporation, precedence or obligation. If the agreement does not define a baseline home, propose a structure for its owner's review instead of declaring a new exhibit legally controlling.
 
-## The two-trigger taxonomy
+## Distinguish kinds of changes
 
-Change Order triggers split into two kinds, and the SOW must treat them differently:
+Volume changes and new workstreams may need different treatment. Inspect the actual agreement for each. Record the trigger, threshold if any, required evidence, approver and consequence. Never assume that a small overage is absorbed or that a new integration automatically requires a Change Order. Where the terms distinguish volumetric (soft) and binary (hard) triggers, preserve that distinction and the exact approved wording.
 
-**Soft triggers (volumetric).** The footprint materially exceeds the Basis of Estimate, for example custom-automation volume or record counts well past those assumed. The word that does the work is "materially": small overages absorb into T&M, only material excess re-baselines. These are matters of degree.
+## Verify inventory and gates
 
-**Hard triggers (binary workstream additions).** A second integration, a second org or an org split or merge, an additional platform migration. These are not matters of degree; any amount is a Change Order. They are listed in Exhibit A as "Change Orders regardless of size, independent of the footprint figures above." The "regardless of size" is a defended stricter term (see structural-deslop.md, Tell 2 exception), not slop.
+Confirm when the estimate is checked against actual inventory, who accepts the result and which downstream activity depends on it. Missing authority or a contradictory gate is an unresolved decision. Do not invent an Analyze/Build phase sequence or a right to stop work.
 
-Keeping these separate stops the SOW from treating "one extra integration" as if it were a volumetric overage to be negotiated by degree. It is binary; it triggers regardless.
+## Review technical estimates
 
-## The inventory gate
+Lines of code, customization counts and data volumes may be estimation proxies rather than customer attestations. Check the supplied basis before describing them. Flag a broad functional-parity promise that conflicts with an explicit cap; preserve both until an authorized owner resolves the contradiction.
 
-The footprint is confirmed during the Analyze-phase inventory, and that confirmation is itself a gate: where the inventory shows the footprint materially exceeds the basis, Estate re-baselines through a Change Order before Build proceeds. Exhibit A can carry a "Confirmed in Analyze" checkbox column that doubles as the analysis sign-off log.
+## Report
 
-## Lines-of-code framing
-
-Apex and line-of-code figures are Estate's estimation assumptions, confirmed during Analyze. They are explicitly NOT a quantity the client attests to before signing. State this in Exhibit A. Without it, the LOC figure reads as a client representation, which it is not and which the client cannot make accurately before discovery.
-
-## Language that softens the contradiction
-
-A 1:1 / like-for-like migration promise sits in tension with caps (for example a 10-class Apex cap). "Like-for-like" implies everything carries over; the cap says it does not. Resolve by softening "like-for-like" to "functional-parity migration for standard configurations." Parity of function, within the stated standard boundary, is honest; verbatim reproduction of everything is not, and the caps make that explicit.
-
-## Where each piece lives
-
-| Piece | Home |
-|-------|------|
-| Qualitative scope ("records migrated and validated") | Scope body (Section 2) |
-| Quantitative footprint (counts, scale, LOC) | Exhibit A |
-| Full basis-of-estimate + soft-trigger mechanic | Section 7.2 Key Assumptions |
-| Hard triggers (binary additions) | Exhibit A, restated in Section 8.1 triggers |
-| Inventory gate | Section 7.3 Protective Clauses, referenced from Exhibit A |
-
-Section 1 and 2 may preview the basis-of-estimate idea in one sentence each, pointing to Section 7.2 and Exhibit A. They do not re-explain it. That preview-not-repeat rule is the cross-reference discipline; see section-ownership.md.
+Return a table of quantity, source, contractual meaning, owning section, references, verification state and unresolved decision. Reconcile totals to the quote; route any commercial correction to the authorized pricing process. This is an editorial and consistency review, not contract approval.

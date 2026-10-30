@@ -11,9 +11,17 @@ Use this mode for the estate-specific intake, collision review, scaffolder and r
 
 Identify the requested outcome, intended users, actual inputs and available tools. Inspect the closest existing workflows before creating another entrypoint. Extend an existing mode when it already owns the task. A repeated count, word count or reference-file quota does not decide whether a workflow belongs in a skill.
 
+Use a skill when a bounded, reusable procedure needs task-specific instructions or resources. Use a saved prompt for a one-off request and the assistant's global instructions for behavior required in every conversation. A skill cannot replace an unavailable tool. Record the missing capability, the affected step and an available fallback; leave that step unverified when no fallback works.
+
+Collect the task, intended audience and trigger situations, existing workflow files, and representative inputs and good outputs. Mark an unavailable example as a gap rather than inventing source evidence.
+
 Keep local sketches outside canonical `skills/`. For a repository draft, complete [governed-intake.md](references/governed-intake.md). Before candidate status, identify the closest skills and record the collision decision, capability fallback and intended hosts. Keep cost and efficiency `unknown` until dated execution evidence measures them.
 
 Inventory the original workflow's decisions, examples, templates, scripts, assets, failure handling and checks before rewriting. Preserve those capabilities or record each deliberate change. Do not replace a working implementation with general prose.
+
+## Update an existing skill
+
+Read its current entrypoint and the references and resources used by the affected behavior. Preserve dirty work. Edit the maintained source in place; do not run the new-skill scaffolder or create another entrypoint for the same job. Reproduce the reported defect, make the smallest complete correction, and compare the resulting output with the original requirements. Run changed-skill checks, plus overlap-group checks when trigger selection changes. Refresh the package and obtain the required review before installation.
 
 ## Write the focused workflow
 
@@ -64,6 +72,10 @@ Test a realistic positive request, a relevant alternate request and a nearby req
 
 Use changed-skill checks for a narrow repair, overlap-group checks when routing changes, and the full estate checks for shared assembly or release changes. Apply [the skill release standard](references/estate/skill-standard.md). Validate, assemble and extract the portable package; execute its required resources away from sibling source folders. Preserve exact package and test receipts.
 
+Diagnose failed selection from the observed request: add a missing selection condition when the skill fails to load, and narrow an ambiguous condition when it takes a neighboring task. Name that task's owner. Generic output needs a more specific procedure or example, not a broader description. Remove duplicated reference content and split long material at a useful decision boundary. Check adjacent examples so a correction does not merely fit one case. Recheck affected outputs and routing when dependencies change.
+
 Use the containing maintenance workflow for build, installation, rollback and requested account replacement. Creating a draft does not install it. A source or packaging check does not establish discovery or execution in another host.
 
 Deliver the complete workflow and required files in the requested repository. When file access is unavailable, provide the complete labeled file contents through the supported host. Include the trigger decisions, intake, validation evidence and actual remaining action; no reference file is required merely to fill a template.
+
+Include the final description, intended and excluded trigger situations, the resource plan with each file's purpose, and the positive, alternate and negative acceptance prompts with their observed results. Keep unrun cases explicit. These outputs are required where relevant; fixed sentence, repetition and reference-file quotas are not acceptance criteria.

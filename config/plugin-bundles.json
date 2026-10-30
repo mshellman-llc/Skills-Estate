@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.1.0",
+  "version": "0.2.5",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -152,7 +152,7 @@
         "brain-work-item",
         "execution-truth",
         "github-repository-work",
-        "megan-writing-style",
+        "author-writing-style",
         "personal-writing-style-runtime",
         "sf-headless-screenshot",
         "transcript-ingestion"
@@ -303,7 +303,7 @@
         "reviewed_sha256": "4978c774ab29966c4221580ff1ee50ce7fdc74bd9920b49df310404cae0e529a",
         "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
       },
-      "megan-writing-style": {
+      "author-writing-style": {
         "status": "pending"
       },
       "org-preflight": {
@@ -462,5 +462,6 @@
         "status": "pending"
       }
     }
-  }
+  },
+  "version_policy": 1
 }

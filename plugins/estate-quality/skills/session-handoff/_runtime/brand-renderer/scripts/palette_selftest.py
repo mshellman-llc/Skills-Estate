@@ -11,7 +11,10 @@ from tokens import T
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--skill', type=Path, default=Path(__file__).resolve().parents[1] / 'SKILL.md')
+    default_skill = Path(__file__).resolve().parents[1] / 'SKILL.md'
+    if not default_skill.exists():
+        default_skill = default_skill.with_name('WORKFLOW.md')
+    parser.add_argument('--skill', type=Path, default=default_skill)
     args = parser.parse_args()
     text = args.skill.read_text()
     selected = load_profile(T.path)

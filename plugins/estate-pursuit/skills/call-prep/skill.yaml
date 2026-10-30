@@ -1,11 +1,11 @@
 schema_version: 1
 name: call-prep
 display_name: Call Prep
-summary: The single call-planning capability for an Estate pursuit, with two modes.
+summary: The single call-planning capability for a sales pursuit, with two modes.
 status: active
 tier: core
 version: 0.2.1
-owner: Estate
+owner: Skills Estate maintainer
 category: pursuit-intelligence
 runtimes:
 - generic-agent-skills
@@ -14,7 +14,7 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- 'The single call-planning capability for an Estate pursuit, with two modes. Mode
+- 'The single call-planning capability for a sales pursuit, with two modes. Mode
   A builds and maintains the rolling Pursuit Brief: one canonical overview of the
   opportunity covering situation, desired business outcomes, confirmed facts with
   sources, labeled assumptions, unknowns, stakeholders and missing roles, risks, qualification

@@ -37,7 +37,7 @@ enforced so history is traceable; everything else steps back.
 
 ## `jira`
 
-All Jira work is done by the **agent** through the **Atlassian Rovo MCP** — a company-wide
+All Jira work is done by the **agent** through the **Atlassian Rovo MCP** — an explicitly configured
 connector authenticated interactively in the Claude client. There is no CLI to install or
 authenticate, and a hook cannot reach the MCP, so `_ticket.sh` has no Jira arm.
 

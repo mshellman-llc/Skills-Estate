@@ -10,7 +10,7 @@ Run from the checkout or an isolated snapshot containing the required source and
 
 ```sh
 python3 tools/estate.py validate
-python3 -m unittest discover -s tests -v
+python3 tools/run_tests.py --report .local/test-results.json
 python3 tools/estate.py build
 python3 tools/estate.py bundle
 ```

@@ -141,7 +141,7 @@ ROOT=$(git rev-parse --show-toplevel); cd "$ROOT"
 #
 # A worktree materialises tracked content from the branch it was cut from, and
 # tooling conventionally cuts from origin/<trunk> rather than the local branch
-# (64-Org's scripts/new-ticket does exactly that). So origin is the authority for
+# (Example Project's scripts/new-ticket does exactly that). So origin is the authority for
 # "will a worktree get the contract".
 #
 # Reading the LOCAL branch produced an immediate false alarm on a clone whose local
@@ -406,7 +406,7 @@ fi
 # ═══ 4b. hooks the REPO wires for itself ══════════════════════
 #
 # Sections 1-4 all answer "is OUR stack armed". None of them can see a second
-# stack. That blind spot has already cost: 64-Org carried three hooks of its own
+# stack. That blind spot has already cost: Example Project carried three hooks of its own
 # in .claude/hooks/, forked from this skill's ancestor before this skill existed.
 # Adopting the skill installed a newer implementation ALONGSIDE the fork instead of
 # retiring it, and the ledger migration then left one of the forked hooks writing
@@ -863,7 +863,7 @@ if [ "$PROBE" = "0" ]; then
 elif [ "$(ticket_system)" = "jira" ]; then
   # Jira has no shell-callable CLI in this stack anymore: all Jira work is done by the
   # agent through the Atlassian Rovo MCP, which a bash audit cannot reach or probe.
-  info "Jira runs agent-side through the Atlassian Rovo MCP (company-wide, interactive"
+  info "Jira runs agent-side through the Atlassian Rovo MCP (explicitly configured, interactive"
   info "auth) — there is nothing here for a bash audit to shell-check. Confirm the Rovo"
   info "MCP is connected in your Claude client."
 elif ! ticket_cli_present; then

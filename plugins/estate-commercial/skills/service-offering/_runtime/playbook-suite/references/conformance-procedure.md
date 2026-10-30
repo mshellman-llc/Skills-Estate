@@ -7,7 +7,9 @@ standard for the ones that follow.
 ## Order
 
 **1. Freeze the spec.** Nothing regenerates against a moving definition, so pin the spec
-version before you start.
+version before you start. Obtain the explicit inputs and complete the authority checks
+in [spec-inputs.md](spec-inputs.md). The bundled scripts check the preserved 1.1
+model only; a successful run is not current specification acceptance.
 
 **2. Inventory.** Run the audit against the playbook folder:
 
@@ -39,7 +41,11 @@ mismatch is a blocking finding: flag it, adjust neither side unilaterally.
 **6. Promote.** Once conforming, lift the artifact set into the pattern references so later
 playbooks copy a correct example as the canonical DDOC structure.
 
-## Known corrections to expect on a pre-spec playbook
+## Preserved version 1.1 corrections to verify with the current specification
+
+These are compatibility rules, not universal policies. Apply each only when the
+caller's approved specification confirms it; otherwise record the conflict and
+leave the source unchanged.
 
 - Any Pricing Sheet spreadsheet is obsolete. Pricing is the quote.
 - Any internal Deal Desk document is obsolete. Deal Desk reviews the quote, SOW, and DDOC.

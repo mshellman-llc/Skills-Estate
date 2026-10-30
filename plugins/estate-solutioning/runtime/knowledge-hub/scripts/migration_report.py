@@ -14,18 +14,21 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import hub_runtime  # noqa: E402
 
 
-BUCKET_SCOPES = {
-    "20 deals": "opportunity",
-    "30 projects": "engagement",
-    "90 to be sorted": "unclassified",
-}
 
 
 def stable_slug(value):
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
 
 
-def audit(root):
+def audit(root, bucket_scopes=None):
+    # Folder names are workspace configuration, never evidence of lifecycle authority.
+    bucket_scopes = {} if bucket_scopes is None else bucket_scopes
+    if not isinstance(bucket_scopes, dict) or any(
+        not isinstance(key, str) or not key or '/' in key or '\\' in key
+        or not isinstance(value, str) or value not in {"opportunity", "engagement", "unclassified"}
+        for key, value in bucket_scopes.items()
+    ):
+        raise ValueError("bucket scopes must map folder names to opportunity, engagement or unclassified")
     root = pathlib.Path(root).expanduser().resolve()
     hubs = []
     for hub in sorted(root.glob("*/*/knowledge-hub")):
@@ -46,7 +49,7 @@ def audit(root):
             })
         bucket = hub.parent.parent.name
         client_slug = stable_slug(hub.parent.name)
-        scope = BUCKET_SCOPES.get(bucket, "unclassified")
+        scope = bucket_scopes.get(bucket, "unclassified")
         hubs.append({
             "bucket": bucket,
             "clientFolder": hub.parent.name,
@@ -113,10 +116,12 @@ def markdown(report):
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("root")
+    parser.add_argument("--bucket-scopes", type=pathlib.Path, help="explicit JSON folder-name to lifecycle mapping; otherwise all contexts remain unclassified")
     parser.add_argument("--json-output")
     parser.add_argument("--markdown-output")
     args = parser.parse_args(argv)
-    report = audit(args.root)
+    scopes = json.loads(args.bucket_scopes.read_text()) if args.bucket_scopes else None
+    report = audit(args.root, scopes)
     if args.json_output:
         pathlib.Path(args.json_output).write_text(
             json.dumps(report, indent=2) + "\n", encoding="utf-8")

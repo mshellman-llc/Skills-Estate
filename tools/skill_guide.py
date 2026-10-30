@@ -3,9 +3,10 @@ import hashlib
 import json
 from pathlib import Path
 import re
+from catalog import excluded_sources
 
 PERSONAL = re.compile(r"\bMegan\b|meganshellman|mshellman|BeastMode|JobHunt|GoGuardian|NeuraFlash|/Volumes/(?:BeastMode|Stickers|Meridian)", re.I)
-PERSONAL_SKILLS = set('beastmode-capture beastmode-context beastmode-health beastmode-reconcile brain-work-item career-application career-materials-and-outreach career-progression-and-offers case-study-builder fortunes-weave github-repository-work independent-product megan-writing-style resume-numbers-and-keywords sticker-sheets'.split())
+PERSONAL_SKILLS = set()  # Personal context is supplied separately from functional workflows.
 LOCAL_CLEANUP = {}
 SETUP = {
     **{n: 'Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization.' for n in 'dx-devops-promote dx-devops-work-item-manage org-preflight sf-delivery-standards sf-deploy-engine sf-enterprise-patterns sf-headless-screenshot sf-solo-devops'.split()},
@@ -15,6 +16,8 @@ SETUP = {
     'brand-renderer': 'Requires the bundled rendering runtime and the artifact format’s dependencies. Select the project brand or neutral profile.',
     'sow': 'Requires a confirmed quote model, the project’s approved contract profile, and the document runtime.',
     'sf-headless-screenshot': 'Requires sfqa, a supported browser runtime, and an authorized Salesforce connection.',
+    'playbook-suite': 'Requires the caller’s approved specification, manifest and qualifier schemas, and stage-gate workbook. Bundled checks cover the preserved 1.1 compatibility model; they do not certify those external inputs or rendered outputs.',
+    'playbook-fit-router': 'Requires caller-supplied qualifier data and its approved schema. The router checks minimum fields; schema and policy conformance need separate evidence.',
 }
 
 def text_files(folder):
@@ -39,7 +42,8 @@ def scan(root, folder):
     return findings, count
 
 def load(root):
-    return json.loads((root / 'config/skill-guide.json').read_text())['skills']
+    return {name: guide for name, guide in json.loads((root / 'config/skill-guide.json').read_text())['skills'].items()
+            if name not in excluded_sources(root)}
 
 def assessment(root, name, guide, resources):
     own, count = scan(root, root / 'skills' / name)
@@ -84,7 +88,7 @@ def report(root):
              'Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.', '',
              'Every assembled task package receives the shared policies. The shared workflow uses project roles and contains no named personal owner.', '',
              'Discovery synthesis and sales mapping use the current project owner and the intended author’s confirmed profile. Writing-integrity resolves an explicitly configured profile owner. Fixture names and selftest checks are listed separately in the map and do not make a method personal.', '',
-             'Megan-specific workflows retain their current sources and permissions. Generalizing those methods requires replacing personal records, decisions, paths, identity, and permissions; deleting a name alone would be insufficient.', '',
+             'Functional workflows accept explicit task context. Private originals remain outside the portable collection; this guide is not a certificate of host execution.', '',
              '| Workflow | Built for | Setup | Personal references in source |', '| --- | --- | --- | --- |', *rows, '',
              'Refresh this review with `python3 tools/skill_guide.py --report`. The map recomputes reference findings on each build. Reader-guide copy is bound to its reviewed entrypoint hash; a changed entrypoint shows current instructions until the guide is reviewed again.', '']
     return '\n'.join(lines)

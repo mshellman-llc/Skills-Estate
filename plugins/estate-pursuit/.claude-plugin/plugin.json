@@ -2,8 +2,7 @@
   "author": {
     "name": "Skills Estate"
   },
-  "description": "Skills Estate pursuit workflows and routing.",
+  "description": "Unreviewed candidate for isolated testing. Skills Estate pursuit workflows and routing.",
   "name": "estate-pursuit",
-  "repository": "https://github.com/mshellman-llc/Skills-Estate",
-  "version": "0.1.0"
+  "version": "0.2.5"
 }

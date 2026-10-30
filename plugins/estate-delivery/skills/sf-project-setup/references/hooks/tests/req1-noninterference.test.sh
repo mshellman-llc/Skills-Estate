@@ -56,7 +56,7 @@ MG="$TMP/managed repo"; mkdir -p "$MG"    && ( cd "$MG"  && "$REALGIT" init -q -
   && "$REALGIT" config estate.mode native \
   && "$REALGIT" config estate.trunk main \
   && "$REALGIT" config estate.ticket.system jira \
-  && "$REALGIT" config estate.ticket.project ORG64 )
+  && "$REALGIT" config estate.ticket.project EXAMPLE )
 
 # call-counting shims: each records itself, then execs the real tool.
 BIN="$TMP/bin"; mkdir -p "$BIN"

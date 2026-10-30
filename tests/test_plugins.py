@@ -81,6 +81,20 @@ class PluginTests(unittest.TestCase):
             plugins.build_plugins(self.root, ['estate-solutioning'])
         self.assertFalse((self.root / 'dist/plugins').exists())
 
+    def test_internal_root_rename_preserves_all_backlinks(self):
+        control = self.root / 'skills/control'
+        (control / 'README.md').write_text('[Workflow](SKILL.md)\n')
+        (control / 'references').mkdir()
+        (control / 'references/detail.md').write_text('[Workflow](../SKILL.md#method)\n')
+        (control / 'SKILL.md').write_text((control / 'SKILL.md').read_text() + '\n[Self](SKILL.md)\n')
+        plugins.build_plugins(self.root, ['estate-quality'], candidate=True)
+        for host in ('claude', 'codex'):
+            package = self.root / 'dist/plugins' / host / 'plugins/estate-quality/runtime/control'
+            self.assertEqual('[Workflow](WORKFLOW.md)\n', (package / 'README.md').read_text())
+            self.assertEqual('[Workflow](../WORKFLOW.md#method)\n', (package / 'references/detail.md').read_text())
+            self.assertIn('[Self](WORKFLOW.md)', (package / 'WORKFLOW.md').read_text())
+            self.assertFalse((package / 'SKILL.md').exists())
+
     def test_owner_build_publishes_with_gaps_recorded_and_no_candidate_label(self):
         result = plugins.build_plugins(self.root, ['estate-solutioning'], owner=True)
         self.assertEqual(result['status'], 'owner-published')

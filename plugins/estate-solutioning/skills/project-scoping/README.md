@@ -7,6 +7,6 @@
 
 **Not for.** Do NOT use for the SOW (sow), a static scope reference or option comparison (scope-reference), or project delivery. A rough order of magnitude range and its basis use the rom mode.
 
-**Related.** Optionally uses [`knowledge-hub`](../knowledge-hub/README.md) when an authorized project destination exists; Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
+**Related.** Optionally uses [`knowledge-hub`](_runtime/knowledge-hub/README.md) when an authorized project destination exists; Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
 
 **Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `core`

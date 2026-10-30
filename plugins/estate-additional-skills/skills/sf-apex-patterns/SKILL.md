@@ -1,6 +1,6 @@
 ---
 name: sf-apex-patterns
-description: 'Implement and enforce the Estate house Salesforce architecture: service layer shared by trigger/UI/API entry points, a lean owned Unit of Work for all DML, selector classes for all SOQL (USER_MODE by default), DTO/POJO returns from @AuraEnabled controllers, and imperative Apex from LWC. Use this skill whenever writing or reviewing Apex classes, triggers, LWC JavaScript, or scaffolding a new Salesforce feature — even if the user doesn''t name the architecture. Also use it when asked to set up pre-commit checks, run architecture checks, fix arch-check violations, add a selector/service/UoW, or bring legacy Apex toward the house pattern. Triggers on: "new apex class", "add a trigger", "LWC component", "service layer", "unit of work", "selector", "arch check", "pre-commit", "architecture violation".'
+description: 'Implement and enforce the Estate house Salesforce architecture: service layer shared by trigger/UI/API entry points, a lean owned Unit of Work for all DML, selector classes for all SOQL (USER_MODE by default), DTO/POJO returns from @AuraEnabled controllers, and imperative Apex from LWC. Use this skill when the project has adopted this architecture or the user asks to evaluate it for Apex, triggers, LWC or a new Salesforce feature. Also use it when asked to set up pre-commit checks, run architecture checks, fix arch-check violations, add a selector/service/UoW, or bring legacy Apex toward the house pattern. Triggers on: "new apex class", "add a trigger", "LWC component", "service layer", "unit of work", "selector", "arch check", "pre-commit", "architecture violation".'
 metadata:
   canon_exempt: 'engineering-doc'
   canon_exempt_reason: 'Enforcement-stack reference an agent must hold in full: rule IDs, exit codes, suppression contract, and engine semantics, punctuation included.'
@@ -20,6 +20,10 @@ field-level security is enforced by default and query shape is reviewable; DTOs 
 boundary so the LWC/React view layer is decoupled from the data model. The full spec with
 code examples is in `references/architecture.md` — read it before writing code in an
 unfamiliar layer. The rule catalog with rationale per check is in `references/rules.md`.
+
+## Project adoption
+
+This is a reusable reference architecture, not an employer or platform mandate. Read the project's architecture decisions and existing framework before applying it. Preserve a confirmed project convention unless the user authorizes migration. If adoption is undecided, present compatibility findings and leave enforcement uninstalled. The bundled rule severities are defaults for this named pattern, not policies inferred for a new client.
 
 ## The layers at a glance
 

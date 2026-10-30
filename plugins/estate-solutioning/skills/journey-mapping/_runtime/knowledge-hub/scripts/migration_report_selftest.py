@@ -12,15 +12,17 @@ import migration_report  # noqa: E402
 
 with tempfile.TemporaryDirectory() as directory:
     root = pathlib.Path(directory)
-    hub = root / "20 deals" / "example" / "knowledge-hub"
+    hub = root / "Synthetic Sales" / "example" / "knowledge-hub"
     hub.mkdir(parents=True)
     (hub / "01-company-profile.md").write_text("profile")
     (hub / "05-scope-plan-status.md").write_text("mixed")
     (hub / "custom.md").write_text("unknown")
     before = {path: path.read_bytes() for path in hub.iterdir()}
-    report = migration_report.audit(root)
+    report = migration_report.audit(root, {"Synthetic Sales": "opportunity"})
+    unspecified = migration_report.audit(root)
     summary = report["summary"]
     checks = {
+        "unconfigured folder does not imply lifecycle": unspecified["summary"]["contextProposals"] == 0 and unspecified["hubs"][0]["proposedContextType"] == "unclassified",
         "one Hub found": summary["hubs"] == 1,
         "three files inspected": summary["files"] == 3,
         "one direct mapping": summary["mapped"] == 1,

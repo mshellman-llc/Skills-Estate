@@ -22,7 +22,7 @@ The restoration candidate contains 82 source modules and 55 proposed task entryp
 
 ## Use the skills
 
-The skills reach every app as plugins from this repository's marketplace. Merge a change to `main` and GitHub does the rest: it rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the [Plugins (latest)](https://github.com/mshellman-llc/Skills-Estate/releases/tag/plugins-latest) release. An hourly run repeats this in case GitHub skipped a push. Do not edit `plugins/`; it is generated.
+The skills reach every app as plugins from this repository's marketplace. After a change reaches `main` and passes automated verification, GitHub rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the [Plugins (latest)](https://github.com/mshellman-llc/Skills-Estate/releases/tag/plugins-latest) release. An hourly run retries pending verification or incomplete uploads. It refuses to publish stale or failing source. Do not edit `plugins/`; it is generated.
 
 - Cowork and claude.ai: Customize, Plugins, Add, Add marketplace, `mshellman-llc/Skills-Estate`, with automatic sync on.
 - Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, install the seven `estate-` plugins, and turn on auto-update for the marketplace in `/plugin`.
@@ -36,11 +36,17 @@ Edit `skills/<name>/SKILL.md` and its supporting resources. Edit shared rules on
 
 ```sh
 python3 tools/estate.py validate
-python3 -m unittest discover -s tests -v
+python3 tools/run_tests.py --report .local/test-results.json
 python3 tools/estate.py sync
 ```
 
 `build/`, `dist/` and `.local/` are generated and ignored by Git. Do not edit them, installed links, or `synced/` account downloads as sources.
+
+The runner lists deferred browser, loopback, and generated-map checks explicitly. CI runs `--all-integrations`; a local pass with deferred checks is not full release acceptance. Use a supported browser environment and preserve the browser launch guards.
+
+Before generating changed plugins, increase `version` in `config/plugin-bundles.json`, then run `python3 tools/plugin_version.py --record 'Describe the changes'` and `python3 tools/plugins.py --candidate`. The version history binds source, dependencies, routing, and assembly to one version and refuses stale builds or reuse of a version for changed content. Follow the [existing add/update/release workflow](skills/skill-estate-sync/references/release-workflow.md) for review and publication. Candidate creation does not install or publish.
+
+Supply personal profiles, client facts, contract policies, accounts, and learning stores as explicit external inputs. The portable workflows do not select a personal context store automatically. `config/retired-entrypoints.json` prevents the 15 removed predecessors and standalone Prose Pass from returning through normal builds and activation. Their required internal methods remain with their successors; Explorer remains available under the later keep decision.
 
 ## If something breaks
 

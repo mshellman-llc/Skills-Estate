@@ -1,12 +1,14 @@
 # Project Charter: Northwind Revenue Cloud build
 
-Prepared by Estate for Northwind Traders. Drafted 2026-08-10 by the Program Lead.
+Synthetic test fixture. Names, figures, dates and project facts are example inputs, not a real engagement.
+
+Prepared by Example Delivery Team for Northwind Traders. Drafted 2026-08-10 by the Program Lead.
 Status: DRAFT until the Sign-off section carries the client signature block.
 
 ## Engagement summary
 
 Northwind Traders is replacing spreadsheet-based quoting with Revenue Cloud so pricing survives
-the life of a program. Estate delivers the configuration, two integrations, and a clean-source
+the life of a program. The example delivery team delivers the configuration, two integrations, and a clean-source
 data migration over fourteen weeks.
 
 | Field | Value | Source |
@@ -55,16 +57,16 @@ Source: SOW-2026-014 estimate and the accepted handoff brief, as of 2026-08-01
 
 | Role | Named owner | Allocation | Source |
 |---|---|---|---|
-| CSE | Dana Whitfield | 10% | handoff brief |
-| Program Lead (PMO) | Marcus Ito | 50% | handoff brief |
-| Solution Lead | Priya Raman | 75% | handoff brief |
-| BA | Jordan Cole | 100% | handoff brief |
+| CSE | Synthetic Commercial Owner | 10% | handoff brief |
+| Program Lead (PMO) | Synthetic Project Owner | 50% | handoff brief |
+| Solution Lead | Synthetic Technical Owner | 75% | handoff brief |
+| BA | Synthetic Analyst | 100% | handoff brief |
 
 Client-side counterparts:
 
 | Role | Named owner | Function |
 |---|---|---|
-| Executive sponsor | Elena Ruiz | VP Revenue Operations |
+| Executive sponsor | Synthetic Sponsor | VP Revenue Operations |
 
 ## Governance and cadence
 
@@ -101,5 +103,5 @@ Source: SOW-2026-014, as of 2026-08-01
 
 | Party | Name | Role | Signature | Date |
 |---|---|---|---|---|
-| Northwind Traders | Elena Ruiz | Executive sponsor | | |
-| Estate | Dana Whitfield | CSE | | |
+| Northwind Traders | Synthetic Sponsor | Executive sponsor | | |
+| Example Delivery Team | Synthetic Commercial Owner | CSE | | |

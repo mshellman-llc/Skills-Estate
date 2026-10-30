@@ -165,7 +165,7 @@ def check(manifest, raw_text):
     # cannot slip past the raw scan and a raw dash cannot hide from the parse.
     count = max(count_em_dashes(manifest), raw_text.count(EM_DASH))
     if count:
-        findings.append(f"em dash found in manifest ({count} occurrence(s)); prose-pass bans it everywhere")
+        findings.append(f"em dash found in manifest ({count} occurrence(s)); the shared writing standard requires reviewing it")
 
     for field in ("client", "engagement", "as_of"):
         if not filled(manifest.get(field)):

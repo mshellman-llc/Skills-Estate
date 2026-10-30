@@ -12,26 +12,26 @@ git -C "$R" init -q -b staging .
 git -C "$R" config user.email t@t.test; git -C "$R" config user.name t
 printf 'base\n' > "$R/file"
 git -C "$R" add file && git -C "$R" commit -qm base
-git -C "$R" branch stevenc
+git -C "$R" branch integration-dev
 git -C "$R" branch WI-000001
 git -C "$R" remote add origin "$O"
-git -C "$R" push -q origin staging stevenc WI-000001
+git -C "$R" push -q origin staging integration-dev WI-000001
 git -C "$R" config estate.mode native
 git -C "$R" config estate.delivery devops-center
 git -C "$R" config estate.host github
 git -C "$R" config estate.trunk staging
 git -C "$R" config estate.devops.workmodel shared
-git -C "$R" config estate.devops.integrationbranch stevenc
-git -C "$R" config estate.devops.environment StevenC
+git -C "$R" config estate.devops.integrationbranch integration-dev
+git -C "$R" config estate.devops.environment ExampleDevelopment
 git -C "$R" config estate.devops.branchpattern '^WI-[0-9]+$'
 git -C "$R" config estate.devops.developmentbranchpattern '^dev/WI-[0-9]+$'
-git -C "$R" rev-parse stevenc > "$RECEIPT"
+git -C "$R" rev-parse integration-dev > "$RECEIPT"
 
 cat > "$BIN/gh" <<'SH'
 #!/bin/bash
 if [ "$1 $2" = "repo view" ]; then printf 'Estate/Test\n'; exit 0; fi
 case "$*" in
-  *'/deployments -f environment=StevenC'*) printf '[{"id":42,"sha":"%s"}]\n' "$(cat "$RECEIPT")" ;;
+  *'/deployments -f environment=ExampleDevelopment'*) printf '[{"id":42,"sha":"%s"}]\n' "$(cat "$RECEIPT")" ;;
   *'/deployments/42/statuses'*) printf '[{"state":"success"}]\n' ;;
   *) exit 1 ;;
 esac
@@ -53,22 +53,22 @@ run() {
 
 echo "== shared development branch creation =="
 run block "stale implicit base is refused" "git worktree add '$TMP/dev' -b dev/WI-000001"
-run allow "explicit deployed integration base is allowed" "git worktree add '$TMP/dev' -b dev/WI-000001 origin/stevenc"
+run allow "explicit deployed integration base is allowed" "git worktree add '$TMP/dev' -b dev/WI-000001 origin/integration-dev"
 
-git -C "$R" checkout -q stevenc
+git -C "$R" checkout -q integration-dev
 printf 'ahead\n' >> "$R/file"
 git -C "$R" add file && git -C "$R" commit -qm ahead
-git -C "$R" push -q origin stevenc
+git -C "$R" push -q origin integration-dev
 git -C "$R" checkout -q staging
-run block "branch ahead of deployment receipt freezes new work" "git worktree add '$TMP/dev' -b dev/WI-000002 origin/stevenc"
+run block "branch ahead of deployment receipt freezes new work" "git worktree add '$TMP/dev' -b dev/WI-000002 origin/integration-dev"
 
 git -C "$R" checkout -q WI-000001
-run block "integration branch cannot merge into package" "git merge origin/stevenc"
+run block "integration branch cannot merge into package" "git merge origin/integration-dev"
 
 git -C "$R" config estate.devops.workmodel isolated
-run allow "isolated DevOps Center mode is unchanged" "git merge origin/stevenc"
+run allow "isolated DevOps Center mode is unchanged" "git merge origin/integration-dev"
 git -C "$R" config estate.delivery direct
-run allow "direct delivery is unchanged" "git worktree add '$TMP/dev' -b dev/WI-000003 origin/stevenc"
+run allow "direct delivery is unchanged" "git worktree add '$TMP/dev' -b dev/WI-000003 origin/integration-dev"
 
 echo
 echo "$PASS passed, $FAIL failed"

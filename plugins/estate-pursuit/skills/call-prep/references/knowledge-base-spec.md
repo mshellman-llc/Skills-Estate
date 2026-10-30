@@ -40,9 +40,9 @@ Typed prefixes so a reader knows the provenance class before they click:
 Internal footnotes need enough detail to re-find the source cold:
 
 ```markdown
-[^I1]: Laura Perz, #methode-rca Slack, 2026-08-05 15:50 EDT, relaying Salesforce AE notes.
-[^T1]: Methode SFDC Call Transcript, Google Drive doc `1X_2cuKZA...`, shared 2026-07-30.
-        Transcript covers approximately 00:07:11 to 00:28:10.
+[^I1]: Synthetic workshop coordinator, #sample-registration, 2030-01-10 09:00 UTC, reporting a booking issue.
+[^T1]: Synthetic registration interview, source ID SYNTH-T1, created 2030-01-11.
+        Transcript excerpt covers 00:02:00 to 00:05:00; no real meeting is represented.
 ```
 
 Note the transcript coverage range. Partial transcripts are common, and a future reader needs to know they are not looking at the whole call.
@@ -54,9 +54,9 @@ Note the transcript coverage range. Partial transcripts are common, and a future
 When sources disagree, show both and rule:
 
 ```markdown
-> **Conflict flagged:** an XBRL extract (R99) shows Automotive $489.2M and Industrial $583.6M,
-> which sums above the consolidated total. The $467.7 / $524.3 / $27.2 split sums exactly and
-> matches management commentary. **Use the latter.**
+> **Synthetic conflict:** a draft lists 28 adult places and 17 child places,
+> but the signed register contains 25 adult places and 15 child places, totaling 40.
+> Use the signed register because it is the stated authority; retain the draft discrepancy.
 ```
 
 This costs three lines and buys a great deal. A brief that quietly picks a number and gets it wrong in front of a client does more damage than one that shows the disagreement. It also protects the seller: if the client cites the other figure, they know why and can respond.
@@ -109,6 +109,6 @@ Write the talk-track lines as **verbatim, speakable sentences**, not bullet summ
 
 These files get read fast and under stress. Lead with the finding, then the evidence. Bold the number or name that matters. Use tables for anything with more than three parallel items.
 
-Quote clients verbatim and attribute. A paraphrase of "we just told them, too bad, deal with it" loses everything that makes it useful.
+Quote authorized client evidence exactly and attribute it. Keep a source locator; do not ship real quotations as reusable examples.
 
 Where you calculate something rather than citing it, say so — "our calculation" or "derived" — so a reader knows which numbers came from a filing and which came from you.

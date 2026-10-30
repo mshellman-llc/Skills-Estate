@@ -29,7 +29,7 @@ For `estate.delivery=devops-center`, use this order:
 3. Complete the prune and round-trip dry run in this guide.
 4. Commit and push the baseline to `main`.
 5. Create `staging` from that exact `main` commit and push it.
-6. Refresh the Staging and `stevenc2` sandboxes from production, so their starting
+6. Refresh the Staging and `sandbox-a` sandboxes from production, so their starting
    metadata and org-bound user references derive from the same source.
 7. Connect the repository, branches, environments, and project in DevOps Center.
 8. Only then run `install.sh --repo --delivery devops-center ...` to arm the local

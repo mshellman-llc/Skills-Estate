@@ -2,7 +2,7 @@ Implement the attached writing-integrity kit in {{HOST_NAME}} for {{OWNER}}, usi
 
 Read the kit's README, skill entrypoint and learning workflow. {{HOST_ROUTE}}
 
-Inspect the tools and persistent instruction surfaces you actually have. Choose a private storage location for this owner. If the same owner's local tools already share a writing-integrity store, reuse it. Do not overwrite a profile belonging to another person or infer ownership from a folder name.
+Inspect the tools and persistent instruction surfaces you actually have. Choose a separate private storage location authorized for this owner and task context. Pass that explicit location as --store to every learning.py command. Do not reuse another store merely because the owner is the same person; no environment or default path establishes audience authorization. Do not overwrite a profile belonging to another person or infer ownership from a folder name.
 
 I authorize ongoing capture of writing mistakes I identify and substantive replacements you make after a review misses something. Apply corrections throughout the current piece. Record the actual before and after text, reason, source and scope as it happens. I do not need to say “remember this” each time. Keep raw examples private. This does not authorize searching other chats or transmitting my material to another service.
 

@@ -2,8 +2,8 @@
 """Selftest for reconcile.py, the Mode B evidence gate.
 
 Each case asserts that a specific failure mode is caught. The failure modes are
-drawn from real defects found while building call briefs, which is why they are
-the ones worth testing.
+represented by newly authored synthetic workshop-registration examples. No private
+meeting, quotation, commercial figure or person is reproduced.
 
 Usage: python3 reconcile_selftest.py
 """
@@ -43,12 +43,12 @@ def case(name):
 
 @case("conflicting values for one quantity are caught")
 def _():
-    # The real defect: one SOW total in Salesforce and another in the record.
+    # Synthetic disagreement between a booking estimate and register.
     out = run({"meeting": MEETING, "figures": [
-        {"key": "sow002", "label": "SOW002 total", "value": "$197,775",
-         "source": "Salesforce closed-won", "meaning": "NTE"},
-        {"key": "sow002", "label": "SOW002 total", "value": "$225,800",
-         "source": "Engagement record", "meaning": "NTE"},
+        {"key": "workshop_fee", "label": "Workshop fee", "value": "$800",
+         "source": "Synthetic booking estimate", "meaning": "NTE"},
+        {"key": "workshop_fee", "label": "Workshop fee", "value": "$900",
+         "source": "Synthetic register", "meaning": "NTE"},
     ], "landmines": [{"title": "x", "body": "y"}]})
     codes = [e["code"] for e in out["errors"]]
     assert "FIGURE_CONFLICT" in codes, codes
@@ -58,10 +58,10 @@ def _():
 @case("matching values across sources do not false-positive")
 def _():
     out = run({"meeting": MEETING, "figures": [
-        {"key": "credit_memos", "label": "Credit memos", "value": "1,000+",
-         "source": "Billing records", "meaning": "per year"},
-        {"key": "credit_memos", "label": "Credit memos", "value": "1,000+",
-         "source": "Findings Report 10.3", "meaning": "per year"},
+        {"key": "places", "label": "Workshop places", "value": "40",
+         "source": "Synthetic booking records", "meaning": "per workshop"},
+        {"key": "places", "label": "Workshop places", "value": "40",
+         "source": "Synthetic signed register", "meaning": "per workshop"},
     ]})
     assert out["pass"], out["errors"]
 
@@ -69,7 +69,7 @@ def _():
 @case("a figure with no source fails")
 def _():
     out = run({"meeting": MEETING, "figures": [
-        {"label": "Recoverable", "value": "$200K-$300K", "meaning": "near term"}]})
+        {"label": "Recoverable", "value": "$60-$80", "meaning": "near term"}]})
     assert "FIGURE_NO_SOURCE" in [e["code"] for e in out["errors"]]
 
 
@@ -83,10 +83,10 @@ def _():
 @case("spoken lines with a mined voice pass")
 def _():
     out = run({"meeting": MEETING,
-               "voice_inventory": [{"phrase": "carpet in a bathroom",
-                                    "kind": "analogy", "source": "Jun 24 transcript"}],
-               "talk_track": [{"title": "Open", "say": ["It is carpet in a bathroom."],
-                               "voice_basis": "carpet in a bathroom"}]})
+               "voice_inventory": [{"phrase": "a queue without numbered tickets",
+                                    "kind": "analogy", "source": "Synthetic interview SYNTH-T1"}],
+               "talk_track": [{"title": "Open", "say": ["It is a queue without numbered tickets."],
+                               "voice_basis": "a queue without numbered tickets"}]})
     assert out["pass"], out["errors"]
 
 
@@ -99,9 +99,9 @@ def _():
 
 @case("a 'never' item placed into content fails")
 def _():
-    # The real risk: a CFO's assessment of his own staff reaching an artifact.
+    # Synthetic restricted planning note must not reach the public brief.
     out = run({"meeting": MEETING, "claims": [
-        {"text": "He questioned two people's suitability", "source": "Jun 24 transcript",
+        {"text": "An unpublished workshop date is under discussion", "source": "Synthetic interview SYNTH-T1",
          "sensitivity": "never", "placement": "qa_answer"}]})
     assert "SENSITIVITY_LEAK" in [e["code"] for e in out["errors"]]
 
@@ -109,7 +109,7 @@ def _():
 @case("an untagged claim fails")
 def _():
     out = run({"meeting": MEETING, "claims": [
-        {"text": "Work paused pending a change order", "source": "Slack Jul 10"}]})
+        {"text": "Registration paused pending a room check", "source": "Synthetic coordinator note"}]})
     assert "CLAIM_NO_SENSITIVITY" in [e["code"] for e in out["errors"]]
 
 
@@ -125,11 +125,11 @@ def _():
 
 @case("a conflict that is flagged and landmined passes as acknowledged")
 def _():
-    # Two SOW totals, both shown, disagreement named. The presenter decides.
+    # Two workshop fee estimates, both shown, disagreement named. The presenter decides.
     out = run({"meeting": MEETING, "figures": [
-        {"key": "sow", "label": "SOW", "value": "$197,775", "source": "Salesforce",
+        {"key": "workshop", "label": "Workshop fee", "value": "$800", "source": "Synthetic booking estimate",
          "meaning": "NTE", "flag": True},
-        {"key": "sow", "label": "SOW", "value": "$225,800", "source": "Record",
+        {"key": "workshop", "label": "Workshop fee", "value": "$900", "source": "Record",
          "meaning": "NTE", "flag": True},
     ], "landmines": [{"title": "Two conflicting SOW totals",
                       "body": "Verify before quoting", "do": "Confirm in writing"}]})

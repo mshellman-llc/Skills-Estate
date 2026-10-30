@@ -62,21 +62,20 @@ expect("fail.md", 1, want_substrings=[
     "must run in rank order",
 ])
 
-# Em dash detection, generated at runtime so no fixture file carries the
-# character (the skill directory itself must scan clean).
+# Punctuation does not invalidate an otherwise supported ledger.
 import tempfile
 
 with open(os.path.join(FIX, "pass.md"), encoding="utf-8") as f:
     clean = f.read()
 tmp = tempfile.NamedTemporaryFile("w", suffix=".md", delete=False, encoding="utf-8")
-tmp.write(clean + "\nA stray em dash \u2014 the gate must catch it.\n")
+tmp.write(clean + "\nA source sentence \u2014 preserve its punctuation.\n")
 tmp.close()
 proc = subprocess.run([sys.executable, GATE, tmp.name], capture_output=True, text=True)
 os.unlink(tmp.name)
-if proc.returncode != 1 or "em dash on line" not in proc.stdout:
-    failures.append("em dash case: expected exit 1 with 'em dash on line', got {}\n{}".format(proc.returncode, proc.stdout))
+if proc.returncode != 0 or "em dash on line" in proc.stdout:
+    failures.append("punctuation preservation: expected exit 0, got {}\n{}".format(proc.returncode, proc.stdout))
 else:
-    print("ok: runtime em dash case (exit 1)")
+    print("ok: source punctuation preserved (exit 0)")
 
 # Markdown with no ledger tables at all.
 expect("fail_no_tables.md", 1, want_substrings=[

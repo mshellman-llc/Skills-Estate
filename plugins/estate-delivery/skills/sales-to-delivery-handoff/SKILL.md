@@ -1,13 +1,13 @@
 ---
 name: sales-to-delivery-handoff
-description: 'Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (solution-brief), the kickoff meeting or project charter (estate-delivery-kickoff), requirements extraction (requirements-capture), or pre-sale research and call prep (call-prep).'
+description: 'Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (solution-brief), the kickoff meeting or project charter (delivery-kickoff), requirements extraction (requirements-capture), or pre-sale research and call prep (call-prep).'
 ---
 
 
 # Estate sales-to-delivery handoff
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [`readout-brief.md`](_runtime/prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [Writing Integrity review](_runtime/writing-integrity/references/detailed-review.md). Inputs, not a final pass.**
 
 A signed deal crosses from the people who sold it to the people who deliver it, and
 most of what the seller knows is about to walk out of the room. This skill captures
@@ -28,6 +28,17 @@ schemas and no defined mapping between them; facts died at the seam. That defect
 why this is one skill. The package is the brief at an earlier state of completion,
 never a different document.
 
+## Project context required
+
+Use only the caller-confirmed engagement, source records, private output location,
+and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,
+and Pursuit Lead to that project's authorized owners; these labels do not impose
+an employer organization chart or signing authority. The executed agreement and
+accepted project plan determine gates, commercial rules, and support obligations.
+Keep account history, risk assessments, credentials, and client evidence outside
+portable skill sources. A cached account, attached Project, or available connector
+is not authorization to read, write, or publish.
+
 ## Governance, delegated
 
 - **evidence-core runs first.** Every load-bearing claim enters the ledger
@@ -37,7 +48,7 @@ never a different document.
   `sales_to_delivery_handoff` in evidence-core's `reference/artifact-registry.json`.
 - **brand-renderer owns the rendered surface.** No inlined hex, no
   duplicated palette. Brand applies during the build.
-- **prose-pass owns the voice.** Run its checker on the rendered prose. No em
+- **Writing-integrity owns writing review.** Run its bundled diagnostics on the rendered prose. No em
   dashes, sentence-case headings, no AI-tell constructions.
 - **The money rule.** Contract figures come from the executed SOW and its quote
   (Q-number) only. Never from Slack, never from memory, never from the proposal
@@ -122,7 +133,7 @@ Specs for 11 and 12, including the readiness checklist items:
    HTML or portable Markdown brief. Confidence maps to presentation: Confirmed
    reads as fact, Inferred as inference with its basis, Unknown as a named open
    question, conflicts as flagged divergences with both values shown. Run
-   prose-pass on the rendered prose. Never hand-patch the render; fix the manifest
+   writing-integrity on the rendered prose. Never hand-patch the render; fix the manifest
    and re-render.
 6. **Transfer and land.** Moment 1: support the warm transfer (the SSL walks the
    package to the Program Lead and Solution Lead in a recorded session), then
@@ -172,7 +183,7 @@ with owners, sections 11 and 12, or the gate.
 ## Running unattended
 
 The warm transfer and the acceptance need humans. On a headless run: build the
-manifest, run the gate and prose-pass, and stop with the findings and the open
+manifest, run the gate and review with writing-integrity, and stop with the findings and the open
 gaps. Say plainly that the transfer session and acceptance are outstanding. Never
 record an acceptance nobody gave.
 
@@ -181,13 +192,13 @@ record an acceptance nobody gave.
 This skill is the first delivery link in the chain that runs SOW, then
 s2d-handoff, then kickoff, then status, then UAT, then cutover-closeout. Its
 upstream producer is the sales side: the executed SOW and quote arrive as
-fixed input. Its downstream consumer is estate-delivery-kickoff, which
+fixed input. Its downstream consumer is delivery-kickoff, which
 turns the accepted brief into the charter and governance pack.
 
 - Does not judge technical deliverability or carry implementation depth. Section
   05 is orientation only; the deep answer is solution-brief.
 - Does not run the kickoff or write the project charter. That is
-  estate-delivery-kickoff.
+  delivery-kickoff.
 - Does not extract or structure requirements. That is requirements-capture.
 - Does not do pursuit research or call prep. That is call-prep, pre-sale
   only.

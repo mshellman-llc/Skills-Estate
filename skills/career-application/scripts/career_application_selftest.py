@@ -1,130 +1,79 @@
 #!/usr/bin/env python3
-"""Structural and source-integrity checks for the personal career skill."""
-
+"""Exercise career workflow resources and explicit private export with synthetic evidence."""
+import hashlib
+import json
 from pathlib import Path
-import re
-import sys
+import tempfile
+import unittest
+from zipfile import ZipFile
+import build_portable_bundle as bundle
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
-SKILL_ROOT = Path(__file__).resolve().parents[1]
-JOBHUNT_ROOT = SKILL_ROOT.parents[1]
-SKILL = SKILL_ROOT / "SKILL.md"
-CONTEXT = JOBHUNT_ROOT / "00_Master" / "Career_Application_Operating_Context.md"
+class CareerPortabilityTests(unittest.TestCase):
+    def test_workflow_keeps_evidence_and_submission_boundaries(self):
+        text = (ROOT / 'SKILL.md').read_text()
+        for required in ('filled and awaiting submission', 'explicitly authorizes',
+                         'A clipped read is incomplete', 'inventory relevant prior role-specific resumes',
+                         'check_role_resume_readiness.py', 'confirmed career root'):
+            self.assertIn(required, text)
+        self.assertTrue((ROOT / 'scripts/content-review.ts').is_file())
 
-REQUIRED_SOURCES = [
-    CONTEXT,
-    JOBHUNT_ROOT / "00_Master" / "Professional_Profile.md",
-    JOBHUNT_ROOT / "00_Master" / "Career_Program_Portfolio.md",
-    JOBHUNT_ROOT / "00_Master" / "Client_Work_Strategy_and_Leadership_Record.md",
-    JOBHUNT_ROOT / "00_Master" / "GoGuardian_Program_Record.md",
-    JOBHUNT_ROOT / "05_Reference" / "Engagements" / "GoGuardian" / "GoGuardian_Source_Audit.md",
-    JOBHUNT_ROOT / "05_Reference" / "Engagements" / "GoGuardian" / "GoGuardian_Deliverables_and_Artifact_Catalog.md",
-    JOBHUNT_ROOT / "05_Reference" / "Engagements" / "GoGuardian" / "GoGuardian_Assessment_Method_and_Scoring.md",
-    JOBHUNT_ROOT / "05_Reference" / "Engagements" / "GoGuardian" / "GoGuardian_Metric_and_Claim_Library.md",
-    JOBHUNT_ROOT / "00_Master" / "Governed_AI_Skill_Estate_and_Knowledge_Hub_Program_Record.md",
-    JOBHUNT_ROOT / "00_Master" / "AI_Skill_Portfolio_Quality_and_Scaling_Record.md",
-    JOBHUNT_ROOT / "00_Master" / "Linky_Product_Record.md",
-    JOBHUNT_ROOT / "00_Master" / "Assessment_Strategy_and_Enablement_Program_Record.md",
-    JOBHUNT_ROOT / "00_Master" / "Solution_Engineering_Leadership_Evidence_Map.md",
-    JOBHUNT_ROOT / "00_Master" / "Leadership_Interview_Evidence_Map.md",
-    JOBHUNT_ROOT / "00_Master" / "Career_Narrative_Translation_Guide.md",
-    JOBHUNT_ROOT / "05_Reference" / "Claim_Governance" / "Career_Program_Evidence_Ledger.md",
-    JOBHUNT_ROOT / "05_Reference" / "Story_Bank" / "Success_Stories.md",
-    JOBHUNT_ROOT / "04_Interview" / "Interview_Preparation.md",
-    JOBHUNT_ROOT / "03_Tracker" / "applications.md",
-    JOBHUNT_ROOT / "02_Templates" / "Role_Work_Record_Template.md",
-    JOBHUNT_ROOT / "00_Master" / "Resume_Masters" / "Megan_Shellman_Technical_GTM_Solutions_Leadership_Resume.docx",
-    JOBHUNT_ROOT / "00_Master" / "Resume_Masters" / "Megan_Shellman_AI_Strategy_Enablement_Resume.docx",
-    JOBHUNT_ROOT / "00_Master" / "Resume_Masters" / "Megan_Shellman_Revenue_Technology_Transformation_Resume.docx",
-]
+    def test_only_explicit_pinned_evidence_is_exported(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            evidence = root / 'evidence.md'
+            evidence.write_text('Synthetic candidate completed a sample project.\n')
+            unrelated = root / 'not-selected.txt'
+            unrelated.write_text('Private sentinel not selected for export.')
+            manifest = root / 'sources.json'
+            row = {'source': str(evidence), 'destination': 'references/evidence.md',
+                   'sha256': hashlib.sha256(evidence.read_bytes()).hexdigest()}
+            manifest.write_text(json.dumps({'format': 1, 'owner': 'Synthetic candidate', 'files': [row],
+                                            'required': ['references/evidence.md']}))
+            result = bundle.build(manifest, root / 'export')
+            self.assertFalse(result['uploaded'])
+            self.assertFalse(result['installed'])
+            with ZipFile(root / 'export/career-evidence.zip') as z:
+                self.assertEqual(evidence.read_bytes(), z.read('career-application/references/evidence.md'))
+                self.assertFalse(any('not-selected' in name for name in z.namelist()))
+            with self.assertRaisesRegex(ValueError, 'existing files'):
+                bundle.build(manifest, root / 'export')
+            evidence.write_text('Changed synthetic evidence.')
+            with self.assertRaisesRegex(ValueError, 'stale'):
+                bundle.build(manifest, root / 'new-export')
+            row['destination'] = '../escape.md'
+            manifest.write_text(json.dumps({'format': 1, 'owner': 'Synthetic candidate', 'files': [row]}))
+            with self.assertRaisesRegex(ValueError, 'inside'):
+                bundle.build(manifest, root / 'escape-export')
+
+    def test_private_output_cannot_enter_distribution_tree(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            plugin = root / 'plugin'
+            (plugin / '.claude-plugin').mkdir(parents=True)
+            module = plugin / 'skills/career-application'
+            module.mkdir(parents=True)
+            alias = root / 'alias'
+            alias.symlink_to(plugin, target_is_directory=True)
+            with patch.object(bundle, 'SKILL_ROOT', module):
+                for output in (plugin / 'skills/another-module/private', plugin / 'private', alias / 'private'):
+                    with self.subTest(output=output):
+                        with self.assertRaisesRegex(ValueError, 'outside every enclosing'):
+                            bundle.build(root / 'unused.json', output)
+                        self.assertFalse(output.exists())
+
+    def test_missing_sources_do_not_trigger_discovery(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            manifest = root / 'sources.json'
+            manifest.write_text(json.dumps({'format': 1, 'owner': 'Synthetic candidate', 'files': []}))
+            with self.assertRaisesRegex(ValueError, 'explicit nonempty'):
+                bundle.build(manifest, root / 'export')
+            self.assertFalse((root / 'export').exists())
 
 
-def fail(message: str) -> None:
-    print(f"FAIL: {message}")
-    raise SystemExit(1)
-
-
-text = SKILL.read_text(encoding="utf-8")
-match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
-if not match:
-    fail("SKILL.md has no YAML frontmatter")
-
-frontmatter = match.group(1)
-name = re.search(r"^name:\s*(.+)$", frontmatter, re.MULTILINE)
-description = re.search(r"^description:\s*(.+)$", frontmatter, re.MULTILINE)
-if not name or name.group(1).strip() != "career-application":
-    fail("unexpected skill name")
-if not description or len(description.group(1).strip()) > 200:
-    fail("description is missing or exceeds Claude's 200-character guidance")
-
-for required in (
-    "filled and awaiting submission",
-    "explicitly authorizes",
-    "references/career-context.md",
-    "references/career-narrative-translation-guide.md",
-    "references/governed-skill-estate-and-knowledge-hub-program-record.md",
-    "references/ai-skill-portfolio-quality-and-scaling-record.md",
-    "references/client-work-strategy-and-leadership-record.md",
-    "references/goguardian-program-record.md",
-    "references/goguardian-source-audit.md",
-    "references/goguardian-deliverables-and-artifact-catalog.md",
-    "references/goguardian-assessment-method-and-scoring.md",
-    "references/goguardian-metric-and-claim-library.md",
-    "references/linky-product-record.md",
-    "references/assessment-strategy-and-enablement-program-record.md",
-    "references/solution-engineering-leadership-evidence-map.md",
-    "references/leadership-interview-evidence-map.md",
-    "references/success-stories.md",
-    "references/interview-preparation.md",
-    "$career-application interview",
-    "assets/resumes/",
-    "Do not share or publish",
-    "A clipped read is incomplete",
-    "inventory relevant prior role-specific resumes",
-    "check_role_resume_readiness.py",
-):
-    if required.lower() not in text.lower():
-        fail(f"missing required instruction: {required}")
-
-missing = [str(path) for path in REQUIRED_SOURCES if not path.is_file()]
-if missing:
-    fail("missing source files: " + ", ".join(missing))
-
-receipt_template = (JOBHUNT_ROOT / "02_Templates" / "Role_Work_Record_Template.md").read_text(encoding="utf-8")
-for required in (
-    "## Resume source review",
-    "Base master:",
-    "Prior variants reviewed:",
-    "Retain:",
-    "Revise:",
-    "Exclude:",
-    "Claim authority checked:",
-    "Tailored resume:",
-    "Finished copy check:",
-):
-    if required not in receipt_template:
-        fail(f"role record template is missing: {required}")
-
-if not (SKILL_ROOT / "scripts" / "check_role_resume_readiness.py").is_file():
-    fail("resume readiness checker is missing")
-
-context = CONTEXT.read_text(encoding="utf-8")
-for required in (
-    "Senior Managing Principal Sales Engineer, Technology Solutions - AI & Revenue Operations",
-    "Managing Principal | Jul 2025-Feb 2026",
-    "SQMR",
-    "$200K",
-    "$250K+",
-    "43 CRM-attributed pursuit teams",
-    "53 broader Book of Business deal/project cycles",
-    "46 authored scoping-application quotes",
-    "Megan_Shellman_Technical_GTM_Solutions_Leadership_Resume.docx",
-    "Megan_Shellman_AI_Strategy_Enablement_Resume.docx",
-    "Megan_Shellman_Revenue_Technology_Transformation_Resume.docx",
-    "Older resumes are writing and layout history, not current claim authority",
-):
-    if required not in context:
-        fail(f"operating context is missing: {required}")
-
-print("PASS: career-application skill and live sources are consistent")
-sys.exit(0)
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

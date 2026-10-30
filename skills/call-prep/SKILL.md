@@ -1,10 +1,15 @@
 ---
 name: call-prep
-description: 'Plan an Estate sales pursuit in two modes: maintain its canonical Pursuit Brief or prepare one upcoming call. Use for a pursuit overview, recommended call sequence, objective, attendee plan, agenda, tailored questions, talk track, negotiation preparation, or prospect, account, and competitor research before a sales conversation. Route post-call discovery and transcript ingestion to discovery-brief, scope and pricing to scoping-agent, and signed work to delivery skills.'
+description: 'Plan a sales pursuit in two modes: maintain its canonical Pursuit Brief or prepare one upcoming call. Use for a pursuit overview, recommended call sequence, objective, attendee plan, agenda, tailored questions, talk track, negotiation preparation, or prospect, account, and competitor research before a sales conversation. Route post-call discovery and transcript ingestion to discovery-brief, scope and pricing to scoping-agent, and signed work to delivery skills.'
 ---
 
 
-# Estate call prep
+# Call prep
+
+## Caller context and source boundary
+
+Use only the current task's supplied or explicitly authorized account, project sources and destinations. Resolve record names such as `client.profile` within that confirmed context; they are logical slots, not a default personal store. Connector availability alone does not authorize searching another account. Organization-specific pricing, capability catalogs, approval roles and policies must be supplied or confirmed; absent material context remains an explicit gap. Keep reusable package files immutable during a client task and save client records outside them. Never populate an example with private source material.
+
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
 > [`readout-brief.md`](../prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
@@ -128,7 +133,7 @@ It fails on unsourced figures, unreconciled conflicts, and leaks of `never`-tagg
 
 Depth is set by the clock. Two hours means parallel research agents and the full pack. Twenty minutes means one research pass and a tight brief; say what you are cutting rather than half-building more.
 
-**Harvest internal knowledge first.** Public research is commodity work any competitor can do. Sweep Slack, Google Drive, the connected client folder, Salesforce, and the calendar in parallel. A zero-result Salesforce search is itself a finding. Read transcripts verbatim, never summaries: a summary says the client has quoting problems, the transcript says one person prices multi-year commitments in a 35-tab spreadsheet updated from memory, and only the second version wins a room.
+**Harvest internal knowledge first.** Public research is commodity work any competitor can do. Search the authorized project sources and connected account relevant to this task, such as Slack, Drive, CRM and calendar. Do not broaden to other personal or employer accounts. A zero-result Salesforce search is itself a finding. Read transcripts verbatim, never summaries: a summary may omit the actor, mechanism or qualification that changes the decision. Preserve those details from the authorized source rather than inventing an example.
 
 **Then public research, in parallel, with citation discipline.** Spawn two subagents in the same turn: Agent A on the business (how they make money, who pays them, financial condition, priorities), Agent B on the people and the field (attendees, absent deciders, competitors, platform landscape). Prompt templates are in `references/research-prompts.md`; the two demands worth preserving in any edit are the inline source URL next to every claim and the `[ASSUMPTION]` label with confidence on unverified reasoning. Write agent output to disk and read it there.
 
@@ -144,7 +149,7 @@ Depth is set by the clock. Two hours means parallel research agents and the full
 python3 scripts/build_brief.py draft.html -o out.html --verify
 ```
 
-It inlines fonts, logo, and background from `skills/_shared/estate-brand/` as base64 and renders headlessly to confirm zero console errors. The file must stay fully self-contained, no CDN dependencies: these get opened on planes and in client parking lots. The HTML is secondary; the Markdown brief is the canonical record per `_shared/output-contract.md`.
+It resolves the explicitly selected project brand profile (or neutral default), embeds declared assets, and verifies the result only in permitted browser infrastructure. Missing assets or unavailable rendering remain acceptance gaps. The file must stay fully self-contained, no CDN dependencies: these get opened on planes and in client parking lots. The HTML is secondary; the Markdown brief is the canonical record per `_shared/output-contract.md`.
 
 ## Landing the work
 
@@ -159,8 +164,8 @@ Close with the top three facts, then the landmines. Then flag your biggest judgm
 - `scripts/check_pursuit_brief.py` for each Pursuit Brief and Call Brief, plus
   `--before/--after` when revising an existing Pursuit Brief.
 - `scripts/reconcile.py` on the evidence ledger whenever a Mode B brief carries figures.
-- **prose-pass** owns voice: run its checker on the prose. No em dashes, no buzzwords, no AI-construction patterns. Report the counts it prints.
-- **brand-renderer** and `_shared/build-card.md` own any branded surface. Never inline invented hex values; the template and `build_brief.py` pull the real tokens and assets from `_shared/estate-brand/`.
+- **writing-integrity** owns writing review: run its bundled diagnostics on the prose. No em dashes, no buzzwords, no AI-construction patterns. Report the counts it prints.
+- **brand-renderer** and `_shared/build-card.md` own any branded surface. Use `--profile` for an explicitly supplied profile; the renderer otherwise stays neutral and never discovers an employer brand from personal folders.
 
 ## Boundaries
 

@@ -354,7 +354,7 @@ def main():
     coverage = {"files_found": len(files), "scored": len(results),
                 "skipped": skipped, "complete": not skipped}
 
-    notes = []
+    notes = ["Qualifier JSON Schema validation was not performed; decision use requires validation against the caller-supplied approved schema."]
     if not viable:
         notes.append("No playbook scored above the possible threshold. Route to paid "
                      "scoping rather than forcing the nearest match.")
@@ -378,6 +378,8 @@ def main():
                    "client": src.get("client")},
         "weights_used": weights,
         "coverage": coverage,
+        "schema_validation": {"status": "not_performed", "checks": "minimum_required_fields",
+                              "decision_use_requires": "caller_supplied_schema_validation"},
         "top_matches": top,
         "route": ("paid scoping" if not viable else top[0]["playbook"]),
         "notes": notes,

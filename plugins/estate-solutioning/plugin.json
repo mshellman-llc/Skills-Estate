@@ -3,8 +3,7 @@
   "author": {
     "name": "Skills Estate"
   },
-  "description": "Skills Estate solutioning workflows and routing.",
+  "description": "Unreviewed candidate for isolated testing. Skills Estate solutioning workflows and routing.",
   "name": "estate-solutioning",
-  "repository": "https://github.com/mshellman-llc/Skills-Estate",
-  "version": "0.1.0"
+  "version": "0.2.5"
 }

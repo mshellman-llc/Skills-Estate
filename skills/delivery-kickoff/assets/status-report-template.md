@@ -1,8 +1,8 @@
 # Weekly status: {{ENGAGEMENT_NAME}} ({{SOW_ID}})
 
 Week of {{WEEK_START_DATE}}. Prepared by {{PROGRAM_LEAD_NAME}}, Program Lead.
-Template created at Mobilize by estate-delivery-kickoff; produced weekly by
-estate-delivery-status from the live RAID and decision logs.
+Template created at Mobilize by delivery-kickoff; produced weekly by
+delivery-status from the live RAID and decision logs.
 
 ## Overall status
 

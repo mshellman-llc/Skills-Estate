@@ -3,27 +3,29 @@ name: sf-headless-screenshot
 description: 'Drive the sfqa CLI to capture headless screenshots and run clickpath assertions against a Salesforce org. No interactive login, no credential exposure. Trigger when you need to capture what a Salesforce page looks like without a human watching: after deploying UI-affecting metadata and needing verification evidence, when estate-ac-qa needs its browser driver, or when a ticket needs screenshot proof of a rendered page. Do not trigger for interactive browser exploration (use sf-browser-automation) or for non-Salesforce pages.'
 ---
 
+Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
+
+
 
 # Salesforce Headless Screenshot
 
 Captures real Lightning pages from a real headless Chromium, authenticated off
 the SF CLI. No interactive login, no credential in the transcript.
 
-**Tool:** resolve `SFQA_HOME` once for the current host, then use it throughout:
+**Tool:** set `SFQA_HOME` to the explicitly selected installation for this task.
+Verify that its `sfqa.mjs` exists and inspect its current help before use. This
+skill does not bundle that executable or establish that a cached installation is
+approved. If no supported tool is available, report the browser check pending.
 
 ```bash
-if [[ -z "${SFQA_HOME:-}" ]]; then
-  if [[ -f "$HOME/.agents/tools/sfqa/sfqa.mjs" ]]; then
-    SFQA_HOME="$HOME/.agents/tools/sfqa"
-  else
-    SFQA_HOME="$HOME/.claude/tools/sfqa"
-  fi
-fi
+: "${SFQA_HOME:?Set SFQA_HOME to the selected tool installation}"
+test -f "$SFQA_HOME/sfqa.mjs"
+node "$SFQA_HOME/sfqa.mjs" help
 ```
 
-Run it as `node "$SFQA_HOME/sfqa.mjs"` (or `"$SFQA_HOME/bin/sfqa"`).
-The explicit environment variable supports custom installs; Codex and Claude defaults
-remain automatic. Full flag list: `sfqa help`.
+Use an explicitly confirmed org alias and page or record ID from the task.
+The examples below are synthetic; replace their identifiers before invocation.
+A write in a clickpath needs the user's authorization for that target.
 
 ## When to use this
 
@@ -43,14 +45,14 @@ For interactive exploration in a visible Chrome the user is watching, use
 node "$SFQA_HOME/sfqa.mjs" doctor            # checks SF CLI + Chromium
 ```
 
-If Chromium is missing: `cd "$SFQA_HOME" && npx playwright install chromium`.
+If Chromium is missing, report the dependency. Install a supported browser only when authorized. Do not launch installed macOS Chrome through Node or Playwright; use a permitted connected browser or supported isolated Chromium environment. Never retry the blocked launch path.
 
 ## Single screenshot
 
 ```bash
 node "$SFQA_HOME/sfqa.mjs" shot \
-  --org StevenC2 \
-  --url /lightning/r/Account/001TH00000jd34FYAQ/view \
+  --org CONFIRMED_ORG_ALIAS \
+  --url /lightning/r/Account/ACCOUNT_RECORD_ID/view \
   --wait record \
   --out qa/GH-42/account.png --text
 ```
@@ -70,7 +72,7 @@ node "$SFQA_HOME/sfqa.mjs" batch --list shots.json
 
 ```json
 {
-  "org": "StevenC2",
+  "org": "CONFIRMED_ORG_ALIAS",
   "outDir": "qa/GH-42",
   "viewport": "1600x1000",
   "text": true,
@@ -90,7 +92,7 @@ node "$SFQA_HOME/sfqa.mjs" flow --flow acceptance.json
 
 ```json
 {
-  "org": "StevenC2",
+  "org": "CONFIRMED_ORG_ALIAS",
   "name": "GH-42 invoice summary fees",
   "outDir": "qa/GH-42",
   "text": true,
@@ -117,15 +119,14 @@ a gate. `report.md` pastes straight into a GitHub issue or PR comment.
 
 ## When to trust the detector, and when to use your own eyes
 
-`shot`/`batch`/`flow` auto-detect readiness. It is deterministic (16/16 identical
-runs across four page families), so trust it for bulk capture.
+`shot`/`batch`/`flow` use readiness heuristics. Verify them against representative pages in the selected org before relying on a bulk capture; prior measurements from another org do not establish current readiness.
 
 Use `watch` when a heuristic shouldn't have the final say, for example an LWC doing
 an external callout that legitimately takes 20s, a page that looks wrong, or
 anything unfamiliar:
 
 ```bash
-node "$SFQA_HOME/sfqa.mjs" watch --org StevenC2 \
+node "$SFQA_HOME/sfqa.mjs" watch --org CONFIRMED_ORG_ALIAS \
   --url /lightning/r/Account/001.../view --every 2000 --for 20000 --out-dir qa/watch
 ```
 
@@ -142,9 +143,9 @@ Treat a slow page as a defect worth mentioning, not just a longer wait. Likely
 causes: slow SOQL, an external callout, or a stale LWC needing recompile. Retry
 with `--hard-refresh` to rule the last one out.
 
-**Calibrate per org.** On the StevenC2 sandbox, front-end pages genuinely render in
-5-8s (Account list ~5.5s, Opportunity record ~8s), so the 5000 default flags nearly
-everything. Use `--slow-threshold 9000` there.
+**Calibrate per org.** Measure representative pages in the authorized target and
+record the samples before selecting `--slow-threshold`. A threshold from another
+project is not a baseline for this one.
 
 ## How readiness works, and why you rarely need to tune it
 
@@ -154,17 +155,10 @@ see its components). The tool therefore waits on a signal that needs no knowledg
 of Salesforce internals: **the page stopped changing.**
 
 Specifically: text length steady **and** no DOM mutation, across **all frames**, for
-2500ms. All three parts were required to make it deterministic:
-
-- Text alone captured a 2659-char Account record page whose finished state is 4386.
-- Main-frame-only mutation captured Apex Classes at 1587 chars (finished: 6617).
-  Setup embeds a Visualforce iframe that attaches late, and while it loads the main
-  frame is perfectly quiet.
-- Network activity is unusable in both directions: long-polling re-bumps it every
-  1.2-5.3s *after* render, a warm cache lets it go quiet *mid*-render, and
-  `/aura?r=...` requests stay in-flight 6+ seconds so in-flight never hits zero.
-- A 1500ms window returned a 277-char Object Manager page on 2 of 3 runs; measured
-  plateaus reach ~1.5s, hence 2500ms.
+2500ms in the described implementation; confirm the selected tool's current
+settings. Text can stabilize before all components arrive, an iframe can load
+while the main frame is quiet, and persistent network connections can outlive
+rendering. A quiet window is a heuristic, not proof that required content loaded.
 
 Practical consequences:
 
@@ -207,12 +201,14 @@ Both dispatch **real mouse/keyboard events via CDP**, never a JS `.click()`.
 
 ## Sessions
 
-Cookies are cached per org at `~/.sfqa/sessions/<username>.json`, mode `0600`, so
-repeat runs skip re-auth. Expired cookies are detected on the first navigation and
-re-minted automatically. To force a fresh session:
-`sfqa session --org X --refresh`. To wipe one: `sfqa session --org X --clear`.
+Inspect the selected tool's session configuration before use. Reuse a cached
+session only after verifying its org and account match the task. Keep cookies in
+private storage outside packages and reports. A username or matching alias alone
+does not authorize reuse in another account context.
 
-If auth genuinely fails, the fix is always `sf org login web --alias <org>`.
+When supported by the selected tool, `sfqa session --org CONFIRMED_ORG_ALIAS
+--refresh` renews that session and `--clear` removes it. Authentication changes
+remain separate authorized account actions. Do not silently choose a cached org.
 
 ## Credential safety (why this is safe to run unattended)
 
@@ -236,10 +232,7 @@ If auth genuinely fails, the fix is always `sf org login web --alias <org>`.
 - On failure the tool writes `<out>.FAILED.png`. Check it first when diagnosing.
 - Screenshots are retina (`--scale 2`), so a 1600x1000 viewport yields a 3200x2000
   PNG. Use `--scale 1` for smaller files.
-- Front-end pages in the StevenC2 sandbox render in ~5-8s; Setup is slower still.
-- The browser defaults to real Chrome (`channel: 'chromium'`), not Playwright's
-  `chrome-headless-shell`, so rendering matches what a human sees. `--headless-shell`
-  trades that fidelity for speed.
+- Inspect the actual browser path and supported launch policy before running. The tool configuration does not override the prohibition on direct installed macOS Chrome launches. Record any headless rendering limits.
 - Each invocation uses a fresh browser profile, so the HTTP cache is always cold
   between runs. Stale LWC bundles only matter *within* one batch/flow run.
 

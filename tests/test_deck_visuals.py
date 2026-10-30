@@ -4,9 +4,9 @@ import json
 import sys
 import unittest
 from pathlib import Path
-from test_deck_html import DeckTests, Markup
+from tests.deck_fixtures import DeckFixture, Markup
 
-class VisualTests(DeckTests):
+class VisualTests(DeckFixture, unittest.TestCase):
     def setUp(self):
         super().setUp()
         self.data=json.loads((self.pkg/'examples/reconciliation-narrative.json').read_text())

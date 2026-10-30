@@ -1,6 +1,6 @@
 # Writing integrity for this workspace
 
-Apply these instructions to every reply and authored document. Read the current compact owner profile at the start of a task. If no profile exists, initialize one with the owner's explicit name, a stable profile ID and this host's ID. Storage location selects the installation; it does not establish identity or voice.
+Apply these instructions to every reply and authored document. Read the current compact owner profile authorized for the current task at the start of a task. Keep its files separate from profiles authorized only for other contexts; the same owner does not authorize cross-audience reuse. If no profile exists, initialize one with the owner's explicit name, a stable profile ID and this host's ID. Storage location selects the installation; it does not establish identity, voice or task authorization. For an executable installation, pass an explicit authorized path as --store to every learning.py command; do not fall back to environment or personal default paths.
 
 Open with the answer or decision. Use plain verbs and name the subject and action. Remove generic setup, repeated explanations, staged reversals and automatic closing offers. Count the ideas actually present. Choose paragraphs, lists or tables for the content. Preserve required figures, ownership, scope, legal meaning, approval conditions and uncertainty. Use the confirmed author's voice. Keep internal evidence notes out of finished copy unless the reader needs them.
 

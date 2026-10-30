@@ -10,13 +10,24 @@ Run this module's relative commands from the directory containing this WORKFLOW.
 # Estate delivery suite
 
 > **Before writing: [`build-card.md`](../../_shared/build-card.md) plus
-> [`readout-brief.md`](../prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [Writing Integrity review](../writing-integrity/references/detailed-review.md). Inputs, not a final pass.**
 
 The coordinator for delivery engagements after signature. It identifies the current stage, what gate
 comes next, and which skill does the work. Content decisions stay with the skill
 that owns each artifact. This file stays thin on purpose: the moment it starts
 describing how to build a charter or a test script, it is competing with the
 owner, and instruction competition is the defect the house model exists to kill.
+
+## Project context required
+
+Use only the caller-confirmed engagement, source records, private output location,
+and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,
+and Pursuit Lead to that project's authorized owners; these labels do not impose
+an employer organization chart or signing authority. The executed agreement and
+accepted project plan determine gates, commercial rules, and support obligations.
+Keep account history, risk assessments, credentials, and client evidence outside
+portable skill sources. A cached account, attached Project, or available connector
+is not authorization to read, write, or publish.
 
 ## Where the files are
 
@@ -93,29 +104,28 @@ never just say it was written.
 - Reopening a passed gate is scope drift first: log it through
   `delivery-status` and assess the change-order candidate before any
   rework starts.
-- The Go-Live Acceptance gate runs on the deemed-acceptance clock from the SOW
-  clause. `cutover-closeout` owns that mechanic; this suite only
-  refuses to call the engagement done without the gate.
+- Apply the Go-Live Acceptance mechanism in the executed agreement. Use a
+  deemed-acceptance clock only when the agreement actually contains one;
+  otherwise obtain its specified acceptance evidence. `cutover-closeout` owns
+  that check. This suite does not close the gate without that evidence.
 - A blocked gate is a finding with an owner and a resolve-by date in the state
   file's open decisions, never a reason to route around the gate.
 
-## Known gaps: flag, do not fill
+## Check current capabilities and gaps
 
-Three gaps are real as of 2026-08 and this suite names them instead of papering
-over them. No prior-deal comparables library exists yet; the closeout harvest is
-designed to feed one, so "what did similar deals do" goes to a human. No CRM
-eventing exists; every skill here is user-invoked, so never promise that
-anything fires automatically at signature or stage change. Sell-side deal
-governance gate tracking has no owning skill; this suite starts at the signed
-SOW and does not reach back. Details and the full register live in
-`references/stage-map.md`.
+Inspect the caller's actual comparables library, authorized automation, and
+approval records before reporting a gap. If prior-deal evidence is unavailable,
+record that limit rather than inventing a comparison. Do not promise automatic
+execution at signature or a stage change without its configured trigger and
+execution evidence. Route pre-signature governance to its confirmed owner;
+this suite starts at the signed engagement. See `references/stage-map.md`.
 
 ## What this skill does not do
 
 - Does not build any delivery artifact; the stage skills own their artifacts.
-- Does not price or author numbers. Executed commercial artifacts hold those values, and `sow-quality` owns change-order math through its Basis of Estimate.
+- Does not price or author numbers. Executed commercial artifacts hold committed values. Route proposed changes to the confirmed commercial owner and `project-scoping`; `sow-quality` reviews their evidence and language but does not calculate pricing.
 - Does not gate content quality; parity and visual are `brand-renderer`,
-  voice is `prose-pass`, evidence is `evidence-core`.
+  writing review is `writing-integrity`, evidence is `evidence-core`.
 - Does not touch pre-signature work. Send each request to its named sales artifact owner.
 - Does not decide, approve, or sign; humans hold every gate.
 
@@ -134,8 +144,9 @@ SOW and does not reach back. Details and the full register live in
 
 ## Files
 
-- `scripts/plan.py` · the deterministic planner; the stage table lives in code
-  here and in prose in `references/stage-map.md`; change both together.
+- `references/stages.json` · the authoritative stage IDs, gates and task owners.
+- `scripts/plan.py` · the deterministic planner; it reads that stage model.
+  Keep `references/stage-map.md` consistent with the model when changing it.
 - `scripts/plan_selftest.py` · run it after any change to the planner or the
   state spec; it must pass before the change ships.
 - `scripts/fixtures/` · state files exercising new, mid-engagement, complete,

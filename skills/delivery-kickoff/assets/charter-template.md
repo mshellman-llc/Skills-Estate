@@ -1,6 +1,6 @@
 # Project Charter: {{ENGAGEMENT_NAME}}
 
-Prepared by Estate for {{CLIENT}}. Drafted {{DRAFT_DATE}} by {{AUTHOR_ROLE}}.
+Prepared by {{DELIVERY_ORGANIZATION}} for {{CLIENT}}. Drafted {{DRAFT_DATE}} by {{AUTHOR_ROLE}}.
 Status: DRAFT until the Sign-off section carries the client signature block.
 
 ## Engagement summary
@@ -107,9 +107,10 @@ Assumptions the charter rests on, and the open questions inherited from the hand
 
 ## Sign-off
 
-The charter takes effect when both signatures are present. Estate drafts; the client signs.
+Apply the agreement's actual signature and effective-date conditions. The skill drafts;
+authorized humans sign. Add or remove party rows to match those conditions.
 
 | Party | Name | Role | Signature | Date |
 |---|---|---|---|---|
-| {{CLIENT}} | {{NAME}} | Executive sponsor | | |
-| Estate | {{NAME}} | CSE | | |
+| {{CLIENT}} | {{NAME}} | {{AUTHORIZED_SIGNATORY_ROLE}} | | |
+| {{DELIVERY_ORGANIZATION}} | {{NAME}} | {{AUTHORIZED_SIGNATORY_ROLE}} | | |

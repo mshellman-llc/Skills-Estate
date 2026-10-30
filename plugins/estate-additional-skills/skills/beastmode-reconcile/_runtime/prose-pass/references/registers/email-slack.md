@@ -28,9 +28,11 @@ This register almost always takes the quick pass: scanner, fix hits, apply the r
 
 ## Worked example
 
+This example is fictional. The supplied pilot log reports a 15% processing-time reduction from a platform update. That source fact is available to the editor alongside the draft.
+
 Input: "We are excited to announce a transformative new initiative that leverages cutting-edge technology to streamline operations and empower our teams. The future looks bright as we embark on this journey together."
 
-Rewrite: "We're launching a new initiative to simplify operations and give teams better tools. It uses the latest version of our internal platform, which cut processing time by 40% in pilot testing.
+Rewrite: "We're launching a new initiative to simplify operations and give teams better tools. It uses the latest version of our internal platform, which cut processing time by 15% in the fictional pilot log.
 
 That's it. That's the update."
 

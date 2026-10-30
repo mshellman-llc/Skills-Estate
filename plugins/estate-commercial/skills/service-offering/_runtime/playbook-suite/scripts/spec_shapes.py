@@ -1,14 +1,21 @@
-"""The SPEC.md per-shape artifact requirements, in one place.
+"""Preserved version 1.1 artifact model for compatibility checks.
 
-This mirrors the "Per-shape requirements" table in
-`skills/_shared/playbook-spec/SPEC.md` (spec 1.1). SPEC.md is the authority; this
-module is the machine copy the folder tools (conformance_audit, plan) read so they
-score a playbook against the artifacts its shape actually carries, not a flat
-all-ten set. The canonical build (`canonical/build-canonical.py`) encodes the same
-table for the registry side. Keep the three in step; SPEC.md wins any disagreement.
+The authoritative specification is a caller input and is not bundled. This model
+preserves the existing shapes and artifact requirements; it cannot establish that
+they match the caller's current rules. See references/spec-inputs.md before using
+these checks to support a release decision.
 """
 
 SPEC_VERSION = "1.1"
+
+
+def authority_status():
+    """The local scripts do not validate an authoritative external specification."""
+    return {"status": "unverified", "checked_rules_version": SPEC_VERSION,
+            "release_ready": False,
+            "required_inputs": ["approved_specification", "manifest_schema",
+                                "qualifier_schema", "stage_gate_workbook"]}
+
 
 SHAPES = ["Front Door", "Assess", "Implement", "Migrate", "Enhance", "Operate"]
 

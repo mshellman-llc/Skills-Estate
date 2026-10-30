@@ -59,11 +59,11 @@ works.
 | | Always-on (default) | Scale-to-zero (opt-in) |
 |---|---|---|
 | Shape | one container, HTTP + workers | thin service + per-env Cloud Run Job + Cloud Scheduler |
-| Cost | ~$53/client/month | ~$3.60/client/month |
+| Cost | Estimate from the selected region and current resource pricing | Estimate from the selected region, job frequency and current resource pricing |
 | Single-writer safety | `min-instances=1`, assumed | GCS lease + fencing tokens, enforced |
 | Background timers | in-process | none — Cloud Scheduler hits `/internal/reconcile` |
 | Dashboard | works | **503s** |
-| Production-proven | yes | **no** |
+| Acceptance evidence | Require current evidence for the selected engine version and target | Require current evidence, including failure-path tests |
 
 ### Always-on
 
@@ -109,7 +109,7 @@ GOOGLE_OAUTH_CLIENT_SECRET=google-oauth-client-secret:latest,\
 SESSION_SECRET=session-secret:latest"
 ```
 
-`ALLOWED_HD` defaults to `estate.com` — **set it per client**. `AUTH_DISABLED=true`
+Set `ALLOWED_HD` explicitly to the authorized Workspace domain. Inspect the selected engine version for any inherited default and reject deployment until it is replaced; never infer a domain from this reusable guide. `AUTH_DISABLED=true`
 is local dev only and logs a loud warning; never set it on a deployed service.
 
 Then open the network layer, since Cloud Run IAM can express neither Workspace
@@ -249,5 +249,4 @@ Provisioning is done when:
 
 Then run `scripts/init.sh` to wire the repo, and `sf-delivery-standards init` for
 the local loop. Keep provisioning detail — GCP project ids, secret names,
-Connected App setup — **out** of the client repo's `CLAUDE.md`. It belongs here,
-not duplicated per client.
+Connected App setup — **out** of the client repo's `CLAUDE.md`. Keep it in the authorized private project record, outside this reusable skill and its distributions.

@@ -3,7 +3,12 @@ name: prose-pass
 description: Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.
 ---
 
+Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
+
+
 # Writing diagnostic tools
+
+Prose Pass is retired as a standalone skill. The `prose-pass` directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.
 
 Read [writing-integrity](_runtime/writing-integrity/WORKFLOW.md) before using these tools.
 That workflow owns writing review. A confirmed personal profile supplies the

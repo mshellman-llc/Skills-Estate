@@ -1,86 +1,153 @@
 {
-  "_fixture": "SYNTHETIC TEST FIXTURE. Fictional client. No real Service Provider client data. Assess variant (advisory, readout-gated, fixed fee).",
+  "_fixture": "Synthetic skill test. All organizations, people, scope and figures are examples.",
+  "source": {
+    "reference": "Synthetic quote Q-EXAMPLE-001, revision 1"
+  },
   "projectContext": {
-    "accountName": "Calder Diagnostics Group, LLC",
-    "opportunityName": "Salesforce Platform Direction Assessment",
-    "quoteName": "Q-000904",
-    "businessNeed": "Calder Diagnostics has grown through three acquisitions in four years and now runs two Salesforce orgs plus an inherited CPQ estate nobody owns. Leadership needs an independent read on whether to consolidate, re-platform, or hold, before committing next year's capital budget.",
-    "businessDriver": "Two Salesforce orgs and an unowned CPQ estate ahead of a capital budget decision."
+    "accountName": "Example Manufacturing LLC",
+    "opportunityName": "Service request workflow assessment",
+    "quoteName": "Q-EXAMPLE-001",
+    "businessNeed": "The service desk needs a decision on a common request workflow before a build is scoped.",
+    "businessDriver": "Requests currently arrive in three separate inboxes.",
+    "psaEffectiveDate": "2026-10-01",
+    "clientAddress": "200 Example Avenue, Example City",
+    "clientContact": "Example Operations Lead",
+    "primaryContact": "Example Operations Lead, operations@example.test",
+    "executiveSponsor": "Example Sponsor, Operations Director",
+    "providerLead": "Example Delivery Lead, Engagement Manager",
+    "accountsPayable": "Accounts Payable, ap@example.test, 200 Example Avenue",
+    "testScriptOwnership": "jointly authored by the client and provider",
+    "returnBy": "2026-11-01"
   },
   "projectSummary": {
-    "totalValue": 62200,
-    "totalHours": 260,
-    "durationWeeks": 3,
-    "teamSize": 4,
-    "totalScopeItems": 4
+    "totalValue": 10000,
+    "totalHours": 100,
+    "durationWeeks": 4,
+    "teamSize": 2,
+    "totalScopeItems": 2
   },
-  "engagementType": "Salesforce platform direction assessment",
-  "platform": "Salesforce",
-  "sourceSystem": "Two production Salesforce orgs and a legacy CPQ managed package",
-  "engagementBoundary": "This is an advisory engagement. Service Provider assesses the current estate and delivers a recommendation and roadmap. No system is built, configured, or deployed.",
-  "boundarySummary": "Assessment and recommendation only. No build, no configuration, no deployment.",
+  "engagementType": "Workflow assessment",
+  "platform": "Example service platform",
+  "sourceSystem": "Shared inboxes",
+  "pricingModel": "fixed",
+  "engagementBoundary": "Analysis and recommendation only. No configuration or deployment.",
+  "boundarySummary": "Analysis and recommendation only. No configuration or deployment.",
   "exclusions": [
-    "Any configuration, development, or deployment in either Salesforce org.",
-    "Data migration or data remediation of any kind.",
-    "Vendor negotiation or license procurement on Calder's behalf.",
-    "A detailed implementation estimate. The assessment sizes the direction in rough order of magnitude; a priced implementation plan is a separate engagement."
+    "Configuration, production deployment, and historical data migration are excluded."
+  ],
+  "changeOrderTriggers": [
+    "Additional workflows or interviews require separately agreed scope."
+  ],
+  "basisOfEstimate": [
+    {
+      "dimension": "Queues",
+      "footprint": "1"
+    },
+    {
+      "dimension": "Example requests",
+      "footprint": "10"
+    }
   ],
   "timeline": {
-    "summary": { "blendedRate": 239.23 },
+    "summary": {
+      "blendedRate": 100
+    },
     "bands": [
       {
-        "startDate": "2026-09-07",
-        "endDate": "2026-09-25",
+        "name": "Pilot",
+        "startDate": "2026-12-01",
+        "endDate": "2026-12-28",
         "phases": [
-          { "name": "Discover", "weeks": "1", "weekNumbers": [1], "purpose": "Stakeholder sessions and estate information gathering." },
-          { "name": "Assess", "weeks": "2", "weekNumbers": [2], "purpose": "Analysis and findings against the in-scope areas." },
-          { "name": "Recommend", "weeks": "3", "weekNumbers": [3], "purpose": "Roadmap, prioritization, and the executive readout." }
+          {
+            "name": "Discover",
+            "weeks": "1",
+            "weekNumbers": [
+              1
+            ],
+            "purpose": "Review ten example requests and interview two stakeholders."
+          },
+          {
+            "name": "Assess",
+            "weeks": "2-3",
+            "weekNumbers": [
+              2,
+              3
+            ],
+            "purpose": "Document ownership gaps and compare workflow options."
+          },
+          {
+            "name": "Recommend",
+            "weeks": "4",
+            "weekNumbers": [
+              4
+            ],
+            "purpose": "Present the recommended workflow and open decisions."
+          }
         ],
         "resources": [
-          { "role": "Solution Architect", "titleLevel": "Principal", "billRate": 285, "totalHours": 80, "totalRevenue": 22800,
-            "hoursByPhase": { "Discover": 24, "Assess": 40, "Recommend": 16 } },
-          { "role": "Sr Business Analyst", "titleLevel": "Senior Consultant", "billRate": 195, "totalHours": 120, "totalRevenue": 23400,
-            "hoursByPhase": { "Discover": 40, "Assess": 56, "Recommend": 24 } },
-          { "role": "Program Manager", "titleLevel": "Senior Manager", "billRate": 250, "totalHours": 40, "totalRevenue": 10000,
-            "hoursByPhase": { "Discover": 12, "Assess": 16, "Recommend": 12 } },
-          { "role": "Client Services Executive", "titleLevel": "Director", "billRate": 300, "totalHours": 20, "totalRevenue": 6000,
-            "hoursByPhase": { "Discover": 6, "Assess": 6, "Recommend": 8 } }
+          {
+            "role": "Assessment Lead",
+            "titleLevel": "Lead",
+            "billRate": 100,
+            "totalHours": 40,
+            "totalRevenue": 4000,
+            "hoursByPhase": {
+              "Discover": 20,
+              "Assess": 10,
+              "Recommend": 10
+            },
+            "responsibility": "Lead the interviews and present the recommendation."
+          },
+          {
+            "role": "Process Analyst",
+            "titleLevel": "Specialist",
+            "billRate": 100,
+            "totalHours": 60,
+            "totalRevenue": 6000,
+            "hoursByPhase": {
+              "Discover": 10,
+              "Assess": 40,
+              "Recommend": 10
+            },
+            "responsibility": "Analyze request ownership and document the findings."
+          }
         ]
       }
     ]
   },
   "scopeItemsByCapability": [
     {
-      "name": "Current-state assessment",
+      "name": "Request handling",
       "children": [],
       "scopeItems": [
         {
-          "name": "Org and estate inventory",
-          "description": "<p>A documented inventory of both Salesforce orgs and the legacy CPQ estate, covering objects, automation, integrations, and license consumption. Establishes the factual baseline the recommendation rests on.</p>",
-          "assumptions": "Calder provides read-only access to both production orgs within the first three business days. Up to 12 stakeholder interviews are conducted."
+          "name": "Workflow findings",
+          "description": "Document ownership gaps in the current request process.",
+          "assumptions": "The client supplies ten example requests and attends two interviews.",
+          "format": "PDF"
         },
         {
-          "name": "Technical debt and risk findings",
-          "description": "<p>Findings on technical debt, unsupported customization, and operational risk across the estate, each rated and evidenced. Identifies what is load-bearing and what is abandoned.</p>",
-          "assumptions": "Findings are based on configuration inspection and stakeholder input. No code-level security audit or penetration testing is performed."
-        }
-      ]
-    },
-    {
-      "name": "Direction and roadmap",
-      "children": [],
-      "scopeItems": [
-        {
-          "name": "Consolidation options analysis",
-          "description": "<p>A comparison of the viable directions, consolidate, re-platform, or hold, with the trade-offs, risks, and rough order-of-magnitude effort for each. Gives leadership a defensible basis for the capital decision.</p>",
-          "assumptions": "Options are sized in rough order of magnitude only. A firm implementation estimate requires a separate scoping engagement."
-        },
-        {
-          "name": "Recommended roadmap and executive readout",
-          "description": "<p>A sequenced roadmap for the recommended direction, presented in an executive readout with the findings and the reasoning behind the recommendation. This is the deliverable the engagement is accepted on.</p>",
-          "assumptions": "One executive readout session is included. Additional readouts to other audiences are scheduled separately."
+          "name": "Executive readout",
+          "description": "Present the recommended workflow and its open decisions.",
+          "assumptions": "One readout is included. Additional research requires a change order.",
+          "format": "PPTX"
         }
       ]
     }
-  ]
+  ],
+  "deliverables": [
+    {
+      "name": "Workflow findings",
+      "description": "An evidence-linked account of ownership gaps in the current request process.",
+      "format": "PDF"
+    },
+    {
+      "name": "Executive readout",
+      "description": "The recommended workflow, open decisions, and next step.",
+      "format": "PPTX"
+    }
+  ],
+  "deliveryMethodology": "The team follows the phases and responsibilities specified in this quote. Each phase produces the agreed outputs for the next review.",
+  "scopeNote": "Only the deliverables and supporting activities explicitly described in Section 2 are included. Additional implementation or migration work requires separate scoping.",
+  "_fixture_purpose": "Synthetic renderer shape example."
 }

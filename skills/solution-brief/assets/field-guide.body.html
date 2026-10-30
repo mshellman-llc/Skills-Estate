@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Northgate Mutual: equipment reservation field guide</title>
+<title>Synthetic document review laboratory</title>
 <style>
 __FONTS__
 *{box-sizing:border-box;margin:0;padding:0}
@@ -72,9 +72,9 @@ footer img{height:19px;opacity:.8}footer p{font-size:11px;color:var(--muted);max
 .pr-hin input:focus{outline:0;border-color:var(--teal)}
 .pr-hin span{font-size:12px;color:var(--muted)}
 .pr-rate{font-size:12.5px;color:var(--ink2);border-top:1px solid var(--border);padding-top:11px}
-.pr-rate b{font-variant-numeric:tabular-nums;color:var(--navy);font-family:var(--f);font-size:13px}
+.pr-rate b,.pr-rate strong{font-variant-numeric:tabular-nums;color:var(--navy);font-family:var(--f);font-size:13px}
 .pr-cost{font-size:14px;color:var(--ink)}
-.pr-cost b{font-variant-numeric:tabular-nums;display:block;font-size:24px;font-weight:800;color:var(--teal);letter-spacing:-.01em;margin-top:2px;font-family:var(--f)}
+.pr-cost b,.pr-cost strong{font-variant-numeric:tabular-nums;display:block;font-size:24px;font-weight:800;color:var(--teal);letter-spacing:-.01em;margin-top:2px;font-family:var(--f)}
 .pr-compare{font-size:11.5px;color:var(--muted);font-family:var(--f)}
 .ifl-steps{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 12px}
 .ifl-chip{flex:1;min-width:104px;text-align:left;background:var(--sand);border:var(--brand-border-width) solid var(--border);border-radius:var(--radius);padding:9px 11px;cursor:pointer;transition:.14s;font-family:var(--f)}
@@ -128,283 +128,26 @@ tr.hide-row{display:none}
 @media(max-width:640px){.svcs{grid-template-columns:1fr}}
 </style></head>
 <body><div class="page">
-
-<header class="mast">
- <div class="mtop"><img src="__MARK__" alt="Example Delivery Team"><span class="tag">Synthetic fixture · not a real pursuit</span></div>
- <span class="ey">Northgate Mutual Cooperative · equipment reservation pursuit</span>
- <h1>Equipment reservations: proposed design and open decisions</h1>
- <div class="meta">
-  <span>Prepared for</span><b>Example Delivery Team pursuit team</b>
-  <span>Date</span><b>5 August 2026</b>
-  <span>Before build</span><b>Confirm the rate multiplier and equipment count before proceeding beyond design. Section 9 names the owners.</b>
-  <span>Primary sources</span><b>Northgate requirements memo (12 Jun), reservation log extract, member rate schedule FY26, Halverson IT proposal (3 Jul), discovery calls 19 Jun and 2 Jul</b>
-  <span>Money</span><b>The rates below are Northgate’s member rates. Provider fees require a separate confirmed quote.</b>
- </div>
-</header>
-
-<main class="body">
-
-<section class="sec">
- <span class="kicker">1 · Orientation</span>
- <h2>Halverson IT has proposed rebuilding the reservation system</h2>
- <p class="lead">Halverson IT has run Northgate's systems for nine years, including the Access database that holds every equipment reservation today. On 3 July they sent Northgate an unsolicited proposal to rebuild it themselves. Review that proposal before meeting Dale Halverson. Section 8 prepares responses to his likely questions.</p>
- <p>Reneé Okonkwo, operations director, controls the budget and called us in. Tom Bramley in member services wrote the requirements memo and runs reservations day to day. The request covers reservations and scheduling, followed by billing from actual usage. The current scope covers reservations and scheduling. Billing depends on a telematics feed that does not exist yet.</p>
- <div class="call"><span class="lbl">How this is sourced</span><p>Every claim below traces to a document or a call. Where a mechanic is our proposed architecture rather than something Northgate stated, it says so. What we could not confirm sits in section 9 as unknown.</p></div>
+<header class="mast"><div class="mtop"><img src="__LOGO__" alt="Selected brand"><span>Synthetic test fixture · no real engagement</span></div><h1>Document review laboratory</h1><p class="lead">Follow a sample document through intake, review and export. Inspect the explicit inputs, failure paths and implementation choices.</p></header>
+<main>
+<section class="sec"><span class="kicker">1 · Orientation</span><h2>The sample review must retain source identity</h2><p>This newly constructed exercise uses fictional documents and test endpoints. A submitter supplies a source revision. A reviewer records a decision, and an export adapter writes the accepted result. The exercise contains no real client, employee, quote or operational incident.</p><p>The source record remains read-only. An invalid identifier stays pending. An export with an uncertain outcome must be reconciled before retrying. Those requirements are fixture inputs, not statements about any deployed product.</p></section>
+<section class="sec"><span class="kicker">2 · Scenario calculator</span><h2>Compare hypothetical review effort</h2><p>The calculator demonstrates tier selection and a bounded quantity range. Its rates are newly invented test values, not a rate card or offer.</p>
+<div class="pr"><div class="pr-head"><h3>Hypothetical rate by review step</h3><div id="prToggle" class="pr-toggle"><button class="pr-tb active" data-status="member">Standard review</button><button class="pr-tb" data-status="associate">Extended review</button></div></div><div id="prRoles" class="pr-roles"></div><div class="pr-hin"><label>Minimum days <input id="prLow" type="number" value="2" min="0"></label><label>Maximum days <input id="prHigh" type="number" value="4" min="0"></label></div><p class="pr-rate"><span id="prRoleName">Sample intake</span>, <span id="prStatusName">standard review</span>: <strong id="prRate">$12</strong> per day.</p><p class="pr-cost">Scenario value: <strong id="prCost">$24 – $48</strong></p><p id="prCompare" class="pr-compare"></p></div>
 </section>
-
-<section class="sec">
- <span class="kicker">2 · The charging model</span>
- <h2>Northgate charges by equipment class and membership tier</h2>
- <p>Northgate is a member-owned cooperative that rents shared farm equipment. Full members pay one daily rate. Associate members, who joined after the 2019 expansion and hold no equity, pay more. The FY26 schedule lists both columns for each of nine equipment classes.</p>
- <p>There is no list price and no discounting. A reservation's cost is the class daily rate, times the tier, times the days out. Tom runs that lookup by hand against a printed sheet, then types the total into an invoice. He told us on 2 July that he has billed the wrong tier twice this season.</p>
- <p>The proposed design uses the equipment class and member tier to select a rate. Equipment classes become products with a class attribute. The two tiers become two price books, resolved from the member record. Price book entries replace the manual lookup against the printed sheet.</p>
- <span class="wlabel">Rate resolver – try the model</span>
-<div class="pr">
- <div class="pr-head">
-  <span style="font-size:13px;color:var(--ink2)">Pick the tier, the equipment class, and the day range.</span>
-  <div class="pr-toggle" id="prToggle">
-   <button class="pr-tb active" data-status="member">Full member</button>
-   <button class="pr-tb" data-status="client">Associate member</button>
-  </div>
- </div>
- <div class="pr-grid">
-  <div class="pr-roles" id="prRoles"></div>
-  <div class="pr-panel">
-   <div>
-    <div class="pr-hlab">Days out <span>low / high</span></div>
-    <div class="pr-hin"><input type="number" id="prLow" value="3" min="0" step="1"><span>to</span><input type="number" id="prHigh" value="7" min="0" step="1"></div>
-   </div>
-   <div class="pr-rate"><span id="prRoleName">Combine harvester</span>, <span id="prStatusName">full member</span> rate <b id="prRate">$480</b> / day</div>
-   <div class="pr-cost">Reservation value<b id="prCost">$1,440 &ndash; $3,360</b></div>
-   <div class="pr-compare" id="prCompare"></div>
-  </div>
- </div>
- <p class="src">Rates: Northgate member rate schedule FY26, both tier columns. This is the lookup Tom runs against a printed sheet today. Provider fees require a separate confirmed quote.</p>
-</div>
- <div class="call warn"><span class="lbl">Contested in the sources</span><p>The requirements memo puts the associate multiplier at 1.5x. The rate schedule works out to 1.35x on seven of nine classes. The resolver above uses the schedule, since it is the operating document. Section 9 carries this as a gate blocker.</p></div>
-</section>
-
-<section class="sec">
- <span class="kicker">3 · Reservation to invoice</span>
- <h2>From reservation request to invoice</h2>
- <p>The requirements memo describes the target process in prose. Laid out as steps, it crosses four platform layers and one dependency Northgate has to supply. Use the steps to identify which functions need configuration, custom code or input from Northgate.</p>
- <span class="wlabel">The flow, step by step</span>
-<div class="ifl-steps" id="iflSteps"></div>
-<div class="ifl-detail" id="iflDetail"></div>
-<p>Downstream of step 7 the memo continues into dues reconciliation and the annual equity statement. Both sit in the billing phase, outside what we are scoping now.</p>
-</section>
-
-<section class="sec">
- <span class="kicker">4 · The build ledger</span>
- <h2>Proposed configuration and custom development</h2>
- <p>The table distinguishes platform features from configuration and custom development. Discuss the conflict rule, telematics integration and reservation history with Dale; these require development in the proposed design.</p>
- <div class="ldf">
- <div class="ldf-pills" id="ldfPills">
-  <button class="ldf-p active" data-f="all">All<b>12</b></button>
-  <button class="ldf-p" data-f="native">Native<b>4</b></button>
-  <button class="ldf-p" data-f="config">Configured<b>4</b></button>
-  <button class="ldf-p" data-f="custom">Custom<b>3</b></button>
-  <button class="ldf-p" data-f="dep">Dependency<b>1</b></button>
- </div>
- <div class="ldf-bar" title="Native / Configured / Custom / Dependency across the 12 rows">
-  <div class="ldf-seg native" style="width:33.3%"></div>
-  <div class="ldf-seg config" style="width:33.3%"></div>
-  <div class="ldf-seg custom" style="width:25%"></div>
-  <div class="ldf-seg dep" style="width:8.4%"></div>
- </div>
-</div>
-<table>
-  <thead><tr><th style="width:210px">Capability</th><th style="width:96px">Disposition</th><th>Proposed implementation</th></tr></thead>
-  <tbody>
-   <tr data-disp="native"><td>Equipment catalog with classes and attributes</td><td><span class="disp d-native">Native</span></td><td>Product records carry the class, capacity, and attachment attributes. The flat equipment list becomes categorized and searchable.</td></tr>
-   <tr data-disp="native"><td>Tier pricing by membership status</td><td><span class="disp d-native">Native</span></td><td>Two price books resolved from the member record with no manual override. Use the FY26 schedule for price book entries once the multiplier question in section 9 is resolved.</td></tr>
-   <tr data-disp="native"><td>Availability calendar per asset</td><td><span class="disp d-native">Native</span></td><td>Scheduler holds each machine as a resource with its own calendar. Northgate has no calendar today; Tom keeps availability in his head and in the Access log.</td></tr>
-   <tr data-disp="native"><td>Equipment bundles</td><td><span class="disp d-native">Native</span></td><td>A harvest package groups a combine, a grain cart, and a header as one selection. Tom named this as the thing members ask for most and the log cannot express.</td></tr>
-   <tr data-disp="config"><td>Member reservation request form</td><td><span class="disp d-config">Configured</span></td><td>A screen flow on the member portal replaces the phone call and paper slip.</td></tr>
-   <tr data-disp="config"><td>Approval routing for multi-day holds</td><td><span class="disp d-config">Configured</span></td><td>Standard approval process. Reservations over four days route to Reneé. The threshold comes from the requirements memo.</td></tr>
-   <tr data-disp="config"><td>Return checklist and condition capture</td><td><span class="disp d-config">Configured</span></td><td>A mobile flow at return, with photo attachments on the asset. Northgate does this on paper and loses roughly a third of the sheets, per the 19 June call.</td></tr>
-   <tr data-disp="config"><td>Invoice generation from the reservation</td><td><span class="disp d-config">Configured</span></td><td>Billing schedules off the confirmed reservation and the captured days. Configuration, provided usage arrives as structured data.</td></tr>
-   <tr data-disp="custom"><td>Double-booking conflict rule</td><td><span class="disp d-custom">Custom</span></td><td>Northgate deliberately overbooks in harvest season and reallocates by seniority. No platform rule expresses that. Section 6 lays out three designs and a recommendation.</td></tr>
-   <tr data-disp="custom"><td>Telematics usage ingest</td><td><span class="disp d-custom">Custom</span></td><td>Engine hours from the equipment tracker feed billable usage. The tracker vendor exposes a REST endpoint. The integration must be built after Northgate provides access to the API.</td></tr>
-   <tr data-disp="custom"><td>Reportable reservation history</td><td><span class="disp d-custom">Custom</span></td><td>The memo requires every change to a confirmed reservation to be auditable for the member dispute process. Field history reports poorly and ages out. This needs an immutable snapshot record.</td></tr>
-   <tr data-disp="dep"><td>Member tier data quality</td><td><span class="disp d-dep">Dependency</span></td><td>Tier pricing reads the member record. Northgate's roster lives in a spreadsheet and 41 of the entries have no tier set. Northgate must fill in the missing tiers.</td></tr>
-  </tbody>
- </table>
- <div class="call warn"><span class="lbl">Work that requires development</span><p>Of the twelve rows, four use native features, four require configuration and three require custom development. Northgate must resolve the remaining dependency: missing member tiers.</p></div>
-</section>
-
-<section class="sec">
- <span class="kicker">5 · The equipment list</span>
- <h2>Equipment details are stored as free text</h2>
- <p>The reservation log stores each machine in one free-text row. Class, capacity, and attachments are all typed into a description field, which is why Tom cannot search it and why no two people write the same machine the same way. A structured catalog must be built from that list. Its size depends on the equipment and package count, which remains unresolved in section 9.</p>
-<span class="wlabel">Equipment &ndash; today versus the target</span>
-<div class="ctw">
- <div class="ct-head">
-  <span class="ct-sub">Switch between the current log and the structured catalog to build.</span>
-  <div class="ct-toggle" id="ctToggle">
-   <button class="ct-tb active" data-view="flat">Log today</button>
-   <button class="ct-tb" data-view="struct">Structured target</button>
-  </div>
- </div>
- <div class="ct-view show" data-view="flat">
-  <div class="ct-note">Equipment descriptions share one free-text field; classes and bundles have no separate records. Tom looks up the tier and rate on a printed sheet.</div>
-  <div class="frows">
-   <div class="frow"><b>Combine harvester</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Grain cart</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Tillage rig</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Sprayer</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Baler</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Grain dryer</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Skid loader</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Planter, 12 row</b><span class="fmeta">free text</span></div>
-   <div class="frow"><b>Field trailer</b><span class="fmeta">free text</span></div>
-  </div>
- </div>
- <div class="ct-view" data-view="struct">
-  <div class="ct-note">The same nine machines, grouped by category, carrying attributes and a tier rate, with the harvest package expressed as a bundle.</div>
-  <div class="cat">
-   <div class="cat-h">Harvest</div>
-   <div class="svcs">
-    <div class="svc bundle"><div class="sh"><b>Harvest package</b><span class="bdg">Bundle</span></div><div class="contains">Combine, grain cart, and header as one selection</div><div class="chips"><span class="chip">3 components</span><span class="chip rate">Tier priced</span></div></div>
-    <div class="svc"><div class="sh"><b>Combine harvester</b></div><div class="chips"><span class="chip">Class 8</span><span class="chip">Header optional</span><span class="chip rate">Daily</span></div></div>
-    <div class="svc"><div class="sh"><b>Grain cart</b></div><div class="chips"><span class="chip">1,000 bu</span><span class="chip rate">Daily</span></div></div>
-    <div class="svc"><div class="sh"><b>Grain dryer</b></div><div class="chips"><span class="chip">Stationary</span><span class="chip rate">Daily</span></div></div>
-   </div>
-  </div>
-  <div class="cat">
-   <div class="cat-h">Tillage and planting</div>
-   <div class="svcs">
-    <div class="svc"><div class="sh"><b>Tillage rig</b></div><div class="chips"><span class="chip">24 ft</span><span class="chip rate">Daily</span></div></div>
-    <div class="svc"><div class="sh"><b>Planter, 12 row</b></div><div class="chips"><span class="chip">12 row</span><span class="chip rate">Daily</span></div></div>
-   </div>
-  </div>
-  <div class="cat">
-   <div class="cat-h">Application and handling</div>
-   <div class="svcs">
-    <div class="svc"><div class="sh"><b>Sprayer</b></div><div class="chips"><span class="chip">Self propelled</span><span class="chip rate">Daily</span></div></div>
-    <div class="svc"><div class="sh"><b>Baler</b></div><div class="chips"><span class="chip">Round</span><span class="chip rate">Daily</span></div></div>
-    <div class="svc"><div class="sh"><b>Skid loader</b></div><div class="chips"><span class="chip">Attachments</span><span class="chip rate">Daily</span></div></div>
-    <div class="svc"><div class="sh"><b>Field trailer</b></div><div class="chips"><span class="chip">Towable</span><span class="chip rate">Daily</span></div></div>
-   </div>
-  </div>
- </div>
- <p class="src">Left panel: reservation log extract, equipment column. Right panel: Example Delivery Team's proposed structure, consistent with the nine classes on the FY26 schedule.</p>
-</div>
-</section>
-
-<section class="sec">
- <span class="kicker">6 · The conflict decision</span>
- <h2>Double booking: hard lock, soft warning, or an overbooking pool</h2>
- <p>Northgate overbooks on purpose. In harvest season two members routinely hold the same combine for the same week, and Tom reallocates by membership seniority the morning of. The requirements memo calls this "the way it works" and offers no rule. Choose how to handle overlapping reservations before designing the reservation records.</p>
- <table>
-  <thead><tr><th style="width:160px">Option</th><th>Mechanics and fit</th><th style="width:140px">Watch</th></tr></thead>
-  <tbody>
-   <tr><td>Hard lock</td><td>Scheduler refuses a second hold on a booked asset. This is the platform default and the simplest option to build. It prevents the deliberate overbooking Northgate uses today.</td><td>Tom loses the flexibility he uses every harvest.</td></tr>
-   <tr><td>Soft warning</td><td>The second reservation saves with a conflict flag, and a queue shows Tom every clash to resolve. The queue records the overlaps Tom already manages. It requires a custom addition to standard scheduling.</td><td>Needs a resolution screen and a seniority field.</td></tr>
-   <tr><td>Overbooking pool</td><td>Reservations attach to a class rather than a machine, and assignment happens at pickup. This is the largest development option. The reservation refers to an equipment class until a machine is assigned.</td><td>Reshapes billing, since usage attaches to the machine.</td></tr>
-  </tbody>
- </table>
- <p>Recommend the soft warning. It preserves the overbooking Northgate depends on, surfaces conflicts that are invisible today, and leaves the reservation attached to a machine so the telematics feed and the invoice still line up. Defer the pool option because it changes machine assignment and billing as well as conflict handling. Confirm the seniority rule with Reneé before committing either way.</p>
-</section>
-
-<section class="sec">
- <span class="kicker">7 · Systems and dependencies</span>
- <h2>Access and decisions needed from Northgate</h2>
- <p>Salesforce owns the reservation, the member, and the invoice. Everything else stays where it is. Equipment maintenance records stay in the Halverson-managed Access database, which we read from and never write to. The telematics tracker stays with its vendor. Accounting stays in QuickBooks. The design needs read access to Access, a telematics feed and an invoice export to QuickBooks.</p>
- <table>
-  <thead><tr><th style="width:170px">Dependency</th><th>Why it matters</th><th style="width:120px">Owner</th></tr></thead>
-  <tbody>
-   <tr><td>Telematics API credentials</td><td>Engine hours drive billable usage. The vendor exposes a REST endpoint, and Northgate holds the contract. Without credentials and a test device, usage capture stays manual and the billing phase cannot start.</td><td>Northgate</td></tr>
-   <tr><td>Member roster tier cleanup</td><td>Tier pricing reads the member record. Forty-one roster entries have no tier. Fill in those tiers before applying member rates.</td><td>Northgate member services</td></tr>
-   <tr><td>Equipment inventory count</td><td>The catalog build sizes off the number of machines and packages. Nobody has produced a count. Arrange a one-hour inventory walkthrough with Tom to establish the count.</td><td>Tom Bramley</td></tr>
-   <tr><td>Access database read access</td><td>Maintenance history informs availability. Halverson controls the database and has not been asked for access. Ask Halverson for access before planning the integration.</td><td>Halverson IT</td></tr>
-   <tr><td>Seniority rule for reallocation</td><td>The soft-warning design in section 6 needs a written rule. Today it lives in Tom's judgment.</td><td>Reneé Okonkwo</td></tr>
-   <tr><td>QuickBooks export format</td><td>Invoices land in accounting. The current export is a manual CSV. Confirm the format before treating invoicing as configuration.</td><td>Northgate finance</td></tr>
-  </tbody>
- </table>
- <div class="call warn"><span class="lbl">Assign each dependency</span><p>The requirements memo omits customer responsibilities. Confirm an owner and due date for each dependency above during the meeting.</p></div>
-</section>
-
-<section class="sec">
- <span class="kicker">8 · Against the in-house build</span>
- <h2>How to answer Dale Halverson</h2>
- <p>Halverson has supported Northgate for nine years and has proposed the full rebuild. Discuss a division of work: our team would configure scheduling and pricing; Halverson would retain the systems he manages. Confirm that split with Northgate and Halverson.</p>
-
- <div class="qa">
-  <div class="q">"I built the reservation database. I know this operation better than any consultant. Why pay you?"</div>
-  <div class="a">
-   <p>Your experience with Northgate will inform the design. We propose leaving the maintenance database with you. Tier pricing must read the member record so the invoice uses that member’s assigned rate. Overbooking has to be expressed as a rule rather than as Tom's memory. The invoice needs structured usage data from the tracker to charge for actual use. The design must connect member pricing, reservation rules and usage data.</p>
-   <p>Agree which parts Halverson will own before estimating our work.</p>
-  </div>
-  <div class="ask"><b>Ask them:</b> which parts do you want to keep, and which should our team deliver? Agree the split in the design session.</div>
- </div>
-
- <div class="qa">
-  <div class="q">"Two tiers and nine rates. That's a lookup table. Why is pricing hard?"</div>
-  <div class="a">
-   <p>The rate lookup must use the correct member tier. Tom told us he billed the wrong tier twice this season, and 41 roster entries have no tier at all. Member-based pricing still requires the missing tiers to be filled in. The rate documents also disagree: the requirements memo says the associate multiplier is 1.5x and the rate schedule works out to 1.35x. Confirm the rate schedule before configuring either approach.</p>
-  </div>
-  <div class="ask"><b>Ask them:</b> which document governs the associate multiplier, and who can settle it this week? Confirm the governing rate before building the price books.</div>
- </div>
-
- <div class="qa">
-  <div class="q">"We overbook on purpose. Your system will just block it."</div>
-  <div class="a">
-   <p>The soft-warning option in section 6 allows overlapping reservations and records them in a queue. The queue records each overlap and how Tom resolves it. That history supports the member dispute reviews required by the memo.</p>
-  </div>
-  <div class="ask"><b>Ask them:</b> is reallocation seniority by join date, equity share, or something Tom carries in his head? We need it written down before it can be built.</div>
- </div>
-
- <div class="qa">
-  <div class="q">"The tracker already reports hours. Isn't billing just reading that?"</div>
-  <div class="a">
-   <p>We still need API credentials and a test device to inspect the feed. Then engine hours have to become billable days under a rule that does not exist yet: a machine idling in a yard reports hours too. That rule is Northgate's to set, which is why billing sits behind reservations.</p>
-  </div>
-  <div class="ask"><b>Ask them:</b> who holds the tracker contract, and can we get a test device plus credentials before the design session?</div>
- </div>
-
- <div class="call warn"><span class="lbl">Commercial question</span><p>In this scenario, Halverson has proposed a lower price than our team can offer, and Reneé has seen it. Ask the commercial owner whether to pursue the design session and a smaller scope.</p></div>
-</section>
-
-<section class="sec">
- <span class="kicker">9 · Open decisions</span>
- <h2>Six unresolved items, two of them blocking</h2>
- <p>These are the gaps between the requirements memo, the rate schedule, the log extract, and what Northgate said on the calls. Each is sourced and none is settled here. The rate multiplier and equipment count must be resolved before work proceeds beyond design.</p>
- <table>
-  <thead><tr><th style="width:190px">Item</th><th>Why it matters</th><th style="width:130px">Decider</th></tr></thead>
-  <tbody>
-   <tr><td>Associate multiplier: 1.5x or 1.35x <span class="blk">Resolve before build</span></td><td>The requirements memo and the FY26 rate schedule disagree on seven of nine classes. Price books cannot be built both ways. Reneé must confirm which document governs.</td><td>Reneé Okonkwo</td></tr>
-   <tr><td>Equipment and package count <span class="blk">Resolve before build</span></td><td>The catalog build sizes off this number and nobody has produced it. Count the equipment and packages during the walkthrough with Tom.</td><td>Tom Bramley</td></tr>
-   <tr><td>Conflict design</td><td>Hard lock, soft warning, or overbooking pool. We recommend the soft warning in section 6. The choice changes whether a reservation attaches to a machine or a class.</td><td>Reneé + Example Delivery Team</td></tr>
-   <tr><td>Idle hours versus billable days</td><td>Engine hours include idling. The rule converting hours to billable days does not exist. Agree the conversion rule before the billing phase.</td><td>Northgate finance</td></tr>
-   <tr><td>Access database access</td><td>Maintenance history informs availability. Halverson controls it and has not been asked. Halverson must agree to provide access.</td><td>Halverson IT</td></tr>
-   <tr><td>Scope boundary against Halverson</td><td>Halverson proposed the whole build. The teams must agree their responsibilities before Example Delivery Team prices its work.</td><td>Reneé + Example Delivery Team</td></tr>
-  </tbody>
- </table>
-</section>
-
-<section class="sec">
- <span class="kicker">10 · Sources</span>
- <h2>Where each claim comes from</h2>
- <p><strong>Northgate requirements memo, 12 June 2026</strong> (Tom Bramley): the seven-step target process, the four-day approval threshold, the auditable-history requirement, the 1.5x associate multiplier, the overbooking description, and the absence of any customer-obligation section.</p>
- <p><strong>Member rate schedule FY26:</strong> the nine equipment classes and both tier columns, which work out to a 1.35x associate multiplier on seven of the nine.</p>
- <p><strong>Reservation log extract, Access database:</strong> equipment held as free text in one field, no calendar, no bundle structure, and the 41 roster entries with no tier set.</p>
- <p><strong>Halverson IT proposal, 3 July 2026:</strong> the in-house build plan, its scope, and its price, used here only to understand what you are being measured against.</p>
- <p><strong>Discovery calls, 19 June and 2 July 2026:</strong> the lost paper return sheets, the two wrong-tier invoices this season, the harvest-season reallocation by seniority, and the missing telematics credentials.</p>
- <div class="call"><span class="lbl">Sections not included, and why</span><p>Four sections were dropped with the reason on record. Critical interfaces: one interface is in scope and its failure path sits inside the flow in section 3. Staffing: this guide does not staff, and the design session sets the split with Halverson. Timeline and gates: no dates are confirmed anywhere in the evidence. Financial reconciliation: the guide prices nothing.</p></div>
- <p class="src">Sections 3 through 7 are Example Delivery Team's proposed architecture, consistent with the sources above. They are a recommendation for scoping. Nothing here is committed. The design session precedes any fixed number. The commercial owner approves pricing.</p>
-</section>
-
-</main>
-
-<footer><div class="fin">
- <img src="__LOGO__" alt="Example Delivery Team"><p>Example Delivery Team internal field guide · Northgate Mutual Cooperative equipment reservation pursuit · 5 August 2026. Synthetic fixture. Not for client distribution. Use the confirmed quote for provider fees.</p>
-</div></footer>
+<section class="sec"><span class="kicker">3 · Review flow</span><h2>Trace the state changes</h2><p>Select a step to inspect its operation and the fixture source that defines it.</p><div class="ifl"><div class="ifl-steps" id="iflSteps"></div><div class="ifl-detail" id="iflDetail"></div></div></section>
+<section class="sec"><span class="kicker">4 · Implementation ledger</span><h2>Separate supplied features from work to build</h2><p>The classifications below are assumptions of this synthetic exercise. A real project must verify them against its selected platform.</p><div class="ldf"><div class="ldf-bar" role="img" aria-label="12 capabilities: 4 native, 4 configured, 3 custom, 1 dependency"><span class="ldf-seg native" style="width:33.333333%"></span><span class="ldf-seg config" style="width:33.333333%"></span><span class="ldf-seg custom" style="width:25%"></span><span class="ldf-seg dep" style="width:8.333334%"></span></div><div id="ldfPills" class="ldf-pills"><button class="ldf-p active" data-f="all">All 12</button><button class="ldf-p" data-f="native">Native 4</button><button class="ldf-p" data-f="config">Configured 4</button><button class="ldf-p" data-f="custom">Custom 3</button><button class="ldf-p" data-f="dep">Dependency 1</button></div><table><thead><tr><th>Capability</th><th>Disposition</th><th>Fixture behavior</th></tr></thead><tbody><tr data-disp="native"><td>Sample intake</td><td>Native</td><td>Receive the supplied source identifier and revision.</td></tr><tr data-disp="native"><td>Metadata validation</td><td>Native</td><td>Require the documented fields before assigning a reviewer.</td></tr><tr data-disp="native"><td>Source preservation</td><td>Native</td><td>Leave the submitted file unchanged.</td></tr><tr data-disp="native"><td>Result identity</td><td>Native</td><td>Retain a stable identifier for each source revision.</td></tr><tr data-disp="config"><td>Review form</td><td>Configured</td><td>Capture a decision and supporting reason.</td></tr><tr data-disp="config"><td>Exception queue</td><td>Configured</td><td>Show rejected inputs to their named owner.</td></tr><tr data-disp="config"><td>Completion record</td><td>Configured</td><td>Record the actual outcome and source revision.</td></tr><tr data-disp="config"><td>Export view</td><td>Configured</td><td>Show confirmed outputs separately from pending attempts.</td></tr><tr data-disp="custom"><td>Permission boundary</td><td>Custom</td><td>Check the caller and record access before any state change.</td></tr><tr data-disp="custom"><td>Duplicate protection</td><td>Custom</td><td>Claim each export atomically and retain its result identifier.</td></tr><tr data-disp="custom"><td>Recovery behavior</td><td>Custom</td><td>Resolve uncertain outcomes before retrying a write.</td></tr><tr data-disp="dep"><td>Authorized endpoint</td><td>Dependency</td><td>The caller supplies a destination and confirms the permitted action.</td></tr></tbody></table></div></section>
+<section class="sec"><span class="kicker">5 · Information model</span><h2>Keep source and review records separate</h2><div class="ctw"><div id="ctToggle" class="ct-toggle"><button class="ct-tb active" data-view="current">Unstructured input</button><button class="ct-tb" data-view="target">Proposed records</button></div><div class="ct-view show" data-view="current"><p>A synthetic input folder contains files with inconsistent labels. The fixture provides no reliable relationship between a file and a review decision.</p><ul><li>sample-one.txt</li><li>sample-two.txt</li><li>sample-three.txt</li></ul></div><div class="ct-view" data-view="target"><p>The proposed exercise uses three record types with explicit identifiers.</p><ul><li>Source: document identifier, revision and immutable content reference.</li><li>Review: source revision, authorized reviewer, decision and reason.</li><li>Export attempt: review identifier, operation key, destination and confirmed result.</li></ul></div></div></section>
+<section class="sec"><span class="kicker">6 · Failure handling</span><h2>Resolve uncertain exports before retrying</h2><p>A completed result and an unfinished attempt are different states. The adapter claims an operation key before writing. If a timeout leaves the outcome unknown, it queries the destination using that key. A confirmed result completes the local attempt; an unresolved result remains pending.</p><p>This is a design hypothesis to test with the supplied adapter. It does not establish exactly-once behavior or authorize an external write.</p></section>
+<section class="sec"><span class="kicker">7 · Inputs</span><h2>The caller supplies permissions and destination</h2><table><thead><tr><th>Input</th><th>Purpose</th><th>Owner</th></tr></thead><tbody><tr><td>Sample source revision</td><td>Provides the exact file to review.</td><td>Synthetic Submitter</td></tr><tr><td>Reviewer permission</td><td>Defines who may record the decision.</td><td>Synthetic Access Owner</td></tr><tr><td>Test destination</td><td>Provides a permitted export target and operation contract.</td><td>Synthetic Endpoint Owner</td></tr></tbody></table></section>
+<section class="sec"><span class="kicker">8 · Review questions</span><h2>Check the boundaries before implementation</h2><div class="qa"><div class="q">Can the source file be edited during review?</div><div class="a"><p>No. This exercise preserves the supplied revision and creates a separate review record. A changed source requires a new review.</p></div></div><div class="qa"><div class="q">Does a matching owner name grant access?</div><div class="a"><p>No. The caller must have the required permission for the selected record and action.</p></div></div><div class="qa"><div class="q">What happens after an ambiguous timeout?</div><div class="a"><p>The adapter reconciles the prior attempt before sending another write.</p></div></div></section>
+<section class="sec"><span class="kicker">9 · Open decisions</span><h2>Confirm the adapter and retention rules</h2><p>The fixture intentionally leaves the destination protocol and record retention period unspecified. Obtain these from the current project before implementation. The calculator above does not resolve either decision.</p></section>
+<section class="sec"><span class="kicker">10 · Fixture sources</span><h2>Use the test specification as the evidence</h2><p>Cases 1 through 7 are newly constructed synthetic review operations. All displayed rates, names and file identifiers are test values. Replace them with confirmed project evidence before creating a real field guide.</p><p>The graph fixtures separately exercise typed relationships, evidence coverage, missing dependencies and reconciliation failures. Passing those checks establishes only the tested behavior.</p></section>
+</main><footer><div class="fin"><img src="__LOGO__" alt="Selected brand"><p>Synthetic document review laboratory. No personal, client or employer records are included.</p></div></footer>
 </div><script>
 (function(){
- var rates={"Combine harvester":[480,648],"Grain cart":[165,223],"Tillage rig":[210,284],"Sprayer":[395,533],"Baler":[190,257],"Grain dryer":[240,324],"Skid loader":[145,196],"Planter, 12 row":[310,419],"Field trailer":[85,115]};
- var order=["Combine harvester","Grain cart","Tillage rig","Sprayer","Baler","Grain dryer","Skid loader","Planter, 12 row","Field trailer"];
- var state={role:"Combine harvester",status:"member"};
+ var rates={"Sample intake": [12, 18], "Technical review": [24, 36], "Export check": [8, 12]};
+ var order=["Sample intake", "Technical review", "Export check"];
+ var state={role:"Sample intake",status:"member"};
  var fmt=function(n){return "$"+Math.round(n).toLocaleString("en-US");};
  var rolesEl=document.getElementById("prRoles");
  if(rolesEl){
@@ -417,10 +160,10 @@ tr.hide-row{display:none}
    document.getElementById("prLow").setAttribute("aria-invalid",String(!valid));
    document.getElementById("prHigh").setAttribute("aria-invalid",String(!valid));
    document.getElementById("prRoleName").textContent=state.role;
-   document.getElementById("prStatusName").textContent=state.status=="member"?"full member":"associate member";
+   document.getElementById("prStatusName").textContent=state.status=="member"?"standard review":"extended review";
    document.getElementById("prRate").textContent=fmt(rate);
    document.getElementById("prCost").textContent=valid?fmt(lo*rate)+" – "+fmt(hi*rate):"Enter nonnegative days with maximum ≥ minimum";
-   document.getElementById("prCompare").textContent=valid?"At "+(state.status=="member"?"associate":"full member")+" rates: "+fmt(lo*orate)+" – "+fmt(hi*orate):"";
+   document.getElementById("prCompare").textContent=valid?"At "+(state.status=="member"?"extended review":"standard review")+" rates: "+fmt(lo*orate)+" – "+fmt(hi*orate):"";
   }
   rolesEl.addEventListener("click",function(e){var b=e.target.closest(".pr-rb");if(!b)return;state.role=b.getAttribute("data-role");rolesEl.querySelectorAll(".pr-rb").forEach(function(x){x.classList.remove("active");});b.classList.add("active");calc();});
   document.getElementById("prToggle").addEventListener("click",function(e){var b=e.target.closest(".pr-tb");if(!b)return;state.status=b.getAttribute("data-status");this.querySelectorAll(".pr-tb").forEach(function(x){x.classList.remove("active");});b.classList.add("active");calc();});
@@ -429,14 +172,63 @@ tr.hide-row{display:none}
   calc();
  }
  var steps=[
-  {n:1,title:"Member requests a reservation",layer:"Member portal",disp:"config",what:"A screen flow captures the machine, the dates, and the field. Replaces the phone call to Tom and the paper slip that follows it.",src:"Requirements memo, step 1"},
-  {n:2,title:"Availability check",layer:"Scheduler",disp:"native",what:"Each machine is a scheduled resource with its own calendar. The check is platform behavior. Northgate has no calendar today; Tom uses the Access log and his knowledge of bookings.",src:"Requirements memo step 2; no calendar today, 19 Jun"},
-  {n:3,title:"Conflict handling",layer:"Scheduler",disp:"custom",what:"Harvest-season double holds are deliberate and get reallocated by seniority. The proposed design needs a custom rule for that reallocation. Section 6 carries three designs and a recommendation.",src:"Memo describes overbooking, states no rule"},
-  {n:4,title:"Reservation confirmed, machine held",layer:"Asset",disp:"native",what:"The confirmed reservation holds the asset for the window and routes to Reneé when it runs past four days. Standard scheduling plus a standard approval.",src:"Requirements memo, four-day threshold"},
-  {n:5,title:"Return and condition capture",layer:"Field Service",disp:"config",what:"A mobile checklist at return, with photos attached to the asset. Today this is paper, and roughly a third of the sheets never make it back.",src:"Discovery call, 19 Jun"},
-  {n:6,title:"Usage arrives from the tracker",layer:"Telematics",disp:"dep",what:"Engine hours feed billable usage over the vendor's REST endpoint. Northgate holds the contract and must provide credentials before the integration can be built. The hours-to-days rule is also undecided.",src:"Discovery call 2 Jul; open in section 9"},
-  {n:7,title:"Invoice to the member",layer:"Billing",disp:"config",what:"Billing selects the equipment class rate for the member tier and generates the invoice. Configure this after structured usage data is available and Northgate confirms the rate multiplier.",src:"Requirements memo step 7; rate schedule FY26"}
- ];
+  {
+    "n": 1,
+    "title": "Submit a sample",
+    "layer": "Intake portal",
+    "disp": "config",
+    "what": "The submitter supplies a sample document identifier and source revision.",
+    "src": "Synthetic test specification, case 1"
+  },
+  {
+    "n": 2,
+    "title": "Validate metadata",
+    "layer": "Intake service",
+    "disp": "native",
+    "what": "The service checks required fields and keeps the source file unchanged.",
+    "src": "Synthetic test specification, case 2"
+  },
+  {
+    "n": 3,
+    "title": "Assign the reviewer",
+    "layer": "Review queue",
+    "disp": "custom",
+    "what": "A rule routes the document to an available reviewer with the required permission.",
+    "src": "Synthetic test specification, case 3"
+  },
+  {
+    "n": 4,
+    "title": "Record the decision",
+    "layer": "Review record",
+    "disp": "native",
+    "what": "The decision records the reviewer, time and source revision.",
+    "src": "Synthetic test specification, case 4"
+  },
+  {
+    "n": 5,
+    "title": "Resolve an exception",
+    "layer": "Exception queue",
+    "disp": "config",
+    "what": "An invalid identifier stays pending until its owner corrects the input.",
+    "src": "Synthetic test specification, case 5"
+  },
+  {
+    "n": 6,
+    "title": "Confirm export access",
+    "layer": "Export adapter",
+    "disp": "dep",
+    "what": "The caller supplies an authorized test endpoint before export can run.",
+    "src": "Synthetic test specification, case 6"
+  },
+  {
+    "n": 7,
+    "title": "Export the result",
+    "layer": "Result ledger",
+    "disp": "config",
+    "what": "The adapter writes one result per source revision and retains the operation identifier.",
+    "src": "Synthetic test specification, case 7"
+  }
+];
  var dispName={native:"Native",config:"Configured",custom:"Custom",dep:"Dependency"};
  var stepsEl=document.getElementById("iflSteps"), detEl=document.getElementById("iflDetail");
  if(stepsEl){
@@ -453,5 +245,4 @@ tr.hide-row{display:none}
  var ctT=document.getElementById("ctToggle");
  if(ctT){ctT.addEventListener("click",function(e){var b=e.target.closest(".ct-tb");if(!b)return;var v=b.getAttribute("data-view");this.querySelectorAll(".ct-tb").forEach(function(x){x.classList.remove("active");});b.classList.add("active");document.querySelectorAll(".ct-view").forEach(function(p){p.classList.toggle("show",p.getAttribute("data-view")===v);});});}
 })();
-</script>
-</body></html>
+</script></body></html>

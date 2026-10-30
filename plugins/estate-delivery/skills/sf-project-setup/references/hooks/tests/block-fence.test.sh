@@ -95,7 +95,7 @@ is_devops_center() { return 0; }
 devops_org_alias() { printf control64; }
 devops_project_id() { printf 0DB000000000001; }
 trunk() { printf staging; }
-org_alias() { printf stevenc2; }
+org_alias() { printf sandbox-a; }
 block_render "$TEMPLATE" > "$TMP/devops.md"
 grep -qF '**Invariant: DevOps Center owns stage branches and promotion.**' "$TMP/devops.md" \
   && ok "DevOps Center invariant rendered" || no "DevOps Center invariant missing"
@@ -113,8 +113,8 @@ S=$(block_status "$TMP/devops.md"); [ "$S" = OK ] && ok "DevOps Center block -> 
 
 echo "== Shared DevOps Center renders the dual-branch contract =="
 is_devops_shared() { return 0; }
-devops_integration_branch() { printf stevenc; }
-devops_environment() { printf StevenC; }
+devops_integration_branch() { printf integration-dev; }
+devops_environment() { printf ExampleDevelopment; }
 block_render "$TEMPLATE" > "$TMP/devops-shared.md"
 grep -qF '**Invariant: the shared development org and its integration branch agree at rest.**' "$TMP/devops-shared.md" \
   && ok "shared-org invariant rendered" || no "shared-org invariant missing"
@@ -122,7 +122,7 @@ grep -qF 'dev/WI-######' "$TMP/devops-shared.md" \
   && ok "development branch role rendered" || no "development branch role missing"
 grep -qF 'estate-devops-package' "$TMP/devops-shared.md" \
   && ok "exact package helper rendered" || no "package helper missing"
-grep -qF 'StevenC' "$TMP/devops-shared.md" \
+grep -qF 'ExampleDevelopment' "$TMP/devops-shared.md" \
   && ok "central deployment environment rendered" || no "deployment environment missing"
 S=$(block_status "$TMP/devops-shared.md"); [ "$S" = OK ] && ok "shared DevOps Center block -> OK" || no "shared DevOps Center block" "$S"
 

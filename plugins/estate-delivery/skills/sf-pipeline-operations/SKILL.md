@@ -117,11 +117,11 @@ are wrong.** Browser cookies do not reach a bash process and the VS Code token
 lives in the OS keychain, so terminal callers mint their own:
 
 1. Open `$ENGINE_URL/auth/login?redirect=cli` in a browser and sign in.
-2. Run the command the page prints. It writes `~/.config/sf-deploy-engine/token`, mode 600.
+2. Follow that endpoint's login flow. Save the resulting token privately in an endpoint-specific file with mode 600; set `SFDE_TOKEN_FILE` to its absolute path. Never paste a token into chat.
 3. Re-run that login when a call reports 401. The token lasts 30 days.
 
-`scripts/engine.sh` reads that file (or `SFDE_TOKEN`) and sends
-`Authorization: Bearer`. Use it rather than hand-rolled curl — the release and
+`scripts/engine.sh` reads only the explicit `SFDE_TOKEN_FILE` (or `SFDE_TOKEN`) and sends
+`Authorization: Bearer`. No default token file is read. Confirm the token and endpoint belong to the same authorized account. Use the helper rather than hand-rolled curl — the release and
 rollback payloads are the fiddly part.
 
 ```bash
@@ -138,6 +138,8 @@ by design — see [references/provisioning.md](references/provisioning.md).
 ---
 
 ## Daily operations
+
+The command examples use synthetic ticket keys, branch names and sandbox labels. Resolve actual values from the authorized project configuration; examples do not identify an account or grant access.
 
 Full payloads, response shapes and every endpoint:
 [references/operations.md](references/operations.md).
@@ -175,18 +177,18 @@ Merge commit, never squash. Never delete the upstream branch.
 Selective, specific tickets — this is what the dashboard's release builder does:
 
 ```bash
-scripts/engine.sh release --from preprod GH-397 GH-401 ORG64-42
+scripts/engine.sh release --from preprod GH-397 GH-401 EXAMPLE-42
 ```
 
-Ticket identifiers are provider-aware: `GH-397`, a Jira key like `ORG64-42`, the
-canonical `jira:ORG64-42`, or a bare issue number. An identifier no **configured**
+Ticket identifiers are provider-aware: `GH-397`, a Jira key like `EXAMPLE-42`, the
+canonical `jira:EXAMPLE-42`, or a bare issue number. An identifier no **configured**
 provider recognises is rejected rather than guessed at.
 
 One release can span several sources — different dev sandboxes, or a sandbox and
 preprod together. `--from` applies to every ticket after it, until the next one:
 
 ```bash
-scripts/engine.sh release --to preprod --from stevenc2 GH-397 --from meg-dev GH-401
+scripts/engine.sh release --to preprod --from sandbox-a GH-397 --from sandbox-b GH-401
 ```
 
 **`--from` is required** — there is no default source, and the API rejects a flat

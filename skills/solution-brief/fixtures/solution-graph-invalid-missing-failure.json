@@ -4,9 +4,9 @@
   "outputType": "solution_brief",
   "mode": "approval",
   "engagement": {
-    "engagementId": "FIX-APEX-RICH",
-    "clientName": "Apex Industrial Safety",
-    "asOf": "2026-04-30T12:00:00Z"
+    "engagementId": "FIX-SYNTHETIC-REVIEW",
+    "clientName": "Synthetic Review Laboratory",
+    "asOf": "2025-02-14T12:00:00Z"
   },
   "sufficiency": {
     "status": "Sufficient",
@@ -24,10 +24,10 @@
       "timeline_decision_gates": "Sufficient"
     },
     "blockers": [],
-    "nextGate": "Approve the content model for rendering"
+    "nextGate": "Resolve the missing sample inputs before approving the fixture for rendering."
   },
   "technicalJudgment": {
-    "statement": "Approve the solution shape with the catalog and BTP conditions explicitly gated before Build.",
+    "statement": "The synthetic review flow is ready for the modeled checks once its explicit input conditions are resolved.",
     "force": "approve_with_conditions",
     "conditionRefs": [
       "DEP-CATALOG",
@@ -42,79 +42,79 @@
     "systems": [
       {
         "id": "SYS-SF",
-        "name": "Salesforce Sales and Service Cloud",
-        "description": "System of engagement for customer and case context.",
+        "name": "Sample review component 1",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SYS.SF"
         ],
         "loadBearing": true,
         "disposition": "keep",
-        "owner": "Apex Sales Operations",
+        "owner": "Synthetic Review Owner",
         "responsibilities": [
-          "Customer and case context"
+          "Validate the synthetic review item and record the result."
         ],
         "dataDomains": [
-          "accounts",
-          "cases"
+          "sample document metadata",
+          "sample document metadata"
         ],
         "accessState": "confirmed"
       },
       {
         "id": "SYS-RC",
-        "name": "Revenue Cloud Advanced and Billing",
-        "description": "Contract lifecycle and billing schedule system.",
+        "name": "Sample review component 2",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SYS.RC"
         ],
         "loadBearing": true,
         "disposition": "new",
-        "owner": "Apex Sentinel Operations",
+        "owner": "Synthetic Review Owner",
         "responsibilities": [
-          "Quote, contract, amend, renew, billing schedule"
+          "Validate the synthetic review item and record the result."
         ],
         "dataDomains": [
-          "contracts",
-          "billing schedules"
+          "sample document metadata",
+          "sample document metadata"
         ],
         "accessState": "pending"
       },
       {
         "id": "SYS-BTP",
-        "name": "SAP BTP Integration Suite",
-        "description": "Integration seam for all net-new Salesforce to SAP exchanges.",
+        "name": "Sample review component 3",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SYS.BTP"
         ],
         "loadBearing": true,
         "disposition": "new",
-        "owner": "Apex IT",
+        "owner": "Synthetic Review Owner",
         "responsibilities": [
-          "Orchestration, transformation, retry, alerting"
+          "Validate the synthetic review item and record the result."
         ],
         "dataDomains": [
-          "orders",
-          "billing events"
+          "sample document metadata",
+          "sample document metadata"
         ],
         "accessState": "pending"
       },
       {
         "id": "SYS-SAP",
-        "name": "SAP ECC and RAR",
-        "description": "Financial system of record for orders, invoices, revenue recognition, and GL.",
+        "name": "Sample review component 4",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SYS.SAP"
         ],
         "loadBearing": true,
         "disposition": "connect",
-        "owner": "Apex Finance and IT",
+        "owner": "Synthetic Review Owner",
         "responsibilities": [
-          "Sales order, invoice, revenue recognition, general ledger"
+          "Validate the synthetic review item and record the result."
         ],
         "dataDomains": [
-          "sales orders",
-          "invoices",
-          "POBs",
-          "journals"
+          "sample document metadata",
+          "sample document metadata",
+          "sample document metadata",
+          "sample document metadata"
         ],
         "accessState": "confirmed"
       }
@@ -122,8 +122,8 @@
     "interfaces": [
       {
         "id": "IFC-ORDER",
-        "name": "New order transmission",
-        "description": "Revenue Cloud sends an accepted quote and contract to SAP through BTP.",
+        "name": "Sample review component 5",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-IFC.ORDER"
         ],
@@ -131,21 +131,21 @@
         "fromSystemId": "SYS-RC",
         "toSystemId": "SYS-BTP",
         "direction": "event_out",
-        "purpose": "Create a structured order handoff",
-        "trigger": "Quote acceptance",
+        "purpose": "Transfer a synthetic document identifier to its review queue.",
+        "trigger": "A sample document enters the review queue.",
         "payloads": [
-          "customer",
-          "products",
-          "contract terms",
-          "billing instructions"
+          "sampleDocumentId and reviewStatus",
+          "sampleDocumentId and reviewStatus",
+          "sampleDocumentId and reviewStatus",
+          "sampleDocumentId and reviewStatus"
         ],
-        "protocol": "REST via MuleSoft and BTP",
-        "owner": "Estate Technical Architect",
+        "protocol": "REST",
+        "owner": "Synthetic Review Owner",
         "contractState": "draft",
         "happyPath": [
-          "Validate payload",
-          "Submit to BTP",
-          "Receive correlation ID"
+          "Validate the sample identifier and record the resulting review state.",
+          "Validate the sample identifier and record the resulting review state.",
+          "Validate the sample identifier and record the resulting review state."
         ],
         "failurePaths": [],
         "securityControls": [
@@ -153,15 +153,15 @@
           "encrypted transport"
         ],
         "observability": [
-          "request log",
-          "response status",
-          "correlation ID"
+          "Sample identifier, attempt count and result status.",
+          "Sample identifier, attempt count and result status.",
+          "Sample identifier, attempt count and result status."
         ]
       },
       {
         "id": "IFC-BILL",
-        "name": "Billing schedule synchronization",
-        "description": "Revenue Cloud sends governed billing events through BTP to SAP invoicing and RAR.",
+        "name": "Sample review component 6",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-IFC.BILL"
         ],
@@ -169,34 +169,34 @@
         "fromSystemId": "SYS-RC",
         "toSystemId": "SYS-SAP",
         "direction": "event_out",
-        "purpose": "Synchronize billing schedule and modification events",
-        "trigger": "RCB billing event or contract amendment",
+        "purpose": "Transfer a synthetic document identifier to its review queue.",
+        "trigger": "A sample document enters the review queue.",
         "payloads": [
-          "schedule",
-          "POB",
-          "currency",
-          "modification"
+          "sampleDocumentId and reviewStatus",
+          "sampleDocumentId and reviewStatus",
+          "sampleDocumentId and reviewStatus",
+          "sampleDocumentId and reviewStatus"
         ],
-        "protocol": "REST and BTP iFlow",
-        "owner": "Estate Solution Architect",
+        "protocol": "REST",
+        "owner": "Synthetic Review Owner",
         "contractState": "draft",
         "happyPath": [
-          "Validate billing event",
-          "Transform for SAP",
-          "Post and acknowledge"
+          "Validate the sample identifier and record the resulting review state.",
+          "Validate the sample identifier and record the resulting review state.",
+          "Validate the sample identifier and record the resulting review state."
         ],
         "failurePaths": [
           {
             "id": "FP-BILL-01",
-            "condition": "SAP rejects billing event or allocation data",
-            "behavior": "Hold the event, prevent invoice progression, and route to finance review",
-            "retry": "Manual replay after data correction",
-            "escalation": "Notify Finance and Solution Architect",
-            "owner": "Apex Finance Operations",
+            "condition": "The sample endpoint rejects an invalid document identifier.",
+            "behavior": "Retain the failed item, prevent duplicate processing, and route it to the sample review queue.",
+            "retry": "Retry the sample operation with the same idempotency key after correcting its input.",
+            "escalation": "Notify the sample review owner and retain the failed item.",
+            "owner": "Synthetic Review Owner",
             "observability": [
-              "rejection reason",
-              "held-event queue",
-              "finance alert"
+              "Sample identifier, attempt count and result status.",
+              "Sample identifier, attempt count and result status.",
+              "Sample identifier, attempt count and result status."
             ],
             "claimIds": [
               "CLM-IFC.BILL"
@@ -208,30 +208,30 @@
           "encrypted transport"
         ],
         "observability": [
-          "event ledger",
-          "SAP acknowledgment",
-          "held-event queue"
+          "Sample identifier, attempt count and result status.",
+          "Sample identifier, attempt count and result status.",
+          "Sample identifier, attempt count and result status."
         ]
       }
     ],
     "adrs": [
       {
         "id": "ADR-BTP",
-        "name": "Use SAP BTP for net-new integrations",
-        "description": "BTP aligns the solution to the S/4HANA direction while existing Boomi flows remain.",
+        "name": "Sample review component 7",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ADR.BTP"
         ],
         "loadBearing": true,
-        "question": "BTP or Boomi for the new integration surface?",
-        "decision": "Use SAP BTP for all net-new flows.",
+        "question": "How does the sample review flow handle a missing input?",
+        "decision": "Use a queue with an explicit reviewer and an immutable completion record.",
         "state": "resolved",
-        "rationale": "Avoid rebuilding the new integration during the S/4HANA transition.",
+        "rationale": "An explicit queue keeps the sample review state separate from the source file.",
         "alternatives": [
-          "Extend Boomi",
-          "Point-to-point integration"
+          "Use a manually confirmed review queue for this synthetic exercise.",
+          "Use a manually confirmed review queue for this synthetic exercise."
         ],
-        "owner": "Apex IT and Estate Technical Architect",
+        "owner": "Synthetic Review Owner",
         "decisionPointRef": "MLS-DESIGN-GATE",
         "affectedRefs": [
           "SYS-BTP",
@@ -242,21 +242,21 @@
       },
       {
         "id": "ADR-RCB",
-        "name": "Revenue Cloud owns billing schedules",
-        "description": "RCB manages schedule logic while SAP owns invoicing and revenue recognition.",
+        "name": "Sample review component 8",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ADR.RCB"
         ],
         "loadBearing": true,
-        "question": "Should billing schedules live in Salesforce or SAP custom logic?",
-        "decision": "Use Revenue Cloud Billing for schedule logic.",
+        "question": "How does the sample review flow handle a missing input?",
+        "decision": "Use a queue with an explicit reviewer and an immutable completion record.",
         "state": "resolved",
-        "rationale": "Keeps subscription configuration in Salesforce and avoids custom SAP schedule logic.",
+        "rationale": "An explicit queue keeps the sample review state separate from the source file.",
         "alternatives": [
-          "SAP-only billing schedules",
-          "Split logic across both systems"
+          "Use a manually confirmed review queue for this synthetic exercise.",
+          "Use a manually confirmed review queue for this synthetic exercise."
         ],
-        "owner": "Apex Finance and Estate Solution Architect",
+        "owner": "Synthetic Review Owner",
         "decisionPointRef": "MLS-DESIGN-GATE",
         "affectedRefs": [
           "SYS-RC",
@@ -269,71 +269,71 @@
     "scopeItems": [
       {
         "id": "SCP-LIFECYCLE",
-        "name": "Subscription lifecycle",
-        "description": "Configure quote, contract, amend, renew, suspend, and cancel for Grid.",
+        "name": "Sample review component 9",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SCP.LIFECYCLE"
         ],
         "loadBearing": true,
         "inclusionState": "included",
-        "workstream": "Revenue Cloud",
+        "workstream": "Synthetic document review",
         "acceptanceCriteria": [
-          "One contract supports amendment and renewal without spawning duplicate contracts"
+          "The synthetic review item reaches its assigned queue once and retains its source identifier."
         ]
       },
       {
         "id": "SCP-INTEGRATION",
-        "name": "BTP integration flows",
-        "description": "Design and build the order and billing event interfaces.",
+        "name": "Sample review component 10",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SCP.INTEGRATION"
         ],
         "loadBearing": true,
         "inclusionState": "included",
-        "workstream": "Integration",
+        "workstream": "Synthetic document review",
         "acceptanceCriteria": [
-          "E2E order and billing scenarios pass with observable failure handling"
+          "The synthetic review item reaches its assigned queue once and retains its source identifier."
         ]
       },
       {
         "id": "SCP-BILLING",
-        "name": "Billing schedules and modifications",
-        "description": "Configure billing triggers, proration, free months, and credit behavior.",
+        "name": "Sample review component 11",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SCP.BILLING"
         ],
         "loadBearing": true,
         "inclusionState": "included",
-        "workstream": "Billing",
+        "workstream": "Synthetic document review",
         "acceptanceCriteria": [
-          "Billing schedules match approved scenarios and SAP acknowledgments"
+          "The synthetic review item reaches its assigned queue once and retains its source identifier."
         ]
       },
       {
         "id": "SCP-RIGHTREV",
-        "name": "Salesforce-native revenue recognition",
-        "description": "RightRev implementation is excluded because SAP RAR remains the revenue-recognition engine.",
+        "name": "Sample review component 12",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-SCP.RIGHTREV"
         ],
         "loadBearing": true,
         "inclusionState": "excluded",
-        "workstream": "Revenue recognition",
+        "workstream": "Synthetic document review",
         "acceptanceCriteria": []
       }
     ],
     "risks": [
       {
         "id": "RSK-BTP",
-        "name": "BTP delivery experience",
-        "description": "Neither team has demonstrated the full target iFlow shape.",
+        "name": "Sample review component 13",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-RSK.BTP"
         ],
         "loadBearing": true,
         "probability": "medium",
         "impact": "high",
-        "owner": "Estate Technical Architect",
+        "owner": "Synthetic Review Owner",
         "affectedRefs": [
           "SYS-BTP",
           "IFC-ORDER",
@@ -342,64 +342,64 @@
           "PHS-BUILD"
         ],
         "mitigationActions": [
-          "Run a two-week BTP architecture spike",
-          "Staff a BTP-experienced developer"
+          "Run the synthetic invalid-identifier case before accepting the review flow.",
+          "Run the synthetic invalid-identifier case before accepting the review flow."
         ],
-        "trigger": "Architecture spike fails acceptance criteria",
-        "residualExposure": "Timeline and staffing remain exposed until the spike passes"
+        "trigger": "A sample document enters the review queue.",
+        "residualExposure": "The affected sample remains pending until its input is supplied."
       },
       {
         "id": "RSK-CATALOG",
-        "name": "Catalog rationalization delay",
-        "description": "Material-number mapping may not be ready before configuration begins.",
+        "name": "Sample review component 14",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-RSK.CATALOG"
         ],
         "loadBearing": true,
         "probability": "high",
         "impact": "high",
-        "owner": "Apex Sentinel Operations",
+        "owner": "Synthetic Review Owner",
         "affectedRefs": [
           "SCP-LIFECYCLE",
           "PHS-DESIGN",
           "PHS-BUILD"
         ],
         "mitigationActions": [
-          "Provide mapping template in Analyze",
-          "Gate Design exit on signed catalog mapping"
+          "Run the synthetic invalid-identifier case before accepting the review flow.",
+          "Run the synthetic invalid-identifier case before accepting the review flow."
         ],
-        "trigger": "Catalog mapping incomplete at Design gate",
-        "residualExposure": "Configuration and integration mapping cannot proceed"
+        "trigger": "A sample document enters the review queue.",
+        "residualExposure": "The affected sample remains pending until its input is supplied."
       }
     ],
     "assumptions": [
       {
         "id": "ASM-SAP-INVOICE",
-        "name": "SAP owns invoicing",
-        "description": "Invoicing, AR, collections, tax, and revenue recognition stay in SAP.",
+        "name": "Sample review component 15",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ASM.SAP.INVOICE"
         ],
         "loadBearing": true,
-        "owner": "Apex Finance",
+        "owner": "Synthetic Review Owner",
         "affectedRefs": [
           "SYS-SAP",
           "IFC-BILL",
           "SCP-BILLING",
           "FIN-BILLING"
         ],
-        "consequenceIfFalse": "Reopen the architecture and price a materially larger engagement.",
-        "closureCondition": "Finance approves the invoicing boundary at Design gate"
+        "consequenceIfFalse": "Keep the affected fixture item pending until the input is confirmed.",
+        "closureCondition": "The synthetic owner supplies the missing fixture input and records its version."
       },
       {
         "id": "ASM-PM",
-        "name": "Apex provides a client-side PM",
-        "description": "Estate PM effort assumes an empowered client project owner.",
+        "name": "Sample review component 16",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ASM.PM"
         ],
         "loadBearing": true,
-        "owner": "Apex Executive Sponsor",
+        "owner": "Synthetic Review Owner",
         "affectedRefs": [
           "ROL-PM",
           "ALC-PM-ANALYZE",
@@ -407,26 +407,26 @@
           "ALC-PM-BUILD",
           "FIN-PM"
         ],
-        "consequenceIfFalse": "Increase PM allocation and commercial baseline.",
-        "closureCondition": "Name and commit the client PM before Mobilize"
+        "consequenceIfFalse": "Keep the affected fixture item pending until the input is confirmed.",
+        "closureCondition": "The synthetic owner supplies the missing fixture input and records its version."
       }
     ],
     "dependencies": [
       {
         "id": "DEP-CATALOG",
-        "name": "Approved catalog mapping",
-        "description": "Material numbers must map to Salesforce products before design can close.",
+        "name": "Sample review component 17",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-DEP.CATALOG"
         ],
         "loadBearing": true,
-        "owner": "Apex Sentinel Operations",
+        "owner": "Synthetic Review Owner",
         "affectedRefs": [
           "SCP-LIFECYCLE",
           "SCP-INTEGRATION",
           "PHS-DESIGN"
         ],
-        "closureCondition": "Signed catalog mapping and data-quality checklist",
+        "closureCondition": "The synthetic owner supplies the missing fixture input and records its version.",
         "blocksRefs": [
           "MLS-DESIGN-GATE",
           "PHS-BUILD"
@@ -436,84 +436,84 @@
     "roles": [
       {
         "id": "ROL-SA",
-        "name": "Solution Architect",
-        "description": "Owns Revenue Cloud lifecycle, billing boundaries, and technical judgment.",
+        "name": "Sample review component 18",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ROL.SA"
         ],
         "loadBearing": true,
         "responsibilities": [
-          "Solution architecture",
-          "ADRs",
-          "Billing design"
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result."
         ],
         "requiredSkills": [
-          "Revenue Cloud",
-          "Subscription lifecycle"
+          "Document workflow validation",
+          "Document workflow validation"
         ],
-        "owner": "Estate"
+        "owner": "Synthetic Review Owner"
       },
       {
         "id": "ROL-TA",
-        "name": "Technical Architect",
-        "description": "Owns BTP topology, interface contracts, security, and failure behavior.",
+        "name": "Sample review component 19",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ROL.TA"
         ],
         "loadBearing": true,
         "responsibilities": [
-          "Integration architecture",
-          "Interface contracts",
-          "Observability"
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result."
         ],
         "requiredSkills": [
-          "SAP BTP",
-          "API-led integration"
+          "Document workflow validation",
+          "Document workflow validation"
         ],
-        "owner": "Estate"
+        "owner": "Synthetic Review Owner"
       },
       {
         "id": "ROL-DEV",
-        "name": "BTP Developer",
-        "description": "Builds and tests the load-bearing integration flows.",
+        "name": "Sample review component 20",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ROL.DEV"
         ],
         "loadBearing": true,
         "responsibilities": [
-          "iFlow build",
-          "Error handling",
-          "E2E tests"
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result."
         ],
         "requiredSkills": [
-          "SAP BTP Integration Suite"
+          "Document workflow validation"
         ],
-        "owner": "Estate"
+        "owner": "Synthetic Review Owner"
       },
       {
         "id": "ROL-PM",
-        "name": "Project Manager",
-        "description": "Owns gates, decisions, dependencies, and delivery coordination.",
+        "name": "Sample review component 21",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ROL.PM"
         ],
         "loadBearing": true,
         "responsibilities": [
-          "Governance",
-          "Decision log",
-          "Phase gates"
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result.",
+          "Validate the synthetic review item and record the result."
         ],
         "requiredSkills": [
-          "Complex integration delivery"
+          "Document workflow validation"
         ],
-        "owner": "Estate"
+        "owner": "Synthetic Review Owner"
       }
     ],
     "allocations": [
       {
         "id": "ALC-SA-ANALYZE",
-        "name": "SA in Analyze",
-        "description": "Solution Architect confirms lifecycle and billing requirements.",
+        "name": "Sample review component 22",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ALC.SA.ANALYZE"
         ],
@@ -524,15 +524,15 @@
           "SCP-LIFECYCLE",
           "SCP-BILLING"
         ],
-        "hours": 120,
+        "hours": 24.0,
         "basis": "quoted",
         "startMilestoneId": "MLS-ANALYZE-START",
         "endMilestoneId": "MLS-DESIGN-GATE"
       },
       {
         "id": "ALC-SA-DESIGN",
-        "name": "SA in Design",
-        "description": "Solution Architect owns system boundary and billing ADRs.",
+        "name": "Sample review component 23",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ALC.SA.DESIGN"
         ],
@@ -543,15 +543,15 @@
           "SCP-LIFECYCLE",
           "SCP-BILLING"
         ],
-        "hours": 180,
+        "hours": 36.0,
         "basis": "quoted",
         "startMilestoneId": "MLS-ANALYZE-START",
         "endMilestoneId": "MLS-DESIGN-GATE"
       },
       {
         "id": "ALC-TA-DESIGN",
-        "name": "TA in Design",
-        "description": "Technical Architect owns interface contracts and failure design.",
+        "name": "Sample review component 24",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ALC.TA.DESIGN"
         ],
@@ -561,15 +561,15 @@
         "scopeItemIds": [
           "SCP-INTEGRATION"
         ],
-        "hours": 160,
+        "hours": 32.0,
         "basis": "quoted",
         "startMilestoneId": "MLS-ANALYZE-START",
         "endMilestoneId": "MLS-DESIGN-GATE"
       },
       {
         "id": "ALC-DEV-BUILD",
-        "name": "BTP developer in Build",
-        "description": "Developer builds and validates the integration flows.",
+        "name": "Sample review component 25",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ALC.DEV.BUILD"
         ],
@@ -579,15 +579,15 @@
         "scopeItemIds": [
           "SCP-INTEGRATION"
         ],
-        "hours": 420,
+        "hours": 84.0,
         "basis": "quoted",
         "startMilestoneId": "MLS-BUILD-START",
         "endMilestoneId": "MLS-VALIDATION-EXIT"
       },
       {
         "id": "ALC-PM-ANALYZE",
-        "name": "PM in Analyze",
-        "description": "Project Manager owns Analyze governance.",
+        "name": "Sample review component 26",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ALC.PM.ANALYZE"
         ],
@@ -599,15 +599,15 @@
           "SCP-INTEGRATION",
           "SCP-BILLING"
         ],
-        "hours": 60,
+        "hours": 12.0,
         "basis": "quoted",
         "startMilestoneId": "MLS-ANALYZE-START",
         "endMilestoneId": "MLS-DESIGN-GATE"
       },
       {
         "id": "ALC-PM-DESIGN",
-        "name": "PM in Design",
-        "description": "Project Manager owns Design governance.",
+        "name": "Sample review component 27",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ALC.PM.DESIGN"
         ],
@@ -619,15 +619,15 @@
           "SCP-INTEGRATION",
           "SCP-BILLING"
         ],
-        "hours": 80,
+        "hours": 16.0,
         "basis": "quoted",
         "startMilestoneId": "MLS-ANALYZE-START",
         "endMilestoneId": "MLS-DESIGN-GATE"
       },
       {
         "id": "ALC-PM-BUILD",
-        "name": "PM in Build",
-        "description": "Project Manager owns Build and validation governance.",
+        "name": "Sample review component 28",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-ALC.PM.BUILD"
         ],
@@ -639,7 +639,7 @@
           "SCP-INTEGRATION",
           "SCP-BILLING"
         ],
-        "hours": 220,
+        "hours": 44.0,
         "basis": "quoted",
         "startMilestoneId": "MLS-BUILD-START",
         "endMilestoneId": "MLS-VALIDATION-EXIT"
@@ -648,55 +648,55 @@
     "phases": [
       {
         "id": "PHS-ANALYZE",
-        "name": "Analyze",
-        "description": "Confirm process, source data, catalog, and interface needs.",
+        "name": "Sample review component 29",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-PHS.ANALYZE"
         ],
         "loadBearing": true,
         "sequence": 1,
-        "objective": "Turn quoted scope into an evidence-backed baseline.",
+        "objective": "Carry each synthetic document from intake to a checked review record.",
         "entryCriteria": [
-          "Access provisioned"
+          "The prior fixture step has a recorded completion result."
         ],
         "exitCriteria": [
-          "Scope, catalog approach, and interface inventory approved"
+          "The sample happy path and failure cases retain the expected source identifiers."
         ],
         "durationWeeks": 3
       },
       {
         "id": "PHS-DESIGN",
-        "name": "Design",
-        "description": "Approve architecture, ADRs, interface contracts, failure behavior, and acceptance criteria.",
+        "name": "Sample review component 30",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-PHS.DESIGN"
         ],
         "loadBearing": true,
         "sequence": 2,
-        "objective": "Make the system and delivery logic buildable.",
+        "objective": "Carry each synthetic document from intake to a checked review record.",
         "entryCriteria": [
-          "Analyze exit passed"
+          "The prior fixture step has a recorded completion result."
         ],
         "exitCriteria": [
-          "Architecture, interface contracts, catalog mapping, and test approach approved"
+          "The sample happy path and failure cases retain the expected source identifiers."
         ],
         "durationWeeks": 4
       },
       {
         "id": "PHS-BUILD",
-        "name": "Build and Validate",
-        "description": "Configure Revenue Cloud, build BTP flows, and prove E2E scenarios.",
+        "name": "Sample review component 31",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-PHS.BUILD"
         ],
         "loadBearing": true,
         "sequence": 3,
-        "objective": "Deliver and validate the approved scope.",
+        "objective": "Carry each synthetic document from intake to a checked review record.",
         "entryCriteria": [
-          "Design gate passed"
+          "The prior fixture step has a recorded completion result."
         ],
         "exitCriteria": [
-          "E2E happy and failure paths pass acceptance criteria"
+          "The sample happy path and failure cases retain the expected source identifiers."
         ],
         "durationWeeks": 11
       }
@@ -704,8 +704,8 @@
     "milestones": [
       {
         "id": "MLS-ANALYZE-START",
-        "name": "Analyze start",
-        "description": "Access and kickoff complete.",
+        "name": "Sample review component 32",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-MLS.ANALYZE.START"
         ],
@@ -713,13 +713,13 @@
         "phaseId": "PHS-ANALYZE",
         "milestoneType": "entry",
         "date": null,
-        "offset": "Week 1",
-        "owner": "Project Manager"
+        "offset": "A supplied position in the synthetic exercise sequence.",
+        "owner": "Synthetic Review Owner"
       },
       {
         "id": "MLS-DESIGN-GATE",
-        "name": "Design approval gate",
-        "description": "Architecture, interface, catalog, and test decisions approved.",
+        "name": "Sample review component 33",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-MLS.DESIGN.GATE"
         ],
@@ -727,13 +727,13 @@
         "phaseId": "PHS-DESIGN",
         "milestoneType": "decision",
         "date": null,
-        "offset": "End of week 7",
-        "owner": "Technical approvers"
+        "offset": "A supplied position in the synthetic exercise sequence.",
+        "owner": "Synthetic Review Owner"
       },
       {
         "id": "MLS-BUILD-START",
-        "name": "Build start",
-        "description": "All Design gate dependencies closed.",
+        "name": "Sample review component 34",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-MLS.BUILD.START"
         ],
@@ -741,13 +741,13 @@
         "phaseId": "PHS-BUILD",
         "milestoneType": "entry",
         "date": null,
-        "offset": "Week 8",
-        "owner": "Project Manager"
+        "offset": "A supplied position in the synthetic exercise sequence.",
+        "owner": "Synthetic Review Owner"
       },
       {
         "id": "MLS-VALIDATION-EXIT",
-        "name": "Validation exit",
-        "description": "All E2E scenarios and failure paths pass.",
+        "name": "Sample review component 35",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-MLS.VALIDATION.EXIT"
         ],
@@ -755,91 +755,91 @@
         "phaseId": "PHS-BUILD",
         "milestoneType": "exit",
         "date": null,
-        "offset": "End of week 18",
-        "owner": "Client and Estate technical leads"
+        "offset": "A supplied position in the synthetic exercise sequence.",
+        "owner": "Synthetic Review Owner"
       }
     ],
     "financialLines": [
       {
         "id": "FIN-LIFECYCLE",
-        "name": "Subscription lifecycle services",
-        "description": "Priced baseline for lifecycle configuration.",
+        "name": "Sample review component 36",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-FIN.LIFECYCLE"
         ],
         "loadBearing": true,
         "basis": "scope",
-        "amount": 180000,
+        "amount": 36000.0,
         "currency": "USD",
         "inclusionState": "included",
         "sourceQuoteRef": "Q-FIXTURE"
       },
       {
         "id": "FIN-INTEGRATION",
-        "name": "BTP integration services",
-        "description": "Priced baseline for interface design and build.",
+        "name": "Sample review component 37",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-FIN.INTEGRATION"
         ],
         "loadBearing": true,
         "basis": "scope",
-        "amount": 260000,
+        "amount": 52000.0,
         "currency": "USD",
         "inclusionState": "included",
         "sourceQuoteRef": "Q-FIXTURE"
       },
       {
         "id": "FIN-BILLING",
-        "name": "Billing configuration services",
-        "description": "Priced baseline for billing schedules and modifications.",
+        "name": "Sample review component 38",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-FIN.BILLING"
         ],
         "loadBearing": true,
         "basis": "scope",
-        "amount": 122725,
+        "amount": 24545.0,
         "currency": "USD",
         "inclusionState": "included",
         "sourceQuoteRef": "Q-FIXTURE"
       },
       {
         "id": "FIN-PM",
-        "name": "Project management allocation",
-        "description": "PM cost is included across the priced scope lines.",
+        "name": "Sample review component 39",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-FIN.PM"
         ],
         "loadBearing": false,
         "basis": "role",
-        "amount": 0,
+        "amount": 0.0,
         "currency": "USD",
         "inclusionState": "included",
         "sourceQuoteRef": "Q-FIXTURE"
       },
       {
         "id": "FIN-RIGHTREV",
-        "name": "RightRev implementation",
-        "description": "Excluded from the baseline.",
+        "name": "Sample review component 40",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-FIN.RIGHTREV"
         ],
         "loadBearing": true,
         "basis": "excluded",
-        "amount": 0,
+        "amount": 0.0,
         "currency": "USD",
         "inclusionState": "excluded",
         "sourceQuoteRef": null
       },
       {
         "id": "FIN-TOTAL",
-        "name": "Total investment",
-        "description": "Reconciled included baseline.",
+        "name": "Sample review component 41",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-FIN.TOTAL"
         ],
         "loadBearing": true,
         "basis": "total",
-        "amount": 562725,
+        "amount": 112545.0,
         "currency": "USD",
         "inclusionState": "included",
         "sourceQuoteRef": "Q-FIXTURE"
@@ -848,8 +848,8 @@
     "reconciliationControls": [
       {
         "id": "REC-SCOPE",
-        "name": "Included scope pricing",
-        "description": "All included scope items map to included financial lines.",
+        "name": "Sample review component 42",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-REC.SCOPE"
         ],
@@ -865,16 +865,16 @@
           "FIN-INTEGRATION",
           "FIN-BILLING"
         ],
-        "tolerance": 0,
-        "expected": 3,
-        "actual": 3,
-        "variance": 0,
+        "tolerance": 0.0,
+        "expected": 0.6000000000000001,
+        "actual": 0.6000000000000001,
+        "variance": 0.0,
         "status": "pass"
       },
       {
         "id": "REC-TOTAL",
-        "name": "Investment total",
-        "description": "Included scope lines reconcile to the total investment.",
+        "name": "Sample review component 43",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-REC.TOTAL"
         ],
@@ -888,16 +888,16 @@
         "rightRefs": [
           "FIN-TOTAL"
         ],
-        "tolerance": 0,
-        "expected": 562725,
-        "actual": 562725,
-        "variance": 0,
+        "tolerance": 0.0,
+        "expected": 112545.0,
+        "actual": 112545.0,
+        "variance": 0.0,
         "status": "pass"
       },
       {
         "id": "REC-EXCLUSION",
-        "name": "Excluded scope contributes zero",
-        "description": "Excluded RightRev work has no baseline contribution.",
+        "name": "Sample review component 44",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
         "claimIds": [
           "CLM-REC.EXCLUSION"
         ],
@@ -909,10 +909,10 @@
         "rightRefs": [
           "FIN-RIGHTREV"
         ],
-        "tolerance": 0,
-        "expected": 0,
-        "actual": 0,
-        "variance": 0,
+        "tolerance": 0.0,
+        "expected": 0.0,
+        "actual": 0.0,
+        "variance": 0.0,
         "status": "pass"
       }
     ]
@@ -1547,7 +1547,7 @@
     {
       "viewId": "VIEW-01",
       "viewType": "technical_judgment",
-      "audienceTask": "Know whether the solution is technically deliverable and under which conditions.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "ADR-BTP",
         "ADR-RCB",
@@ -1568,7 +1568,7 @@
     {
       "viewId": "VIEW-02",
       "viewType": "system_boundary",
-      "audienceTask": "Understand systems, ownership, scope, and access boundaries.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "SYS-SF",
         "SYS-RC",
@@ -1595,7 +1595,7 @@
     {
       "viewId": "VIEW-03",
       "viewType": "critical_interfaces",
-      "audienceTask": "Trace load-bearing exchanges and failure behavior.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "IFC-ORDER",
         "IFC-BILL",
@@ -1618,7 +1618,7 @@
     {
       "viewId": "VIEW-04",
       "viewType": "architecture_decisions",
-      "audienceTask": "Know what was decided, why, and what each decision governs.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "ADR-BTP",
         "ADR-RCB",
@@ -1639,7 +1639,7 @@
     {
       "viewId": "VIEW-05",
       "viewType": "scope_solution_trace",
-      "audienceTask": "Trace included and excluded scope to the solution and phases.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "SCP-LIFECYCLE",
         "SCP-INTEGRATION",
@@ -1666,7 +1666,7 @@
     {
       "viewId": "VIEW-06",
       "viewType": "risk_concentration",
-      "audienceTask": "See where risks and conditions attach to the architecture and timeline.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "RSK-BTP",
         "RSK-CATALOG",
@@ -1695,7 +1695,7 @@
     {
       "viewId": "VIEW-07",
       "viewType": "staffing_delivery_shape",
-      "audienceTask": "Understand technical ownership, allocations, peaks, and feasibility.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "ROL-SA",
         "ROL-TA",
@@ -1730,7 +1730,7 @@
     {
       "viewId": "VIEW-08",
       "viewType": "timeline_decision_gates",
-      "audienceTask": "Understand phases, entry and exit criteria, and decision gates.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "PHS-ANALYZE",
         "PHS-DESIGN",
@@ -1757,7 +1757,7 @@
     {
       "viewId": "VIEW-09",
       "viewType": "financial_reconciliation",
-      "audienceTask": "Verify scope, staffing, timing, and investment coherence.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "FIN-LIFECYCLE",
         "FIN-INTEGRATION",
@@ -1786,7 +1786,7 @@
     {
       "viewId": "VIEW-10",
       "viewType": "conditions_next_action",
-      "audienceTask": "Know which conditions block progress and the next evidence gate.",
+      "audienceTask": "Inspect the sample review flow and identify its unresolved input.",
       "entityRefs": [
         "DEP-CATALOG",
         "ASM-SAP-INVOICE",
@@ -1854,6 +1854,6 @@
     "CLM-SYS.SF"
   ],
   "metadata": {
-    "fixturePurpose": "industrial-subscription-shaped rich graph demonstrating distinct semantic components and relationships"
+    "fixturePurpose": "Newly constructed synthetic document-review laboratory; topology exercises graph checks without real engagement facts."
   }
 }

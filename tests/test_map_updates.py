@@ -8,11 +8,15 @@ import json
 from pathlib import Path
 import tempfile
 import threading
+import sys
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'tools'))
+from test_capabilities import integration
 spec=importlib.util.spec_from_file_location('map_viewer',ROOT/'artifacts/skills-map/viewer.py')
 viewer=importlib.util.module_from_spec(spec);spec.loader.exec_module(viewer)
 COMMIT='a'*40
@@ -80,6 +84,42 @@ class MapUpdateTests(unittest.TestCase):
             with self.assertRaises(ValueError):viewer.refresh(output,changing)
             self.assertEqual(output.read_text(),'old')
 
+    def test_handler_enforces_request_boundaries_without_a_socket(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output=Path(tmp)/'map.html';output.write_text(snapshot()[1])
+            server=SimpleNamespace(output=output,token='synthetic-token',origin='http://127.0.0.1:12345',
+                                   lock=threading.Lock(),last_error=None)
+            def request(method,path,headers=None):
+                handler=object.__new__(viewer.MapHandler)
+                handler.server=server;handler.path=path
+                handler.headers={'Host':'127.0.0.1:12345',**(headers or {})}
+                replies=[]
+                handler.respond=lambda status,body,kind=None: replies.append((status,body))
+                getattr(handler,'do_'+method)()
+                self.assertEqual(1,len(replies))
+                return replies[0]
+            self.assertEqual(request('GET','/')[0],200)
+            self.assertIn(server.token.encode(),request('GET','/')[1])
+            self.assertEqual(request('GET','/../../etc/passwd')[0],404)
+            self.assertEqual(request('GET','/',{'Host':'evil.example'})[0],403)
+            valid={'Origin':server.origin,'X-Map-CSRF':server.token}
+            with patch.object(viewer,'refresh',return_value={'skills':1}) as refresh:
+                for headers in [{}, {**valid,'Origin':'https://evil.example'},
+                                {**valid,'X-Map-CSRF':'wrong'}, {**valid,'Host':'evil.example'}]:
+                    self.assertEqual(request('POST','/api/update',headers)[0],403)
+                for extra in [{'Content-Length':'2'},{'Transfer-Encoding':'chunked'}]:
+                    self.assertEqual(request('POST','/api/update',{**valid,**extra})[0],400)
+                self.assertEqual(request('POST','/wrong-route',valid)[0],404)
+                refresh.assert_not_called()
+                with server.lock:self.assertEqual(request('POST','/api/update',valid)[0],409)
+                self.assertEqual(request('POST','/api/update',valid)[0],200)
+                refresh.assert_called_once_with(output)
+            with patch.object(viewer,'refresh',side_effect=ValueError('Still building')):
+                self.assertEqual(request('POST','/api/update',valid)[0],502)
+                self.assertEqual(request('GET','/api/status')[1]['error'],'Still building')
+                self.assertFalse(server.lock.locked())
+
+    @integration('loopback')
     def test_server_requires_same_origin_nonce_and_no_request_body(self):
         with tempfile.TemporaryDirectory() as tmp:
             output=Path(tmp)/'map.html';output.write_text(snapshot()[1])

@@ -24,7 +24,7 @@ inputs and saved examples separate from reusable validation rules.
 
 ## Voice reading pass
 
-The prose gate itself is the `prose-pass` skill. These seven questions are the
+Writing Integrity owns prose review and uses the internal `prose-pass` diagnostics. These seven questions are the
 reading pass a matcher cannot do:
 
 1. Does any sentence set up a contrast only to knock it down for effect?

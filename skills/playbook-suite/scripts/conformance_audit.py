@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-"""Audit an existing playbook folder against Estate playbook spec 1.1.
+"""Check a playbook folder against the preserved version 1.1 artifact model.
 
     python3 conformance_audit.py PLAYBOOK_DIR [--manifest manifest.json] [--infer] [--json]
 
 Reports what is present, missing, off-format, ungated, and obsolete. It resolves
 artifacts through the manifest (STRUCTURE.md: filenames are cosmetic, the machine
-binds by drive_file_id), checks the required set per the shape's row in SPEC.md, and
+binds by drive_file_id), checks the required set in the preserved shape model, and
 reads the filesystem only to catch obsolete or stale-role filenames and manifest
 pointers that miss disk. It never opens a document, so contents conformance stays
 with the visual gate and a person.
 
-Exit 0 when the playbook conforms. Exit 1 when it does not. Exit 2 on a usage error.
+Exit 0 when the modeled checks pass, 1 for findings, and 2 for a usage error.
+No exit status establishes acceptance against a current approved specification.
 """
 
 import argparse
@@ -83,7 +84,7 @@ def infer_manifest(name, files):
 
 
 def rom_required(manifest):
-    """ROM (06) is built only when the band spread exceeds 2x (SPEC.md). Absent a
+    """ROM (06) is built only when the band spread exceeds 2x in the preserved model. Absent a
     band_spread it is treated as not required, so a single-band playbook never flags it."""
     spread = manifest.get("band_spread")
     return bool(spread) and spread > 2
@@ -133,7 +134,7 @@ def main():
     if inferred:
         findings["notes"].append("manifest was inferred from filenames; correct it by hand before relying on it")
 
-    # Required set per the shape's SPEC.md row. R is required; C is required only
+    # Required set per the preserved shape model. R is required; C is required only
     # when its trigger fires (ROM at band spread > 2); everything else is skipped.
     for num, (slug, fmt, scope) in ARTIFACTS.items():
         req = spec_shapes.requirement(shape, num)
@@ -190,6 +191,7 @@ def main():
 
     total = sum(len(v) for k, v in findings.items() if k != "notes")
     result = {"playbook": manifest.get("code"), "shape": shape, "spec_version": SPEC_VERSION,
+              "spec_authority": spec_shapes.authority_status(),
               "files_scanned": len(files), "blocking_findings": total, "findings": findings}
 
     if args.json:
@@ -205,6 +207,7 @@ def main():
         n_notes = len(findings["notes"])
         print(f"\n  {total} blocking finding{'' if total == 1 else 's'}, "
               f"{n_notes} note{'' if n_notes == 1 else 's'}")
+        print("  Specification authority unverified; compatibility checks do not establish release readiness.")
         print("  Contents conformance is the visual gate and is not checked here.\n")
 
     return 0 if total == 0 else 1

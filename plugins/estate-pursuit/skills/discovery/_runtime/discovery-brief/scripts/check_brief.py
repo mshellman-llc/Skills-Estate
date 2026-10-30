@@ -6,11 +6,11 @@ Validates a JSON ledger or a markdown brief against the ledger spec
 
   1. Every Column A claim carries a non-empty source.
   2. No Column A confidence is Unknown; every confidence is Confirmed or Inferred.
-  3. Column B is non-empty.
+  3. Column B is non-empty unless JSON discovery_complete is explicitly true.
   4. Every Column B question has text, a rank of High/Medium/Low, and a
      non-empty scope line it unblocks.
   5. Column B entries appear in rank order (High, then Medium, then Low).
-  6. No em dash anywhere in the file.
+  6. JSON known/open entries are objects; punctuation is not an evidence gate.
 
 Usage: check_brief.py <ledger.json | brief.md>
 Exit 0 on pass, 1 on any failure, 2 on unusable input.
@@ -31,36 +31,45 @@ COL_A_HEADINGS = ("column a", "what we know")
 COL_B_HEADINGS = ("column b", "open questions", "ranked unknowns")
 
 
+def text_field(row, name, problems, label):
+    value = row.get(name, "")
+    if not isinstance(value, str):
+        problems.append("{}: {} must be text".format(label, name))
+        return ""
+    return value.strip()
+
+
 def check_known(rows, problems):
     for i, row in enumerate(rows, 1):
-        label = (row.get("claim") or "").strip() or "row {}".format(i)
+        claim = text_field(row, "claim", problems, "Column A row {}".format(i))
+        label = claim or "row {}".format(i)
         label = "Column A [{}]".format(label[:60])
-        if not (row.get("claim") or "").strip():
+        if not claim:
             problems.append("{}: empty claim".format(label))
-        if not (row.get("source") or "").strip():
+        if not text_field(row, "source", problems, label):
             problems.append("{}: no source token; an unsourced claim does not enter Column A".format(label))
-        conf = (row.get("confidence") or "").strip()
+        conf = text_field(row, "confidence", problems, label)
         if conf == "Unknown":
             problems.append("{}: confidence Unknown; a searched-for fact not found belongs in Column B as a question".format(label))
         elif conf not in CONFIDENCE:
             problems.append("{}: confidence must be Confirmed or Inferred, got '{}'".format(label, conf))
 
 
-def check_open(rows, problems):
-    if not rows:
+def check_open(rows, problems, complete=False):
+    if not rows and not complete:
         problems.append("Column B is empty; a brief with no open questions is a status report, not a discovery brief")
         return
     seen_ranks = []
     for i, row in enumerate(rows, 1):
-        label = "Column B [{}]".format((row.get("id") or "row {}".format(i)).strip())
-        if not (row.get("question") or "").strip():
+        label = "Column B [{}]".format(text_field(row, "id", problems, "Column B row {}".format(i)) or "row {}".format(i))
+        if not text_field(row, "question", problems, label):
             problems.append("{}: empty question".format(label))
-        rank = (row.get("rank") or "").strip()
+        rank = text_field(row, "rank", problems, label)
         if rank not in RANKS:
             problems.append("{}: rank must be High, Medium, or Low, got '{}'".format(label, rank))
         else:
             seen_ranks.append((label, rank))
-        if not (row.get("unblocks") or "").strip():
+        if not text_field(row, "unblocks", problems, label):
             problems.append("{}: no scope line named; a question that unblocks nothing fails the cut test".format(label))
     for (prev_label, prev), (label, cur) in zip(seen_ranks, seen_ranks[1:]):
         if RANK_ORDER[cur] < RANK_ORDER[prev]:
@@ -159,7 +168,9 @@ def check_json(data, problems):
     if not isinstance(open_qs, list):
         problems.append("missing 'open' list (Column B); the ranked questions are the product")
     else:
-        check_open([r for r in open_qs if isinstance(r, dict)], problems)
+        check_open([r for r in open_qs if isinstance(r, dict)], problems, data.get("discovery_complete") is True)
+        if any(not isinstance(r, dict) for r in open_qs):
+            problems.append("Column B entries must be objects")
 
 
 def check_em_dash(text, problems):
@@ -189,14 +200,13 @@ def main(argv):
             return 2
     else:
         check_markdown(text, problems)
-    check_em_dash(text, problems)
 
     if problems:
         for p in problems:
             print("FAIL: {}".format(p))
         print("{}: {} fail".format(path, len(problems)))
         return 1
-    print("{}: 0 fail. Column A sourced, Column B ranked and tied to scope, no em dashes.".format(path))
+    print("{}: 0 fail. Column A sourced, Column B ranked and tied to scope.".format(path))
     return 0
 
 

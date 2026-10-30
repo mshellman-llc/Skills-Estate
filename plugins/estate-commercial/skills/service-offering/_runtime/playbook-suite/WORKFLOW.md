@@ -16,9 +16,17 @@ The coordinator for the playbook artifact suite. It decides what must exist, in 
 
 ## The spec is upstream
 
-`_shared/playbook-spec/SPEC.md` is the single authoritative definition. Read it before acting; where this file and the spec disagree, the spec wins. Both scripts pin to the spec version and raise a finding against a manifest that declares a different one.
+The caller supplies the current approved offering specification, manifest schema,
+qualifier schema, and stage-gate workbook as explicit project paths. This package
+does not include those authorities or an installed playbook-spec dependency.
+Read [spec-inputs.md](references/spec-inputs.md) before treating a plan as current.
 
-SPEC.md is 18 KB. Read the shared sections (artifact suite, brand, voice, release gates, naming) plus the `### NN` section for the artifact in hand. Loading all ten artifact definitions to build one of them is waste.
+The scripts retain a version 1.1 compatibility model. They check that model and
+manifest assertions; they do not load or validate the caller's specification or
+schemas. Their output therefore says `spec_authority.status: unverified` and
+`release_ready: false`, including when every modeled artifact is complete.
+A current specification with different requirements needs an explicit reviewed
+adapter update; changing only a version string does not implement its rules.
 
 ## The suite is ten numbered slots
 
@@ -44,11 +52,13 @@ The planner is deterministic and content-free. Read `phase-2-extension.md` befor
 
 ## Working a playbook
 
-1. **Locate the manifest.** `manifest.json` in the playbook folder, conforming to
-   `_shared/playbook-spec/schema/manifest.schema.json`. No manifest means the playbook
-   predates the spec; write one from what is on disk before building anything.
+1. **Confirm the specification inputs.** Follow [spec-inputs.md](references/spec-inputs.md),
+   record the supplied paths and versions, and validate `manifest.json` against the
+   supplied manifest schema. If no manifest exists, inventory the folder and draft
+   one for validation; its absence alone does not establish its age or conformance.
+   Missing authority permits a labeled diagnostic inventory, not release approval.
 2. **Run the planner.** Report the totals and every finding. Do not narrate the run.
-3. **Take the next ready step.** The plan names the builder skill. Hand off to it with the artifact number, the option if any, and the Q-number.
+3. **Take the next ready step.** Use the plan’s `invocation.skill` and `invocation.mode`, with the artifact number, option and source quote. The `builder` field retains a historical identifier for existing executors; it is not the current installed skill name. Artifact 09 is a local template-copy operation, with no skill invocation.
 4. **Gate the result.** All three gates, every artifact, written disposition each. A FAIL is not shippable.
 5. **Update the manifest.** Status and gate results, immediately. A manifest that lags the folder makes the next plan wrong.
 6. **Re-run the planner** and continue until nothing is outstanding.
@@ -60,21 +70,21 @@ Do not build ahead of the plan. An artifact built before its dependency exists g
 | Artifact | Skill |
 |---|---|
 | 01 README | this skill, from the manifest |
-| 02 Overview | this skill thinks, `playbook-onepager` renders |
-| 03 One-pager | `playbook-onepager` |
-| 04 Talk Track and Objections | this skill thinks, `playbook-onepager` renders |
+| 02 Overview | `service-offering`, offering package planning mode; use the available document tool for the specified DOCX |
+| 03 One-pager | `service-offering`, internal brief or external handout mode |
+| 04 Talk Track and Objections | `service-offering`, offering package planning mode; use the available document tool for the specified DOCX |
 | 05 Qualifier | this skill, plus the `qualifier.json` twin |
-| 06 ROM deck | `estate-brand-renderer` |
-| 07 DDOC | `estate-ddoc` |
-| 08 Proposal | `estate-brand-renderer` |
+| 06 ROM deck | `project-scoping` rough estimate supplies the figures; `deck-builder` renders the deck |
+| 07 DDOC | `deck-builder`, scope decision deck mode |
+| 08 Proposal | `deck-builder` for the prescribed presentation format |
 | 09 Pre-Engagement Stage Gate | copy the template, adapt rows |
-| 10 SOW | `estate-sow` |
+| 10 SOW | `statement-of-work` |
 
-Gates on everything: `estate-brand-renderer` for parity, a human or model for visual, `prose-pass` for prose. Voice rewriting is `prose-pass`, applied during the build and not as a pass afterwards.
+Gates on everything: `brand-renderer` for parity, a human or model for visual, `writing-integrity` for prose. Writing review is `writing-integrity`, applied during the build and not as a pass afterwards.
 
 ## Artifact 05 has a machine-readable twin
 
-The Qualifier ships as a .docx for humans and a `qualifier.json` for the fit router, both generated from the same source. They must not drift. When the Qualifier changes, regenerate both in the same step, and validate the JSON against `_shared/playbook-spec/schema/qualifier.schema.json` before marking the artifact done.
+The Qualifier ships as a .docx for humans and a `qualifier.json` for the fit router, both generated from the same source. They must not drift. When the Qualifier changes, regenerate both in the same step, and validate the JSON against the caller-supplied qualifier schema before marking the artifact done.
 
 ## The DDOC mode is a scope fact
 
@@ -108,7 +118,7 @@ It reports what is present, what is missing, what is misnamed, what carries no g
 - `phase-2-extension.md` · the contract that keeps phase 2 additive.
 - `conformance-procedure.md` · the six-step conformance run.
 
-The manifest and qualifier schemas the planner cites live in `_shared/playbook-spec/schema/`.
+The manifest and qualifier schemas are caller inputs described in [spec-inputs.md](references/spec-inputs.md). The planner does not perform JSON Schema validation.
 ## Commercial policy input
 
 The package planner reads `commercial_policy` from the manifest. Supply

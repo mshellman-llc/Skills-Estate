@@ -7,7 +7,7 @@
 
 **Use it when.** For a weekly or project status report, delivery update, what moved this week, logging a decision or risk from a meeting, updating the RAID log, or checking did we agree to that in scope.
 
-**Not for.** Do NOT use for authoring change orders or SOWs (sow-quality, sow), kickoff or charter (estate-delivery-kickoff), UAT tracking (estate-uat-validation), pricing (the Estate Pricing System), or sales pursuits (call-prep).
+**Not for.** Do NOT use for authoring change orders or SOWs (statement-of-work), kickoff or charter (delivery-kickoff), UAT tracking (acceptance-testing), pricing (the Estate Pricing System), or sales pursuits (call-prep).
 
 **Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](../quality-gate/README.md); Used by [`delivery-suite`](../delivery-suite/README.md).
 

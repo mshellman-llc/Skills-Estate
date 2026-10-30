@@ -1,6 +1,3 @@
-# Reference
+# Renderer references
 
-Worked examples and their parity manifests live here. A synthetic Solution Brief
-(HTML) ships with its manifest. A synthetic 12-slide deck (PPTX) ships with its
-extractor command and manifest. Everything is anonymized. Any pasted tool output
-is copied byte for byte from a real run.
+These references define the parity manifest, brand checks and authoring controls. Executable selftests generate disposable synthetic HTML and deck fixtures; their outputs are test evidence, not client artifacts. No private worked deliverable or rendered example is bundled here.

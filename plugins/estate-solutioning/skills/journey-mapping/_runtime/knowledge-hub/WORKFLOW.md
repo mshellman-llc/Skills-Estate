@@ -51,8 +51,7 @@ A `local` store can be any explicitly configured writable folder. Google Drive
 and a synced mount are optional. The manifest's `stores.local.root` is resolved
 relative to the manifest location when it is not absolute. A sync mount remains
 one local access path; its presence never changes `primaryStore` automatically.
-`hub_runtime.find_synced_hub_roots` can discover candidate mounts, but identity,
-authority, and actual read/write access must still be checked.
+`hub_runtime.find_synced_hub_roots` requires an explicit caller-selected `base` directory. It can discover candidate mounts there, but identity, authority and actual read/write access must still be checked. Discovery grants no write authority, including for a folder labeled My Drive.
 
 Use the record CLI for local work. It validates registered context identities,
 returns content and its observed hash together, serializes cooperating local
@@ -150,3 +149,5 @@ Return resolved identity, logical records used, sources, findings, attempted
 writes, persistence state, pending mirrors, conflicts, and exact patches. Format
 the durable run record with
 [`output-contract.md`](../../_shared/output-contract.md).
+
+Legacy migration inventory accepts an explicit `--bucket-scopes FILE` JSON mapping of existing folder names to `opportunity`, `engagement` or `unclassified`. Without that mapping, folders remain unclassified; their names never establish lifecycle authority. The report proposes mappings and preserves source bytes. Actual migration requires its own authorized write and readback.

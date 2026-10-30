@@ -22,7 +22,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
-MD = SKILL / "SKILL.md"
+MD = SKILL / ("SKILL.md" if (SKILL / "SKILL.md").is_file() else "WORKFLOW.md")
 REF = SKILL / "references" / "architecture-templates.md"
 SKILLS_ROOT = SKILL.parent
 
@@ -67,7 +67,7 @@ expect("SKILL.md under the 12 KB budget", size <= 12288, True)
 
 # --- frontmatter matches the house shape --------------------------------------
 fm = re.match(r"^---\n(.*?)\n---\n", text, re.S)
-expect("has frontmatter", bool(fm), True)
+expect("workflow retains its source metadata", bool(fm), True)
 if fm:
     keys = set(re.findall(r"^([A-Za-z_][\w-]*):", fm.group(1), re.M))
     extra = sorted(keys - {"name", "description", "license"})
@@ -130,7 +130,7 @@ for skill_name, rel in GATES.items():
     expect(f"cites {skill_name}", cited, True)
     target = SKILLS_ROOT / skill_name / rel
     if not SKILLS_ROOT.joinpath(skill_name).exists():
-        print(f"  note: {skill_name} not reachable, gate-path check skipped")
+        fail.append(f"required diagnostic runtime missing: {skill_name}")
         continue
     expect(f"  {rel} exists", target.exists(), True)
 

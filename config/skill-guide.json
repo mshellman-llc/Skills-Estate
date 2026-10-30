@@ -23,52 +23,52 @@
       "inputs": "Source material, design decisions, system constraints, and the selected brand.",
       "outputs": "Architecture intent, component and interface views, data design, and trade-offs.",
       "example": "Write an architecture reference from this design record, including interfaces and trade-offs.",
-      "reviewedEntrypointSha256": "40e7d74ff6f5dc94598f18be082f66a14f92474968d754bf51d62c8f9fb3d6fb"
+      "reviewedEntrypointSha256": "704962a9930c507f8002c1b4832d5947542aaf24b09f6a6c7c838028eb15b0d2"
     },
     "beastmode-capture": {
-      "what": "Save a decision or correction in Megan’s knowledge system.",
-      "when": "Megan asks to retain a supported decision, discovery, or correction.",
+      "what": "Save a decision or correction in the user’s knowledge system.",
+      "when": "The user asks to retain a supported decision, discovery, or correction.",
       "inputs": "The decision, supporting evidence, intended destination, and current record.",
       "outputs": "A verified saved record or revision proposal with its actual acceptance state.",
       "example": "Save this decision in the current BeastMode project record with its supporting source.",
-      "reviewedEntrypointSha256": "4441d8d41d7326ab221f61f01c3e60b157462403f17856968ce4007eef0d1810",
-      "reuseNote": "This adapter saves decisions to Megan’s permitted BeastMode records under her knowledge contract."
+      "reviewedEntrypointSha256": "88b922fc5e1b600a1ace4d0a19bd936945ecddfbbb42bc9aa04964f5968de14a",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "beastmode-context": {
-      "what": "Resume Megan’s work from the current subject sources.",
+      "what": "Resume the user’s work from the current subject sources.",
       "when": "A request to get oriented or continue a BeastMode project.",
       "inputs": "The requested result and access to the relevant local sources or permitted Hub.",
       "outputs": "The relevant context, source conflicts, and the next supported action.",
       "example": "Resume this BeastMode project from its current sources and identify the next action.",
-      "reviewedEntrypointSha256": "ced9cea1345d2ebec4b072e0ef88e47a1cc98c239cc824b417d7ba2aa52df98e",
-      "reuseNote": "This workflow follows Megan’s BeastMode router to her current private subject authorities."
+      "reviewedEntrypointSha256": "02ca69e21b2e17b50e6be9a2cced92534e1ba788ba8759c702d10bd06026f223",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "beastmode-health": {
-      "what": "Check Megan’s context and knowledge infrastructure.",
+      "what": "Check the user’s context and knowledge infrastructure.",
       "when": "A Hub health check or investigation of stale context.",
       "inputs": "The permitted Hub connection and the named environment or symptom.",
       "outputs": "Scoped health findings, evidence, and any remaining checks.",
       "example": "Check the local Hub for stale context and report the evidence behind each finding.",
-      "reviewedEntrypointSha256": "111f0039b8daab4b7419ed7a2e56f584b0ac26d74d848fa91bceda9ddbf2ffdb",
-      "reuseNote": "The health checks depend on Megan’s configured Hub connection and operating environment."
+      "reviewedEntrypointSha256": "8939e8a9cb9a17000d4ac23d732e204c5fad2c46722e7fec0d5fc44fa479ddbc",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "beastmode-reconcile": {
-      "what": "Compare Megan’s source folders and preserve unique evidence.",
+      "what": "Compare the user’s source folders and preserve unique evidence.",
       "when": "A named intake, reconciliation, or authorized cleanup task.",
       "inputs": "The folders, current authorities, and existing reconciliation records.",
       "outputs": "A comparison and, when authorized, verified reversible dispositions.",
       "example": "Compare these two project folders and identify unique material before proposing any moves.",
-      "reviewedEntrypointSha256": "dc2ba49867a08ed0cf093fc28a8bb7e6a9432127774243b8519dcdccd7195eeb",
-      "reuseNote": "The reconciliation rules use Megan’s two source drives, existing disposition records, and cleanup permissions."
+      "reviewedEntrypointSha256": "70bfeccd296dc9c6f8ee7a290a5b605e1087b1abb0c5bd4794ac969945acc9e4",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "brain-work-item": {
-      "what": "Connect a Codex work item to Megan’s Brain task record.",
+      "what": "Connect a Codex work item to the user’s Brain task record.",
       "when": "Starting, continuing, or completing a Brain-linked task.",
       "inputs": "The task ID, current Brain note, and access to the task bridge.",
       "outputs": "The task’s supported state, work receipt, and linked chat where applicable.",
       "example": "Continue this Brain task and record the result when its acceptance checks pass.",
-      "reviewedEntrypointSha256": "e64d7c77ce346daa697b9cb79a6a7c5171ddd683d8c37466d0b609bd33d21cf8",
-      "reuseNote": "The workflow calls MeganOS task helpers and reads Megan’s Brain task records."
+      "reviewedEntrypointSha256": "d2aa7234b3610505200c90188ad9c60811d6eb3e8288d22b33d15856c0662193",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "brand-renderer": {
       "what": "Render an artifact using the selected visual identity.",
@@ -76,7 +76,7 @@
       "inputs": "The artifact, confirmed brand profile or neutral defaults, and rendering runtime.",
       "outputs": "Rendered files, brand checks, and findings from visual inspection.",
       "example": "Render this report using the confirmed project brand and inspect the exported pages.",
-      "reviewedEntrypointSha256": "9ae85bc5d1df0e0f8a92e714dc03e18d468a0deb540edbac8c6cd716226db259"
+      "reviewedEntrypointSha256": "a547727f6e59008212becc0315e6d268f90e46080d99d8cd6a54f75ac29cd852"
     },
     "build-interactive-explorer": {
       "what": "Build an interactive explorer website from source material, with paths, clickable stages, expandable detail and optional roadmaps.",
@@ -92,7 +92,7 @@
       "inputs": "The problem, alternatives, supported benefits, costs, risks, and funding decision.",
       "outputs": "An investment case with shown calculations, trade-offs, and a bounded ask.",
       "example": "Build an investment case from these costs, benefits, and alternatives for the funding owner.",
-      "reviewedEntrypointSha256": "058385df9366e8de70e55530d5273d134a766790c55bed2289f951a4b6552362"
+      "reviewedEntrypointSha256": "60d0d5d79bacd66008d85d6fd57e301b98bd66bebdeb913dc23b63dad85c5dd0"
     },
     "call-prep": {
       "what": "Prepare a pursuit or an upcoming sales conversation.",
@@ -100,43 +100,43 @@
       "inputs": "Account evidence, attendees, pursuit context, and the upcoming decision.",
       "outputs": "A pursuit or call brief with ranked questions and recommended next steps.",
       "example": "Prepare a call brief for this account with an objective, agenda, and ranked questions.",
-      "reviewedEntrypointSha256": "388300c5ad2b281f9e90c972608659608c9766f8eb02febd46d58ba1815ed713"
+      "reviewedEntrypointSha256": "e12fbf1eacebf3e8d801f837e8453941265cc49ad27c2683da4b9d4b391cff60"
     },
     "career-application": {
-      "what": "Prepare Megan’s application and interview work for a selected role.",
+      "what": "Prepare the user’s application and interview work for a selected role.",
       "when": "Assessing a posting, tailoring materials, or preparing an interview.",
-      "inputs": "The current posting, Megan’s career sources, and the role work record.",
+      "inputs": "The current posting, the user’s career sources, and the role work record.",
       "outputs": "Role assessment, tailored materials, interview preparation, or authorized form work.",
       "example": "Assess this posting against my current career direction and prepare the selected application materials.",
-      "reviewedEntrypointSha256": "556a971877a17c2876b0a213c2825cf2935632da51e0d83689b6d098fa950ff8",
-      "reuseNote": "The workflow depends on Megan’s private career records, target roles, role tracker, and writing profile."
+      "reviewedEntrypointSha256": "f445e838915a95dcf79bcf8a5fe4751ebe44f1201cd4943390c6e010c898b70e",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "career-materials-and-outreach": {
-      "what": "Draft supporting application materials in Megan’s voice.",
+      "what": "Draft supporting application materials in the user’s voice.",
       "when": "A cover letter, form answer, outreach draft, or LinkedIn section is needed.",
       "inputs": "The role record, current career evidence, and the requested audience.",
-      "outputs": "Complete drafts tied to the role and Megan’s supported experience.",
+      "outputs": "Complete drafts tied to the role and the user’s supported experience.",
       "example": "Draft a cover letter for this role from my current role work record.",
-      "reviewedEntrypointSha256": "bb0bef006742020b3314cbcb073605d3e1e8018d4f7ff42238b45f180c098e86",
-      "reuseNote": "Megan is the intended author. The workflow uses her role record, career evidence, and voice."
+      "reviewedEntrypointSha256": "c3dc0019f1bde982446eab7af59904a378479dfe8f3758427fbf79b727bc79ec",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "career-progression-and-offers": {
-      "what": "Compare roles and offers against Megan’s career direction.",
+      "what": "Compare roles and offers against the candidate’s chosen career direction.",
       "when": "A role screen, tracker review, negotiation, or offer comparison.",
-      "inputs": "Role or offer terms, Megan’s criteria, and the current career record.",
-      "outputs": "A comparison, open questions, and negotiation drafts for Megan’s decision.",
+      "inputs": "Role or offer terms, the user’s criteria, and the current career record.",
+      "outputs": "A comparison, open questions, and negotiation drafts for the user’s decision.",
       "example": "Compare these offers against my recorded career gates and list the unresolved terms.",
-      "reviewedEntrypointSha256": "b71e446b1d1cdb50b2316adecfbaef97795bf718952dbcd54e7d0fd3c566ee7f",
-      "reuseNote": "The criteria and decisions follow Megan’s VP-to-ELT direction, personal career gates, and offer tracker."
+      "reviewedEntrypointSha256": "4bd8a9469889eee41a03eb6f90e7ffe10879a96556796192538206db652571b0",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "case-study-builder": {
-      "what": "Turn Megan’s work into a portfolio case study.",
-      "when": "A project or engagement needs a case study for her portfolio.",
-      "inputs": "Project evidence, her template, and current claims and rights decisions.",
+      "what": "Turn the user’s work into a portfolio case study.",
+      "when": "A project or engagement needs a case study for the user’s portfolio.",
+      "inputs": "Project evidence, the user’s template, and current claims and rights decisions.",
       "outputs": "A working copy and a clean publish copy with unresolved gaps kept in the working record.",
       "example": "Turn this project into a working case study and publish copy using my claims ledger.",
-      "reviewedEntrypointSha256": "4d938a14aa3a0212b061865719571584bc1b46baa49bdea9f960a2a9de78475f",
-      "reuseNote": "The workflow writes Megan’s portfolio and depends on her project evidence, claims ledger, and publication rights."
+      "reviewedEntrypointSha256": "e78a68ff01fee091589db827b094754fe95b5f7ca303e7779a81a94da3bcd750",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "client-brand": {
       "what": "Apply the confirmed project or client identity.",
@@ -168,7 +168,7 @@
       "inputs": "Executed scope, release evidence, owners, and the go or no-go decision.",
       "outputs": "A cutover runbook, acceptance record, hypercare plan, and closeout materials.",
       "example": "Prepare the cutover runbook and hypercare plan from this accepted release.",
-      "reviewedEntrypointSha256": "260842d12da1a5a2fd3ed642a214e6951a59974de1cc4f9a5178a821b83d6949"
+      "reviewedEntrypointSha256": "583fb89bee016741de40cafa78ec1a29c44e9d5109a4e67fc68ee4a4de7ce00f"
     },
     "ddoc": {
       "what": "Build a deck for a scope or proposal decision.",
@@ -176,7 +176,7 @@
       "inputs": "Scoped options, supporting evidence, commercial inputs, and the decision mode.",
       "outputs": "A reviewed decision narrative and editable presentation.",
       "example": "Build a decision deck comparing these two scoped options for the buyer.",
-      "reviewedEntrypointSha256": "5be18411c1de15429797727f833d4bc6e391edbf433c7de4e024eaa29895b39e"
+      "reviewedEntrypointSha256": "b4190b6f05c8fe0301adfc24fb3ba516ed6550f343e0aae0a2b6319abd26799f"
     },
     "deal-desk": {
       "what": "Review a deal’s commercial figures and approval conditions.",
@@ -184,7 +184,7 @@
       "inputs": "One quote revision, provider economics, and the applicable approval policy.",
       "outputs": "A commercial review packet with reconciled figures and approval gaps.",
       "example": "Reconcile this proposal against the quote and prepare the internal commercial review.",
-      "reviewedEntrypointSha256": "cb2d94c11a381d9447567a9bc89a7b530352c9e6245d9cd6c5c403efc5ee7fb2"
+      "reviewedEntrypointSha256": "6aacdbe555c2007a862aa365ad3676893056be9f3c6783cf1722e6a291b273e5"
     },
     "deck-builder": {
       "what": "Build a presentation around the audience’s decision.",
@@ -192,7 +192,7 @@
       "inputs": "The audience, decision, source evidence, and output requirements.",
       "outputs": "An editable deck with reviewed copy, explanatory visuals, and rendered checks.",
       "example": "Create a briefing deck that helps this audience decide between the supported options.",
-      "reviewedEntrypointSha256": "bfdedb9df5a907c56df720ea4be8b23def0ae1df4a1f3aab17376a242780b721"
+      "reviewedEntrypointSha256": "f0f27ea1b6fa2ed0bbffa39963b983d4363de43470336f9cae9fdaa435113acb"
     },
     "delivery-kickoff": {
       "what": "Mobilize a signed delivery engagement.",
@@ -200,7 +200,7 @@
       "inputs": "The signed SOW, accepted handoff, team, and governance requirements.",
       "outputs": "A charter, governance pack, kickoff materials, and initial delivery plan.",
       "example": "Prepare kickoff materials from the signed SOW and accepted handoff.",
-      "reviewedEntrypointSha256": "77bc2d10375c3f8c9edbe4c16184c69f5c203517e2c62084dfdbeb59daf5b4ee"
+      "reviewedEntrypointSha256": "d396f6407dda36d98608b4d8480c3b2fad9ca94a261bb24d2ded26395175bba9"
     },
     "delivery-status": {
       "what": "Report delivery progress against the agreed scope.",
@@ -208,7 +208,7 @@
       "inputs": "The executed baseline, reporting period, progress evidence, and current logs.",
       "outputs": "A status report, maintained logs, and supported scope-change candidates.",
       "example": "Write this period’s delivery status from the executed scope and current progress records.",
-      "reviewedEntrypointSha256": "8916ab1da561f39b9dbe93cf4876d39ae6aae6c56accdf7b7ca1bbd64b619f02"
+      "reviewedEntrypointSha256": "c697f05725047139bd568df55c4af141da9e3d4734188526b68461aa3cc16646"
     },
     "delivery-suite": {
       "what": "Route delivery work to the appropriate stage and owner.",
@@ -216,7 +216,7 @@
       "inputs": "Executed scope, current delivery state, and the requested decision.",
       "outputs": "An updated stage record and the next owning workflow or gate.",
       "example": "Review this engagement’s delivery state and route the next work to its owner.",
-      "reviewedEntrypointSha256": "84904faf8a6b94db0a5e7f12929c02012f9202e1ab525993fde30b72a601adbc"
+      "reviewedEntrypointSha256": "39b3a3e46eae49ae780f245a616eeb4b1a42824a53027735c577768d149d0372"
     },
     "discovery-brief": {
       "what": "Maintain the findings and open questions for a pursuit.",
@@ -224,7 +224,7 @@
       "inputs": "The pursuit record, source notes, and scope or pricing questions.",
       "outputs": "A sourced discovery ledger and ranked questions that unblock the pursuit.",
       "example": "Update the pursuit ledger from this call and rank the unanswered scope questions.",
-      "reviewedEntrypointSha256": "ed16b1b02e20edba949984ac8a7b9ced1f471cce81a291561c5c1cde690ce121"
+      "reviewedEntrypointSha256": "51d21c7ee14f73df4a09ba9cb86ef8ff3a5a7f938c5f3523c021d662f01d1df3"
     },
     "discovery-synthesis": {
       "what": "Turn interviews and meeting notes into research findings.",
@@ -232,7 +232,7 @@
       "inputs": "Transcripts, notes, speaker context, and the research purpose.",
       "outputs": "Supported findings, jobs to be done, pain points, quotations, and next steps.",
       "example": "Synthesize these interviews into findings, jobs to be done, and supported next steps.",
-      "reviewedEntrypointSha256": "870fc01f91fc53793d3fd815a09c193cf1d7e6543e736899f73030fe788cae5f"
+      "reviewedEntrypointSha256": "12816586f1c4c68c212ccf9571adc18b34cfc8e54f4480de3507a8fecbfb9cc7"
     },
     "dx-devops-promote": {
       "what": "Prepare and perform an authorized DevOps Center promotion.",
@@ -248,7 +248,7 @@
       "inputs": "The configured integration, selected work item, and requested operation.",
       "outputs": "The verified work-item change, commit, or review request.",
       "example": "Inspect this DevOps Center work item and prepare the requested field update.",
-      "reviewedEntrypointSha256": "5929c6a8bbc1d8d19e80c50eab1b7dfb099c77d06d583b53f4d34f1c0e9c0829"
+      "reviewedEntrypointSha256": "d06e708aef3b2bafb70137e5e457b5f0e0786672a1191c0fd10e50b4c4def260"
     },
     "evidence-core": {
       "what": "Track source records and the claims an artifact can support.",
@@ -256,7 +256,7 @@
       "inputs": "The project sources, revisions, authority rules, and proposed claims.",
       "outputs": "A source register, atomic claims, conflicts, and an evidence sufficiency decision.",
       "example": "Build a claim ledger for this report using these versioned sources.",
-      "reviewedEntrypointSha256": "b740dfe27b232222e78d627dda2ee2168f969c9c92f4615c4d6c1ea335d74b39"
+      "reviewedEntrypointSha256": "940140ceb630651a43b4c54fbfaa99c3e64f157af5fcf869df979da601794b40"
     },
     "execution-truth": {
       "what": "Verify what changed and where the result exists.",
@@ -267,31 +267,31 @@
       "reviewedEntrypointSha256": "6541592ce8b7e87ed1375f4213d7d275b71a3719e500c2d0290d702fa3697037"
     },
     "fortunes-weave": {
-      "what": "Answer questions and maintain Megan’s Fortune’s Weave planner.",
-      "when": "A question concerns her current route, roster, or planner.",
+      "what": "Answer questions and maintain the user’s Fortune’s Weave planner.",
+      "when": "A question concerns the user’s current route, roster, or planner.",
       "inputs": "Her current project router, route sources, roster, and live planner state.",
       "outputs": "A sourced answer or an authorized, verified planner update.",
       "example": "Check my current route and roster before recommending the next planner update.",
-      "reviewedEntrypointSha256": "c6242a7e2b0d9e42b7e1b7be007e07a3e4918ed0bb233c5791130127365d85f6",
-      "reuseNote": "The workflow uses Megan’s route, roster, project router, and planner state."
+      "reviewedEntrypointSha256": "e6878b651358518384bd7068c40229e5626bab1bef4b4a0b9b6f37d24a4ba124",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "github-repository-work": {
-      "what": "Work with Megan’s GitHub repositories.",
+      "what": "Work with the user’s GitHub repositories.",
       "when": "A repository needs inspection, a commit, a PR, or release work.",
-      "inputs": "The intended mshellman-llc repository and authorized change.",
+      "inputs": "The explicitly identified repository, intended account and authorized change.",
       "outputs": "Verified repository changes and separate PR, merge, or deployment state.",
-      "example": "Review this mshellman-llc repository change and prepare a pull request.",
-      "reviewedEntrypointSha256": "be4bcf9e25967501d7e04d3cf5f099105c67f03cf017d864bc1e9a3974710ab1",
-      "reuseNote": "The entrypoint selects the mshellman-llc account. Another owner needs an explicit repository and identity configuration."
+      "example": "Review this specified repository change and prepare a pull request.",
+      "reviewedEntrypointSha256": "416dd70ad35b0187da9d23fa1168ae095aaa59cbaecd47b79525d33b475156e5",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "independent-product": {
-      "what": "Develop Megan’s independent work from supplied historical projects.",
+      "what": "Develop the user’s independent work from supplied historical projects.",
       "when": "An employer-era artifact is being translated into an independent product or offer.",
       "inputs": "Authorized historical sources, a project brief, and claims and rights decisions.",
       "outputs": "A usable independent artifact or backlog with source and publication questions resolved where possible.",
       "example": "Translate these authorized historical materials into an independent offering brief.",
-      "reviewedEntrypointSha256": "d9fa7a4ac036e34c2fbec4d261f2db8c1edeb339c7b67efa9247e79dc5515faf",
-      "reuseNote": "The entrypoint carries Megan’s historical reuse authorization and private project routes. Those permissions do not transfer to another user."
+      "reviewedEntrypointSha256": "cfeebb0f638e7359af4d6a58b7730e104c8088b9c473b96c4069dcaefc17194c",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "information-architecture": {
       "what": "Organize navigation, content labels, and site structure.",
@@ -307,7 +307,7 @@
       "inputs": "Versioned scope, options, assumptions, and confirmed prices when applicable.",
       "outputs": "An interactive HTML page with selectable options and reconciled figures.",
       "example": "Create an interactive comparison of these scope options using the confirmed quote figures.",
-      "reviewedEntrypointSha256": "4c480273eae7deba6c1cdd83c06283924d748129637dba16e604db09cb1b93e8"
+      "reviewedEntrypointSha256": "3b993c5d1b1230ef6f5c2dc2b76cd5778eb5346b60c59247693f55a3aac219c5"
     },
     "journey-mapping": {
       "what": "Map a customer or role’s experience and the service underneath.",
@@ -323,7 +323,7 @@
       "inputs": "Research about struggling moments, switching triggers, and desired outcomes.",
       "outputs": "Job statements, hire and fire criteria, and a review of unsupported framing.",
       "example": "Extract the struggling moments and hire criteria from these interviews before drafting job statements.",
-      "reviewedEntrypointSha256": "d5cd38b901e31fa601378e7fba4b942714e4beb2971f491c9d4a74802a8dff19"
+      "reviewedEntrypointSha256": "6e7cea735d3f48a97c62b979e3bdf2044939d00e617219b25d9a5185a8d40ef0"
     },
     "knowledge-hub": {
       "what": "Retrieve and maintain a project’s durable knowledge.",
@@ -331,16 +331,16 @@
       "inputs": "The confirmed project identity, permitted storage, and relevant sources.",
       "outputs": "Retrieved context or verified workspace and record updates.",
       "example": "Find the current discovery and decision records for this opportunity in the permitted store.",
-      "reviewedEntrypointSha256": "eb8bccacd19b08ac2c198b4492233e3a33734c6af2e82d529d9d956dc650d412"
+      "reviewedEntrypointSha256": "29b7962b049af27078d64360c68c2abd6c15c7263590902d285dc0835689c05b"
     },
-    "megan-writing-style": {
-      "what": "Write prose in Megan’s personal voice.",
-      "when": "Megan is the intended author of the finished text.",
-      "inputs": "The draft or brief, its sources, and her current voice guidance.",
-      "outputs": "Complete prose reviewed against her personal writing preferences.",
+    "author-writing-style": {
+      "what": "Apply an explicitly selected author’s confirmed writing profile.",
+      "when": "The task names an author and provides or authorizes their profile.",
+      "inputs": "The draft, sources, intended author and confirmed profile.",
+      "outputs": "Complete prose preserving supported claims and confirmed author preferences.",
       "example": "Rewrite this About draft in my voice while preserving its supported claims.",
-      "reviewedEntrypointSha256": "f507be24a59a7f25f71ad483bf8ea9289bebb29103c99b17171ccb60b019ace5",
-      "reuseNote": "This is Megan’s personal voice profile. Another author should build and confirm a separate profile."
+      "reviewedEntrypointSha256": "2c4a88898b19221b63419f21ecc5e0638268b88fd9e84e25e34785e35013b08a",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "org-preflight": {
       "what": "Verify the Salesforce organization before a write.",
@@ -372,7 +372,7 @@
       "inputs": "The current offering catalog and supported prospect findings.",
       "outputs": "Ranked fit, evidence behind the score, disqualifiers, and open questions.",
       "example": "Compare this prospect’s discovery findings with our current offering catalog.",
-      "reviewedEntrypointSha256": "4108b831d1670e0aa815a4b8db771cbb3d3fc1a89c167ecd9bc3d60108fc598d"
+      "reviewedEntrypointSha256": "190748cd28c50baad5b6260742889081c1effa47bbc8025ab5073a3d12476bbe"
     },
     "playbook-onepager": {
       "what": "Render an offering into sales handouts.",
@@ -380,7 +380,7 @@
       "inputs": "Structured offering content and the selected brand profile.",
       "outputs": "A two-page internal brief and one-page external PDF, checked after rendering.",
       "example": "Render this defined offering as an internal brief and an external handout.",
-      "reviewedEntrypointSha256": "13b0d9708c276ec87a1c0ba03c75d058eb83b7930b13c8852c863794b620e544"
+      "reviewedEntrypointSha256": "d968ee8a9d28b50e4de5f049539210e999818df6af2a53c9d5a4ba6adafac605"
     },
     "playbook-suite": {
       "what": "Plan and track the artifacts for an offering.",
@@ -388,7 +388,7 @@
       "inputs": "The offering definition, manifest, existing artifacts, and commercial policy.",
       "outputs": "An artifact plan, owning workflows, and remaining readiness checks.",
       "example": "Review this offering’s artifact manifest and identify what remains before release.",
-      "reviewedEntrypointSha256": "c538cd43326a70f9ec5a4c058e8c8365ed5b103f5bacc4a79d23cc7691d89017"
+      "reviewedEntrypointSha256": "472ad5c6e512f9f142aacbdcf26cef02e30bc9d93bd5bea308092d502715e240"
     },
     "pm-spec-writing": {
       "what": "Write a testable feature specification.",
@@ -420,7 +420,7 @@
       "inputs": "The saved text, source figures, and required review configuration.",
       "outputs": "Diagnostic findings, figure comparisons, or review records.",
       "example": "Check this saved draft for recurring writing patterns and changed figures.",
-      "reviewedEntrypointSha256": "7f4e9841439177591d777c1f7cbd41d850ca4b9f8e91fad7c54cd9e10b9df946"
+      "reviewedEntrypointSha256": "dbedb0f75e23a6f4a21d3ae9b48d36fb79c1d24a9e0bd56a27e9f062aa5de386"
     },
     "quality-gate": {
       "what": "Review a finished artifact against the request and sources.",
@@ -428,7 +428,7 @@
       "inputs": "The artifact, controlling sources, output requirements, and actual checks.",
       "outputs": "A release decision with supported findings and required repairs.",
       "example": "Review this deliverable against its sources, requested outcome, and rendered form.",
-      "reviewedEntrypointSha256": "8c1b810ececd7a2cdf64dad7dbd818f17303e5272a60a64270d18a36962ccf3f"
+      "reviewedEntrypointSha256": "854448520c20383707e16bddd027fed13a2196e75b083918a894e4f0398b9e1b"
     },
     "requirements-capture": {
       "what": "Turn source material into a structured requirements backlog.",
@@ -439,13 +439,13 @@
       "reviewedEntrypointSha256": "385cb6eae53db8ace3563a43c94edcfd9df9d3f3908d5da0c8b02607176578a2"
     },
     "resume-numbers-and-keywords": {
-      "what": "Apply Megan’s resume methods for figures and ATS wording.",
+      "what": "Apply the user’s resume methods for figures and ATS wording.",
       "when": "Her tailored resume needs quantified bullets or keyword placement.",
       "inputs": "Current career evidence, the posting, and the draft resume.",
-      "outputs": "Revised bullets and layout that preserve her stated scope and evidence.",
+      "outputs": "Revised bullets and layout that preserve the user’s stated scope and evidence.",
       "example": "Review my resume bullets against this posting and the current source figures.",
-      "reviewedEntrypointSha256": "b6de89cc48380999f979cc15ea6714c2c7ee71d968a7ad4fbddaebce8183d03b",
-      "reuseNote": "The method includes Megan’s actual deal figures, career-source names, and dated resume decisions. Other authors need their own evidence and preferences."
+      "reviewedEntrypointSha256": "bac682d878466ed29e02267f52a0adf61978ceb3b10d68ecd529552388ada4dd",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "roadmap-artifacts": {
       "what": "Build roadmaps and their parts from one fixed set of interactive components.",
@@ -453,7 +453,7 @@
       "inputs": "The work to plan, the governing brand profile, and connected sources when the data lives in a tool.",
       "outputs": "A plan JSON rendered as a branded page, embeddable element or single-file estate page.",
       "example": "Build a now, next, later roadmap for these initiatives in our confirmed brand.",
-      "reviewedEntrypointSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      "reviewedEntrypointSha256": "7241e889b43846ae608a40c38e10040b5779733540196b8cd79ff0622beb5c1e"
     },
     "rom": {
       "what": "Estimate a rough effort or cost range.",
@@ -461,7 +461,7 @@
       "inputs": "Supplied scope, comparables, assumptions, and rates when available.",
       "outputs": "A sourced estimate range with calculations and reopening conditions.",
       "example": "Estimate a rough effort range from these scope items and comparable projects.",
-      "reviewedEntrypointSha256": "c85a4329d43d5b9b69459524eae2665da4398530bd02c224ddb92d00697b70b7"
+      "reviewedEntrypointSha256": "5c4e72f9e50282c5c3a43c366fc34a82600b0df5606cace94c7cd48ceac16045"
     },
     "s2d-handoff": {
       "what": "Prepare the handoff from sales to delivery.",
@@ -469,7 +469,7 @@
       "inputs": "The executed agreement, quote, deal record, and receiving team.",
       "outputs": "A handoff package with ownership, assumptions, and tracked acceptance.",
       "example": "Prepare the sales-to-delivery handoff from the executed agreement and deal record.",
-      "reviewedEntrypointSha256": "dbbed5e7d80261f145608389ee091792c54a592565f64afa5a1b8727a0e03cf7"
+      "reviewedEntrypointSha256": "5a20835369410ea3c73c2a29dbe76ca197f11b23126f9e8eb6305585a99ee0cb"
     },
     "sales-journey-critique": {
       "what": "Review a sales journey, demo, or proposed workflow.",
@@ -493,7 +493,7 @@
       "inputs": "One versioned quote or export with scope, hours, staffing, price, and timeline.",
       "outputs": "A reconciled scope summary or side-by-side option comparison.",
       "example": "Create a printable comparison of these options from one confirmed quote revision.",
-      "reviewedEntrypointSha256": "036522686c26cfbd726e271f3a68fcd284d2094ff7f4e57331c1ca6c576dc6f3"
+      "reviewedEntrypointSha256": "5ce4f83358b1c63d3abedd2a09d4258a3642c8d5b6fcba42e525cb313e45c6fc"
     },
     "scoping-agent": {
       "what": "Develop scope, effort, staffing, and timeline estimates.",
@@ -509,7 +509,7 @@
       "inputs": "The session’s decisions, files, running state, and completed checks.",
       "outputs": "A handoff with the current state, verification, open questions, and exact next action.",
       "example": "Prepare a handoff with the current files, decisions, verification, and exact next action.",
-      "reviewedEntrypointSha256": "b8e372a43603fe9780b36ca8f975d0a35c9940905d6e2aa5b2947702cb2346b0"
+      "reviewedEntrypointSha256": "76315e6e195546e7bb4722b3782a681f17654707ed822c1f0f266ef263ec484b"
     },
     "sf-delivery-standards": {
       "what": "Set up or repair a Salesforce project’s delivery checks.",
@@ -517,7 +517,7 @@
       "inputs": "The repository, current configuration, delivery mode, and supported tools.",
       "outputs": "Reviewed configuration changes and evidence from the relevant checks.",
       "example": "Audit this Salesforce repository’s delivery hooks and project instructions.",
-      "reviewedEntrypointSha256": "e583ebcd7cf1ad549053890ba686b94750c9ecb203aba83988f9b250dd17d398"
+      "reviewedEntrypointSha256": "cbe0c98f1c39d2808706ed8cea1e1826b72e025324da68a99694a178b7889777"
     },
     "sf-deploy-engine": {
       "what": "Operate an existing Salesforce deployment pipeline.",
@@ -525,7 +525,7 @@
       "inputs": "The pipeline’s configuration, authenticated target, release state, and authorization.",
       "outputs": "Pipeline results and the verified state of the requested operation.",
       "example": "Inspect the configured pipeline and validate the selected release against its target.",
-      "reviewedEntrypointSha256": "8a3363562cb665f34bf4029bdc1f8f092754fa3f532b3e2e40fa019925e457a4"
+      "reviewedEntrypointSha256": "11dcb9eaee787e9b3008c8ba2ef8ee906572c0883004666d044dbf8757f2fdb0"
     },
     "sf-enterprise-patterns": {
       "what": "Apply the project’s Salesforce code architecture.",
@@ -533,7 +533,7 @@
       "inputs": "The codebase, project patterns, and the requested feature or review.",
       "outputs": "A design, implementation, or review aligned to those conventions.",
       "example": "Review this Apex change against the project’s service, selector, and unit-of-work patterns.",
-      "reviewedEntrypointSha256": "7db20b0a491efdbba0ed7db56612f1c0613f7dd79d7c7aeb017282d8ffa3f0c1"
+      "reviewedEntrypointSha256": "676a08b14eb36d9e9ff9835e02eb4ca0b8b8fe4e917142f4e6105f4ecb1dfe64"
     },
     "sf-headless-screenshot": {
       "what": "Capture Salesforce UI evidence and run clickpath checks.",
@@ -541,7 +541,7 @@
       "inputs": "The org connection, supported screenshot runtime, and target path.",
       "outputs": "Screenshots, clickpath results, and observed UI issues.",
       "example": "Capture this Salesforce clickpath and check its stated acceptance conditions.",
-      "reviewedEntrypointSha256": "df594629775fad1a3101023acd65ace96c14b6138a9ff245b505d8e87fc1b716"
+      "reviewedEntrypointSha256": "06cdf4bb69534ca8360c6e45568165ebed6f98c4d74aa7100a73fef3d453cfe1"
     },
     "sf-solo-devops": {
       "what": "Deliver a change to a single-org Salesforce project.",
@@ -557,7 +557,7 @@
       "inputs": "The recurring task, example requests, source methods, and expected outputs.",
       "outputs": "The preserved workflow, governed intake, metadata, required resources and validation evidence.",
       "example": "Create a focused skill from this repeated workflow and these example requests.",
-      "reviewedEntrypointSha256": "7707596d62f8f76ae137d3e030716960a09de13184f5c244dd61fef69b4d0022"
+      "reviewedEntrypointSha256": "ee26692c205920fa87c71c04af6dcd814fc43606c2da4a7a1a74c154df3778a6"
     },
     "skill-estate-sync": {
       "what": "Author, package and release Skills Estate workflows.",
@@ -565,7 +565,7 @@
       "inputs": "The canonical estate checkout, dependency configuration, and target surface.",
       "outputs": "The requested workflow or package, validation results, and destination-specific release records.",
       "example": "Validate the current estate and build candidate packages without promoting them.",
-      "reviewedEntrypointSha256": "15c86261fa20e9fc8a30a36fee43be8aa5be4b6ea5e98905cfc3304dcddb7f25"
+      "reviewedEntrypointSha256": "e6eca666dc36e00dbcf30cf1c8a4a94b8bd79b7d01d3b6a1aba18c30344cc657"
     },
     "solution-brief": {
       "what": "Explain whether a proposed solution can be delivered.",
@@ -581,7 +581,7 @@
       "inputs": "The confirmed quote model and the project’s approved contract and brand profiles.",
       "outputs": "A reconciled Word document and checks against the selected scope and terms.",
       "example": "Draft the selected SOW variant from this confirmed quote and approved contract profile.",
-      "reviewedEntrypointSha256": "be5dd1016967a714b5ef86f1cb8a41f1b5e6fdc0873cdc9a0714097e3c856783"
+      "reviewedEntrypointSha256": "4e4d47135eda6b0e5bf6fabff30693368ad61984e4761e705d038d935fcf7db3"
     },
     "sow-quality": {
       "what": "Review a statement of work and its obligations.",
@@ -589,7 +589,7 @@
       "inputs": "The draft agreement, confirmed scope, estimate, and controlling terms.",
       "outputs": "Findings or revisions addressing ambiguity, duplication, and scope consistency.",
       "example": "Review this SOW for ambiguous obligations and inconsistencies with the agreed scope.",
-      "reviewedEntrypointSha256": "5b99cc8c27ee3fbe52cd056059467384decc1545005e29cafa03c5e93843336c"
+      "reviewedEntrypointSha256": "f13a0cc56620104bd57e6b8f76a4586488f7d2fdd9fe7ad5424117a6a0fd9ec1"
     },
     "spec-writer": {
       "what": "Specify detailed UI, API, and data behavior.",
@@ -597,7 +597,7 @@
       "inputs": "The current implementation, user flows, interfaces, data, and constraints.",
       "outputs": "A detailed specification with states, persistence, interfaces, and acceptance checks.",
       "example": "Specify the UI states, API contracts, and data changes for this feature.",
-      "reviewedEntrypointSha256": "acbf206e7bc6b2654861163d070394bdb2d4e8fa8ee525a85062f375a11bad54"
+      "reviewedEntrypointSha256": "7ae4353bc1c856ed2de2a49fef14ef204b420d9e2d46541462c9e6ef750ea61f"
     },
     "sticker-art-direction": {
       "what": "Develop and critique typography-led sticker designs.",
@@ -608,13 +608,13 @@
       "reviewedEntrypointSha256": "dcdd4dd6bb05db06865fc642b5d0eb269386f09c5a87bf2a31168f49b62cdf4f"
     },
     "sticker-sheets": {
-      "what": "Lay out Megan’s sticker designs for Cricut printing.",
+      "what": "Lay out the user’s sticker designs for Cricut printing.",
       "when": "Her PNG designs need exact-count Print Then Cut sheets.",
-      "inputs": "The designs, requested sizes and counts, and her project generator.",
+      "inputs": "The designs, requested sizes and counts, and the user’s project generator.",
       "outputs": "Generated sheets and layout checks before a physical print test.",
       "example": "Lay out these PNGs in the requested sizes and counts using my current sheet generator.",
-      "reviewedEntrypointSha256": "de0c3e9ebdfdf618bfde1e681317e9d026e772f5dfae332a47470ff0673751e8",
-      "reuseNote": "This adapter depends on the generator maintained in Megan’s sticker project; that generator is outside this package."
+      "reviewedEntrypointSha256": "1b464817a7997c722c9ce4b4ea92ffda707eb21f6aceee9a70aecc3491c02c38",
+      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "system-design": {
       "what": "Explore a system or service design.",
@@ -622,7 +622,7 @@
       "inputs": "The problem, requirements, constraints, scale, and existing system context.",
       "outputs": "A working design covering components, data, interfaces, and trade-offs.",
       "example": "Explore a working design for this service, including its data flow and trade-offs.",
-      "reviewedEntrypointSha256": "12d9be6a62f3077f90e17a8c6f21b4355dcdb71490264a083b725750d6dae6a9"
+      "reviewedEntrypointSha256": "a85c9e72b9cd4db699a8d758270748b7a18cdd8f08a26ddb03cb99b75e639b56"
     },
     "team-onboarding": {
       "what": "Plan a role’s first 30, 60, and 90 days.",
@@ -630,7 +630,7 @@
       "inputs": "The role, success criteria, mentors, existing materials, access, and time budget.",
       "outputs": "A role-specific onboarding plan with learning, contribution, and feedback milestones.",
       "example": "Create a 30/60/90-day plan for this role using the team’s mentoring and access constraints.",
-      "reviewedEntrypointSha256": "37cefe75ef3aba2897f631afc3c43508dc1731487ed85f2680506cce027c09c8"
+      "reviewedEntrypointSha256": "20659fda549fafd71092ba6d71a5cee667b4b4b36e7a13701f068154b4bff265"
     },
     "transcript-ingestion": {
       "what": "Preserve and index a meeting transcript.",
@@ -646,7 +646,7 @@
       "inputs": "Executed scope, requirements, test results, defects, and gate owners.",
       "outputs": "Test scripts, traceability, defect and coverage records, and readiness findings.",
       "example": "Build the acceptance test and coverage records from these approved requirements.",
-      "reviewedEntrypointSha256": "84d71cca6765822322362afbaf7278a34a5542540b7e79033a44f6523e37a2a2"
+      "reviewedEntrypointSha256": "b61f0dcd77e5b66e21a3aca25285f5f4dd6e2e3cbcdf12ffd84fb5460bd0056e"
     },
     "usability-testing": {
       "what": "Plan usability research or synthesize observations.",
@@ -662,7 +662,7 @@
       "inputs": "The brief or draft, controlling sources, and an authorized profile when available.",
       "outputs": "Complete reviewed prose and, when enabled, private correction-learning records.",
       "example": "Review this draft for clarity, repetition, and unsupported claims. Preserve its meaning and intended voice; return the complete revision.",
-      "reviewedEntrypointSha256": "5a4968d44a9781b5ac262f0c4e47c15448b416bdf7b6acb601fdc802d645967a"
+      "reviewedEntrypointSha256": "d803e6989ebbf6222af21a788033f43c48fba6f5d425a5d51312defa8de22fcc"
     },
     "writing-style-builder": {
       "what": "Build or revise a person’s private writing profile.",

@@ -7,6 +7,6 @@
 
 **Use it when.** Before creating or materially revising a client artifact whose factual claims must trace to governed sources. Owns source authority, atomic claims, confidence, staleness, conflicts, inline claim references, and evidence sufficiency; it does not own Hub storage or the consulting lifecycle layout.
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Used by 20 skills.
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Used by 20 skills.
 
-**Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `core`
+**Full trigger logic and boundaries:** [SKILL.md](WORKFLOW.md) · tier `core`

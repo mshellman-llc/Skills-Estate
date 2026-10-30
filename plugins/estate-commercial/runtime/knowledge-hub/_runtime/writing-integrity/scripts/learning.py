@@ -55,12 +55,14 @@ def read_json(path):
     return json.loads(raw)
 
 
+def store_argument(value):
+    if not value or not value.strip() or not Path(value).expanduser().is_absolute():
+        raise argparse.ArgumentTypeError('Use a nonempty absolute --store path authorized for this task.')
+    return Path(value).expanduser()
+
+
 def root_path():
-    if os.environ.get('WRITING_INTEGRITY_HOME'):
-        return Path(os.environ['WRITING_INTEGRITY_HOME']).expanduser().resolve()
-    if os.name == 'nt':
-        return Path(os.environ.get('LOCALAPPDATA', Path.home() / 'AppData/Local')) / 'writing-integrity'
-    return Path(os.environ.get('XDG_DATA_HOME', Path.home() / '.local/share')) / 'writing-integrity'
+    raise ValueError("Writing profile commands require an explicit --store path authorized for the current task and owner. No environment or default store is used.")
 
 
 def render(rules, owner):
@@ -421,7 +423,7 @@ class Store:
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--store', type=Path, default=None)
+    ap.add_argument('--store', type=store_argument, default=None)
     ap.add_argument('--profile')
     commands = ap.add_subparsers(dest='command', required=True)
     init = commands.add_parser('init'); init.add_argument('--owner', required=True); init.add_argument('--profile-id', required=True); init.add_argument('--host', required=True); init.add_argument('--durability', choices=['persistent', 'session', 'manual'], required=True); init.add_argument('--enable-learning', action='store_true')

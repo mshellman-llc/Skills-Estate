@@ -1,6 +1,6 @@
 ---
 name: ddoc
-description: 'Authors, gates, and builds the DDOC, the client-facing Deal Decision deck presented immediately before the proposal: interactive copy approval first, then the PPTX build. Two modes: decision mode when the client chooses between options, confirmation mode when there is one option. build_ddoc.js --check gates a manifest without rendering, so copy can be gated where the renderer cannot be installed. Use when asked to build, review, de-slop, gate, or rebuild a DDOC, deal decision deck, options deck, scope deck, or the deck presented before the proposal. Trigger on DDOC, options deck, version slide, discussion document, the deck that goes with the SOW, or a Q-number paired with a deck request. Do NOT use for SOW review (sow-quality), prose editing (prose-pass), PPTX mechanics (pptx), or a generic multi-slide proposal deck (deck-builder).'
+description: 'Authors, gates, and builds the DDOC, the client-facing Deal Decision deck presented immediately before the proposal: interactive copy approval first, then the PPTX build. Two modes: decision mode when the client chooses between options, confirmation mode when there is one option. build_ddoc.js --check gates a manifest without rendering, so copy can be gated where the renderer cannot be installed. Use when asked to build, review, de-slop, gate, or rebuild a DDOC, deal decision deck, options deck, scope deck, or the deck presented before the proposal. Trigger on DDOC, options deck, version slide, discussion document, the deck that goes with the SOW, or a Q-number paired with a deck request. Do NOT use for SOW review (sow-quality), prose editing (writing-integrity), PPTX mechanics (pptx), or a generic multi-slide proposal deck (deck-builder).'
 ---
 
 Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
@@ -53,7 +53,7 @@ This catches structural problems (missing slides, option count, evidence classes
 
 ## Phase 2: diagnostic scan
 
-Run the prose gate over the manifest's authored text. `prose_check.py` lives in the **`prose-pass` skill**, not this one; fetch that skill and run its script:
+Run the prose gate over the manifest's authored text. `writing-integrity` owns this review. Its bundled internal `prose-pass` runtime provides `prose_check.py`; resolve that runtime and run its script:
 
 ```bash
 python3 ../prose-pass/scripts/prose_check.py extracted.txt --config ../prose-pass/house.json
@@ -116,7 +116,7 @@ any rendering.
 
 - Does not price. The quote owns the number; this renders it.
 - Does not author scope language. Scope comes from the quote or the user; this audits and cleans it.
-- Does not replace `prose-pass`. Writing review belongs to writing-integrity; the diagnostic tools support that review.
+- Writing review belongs to writing-integrity; the bundled internal diagnostic tools support that review.
 - Does not build the SOW. That is `sow`.
 - Authors and builds the DDOC: copy approval, then the PPTX build. Copy approval and the slide-copy editorial rules both live in this skill; the per-slide-type editorial rules are in `references/slide-copy-patterns.md`.
 
@@ -143,7 +143,7 @@ The **gate** needs Node only. `build_ddoc.js --check` runs with no third-party p
 
 The **renderer** needs `pptxgenjs` (`npm install pptxgenjs`). Where the npm registry is unreachable (for example an install that returns 403), the renderer cannot run and `--check` is the only usable path; build the PPTX in an environment with registry access.
 
-The **prose gate** (`prose_check.py`, `house.json`) lives in the `prose-pass` skill. Fetch it separately.
+The diagnostic commands (`prose_check.py`, `house.json`) remain in the bundled internal `prose-pass` runtime. Use Writing Integrity for review; do not install a separate Prose Pass skill.
 
 PPTX validation and rasterization for the visual gate are environment-specific. Use the host's presentation skill and its documented render-and-verify workflow (for example, the Claude `pptx` skill or the Codex `presentations` skill). If neither is available, substitute an equivalent validation and rasterization step and state which one was used in the release note. Do not claim the visual gate passed without naming the mechanism that rendered the slides.
 

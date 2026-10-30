@@ -1,51 +1,52 @@
-# Meridian Logistics business case
+# Synthetic library catalogue business case
 
-Source stamp: quote Q-000118 as of 2026-08-01, ledger snapshot 2026-08-04.
+This fictional fixture was authored for gate tests. All organizations, sources and amounts are invented.
+Source stamp: quote Q-SYNTH01 as of 2030-02-01, ledger snapshot 2030-02-02.
 
 ## 01 Executive frame
 
-Bar: an approver who reads only this section knows what they are funding.
-We recommend approving Phase 1 of the billing consolidation at $186,000 [quote: Q-000118].
-The decisive factor is the ERP cutover date of 2026-12-15 [src: IT steering minutes, 2026-07-22].
-The strongest argument against is that a point tool costs less in year one; we concede the year-one delta and hold on the rework cost below.
+Bar: the approver knows the proposed investment.
+Approve a shared library catalogue pilot at $600 [quote: Q-SYNTH01].
+The decisive factor is the fictional branch inventory exercise in July [src: synthetic project brief, 2030-02-01].
+The strongest argument against is keeping paper cards, which avoids a software dependency; the pilot must retain printable records.
 
 ## 02 The client and the gap
 
-Meridian Logistics runs regional freight brokerage on a fifteen-year-old billing stack.
-Annual revenue of $412M [src: FY25 10-K, 2026-02-14].
-Every carrier renewal is rebuilt from scratch in a spreadsheet owned by one analyst [src: discovery notes, 2026-06-30].
+The fictional Lantern Library lends board games from two volunteer-run rooms.
+Annual catalogue administration costs $1,440 [src: synthetic time ledger, 2030-02-01].
+Each room keeps separate paper cards, so volunteers cannot confirm availability across rooms [src: synthetic interview, 2030-02-01].
 
 ## 03 Why this moment
 
-The ERP cutover lands 2026-12-15 and any integration built before approval gets built twice [src: IT steering minutes, 2026-07-22].
-Budget for this fiscal year closes at the November board meeting [src: sponsor email, 2026-07-28].
+A joint inventory exercise in July can establish one catalogue without repeating counting work [src: synthetic project brief, 2030-02-01].
+The volunteer committee must select its recording method before that exercise [src: synthetic committee note, 2030-02-02].
 
 ## 04 Economics
 
-Bar: every benefit closes a named pain, and the cost of waiting is shown arithmetic.
-Benefit: renewals stop being rebuilt from scratch, closing the single-analyst spreadsheet dependency [src: discovery notes, 2026-06-30].
-Benefit: unbilled renewal leakage of roughly 6% is recovered [inferred: A3, medium, ops lead estimate on the 2026-06-30 call].
-Cost of waiting: $46,500/mo x 4 = $186,000 [computed: inputs C7, C9].
-C7 is the monthly manual reconciliation cost [src: ops time study, 2026-07-10] and C9 is the decision-to-start interval [src: sponsor email, 2026-07-28].
+Bar: each benefit closes an evidenced gap; waiting has explicit arithmetic.
+A shared catalogue lets a volunteer check both rooms without making a telephone call [src: synthetic interview, 2030-02-01].
+The pilot may reduce duplicate counting, but the amount is unmeasured [inferred: A1, low, synthetic interview].
+Cost of waiting: $120/mo x 5 = $600 [computed: inputs C1, C2].
+C1 is the synthetic monthly card reconciliation cost; C2 is the five-month planning interval [src: synthetic time ledger and committee note, 2030-02-02].
 
 ## 05 The case against
 
-Only upside here.
+Paper is cheaper.
 
 ## 06 Risk
 
-Risk: the client-side data owner is 40% allocated elsewhere; severity medium; mitigation is naming a backup owner before kickoff [src: staffing thread, 2026-07-25].
-Risk: cutover slip would compress stabilization; severity high; mitigation is phasing integration work after the cutover gate [src: solution brief v2, 2026-07-18].
+Risk: volunteers may find the catalogue difficult; mitigation is a supervised practice session [src: synthetic pilot proposal, 2030-02-02].
+Risk: connectivity may fail; mitigation is a dated printable inventory [src: synthetic pilot proposal, 2030-02-02].
 
 ## 07 Investment and delivery
 
-Phase 1 investment is $186,000 fixed fee [quote: Q-000118].
-Data migration is scoped but not yet priced [gap: migration scoping open, owner J. Ruiz, due 2026-08-29].
-The plan sequences integration work after the 2026-12-15 cutover [src: solution brief v2, 2026-07-18].
+The fixed-fee pilot is $600 [quote: Q-SYNTH01].
+Ongoing hosting remains unpriced [gap: hosting quote needed, owner committee, due 2030-02-10].
+The pilot precedes inventory day and includes a decision to continue or stop [src: synthetic pilot proposal, 2030-02-02].
 
 ## 08 The ask
 
-Bar: the ask is specific and bounded.
-Approve Phase 1 at $186,000 by the November board meeting [quote: Q-000118].
-Not yet priced: data migration [gap: migration scoping open, owner J. Ruiz, due 2026-08-29].
-Open decision: backup data owner, owner K. Patel, resolve by 2026-09-05 [src: staffing thread, 2026-07-25].
+Bar: the decision is specific and bounded.
+Approve the pilot at $600 [quote: Q-SYNTH01].
+Do not approve ongoing hosting yet [gap: hosting quote needed, owner committee, due 2030-02-10].
+Name a volunteer trainer before practice starts [src: synthetic committee note, 2030-02-02].

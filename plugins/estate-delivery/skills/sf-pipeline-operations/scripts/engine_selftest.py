@@ -66,9 +66,9 @@ PIPELINE_ROUTES = """\
 engine_url: https://engine.example.com
 
 environments:
-  stevenc2:
-    org_name: 64_Dev_StevenC
-    branch: sandbox/stevenc
+  sandbox-a:
+    org_name: Example_Dev_A
+    branch: sandbox/developer-a
     tier: sandbox
     test_level: NoTestRun
   preprod:
@@ -178,7 +178,7 @@ def test_init_wiring(tmp):
     check(r.returncode == 0, "--check exits 0", r.stderr)
     check("main preprod" in r.stdout, "--check reports the engine-managed branches", r.stdout)
     branches = r.stdout.split("engine-managed branches:")[1].split("\n")[0]
-    check("sandbox/stevenc" not in branches,
+    check("sandbox/developer-a" not in branches,
           "a tier: sandbox branch is NOT engine-managed", branches)
     check(not (home / ".estate-engine").exists(), "--check installed nothing")
 

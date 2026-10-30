@@ -5,7 +5,7 @@ description: 'Design a structured first-three-month ramp for employees, contract
 
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [`readout-brief.md`](_runtime/prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [Writing Integrity review](_runtime/writing-integrity/references/detailed-review.md). Inputs, not a final pass.**
 
 A repeatable framework for building an onboarding plan that ramps new team members predictably without burning out the people training them.
 

@@ -94,7 +94,10 @@ class ScaffolderTests(unittest.TestCase):
         self.assertEqual(list(outside.iterdir()), [])
 
     def test_missing_reference_and_placeholder_workflow_leave_no_skill(self):
-        self.assertEqual(self.invoke("--reference", str(self.folder / "absent.md")).returncode, 2)
+        missing = self.invoke("--reference", str(self.folder / "absent.md"))
+        self.assertEqual(missing.returncode, 2)
+        self.assertIn("--reference", missing.stderr)
+        self.assertIn("absent.md", missing.stderr)
         self.assertFalse((self.project / "skills").exists())
         self.workflow.write_text("TODO: write the real workflow")
         self.assertEqual(self.invoke().returncode, 2)

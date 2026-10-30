@@ -113,8 +113,8 @@ project facts returned by `dx-devops-pipeline-manage`. The intended shape is:
 
 - production branch `main`;
 - first landing branch derived from the pipeline's linked `nextStageId` topology, expected to be
-  `staging` for 64org and recorded as `estate.trunk` only because it is the WI review target;
-- development org `stevenc2`, recorded as `estate.orgalias` and project-locally in `.sf`;
+  the configured landing branch for this project and recorded as `estate.trunk` only because it is the WI review target;
+- development org `sandbox-a`, recorded as `estate.orgalias` and project-locally in `.sf`;
 - protected branches `staging main`;
 - squash required;
 - `ticket.system=pattern`, with the DevOps Center WI pattern;
@@ -146,8 +146,8 @@ install shared mode as prose-only policy.
 Shared mode additionally records:
 
 - `devops.workmodel=shared`;
-- `devops.integrationbranch`, such as `stevenc`;
-- `devops.environment`, such as `StevenC`;
+- `devops.integrationbranch`, such as `integration-dev`;
+- `devops.environment`, such as `ExampleDevelopment`;
 - `devops.developmentbranchpattern=^dev/WI-[0-9]+$`.
 
 The installer adds the integration branch to `estate.protected`. Audit requires the branch to
@@ -252,12 +252,12 @@ Both produce the same error; the distinction is a Jira admin-UI lookup.
 
 ```bash
 scripts/install.sh --repo \
-  --mode stealth --delivery direct --trunk sandbox/scocchiarella-dev --host github \
-  --ticket-system jira --ticket-project SFO --ticket-remote ours \
-  --format check --pmd advise --drift tracking --org-alias 64_Dev --squash prefer
+  --mode stealth --delivery direct --trunk CONFIRMED_DEV_BRANCH --host github \
+  --ticket-system jira --ticket-project CONFIRMED_PROJECT_KEY --ticket-remote ours \
+  --format check --pmd advise --drift tracking --org-alias CONFIRMED_DEV_ALIAS --squash prefer
 ```
 
-For the dedicated 64org DevOps Center repository, after the production seed and stage
+For the confirmed DevOps Center repository, after the production seed and stage
 branches exist:
 
 ```bash
@@ -265,7 +265,7 @@ scripts/install.sh --repo --platform both \
   --mode native --delivery devops-center --host github \
   --ticket-system pattern --ticket-pattern '(^|[^[:alnum:]])WI-[0-9]+([^[:alnum:]]|$)' \
   --ticket-remote ours --format client --pmd block --drift tracking \
-  --org-alias stevenc2 --squash require --protected 'staging main' \
+  --org-alias sandbox-a --squash require --protected 'staging main' \
   --devops-org-alias <control-org-alias> --devops-project-id <project-id> \
   --devops-pipeline-id <pipeline-id>
 ```
@@ -278,8 +278,8 @@ For the shared-org variant, add:
 
 ```bash
   --devops-work-model shared \
-  --devops-integration-branch stevenc \
-  --devops-environment StevenC
+  --devops-integration-branch integration-dev \
+  --devops-environment ExampleDevelopment
 ```
 
 The command refuses shared mode on non-GitHub hosts or without both centralized names. It does not

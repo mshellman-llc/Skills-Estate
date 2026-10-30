@@ -4,7 +4,7 @@
 # Two bugs, both of which reported the wrong thing about a correctly configured repo.
 #
 # 1. trunk_ref — the on-trunk contract check read the LOCAL trunk branch. Worktrees
-#    are cut from origin/<trunk> (64-Org's scripts/new-ticket does exactly that), so
+#    are cut from origin/<trunk> (Example Project's scripts/new-ticket does exactly that), so
 #    on a clone whose local branch merely lagged origin, the block was present in
 #    every worktree and audit said no CLAUDE.md was committed on trunk. A false alarm
 #    costs the same trust as a false clean — people stop reading the output either way.
@@ -180,18 +180,18 @@ run_audit
 expect yes 'requires estate.devops.integrationbranch' "integration branch is required"
 expect yes 'requires estate.devops.environment' "deployment environment is required"
 
-git config estate.devops.integrationbranch stevenc
-git config estate.devops.environment StevenC
+git config estate.devops.integrationbranch integration-dev
+git config estate.devops.environment ExampleDevelopment
 git config estate.devops.developmentbranchpattern '^dev/WI-[0-9]+$'
 run_audit
-expect yes "integration branch 'stevenc' does not resolve" "missing integration branch fails"
-expect yes "requires 'stevenc' in estate.protected" "integration branch must be protected"
+expect yes "integration branch 'integration-dev' does not resolve" "missing integration branch fails"
+expect yes "requires 'integration-dev' in estate.protected" "integration branch must be protected"
 
-git branch stevenc "$BASE_SHA"
-git config estate.protected 'staging main stevenc'
+git branch integration-dev "$BASE_SHA"
+git config estate.protected 'staging main integration-dev'
 run_audit
-expect no "integration branch 'stevenc' does not resolve" "configured integration branch passes"
-expect no "requires 'stevenc' in estate.protected" "protected integration branch passes"
+expect no "integration branch 'integration-dev' does not resolve" "configured integration branch passes"
+expect no "requires 'integration-dev' in estate.protected" "protected integration branch passes"
 
 git config estate.delivery direct
 git config estate.trunk main

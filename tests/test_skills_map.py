@@ -8,10 +8,14 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'tools'))
+from test_capabilities import integration
+from catalog import source_names
 MAP = ROOT / 'artifacts' / 'skills-map'
 spec = importlib.util.spec_from_file_location('map_builder', MAP / 'build.py')
 builder = importlib.util.module_from_spec(spec)
@@ -20,10 +24,22 @@ spec.loader.exec_module(builder)
 class SkillsMapTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.data = json.loads((MAP / 'index.json').read_text())
+        cls.temp = tempfile.TemporaryDirectory(prefix='estate-map-fixture-')
+        cls.addClassCleanup(cls.temp.cleanup)
+        cls.output = Path(cls.temp.name)/'index.html'
+        baseline=Path(cls.temp.name)/'baseline';baseline.mkdir()
+        for command in (['init','-q'],['commit','-q','--allow-empty','-m','Synthetic baseline'],
+                        ['update-ref','refs/remotes/fixture/main','HEAD']):
+            subprocess.run(['git','-C',str(baseline),*command],env={**os.environ,**GIT_ENV},
+                           capture_output=True,text=True,check=True)
+        # Exercise the real builder against current source without overwriting
+        # the committed snapshot or depending on its last regeneration date.
+        with contextlib.redirect_stdout(io.StringIO()):
+            cls.data = builder.build(argparse.Namespace(repo=ROOT,baseline_repo=baseline,
+                base='HEAD',published_ref='refs/remotes/fixture/main',extra=[],output=cls.output))
 
     def test_all_canonical_skills_appear_once(self):
-        expected = {p.parent.name for p in ROOT.glob('skills/*/SKILL.md')}
+        expected = source_names(ROOT)
         actual = [s['id'] for s in self.data['skills']]
         self.assertEqual(set(actual), expected)
         self.assertEqual(len(actual), len(set(actual)))
@@ -44,10 +60,25 @@ class SkillsMapTests(unittest.TestCase):
                     self.assertEqual(s['status'], 'local-addition')
 
     def test_embedded_html_data_matches_json(self):
-        text = (MAP/'index.html').read_text()
+        text = self.output.read_text()
         embedded = re.search(r'<script type="application/json" id="estate-data">(.*?)</script>', text, re.S)[1]
         self.assertEqual(json.loads(embedded), self.data)
         self.assertNotIn('<', embedded)
+
+    @integration('generated-map')
+    def test_committed_snapshot_matches_current_source_inventory(self):
+        snapshot=json.loads((MAP/'index.json').read_text())
+        expected={s['id']:s for s in self.data['skills']}
+        actual={s['id']:s for s in snapshot['skills']}
+        instruction='Generated map is stale. Rebuild artifacts/skills-map/build.py from the intended published baseline.'
+        self.assertEqual(set(expected),set(actual),instruction)
+        for name,skill in expected.items():
+            with self.subTest(skill=name):
+                for field in ('markdown','sourceSha256','resources'):
+                    self.assertEqual(skill[field],actual[name][field],instruction)
+        html=(MAP/'index.html').read_text()
+        embedded=re.search(r'<script type="application/json" id="estate-data">(.*?)</script>',html,re.S)[1]
+        self.assertEqual(json.loads(embedded),snapshot,'Generated HTML and JSON disagree')
 
     def test_connections_have_source_evidence(self):
         names={s['id'] for s in self.data['skills']}

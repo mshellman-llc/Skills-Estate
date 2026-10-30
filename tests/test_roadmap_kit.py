@@ -10,6 +10,8 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+from test_capabilities import integration
 KIT = ROOT / 'skills/roadmap-artifacts'
 sys.path.insert(0, str(KIT / 'scripts'))
 import rk_embed  # noqa: E402
@@ -87,6 +89,7 @@ class PageTests(unittest.TestCase):
                     result = brand_check(out)
                     self.assertEqual(result.returncode, 0, out.name + result.stdout)
 
+    @integration("browser")
     def test_pages_render_without_network_or_errors(self):
         node = os.environ.get('ESTATE_NODE') or shutil.which('node')
         self.assertTrue(node, 'Node is required')
@@ -100,7 +103,7 @@ class PageTests(unittest.TestCase):
             runner = base / 'check.cjs'
             runner.write_text(r"""
 const {chromium}=require('playwright'),assert=require('assert/strict'),url=require('url'),path=require('path');
-(async()=>{const b=await chromium.launch({headless:true,executablePath:process.env.PW_CHROMIUM||undefined});
+(async()=>{const b=await chromium.launch(require(process.env.ESTATE_BROWSER_POLICY).launchOptions());
 try {for (const [name,check] of [['jtbd',async p=>{
   assert.equal(await p.locator('.rk-evidence li').count(),2);
   assert.equal(await p.locator('.rk-ref[href="#ev-1"]').count(),3);
@@ -118,9 +121,10 @@ try {for (const [name,check] of [['jtbd',async p=>{
   await p.close();}
 } finally {await b.close();}})().catch(e=>{console.error(e);process.exit(1)});
 """, encoding='utf-8')
-            result = subprocess.run([node, str(runner), str(base)], capture_output=True, text=True, env=os.environ.copy())
+            result = subprocess.run([node, str(runner), str(base)], capture_output=True, text=True, env={**os.environ, "ESTATE_BROWSER_POLICY": str(ROOT/"skills/brand-renderer/scripts/browser_launch_policy.cjs")})
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+    @integration("browser")
     def test_proposal_draws_quoted_phases_on_a_week_axis(self):
         node = os.environ.get('ESTATE_NODE') or shutil.which('node')
         skill = ROOT / 'skills/interactive-proposal'
@@ -134,7 +138,7 @@ try {for (const [name,check] of [['jtbd',async p=>{
             runner = Path(folder) / 'check.cjs'
             runner.write_text(r"""
 const {chromium}=require('playwright'),assert=require('assert/strict'),url=require('url');
-(async()=>{const b=await chromium.launch({headless:true,executablePath:process.env.PW_CHROMIUM||undefined});
+(async()=>{const b=await chromium.launch(require(process.env.ESTATE_BROWSER_POLICY).launchOptions());
 try {const p=await b.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
 await p.goto(url.pathToFileURL(process.argv[2]).href);
 await p.locator('[role=tab]').last().click();
@@ -144,7 +148,7 @@ assert.equal(await p.locator('#timeline').isVisible(),false);
 assert.deepEqual(errors,[]);
 } finally {await b.close();}})().catch(e=>{console.error(e);process.exit(1)});
 """, encoding='utf-8')
-            result = subprocess.run([node, str(runner), str(out)], capture_output=True, text=True, env=os.environ.copy())
+            result = subprocess.run([node, str(runner), str(out)], capture_output=True, text=True, env={**os.environ, "ESTATE_BROWSER_POLICY": str(ROOT/"skills/brand-renderer/scripts/browser_launch_policy.cjs")})
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
 

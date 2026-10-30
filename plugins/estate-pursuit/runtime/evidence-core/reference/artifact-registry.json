@@ -38,7 +38,7 @@
       "fullOutput": "Discovery call preparation brief",
       "insufficientOutput": "Discovery readiness gap memo",
       "hardFails": ["generic questionnaire", "re-asking confirmed facts", "unknown presented as fact", "questions not ranked by decision impact", "template substitution"],
-      "referenceComponents": ["Approved Finance Discovery Brief example"]
+      "referenceComponents": ["Synthetic finance discovery brief pattern"]
     },
     {
       "artifactType": "rom",
@@ -62,7 +62,7 @@
       "fullOutput": "Executive business case",
       "insufficientOutput": "Investment readiness gap memo",
       "hardFails": ["invented ROI", "benefits not tied to evidence", "case against omitted", "recommendation without conditions", "example-cloned structure"],
-      "referenceComponents": ["Approved subscription Business Case example", "Patient access investment Business Case pattern"]
+      "referenceComponents": ["Synthetic subscription business case pattern", "Patient access investment Business Case pattern"]
     },
     {
       "artifactType": "ddoc",
@@ -99,7 +99,7 @@
       "fullOutput": "Solution Brief in approval or build-reference mode",
       "insufficientOutput": "Technical Readiness Memo",
       "hardFails": ["generic architecture", "full brief generated after insufficient gate", "failure paths omitted", "commercial approval claimed", "onboarding content substituted for architecture", "unsupported technical precision"],
-      "referenceComponents": ["Approved industrial Solution Brief example", "Technical Readiness Memo pattern"]
+      "referenceComponents": ["Synthetic industrial solution brief pattern", "Technical Readiness Memo pattern"]
     },
     {
       "artifactType": "sales_to_delivery_handoff",

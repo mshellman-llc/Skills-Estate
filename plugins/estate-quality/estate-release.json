@@ -18,7 +18,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "78e076d5c9f82153b4b9cf9a5f0441de99959eeea2908b69fd14b69a51c00385",
+      "required_sha256": "aa925e814aea50f3910a1a12f9f9ab504323b0d47bf1f4273015c5245c53a9bb",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -33,7 +33,7 @@
       "subject": "delivery-router"
     },
     {
-      "required_sha256": "0f919085a0099d8244915c18b8bc384a66996068b70e3bb9c0c5b5d6f45c662d",
+      "required_sha256": "e96d008a88c24dd49c9a44f7f09843a2920045b3ab573cd8dec9cf185d8fc5c8",
       "status": "review required",
       "subject": "governance-router"
     },
@@ -43,7 +43,7 @@
       "subject": "pursuit-router"
     },
     {
-      "required_sha256": "59a537d58fd06a7dfca794832034c5d69de464e86857996f6581b4e7c578a08c",
+      "required_sha256": "3f7028d5971634087218bfee2f9c8a01daae7085f25845f83c1c68cc6168990f",
       "status": "review required",
       "subject": "quality-router"
     },
@@ -63,34 +63,44 @@
       "subject": "analytics-strategy"
     },
     {
-      "required_sha256": "76a3dcbdb495ae8823b563ec1dc35012c2dcb3705b4bb346a9eff4c03e5ee2c5",
+      "required_sha256": "433b6830f4fdef4f464afc7571e18b8487599333fe79d8c6a82666c211ef2483",
       "status": "review required",
       "subject": "architecture-doc"
     },
     {
-      "required_sha256": "5eef506a94cd814f731957a87a5f240b3093139cd06b8a767bba4698d1b6cf65",
+      "required_sha256": "cc859084a1a2898e3531af260324a6b3bfbc6e3893060588a7fb0f620f079190",
+      "status": "review required",
+      "subject": "author-writing-style"
+    },
+    {
+      "required_sha256": "32f3133d1627a562a100b16cf2bc9ea2ec631ce8f5d135525306e18fb3556ff2",
       "status": "review required",
       "subject": "beastmode-capture"
     },
     {
-      "required_sha256": "c7bbaa6e6c3c85509d47b29128e44b910dc29b267d3d6426cc032deb83524f68",
+      "required_sha256": "da78c5ea83be9eb87659b07c46e4e3bc51ea486d590ef29423c9c0b182b2e44e",
       "status": "review required",
       "subject": "beastmode-context"
     },
     {
-      "required_sha256": "66fd766c10d310670847381307943de21a149d674216c6e2ce9909c8e61c9b6b",
+      "required_sha256": "c5f4533bc881ae6f738ed2c17dcddfb8e88c1de8ade4f9f5920b76e1646368f5",
       "status": "review required",
       "subject": "beastmode-health"
     },
     {
-      "required_sha256": "8766afb95c375b7a4b8aabf5fcb82b397fc75e5dd125ac2dc1f81a5b051bae93",
+      "required_sha256": "65b9a6e555e50613f85b8eadc06e57cca75b99a5b1274b2f03b531cd0e7294e0",
       "status": "review required",
       "subject": "beastmode-reconcile"
     },
     {
-      "required_sha256": "974f76a23d1319774966b8b90c8222cd1b80a86c4a88481986582fbbaea9f74e",
+      "required_sha256": "cd7c606f57369490ad6ac932f667ca5f030ee52a139d364fda9fe1e3350da76c",
       "status": "review required",
       "subject": "brain-work-item"
+    },
+    {
+      "required_sha256": "52ae6d2db2e99eabd6c584c63e5da7548b417ca5599be748d6c829df7d01a5b5",
+      "status": "review required",
+      "subject": "brand-renderer"
     },
     {
       "required_sha256": "37f9698acb4c3690dcd0ea5a19fb58334a27e03ac89ddd2fe098b9faa5807010",
@@ -98,32 +108,32 @@
       "subject": "build-interactive-explorer"
     },
     {
-      "required_sha256": "b6f83ff314157a16e30757d0bad202845d9ec5dbd5220b85a69fb96d9dff977f",
+      "required_sha256": "26dad37402bb1e259fe4c9e57e23c2b0690fcfddaaf8445b7832f22eb6a53b81",
       "status": "review required",
       "subject": "business-case"
     },
     {
-      "required_sha256": "5a7480e7772e48bd93361deb2cd8828e34a278c11b8e0395010d602308fa0062",
+      "required_sha256": "a7f6eaa1f41ed63b26060a039dbc2eaaca83bcf92306f0114f508c9c8a8803b9",
       "status": "review required",
       "subject": "call-prep"
     },
     {
-      "required_sha256": "7f16d2dc98e99ce152cfcb68f25beafdf26cb9af0de6d131b41eb3e55a786942",
+      "required_sha256": "2cf285da3d7353d4635ac2ff1b44debdf1734e824458d0303fdcc3d9ea7d2e4e",
       "status": "review required",
       "subject": "career-application"
     },
     {
-      "required_sha256": "e4f9628533151283c619dbd3ed5d1446700c152982a257288b2dd8607881ba17",
+      "required_sha256": "cb890dd149548478c317c9ceb0a13bc5c8b7a3bdcfb6a5b774f0ae41b749e1cc",
       "status": "review required",
       "subject": "career-materials-and-outreach"
     },
     {
-      "required_sha256": "6008a5eb64729b4e3c593a18e4fdda4549f67dfe95b95fda5b6aa3ecbeda633c",
+      "required_sha256": "55ee76a4e24277f2e1877e99c494588f8403293cc4881aeb5a2ae2296f27dbfc",
       "status": "review required",
       "subject": "career-progression-and-offers"
     },
     {
-      "required_sha256": "ff0544e47c2a4f7057eae2476c71e58aced8c2b6a01e56491312a3c0939c8e21",
+      "required_sha256": "f3a6b3a66331540f874d467be7ea88a133e2aa6c196f7a718b1f9a25004a9f56",
       "status": "review required",
       "subject": "case-study-builder"
     },
@@ -133,52 +143,52 @@
       "subject": "code-simplify"
     },
     {
-      "required_sha256": "d6411c0231c6280eafc1417b58c818c2e9d9e4073b335be918b53407d1278388",
+      "required_sha256": "4151f91fc745710a7acff9e8a2f021c0377969c3c6926458a4f5ac80d869c274",
       "status": "review required",
       "subject": "cross-platform-skill-release"
     },
     {
-      "required_sha256": "6ddc1fc11e0c68913cfcb13425b4a6d342ebf01fb15698737ff7e3932c89aac9",
+      "required_sha256": "21458ba1ae54a7788f4c80aa3cdff4d2f23c95fb8163ccc5fa452a0003ec9661",
       "status": "review required",
       "subject": "cutover-closeout"
     },
     {
-      "required_sha256": "19d7ccc480c02d7c26d923ed79b2442d242ba28e3413e63685371149a02316ec",
+      "required_sha256": "2581f5862b7062b1d5efc0024847c9e165f7f0e0ebc380d4d6b152251614ea3e",
       "status": "review required",
       "subject": "ddoc"
     },
     {
-      "required_sha256": "46c2bd353b2861d987ad512e290f8dc630449dae8db5972a78d758d9f2ce7755",
+      "required_sha256": "e1eedbdc79e462b0c96086ae75ab7721ab03d7e498c8272d029fca22f71d5a0a",
       "status": "review required",
       "subject": "deal-desk"
     },
     {
-      "required_sha256": "3cf6286947c5377b37a996044640fa83f64202d4c03ad030b8d6a4dcd385c924",
+      "required_sha256": "111b7f6236591800de7f996b604ddf6f0ef745c79aee38d4cd43288c5dd88866",
       "status": "review required",
       "subject": "deck-builder"
     },
     {
-      "required_sha256": "5fca97a9c6b7dcddec9edf6e25646fd0f200e20c94f8c87a36ecefe980daf1b9",
+      "required_sha256": "d279f05e21e5dbc2d90c7a19a0ec562c84692374c1942574179df2c86729436a",
       "status": "review required",
       "subject": "delivery-kickoff"
     },
     {
-      "required_sha256": "4ce4d752ea445ffeee02c6f2daa47e93eb471b65ea21351a9beabae86794e309",
+      "required_sha256": "ea10d735172f1bb24edc054febca50d1aea470634b9c90ea707c65da193f2f7f",
       "status": "review required",
       "subject": "delivery-status"
     },
     {
-      "required_sha256": "b701fc7d5d91eab1c2ec4f6fa821c2e80e800be5fe70b61ba72c59dba5f03558",
+      "required_sha256": "da2560b2bc0d1a0a46c7a8625c144021008a42e9be2c8e5e6ce6688979a573bb",
       "status": "review required",
       "subject": "delivery-suite"
     },
     {
-      "required_sha256": "66be18581119c33fc97151a216531f38c12abbd4a5777aa3b6534bc5dd680dff",
+      "required_sha256": "107ade2a49bf1861e80cbbb842d48f62f4c3b42aae109dbe0f7dcfcf559a2a44",
       "status": "review required",
       "subject": "discovery-brief"
     },
     {
-      "required_sha256": "b1d74afd1216082659d4d8ca00b1c49842043b121ac1f3fc33dc0dccb5e2f514",
+      "required_sha256": "2f84060c3725134cc49412e70f2f3c9c3db473a5027ef6e52160ae3e00be1be6",
       "status": "review required",
       "subject": "discovery-synthesis"
     },
@@ -188,9 +198,14 @@
       "subject": "dx-devops-promote"
     },
     {
-      "required_sha256": "7f067f1903bc4e7256169b16d6fa9633c280c7bcf44abf30c4de77858bd47018",
+      "required_sha256": "b09466ae79ad02628e9df262a77a88650641f4b63b4d5f0fea00077269d1fa38",
       "status": "review required",
       "subject": "dx-devops-work-item-manage"
+    },
+    {
+      "required_sha256": "8e2341357f37f73c06605b380d346c0eceea0f3b8aba7d8a020a2045ad9ac4f6",
+      "status": "review required",
+      "subject": "evidence-core"
     },
     {
       "required_sha256": "e17e9a6e20a79e1d4c9964d773e9556368c922c20b844c591392acc950e56050",
@@ -198,17 +213,17 @@
       "subject": "execution-truth"
     },
     {
-      "required_sha256": "374756c96ab7f5773068b6ea9b61164d58380d46fa2c9ceccc533a5a70d4ae86",
+      "required_sha256": "00155ced7574fc19821c0f09ec81ce3b5066ee6fd55ad619635ae78764961401",
       "status": "review required",
       "subject": "fortunes-weave"
     },
     {
-      "required_sha256": "ca3750103033466c578806b87fc43d9f6b180f9524488d24e7e20532d5b35b06",
+      "required_sha256": "702dcfd1eeee32c316920e0a4f29bf07cde2e177695f046057de105d28908cc7",
       "status": "review required",
       "subject": "github-repository-work"
     },
     {
-      "required_sha256": "8de820cbc203fb9ffd271e0756cdaac9bb7abd820379e97b094eb3183a5d0fe1",
+      "required_sha256": "9dcedf6a0ccfaadf96b1814051b450b05fa7c855be9d695d85ed6388890de0e8",
       "status": "review required",
       "subject": "independent-product"
     },
@@ -218,9 +233,19 @@
       "subject": "information-architecture"
     },
     {
-      "required_sha256": "87a450c65e2c5500808218ea04323e2e919a0da19fb64e51701235a5522de675",
+      "required_sha256": "d11727f5f93183b97dc9352e87971f5e13121ee476ac841303b66d2ba036ce93",
       "status": "review required",
-      "subject": "megan-writing-style"
+      "subject": "interactive-proposal"
+    },
+    {
+      "required_sha256": "10eb14f8b999587504f2d425089382e6b31a38dc3657168e5ea4aa8681df44fd",
+      "status": "review required",
+      "subject": "jtbd-framing"
+    },
+    {
+      "required_sha256": "558908a00c40f7e3f798d6aa0bd203b4529cabe16b6e2c9e195bb2def176fdb8",
+      "status": "review required",
+      "subject": "knowledge-hub"
     },
     {
       "required_sha256": "cca7a9773fb2d59b321e00905f8a35ab9ee5d0853882c1d417b7ca26f0518507",
@@ -238,17 +263,17 @@
       "subject": "playbook-builder"
     },
     {
-      "required_sha256": "2efba2fbaf770a437d66e8472776018d5d45878645092e3adf9205a4c80566d7",
+      "required_sha256": "a29317616045719689cc075e6550d6f2b9a4a27677de19cf3cacc13f45d61558",
       "status": "review required",
       "subject": "playbook-fit-router"
     },
     {
-      "required_sha256": "9715e276e433c033c283d0cc1e7f7526f5d0dc44f0605bc183d20c3e56067f3c",
+      "required_sha256": "93fa3a09b619223e9f642d24fe601e84edab73d86bdcbf3f4bc1369503b24738",
       "status": "review required",
       "subject": "playbook-onepager"
     },
     {
-      "required_sha256": "4baacd6b81449d8818581fd58d2e17bc4a8e30d76332c92224c822a985be365d",
+      "required_sha256": "99bfe46ea325fd963c8b3f7c86a3ba1c38608a03053788bbbb9ba3a4cae820f7",
       "status": "review required",
       "subject": "playbook-suite"
     },
@@ -268,22 +293,32 @@
       "subject": "product-development-pathway"
     },
     {
+      "required_sha256": "ec311c65da767bece4e718efd2871be388c15990d2382bb93fc6fb3486d7f0fd",
+      "status": "review required",
+      "subject": "prose-pass"
+    },
+    {
+      "required_sha256": "5870587f309b144d66d66c4ba72a8164e3d728a9f8b56aa5acef16c87b0513b5",
+      "status": "review required",
+      "subject": "quality-gate"
+    },
+    {
       "required_sha256": "dacd9feff696dac75a3b5aadbbf61a9879d58e6a39971e6b82b11c31d8cc9b74",
       "status": "review required",
       "subject": "requirements-capture"
     },
     {
-      "required_sha256": "815291e4c9a2642205f51a19207bf74968e451a03be609385346e4cbf30d3b64",
+      "required_sha256": "ec7635d2cafc18f2382b731e1df9caee6fa7ffb0912ded6ea7f56cca36aadf1a",
       "status": "review required",
       "subject": "resume-numbers-and-keywords"
     },
     {
-      "required_sha256": "416c4100e945117e06c0d0a06c070e3096553f5214420e2e8546da16aedf1a83",
+      "required_sha256": "daab6bca7478b1f25cdb371eab08c1a31ce95adc7f1a078dab91a5d7d8ebeefa",
       "status": "review required",
       "subject": "rom"
     },
     {
-      "required_sha256": "a0330adf3e44a0d8adb907e38be1af8ddea96fec2890595877b94aa350003776",
+      "required_sha256": "136777a5a18f12c8338058a7b190ce7f50b1dfc57f60ae69aa4db6cb4d183927",
       "status": "review required",
       "subject": "s2d-handoff"
     },
@@ -298,32 +333,37 @@
       "subject": "sales-process-mapping"
     },
     {
+      "required_sha256": "98d47f8b7284a6cf4472b6c2cdf81e09f64cccfdc145e504e9f8eda28898c43b",
+      "status": "review required",
+      "subject": "scope-reference"
+    },
+    {
       "required_sha256": "77e0fbfd7d08b9c99f1c16866a175fbdafd53b5137ded3edeee89c9848bc81ed",
       "status": "review required",
       "subject": "scoping-agent"
     },
     {
-      "required_sha256": "367420ad1a06358993652762e74893029136d9bb38f2bfbbebef60e6cd0a3f94",
+      "required_sha256": "414024e0fef3bb6a8a52c18ec9380bb5b4b275158a5541f529acb3c38a9827b8",
       "status": "review required",
       "subject": "session-handoff"
     },
     {
-      "required_sha256": "f700b645892c39fbebd316c04bd4faaf560e4ae927581062aa852d50b61e5458",
+      "required_sha256": "b7b038b1b28096b25cc8fa755885a6556c640b49a04d69c922042a2e86b7a953",
       "status": "review required",
       "subject": "sf-delivery-standards"
     },
     {
-      "required_sha256": "d11d648e5be99418d804d1097b984bb80ebfa7375bf10d89b9c75ee0009f41f6",
+      "required_sha256": "b782ccc4b6452747182d1b9b65c9405e3232c24fa87f449f5726abd8598368da",
       "status": "review required",
       "subject": "sf-deploy-engine"
     },
     {
-      "required_sha256": "a05ad70234757f4fa98acb7d920101493be4e63927f784397036af9f4de1e5e8",
+      "required_sha256": "3dc7b5aa6610ce21780b2cc7f5a234cea6ff024a48af6c5aa408b179ed302a3b",
       "status": "review required",
       "subject": "sf-enterprise-patterns"
     },
     {
-      "required_sha256": "7d3afff4bedac0a799602c352038e1167d041affbf190c47df2b11fb00562b38",
+      "required_sha256": "6a20b78b2e6a47fa9c7dc10096a23a87101e1bd6317e1fd531eb943c898089f7",
       "status": "review required",
       "subject": "sf-headless-screenshot"
     },
@@ -333,32 +373,32 @@
       "subject": "sf-solo-devops"
     },
     {
-      "required_sha256": "51cfe05d63116f8b8476fb753f3314e5a58c964d65254f490176baf6cf29a8e2",
+      "required_sha256": "e6307e589a0abcd867ba6cc5912ec4097a0ae9843e4dc9f3140a04197cef2782",
       "status": "review required",
       "subject": "skill-creation-walkthrough"
     },
     {
-      "required_sha256": "b258c53bc75f14832f1acca139db6c27a88aea0d1d23d93c5f914a31832ed177",
+      "required_sha256": "bf3ca063ea5da81d19c1a4c52f2946a21e34e94a89894dcac514e8a4666a50ae",
       "status": "review required",
       "subject": "skill-estate-sync"
     },
     {
-      "required_sha256": "4446f8114f799b04b593eb6c3f20800d017983459c7b23f1715eeebc13e1e13e",
+      "required_sha256": "89be6ea92ec62f1db1255e1f2c31eb5ab4f9e8a95028a394d19d11dd6f20be92",
       "status": "review required",
       "subject": "solution-brief"
     },
     {
-      "required_sha256": "aad1904cdb83d88d2c8904e3822e6410f08877ffa102a6516001c08f085743a6",
+      "required_sha256": "06e7951d609352ee77a08a1108cb49dad699c091da232cc34758cbcba9ce60cf",
       "status": "review required",
       "subject": "sow"
     },
     {
-      "required_sha256": "4099d301847ad606a6929a4d3340761e0a2e29e781393bcfe1c934623c5c7947",
+      "required_sha256": "40e07cf54b9c30e26f3e0e4dceeeff295a306a07aaf2e7e195f425bf0ad4c06b",
       "status": "review required",
       "subject": "sow-quality"
     },
     {
-      "required_sha256": "9a9a1545b2225d37b6c1b123cb911932fe1e0c96dc7de35253f6ed7fc650b807",
+      "required_sha256": "c713435c52d6440e7a2db3b9b7c116a2705ee10d03a507ba55a9cc2d35520462",
       "status": "review required",
       "subject": "spec-writer"
     },
@@ -368,27 +408,27 @@
       "subject": "sticker-art-direction"
     },
     {
-      "required_sha256": "a90a16e135a19182159ef600532fad0d4aa6cf885c6c2025a97c186128a94462",
+      "required_sha256": "550b037b2384016bee2ca3c0c02edbf7b7e24a1d3e3363e71861954a228bd3db",
       "status": "review required",
       "subject": "sticker-sheets"
     },
     {
-      "required_sha256": "d3482835b7e9aa197fd294204d29779f931dda85b085d9a0cba0c9493eff59da",
+      "required_sha256": "b74f57a998c3417be89e77c10248f6100896029d01a6825154abbd85c3b852f3",
       "status": "review required",
       "subject": "system-design"
     },
     {
-      "required_sha256": "c2b98e4b2d29f2f3b1506a89bbe0fd20f0e0a11a8b231c6bbd430db82c4508bb",
+      "required_sha256": "3a70611677154eaca7ee4c2d5f11a4b2e6b6606084987ee84612a58239bdf471",
       "status": "review required",
       "subject": "team-onboarding"
     },
     {
-      "required_sha256": "c8eae60aacafdb8a6a13de0fd1710f420cc205fbb1238cd409644e5a8793c7c2",
+      "required_sha256": "80222a774570a4ae18dba1237e4f535bf61289b1ba2448e86a537e9a86250870",
       "status": "review required",
       "subject": "transcript-ingestion"
     },
     {
-      "required_sha256": "069f3ac8ff5aff69ff10f7246e6d22e1f86e4ccabe562a39f6365d7242c1a000",
+      "required_sha256": "8ccbb7099c4c23a3b3786f548c3938ddc37cf9d1bb92f3bd84b8f75ee24fb192",
       "status": "review required",
       "subject": "uat-validation"
     },
@@ -398,11 +438,16 @@
       "subject": "usability-testing"
     },
     {
+      "required_sha256": "429a2314ab0f03ba2d855fae48f028705989a718ac49e3c0ff3eef806ee84e27",
+      "status": "review required",
+      "subject": "writing-integrity"
+    },
+    {
       "required_sha256": "5f6253ee593d3807308ba52a2bead86ea505ab494351d8ead9b5bb565a0c2a62",
       "status": "review required",
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "deae180ba9b42dd74875165505875d575ea721c5bb51500483c91aa6823b57c7",
-  "status": "owner-published"
+  "source_sha256": "c4e5c42a0a79588ae2c30c9669602f882bf13c5e37e71fb7a93e31952b771c57",
+  "status": "candidate-unreviewed"
 }

@@ -1,13 +1,13 @@
 {
   "mode": "decision",
-  "client": "Northwind Industrial Controls",
+  "client": "Synthetic Training Studio",
   "title": "Three options, one decision",
-  "date": "2026-08-14",
-  "quote_number": "Q-000101",
+  "date": "2025-02-14",
+  "quote_number": "Q-SYNTHETIC-101",
   "quote_snapshot": {
-    "quote.lift_and_shift_fee": 321100,
-    "quote.total_fixed_fee": 450900,
-    "quote.rearchitect_fee": 599900
+    "quote.lift_and_shift_fee": 68000,
+    "quote.total_fixed_fee": 94000,
+    "quote.rearchitect_fee": 122000
   },
   "options": [
     {
@@ -18,7 +18,7 @@
         "Quoting and pricing only.",
         "One integration in scope."
       ],
-      "investment": "$321,100"
+      "investment": "$68,000"
     },
     {
       "name": "Remediate and migrate",
@@ -29,7 +29,7 @@
         "Two integrations in scope.",
         "Migration of active subscriptions."
       ],
-      "investment": "$450,900"
+      "investment": "$94,000"
     },
     {
       "name": "Re-architect and migrate",
@@ -39,23 +39,23 @@
         "Full revenue lifecycle.",
         "Four integrations in scope."
       ],
-      "investment": "$599,900"
+      "investment": "$122,000"
     }
   ],
   "figures": [
     {
       "label": "Lift and shift investment",
-      "value": 321100,
+      "value": 68000,
       "quote_field": "quote.lift_and_shift_fee"
     },
     {
       "label": "Remediate and migrate investment",
-      "value": 450900,
+      "value": 94000,
       "quote_field": "quote.total_fixed_fee"
     },
     {
       "label": "Re-architect and migrate investment",
-      "value": 599900,
+      "value": 122000,
       "quote_field": "quote.rearchitect_fee"
     }
   ],
@@ -65,14 +65,14 @@
       "title": "What we heard",
       "items": [
         {
-          "text": "Quotes take eleven days to leave the building.",
+          "text": "The fictional intake queue takes six days to produce a draft.",
           "evidence": "client_stated",
-          "source": "R. Alvarez, discovery call 2026-07-08"
+          "source": "Synthetic Operations Owner, fixture interview A"
         },
         {
           "text": "Pricing lives in a spreadsheet outside the system.",
           "evidence": "client_stated",
-          "source": "R. Alvarez, discovery call 2026-07-08"
+          "source": "Synthetic Operations Owner, fixture interview A"
         }
       ]
     },
@@ -255,5 +255,7 @@
       ]
     }
   ],
-  "_note": "Illustrative example for the skill. Figures are not a live client quote."
+  "_note": "Illustrative example for the skill. Figures are not a live client quote.",
+  "_fixture": true,
+  "_source": "Synthetic training-studio scenario: test figures and interview statements created for renderer regression; no real quote or engagement."
 }

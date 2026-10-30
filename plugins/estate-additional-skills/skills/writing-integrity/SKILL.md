@@ -10,7 +10,9 @@ Use this skill for every authored sentence, including short replies and internal
 
 ## Start with the active profile
 
-Resolve this skill's folder to an absolute path. Run `python3 scripts/learning.py context --host HOST --tags general,FORMAT --markdown` from that folder. Use the actual host and a lowercase format tag such as `message`, `resume`, `proposal`, `ui` or `technical`. The store location selects an installation; its explicit owner selects the person. Do not infer identity or voice from a folder name.
+Author and project context are optional inputs. Set `PROFILE_STORE` only to a private profile location explicitly authorized for the current task and owner, then pass it with `--store` for every learning command. An existing profile or matching owner does not authorize reuse in another context. Without a confirmed store, use the core review rules without loading or saving learned preferences.
+
+Resolve this skill's folder to an absolute path. Run `python3 scripts/learning.py --store "$PROFILE_STORE" context --host HOST --tags general,FORMAT --markdown` from that folder. Use the actual host and a lowercase format tag such as `message`, `resume`, `proposal`, `ui` or `technical`. The store location selects an installation; its explicit owner selects the person. Do not infer identity or voice from a folder name.
 
 Load the compact profile at the start of a task and after a correction changes it. If the installation is new, read [host setup](references/host-setup.md) for enrollment. Ordinary writing can proceed with the core rules when no profile is available. Never report a saved correction without a storage receipt.
 

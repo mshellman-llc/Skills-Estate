@@ -175,7 +175,7 @@ sfds_gate() {
 # containing the process's cwd. A hook's cwd is the SESSION's project directory,
 # not the repo the command it is inspecting will act on. When those differ, every
 # guard applies the wrong project's rules — observed: a `git commit` in the
-# skills repo blocked by 64-Org's Jira ref rules, in a repo that has no
+# skills repo blocked by Example Project's Jira ref rules, in a repo that has no
 # `estate.mode` at all and where every guard should have been inert.
 #
 # The fix is to stand where the command stands. chdir'ing the hook process is

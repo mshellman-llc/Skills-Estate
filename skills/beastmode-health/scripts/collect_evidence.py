@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sqlite3
 import subprocess
 import sys
@@ -55,10 +56,27 @@ def collect(config, now=None):
     now = now or datetime.now(timezone.utc)
     if config.get("schemaVersion") != 2:
         raise ValueError("unsupported evidence map")
-    root = Path(config["runtimeRoot"]).expanduser()
+    def configured_path(value, label):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(label + " requires an explicitly configured absolute path")
+        path = Path(value).expanduser()
+        if not path.is_absolute():
+            raise ValueError(label + " requires an explicitly configured absolute path")
+        return path
+    root = configured_path(config.get("runtimeRoot"), "runtimeRoot")
+    if type(config.get("bridgeMaxAgeSeconds")) is not int or config["bridgeMaxAgeSeconds"] <= 0:
+        raise ValueError("bridgeMaxAgeSeconds must be a positive configured interval")
+    for key in ("skillEntrypoints", "mountRoots", "launchdJobs"):
+        if not isinstance(config.get(key, []), list):
+            raise ValueError(key + " must be an explicit list")
+    entrypoints = [configured_path(value, "skillEntrypoints") for value in config.get("skillEntrypoints", [])]
+    mounts = [configured_path(value, "mountRoots") for value in config.get("mountRoots", [])]
+    labels = config.get("launchdJobs", [])
+    if any(not isinstance(label, str) or not re.fullmatch(r"[A-Za-z0-9._-]+", label) for label in labels):
+        raise ValueError("launchdJobs must contain explicit job labels")
     rows = []
-    # The owner-approved off-Mac destination (the service's HUB_BACKUP_DIR), when one is configured.
-    offmac = Path(config["offMacBackupDir"]).expanduser() if config.get("offMacBackupDir") else None
+    # The explicitly configured off-device destination, when authorized for this check.
+    offmac = configured_path(config["offMacBackupDir"], "offMacBackupDir") if config.get("offMacBackupDir") else None
     folders = [root/"backups"] + ([offmac] if offmac else [])
     generation = None
     try:
@@ -125,8 +143,7 @@ def collect(config, now=None):
         rows.append(result("off-mac-copy", "not-rechecked", "Separate delivery receipt not verified", "off-Mac receipt", now))
     rows.append(result("key-recovery", "not-rechecked", "Separate key escrow not verified; key material was not opened", "recovery receipt", now))
     links = []
-    for value in config["skillEntrypoints"]:
-        p = Path(value).expanduser()
+    for p in entrypoints:
         if p.name != "SKILL.md":
             raise ValueError("only skill entrypoints may be checked")
         try:
@@ -135,12 +152,12 @@ def collect(config, now=None):
                 f.read(1)
             links.append({"path":str(p), "resolvedPath":str(resolved), "state":"readable"})
         except FileNotFoundError:
-            state = "unavailable" if str(p).startswith("/Volumes/BeastMode/") and not os.path.ismount("/Volumes/BeastMode") else "missing"
+            state = "unavailable" if any((p == mount or mount in p.parents) and not os.path.ismount(mount) for mount in mounts) else "missing"
             links.append({"path":str(p), "state":state})
         except OSError:
             links.append({"path":str(p), "state":"unavailable"})
-    state = "needs-attention" if any(x["state"] == "missing" for x in links) else "not-rechecked" if any(x["state"] == "unavailable" for x in links) else "verified-now"
-    rows.append(result("skill-links", state, "Resolved entrypoints on this Mac", "live filesystem", now, paths=links))
+    state = "not-rechecked" if not links else "needs-attention" if any(x["state"] == "missing" for x in links) else "not-rechecked" if any(x["state"] == "unavailable" for x in links) else "verified-now"
+    rows.append(result("skill-links", state, "Selected entrypoints on this host" if links else "No entrypoints selected for this check", "live filesystem", now, paths=links))
     if bridge:
         latest = max(bridge, key=lambda v: stamp(v["at"]))
         age = (now-stamp(latest["at"])).total_seconds()
@@ -150,7 +167,9 @@ def collect(config, now=None):
         rows.append(result("bridge", state, "Recent bridge heartbeat and mounted roots" if state == "verified-now" else "Bridge heartbeat or sources need attention", "bridge table", now, latest["at"], failedSources=badsources, unmountedRoots=badroots, checkedSources=len(latest.get("sources",[]))))
     else:
         rows.append(result("bridge", "not-rechecked", "No readable bridge heartbeat", "bridge table", now))
-    for label in ("com.beastmode.knowledge-hub.service", "com.beastmode.knowledge-hub.bridge"):
+    if not labels:
+        rows.append(result("launchd", "not-rechecked", "No launchd jobs selected for this check", "explicit configuration", now))
+    for label in labels:
         if sys.platform != "darwin":
             rows.append(result("launchd-"+label.rsplit(".",1)[-1], "not-rechecked", "launchd is only available on the Mac", "launchctl", now))
             continue
@@ -170,6 +189,10 @@ def collect(config, now=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--index", type=Path, default=Path(__file__).resolve().parent.parent/"references/evidence-index.json")
+    parser.add_argument("--index", type=Path, required=True, help="Explicit owner-authorized evidence configuration outside the package")
     args = parser.parse_args()
-    print(json.dumps(collect(read_json(args.index)), indent=2))
+    try:
+        print(json.dumps(collect(read_json(args.index)), indent=2))
+    except (OSError, ValueError, TypeError, KeyError) as exc:
+        print(str(exc), file=sys.stderr)
+        raise SystemExit(2)

@@ -17,7 +17,7 @@ import sys
 import tempfile
 import shutil
 import html as html_module
-from brand_runtime import apply_profile
+from brand_runtime import apply_profile, selected as brand_directory
 
 # Lucide paths, inlined so the brief works with no network. Stroke width 1.75 per brand.
 ICONS = {
@@ -118,7 +118,8 @@ const pw = await import(process.env.PW_MODULE);
 const chromium = (pw.chromium ?? pw.default?.chromium);
 if (!chromium) { console.error('Could not load chromium from ' + process.env.PW_MODULE); process.exit(2); }
 const [file, output] = process.argv.slice(2);
-const b = await chromium.launch(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {});
+const {default: browserPolicy} = await import(process.env.ESTATE_BROWSER_POLICY);
+const b = await chromium.launch(browserPolicy.launchOptions());
 const p = await b.newPage({ viewport: { width: 1400, height: 1000 } });
 p.setDefaultTimeout(5000);
 await p.route(/^https?:\/\//, route => route.abort());
@@ -223,7 +224,8 @@ def verify(path: pathlib.Path) -> int:
     entry = nm / "playwright" / "index.js"
     if not entry.exists():
         entry = nm / "playwright" / "index.mjs"
-    env = {**os.environ, "PW_MODULE": entry.resolve().as_uri()}
+    env = {**os.environ, "PW_MODULE": entry.resolve().as_uri(),
+           "ESTATE_BROWSER_POLICY": (brand_directory.parent / "scripts/browser_launch_policy.cjs").resolve().as_uri()}
     try:
         result = subprocess.run([node, str(script), str(path.resolve()), str(attempt)],
                                 capture_output=True, text=True, timeout=180, env=env)

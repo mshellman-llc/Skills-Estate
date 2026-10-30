@@ -7,6 +7,6 @@
 
 **Use it when.** For every styled or client-facing output. Requires inspected evidence from the prose review (with a prose-pass receipt for final narrative artifacts) and, for styled output, from brand-renderer plus the rendered result, not a claim that another skill was mentioned. Blocks release when a required runtime, receipt, source support, or rendered output is absent.
 
-**Related.** Calls [`prose-pass`](../prose-pass/README.md), [`sow-quality`](../sow-quality/README.md); Used by 20 skills.
+**Related.** Uses the bundled [`prose-pass`](../prose-pass/README.md) diagnostics. Contractual scope also requires the contract scope and obligation review mode in `statement-of-work`, which is not bundled here; existing receipts retain the `sow-quality` control identifier. Record the contract check as blocked when that workflow or its evidence is unavailable.
 
 **Full trigger logic and boundaries:** [SKILL.md](WORKFLOW.md) · tier `core`

@@ -1,4 +1,9 @@
+import fs from 'node:fs';
 import path from 'node:path';
+const policyURL = [new URL('../_runtime/brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url),
+  new URL('../../brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url)].find(url => fs.existsSync(url));
+if (!policyURL) throw new Error('Browser policy is missing. Rebuild with the declared brand runtime.');
+const {default: browserPolicy} = await import(policyURL.href);
 const pw = await import(process.env.PW_MODULE);
 const [url, output] = process.argv.slice(2);
 const report = { checks: {}, failures: [], widgets: {}, screenshots: [] };
@@ -9,7 +14,7 @@ function check(name, passed) {
 }
 try {
   browser = await (pw.chromium ?? pw.default.chromium).launch(
-    process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {});
+    browserPolicy.launchOptions());
   const page = await browser.newPage({viewport:{width:1100,height:1000}});
   page.setDefaultTimeout(5000);
   await page.route(/^https?:\/\//, route => {

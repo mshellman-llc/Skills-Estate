@@ -1,0 +1,29 @@
+{
+  "format": 1,
+  "versions": {
+    "0.2.0": {
+      "content_sha256": "eb7947f03544b6bf543354123f22894c3536b7f03f3ab2bfcc2955c5d8659cd8",
+      "note": "Externalize personal context and synthetic examples; preserve retired modes and current marketplace; enforce source-bound version updates and guarded browser checks."
+    },
+    "0.2.1": {
+      "content_sha256": "ca629c18c3bf3f511099f34562d838e514cb140e02824f1d2a801f13b4994cb6",
+      "note": "Complete portable context and synthetic fixtures; preserve retired entrypoints and required runtimes; repair package backlinks; bind verified source and release retry behavior."
+    },
+    "0.2.2": {
+      "content_sha256": "9f015d88eee44d038d36c6a0525dff50a9848b986739409f7be178c6f0349926",
+      "note": "Complete declared evidence and knowledge dependencies; keep separate delivery-stage calls readable without broken package links."
+    },
+    "0.2.3": {
+      "content_sha256": "30d864017427f582c98c478da3d618242f3a6c6bf2dd935cf9ecb00b7689ec51",
+      "note": "Make release inputs reproducible from Git checkout permissions; preserve portable skills and retired entrypoints."
+    },
+    "0.2.4": {
+      "content_sha256": "8c448317b94e94975e33958ccaa96e61fcc0f3a3a391264be5fc8e1ee4ccd9e2",
+      "note": "Keep Git checkout modes reproducible and invoke portable career helpers explicitly with Python."
+    },
+    "0.2.5": {
+      "content_sha256": "703dcbccb02d76d1de4fa631e05d30a97858dbc6ad0b995c9ebeae1321031b97",
+      "note": "Bind the independently reviewed Python command clarification to its current reader guide."
+    }
+  }
+}

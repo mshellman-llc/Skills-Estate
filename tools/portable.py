@@ -68,8 +68,10 @@ def source_files(directory):
             yield file
 
 
-def assemble(root, name, destination, dependencies):
+def assemble(root, name, destination, dependencies, *, entrypoint_name='SKILL.md'):
     root, destination = Path(root).resolve(), Path(destination)
+    if entrypoint_name not in {'SKILL.md', 'WORKFLOW.md'}:
+        raise ValueError('Unsupported package entrypoint filename')
     if destination.exists():
         raise ValueError(f"Refusing to replace an existing package: {destination}")
     if name in dependencies or len(dependencies) != len(set(dependencies)):
@@ -101,7 +103,7 @@ def assemble(root, name, destination, dependencies):
                     # discoverable SKILL.md at the package's top level.
                     mapping[file] = prefix / "WORKFLOW.md"
                 continue
-            mapping[file] = prefix / relative
+            mapping[file] = prefix / (entrypoint_name if skill == name and relative == Path('SKILL.md') else relative)
     shared = root / "skills" / "_shared"
     if shared.exists():
         pending = []

@@ -153,7 +153,6 @@ def select_store(manifest: Dict, available: Iterable[str]) -> Dict[str, object]:
 # so it runs without a Drive account, against a fixture tree in tests.
 # ---------------------------------------------------------------------------
 
-DEFAULT_SYNCED_DRIVE_BASE = "~/Library/CloudStorage"
 HUB_FOLDER_NAME = "AI Knowledge Hub"
 
 
@@ -186,12 +185,14 @@ def _readable_dir(path) -> bool:
 def synced_drive_mounts(base=None, email=None) -> List[pathlib.Path]:
     """Return Google Drive mount roots present on this host.
 
-    `base` defaults to the macOS CloudStorage location and is a parameter so a
-    test can point at a fixture tree. Each result is a directory named
+    `base` is a caller-selected directory and is required. This function does
+    not search a home directory or select an account automatically. Each result is a directory named
     `GoogleDrive-<account>`. With `email`, only that account is returned. More
     than one account is returned as more than one mount; this never guesses.
     """
-    root = pathlib.Path(base or DEFAULT_SYNCED_DRIVE_BASE).expanduser()
+    if base is None or not str(base).strip():
+        raise MissingIdentity("synced Drive discovery requires an explicit base directory")
+    root = pathlib.Path(base).expanduser().resolve()
     if not root.is_dir():
         return []
     mounts = []
@@ -233,9 +234,9 @@ def find_synced_hub_roots(client=None, base=None, email=None) -> List[Dict[str, 
     Returns one dict per candidate: `root` (absolute path to the hub folder),
     `area` (`my-drive` or `shared-drive`), `account` (the mount name), `client`
     (the client folder name under `Clients`), `readable` (the mount answered a
-    list and a first-byte read), and `writableByDefault` (True for My Drive;
-    False for a Shared drive, which an organization commonly controls read only,
-    and which a caller holding a write grant can override).
+    list and a first-byte read), and `writableByDefault` (always False; discovery does not establish write
+    authority). The caller must verify task authorization and destination access
+    before using the guarded write API, regardless of the mount area.
 
     A hub may sit directly under its client folder or one level down under an
     opportunity or engagement folder; both are found. With `client`, the search
@@ -272,7 +273,7 @@ def find_synced_hub_roots(client=None, base=None, email=None) -> List[Dict[str, 
                         "account": mount.name,
                         "client": client_folder.name,
                         "readable": _readable_dir(hub_path),
-                        "writableByDefault": entry["area"] == "my-drive",
+                        "writableByDefault": False,
                     })
     return matches
 

@@ -11,11 +11,14 @@ Usage:
     python slop_scan.py SOW.docx
     python slop_scan.py SOW.docx --verify   # terse pass/fail summary
 
-Requires `extract-text` (from the docx skill environment) on PATH.
+Uses the Python standard library for DOCX text extraction. --text prints the
+complete extracted text for review; drawing/embedded-object content still needs
+rendered inspection.
 """
 import sys
 import re
-import subprocess
+import zipfile
+import xml.etree.ElementTree as ET
 from collections import Counter
 
 # Distinctive FULL-CLAUSE phrases that only the owning section should contain.
@@ -64,18 +67,70 @@ RULE_OF_THREE = re.compile(
 
 
 def get_text(path):
+    """Read Word text without invoking an external executable.
+
+    Tables belong in the complete text and figure scan. The prose-only view
+    excludes table paragraphs but retains literal pipe-prefixed prose. Word
+    text runs are joined before counting a phrase split across formatting.
+    """
+    ns = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+    full, prose = [], []
+
+    def walk(node, in_table=False):
+        in_table = in_table or node.tag == ns + "tbl"
+        if node.tag == ns + "p":
+            pieces = []
+            for part in node.iter():
+                if part.tag == ns + "t":
+                    pieces.append(part.text or "")
+                elif part.tag == ns + "tab":
+                    pieces.append("\t")
+                elif part.tag in (ns + "br", ns + "cr"):
+                    pieces.append("\n")
+                elif part.tag == ns + "noBreakHyphen":
+                    pieces.append("\u2011")
+                elif part.tag == ns + "softHyphen":
+                    pieces.append("\u00ad")
+                elif part.tag == ns + "sym":
+                    # Legacy symbol fonts use font-specific/private mappings.
+                    # Never silently erase them or guess a contractual symbol.
+                    font = part.get(ns + "font", "").casefold()
+                    raw = part.get(ns + "char", "")
+                    text_fonts = {"arial", "times new roman", "calibri", "aptos",
+                                  "cambria", "courier new", "helvetica"}
+                    try:
+                        code = int(raw, 16)
+                        supported = font in text_fonts and 0x20 <= code < 0xD800
+                        supported &= not 0x7F <= code <= 0x9F
+                        if not supported:
+                            raise ValueError()
+                        pieces.append(chr(code))
+                    except ValueError:
+                        raise ValueError(f"unmappable Word symbol font={font!r} char={raw!r}; inspect the rendered document")
+            text = "".join(pieces)
+            if text.strip():
+                full.append(text)
+                if not in_table:
+                    prose.append(text)
+            return
+        for child in node:
+            walk(child, in_table)
+
     try:
-        out = subprocess.run(
-            ["extract-text", path], capture_output=True, text=True, check=True
-        ).stdout
-    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        with zipfile.ZipFile(path) as archive:
+            names = archive.namelist()
+            if "word/document.xml" not in names:
+                raise ValueError("DOCX has no word/document.xml")
+            parts = ["word/document.xml"] + sorted(
+                n for n in names if re.fullmatch(
+                    r"word/(?:header\d+|footer\d+|footnotes|endnotes)\.xml", n))
+            for name in parts:
+                walk(ET.fromstring(archive.read(name)))
+    except (OSError, ValueError, zipfile.BadZipFile, ET.ParseError) as e:
         sys.exit(f"Could not extract text from {path}: {e}")
-    # drop table rows (lines starting with |) and blank lines for prose scan
-    prose = "\n".join(
-        ln for ln in out.splitlines()
-        if not ln.lstrip().startswith("|") and ln.strip()
-    )
-    return out, prose
+    if not full:
+        sys.exit(f"Could not extract text from {path}: no readable Word text; inspect the rendered document")
+    return "\n".join(full), "\n".join(prose)
 
 
 def sentences(prose):
@@ -85,6 +140,9 @@ def sentences(prose):
 
 def scan(path, verify=False):
     full, prose = get_text(path)
+    # Discretionary hyphens are layout hints. Keep them in --text/source, but
+    # do not let formatting conceal a repeated mechanic from the diagnostics.
+    full, prose = full.replace("\u00ad", ""), prose.replace("\u00ad", "")
     findings = {}
 
     # 1. repeated mechanics
@@ -188,6 +246,9 @@ if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     flags = [a for a in sys.argv[1:] if a.startswith("--")]
     if not args:
-        sys.exit("usage: python slop_scan.py SOW.docx [--verify]")
+        sys.exit("usage: python slop_scan.py SOW.docx [--verify|--text]")
+    if "--text" in flags:
+        print(get_text(args[0])[0])
+        sys.exit(0)
     findings = scan(args[0], verify="--verify" in flags)
     sys.exit(report(args[0], findings, "--verify" in flags))

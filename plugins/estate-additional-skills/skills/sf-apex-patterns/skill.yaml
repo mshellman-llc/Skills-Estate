@@ -1,7 +1,7 @@
 schema_version: 1
 name: sf-enterprise-patterns
 display_name: Salesforce Enterprise Patterns
-summary: Implement and enforce the Estate house Salesforce architecture on a project
+summary: Implement and check the reference Salesforce architecture when adopted by the project
   codebase - service layer shared by trigger, UI, and API entry points, a lean owned
   UnitOfWork for all DML, selector classes with USER_MODE for all SOQL, DTO returns
   from AuraEnabled controllers, and imperative Apex from LWC - with a tested PMD 7
@@ -19,13 +19,13 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- 'Implement and enforce the Estate house Salesforce architecture: service layer,
+- 'Implement and check the project-adopted reference Salesforce architecture: service layer,
   unit of work, selector classes, DTO returns from AuraEnabled controllers, imperative
-  Apex from LWC. Trigger when writing or reviewing Apex classes, triggers, or LWC
+  Apex from LWC. Trigger when this architecture is adopted or being evaluated and writing or reviewing Apex classes, triggers, or LWC
   JavaScript; when scaffolding a new Salesforce feature; on "new apex class", "add
   a trigger", "LWC component", "service layer", "unit of work", "selector", "DTO",
   "arch check", "architecture violation", "run the architecture checks", "set up
-  pre-commit checks", or bringing legacy Apex toward the house pattern. Also covers
+  pre-commit checks", or an authorized migration of legacy Apex toward the adopted pattern. Also covers
   the Trigger Actions Framework as the handler-layer variant. Do NOT trigger for
   delivery-standards install/audit (sf-delivery-standards), deploys and promotion
   (sf-deploy-engine), or non-Salesforce code.'

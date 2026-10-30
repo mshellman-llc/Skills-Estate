@@ -1,18 +1,29 @@
 ---
 name: cutover-closeout
-description: 'Run stage 06 Deploy and Closeout after an approved go or no-go: build the cutover runbook, track Go-Live Acceptance against the executed SOW, manage hypercare triage, prepare transition records, and capture outcomes and reusable assets. Use for cutover, go-live, runbooks, hypercare, deemed acceptance, closeout, support transition, or lessons learned. Route UAT to estate-uat-validation, ongoing status and changes to delivery-status, managed operations to their service owner, and contract authoring to sow.'
+description: 'Run stage 06 Deploy and Closeout after an approved go or no-go: build the cutover runbook, track Go-Live Acceptance against the executed SOW, manage hypercare triage, prepare transition records, and capture outcomes and reusable assets. Use for cutover, go-live, runbooks, hypercare, deemed acceptance, closeout, support transition, or lessons learned. Route UAT to acceptance-testing, ongoing status and changes to delivery-status, managed operations to their service owner, and contract authoring to sow.'
 ---
 
 
 # Estate cutover and closeout
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [`readout-brief.md`](_runtime/prose-pass/references/registers/readout-brief.md).**
+> [Writing Integrity review](_runtime/writing-integrity/references/detailed-review.md).**
 
 This skill brings an approved release into production and closes the engagement
 on the record. Humans approve acceptance, rollback, and closeout. The skill
 assembles the evidence, computes contractual dates, tracks the work, and drafts
 the records.
+
+## Project context required
+
+Use only the caller-confirmed engagement, source records, private output location,
+and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,
+and Pursuit Lead to that project's authorized owners; these labels do not impose
+an employer organization chart or signing authority. The executed agreement and
+accepted project plan determine gates, commercial rules, and support obligations.
+Keep account history, risk assessments, credentials, and client evidence outside
+portable skill sources. A cached account, attached Project, or available connector
+is not authorization to read, write, or publish.
 
 ## Source authority
 
@@ -23,7 +34,7 @@ and dates. The signed readiness pack owns the release decision. Timesheets own
 actual effort. Record a missing load-bearing fact as a gap with an owner, due
 date, and blocked gate.
 
-Run `evidence-core` before drafting. Use `prose-pass` for every prose artifact
+Run `evidence-core` before drafting. Use `writing-integrity` for every prose artifact
 and `brand-renderer` for a client-facing render. This skill records commercial
 impact but never creates rates, hours, fees, or a change price.
 
@@ -38,8 +49,10 @@ step must be observable. A rollback decision remains human-owned.
 
 ### Go-Live Acceptance
 
-Read the exact executed-SOW clause. Compute its deadline from the actual go-live
-date and the contract's business-day rules. Track delivery, client response,
+Read the exact executed-SOW acceptance mechanism. If it contains a deemed-acceptance
+clause compatible with the calculator, compute its deadline from the sourced trigger
+date and contract day-counting rules. Otherwise record the required acceptance actions
+and the manual review gap; do not invent or calculate a deadline. Track delivery, client response,
 exceptions, and deemed-acceptance status with
 `references/acceptance-tracker-spec.md`. Never infer acceptance from silence
 before the contractual clock expires.
@@ -73,7 +86,9 @@ owner approves promotion. Route a qualified follow-on need to
 Validate every runbook, acceptance tracker, and closeout record:
 
 ```bash
-python3 scripts/closeout_gate.py artifact.json
+python3 scripts/closeout_gate.py artifact.md --type runbook
+# Use --type acceptance only for a supported sourced deemed-acceptance clock;
+# use --type closeout for the closeout Markdown record.
 ```
 
 Exit 0 passes. Exit 1 reports content defects. Exit 2 reports invocation or

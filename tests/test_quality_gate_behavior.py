@@ -113,6 +113,40 @@ class QualityRecordTests(unittest.TestCase):
                              'citation': 'Synthetic memo', 'receipt': 'receipt.json'}]
         return record, artifact, receipt
 
+    def test_unknown_assertion_kinds_are_refused_before_release(self):
+        for kind in ['approval', 'financial-figure', 'approval_status ', 'unsupported']:
+            with self.subTest(kind=kind):
+                record = copy.deepcopy(self.record)
+                record['assertions'] = [{'kind': kind, 'supported_by': 'missing'}]
+                result, verdict = self.invoke(record)
+                self.assertEqual(result.returncode, 1)
+                self.assertFalse(verdict['released'])
+                self.assertIn('assertion-kind', {f['code'] for f in verdict['findings']})
+        for kind in ['narrative', 'other']:
+            record['assertions'] = [{'kind': kind}]
+            result, verdict = self.invoke(record)
+            self.assertTrue(verdict['released'], verdict)
+        record['assertions'] = [{'kind': 'approval_status', 'supported_by': 'missing'}]
+        result, verdict = self.invoke(record)
+        self.assertFalse(verdict['released'])
+        self.assertIn('fail-closed', {f['code'] for f in verdict['findings']})
+
+    def test_styled_capable_paths_need_explicit_review_applicability(self):
+        for suffix in ['.html', '.HTM', '.pptx', '.docx', '.xlsx', '.pdf']:
+            with self.subTest(suffix=suffix):
+                record = copy.deepcopy(self.record)
+                record['artifact']['path'] = 'artifact' + suffix
+                result, verdict = self.invoke(record)
+                self.assertFalse(verdict['released'])
+                self.assertIn('brand-applicability', {f['code'] for f in verdict['findings']})
+                record['artifact']['brand_render'] = True
+                result, verdict = self.invoke(record)
+                self.assertFalse(verdict['released'])
+                self.assertIn('unrouted-control', {f['code'] for f in verdict['findings']})
+                record['artifact']['brand_render'] = False
+                result, verdict = self.invoke(record)
+                self.assertTrue(verdict['released'], verdict)
+
     def test_final_receipt_is_validated_and_bound_to_current_artifact(self):
         record, artifact, receipt = self.final_narrative()
         result, verdict = self.invoke(record)

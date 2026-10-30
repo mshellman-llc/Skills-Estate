@@ -18,10 +18,10 @@ Each task links to its primary workflow. Packages are also listed here when one 
 
 ## Source workflows
 
+- [author-writing-style](../../skills/author-writing-style/SKILL.md)
 - [brand-renderer](../../skills/brand-renderer/SKILL.md)
 - [client-brand](../../skills/client-brand/SKILL.md)
 - [deck-builder](../../skills/deck-builder/SKILL.md)
-- [megan-writing-style](../../skills/megan-writing-style/SKILL.md)
 - [personal-writing-style-runtime](../../skills/personal-writing-style-runtime/SKILL.md)
 - [prose-pass](../../skills/prose-pass/SKILL.md)
 - [roadmap-artifacts](../../skills/roadmap-artifacts/SKILL.md)

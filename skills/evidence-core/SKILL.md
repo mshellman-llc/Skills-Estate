@@ -126,7 +126,7 @@ continue into full generation.
 
 Inside a pursuit workspace the ledger is authored as `evidence/evidence-ledger.jsonl`,
 an append-only event log under git, one JSON object per line. This is the
-authoring form agreed with the workspace standard on 2026-09-01. The schema
+authoring form supported by the workspace standard. The schema
 document above stays the form the gate reads; `scripts/ledger_events.py project`
 produces it, so nothing downstream changes, and if the trial fails the projection
 step is dropped and the document is authored directly.
@@ -176,7 +176,7 @@ python3 scripts/ledger_events_selftest.py
 ```
 
 The fixtures are synthetic and cover rich evidence, sparse evidence, an open
-load-bearing conflict, and superseded pricing.
+load-bearing conflict, and superseded pricing. Bundled names, dates, quotations, approvals and commercial scenarios are test data, not client records or actual approvals. Supply authorized task evidence for real work.
 
 ## Handoff to artifact skills
 

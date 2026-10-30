@@ -24,6 +24,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
 MD = SKILL / "SKILL.md"
+if not MD.exists():
+    MD = SKILL / "WORKFLOW.md"
 HOUSE = SKILL.parents[1]
 GOVERNANCE_TEMPLATE = SKILL / "templates" / "skill" / "governance.yaml"
 METADATA_TEMPLATE = SKILL / "templates" / "skill" / "skill.yaml"
@@ -69,10 +71,10 @@ expect("no em dashes", text.count("\u2014"), 0)
 expect("no section sign", text.count("\u00a7"), 0)
 
 size = len(text.encode())
-print(f"  SKILL.md is {size} bytes; review disclosure against the shared standard")
+print(f"  {MD.name} is {size} bytes; review disclosure against the shared standard")
 
 fm = re.match(r"^---\n(.*?)\n---\n", text, re.S)
-expect("has frontmatter", bool(fm), True)
+expect("has workflow frontmatter", bool(fm), True)
 if fm:
     keys = set(re.findall(r"^([A-Za-z_][\w-]*):", fm.group(1), re.M))
     expect("only house frontmatter keys",

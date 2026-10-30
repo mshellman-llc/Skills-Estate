@@ -4,7 +4,7 @@ The two governance logs are the memory of the engagement. The status report is a
 
 ## The stable ID convention
 
-Seeded by `estate-delivery-kickoff` at Mobilize. IDs are permanent for the life of the engagement.
+Seeded by `delivery-kickoff` at Mobilize. IDs are permanent for the life of the engagement.
 
 | Prefix | Log | Meaning |
 |--------|-----|---------|
@@ -16,7 +16,7 @@ Seeded by `estate-delivery-kickoff` at Mobilize. IDs are permanent for the life 
 
 - Three digits, zero-padded, sequential per prefix. The next risk after R-017 is R-018 even if R-005 was closed long ago.
 - Never renumber, never reuse, never delete. A closed entry stays in the log with status Closed. An ID that once meant something must always mean that thing, because status reports, transcripts, and emails reference IDs and those references must never dangle.
-- Decisions use DEC, not D, so decision references never collide with dependencies. This matches the log templates seeded by estate-delivery-kickoff; the templates are the authority for the convention.
+- Decisions use DEC, not D, so decision references never collide with dependencies. This matches the log templates seeded by delivery-kickoff; the templates are the authority for the convention.
 
 ## RAID entry format
 
@@ -30,7 +30,7 @@ ID | Type | Item | Owner | Status | Resolve-by | Gate blocked | Source | History
 - **Owner**: a role or named person. An unowned entry is not written; it goes back to the user as a question.
 - **Status**: Open, Mitigating, Closed (risks/issues); Open, Validated, Invalidated (assumptions); Open, Delivered (dependencies).
 - **Gate blocked**: which phase gate this blocks, or "none". This is what makes the log a planning tool instead of a worry list.
-- **Source**: where the entry came from. A transcript quote with speaker and date ("J. Ryan, 2026-08-05 requirements session: 'we cannot get you sandbox access until security review clears'"), an SOW clause, or a named person's statement. Every entry sourced, no exceptions.
+- **Source**: where the entry came from. A transcript quote with speaker and date (synthetic example: "Test coordinator, 2030-02-12 fixture meeting: 'the test environment is unavailable until the sample checklist is approved'"), an SOW clause, or a named person's statement. Every entry sourced, no exceptions.
 - **History**: dated status lines appended over time. Corrections are new history lines, never edits to the original item text.
 
 ## Decision entry format
@@ -47,7 +47,7 @@ ID | Decision | Date | Made by | Rationale | Source | Status
 
 - New information is a new entry or a new history line. Never rewrite an existing item to say something different from what it said when it was sourced.
 - Closing needs a sourced basis: a quote, a delivered artifact, a signed gate. "It has not come up lately" is not closure. No source, stays open.
-- When a meeting produces candidate entries, propose the batch to the user with sources before appending, when running interactively. On an unattended run, append with a clearly marked `proposed` status and say so in the status report.
+- When a meeting produces candidate entries, propose the batch to the user with sources before appending, when running interactively. On an unattended run, append with a clearly marked `proposed` status only if this destination and update are already authorized; otherwise return the proposed batch without writing. Say which occurred in the status report.
 
 ## What to extract from each transcript
 
@@ -56,7 +56,7 @@ Read the transcript verbatim and pull, with quotes and speakers:
 1. Decisions made in the room (someone with authority chose between options).
 2. New risks (a stated threat to scope, timeline, or budget).
 3. New issues (a risk that has materialized).
-4. New dependencies (Estate is waiting on someone, or someone on Estate).
+4. New dependencies (the delivery team is waiting on someone, or someone on the delivery team).
 5. Assumptions stated as fact ("we assume the data is clean" is A-0NN, not silence).
 6. Action items with owners and dates. Unowned actions evaporate; push for an owner before logging.
 7. Anything that smells like scope drift: route those to the scope-drift protocol, not just the logs.

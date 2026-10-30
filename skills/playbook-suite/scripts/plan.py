@@ -30,7 +30,7 @@ import spec_shapes
 SPEC_VERSION = spec_shapes.SPEC_VERSION
 
 # number -> (display name, builder). Format, scope, and per-shape requirement come
-# from spec_shapes so the artifact set has one authority (SPEC.md).
+# from the preserved spec_shapes compatibility model.
 ARTIFACT_META = {
     1:  ("README", "estate-playbook-suite"),
     2:  ("Overview", "estate-playbook-suite"),
@@ -42,6 +42,22 @@ ARTIFACT_META = {
     8:  ("Proposal", "estate-brand-renderer"),
     9:  ("Pre-Engagement Stage Gate", "template copy"),
     10: ("SOW", "estate-sow"),
+}
+
+
+# Current host invocation, additive to the legacy builder identifier. Artifact
+# names, formats, ordering and dependency semantics remain unchanged.
+INVOCATIONS = {
+    1: {"skill": "service-offering", "mode": "offering package planning"},
+    2: {"skill": "service-offering", "mode": "offering package planning"},
+    3: {"skill": "service-offering", "mode": "internal brief or external handout"},
+    4: {"skill": "service-offering", "mode": "offering package planning"},
+    5: {"skill": "service-offering", "mode": "offering package planning"},
+    6: {"skill": "deck-builder", "mode": "primary", "source_workflow": "project-scoping: rough estimate"},
+    7: {"skill": "deck-builder", "mode": "scope decision deck"},
+    8: {"skill": "deck-builder", "mode": "primary"},
+    9: {"skill": None, "mode": "template copy"},
+    10: {"skill": "statement-of-work", "mode": "primary"},
 }
 
 # Artifacts that must exist before another can be built. Keys depend on values.
@@ -160,6 +176,7 @@ def build_plan(manifest):
             "option": req["option"],
             "format": req["format"],
             "builder": req["builder"],
+            "invocation": dict(INVOCATIONS[req["number"]]),
             "filename": (entry or {}).get("filename"),
             "status": status,
             "gates": states,
@@ -207,7 +224,7 @@ def quote_findings(manifest):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("manifest")
-    ap.add_argument("--spec-version", default=SPEC_VERSION)
+    ap.add_argument("--spec-version", default=SPEC_VERSION, choices=[SPEC_VERSION])
     ap.add_argument("--format", choices=["json", "text"], default="json")
     args = ap.parse_args()
 
@@ -222,7 +239,7 @@ def main():
     declared = manifest.get("spec_version")
     if declared != args.spec_version:
         findings.append(f"manifest declares spec_version {declared!r}; planner is spec {args.spec_version}. "
-                        "Re-check the artifact set against SPEC.md before building.")
+                        "Re-check the artifact set against the caller-supplied approved specification before building.")
 
     todo = [s for s in steps if s["action"] != "complete"]
     ready = [s for s in todo if not s["blocked_by_artifacts"]]
@@ -231,6 +248,7 @@ def main():
         "playbook": manifest.get("code"),
         "playbook_name": manifest.get("name"),
         "spec_version": args.spec_version,
+        "spec_authority": spec_shapes.authority_status(),
         "stage": manifest.get("stage"),
         "totals": {
             "required": len(steps),
@@ -247,6 +265,7 @@ def main():
         print(json.dumps(plan, indent=2))
     else:
         print(f"{plan['playbook']} · {plan['playbook_name']} · stage {plan['stage']}")
+        print("  Specification authority unverified; compatibility checks do not establish release readiness.")
         print(f"  {plan['totals']['complete']}/{plan['totals']['required']} complete, "
               f"{plan['totals']['ready_now']} ready to build now")
         for f in findings:
@@ -255,7 +274,9 @@ def main():
             tag = f"{s['artifact']:02d}"
             opt = f" [{s['option']}]" if s["option"] else ""
             blocked = f" blocked by {s['blocked_by_artifacts']}" if s["blocked_by_artifacts"] else ""
-            print(f"  {tag} {s['name']}{opt}: {s['action']}{blocked}")
+            route = s["invocation"]
+            target = (route["skill"] + ": " if route["skill"] else "") + route["mode"]
+            print(f"  {tag} {s['name']}{opt}: {s['action']}{blocked}; use {target}")
     return 0
 
 

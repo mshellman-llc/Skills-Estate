@@ -5,6 +5,8 @@ description: Internal diagnostic and figure-preservation tools used by writing-i
 
 # Writing diagnostic tools
 
+Prose Pass is retired as a standalone skill. The `prose-pass` directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.
+
 Read [writing-integrity](../writing-integrity/SKILL.md) before using these tools.
 That workflow owns writing review. A confirmed personal profile supplies the
 author's voice. A visual brand profile cannot impose a former employer's voice

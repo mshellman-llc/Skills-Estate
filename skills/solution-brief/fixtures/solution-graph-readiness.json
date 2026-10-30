@@ -4,9 +4,9 @@
   "outputType": "readiness_gap_memo",
   "mode": "readiness",
   "engagement": {
-    "engagementId": "FIX-SPARSE",
-    "clientName": "Sparse Client",
-    "asOf": "2026-07-23T12:00:00Z"
+    "engagementId": "FIX-SYNTHETIC-REVIEW",
+    "clientName": "Synthetic Review Laboratory",
+    "asOf": "2025-02-14T12:00:00Z"
   },
   "sufficiency": {
     "status": "Insufficient",
@@ -16,16 +16,16 @@
     },
     "blockers": [
       {
-        "description": "Interface contracts and failure paths are missing",
-        "owner": "Client technical owner",
-        "closureCondition": "Approve interface contracts and unhappy paths",
+        "description": "This synthetic component moves a sample document through intake, review and export with its source identifier intact.",
+        "owner": "Synthetic Review Owner",
+        "closureCondition": "The synthetic owner supplies the missing fixture input and records its version.",
         "affectedRefs": [],
         "claimIds": [
           "CLM-GAP.001"
         ]
       }
     ],
-    "nextGate": "Close blockers and rerun sufficiency"
+    "nextGate": "Resolve the missing sample inputs before approving the fixture for rendering."
   },
   "nodes": {
     "systems": [],
@@ -48,6 +48,6 @@
     "CLM-GAP.001"
   ],
   "metadata": {
-    "fixturePurpose": "Terminal sparse-evidence path"
+    "fixturePurpose": "Newly constructed synthetic document-review laboratory; topology exercises graph checks without real engagement facts."
   }
 }

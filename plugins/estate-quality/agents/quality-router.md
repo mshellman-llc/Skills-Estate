@@ -17,7 +17,7 @@ description: Route the shared controls every other skill depends on. Knowledge H
 - [knowledge-hub](../skills/knowledge-hub/SKILL.md)
 - [evidence-core](../runtime/evidence-core/WORKFLOW.md)
 - [quality-gate](../skills/deliverable-review/SKILL.md)
-- [prose-pass](../runtime/prose-pass/WORKFLOW.md)
+- [writing-integrity](../runtime/writing-integrity/WORKFLOW.md)
 - [brand-renderer](../runtime/brand-renderer/WORKFLOW.md)
 - [org-preflight](../runtime/org-preflight/WORKFLOW.md)
 - [session-handoff](../skills/session-handoff/SKILL.md)

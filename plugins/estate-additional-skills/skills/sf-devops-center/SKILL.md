@@ -25,7 +25,7 @@ Manages the complete work item lifecycle in DevOps Center — from creation thro
 ## Scope
 
 - **In scope**: List work items, create new work items, commit changes to work item branches, update work item fields (subject, description, status), transition work item status (New → In Progress → Ready to Promote), create pull requests for work item branches
-- **Out of scope**: Promotion/deployment, conflict detection, pipeline or project management (separate skills)
+- **Separate mode**: Promotion and conflict recovery use [the complete promotion workflow](_runtime/dx-devops-promote/WORKFLOW.md), embedded in `sf-devops-center`. Select it before any mutation. Pipeline or project setup remains outside this workflow.
 
 ---
 
@@ -33,8 +33,9 @@ Manages the complete work item lifecycle in DevOps Center — from creation thro
 
 Gather or infer before proceeding:
 
-- **Operation type**: list, create, update, commit, or create-review
-- **For list**: project ID (required) — obtain via `sf devops project list --json` if not provided
+- **Target org**: the explicit org authorized for this operation; pass `--target-org <confirmed-alias>` to every org command. A machine default or cached alias is not confirmation.
+- **Operation type**: list, create, update, commit, or create-review; promotion selects the separate embedded mode
+- **For list**: project ID (required) — obtain via `sf devops project list --target-org <confirmed-alias> --json` if not provided
 - **For create**: project ID (required), subject (required), description (optional)
 - **For commit**: work item name or ID (required) to retrieve branch name, files to commit, commit message
 - **For update**: work item name (e.g., WI-000001) or work item ID (required), fields to update (subject, description, status)
@@ -71,20 +72,20 @@ shape. Promotion-specific capability checks remain owned by `dx-devops-promote`.
 
 2. **Verify org authentication** before any operation:
    ```bash
-   sf org display --json
+   sf org display --target-org <confirmed-alias> --json
    ```
-   - If no default org is set or authentication has expired, instruct the user to run:
+   - If authentication for the confirmed org is unavailable, report that access gap. Login is a separate authorized account action:
      ```bash
-     sf org login web --set-default --alias <alias>
+     sf org login web --alias <confirmed-alias>
      ```
    - Verify the authenticated org has DevOps Center enabled by attempting to list projects
-   - If the user wants to target a specific org, use `--target-org <alias>` on all subsequent commands
+   - Use the confirmed `--target-org` on every subsequent org command; never change the machine default to continue
 
 3. **List work items** — when the user wants to see existing work items:
    ```bash
-   sf devops work-item list --project-id <project-id> --json
+   sf devops work-item list --project-id <project-id> --target-org <confirmed-alias> --json
    ```
-   - `--project-id` is required — if the user provides a project name instead of ID, first run `sf devops project list --json` to resolve the name to an ID
+   - `--project-id` is required — if the user provides a project name instead of ID, first run `sf devops project list --target-org <confirmed-alias> --json` to resolve the name to an ID
    - Verify the command returns status 0 (success)
    - Parse the JSON output: the work items are in the `.result[]` array
    - Each work item has: `name` (e.g., WI-000001), `subject`, `branch`, `environment`, `status`, `description`
@@ -92,7 +93,7 @@ shape. Promotion-specific capability checks remain owned by `dx-devops-promote`.
    - If `.result[]` is an empty array, confirm "No work items found in project <project-name>."
    - If the user requested filtering by status (e.g., "show work items in Ready to Promote status"), run:
      ```bash
-     sf devops work-item list --project-id <id> --json | jq '.result[] | select(.status == "<requested-status>")'
+     sf devops work-item list --project-id <id> --target-org <confirmed-alias> --json | jq '.result[] | select(.status == "<requested-status>")'
      ```
      Then present the matching work items
 
@@ -102,9 +103,9 @@ shape. Promotion-specific capability checks remain owned by `dx-devops-promote`.
      --project-id <project-id> \
      --subject "<subject>" \
      --description "<description>" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
-   - `--project-id` is required (obtain from user or via `sf devops project list --json`)
+   - `--project-id` is required (obtain from user or via `sf devops project list --target-org <confirmed-alias> --json`)
    - `--subject` is required (user-facing title)
    - `--description` is optional (defaults to blank if omitted)
    - Capture the returned work item name (e.g., WI-000001), branch name, and environment from JSON output for future operations
@@ -131,12 +132,12 @@ shape. Promotion-specific capability checks remain owned by `dx-devops-promote`.
      --subject "<new-subject>" \
      --description "<new-description>" \
      --status "<In Progress|Ready to Promote>" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
    - Work item identifier is required: use `--work-item-name <WI-000001>` (preferred) or `--work-item-id <id>`
    - If the user provides a work item by subject instead of name, resolve it to a name first:
      ```bash
-     sf devops work-item list --project-id <id> --json | jq -r '.result[] | select(.subject == "<user-provided-subject>") | .name'
+     sf devops work-item list --project-id <id> --target-org <confirmed-alias> --json | jq -r '.result[] | select(.subject == "<user-provided-subject>") | .name'
      ```
      Then pass the returned name (e.g., WI-000001) to the update command
    - At least one of `--subject`, `--description`, or `--status` must be provided
@@ -150,12 +151,12 @@ shape. Promotion-specific capability checks remain owned by `dx-devops-promote`.
    ```bash
    sf devops review create \
      --work-item-name <WI-name> \
-     --json
+     --target-org <confirmed-alias> --json
    ```
    - Work item identifier is required: use `--work-item-name <WI-000001>` (preferred) or `--work-item-id <id>`
    - If the user provides a work item by subject instead of name, resolve it to a name first:
      ```bash
-     sf devops work-item list --project-id <id> --json | jq -r '.result[] | select(.subject == "<user-provided-subject>") | .name'
+     sf devops work-item list --project-id <id> --target-org <confirmed-alias> --json | jq -r '.result[] | select(.subject == "<user-provided-subject>") | .name'
      ```
      Then pass the returned name (e.g., WI-000001) to the review create command
    - Creates PR via DevOps Center API using VCS credentials stored in the org
@@ -193,7 +194,7 @@ shape. Promotion-specific capability checks remain owned by `dx-devops-promote`.
 | All sf devops commands must use `--json` flag | Structured output is required for headless consumption; human-readable output is unreliable for parsing |
 | Inspect plugin version and requested command capability before mutation | Installed does not mean supported; fail clearly on version skew |
 | Work item identifier required for commit, update, and create-review | Use `--work-item-name` (preferred) or `--work-item-id`; obtain from list or prior create |
-| Project ID required for list and create | All work items belong to a project; use `sf devops project list --json` if not provided |
+| Project ID required for list and create | All work items belong to a project; use `sf devops project list --target-org <confirmed-alias> --json` if not provided |
 | At least one update field required | Update command fails if no `--subject`, `--description`, or `--status` flag is provided |
 | Status values must be exact strings | "In Progress" and "Ready to Promote" (with spaces, proper capitalization); other values fail |
 | Idempotent create operations | Check for existing work item with same subject + project before creating duplicates |
@@ -207,14 +208,14 @@ shape. Promotion-specific capability checks remain owned by `dx-devops-promote`.
 
 | Issue | Resolution |
 |-------|------------|
-| **No default org set** | Run `sf org display --json` first; if it fails, instruct user to run `sf org login web --set-default` |
+| **No confirmed or accessible org** | Resolve the authorized target before org access; verify it with `sf org display --target-org <confirmed-alias> --json`. Report an access gap without changing defaults. |
 | **Plugin missing, obsolete, or missing requested command** | Stop before mutation, install or upgrade `@salesforce/plugin-devops-center`, and rerun capability inspection |
-| **User provides work item by subject, not name** | Resolve via: `sf devops work-item list --project-id <id> --json \| jq -r '.result[] \| select(.subject == "<subject>") \| .name'`; then pass the returned name to the update/create-review command |
-| **User provides project by name, not ID** | First run `sf devops project list --json` and filter `.result[]` by `.name` field to find the project ID, then use that ID in the list/create command |
+| **User provides work item by subject, not name** | Resolve via: `sf devops work-item list --project-id <id> --target-org <confirmed-alias> --json \| jq -r '.result[] \| select(.subject == "<subject>") \| .name'`; then pass the returned name to the update/create-review command |
+| **User provides project by name, not ID** | First run `sf devops project list --target-org <confirmed-alias> --json` and filter `.result[]` by `.name` field to find the project ID, then use that ID in the list/create command |
 | **Status update response missing status field** | The CLI doesn't always return the status field in the update response; re-run `sf devops work-item list` filtered to this work item and check `.result[0].status` to verify the transition persisted |
 | **Work item not found** | User provided invalid work item name/ID; run list command to show available work items |
 | **Invalid status value** | Only "In Progress" and "Ready to Promote" are valid (exact strings with spaces); check spelling and capitalization |
-| **Project not found** | User provided invalid project ID; run `sf devops project list --json` to show available projects |
+| **Project not found** | User provided invalid project ID; run `sf devops project list --target-org <confirmed-alias> --json` to show available projects |
 | **Duplicate work item subject** | Idempotent create check should catch this; return existing work item name instead of creating duplicate |
 | **Git push fails - no commits or branch not found** | Verify files are staged with `git status` and branch name retrieved from work item via list command |
 | **PR creation fails - VCS credentials** | VCS credentials not configured in DevOps Center UI; instruct user to configure in Setup → DevOps Center → VCS Credentials |
@@ -241,11 +242,11 @@ Outputs are derived from `sf devops work-item` CLI, `sf devops review create` CL
 Before reporting results to the user:
 
 ### Universal Checks
-- [ ] Was org authentication verified with `sf org display --json`?
+- [ ] Was org authentication verified with `sf org display --target-org <confirmed-alias> --json`?
 - [ ] Was the CLI command executed with `--json` flag?
 - [ ] Did the CLI return a successful exit code (0)?
 - [ ] Is the JSON output parseable and non-empty?
-- [ ] If multi-org scenario, was `--target-org` specified on all commands?
+- [ ] Was the explicitly authorized `--target-org` specified on every org command?
 
 ### List Operation Checks
 - [ ] Was `--project-id` provided?

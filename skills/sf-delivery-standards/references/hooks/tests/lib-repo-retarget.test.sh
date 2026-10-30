@@ -5,7 +5,7 @@
 # The bug these pin down: every `estate.*` read goes through `git config`, which
 # answers for the repo containing the hook process's cwd. A hook's cwd is the
 # SESSION's project directory, not necessarily the repo the command acts on. So a
-# `git commit` in the skills repo was blocked by 64-Org's Jira ref rules — in a
+# `git commit` in the skills repo was blocked by Example Project's Jira ref rules — in a
 # repo with no `estate.mode` at all, where every guard should have been inert.
 #
 # It has TWO directions, and only one of them is visible in normal use:
@@ -60,7 +60,7 @@ done
   && git config estate.mode native \
   && git config estate.trunk main \
   && git config estate.ticket.system jira \
-  && git config estate.ticket.project ORG64 )
+  && git config estate.ticket.project EXAMPLE )
 
 PASS=0; FAIL=0
 
