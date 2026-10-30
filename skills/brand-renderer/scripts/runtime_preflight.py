@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Resolve the brand assets, voice engine, and release validator this gate calls.
+"""Resolve brand assets, writing diagnostics and the release validator.
 
 brand-renderer is the entry point for every branded surface, so it is the skill
 that has to prove the runtime before anything is drafted. It resolves prose-pass
-for voice and quality-gate for the release decision. The direction is one way:
+for diagnostics under Writing Integrity and quality-gate for the release decision. The direction is one way:
 neither of those resolves brand-renderer, which is what keeps a bundle from
 carrying a second copy of the skill that carried it.
 """
@@ -35,8 +35,8 @@ def resolve() -> dict:
         ROOT / "_runtime" / "prose-pass",
         ROOT.parent / "prose-pass",
         ROOT.parent / "_runtime" / "prose-pass",
-        Path("/mnt/skills/user/prose-pass"),
-        Path("/mnt/skills/organization/prose-pass"),
+        Path("/mnt/skills/user/writing-integrity/_runtime/prose-pass"),
+        Path("/mnt/skills/organization/writing-integrity/_runtime/prose-pass"),
     ]
     quality_root_candidates = [
         ROOT / "_runtime" / "quality-gate",

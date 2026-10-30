@@ -37,7 +37,7 @@ never a different document.
   `sales_to_delivery_handoff` in evidence-core's `reference/artifact-registry.json`.
 - **brand-renderer owns the rendered surface.** No inlined hex, no
   duplicated palette. Brand applies during the build.
-- **prose-pass owns the voice.** Run its checker on the rendered prose. No em
+- **Writing-integrity owns writing review.** Run its bundled diagnostics on the rendered prose. No em
   dashes, sentence-case headings, no AI-tell constructions.
 - **The money rule.** Contract figures come from the executed SOW and its quote
   (Q-number) only. Never from Slack, never from memory, never from the proposal
@@ -122,7 +122,7 @@ Specs for 11 and 12, including the readiness checklist items:
    HTML or portable Markdown brief. Confidence maps to presentation: Confirmed
    reads as fact, Inferred as inference with its basis, Unknown as a named open
    question, conflicts as flagged divergences with both values shown. Run
-   prose-pass on the rendered prose. Never hand-patch the render; fix the manifest
+   writing-integrity on the rendered prose. Never hand-patch the render; fix the manifest
    and re-render.
 6. **Transfer and land.** Moment 1: support the warm transfer (the SSL walks the
    package to the Program Lead and Solution Lead in a recorded session), then
@@ -172,7 +172,7 @@ with owners, sections 11 and 12, or the gate.
 ## Running unattended
 
 The warm transfer and the acceptance need humans. On a headless run: build the
-manifest, run the gate and prose-pass, and stop with the findings and the open
+manifest, run the gate and review with writing-integrity, and stop with the findings and the open
 gaps. Say plainly that the transfer session and acceptance are outstanding. Never
 record an acceptance nobody gave.
 

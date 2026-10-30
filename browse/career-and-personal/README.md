@@ -20,11 +20,11 @@ Each task links to its primary workflow. Packages are also listed here when one 
 ## Source workflows
 
 - [career-application](../../skills/career-application/SKILL.md)
-- [career-materials-and-outreach](../../skills/career-materials-and-outreach/SKILL.md)
+- [career-materials-and-outreach](../../skills/career-materials-and-outreach/SKILL.md) — embedded workflow; standalone skill retired, use `career-application`
 - [career-progression-and-offers](../../skills/career-progression-and-offers/SKILL.md)
 - [case-study-builder](../../skills/case-study-builder/SKILL.md)
 - [fortunes-weave](../../skills/fortunes-weave/SKILL.md)
-- [resume-numbers-and-keywords](../../skills/resume-numbers-and-keywords/SKILL.md)
+- [resume-numbers-and-keywords](../../skills/resume-numbers-and-keywords/SKILL.md) — embedded workflow; standalone skill retired, use `career-application`
 - [sticker-art-direction](../../skills/sticker-art-direction/SKILL.md)
 - [sticker-sheets](../../skills/sticker-sheets/SKILL.md)
 

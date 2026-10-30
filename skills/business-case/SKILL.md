@@ -204,8 +204,8 @@ Never ship a funding document to a client on an unattended run.
   evidence-core's `deal_desk` contract.
 - Does not research the prospect. That is `estate-call-prep`; this consumes
   its outputs as sources.
-- Does not own evidence rules, brand tokens, or voice. Those are
-  `estate-evidence-core`, `estate-brand-renderer`, and `prose-pass`.
+- Evidence rules belong to `estate-evidence-core`, brand tokens to
+  `estate-brand-renderer`, and writing review to `writing-integrity` using the confirmed author profile.
 
 ## Files
 

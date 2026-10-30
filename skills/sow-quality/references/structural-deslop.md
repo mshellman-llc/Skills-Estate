@@ -1,6 +1,11 @@
 # Structural de-slop
 
-These are the AI tells a keyword scan misses. They live in how the document is organized, not in its vocabulary. Word-level patterns (buzzwords, hollow transitions, parallel gerunds) belong to the `prose-pass` skill. This file owns the structural ones.
+Historical CPQ/T&M profile reference. Preserve these examples as examples. Apply
+their terms, section numbers and role names only when the selected agreement
+adopts that profile; the current contract and confirmed project policy control.
+Never convert a fixed commitment or billing model merely to match this reference.
+
+These are the AI tells a keyword scan misses. They live in how the document is organized, not in its vocabulary. Word-level patterns (buzzwords, hollow transitions, parallel gerunds) are checked by Writing Integrity’s internal diagnostic tools. This file owns the structural ones.
 
 ## Tell 1: Repetition-as-thoroughness
 

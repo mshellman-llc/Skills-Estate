@@ -44,6 +44,22 @@ ARTIFACT_META = {
     10: ("SOW", "estate-sow"),
 }
 
+
+# Current host invocation, additive to the legacy builder identifier. Artifact
+# names, formats, ordering and dependency semantics remain unchanged.
+INVOCATIONS = {
+    1: {"skill": "service-offering", "mode": "offering package planning"},
+    2: {"skill": "service-offering", "mode": "offering package planning"},
+    3: {"skill": "service-offering", "mode": "internal brief or external handout"},
+    4: {"skill": "service-offering", "mode": "offering package planning"},
+    5: {"skill": "service-offering", "mode": "offering package planning"},
+    6: {"skill": "deck-builder", "mode": "primary", "source_workflow": "project-scoping: rough estimate"},
+    7: {"skill": "deck-builder", "mode": "scope decision deck"},
+    8: {"skill": "deck-builder", "mode": "primary"},
+    9: {"skill": None, "mode": "template copy"},
+    10: {"skill": "statement-of-work", "mode": "primary"},
+}
+
 # Artifacts that must exist before another can be built. Keys depend on values.
 DEPENDS_ON = {
     2: [],
@@ -160,6 +176,7 @@ def build_plan(manifest):
             "option": req["option"],
             "format": req["format"],
             "builder": req["builder"],
+            "invocation": dict(INVOCATIONS[req["number"]]),
             "filename": (entry or {}).get("filename"),
             "status": status,
             "gates": states,
@@ -255,7 +272,9 @@ def main():
             tag = f"{s['artifact']:02d}"
             opt = f" [{s['option']}]" if s["option"] else ""
             blocked = f" blocked by {s['blocked_by_artifacts']}" if s["blocked_by_artifacts"] else ""
-            print(f"  {tag} {s['name']}{opt}: {s['action']}{blocked}")
+            route = s["invocation"]
+            target = (route["skill"] + ": " if route["skill"] else "") + route["mode"]
+            print(f"  {tag} {s['name']}{opt}: {s['action']}{blocked}; use {target}")
     return 0
 
 

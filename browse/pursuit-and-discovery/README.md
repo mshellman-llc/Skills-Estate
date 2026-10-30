@@ -19,11 +19,11 @@ Each task links to its primary workflow. Packages are also listed here when one 
 ## Source workflows
 
 - [call-prep](../../skills/call-prep/SKILL.md)
-- [discovery-brief](../../skills/discovery-brief/SKILL.md)
+- [discovery-brief](../../skills/discovery-brief/SKILL.md) — embedded workflow; standalone skill retired, use `discovery`
 - [discovery-synthesis](../../skills/discovery-synthesis/SKILL.md)
 - [jtbd-framing](../../skills/jtbd-framing/SKILL.md)
 - [playbook-fit-router](../../skills/playbook-fit-router/SKILL.md)
-- [sales-journey-critique](../../skills/sales-journey-critique/SKILL.md)
+- [sales-journey-critique](../../skills/sales-journey-critique/SKILL.md) — embedded workflow; standalone skill retired, use `sales-process-mapping`
 - [sales-process-mapping](../../skills/sales-process-mapping/SKILL.md)
 
 ## Share this group

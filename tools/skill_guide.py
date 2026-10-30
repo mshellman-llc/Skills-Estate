@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+from catalog import excluded_sources
 
 PERSONAL = re.compile(r"\bMegan\b|meganshellman|mshellman|BeastMode|JobHunt|GoGuardian|NeuraFlash|/Volumes/(?:BeastMode|Stickers|Meridian)", re.I)
 PERSONAL_SKILLS = set('beastmode-capture beastmode-context beastmode-health beastmode-reconcile brain-work-item career-application career-materials-and-outreach career-progression-and-offers case-study-builder fortunes-weave github-repository-work independent-product megan-writing-style resume-numbers-and-keywords sticker-sheets'.split())
@@ -39,7 +40,8 @@ def scan(root, folder):
     return findings, count
 
 def load(root):
-    return json.loads((root / 'config/skill-guide.json').read_text())['skills']
+    return {name: guide for name, guide in json.loads((root / 'config/skill-guide.json').read_text())['skills'].items()
+            if name not in excluded_sources(root)}
 
 def assessment(root, name, guide, resources):
     own, count = scan(root, root / 'skills' / name)

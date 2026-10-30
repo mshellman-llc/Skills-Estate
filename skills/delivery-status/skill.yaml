@@ -27,8 +27,7 @@ triggers:
   to update the RAID log, or says "the client wants a status" or "did we agree to
   that in scope?". Trigger on status report, RAID log, decision log, scope drift,
   scope creep, change order candidate, burn report, or a meeting transcript paired
-  with a delivery engagement. Do NOT use for authoring change orders or SOWs (sow-quality,
-  sow), kickoff or charter (estate-delivery-kickoff), UAT tracking (estate-uat-validation),
+  with a delivery engagement. Do NOT use for authoring change orders or SOWs (statement-of-work), kickoff or charter (estate-delivery-kickoff), UAT tracking (estate-uat-validation),
   pricing (the Estate Pricing System), or sales pursuits (call-prep).'
 exclusions: []
 inputs:

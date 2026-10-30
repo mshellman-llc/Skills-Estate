@@ -40,7 +40,8 @@ jobs:
           python3 artifacts/skills-map/build.py --base "$map_baseline"
           python3 tools/browse.py --check
       - run: python3 tools/estate.py validate
-      - run: python3 -m unittest discover -s tests -v
+      - name: Run tests including browser, loopback and generated-map checks
+        run: python3 tools/run_tests.py --all-integrations --report .local/test-results.json
       - run: python3 tools/estate.py build
       - run: python3 tools/estate.py bundle
       - run: python3 tools/browse.py --bundle

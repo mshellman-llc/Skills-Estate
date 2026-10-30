@@ -199,7 +199,8 @@
       "pack": "core",
       "modes": {
         "review a sales journey or demo": "sales-journey-critique"
-      }
+      },
+      "description": "Map a sales process from supplied evidence, or review a sales journey, discovery demo or proposed workflow. Select mapping for the process and record authority; select critique for current versus proposed behavior, click paths, measures and actionable corrections."
     },
     "sales-to-delivery-handoff": {
       "source": "s2d-handoff",

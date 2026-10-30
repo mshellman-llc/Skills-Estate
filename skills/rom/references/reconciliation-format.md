@@ -4,6 +4,10 @@ Verification is by computation, and the computation is printed. A tie-out that h
 silently did not happen. This file defines the figures block the gate consumes and the
 reconciliation block it prints.
 
+This gate applies to quote-anchored figures. For local or effort-only estimates,
+use the primary project-scoping calculator and its incomplete-estimate contract.
+Do not invent quote fields, rates or commercial approval to satisfy this schema.
+
 ## The figures block
 
 One JSON object, either in a standalone `.json` file or inside the first fenced ```json
@@ -19,6 +23,8 @@ rendered markup.
   "quote_total_hours": 1200,
   "blended_rate": 250.0,
   "quote_total_fee": 300000.0,
+  "fee_source": "Fictional quote Q-000043 revision 1",
+  "fixed_fee_basis": "Independently agreed milestone fee",
   "range_low": 270000.0,
   "range_high": 345000.0,
   "phases": [
@@ -45,14 +51,18 @@ Field rules:
   names, and imposes no phase count or sequence.
 - `work_packages` is optional; when absent the tie is two-way and the gate says so. When the
   quote carries work packages, include them; omitting them to dodge a mismatch is smoothing.
-- All hours and money are numbers, not strings.
+- All hours and money must be finite, nonnegative JSON numbers, not strings or booleans.
+- Fixed fees require nonempty `fee_source` and `fixed_fee_basis`, naming the actual authoritative commercial record and agreed basis. Their presence does not itself verify commercial authority.
 
 ## The gate's checks
 
 1. **Three-way tie**: sum(phase hours) = sum(role hours) = sum(work-package hours) =
    `quote_total_hours`, exact to 0.01 hours.
-2. **Fee reconciliation**: `quote_total_hours` times `blended_rate` matches
-   `quote_total_fee` within 0.5 percent (rounding room, nothing more).
+2. **Fee reconciliation**: for T&M, `quote_total_hours` times `blended_rate` matches
+   `quote_total_fee` within the retained 0.5 percent arithmetic tolerance. This
+   diagnostic tolerance does not authorize changing quoted amounts. A fixed fee
+   uses its separately sourced `fee_source` and `fixed_fee_basis`; hours times rate
+   may differ and cannot replace that fee.
 3. **Range brackets the quote**: `range_low` <= `quote_total_fee` <= `range_high`, with
    `range_low` < `range_high` and both positive.
 4. **Model card**: exactly one card, and it matches the pricing model.
@@ -69,7 +79,7 @@ ROM figure gate: Q-000043 (fixed_fee), as of 2026-08-11
   work package hours total: 1200.00
   quote total hours:        1200.00
   three-way tie: PASS
-  fee check: 1200.00 h x 250.00 = 300000.00 vs quote fee 300000.00 (delta 0.00, 0.000%): PASS
+  fixed fee: check authoritative fee_source and stated fixed_fee_basis
   range: 270000.00 to 345000.00 brackets quote total 300000.00: PASS
   model card: fixed_price matches fixed_fee: PASS
 RESULT: PASS (0 failures)

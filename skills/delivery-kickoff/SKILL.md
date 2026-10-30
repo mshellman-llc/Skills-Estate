@@ -92,7 +92,7 @@ decision. The decision log records only decisions humans actually made, with the
 Read `references/kickoff-deck-contracts.md` for what every slide must carry, per deck and per
 variant. This skill owns the content contract only. Mechanics are delegated: deck-builder runs
 the stage-gated build, pptx owns the file format, estate-brand-renderer owns brand tokens and
-the visual, parity, and brand gates, prose-pass gates the copy. Do not inline hex values or
+the visual, parity, and brand gates, writing-integrity reviews the copy. Do not inline hex values or
 restate any of their rules.
 
 Two decks, in order. The **internal kickoff** runs first, always: it is where the Program Lead
@@ -137,7 +137,7 @@ files; never just say they were written.
   insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence
   is a hard fail.
 - **estate-brand-renderer** owns brand for every rendered artifact, applied during the build.
-- **prose-pass** owns voice; run its checker on every prose deliverable, including the charter.
+- **writing-integrity** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.
 - **The quote and SOW own every number.** This skill renders figures and authors none.
 
 Where a governor is not installed on the current surface, state the check it would have run, do

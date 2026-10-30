@@ -21,7 +21,7 @@ triggers:
   Use when building a multi-slide proposal, pitch, or client deck and you want discipline
   (lock the argument before designing) plus a self-improving final QA pass. Defers
   all brand, color, and visual decisions to brand-renderer and the final
-  copy pass to prose-pass.
+  writing review to writing-integrity.
 exclusions: []
 inputs:
 - name: task_context

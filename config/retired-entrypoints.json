@@ -1,0 +1,103 @@
+{
+  "format": 1,
+  "entries": {
+    "prose-pass": {
+      "successor": "writing-integrity",
+      "retained_runtime": "prose-pass",
+      "reason": "Standalone writing selection is retired. Writing Integrity retains the diagnostic scripts, format registers, figure checks and receipt compatibility as an internal runtime."
+    },
+    "skill-creation-walkthrough": {
+      "successor": "skill-estate-sync",
+      "retained_runtime": "skill-creation-walkthrough",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "cross-platform-skill-release": {
+      "successor": "skill-estate-sync",
+      "retained_runtime": "cross-platform-skill-release",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "sales-journey-critique": {
+      "successor": "sales-process-mapping",
+      "retained_runtime": "sales-journey-critique",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "dx-devops-promote": {
+      "successor": "sf-devops-center",
+      "retained_runtime": "dx-devops-promote",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "career-materials-and-outreach": {
+      "successor": "career-application",
+      "retained_runtime": "career-materials-and-outreach",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "resume-numbers-and-keywords": {
+      "successor": "career-application",
+      "retained_runtime": "resume-numbers-and-keywords",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "spec-writer": {
+      "successor": "feature-spec",
+      "retained_runtime": "spec-writer",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "architecture-doc": {
+      "successor": "system-design",
+      "retained_runtime": "architecture-doc",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "discovery-brief": {
+      "successor": "discovery",
+      "retained_runtime": "discovery-brief",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "rom": {
+      "successor": "project-scoping",
+      "retained_runtime": "rom",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "sow-quality": {
+      "successor": "statement-of-work",
+      "retained_runtime": "sow-quality",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "ddoc": {
+      "successor": "deck-builder",
+      "retained_runtime": "ddoc",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "interactive-proposal": {
+      "successor": "scope-options",
+      "retained_runtime": "interactive-proposal",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "playbook-onepager": {
+      "successor": "service-offering",
+      "retained_runtime": "playbook-onepager",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    },
+    "playbook-suite": {
+      "successor": "service-offering",
+      "retained_runtime": "playbook-suite",
+      "allowed_as_mode": true,
+      "reason": "Standalone entrypoint retired by user; preserve the existing embedded workflow. Replacement acceptance is separate."
+    }
+  },
+  "excluded_sources": [
+    "build-interactive-explorer"
+  ]
+}

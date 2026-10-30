@@ -135,7 +135,7 @@ skill) and rerun; this skill never edits a figure to make the tie-out pass.
 **8. Render and gate the rendering.** Hand to estate-brand-renderer for
 the HTML (or docx backup for email and print). Margin is the visually
 dominant figure, rendered against the floor; all economics in monospace.
-Verify by rendering, then run prose-pass on the prose. Report counts per
+Verify by rendering, then apply writing-integrity to the prose. Report counts per
 gate, not adjectives, and write a one-line disposition per gate.
 
 **9. Land and close the loop.** Deliver the file, commit it to the deal's

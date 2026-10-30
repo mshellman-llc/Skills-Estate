@@ -10,7 +10,7 @@ import tempfile
 import zipfile
 
 import estate
-from catalog import entries as catalog_entries
+from catalog import entries as catalog_entries, retired_entries, excluded_sources
 from portable import assemble, runtime_closure
 
 BUNDLES = {f'estate-{name}' for name in
@@ -62,6 +62,8 @@ def config(root):
             raise ValueError('Duplicate router owner: ' + name)
         routers[name] = bundle
         for module in router_modules(root, item):
+            if module in retired_entries(root) and not retired_entries(root)[module].get('allowed_as_mode'):
+                raise ValueError('Router selects retired standalone skill: ' + module)
             if module not in estate.names(root):
                 raise ValueError('Router points to absent workflow: ' + module)
             runtime_closure(root, module)
@@ -99,7 +101,7 @@ def shared_hash(root, settings):
     records = [('bundle-inputs', estate.sha(json.dumps(inputs, sort_keys=True).encode()))]
     for directory in ('policies', 'tools', 'config'):
         for file in estate.files(root / directory):
-            if file == root / 'config/plugin-bundles.json':
+            if file in (root / 'config/plugin-bundles.json', root / 'config/release-history.json'):
                 continue
             records.append((str(file.relative_to(root)), estate.sha(file.read_bytes())))
     for name in estate.DEPENDENCY_INPUTS:
@@ -117,6 +119,8 @@ def required_modules(root, item, manifest):
         required.update(package['runtime_dependencies'])
     for module in list(required):
         required.update(runtime_closure(root, module))
+    if required & excluded_sources(root):
+        raise ValueError('Excluded source in plugin dependency closure')
     return sorted(required)
 
 
@@ -173,9 +177,21 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n')
 
 
-def build_plugins(root=estate.ROOT, selected=None, candidate=False):
+def build_plugins(root=estate.ROOT, selected=None, candidate=False, profile_name=None, review_only=False):
     root = Path(root)
     settings = config(root)
+    profile = None
+    if profile_name is not None:
+        from release_workflow import load_profile
+        profile = load_profile(root, profile_name, allow_blocked=review_only)
+        if review_only and profile['audience'] != 'workplace':
+            raise ValueError('Private review fixtures require a workplace profile')
+        settings = dict(settings, version=profile['version'], marketplace=profile['marketplace'], bundles={
+            profile['plugin']: {'entries': profile['entries'], 'internal': [],
+                                'description': profile['description'], 'opt_in': True}})
+        selected = [profile['plugin']]
+    if review_only and profile is None:
+        raise ValueError('Private review fixtures require an explicit profile')
     selected = sorted(set(selected or settings['bundles']))
     if set(selected) - set(settings['bundles']):
         raise ValueError('Unknown selected bundle')
@@ -185,7 +201,9 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
         raise ValueError('Release blocked: ' + ', '.join(x['subject'] for x in gaps))
     state = 'candidate-unreviewed' if gaps else 'reviewed'
     stage = Path(tempfile.mkdtemp(prefix='plugin-build-', dir=root / '.local'))
-    destination = root / 'dist/plugins'
+    destination = root / ('dist/profiles/' + profile_name if profile_name else 'dist/plugins')
+    if review_only:
+        destination = root / '.local/privacy-review' / profile_name
     outputs = {}
     try:
         for host in ('claude', 'codex'):
@@ -221,6 +239,9 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
                     target = package / ('agents/' + router + '.md' if host == 'claude' else 'skills/' + router + '/SKILL.md')
                     target.parent.mkdir(parents=True, exist_ok=True)
                     target.write_text(router_text(root, item, targets, host))
+                if profile is not None:
+                    from release_workflow import adapt_workplace_resources
+                    adapt_workplace_resources(root, profile, package, manifest)
                 description = item['description']
                 if gaps:
                     description = 'Unreviewed candidate for isolated testing. ' + description
@@ -228,6 +249,8 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
                             'name': name, 'version': settings['version'], 'description': description,
                             'author': {'name': 'Skills Estate'},
                             'repository': 'https://github.com/mshellman-llc/Skills-Estate'}
+                if profile is not None and profile['audience'] == 'workplace':
+                    portable.pop('repository')
                 write_json(package / 'plugin.json', portable)
                 write_json(package / '.claude-plugin/plugin.json', {k: v for k, v in portable.items() if k != '$schema'})
                 write_json(package / '.codex-plugin/plugin.json', {'name': name, 'version': settings['version'],
@@ -235,7 +258,15 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
                 receipt = {'status': state, 'host_adapter': host, 'source_sha256': manifest['source_sha256'],
                            'entries': item['entries'], 'required_modules': required_modules(root, item, manifest),
                            'opt_in': item['opt_in'], 'review_gaps': gaps}
+                if profile is not None and profile['audience'] == 'workplace':
+                    # Keep private release review details outside the distributable payload.
+                    receipt = {'status': state, 'host_adapter': host,
+                               'source_sha256': manifest['source_sha256'], 'entries': item['entries'],
+                               'required_modules': required_modules(root, item, manifest)}
                 write_json(package / 'estate-release.json', receipt)
+                if profile is not None:
+                    from release_workflow import verify_payload
+                    verify_payload(root, profile, package, review_only=review_only)
                 # Verify every generated router link against the actual candidate.
                 if item.get('router_source'):
                     for link in re.findall(r'\]\(([^)]+)\)', target.read_text()):
@@ -256,6 +287,7 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
             market = {'name': settings['marketplace'], 'plugins': marketplace}
             if host == 'claude':
                 market['owner'] = {'name': 'Skills Estate'}
+                market['description'] = profile['description'] if profile is not None else 'Private Skills Estate workflow candidates.'
             write_json(host_root / ('.claude-plugin/marketplace.json' if host == 'claude' else '.agents/plugins/marketplace.json'), market)
         if estate.source_hash(root) != manifest['source_sha256']:
             raise ValueError('Source changed during plugin build')
@@ -263,9 +295,14 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False):
                   'packages': outputs, 'review_gaps': gaps,
                   'states': {'built': True, 'source_reviewed': not gaps, 'host_verified': False,
                              'installed': False, 'published': False}}
+        if review_only:
+            result['privacy_review_only'] = True
+            result['ready_for_distribution'] = False
         write_json(stage / 'release.json', result)
-        destination.parent.mkdir(exist_ok=True)
-        previous = root / '.local/previous-plugin-build'
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        previous = root / ('.local/previous-plugin-build-' + profile_name if profile_name else '.local/previous-plugin-build')
+        if review_only:
+            previous = root / ('.local/previous-privacy-review-' + profile_name)
         if previous.exists():
             raise ValueError('Previous plugin build needs recovery before replacing it')
         if destination.exists():

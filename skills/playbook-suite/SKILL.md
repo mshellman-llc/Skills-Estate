@@ -45,7 +45,7 @@ The planner is deterministic and content-free. Read `phase-2-extension.md` befor
    `_shared/playbook-spec/schema/manifest.schema.json`. No manifest means the playbook
    predates the spec; write one from what is on disk before building anything.
 2. **Run the planner.** Report the totals and every finding. Do not narrate the run.
-3. **Take the next ready step.** The plan names the builder skill. Hand off to it with the artifact number, the option if any, and the Q-number.
+3. **Take the next ready step.** Use the plan’s `invocation.skill` and `invocation.mode`, with the artifact number, option and source quote. The `builder` field retains a historical identifier for existing executors; it is not the current installed skill name. Artifact 09 is a local template-copy operation, with no skill invocation.
 4. **Gate the result.** All three gates, every artifact, written disposition each. A FAIL is not shippable.
 5. **Update the manifest.** Status and gate results, immediately. A manifest that lags the folder makes the next plan wrong.
 6. **Re-run the planner** and continue until nothing is outstanding.
@@ -57,17 +57,17 @@ Do not build ahead of the plan. An artifact built before its dependency exists g
 | Artifact | Skill |
 |---|---|
 | 01 README | this skill, from the manifest |
-| 02 Overview | this skill thinks, `playbook-onepager` renders |
-| 03 One-pager | `playbook-onepager` |
-| 04 Talk Track and Objections | this skill thinks, `playbook-onepager` renders |
+| 02 Overview | `service-offering`, offering package planning mode; use the available document tool for the specified DOCX |
+| 03 One-pager | `service-offering`, internal brief or external handout mode |
+| 04 Talk Track and Objections | `service-offering`, offering package planning mode; use the available document tool for the specified DOCX |
 | 05 Qualifier | this skill, plus the `qualifier.json` twin |
-| 06 ROM deck | `estate-brand-renderer` |
-| 07 DDOC | `estate-ddoc` |
-| 08 Proposal | `estate-brand-renderer` |
+| 06 ROM deck | `project-scoping` rough estimate supplies the figures; `deck-builder` renders the deck |
+| 07 DDOC | `deck-builder`, scope decision deck mode |
+| 08 Proposal | `deck-builder` for the prescribed presentation format |
 | 09 Pre-Engagement Stage Gate | copy the template, adapt rows |
-| 10 SOW | `estate-sow` |
+| 10 SOW | `statement-of-work` |
 
-Gates on everything: `estate-brand-renderer` for parity, a human or model for visual, `prose-pass` for prose. Voice rewriting is `prose-pass`, applied during the build and not as a pass afterwards.
+Gates on everything: `brand-renderer` for parity, a human or model for visual, `writing-integrity` for prose. Writing review is `writing-integrity`, applied during the build and not as a pass afterwards.
 
 ## Artifact 05 has a machine-readable twin
 

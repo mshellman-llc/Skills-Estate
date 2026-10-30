@@ -74,6 +74,14 @@ Edit the canonical brand policy/profile once. Rebuild dependent packages so thei
 
 Runtime relationships belong in `config/runtime-dependencies.json`. A router must carry the scripts and references needed by its declared dependencies when used alone. Test the assembled package away from sibling source directories to reveal accidental source-tree dependencies.
 
+## Prepare personal or workplace releases
+
+Use `python3 tools/estate.py release plan --profile personal` from the selected checkout to inspect its explicit selection. The `telix` profile is separate and refuses preparation until its complete dependency payload has a current privacy review. Neither profile enables account synchronization.
+
+Author in `skills/`, update catalog and runtime declarations when needed, then run the relevant behavioral checks and the estate test runner. Run `release bump --profile personal --part patch --note 'Describe the change'` before preparing changed source. Run `sync`, read `build/manifest.json` for the source hash, and run `release prepare --profile personal --expected-source HASH`. Finish with `release verify --profile personal`. The bridge also accepts these commands after `release`.
+
+The workflow reuses the plugin builder, records version notes in `config/release-history.json`, and preserves exact candidates and receipts under `.local/prepared-releases/`. It rejects changed source reused at the same prepared version. Preparation produces candidates; review gaps and host acceptance remain explicit. It never installs, uploads or publishes. Retired standalone names stay excluded while their approved embedded workflows remain available. Read [the release workflow guide](references/release-workflow.md) for the full sequence and recovery procedure.
+
 ## Account uploads and other surfaces
 
 Local installation does not upload to Claude's account, a Codex account, Cowork, ChatGPT, or an API deployment. Check the destination's current supported format and available authorized upload method. Do not assume every surface accepts the same ZIP or provides a skill registry.

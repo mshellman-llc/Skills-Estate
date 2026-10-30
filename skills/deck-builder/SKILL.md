@@ -83,7 +83,7 @@ plan is complete when every claim has an explanation and evidence.
 
 ### Stage 4: Copy
 
-The copy record has the actual headline and body text for each slide. Name the action or behavior the slide explains. Remove a subtitle that repeats the headline. Keep headlines short, break body text at meaning units, and use consistent terms. **Run `prose-pass` on this** before it goes
+The copy record has the actual headline and body text for each slide. Name the action or behavior the slide explains. Remove a subtitle that repeats the headline. Keep headlines short, break body text at meaning units, and use consistent terms. **Review this with `writing-integrity`** before it goes
 into the build. Diagram labels may name an actor, state, field or transition concisely. Review their meaning and consistency; do not expand them into prose merely to satisfy sentence length. This does not exempt labels from writing review.
 
 ### Stage 5: Design + build
@@ -109,7 +109,7 @@ copy of `polish-learnings.md` so the next deck's first build avoids it.
 2. Walk the checklist:
    - **Argument:** every slide supports the one message; no orphan slides; chapter/section labels match the structure.
    - **Explanation:** answer each storyboard question from the finished slide. Identify the actual element that supplies the answer. Check that arrows and branches have defined meanings. A populated field does not prove that a reader can understand the relationship.
-   - **Text:** headlines short; no awkward orphan line; key text bold enough; terms unified; ran through `prose-pass`.
+   - **Text:** headlines short; no awkward orphan line; key text bold enough; terms unified; reviewed with `writing-integrity`.
    - **Layout:** no clipping or label collisions. Preserve evidence when adjusting density. Empty space does not require an extra card; use the space the explanation needs.
    - **Icons/images:** visual center aligned to its background shape; assets not blurry, cropped, or too small.
    - **Thumbnail test:** inspect the argument's progression and visual hierarchy. Read detailed diagrams at delivery size; thumbnails cannot validate their labels.

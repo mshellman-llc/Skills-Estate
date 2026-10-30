@@ -9,6 +9,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from portable import assemble, runtime_closure
+from catalog import source_names
 
 BAD = 'It is worth noting that this robust ecosystem seamlessly empowers teams to leverage innovative solutions.'
 GOOD = 'The import failed because row 12 has no account ID.'
@@ -38,7 +39,7 @@ class UniversalWritingTests(unittest.TestCase):
         return result
 
     def test_all_entries_require_both_writing_runtimes_and_policy(self):
-        entries = sorted((ROOT / 'skills').glob('*/SKILL.md'))
+        entries = [ROOT / 'skills' / name / 'SKILL.md' for name in sorted(source_names(ROOT))]
         self.assertTrue(entries, "No skill entrypoints discovered")
         for entry in entries:
             name = entry.parent.name

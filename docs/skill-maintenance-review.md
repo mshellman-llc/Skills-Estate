@@ -33,3 +33,13 @@ The cleanup compares unchanged workflows with the previous GitHub revision after
 Run source validation, the complete test suite, candidate assembly, ZIP extraction checks and the map's browser checks. Keep pending module acceptance records pending. Candidate package creation does not override the existing installation gates or establish execution in Claude, Cowork or a private account.
 
 Earlier task names remain source module paths and deep links. Git history preserves their prior versions. Existing installed copies require the managed release process and a restore receipt; never delete a divergent installation merely to match the catalog.
+
+Independent review found missing guidance for updating an existing skill, diagnosing selection failures and delivering the completed workflow. That guidance is restored. Acceptance depends on relevant behavior and observed outputs; the former numerical quotas and mandatory first reference remain deliberately removed. The bundled authoring self-test recognizes its runtime `WORKFLOW.md` filename. Packaging tests verify that the mode does not introduce another discoverable `SKILL.md`.
+
+## Prose Pass retirement correction
+
+Prose Pass is retired as a standalone writing skill. Writing Integrity owns writing review and author-profile use. The retained `prose-pass` source path supplies document extraction, construction checks, format registers, numeric comparisons and hash-bound review receipts. Those executable capabilities remain inside Writing Integrity and other packages that need them. A scanner result does not prove editorial quality.
+
+The earlier consolidation left contradictory selection instructions in the quality router, producer workflows and source metadata. Those active routes now select Writing Integrity. The retirement registry prevents reintroducing the old name through a public entrypoint, an alias, a mode or router configuration. Generated source listings label the retained module explicitly. Script filenames, receipt control identifiers and historical records remain compatible; they do not represent a standalone installation.
+
+Local readback on 29 October 2026 found no standalone `prose-pass` installation in the Codex or Claude skill directories. Writing Integrity was still installed in both. New source corrections require reviewed packaging and promotion before they change those pinned installations; source repair alone does not update every host or account.

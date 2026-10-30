@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -92,6 +93,30 @@ class CatalogBuildTests(unittest.TestCase):
         release = package / '_runtime/cross-platform-skill-release'
         self.assertTrue((release / 'references/estate-release.md').is_file())
         self.assertTrue((mode / 'references/governed-intake.md').is_file())
+        checked = subprocess.run([sys.executable, str(mode / 'scripts/walkthrough_selftest.py')],
+                                 cwd=self.root, capture_output=True, text=True)
+        self.assertEqual(checked.returncode, 0, checked.stdout + checked.stderr)
+        self.assertIn('SELFTEST PASSED', checked.stdout)
+        for resource in ['brand-renderer/scripts/palette_selftest.py',
+                         'writing-integrity/scripts/review_selftest.py']:
+            checked = subprocess.run([sys.executable, str(package / '_runtime' / resource)],
+                                     cwd=self.root, capture_output=True, text=True)
+            self.assertEqual(checked.returncode, 0, checked.stdout + checked.stderr)
+        writing = self.root / 'writing-integrity'
+        assemble(ROOT, 'writing-integrity', writing, runtime_closure(ROOT, 'writing-integrity'))
+        writing_zip = self.root / 'writing-integrity.zip'
+        with zipfile.ZipFile(writing_zip, 'w') as archive:
+            for file in writing.rglob('*'):
+                if file.is_file():
+                    archive.write(file, str(Path('writing-integrity') / file.relative_to(writing)))
+        kit = self.root / 'writing-setup'
+        made_kit = subprocess.run([sys.executable,
+            str(package / '_runtime/writing-integrity/scripts/build_kit.py'),
+            '--package', str(writing_zip), '--output', str(kit),
+            '--owner', 'Example owner', '--profile', 'example'],
+            cwd=self.root, capture_output=True, text=True)
+        self.assertEqual(made_kit.returncode, 0, made_kit.stdout + made_kit.stderr)
+        self.assertTrue((kit / 'manifest.json').is_file())
         workflow = self.root / 'workflow.md'
         workflow.write_text('Read the supplied rows. Write a CSV retaining each row and its source line.\n')
         project = self.root / 'project'

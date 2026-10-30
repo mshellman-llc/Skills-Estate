@@ -42,4 +42,4 @@ If the engagement carried maturity-gap capability tags (CPQ and Billing amendmen
 
 ## Format and landing
 
-One markdown document plus the actuals table already in the closeout report. Every claim sourced (log entry, timesheet export, quote field, transcript). Run prose-pass on it; the harvest gets read by people who were not there, so it must survive without the delivery team in the room. Land it in the knowledge base, then link it from the engagement record's artifacts section, and say in the session close where it landed.
+One markdown document plus the actuals table already in the closeout report. Every claim sourced (log entry, timesheet export, quote field, transcript). Apply writing-integrity to it; the harvest gets read by people who were not there, so it must survive without the delivery team in the room. Land it in the knowledge base, then link it from the engagement record's artifacts section, and say in the session close where it landed.

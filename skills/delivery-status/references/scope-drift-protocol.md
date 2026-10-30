@@ -4,7 +4,7 @@ Scope is always an estimate; no project delivers exactly to the SOW. The job is 
 
 ## What this protocol produces
 
-Change-order **CANDIDATES**. Never change orders. A candidate is a routed proposal for a human decision; the decision (in scope, absorb deliberately, or raise a Change Order) belongs to the Program Lead and CSE, and the authoring belongs to the `sow-quality` Basis of Estimate framework plus humans. This skill supplies the evidence and stops.
+Change-order **CANDIDATES**. Never change orders. A candidate is a routed proposal for a human decision; the decision (in scope, absorb deliberately, or raise a Change Order) belongs to the Program Lead and CSE, and contractual review uses the contract scope and obligation review mode in `statement-of-work`; authorized humans own contractual changes. This skill supplies the evidence and stops.
 
 ## The detection pass
 
@@ -21,7 +21,7 @@ For each item, answer: does the baseline name this, qualitatively (scope body) a
 
 ## Trigger classification
 
-Use the two-trigger taxonomy owned by `sow-quality` (its `references/basis-of-estimate.md` is authoritative; read it when classifying, and do not restate its mechanics in the report):
+Use the two-trigger taxonomy in the contract scope and obligation review mode of `statement-of-work` (read `_runtime/sow-quality/references/basis-of-estimate.md` from that package; apply it only when the selected agreement adopts it, and do not restate its mechanics in the report):
 
 - **Soft trigger (volumetric)**: the footprint materially exceeds the Basis of Estimate. Record counts, custom-automation volume, catalog scale well past Exhibit A figures. "Materially" is doing the work: note small overages, but a candidate needs material excess.
 - **Hard trigger (binary workstream addition)**: a second integration, a second org, an org split or merge, an additional migration. Any amount triggers, regardless of size. Do not treat these as negotiable by degree.

@@ -1,11 +1,12 @@
 import fs from 'node:fs';
 import {pathToFileURL} from 'node:url';
+import browserPolicy from './browser_launch_policy.cjs';
 const [source, destination, expected] = process.argv.slice(2);
 const report = {checks:{}, failures:[]};
 let browser;
 try {
   const {chromium} = await import(process.env.PW_MODULE);
-  browser = await chromium.launch({headless:true, ...(process.env.PW_CHROMIUM ? {executablePath:process.env.PW_CHROMIUM} : {})});
+  browser = await chromium.launch(browserPolicy.launchOptions());
   const context = await browser.newContext({viewport:{width:816,height:1056}});
   const page = await context.newPage();
   page.on('pageerror', error=>report.failures.push(error.message));

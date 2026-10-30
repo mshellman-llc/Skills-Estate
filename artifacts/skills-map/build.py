@@ -8,6 +8,7 @@ HERE = Path(__file__).resolve().parent
 import sys
 sys.path.insert(0,str(HERE.parents[1]/'tools'))
 from browse import load_groups
+from catalog import source_names, excluded_sources
 from skill_guide import load as load_guides, assessment, overview_excerpt, readable_body, scan
 FAMILIES = [(g['title'],g['description'],' '.join(g['skills'])) for g in load_groups(HERE.parents[1],check_coverage=False)]
 DEFAULT_PUBLISHED_REF = 'refs/remotes/origin/main'
@@ -176,10 +177,11 @@ def build(args):
             base_blobs[path] = meta.split()[2]
     base_files = list(base_blobs)
     base_skills = {p.split('/')[1] for p in base_files if re.fullmatch(r'skills/[^/]+/SKILL.md', p)}
-    folders = {p.parent.name: (p.parent, False) for p in root.glob('skills/*/SKILL.md')}
+    folders = {name: (root / 'skills' / name, False) for name in sorted(source_names(root))}
     for folder in args.extra:
         folder = folder.resolve()
         name = folder.name
+        if name in excluded_sources(root): raise ValueError('Excluded source cannot be added to the map: '+name)
         if name in folders: raise ValueError('Extra shadows canonical skill: '+name)
         if not (folder/'SKILL.md').is_file(): raise ValueError('Missing extra SKILL.md: '+str(folder))
         folders[name] = (folder, True)

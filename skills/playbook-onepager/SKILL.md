@@ -13,7 +13,11 @@ Turns one playbook into two branded PDFs, using the same visual system every tim
 - **Internal brief** (`*-internal-brief.pdf`): sales enablement, two pages. The seven Clarity questions as numbered sections (01-07), with optional qualifier/disqualifier boxes, a talking-tracks table, numbered delivery steps, and Positioning / Two-gears callouts. Footer, "INTERNAL USE ONLY".
 - **External one-pager** (`*-external-onepager.pdf`): client-facing, one page. Headline, subtitle, intro, a "What you get" grid, a two-column "who it's for / why it matters" band, a "How it works" callout, and a footer with the cost/CTA line.
 
-This is the presentation layer for **playbook-suite**. That skill defines an offering in the house format (scope, deliverables, value, buyer, Tldr, Eli5, internal and external one-pagers); this skill renders that entry to PDF. It reads the same house format directly, so the two compose.
+This is the rendering mode of **service-offering**. Its primary workflow,
+[playbook-builder](../playbook-builder/SKILL.md), defines the offering and its
+house-format entry. The separate [playbook-suite](../playbook-suite/SKILL.md)
+mode plans the artifact package and its dependencies. This workflow renders
+the agreed entry to PDF; it does not define the offering or mark the suite complete.
 
 ## Shared brand and runtime
 
@@ -35,7 +39,7 @@ Set `ESTATE_NODE` when Node is not on PATH, `ESTATE_NODE_MODULES` when Playwrigh
 
 ## Two input modes
 
-**Plain, from the house format.** Point the renderer at a playbook-suite entry or a whole corpus. It maps the seven internal answers and six external answers straight into the templates. The rich components stay off, so you get a clean 7-part brief and a standard one-pager. Best for rendering a catalog quickly and consistently.
+**Plain, from the house format.** Point the renderer at a service-offering entry or a whole corpus. It maps the seven internal answers and six external answers straight into the templates. The rich components stay off, so you get a clean 7-part brief and a standard one-pager. Best for rendering a catalog quickly and consistently.
 
 ```bash
 # one entry by its number
@@ -66,7 +70,7 @@ The JSON schema and the full field-to-slot mapping are in `references/field-mapp
 
 ## Workflow
 
-1. Read the offering source and confirm the requested audience. Use `playbook-suite` for offering definition; this skill renders the agreed definition.
+1. Read the offering source and confirm the requested audience. Use the primary `service-offering` workflow for offering definition; this mode renders the agreed definition.
 2. Run the dependency preflight and select the brand profile.
 3. Use `--md` for standard entries or `--json` for the richer components. Read [field-mapping.md](references/field-mapping.md) before authoring JSON.
 4. Render into a new, empty attempt directory. Strict parsing rejects unknown labels and required-content gaps. Source HTML permits only inline emphasis; scripts, images, arbitrary attributes, and resource loads are rejected.

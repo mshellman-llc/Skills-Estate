@@ -1,12 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
+const policyURL = [new URL('../_runtime/brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url),
+  new URL('../../brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url)].find(url => fs.existsSync(url));
+if (!policyURL) throw new Error('Browser policy is missing. Rebuild with the declared brand runtime.');
+const {default: browserPolicy} = await import(policyURL.href);
 const [url,output]=process.argv.slice(2);
 const report={checks:{},failures:[]};
 const check=(name,value)=>{report.checks[name]=Boolean(value);if(!value)report.failures.push(name);};
 let browser;
 try {
   const {chromium}=await import(process.env.PW_MODULE);
-  browser=await chromium.launch({headless:true,args:["--disable-gpu"],...(process.env.PW_CHROMIUM?{executablePath:process.env.PW_CHROMIUM}:{})});
+  browser=await chromium.launch({...browserPolicy.launchOptions(),args:["--disable-gpu"]});
   const context=await browser.newContext({viewport:{width:1280,height:1000}});
   const page=await context.newPage();
   page.on('pageerror',e=>report.failures.push(e.message));

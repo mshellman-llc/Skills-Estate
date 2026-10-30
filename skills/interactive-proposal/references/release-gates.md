@@ -8,8 +8,8 @@ Run them. Do not narrate them. Report the result and the dispositions.
 
 ## Why the gate wiring is spelled out here
 
-The prose gate is the `prose-pass` skill, a sibling in the estate. It consolidated the older
-separate checkers into one: `../prose-pass/scripts/prose_check.py` gates the mechanical and
+Writing Integrity owns the prose review. Its retained internal `prose-pass` runtime consolidated the older
+separate checkers: `../prose-pass/scripts/prose_check.py` gates the mechanical and
 structural tells against `house.json`, and `../prose-pass/scripts/rewrite_scan.py --tie-out`
 reconciles figures. Do not keep
 a local word list; prose-pass is the single authoritative home.

@@ -23,7 +23,7 @@ triggers:
   source of truth; this skill renders it. It does not price (the confirmed quote owns figures)
   and does not author scope language (scoping-agent does). It takes a JSON quote model,
   builds the document through the docx library, resolves placeholders with a printed
-  audit trail, verifies the required-clause gate, and hands off to sow-quality.
+  audit trail, verifies the required-clause gate, and hands off to the embedded contract review mode.
   Do NOT use for the DDOC; that is ddoc.
 exclusions: []
 inputs:

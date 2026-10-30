@@ -36,6 +36,12 @@ that gates other work. Remove questions that cannot change scope, effort, price,
 or a delivery decision. An unresolved item carries `do not size until Q-nn` in
 the relevant scope row.
 
+## Inspection and persistence state
+
+Record only sources actually inspected. If the input summarizes what “transcript line N says,” cite the supplied summary of line N; do not claim that the transcript itself was searched. A search field can say “supplied summary only; full transcript unavailable.” An excerpt or summary is not a full-transcript search; record its exact available lines and keep the missing source as a retrieval gap. An attributed statement establishes what that speaker said, not independently verified authority for sizing or approval. Narrow a question when the available evidence answers only part of it.
+
+When no write occurred, present an unapplied ledger patch. If a write was attempted but its result or readback is missing, report persistence as unverified or unknown and inspect the destination before retrying; do not call that patch unapplied. Label evidence registration, refresh and validation as proposed actions unless they ran. Preserve supplied human text exactly; if the human block is absent, retain a placeholder for its unchanged contents rather than inventing a note or claiming it was checked.
+
 ## Evidence and commercial rules
 
 Run `evidence-core` before building the ledger. Register sources in
@@ -92,10 +98,10 @@ python3 scripts/check_brief.py ledger.json
 ```
 
 The gate checks source tokens, valid ranks, named scope lines, rank order,
-unknown placement, and prohibited punctuation. Exit 0 passes. A nonzero result
+unknown placement, and object structure. An empty JSON open-question list passes only when discovery_complete is explicitly true; punctuation alone does not fail this evidence gate. Exit 0 passes. A nonzero result
 blocks release.
 
-Run `prose-pass` on the brief and `brand-renderer` on any branded surface. Apply
+Apply `writing-integrity` to the brief and `brand-renderer` on any branded surface. Apply
 `quality-gate` before final delivery. The shared sequence is in
 [`release-gate.md`](../_shared/release-gate.md).
 

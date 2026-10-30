@@ -30,10 +30,14 @@
     "brand-renderer"
   ],
   "discovery-brief": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "discovery-synthesis": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "evidence-core": [
     "brand-renderer"
@@ -79,7 +83,9 @@
     "delivery-suite"
   ],
   "rom": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "s2d-handoff": [
     "brand-renderer",
@@ -105,7 +111,8 @@
     "brand-renderer"
   ],
   "sow-quality": [
-    "brand-renderer"
+    "brand-renderer",
+    "knowledge-hub"
   ],
   "spec-writer": [
     "brand-renderer"
@@ -140,5 +147,9 @@
   ],
   "build-interactive-explorer": [
     "roadmap-artifacts"
+  ],
+  "scoping-agent": [
+    "evidence-core",
+    "knowledge-hub"
   ]
 }

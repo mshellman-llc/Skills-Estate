@@ -24,8 +24,8 @@ triggers:
   boundaries explored before decisions are formalized. Also trigger when a user describes
   a system they intend to build and asks how to approach it. Not for reviewing existing
   code, and not for capturing a single already-made decision as a short record with
-  its consequences. Not for a formal, sourced, client-facing, polished, or Estate-branded
-  architecture document; use architecture-doc for that deliverable.
+  its consequences. For a formal sourced architecture or engineering reference,
+  select the embedded formal architecture reference mode and its architecture-doc workflow.
 exclusions: []
 inputs:
 - name: task_context

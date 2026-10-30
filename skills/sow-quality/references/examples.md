@@ -1,5 +1,10 @@
 # Before / after examples
 
+Historical CPQ/T&M profile reference. Preserve these examples as examples. Apply
+their terms, section numbers and role names only when the selected agreement
+adopts that profile; the current contract and confirmed project policy control.
+Never convert a fixed commitment or billing model merely to match this reference.
+
 All drawn from the Tier 1 CPQ Lift & Shift SOW de-slop pass. Each shows the tell, the cut, and why.
 
 ## Repetition-as-thoroughness

@@ -17,7 +17,7 @@ description: Route the shared controls every other skill depends on. Knowledge H
 - `knowledge-hub`
 - `evidence-core`
 - `quality-gate`
-- `prose-pass`
+- `writing-integrity`
 - `brand-renderer`
 - `org-preflight`
 - `session-handoff`
