@@ -1,0 +1,33 @@
+{
+  "format": 1,
+  "profiles": {
+    "personal": {
+      "audience": "personal",
+      "blocked_reason": null,
+      "description": "Selected personal estate maintenance and review workflows.",
+      "entries": [
+        "code-simplify",
+        "information-architecture",
+        "writing-integrity",
+        "skill-estate-sync"
+      ],
+      "marketplace": "skills-estate-personal",
+      "plugin": "estate-personal",
+      "privacy_review": null,
+      "version": "0.1.5"
+    },
+    "telix": {
+      "audience": "workplace",
+      "blocked_reason": "Mandatory Writing Integrity dependencies still contain Megan-specific profile and local tool instructions. Review the complete generated closure before workplace distribution.",
+      "description": "Minimal workplace workflows, pending complete dependency review.",
+      "entries": [
+        "code-simplify"
+      ],
+      "marketplace": "skills-estate-telix",
+      "plugin": "estate-telix",
+      "privacy_review": null,
+      "reference_adaptations": "config/workplace-reference-adaptations.json",
+      "version": "0.1.1"
+    }
+  }
+}

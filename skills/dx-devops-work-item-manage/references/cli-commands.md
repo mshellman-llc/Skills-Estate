@@ -1,5 +1,9 @@
 # DevOps Center Work Item CLI Commands Reference
 
+All IDs and aliases below are examples. Resolve the explicitly authorized org
+and use its `--target-org` on every org command. Never infer authorization from
+a default, change the default, or log into another account to make an example work.
+
 Complete reference for `sf devops work-item` CLI commands with JSON output schemas and common patterns.
 
 ## Command Summary
@@ -11,15 +15,15 @@ Complete reference for `sf devops work-item` CLI commands with JSON output schem
 | `sf devops work-item update` | Update work item fields or status | `--work-item-name` OR `--work-item-id`, plus at least one of: `--subject`, `--description`, `--status` | `--api-version` |
 | `sf devops review create` | Create pull request for work item | `--work-item-name` OR `--work-item-id` | `--api-version` |
 
-All commands support `--json` for structured output and `--target-org <alias>` for multi-org scenarios.
+All commands support `--json` for structured output and `--target-org <alias>` for every org operation, using its explicitly confirmed target.
 
 **Org Authentication:**
 Before running any DevOps Center commands, verify org authentication:
 ```bash
-sf org display --json
+sf org display --target-org <confirmed-alias> --json
 ```
 
-If no default org is set or the user wants to target a specific org, add `--target-org <alias>` to all commands.
+Pass the authorized `--target-org <confirmed-alias>` to every org command. Do not rely on, set or change a machine default.
 
 ---
 
@@ -28,7 +32,7 @@ If no default org is set or the user wants to target a specific org, add `--targ
 ### Basic Usage
 
 ```bash
-sf devops work-item list --project-id <project-id> --json
+sf devops work-item list --project-id <project-id> --target-org <confirmed-alias> --json
 ```
 
 ### Example
@@ -92,7 +96,7 @@ sf devops work-item list --target-org my-devops-org --project-id 1Qg000000000001
 sf devops work-item create \
   --project-id <project-id> \
   --subject "<subject>" \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 ### With Optional Description
@@ -102,7 +106,7 @@ sf devops work-item create \
   --project-id 1Qg000000000001 \
   --subject "Fix login bug" \
   --description "Users can't log in on mobile devices" \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 ### JSON Output Schema
@@ -134,7 +138,7 @@ sf devops work-item create \
 sf devops work-item update \
   --work-item-name WI-000001 \
   --subject "Fix critical login bug" \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 ### Update Description
@@ -143,7 +147,7 @@ sf devops work-item update \
 sf devops work-item update \
   --work-item-name WI-000001 \
   --description "Updated description with repro steps: 1. Open app on iOS 2. Tap login..." \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 ### Update Status
@@ -152,7 +156,7 @@ sf devops work-item update \
 sf devops work-item update \
   --work-item-name WI-000001 \
   --status "In Progress" \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 Valid status values (exact strings):
@@ -167,7 +171,7 @@ sf devops work-item update \
   --subject "Fix critical login bug [P0]" \
   --description "Updated with repro steps" \
   --status "In Progress" \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 ### Using Work Item ID Instead of Name
@@ -176,7 +180,7 @@ sf devops work-item update \
 sf devops work-item update \
   --work-item-id 0Wx000000000001AAA \
   --status "Ready to Promote" \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 > **Note:** Prefer `--work-item-name` (WI-000001) over `--work-item-id` when available — names are human-readable and easier to reference.
@@ -274,7 +278,7 @@ sf devops work-item update \
 WORK_ITEM_NAME=$(sf devops work-item create \
   --project-id 1Qg000000000001 \
   --subject "Test WI" \
-  --json | jq -r '.result.name')
+  --target-org <confirmed-alias> --json | jq -r '.result.name')
 
 echo "Created work item: $WORK_ITEM_NAME"
 # Output: Created work item: WI-000004
@@ -284,7 +288,7 @@ echo "Created work item: $WORK_ITEM_NAME"
 
 ```bash
 # Count returned work items
-COUNT=$(sf devops work-item list --project-id 1Qg000000000001 --json | jq '.result | length')
+COUNT=$(sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | jq '.result | length')
 
 if [ "$COUNT" -eq 0 ]; then
   echo "No work items found for this project"
@@ -297,7 +301,7 @@ fi
 
 ```bash
 # List work item names and subjects
-sf devops work-item list --project-id 1Qg000000000001 --json | \
+sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
   jq -r '.result[] | "\(.name): \(.subject)"'
 
 # Output:
@@ -309,7 +313,7 @@ sf devops work-item list --project-id 1Qg000000000001 --json | \
 
 ```bash
 # Find all work items with "Ready to Promote" status
-sf devops work-item list --project-id 1Qg000000000001 --json | \
+sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
   jq -r '.result[] | select(.status == "Ready to Promote") | "\(.name): \(.subject)"'
 ```
 
@@ -326,7 +330,7 @@ SUBJECT="Fix login bug"
 # Check if work item with subject exists
 EXISTING_NAME=$(sf devops work-item list \
   --project-id "$PROJECT_ID" \
-  --json | \
+  --target-org <confirmed-alias> --json | \
   jq -r ".result[] | select(.subject == \"$SUBJECT\") | .name" | head -n1)
 
 if [ -n "$EXISTING_NAME" ]; then
@@ -336,7 +340,7 @@ else
   NEW_NAME=$(sf devops work-item create \
     --project-id "$PROJECT_ID" \
     --subject "$SUBJECT" \
-    --json | jq -r '.result.name')
+    --target-org <confirmed-alias> --json | jq -r '.result.name')
   echo "Created new work item: $NEW_NAME"
 fi
 ```
@@ -360,7 +364,7 @@ sf org display --target-org <alias> --json
 If authentication fails, the user must run:
 
 ```bash
-sf org login web --set-default --alias <alias>
+sf org login web --alias <confirmed-alias>
 ```
 
 ---
@@ -372,7 +376,7 @@ sf org login web --set-default --alias <alias>
 ```bash
 sf devops review create \
   --work-item-name <WI-name> \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 ### Example with Work Item Name
@@ -380,7 +384,7 @@ sf devops review create \
 ```bash
 sf devops review create \
   --work-item-name WI-000001 \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 ### Example with Work Item ID
@@ -388,7 +392,7 @@ sf devops review create \
 ```bash
 sf devops review create \
   --work-item-id 0Wx000000000001AAA \
-  --json
+  --target-org <confirmed-alias> --json
 ```
 
 > **Note:** Prefer `--work-item-name` (WI-000001) over `--work-item-id` when available — names are human-readable and easier to reference.
@@ -464,7 +468,7 @@ sf devops review create \
 If the user doesn't provide a project ID, list available projects first:
 
 ```bash
-sf devops project list --json | jq -r '.result[] | "\(.id): \(.name)"'
+sf devops project list --target-org <confirmed-alias> --json | jq -r '.result[] | "\(.id): \(.name)"'
 ```
 
 Output:

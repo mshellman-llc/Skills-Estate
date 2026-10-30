@@ -10,6 +10,10 @@ This skill supplies the wording method that `career-application` tailor step 11 
 
 Before writing, load the operating context, the role work record, the master copy in the role folder, the live posting (if it is down, the record's posting snapshot, and say so), and `00_Master/Career_Narrative_Translation_Guide.md`. Claim authority is Professional_Profile → program records → `05_Reference/Claim_Governance/Career_Program_Evidence_Ledger.md`. Portfolio case studies are public copies and never a source for a resume figure.
 
+Before combining facts in a bullet, verify that the source explicitly connects the actor, work, figure and period. Separate records for a team activity and a candidate's platform experience do not establish that the candidate led that activity or that it used that platform. An unnamed team's count stays off the candidate's bullet until ownership is supported.
+
+Paths such as `00_Master/`, `03_Tracker/` and `06_System/` name records under the user's confirmed Career root; they are not relative to the installed skill directory. Resolve needed records to absolute paths from that confirmed root. The packaged checker is a separate executable resource, linked in the final step below.
+
 ## Two classes of figure
 
 - Stated: an exact figure in Professional_Profile, a program record, the operating context or the evidence ledger (more than 90% of AMER Revenue Cloud delivery deals, 92 projects, $28.2M, the four $1M-plus deals, the $8.5M pipeline, the $7.6M CRM pursuit value, the $256,751 GoGuardian value). Megan prefers these approximated and rounded the same way as estimates: round to the nearest natural figure and signal it with one word inside the number ($7.6M → "~$7.5M", $256,751 → "about $250K", 92 projects → "90+ projects"). Keep the figure's stated scope, because the scope is what makes it true. No Estimate basis entry is needed, since the source already holds the exact value.
@@ -18,7 +22,7 @@ Before writing, load the operating context, the role work record, the master cop
 ## Building an estimate
 
 - Write the inputs and the arithmetic. Shapes: a range ("$1M–$2M deal values"), a bound ("20+ enterprise pursuits"), a share of a stated total ("about half of the $2.19M closed-won work"), frequency times period (5 workshops a month across 2025 → "about 60"), before and after with the baseline ("from about two weeks to half a day").
-- Round to the nearest natural figure (nearest 5, 10, half or whole). When the arithmetic lands exactly between, keep the raw figure. Do not shade down for modesty or up for effect.
+- Round to the nearest natural figure (nearest 5, 10, half or whole). When the arithmetic lands exactly between, keep the raw figure. Do not shade down for modesty or up for effect. For the chosen increment, calculate the adjacent lower and upper values and compare their distances from the raw figure. A supported 23 rounds to about 25 at an increment of five: distances are 3 and 2; the midpoint is 22.5. Keep the original unit and period. This changes presentation, not the source figure, and is not a new estimate.
 - Signal the estimate with one word inside the number: about, roughly, ~, +, or a range.
 - A ledger qualifier on a figure is handled first by replacement with the verified result (the assessment became two signed SOWs and a paid change order, $256,751) and otherwise as one word inside the number ("a reported ~40%"). Never a clause, parenthetical or second sentence.
 - Missing inputs: ask Megan one question for that bullet ("roughly how many pursuits a quarter?") and leave the bullet unnumbered until she answers.
@@ -46,12 +50,14 @@ Megan wants posting keywords on the resume, placed by judgment: an exact-match s
 
 ## Bullet shape
 
-Each bullet names what Megan decided or owned, the mechanism she built or used, and the result, with plain verbs (led, designed, built, priced, decided, managed, hired, coached). Vary the order. End at the fact; a consequence gets its own sentence. No trailing "resulting in" or "ensuring", no power verbs (spearheaded, orchestrated, championed), no builder constructions, no X-not-Y. Solution and transformation roles keep one concrete client decision and one scaling mechanism, as the operating context requires. Titles and dates exactly as locked, month and year ("Feb 2026–Oct 2026").
+A bullet format cannot supply missing evidence. If the source establishes experience with API design but no ownership or leadership, retain that level of claim; do not add led, designed, built or managed. Record missing ownership, mechanism and outcome as gaps instead of presenting an invented achievement with placeholders.
+
+When supported by evidence, a bullet names what Megan decided or owned, the mechanism she built or used, and the result. When those elements are absent, keep a bounded activity or experience statement and record the missing evidence separately. Use plain verbs (led, designed, built, priced, decided, managed, hired, coached). Vary the order. End at the fact; a consequence gets its own sentence. No trailing "resulting in" or "ensuring", no power verbs (spearheaded, orchestrated, championed), no builder constructions, no X-not-Y. Solution and transformation roles keep one concrete client decision and one scaling mechanism, as the operating context requires. Titles and dates exactly as locked, month and year ("Feb 2026–Oct 2026").
 
 ## Layout and gate
 
 Keep the master's typography; one or two pages as the router allows. ATS checks: standard section names, contact details in the body, no text boxes, images or content tables, standard fonts. Render to PDF and look at every page.
 
-Apply `megan-writing-style` and the leadership-and-career section of `writing-integrity`. Where installed, run `/usr/bin/python3 ~/.agents/humanize/tellscan.py scan <file> --profile megan` and fix structure rather than swapping words; where not installed, check by reading and say no scan ran. Complete the resume source review receipt, run `06_System/career-application/scripts/check_role_resume_readiness.py`, update `03_Tracker/applications.md`, state `prepared locally`, and end with changed, verified, unchanged and the exact next action.
+Apply `megan-writing-style` and the leadership-and-career section of `writing-integrity`. Where installed, run `/usr/bin/python3 ~/.agents/humanize/tellscan.py scan <file> --profile megan` and fix structure rather than swapping words; where not installed, check by reading and say no scan ran. Complete the resume source review receipt, resolve the [packaged readiness checker](../career-application/scripts/check_role_resume_readiness.py) from this workflow's location and run it with Python, passing the absolute path to `Role_Work_Record.md` as its single positional argument, update `03_Tracker/applications.md`, state `prepared locally`, and end with changed, verified, unchanged and the exact next action.
 
 Method adapted from the open-source ResumeSkills set (resume-quantifier, resume-ats-optimizer, resume-bullet-writer, resume-formatter, executive-resume-writer), rewritten against the October 7, 2026 operating context.

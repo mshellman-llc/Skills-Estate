@@ -1,11 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
+const policyURL = [new URL('../_runtime/brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url),
+  new URL('../../brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url)].find(url => fs.existsSync(url));
+if (!policyURL) throw new Error('Browser policy is missing. Rebuild with the declared brand runtime.');
+const {default: browserPolicy} = await import(policyURL.href);
 const {chromium}=await import(process.env.PW_MODULE||'playwright');
 const [url,out,planPath]=process.argv.slice(2);
 if(!url?.startsWith('file:')||!out||!planPath)throw Error('Supply a local HTML URL, new output directory and presentation JSON');
 const plan=JSON.parse(fs.readFileSync(planPath,'utf8'));fs.mkdirSync(out,{recursive:false});
 const report={failures:[],remoteRequests:[],matrix:[],snapshots:[],views:[]};
-const browser=await chromium.launch({headless:true,args:["--disable-gpu"],...(process.env.PW_CHROMIUM?{executablePath:process.env.PW_CHROMIUM}:{})});
+const browser=await chromium.launch({...browserPolicy.launchOptions(),args:["--disable-gpu"]});
 try{
  const page=await browser.newPage({viewport:{width:1360,height:1000},deviceScaleFactor:1});
  await page.route('**/*',route=>{if(/^https?:/.test(route.request().url())){report.remoteRequests.push(route.request().url());return route.abort();}return route.continue();});

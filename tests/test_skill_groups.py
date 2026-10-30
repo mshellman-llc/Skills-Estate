@@ -9,12 +9,12 @@ import unittest
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import browse
-from catalog import entries
+from catalog import entries, source_names
 
 class SkillGroupTests(unittest.TestCase):
     def test_all_modules_are_in_exactly_one_group_and_documents_are_current(self):
         groups=browse.load_groups(ROOT)
-        modules={p.parent.name for p in ROOT.glob('skills/*/SKILL.md')}
+        modules=source_names(ROOT)
         assigned=[n for g in groups for n in g['skills'] if n in modules]
         self.assertEqual(set(assigned),modules);self.assertEqual(len(assigned),len(modules));self.assertEqual(browse.write_pages(ROOT,check=True),[])
         data=json.loads((ROOT/'artifacts/skills-map/index.json').read_text())

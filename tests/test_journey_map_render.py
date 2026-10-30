@@ -10,8 +10,11 @@ import tempfile
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools'))
+from test_capabilities import integration
 
 class JourneyMapRenderTests(unittest.TestCase):
+    @integration('browser')
     def test_render_and_failure_cases(self):
         node = os.environ.get('ESTATE_NODE') or shutil.which('node')
         self.assertTrue(node, 'Node is required')
@@ -26,7 +29,8 @@ const {chromium} = require('playwright');
 (async () => {
  const [source, out] = process.argv.slice(2);
  const html = fs.readFileSync(source, 'utf8');
- const browser = await chromium.launch({headless:true, executablePath:process.env.PW_CHROMIUM || undefined});
+ const {launchOptions} = require(process.env.ESTATE_BROWSER_POLICY);
+ const browser = await chromium.launch(launchOptions());
  const page = await browser.newPage({viewport:{width:1440,height:1100}});
  const errors=[]; page.on('pageerror', e => errors.push(e.message));
  const results=[];
@@ -165,7 +169,7 @@ const {chromium} = require('playwright');
 })().catch(e=>{console.error(e);process.exit(1)});
 ''', encoding='utf-8')
         result = subprocess.run([node, str(runner), str(ROOT/'skills/journey-mapping/assets/journey-map.html'), str(out)],
-                                text=True,capture_output=True,env=os.environ.copy())
+                                text=True,capture_output=True,env={**os.environ, 'ESTATE_BROWSER_POLICY': str(ROOT/'skills/brand-renderer/scripts/browser_launch_policy.cjs')})
         (out/'run.log').write_text(result.stdout+result.stderr)
         self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
         cases = json.loads(result.stdout)
@@ -177,7 +181,7 @@ const {chromium} = require('playwright');
                     'missing-emotion', 'uncaptured-with-scores', 'missing-row-basis', 'bad-phase'}
         self.assertTrue(expected <= {case['case'] for case in cases})
 
-    def test_documented_json_rebuild_preserves_data_and_prevents_script_breakout(self):
+    def rebuild(self, base):
         layout = (ROOT / 'skills/journey-mapping/references/rendered-map-layout.md').read_text()
         code = re.search(r'```python\n(.*?)\n```', layout, re.S)[1]
         data = {'eyebrow': 'Synthetic test', 'title': '</script><img src=x onerror=alert(1)>',
@@ -188,20 +192,32 @@ const {chromium} = require('playwright');
                          for label in ['Step and touchpoint', 'Goal', 'Thoughts', 'Pain points', 'Opportunities']],
                 'blueprint': [{'label': label, 'cells': [None]}
                               for label in ['Front-stage', 'Back-stage', 'Supporting']], 'friction': []}
+        (base/'map-data.json').write_text(json.dumps(data))
+        starter = ROOT/'skills/journey-mapping/assets/journey-map.html'
+        build = subprocess.run([sys.executable, '-c', 'STARTER = '+repr(str(starter))+'\n'+code],
+                               cwd=base, capture_output=True, text=True)
+        self.assertEqual(build.returncode, 0, build.stderr)
+        html = (base/'journey-map.html').read_text()
+        embedded = html.split('const MAP = ', 1)[1].split(';\n\nconst el', 1)[0]
+        return data, html, embedded
+
+    def test_documented_json_rebuild_preserves_data_and_escapes_script_delimiter(self):
+        with tempfile.TemporaryDirectory() as folder:
+            data, html, embedded = self.rebuild(Path(folder))
+            self.assertEqual(json.loads(embedded), data)
+            self.assertNotIn('</script>', embedded.casefold())
+            self.assertNotIn('<img', embedded.casefold())
+            self.assertIn('\\u003c', embedded)
+
+    @integration('browser')
+    def test_documented_rebuild_renders_source_text_without_executing_markup(self):
         with tempfile.TemporaryDirectory() as folder:
             base = Path(folder)
-            (base/'map-data.json').write_text(json.dumps(data))
-            starter = ROOT/'skills/journey-mapping/assets/journey-map.html'
-            build = subprocess.run([sys.executable, '-c', 'STARTER = '+repr(str(starter))+'\n'+code],
-                                   cwd=base, capture_output=True, text=True)
-            self.assertEqual(build.returncode, 0, build.stderr)
-            html = (base/'journey-map.html').read_text()
-            embedded = html.split('const MAP = ', 1)[1].split(';\n\nconst el', 1)[0]
-            self.assertEqual(json.loads(embedded), data)
+            self.rebuild(base)
             runner = base/'check.cjs'
             runner.write_text("""
 const {chromium}=require('playwright'),assert=require('assert/strict'),url=require('url');
-(async()=>{const b=await chromium.launch({headless:true,executablePath:process.env.PW_CHROMIUM||undefined});
+(async()=>{const {launchOptions}=require(process.env.ESTATE_BROWSER_POLICY);const b=await chromium.launch(launchOptions());
 try {const p=await b.newPage();await p.goto(url.pathToFileURL(process.argv[2]).href);
 assert.equal(await p.locator('[role=alert], img').count(),0);
 assert.equal(await p.locator('h1').innerText(),'</script><img src=x onerror=alert(1)>');
@@ -209,7 +225,7 @@ assert.equal(await p.locator('h1').innerText(),'</script><img src=x onerror=aler
 """, encoding='utf-8')
             node = os.environ.get('ESTATE_NODE') or shutil.which('node')
             result = subprocess.run([node, str(runner), str(base/'journey-map.html')],
-                                    capture_output=True, text=True, env=os.environ.copy())
+                                    capture_output=True, text=True, env={**os.environ, 'ESTATE_BROWSER_POLICY': str(ROOT/'skills/brand-renderer/scripts/browser_launch_policy.cjs')})
             self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
 
     def test_neutral_starter_passes_the_selected_profile_check(self):

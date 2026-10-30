@@ -8,13 +8,13 @@ The governing rule, inherited from the ledger: **the transcript is the only sour
 
 - Pull the verbatim, speaker-labeled transcript through whatever the account uses: the connected meeting-notes integration, Drive, or an uploaded file. Never settle for a summary; a summary says the client has quoting problems, the transcript says one person prices multi-year commitments in a spreadsheet updated from memory, and only the second version moves scope.
 - Never substitute a similarly titled note for the session that was named. Confirm the date and attendees match the calendar event before ingesting.
-- If no transcript exists, say so and stop. Notes from a human attendee can be ingested, but every fact they produce enters Column A as Inferred, sourced to "attendee notes, [name], [date]", never Confirmed.
+- If the transcript is unavailable, record the retrieval gap. A supplied summary or attendee note can support a bounded proposed patch, identified as secondary evidence; it does not establish a full-transcript search or authorize question closure. Attribute inferred claims to the supplied material, preserving uncertainty and any available location.
 
 ## 2. Walk Column B, question by question
 
 For each open question in the session brief, in rank order:
 
-- **Answered.** Move the fact to Column A: claim as stated, source "session transcript [date], [speaker]", confidence Confirmed, with the attributed verbatim quote preserved. Retire the question's id. Remove the don't-size flag from the scope line it was blocking; the line is now sizeable, though sizing itself belongs to the scoping owner.
+- **Answered.** Move the fact to Column A: claim as stated, source "session transcript [date], [speaker]", with the attributed exact quote and location preserved. A statement confirms what the speaker said; use Confirmed for the underlying claim only when the source has authority for that claim. Otherwise mark it Inferred and retain the authority gap. Retire the question only to the extent the supported answer resolves it. Propose clearing a corresponding don't-size flag to the scoping owner; do not change the scope row or declare it sizeable yourself.
 - **Partially answered.** Record what landed as a Column A entry, then keep a narrowed replacement question open under a new id, with why_open updated to say what the session did and did not resolve.
 - **Answered with a conflict.** The room said something the RFP or a workshop contradicts. Keep both in the claim text, flag the divergence, mark Inferred, and add a resolution question to Column B. Never launder two answers into one confident fact.
 - **Unanswered.** Stays open, rank re-checked (an answer elsewhere in the call may have raised or lowered its scoping impact).
@@ -40,7 +40,7 @@ A decision that changes prior scope is flagged as a decision change, explicitly,
 
 ## 5. Propose scope revisions, do not commit them
 
-Produce a scope-revision proposal for the scoping owner: lines to add, lines whose don't-size flag cleared, lines the session moved out of scope, each with its transcript reference. Hand it to **scoping-agent** territory (the Pricing System) for creation, editing, and sizing. This skill proposes and cites; it never creates or edits a scope item, never prices a line, and never clears a gate. The SSL owns the scope.
+Produce a scope-revision proposal for the scoping owner: lines to add, lines whose don't-size flag could be cleared after the scoping owner's review, lines the session moved out of scope, each with its transcript reference. Hand it to **scoping-agent** territory (the Pricing System) for creation, editing, and sizing. This skill proposes and cites; it never creates or edits a scope item, never prices a line, and never clears a gate. The SSL owns the scope.
 
 ## 6. Feed the Pursuit Brief
 

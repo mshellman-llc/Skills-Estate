@@ -112,7 +112,7 @@ SOW and does not reach back. Details and the full register live in
 - Does not build any delivery artifact; the stage skills own their artifacts.
 - Does not price or author numbers. Executed commercial artifacts hold those values, and `sow-quality` owns change-order math through its Basis of Estimate.
 - Does not gate content quality; parity and visual are `brand-renderer`,
-  voice is `prose-pass`, evidence is `evidence-core`.
+  writing review is `writing-integrity`, evidence is `evidence-core`.
 - Does not touch pre-signature work. Send each request to its named sales artifact owner.
 - Does not decide, approve, or sign; humans hold every gate.
 

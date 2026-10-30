@@ -12,10 +12,15 @@ Before drafting, load `00_Master/Career_Application_Operating_Context.md`, the r
 
 Megan is the author. Before drafting, state audience, purpose, reader action and consequence level; hiring material gets deep review. Write under `megan-writing-style` and `writing-integrity`; run `/usr/bin/python3 ~/.agents/humanize/tellscan.py scan <file> --profile megan` on each finished file where installed, fix structure rather than swapping words, and say plainly when no scan ran.
 
+## Bounded drafts from supplied facts
+
+When the user supplies the relevant role facts inline and asks for a short draft, deliver the requested prose using those facts. Keep its provisional state separate from submission readiness. Missing posting details limit role-specific claims; they do not require replacing a requested short letter with a paragraph outline. Omit an unsupported requirement, mechanism or recipient detail rather than filling a placeholder as though it were known. The user's requested length governs that bounded draft; the normal full-letter format applies when a complete application letter is requested.
+
 ## Rules for every piece
 
 - Open with the point. Each sentence carries a name, number, system, decision or date.
 - Posting keywords appear where they describe real work, once or twice a paragraph.
+- Preserve who did what and what was observed. Leading work does not establish personal design or implementation ownership. A named property such as retry-safe does not prove zero failures, a particular mechanism, or a production guarantee. Keep the source's trial, time and outcome qualifiers; an observed reduction does not mean elimination. Omit a missing mechanism rather than inventing one to complete a paragraph.
 - People leadership is managed people leaders, hired, coached, ran performance reviews; no headcount.
 - Figures are locked or stated figures from the sources above, or estimates already in the record's Estimate basis. Years-per-skill for a form field count as an estimate: compute from role dates, record in Estimate basis, then use.
 - Employment ended October 1, 2026; nothing implies she is still at her former employer, and a current-employment answer matches the date of the action. Dates are month and year. No defensive narration about the exit or title history.

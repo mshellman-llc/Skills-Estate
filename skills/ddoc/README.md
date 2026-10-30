@@ -7,7 +7,7 @@
 
 **Use it when.** Asked to build, review, de-slop, gate, or rebuild a DDOC, deal decision deck, options deck, scope deck, or the deck presented before the proposal.
 
-**Not for.** Do NOT use for SOW review (sow-quality), prose editing (prose-pass), PPTX mechanics (pptx), or a generic multi-slide proposal deck (deck-builder).
+**Not for.** Do NOT use for SOW review (sow-quality), prose editing (writing-integrity), PPTX mechanics (pptx), or a generic multi-slide proposal deck (deck-builder).
 
 **Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](../quality-gate/README.md).
 

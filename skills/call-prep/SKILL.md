@@ -159,7 +159,7 @@ Close with the top three facts, then the landmines. Then flag your biggest judgm
 - `scripts/check_pursuit_brief.py` for each Pursuit Brief and Call Brief, plus
   `--before/--after` when revising an existing Pursuit Brief.
 - `scripts/reconcile.py` on the evidence ledger whenever a Mode B brief carries figures.
-- **prose-pass** owns voice: run its checker on the prose. No em dashes, no buzzwords, no AI-construction patterns. Report the counts it prints.
+- **writing-integrity** owns writing review: run its bundled diagnostics on the prose. No em dashes, no buzzwords, no AI-construction patterns. Report the counts it prints.
 - **brand-renderer** and `_shared/build-card.md` own any branded surface. Never inline invented hex values; the template and `build_brief.py` pull the real tokens and assets from `_shared/estate-brand/`.
 
 ## Boundaries

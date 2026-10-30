@@ -8,6 +8,7 @@ import re
 import subprocess
 from urllib.parse import urljoin
 import zipfile
+from catalog import source_names
 
 ROOT = Path(__file__).resolve().parents[1]
 START, END = '<!-- SKILL-GROUPS:BEGIN -->', '<!-- SKILL-GROUPS:END -->'
@@ -35,7 +36,7 @@ def load_groups(root=ROOT, check_coverage=True):
                 raise ValueError('Invalid or duplicate skill assignment: '+name)
             owners[name]=identifier
     if check_coverage:
-        actual={p.parent.name for p in root.glob('skills/*/SKILL.md')}
+        actual=source_names(root)
         optional=set(config.get('optionalSkills',[]))
         if actual-set(owners) or set(owners)-actual-optional:
             raise ValueError('Group coverage differs: '+', '.join(sorted((actual-set(owners)) | (set(owners)-actual-optional))))
@@ -51,9 +52,16 @@ def region(text, content):
     return text[:index]+'\n\n'+block+'\n'+text[index:]
 
 def documents(root=ROOT):
-    from catalog import entries
+    from catalog import entries, retired_entries
     root=Path(root);groups=load_groups(root);public=entries(root)
-    actual={p.parent.name for p in root.glob('skills/*/SKILL.md')}
+    retired = retired_entries(root)
+    def source_link(name, prefix):
+        link = f'[{name}]({prefix}skills/{name}/SKILL.md)'
+        if name in retired:
+            role = 'embedded workflow' if retired[name].get('allowed_as_mode') else 'internal diagnostics'
+            link += f" — {role}; standalone skill retired, use `{retired[name]['successor']}`"
+        return '- ' + link
+    actual=source_names(root)
     result={};summary=['## Browse by work','', '| Group | Source workflows | Task packages |','| --- | ---: | ---: |']
     for g in groups:
         members=sorted(set(g['skills']) & actual)
@@ -67,7 +75,7 @@ def documents(root=ROOT):
             lines.append(f"| `{name}` | [{item['source']}](../../skills/{item['source']}/SKILL.md) | {modes} |")
         if not packages: lines += ['','This group contains supporting workflows rather than standalone task packages.']
         lines += ['', '## Source workflows','']
-        lines += [f'- [{name}](../../skills/{name}/SKILL.md)' for name in members]
+        lines += [source_link(name, '../../') for name in members]
         lines += ['', '## Share this group','',
                   f"Share this GitHub page with someone who has repository access. The `skill-collections` workflow artifact contains `{g['id']}.zip`, with the complete task ZIPs listed above and a manifest.",
                   '', 'Package readiness follows the current [catalog](../../CATALOG.md).', '']
@@ -84,7 +92,7 @@ def documents(root=ROOT):
         'Proposed task entrypoints':['| Entrypoint | Primary source | Included modes |','| --- | --- | --- |']+
             [f"| {name} | [{item['source']}](skills/{item['source']}/SKILL.md) | {', '.join(item.get('modes',{}).values())} |" for name,item in public.items()],
         'Source modules':['Each module needs a reviewed capability disposition before release.','']+
-            [f'- [{name}](skills/{name}/SKILL.md)' for name in sorted(actual)],
+            [source_link(name, '') for name in sorted(actual)],
         'Routing agents':[f'- [{p.stem}](agents/{p.name})' for p in sorted((root/'agents').glob('*.md'))]}
     for title,lines in inventories.items():
         pattern=r'(?ms)^## '+re.escape(title)+r'\n.*?(?=^## |\Z)'

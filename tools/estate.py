@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import releases
 from portable import assemble, runtime_closure
-from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint
+from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint, excluded_sources, source_names
 
 IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv', 'node_modules'}
 DEPENDENCY_INPUTS = ('package.json', 'pnpm-lock.yaml', 'requirements-test.txt')
@@ -53,7 +53,7 @@ def tree_hash(folder):
 
 
 def names(root=ROOT):
-    return sorted(p.name for p in (root / 'skills').iterdir() if p.is_dir() and (p / 'SKILL.md').is_file())
+    return sorted(source_names(root))
 
 
 def write_json(path, value):
@@ -221,8 +221,18 @@ def replace_outputs(root, stage, destination):
 def source_hash(root=ROOT):
     records = []
     for directory in ('skills', 'policies', 'tools', 'agents', 'tests', 'examples', 'config'):
+        if directory == 'skills':
+            selected = []
+            for child in sorted((root / directory).iterdir()):
+                if child.name in excluded_sources(root) | IGNORED or child.name.endswith('.pyc'):
+                    continue
+                if child.is_symlink():
+                    raise ValueError('Symlink inside source package: ' + str(child))
+                selected.extend(files(child) if child.is_dir() else [child])
+        else:
+            selected = files(root / directory)
         records += [(str(p.relative_to(root)), sha(p.read_bytes()), p.stat().st_mode & 0o111)
-                    for p in files(root / directory)]
+                    for p in selected if p != root / 'config/release-history.json']
     for name in DEPENDENCY_INPUTS:
         path = root / name
         if path.is_symlink():
@@ -235,7 +245,10 @@ def source_hash(root=ROOT):
 
 
 def runtime_dependencies(name, root=ROOT):
-    return runtime_closure(root, name)
+    selected = runtime_closure(root, name)
+    if ({name} | set(selected)) & excluded_sources(root):
+        raise ValueError('Excluded source in runtime dependency closure')
+    return selected
 
 
 def validate(root=ROOT):
@@ -641,6 +654,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--home', type=Path, default=Path.home(), help='Local install root; use a temporary home for tests')
     sub = ap.add_subparsers(dest='command', required=True)
+    sub.add_parser('release', help='Plan, version, prepare or verify audience-scoped candidates').add_argument('arguments', nargs=argparse.REMAINDER)
     for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed']:
         sub.add_parser(command)
     for command in ['install', 'adopt']:
@@ -655,6 +669,9 @@ def main():
     pub.add_argument('--skill', required=True)
     pub.add_argument('--reference', required=True, help='Account and upload record; a report, not independent verification')
     args = ap.parse_args()
+    if args.command == 'release':
+        from release_workflow import main as release_main
+        return release_main(args.arguments, ROOT)
     try:
         with lock():
             if args.command == 'validate': result = validate()

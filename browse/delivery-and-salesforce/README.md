@@ -29,7 +29,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [delivery-kickoff](../../skills/delivery-kickoff/SKILL.md)
 - [delivery-status](../../skills/delivery-status/SKILL.md)
 - [delivery-suite](../../skills/delivery-suite/SKILL.md)
-- [dx-devops-promote](../../skills/dx-devops-promote/SKILL.md)
+- [dx-devops-promote](../../skills/dx-devops-promote/SKILL.md) — embedded workflow; standalone skill retired, use `sf-devops-center`
 - [dx-devops-work-item-manage](../../skills/dx-devops-work-item-manage/SKILL.md)
 - [org-preflight](../../skills/org-preflight/SKILL.md)
 - [requirements-capture](../../skills/requirements-capture/SKILL.md)

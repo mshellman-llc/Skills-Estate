@@ -26,7 +26,7 @@ The producing skill owns the requested artifact and its information design.
 Use this library when that artifact needs a visual profile. A plain chat reply
 does not require a brand preflight. Writing-integrity applies to its prose.
 
-What this skill holds constant across all eight:
+What this skill holds constant across output formats:
 
 - **Typography.** The profile's font stack and supplied font files, with
   tabular figures where digits align. System fonts need no bundled files.
@@ -127,7 +127,7 @@ pass authorizes release.
 
 Release note discipline: record a disposition for every parity or brand warning
 and every visual review flag before shipping. Prose findings cannot be disposed.
-Rewrite until prose-pass reports clean.
+Repair supported scanner findings, then read the complete result using Writing Integrity. A clean scan does not establish editorial quality.
 
 ## Workflow
 

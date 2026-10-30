@@ -22,20 +22,20 @@ Each task links to its primary workflow. Packages are also listed here when one 
 
 ## Source workflows
 
-- [architecture-doc](../../skills/architecture-doc/SKILL.md)
+- [architecture-doc](../../skills/architecture-doc/SKILL.md) — embedded workflow; standalone skill retired, use `system-design`
 - [business-case](../../skills/business-case/SKILL.md)
-- [ddoc](../../skills/ddoc/SKILL.md)
+- [ddoc](../../skills/ddoc/SKILL.md) — embedded workflow; standalone skill retired, use `deck-builder`
 - [deal-desk](../../skills/deal-desk/SKILL.md)
-- [interactive-proposal](../../skills/interactive-proposal/SKILL.md)
+- [interactive-proposal](../../skills/interactive-proposal/SKILL.md) — embedded workflow; standalone skill retired, use `scope-options`
 - [playbook-builder](../../skills/playbook-builder/SKILL.md)
-- [playbook-onepager](../../skills/playbook-onepager/SKILL.md)
-- [playbook-suite](../../skills/playbook-suite/SKILL.md)
-- [rom](../../skills/rom/SKILL.md)
+- [playbook-onepager](../../skills/playbook-onepager/SKILL.md) — embedded workflow; standalone skill retired, use `service-offering`
+- [playbook-suite](../../skills/playbook-suite/SKILL.md) — embedded workflow; standalone skill retired, use `service-offering`
+- [rom](../../skills/rom/SKILL.md) — embedded workflow; standalone skill retired, use `project-scoping`
 - [scope-reference](../../skills/scope-reference/SKILL.md)
 - [scoping-agent](../../skills/scoping-agent/SKILL.md)
 - [solution-brief](../../skills/solution-brief/SKILL.md)
 - [sow](../../skills/sow/SKILL.md)
-- [sow-quality](../../skills/sow-quality/SKILL.md)
+- [sow-quality](../../skills/sow-quality/SKILL.md) — embedded workflow; standalone skill retired, use `statement-of-work`
 
 ## Share this group
 

@@ -17,11 +17,11 @@ Each task links to its primary workflow. Packages are also listed here when one 
 ## Source workflows
 
 - [code-simplify](../../skills/code-simplify/SKILL.md)
-- [cross-platform-skill-release](../../skills/cross-platform-skill-release/SKILL.md)
+- [cross-platform-skill-release](../../skills/cross-platform-skill-release/SKILL.md) — embedded workflow; standalone skill retired, use `skill-estate-sync`
 - [execution-truth](../../skills/execution-truth/SKILL.md)
 - [github-repository-work](../../skills/github-repository-work/SKILL.md)
 - [quality-gate](../../skills/quality-gate/SKILL.md)
-- [skill-creation-walkthrough](../../skills/skill-creation-walkthrough/SKILL.md)
+- [skill-creation-walkthrough](../../skills/skill-creation-walkthrough/SKILL.md) — embedded workflow; standalone skill retired, use `skill-estate-sync`
 - [skill-estate-sync](../../skills/skill-estate-sync/SKILL.md)
 
 ## Share this group

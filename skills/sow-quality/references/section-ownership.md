@@ -1,5 +1,10 @@
 # Section ownership and cross-reference discipline
 
+Historical CPQ/T&M profile reference. Preserve these examples as examples. Apply
+their terms, section numbers and role names only when the selected agreement
+adopts that profile; the current contract and confirmed project policy control.
+Never convert a fixed commitment or billing model merely to match this reference.
+
 Every mechanic in a SOW has exactly one section that owns it. Owning means: the full statement of the mechanic lives there, and nowhere else. Every other section that needs to invoke the mechanic points to the owner in one sentence. This is the single rule that prevents repetition-as-thoroughness.
 
 ## The standard CPQ SOW ownership map

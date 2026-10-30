@@ -38,7 +38,7 @@ List timeline snapshots first and identify the active snapshot ID. Read that sna
 
 The headline price comes from the staffing snapshot. Per-item dollars are omitted because back-allocation may drift between snapshots. Item hours are scope estimates; staffing hours can also cover delivery activities. Do not force the two totals to match or infer that an optional item is already priced.
 
-Display exact prices by default. If the user requests rounded prices, show the rounded amount as approximate and preserve the exact quote alongside it. Rounding never changes the working source. Show all requested staffing variants on the static page so printing retains every price and duration. A prospect-facing selector belongs in `interactive-proposal`.
+Display exact prices by default. If the user requests rounded prices, show the rounded amount as approximate and preserve the exact quote alongside it. Rounding never changes the working source. Show all requested staffing variants on the static page so printing retains every price and duration. For a prospect-facing selector, choose the interactive proposal or explorer mode and read [its complete workflow](../interactive-proposal/SKILL.md). The portable Scope Options package embeds it; static comparison rules do not substitute for its interaction and print checks.
 
 ## Reconcile before rendering
 

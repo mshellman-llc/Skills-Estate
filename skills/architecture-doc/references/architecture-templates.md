@@ -107,8 +107,8 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 - Storage split. [What lives in the database versus object storage.] `Source: ...`
 
 ### Identity and authorization
-- The authorization key. [What the system keys on.]
-- Access or audience levels. [Table.] `Source: ...`
+- Principal and authorization key. [Identity, tenant or isolation key where relevant.]
+- Access matrix. [Who may perform each action, where authorization is enforced, and what denial returns.] `Source: ...`
 
 ### Data model
 - Tables and an illustrative schema. [See the schema-block pattern below.]
@@ -120,7 +120,7 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 - Idempotency and retry. [How a repeated call resolves.] `Source: ...`
 
 ### Credential and serving
-- The request path. [The fixed order: decide, serve, log.]
+- The request path. [Ordered requests, responses and state changes for the actual interaction. Include credential handling and failure branches; do not assume one universal sequence.]
 - The security order and the transaction boundary. [What is atomic, what fails closed.]
 - Error behavior. [What a denied, expired, or unknown request returns, and why.] `Source: ...`
 
@@ -145,7 +145,7 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 
 ## Systems-map pattern
 
-Draw the map using the selected renderer and project profile. Existing diagram classes (`.diagram`, `.drow`, `.dbox`, `.dseam`, `.dcap`) may be reused when available. One row per layer, seams for the connectors, a caption that carries the source. Keep boxes to a title and one line. Example layers for a hosted app:
+Draw a directed systems map using the selected renderer and project profile. Label every relationship with its operation or data, identify trust and ownership boundaries, and distinguish proposed flows from confirmed behavior. A sequence shows ordered requests, responses, state changes and failure branches. Existing diagram classes (`.diagram`, `.drow`, `.dbox`, `.dseam`, `.dcap`) may be reused when available. One row per layer, seams for the connectors, a caption that carries the source. Keep boxes to a title and one line. Example layers for a hosted app:
 
 ```
 row 1:  [source and deploy]  --deploy on push-->  [the app, dark box]

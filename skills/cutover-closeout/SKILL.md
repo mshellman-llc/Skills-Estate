@@ -23,7 +23,7 @@ and dates. The signed readiness pack owns the release decision. Timesheets own
 actual effort. Record a missing load-bearing fact as a gap with an owner, due
 date, and blocked gate.
 
-Run `evidence-core` before drafting. Use `prose-pass` for every prose artifact
+Run `evidence-core` before drafting. Use `writing-integrity` for every prose artifact
 and `brand-renderer` for a client-facing render. This skill records commercial
 impact but never creates rates, hours, fees, or a change price.
 

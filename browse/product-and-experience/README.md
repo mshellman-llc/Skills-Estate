@@ -31,7 +31,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [pm-spec-writing](../../skills/pm-spec-writing/SKILL.md)
 - [process](../../skills/process/SKILL.md)
 - [product-development-pathway](../../skills/product-development-pathway/SKILL.md)
-- [spec-writer](../../skills/spec-writer/SKILL.md)
+- [spec-writer](../../skills/spec-writer/SKILL.md) — embedded workflow; standalone skill retired, use `feature-spec`
 - [system-design](../../skills/system-design/SKILL.md)
 - [usability-testing](../../skills/usability-testing/SKILL.md)
 

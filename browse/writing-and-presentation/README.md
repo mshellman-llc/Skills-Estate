@@ -22,7 +22,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [deck-builder](../../skills/deck-builder/SKILL.md)
 - [megan-writing-style](../../skills/megan-writing-style/SKILL.md)
 - [personal-writing-style-runtime](../../skills/personal-writing-style-runtime/SKILL.md)
-- [prose-pass](../../skills/prose-pass/SKILL.md)
+- [prose-pass](../../skills/prose-pass/SKILL.md) — internal diagnostics; standalone skill retired, use `writing-integrity`
 - [writing-integrity](../../skills/writing-integrity/SKILL.md)
 - [writing-style-builder](../../skills/writing-style-builder/SKILL.md)
 

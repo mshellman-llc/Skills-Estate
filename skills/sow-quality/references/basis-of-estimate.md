@@ -1,5 +1,10 @@
 # Basis of Estimate framework
 
+Historical CPQ/T&M profile reference. Preserve these examples as examples. Apply
+their terms, section numbers and role names only when the selected agreement
+adopts that profile; the current contract and confirmed project policy control.
+Never convert a fixed commitment or billing model merely to match this reference.
+
 The standard for handling volumetric assumptions in any Estate playbook SOW. It plugs into the SOW Assumptions sub-component and the DDOC Assumptions slide defined in the Playbook Process Guidelines. A SOW that states counts inline ("up to 1,000 product records") in the scope body reads as a commitment to that exact number, which is wrong for a Time-and-Materials engagement and dangerous if the real count differs.
 
 ## The core move

@@ -1,0 +1,419 @@
+{
+  "format": 1,
+  "purpose": "Replace personal examples and optional scanner location with owner-confirmed configuration in workplace packages only. Preserve complete workflows, learning and diagnostic semantics.",
+  "references": [
+    {
+      "source": "skills/writing-integrity/references/learning.md",
+      "source_sha256": "3dea2a3fc0633b777b8345c9227139f86981241692542facb40102008d8be2e2",
+      "edits": [
+        {
+          "before": "Use lowercase IDs such as `megan`, `codex`, `claude-code`, `claude-ai`, `chatgpt` or `gemini`.",
+          "after": "Use a chosen lowercase profile ID such as `writer` and a host ID such as `codex`, `claude-code`, `claude-ai`, `chatgpt` or `gemini`.",
+          "count": 1
+        },
+        {
+          "before": "The default store is `~/.local/share/writing-integrity` on macOS and Linux, or `%LOCALAPPDATA%/writing-integrity` on Windows. `WRITING_INTEGRITY_HOME` or `--store PATH` selects another location. Keep the store outside repositories and skill packages.",
+          "after": "This workplace package requires an explicit `--store PATH` and ignores personal environment variables and default stores. Set `WORKPLACE_STORE` to a confirmed private workplace location separate from personal profiles, even for the same owner. Keep the store outside repositories and skill packages. Without a confirmed location, use core writing review without learned preferences.",
+          "count": 1
+        },
+        {
+          "before": "Use one profile for a person across local tools when they share a private store.",
+          "after": "Use one workplace profile for a person across approved workplace tools when they share that private workplace store. Keep personal learning separate.",
+          "count": 1
+        },
+        {
+          "before": "python3 scripts/learning.py",
+          "after": "python3 scripts/learning.py --store \"$WORKPLACE_STORE\"",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/references/detailed-review.md",
+      "source_sha256": "10f161cfb0c6b01550f78500acc4c96cffc741a530662e961f6a455af90cbb17",
+      "edits": [
+        {
+          "before": "Use the confirmed author profile, such as `megan-writing-style`, when writing as that person.",
+          "after": "Use the confirmed author profile when writing as that person.",
+          "count": 1
+        },
+        {
+          "before": "If `~/.agents/humanize/tellscan.py` is available, scan finished prose files:",
+          "after": "If the owner has configured the optional tellscan scanner, resolve its actual executable path and supported options before use. Set `SCANNER` to that path and `PROFILE` to a confirmed profile supported by that scanner. Scan finished prose files:",
+          "count": 1
+        },
+        {
+          "before": "/usr/bin/python3 ~/.agents/humanize/tellscan.py",
+          "after": "python3 \"$SCANNER\"",
+          "count": 3
+        },
+        {
+          "before": "scan <file> --profile megan",
+          "after": "scan <file> --profile \"$PROFILE\"",
+          "count": 1
+        },
+        {
+          "before": "Use `--profile megan` for Megan-authored copy.",
+          "after": "Use a named scanner profile only when the owner confirmed it for this author's copy.",
+          "count": 1
+        },
+        {
+          "before": "## Check saved files",
+          "after": "## Check saved files\n\nBefore using an optional external scanner or its learning command, verify that its profile and storage are authorized and isolated for this workplace. Never use a personal or default learning store. If the scanner cannot establish this separation, use the bundled diagnostics and manual review; retain learning only through the explicit workplace store.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/scripts/learning.py",
+      "source_sha256": "9cea10ef7051c98e3e2a72127a9cf6b108fad6da395829a21a5767fae6348677",
+      "edits": [
+        {
+          "before": "def root_path():\n    if os.environ.get('WRITING_INTEGRITY_HOME'):\n        return Path(os.environ['WRITING_INTEGRITY_HOME']).expanduser().resolve()\n    if os.name == 'nt':\n        return Path(os.environ.get('LOCALAPPDATA', Path.home() / 'AppData/Local')) / 'writing-integrity'\n    return Path(os.environ.get('XDG_DATA_HOME', Path.home() / '.local/share')) / 'writing-integrity'\n",
+          "after": "def root_path():\n    raise ValueError(\"Workplace learning requires an explicit --store path for a separate workplace profile. No personal environment or default store is used.\")\n",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/SKILL.md",
+      "source_sha256": "5a4968d44a9781b5ac262f0c4e47c15448b416bdf7b6acb601fdc802d645967a",
+      "edits": [
+        {
+          "before": "## Start with the active profile",
+          "after": "## Start with the active profile\n\nThis workplace package never selects a personal store automatically. Set `WORKPLACE_STORE` to an explicitly confirmed private workplace profile location, separate from personal profiles even for the same owner. Pass it with `--store` for every learning command. Without a confirmed workplace store, use the core review rules and do not read or write personal learning data.",
+          "count": 1
+        },
+        {
+          "before": "python3 scripts/learning.py",
+          "after": "python3 scripts/learning.py --store \"$WORKPLACE_STORE\"",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/references/host-setup.md",
+      "source_sha256": "c7b74bc8171319428ccd23a95b8faa1792fd5b6aa73f3520b5724c4efb5f9353",
+      "edits": [
+        {
+          "before": "Codex and Claude Code can use the same private store for the same owner.",
+          "after": "Codex and Claude Code can use the same approved workplace store for the same owner. Keep personal profiles separate even for that owner. This workplace package requires an explicit `--store PATH` for every learning command; it never reads a personal environment or default store. Without a confirmed workplace location, use core writing review without learned preferences.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/prose-pass/references/construction-rules.md",
+      "source_sha256": "08a4e35c09216379dd2716b845bb1b663b82cfb81951d346dcfe3625c792e172",
+      "edits": [
+        {
+          "before": "Examples are drawn from two real documents, anonymized: an interactive lifecycle panel and a consulting assessment deck.",
+          "after": "The rules preserve the original construction guidance. All examples in this workplace edition are newly written synthetic illustrations; their figures, systems and events do not describe a real engagement.",
+          "count": 1
+        },
+        {
+          "before": "> Before: Costs not yet negotiated, and the first numbers were too high.\n> After: Costs are not negotiated. The first numbers came back too high.",
+          "after": "> Before: The demo has not started, and the presenter is still checking the microphone.\n> After: The demo has not started. The presenter is still checking the microphone.",
+          "count": 1
+        },
+        {
+          "before": "> Before: The product does it and the implementation blocks it.\n> After: Every capability was present at go-live. None was configured.",
+          "after": "> Before: The importer reads it and the validator rejects it.\n> After: The importer reads the file. The validator rejects its missing header.",
+          "count": 1
+        },
+        {
+          "before": "`Nine stages, three verdicts`. `Your four examples`. `Two figures`. `The three questions`.",
+          "after": "`Seven screens, two decisions`. `Your six examples`. `Five figures`. `The four questions`.",
+          "count": 1
+        },
+        {
+          "before": "> One question at each: is the system holding up?",
+          "after": "> One question before saving: is the filename valid?",
+          "count": 1
+        },
+        {
+          "before": "`Credit memos follow.` `In acceptance testing.` `Phase 1B.`",
+          "after": "`Drafts ready.` `In the review queue.` `Pilot phase.`",
+          "count": 1
+        },
+        {
+          "before": "`Defective code, rules from 2021, bad records from grouped deals.`",
+          "after": "`Stale icons, labels from 2019, missing screenshots from test runs.`",
+          "count": 1
+        },
+        {
+          "before": "`Each one answers who works there, what the business needs, and one of three verdicts` fails because a verdict cannot be answered.",
+          "after": "`Each guide explains who checks the file, when the review begins, and one of four labels` fails because a label is not an explanation.",
+          "count": 1
+        },
+        {
+          "before": "> LEAD TO CASH / Who carries the work at each stage / What was bought, and what actually does the work.",
+          "after": "> FILE REVIEW / Who checks each submission / The people responsible for reviewing submitted files.",
+          "count": 1
+        },
+        {
+          "before": "`THE STORY`, `WHAT IT MEANS`, `WHAT WAS SKIPPED`",
+          "after": "`THE EXPLANATION`, `WHAT THIS TELLS US`, `WHAT WAS LEFT OUT`",
+          "count": 1
+        },
+        {
+          "before": "`Retellable without system vocabulary`",
+          "after": "`Explained without implementation terminology`",
+          "count": 1
+        },
+        {
+          "before": "`Click any stage`, `Each question opens only if the answer before it is yes`",
+          "after": "`Select any screen`, `Each panel appears after the previous panel is complete`",
+          "count": 1
+        },
+        {
+          "before": "`The July 15 question, answered`",
+          "after": "`The September 8 question, answered`",
+          "count": 1
+        },
+        {
+          "before": "`Your four examples`. `The cascades you asked to see`. `In your order`. `As requested`. `You said`.",
+          "after": "`Your six examples`. `The panels you asked to see`. `In the order you specified`. `As requested`. `You said`.",
+          "count": 1
+        },
+        {
+          "before": "> the code books it as new business, failing overnight silently\n> 550+ automations sit on the quoting engine, so changes stopped shipping\n> BUILT, IN ACCEPTANCE TESTING",
+          "after": "> the job marks the draft complete, failing during export silently\n> 27 validation rules run on the sample importer, so releases stopped\n> WRITTEN, WAITING FOR REVIEW",
+          "count": 1
+        },
+        {
+          "before": "In the source document, a reader could not tell which of two organizations had built the work under review, which was load-bearing in a document about who should pay for it.",
+          "after": "In this synthetic example, a reader cannot tell whether the writer or reviewer owns the next action. That missing actor prevents the reader from routing the review.",
+          "count": 1
+        },
+        {
+          "before": "The source deck repeated `owned by finance operations` and `3 or 4 redundant apps` word for word across slides, and restated three statistics on a later slide that had already carried them.",
+          "after": "A synthetic guide repeats `reviewed by the support coordinator` and `6 or 7 sample files` across sections, then repeats two figures in its conclusion.",
+          "count": 1
+        },
+        {
+          "before": "In the source deck, all four case studies ran exactly five beats, each beat one short sentence, the fifth always root cause plus status. Four unrelated failure modes do not have the same shape.",
+          "after": "In a synthetic guide, six unrelated troubleshooting cases each use exactly four short sentences, with the last sentence always giving a cause and status. Unrelated failure modes need different amounts of explanation.",
+          "count": 1
+        },
+        {
+          "before": "> Verdicts: holding up / set up wrong / broken",
+          "after": "> Verdicts: doing fine / awaiting review / rejected",
+          "count": 1
+        },
+        {
+          "before": "Two of those three are specific. `Holding up` is an unmeasurable hedge.",
+          "after": "Two of those three identify a state. `Doing fine` is an unmeasurable hedge.",
+          "count": 1
+        },
+        {
+          "before": "`Runs the same product as thousands of companies`",
+          "after": "`Uses the same file format as countless teams`",
+          "count": 1
+        },
+        {
+          "before": "The source deck expressed ranges four ways (`$200K\u2013$300K`, `70-80%`, `5-10`, `5 to 10`) and approximation three ways (tilde, plus-suffix, rounding). Two of those range instances were the same underlying quantity.",
+          "after": "A synthetic worksheet expresses ranges four ways (`$12K\u2013$18K`, `20-35%`, `2-6`, `2 to 6`) and approximation three ways (tilde, plus-suffix, rounding). The last two ranges describe the same sample count.",
+          "count": 1
+        },
+        {
+          "before": "`$49,676` beside `$0.9M\u2013$1.8M`",
+          "after": "`$7,432` beside `$0.2M\u2013$0.4M`",
+          "count": 1
+        },
+        {
+          "before": "`Exposure`. `Recurs every year the failures stand`. `Invests in a depreciating asset`.",
+          "after": "`Looming losses`. `Wastes money every week the delay continues`. `Funds a steadily declining service`.",
+          "count": 1
+        },
+        {
+          "before": "`$0.9M to $1.8M annually, until pricing and approvals deploy.`",
+          "after": "`$8,000 to $12,000 per year in the synthetic estimate, until the replacement job runs.`",
+          "count": 1
+        },
+        {
+          "before": "> The 18-month figure is [another party]'s program design, and we were asked to fill in the blanks on it.\n> You said no one inside the company can state that yet.",
+          "after": "> The 9-week schedule came from [another team], and we were asked to supply the missing steps.\n> You said the review group had not confirmed that date.",
+          "count": 1
+        },
+        {
+          "before": "Both sentences are true and both are doing something other than informing.",
+          "after": "Assume the synthetic brief supports both sentences. They still do something other than inform.",
+          "count": 1
+        },
+        {
+          "before": "The first draft of this file failed C1 ten times and C7 five times.",
+          "after": "A draft explaining construction rules can itself repeat balanced clauses or padded triads.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/prose-pass/scripts/prose_check_selftest.py",
+      "source_sha256": "ae8380353b7975575ee7613cf542b2cb42e8e997c7a7695737413506e41721ab",
+      "edits": [
+        {
+          "before": "Runs the checker over an inline bad fixture and an inline clean fixture with the",
+          "after": "All fixture narratives and figures are synthetic and describe no real project.\nRuns the checker over an inline bad fixture and an inline clean fixture with the",
+          "count": 1
+        },
+        {
+          "before": "It's worth noting that per your request, we built the four cascades you asked to see.",
+          "after": "It's worth noting that per your request, we built the two panels you asked to see.",
+          "count": 1
+        },
+        {
+          "before": "The client's revenue process, and the investment it will take to fix it. Three root causes, and no single fix clears the board. Lights-on ships nothing new, and the exposure recurs annually.",
+          "after": "The sample import is ready, and the test operator can run it. Two fields need labels, and the reviewer must confirm them. The nightly job stays idle, and the deadline moves again.",
+          "count": 1
+        },
+        {
+          "before": "Quote-to-cash cycle dropped 40 percent after we rebuilt the pricing service.\n\nThree teams ran the old process. None of them agreed on the discount rules. That is why quotes took nine days.\n\nWe configured the approval matrix so a regional deal clears in one hop. Payback landed in the first quarter.",
+          "after": "The synthetic parser accepted 12 rows from the sample file.\n\nThe test operator checked each header. The missing timestamp caused an error. That result matches the fixture specification.\n\nWe added a label to the preview so the reviewer can identify the input. The export retains its original columns.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/prose-pass/scripts/prose_receipt_selftest.py",
+      "source_sha256": "591786620f0fd34ea8e60376bfe6dc885830309186517a3fe9eb97d67634034d",
+      "edits": [
+        {
+          "before": "Each case is a receipt scenario with the exit code and failure codes it must",
+          "after": "All fixture people, dates, figures and events are synthetic.\nEach case is a receipt scenario with the exit code and failure codes it must",
+          "count": 1
+        },
+        {
+          "before": "Quote turnaround dropped from six days to 41 hours after the rating API ",
+          "after": "Batch completion dropped from two days to 17 hours after the synthetic parser ",
+          "count": 2
+        },
+        {
+          "before": "went live on 2026-03-02. Gene Marsh now reviews eleven exceptions a week ",
+          "after": "went live on 2025-04-09. The test operator now reviews seven exceptions a week ",
+          "count": 1
+        },
+        {
+          "before": "instead of building every quote himself.",
+          "after": "instead of checking every row manually.",
+          "count": 1
+        },
+        {
+          "before": "The regional managers build the standard quotes themselves.",
+          "after": "The validation script checks ordinary rows automatically.",
+          "count": 1
+        },
+        {
+          "before": "figures: 41 hours, 2026-03-02",
+          "after": "figures: 17 hours, 2025-04-09",
+          "count": 1
+        },
+        {
+          "before": "Reviewed 2026-08-18: specific, sourced, checker-clean.",
+          "after": "Reviewed synthetic fixture: specific, sourced, checker-clean.",
+          "count": 1
+        },
+        {
+          "before": "41:rating API launch report",
+          "after": "17:synthetic parser fixture",
+          "count": 1
+        },
+        {
+          "before": "2026:rating API launch report",
+          "after": "2025:synthetic parser fixture",
+          "count": 1
+        },
+        {
+          "before": "03:rating API launch report, date part",
+          "after": "04:synthetic parser fixture, date part",
+          "count": 1
+        },
+        {
+          "before": "02:rating API launch report, date part",
+          "after": "09:synthetic parser fixture, date part",
+          "count": 1
+        },
+        {
+          "before": "Savings reached $2,400,000.",
+          "after": "Savings reached $73,000.",
+          "count": 1
+        },
+        {
+          "before": "went live on 2026-03-02. Gene Marsh now reviews eleven exceptions a week. ",
+          "after": "went live on 2025-04-09. The test operator now reviews seven exceptions a week. ",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/prose-pass/references/registers/email-slack.md",
+      "source_sha256": "88a3344237b93ad5575bcf3ee3a55faade96982352b77147c661a3dd74a9410a",
+      "edits": [
+        {
+          "before": "## Worked example\n\nInput:",
+          "after": "## Worked example\n\nThis example is fictional. The supplied pilot log reports a 15% processing-time reduction from a platform update. That source fact is available to the editor alongside the draft.\n\nInput:",
+          "count": 1
+        },
+        {
+          "before": "which cut processing time by 40% in pilot testing.",
+          "after": "which cut processing time by 15% in the fictional pilot log.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/assets/setup/setup-prompt.md",
+      "source_sha256": "0f51bd0184727893114b2c168bc705056c481f831f4e779e483a3c6c635cfb05",
+      "edits": [
+        {
+          "before": "Choose a private storage location for this owner. If the same owner's local tools already share a writing-integrity store, reuse it.",
+          "after": "Choose a separate private storage location authorized for this owner and workplace. Pass that explicit location as --store to every learning.py command. Do not reuse a personal or other-workplace store merely because the owner is the same person; no environment or default path establishes audience authorization.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/assets/setup/web-instructions.md",
+      "source_sha256": "a79914763efbb661aed7c06e43a02818415c6c00cdf408ecf59be54e9bd88387",
+      "edits": [
+        {
+          "before": "Read the current compact owner profile at the start of a task.",
+          "after": "Read the current compact owner profile authorized for this workplace at the start of a task. Keep its files separate from personal profiles and profiles for other workplaces; the same owner does not authorize cross-audience reuse.",
+          "count": 1
+        },
+        {
+          "before": "Storage location selects the installation; it does not establish identity or voice.",
+          "after": "Storage location selects the installation; it does not establish identity, voice or workplace authorization. For an executable installation, pass an explicit approved workplace path as --store to every learning.py command; do not fall back to environment or personal default paths.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/assets/setup/README.md",
+      "source_sha256": "300928f0207682afed3b21ce73de4c1c9b1d07e6f603fa4829d5f1a57259bd93",
+      "edits": [
+        {
+          "before": "The prompts authorize correction capture and require the tool to test its actual storage.",
+          "after": "The prompts authorize correction capture and require the tool to test its actual storage. This workplace edition requires a separate owner-confirmed workplace store or private project files. Do not reuse personal or other-workplace profiles automatically, even for the same owner. Pass an explicit approved workplace path as --store to every learning.py command.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "skills/writing-integrity/scripts/build_kit.py",
+      "source_sha256": "4fda401e1109eba126d9ad5e63a27ffab752daea4a28c8fc46827913406ab244",
+      "edits": [
+        {
+          "before": "Reuse this owner\u2019s local private store if it already exists.",
+          "after": "Use a separate owner-confirmed workplace store; do not reuse personal or other-workplace profiles automatically. Pass its explicit path as --store to every learning.py command.",
+          "count": 1
+        },
+        {
+          "before": "Read the current compact owner profile at task start.",
+          "after": "Read the current compact owner profile authorized for this workplace at task start. Keep workplace storage separate from personal and other-workplace profiles, even for the same owner. Pass an explicit approved workplace path as --store to every learning.py command.",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -65,7 +65,7 @@ Same page, same brand, same gates. The differences:
 
 **Structure.** Keep the `<main>` landmark in the skeleton. The parity gate requires it.
 
-**Voice.** Apply the confirmed author profile and `prose-pass` while writing, not as a pass afterwards. The test for
+**Voice.** Apply the confirmed author profile and `writing-integrity` while writing, not as a pass afterwards. The test for
 every sentence is whether it carries a specific: a number, a named system, a named owner, or a
 consequence. Scrubbing buzzwords without adding specifics fails the standard that matters even
 when it passes the checker that runs.
@@ -76,6 +76,17 @@ the client can see is a next conversation and a boundary they discover is a disp
 
 **Print.** An `@media print` block so the selected version prints clean. Excluded scope cards drop
 out of print; disclosures print open.
+
+## Invalid input blocks generation
+
+Retain the rejected input and its validation findings. An unsupported fee, invented
+team or duration, mismatched source identifier, or unreconciled count is a blocking
+input error. Propose a correction supported by the actual source; do not silently
+delete the offending field and treat the remaining input as verified. Once the
+source-supported correction is made within the user's authorized scope, rerun the builder's complete
+validation and figure/count reconciliation. Only a successful rerun permits building
+the candidate page. Record what actually ran. Browser interaction, print and rendered
+layout checks remain separate release requirements even after input validation passes.
 
 ## Working builder and checks
 

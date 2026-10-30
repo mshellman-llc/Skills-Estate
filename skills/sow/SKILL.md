@@ -1,6 +1,6 @@
 ---
 name: sow
-description: 'Generate Statements of Work (.docx) from a confirmed quote JSON and a selected contract profile, in Waterfall (fixed scope), Agile (adaptive scope), and Assess (advisory, readout-gated) variants. Use when asked to generate the SOW, draft the SOW from the quote, build the SOW for a Q-number, or turn a quote into a Statement of Work. The quote is the source of truth; this skill renders it, does not price (the Pricing System prices), and does not author scope language (scoping-agent does). It builds the .docx, resolves placeholders with an audit trail, verifies the required-clause gate, and hands off to sow-quality. Do NOT use for the authoring quality pass (sow-quality) or the DDOC (ddoc).'
+description: 'Generate Statements of Work (.docx) from a confirmed quote JSON and a selected contract profile, in Waterfall (fixed scope), Agile (adaptive scope), and Assess (advisory, readout-gated) variants. Use when asked to generate the SOW, draft the SOW from the quote, build the SOW for a Q-number, or turn a quote into a Statement of Work. The quote is the source of truth; this skill renders it, does not price (the Pricing System prices), and does not author scope language (scoping-agent does). It builds the .docx, resolves placeholders with an audit trail, verifies the required-clause gate, and hands off to the embedded contract review mode. For authoring quality review, select the embedded contract scope and obligation review mode; DDOC remains a deck workflow.'
 ---
 
 
@@ -9,7 +9,37 @@ description: 'Generate Statements of Work (.docx) from a confirmed quote JSON an
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
 > [`sow-proposal.md`](../prose-pass/references/registers/sow-proposal.md). Inputs, not a final pass.**
 
-Renders a Statement of Work from a quote. The quote is the only source for numbers and scope language; this skill does not price and does not author scope. DDOC generation lives in `ddoc`.
+Draft or generate the requested editable statement of work from the current quote,
+confirmed scope baseline, contracting entities, approved template and applicable
+agreement. The selected sources govern numbers, scope, acceptance and payment terms.
+This workflow does not invent pricing or scope commitments.
+
+## Select a supported production route
+
+Build a source-to-document mapping for scope, deliverables, responsibilities,
+acceptance, timeline, pricing, payment milestones, assumptions, exclusions and change
+control. Resolve revisions and conflicting sources before asserting final terms.
+Use the available document tool with the supplied template for ordinary drafting,
+revisions, or agreements that do not fit this generator's input contract. Missing
+entity details or approved terms permit a clearly labeled draft with unresolved
+fields visible. Preserve contractual meaning and mandated wording, including its
+punctuation. Historical clauses and example profiles supply no approval.
+
+The optional generator below supports only its documented model and contract-profile
+shape. Use it when that shape faithfully represents the actual agreement. Its fixed
+variant structures, reconciliation requirements, upfront field or Exhibit A layout
+must not create a payment term, acceptance rule, scope cap or requirement for an
+existing CRM record. In particular, an independently sourced fixed fee may differ from hours times
+rate; this generator's per-role revenue equality cannot represent that model.
+Preserve the agreed fee and use the document-tool route for it. If other supplied
+terms cannot be represented faithfully, use the document-tool route; do not force the agreement into the generator or fill missing
+values from examples. For either route reconcile totals and milestones, inspect
+cross-references and placeholders, compare required clauses with the supplied template,
+then run the embedded contract review. Inspect every rendered page before finalizing.
+Creating a document does not approve, send or execute it.
+
+The following variant and CLI sections describe the optional generator. The selected
+agreement remains controlling; unsupported terms require the document-tool route.
 
 ## Variants
 
@@ -92,7 +122,7 @@ Given a Q-number rather than a record Id, resolve it first with a SOQL query on 
 4. **Render.** `node scripts/generate_sow.js model.json <variant> --contract contract.json --output output/sow.docx`. Add `--profile brand.md` for a selected brand. Writes the DOCX, a build record, and a resolution log. Existing outputs are preserved; use a new attempt path.
 5. **Work the resolution log.** Every bracketed field is resolved before the document leaves the building. A missing source value is flagged, never filled.
 6. **Verify the actual contract and quote.** `python3 scripts/verify_contract.py OUT.docx --contract contract.json --quote model.json --variant <variant> --output verification.json`. This compares selected clause text, identities, scope descriptions, quote values, and build hashes. It must pass. The older `verify_clauses.py` checks the reference clause table only and cannot approve a different contract profile.
-7. **Hand off to `sow-quality`** for the authoring pass: structural de-slop, the Basis of Estimate framework, and cross-reference discipline.
+7. **Read [the contract review workflow](../sow-quality/SKILL.md)**, embedded as the contract scope and obligation review mode, for the authoring pass: structural de-slop, the Basis of Estimate framework, and cross-reference discipline.
 8. **Gate.** Parity, visual, prose. Written disposition each.
 
 ## Contract and brand inputs
@@ -137,18 +167,15 @@ never `Tier 2`; the code stays in the manifest, never in the filename.
 ## Rules
 
 - **The quote is the only source for a number.** No price, duration, or headcount that the quote does not ground.
-- **Volumetric assumptions go in Exhibit A**, each with a quantity or complexity limit, and each paired with a soft or hard Change Order trigger.
+- Place volumetric assumptions and any change-control triggers where the selected agreement requires them. Preserve fixed scope caps and contractual rights; Exhibit A and the historical soft/hard taxonomy apply only when adopted by that agreement.
 - **One authoritative home per mechanic.** Exhibit A does not restate Change Order mechanics. Section 7.2 does not lead with consequences before establishing the rule.
 - **Preserve role names and responsibilities from the quote.** Use `roleAliases` only when an explicit mapping is part of the source. Do not silently turn an Account Executive into an engagement-delivery role.
-- **No section symbol.** Write "Section 4" in full. This holds for the resolution log as well as the contract.
-- **No em dashes** in headings, body, or the resolution log.
-- **Every boundary routes.** Each out-of-scope line names the paid next step.
+- Use the selected writing policy for authored wording. Preserve exact quotations and mandated clause punctuation; scanner flags never authorize changing contract terms.
+- Preserve supplied exclusions and their actual handling process. A proposed next step stays proposed; do not invent paid follow-on work.
 
 ## The assumptions in the SOW should already be familiar
 
-By the time the SOW arrives, the client has seen the assumptions on the DDOC and accepted them. Exhibit A restating them in contract language is expected. Exhibit A introducing an assumption the client never saw is how a signature turns into a negotiation.
-
-Check the executed DDOC before finalizing Exhibit A. Anything in Exhibit A with no counterpart on the DDOC is a flag, not a normal case.
+Where the project has an approved decision deck or prior scope record, compare its assumptions with the SOW and flag discrepancies. Preserve the actual approval state; neither an absent deck nor a generated document establishes client acceptance. Use the confirmed scope baseline when no deck exists.
 
 ## Clause coverage and files
 

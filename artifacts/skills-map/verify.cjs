@@ -3,12 +3,13 @@ const path=require('path');
 const assert=require('assert/strict');
 const {pathToFileURL}=require('url');
 const {chromium}=require('playwright');
+const {launchOptions}=require('../../skills/brand-renderer/scripts/browser_launch_policy.cjs');
 (async()=>{
  const input=path.resolve(process.argv[2]||path.join(__dirname,'index.html'));
  const output=path.resolve(process.argv[3]||path.join(__dirname,'qa'));
  fs.mkdirSync(output,{recursive:true});
  const data=JSON.parse(fs.readFileSync(input.replace(/\.html$/,'.json'),'utf8'));
- const browser=await chromium.launch({headless:true,channel:process.env.PLAYWRIGHT_CHANNEL||'chrome'});
+ const browser=await chromium.launch(launchOptions());
  const context=await browser.newContext({viewport:{width:1440,height:1100},acceptDownloads:true});
  const page=await context.newPage();const errors=[], requests=[];
  page.on('pageerror',e=>errors.push(e.message));

@@ -86,8 +86,11 @@ Derive the set from the ledger, not from an example. Read
 
 ## The reasoning tests
 
-1. **The math holds.** Hours times blended rate reconciles to the fee. Surface any
-   discrepancy before rendering; never bury a rounding gap inside a polished number.
+1. **The math holds.** For T&M, hours times the sourced billing rate reconciles to
+   the quoted fee within the gate's retained 0.5 percent diagnostic tolerance. A
+   fixed fee instead requires its authoritative `fee_source` and `fixed_fee_basis`;
+   it may differ from hours times rate. Never substitute hourly billings for an
+   independently agreed fixed fee. Surface discrepancies without changing the quote.
 2. **The three-way tie holds.** Phase hour totals equal role hour totals equal work-package
    hour totals equal the quote grand total, or the variance is flagged with per-line deltas.
    This reconciliation is the artifact's spine.
@@ -97,7 +100,9 @@ Derive the set from the ledger, not from an example. Read
    "Custom objects in CPQ requiring migration of pricing rules" is. The specificity bar is in
    `references/basis-of-estimate.md`.
 5. **The model-specific card is correct.** Fixed fee: the fixed price and milestone basis.
-   T&M: the envelope and upfront. The model determines which appears; never both.
+   T&M: sourced rates and planned effort. Include a ceiling, upfront payment or
+   milestone condition only when the selected agreement supplies it. Never infer
+   payment terms from the model name.
 6. **Range reopeners are this deal's reopeners.** "Additional integrations beyond the scoped
    four" is real. "Scope changes" is not.
 7. **The range is honest about its precision.** A ROM standing on Unknown dimensions is wider
@@ -112,7 +117,8 @@ figures-block schema in `references/reconciliation-format.md`, run this module's
 python3 scripts/rom_gate.py figures.json
 ```
 
-The gate recomputes the three-way tie, checks hours times rate against the fee, checks that
+The gate recomputes the three-way tie, checks T&M hours times rate against the fee
+(or requires a separately sourced fixed fee and its basis), checks that
 the range bounds bracket the quote total, and checks the model card matches the pricing
 model. It prints the full reconciliation and exits nonzero on any failure. The printed
 reconciliation goes on the deal-desk view verbatim; for the buyer view it stays in the build
@@ -150,8 +156,9 @@ skip.
 
 ## State discipline
 
-Q-numbers and quote totals are not durable anchors; sandbox refreshes destroy them. Stamp the
-artifact with its Q-number, quote total, timeline snapshot, and as-of date. Where a playbook
+Stamp the artifact with actual available source identifiers, revision, timeline
+snapshot when supplied, and as-of date. For a quote-anchored estimate include its
+Q-number and quoted total; never invent these for local estimates. Where a playbook
 is involved, live-read its 00-STATE file at open; truth hierarchy: live quote, then
 definition file, then state file, then memory, then chat context. Never hand-patch the
 rendered output; fix the figures block and regenerate.
@@ -164,8 +171,11 @@ When time is short, cut in this order and say what you cut:
 2. Phase-distribution commentary (keep the distribution itself).
 3. Comparable-engagement derivation notes on Inferred figures (keep the Inferred label).
 
-Never cut: the evidence-core run, the gate run and its printed reconciliation, the BOE table
-with its flagged Unknowns, or the assumptions register.
+Never cut the evidence review, verified calculations, the BOE table with its
+flagged Unknowns, or the assumptions register. Quote-anchored figures require the
+ROM gate and printed reconciliation. Local or effort-only estimates instead use
+the primary calculator and its incomplete-estimate contract: preserve missing
+rates and unestimated scope without inventing quote-schema fields.
 
 ## Files
 

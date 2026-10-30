@@ -30,10 +30,14 @@
     "brand-renderer"
   ],
   "discovery-brief": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "discovery-synthesis": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "evidence-core": [
     "brand-renderer"
@@ -76,7 +80,9 @@
     "delivery-suite"
   ],
   "rom": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "s2d-handoff": [
     "brand-renderer",
@@ -102,7 +108,8 @@
     "brand-renderer"
   ],
   "sow-quality": [
-    "brand-renderer"
+    "brand-renderer",
+    "knowledge-hub"
   ],
   "spec-writer": [
     "brand-renderer"
@@ -131,5 +138,9 @@
   "skill-estate-sync": [
     "skill-creation-walkthrough",
     "cross-platform-skill-release"
+  ],
+  "scoping-agent": [
+    "evidence-core",
+    "knowledge-hub"
   ]
 }
