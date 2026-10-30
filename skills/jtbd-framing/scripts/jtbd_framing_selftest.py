@@ -67,7 +67,8 @@ has("keeps the ritual-versus-clarity section", r"## Where JTBD adds clarity and 
 has("names workshop-as-deliverable", r"workshop.{0,60}deliverable")
 has("gives the litmus test", r"litmus test")
 has("requires jobs come from data", r"Jobs come from data")
-has("labels hypotheses instead of fabricating", r"labeled as hypotheses")
+has("marks hypotheses instead of fabricating", r"marked as hypotheses")
+has("shows evidence as references, not repeated labels", r"## Showing evidence.{0,600}evidence list")
 has("links job framing to journey-mapping", r"`journey-mapping`")
 for term in ("situation", "motivation", "outcome", "struggling moment",
              "hire", "fire", "functional", "emotional", "social"):
