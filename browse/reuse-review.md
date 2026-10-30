@@ -1,6 +1,6 @@
 # Skill reuse review
 
-65 general-use methods, 15 Megan-specific workflows, and 0 awaiting source review.
+64 general-use methods, 15 Megan-specific workflows, and 1 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -49,7 +49,7 @@ Megan-specific workflows retain their current sources and permissions. Generaliz
 | `information-architecture` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `interactive-proposal` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `journey-mapping` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `jtbd-framing` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `jtbd-framing` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `knowledge-hub` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `megan-writing-style` | Megan-specific | Supply the task inputs and its supported runtime. | [skills/megan-writing-style/SKILL.md:2](../skills/megan-writing-style/SKILL.md#L2); [skills/megan-writing-style/SKILL.md:3](../skills/megan-writing-style/SKILL.md#L3); [skills/megan-writing-style/SKILL.md:49](../skills/megan-writing-style/SKILL.md#L49); [skills/megan-writing-style/SKILL.md:51](../skills/megan-writing-style/SKILL.md#L51); [skills/megan-writing-style/SKILL.md:56](../skills/megan-writing-style/SKILL.md#L56); [skills/megan-writing-style/SKILL.md:59](../skills/megan-writing-style/SKILL.md#L59); [skills/megan-writing-style/SKILL.md:61](../skills/megan-writing-style/SKILL.md#L61); [skills/megan-writing-style/SKILL.md:7](../skills/megan-writing-style/SKILL.md#L7); [skills/megan-writing-style/SKILL.md:9](../skills/megan-writing-style/SKILL.md#L9) |
 | `org-preflight` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
