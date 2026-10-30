@@ -1,4 +1,0 @@
-interface:
-  display_name: "Cross-platform skill release"
-  short_description: "Package and inspect shared Codex and Claude skills"
-  default_prompt: "Use $cross-platform-skill-release to package this shared skill, update the authorized destinations, and verify the installed contents."

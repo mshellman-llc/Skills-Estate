@@ -1,8 +1,0 @@
-[
-  {"id": "e1", "provenance": "authored", "channel": "chat", "text": "synthetic: quick internal chat line from a fictional test persona"},
-  {"id": "e2", "provenance": "authored", "channel": "email", "text": "synthetic: a fictional test persona's transactional client email"},
-  {"id": "e3", "provenance": "quoted", "channel": "email", "text": "synthetic: a forwarded quote from someone else, not this persona's own words"},
-  {"id": "e4", "provenance": "third-party", "channel": "chat", "text": "synthetic: a colleague's message merely CC'ing this persona"},
-  {"id": "e5", "provenance": "ai-generated", "channel": "document", "text": "synthetic: a model-drafted paragraph the persona sent without editing"},
-  {"id": "e6", "provenance": "templated-edited", "channel": "document", "text": "synthetic: a house template with this persona's edits layered on top"}
-]

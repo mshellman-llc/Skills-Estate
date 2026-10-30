@@ -1,6 +1,0 @@
-interface:
-  display_name: "Career Application"
-  short_description: "Assess and prepare leadership-level applications"
-  default_prompt: "Use $career-application to assess this job posting and recommend whether I should pursue it: <URL>"
-policy:
-  allow_implicit_invocation: false

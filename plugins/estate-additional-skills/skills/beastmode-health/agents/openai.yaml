@@ -1,6 +1,0 @@
-interface:
-  display_name: "Knowledge hub: Check the hub"
-  short_description: "Check context, connections, jobs, and recovery"
-  default_prompt: "Use $beastmode-health to check what is working and what needs attention."
-policy:
-  allow_implicit_invocation: true

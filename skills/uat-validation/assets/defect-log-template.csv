@@ -1,4 +1,0 @@
-Defect ID,Title,Found By,Found Via (Script ID / Step),Environment,Date Found,Requirement IDs,Severity,Triage Decision,Owner,Status,Fix Evidence,Notes
-DEF-001,Discount recalculates to zero when quote is cloned,J. Rivera (client),TS-004 / step 3,UAT sandbox,2026-08-04,CPE-002,2,fix now,DEV (A. Chen),Retest,,Workaround: re-enter discount after clone
-DEF-002,Typo on quote PDF footer,BA,TS-007 / step 5,UAT sandbox,2026-08-04,CPE-005,4,defer,BA,Triaged,,Deferred to hypercare release per triage 2026-08-05
-DEF-003,Tier boundary returns tier 1 price at exactly 100 units,QA,TS-002 / step 2,SIT sandbox,2026-08-05,CPE-002,2,fix now,DEV (A. Chen),Closed,"Retest passed by QA 2026-08-07 in SIT sandbox, TS-002 all steps",Never close without this evidence field filled

@@ -1,4 +1,0 @@
-Test Script ID,Title,Requirement IDs,Phase,Persona,Priority,Status,Executed By,Executed On,Defect IDs,Orphan Flag,Notes
-TS-001,Auto-apply contracted price on quote creation,CPE-001,UAT,Sales rep,Must Have,Passed,J. Rivera (client),2026-08-04,,,
-TS-002,Tier boundary applies correct price at exactly 100 units,CPE-001; CPE-002,SIT,QA,Must Have,Failed,QA,2026-08-05,DEF-003,,Boundary row returns tier 1 price
-TS-003,Legacy nightly smoke suite,,UAT,QA,,Not started,,,,"orphan: client regression suite retained by request, no workbook requirement",

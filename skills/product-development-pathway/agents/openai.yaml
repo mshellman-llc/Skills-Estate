@@ -1,4 +1,0 @@
-interface:
-  display_name: "Product development pathway"
-  short_description: "Develop products from evidence through release"
-  default_prompt: "Use $product-development-pathway to continue this product from its current stage and record the next action in its product home."

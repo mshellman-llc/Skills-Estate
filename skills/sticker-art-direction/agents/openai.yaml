@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sticker Art Direction"
-  short_description: "Develop and critique expressive sticker typography"
-  default_prompt: "Use $sticker-art-direction to develop a sticker from the current project brief, compare distinct compositions, and critique the typography at its intended size."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sales journey critique"
-  short_description: "Review customer flow, systems, click paths, and measures"
-  default_prompt: "Use $sales-journey-critique to review this sales-journey artifact and prioritize concrete corrections to customer flow, current and future state, systems, click paths, and measures."

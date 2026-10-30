@@ -1,4 +1,0 @@
-interface:
-  display_name: "Accessibility audit"
-  short_description: "Review interface barriers against WCAG 2.2 AA"
-  default_prompt: "Use $accessibility-audit to assess this interface against WCAG 2.2 AA."

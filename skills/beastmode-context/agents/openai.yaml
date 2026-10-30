@@ -1,6 +1,0 @@
-interface:
-  display_name: "Knowledge hub: Start with context"
-  short_description: "Start or resume work from current sources"
-  default_prompt: "Use $beastmode-context to resume my work from the current sources."
-policy:
-  allow_implicit_invocation: true

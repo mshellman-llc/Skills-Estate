@@ -1,9 +1,0 @@
-{
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "author": {
-    "name": "Skills Estate"
-  },
-  "description": "Unreviewed candidate for isolated testing. Skills Estate pursuit workflows and routing.",
-  "name": "estate-pursuit",
-  "version": "0.2.2"
-}
