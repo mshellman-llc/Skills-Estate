@@ -131,6 +131,7 @@
         "beastmode-health",
         "beastmode-reconcile",
         "brand-profile",
+        "build-interactive-explorer",
         "career-application",
         "career-decisions",
         "code-simplify",
@@ -194,6 +195,9 @@
         "status": "accepted",
         "reviewed_sha256": "b8673da33d2e50571ddee24b6990d44f9e3081b83ba6053407564beacdf13ef5",
         "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
+      },
+      "build-interactive-explorer": {
+        "status": "pending"
       },
       "business-case": {
         "status": "pending"

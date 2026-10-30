@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 81 source modules and 54 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 82 source modules and 55 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -11,7 +11,7 @@ This candidate contains 81 source modules and 54 proposed task entrypoints. Cons
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 16 | 12 |
-| [Product and experience](browse/product-and-experience/README.md) | 11 | 10 |
+| [Product and experience](browse/product-and-experience/README.md) | 12 | 11 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
@@ -30,6 +30,7 @@ This candidate contains 81 source modules and 54 proposed task entrypoints. Cons
 | beastmode-health | [beastmode-health](skills/beastmode-health/SKILL.md) |  |
 | beastmode-reconcile | [beastmode-reconcile](skills/beastmode-reconcile/SKILL.md) |  |
 | brand-profile | [client-brand](skills/client-brand/SKILL.md) |  |
+| build-interactive-explorer | [build-interactive-explorer](skills/build-interactive-explorer/SKILL.md) |  |
 | business-case | [business-case](skills/business-case/SKILL.md) |  |
 | call-prep | [call-prep](skills/call-prep/SKILL.md) |  |
 | career-application | [career-application](skills/career-application/SKILL.md) | career-materials-and-outreach, resume-numbers-and-keywords |
@@ -90,6 +91,7 @@ Each module needs a reviewed capability disposition before release.
 - [beastmode-reconcile](skills/beastmode-reconcile/SKILL.md)
 - [brain-work-item](skills/brain-work-item/SKILL.md)
 - [brand-renderer](skills/brand-renderer/SKILL.md)
+- [build-interactive-explorer](skills/build-interactive-explorer/SKILL.md)
 - [business-case](skills/business-case/SKILL.md)
 - [call-prep](skills/call-prep/SKILL.md)
 - [career-application](skills/career-application/SKILL.md)

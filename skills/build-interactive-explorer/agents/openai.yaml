@@ -1,0 +1,15 @@
+interface:
+  display_name: Interactive Explorer
+  short_description: Turn source material into a clear, clickable explorer
+  default_prompt: Use $build-interactive-explorer to create a polished interactive
+    explorer from my sources, with clear paths, expandable detail and consolidated
+    references.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
