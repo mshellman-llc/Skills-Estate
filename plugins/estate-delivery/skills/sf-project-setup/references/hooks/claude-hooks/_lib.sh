@@ -545,7 +545,7 @@ sf_deploy_verdict() {
     # eventual-consistency window that widens the longer the test/coverage run takes.
     # Left as UNKNOWN, that verdict drops the run to a pending entry that nothing ever
     # finalises, so record-validate.sh writes no pass and guard-pr-merge.sh blocks a
-    # genuinely green commit. Poll the org to a terminal status first.  (ORG64-161)
+    # genuinely green commit. Poll the org to a terminal status first.  (EXAMPLE-161)
     #
     #   --async     the OPPOSITE case — the job really is still running, and the
     #               command returned early on purpose. Never poll it here; that would

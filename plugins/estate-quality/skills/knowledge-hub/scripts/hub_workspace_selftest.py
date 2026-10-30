@@ -78,28 +78,28 @@ HAVE_GIT = shutil.which("git") is not None
 # ---------------------------------------------------------------------------
 with tempfile.TemporaryDirectory() as directory:
     hub = pathlib.Path(directory) / "AI Knowledge Hub"
-    code, report = run("init", "--hub", str(hub), "--client", "Northstar Manufacturing",
-                       "--opportunity", "opp-2026-northstar", "--opportunity-name", "Commerce replatform",
+    code, report = run("init", "--hub", str(hub), "--client", "Example Manufacturing (synthetic)",
+                       "--opportunity", "opp-2026-example", "--opportunity-name", "Commerce replatform",
                        *([] if HAVE_GIT else ["--no-git"]))
     check("init exits 0", code == 0)
     for name in ("hub.yaml", "AGENTS.md", "CLAUDE.md", "TODO.md", "STANDARDS.md", "METHODOLOGY.md", ".gitignore"):
         check("init creates {}".format(name), (hub / name).exists())
     check("CLAUDE.md is the one-line pointer", (hub / "CLAUDE.md").read_text().strip() == "@AGENTS.md")
-    check("AGENTS.md carries the client name", "Northstar Manufacturing" in (hub / "AGENTS.md").read_text())
+    check("AGENTS.md carries the client name", "Example Manufacturing (synthetic)" in (hub / "AGENTS.md").read_text())
     check("no template placeholder survives",
-          "{{" not in (hub / "AGENTS.md").read_text() and "{{" not in (hub / "opportunities" / "opp-2026-northstar" / "00-OPPORTUNITY.md").read_text())
+          "{{" not in (hub / "AGENTS.md").read_text() and "{{" not in (hub / "opportunities" / "opp-2026-example" / "00-OPPORTUNITY.md").read_text())
     manifest = ws.load_manifest(hub)
     check("manifest is JSON-readable YAML with a local primary store",
-          manifest["primaryStore"] == "local" and manifest["client"]["clientId"] == "client-northstar-manufacturing")
+          manifest["primaryStore"] == "local" and manifest["client"]["clientId"] == "client-example-manufacturing-synthetic")
     check("manifest registers the opportunity",
-          manifest["opportunities"][0]["opportunityId"] == "opp-2026-northstar")
+          manifest["opportunities"][0]["opportunityId"] == "opp-2026-example")
     for folder in ("inputs/transcripts", "research", "synthesis", "evidence", "deliverables"):
-        check("workspace has {}".format(folder), (hub / "opportunities" / "opp-2026-northstar" / folder).is_dir())
+        check("workspace has {}".format(folder), (hub / "opportunities" / "opp-2026-example" / folder).is_dir())
     check("no empty stage records are created",
-          not (hub / "opportunities" / "opp-2026-northstar" / "qualification.md").exists())
+          not (hub / "opportunities" / "opp-2026-example" / "qualification.md").exists())
 
     (hub / "AGENTS.md").write_text("# edited by a human\n")
-    code, report = run("init", "--hub", str(hub), "--opportunity", "opp-2026-northstar",
+    code, report = run("init", "--hub", str(hub), "--opportunity", "opp-2026-example",
                        *([] if HAVE_GIT else ["--no-git"]))
     check("second init exits 0 without --client", code == 0)
     check("second init keeps the human edit", (hub / "AGENTS.md").read_text() == "# edited by a human\n")
@@ -193,7 +193,7 @@ with tempfile.TemporaryDirectory() as directory:
     good = (
         "---\ntitle: Current-state architecture\nstatus: draft\nowner: research agent\n"
         "updated: 2026-09-04\nsources:\n  - SRC-002\n---\n\n"
-        "Dealer ordering runs through EDI 850 plus fax into VA01 [STATED] (CLM-014, SRC-002).\n"
+        "Dealer ordering runs through order API plus email into order console [STATED] (CLM-014, SRC-002).\n"
         "The catalog platform is unknown [ASSUMED].\n\n## Assumptions to validate\n\n- The catalog platform.\n"
     )
     (context / "research" / "current-state-architecture.md").write_text(good)
@@ -201,7 +201,7 @@ with tempfile.TemporaryDirectory() as directory:
     ledger.write_text(
         '{"event":"context","clientId":"client-gate-co","clientName":"Gate Co","scopeType":"opportunity","contextId":"opp-1"}\n'
         '{"event":"source","sourceId":"SRC-002","sourceType":"meeting_transcript","title":"Discovery call","authority":70,"observedAt":"2026-09-04T00:00:00Z","locator":"inputs/transcripts/call.md"}\n'
-        '{"event":"claim","claimId":"CLM-014","statement":"EDI 850 plus fax","tag":"STATED","sourceIds":["SRC-002"],"asOf":"2026-09-04T00:00:00Z","loadBearing":true,"domains":["scope"]}\n'
+        '{"event":"claim","claimId":"CLM-014","statement":"order API plus email","tag":"STATED","sourceIds":["SRC-002"],"asOf":"2026-09-04T00:00:00Z","loadBearing":true,"domains":["scope"]}\n'
     )
     code, report = run("check", "--hub", str(hub))
     check("check passes a compliant file with resolving references", code == 0 and report["blocking"] == 0)
@@ -222,11 +222,11 @@ with tempfile.TemporaryDirectory() as directory:
         git(hub, "add", "-A"); git(hub, "commit", "-q", "-m", "gate: research landed")
         with ledger.open("a") as handle:
             handle.write('{"event":"supersede","claimId":"CLM-014","by":"CLM-015","asOf":"2026-09-05T00:00:00Z"}\n')
-            handle.write('{"event":"claim","claimId":"CLM-015","statement":"EDI 850 only","tag":"STATED","sourceIds":["SRC-002"],"asOf":"2026-09-05T00:00:00Z","loadBearing":true,"domains":["scope"]}\n')
+            handle.write('{"event":"claim","claimId":"CLM-015","statement":"order API only","tag":"STATED","sourceIds":["SRC-002"],"asOf":"2026-09-05T00:00:00Z","loadBearing":true,"domains":["scope"]}\n')
         code, report = run("check", "--hub", str(hub))
         check("appending ledger lines passes", code == 0)
         lines = ledger.read_text().splitlines()
-        lines[2] = lines[2].replace("EDI 850 plus fax", "EDI 850 edited in place")
+        lines[2] = lines[2].replace("order API plus email", "order API edited in place")
         ledger.write_text("\n".join(lines) + "\n")
         code, report = run("check", "--hub", str(hub))
         check("editing a committed ledger line is blocking", code == 1 and "LEDGER-APPEND-ONLY" in codes(report))

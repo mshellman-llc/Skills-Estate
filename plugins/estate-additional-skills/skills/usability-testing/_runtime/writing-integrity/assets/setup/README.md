@@ -1,6 +1,6 @@
 # Writing-integrity setup kit
 
-Choose the prompt for the AI tool you are setting up. The prompts authorize correction capture and require the tool to test its actual storage. They contain no private correction history.
+Choose the prompt for the AI tool you are setting up. The prompts authorize correction capture and require the tool to test its actual storage. This kit requires a separate owner-confirmed profile store or private project files. Do not reuse other profiles automatically, even for the same owner. Pass an explicit authorized path as --store to every learning.py command. They contain no private correction history.
 
 | Tool | Give it these files | Prompt |
 | --- | --- | --- |

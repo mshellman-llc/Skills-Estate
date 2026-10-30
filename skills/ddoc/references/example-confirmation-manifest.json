@@ -5,9 +5,9 @@
   "date": "[Month YYYY]",
   "quote_number": "[Q-number]",
   "quote_snapshot": {
-    "quote.timelineRevenue": 321100
+    "quote.timelineRevenue": 68000
   },
-  "deck_lead": "Salesforce has set an end-of-sale date on Salesforce CPQ. This document sets out one scoped path off it: what it covers, what it leaves out, and what it costs. Client-specific slides are marked and filled during the pursuit.",
+  "deck_lead": "The fictional studio has chosen to evaluate a replacement for its current quoting system. This document sets out one scoped path off it: what it covers, what it leaves out, and what it costs. Client-specific slides are marked and filled during the pursuit.",
   "meta": [
     {
       "k": "Engagement",
@@ -32,13 +32,13 @@
       "name": "Lift and shift",
       "recommended": true,
       "duration": "12 weeks",
-      "investment": "$321,100"
+      "investment": "$68,000"
     }
   ],
   "figures": [
     {
       "label": "Investment",
-      "value": 321100,
+      "value": 68000,
       "quote_field": "quote.timelineRevenue"
     }
   ],
@@ -376,7 +376,7 @@
         "name": "Commercials"
       },
       "title": "Investment",
-      "amount": "$321,100",
+      "amount": "$68,000",
       "qualifier": "Time and materials against the hours in the quote. Figures come from the Pricing System, not from this document.",
       "terms": [
         {
@@ -519,5 +519,7 @@
       "subtitle": "Gated at the Analyze inventory, then again before cutover."
     }
   ],
-  "template": true
+  "template": true,
+  "_fixture": true,
+  "_source": "Synthetic training-studio scenario: test figures and interview statements created for renderer regression; no real quote or engagement."
 }

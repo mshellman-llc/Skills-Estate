@@ -46,7 +46,7 @@ known unknown with an owner and never a silent omission.
 7. **Cutover readiness checklist.** See below, with per-item status and owner.
 8. **Risks carried into deploy.** Test-surfaced risks and issues, already routed to the
    RAID log, that survive into cutover: open defects going to hypercare, data quality
-   findings, training gaps. This is what estate-cutover-closeout inherits; name it here
+   findings, training gaps. This is what cutover-closeout inherits; name it here
    so the handoff is a file, not a hallway conversation.
 9. **Recommendation and decision block.** The skill's recommendation, stated once, with the
    two or three facts that drive it, followed by the honest case for the other answer.
@@ -71,7 +71,7 @@ silent. Each item: status (Ready / Not ready / N/A with reason), owner (role), e
 - Communications plan: go-live announcement, freeze notices, support channel
 - Go/no-go meeting scheduled with the deciders named
 
-Executing this checklist (the cutover itself, hypercare) is estate-cutover-closeout's
+Executing this checklist (the cutover itself, hypercare) is cutover-closeout's
 job. This skill establishes readiness and hands the checklist over.
 
 ## Neutrality rules

@@ -2,6 +2,8 @@
 
 The report is a projection of the governance logs and the period's evidence, in a fixed order. Sections are never dropped because they are empty or awkward; an empty section states why it is empty. Fill `assets/weekly-status-template.md`; this file explains what earns a line in each section.
 
+All populated numbers, dates and IDs below are synthetic format examples, never an engagement baseline. Replace them from supplied evidence.
+
 ## Header (required, gate-checked)
 
 ```markdown
@@ -53,15 +55,15 @@ Per `references/scope-drift-protocol.md`. Either "None observed" plus what was c
 Burn this period, burn to date, remaining against the estimate, from a named source:
 
 ```markdown
-Burn: 118 h this period, 642 h to date of 960 h estimated (66.9%).
-Source: timesheet export 2026-08-08 (Q-000043 baseline).
+Burn: 24 h this period, 120 h to date of 300 h estimated (40.0%).
+Source: synthetic timesheet fixture 2030-02-12 (SAMPLE-001 baseline).
 ```
 
 If no source is available: `Named gap: burn unavailable this period; no timesheet export provided. Owner: Program Lead, resolve by next status.` Never carry last period's figure forward as if current, and never estimate. Percentages are computed from the sourced figures and shown with their inputs so the reader can recompute.
 
 ## 8. Upcoming period
 
-The next gate, the meetings that matter, what Estate needs from the client (each need with an owner and a date; unowned asks evaporate).
+The next gate, the meetings that matter, what the delivery team needs from the client (each need with an owner and a date; unowned asks evaporate).
 
 ## 9. Artifact and gate register delta
 

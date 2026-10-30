@@ -10,6 +10,7 @@ import json
 import hashlib
 import subprocess
 import shutil
+import os
 import xml.etree.ElementTree as ET
 from zipfile import BadZipFile, ZipFile
 
@@ -104,9 +105,9 @@ def check(record: Path) -> None:
     review_ids={s["id"] for s in receipt.get("review",{}).get("sources",[])}
     if not required_paths.issubset(reviewed_paths) or not set(sources).issubset(review_ids):
         raise ValueError("review foundation must include the master, claim authority, and reviewed prior variants")
-    node=shutil.which("node")
-    bundled=Path.home()/".cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
-    if bundled.is_file():node=str(bundled)
+    node = os.environ.get("CAREER_REVIEW_NODE") or shutil.which("node")
+    if node and (not Path(node).is_absolute() or not Path(node).is_file()):
+        raise ValueError("CAREER_REVIEW_NODE must identify an available absolute executable path")
     if not node:raise ValueError("Node 24+ is required for the shared content gate; review is not verified")
     result=subprocess.run([node,str(Path(__file__).with_name("content-review-cli.ts"))],input=json.dumps({"body":body,"brief":receipt.get("brief"),"review":receipt.get("review"),"sources":sources}),text=True,capture_output=True)
     if result.returncode:raise ValueError(result.stderr.strip() or "content review failed")

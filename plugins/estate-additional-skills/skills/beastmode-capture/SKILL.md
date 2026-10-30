@@ -1,6 +1,6 @@
 ---
 name: beastmode-capture
-description: Save a BeastMode decision, discovery, or factual correction with evidence and review state. Use when Megan says remember this, correct the hub, or capture a decision. Do not treat brainstorming as confirmed fact or claim a proposal is accepted.
+description: Save a knowledge-hub decision, discovery, or factual correction with evidence and review state. Use when the user says remember this, correct the hub, or capture a decision. Do not treat brainstorming as confirmed fact or claim a proposal is accepted.
 metadata:
   version: "2026.09.30.2"
 ---
@@ -10,11 +10,13 @@ metadata:
 
 ## Host access
 
+Resolve the hub endpoint, router, local roots and permitted account from explicit task or project configuration. No personal drive, owner profile, schedule or account is a default. Confirm that the selected adapter implements the named operations; if it does not, use its supported equivalent and preserve the same revision, authorization and acceptance checks.
+
 Use only tools and files actually available in this session. In Claude Code invoke `/beastmode-capture`; in Codex use `$beastmode-capture`; in Claude chat/Cowork ask to use `beastmode-capture`. Mac paths identify local authorities; in Cowork resolve them only through a folder already shared with this session. Cloud chat cannot read a Mac path or localhost merely because this skill names it. When hub access or a required foundation is unavailable, report that gap and continue only work supported by accessible evidence. Use named companion skills when available; otherwise apply the safeguards below and identify any required review gate you cannot complete. Do not install dependencies or broaden permissions automatically.
 
-Use the existing hub update workflow. Do not write a second memory database or edit an assistant's separate memory unless Megan explicitly requests that separate destination.
+Use the existing hub update workflow. Do not write a second memory database or edit an assistant's separate memory unless the user explicitly requests that separate destination.
 
-1. Read the current BeastMode router when available and call the permitted hub's `get_context`. Establish exactly what Megan wants retained, where it belongs, and its existing sharing boundary. Default private personal capture to a permitted local destination; never infer approval to upload it to hosted or shared spaces.
+1. Read the current configured hub router when available and call the permitted hub's `get_context`. Establish exactly what the user wants retained, where it belongs, and its existing sharing boundary. Default private personal capture to a permitted local destination; never infer approval to upload it to hosted or shared spaces.
 2. Search for the existing subject record. Fully fetch the relevant record and sources in bounded parts, pinned to exact revisions. A correction belongs with its subject and provenance, not in a competing rulebook. If several authorities disagree, keep the conflict visible; neither drive, the newest timestamp, nor an AI synthesis wins automatically.
 3. Preserve the user's wording where it expresses a decision. Classify each statement as confirmed, user-reported, observed, proposed, estimated, or creative canon as supported by the contract. Record the source and when the statement applied separately from when it was captured. A user report is attributable evidence, not independent verification. Ask only for an ambiguity that materially changes the decision, authority, or sharing scope.
 4. Inspect the actual proposal schema in the available tool/service before constructing input; do not invent required fields or a new-record revision sentinel. Submit `propose_update` against the exact record and contract revisions read. Contract, confirmed-fact, and sharing changes follow the service's owner-review rules. On revision conflict, refetch and compare; preserve both edits and do not force an overwrite.

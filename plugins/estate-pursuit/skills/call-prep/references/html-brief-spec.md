@@ -16,16 +16,16 @@ The build script inlines the fonts, logo, and background as base64, converts `<i
 
 Everything dynamic renders from these. Fill them and the sections build themselves.
 
+The registry examples below describe an invented community workshop, with fictional sources and values. Never use them as evidence for a live client.
+
 ### `FN` — footnotes
 
 ```js
 const FN = {
-  t1: ["Client call transcript",
-       "Drive doc 1X_2cu…, shared by Laura Perz 2026-07-30. Covers 00:07:11 to 00:28:10.",
-       "https://docs.google.com/document/d/…"],
-  "10k": ["Acme FY2026 Form 10-K",
-          "Filed 24 June 2026. Anchor for segments, contract mechanics, and risk factors.",
-          "https://www.sec.gov/…"],
+  t1: ["Synthetic registration interview",
+       "Invented source SYNTH-T1, 2030-01-11, excerpt 00:02:00 to 00:05:00.", ""],
+  register: ["Synthetic workshop register",
+             "Invented signed register, 2030-01-12; 40 places across two sessions.", ""],
 };
 ```
 
@@ -39,9 +39,9 @@ Write the detail field so someone can re-find the source cold: timestamps, docum
 
 ```js
 const FLOW = {
-  rev: { t: "Automotive · $467.7M · operating loss $(30.1)M",
-         b: ["<b>Who pays:</b> vehicle OEMs, either directly or through their Tier 1 suppliers…",
-             "<b>Contract form:</b> a blanket purchase order per part number fixes price…"] },
+  rev: { t: "Synthetic workshop fees · $800",
+         b: ["<b>Who pays:</b> attendees book a place directly with the coordinator.",
+             "<b>Payment rule:</b> this fictional example charges $20 for each of 40 places."] },
 };
 ```
 
@@ -53,9 +53,9 @@ Six to eight nodes works well: revenue streams (one per segment or channel), pri
 
 ```js
 const QS = [
-  ["T1", "What exactly are we quoting?",
-   "\"In automotive, demand shows up as EDI releases against long-term agreements, not as quotes. So help me be precise…\"",
-   "This can reframe the entire deal. A productized migration accelerator never asks it."],
+  ["T1", "When is a place reserved?",
+   "Does submitting a form reserve a place, or does the coordinator confirm it later?",
+   "This separates the request from the actual booking decision."],
 ];
 ```
 
@@ -67,8 +67,8 @@ Write the third field as something a person can actually say out loud. A seller 
 
 ```js
 const ASM = [
-  ["A-01", "The unnamed 10.9% customer is General Motors", "Moderate-high",
-   "No. Not confirmed in FY24 to FY26 filings."],
+  ["A-01", "Submitting a form reserves a place", "Low",
+   "No. The synthetic interview does not establish reservation behavior."],
 ];
 ```
 
@@ -80,8 +80,8 @@ Mirror `10-assumptions-register.md` exactly. Two sources of truth that drift is 
 
 ```js
 const DRILL = [
-  ["Why is the competitor's pitch wrong, not just mispriced?",
-   "Their product is <b>a tool from CPQ to RCA</b>. The client never implemented CPQ, so there is nothing to migrate."],
+  ["What needs verification before recommending an automatic booking flow?",
+   "Confirm <b>who reserves the place</b> and what the attendee sees when a session is full."],
 ];
 ```
 
@@ -128,20 +128,13 @@ Reorder if a pursuit genuinely demands it. Do not drop the assumptions section o
 
 ## Brand constraints
 
-The **brand-renderer** skill and `skills/_shared/build-card.md` govern. Read the build card before changing the visual layer; brand assets live in `skills/_shared/estate-brand/`. The template already complies; these are the rules most easily broken when adding sections.
+Use **brand-renderer** with the caller's explicitly selected project profile. Without one, keep the neutral profile. The reusable template supplies no employer identity, logo, palette or mandatory font. Do not search personal folders for brand assets.
 
-- **Never generate the logo.** It is a real PNG, inlined by the build script from `_shared/estate-brand/assets/logos/`.
-- **Plus Jakarta Sans only**, three weights on the page — 400, 600, 700. The template loads exactly these.
-- **Three brand colours per surface, maximum.** Light sections use navy text, teal accent, sand or frost fills. Dark sections use white, light teal, blue-gray.
-- **Use the CSS variables**, not literal hex codes. `var(--teal)` not `#1A6B6B`.
-- **Sentence case headings.** Never title case.
-- **Body copy left-aligned.** Centre only titles.
-- **Em dashes at zero** in headings and body copy. Commas, colons, and full stops instead. Code comments are exempt.
-- **No decorative underline rules** beneath headings. The brand explicitly forbids them, and they are a common AI tell.
-- **Lucide icons at 1.75 stroke**, line style only, never mixed with filled.
-- **Generous whitespace.** Do not fill every inch.
-
-The teal grid background belongs only on dark surfaces. Never put it on a light one.
+- Use the resolved profile's CSS variables; do not insert a remembered company palette.
+- Embed only declared, accessible assets. Missing required assets block branded output.
+- Keep text left-aligned where readability requires it and preserve generous whitespace.
+- Review writing with writing-integrity. Apply author-specific preferences only from a confirmed supplied profile.
+- Preserve accessible controls, readable contrast and a consistent icon style.
 
 ---
 

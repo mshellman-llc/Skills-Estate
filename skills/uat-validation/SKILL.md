@@ -1,6 +1,6 @@
 ---
 name: uat-validation
-description: 'Runs the validation stage (05 Validate) of an Estate delivery engagement: test scripts traced one-to-one to the requirements workbook, the defect log with triage, the UAT execution tracker with coverage math, the cutover readiness checklist, and the go/no-go evidence pack the humans co-sign against. Use when a build reaches sandbox-complete and testing starts, and whenever someone asks for test scripts, SIT or UAT planning, a traceability matrix, test coverage, a defect log, defect triage, a UAT tracker, "are we ready for UAT", "what''s our test coverage", cutover readiness, a go/no-go pack, or "can we go live". Trigger even on implicit phrasings like "UAT starts Monday, get us set up" or "the client wants to see where testing stands". Do NOT use for authoring requirements (that is estate-requirements-capture), executing cutover or hypercare (that is estate-cutover-closeout), weekly status cadence or RAID upkeep (that is estate-delivery-status), or build work.'
+description: 'Runs the validation stage (05 Validate) of an Estate delivery engagement: test scripts traced one-to-one to the requirements workbook, the defect log with triage, the UAT execution tracker with coverage math, the cutover readiness checklist, and the go/no-go evidence pack the humans co-sign against. Use when a build reaches sandbox-complete and testing starts, and whenever someone asks for test scripts, SIT or UAT planning, a traceability matrix, test coverage, a defect log, defect triage, a UAT tracker, "are we ready for UAT", "what''s our test coverage", cutover readiness, a go/no-go pack, or "can we go live". Trigger even on implicit phrasings like "UAT starts Monday, get us set up" or "the client wants to see where testing stands". Do NOT use for authoring requirements (that is requirements-backlog), executing cutover or hypercare (that is cutover-closeout), weekly status cadence or RAID upkeep (that is delivery-status), or build work.'
 ---
 
 
@@ -21,15 +21,26 @@ execute UAT, triage defects, sign off scripts, and make the go/no-go call. The s
 marks a gate met, never waives a failed script, never closes a defect without verified
 retest evidence, and ships the decision block of the pack empty.
 
+## Project context required
+
+Use only the caller-confirmed engagement, source records, private output location,
+and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,
+and Pursuit Lead to that project's authorized owners; these labels do not impose
+an employer organization chart or signing authority. The executed agreement and
+accepted project plan determine gates, commercial rules, and support obligations.
+Keep account history, risk assessments, credentials, and client evidence outside
+portable skill sources. A cached account, attached Project, or available connector
+is not authorization to read, write, or publish.
+
 ## Governors
 
-- **estate-evidence-core** owns provenance. Run it before assembling the go/no-go pack:
+- **evidence-core** owns provenance. Run it before assembling the go/no-go pack:
   every fact in the pack (a pass, a defect state, an acceptance criterion status) traces to
   a source with a date. Test results are evidence only when they carry an executor and a
   date. If a load-bearing input (requirements workbook, Test Plan, SOW acceptance section)
   is missing or insufficient, produce a readiness-gap memo naming what is missing and stop;
   a go/no-go pack built on an unsourced requirement set is a hard fail.
-- **estate-brand-renderer** owns brand for any client-facing render of these artifacts.
+- **brand-renderer** owns brand for any client-facing render of these artifacts.
   Never inline hex values here.
 - **writing-integrity** owns writing review; a confirmed profile supplies voice. Run its checker on every prose deliverable, including the pack.
 - **The SOW owns acceptance.** UAT gates, acceptance criteria, and deemed-acceptance
@@ -45,7 +56,7 @@ do the best manual substitute, and say that is what you did. Never silently skip
 
 Find the real objects before writing anything:
 
-1. **The requirements workbook** from estate-requirements-capture: the Excel delivery
+1. **The requirements workbook** from requirements-backlog: the Excel delivery
    matrix with epics and requirements, Gherkin acceptance criteria, MoSCoW priorities, and
    prefix-numbered requirement IDs (for example `CPE-001`). Those IDs, verbatim, are the
    traceability keys for everything downstream. If no workbook exists, requirements capture
@@ -68,13 +79,13 @@ Convert Gherkin acceptance criteria to test steps mechanically wherever the AC a
 Given becomes preconditions, When becomes action steps, Then becomes expected results,
 Scenario Outlines become data-driven scripts. Mechanical is the goal because a step lifted
 from a co-signed AC inherits its authority; label anything you had to infer, and route
-missing AC back through estate-requirements-capture as an open question rather than
+missing AC back through requirements-backlog as an open question rather than
 quietly repairing the requirement inside a test script.
 
 Coverage rules: every requirement gets at least one script; Must Haves get a UAT script
 executed by the client persona; a requirement that cannot be scripted yet goes on the named
 gap list with owner, reason, and resolve-by. A script tracing to nothing is scope drift:
-flag it in its Orphan Flag field and route it to estate-delivery-status so the drift
+flag it in its Orphan Flag field and route it to delivery-status so the drift
 surfaces in status, not in a test asset.
 
 Then run the gate:
@@ -97,7 +108,7 @@ say so); a source on every defect (who reported, which script and step, which en
 when); a triage decision distinct from severity; and closure only on verified retest
 evidence recorded in the log. "Dev says it's fixed" moves a defect to Retest, never to
 Closed. Sev 1 and 2 defects also route to the RAID log as issues via
-estate-delivery-status.
+delivery-status.
 
 ## Phase 3: UAT tracker and coverage
 
@@ -108,7 +119,7 @@ scripts; never hand-set it.
 Report two numbers, always both: execution progress (terminal scripts over total) and
 requirement pass rate (requirements fully passed over total), each cut by MoSCoW priority.
 Report counts as "n of m (percent)". Refresh daily during UAT and hand the movement summary
-to estate-delivery-status; the tracker is the source, status quotes it.
+to delivery-status; the tracker is the source, status quotes it.
 
 ## Phase 4: cutover readiness and the go/no-go pack
 
@@ -129,7 +140,7 @@ python3 scripts/trace_check.py --requirements reqs.csv --scripts tracker.csv \
 - Every acceptance criterion from the SOW and Test Plan gets a Met / Not met / Cannot
   assess status with an evidence pointer, cited by document and section.
 - The cutover readiness checklist carries per-item status and owner; executing it belongs
-  to estate-cutover-closeout, which inherits it along with the open defect list.
+  to cutover-closeout, which inherits it along with the open defect list.
 - Framing is neutral: counts before adjectives, no inflation, no minimizing. The
   recommendation appears once, in the final section, followed by the honest case for the
   other answer. The signature block ships empty.
@@ -139,7 +150,7 @@ framing is a named failure mode of this stage.
 
 When the humans co-sign the go/no-go, update the engagement's DELIVERY-STATE.md in the same
 session (`go_no_go` with date, pack path, append-only dated log line) per
-estate-delivery-suite's `references/delivery-state-spec.md`.
+delivery-suite's `references/delivery-state-spec.md`.
 
 ## Durable output
 
@@ -172,17 +183,17 @@ named gap list, or source stamps. Those are what make the pack signable.
 
 In the delivery chain (SOW, then s2d-handoff, then kickoff, then status, then
 UAT, then cutover-closeout), this skill's upstream producer is the Build stage
-tracked by estate-delivery-status, whose cadence hands over a
+tracked by delivery-status, whose cadence hands over a
 sandbox-complete build and the co-signed requirements to prove it against. Its
-downstream consumer is estate-cutover-closeout, which inherits the readiness
+downstream consumer is cutover-closeout, which inherits the readiness
 checklist and the open defect list from the pack. UAT does not accept scope
 changes: a script or ask that traces to no requirement is drift, flagged and
-routed to estate-delivery-status, never absorbed into the test assets.
+routed to delivery-status, never absorbed into the test assets.
 
-- Does not author requirements or acceptance criteria; that is estate-requirements-capture.
-- Does not execute cutover, go-live, or hypercare; that is estate-cutover-closeout, which
+- Does not author requirements or acceptance criteria; that is requirements-backlog.
+- Does not execute cutover, go-live, or hypercare; that is cutover-closeout, which
   inherits the readiness checklist and open defect list from the pack.
-- Does not run status cadence or own the RAID log; that is estate-delivery-status. This
+- Does not run status cadence or own the RAID log; that is delivery-status. This
   skill feeds it defects and test progress.
 - Does not build or fix the system; defects go to owners, not to this skill.
 - Does not decide go or no-go, sign off UAT, waive failed scripts, or close unverified

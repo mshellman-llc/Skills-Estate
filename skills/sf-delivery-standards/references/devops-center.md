@@ -71,8 +71,8 @@ Shared mode records three additional facts:
 
 ```bash
 git config estate.devops.workmodel shared
-git config estate.devops.integrationbranch stevenc
-git config estate.devops.environment StevenC
+git config estate.devops.integrationbranch integration-dev
+git config estate.devops.environment ExampleDevelopment
 ```
 
 The at-rest invariant is:
@@ -150,7 +150,7 @@ the quality gates that a web-generated commit did not run locally.
 
 ## Two org aliases
 
-The project-local Salesforce target is the branchless development org, such as `stevenc2`. Local
+The project-local Salesforce target is the branchless development org, such as `sandbox-a`. Local
 `sf project retrieve` and `sf project deploy` commands rely on it and never pass `--target-org`.
 
 DevOps Center commands target the control org explicitly:

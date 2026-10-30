@@ -108,7 +108,7 @@ case "$TSYS" in
   jira)
     # Jira is agent-side via the Atlassian Rovo MCP now — no CLI to install or
     # authenticate, and a bash preflight cannot reach an MCP, so nothing to check here.
-    soft "Rovo MCP" "Jira runs agent-side via the Atlassian Rovo MCP (company-wide, interactive"
+    soft "Rovo MCP" "Jira runs agent-side via the Atlassian Rovo MCP (explicitly configured, interactive"
     printf '           auth). There is no tracker CLI to install — confirm the Rovo MCP is\n'
     printf '           connected in your Claude client.\n' ;;
   pattern|none)

@@ -71,9 +71,9 @@ efficiency:
 stewardship:
   steward: Estate consulting methods owners
   maintainers:
-    - Megan Shellman
-    - Designated consulting methods co-owner
-  lifecycle_approver: Megan Shellman and the designated consulting methods co-owner
+    - Project-designated transcript maintainer
+    - Project-designated methods reviewer
+  lifecycle_approver: The lifecycle approver designated by the adopting project
   review_date: 2026-09-30
   stale_facts:
     - Supported transcript formats

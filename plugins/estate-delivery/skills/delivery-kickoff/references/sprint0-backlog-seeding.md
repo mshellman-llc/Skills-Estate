@@ -1,9 +1,8 @@
 # Sprint 0 plan and backlog seeding rules
 
-Sprint 0 is the mobilization sprint: the two weeks between charter drafting and real delivery
-work. The economics of this stage are brutal: lost efficiency in weeks one and two costs roughly
-110 percent effort to recover later, so Sprint 0 exists to make sure Analyze starts with nothing
-missing. On a waterfall engagement the same content is the mobilization plan; the name changes,
+Sprint 0 is the mobilization interval between charter drafting and delivery work. Its
+duration comes from the accepted project plan. Its purpose is to resolve readiness gaps
+before Analyze starts; no fixed duration or recovery-effort multiplier is assumed. On a waterfall engagement the same content is the mobilization plan; the name changes,
 the checklist does not.
 
 ## Sprint 0 plan contents
@@ -21,7 +20,7 @@ need, and add engagement-specific items from the RAID log:
 4. Handoff open questions resolved or converted to owned RAID items with dates.
 5. Flagged deltas (F-###) dispositioned before client kickoff where possible.
 6. Requirements sessions scheduled with the right client attendees (scheduling only; running them
-   is estate-requirements-capture's job in Analyze).
+   is requirements-backlog's job in Analyze).
 7. Client research pack distributed to the team.
 8. Both kickoffs held: internal first, then client.
 9. Backlog seeded and, on agile engagements, ordered with the client product owner.
@@ -44,10 +43,11 @@ The seed backlog is a projection of the scope baseline, nothing more. Rules:
   the backlog carries no hours this skill authored.
 - **Every seeded item cites its source**: SOW clause or handoff section.
 - **Order by dependency, then by gate.** Items blocking the Analyze gate float to the top.
-  Migration and integration epics get an early discovery story, because those are where
-  maturity-gap capabilities live.
-- **Tag maturity-gap items.** Any epic touching CPQ and Billing amendments, ERP integrations, RCA
-  migrations, DRO, UBB, or CLM is tagged for raised oversight, and gets a companion RAID risk.
+  Migration and integration epics get an early discovery story when the supplied risk
+  evidence identifies uncertainty; the technology category alone does not establish a gap.
+- **Carry evidenced capability risks.** Use tags from the supplied project risk profile and
+  handoff, each with evidence and an owner. Do not infer an organization's capability gaps
+  from a technology name. A confirmed gap gets the agreed oversight and a companion RAID risk.
 
 Format: a markdown table per epic (ID, item, description, source, testable against, tags), so the
 backlog can live beside the governance pack and be lifted into whatever tracker the team uses.
@@ -58,5 +58,5 @@ This skill does not own the tracker; it hands the team a correct seed.
 A short extension of the handoff brief's company overview for the delivery team: what the company
 does, how it makes money, who the stakeholders are, what was promised, plus anything new since the
 brief was written. Every claim sourced. Do not rebuild pursuit-grade research; if the team needs a
-full prep pack for a specific meeting, that is estate-call-prep. This pack is a two-page read,
+full prep pack for a specific meeting, that is call-prep. This pack is a two-page read,
 not a knowledge base.

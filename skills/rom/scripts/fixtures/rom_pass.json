@@ -9,16 +9,39 @@
   "range_low": 270000.0,
   "range_high": 345000.0,
   "phases": [
-    {"name": "Analyze", "hours": 240},
-    {"name": "Build", "hours": 720},
-    {"name": "Deploy", "hours": 240}
+    {
+      "name": "Analyze",
+      "hours": 240
+    },
+    {
+      "name": "Build",
+      "hours": 720
+    },
+    {
+      "name": "Deploy",
+      "hours": 240
+    }
   ],
   "roles": [
-    {"name": "Solution Architect", "hours": 400},
-    {"name": "Consultant", "hours": 800}
+    {
+      "name": "Solution Architect",
+      "hours": 400
+    },
+    {
+      "name": "Consultant",
+      "hours": 800
+    }
   ],
   "work_packages": [
-    {"name": "Pricing rule migration", "hours": 700},
-    {"name": "Integration build", "hours": 500}
-  ]
+    {
+      "name": "Pricing rule migration",
+      "hours": 700
+    },
+    {
+      "name": "Integration build",
+      "hours": 500
+    }
+  ],
+  "fee_source": "Fictional quote Q-000900 revision 1",
+  "fixed_fee_basis": "Fictional independently agreed milestone fee"
 }

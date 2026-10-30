@@ -5,6 +5,6 @@
 
 **What it does.** : epics, capabilities, business needs, user stories, and Gherkin acceptance criteria, delivered as a branded two-tab Excel workbook. Use to define, write, organize, or refine requirements, to extract them from an uploaded deck, PRD, brief, spec, or transcript, or to turn a Salesforce SOW into a backlog (BA mode: analyze this SOW, SOW to backlog, Salesforce BA).
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
 
 **Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `core`

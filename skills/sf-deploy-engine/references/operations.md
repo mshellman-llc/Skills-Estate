@@ -18,17 +18,18 @@ There are three credential paths and they do not interchange:
 |---|---|---|
 | Browser | httpOnly session cookie | set by `/auth/callback` |
 | VS Code extension | session token as `Authorization: Bearer` | `vscode.SecretStorage`, the OS keychain |
-| Terminal, scripts, agents | CLI token as `Authorization: Bearer` | `~/.config/sf-deploy-engine/token` |
+| Terminal, scripts, agents | CLI token as `Authorization: Bearer` | an explicitly selected endpoint-specific file (`SFDE_TOKEN_FILE`) |
 
 A bash process reaches neither the browser cookie nor the keychain, which is why
 the CLI token exists. Mint it once:
 
 ```bash
 open "$ENGINE_URL/auth/login?redirect=cli"     # sign in with a Workspace account
-# run the command the page prints — writes ~/.config/sf-deploy-engine/token, mode 600
+# follow this endpoint's flow; store the token privately with mode 600
+# set SFDE_TOKEN_FILE to that absolute path; never paste a token into chat
 ```
 
-Valid 30 days. On a 401, re-run that login. `SFDE_TOKEN` overrides the file.
+Valid 30 days. On a 401, re-run that login. `SFDE_TOKEN` overrides the explicit file. No default token path is read. Confirm that the token and selected endpoint belong to the authorized account.
 
 Revocation is coarse by design: there is no revocation list, so revoking means
 rotating `SESSION_SECRET`, which invalidates every browser, VS Code and CLI
@@ -60,7 +61,7 @@ The one to reach for first.
 ```json
 {
   "paused": false,
-  "repo": "Estate/64-Org-Estate",
+  "repo": "Estate/Example Project-Estate",
   "environments": {
     "preprod": {
       "state": "SETTLED",
@@ -114,7 +115,7 @@ Exactly one of `sha` or `ticket` — sending both, or neither, is a 400.
 
 - **`ticket`** is resolved to the deploy that carried it in that environment, via
   the model's ticket → deploy join. Any identifier a **configured** provider
-  recognises: `GH-397`, `ORG64-42`, or canonical `jira:ORG64-42`.
+  recognises: `GH-397`, `EXAMPLE-42`, or canonical `jira:EXAMPLE-42`.
 - **`sha`** is a merge commit on the environment's branch.
 - **`mode: "pr"`** (default) opens a revert PR, so the inverse deployment is
   validated before it merges.
@@ -139,8 +140,8 @@ Selective promotion. Two accepted shapes, normalized to the same thing:
 
 ```json
 { "tickets": [
-    { "ticket": "GH-397", "from": "stevenc2" },
-    { "ticket": "ORG64-42", "from": "meg-dev" }
+    { "ticket": "GH-397", "from": "sandbox-a" },
+    { "ticket": "EXAMPLE-42", "from": "sandbox-b" }
   ],
   "to": "preprod" }
 ```
@@ -245,7 +246,7 @@ Trace one ticket: where it is now, every deploy that ever carried it, and what
 each of those deploys carried alongside it.
 
 URL-encode the ref — the canonical form contains a colon
-(`jira%3AORG64-42`). `GH-397`, `ORG64-42` and `github:397` all work. An
+(`jira%3AEXAMPLE-42`). `GH-397`, `EXAMPLE-42` and `github:397` all work. An
 identifier no configured provider recognises is a **400, not an empty result**:
 fail-closed applies to reads too, because a confident empty "never shipped" is
 worse than a rejection.

@@ -26,7 +26,7 @@ tight or provisional, that is the lead, not a footnote.
 
 ## Governance, delegated
 
-- **estate-evidence-core** runs first. Sales context, stakeholder
+- **evidence-core** runs first. Sales context, stakeholder
   postures, risks, and assumptions are load-bearing claims; build the ledger
   before the packet. If a load-bearing domain is Insufficient, produce the
   "Not ready for Deal Desk approval" memo and stop. A full packet after
@@ -37,7 +37,7 @@ tight or provisional, that is the lead, not a footnote.
   and printed with the computation, never asserted. Fixed fee or T&M, never
   both. If the quote and any other document disagree, the quote wins and the
   disagreement becomes a flag.
-- **estate-brand-renderer** owns the rendering and the visual, parity, and
+- **brand-renderer** owns the rendering and the visual, parity, and
   brand release gates. Never inline hex values or rebuild the token set.
 - **writing-integrity** owns writing review; a confirmed profile supplies voice. Run its checker on the packet's prose. No em
   dashes, sentence-case headings, no AI vocabulary in the tagline or
@@ -132,10 +132,10 @@ line no artifact carries is a warning to confirm. Fix conflicts at their
 source (the quote through scoping-agent, or the artifact through its owning
 skill) and rerun; this skill never edits a figure to make the tie-out pass.
 
-**8. Render and gate the rendering.** Hand to estate-brand-renderer for
+**8. Render and gate the rendering.** Hand to brand-renderer for
 the HTML (or docx backup for email and print). Margin is the visually
 dominant figure, rendered against the floor; all economics in monospace.
-Verify by rendering, then run prose-pass on the prose. Report counts per
+Verify by rendering, then apply writing-integrity to the prose. Report counts per
 gate, not adjectives, and write a one-line disposition per gate.
 
 **9. Land and close the loop.** Deliver the file, commit it to the deal's
@@ -170,11 +170,11 @@ consequences.
   cost rates, and candid risk the client never sees.
 - Does not price and does not touch the quote. scoping-agent owns scope and
   pricing changes; this skill renders and routes.
-- Not the DDOC. The client-facing decision deck is estate-ddoc; "Deal Desk
+- Not the DDOC. The client-facing decision deck is deck-builder; "Deal Desk
   document" as a client deck is a retired name for that artifact, and this
   skill is the internal readout only.
-- Not the business case; that is estate-business-case. Not SOW terms;
-  that is estate-sow, and the protective clauses' text lives in the SOW
+- Not the business case; that is business-case. Not SOW terms;
+  that is statement-of-work, and the protective clauses' text lives in the SOW
   master, cited here by number only.
 - Reviews and verdicts only. It never authors or silently rewrites the
   solution, the SOW, or any source evidence; a failed check produces a

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gate for the Estate Project Charter (estate-delivery-kickoff).
+"""Gate for the Estate Project Charter (delivery-kickoff).
 
 Validates a charter markdown document before any human reads or signs it:
 
@@ -8,7 +8,7 @@ Validates a charter markdown document before any human reads or signs it:
   raci-filled         the RACI table exists, every cell is filled, one Accountable per row
   raci-coverage       every role in the team table appears in the RACI
   placeholders        no unfilled template tokens remain ({{...}}, TBD, TODO, ...)
-  em-dash             no em dash characters anywhere (prose-pass owns voice; this is the
+  em-dash             no em dash characters anywhere (writing-integrity owns writing review; this is the
                       one character-level tell cheap enough to block here)
 
 Exit code 0 on pass, 1 on any failure, 2 on usage or read error.

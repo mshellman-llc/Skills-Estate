@@ -96,32 +96,32 @@ with tempfile.TemporaryDirectory() as directory:
 
 with tempfile.TemporaryDirectory() as directory:
     base = pathlib.Path(directory)
-    acme_hub = base / "GoogleDrive-a@x.com" / "My Drive" / "Clients" / "Acme Corp" / "AI Knowledge Hub"
+    acme_hub = base / "GoogleDrive-owner-a@example.invalid" / "My Drive" / "Clients" / "Acme Corp" / "AI Knowledge Hub"
     acme_hub.mkdir(parents=True)
     (acme_hub / "00-CLIENT.md").write_text("# Acme\n")
-    beta_hub = (base / "GoogleDrive-a@x.com" / "Shared drives" /
+    beta_hub = (base / "GoogleDrive-owner-a@example.invalid" / "Shared drives" /
                 "Example Shared Drive" / "Clients" / "Beta LLC" / "AI Knowledge Hub")
     beta_hub.mkdir(parents=True)
     # A hub nested one level below the client folder, under an engagement.
-    thermal_hub = (base / "GoogleDrive-a@x.com" / "Shared drives" /
+    thermal_hub = (base / "GoogleDrive-owner-a@example.invalid" / "Shared drives" /
                 "Example Shared Drive" / "Clients" / "Example Thermal" /
                 "Example - Pilot" / "AI Knowledge Hub")
     thermal_hub.mkdir(parents=True)
-    west_hub = base / "GoogleDrive-b@x.com" / "My Drive" / "Clients" / "Acme West" / "AI Knowledge Hub"
+    west_hub = base / "GoogleDrive-owner-b@example.invalid" / "My Drive" / "Clients" / "Acme West" / "AI Knowledge Hub"
     west_hub.mkdir(parents=True)
 
     check("both Drive accounts are seen, never reduced to one",
           len(hub.synced_drive_mounts(base=base)) == 2)
     check("account filter narrows to one mount",
-          len(hub.synced_drive_mounts(base=base, email="a@x.com")) == 1)
+          len(hub.synced_drive_mounts(base=base, email="owner-a@example.invalid")) == 1)
     check("absent CloudStorage base yields no mounts",
           hub.synced_drive_mounts(base=base / "missing") == [])
 
     acme = hub.find_synced_hub_roots(client="acme", base=base)
     check("client match returns every account's hub, not the first",
           len(acme) == 2)
-    check("a My Drive hub is writable by default",
-          all(m["writableByDefault"] for m in acme if m["area"] == "my-drive"))
+    check("My Drive does not imply write authority",
+          all(m["writableByDefault"] is False for m in acme if m["area"] == "my-drive"))
     beta = hub.find_synced_hub_roots(client="beta", base=base)
     check("a Shared drive hub is found but not writable by default",
           len(beta) == 1 and beta[0]["writableByDefault"] is False)

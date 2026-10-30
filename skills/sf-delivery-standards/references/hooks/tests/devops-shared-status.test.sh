@@ -13,22 +13,22 @@ git -C "$R" config user.email t@t.test
 git -C "$R" config user.name t
 printf 'base\n' > "$R/file"
 git -C "$R" add file && git -C "$R" commit -qm base
-git -C "$R" branch stevenc
+git -C "$R" branch integration-dev
 git -C "$R" remote add origin "$O"
-git -C "$R" push -q origin staging stevenc
+git -C "$R" push -q origin staging integration-dev
 git -C "$R" config estate.delivery devops-center
 git -C "$R" config estate.devops.workmodel shared
-git -C "$R" config estate.devops.integrationbranch stevenc
-git -C "$R" config estate.devops.environment StevenC
+git -C "$R" config estate.devops.integrationbranch integration-dev
+git -C "$R" config estate.devops.environment ExampleDevelopment
 git -C "$R" config estate.host github
-git -C "$R" rev-parse stevenc > "$RECEIPT"
+git -C "$R" rev-parse integration-dev > "$RECEIPT"
 printf 'success\n' > "$STATE"
 
 cat > "$BIN/gh" <<'SH'
 #!/bin/bash
 if [ "$1 $2" = "repo view" ]; then printf 'Estate/Test\n'; exit 0; fi
 case "$*" in
-  *'/deployments -f environment=StevenC'*)
+  *'/deployments -f environment=ExampleDevelopment'*)
     printf '[{"id":42,"sha":"%s"}]\n' "$(cat "$RECEIPT")" ;;
   *'/deployments/42/statuses'*)
     printf '[{"state":"%s"}]\n' "$(cat "$STATE")" ;;
@@ -50,13 +50,13 @@ run() {
 echo "== centralized shared-org receipt =="
 run 0 "matching deployment SHA is synced"
 
-git -C "$R" checkout -q stevenc
+git -C "$R" checkout -q integration-dev
 printf 'next\n' >> "$R/file"
 git -C "$R" add file && git -C "$R" commit -qm next
-git -C "$R" push -q origin stevenc
+git -C "$R" push -q origin integration-dev
 run 3 "remote branch ahead of receipt is frozen"
 
-git -C "$R" rev-parse stevenc > "$RECEIPT"
+git -C "$R" rev-parse integration-dev > "$RECEIPT"
 run 0 "new successful receipt restores sync"
 
 printf 'failure\n' > "$STATE"

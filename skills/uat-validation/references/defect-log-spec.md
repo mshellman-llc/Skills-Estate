@@ -1,7 +1,7 @@
 # Defect log and triage
 
 The defect log is the single record of everything found broken during SIT and UAT. It feeds
-three consumers: the daily triage, the RAID log (via estate-delivery-status), and the open
+three consumers: the daily triage, the RAID log (via delivery-status), and the open
 defect table in the go/no-go pack. One log, stable IDs, no side lists.
 
 ## Defect fields
@@ -56,4 +56,4 @@ Run triage as a short standing review during test execution (daily during UAT). 
 prepares the triage sheet: new defects since last triage, proposed severity with basis, and
 suspected duplicates. Humans make the triage decision; record who decided and when. Sev 1
 and 2 defects also go to the RAID log as issues, with the gate they block, through
-estate-delivery-status; do not maintain a parallel risk list inside the defect log.
+delivery-status; do not maintain a parallel risk list inside the defect log.

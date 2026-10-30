@@ -111,7 +111,7 @@ for A in "$@"; do [ "$PREV" = "--job-id" ] && ID="$A"; PREV="$A"; done
 [ "${STUB_UNRESOLVED:-0}" = "1" ] && { echo '{"status":1,"message":"job not found"}'; exit 1; }
 # Eventual consistency: answer InProgress for the first STUB_INPROGRESS_UNTIL report
 # calls, then the real STUB_STATUS. Opt-in (needs both vars), so every other case is
-# untouched. This is the ORG64-161 window — a finished synchronous run the org has
+# untouched. This is the EXAMPLE-161 window — a finished synchronous run the org has
 # not yet marked terminal — and it is what the verdict poll must ride out.
 if [ -n "${STUB_INPROGRESS_UNTIL:-}" ] && [ -n "${STUB_COUNT_FILE:-}" ]; then
   n=$(cat "$STUB_COUNT_FILE" 2>/dev/null || echo 0); n=$((n+1)); echo "$n" > "$STUB_COUNT_FILE"
@@ -409,7 +409,7 @@ fire "$M" "sf project deploy start --dry-run --json --source-dir force-app 2>/de
 check "an echoed JSON success cannot override a real Failed envelope" "ABSENT" "$(vlog)"
 
 echo
-echo "== ORG64-161: a synchronous dry run the org has not FINALISED yet =="
+echo "== EXAMPLE-161: a synchronous dry run the org has not FINALISED yet =="
 # A long dry run (full test suite) returns green, but a fresh `deploy report` fired
 # by this hook a moment later can still say InProgress — the org's status API lags
 # a job it just finished. The verdict must not stall at UNKNOWN and drop the run to a

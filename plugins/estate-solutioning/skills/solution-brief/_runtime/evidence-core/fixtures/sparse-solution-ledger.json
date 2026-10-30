@@ -3,7 +3,7 @@
   "asOf": "2026-07-16T12:00:00Z",
   "engagement": {
     "engagementId": "FIX-SPARSE-SB",
-    "clientName": "Northstar Manufacturing",
+    "clientName": "Example Manufacturing (synthetic)",
     "opportunityId": null,
     "contractId": null
   },
@@ -23,7 +23,7 @@
   "claims": [
     {
       "claimId": "CLM-101",
-      "statement": "Retain the Phase 1 internal case-assist direction while evidence is completed.",
+      "statement": "Retain the Phase 1 internal inventory-assist direction while evidence is completed.",
       "status": "Confirmed",
       "sourceIds": [
         "SRC-101"

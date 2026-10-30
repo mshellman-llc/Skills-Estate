@@ -68,7 +68,10 @@ def main():
         for source in args.reference:
             if source.name in resources:
                 raise ValueError("Reference filenames collide: " + source.name)
-            resources[source.name] = source.read_bytes()
+            try:
+                resources[source.name] = source.read_bytes()
+            except OSError as error:
+                raise ValueError(f"Cannot read --reference {source}: {error.strerror}") from error
         # Only the original template placeholders are expanded. Supplied text is
         # never interpreted as a second template or as YAML syntax.
         replacements = {

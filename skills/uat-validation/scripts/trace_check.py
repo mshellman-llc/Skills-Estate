@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Traceability gate for estate-uat-validation.
+"""Traceability gate for acceptance-testing.
 
 Verifies the identity invariant of the skill: every requirement is covered by
 at least one test script or appears as a named gap with an owner and a reason;
@@ -146,13 +146,13 @@ def run_checks(req_ids, scripts, gaps, gonogo):
                 if unknown:
                     failures.append(
                         "orphan script not flagged: %s traces to unknown requirement ID(s) %s "
-                        "(scope drift; flag it and route to estate-delivery-status)"
+                        "(scope drift; flag it and route to delivery-status)"
                         % (s["id"], ", ".join(unknown))
                     )
                 else:
                     failures.append(
                         "orphan script not flagged: %s traces to no requirement "
-                        "(scope drift; flag it and route to estate-delivery-status)" % s["id"]
+                        "(scope drift; flag it and route to delivery-status)" % s["id"]
                     )
 
     uncovered = sorted(req_set - covered)

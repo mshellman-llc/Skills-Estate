@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Self-test for prose_receipt.py: the bypass and lazy-pass regressions.
 
+All fixture people, dates, figures and events are synthetic.
 Each case is a receipt scenario with the exit code and failure codes it must
 produce. The two that matter most are the regressions this tool exists for: a
 byte-identical result with no justification must fail (lazy pass), and a
@@ -29,15 +30,15 @@ SLOP = (
 )
 
 SOUND = (
-    "Quote turnaround dropped from six days to 41 hours after the rating API "
-    "went live on 2026-03-02. Gene Marsh now reviews eleven exceptions a week "
-    "instead of building every quote himself.\n"
+    "Batch completion dropped from two days to 17 hours after the synthetic parser "
+    "went live on 2025-04-09. The test operator now reviews seven exceptions a week "
+    "instead of checking every row manually.\n"
 )
 
 SOUND_REWRITTEN = (
-    "Quote turnaround dropped from six days to 41 hours after the rating API "
-    "went live on 2026-03-02. Gene Marsh now reviews eleven exceptions a week. "
-    "The regional managers build the standard quotes themselves.\n"
+    "Batch completion dropped from two days to 17 hours after the synthetic parser "
+    "went live on 2025-04-09. The test operator now reviews seven exceptions a week. "
+    "The validation script checks ordinary rows automatically.\n"
 )
 
 WARNING_ONLY = (
@@ -73,7 +74,7 @@ def main() -> int:
         receipt = root / "r1.json"
         p = emit(after, receipt, ["--before-file", str(before),
                                   "--change", "structure: split a balanced clause",
-                                  "--protected", "figures: 41 hours, 2026-03-02"])
+                                  "--protected", "figures: 17 hours, 2025-04-09"])
         expect("rewrite_emits_clean", p.returncode == 0, p.stdout + p.stderr)
         p = run(["validate", str(receipt)])
         expect("rewrite_validates", p.returncode == 0, p.stdout)
@@ -91,7 +92,7 @@ def main() -> int:
         receipt = root / "r3.json"
         p = emit(same, receipt,
                  ["--no-change-justification",
-                  "Reviewed 2026-08-18: specific, sourced, checker-clean."])
+                  "Reviewed synthetic fixture: specific, sourced, checker-clean."])
         expect("justified_no_change_passes", p.returncode == 0, p.stdout)
 
         # 4. Known poor-prose fixture claiming no change needed: must fail.
@@ -124,10 +125,10 @@ def main() -> int:
                  ["--before-file", str(slop),
                   "--change", "vocabulary: removed banned terms",
                   "--change", "specificity: replaced generic claims with figures",
-                  "--added-figure", "41:rating API launch report",
-                  "--added-figure", "2026:rating API launch report",
-                  "--added-figure", "03:rating API launch report, date part",
-                  "--added-figure", "02:rating API launch report, date part"])
+                  "--added-figure", "17:synthetic parser fixture",
+                  "--added-figure", "2025:synthetic parser fixture",
+                  "--added-figure", "04:synthetic parser fixture, date part",
+                  "--added-figure", "09:synthetic parser fixture, date part"])
         expect("corrected_slop_passes", p.returncode == 0, p.stdout + p.stderr)
 
         # 7. Changed text with no logged changes: must fail.
@@ -138,7 +139,7 @@ def main() -> int:
 
         # 8. Figure invention: a number in the rewrite absent from the source.
         invented = root / "invented.md"
-        invented.write_text(SOUND + "Savings reached $2,400,000.\n", encoding="utf-8")
+        invented.write_text(SOUND + "Savings reached $73,000.\n", encoding="utf-8")
         receipt = root / "r7.json"
         p = emit(invented, receipt,
                  ["--before-file", str(before), "--change", "added a claim"])

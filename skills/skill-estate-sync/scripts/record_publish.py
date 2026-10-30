@@ -1,25 +1,16 @@
 #!/usr/bin/env python3
-"""record_publish.py - stamp which bundles were uploaded to a cloud tier.
+"""Record reported bundle publication for an explicitly configured destination.
 
-The claude.ai organization tier and Cowork are reachable only through a web UI.
-Nothing in this toolchain can read them, so the estate cannot diff them the way
-it diffs a local mount. Before this existed, the diff simply omitted them and
-printed "all mirrored", which read as "everything is current" when two of three
-surfaces were unchecked and could be months behind.
+This is a claim ledger, not an upload, account discovery or destination readback.
+Use an authorized workspace configuration with cloud_surfaces and a ledger path.
+Relative ledger paths resolve beside that configuration. The CLI requires the
+bundle directory explicitly and refuses to write into its reusable skill tree.
 
-This does not verify an upload. It records a claim: a human uploaded these
-bundles, at this content hash, on this date. estate_diff.py then compares the
-current bundle hashes against the claim and reports how many are pending. A
-known gap that is stated is worth far more than a silent one.
+    python3 record_publish.py --config /path/to/surfaces.json --dist /path/to/dist --surface selected-destination
+    python3 record_publish.py --config /path/to/surfaces.json --dist /path/to/dist --status
 
-    python3 record_publish.py --surface claude.ai-org
-    python3 record_publish.py --surface cowork --only sow
-    python3 record_publish.py --status
-
-Run it AFTER the upload, not before. The date comes from the caller, because
-scripts here cannot read the clock deterministically; it defaults to today from
-the filesystem's own mtime on the newest bundle, which is close enough to be
-useful and honest about being derived.
+Record only after the upload occurred. --date supplies its date; the default is
+the current local calendar date, not evidence of when an upload actually occurred.
 """
 from __future__ import annotations
 
@@ -37,19 +28,25 @@ REPO = SKILL.parent.parent
 DIST = REPO / "dist"
 
 
-def load_config() -> dict:
+def load_config(path: Path = CONFIG) -> dict:
     try:
-        return json.loads(CONFIG.read_text())
+        return json.loads(path.read_text())
     except (OSError, json.JSONDecodeError) as e:
-        sys.exit(f"error: bad config {CONFIG}: {e}")
+        sys.exit(f"error: bad config {path}: {e}")
 
 
-def ledger_path(cfg: dict) -> Path:
-    return SKILL / cfg.get("ledger", "publish-ledger.json")
+def ledger_path(cfg: dict, config_dir: Path = SKILL) -> Path:
+    value = cfg.get("ledger")
+    if not isinstance(value, str) or not value.strip():
+        sys.exit("error: configuration must supply an explicit ledger path")
+    target = Path(value).expanduser()
+    if not target.is_absolute():
+        target = config_dir / target
+    return target.resolve()
 
 
-def load_ledger(cfg: dict) -> dict:
-    p = ledger_path(cfg)
+def load_ledger(cfg: dict, config_dir: Path = SKILL) -> dict:
+    p = ledger_path(cfg, config_dir)
     if not p.exists():
         return {"_comment": "Written by record_publish.py. Each entry is a human's "
                             "claim that these bundle hashes were uploaded to that "
@@ -86,16 +83,26 @@ def pending(cfg: dict, ledger: dict, surface: str) -> tuple:
 
 
 def main() -> int:
+    global DIST
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--config", type=Path, required=True, help="explicit workspace surface configuration")
+    ap.add_argument("--dist", type=Path, required=True, help="explicit directory containing prepared .skill bundles")
     ap.add_argument("--surface", help="cloud surface name from surfaces.json")
     ap.add_argument("--only", help="record a single skill rather than all of dist")
     ap.add_argument("--date", help="upload date, YYYY-MM-DD (default: today)")
     ap.add_argument("--status", action="store_true", help="report pending uploads and exit")
     args = ap.parse_args()
 
-    cfg = load_config()
-    ledger = load_ledger(cfg)
+    config_path = args.config.expanduser().resolve()
+    DIST = args.dist.expanduser().resolve()
+    cfg = load_config(config_path)
+    destination = ledger_path(cfg, config_path.parent)
+    if destination == SKILL.resolve() or SKILL.resolve() in destination.parents:
+        ap.error("ledger must be outside the reusable skill directory")
+    if not destination.parent.is_dir():
+        ap.error("ledger parent directory must already exist in the authorized workspace")
+    ledger = load_ledger(cfg, config_path.parent)
     known = [s["name"] for s in cfg.get("cloud_surfaces", [])]
 
     if args.status or not args.surface:
@@ -120,10 +127,10 @@ def main() -> int:
     entry["bundles"].update(bundle_hashes(args.only))
     entry["last_recorded"] = date
 
-    ledger_path(cfg).write_text(json.dumps(ledger, indent=2) + "\n")
+    destination.write_text(json.dumps(ledger, indent=2) + "\n")
     scope = args.only or f"all {len(bundle_hashes())} bundles"
     print(f"recorded {scope} as uploaded to {args.surface} on {date}")
-    print(f"  ledger: {ledger_path(cfg)}")
+    print(f"  ledger: {destination}")
     print("  This records your claim. It does not verify the upload landed.")
     return 0
 

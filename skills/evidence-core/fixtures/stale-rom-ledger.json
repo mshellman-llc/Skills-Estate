@@ -3,7 +3,7 @@
   "asOf": "2026-07-16T12:00:00Z",
   "engagement": {
     "engagementId": "FIX-STALE-ROM",
-    "clientName": "Northstar Manufacturing",
+    "clientName": "Example Manufacturing (synthetic)",
     "opportunityId": null,
     "contractId": null
   },

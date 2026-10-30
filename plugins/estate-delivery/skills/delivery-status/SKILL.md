@@ -1,17 +1,28 @@
 ---
 name: delivery-status
-description: 'Continuous delivery documentation for Estate engagements: the weekly client status report, stewardship of the RAID and decision logs with stable IDs, and scope-drift detection against the SOW baseline that raises change-order candidates with an evidence trail. Use for a weekly or project status report, delivery update, what moved this week, logging a decision or risk from a meeting, updating the RAID log, or checking did we agree to that in scope. Do NOT use for authoring change orders or SOWs (sow-quality, sow), kickoff or charter (estate-delivery-kickoff), UAT tracking (estate-uat-validation), pricing (the Estate Pricing System), or sales pursuits (call-prep).'
+description: 'Continuous delivery documentation for Estate engagements: the weekly client status report, stewardship of the RAID and decision logs with stable IDs, and scope-drift detection against the SOW baseline that raises change-order candidates with an evidence trail. Use for a weekly or project status report, delivery update, what moved this week, logging a decision or risk from a meeting, updating the RAID log, or checking did we agree to that in scope. Do NOT use for authoring change orders or SOWs (statement-of-work), kickoff or charter (delivery-kickoff), UAT tracking (acceptance-testing), pricing (the Estate Pricing System), or sales pursuits (call-prep).'
 ---
 
 
 # Estate delivery status
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [`readout-brief.md`](_runtime/prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [Writing Integrity review](_runtime/writing-integrity/references/detailed-review.md). Inputs, not a final pass.**
 
 Keep the engagement record honest, week after week. Three jobs, always together: issue the status report from the record, steward the RAID and decision logs so nothing is re-litigated, and compare observed work against the SOW scope baseline so drift is flagged with evidence before it eats margin. Undocumented decisions cause the same conversation twice; unflagged drift becomes a change order handled reactively or, worse, absorbed silently.
 
-This skill is invoked per cadence by a human. No eventing exists, so never assume you ran last week. Every run states exactly what period it covers and reconciles against the previous status file on disk, not against memory of a prior session.
+Use the invocation actually configured for the engagement. A reporting cadence does not establish an automatic trigger; require configuration and run evidence before reporting that a scheduled or event-driven update occurred. Every run states exactly what period it covers and reconciles against the previous status file on disk, not against memory of a prior session.
+
+## Project context required
+
+Use only the caller-confirmed engagement, source records, private output location,
+and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,
+and Pursuit Lead to that project's authorized owners; these labels do not impose
+an employer organization chart or signing authority. The executed agreement and
+accepted project plan determine gates, commercial rules, and support obligations.
+Keep account history, risk assessments, credentials, and client evidence outside
+portable skill sources. A cached account, attached Project, or available connector
+is not authorization to read, write, or publish.
 
 ## Inputs at a glance
 
@@ -40,7 +51,7 @@ Pin all five before writing anything:
 1. **The engagement.** Client, engagement name, SOW identifier. From the kickoff record or the user.
 2. **The period.** Explicit start and end dates. Ask if ambiguous. The report header carries `Period: YYYY-MM-DD to YYYY-MM-DD`; the gate fails without it.
 3. **The previous status file.** Find it in the engagement folder and read it. Open items, RAID counts, and last-reported burn come from that file. If none exists, say this is the first status of the engagement and that there is no prior baseline to reconcile against.
-4. **The governance logs.** The RAID log and decision log seeded at kickoff by `estate-delivery-kickoff`, using the stable ID convention in `references/log-stewardship.md` (R-001, A-001, I-001, D-001 for RAID, where D is a dependency; DEC-001 for decisions). If the logs do not exist, stop and offer to seed them per that reference before producing any status.
+4. **The governance logs.** The RAID log and decision log seeded at kickoff by `delivery-kickoff`, using the stable ID convention in `references/log-stewardship.md` (R-001, A-001, I-001, D-001 for RAID, where D is a dependency; DEC-001 for decisions). If the logs do not exist, stop and offer to seed them per that reference before producing any status.
 5. **The SOW scope baseline.** The signed SOW's scope section and its Exhibit A Basis of Estimate where one exists. Without a baseline, scope-drift detection degrades to "no baseline on file" as a named gap, flagged in the report, not skipped.
 
 ## Phase 1: harvest the period's evidence
@@ -65,9 +76,9 @@ Rules in full in `references/log-stewardship.md`. The short version:
 
 Protocol and evidence-trail format in `references/scope-drift-protocol.md`. The posture:
 
-Compare every observed work item and client ask from the period against the SOW scope baseline. Classify using the Basis of Estimate trigger taxonomy owned by `sow-quality` (read its `references/basis-of-estimate.md` when classifying): **soft triggers** are volumetric, footprint materially exceeding Exhibit A; **hard triggers** are binary workstream additions such as a second integration or org, which trigger regardless of size.
+Compare every observed work item and client ask from the period against the SOW scope baseline. Classify using the Basis of Estimate trigger taxonomy in the contract scope and obligation review mode of `statement-of-work` (read `_runtime/sow-quality/references/basis-of-estimate.md` from that package; the selected agreement controls its applicability): **soft triggers** are volumetric, footprint materially exceeding Exhibit A; **hard triggers** are binary workstream additions such as a second integration or org, which trigger regardless of size.
 
-When drift is found, raise a **change-order CANDIDATE**: the ask quoted verbatim with attribution, the baseline clause it exceeds cited by section, the trigger class, and the routing (Program Lead and CSE). That is the whole move. This skill never decides in-scope versus out-of-scope (a human call), never silently absorbs the work into status as if it were baseline, and never authors the change order itself; authoring runs through the `sow-quality` Basis of Estimate framework and humans.
+When drift is found, raise a **change-order CANDIDATE**: the ask quoted verbatim with attribution, the baseline clause it exceeds cited by section, the trigger class, and the routing (Program Lead and CSE). That is the whole move. This skill never decides in-scope versus out-of-scope (a human call), never silently absorbs the work into status as if it were baseline, and never authors the change order itself; contractual review uses the contract scope and obligation review mode in `statement-of-work`, while authorized humans own contractual changes.
 
 A period with no drift still gets a scope-drift section reading "None observed" with a one-line statement of what was compared. The gate requires the section either way; silence is not evidence of a check.
 
@@ -89,7 +100,7 @@ python3 scripts/status_check.py STATUS.md --raid-log RAID.md --decision-log DECI
 
 The gate is blocking. It verifies: the period is stated in the header; every stable ID referenced in the report exists in the corresponding log file; the scope-drift section is present and is either "None observed" or candidates each carrying at least one evidence citation; the hours-and-burn section names a source or a named gap; and no unfilled placeholders remain. Exit 0 passes; nonzero blocks issue. Report the counts it prints, not an adjective, and write a one-line disposition.
 
-Then run the prose gate from `prose-pass` on the report (or the manual substitute, stated).
+Review the report with `writing-integrity` and run its bundled internal `prose-pass` diagnostics. If the diagnostics are unavailable, state the manual checks actually performed.
 
 ## Worked example, end to end
 
@@ -99,7 +110,7 @@ Input: a requirements-session transcript in which the client asks for a NetSuite
 2. **Drift**: a candidate block in the scope-drift section. Trigger class hard, the ask quoted verbatim with speaker and date, the SOW integration clause cited by section and quoted, at least one evidence line, routed to Program Lead and CSE.
 3. **Status**: the candidate appears in the flags section as well as the scope-drift section, because it needs a decision. It reappears every period until a decision lands and gets a D-0NN.
 
-The wrong outputs, for contrast: logging it as an action item for the team (silent absorption), deciding it is out of scope in the report (a human call), or drafting the change order (that is the `sow-quality` framework plus humans).
+The wrong outputs, for contrast: logging it as an action item for the team (silent absorption), deciding it is out of scope in the report (a human call), or drafting the change order (authorized humans own contractual changes; the contract scope and obligation review mode in `statement-of-work` reviews the resulting terms).
 
 ## State discipline
 
@@ -129,11 +140,11 @@ Cut in this order, and say what you cut: (1) the narrative accomplishments detai
 
 ## Boundaries
 
-In the delivery chain (SOW, then s2d-handoff, then kickoff, then status, then UAT, then cutover-closeout), this skill's upstream producer is estate-delivery-kickoff, which seeds the logs it stewards, and its downstream consumer is estate-uat-validation, which feeds it defects and test progress once Validate starts. Status does not re-plan: the plan, the baseline, and the gates stay where they were signed, and what this skill produces is the honest record of movement against them.
+In the delivery chain (SOW, then s2d-handoff, then kickoff, then status, then UAT, then cutover-closeout), this skill's upstream producer is delivery-kickoff, which seeds the logs it stewards, and its downstream consumer is acceptance-testing, which feeds it defects and test progress once Validate starts. Status does not re-plan: the plan, the baseline, and the gates stay where they were signed, and what this skill produces is the honest record of movement against them.
 
-- Does not author change orders or scope language. Candidates route to the `sow-quality` Basis of Estimate framework and humans.
-- Does not run kickoff, seed the charter, or create the governance logs from scratch on its own initiative. That is `estate-delivery-kickoff`; this skill stewards what kickoff seeded.
-- Does not track UAT execution or defects. That is `estate-uat-validation`.
+- Does not author change orders or scope language. Candidates route to authorized humans for a contractual decision; the contract scope and obligation review mode in `statement-of-work` reviews the resulting terms.
+- Does not run kickoff, seed the charter, or create the governance logs from scratch on its own initiative. That is `delivery-kickoff`; this skill stewards what kickoff seeded.
+- Does not track UAT execution or defects. That is `acceptance-testing`.
 - Does not price, estimate hours, or compute burn from anything but a named source. The Pricing System and timesheets own the numbers.
 - Does not produce client-facing proposals or sales artifacts.
 

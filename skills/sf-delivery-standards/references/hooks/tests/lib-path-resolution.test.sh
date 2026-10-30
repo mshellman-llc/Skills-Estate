@@ -27,7 +27,7 @@ LIB="$HERE/../claude-hooks/_lib.sh"
 
 TMP=$(mktemp -d "${TMPDIR:-/tmp}/lib path test.XXXXXX") || exit 1   # space on purpose
 M="$TMP/main repo"
-W="$TMP/wt ORG64-1"
+W="$TMP/wt EXAMPLE-1"
 
 cleanup() { rm -rf "$TMP"; }
 trap cleanup EXIT

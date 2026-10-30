@@ -14,6 +14,8 @@ JTBD surfaces what people are trying to accomplish, instead of treating them as 
 
 Use it to apply JTBD to a discovery cycle, to replace persona-driven prioritization with job-driven prioritization, to reframe positioning around what customers hire the product to do, or to audit whether existing JTBD work drives decisions.
 
+The worked examples in the method references illustrate reasoning; they do not establish observations about the current user, a client or a real research sample. Supply authorized research before making factual job claims. Preserve the accompanying upstream license and attribution.
+
 ## Evidence rules
 
 Jobs come from data. Struggling moments, hire criteria, and fire criteria come from what people actually said or did. A feature request alone does not establish the underlying job.
@@ -66,7 +68,7 @@ In positioning, lead with the job. "Help product teams turn discovery research i
 
 ## Related skills
 
-`discovery-synthesis` turns raw interviews and transcripts into structured findings, and job statements are one of its outputs; this skill is the bar those statements are held to. `journey-mapping` lays a job across phases: the Goal lane of a journey map is the job at that phase, struggling moments land where the emotional curve drops, and fire criteria often sit in the final phase where a person decides whether to come back. Handle evidence the same way in both: each item carries a short reference to its source or hypothesis entry, and the entries sit together in one evidence list. `pm-spec-writing` and `spec-writer` take jobs as input to specifications. Positioning and brand work use the job framing but do not replace creative direction. Other strategy frameworks, such as Wardley mapping, North Star metrics, and OKRs, are out of scope.
+`discovery-synthesis` turns raw interviews and transcripts into structured findings, and job statements are one of its outputs; this skill is the bar those statements are held to. `journey-mapping` lays a job across phases: the Goal lane of a journey map is the job at that phase, struggling moments land where the emotional curve drops, and fire criteria often sit in the final phase where a person decides whether to come back. Handle evidence the same way in both: each item carries a short reference to its source or hypothesis entry, and the entries sit together in one evidence list. `feature-spec` takes jobs as input to specifications; its detailed UI and API specification mode covers implementation detail. Positioning and brand work use the job framing but do not replace creative direction. Other strategy frameworks, such as Wardley mapping, North Star metrics, and OKRs, are out of scope.
 
 ## Common failure modes
 

@@ -15,5 +15,6 @@ description: Route authoring, normalizing and validating the Skills Estate itsel
 ## Available skills
 
 - `skill-estate-sync`
-- `skill-creation-walkthrough`
+
+Within Skill Estate Sync, select the embedded authoring mode to create or repair a skill, or the embedded release mode for another host or account. Read that mode's complete workflow. The former standalone names are retained source modules, not separate installed skills.
 

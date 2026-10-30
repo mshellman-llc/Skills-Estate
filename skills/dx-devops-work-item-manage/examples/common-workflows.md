@@ -1,5 +1,9 @@
 # Common Work Item Management Workflows
 
+All IDs and aliases below are examples. Resolve the explicitly authorized org
+and use its `--target-org` on every org command. Never infer authorization from
+a default, change the default, or log into another account to make an example work.
+
 Real-world examples of typical work item operations in DevOps Center autonomous release scenarios.
 
 ---
@@ -12,7 +16,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **Get project ID** (if not already known):
    ```bash
-   sf devops project list --json
+   sf devops project list --target-org <confirmed-alias> --json
    ```
    Output: Project ID `1Qg000000000001`
 
@@ -22,7 +26,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
      --project-id 1Qg000000000001 \
      --subject "Add email validation to Contact" \
      --description "Enforce @salesforce.com domain on Contact email field" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
    Output: Work item name `WI-000001`, branch name `feature/wi-000001-add-email-validation`
 
@@ -31,13 +35,13 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-name WI-000001 \
      --status "In Progress" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 4. **Make code changes on the work item branch**:
    ```bash
    # Get branch name from work item
-   BRANCH=$(sf devops work-item list --project-id 1Qg000000000001 --json | \
+   BRANCH=$(sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.name == "WI-000001") | .branch')
 
    # Checkout the branch
@@ -59,20 +63,20 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-name WI-000001 \
      --status "Ready to Promote" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 7. **Create pull request** for code review:
    ```bash
    sf devops review create \
      --work-item-name WI-000001 \
-     --json
+     --target-org <confirmed-alias> --json
    ```
    Output: PR URL `https://github.com/org/repo/pull/42`
 
 8. **List work items** to confirm final state:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.name == "WI-000001") | {name, subject, status}'
    ```
 
@@ -86,7 +90,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **List work items in In Progress status**:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.status == "In Progress") | .name'
    ```
    Output: Work item names `WI-000001`, `WI-000002`
@@ -97,13 +101,13 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
      sf devops work-item update \
        --work-item-name $WI \
        --status "Ready to Promote" \
-       --json
+       --target-org <confirmed-alias> --json
    done
    ```
 
 3. **Verify all transitioned**:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.status == "Ready to Promote") | {name, subject}'
    ```
 
@@ -117,7 +121,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **Get the work item's branch name**:
    ```bash
-   BRANCH=$(sf devops work-item list --project-id 1Qg000000000001 --json | \
+   BRANCH=$(sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.name == "WI-000003") | .branch')
    echo "Work item branch: $BRANCH"
    ```
@@ -158,7 +162,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-name WI-000001 \
      --subject "[P0] Add email validation to Contact" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 2. **Update description** with new requirements:
@@ -166,7 +170,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-name WI-000001 \
      --description "UPDATED: Enforce @salesforce.com domain. Must deploy by EOD Friday." \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 3. **Update multiple fields at once** (alternative):
@@ -175,7 +179,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
      --work-item-name WI-000001 \
      --subject "[P0] Add email validation to Contact" \
      --description "UPDATED: Enforce @salesforce.com domain. Must deploy by EOD Friday." \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 ---
@@ -188,13 +192,13 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **Get project ID** (if using project name):
    ```bash
-   PROJECT_ID=$(sf devops project list --json | \
+   PROJECT_ID=$(sf devops project list --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.name == "Project Alpha") | .id')
    ```
 
 2. **List work items with Ready to Promote status**:
    ```bash
-   sf devops work-item list --project-id "$PROJECT_ID" --json | \
+   sf devops work-item list --project-id "$PROJECT_ID" --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.status == "Ready to Promote") | {name, subject, branch}'
    ```
 
@@ -216,7 +220,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
    EXISTING_NAME=$(sf devops work-item list \
      --project-id "$PROJECT_ID" \
-     --json | \
+     --target-org <confirmed-alias> --json | \
      jq -r ".result[] | select(.subject == \"$SUBJECT\") | .name" | head -n1)
    ```
 
@@ -228,7 +232,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
      NEW_NAME=$(sf devops work-item create \
        --project-id "$PROJECT_ID" \
        --subject "$SUBJECT" \
-       --json | jq -r '.result.name')
+       --target-org <confirmed-alias> --json | jq -r '.result.name')
      echo "Created new work item: $NEW_NAME"
    fi
    ```
@@ -245,14 +249,14 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    ```bash
    PROJECT_ID="1Qg000000000002"
 
-   sf devops work-item list --project-id "$PROJECT_ID" --json | \
+   sf devops work-item list --project-id "$PROJECT_ID" --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.status != "In Progress" and .status != "Ready to Promote") |
      {name, subject, status, branch}'
    ```
 
 2. **Alternative: show work items in progress**:
    ```bash
-   sf devops work-item list --project-id "$PROJECT_ID" --json | \
+   sf devops work-item list --project-id "$PROJECT_ID" --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.status == "In Progress") |
      "\(.name): \(.subject) (branch: \(.branch))"'
    ```
@@ -274,21 +278,21 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
      --project-id "$PROJECT_ID" \
      --subject "Fix login issue on mobile" \
      --description "Users unable to authenticate on iOS 17+" \
-     --json | jq -r '.result.name')
+     --target-org <confirmed-alias> --json | jq -r '.result.name')
 
    # Bug 2
    WI2=$(sf devops work-item create \
      --project-id "$PROJECT_ID" \
      --subject "Fix search timeout" \
      --description "Search queries timing out for large datasets" \
-     --json | jq -r '.result.name')
+     --target-org <confirmed-alias> --json | jq -r '.result.name')
 
    # Bug 3
    WI3=$(sf devops work-item create \
      --project-id "$PROJECT_ID" \
      --subject "Fix export error" \
      --description "CSV export failing with special characters" \
-     --json | jq -r '.result.name')
+     --target-org <confirmed-alias> --json | jq -r '.result.name')
 
    echo "Created work items: $WI1, $WI2, $WI3"
    ```
@@ -304,7 +308,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 1. **Verify current status**:
    ```bash
    WORK_ITEM="WI-000005"
-   CURRENT_STATUS=$(sf devops work-item list --project-id 1Qg000000000001 --json | \
+   CURRENT_STATUS=$(sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r ".result[] | select(.name == \"$WORK_ITEM\") | .status")
    echo "Current status: $CURRENT_STATUS"
    ```
@@ -314,7 +318,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-name $WORK_ITEM \
      --status "In Progress" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 3. **Update to Ready to Promote** (when work is complete):
@@ -322,12 +326,12 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-name $WORK_ITEM \
      --status "Ready to Promote" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 4. **Verify final status**:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r ".result[] | select(.name == \"$WORK_ITEM\") | .status"
    ```
 
@@ -341,13 +345,13 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **List work items and filter by name**:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq '.result[] | select(.name == "WI-000001")'
    ```
 
 2. **Extract specific fields**:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.name == "WI-000001") |
      "Name: \(.name)\nSubject: \(.subject)\nStatus: \(.status)\nBranch: \(.branch)\nEnvironment: \(.environment)\nDescription: \(.description)"'
    ```
@@ -362,7 +366,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **List all projects**:
    ```bash
-   sf devops project list --json | jq -r '.result[].id'
+   sf devops project list --target-org <confirmed-alias> --json | jq -r '.result[].id'
    ```
    Output: Project IDs `1Qg000000000001`, `1Qg000000000002`
 
@@ -370,7 +374,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    ```bash
    for PROJECT_ID in 1Qg000000000001 1Qg000000000002; do
      echo "Project: $PROJECT_ID"
-     sf devops work-item list --project-id "$PROJECT_ID" --json | \
+     sf devops work-item list --project-id "$PROJECT_ID" --target-org <confirmed-alias> --json | \
        jq -r '.result[] | select(.subject | contains("login")) |
        "  \(.name): \(.subject)"'
    done
@@ -389,7 +393,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item create \
      --project-id 1Qg000000000001 \
      --subject "Refactor user service" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 2. **Add description later** (if needed):
@@ -397,7 +401,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-name WI-000006 \
      --description "Refactor for better testability and performance" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 ---
@@ -413,7 +417,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    sf devops work-item update \
      --work-item-id 0Wx000000000001AAA \
      --status "Ready to Promote" \
-     --json
+     --target-org <confirmed-alias> --json
    ```
 
 > **Note:** Work item IDs (like `0Wx000000000001AAA`) are less human-readable than names (like `WI-000001`). Prefer using `--work-item-name` when possible.
@@ -428,7 +432,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **List work items with Ready to Promote status**:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.status == "Ready to Promote") | .name'
    ```
    Output: Work item names `WI-000001`, `WI-000003`, `WI-000005`
@@ -438,7 +442,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
    for WI in WI-000001 WI-000003 WI-000005; do
      sf devops review create \
        --work-item-name $WI \
-       --json | \
+       --target-org <confirmed-alias> --json | \
        jq -r '.result.pullRequestUrl'
    done
    ```
@@ -446,7 +450,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 3. **Verify PRs were created** by listing work items again and checking for associated review records:
    ```bash
-   sf devops work-item list --project-id 1Qg000000000001 --json | \
+   sf devops work-item list --project-id 1Qg000000000001 --target-org <confirmed-alias> --json | \
      jq -r '.result[] | select(.name == "WI-000001" or .name == "WI-000003" or .name == "WI-000005") | {name, subject, status}'
    ```
 
@@ -460,7 +464,7 @@ Real-world examples of typical work item operations in DevOps Center autonomous 
 
 1. **Attempt to create PR** and handle "PR already exists" error:
    ```bash
-   OUTPUT=$(sf devops review create --work-item-name WI-000002 --json)
+   OUTPUT=$(sf devops review create --work-item-name WI-000002 --target-org <confirmed-alias> --json)
    STATUS=$(echo "$OUTPUT" | jq -r '.status')
 
    if [ "$STATUS" -eq 0 ]; then

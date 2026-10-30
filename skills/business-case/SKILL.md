@@ -1,10 +1,15 @@
 ---
 name: business-case
-description: 'Authors and gates the Estate executive business case, the artifact for the approver who funds the deal: should we invest, why now, and what exactly is being asked. Argues the case for and against the investment honestly, prices the cost of waiting in shown arithmetic, and bounds the ask so no approval is a blank check. Use when asked for a business case, investment case, exec case, value case, cost-benefit, "the case for", "why now memo", "should we fund this", "help me get the CFO to yes", or when a pursuit needs the document the economic buyer reads before signing off. Trigger on any client name or Q-number paired with "business case" or "funding". Do NOT use for the deal decision deck (that is estate-ddoc), the priced clickable proposal (that is estate-interactive-proposal), the internal margin gate (that is the Deal Desk readout under estate-evidence-core''s deal_desk contract), or prospect research (that is estate-call-prep).'
+description: 'Authors and gates the Estate executive business case, the artifact for the approver who funds the deal: should we invest, why now, and what exactly is being asked. Argues the case for and against the investment honestly, prices the cost of waiting in shown arithmetic, and bounds the ask so no approval is a blank check. Use when asked for a business case, investment case, exec case, value case, cost-benefit, "the case for", "why now memo", "should we fund this", "help me get the CFO to yes", or when a pursuit needs the document the economic buyer reads before signing off. Trigger on any client name or Q-number paired with "business case" or "funding". Do NOT use for the deal decision deck (that is deck-builder), the priced clickable proposal (that is scope-options), the internal margin gate (that is the Deal Desk readout under evidence-core''s deal_desk contract), or prospect research (that is call-prep).'
 ---
 
 
 # Estate business case
+
+## Caller context and source boundary
+
+Use only the current task's supplied or explicitly authorized account, project sources and destinations. Resolve record names such as `client.profile` within that confirmed context; they are logical slots, not a default personal store. Connector availability alone does not authorize searching another account. Organization-specific pricing, capability catalogs, approval roles and policies must be supplied or confirmed; absent material context remains an explicit gap. Keep reusable package files immutable during a client task and save client records outside them. Never populate an example with private source material.
+
 
 > **Before writing: the shared build card (`../_shared/build-card.md`, where the
 > estate mounts it) plus the prose-pass register
@@ -25,12 +30,12 @@ anyway.
 
 ## Phase 0: run the evidence core, and stop if it says stop
 
-This artifact makes load-bearing factual claims, so `estate-evidence-core`
+This artifact makes load-bearing factual claims, so `evidence-core`
 runs first. Build the ledger there, then validate against the `business_case`
 contract:
 
 ```bash
-python3 ../estate-evidence-core/scripts/evidence_core.py ledger.json business_case
+python3 ../evidence-core/scripts/evidence_core.py ledger.json business_case
 ```
 
 The contract's required domains are recommendation, current gap, timing,
@@ -146,7 +151,7 @@ would turn your case back into an example, you cloned it.
 
 ## Phase 5: render and release
 
-Rendering belongs to `estate-brand-renderer`. This skill ships no CSS, no
+Rendering belongs to `brand-renderer`. This skill ships no CSS, no
 JS, no palette, and no renderer of its own; a forked stylesheet is a second
 source of truth that drifts. Hand the gated draft to the brand renderer and
 ask for the devices this artifact earns: the for/against balance split, the
@@ -197,15 +202,15 @@ Never ship a funding document to a client on an unattended run.
 
 - Does not price. The quote owns every engagement cost figure; this renders
   them.
-- Does not build the deal decision deck. That is `estate-ddoc`.
+- Does not build the deal decision deck. That is `deck-builder`.
 - Does not build the priced interactive proposal. That is
-  `estate-interactive-proposal`.
+  `scope-options`.
 - Does not run the internal margin gate. That is the Deal Desk readout under
   evidence-core's `deal_desk` contract.
-- Does not research the prospect. That is `estate-call-prep`; this consumes
+- Does not research the prospect. That is `call-prep`; this consumes
   its outputs as sources.
-- Does not own evidence rules, brand tokens, or voice. Those are
-  `estate-evidence-core`, `estate-brand-renderer`, and `prose-pass`.
+- Evidence rules belong to `evidence-core`, brand tokens to
+  `brand-renderer`, and writing review to `writing-integrity` using the confirmed author profile.
 
 ## Files
 

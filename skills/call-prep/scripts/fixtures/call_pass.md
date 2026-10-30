@@ -1,28 +1,30 @@
-# Northwind call brief: quoting operations walkthrough
+# Lantern Workshop call brief: registration operations walkthrough
 
-This is Call 1 from the rolling Pursuit Brief, `northwind-pursuit-brief.md`. Findings feed back into its confirmed facts and stakeholder sections.
+Synthetic test fixture; all people, sources, dates, quantities and decisions are invented.
+
+This is Call 1 from the rolling Pursuit Brief, `lantern-pursuit-brief.md`. Findings feed back into its confirmed facts and stakeholder sections.
 
 ## Call objective
 
-See the quoting spreadsheet workflow end to end with its owner and get the walkthrough recorded.
+See the registration spreadsheet workflow end to end with its owner and get the walkthrough recorded.
 
 ## Desired decisions or outcomes
 
-- A named owner of quoting operations.
+- A named owner of registration operations.
 - Agreement to a recorded screen-share session.
 
 ## Attendees and roles
 
-- Dana Reyes, CFO, sponsor (organizer).
-- Megan Shellman, Estate, pursuit lead.
+- Fictional coordinator, sponsor, sponsor (organizer).
+- Synthetic facilitator, evaluation lead.
 
 ## Known context
 
-Quoting is owned by one analyst (workshop transcript 2026-08-04, VP Ops). Prices decline over program life per the FY2025 10-K.
+Registration is owned by one volunteer (workshop transcript 2030-02-04, workshop steward). The invented register lists forty available places.
 
 ## Run of show
 
-Open on the October board window, move to the walkthrough request, close on scheduling.
+Open on the March planning window, move to the walkthrough request, close on scheduling.
 
 ## Agenda
 
@@ -36,17 +38,17 @@ Open on the October board window, move to the walkthrough request, close on sche
 
 From the discovery ledger, in rank order:
 
-1. Q-01 (High): Does order management run on the incumbent OMS or move to the new platform?
-2. Q-03 (Medium): Who approves discounts above ten percent today?
+1. Q-01 (High): Does order management run on the existing booking sheet or move to the new platform?
+2. Q-03 (Medium): Who approves over-capacity requests today?
 
 ## Risks and sensitivities
 
-- Do not name the analyst's error rate; the VP raised it in confidence. Tagged internal.
+- Do not name the volunteer's draft allocation notes; the steward marked them internal. Tagged internal.
 
 ## Facts, assumptions, and unknowns
 
-- Fact: one analyst owns quoting (transcript 2026-08-04).
-- Assumption A-01: the CFO signs. Not safe to say.
+- Fact: one volunteer owns registration (transcript 2030-02-04).
+- Assumption A-01: the coordinator signs. Not safe to say.
 - Unknown: IT's platform preference.
 
 ## Follow-up plan

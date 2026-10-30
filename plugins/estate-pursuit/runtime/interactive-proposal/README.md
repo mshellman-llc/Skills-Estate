@@ -9,6 +9,6 @@
 
 **Not for.** Do NOT use for the PPTX Deal Decision deck itself (that is ddoc) or a generic slide proposal deck (deck-builder).
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
 
-**Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `core`
+**Full trigger logic and boundaries:** [SKILL.md](WORKFLOW.md) · tier `core`

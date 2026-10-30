@@ -7,39 +7,57 @@
     "quality-gate"
   ],
   "business-case": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core"
   ],
   "call-prep": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "cutover-closeout": [
     "brand-renderer",
-    "delivery-suite"
+    "delivery-suite",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "ddoc": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "deck-builder": [
     "brand-renderer"
   ],
   "delivery-status": [
     "brand-renderer",
-    "delivery-suite"
+    "delivery-suite",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "delivery-suite": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "discovery-brief": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "discovery-synthesis": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "evidence-core": [
-    "brand-renderer"
+    "brand-renderer",
+    "knowledge-hub"
   ],
   "interactive-proposal": [
     "brand-renderer",
+    "evidence-core",
+    "knowledge-hub",
     "roadmap-artifacts"
   ],
   "journey-mapping": [
@@ -54,7 +72,8 @@
     "roadmap-artifacts"
   ],
   "personal-writing-style-runtime": [
-    "brand-renderer"
+    "brand-renderer",
+    "writing-style-builder"
   ],
   "playbook-builder": [
     "brand-renderer"
@@ -69,21 +88,29 @@
     "brand-renderer"
   ],
   "process": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "quality-gate": [
     "prose-pass"
   ],
   "requirements-capture": [
     "brand-renderer",
-    "delivery-suite"
+    "delivery-suite",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "rom": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "s2d-handoff": [
     "brand-renderer",
-    "delivery-suite"
+    "delivery-suite",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "scope-reference": [
     "brand-renderer"
@@ -99,13 +126,17 @@
   ],
   "solution-brief": [
     "brand-renderer",
-    "evidence-core"
+    "evidence-core",
+    "knowledge-hub"
   ],
   "sow": [
-    "brand-renderer"
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
   ],
   "sow-quality": [
-    "brand-renderer"
+    "brand-renderer",
+    "knowledge-hub"
   ],
   "spec-writer": [
     "brand-renderer"
@@ -126,10 +157,12 @@
     "spec-writer"
   ],
   "delivery-kickoff": [
-    "delivery-suite"
+    "delivery-suite",
+    "evidence-core"
   ],
   "uat-validation": [
-    "delivery-suite"
+    "delivery-suite",
+    "evidence-core"
   ],
   "skill-estate-sync": [
     "skill-creation-walkthrough",
@@ -140,5 +173,21 @@
   ],
   "build-interactive-explorer": [
     "roadmap-artifacts"
+  ],
+  "author-writing-style": [
+    "personal-writing-style-runtime",
+    "writing-style-builder"
+  ],
+  "scoping-agent": [
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub"
+  ],
+  "deal-desk": [
+    "evidence-core"
+  ],
+  "transcript-ingestion": [
+    "evidence-core",
+    "knowledge-hub"
   ]
 }

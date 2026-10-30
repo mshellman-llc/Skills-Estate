@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Regression checks for review findings; all profiles and kits are disposable."""
+"""Review regressions. The kit case requires the standalone package; a runtime
+WORKFLOW.md is not an installable writing-integrity ZIP. Other cases run in both forms.
+All profiles and kits are disposable.
+"""
 from pathlib import Path
 import hashlib
 import json
@@ -87,6 +90,8 @@ class ReviewTests(unittest.TestCase):
         logged=json.loads(self.store.db.execute('SELECT body FROM reviews WHERE action="activate"').fetchone()['body'])
         self.assertEqual(logged['owner_provenance'],provenance)
 
+    @unittest.skipUnless((HERE / 'SKILL.md').is_file(),
+                         'Setup-kit fixture requires the standalone writing-integrity package')
     def test_library_uses_checked_zip_even_when_source_reference_changes(self):
         mirror=self.root/'source';shutil.copytree(HERE,mirror,ignore=shutil.ignore_patterns('__pycache__'))
         package=self.root/'skill.zip'

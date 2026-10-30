@@ -113,7 +113,7 @@ NO_PROSE_SKILLS = {
     "skill-estate-sync":      "output is a drift table and a set of bundles",
     "scoping-agent":          "output is scope rows and quote fields in Salesforce",
     "sf-deploy-engine":       "output is pipeline state and deploy results",
-    "prose-pass":             "owns the voice rules the card points at",
+    "prose-pass":             "retains internal diagnostics under writing-integrity",
     "sf-enterprise-patterns": "output is Apex and LWC source plus arch-check results",
     "sf-headless-screenshot": "output is captured page evidence from a CLI",
 }
@@ -356,7 +356,7 @@ def main() -> int:
             print(f"    {row['surface']:16} last recorded {row['last_recorded']:12} {state}")
         print("    a row records what a human said they uploaded. Nothing here")
         print("    reads the tier, so none of it is independent verification.")
-        print("    record an upload with scripts/record_publish.py --surface <name>")
+        print("    record an upload with scripts/record_publish.py --config FILE --dist DIR --surface <name>")
     if broken_shared:
         print("\n  MISSING SHARED DEPENDENCIES (not in source):")
         for name, refs in broken_shared.items():

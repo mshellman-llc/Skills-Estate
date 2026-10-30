@@ -23,7 +23,8 @@
 #
 # Env:
 #   ENGINE_URL   base URL. Falls back to `engine_url:` in pipeline.yml.
-#   SFDE_TOKEN   overrides ~/.config/sf-deploy-engine/token.
+#   SFDE_TOKEN       explicit token for this endpoint.
+#   SFDE_TOKEN_FILE  explicit absolute token file; no shared default is read.
 #
 # Dependencies: bash, git, curl, python3 (stdlib). gh is optional and only used
 # for repo-settings checks. No jq, no npm, no yq.
@@ -215,8 +216,10 @@ else
 fi
 
 TOKEN="${SFDE_TOKEN:-}"
-if [ -z "$TOKEN" ] && [ -f "$HOME/.config/sf-deploy-engine/token" ]; then
-  TOKEN=$(tr -d '\n' < "$HOME/.config/sf-deploy-engine/token")
+if [ -z "$TOKEN" ]; then
+  case "${SFDE_TOKEN_FILE:-}" in
+    /*) [ ! -r "$SFDE_TOKEN_FILE" ] || TOKEN=$(tr -d '\n' < "$SFDE_TOKEN_FILE") ;;
+  esac
 fi
 
 STATUS_JSON=""

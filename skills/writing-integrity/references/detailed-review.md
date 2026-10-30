@@ -45,7 +45,7 @@ If sources conflict, identify the conflict rather than silently choosing an inte
 
 Resolve competing editing choices in this order: facts and explicit constraints; the reader's purpose, relationship and format; confirmed client requirements; the author's established voice; general cleanup. Preserve legal, contractual and regulated wording when it takes precedence over style.
 
-Use the confirmed author profile, such as `megan-writing-style`, when writing as that person. Apply a client's voice only to that client's work under a confirmed profile. Use `client-brand` for visual identity. Keep brand values in that profile and a former employer's voice out of unrelated work. This skill provides writing review; it supplies no house voice.
+Use the confirmed author profile when writing as that person. Apply a client's voice only to that client's work under a confirmed profile. Use `client-brand` for visual identity. Keep brand values in that profile and a former employer's voice out of unrelated work. This skill provides writing review; it supplies no house voice.
 
 ## Match the review to the document
 
@@ -78,16 +78,18 @@ When a factual claim is challenged, inspect the records before agreeing, denying
 
 ## Check saved files
 
+Before using an optional external scanner or its learning command, verify that its profile and storage are authorized for the current task and owner. Never reuse a default store without confirming that authorization. If the scanner cannot establish this separation, use the bundled diagnostics and manual review; retain learning only through the explicitly selected store.
+
 Use [the diagnostic toolkit](../../prose-pass/SKILL.md) for document text extraction, construction checks, figure comparisons and required review records.
 
-If `~/.agents/humanize/tellscan.py` is available, scan finished prose files:
+If the owner has configured the optional tellscan scanner, resolve its actual executable path and supported options before use. Set `SCANNER` to that path and `PROFILE` to a confirmed profile supported by that scanner. Scan finished prose files:
 
 ```bash
-/usr/bin/python3 ~/.agents/humanize/tellscan.py scan <file>
-/usr/bin/python3 ~/.agents/humanize/tellscan.py scan <file> --profile megan
+python3 "$SCANNER" scan <file>
+python3 "$SCANNER" scan <file> --profile "$PROFILE"
 ```
 
-Use `--profile megan` for Megan-authored copy. Inspect flags in context, repair the sentence or argument and rerun after editing. Preserve required terms, meaningful contrasts and deliberate author choices. Quoted bad examples remain examples to examine.
+Use a named scanner profile only when the owner confirmed it for this author's copy. Inspect flags in context, repair the sentence or argument and rerun after editing. Preserve required terms, meaningful contrasts and deliberate author choices. Quoted bad examples remain examples to examine.
 
 The scanner detects some patterns. A clean result still needs a complete reading against the sources and the request. If the scanner is unavailable, perform that reading manually. Never assign an AI probability, infer authorship from writing patterns or promise a detector result. Review for the reader; do not optimize for Turnitin, GPTZero, Copyleaks or another detector.
 
@@ -100,7 +102,7 @@ Apply corrections throughout the current piece and session. For an enrolled prof
 When the user asks to retain a correction and the scanner is installed, use:
 
 ```bash
-/usr/bin/python3 ~/.agents/humanize/tellscan.py learn "<phrase or construction>" --repair "<what to write instead>"
+python3 "$SCANNER" learn "<phrase or construction>" --repair "<what to write instead>"
 ```
 
 The legacy scanner maintains its own candidate rules. Use `tellscan.py report` to inspect them. Scanner learning does not activate a rule in the private profile; use the reviewed promotion process in learning.md. Record each rule's source, repair, exceptions and a test example. Check the whole class of mistakes the correction identifies.

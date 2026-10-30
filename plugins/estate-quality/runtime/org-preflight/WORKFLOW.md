@@ -3,6 +3,9 @@ name: org-preflight
 description: Check the exact intended Salesforce organization before a record write, file upload, or deployment. Use a fresh CLI or connector identity, compare its org ID and sandbox status, and refuse missing or mismatched targets.
 ---
 
+Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
+
+
 
 # Salesforce org preflight
 

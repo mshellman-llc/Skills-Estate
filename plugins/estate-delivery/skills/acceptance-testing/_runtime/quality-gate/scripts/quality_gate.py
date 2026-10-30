@@ -37,6 +37,8 @@ FAIL_CLOSED = {
     "approval_status",
     "go_no_go",
 }
+ASSERTION_KINDS = FAIL_CLOSED | {"narrative", "other"}
+STYLE_CAPABLE_SUFFIXES = {".html", ".htm", ".pptx", ".docx", ".xlsx", ".pdf"}
 
 REQUIRED_FIELDS = (
     "artifact",
@@ -143,6 +145,10 @@ def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
         for flag in (*ROUTED_CONTROLS, "narrative_final"):
             if flag in artifact and type(artifact[flag]) is not bool:
                 error("artifact-flag", "artifact.{} must be a boolean".format(flag))
+        path = artifact.get("path")
+        if (isinstance(path, str) and Path(path).suffix.lower() in STYLE_CAPABLE_SUFFIXES
+                and "brand_render" not in artifact):
+            error("brand-applicability", "artifact.brand_render must explicitly declare whether this file needs styled-output review")
     selected = record.get("controls_selected")
     if (not isinstance(selected, list) or not selected
             or any(not isinstance(c, str) or not c.strip() for c in selected)):
@@ -161,6 +167,9 @@ def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
                     or not isinstance(assertion.get("kind"), str)
                     or not assertion["kind"].strip()):
                 error("assertion-shape", "assertions[{}] needs a named kind".format(index))
+            elif assertion["kind"] not in ASSERTION_KINDS:
+                error("assertion-kind", "assertions[{}] has an unknown kind; use one of {}".format(
+                    index, ", ".join(sorted(ASSERTION_KINDS))))
     hub = record.get("hub_update")
     if (not isinstance(hub, dict) or not isinstance(hub.get("status"), str)
             or not hub["status"].strip()):

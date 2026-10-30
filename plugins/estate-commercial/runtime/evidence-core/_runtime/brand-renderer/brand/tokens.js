@@ -4,9 +4,9 @@ const profile = require("./brand_profile.js");
 const TOKENS_PATH = profile.resolveProfile();
 const raw = profile.compileTokens(profile.loadProfile(TOKENS_PATH), TOKENS_PATH);
 
-const hex = {};        // { navy: "#080F28", ... }
-const bare = {};       // { navy: "080F28", ... }  docx/pptx form
-const byHex = {};      // { "#080f28": {key, name, role, brand, group} }
+const hex = {};        // { tokenName: profileHex, ... }
+const bare = {};       // { tokenName: profileHexWithoutHash, ... }  docx/pptx form
+const byHex = {};      // { profileHex: {key, name, role, brand, group} }
 for (const [key, v] of Object.entries(raw.colors)) {
   hex[key] = v.hex;
   bare[key] = v.hex.replace(/^#/, "");

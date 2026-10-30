@@ -85,7 +85,7 @@ with tempfile.TemporaryDirectory() as directory:
           and document["registers"]["assumptions"][0]["itemId"] == "ASM-007")
     check("asOf honours --as-of", document["asOf"] == "2026-09-05T12:00:00Z")
     check("context is carried from the first event",
-          document["context"]["scopeType"] == "opportunity" and document["context"]["contextId"] == "opp-2026-northstar")
+          document["context"]["scopeType"] == "opportunity" and document["context"]["contextId"] == "opp-2026-example")
     try:
         from jsonschema import Draft202012Validator
     except ImportError:

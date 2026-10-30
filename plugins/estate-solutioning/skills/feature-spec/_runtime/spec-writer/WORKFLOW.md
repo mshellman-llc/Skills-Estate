@@ -49,10 +49,14 @@ For an interactive feature, describe the applicable states:
 | Error or rejection | Give the validation message and recovery path. Explain whether input survives rejection and which permissions apply. |
 | Return visit | Explain how stored state reloads and who owns the record. |
 
+An API-only implementation may still support an interactive task. When saved records, duplicate submission or connectivity loss affect users, specify retained input, an unknown commit outcome, authorized reload on return, and record ownership even when no UI mockup is needed. Session expiry does not establish deletion or loss of persisted records; describe the actual storage lifecycle only when sourced. If both context identifiers are supplied, resolve them to the same authorized canonical context or reject the conflict. A common owner alone does not make two contexts equivalent. A retry for an existing row must retain that row's established context. Do not offer dropping one identifier as permission to move or recreate that row in another context; a transfer is a separate operation requiring explicit authorization and a specified contract.
+
 For each relevant state, name the trigger, visible result, permitted action and
 next state. Add consequential alternatives such as missing dependencies,
 duplicate submissions, cancellation or concurrent edits. Mark an inapplicable
 state as such only when its absence matters to the reader.
+
+For applicable UI behavior, specify keyboard operation, focus movement and restoration, accessible names and labels, and how validation or asynchronous status is announced. State the observable acceptance checks for those behaviors using the project's accessibility requirements. A visual mockup or contrast check alone does not verify them. An API-only change can identify this as an existing caller responsibility when that boundary is supported, rather than inventing a new interface.
 
 Use a mockup when layout or interaction needs visual explanation. Show the
 existing navigation and control states. Show the actual content shape.
@@ -108,6 +112,10 @@ checks. A preliminary manifest is a plan, not a guarantee that investigation
 cannot reveal another necessary file. Update it when the implementation scope
 changes and surface a material decision. Preserve the user's existing approval
 and release boundaries; a file count creates no additional approval gate.
+
+## Persistence completion check
+
+Before delivering a specification that saves records, explicitly state how a later authorized read reloads the durable record and how record ownership and context access are checked. Cover a fresh visit as well as recovery immediately after a timeout. If the existing read path or lifecycle is unknown, name it as an uninspected dependency and specify the observable readback requirement; do not invent a new endpoint or deletion policy as established behavior. Include an acceptance case for that later read, stable identity and denied access. This requirement describes data behavior and does not require a UI mockup.
 
 ## Make acceptance executable
 

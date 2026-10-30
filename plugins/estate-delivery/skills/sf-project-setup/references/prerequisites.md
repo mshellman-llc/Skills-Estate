@@ -36,7 +36,7 @@ run the interactive command instead.
 | `az` (Azure DevOps) | `az login` | Browser opens |
 
 **Jira has no CLI here.** All Jira work is done by the agent through the Atlassian Rovo MCP —
-a company-wide connector authenticated interactively in your Claude client, not on the command
+a connector explicitly authorized for the project in your current client, not on the command
 line. There is nothing to `brew install` and nothing for preflight to check; just confirm the
 Rovo MCP is connected in your client. See [ticket-adapters.md](ticket-adapters.md).
 
@@ -104,10 +104,12 @@ The stack needs a named org alias, and `estate.orgalias` must match it. Without 
 which is how a command meant for a sandbox reaches production.
 
 ```bash
-sf org login web --alias 64_Dev
-sf config set target-org 64_Dev
-sf org display
+sf org login web --alias CONFIRMED_DEV_ALIAS    # only when authorized to connect
+sf org display --target-org CONFIRMED_DEV_ALIAS --json
 ```
+
+Confirm the intended org ID using org-preflight before a write. Do not set a machine
+default or infer project authorization from an existing alias.
 
 `audit` checks that the alias resolves. It reports this as a judgment item, not a failure: an
 unresolvable alias is detectable, a *wrong* one is not.

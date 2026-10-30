@@ -22,6 +22,7 @@ Design systems and evaluate architectural choices. Lead with a recommended desig
 
 ## Ground rules
 
+- When extending an existing system, inspect the supplied implementation, contracts and operating evidence first. State what was inspected and what remains unavailable; proposed extensions must respect confirmed behavior. This design inspection does not imply a completed code review.
 - State assumptions before you design on them. If scale, latency, budget, or team constraints were not given, say what you are assuming and mark it. Do not invent load figures, SLAs, or user counts and present them as fact.
 - Every choice has a cost. Name the trade-off you accept with each decision, not just the benefit.
 - Simplest design that meets the stated requirements wins. Add mechanism only when a requirement forces it.
@@ -30,10 +31,13 @@ Design systems and evaluate architectural choices. Lead with a recommended desig
 
 - Reviewing or debugging code that already exists.
 - Recording one decision that is already made. That is an ADR, not a design.
-- An Estate client-facing or branded architecture document. Use
-  `architecture-doc`, which sources every claim, applies brand canon during the build,
-  and runs the brand and prose gates. This skill is the working-design version: faster, inline,
-  unbranded, and it invents nothing about Estate.
+
+For a formal sourced reference, select the formal architecture reference mode
+and read [architecture-doc](_runtime/architecture-doc/WORKFLOW.md). It preserves source
+locators, the selected project profile, complementary architecture and engineering
+views, and artifact review. The portable System Design package embeds that workflow.
+The framework below covers exploratory working design; it does not replace the
+formal mode or its acceptance checks.
 
 ## Framework
 
@@ -48,7 +52,8 @@ Walk these in order. Skip a section only when it plainly does not apply, and say
 ### 2. High-level design
 - Components and their responsibilities.
 - Data flow between them.
-- API contracts at the boundaries.
+- API contracts, data ownership and state changes at the boundaries.
+- Identity and authorization: principals, relevant tenant or isolation key, allowed actions, enforcement location, and denial behavior. Tenant isolation does not establish permission to act on a record. Require every applicable identity, tenant, ownership or explicit grant check; deny when a required check fails or the governing policy is unavailable. Do not claim a tenant filter compensates for a missing permission check.
 - Storage choices per component.
 
 ### 3. Deep dive
@@ -56,7 +61,7 @@ Walk these in order. Skip a section only when it plainly does not apply, and say
 - API endpoints: shape, method, idempotency (REST, GraphQL, or gRPC as fits).
 - Caching: what, where, invalidation, staleness tolerance.
 - Async: queues, events, ordering, delivery guarantees.
-- Failure handling: timeouts, retries with backoff, idempotency keys, dead-letter paths.
+- Failure handling: timeouts, retries with backoff, idempotency keys, dead-letter paths. A read of completed state followed by a write does not prevent concurrent duplicate work. Specify the atomic claim or uniqueness constraint, idempotent state change, and treatment of external side effects before claiming a redelivery is safe. State any remaining failure window; do not promise exactly-once effects without supporting evidence. A failed claim does not prove work is complete. Distinguish completed, busy and expired claims; do not acknowledge unfinished work unless a separate durable recovery trigger has accepted responsibility. Otherwise defer or retry delivery under the queue contract. State what restarts work if the current owner dies.
 
 ### 4. Scale and reliability
 - Load estimate: request rate, data volume, growth. Show the arithmetic.

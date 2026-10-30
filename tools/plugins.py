@@ -10,7 +10,7 @@ import tempfile
 import zipfile
 
 import estate
-from catalog import entries as catalog_entries
+from catalog import entries as catalog_entries, retired_entries
 from portable import assemble, runtime_closure
 
 BUNDLES = {f'estate-{name}' for name in
@@ -90,7 +90,14 @@ def router_modules(root, item):
     modules = re.findall(r'^- `([a-z0-9-]+)`\s*$', selection, re.M)
     if not modules:
         raise ValueError('Router has no workflow selection')
-    return list(dict.fromkeys(modules + item.get('additional_routes', []) + item.get('controls', [])))
+    selected = list(dict.fromkeys(modules + item.get('additional_routes', []) + item.get('controls', [])))
+    # Embedded modes still route to their owning task entrypoint. Retired
+    # diagnostics have no selectable mode and must never be router choices.
+    retired = {name for name, rule in retired_entries(root).items()
+               if not rule.get('allowed_as_mode')} & set(selected)
+    if retired:
+        raise ValueError('Router selects retired standalone skill: ' + ', '.join(sorted(retired)))
+    return selected
 
 
 def shared_hash(root, settings):
@@ -179,6 +186,8 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
     selected = sorted(set(selected or settings['bundles']))
     if set(selected) - set(settings['bundles']):
         raise ValueError('Unknown selected bundle')
+    from plugin_version import check as check_version
+    check_version(root, settings)
     manifest = estate.build(root)
     gaps = release_gaps(root, settings, selected, manifest)
     if gaps and not (candidate or owner):
@@ -214,8 +223,7 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
                     if module in targets:
                         continue
                     target = package / 'runtime' / module
-                    assemble(root, module, target, runtime_closure(root, module))
-                    (target / 'SKILL.md').rename(target / 'WORKFLOW.md')
+                    assemble(root, module, target, runtime_closure(root, module), entrypoint_name='WORKFLOW.md')
                     targets[module] = f'runtime/{module}/WORKFLOW.md'
                 if item.get('router_source'):
                     router = Path(item['router_source']).stem
@@ -227,8 +235,7 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
                     description = 'Unreviewed candidate for isolated testing. ' + description
                 portable = {'$schema': 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
                             'name': name, 'version': settings['version'], 'description': description,
-                            'author': {'name': 'Skills Estate'},
-                            'repository': 'https://github.com/mshellman-llc/Skills-Estate'}
+                            'author': {'name': 'Skills Estate'}}
                 write_json(package / 'plugin.json', portable)
                 write_json(package / '.claude-plugin/plugin.json', {k: v for k, v in portable.items() if k != '$schema'})
                 write_json(package / '.codex-plugin/plugin.json', {'name': name, 'version': settings['version'],

@@ -2,7 +2,7 @@
 
 The test script is the unit of traceability. Every script declares the requirement IDs it
 covers, using the IDs exactly as they appear in the requirements workbook from
-estate-requirements-capture (prefix plus number, for example `CPE-001`). Never invent an
+requirements-backlog (prefix plus number, for example `CPE-001`). Never invent an
 ID and never paraphrase one; the gate script matches strings, not intentions.
 
 ## Script fields
@@ -44,7 +44,7 @@ Mark the script's Source field `mechanical from AC` only when every step traces 
 When you had to fill in what the AC left unsaid (navigation, record names, boundary values),
 mark it `inferred from AC` and flag the inferred steps inline with `[INFERRED: basis]`. When
 a requirement has no usable AC, author the script, mark it `authored (no AC)`, and raise the
-missing AC as an open question routed back through estate-requirements-capture; do not
+missing AC as an open question routed back through requirements-backlog; do not
 quietly fix the requirement inside a test script.
 
 ## Coverage rules
@@ -66,7 +66,7 @@ A script that traces to no workbook requirement, or to an ID the workbook does n
 is an orphan. Orphans are usually one of: scope drift (someone built and is now testing
 something never captured), a regression script inherited from the client, or a typo in the
 ID. Fix typos. Keep legitimate orphans, but flag them in the Orphan Flag field with the
-reason, and route the scope-drift ones to estate-delivery-status so the drift is visible
+reason, and route the scope-drift ones to delivery-status so the drift is visible
 in status reporting, not buried in a test asset. The gate fails on any unflagged orphan.
 
 ## Test data approach

@@ -1,5 +1,5 @@
 interface:
-  display_name: "BeastMode: Capture a decision"
+  display_name: "Knowledge hub: Capture a decision"
   short_description: "Save decisions and corrections with evidence"
   default_prompt: "Use $beastmode-capture to save this decision with its evidence and review state."
 policy:

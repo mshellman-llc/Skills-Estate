@@ -26,7 +26,7 @@ triggers:
   slide", "scope deck", "discussion document" (a retired name for this same artifact),
   "the deck before the proposal", "the deck that goes with the SOW", or a Q-number
   paired with a deck request. Do NOT trigger for SOW review (that is sow-quality),
-  prose editing (that is prose-pass), or PPTX mechanics (that is pptx).'
+  prose editing (that is writing-integrity), or PPTX mechanics (that is pptx).'
 exclusions: []
 inputs:
 - name: task_context

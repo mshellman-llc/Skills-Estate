@@ -120,8 +120,8 @@ def skills(root: Path, only: str | None, classes: dict):
         # The release-classification inventory is optional during migration,
         # but a skill's own draft status is authoritative. The command promises
         # that drafts never become uploadable bundles, including targeted runs.
-        if declared_status(d) == "draft":
-            print(f"  SKIP {d.name}: skill status draft")
+        if declared_status(d) in {"draft", "internal", "retired"}:
+            print(f"  SKIP {d.name}: skill status {declared_status(d)}")
             continue
         # Unconditional. --no-gate skips the selftest gate, which is a quality
         # question. Whether a skill is cleared for release is not, so no flag
@@ -278,6 +278,8 @@ def archive_map(skill: Path, source: Path) -> dict:
 
 
 def bundle(skill: Path, out: Path, source: Path | None = None) -> Path:
+    if declared_status(skill) in {"draft", "internal", "retired"}:
+        raise ValueError('This source module is not a standalone release: ' + skill.name)
     out.mkdir(parents=True, exist_ok=True)
     dest = out / f"{skill.name}.skill"
     if dest.exists():
@@ -300,6 +302,11 @@ def main() -> int:
 
     if not args.source.exists():
         print(f"error: source {args.source} not found", file=sys.stderr)
+        return 2
+
+    if (args.source.resolve().parent / 'config/skill-catalog.json').is_file():
+        print('This estate uses a task catalog. Run tools/estate.py sync from its repository; '
+              'the legacy module bundler cannot preserve its task modes and retirement policy.', file=sys.stderr)
         return 2
 
     classes = released(args.source)

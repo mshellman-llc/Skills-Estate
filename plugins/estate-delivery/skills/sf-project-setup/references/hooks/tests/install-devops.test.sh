@@ -56,22 +56,22 @@ else
 fi
 
 echo "== Shared development-org variant =="
-git branch stevenc
+git branch integration-dev
 bash "$INSTALL" --repo --platform both --mode native --delivery devops-center \
   --host github --review pr --protected other \
   --devops-org-alias prod --devops-project-id 0I0TEST --devops-pipeline-id PIPE1 \
-  --devops-work-model shared --devops-integration-branch stevenc \
-  --devops-environment StevenC >/dev/null
+  --devops-work-model shared --devops-integration-branch integration-dev \
+  --devops-environment ExampleDevelopment >/dev/null
 PROTECTED=$(git config estate.protected)
-check grep -qw stevenc <<< "$PROTECTED"
+check grep -qw integration-dev <<< "$PROTECTED"
 check test "$(git config estate.devops.workmodel)" = shared
 check test "$(git config estate.devops.developmentbranchpattern)" = '^dev/WI-[0-9]+$'
 check grep -q 'shared development org and its integration branch agree' CLAUDE.md
 check grep -q 'estate-devops-package' AGENTS.md
 
 if bash "$INSTALL" --repo --platform both --mode native --delivery devops-center \
-  --host gitlab --devops-work-model shared --devops-integration-branch stevenc \
-  --devops-environment StevenC --trunk staging >/dev/null 2>&1; then
+  --host gitlab --devops-work-model shared --devops-integration-branch integration-dev \
+  --devops-environment ExampleDevelopment --trunk staging >/dev/null 2>&1; then
   FAIL=$((FAIL+1)); echo "  FAIL non-GitHub shared mode was allowed"
 else
   PASS=$((PASS+1)); echo "  PASS non-GitHub shared mode was refused"

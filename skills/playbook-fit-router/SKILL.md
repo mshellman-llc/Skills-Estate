@@ -18,7 +18,7 @@ Reads discovery material, extracts signals, scores them against every playbook's
 3. **A ruled-out mention does not score.** A bounded negation check keeps "they ruled out RCA" from scoring as evidence of RCA.
 4. **Partial coverage is disclosed.** A qualifier that cannot be read is skipped and named, and the run says so. One bad twin never aborts the catalog.
 
-Classes and their weights: `client_stated` 1.0, `seller_asserted` 0.6, `inferred` 0.3, `not_evidenced` 0.0. See `estate-playbook-spec/references/evidence-classes.md`.
+Classes and their weights: `client_stated` 1.0, `seller_asserted` 0.6, `inferred` 0.3, `not_evidenced` 0.0. The definitions are in [signals-extraction.md](references/signals-extraction.md).
 
 ## Workflow
 
@@ -57,7 +57,16 @@ Classes and their weights: `client_stated` 1.0, `seller_asserted` 0.6, `inferred
 
 ## Dependency
 
-Reads `qualifier.json` per `estate-playbook-spec/schema/qualifier.schema.json`. A playbook whose Qualifier has no JSON twin is invisible to the router, which is why every run reports how many were scored. Generating that twin is part of artifact 05, and the two must not drift.
+The caller supplies the approved qualifier schema and the qualifier directory as
+explicit project paths. Validate each JSON twin against that schema and record the
+schema version, source and validation result before using a ranking for a decision.
+The scorer checks its minimum input fields; it does not perform JSON Schema
+validation or locate a schema in another installed skill. Its output explicitly
+reports this limit. Without the approved schema, a run is diagnostic only.
+
+A playbook whose Qualifier has no JSON twin is invisible to the router, which is
+why every run reports how many were scored. Generating that twin is part of
+artifact 05, and the human document and JSON must not drift.
 
 ## Open decisions
 

@@ -15,6 +15,11 @@ Use the primary workflow below unless the request matches a mode in this table. 
 
 # Discovery Synthesis
 
+## Caller context and source boundary
+
+Use only the current task's supplied or explicitly authorized account, project sources and destinations. Resolve record names such as `client.profile` within that confirmed context; they are logical slots, not a default personal store. Connector availability alone does not authorize searching another account. Organization-specific pricing, capability catalogs, approval roles and policies must be supplied or confirmed; absent material context remains an explicit gap. Keep reusable package files immutable during a client task and save client records outside them. Never populate an example with private source material.
+
+
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
 > [`readout-brief.md`](_runtime/prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
 
@@ -25,10 +30,12 @@ Turn discovery calls into sourced research artifacts for the current project. Us
 This skill is the pipeline: raw call content in, structured artifacts out (JTBD
 statements, pain points, verbatims, a TL;DR, next steps, a .docx). It produces
 shareable research, ready for NotebookLM, a Claude Project, or a stakeholder
-readout. It does not maintain the deal's discovery record. That is
-`discovery-brief`, which owns the ranked two-column ledger and feeds the pursuit
-brief. Run this to turn a transcript into research; run `discovery-brief` to keep
-the deal's structured record and its open questions.
+readout. The primary workflow handles synthesis. The maintain pursuit findings
+mode uses [discovery-brief](_runtime/discovery-brief/WORKFLOW.md), which owns the ranked
+two-column ledger and feeds the pursuit brief. Select that complete workflow
+when the request is to update the deal's structured record or its open questions.
+The portable Discovery package embeds both workflows; no separate installation
+is needed for the ledger mode.
 
 ## Supported Input Types
 
@@ -59,7 +66,7 @@ If the user is in a hurry, proceed with what you have and flag assumptions at th
 
 ## Step 2: Synthesis Analysis
 
-Read the full content carefully. Before generating output, internally map:
+Read the supplied content completely. A summary is secondary evidence and cannot become a verbatim transcript. Keep uncertain speaker labels uncertain. Retain meaningful dissent and distinguish one person's observation from a shared pattern. Before generating output, internally map:
 
 - **Speaker attribution.** Identify who is a consulting-team voice vs. a client voice. Client voices are the research signal. Consultant voices provide context and questions.
 - **Signal types.** Distinguish between explicit pain statements ("we can't do X"), implicit friction ("it takes us 3 days to..."), aspirational statements ("what we really want is..."), and workarounds ("so we built a spreadsheet that...").
@@ -136,8 +143,10 @@ Aim for 3–5 opportunity areas. These should feel distinct and non-overlapping.
 5–10 direct quotes from client speakers that are the most revealing, emotionally resonant, or strategically significant. These are the "sticky" moments, the things you'd put on a slide to make a stakeholder lean forward.
 
 Format:
-> *"[Exact or near-exact quote]"*
+> *"[Exact source quote]"*
 > [Speaker role], [context if helpful]
+
+Preserve the exact words and grammar of a quote with its speaker and timestamp or source location. Never invent a representative quote. Label a paraphrase as a paraphrase outside quotation marks. Select only useful quotes present in the source, even when fewer than five exist.
 
 Do not include consultant quotes here unless they directly provoked a revealing client response.
 
@@ -169,7 +178,9 @@ Examples:
 
 ## Step 4: Output Delivery
 
-**Always produce:**
+Use the user's requested format and length. The full structure above is the default when no narrower format is requested.
+
+**Default delivery:**
 1. The full structured artifact above, rendered in clean Markdown in-chat
 2. A Markdown file in the project’s existing output folder when files can be saved; otherwise provide the complete content in chat.
 
@@ -184,7 +195,7 @@ Examples:
 ## Tone & Quality Standards
 
 - Write in third person for pain points and JTBDs ("The client cannot..." not "You cannot...")
-- Verbatims should be as close to exact wording as possible, flag if paraphrased: *(paraphrased)*
+- Verbatims preserve exact source wording. Present paraphrases separately and label them; do not put reconstructed wording in quotation marks.
 - Don't editorialize in pain points: describe what was said, not what you think they should do
 - Opportunity areas are where you can add strategic thinking, be sharp and specific
 - If the transcript is thin, say so explicitly rather than padding with weak inferences
@@ -194,9 +205,9 @@ Examples:
 
 ## Integration Notes
 
-**For NotebookLM:** The Markdown output is designed to be uploaded directly as a source document. The section headers and structured formatting help NotebookLM generate accurate summaries and Q&A.
+**For NotebookLM:** The Markdown output can be used as a source document after an authorized upload is confirmed by the destination. The section headers and structured formatting help NotebookLM generate accurate summaries and Q&A.
 
-**For Claude Projects:** Save the Markdown output as a project file. Future sessions in the same project will have the synthesis in context automatically.
+**For Claude Projects:** Prepare a Markdown file suitable for the project. A local save does not upload it or establish future-session access. Use an authorized destination write when requested, then read back the saved record before claiming upload or availability.
 
 **For project deliverables:** Use the requested document or research format. Connect opportunity areas to the project’s confirmed assessment framework when one exists.
 

@@ -31,7 +31,7 @@ def check(name, cond, detail=""):
 r = run([os.path.join(FIX, "does_not_exist.md")])
 check("missing_state_exit0", r.returncode == 0, r.stderr)
 check("missing_state_starts_at_handoff", "Current stage: S2D Handoff" in r.stdout)
-check("missing_state_names_handoff_skill", "s2d-handoff" in r.stdout)
+check("missing_state_names_handoff_skill", "sales-to-delivery-handoff" in r.stdout)
 check("missing_state_says_create_file",
       "treating this as a new engagement" in r.stdout)
 check("missing_state_lists_all_stages",
@@ -46,12 +46,12 @@ check("mid_exit0", r.returncode == 0, r.stderr)
 check("mid_current_stage", "Current stage: 02 Analyze" in r.stdout)
 check("mid_next_gate", "Requirements Document co-signed" in r.stdout)
 check("mid_owner",
-      "requirements-capture + journey-mapping" in r.stdout)
+      "requirements-backlog; journey-mapping when needed" in r.stdout)
 check("mid_handoff_not_remaining", "S2D  Handoff" not in r.stdout)
-check("mid_build_no_skill", "no artifact skill by design" in r.stdout)
+check("mid_build_no_skill", "the configured project implementation workflow" in r.stdout)
 check("mid_cross_cutting", "delivery-status" in r.stdout)
 check("mid_governors",
-      "evidence-core, brand-renderer, prose-pass" in r.stdout)
+      "evidence-core, brand-renderer, writing-integrity" in r.stdout)
 check("mid_zero_findings", "Findings: 0" in r.stdout)
 check("mid_engagement_name", "Acme Corp CPQ Implementation" in r.stdout)
 
@@ -68,9 +68,9 @@ check("mid_json_not_complete", payload["complete"] is False)
 # 3. Everything signed: complete, closeout harvest reminder, comparables gap.
 r = run([os.path.join(FIX, "complete.md")])
 check("complete_exit0", r.returncode == 0, r.stderr)
-check("complete_says_complete", "Engagement complete" in r.stdout)
+check("complete_says_complete", "All recorded gates passed. Verify the project acceptance" in r.stdout)
 check("complete_flags_comparables_gap",
-      "No prior-deal comparables library exists yet" in r.stdout)
+      "Use the project's actual reusable-asset destination" in r.stdout)
 check("complete_zero_findings", "Findings: 0" in r.stdout)
 
 # 4. Out-of-order gates: requirements signed while charter open. Plan restarts

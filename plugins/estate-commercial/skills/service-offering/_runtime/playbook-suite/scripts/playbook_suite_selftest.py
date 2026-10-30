@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-"""Selftest for estate-playbook-suite. Stdlib only, no network.
+"""Selftest for the service-offering package planner. Stdlib only, no network.
 
-This skill is the one that reads the shared spec, so the first thing it proves is
-that the machine copy and the spec have not drifted apart. `spec_shapes.py` is a
-hand-maintained mirror of SPEC.md's per-shape table, and a mirror nobody checks
-is a mirror that goes stale. SPEC.md lives under `_shared/`, which is outside this
-skill, so the check degrades to a skip when the spec is not reachable (a bundle
-mounted alone) rather than failing for the wrong reason.
+These checks exercise the preserved version 1.1 model. They do not establish
+agreement with an authoritative caller-supplied specification. Both tools must
+report that limit even when the modeled suite has no outstanding artifacts.
 
 Then the two planners, exercised in both directions:
 
@@ -35,7 +32,6 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
-SPEC = SKILL.parent / "_shared" / "playbook-spec" / "SPEC.md"
 
 sys.path.insert(0, str(HERE))
 import spec_shapes  # noqa: E402
@@ -108,18 +104,11 @@ def write(tmp: Path, name: str, obj) -> Path:
     return p
 
 
-# --- the mirror has not drifted from the spec -------------------------------
-if SPEC.exists():
-    spec_text = SPEC.read_text(encoding="utf-8")
-    m = re.search(r"(?:spec|version)\s*:?\s*(\d+\.\d+)", spec_text[:2000], re.I)
-    declared = m.group(1) if m else None
-    expect("spec_shapes version matches SPEC.md", declared, spec_shapes.SPEC_VERSION)
-    for shape in spec_shapes.SHAPES:
-        if shape.lower() not in spec_text.lower():
-            fail.append(f"shape {shape!r} in spec_shapes is absent from SPEC.md")
-    print(f"  all {len(spec_shapes.SHAPES)} shapes in spec_shapes appear in SPEC.md")
-else:
-    print(f"  note: {SPEC} not reachable; spec-drift check skipped (bundle mounted alone)")
+# --- specification authority remains explicit -------------------------------
+expect("model does not claim specification validation",
+       spec_shapes.authority_status()["status"], "unverified")
+expect("model alone cannot authorize a release",
+       spec_shapes.authority_status()["release_ready"], False)
 
 # --- the planners ------------------------------------------------------------
 print()
@@ -225,8 +214,7 @@ promised = set(re.findall(r"`([A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:md|py|json))`", t
 # The caller supplies these; they are inputs to the scripts, not skill files.
 INPUTS = {"manifest.json", "qualifier.json", "catalog.json", "registry.json"}
 missing = [r for r in sorted(promised)
-           if r not in INPUTS and not r.startswith("_shared/")
-           and not _resolves(r)]
+           if r not in INPUTS and not _resolves(r)]
 print(f"  SKILL.md promises {len(promised)} files, missing: {missing or 'none'}")
 if missing:
     fail.append(f"missing promised files: {missing}")

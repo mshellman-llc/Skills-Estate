@@ -33,7 +33,11 @@ audit, scale and reliability, trade-offs.
 
 Read [architecture-templates.md](references/architecture-templates.md) for the fillable sections, diagrams, schema and trade-off patterns. Select sections that serve the actual system and requested decision. Keep intent and engineering views complementary. Link shared decisions instead of copying them into conflicting descriptions.
 
-Security posture belongs in the architecture view; enforcement details belong in the engineering view. Use sourced infrastructure and people costs. Identify volume assumptions before extending a cost model. Each design choice states its trade-off and the condition for revisiting it.
+A system map shows labeled, directed relationships and trust or ownership boundaries. Name the operation or data crossing each boundary. For a load-bearing interaction, show ordered requests, responses, state changes and failure handling. Distinguish the confirmed system from a proposed model.
+
+Security posture belongs in the architecture view; enforcement details belong in the engineering view. Identify the principal, relevant tenant or isolation key, allowed actions, enforcement location and denial behavior. Tenant isolation and permission to act are separate checks; all required checks must pass. Missing policy or failed authorization denies the action.
+
+For retries and redelivery, distinguish sequential recovery from concurrent duplicate execution. Checking completed state alone is insufficient. Name the atomic claim or uniqueness boundary, idempotent writes and external side-effect handling needed by the proposal; retain unproven failure windows and avoid unsupported exactly-once claims. A failed claim does not prove work is complete. Distinguish completed, busy and expired claims; do not acknowledge unfinished work unless a separate durable recovery trigger has accepted responsibility. Otherwise defer or retry delivery under the queue contract. State what restarts work if the current owner dies. Use sourced infrastructure and people costs. Identify volume assumptions before extending a cost model. Each design choice states its trade-off and the condition for revisiting it.
 
 ---
 

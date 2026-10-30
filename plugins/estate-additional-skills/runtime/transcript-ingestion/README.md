@@ -9,6 +9,6 @@
 
 **Not for.** Do not use for call preparation, general meeting summarization, or unsupported promotion of an AI summary into canonical truth.
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md).
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md).
 
-**Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `core`
+**Full trigger logic and boundaries:** [SKILL.md](WORKFLOW.md) · tier `core`

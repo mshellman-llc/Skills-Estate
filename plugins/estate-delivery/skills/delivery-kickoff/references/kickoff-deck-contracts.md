@@ -4,8 +4,8 @@ Two decks per engagement: internal kickoff (the team, before the client sees any
 kickoff. Each has a waterfall and an agile variant; build the variant matching the SOW delivery
 model, confirmed by a human, never assumed. This file is a content contract: what each slide must
 carry. Deck mechanics belong elsewhere: deck-builder owns the stage-gated build process, pptx owns
-the file format, estate-brand-renderer owns brand tokens and the visual and parity gates.
-prose-pass gates every line of copy. Do not restate their rules here or anywhere.
+the file format, brand-renderer owns brand tokens and the visual and parity gates.
+Writing-integrity reviews every line of copy. Do not restate their rules here or anywhere.
 
 Universal rules for both decks:
 

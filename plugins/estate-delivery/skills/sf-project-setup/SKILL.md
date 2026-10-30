@@ -76,7 +76,7 @@ where it lands in a transcript. If a user offers you a token, decline and point 
 interactive command.
 
 **Jira has no CLI in this stack.** All Jira work is done by the agent through the Atlassian
-Rovo MCP — a company-wide connector authenticated in the Claude client, not on the command
+Rovo MCP — a connector explicitly authorized for the project in the current client, not on the command
 line. A hook is a bash subprocess and cannot reach the session's MCP, so no hook does any Jira
 network work; the agent does. See [references/ticket-adapters.md](references/ticket-adapters.md).
 

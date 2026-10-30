@@ -1,5 +1,5 @@
 interface:
-  display_name: "BeastMode: Start with context"
+  display_name: "Knowledge hub: Start with context"
   short_description: "Start or resume work from current sources"
   default_prompt: "Use $beastmode-context to resume my work from the current sources."
 policy:

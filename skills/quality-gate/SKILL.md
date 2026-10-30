@@ -69,7 +69,7 @@ absent report is a `blocked` verdict, never a `pass`.
    discloses it; any other substitution is a fail.
    Composition is content-driven, so a review flag on footer placement or
    slide layout takes a disposition and stands.
-3. Apply `sow-quality` to SOW or contractual scope content.
+3. Apply the contract scope and obligation review mode in `statement-of-work` to SOW or contractual scope content. Retain `sow-quality` as the existing receipt control identifier.
 4. Apply the producing skill's deterministic validator when one exists.
 5. Reconcile claims, figures, approvals, scope, status, and go/no-go conclusions
    with their sources. Recompute totals and compare quoted numbers with the
@@ -109,5 +109,7 @@ gets the same source check as a document about one.
 - Return a remediation list when release is blocked.
 
 ## Output contract
+
+Use assertion kinds `financial_figure`, `contract_scope`, `approval_status` or `go_no_go` for those claims. Other prose can use `narrative` or an explicit `other`; unknown kinds are rejected. Do not relabel a high-risk claim to avoid its source check. For HTML, PowerPoint, Word, Excel or PDF paths, explicitly set `artifact.brand_render` to a boolean. Set it to `true` for styled output and record the rendering checks; `false` declares that styled-output review does not apply. The validator checks the declaration, not the file's visual design or the truth of a claim. Inspect the artifact to confirm both classifications.
 
 Return a durable Markdown quality record. Include artifact identity, selected controls, performed checks, assertion evidence, release verdict, blockers, remediation, plus Knowledge Hub update status (`not_applicable` when the workflow has no hub write). The command validates record structure and the final narrative receipt. Citation and hub-status fields remain reported evidence; the command does not verify those destinations or prove that a person read the artifact. Exit 0 means the record is valid, including an honest blocked record. Require `released: true` before treating the result as release permission. Library callers pass the record directory as `base_dir` when using relative paths. Regenerate receipts after moving artifacts to another machine or folder. Reading the artifact and checking its sources remain required.

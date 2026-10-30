@@ -147,8 +147,8 @@ STUB_BASE=main
 run block "base=main is protected"    "gh pr merge 5 --merge --delete-branch"
 STUB_BASE=preprod
 run block "base=preprod is protected" "gh pr merge 5 --merge --delete-branch"
-STUB_BASE=stevenc2
-run allow "base=stevenc2 is not"      "gh pr merge 5 --merge --delete-branch"
+STUB_BASE=sandbox-a
+run allow "base=sandbox-a is not"      "gh pr merge 5 --merge --delete-branch"
 
 echo
 echo "== the validate hatch does NOT unlock a protected branch =="

@@ -5,8 +5,8 @@
 
 **What it does.** Run stage 06 Deploy and Closeout after an approved go or no-go: build the cutover runbook, track Go-Live Acceptance against the executed SOW, manage hypercare triage, prepare transition records, and capture outcomes and reusable assets.
 
-**Use it when.** For cutover, go-live, runbooks, hypercare, deemed acceptance, closeout, support transition, or lessons learned. Route UAT to estate-uat-validation, ongoing status and changes to delivery-status, managed operations to their service owner, and contract authoring to sow.
+**Use it when.** For cutover, go-live, runbooks, hypercare, deemed acceptance, closeout, support transition, or lessons learned. Route UAT to acceptance-testing, ongoing status and changes to delivery-status, managed operations to their service owner, and contract authoring to sow.
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md); Used by [`delivery-suite`](_runtime/delivery-suite/README.md).
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md); Used by [`delivery-suite`](_runtime/delivery-suite/README.md).
 
 **Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `situational`

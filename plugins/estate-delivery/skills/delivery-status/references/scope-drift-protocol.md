@@ -1,10 +1,10 @@
 # Scope-drift detection protocol
 
-Scope is always an estimate; no project delivers exactly to the SOW. The job is not to pretend drift away but to see it early, with evidence, so the change-order conversation happens while it is still cheap. Silently absorbed work is the most expensive kind: it costs margin now and credibility later when the absorbed item finally surfaces.
+Use the executed agreement and accepted changes as the baseline. Preserve the difference between estimates, contractual commitments, and caps; a proposed change does not relax an existing commitment. Detect possible drift early with evidence and route it for a decision before silently absorbing work or changing the agreed scope.
 
 ## What this protocol produces
 
-Change-order **CANDIDATES**. Never change orders. A candidate is a routed proposal for a human decision; the decision (in scope, absorb deliberately, or raise a Change Order) belongs to the Program Lead and CSE, and the authoring belongs to the `sow-quality` Basis of Estimate framework plus humans. This skill supplies the evidence and stops.
+Change-order **CANDIDATES**. Never change orders. A candidate is a routed proposal for a human decision; the decision (in scope, absorb deliberately, or raise a Change Order) belongs to the Program Lead and CSE, and contractual review uses the contract scope and obligation review mode in `statement-of-work`; authorized humans own contractual changes. This skill supplies the evidence and stops.
 
 ## The detection pass
 
@@ -21,7 +21,7 @@ For each item, answer: does the baseline name this, qualitatively (scope body) a
 
 ## Trigger classification
 
-Use the two-trigger taxonomy owned by `sow-quality` (its `references/basis-of-estimate.md` is authoritative; read it when classifying, and do not restate its mechanics in the report):
+Use the two-trigger taxonomy in the contract scope and obligation review mode of `statement-of-work` (read `_runtime/sow-quality/references/basis-of-estimate.md` from that package; apply it only when the selected agreement adopts it, and do not restate its mechanics in the report):
 
 - **Soft trigger (volumetric)**: the footprint materially exceeds the Basis of Estimate. Record counts, custom-automation volume, catalog scale well past Exhibit A figures. "Materially" is doing the work: note small overages, but a candidate needs material excess.
 - **Hard trigger (binary workstream addition)**: a second integration, a second org, an org split or merge, an additional migration. Any amount triggers, regardless of size. Do not treat these as negotiable by degree.
@@ -67,4 +67,4 @@ Stating what was compared is the point. "None observed" after a real comparison 
 
 ## Worked example
 
-A requirements-session transcript contains the client asking for a NetSuite integration when the SOW names a single integration (Workday). Output: a D-0NN candidate is wrong (no human decided anything); correct output is a DP or open-question entry if relevant, plus this candidate: trigger class hard, the ask quoted ("we will also need this flowing into NetSuite", B. Chen, 2026-08-05), baseline position citing the SOW integration clause verbatim, evidence lines pointing at the transcript, routed to Program Lead and CSE. The conversation is captured once, with evidence, and does not need to be reconstructed at negotiation time.
+Synthetic fixture: a sample agreement includes one inventory API integration and explicitly classifies additional integrations as binary workstream additions. A fictional requester says "also send test orders to the billing API" in a fixture meeting on 2030-02-12. Record a candidate, not a decision: quote the request and the sample baseline, attach both fixture references, classify it as hard under that sample clause, and route to the configured project and commercial owners. A real case uses its actual agreement and evidence; neither the example clause nor the classification is a universal policy.

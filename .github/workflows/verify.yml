@@ -40,7 +40,20 @@ jobs:
           python3 artifacts/skills-map/build.py --base "$map_baseline"
           python3 tools/browse.py --check
       - run: python3 tools/estate.py validate
-      - run: python3 -m unittest discover -s tests -v
+      - run: python3 tools/run_tests.py --all-integrations --report .local/test-results.json
+      - name: Verify and capture the synthetic field guide
+        run: |
+          mkdir -p .local/render-verification/field-guide
+          python3 skills/solution-brief/scripts/build_field_guide.py skills/solution-brief/assets/field-guide.body.html --output .local/render-verification/field-guide.html
+          node skills/solution-brief/scripts/qa_field_guide.mjs "file://$GITHUB_WORKSPACE/.local/render-verification/field-guide.html" .local/render-verification/field-guide > .local/render-verification/field-guide-result.json
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: skills-estate-render-evidence
+          path: |
+            .local/test-results.json
+            .local/render-verification/
+          if-no-files-found: warn
       - run: python3 tools/estate.py build
       - run: python3 tools/estate.py bundle
       - run: python3 tools/browse.py --bundle

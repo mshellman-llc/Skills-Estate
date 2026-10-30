@@ -65,7 +65,7 @@ concretely for this engagement: acceptance rhythm, demo cadence, how scope chang
 
 ### Team and allocations
 
-Estate roles with named owners and allocations from the SOW estimate and the handoff brief, plus
+The project's confirmed delivery roles with named owners and allocations from the SOW estimate and the handoff brief, plus
 client-side counterparts from the stakeholder map. A role with no named owner is an open item in
 section 8, not a blank. Flag any deal-cycle versus delivery stakeholder mismatch the handoff brief
 surfaced; a sponsor who was in the deal but is absent from delivery is a kickoff risk, not a detail.
@@ -86,9 +86,9 @@ build, testing, deployment and cutover, status reporting, decision escalation, c
 ### Governance and cadence
 
 The ceremony table: what meets, how often, who owns it, who attends, what it produces. Cadence is
-proposed by Estate and agreed at kickoff, never imposed; label it as proposed until the client
-signs. Name where the governance artifacts live and the escalation path (Program Lead to CSE to
-client sponsor).
+proposed by the delivery team and agreed at kickoff, never imposed; label it as proposed until the client
+signs. Name the confirmed private governance destination and actual authorized escalation path.
+Role names in the reference model must be mapped to the project roster.
 
 ### Phase plan and milestones
 
@@ -105,13 +105,14 @@ snapshot the client signs against). Owner and resolve-by date on every row.
 
 ### Sign-off
 
-Signature block for the client executive sponsor and the Estate CSE. The skill drafts the block
-and leaves it empty. Securing the signature is the Program Lead's job. Never mark the charter
+Signature blocks for the parties and signatories required by the selected agreement and
+accepted project governance. The skill drafts them empty; the confirmed project owner secures
+them. Do not infer signing authority from a reference role title. Never mark the charter
 signed, and never record a signature that has not happened.
 
 ## Provenance
 
 Every filled field ties to the SOW, the handoff brief, the shared record, or a named transcript.
-Where estate-evidence-core is installed, run its ledger over the charter's load-bearing claims
+Where evidence-core is installed, run its ledger over the charter's load-bearing claims
 before drafting; where it is not, state that and keep a manual source column, which the template
 already carries.

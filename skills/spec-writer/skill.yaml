@@ -1,7 +1,7 @@
 schema_version: 1
 name: spec-writer
 display_name: Spec Writer
-summary: Rigorous feature specification process.
+summary: Detailed interface, persistence and interaction specification for requested design work.
 status: active
 tier: situational
 version: 1.0.0
@@ -14,9 +14,11 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- Rigorous feature specification process. Produces a self-contained HTML spec with
-  rendered mockups, all UI states, complete file manifest (CREATE/UPDATE/DELETE/READ/MIGRATION),
-  and verifiable done criteria. Use before writing any code for a non-trivial feature.
+- Use with feature-spec when the requested specification needs interface contracts,
+  persistence, recovery, accessibility behavior, or interactive-state detail. Select
+  applicable sections and the requested output format; use mockups when they resolve
+  an interface decision. A defect fix does not automatically require a specification
+  or a separate approval.
 exclusions: []
 inputs:
 - name: task_context

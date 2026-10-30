@@ -1,6 +1,6 @@
 ---
 name: delivery-kickoff
-description: 'Mobilizes an Estate delivery engagement: turns an accepted sales-to-delivery handoff brief and a signed SOW into a draft Project Charter (scope, team, RACI, cadence, ready for client signature), a live governance pack (RAID log, decision log, weekly status template with stable IDs), internal and client kickoff decks in the correct waterfall or agile variant, a Sprint 0 plan with a seeded backlog, and tracked (never performed) sandbox and access setup. Use when a deal has closed and delivery is starting: "kick off the project", "mobilize the engagement", "draft the charter", "set up the RAID log", "build the kickoff deck", "help me get ready for kickoff", "the handoff is accepted, what now", "stand up governance", "Sprint 0 plan", or any Mobilize-phase request. Do NOT use for the handoff itself (that is estate-s2d-handoff), ongoing status reports or RAID upkeep after kickoff (estate-delivery-status), requirements sessions (estate-requirements-capture), or scoping and pricing (the SOW is fixed input).'
+description: 'Mobilizes an Estate delivery engagement: turns an accepted sales-to-delivery handoff brief and a signed SOW into a draft Project Charter (scope, team, RACI, cadence, ready for client signature), a live governance pack (RAID log, decision log, weekly status template with stable IDs), internal and client kickoff decks in the correct waterfall or agile variant, a Sprint 0 plan with a seeded backlog, and tracked (never performed) sandbox and access setup. Use when a deal has closed and delivery is starting: "kick off the project", "mobilize the engagement", "draft the charter", "set up the RAID log", "build the kickoff deck", "help me get ready for kickoff", "the handoff is accepted, what now", "stand up governance", "Sprint 0 plan", or any Mobilize-phase request. Do NOT use for the handoff itself (that is sales-to-delivery-handoff), ongoing status reports or RAID upkeep after kickoff (delivery-status), requirements sessions (requirements-backlog), or scoping and pricing (the SOW is fixed input).'
 ---
 
 
@@ -9,13 +9,24 @@ description: 'Mobilizes an Estate delivery engagement: turns an accepted sales-t
 Mobilization is the stage between an accepted handoff and real delivery work. It produces one
 signed artifact (the Project Charter), one living system (the governance pack), and two meetings
 (internal kickoff, then client kickoff). A weak start compounds: recovering lost efficiency in
-weeks one and two costs roughly 110 percent effort later, which is why this stage is fast,
+weeks one and two can create later rework, so this stage is deliberate,
 complete, and standardized rather than improvised per project.
 
 One boundary carries the whole skill: **this skill drafts, humans sign.** It never signs the
 charter, never commits the client to a cadence, never closes a handoff open question on its own,
 and never provisions an environment. It prepares the artifacts the humans act on, and it tracks
 what the humans did, truthfully.
+
+## Project context required
+
+Use only the caller-confirmed engagement, source records, private output location,
+and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,
+and Pursuit Lead to that project's authorized owners; these labels do not impose
+an employer organization chart or signing authority. The executed agreement and
+accepted project plan determine gates, commercial rules, and support obligations.
+Keep account history, risk assessments, credentials, and client evidence outside
+portable skill sources. A cached account, attached Project, or available connector
+is not authorization to read, write, or publish.
 
 ## Phase 0: orient on the sources
 
@@ -24,7 +35,7 @@ Find the real objects before writing anything:
 1. **The accepted handoff brief.** Its sections (team, stakeholder map with deal-versus-delivery
    mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill's
    raw material. If no accepted brief exists, stop: the handoff is not done, and that is
-   estate-s2d-handoff's job, not a gap to paper over.
+   sales-to-delivery-handoff's job, not a gap to paper over.
 2. **The signed SOW**, with its id and as-of date. The SOW is fixed input. Scope, phases, figures,
    and commercial structure come from it; this skill renders them and authors none of them. Any
    figure ultimately traces to the quote the SOW was built from, per the money rule.
@@ -61,27 +72,27 @@ python3 scripts/charter_check.py CHARTER.md
 It verifies required sections, the scope source stamp (SOW id plus as-of date), a fully assigned
 RACI with exactly one Accountable per activity and every team role covered, no leftover
 placeholder tokens, and no em dashes. Exit 0 passes. Report the printed counts, not an adjective.
-Then run the prose-pass checker over the charter prose. Fix the source and re-render; never
+Then run the writing-integrity checker over the charter prose. Fix the source and re-render; never
 hand-patch output the next regeneration would lose.
 
 The Program Lead secures the signature. Mark the charter DRAFT until they do. When the
 signature lands, update the engagement's DELIVERY-STATE.md in the same session
 (`charter_signed` with date, charter path, append-only dated log line) per
-estate-delivery-suite's `references/delivery-state-spec.md`.
+delivery-suite's `references/delivery-state-spec.md`.
 
 ## Phase 2: stand up the governance pack
 
 Read `references/governance-pack-spec.md`. Three artifacts from `assets/`: the RAID log, the
 decision log, and the weekly status template. This skill creates and seeds them;
-estate-delivery-status stewards them from kickoff onward, which is why the ID conventions are a
+delivery-status stewards them from kickoff onward, which is why the ID conventions are a
 contract, not a style: R/A/I/D-### for RAID items, DEC-### for decisions, zero-padded, permanent,
 append-only. Downstream stewardship diffs these tables by ID; a renumbered log breaks every later
 report.
 
 Seeding is the substance: every handoff open question becomes an owned RAID item with a resolve-by
 date (letting one vanish is the named failure mode of this stage), handoff risks become R items,
-SOW basis-of-estimate assumptions become A items, and maturity-gap capabilities (CPQ and Billing
-amendments, ERP integrations, RCA migrations, DRO, UBB, CLM) each get a raised-oversight risk.
+SOW basis-of-estimate assumptions become A items, and evidenced capability gaps from the
+supplied project risk profile each get the agreed oversight and a sourced risk.
 Every seeded item cites its source. Do not pad the log to look thorough.
 
 Agree with the team where the pack lives before client kickoff, and log that location as a
@@ -91,8 +102,8 @@ decision. The decision log records only decisions humans actually made, with the
 
 Read `references/kickoff-deck-contracts.md` for what every slide must carry, per deck and per
 variant. This skill owns the content contract only. Mechanics are delegated: deck-builder runs
-the stage-gated build, pptx owns the file format, estate-brand-renderer owns brand tokens and
-the visual, parity, and brand gates, prose-pass gates the copy. Do not inline hex values or
+the stage-gated build, pptx owns the file format, brand-renderer owns brand tokens and
+the visual, parity, and brand gates, writing-integrity reviews the copy. Do not inline hex values or
 restate any of their rules.
 
 Two decks, in order. The **internal kickoff** runs first, always: it is where the Program Lead
@@ -111,8 +122,8 @@ lists every item standing between the charter and productive Analyze work, each 
 a date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per
 workstream, stories only where the SOW gives real basis, every item source-cited, no invented
 scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by
-estate-requirements-capture). The client research pack is a two-page sourced extension of the
-handoff overview, not pursuit-grade research; a meeting-specific prep pack is estate-call-prep.
+requirements-backlog). The client research pack is a two-page sourced extension of the
+handoff overview, not pursuit-grade research; a meeting-specific prep pack is call-prep.
 
 ## Phase 5: track the operational setup
 
@@ -132,12 +143,12 @@ files; never just say they were written.
 
 ## Governance delegation
 
-- **estate-evidence-core** governs load-bearing factual claims (client context, stakeholder
+- **evidence-core** governs load-bearing factual claims (client context, stakeholder
   facts, sell-cycle promises). Run it before drafting where installed. If a load-bearing domain is
   insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence
   is a hard fail.
-- **estate-brand-renderer** owns brand for every rendered artifact, applied during the build.
-- **prose-pass** owns voice; run its checker on every prose deliverable, including the charter.
+- **brand-renderer** owns brand for every rendered artifact, applied during the build.
+- **writing-integrity** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.
 - **The quote and SOW own every number.** This skill renders figures and authors none.
 
 Where a governor is not installed on the current surface, state the check it would have run, do
@@ -161,20 +172,20 @@ or the internal-before-client kickoff order.
 
 In the delivery chain (SOW, then s2d-handoff, then kickoff, then status, then
 UAT, then cutover-closeout), this skill's upstream producer is
-estate-s2d-handoff, whose accepted brief is the raw material, and its
-downstream consumer is estate-delivery-status, which stewards the logs this
+sales-to-delivery-handoff, whose accepted brief is the raw material, and its
+downstream consumer is delivery-status, which stewards the logs this
 stage seeds. Kickoff does not re-scope: the SOW baseline is restated, never
 renegotiated, and every delta is a flag for humans.
 
-- Does not run the handoff or write the handoff brief; that is estate-s2d-handoff.
-- Does not steward status, RAID, or decisions after kickoff; that is estate-delivery-status,
+- Does not run the handoff or write the handoff brief; that is sales-to-delivery-handoff.
+- Does not steward status, RAID, or decisions after kickoff; that is delivery-status,
   which takes over the exact files this skill seeds.
 - Does not capture requirements or author acceptance criteria; that is
-  estate-requirements-capture, in Analyze.
+  requirements-backlog, in Analyze.
 - Does not scope, price, or amend scope. The SOW is fixed input; deltas are flags for humans.
 - Does not sign, approve, or gate. It drafts what humans sign and tracks what humans did.
 - Does not provision sandboxes or grant access; it tracks them.
-- Does not build deck files itself; deck-builder, pptx, and estate-brand-renderer do.
+- Does not build deck files itself; deck-builder, pptx, and brand-renderer do.
 
 ## Files
 

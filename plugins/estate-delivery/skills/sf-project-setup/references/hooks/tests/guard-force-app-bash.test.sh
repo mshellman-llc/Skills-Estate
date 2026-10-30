@@ -1,7 +1,7 @@
 #!/bin/bash
 # Regression tests for claude-hooks/guard-force-app-bash.sh.
 #
-# The bug these pin down (first found as GH-436 in 64-Org-Estate, whose
+# The bug these pin down (first found as GH-436 in Example Project-Estate, whose
 # checkout is literally named "64 Org"): when the clone's path contains a
 # SPACE, every worktree path contains one too, so those paths are always
 # quoted. Both the `cd` resolver and the force-app token extractor used to

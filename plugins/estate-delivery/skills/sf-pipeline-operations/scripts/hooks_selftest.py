@@ -68,18 +68,18 @@ environments:
     org_name: Acme_Dev
     branch: sandbox/dev
     tier: sandbox
-    username: dev@acme.com.dev
+    username: developer@example.invalid.dev
     test_level: NoTestRun
   preprod:
     org_name: Acme_Staging
     branch: preprod
-    username: dev@acme.com.staging
+    username: developer@example.invalid.staging
     test_level: RunLocalTests
     destructive_requires_label: false
   main:
     org_name: Acme_Prod
     branch: main
-    username: dev@acme.com
+    username: developer@example.invalid
     test_level: RunLocalTests
     destructive_requires_label: true
     production: true
@@ -116,9 +116,9 @@ def make_fake_home(tmp):
     home = Path(tmp) / "fakehome"
     (home / ".sfdx").mkdir(parents=True)
     (home / ".sfdx" / "alias.json").write_text(json.dumps({"orgs": {
-        "Acme_Prod": "dev@acme.com",
-        "Acme_Staging": "dev@acme.com.staging",
-        "Acme_Dev": "dev@acme.com.dev",
+        "Acme_Prod": "developer@example.invalid",
+        "Acme_Staging": "developer@example.invalid.staging",
+        "Acme_Dev": "developer@example.invalid.dev",
     }}))
     return home
 
@@ -140,9 +140,9 @@ def test_deploy_blocks(tmp, home):
 
     got, err = fire(DEPLOY, "sf project deploy start --source-dir force-app/x --target-org Acme_Prod", repo, env)
     check(got == "block", "prod, named by alias", err)
-    check("dev@acme.com" in err, "message resolves the alias so the org is unambiguous", err)
+    check("developer@example.invalid" in err, "message resolves the alias so the org is unambiguous", err)
 
-    got, _ = fire(DEPLOY, "sf project deploy start -o dev@acme.com.staging --source-dir force-app/x", repo, env)
+    got, _ = fire(DEPLOY, "sf project deploy start -o developer@example.invalid.staging --source-dir force-app/x", repo, env)
     check(got == "block", "staging, named by username via -o")
 
     got, _ = fire(DEPLOY, "sfdx force:source:deploy -o Acme_Prod -p force-app/x", repo, env)

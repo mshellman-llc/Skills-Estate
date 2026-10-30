@@ -74,6 +74,10 @@ Edit the canonical brand policy/profile once. Rebuild dependent packages so thei
 
 Runtime relationships belong in `config/runtime-dependencies.json`. A router must carry the scripts and references needed by its declared dependencies when used alone. Test the assembled package away from sibling source directories to reveal accidental source-tree dependencies.
 
+## Prepare functional releases
+
+The existing catalog contains seven functional plugins. Follow [the release workflow](references/release-workflow.md) to verify changes, raise `config/plugin-bundles.json`'s version, record its content with `python3 tools/plugin_version.py --record 'CHANGE NOTE'`, and generate candidates with `python3 tools/plugins.py --candidate`. Keep explicit context external and preserve retirement mappings. The existing marketplace and owner update command remain the distribution route; source preparation does not authorize publication or installation.
+
 ## Account uploads and other surfaces
 
 Local installation does not upload to Claude's account, a Codex account, Cowork, ChatGPT, or an API deployment. Check the destination's current supported format and available authorized upload method. Do not assume every surface accepts the same ZIP or provides a skill registry.
@@ -93,7 +97,7 @@ The earlier flat-estate tools remain bundled for explicit compatibility work. Th
 
 - `scripts/estate_diff.py --source DIR --config FILE --json` compares a flat skills tree to configured local directories. It distinguishes missing skills, SKILL-only stubs, entrypoint drift, and resource drift; each fails the comparison. It also checks the older `_shared/build-card.md` contract, shared references, and declared prose exemptions. Use it on a tree following that contract, not as a substitute for canonical status.
 - `scripts/build_bundles.py --source DIR --out DIR` gates flat-tree bundles on each skill's `*_selftest.py`, carries transitive shared resources, and preserves the original runtime-vendoring mechanism. Its optional release classification filters drafts. `--no-gate` is a diagnostic bypass and is not release evidence. It does not use the canonical dependency graph or manifests.
-- `scripts/record_publish.py` retains the flat-tree publication-ledger format. The bundled ledger starts empty; old organization uploads are not evidence for this estate. Its configuration must match the intended standalone checkout before writing a record.
+- `scripts/record_publish.py` retains the flat-tree publication-ledger format. The bundled ledger starts empty; old organization uploads are not evidence for this estate. Use explicit `--config FILE --dist DIR`; the configuration must name an external `ledger` path and the intended destinations. The shipped template has no configured surfaces and grants no access.
 - `scripts/sync_build_card.py --skills-root DIR --check` checks the older shared-card/runtime references without generating brand literals.
 - `scripts/estate_sync_selftest.py` exercises those compatibility functions with synthetic fixtures. It does not connect to a host or cloud account.
 

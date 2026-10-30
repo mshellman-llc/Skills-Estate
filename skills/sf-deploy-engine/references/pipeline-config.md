@@ -26,7 +26,7 @@ environments:
     destructive_requires_label: false
     production: false
   main:
-    org_name: 64_Prod
+    org_name: CONFIRMED_PRODUCTION_ORG
     branch: main
     secret_ref: projects/estate/secrets/sf-jwt-prod
     username: someone@example.com
@@ -176,7 +176,7 @@ tickets:
   jira:
     base_url: https://<site>.atlassian.net
     email: <the account the API token belongs to>
-    projects: [ORG64]
+    projects: [EXAMPLE]
     deployments: true
 ```
 

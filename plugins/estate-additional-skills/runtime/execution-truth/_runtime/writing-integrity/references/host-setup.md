@@ -4,7 +4,7 @@ Use the setup prompt supplied with the release kit. Install the writing skill, c
 
 ## Local agents with files and Python
 
-Codex and Claude Code can use the same private store for the same owner. Keep host IDs distinct when capturing or retrieving host-specific rules. Put shared author preferences in the owner's general profile. Another owner needs a separate profile and storage authorization.
+Codex and Claude Code can use the same store when the owner authorized that profile for both tasks. Keep profiles separate when their authorized contexts differ. Pass an explicit `--store PATH` for every learning command; the helper does not select an environment or default store. Without a confirmed location, use core writing review without learned preferences. Keep host IDs distinct when capturing or retrieving host-specific rules. Put shared author preferences in the owner's general profile. Another owner needs a separate profile and storage authorization.
 
 Install the reviewed package through the host's supported skill path or the existing Skills Estate installer. Preserve installed versions and conflicting user files. Do not overwrite an account-synced or plugin-managed copy. Read the complete package entrypoint after installation.
 

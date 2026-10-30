@@ -46,3 +46,5 @@ dependencies and repeat the task.
 
 Release claims must name the surface actually exercised. A local test of a
 connector adapter does not prove that its live service accepted an operation.
+
+Writing Integrity owns writing review. The `prose-pass` paths above refer to its retained internal diagnostics; Prose Pass is retired as a standalone skill.

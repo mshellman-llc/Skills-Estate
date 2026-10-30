@@ -136,7 +136,7 @@ class SowBehaviorTests(unittest.TestCase):
         with zipfile.ZipFile(out) as archive,zipfile.ZipFile(altered,'w') as target:
             for member in archive.infolist():
                 data=archive.read(member.filename)
-                if member.filename=='word/document.xml':data=data.replace(b'five (5) business days',b'forty (40) business days')
+                if member.filename=='word/document.xml':data=data.replace(b'Synthetic acceptance marker A',b'Synthetic acceptance marker X')
                 target.writestr(member,data)
         receipt=json.loads(Path(str(out)+'.build.json').read_text())
         # Even a copied receipt whose artifact hash is refreshed cannot conceal changed clause text.
@@ -148,15 +148,15 @@ class SowBehaviorTests(unittest.TestCase):
 
     def test_changed_contract_profile_controls_the_rendered_wording(self):
         contract=json.loads(self.contract.read_text())
-        contract['clauses']['DEEMED_ACCEPTANCE']=contract['clauses']['DEEMED_ACCEPTANCE'].replace('five (5)', 'seven (7)')
+        contract['clauses']['DEEMED_ACCEPTANCE']=contract['clauses']['DEEMED_ACCEPTANCE'].replace('marker A', 'marker B')
         self.contract.write_text(json.dumps(contract))
         result,out,source=self.build()
         self.assertEqual(0,result.returncode,result.stderr)
         verification=self.verify(out,source)
         self.assertEqual(0,verification.returncode,verification.stdout)
         with zipfile.ZipFile(out) as archive: text=archive.read('word/document.xml').decode()
-        self.assertIn('seven (7) business days',text)
-        self.assertNotIn('five (5) business days',text)
+        self.assertIn('Synthetic acceptance marker B',text)
+        self.assertNotIn('Synthetic acceptance marker A',text)
 
     def test_profile_font_palette_and_logo_aspect_ratio(self):
         import re,struct,zlib

@@ -61,5 +61,5 @@ prevent.
 ## Cadence
 
 During UAT, refresh the tracker at least daily and hand the movement summary (scripts
-newly passed/failed, new defects, unblocked items) to estate-delivery-status for the
+newly passed/failed, new defects, unblocked items) to delivery-status for the
 weekly status. The tracker is the source; status reporting quotes it, never re-derives it.

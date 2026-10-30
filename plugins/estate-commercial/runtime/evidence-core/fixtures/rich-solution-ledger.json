@@ -3,7 +3,7 @@
   "asOf": "2026-07-16T12:00:00Z",
   "engagement": {
     "engagementId": "FIX-RICH-SB",
-    "clientName": "Northstar Manufacturing",
+    "clientName": "Example Manufacturing (synthetic)",
     "opportunityId": null,
     "contractId": null
   },
@@ -45,7 +45,7 @@
   "claims": [
     {
       "claimId": "CLM-001",
-      "statement": "Phase 1 includes the case-assist workflow and excludes external self-service channels.",
+      "statement": "Phase 1 includes the inventory-assist workflow and excludes external self-service channels.",
       "status": "Confirmed",
       "sourceIds": [
         "SRC-001"
@@ -61,7 +61,7 @@
     },
     {
       "claimId": "CLM-002",
-      "statement": "Salesforce Case is the originating system and the client cloud tenant hosts retrieval and orchestration.",
+      "statement": "the synthetic inventory application is the originating system and the client cloud tenant hosts retrieval and orchestration.",
       "status": "Confirmed",
       "sourceIds": [
         "SRC-002",
@@ -95,7 +95,7 @@
     },
     {
       "claimId": "CLM-004",
-      "statement": "Salesforce exchanges requests and cited responses through one versioned Process API.",
+      "statement": "The synthetic inventory application exchanges requests and cited responses through one versioned Process API.",
       "status": "Confirmed",
       "sourceIds": [
         "SRC-002",

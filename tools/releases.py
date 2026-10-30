@@ -83,9 +83,11 @@ def load(home, release_id, tree_hash):
     return folder, record
 
 
-def snapshot(root, home, packages, source_hash, kind, tree_hash):
+def snapshot(root, home, packages, source_hash, kind, tree_hash, provenance=None):
     record = {'format': 1, 'kind': kind, 'repository': str(Path(root).resolve()),
               'source_sha256': source_hash, 'packages': {}}
+    if provenance is not None:
+        record['provenance'] = provenance
     for name, folder in sorted(packages.items()):
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name) or folder.is_symlink():
             raise ValueError('Invalid package source')
@@ -211,6 +213,9 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, 
         desired.pop(str(home / '.claude/skills' / name), None)
     pointer = home / '.config/skills-estate/repository'
     desired[str(pointer)] = str(root)
+    from catalog import check_public_names
+    check_public_names(root, [Path(dest).name for dest in desired if Path(dest) != pointer])
+    check_public_names(root, [Path(target).name for dest, target in desired.items() if Path(dest) != pointer])
     versions, _ = linked_inventory(home, root, desired, tree_hash)
     operations = []
     verified_releases = {}

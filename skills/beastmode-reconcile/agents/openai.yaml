@@ -1,5 +1,5 @@
 interface:
-  display_name: "BeastMode: Reconcile a folder"
+  display_name: "Knowledge hub: Reconcile a folder"
   short_description: "Compare files and archive duplicates reversibly"
   default_prompt: "Use $beastmode-reconcile to compare this folder, preserve unique material, and archive verified duplicates."
 policy:

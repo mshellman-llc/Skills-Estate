@@ -72,7 +72,7 @@ The working format. One file per session brief.
 }
 ```
 
-Required keys: `known` (list, may be empty for a greenfield deal) and `open` (list, must be non-empty; a brief with no open questions is a status report). `meta` is recommended and carries the stamp.
+Required keys: `known` (list, may be empty for a greenfield deal) and `open` (list, normally non-empty). A completed JSON discovery record may use `open: []` only with the Boolean `discovery_complete: true`; strings such as `"true"` do not grant completion. Preserve answered questions, retired IDs and their evidence in the record history. Do not set completion merely to bypass missing answers or evidence. `meta` is recommended and carries the stamp.
 
 ## Markdown representation
 
@@ -102,9 +102,9 @@ The full brief renders each Column B row as a question block in section 02, with
 
 1. Every Column A entry has a non-empty source.
 2. No Column A entry carries confidence Unknown, and every confidence is Confirmed or Inferred.
-3. Column B is non-empty.
+3. Column B is non-empty unless a JSON record explicitly declares `discovery_complete: true`. The Markdown projection has no equivalent completion switch.
 4. Every Column B entry has a non-empty question, a rank of High, Medium, or Low, and a non-empty unblocks value.
 5. Column B entries appear in rank order.
-6. No em dash anywhere in the file.
+6. JSON rows are objects and required text fields contain strings. Punctuation alone does not fail this evidence gate; exact source quotations retain their punctuation.
 
-The gate is blocking. Fix the ledger, not the rendering, and re-project.
+A structural gate failure blocks release. Correct the ledger and re-project. Passing the script does not establish source authority, factual accuracy, scope approval or completion of unanswered work; those require evidence review.

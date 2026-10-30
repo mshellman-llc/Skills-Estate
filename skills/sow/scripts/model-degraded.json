@@ -1,198 +1,114 @@
 {
-  "_fixture": "SYNTHETIC DEGRADED FIXTURE: missing Validate phase, missing descriptions/assumptions, missing curated lists. Tests the no-fabrication flag path.",
+  "_fixture": "Synthetic skill test. All organizations, people, scope and figures are examples.",
+  "source": {
+    "reference": "Synthetic quote Q-EXAMPLE-001, revision 1"
+  },
   "projectContext": {
-    "accountName": "Northwind Instruments, Inc.",
-    "opportunityName": "CPQ to Revenue Cloud Advanced Migration",
-    "quoteName": "Q-DEGRADED"
+    "accountName": "Example Manufacturing LLC",
+    "opportunityName": "Service request pilot",
+    "quoteName": "Q-EXAMPLE-001",
+    "businessNeed": "The service desk needs one request queue with explicit ownership and a tested response workflow.",
+    "businessDriver": "Requests currently arrive in three separate inboxes.",
+    "psaEffectiveDate": "2026-10-01",
+    "clientContact": "Example Operations Lead",
+    "primaryContact": "Example Operations Lead, operations@example.test",
+    "executiveSponsor": "Example Sponsor, Operations Director",
+    "providerLead": "Example Delivery Lead, Engagement Manager",
+    "accountsPayable": "Accounts Payable, ap@example.test, 200 Example Avenue",
+    "testScriptOwnership": "jointly authored by the client and provider",
+    "returnBy": "2026-11-01"
   },
   "projectSummary": {
-    "totalValue": 470400,
-    "totalHours": 2280,
-    "durationWeeks": 18,
-    "teamSize": 8,
-    "totalScopeItems": 6
+    "totalValue": 10000,
+    "totalHours": 100,
+    "durationWeeks": 4,
+    "teamSize": 2,
+    "totalScopeItems": 2
   },
-  "platform": "Salesforce Revenue Cloud Advanced (RCA)",
+  "engagementType": "Service request workflow pilot",
+  "platform": "Example service platform",
+  "sourceSystem": "Shared inboxes",
+  "pricingModel": "tm",
+  "engagementBoundary": "Configure a single request queue and validate it with ten example requests.",
+  "boundarySummary": "One queue and one response workflow. No historical migration.",
+  "exclusions": [
+    "Historical ticket migration requires a separately scoped migration."
+  ],
+  "changeOrderTriggers": [
+    "A second queue or a new integration requires an agreed change order."
+  ],
+  "basisOfEstimate": [
+    {
+      "dimension": "Queues",
+      "footprint": "1"
+    },
+    {
+      "dimension": "Example requests",
+      "footprint": "10"
+    }
+  ],
   "timeline": {
     "summary": {
-      "blendedRate": 206.32
+      "blendedRate": 100
     },
     "bands": [
       {
-        "startDate": "2026-09-14",
-        "endDate": "2027-01-15",
+        "name": "Pilot",
+        "startDate": "2026-12-01",
+        "endDate": "2026-12-28",
         "phases": [
           {
-            "name": "Mobilize",
+            "name": "Design",
             "weeks": "1",
             "weekNumbers": [
               1
             ],
-            "purpose": "Charter, environment access, and the confirmed delivery plan."
-          },
-          {
-            "name": "Analyze",
-            "weeks": "2-4",
-            "weekNumbers": [
-              2,
-              3,
-              4
-            ],
-            "purpose": "Current-state CPQ inventory and the co-signed requirements register."
-          },
-          {
-            "name": "Design",
-            "weeks": "5-7",
-            "weekNumbers": [
-              5,
-              6,
-              7
-            ],
-            "purpose": "Co-signed solution design covering catalog, pricing, approvals, and the ERP interface."
+            "purpose": "Agree the request workflow and acceptance criteria."
           },
           {
             "name": "Build",
-            "weeks": "8-13",
+            "weeks": "2-3",
             "weekNumbers": [
-              8,
-              9,
-              10,
-              11,
-              12,
-              13
+              2,
+              3
             ],
-            "purpose": "Configuration, custom development, and iterative migration dry runs."
+            "purpose": "Configure and demonstrate the queue."
           },
           {
-            "name": "Deploy and Support",
-            "weeks": "17-18",
+            "name": "Validate",
+            "weeks": "4",
             "weekNumbers": [
-              17,
-              18
+              4
             ],
-            "purpose": "Production cutover, hypercare, and transition to the Northwind administrator."
+            "purpose": "Run ten acceptance cases and record the decision."
           }
         ],
         "resources": [
           {
-            "role": "Engagement Manager",
-            "titleLevel": "Director",
-            "billRate": 300,
-            "totalHours": 72,
-            "totalRevenue": 21600,
+            "role": "Delivery Lead",
+            "titleLevel": "Lead",
+            "billRate": 100,
+            "totalHours": 40,
+            "totalRevenue": 4000,
             "hoursByPhase": {
-              "Mobilize": 8,
-              "Analyze": 12,
-              "Design": 12,
-              "Build": 20,
-              "Validate": 12,
-              "Deploy and Support": 8
-            }
+              "Design": 20,
+              "Build": 10,
+              "Validate": 10
+            },
+            "responsibility": "Own the workflow design, client decisions, and acceptance review."
           },
           {
-            "role": "Program Manager",
-            "titleLevel": "Senior Manager",
-            "billRate": 250,
-            "totalHours": 288,
-            "totalRevenue": 72000,
+            "role": "Implementation Specialist",
+            "titleLevel": "Specialist",
+            "billRate": 100,
+            "totalHours": 60,
+            "totalRevenue": 6000,
             "hoursByPhase": {
-              "Mobilize": 24,
-              "Analyze": 48,
-              "Design": 48,
-              "Build": 96,
-              "Validate": 48,
-              "Deploy and Support": 24
-            }
-          },
-          {
-            "role": "Solution Architect",
-            "titleLevel": "Principal",
-            "billRate": 285,
-            "totalHours": 320,
-            "totalRevenue": 91200,
-            "hoursByPhase": {
-              "Mobilize": 16,
-              "Analyze": 64,
-              "Design": 96,
-              "Build": 96,
-              "Validate": 32,
-              "Deploy and Support": 16
-            }
-          },
-          {
-            "role": "Technical Architect",
-            "titleLevel": "Principal",
-            "billRate": 285,
-            "totalHours": 200,
-            "totalRevenue": 57000,
-            "hoursByPhase": {
-              "Mobilize": 8,
-              "Analyze": 40,
-              "Design": 64,
-              "Build": 56,
-              "Validate": 24,
-              "Deploy and Support": 8
-            }
-          },
-          {
-            "role": "Sr Business Analyst",
-            "titleLevel": "Senior Consultant",
-            "billRate": 195,
-            "totalHours": 360,
-            "totalRevenue": 70200,
-            "hoursByPhase": {
-              "Mobilize": 16,
-              "Analyze": 96,
-              "Design": 96,
-              "Build": 96,
-              "Validate": 48,
-              "Deploy and Support": 8
-            }
-          },
-          {
-            "role": "Developer",
-            "titleLevel": "Consultant",
-            "billRate": 175,
-            "totalHours": 640,
-            "totalRevenue": 112000,
-            "hoursByPhase": {
-              "Mobilize": 0,
-              "Analyze": 0,
-              "Design": 64,
-              "Build": 448,
-              "Validate": 96,
-              "Deploy and Support": 32
-            }
-          },
-          {
-            "role": "Quality Assurance (Nearshore)",
-            "titleLevel": "Analyst",
-            "billRate": 95,
-            "totalHours": 280,
-            "totalRevenue": 26600,
-            "hoursByPhase": {
-              "Mobilize": 0,
-              "Analyze": 0,
-              "Design": 0,
-              "Build": 120,
-              "Validate": 136,
-              "Deploy and Support": 24
-            }
-          },
-          {
-            "role": "Data Engineer",
-            "titleLevel": "Senior Consultant",
-            "billRate": 165,
-            "totalHours": 120,
-            "totalRevenue": 19800,
-            "hoursByPhase": {
-              "Mobilize": 0,
-              "Analyze": 16,
-              "Design": 24,
-              "Build": 56,
-              "Validate": 16,
-              "Deploy and Support": 8
-            }
+              "Design": 10,
+              "Build": 40,
+              "Validate": 10
+            },
+            "responsibility": "Configure the queue and execute the agreed test cases."
           }
         ]
       }
@@ -200,58 +116,37 @@
   },
   "scopeItemsByCapability": [
     {
-      "name": "Revenue Cloud Advanced foundation",
+      "name": "Request handling",
       "children": [],
       "scopeItems": [
         {
-          "name": "Product catalog migration",
-          "description": "",
-          "assumptions": ""
+          "name": "Request queue",
+          "description": "Configure one queue with named assignment rules and a visible response status.",
+          "assumptions": "Up to one queue is included. The client supplies the assignment rules. Additional queues require a change order.",
+          "format": "Configured application"
         },
         {
-          "name": "Pricing model configuration",
-          "description": "<p>Configure list pricing, discount schedules, and price book structure for the consolidated catalog.</p><ul><li>Up to 6 price books mapped from the legacy structure.</li><li>Volume and term discount schedules configured natively.</li></ul>",
-          "assumptions": ""
-        }
-      ]
-    },
-    {
-      "name": "Quote to cash",
-      "children": [],
-      "scopeItems": [
-        {
-          "name": "Quoting and approvals",
-          "description": "<p>Configure the quote object, quote line editor behavior, and the consolidated approval matrix across the three business units.</p><ul><li>Single approval model replacing three legacy matrices.</li><li>Quote document template using the standard RCA output.</li></ul>",
-          "assumptions": ""
-        },
-        {
-          "name": "Order management",
-          "description": "<p>Configure order creation from an accepted quote, including order products and the amendment path for in-flight orders.</p>",
-          "assumptions": ""
-        }
-      ]
-    },
-    {
-      "name": "Integration",
-      "children": [],
-      "scopeItems": [
-        {
-          "name": "ERP order interface",
-          "description": "<p>Build the outbound interface that publishes accepted orders to the Northwind ERP.</p><ul><li>Outbound order publication with retry and error queue.</li><li>Field mapping documented and co-signed in Design.</li></ul>",
-          "assumptions": ""
-        }
-      ]
-    },
-    {
-      "name": "Data migration",
-      "children": [],
-      "scopeItems": [
-        {
-          "name": "Historical quote and order migration",
-          "description": "<p>Migrate historical quote headers and accepted orders from the legacy CPQ estate into Revenue Cloud Advanced.</p><ul><li>Two full dry runs before the production load.</li><li>Reconciliation report delivered against source counts.</li></ul>",
-          "assumptions": ""
+          "name": "Acceptance cases",
+          "description": "Run ten example requests through the agreed workflow and record each result.",
+          "assumptions": "Up to ten example requests are supplied by the client. Additional workflows require a change order.",
+          "format": "XLSX"
         }
       ]
     }
-  ]
+  ],
+  "deliverables": [
+    {
+      "name": "Request queue",
+      "description": "One configured queue with assignment and status rules.",
+      "format": "Configured application"
+    },
+    {
+      "name": "Acceptance record",
+      "description": "Results for the ten agreed example requests.",
+      "format": "XLSX"
+    }
+  ],
+  "deliveryMethodology": "The team follows the phases and responsibilities specified in this quote. Each phase produces the agreed outputs for the next review.",
+  "scopeNote": "Only the deliverables and supporting activities explicitly described in Section 2 are included. Additional implementation or migration work requires separate scoping.",
+  "_fixture_purpose": "Synthetic missing-context failure example."
 }

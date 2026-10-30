@@ -7,4 +7,4 @@
 
 **Not for.** Do not trigger for interactive browser exploration (use sf-browser-automation) or for non-Salesforce pages.
 
-**Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `situational`
+**Full trigger logic and boundaries:** [SKILL.md](WORKFLOW.md) · tier `situational`

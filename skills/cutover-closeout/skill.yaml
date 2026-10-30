@@ -29,7 +29,7 @@ triggers:
   hypercare, acceptance clock, deemed acceptance, closeout, close out the project,
   wrap up the engagement, transition to support, lessons learned, or post-go-live
   issues ("we go live Friday, what do we need"). Do NOT use for UAT or the go / no-go
-  itself (that is estate-uat-validation), ongoing status and change orders (delivery-status),
+  itself (that is acceptance-testing), ongoing status and change orders (delivery-status),
   managed-services operations after transition, or SOW authoring (sow).'
 exclusions: []
 inputs:

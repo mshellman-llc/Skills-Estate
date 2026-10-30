@@ -7,6 +7,6 @@
 
 **Not for.** Not for one-off project plans, org charts, product requirements, incident runbooks, or code and query performance tuning.
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
 
 **Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `situational`

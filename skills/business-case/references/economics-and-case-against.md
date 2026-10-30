@@ -3,6 +3,8 @@
 The two sections that decide whether the case is believed. Read this before
 writing sections 04 and 05, and again before running the gate.
 
+The numerical examples below are fictional library-catalogue illustrations, not client evidence.
+
 ## The source-token grammar
 
 Every line of the draft that carries a currency figure or a percentage ends in
@@ -11,11 +13,11 @@ what makes the money rule checkable rather than aspirational.
 
 | Token | Means | Example |
 | --- | --- | --- |
-| `[src: <source>, <date>]` | A sourced client-side or market figure | `Annual revenue of $412M [src: FY25 10-K, 2026-02-14]` |
-| `[quote: <Q-number>]` | An engagement cost figure from the quote | `Phase 1 investment of $186,000 [quote: Q-000118]` |
-| `[inferred: <ID>, <band>, <basis>]` | A labeled inference with its register entry | `Roughly 6% of renewals lapse unbilled [inferred: A3, medium, ops lead estimate on Apr 22 call]` |
-| `[gap: <name>]` | A searched-for figure that does not exist yet | `Data migration cost not yet priced [gap: migration scoping open, owner J. Ruiz, due 2026-08-29]` |
-| `[computed: <inputs>]` | The result of a shown computation | `$46,500/mo x 4 mo = $186,000 [computed: inputs C7, C9]` |
+| `[src: <source>, <date>]` | A sourced client-side or market figure | `Catalogue administration costs $1,440 [src: synthetic time ledger, 2030-02-01]` |
+| `[quote: <Q-number>]` | An engagement cost figure from the quote | `Catalogue pilot investment of $600 [quote: Q-SYNTH01]` |
+| `[inferred: <ID>, <band>, <basis>]` | A labeled inference with its register entry | `Roughly 8% of cards need correction [inferred: A1, low, synthetic volunteer estimate]` |
+| `[gap: <name>]` | A searched-for figure that does not exist yet | `Hosting not yet priced [gap: hosting quote needed, owner committee, due 2030-02-10]` |
+| `[computed: <inputs>]` | The result of a shown computation | `$120/mo x 5 mo = $600 [computed: inputs C7, C9]` |
 
 Rules that ride on the grammar:
 
@@ -38,7 +40,7 @@ every deal; use whichever the timing facts support, and show the work on the
 page:
 
 1. **The compounding monthly cost.** A sourced per-month figure times the
-   months of deferral. `$46,500/mo x 4 mo = $186,000 [computed: inputs C7, C9]`
+   months of deferral. `$120/mo x 5 mo = $600 [computed: inputs C7, C9]`
    where C7 is the sourced monthly cost and C9 is the sourced decision-to-start
    interval.
 2. **The built-twice cost.** Work that must be redone if the decision slips

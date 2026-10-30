@@ -1,7 +1,7 @@
 # RAID log: {{ENGAGEMENT_NAME}} ({{SOW_ID}})
 
-Seeded at Mobilize by estate-delivery-kickoff from the accepted handoff brief, as of {{SEED_DATE}}.
-Stewarded from here by estate-delivery-status. IDs are permanent: never renumber, never reuse.
+Seeded at Mobilize by delivery-kickoff from the accepted handoff brief, as of {{SEED_DATE}}.
+Stewarded from here by delivery-status. IDs are permanent: never renumber, never reuse.
 
 ID conventions: R-### risks, A-### assumptions, I-### issues, D-### dependencies. Numbers are
 zero-padded to three digits and assigned in creation order within each type. A closed item keeps

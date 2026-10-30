@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Resolve the brand assets, voice engine, and release validator this gate calls.
+"""Resolve brand assets, writing diagnostics and the release validator.
 
 brand-renderer is the entry point for every branded surface, so it is the skill
 that has to prove the runtime before anything is drafted. It resolves prose-pass
-for voice and quality-gate for the release decision. The direction is one way:
+for diagnostics under Writing Integrity and quality-gate for the release decision. The direction is one way:
 neither of those resolves brand-renderer, which is what keeps a bundle from
 carrying a second copy of the skill that carried it.
 """
@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -35,16 +36,19 @@ def resolve() -> dict:
         ROOT / "_runtime" / "prose-pass",
         ROOT.parent / "prose-pass",
         ROOT.parent / "_runtime" / "prose-pass",
-        Path("/mnt/skills/user/prose-pass"),
-        Path("/mnt/skills/organization/prose-pass"),
     ]
     quality_root_candidates = [
         ROOT / "_runtime" / "quality-gate",
         ROOT.parent / "quality-gate",
         ROOT.parent / "_runtime" / "quality-gate",
-        Path("/mnt/skills/user/quality-gate"),
-        Path("/mnt/skills/organization/quality-gate"),
     ]
+    for key, candidates in (("ESTATE_PROSE_RUNTIME", prose_root_candidates),
+                            ("ESTATE_QUALITY_RUNTIME", quality_root_candidates)):
+        if os.environ.get(key):
+            path = Path(os.environ[key]).expanduser()
+            if not path.is_absolute():
+                raise ValueError(key + " must name an explicitly selected absolute runtime directory")
+            candidates[:] = [path]
     prose_check = first_file([p / "scripts" / "writing_check.py"
                               for p in prose_root_candidates])
     prose_receipt = first_file([p / "scripts" / "prose_receipt.py"
@@ -85,7 +89,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
-    report = resolve()
+    try:
+        report = resolve()
+    except ValueError as exc:
+        report = {"ok": False, "missing": [str(exc)]}
     if args.json:
         print(json.dumps(report, indent=2))
     elif report["ok"]:

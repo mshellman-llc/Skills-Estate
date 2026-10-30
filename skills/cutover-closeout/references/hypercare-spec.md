@@ -1,6 +1,6 @@
 # Hypercare triage and closeout report spec
 
-Hypercare is the defined support window after go-live, typically two weeks, bounded by whatever the SOW says. Two disciplines carry it: every issue gets a stable identity and an honest disposition, and the line between hypercare-covered work and new scope is drawn early and out loud, because that line is where budget disputes are born.
+Hypercare is the defined support window after go-live, with duration and coverage taken only from the executed SOW. Two disciplines carry it: every issue gets a stable identity and an honest disposition, and the line between hypercare-covered work and new scope is drawn early and out loud, because that line is where budget disputes are born.
 
 ## Triage log
 
@@ -9,14 +9,14 @@ One log for the whole window. Columns:
 | ID | Severity | Reported | Reporter | Issue | Owner | Status | Resolution | Disposition |
 
 - **ID**: `HC-001` upward, assigned at intake, never reused or renumbered. A defect carried in from UAT keeps its upstream ID in the Issue text (for example "carried from DEF-042") and still gets an HC-ID so the hypercare record is complete on its own.
-- **Severity**: Sev 1 (production down or data corrupting, all hands), Sev 2 (core process blocked, no workaround), Sev 3 (impaired with workaround), Sev 4 (cosmetic or convenience). Severity is impact, not who reported it or how loudly.
+- **Severity**: use the project Test Plan. If the team adopts this reference taxonomy, map its labels explicitly: Sev 1 (production down or data corrupting, all hands), Sev 2 (core process blocked, no workaround), Sev 3 (impaired with workaround), Sev 4 (cosmetic or convenience). Severity is impact, not who reported it or how loudly.
 - **Status**: open, in progress, fix deployed, verified, closed.
 - **Resolution**: what was actually done, with the deploy or config reference.
 - **Disposition**: one of the closed states below.
 
 ## No close without verified resolution
 
-An issue closes only when the fix is verified working in production, by a named person, on a named date, recorded in the Resolution cell. "Redeployed" is not verified; "client AP lead ran a live quote through on 2026-08-19, terms block present" is. The closeout gate fails any row dispositioned Closed whose text does not state verification. Developer assertion is how regressions get discovered by the client.
+An issue closes only when the fix is verified working in production, by a named person, on a named date, recorded in the Resolution cell. "Redeployed" is not verified; the synthetic example "test reviewer verified the sample order total on 2030-02-12; expected and actual totals match" is. The closeout gate fails any row dispositioned Closed whose text does not state verification. Developer assertion is how regressions get discovered by the client.
 
 ## Dispositions
 
@@ -29,7 +29,7 @@ Every issue ends the window in exactly one of:
 
 ## The hypercare boundary
 
-Hypercare covers defects: the system not behaving as the co-signed design and the accepted scope say it should. It does not cover new requirements, scope that was descoped with sign-off, training beyond what the SOW includes, or "while you're in there" requests. The test is the scope baseline and the Solution Design Document, not how small the ask sounds; small asks compound.
+Apply the actual support clause first. Under a defect-only support agreement, hypercare covers defects: the system not behaving as the co-signed design and the accepted scope say it should. It does not cover new requirements, scope that was descoped with sign-off, training beyond what the SOW includes, or "while you're in there" requests. The test is the scope baseline and the Solution Design Document, not how small the ask sounds; small asks compound.
 
 When a request fails that test, say so in the log the day it arrives (disposition `Change-order candidate`), tell the client contact it is being routed rather than quietly absorbing it, and route it to delivery-status, where the Basis of Estimate framework and the change-order machinery live. This skill never prices the candidate, never estimates it, and never promises it. Absorbing change-order work inside hypercare is the failure mode: it burns the margin, trains the client that scope is free, and hides the demand signal the account team needs.
 
@@ -37,7 +37,7 @@ Ambiguous cases (the design is silent, or the requirement was arguably implied) 
 
 ## Hypercare Closeout Report
 
-A record document, not a signed one. It states what happened; nobody countersigns it. Drafted at the end of the window from the triage log and the acceptance tracker. Template: `assets/hypercare-closeout-template.md`. Sections, all always present (an empty section states why it is empty; never drop one):
+A record of what happened. Apply the project's actual approval or countersignature requirements; this reference format does not create or waive them. Drafted at the end of the window from the triage log and the acceptance tracker. Template: `assets/hypercare-closeout-template.md`. Sections, all always present (an empty section states why it is empty; never drop one):
 
 1. **Header**: client, engagement, SOW ID, hypercare window (dates, and the SOW clause defining it), Go-Live Acceptance status carried from the tracker with its dates.
 2. **Window summary**: issue counts by severity and disposition, computed from the log, not estimated. Print the counts.

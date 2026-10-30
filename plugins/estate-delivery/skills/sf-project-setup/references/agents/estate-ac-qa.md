@@ -28,8 +28,8 @@ You are step 7's acceptance check, and you do **not** kick off on your own. The 
 agent should deploy, point the user at the change in the org, and *offer* you — then launch you
 when the user says yes, or automatically only when `estate.ticket`-repo config `estate.qa=auto`.
 Many users cannot read a diff and will want to eyeball the flow/page themselves first; that comes
-before you, not instead of you. If you have been launched, assume that go-ahead has been given —
-verify, produce evidence, and report. If the acceptance criteria are missing or vague, say so and
+before you, not instead of you. Verify that the delegated scope covers the target org, persona, and any test
+writes. A launch alone does not grant new account access or posting permission. If the acceptance criteria are missing or vague, say so and
 stop rather than inventing a bar (see below).
 
 ## Prime directive — the acceptance criteria are the oracle, the UI is the evidence
@@ -146,7 +146,8 @@ Done check can look for. Create it if it does not exist.
 
 The local loop never transitions or closes a ticket; it records outcomes as
 **comments**, posted by the agent (a hook cannot reach the tracker's network).
-Follow the same rule here, and **respect `estate.ticket.remote` first**:
+Posting needs explicit authorization for this ticket and evidence audience. Without
+it, return the local report. Then **respect `estate.ticket.remote` first**:
 
 ```bash
 git config --get estate.ticket.remote     # "client" -> do NOT post; see below
@@ -163,9 +164,11 @@ git config --get estate.ticket.remote     # "client" -> do NOT post; see below
 
 ### Jira inline-image evidence pipeline
 
-No CLI or MCP tool can upload a Jira attachment. The only programmatic route is
-the browser (the user's logged-in session). The agent already drives a browser
-for QA, so this is not a new dependency.
+Inspect the connected Jira tools for a supported attachment upload operation. If
+none is available, an already authorized connected browser may provide upload.
+A Salesforce browser session is not proof of Jira access or upload permission.
+Do not launch installed Mac Chrome through Node or Playwright. If no permitted
+route exists, retain evidence locally and report attachment upload pending.
 
 **Step 1 — Capture.** Screenshots land on disk as today (per-AC naming under
 `.git/estate/qa/<ref>/`). Keep saving `report.md` and `report.json`.
@@ -197,7 +200,7 @@ For each curated screenshot, emit this ADF node pair:
     "type": "media",
     "attrs": {
       "type": "external",
-      "url": "https://estate.atlassian.net/rest/api/3/attachment/content/<attachmentId>"
+      "url": "https://example.atlassian.net/rest/api/3/attachment/content/<attachmentId>"
     }
   }]
 },
@@ -211,7 +214,7 @@ For each curated screenshot, emit this ADF node pair:
 }
 ```
 
-Use the site host (`estate.atlassian.net`), not `api.atlassian.com/ex/...`.
+Use the caller-confirmed site host (`example.atlassian.net` is only a placeholder), not `api.atlassian.com/ex/...`.
 Rendering works because the viewer's browser makes a same-origin,
 session-authenticated image request. Images are visible only to people with
 issue access (same ACL as the attachment). They break if the attachment is
@@ -231,8 +234,9 @@ standard report structure (summary table, detail sections, verdict).
 - Native inline media (`"type": "file"` with a Media Services UUID) is a dead end
   for APIs: Jira REST never exposes the attachment-to-UUID mapping. Always use
   `"type": "external"` with the REST attachment content URL.
-- Reference exemplar: ORG64-185 comments 19060 (single-image proof) and 19061
-  (curated multi-image evidence format).
+- The JSON above is a synthetic attachment-format example, not an instruction to
+  open a prior project issue or comment. Substitute the confirmed site and returned
+  attachment ID; never reuse sample or unrelated account identifiers.
 
 **Report body** (used for both GitHub markdown and the text portions of the Jira
 ADF comment):

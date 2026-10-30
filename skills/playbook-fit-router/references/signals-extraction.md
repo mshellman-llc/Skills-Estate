@@ -25,7 +25,7 @@ wrong, quietly.
 wording. Sharpening "quoting feels slow" into "quoting takes eleven days" is a fabrication
 wearing a citation.
 
-**seller_asserted** means Estate believes it and the client has not confirmed it. Account
+**seller_asserted** means the seller believes it and the client has not confirmed it. Account
 notes, CRM fields, and an SE's read of an org all land here. These are legitimate. They are
 also the ones that break in delivery, which is why they score 0.6 rather than 1.0.
 

@@ -251,13 +251,13 @@ run allow "gh pr create --body-file notes.md (out of reach by construction)" \
 echo
 echo "== rule 2: a bare #N when GitHub is not the tracker =="
 git config estate.ticket.system jira
-git config estate.ticket.project ORG64
+git config estate.ticket.project EXAMPLE
 run block "#12 in a commit"          'git commit -m "wip #12"'
 reason "GitHub issue reference"      "rule 2 explains the cross-link, not the keyword"
 run block "#12 in a PR body"         'gh pr create --base main --title x --body "see #12"'
 reason "GitHub issue reference"      "rule 2 fires on PR bodies too"
-run allow "a Jira key is fine"       'git commit -m "ORG64-1: the thing"'
-run allow "Jira key in a PR title"   'gh pr create --base main --title "ORG64-1 thing" --body y'
+run allow "a Jira key is fine"       'git commit -m "EXAMPLE-1: the thing"'
+run allow "Jira key in a PR title"   'gh pr create --base main --title "EXAMPLE-1 thing" --body y'
 run allow "#12 outside a carrier"    'echo "see #12"'
 
 echo "-- rule 1 still wins where both could fire --"

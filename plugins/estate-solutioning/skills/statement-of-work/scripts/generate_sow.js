@@ -53,7 +53,7 @@ function eng(val,section,name,source){if(val===null||val===undefined||val===""){
 function reason(val,section,name,decision,source){if(val===null||val===undefined||val===""){log.push([section,name,"FLAGGED, source absent, not invented",source,true]);return flag(name+": "+decision);}
   log.push([section,name,String(val),source,false]);return T(String(val),{size:22,color:INK});}
 
-// approved contractual language, verbatim, never paraphrased (see references/required-clauses.md)
+// caller-selected contract language, verbatim, never paraphrased
 const AC=input.clauses;
 function clz(str,subs={}){return str.split(/(\{[A-Z_]+\})/).filter(s=>s!=="").map(p=>{const k=/^\{([A-Z_]+)\}$/.exec(p);if(k&&subs[k[1]]!==undefined){const v=subs[k[1]];return typeof v==="string"?T(v,{size:22,color:INK}):v;}return T(p,{size:22,color:INK});});}
 const clzP=(str,subs,o)=>P(clz(str,subs),o);
@@ -307,7 +307,7 @@ function build(){const c=[];
   c.push(table([2600,5160,1600],[[hd("Role"),hd("Responsibility"),hd("Expected time commitment")],
     ...clientRoles.map(r=>[[T(r.role,{size:20,bold:true,color:INK})],[T(r.responsibility,{size:20,color:INK})],[T(r.commitment,{size:18,color:INK})]])]));
   c.push(P([T(clientNote,{size:18,italics:true,color:STEEL})]));
-  log.push(["Section 7.1","client responsibilities",clientRoles.length+(isAssess?" assessment":" build")+" client roles rendered",isAssess?"approved_clauses.CLIENT_RESOURCES_ASSESS":"approved_clauses.CLIENT_RESOURCES",false]);
+  log.push(["Section 7.1","client responsibilities",clientRoles.length+(isAssess?" assessment":" build")+" client roles rendered",isAssess?"contract.clauses.CLIENT_RESOURCES_ASSESS":"contract.clauses.CLIENT_RESOURCES",false]);
   c.push(h2("7.2 Key assumptions"));
   c.push(P([T("The estimate depends on the assumptions below. If an assumption changes, use Change Control to agree any change to effort, schedule or fees.",{size:22,color:INK})]));
   // Section 7.2 states the load-bearing CONDITION only. The Change-Order consequence is owned once by Section 8.1
@@ -326,7 +326,7 @@ function build(){const c=[];
   const APPEXCHANGE=/AppExchange/i;const WORKSHOP=/Additional time to conduct workshops/i;
   AC.PROTECTIVE_ASSUMPTIONS.filter(t=>!(isAssess&&(APPEXCHANGE.test(t)||WORKSHOP.test(t)))).forEach(t=>c.push(bull([T(t,{size:22,color:INK})])));
   c.push(clzP(AC.LOCATION_OF_SERVICES));
-  log.push(["Section 7.3","protective clauses",AC.PROTECTIVE_ASSUMPTIONS.length+" approved clauses + Location of Services, rendered verbatim","approved_clauses.js (legally approved template)",false]);
+  log.push(["Section 7.3","protective clauses",AC.PROTECTIVE_ASSUMPTIONS.length+" approved clauses + Location of Services, rendered verbatim","explicit contract profile supplied by the caller",false]);
   // 8
   c.push(h1("8. Change control"));c.push(h2("8.1 Change order triggers"));
   const curatedCO=Array.isArray(m.changeOrderTriggers)&&m.changeOrderTriggers.length?m.changeOrderTriggers:null;

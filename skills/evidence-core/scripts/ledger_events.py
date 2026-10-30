@@ -2,8 +2,8 @@
 """Check and project an append-only evidence ledger event log.
 
 The event log is JSONL at `evidence/evidence-ledger.jsonl`: one JSON object per
-line, never edited, only appended. It is the trial authoring form agreed on
-2026-09-01. `project` turns it into the schema-valid document that
+line, never edited, only appended. It is the append-only authoring form supported by
+the workspace standard. `project` turns it into the schema-valid document that
 `evidence_core.py` evaluates, so the finalization gate is unchanged.
 
   check    LEDGER.jsonl                 validate every event; exit 1 on errors

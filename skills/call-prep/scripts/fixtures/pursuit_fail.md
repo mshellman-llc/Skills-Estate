@@ -1,28 +1,30 @@
 # Broken pursuit brief
 
+Synthetic test fixture; all people, sources, dates, quantities and decisions are invented.
+
 ## Client and opportunity context
 
-Northwind Manufacturing, quote-to-cash replacement. Budget TBD.
+The fictional Lantern Workshop, class-registration pilot. Budget TBD.
 
 ## Situation
 
-Quoting runs through a spreadsheet.
+Registration runs through a spreadsheet.
 
 ## Assumptions
 
-- The CFO probably signs.
-- Assumption A-02: The incumbent OMS stays. Basis: no migration line in the RFP. Confidence: low.
+- The coordinator probably signs.
+- Assumption A-02: The existing booking sheet stays. Basis: no migration line in the RFP. Confidence: low.
 
 ## Stakeholders
 
-- Dana Reyes, CFO.
+- Fictional coordinator, sponsor.
 
 ## Recommended calls
 
-### Call 1: quoting operations walkthrough
+### Call 1: registration operations walkthrough
 
 Purpose: See the spreadsheet workflow end to end.
 
 ## Immediate next steps
 
-- Ask Dana for the quoting owner's name.
+- Ask The coordinator for the registration owner's name.

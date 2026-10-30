@@ -6,7 +6,7 @@
   "date": "[Month YYYY]",
   "quote_number": "[Q-number]",
   "quote_snapshot": {
-    "quote.totalBuPrice": 65000
+    "quote.totalBuPrice": 24000
   },
   "deck_lead": "A three week assessment that produces a ranked set of AI use cases, a readiness score against the platform and data they already have, and a roadmap the executive team can fund. Client-specific slides are marked and filled during the pursuit.",
   "meta": [
@@ -27,19 +27,19 @@
       "v": "[Q-number]"
     }
   ],
-  "_source": "PB-01 AI Readiness (illustrative example)",
+  "_source": "Synthetic training-studio scenario: test figures and interview statements created for renderer regression; no real quote or engagement.",
   "options": [
     {
       "name": "AI readiness assessment",
       "recommended": true,
       "duration": "3 weeks",
-      "investment": "$65,000"
+      "investment": "$24,000"
     }
   ],
   "figures": [
     {
       "label": "Investment",
-      "value": 65000,
+      "value": 24000,
       "quote_field": "quote.totalBuPrice"
     }
   ],
@@ -315,7 +315,7 @@
         "name": "Commercials"
       },
       "title": "Investment",
-      "amount": "$65,000",
+      "amount": "$24,000",
       "qualifier": "Fixed fee. Figures come from the Pricing System, not from this document.",
       "terms": [
         {
@@ -441,5 +441,6 @@
       "title": "Three weeks to a fundable decision.",
       "subtitle": "A ranked roadmap with a readiness score behind every recommendation."
     }
-  ]
+  ],
+  "_fixture": true
 }

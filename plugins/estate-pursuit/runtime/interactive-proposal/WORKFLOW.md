@@ -3,6 +3,9 @@ name: interactive-proposal
 description: 'Builds a single-file interactive proposal page that a prospect can click through. The page lets a prospect switch among scoped versions. Each version carries its team, timeline, assumptions, boundaries, and call to action. Proposal mode renders a priced scoping-app quote (Q-number) with every number tied to a quote field and reconciled by tie-out. Explorer mode covers pre-quote qualification with the same page and gates, scope and open decisions only, and zero currency on the surface. Use when asked for an interactive proposal, proposal page, quote page, clickable proposal, web version of the DDOC, scope explorer, or option explorer for a pursuit. Trigger on a Q-number or client name paired with interactive, page, site, explorer, or clickable. Do NOT use for the PPTX Deal Decision deck itself (that is ddoc) or a generic slide proposal deck (deck-builder).'
 ---
 
+Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
+
+
 
 # Interactive Proposal
 
@@ -67,7 +70,7 @@ Same page, same brand, same gates. The differences:
 
 **Timeline.** In Proposal mode the builder draws each version's quoted phases with the timeline from `roadmap-artifacts`, on a Week 1, Week 2 axis, and redraws it when the version changes. The phase list stays as the fallback when a phase's `weeks` value is not `N` or `N-M`. The components are inlined, take their colors from the selected profile, and add no network request.
 
-**Voice.** Apply the confirmed author profile and `prose-pass` while writing, not as a pass afterwards. The test for
+**Voice.** Apply the confirmed author profile and `writing-integrity` while writing, not as a pass afterwards. The test for
 every sentence is whether it carries a specific: a number, a named system, a named owner, or a
 consequence. Scrubbing buzzwords without adding specifics fails the standard that matters even
 when it passes the checker that runs.
@@ -78,6 +81,17 @@ the client can see is a next conversation and a boundary they discover is a disp
 
 **Print.** An `@media print` block so the selected version prints clean. Excluded scope cards drop
 out of print; disclosures print open.
+
+## Invalid input blocks generation
+
+Retain the rejected input and its validation findings. An unsupported fee, invented
+team or duration, mismatched source identifier, or unreconciled count is a blocking
+input error. Propose a correction supported by the actual source; do not silently
+delete the offending field and treat the remaining input as verified. Once the
+source-supported correction is made within the user's authorized scope, rerun the builder's complete
+validation and figure/count reconciliation. Only a successful rerun permits building
+the candidate page. Record what actually ran. Browser interaction, print and rendered
+layout checks remain separate release requirements even after input validation passes.
 
 ## Working builder and checks
 

@@ -7,6 +7,6 @@
 
 **Not for.** Do NOT use for the sourced client-facing architecture document (architecture-doc) or the SOW (sow).
 
-**Related.** Depends on [`knowledge-hub`](../knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
+**Related.** Depends on [`knowledge-hub`](_runtime/knowledge-hub/README.md); Calls [`evidence-core`](_runtime/evidence-core/README.md), [`quality-gate`](_runtime/quality-gate/README.md).
 
 **Full trigger logic and boundaries:** [SKILL.md](SKILL.md) · tier `core`

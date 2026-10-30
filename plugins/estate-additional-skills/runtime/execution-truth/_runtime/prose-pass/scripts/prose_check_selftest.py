@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Selftest for prose-pass. No third-party dependencies, no network.
 
+All fixture narratives and figures are synthetic and describe no real project.
 Runs the checker over an inline bad fixture and an inline clean fixture with the
 Estate house config, and asserts the expected findings and exit behavior.
 Prints observed versus expected and exits nonzero on any mismatch.
@@ -22,9 +23,9 @@ CFG = {**prose_check.DEFAULT_CONFIG, **CFG}
 BAD = """\
 We leverage best-in-class synergy to deliver a seamless, robust, holistic platform.
 
-It's worth noting that per your request, we built the four cascades you asked to see.
+It's worth noting that per your request, we built the two panels you asked to see.
 
-The client's revenue process, and the investment it will take to fix it. Three root causes, and no single fix clears the board. Lights-on ships nothing new, and the exposure recurs annually.
+The sample import is ready, and the test operator can run it. Two fields need labels, and the reviewer must confirm them. The nightly job stays idle, and the deadline moves again.
 
 We designed a new pipeline, which enables teams to move faster. See Section §4.
 
@@ -34,11 +35,11 @@ The rollout was fast, clean, and simple.
 """
 
 GOOD = """\
-Quote-to-cash cycle dropped 40 percent after we rebuilt the pricing service.
+The synthetic parser accepted 12 rows from the sample file.
 
-Three teams ran the old process. None of them agreed on the discount rules. That is why quotes took nine days.
+The test operator checked each header. The missing timestamp caused an error. That result matches the fixture specification.
 
-We configured the approval matrix so a regional deal clears in one hop. Payback landed in the first quarter.
+We added a label to the preview so the reviewer can identify the input. The export retains its original columns.
 """
 
 WARNING_ONLY = """\

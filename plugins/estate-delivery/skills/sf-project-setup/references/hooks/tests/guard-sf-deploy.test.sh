@@ -324,8 +324,8 @@ RUN_CWD="$M" run block "pipeline/main checkout cannot deploy" \
 RUN_CWD="$W" run allow "clean WI worktree can deploy to its local dev org" \
     "sf project deploy start --source-dir $FA/A.cls --test-level NoTestRun"
 git config estate.devops.workmodel shared
-git config estate.devops.integrationbranch stevenc
-git config estate.devops.environment StevenC
+git config estate.devops.integrationbranch integration-dev
+git config estate.devops.environment ExampleDevelopment
 RUN_CWD="$W" run block "shared mode routes real deploy through centralized coordinator" \
     "sf project deploy start --source-dir $FA/A.cls --test-level NoTestRun" "local real deploys are disabled"
 git config estate.devops.workmodel isolated

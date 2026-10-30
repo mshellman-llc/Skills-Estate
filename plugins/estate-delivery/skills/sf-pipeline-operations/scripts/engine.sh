@@ -8,7 +8,8 @@
 # this script exists. It sends a CLI token as `Authorization: Bearer`.
 #
 #   ENGINE_URL   base URL. Falls back to `engine_url:` in pipeline.yml.
-#   SFDE_TOKEN   overrides the stored token file.
+#   SFDE_TOKEN       explicit token for the selected endpoint.
+#   SFDE_TOKEN_FILE  explicit absolute file path; no shared default is read.
 #
 # Mint the token once (valid 30 days):
 #   engine.sh login          # prints/opens the URL, then explains the one-liner
@@ -32,7 +33,7 @@
 
 set -euo pipefail
 
-TOKEN_FILE="${HOME}/.config/sf-deploy-engine/token"
+TOKEN_FILE="${SFDE_TOKEN_FILE:-}"
 RAW=0
 
 usage() { sed -n '2,/^set -euo/p' "$0" | sed 's/^# \{0,1\}//; s/^#$//' | sed '$d'; }
@@ -58,7 +59,8 @@ resolve_engine_url() {
 
 read_token() {
   if [ -n "${SFDE_TOKEN:-}" ]; then printf '%s' "$SFDE_TOKEN"; return; fi
-  [ -f "$TOKEN_FILE" ] || return 1
+  case "$TOKEN_FILE" in /*) ;; *) return 1 ;; esac
+  [ -r "$TOKEN_FILE" ] && [ -f "$TOKEN_FILE" ] || return 1
   tr -d '\n' < "$TOKEN_FILE"
 }
 
@@ -73,7 +75,7 @@ call() {
   url="$(resolve_engine_url)$path"
 
   if ! token="$(read_token)"; then
-    die "no CLI token. Run: engine.sh login"
+    die "no explicitly selected CLI token. Set SFDE_TOKEN or an absolute SFDE_TOKEN_FILE for this endpoint; engine.sh login describes enrollment"
   fi
 
   local tmp; tmp=$(mktemp)
@@ -128,7 +130,7 @@ json() { python3 -c 'import json,sys; print(json.dumps(json.loads(sys.stdin.read
 cmd_login() {
   local url; url="$(resolve_engine_url)/auth/login?redirect=cli"
   printf 'Open this and sign in with a Workspace account:\n\n  %s\n\n' "$url"
-  printf 'The page prints one command. Run it — it writes %s (mode 600).\n' "$TOKEN_FILE"
+  printf 'Use the login flow for this endpoint. Save its token in a private endpoint-specific file (mode 600), then set SFDE_TOKEN_FILE to that absolute path. Never paste the token into chat.\n'
   printf 'The token lasts 30 days; re-run this login when a call reports 401.\n'
   if command -v open >/dev/null 2>&1; then open "$url" >/dev/null 2>&1 || true; fi
 }
@@ -241,7 +243,7 @@ print(json.dumps(body))
 }
 
 cmd_ticket() {
-  [ $# -ge 1 ] || die "usage: engine.sh ticket REF     (GH-397, ORG64-42, jira:ORG64-42)"
+  [ $# -ge 1 ] || die "usage: engine.sh ticket REF     (GH-397, EXAMPLE-42, jira:EXAMPLE-42)"
   # The canonical form contains a colon, so the ref is URL-encoded here.
   local enc; enc=$(python3 -c 'import sys,urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$1")
   call GET "/api/ticket/$enc"

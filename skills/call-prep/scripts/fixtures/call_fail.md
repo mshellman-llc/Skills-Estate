@@ -1,5 +1,7 @@
 # Broken call brief
 
+Synthetic test fixture; all people, sources, dates, quantities and decisions are invented.
+
 ## Call objective
 
 Get the walkthrough scheduled. Details {{OWNER_NAME}} to confirm.
@@ -12,4 +14,4 @@ Get the walkthrough scheduled. Details {{OWNER_NAME}} to confirm.
 
 ## Questions
 
-1. What does the quoting process look like?
+1. What does the registration process look like?

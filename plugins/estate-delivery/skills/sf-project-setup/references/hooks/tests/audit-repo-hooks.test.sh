@@ -3,7 +3,7 @@
 # skill's own.
 #
 # The blind spot these pin down: sections 1-4 all answer "is OUR stack armed", and
-# none of them can see a SECOND stack. 64-Org carried three hooks of its own in
+# none of them can see a SECOND stack. Example Project carried three hooks of its own in
 # .claude/hooks/, forked from this skill's ancestor before the skill existed.
 # Adopting the skill installed a newer implementation alongside the fork rather
 # than retiring it, and a later ledger migration left one forked hook writing to a

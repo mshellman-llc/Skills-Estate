@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Quote tie-out check for estate-deal-desk.
+"""Quote tie-out check for commercial-review.
 
 Reconciles every figure in one or more reviewed artifacts (SOW draft, ROM,
 proposal, Deal Desk packet prose) against the source scoping quote, exported

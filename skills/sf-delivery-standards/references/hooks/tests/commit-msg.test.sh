@@ -37,7 +37,7 @@ git config user.email t@t.test; git config user.name t
 git config estate.mode native
 git config estate.trunk main
 git config estate.ticket.system jira
-git config estate.ticket.project ORG64
+git config estate.ticket.project EXAMPLE
 
 PASS=0; FAIL=0
 
@@ -61,40 +61,40 @@ run() {
 echo "== force-app commits require the project's ticket key =="
 stage_force
 run block "no reference at all"          "feat: add the hail matrix"
-run allow "bare ORG64 key"               "feat: add the hail matrix (ORG64-42)"
-run allow "key in a conventional prefix" "feat(ORG64-42): add the hail matrix"
+run allow "bare EXAMPLE key"               "feat: add the hail matrix (EXAMPLE-42)"
+run allow "key in a conventional prefix" "feat(EXAMPLE-42): add the hail matrix"
 run block "another project's key"        "feat: add the hail matrix (SFO-42)"
-run block "the key without its number"   "feat: add the hail matrix (ORG64-)"
+run block "the key without its number"   "feat: add the hail matrix (EXAMPLE-)"
 
 echo "== a ticket key is NOT required off force-app/ — and is NOT validated there =="
 stage_docs
 run allow "docs commit, no reference"    "docs: rewrite the readme"
 # The trap: this looks like the gate passing on a well-formed commit. It is the gate
 # not running at all. A chore commit proves nothing about the ticket pattern.
-run allow "docs commit, malformed key"   "docs: rewrite the readme (ORG64-)"
+run allow "docs commit, malformed key"   "docs: rewrite the readme (EXAMPLE-)"
 
 echo "== closing keywords are rejected outright =="
 stage_force
-run block "fixes #42"                    "feat: add the matrix (ORG64-42)
+run block "fixes #42"                    "feat: add the matrix (EXAMPLE-42)
 
 fixes #42"
-run block "Closes #7, any case"          "feat: add the matrix (ORG64-42)
+run block "Closes #7, any case"          "feat: add the matrix (EXAMPLE-42)
 
 Closes #7"
-run block "resolved #9"                  "feat: add the matrix (ORG64-42)
+run block "resolved #9"                  "feat: add the matrix (EXAMPLE-42)
 
 resolved #9"
 
 echo "== Jira smart commits are rejected =="
-run block "#done"                        "feat: add the matrix ORG64-42 #done"
-run block "#comment"                     "feat: add the matrix ORG64-42 #comment looks good"
-run block "#time"                        "feat: add the matrix ORG64-42 #time 2h"
+run block "#done"                        "feat: add the matrix EXAMPLE-42 #done"
+run block "#comment"                     "feat: add the matrix EXAMPLE-42 #comment looks good"
+run block "#time"                        "feat: add the matrix EXAMPLE-42 #time 2h"
 
 echo "== git's commented template lines are not message content =="
 # A '#123' inside the commented block git appends must never satisfy or trip anything.
 run block "commented text cannot supply the key" "feat: add the matrix
-# ORG64-42 is mentioned only in a comment"
-run allow "commented closing keyword is inert"   "feat: add the matrix (ORG64-42)
+# EXAMPLE-42 is mentioned only in a comment"
+run allow "commented closing keyword is inert"   "feat: add the matrix (EXAMPLE-42)
 # fixes #42 written in a comment"
 
 echo "== ticket.system=none disables the requirement =="

@@ -58,3 +58,14 @@ None of these require a planner change.
   predecessor.
 - Moving gate results out of the manifest into a platform-only store, which would make the
   playbook folder no longer self-describing.
+
+## Current invocation adapter
+
+Each step includes `invocation.skill` and `invocation.mode` for the current catalog.
+`builder` retains the legacy value so existing executors do not lose their contract.
+New executors dispatch through `invocation`; migrate an existing executor explicitly.
+A null skill denotes the local template-copy operation. ROM deck preparation also
+names `source_workflow`; its estimate is an input to deck rendering, not permission
+to invent figures. The artifact format, scope, dependencies and gate requirements
+remain unchanged. An invocation route does not establish that a host has installed
+or accepted the target package.

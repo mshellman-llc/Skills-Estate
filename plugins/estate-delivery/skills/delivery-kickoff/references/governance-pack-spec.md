@@ -1,14 +1,14 @@
 # Governance pack spec
 
 Three artifacts, created once at Mobilize, stewarded for the rest of the engagement by
-estate-delivery-status. This skill seeds them; it does not run them. Everything here exists so
+delivery-status. This skill seeds them; it does not run them. Everything here exists so
 that downstream stewardship is mechanical: stable IDs, fixed columns, append-only history.
 
 Templates: `assets/raid-log-template.md`, `assets/decision-log-template.md`,
 `assets/status-report-template.md`. Fill them; do not restructure them. A steward skill parsing
 these files depends on the column sets staying put.
 
-## Stable ID conventions (shared contract with estate-delivery-status)
+## Stable ID conventions (shared contract with delivery-status)
 
 - RAID log: `R-###` risks, `A-###` assumptions, `I-###` issues, `D-###` dependencies.
 - Decision log: `DEC-###`. DEC rather than D, so decisions never collide with dependencies.
@@ -37,9 +37,9 @@ The RAID log starts populated, not empty. Seed from, in order:
 3. **SOW assumptions.** Volumetric and dependency assumptions in the SOW (Exhibit A, basis of
    estimate) become A items so their invalidation is noticed, not discovered.
 4. **Charter flagged deltas.** Each F-### delta gets a companion R item if unresolved at seeding.
-5. **Maturity-gap capabilities.** If the engagement touches a maturity-gap capability (CPQ and
-   Billing amendments, ERP integrations, RCA migrations, DRO, UBB, CLM), seed an R item raising
-   the oversight level, per the confidence tiers.
+5. **Evidenced capability gaps.** Carry the supplied handoff or project risk profile's
+   capability gaps into R items with the source, owner, and agreed oversight. Do not import
+   a former organization's confidence tiers or infer a gap from a product name.
 
 Every seeded item cites its source (handoff section, SOW clause, transcript id). Do not invent
 risks to make the log look thorough; a padded RAID log trains the client to skim it.

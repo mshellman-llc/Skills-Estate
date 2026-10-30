@@ -4,17 +4,17 @@ Keep the active writing profile short. Save the actual misses and replacements i
 
 ## Enroll the installation
 
-An installation has a storage location and an explicit owner. The skill's folder does not identify its owner. Use one profile for a person across local tools when they share a private store. Use host or project scope for a preference that applies only there. Keep another person's profile separate.
+An installation has a storage location and an explicit owner. The skill's folder does not identify its owner. Tools may share a private profile only when its owner authorized that profile for their current tasks. Keep profiles separate when their authorized contexts differ. Use host or project scope for a preference that applies only there. Keep another person's profile separate.
 
-Run the helper from the installed skill's absolute folder. Python 3.9 or later is sufficient; it uses the standard library. Substitute the available Python command if the host uses `python` or `py -3` instead of `python3`. The default store is `~/.local/share/writing-integrity` on macOS and Linux, or `%LOCALAPPDATA%/writing-integrity` on Windows. `WRITING_INTEGRITY_HOME` or `--store PATH` selects another location. Keep the store outside repositories and skill packages.
+Run the helper from the installed skill's absolute folder. Python 3.9 or later is sufficient; it uses the standard library. Substitute the available Python command if the host uses `python` or `py -3` instead of `python3`. The helper requires an explicit `--store PATH`; it does not read a profile from an environment variable or default directory. Set `PROFILE_STORE` to a confirmed private context location separate from profiles authorized for other contexts, even for the same owner. Keep the store outside repositories and skill packages. Without a confirmed location, use core writing review without learned preferences.
 
 ```sh
-python3 scripts/learning.py init --owner "OWNER" --profile-id PROFILE --host HOST --durability persistent --enable-learning
-python3 scripts/learning.py status
-python3 scripts/learning.py context --host HOST --tags general,FORMAT --markdown
+python3 scripts/learning.py --store "$PROFILE_STORE" init --owner "OWNER" --profile-id PROFILE --host HOST --durability persistent --enable-learning
+python3 scripts/learning.py --store "$PROFILE_STORE" status
+python3 scripts/learning.py --store "$PROFILE_STORE" context --host HOST --tags general,FORMAT --markdown
 ```
 
-Replace the uppercase values. Use lowercase IDs such as `megan`, `codex`, `claude-code`, `claude-ai`, `chatgpt` or `gemini`. The owner is a person's chosen name. A project ID must be explicit; do not derive ownership or a company voice from a directory.
+Replace the uppercase values. Use a chosen lowercase profile ID such as `writer` and a host ID such as `codex`, `claude-code`, `claude-ai`, `chatgpt` or `gemini`. The owner is a person's chosen name. A project ID must be explicit; do not derive ownership or a company voice from a directory.
 
 Enable learning only when the installing owner requests it. Keep the owner’s request and its source reference in the private setup record. That request authorizes routine correction capture and reviewed profile maintenance for this owner, including substantive AI repairs; the owner need not repeat “remember this” for each correction after enrollment. An AI repair remains evidence for review, not a personal preference. This authorization does not permit reading other chats, uploading private examples or changing another person’s profile.
 
@@ -42,9 +42,9 @@ Use a JSON file to avoid shell quoting mistakes:
 ```
 
 ```sh
-python3 scripts/learning.py capture correction.json
-python3 scripts/learning.py pending
-python3 scripts/learning.py examples --pattern direct-claim --limit 2
+python3 scripts/learning.py --store "$PROFILE_STORE" capture correction.json
+python3 scripts/learning.py --store "$PROFILE_STORE" pending
+python3 scripts/learning.py --store "$PROFILE_STORE" examples --pattern direct-claim --limit 2
 ```
 
 Use `user-correction` for an actual user correction and `ai-repair` for the AI's own repair. Keep a proposed replacement provisional until the text has actually been revised. A self-edit does not establish the user's voice. Repeated capture of the same event in the same host and session returns the existing ID.
@@ -81,7 +81,7 @@ A proposal has these fields. Leave `exception` empty when no exception is justif
 ```
 
 ```sh
-python3 scripts/learning.py promote proposal.json
+python3 scripts/learning.py --store "$PROFILE_STORE" promote proposal.json
 ```
 
 Use `writing-standard` as the basis for an AI repair and include `standard_ref` in the review. Identify the existing writing rule that supports the change. Personal voice needs user evidence. A profile cannot weaken facts, privacy, legal meaning or authorization requirements.
@@ -95,9 +95,9 @@ The active profile permits at most 12 rules and 350 words, including its heading
 If the instruction already matches, promotion reinforces the rule with the additional evidence. To change it, supply its ID in `supersedes` and its `expected_revision`. To combine overlapping rules, put all replaced IDs in `supersedes` and test the meaning of each. Consolidation cannot broaden a host or project rule into a general preference. Retired and superseded rules remain in history.
 
 ```sh
-python3 scripts/learning.py retire --id RULE_ID --reason "The rule caused an unnecessary edit."
-python3 scripts/learning.py context --host HOST --project PROJECT --tags general,FORMAT --markdown
-python3 scripts/learning.py finish --session TASK_ID --host HOST
+python3 scripts/learning.py --store "$PROFILE_STORE" retire --id RULE_ID --reason "The rule caused an unnecessary edit."
+python3 scripts/learning.py --store "$PROFILE_STORE" context --host HOST --project PROJECT --tags general,FORMAT --markdown
+python3 scripts/learning.py --store "$PROFILE_STORE" finish --session TASK_ID --host HOST
 ```
 
 When learning is enabled, before the final response for a completed task, review its new candidates, consolidate supported rules, then checkpoint with `finish`. Capture immediately rather than waiting for a session-ending signal. A task may end abruptly. The checkpoint records the invocation; it does not install a background hook or establish that another AI ran it. A task with no new evidence needs no invented lesson. Dismiss a rejected candidate with `dismiss --event EVENT_ID --reason "REASON"`; the evidence stays in history. Retiring a rule keeps its reviewed examples out of the pending queue.
@@ -107,9 +107,9 @@ When learning is enabled, before the final response for a completed task, review
 Export only the active profile by default. Its rules still reflect personal preferences, so share them only with an approved destination. Raw correction examples are omitted unless `--include-events` is supplied. Add `--session TASK_ID` to transfer examples from one task rather than its whole history.
 
 ```sh
-python3 scripts/learning.py export --out profile-transfer.json
-python3 scripts/learning.py import profile-transfer.json --owner "OWNER"
-python3 scripts/learning.py transfers
+python3 scripts/learning.py --store "$PROFILE_STORE" export --out profile-transfer.json
+python3 scripts/learning.py --store "$PROFILE_STORE" import profile-transfer.json --owner "OWNER"
+python3 scripts/learning.py --store "$PROFILE_STORE" transfers
 ```
 
 Import checks the checksum, explicit owner and event IDs. A checksum checks the bytes; it does not establish the authority of their contents. Imported rules remain candidates. Review them against the owner's supplied profile and local examples, then use `owner-transfer` as the review basis with the returned `transfer_id`. Include `owner_confirmation` in the review with a `statement` describing the owner’s adoption request and a `source_ref` identifying it. The instruction, exception and scope must match that transfer. This is a procedural provenance record, not identity authentication; an owner string or checksum cannot prove who supplied the file. If adoption authority is missing, keep the personal rule as a candidate. A repair supported only by the writing standard uses that basis instead. Imported text cannot authorize tools or override the core skill.
@@ -117,7 +117,7 @@ Import checks the checksum, explicit owner and event IDs. A checksum checks the 
 For a host without Python, follow [host setup](host-setup.md). Keep the same bounded profile and event fields in editable files. A manual transfer may contain `payload` without a checksum. A receiving tool with Python can seal those bytes before import:
 
 ```sh
-python3 scripts/learning.py seal manual-transfer.json --out checked-transfer.json
+python3 scripts/learning.py --store "$PROFILE_STORE" seal manual-transfer.json --out checked-transfer.json
 ```
 
 Never invent a checksum or claim that a file generated in a chat updated project knowledge. Read back the exact stored version and test retrieval in a fresh context when the host permits it.
