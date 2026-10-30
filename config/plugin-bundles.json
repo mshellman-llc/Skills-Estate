@@ -131,6 +131,7 @@
         "beastmode-health",
         "beastmode-reconcile",
         "brand-profile",
+        "build-interactive-explorer",
         "career-application",
         "career-decisions",
         "code-simplify",
@@ -162,7 +163,7 @@
   "release": {
     "shared": {
       "status": "accepted",
-      "reviewed_sha256": "97b9787f9f07eb78d1b31a8792de681fdf217cb7782977985d818ceb894c428f",
+      "reviewed_sha256": "7982e2d6a099bbc5e26edd938711fe867148e989bf336a0ebf1ca29473ec4b1c",
       "evidence": "Owner approval by Megan Shellman on 2026-10-30, renewed for the account-provided install change, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers. Earlier accepted assembly evidence: SE-069 independent Claude review; SE-056/062/067 implementation reviews; 324-test integration verification. Private coordinator records retain raw outputs."
     },
     "modules": {
@@ -194,6 +195,9 @@
         "status": "accepted",
         "reviewed_sha256": "b8673da33d2e50571ddee24b6990d44f9e3081b83ba6053407564beacdf13ef5",
         "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
+      },
+      "build-interactive-explorer": {
+        "status": "pending"
       },
       "business-case": {
         "status": "pending"

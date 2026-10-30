@@ -78,6 +78,14 @@
       "example": "Render this report using the confirmed project brand and inspect the exported pages.",
       "reviewedEntrypointSha256": "9ae85bc5d1df0e0f8a92e714dc03e18d468a0deb540edbac8c6cd716226db259"
     },
+    "build-interactive-explorer": {
+      "what": "Build an interactive explorer website from source material, with paths, clickable stages, expandable detail and optional roadmaps.",
+      "when": "Source material needs a clickable explanation such as a solution explorer, research hub, process guide or journey view.",
+      "inputs": "The topic, its sources, and the intended audience and destination.",
+      "outputs": "A static explorer site generated from validated content JSON.",
+      "example": "Turn these discovery notes into an interactive explorer with seller and enterprise paths and a delivery roadmap.",
+      "reviewedEntrypointSha256": "b041ce70f2019c9f3c09efd34536ca30f902fe88d61d13ba857a7d90fc2d69ee"
+    },
     "business-case": {
       "what": "Build the case for an investment decision.",
       "when": "An approver needs to decide whether to fund an initiative.",
