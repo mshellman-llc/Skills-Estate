@@ -1,5 +1,8 @@
 #!/bin/sh
 set -eu
 cd "$(git rev-parse --show-toplevel)"
+# Tests create independent Git repositories. Git exports repository-local
+# variables to hooks; retaining them redirects those fixtures into this repo.
+unset $(git rev-parse --local-env-vars)
 python3 tools/estate.py validate
 python3 tools/run_tests.py --report .local/pre-push-tests.json
