@@ -24,7 +24,7 @@ Keep proposals separate from what a customer said. Preserve contradictory situat
 
 ## Showing evidence
 
-Record the basis for every job, moment and criterion: the interview, ticket set or record it came from, or the reasoning behind a hypothesis. Show it as a short reference, such as a superscript number, that points to one evidence list at the end. Do not print "hypothesis", "reported" or a source name beside every statement; repeated labels bury the framing. When a whole set is hypothetical, say so once at the top of the list and once in the readout.
+Record the basis for every job, moment and criterion: the interview, ticket set or record it came from, or the reasoning behind a hypothesis. Show it as a short reference, such as a superscript number, that points to one evidence list at the end. Do not print "hypothesis", "reported" or a source name beside every statement; repeated labels bury the framing. When a whole set is hypothetical, say so once at the top of the list and once in the readout. For a page or artifact, build the readout from the roadmap components so the numbers, layout and brand stay consistent: see [Rendering with roadmap components](references/rendering-with-roadmap-components.md).
 
 ## Feature lists, persona theater, and job framing
 
@@ -105,3 +105,4 @@ Return the job framing that would change a decision, the decision implications, 
 - [Applying JTBD to prioritization](references/applying-jtbd-to-prioritization.md): prioritizing candidates by job.
 - [Applying JTBD to positioning](references/applying-jtbd-to-positioning.md): job-led versus feature-led positioning.
 - [Common JTBD failures](references/common-jtbd-failures.md): eleven patterns with diagnoses and cures.
+- [Rendering with roadmap components](references/rendering-with-roadmap-components.md): which component carries each output, evidence numbers, and the single-file build.

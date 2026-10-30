@@ -9,7 +9,7 @@ import re
 import sys
 
 HERE=Path(__file__).resolve().parent
-from brand_runtime import apply_profile
+from brand_runtime import apply_profile, roadmap_assets
 
 
 def require_text(value, label):
@@ -147,7 +147,8 @@ def main():
         template=(HERE.parent/'templates/proposal.html').read_text()
         # JSON must not terminate its script element or become executable markup.
         encoded=json.dumps(data,ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
-        html=template.replace('__PROPOSAL_DATA__',encoded)
+        kit=roadmap_assets(str(args.profile) if args.profile else None)
+        html=template.replace('__PROPOSAL_DATA__',encoded).replace('__RK_CSS__',kit['css']).replace('__RK_JS__',kit['js'])
         html,brand=apply_profile(html,str(args.profile) if args.profile else None)
         args.output.parent.mkdir(parents=True,exist_ok=True)
         args.output.write_text(html)

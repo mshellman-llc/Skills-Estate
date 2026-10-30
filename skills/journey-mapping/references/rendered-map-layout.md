@@ -1,6 +1,6 @@
 # Rendered map layout
 
-A rendered journey map puts the journey map and the service blueprint on one board, so a reader can follow each phase from the actor’s experience to the staff and systems supporting it. Friction callouts sit below the board; the separate opportunity map retains owners, dependencies, expected outcomes and measures. [The HTML starter](../assets/journey-map.html) implements this layout from one data object.
+A rendered journey map puts the journey map and the service blueprint on one board, so a reader can follow each phase from the actor’s experience to the staff and systems supporting it. Friction callouts sit below the board. The opportunity map follows as a board of cards that keep owners, dependencies, expected outcomes and measures. [The HTML starter](../assets/journey-map.html) implements this layout from one data object.
 
 ## Page order
 
@@ -15,6 +15,14 @@ An evidence list follows the note. Row labels and feeling cells carry a small re
 The friction section closes the page. Critical friction includes the troughs in the emotional curve. Each supported trough in the emotional curve can have a card with the phase number, a one-line finding, and one or two sentences on the cause, including a number from the record where one exists (for example, "5 of 35 playbooks are published" or "outcomes sit at 0").
 
 Operational friction outside a trough can also have a card; do not change an emotion score to fit a finding. The sample values are illustrative and are labeled as such.
+
+## Opportunity map
+
+`opportunityMap` is optional. When present, the page ends with the opportunity map drawn by the estate's roadmap components (`roadmap-artifacts`), in columns for quick wins, strategic bets, cross-team gaps and front-to-back disconnects. Only columns with an opportunity appear.
+
+Each opportunity has `phase` (the phase number of the friction it addresses), `kind` (`quick win`, `strategic bet`, `cross-team gap` or `disconnect`), `title`, `outcome` and `measure`, plus `basis` (observed, reported or hypothesis) and `source`. `intervention`, `dependsOn`, `effort` and `owner` are optional; an owner of `"TBD"` shows an empty owner slot. The basis and source go into the evidence list once, and each card carries the reference number, the same way the board rows do. Effort is a label, never a price.
+
+Keep the prioritized Markdown opportunity map in the narrative when the reader needs the full reasoning; the board shows the decision view.
 
 ## Board rows
 
@@ -53,19 +61,12 @@ Every phase column has a value or an intentional blank in each row. When scores 
 
 Author the map data as JSON, then embed that object in the HTML starter. Rebuild the HTML from the JSON after an edit. Do not maintain a JavaScript object and convert it back to JSON with regular expressions; that can change quotes or leave the two versions inconsistent.
 
-The following local build preserves the starter's rendering logic. Replace `STARTER` with the installed asset path and run it in the output folder. It escapes HTML-opening characters inside JSON so a quoted source cannot close the script element.
+Build the page with the packaged script. It replaces the starter's `MAP` object with the JSON, escapes HTML-opening characters so a quoted source cannot close the script element, and inlines the roadmap components so the page stays one file with no network requests. Run it from the skill directory; existing outputs are refused.
 
-```python
-import json
-from pathlib import Path
-
-starter = Path(STARTER).read_text(encoding="utf-8")
-data = json.loads(Path("map-data.json").read_text(encoding="utf-8"))
-start = starter.index("const MAP = {")
-end = starter.index("\n};", start) + 3
-body = json.dumps(data, ensure_ascii=False, indent=2).replace("<", "\\u003c")
-html = starter[:start] + "const MAP = " + body + ";" + starter[end:]
-Path("journey-map.html").write_text(html, encoding="utf-8")
+```bash
+python3 scripts/build_journey_map.py map-data.json --output attempt-001/journey-map.html
 ```
+
+The starter opened on its own renders the opportunity map as a numbered list, because the components are added only by the build.
 
 Open the rebuilt HTML and check its visible errors, qualitative feelings, blueprint layers and opportunity text against the JSON and narrative. A source edit is not proof that the rendered output changed.

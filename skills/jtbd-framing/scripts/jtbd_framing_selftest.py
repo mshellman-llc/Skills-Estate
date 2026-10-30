@@ -51,7 +51,7 @@ expect("license file present", (SKILL / "LICENSE").exists(), True)
 print()
 cited = set(re.findall(r"\]\(references/([a-z0-9-]+\.md)\)", text))
 present = {f.name for f in REFDIR.glob("*.md")}
-expect("eight references present", len(present), 8)
+expect("nine references present", len(present), 9)
 expect("every cited reference exists", sorted(cited - present), [])
 expect("no orphaned references", sorted(present - cited), [])
 expect("no stub references", [f.name for f in REFDIR.glob("*.md") if f.stat().st_size < 4000], [])
@@ -70,6 +70,7 @@ has("requires jobs come from data", r"Jobs come from data")
 has("marks hypotheses instead of fabricating", r"marked as hypotheses")
 has("shows evidence as references, not repeated labels", r"## Showing evidence.{0,600}evidence list")
 has("links job framing to journey-mapping", r"`journey-mapping`")
+has("renders pages with the roadmap components", r"references/rendering-with-roadmap-components\.md")
 for term in ("situation", "motivation", "outcome", "struggling moment",
              "hire", "fire", "functional", "emotional", "social"):
     if term not in text.lower():

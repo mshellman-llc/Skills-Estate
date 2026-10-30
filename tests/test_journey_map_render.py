@@ -40,8 +40,10 @@ const {chromium} = require('playwright');
   assert.equal(await page.locator('[role=alert]').count(),0);
   assert.equal(await page.locator('.curve.hyp').count(),1);
   assert.equal(await page.locator('.hypothesis, .basis-tag').count(),0, 'Evidence is referenced, not labelled in every cell');
-  assert.deepEqual(await page.locator('#evidence li').allTextContents(),['Thoughts: Hypothesis','Pain points: Hypothesis']);
+  assert.deepEqual(await page.locator('#evidence li').allTextContents(),['Thoughts: Hypothesis','Pain points: Hypothesis','Opportunity: Hypothesis · Synthetic example']);
   assert.equal(await page.locator('#grid .ref').count(),2);
+  assert.equal(await page.locator('#opp-section .opp-list li').count(),3, 'Without the inlined components the opportunity map is a list');
+  assert.equal(await page.locator('#opp-section .ref').count(),3);
   const order=await page.locator('#grid > .lab, #grid > .vis').allTextContents();
   assert.deepEqual(order.slice(-5),['Front-stage','Line of visibility','Back-stage','Line of internal interaction','Supporting']);
   assert.equal(await page.locator('.card').count(),3);
@@ -60,7 +62,7 @@ const {chromium} = require('playwright');
   results.push({case:'mobile-scroll',passed:true});
   await render('evidence','MAP.emotionBasis="evidence"; MAP.rows[2].basis="reported"; MAP.rows[3].basis="observed";');
   assert.equal(await page.locator('.curve.hyp').count(),0);
-  assert.deepEqual(await page.locator('#evidence li').allTextContents(),['Thoughts: Reported','Pain points: Observed']);
+  assert.deepEqual(await page.locator('#evidence li').allTextContents(),['Thoughts: Reported','Pain points: Observed','Opportunity: Hypothesis · Synthetic example']);
   assert.equal(await page.locator('.curve').count(),1);
   results.push({case:'evidence',passed:true});
   await render('unknown','MAP.emotion=null; MAP.emotionBasis="not captured"; MAP.blueprint[1].cells[0]=null; MAP.rows[2].cells[0]=null;');
@@ -68,7 +70,7 @@ const {chromium} = require('playwright');
   assert.equal(await page.locator('.curve').count(),0);
   assert.match(await page.locator('.emotion').innerText(),/Not captured/);
   assert.match(await page.locator('#grid').innerText(),/Not captured/);
-  assert.equal(await page.locator('#evidence li').count(),2);
+  assert.equal(await page.locator('#evidence li').count(),3);
   const missingCells = await page.locator('#grid .cell').evaluateAll(cells => cells.filter(c => c.textContent === 'Not captured').length);
   assert.ok(missingCells >= 2, 'Missing values retain a single visible label');
   assert.equal(await page.locator('#evidence').innerText().then(t => /not captured/i.test(t)),false);
@@ -153,6 +155,9 @@ const {chromium} = require('playwright');
    ['uncaptured-with-scores','MAP.emotionBasis="not captured";','Use null'],
    ['missing-row-basis','delete MAP.rows[2].basis;','own evidence basis'],
    ['bad-phase','MAP.friction[0].phase="99";','valid phase'],
+   ['bad-opportunity-kind','MAP.opportunityMap[0].kind="idea";','valid phase, kind'],
+   ['unsourced-opportunity','delete MAP.opportunityMap[0].source;','valid phase, kind'],
+   ['opportunity-without-measure','MAP.opportunityMap[1].measure=" ";','valid phase, kind'],
   ]) {
    await render(name,mutation);
    assert.ok((await page.locator('[role=alert]').innerText()).includes(expected));
@@ -175,12 +180,13 @@ const {chromium} = require('playwright');
                     'feeling-text-escaped', 'boundaries', 'short-feelings', 'long-feelings',
                     'null-feelings', 'nonobject-feeling', 'blank-feeling-source', 'unbased-feeling',
                     'blank-feeling', 'invalid-feeling-basis', 'short-row', 'long-row', 'out-of-range',
-                    'missing-emotion', 'uncaptured-with-scores', 'missing-row-basis', 'bad-phase'}
+                    'missing-emotion', 'uncaptured-with-scores', 'missing-row-basis', 'bad-phase',
+                    'bad-opportunity-kind', 'unsourced-opportunity', 'opportunity-without-measure'}
         self.assertTrue(expected <= {case['case'] for case in cases})
 
-    def test_documented_json_rebuild_preserves_data_and_prevents_script_breakout(self):
+    def test_json_build_preserves_data_inlines_components_and_prevents_script_breakout(self):
         layout = (ROOT / 'skills/journey-mapping/references/rendered-map-layout.md').read_text()
-        code = re.search(r'```python\n(.*?)\n```', layout, re.S)[1]
+        self.assertIn('python3 scripts/build_journey_map.py map-data.json --output', layout)
         data = {'eyebrow': 'Synthetic test', 'title': '</script><img src=x onerror=alert(1)>',
                 'lead': 'Source text must remain text.', 'phases': ['Receive'],
                 'emotion': None, 'emotionBasis': 'not captured', 'basisNote': 'Synthetic data only.',
@@ -188,12 +194,15 @@ const {chromium} = require('playwright');
                          if label in ('Thoughts', 'Pain points') else {})}
                          for label in ['Step and touchpoint', 'Goal', 'Thoughts', 'Pain points', 'Opportunities']],
                 'blueprint': [{'label': label, 'cells': [None]}
-                              for label in ['Front-stage', 'Back-stage', 'Supporting']], 'friction': []}
+                              for label in ['Front-stage', 'Back-stage', 'Supporting']], 'friction': [],
+                'opportunityMap': [{'phase': '01', 'kind': 'quick win', 'title': '</script>Route on arrival',
+                                    'outcome': 'Cases reach an owner', 'measure': 'Minutes to first owner',
+                                    'basis': 'hypothesis', 'source': 'Synthetic test'}]}
         with tempfile.TemporaryDirectory() as folder:
             base = Path(folder)
             (base/'map-data.json').write_text(json.dumps(data))
-            starter = ROOT/'skills/journey-mapping/assets/journey-map.html'
-            build = subprocess.run([sys.executable, '-c', 'STARTER = '+repr(str(starter))+'\n'+code],
+            build = subprocess.run([sys.executable, str(ROOT/'skills/journey-mapping/scripts/build_journey_map.py'),
+                                    'map-data.json', '--output', 'journey-map.html'],
                                    cwd=base, capture_output=True, text=True)
             self.assertEqual(build.returncode, 0, build.stderr)
             html = (base/'journey-map.html').read_text()
@@ -206,12 +215,18 @@ const {chromium}=require('playwright'),assert=require('assert/strict'),url=requi
 try {const p=await b.newPage();await p.goto(url.pathToFileURL(process.argv[2]).href);
 assert.equal(await p.locator('[role=alert], img').count(),0);
 assert.equal(await p.locator('h1').innerText(),'</script><img src=x onerror=alert(1)>');
+assert.equal(await p.locator('#opps .rk-card').count(),1);
+assert.equal(await p.locator('#opps .rk-card-title').innerText().then(t=>t.startsWith('</script>Route on arrival')),true);
+assert.equal(await p.locator('#opps .rk-ref').getAttribute('href'),'#ev-1');
 } finally {await b.close();}})().catch(e=>{console.error(e);process.exit(1)});
 """, encoding='utf-8')
             node = os.environ.get('ESTATE_NODE') or shutil.which('node')
             result = subprocess.run([node, str(runner), str(base/'journey-map.html')],
                                     capture_output=True, text=True, env=os.environ.copy())
             self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
+            check = subprocess.run([sys.executable, str(ROOT/'skills/brand-renderer/scripts/brand_check.py'),
+                                    str(base/'journey-map.html')], cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(check.returncode, 0, check.stdout+check.stderr)
 
     def test_neutral_starter_passes_the_selected_profile_check(self):
         result = subprocess.run([sys.executable, str(ROOT/'skills/brand-renderer/scripts/brand_check.py'),
