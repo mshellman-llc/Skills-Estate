@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -218,6 +219,37 @@ class EstateTests(unittest.TestCase):
         estate.build(self.root); estate.install(self.root, self.home)
         self.assertEqual((external / 'SKILL.md').read_text(), 'Account content')
         self.assertTrue(estate.status(self.root, self.home)['external_skill_locations'])
+
+    def account_copy(self, name):
+        synced = self.home / '.claude/skills/synced/account' / name
+        synced.mkdir(parents=True); (synced / 'SKILL.md').write_text('Account copy\n')
+
+    def test_account_skill_is_not_linked_again_into_claude_code(self):
+        self.account_copy('demo')
+        estate.build(self.root); estate.bundle(self.root)
+        estate.install(self.root, self.home)
+        self.assertFalse((self.home / '.claude/skills/demo').exists())
+        self.assertTrue((self.home / '.agents/skills/demo').is_dir())
+        status = estate.status(self.root, self.home)
+        self.assertEqual(status['local']['claude-code']['demo'], 'account-provided')
+        self.assertEqual(status['local']['codex']['demo'], 'linked-current')
+        self.assertTrue(status['ok'])
+
+    def test_reinstall_retires_claude_code_link_once_the_account_has_the_skill(self):
+        estate.build(self.root); estate.bundle(self.root)
+        estate.install(self.root, self.home)
+        self.assertTrue((self.home / '.claude/skills/demo').is_symlink())
+        self.account_copy('demo')
+        self.assertEqual(estate.status(self.root, self.home)['local']['claude-code']['demo'], 'duplicate')
+        self.assertEqual(estate.install(self.root, self.home)['links_changed'], 1)
+        self.assertFalse(os.path.lexists(self.home / '.claude/skills/demo'))
+        self.assertTrue((self.home / '.agents/skills/demo').is_dir())
+        self.assertTrue(estate.status(self.root, self.home)['ok'])
+
+    def test_account_names_replaced_by_packages_are_reported(self):
+        root = Path(__file__).resolve().parents[1]
+        renamed = estate.account_renames(root, {'requirements-capture', 'client-brand', 'journey-mapping', 'docx'})
+        self.assertEqual(renamed, {'client-brand': 'brand-profile', 'requirements-capture': 'requirements-backlog'})
 
     def test_selftest_fixture_paths_are_preserved_without_becoming_dependencies(self):
         (self.root / 'skills/_shared').mkdir()

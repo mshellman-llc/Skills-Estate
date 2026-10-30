@@ -162,8 +162,8 @@
   "release": {
     "shared": {
       "status": "accepted",
-      "reviewed_sha256": "559034ff3240fb26941d597233337b0a21806296c8781012a5c6359e105a47bd",
-      "evidence": "Owner approval by Megan Shellman on 2026-10-30, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers. Earlier accepted assembly evidence: SE-069 independent Claude review; SE-056/062/067 implementation reviews; 324-test integration verification. Private coordinator records retain raw outputs."
+      "reviewed_sha256": "97b9787f9f07eb78d1b31a8792de681fdf217cb7782977985d818ceb894c428f",
+      "evidence": "Owner approval by Megan Shellman on 2026-10-30, renewed for the account-provided install change, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers. Earlier accepted assembly evidence: SE-069 independent Claude review; SE-056/062/067 implementation reviews; 324-test integration verification. Private coordinator records retain raw outputs."
     },
     "modules": {
       "accessibility-audit": {

@@ -174,7 +174,8 @@ def linked_inventory(home, repository, links, tree_hash):
     return versions, packages
 
 
-def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, preserve_existing=False, links=None):
+def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, preserve_existing=False, links=None,
+             account_provided=()):
     root, home = Path(root).resolve(), Path(home).absolute()
     folder, record = load(home, release_id, tree_hash)
     if record['repository'] != str(root):
@@ -205,6 +206,9 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, 
         for destination, target in (previous or {}).get('links', {}).items():
             if Path(target).name in record['packages']:
                 desired[destination] = str(folder / 'skills' / Path(target).name)
+    # Claude Code already reads these from the Claude account; a local link would list them twice.
+    for name in account_provided:
+        desired.pop(str(home / '.claude/skills' / name), None)
     pointer = home / '.config/skills-estate/repository'
     desired[str(pointer)] = str(root)
     versions, _ = linked_inventory(home, root, desired, tree_hash)
