@@ -12,6 +12,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | --- | --- | --- |
 | `call-prep` | [call-prep](../../skills/call-prep/SKILL.md) |  |
 | `discovery` | [discovery-synthesis](../../skills/discovery-synthesis/SKILL.md) | [maintain pursuit findings](../../skills/discovery-brief/SKILL.md) |
+| `jtbd-framing` | [jtbd-framing](../../skills/jtbd-framing/SKILL.md) |  |
 | `offering-fit` | [playbook-fit-router](../../skills/playbook-fit-router/SKILL.md) |  |
 | `sales-process-mapping` | [sales-process-mapping](../../skills/sales-process-mapping/SKILL.md) | [review a sales journey or demo](../../skills/sales-journey-critique/SKILL.md) |
 

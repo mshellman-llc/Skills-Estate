@@ -10,11 +10,10 @@
         "call-prep",
         "deck-builder",
         "discovery",
+        "jtbd-framing",
         "sales-process-mapping"
       ],
-      "internal": [
-        "jtbd-framing"
-      ],
+      "internal": [],
       "opt_in": false,
       "router_source": "agents/pursuit-router.md",
       "additional_routes": [
@@ -163,8 +162,8 @@
   "release": {
     "shared": {
       "status": "accepted",
-      "reviewed_sha256": "114f3e32b9d1c55ba1f7c49cc858c18fda96b3cc6bebc9f62163f619b417e4de",
-      "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers. Earlier accepted assembly evidence: SE-069 independent Claude review; SE-056/062/067 implementation reviews; 324-test integration verification. Private coordinator records retain raw outputs."
+      "reviewed_sha256": "559034ff3240fb26941d597233337b0a21806296c8781012a5c6359e105a47bd",
+      "evidence": "Owner approval by Megan Shellman on 2026-10-30, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers. Earlier accepted assembly evidence: SE-069 independent Claude review; SE-056/062/067 implementation reviews; 324-test integration verification. Private coordinator records retain raw outputs."
     },
     "modules": {
       "accessibility-audit": {
@@ -291,7 +290,9 @@
         "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
       },
       "jtbd-framing": {
-        "status": "pending"
+        "status": "accepted",
+        "reviewed_sha256": "e22c980eb0cf8bca57ffc4a028676c14f55fe7d4e0fbb3c42d12bf7baf6bcfcb",
+        "evidence": "Owner approval by Megan Shellman on 2026-10-30, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
       },
       "knowledge-hub": {
         "status": "accepted",
