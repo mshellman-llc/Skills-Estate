@@ -1,15 +1,62 @@
-# Skills Estate
+---
+client: "Example Manufacturing"
+client_id: "client-example-manufacturing"
+sf_opportunity_ids: []
+status: active
+as_of: "2026-10-30"
+created_from: "knowledge-hub init"
+---
 
-Author skills in `skills/` and shared rules in `policies/`. `build/` and `dist/` are generated. Never edit installed or account-synced copies as the source of truth.
+# Example Manufacturing: AI Knowledge Hub index
 
-Apply [the shared workflow](policies/workflow.md) and [writing standard](policies/writing.md) while authoring. These policies apply across source modules; portable packages link them once from their top-level entrypoint.
+This file is the map. Any agent or person landing in this folder reads it first.
+An unindexed file does not exist. `CLAUDE.md` is a one-line pointer here so
+Claude Code auto-loads the same content that ChatGPT, Codex, and Cursor read
+natively.
 
-Read the requested skill and its referenced files before changing it. Preserve specialized workflow decisions and supported resources. Keep company identities, private client records, credentials, legal clauses, and payment details out of reusable skills. Branding comes from `policies/brand.md` and the current project's confirmed profile.
+## Session start
 
-Use separate checkouts for concurrent workers and assign one owner per source path. Preserve dirty work. Keep temporary run evidence outside distributable packages; reuse the existing task record rather than creating another folder.
+1. Run the knowledge-hub skill's `hub_workspace.py audit --hub .` before touching
+   any work. It reports sync conflict copies and any commit that a Drive sync race
+   dropped off the branch. A human would never notice a clobbered ref; your agent
+   notices for you. If it reports a blocking finding, run `doctor` and read what
+   it repaired before continuing.
+2. Read `STANDARDS.md` (claim tags, IDs, frontmatter, commit rules) and, for a
+   pursuit, `METHODOLOGY.md` (the seven-phase pipeline).
+3. Read `00-CLIENT.md`, then the one front door for the opportunity or engagement
+   you are working, then at most four task-relevant records.
 
-Use the connected browser for local visual inspection. Do not launch the installed macOS Google Chrome application through Node, Playwright, or a shell, and do not retry that path with elevated permissions after a crash. Repository browser harnesses use `browser_launch_policy.cjs`, which rejects installed Chrome paths and browser channels. Standalone tests may use Playwright's version-matched bundled Chromium only when that execution environment supports it. If browser execution is unavailable, run nonbrowser checks and report visual checks pending. Test the launch guard with mocks; never launch Chrome to verify a refusal. This guard prevents the known launch path; it does not repair macOS application registration.
+## Current direction
 
-Run `python3 tools/estate.py validate`, `python3 tools/run_tests.py --report .local/test-results.json`, and `python3 tools/estate.py sync` before delivery. Report the runner’s deferred integration checks separately. After rebuilding the map, run `--integration generated-map`; run browser and loopback integrations only in a permitted environment. CI runs `--all-integrations` and must pass those checks before release. After source or dependency changes, refresh both candidate build and ZIPs from a stable source tree. If that is blocked, report the stale outputs and exact remaining command; do not describe them as current. `sync` refreshes candidate build and ZIPs only. Git hooks never build or install. Use `status` to inspect source, build, ZIPs, pinned installations, and account gaps. Before rebuilding a checkout with legacy mutable installations, use `pin-installed` to preserve their existing bytes. Everyday promotion requires the reviewed `--expected-source` hash and completed release gates; do not promote a source-restoration candidate. `install` refuses conflicts; `adopt` is a separate reversible migration with backups. Never overwrite `synced/` or platform-managed plugins.
+State the working thesis in three lines and date it. When a pivot lands, rewrite
+this block and move the superseded thesis to the archive table below.
 
-The user owns this private repository. Existing source archives retain their history. Do not add a distribution license or claim authorship of imported material without evidence. Local install checks do not prove account upload, runtime discovery, or deployment.
+- Direction: (not yet stated)
+- Since: 2026-10-30
+- Decided by: (owner)
+
+## Start here, in order
+
+1. `00-CLIENT.md`
+2. `account/` records that exist
+3. `opportunities/<id>/00-OPPORTUNITY.md` or `engagements/<id>/00-ENGAGEMENT.md`
+4. `TODO.md` for who owns what
+
+## File index
+
+| Path | What it is | Owner | Status |
+|---|---|---|---|
+| `STANDARDS.md` | Rules for every file in this hub | knowledge-hub skill | final |
+| `METHODOLOGY.md` | Pursuit research and scoping pipeline | knowledge-hub skill | final |
+| `TODO.md` | Human and agent assignments, updated on handoff | deal owner | live |
+
+## Archive: do not build from these
+
+| Path | Why archived | Superseded by | Date |
+|---|---|---|---|
+
+## Dormancy
+
+A hub untouched for 60 days gets a line here naming the outcome (won, lost,
+paused) so a dead folder is distinguishable from a live one without checking
+file dates. `audit` warns when this is due.

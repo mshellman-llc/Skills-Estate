@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "client": {
+    "clientId": "client-example-manufacturing",
+    "canonicalName": "Example Manufacturing",
+    "aliases": []
+  },
+  "opportunities": [
+    {
+      "opportunityId": "opp-pilot",
+      "name": "opp-pilot",
+      "status": "active"
+    }
+  ],
+  "engagements": [
+    {
+      "engagementId": "eng-pilot",
+      "name": "eng-pilot",
+      "status": "active"
+    }
+  ],
+  "primaryStore": "local",
+  "mirrors": [],
+  "stores": {
+    "local": {
+      "root": ".",
+      "gitRepository": true,
+      "syncedFilesystem": false
+    }
+  },
+  "persistence": {
+    "conflictPolicy": "stop-and-report",
+    "lastVerified": null
+  }
+}
