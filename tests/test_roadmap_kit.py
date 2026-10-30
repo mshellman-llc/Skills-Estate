@@ -80,7 +80,7 @@ class PageTests(unittest.TestCase):
                     data['meta']['mode'] = mode
                     out = Path(folder) / f'{example.stem}-{mode}.html'
                     document, resource, notes = rk_embed.build_page(data)
-                    self.assertEqual(resource['name'], 'Neutral')
+                    self.assertEqual(resource['name'], 'Baseline')
                     self.assertEqual(notes, [])
                     self.assertNotIn('__RK_', document)
                     out.write_text(document)
