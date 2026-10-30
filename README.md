@@ -22,7 +22,7 @@ The restoration candidate contains 82 source modules and 55 proposed task entryp
 
 ## Use the skills
 
-Claude Code and Cowork install the skills as plugins from this repository's marketplace. GitHub Actions rebuilds the `marketplace` branch from every push to `main`, and `.claude-plugin/marketplace.json` on `main` points each plugin there.
+Claude Code and Cowork install the skills as plugins from this repository's marketplace. After every push to `main`, GitHub Actions rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the `plugins-latest` release. Do not edit `plugins/`; it is generated.
 
 - Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, then `/plugin install estate-solutioning@skills-estate` and the other six `estate-` plugins. Turn on auto-update for the marketplace in `/plugin`.
 - Cowork and claude.ai: Customize, Plugins, Add, Add marketplace, `mshellman-llc/Skills-Estate`.

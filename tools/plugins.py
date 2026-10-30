@@ -285,16 +285,11 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
             shutil.rmtree(stage)
 
 
-MARKETPLACE_BRANCH = 'marketplace'
-
-
 def root_marketplace(root):
-    """The marketplace file on main. Claude Code and Cowork read it from the default branch;
-    each plugin comes from the generated `marketplace` branch that CI publishes from main."""
+    """The marketplace file on main. Claude Code and Cowork read it from the default branch.
+    Each plugin is a folder under plugins/ on main, which CI regenerates from every push."""
     settings = config(root)
-    plugins = [{'name': name, 'description': item['description'],
-                'source': {'source': 'git-subdir', 'url': 'mshellman-llc/Skills-Estate',
-                           'path': 'plugins/' + name, 'ref': MARKETPLACE_BRANCH}}
+    plugins = [{'name': name, 'description': item['description'], 'source': './plugins/' + name}
                for name, item in sorted(settings['bundles'].items())]
     return {'name': 'skills-estate', 'owner': {'name': 'Megan Shellman'},
             'metadata': {'description': "Megan's Skills Estate skills, published from main."}, 'plugins': plugins}

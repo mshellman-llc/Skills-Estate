@@ -7,7 +7,7 @@ permissions:
   contents: write
 concurrency:
   group: marketplace
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -20,19 +20,26 @@ jobs:
         run: |
           mkdir -p .local
           python3 tools/plugins.py --root-marketplace
-          git diff --exit-code .claude-plugin/marketplace.json
           python3 tools/plugins.py --owner
-      - name: Publish to the marketplace branch
+      - name: Commit the plugin folders to main
         shell: bash
         run: |
-          out="$(mktemp -d)"
-          cp -R dist/plugins/claude/plugins "$out/plugins"
-          mkdir -p "$out/.claude-plugin"
-          cp dist/plugins/claude/.claude-plugin/marketplace.json "$out/.claude-plugin/marketplace.json"
-          cp dist/plugins/release.json "$out/release.json"
-          printf 'Generated from main at %s by .github/workflows/marketplace.yml. Do not edit; change main instead.\n' "$GITHUB_SHA" > "$out/README.md"
-          cd "$out"
-          git init -q -b marketplace
-          git add -A
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Publish plugins from main ${GITHUB_SHA}"
-          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" marketplace
+          rm -rf plugins
+          cp -R dist/plugins/claude/plugins plugins
+          git add -A plugins .claude-plugin/marketplace.json
+          if git diff --cached --quiet; then echo "Plugins unchanged"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Publish plugins from ${GITHUB_SHA::7} [skip ci]"
+          for attempt in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1
+      - name: Attach plugin ZIPs to the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete plugins-latest --yes --cleanup-tag || true
+          gh release create plugins-latest dist/plugins/claude/*.zip --target main \
+            --title "Plugins (latest)" \
+            --notes "Built from main at ${GITHUB_SHA::7}. To install by hand in Cowork or claude.ai: Customize, Plugins, Add, Upload plugin, then choose each ZIP."
