@@ -39,16 +39,19 @@
     "brand-renderer"
   ],
   "interactive-proposal": [
-    "brand-renderer"
+    "brand-renderer",
+    "roadmap-artifacts"
   ],
   "journey-mapping": [
     "brand-renderer",
     "client-brand",
     "evidence-core",
-    "knowledge-hub"
+    "knowledge-hub",
+    "roadmap-artifacts"
   ],
   "jtbd-framing": [
-    "brand-renderer"
+    "brand-renderer",
+    "roadmap-artifacts"
   ],
   "personal-writing-style-runtime": [
     "brand-renderer"
@@ -131,5 +134,8 @@
   "skill-estate-sync": [
     "skill-creation-walkthrough",
     "cross-platform-skill-release"
+  ],
+  "roadmap-artifacts": [
+    "brand-renderer"
   ]
 }

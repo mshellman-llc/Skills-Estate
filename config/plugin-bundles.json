@@ -35,6 +35,7 @@
         "process-design",
         "project-scoping",
         "requirements-backlog",
+        "roadmap-artifacts",
         "scope-options",
         "solution-brief",
         "statement-of-work",
@@ -327,6 +328,9 @@
         "status": "pending"
       },
       "resume-numbers-and-keywords": {
+        "status": "pending"
+      },
+      "roadmap-artifacts": {
         "status": "pending"
       },
       "rom": {

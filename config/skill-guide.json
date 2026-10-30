@@ -439,6 +439,14 @@
       "reviewedEntrypointSha256": "b6de89cc48380999f979cc15ea6714c2c7ee71d968a7ad4fbddaebce8183d03b",
       "reuseNote": "The method includes Megan’s actual deal figures, career-source names, and dated resume decisions. Other authors need their own evidence and preferences."
     },
+    "roadmap-artifacts": {
+      "what": "Build roadmaps and their parts from one fixed set of interactive components.",
+      "when": "A roadmap, timeline, launch plan or delivery plan is needed as a page or inside another page.",
+      "inputs": "The work to plan, the governing brand profile, and connected sources when the data lives in a tool.",
+      "outputs": "A plan JSON rendered as a branded page, embeddable element or single-file estate page.",
+      "example": "Build a now, next, later roadmap for these initiatives in our confirmed brand.",
+      "reviewedEntrypointSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
     "rom": {
       "what": "Estimate a rough effort or cost range.",
       "when": "A pursuit needs an early estimate and its basis.",

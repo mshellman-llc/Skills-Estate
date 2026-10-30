@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 80 source modules and 52 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 81 source modules and 53 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -13,7 +13,7 @@ This candidate contains 80 source modules and 52 proposed task entrypoints. Cons
 | [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 16 | 12 |
 | [Product and experience](browse/product-and-experience/README.md) | 11 | 10 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
-| [Writing and presentation](browse/writing-and-presentation/README.md) | 8 | 4 |
+| [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
 | [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
 <!-- SKILL-GROUPS:END -->
@@ -54,6 +54,7 @@ This candidate contains 80 source modules and 52 proposed task entrypoints. Cons
 | product-development | [product-development-pathway](skills/product-development-pathway/SKILL.md) |  |
 | project-scoping | [scoping-agent](skills/scoping-agent/SKILL.md) | rom |
 | requirements-backlog | [requirements-capture](skills/requirements-capture/SKILL.md) |  |
+| roadmap-artifacts | [roadmap-artifacts](skills/roadmap-artifacts/SKILL.md) |  |
 | sales-process-mapping | [sales-process-mapping](skills/sales-process-mapping/SKILL.md) | sales-journey-critique |
 | sales-to-delivery-handoff | [s2d-handoff](skills/s2d-handoff/SKILL.md) |  |
 | scope-options | [scope-reference](skills/scope-reference/SKILL.md) | interactive-proposal |
@@ -132,6 +133,7 @@ Each module needs a reviewed capability disposition before release.
 - [quality-gate](skills/quality-gate/SKILL.md)
 - [requirements-capture](skills/requirements-capture/SKILL.md)
 - [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md)
+- [roadmap-artifacts](skills/roadmap-artifacts/SKILL.md)
 - [rom](skills/rom/SKILL.md)
 - [s2d-handoff](skills/s2d-handoff/SKILL.md)
 - [sales-journey-critique](skills/sales-journey-critique/SKILL.md)

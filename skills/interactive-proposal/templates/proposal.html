@@ -16,6 +16,8 @@ section,details{margin:28px 0}.grid{display:grid;grid-template-columns:repeat(2,
 summary{font-weight:700;cursor:pointer;padding:10px 0}.disclosure{padding:12px 0}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--brand-border);vertical-align:top;overflow-wrap:anywhere}
 footer{border-top:1px solid var(--brand-border)}[hidden]{display:none!important}
 @media(max-width:700px){header,main,footer{padding:18px}.grid{grid-template-columns:1fr}.panel{padding:18px}.metric{font-size:30px}}
+.rk-timeline{margin-top:16px}
+__RK_CSS__
 @page{size:Letter;margin:12mm}
 @media print{
   .tabs,.item.out{display:none!important}
@@ -44,7 +46,7 @@ footer{border-top:1px solid var(--brand-border)}[hidden]{display:none!important}
 <div class="tabs" role="tablist" aria-label="Scope version" id="tabs"></div>
 <section class="panel" role="tabpanel" id="version-panel" tabindex="0"><h2 id="version-name"></h2><p id="tagline"></p><p class="metric" id="metric"></p><p id="metric-label"></p><p id="duration"></p><p id="version-source" class="source"></p></section>
 <section><h2>Scope by version</h2><div id="scope" class="grid"></div></section>
-<section id="staffing"><h2>Team and timeline</h2><div class="grid"><div><h3>Team</h3><ul id="team"></ul></div><div><h3>Timeline</h3><ul id="timeline"></ul></div></div></section>
+<section id="staffing"><h2>Team and timeline</h2><div class="grid"><div><h3>Team</h3><ul id="team"></ul></div><div><h3>Timeline</h3><ul id="timeline"></ul></div></div><div class="rk rk-embed rk-timeline" id="timeline-chart" hidden></div></section>
 <section id="architecture-section" hidden><h2>Systems and interfaces</h2><p id="architecture"></p></section>
 <section id="decision-section" hidden><h2>Open decisions</h2><ul id="decisions"></ul></section>
 <section id="phase-zero" hidden><h2 id="phase-name"></h2><p id="phase-description"></p><ul id="phase-outputs"></ul></section>
@@ -54,6 +56,7 @@ footer{border-top:1px solid var(--brand-border)}[hidden]{display:none!important}
 <section class="next-steps"><h2>Next steps</h2><ol id="next-steps"></ol></section>
 </main><footer id="confidentiality"></footer>
 <script type="application/json" id="proposal-data">__PROPOSAL_DATA__</script>
+<script>__RK_JS__</script>
 <script>
 'use strict';
 const data=JSON.parse(document.getElementById('proposal-data').textContent);
@@ -103,10 +106,26 @@ function select(index){
     if(!included)card.append(item('p','To add this work: '+v.not_included.find(b=>b.item===scope.name).route));
     card.append(item('p','Source: '+sourceLabel(scope.source),'source'));return card;
   }));
-  if(priced){list('team',v.team.map(t=>t.role+' · '+t.allocation));list('timeline',v.timeline.map(t=>t.phase+' · weeks '+t.weeks));}
+  if(priced){list('team',v.team.map(t=>t.role+' · '+t.allocation));list('timeline',v.timeline.map(t=>t.phase+' · weeks '+t.weeks));drawTimeline(v);}
   list('assumption-list',v.assumptions);list('boundary-list',v.not_included.length?v.not_included.map(b=>b.item+' · '+b.route):['No additional exclusions are recorded for this version.']);
   const rows=priced?[[amount,data.meta.quote_number+' · versions['+v.key+'].total'],[String(v.duration_weeks)+' weeks',data.meta.quote_number+' · versions['+v.key+'].duration_weeks'],...v.team.map((t,i)=>[t.role+': '+t.allocation,data.meta.quote_number+' · versions['+v.key+'].team['+i+']']),...v.timeline.map((t,i)=>[t.phase+': '+t.weeks,data.meta.quote_number+' · versions['+v.key+'].timeline['+i+']'])]:[[String(v.metric)+' '+v.metric_label,'Distinct included scope IDs: '+v._included_ids.join(', ')],['Price, team and duration absent','No confirmed quote']];
   byId('audit').replaceChildren(...rows.map(row=>{const tr=document.createElement('tr');tr.append(...row.map(cell=>item('td',cell)));return tr;}));
+}
+// Quoted phases on a relative week axis. Week numbers come from the quote's weeks field; the
+// placeholder dates only position bars. A phase whose weeks are not "N" or "N-M" keeps the list alone.
+function drawTimeline(v){
+  const chart=byId('timeline-chart'),DAY=86400000,base=Date.UTC(2001,0,1);
+  const iso=t=>new Date(t).toISOString().slice(0,10);
+  const spans=v.timeline.map(t=>String(t.weeks).trim().match(/^(\d+)(?:\s*[-\u2013]\s*(\d+))?$/));
+  if(!window.RoadmapKit||spans.some(m=>!m||Number(m[1])<1||Number(m[2]||m[1])<Number(m[1]))){chart.hidden=true;return;}
+  const last=Math.max(...spans.map(m=>Number(m[2]||m[1])));
+  const plan={kit:1,id:'proposal-'+v.key,persist:false,meta:{title:v.name+' timeline'},
+    legend:{items:v.timeline.map((t,i)=>({key:'p'+i,label:t.phase,c:i%6+1}))},
+    blocks:[{type:'timeline',relative:'week',labelHeader:'Phase',start:iso(base),end:iso(base+(last*7-1)*DAY),unitWidth:last>12?48:68,
+      rows:v.timeline.map((t,i)=>({id:'p'+i,label:t.phase,group:'p'+i,start:iso(base+(Number(spans[i][1])-1)*7*DAY),end:iso(base+(Number(spans[i][2]||spans[i][1])*7-1)*DAY)}))}]};
+  chart.hidden=false;
+  RoadmapKit.mount(plan,chart,{embed:true,live:false,parts:['blocks']});
+  byId('timeline').closest('div').hidden=true;
 }
 select(0);
 let disclosureState;

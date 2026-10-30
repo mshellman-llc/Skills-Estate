@@ -179,6 +179,11 @@
       "pack": "core",
       "modes": {}
     },
+    "roadmap-artifacts": {
+      "source": "roadmap-artifacts",
+      "pack": "core",
+      "modes": {}
+    },
     "sales-process-mapping": {
       "source": "sales-process-mapping",
       "pack": "core",
