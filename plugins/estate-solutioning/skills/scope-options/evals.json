@@ -1,0 +1,40 @@
+{
+  "skill_name": "scope-reference",
+  "evals": [
+    {
+      "id": 1,
+      "name": "explicit-multi-quote-request",
+      "prompt": "Build me a scope reference for Northwind comparing Q-000101 (Starter), Q-000102 (Growth), and Q-000103 (Enterprise). Client-facing.",
+      "expected_output": "Static branded HTML: 3 option cards + one line-item matrix with hours anchor, states validated 1:1 against the three live quotes, prices from timeline snapshots, no per-item dollars, prose gate passed.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "implicit-trigger-no-skill-word",
+      "prompt": "I need a one-pager that shows what's in each tier for the Acme deal side by side so I can walk the client through it.",
+      "expected_output": "Skill triggers despite no 'scope reference' phrase. Resolves Acme quotes, builds the same static side-by-side artifact.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "should-NOT-trigger-interactive",
+      "prompt": "Make me a clickable interactive proposal page for Q-000200 where the prospect can switch between versions.",
+      "expected_output": "This skill should DEFER to interactive-proposal (click-through, version switcher). Correct behavior is NOT to build the static scope reference.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "two-staffing-variants",
+      "prompt": "Scope reference for Contoso, two options (Q-000301, Q-000302), and show both the onshore and nearshore pricing so they can compare.",
+      "expected_output": "Reads each variant as its own snapshot (own hours/weeks/revenue), shows both plans in the static reference and print output, does not assume hours match across variants.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "single-option-no-tiers",
+      "prompt": "Can you make a scope reference for the Globex project? It's just one quote, Q-000400, no tiers.",
+      "expected_output": "Single-option mode: one summary panel (not a card row), matrix retaining included, optional and available items when present (no comparison), same brand + hours anchor + gates. Skill announces single-option mode.",
+      "files": []
+    }
+  ]
+}

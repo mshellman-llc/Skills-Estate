@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "runtimeRoot": "~/Library/Application Support/BeastModeHub/runtime",
+  "receiptIndex": "index.sqlite settings.last_backup and settings.last_restore",
+  "offMacBackupDir": "/Volumes/Meridian/Backups/BeastModeHub",
+  "bridgeMaxAgeSeconds": 900,
+  "skillEntrypoints": [
+    "~/.codex/skills/execution-truth/SKILL.md",
+    "~/.agents/skills/beastmode-health/SKILL.md",
+    "~/.claude/skills/beastmode-health/SKILL.md"
+  ]
+}

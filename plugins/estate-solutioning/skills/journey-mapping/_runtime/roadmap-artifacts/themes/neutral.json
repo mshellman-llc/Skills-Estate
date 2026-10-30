@@ -1,0 +1,17 @@
+{
+  "name": "Neutral default",
+  "status": "confirmed",
+  "source": "Light roles: client-brand skill neutral default. Dark roles, chart palette: dataviz skill references/palette.md (chart chrome, categorical slots 1-6).",
+  "light": { "ground": "#ffffff", "card": "#ffffff", "surface": "#f5f6f7", "border": "#d9dce1", "text": "#1a1a1a", "muted": "#5f6368", "subtle": "#5f6368", "accent": "#2f5d8a", "on_accent": "#ffffff" },
+  "dark": { "ground": "#0d0d0d", "card": "#1a1a19", "surface": "#141413", "border": "#383835", "text": "#f0efec", "muted": "#c3c2b7", "subtle": "#c3c2b7", "accent": "#3987e5", "on_accent": "#0b0b0b" },
+  "categorical": {
+    "light": ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"],
+    "dark": ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181", "#008300"]
+  },
+  "fonts": {
+    "display": { "family": "", "stack": "system-ui, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif" },
+    "body": { "family": "", "stack": "system-ui, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif" },
+    "mono": { "family": "", "stack": "ui-monospace, \"SFMono-Regular\", Menlo, Consolas, monospace" }
+  },
+  "radius": "4px"
+}

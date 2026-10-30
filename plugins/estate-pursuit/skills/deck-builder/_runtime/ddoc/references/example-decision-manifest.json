@@ -1,0 +1,259 @@
+{
+  "mode": "decision",
+  "client": "Northwind Industrial Controls",
+  "title": "Three options, one decision",
+  "date": "2026-08-14",
+  "quote_number": "Q-000101",
+  "quote_snapshot": {
+    "quote.lift_and_shift_fee": 321100,
+    "quote.total_fixed_fee": 450900,
+    "quote.rearchitect_fee": 599900
+  },
+  "options": [
+    {
+      "name": "Lift and shift",
+      "recommended": false,
+      "duration": "12 weeks",
+      "summary": [
+        "Quoting and pricing only.",
+        "One integration in scope."
+      ],
+      "investment": "$321,100"
+    },
+    {
+      "name": "Remediate and migrate",
+      "recommended": true,
+      "duration": "17 weeks",
+      "summary": [
+        "Quoting, pricing, and order management.",
+        "Two integrations in scope.",
+        "Migration of active subscriptions."
+      ],
+      "investment": "$450,900"
+    },
+    {
+      "name": "Re-architect and migrate",
+      "recommended": false,
+      "duration": "24 weeks",
+      "summary": [
+        "Full revenue lifecycle.",
+        "Four integrations in scope."
+      ],
+      "investment": "$599,900"
+    }
+  ],
+  "figures": [
+    {
+      "label": "Lift and shift investment",
+      "value": 321100,
+      "quote_field": "quote.lift_and_shift_fee"
+    },
+    {
+      "label": "Remediate and migrate investment",
+      "value": 450900,
+      "quote_field": "quote.total_fixed_fee"
+    },
+    {
+      "label": "Re-architect and migrate investment",
+      "value": 599900,
+      "quote_field": "quote.rearchitect_fee"
+    }
+  ],
+  "slides": [
+    {
+      "kind": "heard",
+      "title": "What we heard",
+      "items": [
+        {
+          "text": "Quotes take eleven days to leave the building.",
+          "evidence": "client_stated",
+          "source": "R. Alvarez, discovery call 2026-07-08"
+        },
+        {
+          "text": "Pricing lives in a spreadsheet outside the system.",
+          "evidence": "client_stated",
+          "source": "R. Alvarez, discovery call 2026-07-08"
+        }
+      ]
+    },
+    {
+      "kind": "recommendation",
+      "title": "We recommend remediate and migrate",
+      "subtitle": "It closes the quoting delay without taking on the order management rebuild in the same phase.",
+      "bullets": [
+        "Remediate and migrate covers the two systems that produce the eleven day cycle.",
+        "Lift and shift leaves order management untouched, which is where the second delay sits."
+      ]
+    },
+    {
+      "kind": "comparison",
+      "title": "The three options side by side",
+      "label": "Options",
+      "rows": [
+        {
+          "label": "In scope",
+          "values": [
+            "Quote configuration and approval routing.",
+            "Quote configuration, approval routing, and order handoff.",
+            "The full revenue lifecycle through billing."
+          ]
+        },
+        {
+          "label": "Not in scope",
+          "values": [
+            "Order management, available as a later phase.",
+            "Billing configuration, available as a later phase.",
+            "Field service, available as a later phase."
+          ]
+        },
+        {
+          "label": "Assumptions",
+          "values": [
+            "One integration endpoint.",
+            "Two integration endpoints.",
+            "Four integration endpoints."
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "option_block",
+      "option": "Lift and shift",
+      "title": "Lift and shift in detail",
+      "sections": {
+        "In scope": [
+          "Quote configuration and approval routing."
+        ],
+        "Not in scope": [
+          "Order management, available as a later phase."
+        ],
+        "Assumptions": [
+          "One integration endpoint."
+        ],
+        "Timeline": [
+          "Twelve weeks from kickoff."
+        ]
+      }
+    },
+    {
+      "kind": "option_block",
+      "option": "Remediate and migrate",
+      "title": "Remediate and migrate in detail",
+      "sections": {
+        "In scope": [
+          "Quote configuration, approval routing, and order handoff."
+        ],
+        "Not in scope": [
+          "Billing configuration, available as a later phase."
+        ],
+        "Assumptions": [
+          "Two integration endpoints."
+        ],
+        "Timeline": [
+          "Seventeen weeks from kickoff."
+        ]
+      }
+    },
+    {
+      "kind": "option_block",
+      "option": "Re-architect and migrate",
+      "title": "Re-architect and migrate in detail",
+      "sections": {
+        "In scope": [
+          "The full revenue lifecycle through billing."
+        ],
+        "Not in scope": [
+          "Field service, available as a later phase."
+        ],
+        "Assumptions": [
+          "Four integration endpoints."
+        ],
+        "Timeline": [
+          "Twenty four weeks from kickoff."
+        ]
+      }
+    },
+    {
+      "kind": "outside_all",
+      "title": "What sits outside every option",
+      "bullets": [
+        "Data warehouse reporting stays with your team.",
+        "Field service remains out of scope in all three."
+      ],
+      "callout": "Each exclusion above routes to a scoped next step."
+    },
+    {
+      "kind": "timeline",
+      "title": "Where the recommended option spends its time",
+      "phases": [
+        {
+          "name": "Mobilize",
+          "weeks": 1
+        },
+        {
+          "name": "Analyze",
+          "weeks": 3,
+          "milestone": "Inventory gate"
+        },
+        {
+          "name": "Design",
+          "weeks": 3
+        },
+        {
+          "name": "Build",
+          "weeks": 5
+        },
+        {
+          "name": "Validate",
+          "weeks": 3,
+          "milestone": "Cutover gate"
+        },
+        {
+          "name": "Cutover",
+          "weeks": 2
+        }
+      ],
+      "bullets": [
+        "Seventeen weeks for remediate and migrate, gated at Analyze and at cutover.",
+        "The other options run the same shape at twelve and twenty four weeks."
+      ]
+    },
+    {
+      "kind": "need_from_you",
+      "title": "What we need from you",
+      "steps": [
+        {
+          "text": "A sandbox provisioned and credentialed for the delivery team.",
+          "when": "5 days before"
+        },
+        {
+          "text": "A named decision owner with authority to accept deliverables.",
+          "when": "10 days before"
+        },
+        {
+          "text": "Recurring calendar holds for your named stakeholders.",
+          "when": "5 days before"
+        }
+      ]
+    },
+    {
+      "kind": "decision",
+      "title": "Decision and next step",
+      "steps": [
+        {
+          "text": "Confirm an option and the assumptions behind it.",
+          "when": "By Aug 21"
+        },
+        {
+          "text": "We issue the Statement of Work for the selected option.",
+          "when": "Within 3 days"
+        },
+        {
+          "text": "Pre-engagement checklist opens and kickoff is scheduled.",
+          "when": "Sep"
+        }
+      ]
+    }
+  ],
+  "_note": "Illustrative example for the skill. Figures are not a live client quote."
+}

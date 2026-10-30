@@ -1,0 +1,984 @@
+{
+  "title": "Nightly reconciliation: proposed tests",
+  "context": "Synthetic design example",
+  "mode": "reading",
+  "audience": "Finance controller and integration lead",
+  "decision": "Approve sandbox tests of matching and posting recovery.",
+  "thesis": "Before using the service in production, test how it handles lost responses and records that finance must correct.",
+  "sources": {
+    "brief": "Synthetic scenario: test nightly matching in a sandbox. Production posting needs separate approval.",
+    "contract": "Proposed design: keep the original request ID and use it to retrieve the ledger receipt. Confirm that the actual API supports this lookup.",
+    "matching": "Proposed matching rules: hold unresolved account, amount or currency conflicts for finance.",
+    "scope": "Example scope: consume billing exports, reconcile nightly records and submit approved postings. Billing configuration and historical migration are excluded.",
+    "acceptance": "Proposed tests, with the results to save. These are test requirements, not recorded test runs.",
+    "operations": "Proposed stop procedure: stop new postings, check requests already sent, then use the documented manual process."
+  },
+  "slides": [
+    {
+      "title": "Approve sandbox tests before production posting",
+      "lead": "Test whether the service can recover a lost posting response without creating a duplicate entry.",
+      "question": "What decision is needed now?",
+      "reason": "Explain why sandbox testing comes before production approval.",
+      "transition": "Show the lost response that the tests need to reproduce.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "description": "Run the sandbox tests and review their results before deciding whether to use the service in production.",
+          "nodes": [
+            {
+              "id": "inputs",
+              "label": "Prepare the tests",
+              "x": 10,
+              "y": 50,
+              "w": 240,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "validation",
+              "label": "Run sandbox tests",
+              "x": 435,
+              "y": 50,
+              "w": 250,
+              "h": 76,
+              "kind": "emphasis"
+            },
+            {
+              "id": "evidence",
+              "label": "Save test results",
+              "x": 860,
+              "y": 50,
+              "w": 250,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "approval",
+              "label": "Approve production?",
+              "x": 860,
+              "y": 260,
+              "w": 250,
+              "h": 110,
+              "kind": "decision"
+            },
+            {
+              "id": "hold",
+              "label": "Revise and retest",
+              "x": 435,
+              "y": 275,
+              "w": 250,
+              "h": 76,
+              "kind": "process"
+            }
+          ],
+          "edges": [
+            {
+              "from": "inputs",
+              "to": "validation",
+              "label": "Access and sample",
+              "label_x": 340,
+              "label_y": 80,
+              "label_width": 175
+            },
+            {
+              "from": "validation",
+              "to": "evidence",
+              "label": "Test failures",
+              "label_x": 775,
+              "label_y": 80,
+              "label_width": 180
+            },
+            {
+              "from": "evidence",
+              "to": "approval",
+              "label": "Review results",
+              "from_side": "bottom",
+              "to_side": "top",
+              "label_x": 977,
+              "label_y": 207
+            },
+            {
+              "from": "approval",
+              "to": "hold",
+              "label": "Results insufficient",
+              "from_side": "left",
+              "to_side": "right",
+              "label_x": 773,
+              "label_y": 300,
+              "label_width": 180
+            },
+            {
+              "from": "hold",
+              "to": "validation",
+              "label": "Run tests again",
+              "from_side": "left",
+              "to_side": "left",
+              "via": [
+                [
+                  390,
+                  313
+                ],
+                [
+                  390,
+                  88
+                ]
+              ],
+              "label_x": 230,
+              "label_y": 255,
+              "label_width": 280
+            }
+          ],
+          "zones": [],
+          "height": 400,
+          "caption": ""
+        }
+      ],
+      "sources": [
+        "brief"
+      ],
+      "implication": "Approval here covers sandbox tests only."
+    },
+    {
+      "title": "The ledger may accept a posting even when its response is lost",
+      "lead": "The service cannot tell whether the request succeeded until it checks the ledger.",
+      "question": "Why is a blind retry unsafe?",
+      "reason": "Show how the ledger can accept a request while the service misses its response.",
+      "transition": "Explain how to check whether the original request succeeded.",
+      "blocks": [
+        {
+          "type": "sequence",
+          "description": "Illustrative failure: the request is accepted, but the return path fails.",
+          "actors": [
+            {
+              "id": "service",
+              "label": "Reconciliation service"
+            },
+            {
+              "id": "ledger",
+              "label": "Ledger"
+            }
+          ],
+          "events": [
+            {
+              "from": "service",
+              "to": "ledger",
+              "label": "1. Submit request R-104"
+            },
+            {
+              "from": "ledger",
+              "to": "service",
+              "label": "2. Accepted posting J-882; response lost",
+              "lost": true
+            }
+          ],
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "text": "The caller still has R-104. It does not yet know that J-882 exists. Sending a fresh request could duplicate the posting."
+        }
+      ],
+      "sources": [
+        "contract"
+      ]
+    },
+    {
+      "title": "Check for the original receipt before sending the request again",
+      "lead": "Use the same request ID to ask the ledger whether it accepted the posting.",
+      "question": "What evidence makes recovery safe?",
+      "reason": "Keep an unknown result on hold until the original receipt can be found.",
+      "transition": "Next, show what happens when finance data conflicts.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "description": "If the ledger cannot confirm what happened to the request, keep it on hold.",
+          "nodes": [
+            {
+              "id": "lookup",
+              "label": "Look up R-104",
+              "x": 10,
+              "y": 125,
+              "w": 220,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "result",
+              "label": "Receipt found?",
+              "x": 435,
+              "y": 105,
+              "w": 230,
+              "h": 116,
+              "kind": "decision"
+            },
+            {
+              "id": "success",
+              "label": "Record J-882",
+              "x": 860,
+              "y": 35,
+              "w": 250,
+              "h": 76,
+              "kind": "emphasis"
+            },
+            {
+              "id": "hold",
+              "label": "Keep on hold",
+              "x": 860,
+              "y": 275,
+              "w": 250,
+              "h": 76,
+              "kind": "process"
+            }
+          ],
+          "edges": [
+            {
+              "from": "lookup",
+              "to": "result",
+              "label": "Request ID",
+              "label_x": 330,
+              "label_y": 145,
+              "label_width": 190
+            },
+            {
+              "from": "result",
+              "to": "success",
+              "label": "Receipt found",
+              "from_side": "right",
+              "to_side": "left",
+              "via": [
+                [
+                  760,
+                  163
+                ],
+                [
+                  760,
+                  73
+                ]
+              ],
+              "label_x": 770,
+              "label_y": 50,
+              "label_width": 205
+            },
+            {
+              "from": "result",
+              "to": "hold",
+              "label": "Still unknown",
+              "from_side": "right",
+              "to_side": "left",
+              "via": [
+                [
+                  760,
+                  163
+                ],
+                [
+                  760,
+                  313
+                ]
+              ],
+              "label_x": 750,
+              "label_y": 385,
+              "label_width": 330
+            }
+          ],
+          "zones": [],
+          "height": 400,
+          "caption": ""
+        }
+      ],
+      "sources": [
+        "contract"
+      ],
+      "implication": "Confirm that the ledger API supports this lookup. If it does not, change the recovery design."
+    },
+    {
+      "title": "Finance must resolve a conflicting match before it is posted",
+      "lead": "After finance approves a correction, the service runs the record through matching again.",
+      "question": "Where does human judgment enter?",
+      "reason": "Show how finance corrects a record and sends it through matching again.",
+      "transition": "Show the record finance uses for that correction.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "description": "Run matching again after finance corrects a record.",
+          "nodes": [
+            {
+              "id": "snapshot",
+              "label": "Batch snapshot",
+              "x": 20,
+              "y": 72,
+              "w": 220,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "match",
+              "label": "Match approved?",
+              "x": 420,
+              "y": 60,
+              "w": 230,
+              "h": 100,
+              "kind": "decision"
+            },
+            {
+              "id": "post",
+              "label": "Send posting",
+              "x": 875,
+              "y": 72,
+              "w": 220,
+              "h": 76,
+              "kind": "emphasis"
+            },
+            {
+              "id": "owner",
+              "label": "Finance owner",
+              "x": 420,
+              "y": 285,
+              "w": 230,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "history",
+              "label": "Record correction",
+              "x": 875,
+              "y": 285,
+              "w": 220,
+              "h": 76,
+              "kind": "process"
+            }
+          ],
+          "edges": [
+            {
+              "from": "snapshot",
+              "to": "match",
+              "label": "Check record keys",
+              "label_x": 325,
+              "label_y": 95,
+              "label_width": 150
+            },
+            {
+              "from": "match",
+              "to": "post",
+              "label": "Approved",
+              "label_x": 765,
+              "label_y": 95,
+              "label_width": 175
+            },
+            {
+              "from": "match",
+              "to": "owner",
+              "label": "Conflict",
+              "from_side": "bottom",
+              "to_side": "top",
+              "label_x": 535,
+              "label_y": 230
+            },
+            {
+              "from": "owner",
+              "to": "history",
+              "label": "Record the reason",
+              "label_x": 765,
+              "label_y": 307,
+              "label_width": 200
+            },
+            {
+              "from": "history",
+              "to": "match",
+              "label": "Run matching again",
+              "from_side": "bottom",
+              "to_side": "top",
+              "via": [
+                [
+                  985,
+                  390
+                ],
+                [
+                  1115,
+                  390
+                ],
+                [
+                  1115,
+                  12
+                ],
+                [
+                  535,
+                  12
+                ]
+              ],
+              "label_x": 900,
+              "label_y": 34,
+              "label_width": 320
+            }
+          ],
+          "zones": [
+            {
+              "x": 0,
+              "y": 35,
+              "w": 1110,
+              "h": 150,
+              "label": "Service"
+            },
+            {
+              "x": 390,
+              "y": 245,
+              "w": 720,
+              "h": 130,
+              "label": "Finance"
+            }
+          ],
+          "height": 400,
+          "caption": ""
+        }
+      ],
+      "sources": [
+        "matching"
+      ]
+    },
+    {
+      "title": "Show finance what needs correcting",
+      "lead": "The held record identifies the conflicting values, the reviewer and any previous correction.",
+      "question": "What does the reviewer need to act?",
+      "reason": "Show the values and history finance needs to resolve the held record.",
+      "transition": "Locate the held record within the proposed service.",
+      "blocks": [
+        {
+          "type": "specimen",
+          "title": "Held item EX-017",
+          "description": "Proposed fields for a held record.",
+          "fields": [
+            {
+              "label": "Source record",
+              "value": "Batch B-042 · invoice INV-017",
+              "why": "Locate the original input."
+            },
+            {
+              "label": "Conflict",
+              "value": "Currency differs: USD / CAD",
+              "why": "Show both values; do not guess."
+            },
+            {
+              "label": "Owner",
+              "value": "Finance controller",
+              "why": "Identify who approves the correction."
+            },
+            {
+              "label": "Correction",
+              "value": "Awaiting approved mapping",
+              "why": "Keep the item held until resolved."
+            },
+            {
+              "label": "Replay history",
+              "value": "No replay recorded",
+              "why": "Keep the original reason when the record runs again."
+            }
+          ],
+          "caption": ""
+        }
+      ],
+      "sources": [
+        "matching"
+      ]
+    },
+    {
+      "title": "The service matches billing exports and sends approved postings",
+      "lead": "Billing configuration and historical migration are outside the proposed work.",
+      "question": "Which work and interfaces belong to this engagement?",
+      "reason": "Show which records enter the service and which requests leave it.",
+      "transition": "Use that scope to choose the tests.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "description": "The service reads billing exports and exchanges posting requests and receipts with the ledger.",
+          "nodes": [
+            {
+              "id": "billing",
+              "label": "Billing export",
+              "x": 10,
+              "y": 75,
+              "w": 210,
+              "h": 76,
+              "kind": "external"
+            },
+            {
+              "id": "reader",
+              "label": "Batch reader",
+              "x": 310,
+              "y": 75,
+              "w": 220,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "match",
+              "label": "Match and hold",
+              "x": 310,
+              "y": 270,
+              "w": 220,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "adapter",
+              "label": "Posting adapter",
+              "x": 660,
+              "y": 270,
+              "w": 220,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "ledger",
+              "label": "Ledger API",
+              "x": 900,
+              "y": 75,
+              "w": 210,
+              "h": 76,
+              "kind": "external"
+            }
+          ],
+          "edges": [
+            {
+              "from": "billing",
+              "to": "reader",
+              "label": "Snapshot",
+              "label_x": 265,
+              "label_y": 180,
+              "label_width": 130
+            },
+            {
+              "from": "reader",
+              "to": "match",
+              "label": "Source keys",
+              "from_side": "bottom",
+              "to_side": "top",
+              "label_x": 420,
+              "label_y": 217
+            },
+            {
+              "from": "match",
+              "to": "adapter",
+              "label": "Approved items",
+              "label_x": 595,
+              "label_y": 292,
+              "label_width": 170
+            },
+            {
+              "from": "adapter",
+              "to": "ledger",
+              "label": "Post request",
+              "from_side": "right",
+              "to_side": "bottom",
+              "via": [
+                [
+                  1005,
+                  308
+                ]
+              ],
+              "label_x": 1005,
+              "label_y": 235,
+              "label_width": 195
+            },
+            {
+              "from": "ledger",
+              "to": "adapter",
+              "label": "Receipt",
+              "from_side": "left",
+              "to_side": "top",
+              "via": [
+                [
+                  800,
+                  113
+                ],
+                [
+                  800,
+                  230
+                ],
+                [
+                  770,
+                  230
+                ]
+              ],
+              "label_x": 740,
+              "label_y": 185,
+              "label_width": 150
+            }
+          ],
+          "zones": [
+            {
+              "x": 280,
+              "y": 20,
+              "w": 610,
+              "h": 360,
+              "label": "Proposed service"
+            }
+          ],
+          "height": 400,
+          "caption": ""
+        }
+      ],
+      "sources": [
+        "scope"
+      ]
+    },
+    {
+      "title": "Test lost responses and duplicate batches before going live",
+      "lead": "Check that retries do not create duplicate entries and that finance can correct held records.",
+      "question": "What evidence would count as a pass?",
+      "reason": "Give each test an expected result and a record to save.",
+      "transition": "Explain how to stop posting after the service goes live.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Case",
+            "Expected result",
+            "Save with the test result"
+          ],
+          "rows": [
+            [
+              "Repeat the batch",
+              "No additional posting.",
+              "Posting IDs before and after replay."
+            ],
+            [
+              "Lose the response",
+              "Find the original receipt. Keep the request on hold if its result is unknown.",
+              "Request ID and ledger lookup response."
+            ],
+            [
+              "Conflicting match",
+              "Keep the record on hold for finance.",
+              "Exception with both source values."
+            ],
+            [
+              "Correct and replay",
+              "Retain the reason and approval.",
+              "Correction linked to the record of its rerun."
+            ]
+          ]
+        }
+      ],
+      "sources": [
+        "acceptance"
+      ]
+    },
+    {
+      "title": "Stop new postings, then check requests already sent",
+      "lead": "Before switching to manual processing, find out which requests the ledger accepted.",
+      "question": "What makes the stop path recoverable?",
+      "reason": "Resolve requests already sent before manual processing begins.",
+      "transition": "Finish with the assignments needed to start testing.",
+      "blocks": [
+        {
+          "type": "diagram",
+          "description": "The operating instructions must name who can stop posting and what must be checked before it resumes.",
+          "nodes": [
+            {
+              "id": "authorized",
+              "label": "Posting enabled",
+              "x": 15,
+              "y": 50,
+              "w": 270,
+              "h": 76,
+              "kind": "emphasis"
+            },
+            {
+              "id": "paused",
+              "label": "Stop new postings",
+              "x": 435,
+              "y": 50,
+              "w": 220,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "reconcile",
+              "label": "Check sent requests",
+              "x": 880,
+              "y": 50,
+              "w": 230,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "fallback",
+              "label": "Process manually",
+              "x": 880,
+              "y": 277,
+              "w": 230,
+              "h": 76,
+              "kind": "process"
+            },
+            {
+              "id": "resume",
+              "label": "Resume posting?",
+              "x": 435,
+              "y": 260,
+              "w": 250,
+              "h": 110,
+              "kind": "decision"
+            }
+          ],
+          "edges": [
+            {
+              "from": "authorized",
+              "to": "paused",
+              "label": "Authorized stop",
+              "label_x": 360,
+              "label_y": 72,
+              "label_width": 170
+            },
+            {
+              "from": "paused",
+              "to": "reconcile",
+              "label": "Check requests sent",
+              "label_x": 770,
+              "label_y": 72,
+              "label_width": 210
+            },
+            {
+              "from": "reconcile",
+              "to": "fallback",
+              "label": "Results confirmed",
+              "from_side": "bottom",
+              "to_side": "top",
+              "label_x": 995,
+              "label_y": 220
+            },
+            {
+              "from": "fallback",
+              "to": "resume",
+              "label": "Review results",
+              "from_side": "left",
+              "to_side": "right",
+              "label_x": 765,
+              "label_y": 307,
+              "label_width": 190
+            },
+            {
+              "from": "resume",
+              "to": "authorized",
+              "label": "Approval to resume",
+              "from_side": "left",
+              "to_side": "bottom",
+              "via": [
+                [
+                  150,
+                  315
+                ]
+              ],
+              "label_x": 150,
+              "label_y": 232,
+              "label_width": 250
+            }
+          ],
+          "zones": [],
+          "height": 400
+        }
+      ],
+      "sources": [
+        "operations"
+      ]
+    },
+    {
+      "title": "Assign the test preparation before approving the sandbox work",
+      "question": "What must be decided and assigned next?",
+      "reason": "Assign access, sample data, API checks and test review before the work starts.",
+      "transition": "The reference slides retain the detailed operating requirements.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Preparation",
+            "Owner",
+            "Before testing"
+          ],
+          "rows": [
+            [
+              "Test access",
+              "Platform owner",
+              "Confirm access to the sandbox environments."
+            ],
+            [
+              "Representative batch",
+              "Finance lead",
+              "Supply the sample and expected totals."
+            ],
+            [
+              "Ledger API",
+              "Integration lead",
+              "Check request IDs and receipt lookup."
+            ],
+            [
+              "Test reviewer",
+              "Delivery sponsor",
+              "Name who reviews the results and what counts as a pass."
+            ]
+          ]
+        }
+      ],
+      "sources": [
+        "brief"
+      ],
+      "implication": "Decide whether to allow production posting after reviewing the test results."
+    },
+    {
+      "title": "Reference: keep the original batch and each correction",
+      "lead": "In this example, finance compares two exports and records corrections in a spreadsheet.",
+      "question": "What changes in the daily workflow?",
+      "reason": "Keep the current spreadsheet process and the proposed records visible.",
+      "transition": "The next slide lists the included work and exclusions.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Step",
+            "Current example",
+            "Required record"
+          ],
+          "rows": [
+            [
+              "Export",
+              "Finance retrieves Billing invoices and Ledger entries.",
+              "Dated, complete snapshot with source IDs."
+            ],
+            [
+              "Compare",
+              "An analyst matches order and account keys.",
+              "Approved account, order, currency and amount rules."
+            ],
+            [
+              "Correct",
+              "Finance repeats the comparison after a spreadsheet correction.",
+              "Original conflict, recorded correction and linked replay."
+            ]
+          ]
+        }
+      ],
+      "sources": [
+        "matching"
+      ],
+      "implication": "Reject incomplete batches. The example process has no shared record of reruns."
+    },
+    {
+      "title": "Reference: the service processes completed nightly batches",
+      "lead": "Pricing rules, quote approvals and invoice generation remain in the existing systems.",
+      "question": "Which adjacent requests require another scope decision?",
+      "reason": "Retain the nightly batch limit and the work excluded from the proposal.",
+      "transition": "Then assign the owner for each problem.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Included work",
+            "What the work must cover"
+          ],
+          "rows": [
+            [
+              "Nightly reconciliation",
+              "Process a completed batch; real-time processing is excluded."
+            ],
+            [
+              "Exception queue",
+              "Show the reason, owner and resolution history."
+            ],
+            [
+              "Replay protection",
+              "A repeated batch creates no additional journal entry."
+            ],
+            [
+              "Operational alert",
+              "Notify finance when a batch stalls or held items remain."
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Agree separate work and acceptance criteria for historical invoice migration, customer statements or collections workflows."
+        }
+      ],
+      "sources": [
+        "scope"
+      ]
+    },
+    {
+      "title": "Reference: who handles each problem",
+      "question": "Who acts on each kind of exception?",
+      "reason": "Name who fixes each problem and who approves a correction.",
+      "transition": "Finish the reference section with the delivery sequence.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Condition",
+            "Owner",
+            "Required action"
+          ],
+          "rows": [
+            [
+              "Missing account key",
+              "Finance operations",
+              "Correct the source mapping, then replay."
+            ],
+            [
+              "Amount or currency conflict",
+              "Controller",
+              "Approve the correction and record the reason."
+            ],
+            [
+              "Posting timeout",
+              "Integration engineer",
+              "Check for the original receipt as shown on slide 3 before retrying."
+            ],
+            [
+              "Key maps to two accounts",
+              "Finance owner",
+              "Hold the record until its account mapping is approved."
+            ]
+          ]
+        }
+      ],
+      "sources": [
+        "operations"
+      ]
+    },
+    {
+      "title": "Reference: what must happen before go-live",
+      "lead": "Record the last completed batch. Name the engineer responsible for the switch and the person who can stop it.",
+      "question": "What must the delivery team establish before cutover?",
+      "reason": "State what each delivery phase must produce before go-live.",
+      "transition": "The appendix describes the synthetic scenario sources.",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Phase",
+            "Result required before advancing"
+          ],
+          "rows": [
+            [
+              "Map",
+              "Finance signs the key mapping and exception categories; the controller approves tolerances and ownership."
+            ],
+            [
+              "Build",
+              "Engineering implements the reader, matcher and adapter in a sandbox."
+            ],
+            [
+              "Replay",
+              "The team compares a complete sample with expected totals and runs the failure tests."
+            ],
+            [
+              "Decide",
+              "The controller reviews the test results and decides whether to go live."
+            ]
+          ]
+        }
+      ],
+      "sources": [
+        "brief"
+      ],
+      "implication": "Keep manual reconciliation available until the controller accepts the results."
+    }
+  ]
+}

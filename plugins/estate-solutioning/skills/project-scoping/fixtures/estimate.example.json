@@ -1,0 +1,91 @@
+{
+  "source": {
+    "reference": "Fictional batch reconciliation brief",
+    "revision": "example-1"
+  },
+  "currency": "USD",
+  "rates": [
+    {
+      "role": "Developer",
+      "rate": "100",
+      "source": "Fictional example rate card, revision 1"
+    },
+    {
+      "role": "Architect",
+      "rate": "150",
+      "source": "Fictional example rate card, revision 1"
+    }
+  ],
+  "items": [
+    {
+      "id": "import",
+      "name": "Batch import",
+      "description": "Import a batch and retain each request ID. Reject duplicate input without creating another posting.",
+      "basis": "Fictional scoped range for import and duplicate handling.",
+      "source": "Example brief, import requirements",
+      "allocations": [
+        {
+          "role": "Developer",
+          "hours": {
+            "low": 20,
+            "expected": 30,
+            "high": 44
+          }
+        },
+        {
+          "role": "Architect",
+          "hours": {
+            "low": 4,
+            "expected": 6,
+            "high": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "name": "Retry and recovery checks",
+      "description": "Check whether the ledger accepted a posting before retrying a request with a missing response.",
+      "basis": "Fictional scoped range for the acceptance and recovery paths.",
+      "source": "Example brief, recovery requirements",
+      "allocations": [
+        {
+          "role": "Developer",
+          "hours": {
+            "low": 8,
+            "expected": 12,
+            "high": 16
+          }
+        },
+        {
+          "role": "Architect",
+          "hours": {
+            "low": 2,
+            "expected": 4,
+            "high": 6
+          }
+        }
+      ]
+    }
+  ],
+  "capacity": [
+    {
+      "role": "Developer",
+      "people": 1,
+      "hours_per_person_week": 30,
+      "availability": "0.5"
+    },
+    {
+      "role": "Architect",
+      "people": 1,
+      "hours_per_person_week": 10,
+      "availability": "0.5"
+    }
+  ],
+  "assumptions": [
+    "The example covers one batch format and one ledger endpoint."
+  ],
+  "exclusions": [
+    "Production deployment."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "kit": 1,
+  "id": "example-tallyroom-gtm-payments",
+  "template": "gtm-launch",
+  "meta": {
+    "eyebrow": ["GTM roadmap", "Tier 1 launch", "L-Day 1 Jun 2027"],
+    "title": "Tallyroom Payments launch plan",
+    "subtitle": "Agency owners who chase late invoices by email.",
+    "northStar": { "label": "Promise", "value": "Get paid in days, not weeks, from the invoice you already send." },
+    "stats": [{ "label": "Success metric", "value": "1,200 accounts with pay link on", "target": "by L+30" }, { "label": "Launch tier", "value": "Tier 1" }],
+    "source": "Example data. Replace with your inputs.",
+    "updated": "2026-10-29"
+  },
+  "legend": {
+    "title": "Function",
+    "items": [
+      { "key": "pmm", "label": "Product marketing", "c": 4 },
+      { "key": "sales", "label": "Sales", "c": 1 },
+      { "key": "sup", "label": "Support", "c": 2 },
+      { "key": "paid", "label": "Paid & lifecycle", "c": 5 }
+    ]
+  },
+  "blocks": [
+    {
+      "type": "matrix",
+      "title": "Phases by function",
+      "columns": [
+        { "id": "pre", "title": "Pre-launch", "subtitle": "L-42 to L-1" },
+        { "id": "week", "title": "Launch week", "subtitle": "L-Day to L+5", "tone": "crit" },
+        { "id": "post", "title": "Post-launch / scale", "subtitle": "L+6 to L+60" }
+      ],
+      "rows": [
+        { "id": "pmm", "label": "Product marketing", "group": "pmm" },
+        { "id": "sales", "label": "Sales", "group": "sales" },
+        { "id": "sup", "label": "Support", "group": "sup" },
+        { "id": "paid", "label": "Paid & lifecycle", "group": "paid" }
+      ],
+      "cards": [
+        { "col": "pre", "row": "pmm", "group": "pmm", "title": "Positioning doc and launch FAQ", "kicker": "L-42", "owner": "TBD" },
+        { "col": "pre", "row": "pmm", "group": "pmm", "title": "Beta customer case study: 19 → 6 days to paid", "kicker": "L-14", "owner": "TBD" },
+        { "col": "pre", "row": "sales", "group": "sales", "title": "Enablement deck and 3-minute demo script", "kicker": "L-21", "owner": "TBD" },
+        { "col": "pre", "row": "sup", "group": "sup", "title": "12 help articles and payout dispute macro", "kicker": "L-10", "owner": "TBD" },
+        { "col": "pre", "row": "paid", "group": "paid", "title": "Waitlist email to 112 accounts who asked", "kicker": "L-7", "owner": "TBD" },
+        { "col": "week", "row": "pmm", "group": "pmm", "title": "Keynote demo at partner conference", "kicker": "L-Day", "owner": "TBD" },
+        { "col": "week", "row": "sales", "group": "sales", "title": "Call top 50 accounts by invoice volume", "kicker": "L+1", "owner": "TBD" },
+        { "col": "week", "row": "sup", "group": "sup", "title": "Extended hours and payout escalation rota", "kicker": "L-Day", "owner": "TBD" },
+        { "col": "week", "row": "paid", "group": "paid", "title": "In-app banner and all-customer email", "kicker": "L-Day", "owner": "TBD" },
+        { "col": "post", "row": "pmm", "group": "pmm", "title": "Webinar: cutting days-to-paid", "kicker": "L+21", "owner": "TBD" },
+        { "col": "post", "row": "sales", "group": "sales", "title": "Payments add-on in annual renewals", "kicker": "L+30", "owner": "TBD" },
+        { "col": "post", "row": "paid", "group": "paid", "title": "Search campaign on 'invoice payment link'", "kicker": "L+14", "owner": "TBD" }
+      ]
+    },
+    {
+      "type": "callouts",
+      "title": "Must not slip",
+      "items": [
+        { "title": "Keynote demo on L-Day", "body": "Owner: Product marketing. The conference slot cannot move.", "tone": "crit" },
+        { "title": "Payout escalation rota", "body": "Owner: Support. First payouts land L+2; a missed dispute costs trust fast.", "tone": "crit" },
+        { "title": "All-customer email", "body": "Owner: Paid & lifecycle. It drives most of the 1,200-account target.", "tone": "warn" }
+      ]
+    }
+  ]
+}

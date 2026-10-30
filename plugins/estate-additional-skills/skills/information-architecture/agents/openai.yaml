@@ -1,0 +1,4 @@
+interface:
+  display_name: "Information architecture"
+  short_description: "Design navigation and test content findability"
+  default_prompt: "Use $information-architecture to review this sitemap and propose a structure."

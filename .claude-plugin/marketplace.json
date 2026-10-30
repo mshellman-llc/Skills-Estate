@@ -1,0 +1,36 @@
+{
+  "name": "skills-estate-private",
+  "owner": {
+    "name": "Skills Estate"
+  },
+  "plugins": [
+    {
+      "name": "estate-additional-skills",
+      "source": "./plugins/estate-additional-skills"
+    },
+    {
+      "name": "estate-commercial",
+      "source": "./plugins/estate-commercial"
+    },
+    {
+      "name": "estate-delivery",
+      "source": "./plugins/estate-delivery"
+    },
+    {
+      "name": "estate-governance",
+      "source": "./plugins/estate-governance"
+    },
+    {
+      "name": "estate-pursuit",
+      "source": "./plugins/estate-pursuit"
+    },
+    {
+      "name": "estate-quality",
+      "source": "./plugins/estate-quality"
+    },
+    {
+      "name": "estate-solutioning",
+      "source": "./plugins/estate-solutioning"
+    }
+  ]
+}

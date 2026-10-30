@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "client": "Acme Industrial",
+    "call": "Scoping session 2, 2026-08-14",
+    "as_of": "2026-08-11"
+  },
+  "known": [
+    {
+      "claim": "Twelve NOW requirements; nine core, three net-new",
+      "source": "RFP section 3, 2026-05-02; scoring sheet 2026-06-20",
+      "confidence": "Confirmed",
+      "as_of": "2026-06-20"
+    },
+    {
+      "claim": "Billing integration looks reusable from the prior phase",
+      "source": "workshop transcript 2026-03-18",
+      "confidence": "Inferred",
+      "as_of": "2026-03-18"
+    }
+  ],
+  "open": [
+    {
+      "id": "Q-01",
+      "question": "Does order management stay on the incumbent OMS or move?",
+      "why_open": "RFP names both systems without a disposition",
+      "unblocks": "ORD workstream scope lines",
+      "rank": "High"
+    },
+    {
+      "id": "Q-02",
+      "question": "How many discount approval tiers exist today?",
+      "why_open": "Scoring sheet marks approvals partially capable; tier count not on file",
+      "unblocks": "CPQ approval-workflow line",
+      "rank": "Medium"
+    },
+    {
+      "id": "Q-03",
+      "question": "Which sandbox refresh cadence does IT run?",
+      "why_open": "Not in the RFP or workshop notes",
+      "unblocks": "environment-setup line",
+      "rank": "Low"
+    }
+  ]
+}
