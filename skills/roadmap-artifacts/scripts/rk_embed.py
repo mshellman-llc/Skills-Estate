@@ -15,7 +15,9 @@ width.
 Host builders call `assets()` and place the CSS and JS in their own template.
 """
 import argparse
+import functools
 import hashlib
+import html
 import json
 from pathlib import Path
 import re
@@ -58,15 +60,6 @@ for n in range(1, 7):
 STATUS_ROLES = ("status-good", "status-warning", "status-critical")
 
 
-def contrast(a, b):
-    def luminance(value):
-        channels = [int(value[i:i + 2], 16) / 255 for i in (1, 3, 5)]
-        linear = [x / 12.92 if x <= 0.04045 else ((x + 0.055) / 1.055) ** 2.4 for x in channels]
-        return sum(c * w for c, w in zip(linear, (0.2126, 0.7152, 0.0722)))
-    x, y = sorted((luminance(a), luminance(b)))
-    return (y + 0.05) / (x + 0.05)
-
-
 def adapter(colors=None):
     """Settings that map the kit onto estate palette variables."""
     colors = colors or {}
@@ -76,6 +69,7 @@ def adapter(colors=None):
         value = colors.get(role)
         if not value or "text" not in colors or "background" not in colors:
             return "var(--brand-background)" if role in ("accent", "dark") else "var(--brand-text)"
+        contrast = brand_runtime()[1].contrast
         return ("var(--brand-text)" if contrast(value, colors["text"]) >= contrast(value, colors["background"])
                 else "var(--brand-background)")
 
@@ -163,6 +157,7 @@ __RK_CSS__
 """
 
 
+@functools.lru_cache(maxsize=None)
 def brand_runtime():
     for path in (HERE.parent / "_runtime/brand-renderer/brand", HERE.parent.parent / "brand-renderer/brand"):
         if (path / "html_profile.py").is_file():
@@ -175,11 +170,10 @@ def brand_runtime():
 
 def build_page(plan, profile=None):
     sys.path.insert(0, str(HERE))
-    from build import check
+    from build import check, cited
     problems = check(plan)
     if problems:
         raise ValueError("Plan check failed:\n- " + "\n- ".join(problems))
-    from build import cited
     if cited(plan) and not any(b.get("type") == "evidence" for b in plan.get("blocks", [])):
         raise ValueError("A standalone page with cite numbers needs an evidence block for them to point to")
     if plan.get("live"):
@@ -187,9 +181,7 @@ def build_page(plan, profile=None):
     html_profile, brand_profile = brand_runtime()
     colors = brand_profile.load_profile(brand_profile.resolve_profile(str(profile) if profile else None))["colors"]
     kit = assets(colors)
-    title = str(plan.get("meta", {}).get("title", "Roadmap"))
-    for a, b in (("&", "&amp;"), ("<", "&lt;"), (">", "&gt;")):
-        title = title.replace(a, b)
+    title = html.escape(str(plan.get("meta", {}).get("title", "Roadmap")), quote=False)
     document = (PAGE.replace("__TITLE__", title).replace("__RK_CSS__", kit["css"])
                 .replace("__PLAN__", script_json(plan)).replace("__RK_JS__", kit["js"]))
     document, resource = html_profile.apply_profile(document, str(profile) if profile else None)

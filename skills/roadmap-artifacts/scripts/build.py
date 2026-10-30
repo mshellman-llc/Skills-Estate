@@ -27,7 +27,9 @@ def cited(plan):
     """Every cite number on cards, callouts, table rows and timeline rows."""
     found = set()
     for b in plan.get("blocks", []):
-        for item in b.get("cards", []) + b.get("items", []) + b.get("rows", []) if b.get("type") != "evidence" else []:
+        if b.get("type") == "evidence":
+            continue
+        for item in b.get("cards", []) + b.get("items", []) + b.get("rows", []):
             if isinstance(item, dict) and item.get("cite") is not None:
                 found.update(item["cite"] if isinstance(item["cite"], list) else [item["cite"]])
     return found

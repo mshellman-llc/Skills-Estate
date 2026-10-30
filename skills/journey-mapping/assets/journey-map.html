@@ -394,7 +394,7 @@ if (MAP.opportunityMap?.length) {
       opps, {embed: true, live: false, parts: ["blocks"]});
   } else {
     const list = el("ol", "opp-list");
-    MAP.opportunityMap.forEach(o => { const li = el("li", null, `${OPP_KINDS[o.kind]}, phase ${o.phase}: ${o.title}. Outcome: ${o.outcome}. Measure: ${o.measure}.`); const a = el("a", "ref", String(cite(o))); a.href = `#ev-${cite(o)}`; li.append(a); list.append(li); });
+    MAP.opportunityMap.forEach(o => { const k = cite(o), li = el("li", null, `${OPP_KINDS[o.kind]}, phase ${o.phase}: ${o.title}. Outcome: ${o.outcome}. Measure: ${o.measure}.`); const a = el("a", "ref", String(k)); a.href = `#ev-${k}`; li.append(a); list.append(li); });
     opps.replaceChildren(list);
   }
 }
