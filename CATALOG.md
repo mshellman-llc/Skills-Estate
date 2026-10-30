@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 82 source modules and 54 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 82 source modules and 55 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -8,7 +8,7 @@ This candidate contains 82 source modules and 54 proposed task entrypoints. Cons
 
 | Group | Source workflows | Task packages |
 | --- | ---: | ---: |
-| [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 4 |
+| [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 16 | 12 |
 | [Product and experience](browse/product-and-experience/README.md) | 12 | 11 |
@@ -48,6 +48,7 @@ This candidate contains 82 source modules and 54 proposed task entrypoints. Cons
 | independent-product | [independent-product](skills/independent-product/SKILL.md) |  |
 | information-architecture | [information-architecture](skills/information-architecture/SKILL.md) |  |
 | journey-mapping | [journey-mapping](skills/journey-mapping/SKILL.md) |  |
+| jtbd-framing | [jtbd-framing](skills/jtbd-framing/SKILL.md) |  |
 | knowledge-hub | [knowledge-hub](skills/knowledge-hub/SKILL.md) |  |
 | offering-fit | [playbook-fit-router](skills/playbook-fit-router/SKILL.md) |  |
 | portfolio-case-study | [case-study-builder](skills/case-study-builder/SKILL.md) |  |

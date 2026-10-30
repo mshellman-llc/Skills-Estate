@@ -8,7 +8,7 @@ Open a group to find its workflows and task packages. The interactive map uses t
 
 | Group | Source workflows | Task packages |
 | --- | ---: | ---: |
-| [Pursuit and discovery](pursuit-and-discovery/README.md) | 7 | 4 |
+| [Pursuit and discovery](pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and Salesforce](delivery-and-salesforce/README.md) | 16 | 12 |
 | [Product and experience](product-and-experience/README.md) | 12 | 11 |
