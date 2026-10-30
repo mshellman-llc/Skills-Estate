@@ -1,0 +1,50 @@
+{
+  "kit": 1,
+  "id": "example-tallyroom-delivery-live",
+  "template": "project-delivery",
+  "meta": {
+    "eyebrow": ["Delivery timeline", "Live from Google Sheets"],
+    "title": "Payments delivery tracker",
+    "subtitle": "Rows come from the team's planning sheet. Edit dates in the sheet and this timeline follows within 5 minutes.",
+    "stats": [{ "label": "GA", "value": "1 Jun 2027" }],
+    "source": "Example data.",
+    "sources": [{ "name": "Google Sheets", "detail": "Planning!A1:H60", "retrieved": "2026-10-29" }],
+    "updated": "2026-10-29"
+  },
+  "legend": {
+    "title": "Team",
+    "items": [
+      { "key": "pay", "label": "Payments squad", "c": 1 },
+      { "key": "core", "label": "Core squad", "c": 2 },
+      { "key": "ops", "label": "Risk & ops", "c": 3 }
+    ]
+  },
+  "blocks": [
+    {
+      "type": "timeline",
+      "title": "Workstreams",
+      "start": "2027-01-04", "end": "2027-06-04", "scale": "month", "labelHeader": "Workstream",
+      "markers": [{ "date": "2027-06-01", "label": "GA" }],
+      "rows": [
+        { "id": "kyc", "label": "Stripe Connect onboarding", "group": "ops", "owner": "TBD", "start": "2027-01-04", "end": "2027-02-12" },
+        { "id": "ledger", "label": "Payment ledger", "group": "pay", "owner": "TBD", "start": "2027-02-01", "end": "2027-03-26", "deps": ["kyc"] },
+        { "id": "paylink", "label": "Pay link on invoice", "group": "pay", "owner": "TBD", "start": "2027-03-29", "end": "2027-04-23", "deps": ["ledger"] },
+        { "id": "beta", "label": "Private beta", "group": "core", "owner": "TBD", "start": "2027-04-26", "end": "2027-05-28", "deps": ["paylink"] }
+      ]
+    }
+  ],
+  "live": [
+    {
+      "block": 0,
+      "server": "Google Sheets",
+      "tool": "get_values",
+      "input": { "spreadsheetId": "REPLACE_WITH_SHEET_ID", "range": "Planning!A1:H60" },
+      "items": "values",
+      "format": "rows",
+      "map": { "id": "ID", "title": "Workstream", "group": "Team", "owner": "Owner", "start": "Start", "end": "End", "deps": "Depends on" },
+      "values": { "group": { "Payments": "pay", "Core": "core", "Risk & ops": "ops", "*": "core" } },
+      "refetch": 300000,
+      "verified": "2026-10-29: get_values returns {range, values: [[row], ...]}; first row is the header."
+    }
+  ]
+}

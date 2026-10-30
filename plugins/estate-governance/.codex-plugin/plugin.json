@@ -1,0 +1,6 @@
+{
+  "description": "Skills Estate governance workflows and routing.",
+  "name": "estate-governance",
+  "skills": "./skills/",
+  "version": "0.1.0"
+}

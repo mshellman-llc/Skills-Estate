@@ -1,0 +1,408 @@
+{
+  "entries": [
+    "deliverable-review",
+    "knowledge-hub",
+    "session-handoff"
+  ],
+  "host_adapter": "claude",
+  "opt_in": false,
+  "required_modules": [
+    "brand-renderer",
+    "evidence-core",
+    "knowledge-hub",
+    "org-preflight",
+    "prose-pass",
+    "quality-gate",
+    "session-handoff",
+    "writing-integrity"
+  ],
+  "review_gaps": [
+    {
+      "required_sha256": "78e076d5c9f82153b4b9cf9a5f0441de99959eeea2908b69fd14b69a51c00385",
+      "status": "review required",
+      "subject": "shared assembly"
+    },
+    {
+      "required_sha256": "21292d3fe79c42f8e7e009ab129368345fa22f4760c598494c9839015976f302",
+      "status": "review required",
+      "subject": "commercial-router"
+    },
+    {
+      "required_sha256": "febcd3f84b0f9cbe25518d6be7976d2ba5eeadc15d2fcff558a4afaf4f4cf1f8",
+      "status": "review required",
+      "subject": "delivery-router"
+    },
+    {
+      "required_sha256": "0f919085a0099d8244915c18b8bc384a66996068b70e3bb9c0c5b5d6f45c662d",
+      "status": "review required",
+      "subject": "governance-router"
+    },
+    {
+      "required_sha256": "e8c92ee085c11c05e658f0bf8a87bb65227e296608c566f6bb98930de036b4d4",
+      "status": "review required",
+      "subject": "pursuit-router"
+    },
+    {
+      "required_sha256": "59a537d58fd06a7dfca794832034c5d69de464e86857996f6581b4e7c578a08c",
+      "status": "review required",
+      "subject": "quality-router"
+    },
+    {
+      "required_sha256": "b3b53b12c57787b8bdc472785f2e25633ad9482101306c07a5da4f5b58725b78",
+      "status": "review required",
+      "subject": "solutioning-router"
+    },
+    {
+      "required_sha256": "c8d7fa0aacc967d84c4f2a528897e4a5655f650499fcc1eef48f37cff364d1aa",
+      "status": "review required",
+      "subject": "accessibility-audit"
+    },
+    {
+      "required_sha256": "2605866dd089e203b978df17ec27b0ac681232fc76631e95091908e467840480",
+      "status": "review required",
+      "subject": "analytics-strategy"
+    },
+    {
+      "required_sha256": "76a3dcbdb495ae8823b563ec1dc35012c2dcb3705b4bb346a9eff4c03e5ee2c5",
+      "status": "review required",
+      "subject": "architecture-doc"
+    },
+    {
+      "required_sha256": "5eef506a94cd814f731957a87a5f240b3093139cd06b8a767bba4698d1b6cf65",
+      "status": "review required",
+      "subject": "beastmode-capture"
+    },
+    {
+      "required_sha256": "c7bbaa6e6c3c85509d47b29128e44b910dc29b267d3d6426cc032deb83524f68",
+      "status": "review required",
+      "subject": "beastmode-context"
+    },
+    {
+      "required_sha256": "66fd766c10d310670847381307943de21a149d674216c6e2ce9909c8e61c9b6b",
+      "status": "review required",
+      "subject": "beastmode-health"
+    },
+    {
+      "required_sha256": "8766afb95c375b7a4b8aabf5fcb82b397fc75e5dd125ac2dc1f81a5b051bae93",
+      "status": "review required",
+      "subject": "beastmode-reconcile"
+    },
+    {
+      "required_sha256": "974f76a23d1319774966b8b90c8222cd1b80a86c4a88481986582fbbaea9f74e",
+      "status": "review required",
+      "subject": "brain-work-item"
+    },
+    {
+      "required_sha256": "37f9698acb4c3690dcd0ea5a19fb58334a27e03ac89ddd2fe098b9faa5807010",
+      "status": "review required",
+      "subject": "build-interactive-explorer"
+    },
+    {
+      "required_sha256": "b6f83ff314157a16e30757d0bad202845d9ec5dbd5220b85a69fb96d9dff977f",
+      "status": "review required",
+      "subject": "business-case"
+    },
+    {
+      "required_sha256": "5a7480e7772e48bd93361deb2cd8828e34a278c11b8e0395010d602308fa0062",
+      "status": "review required",
+      "subject": "call-prep"
+    },
+    {
+      "required_sha256": "7f16d2dc98e99ce152cfcb68f25beafdf26cb9af0de6d131b41eb3e55a786942",
+      "status": "review required",
+      "subject": "career-application"
+    },
+    {
+      "required_sha256": "e4f9628533151283c619dbd3ed5d1446700c152982a257288b2dd8607881ba17",
+      "status": "review required",
+      "subject": "career-materials-and-outreach"
+    },
+    {
+      "required_sha256": "6008a5eb64729b4e3c593a18e4fdda4549f67dfe95b95fda5b6aa3ecbeda633c",
+      "status": "review required",
+      "subject": "career-progression-and-offers"
+    },
+    {
+      "required_sha256": "ff0544e47c2a4f7057eae2476c71e58aced8c2b6a01e56491312a3c0939c8e21",
+      "status": "review required",
+      "subject": "case-study-builder"
+    },
+    {
+      "required_sha256": "5c492acc4249b8a42a9fc4ea1911dad5251222ec4796531010e23c8c4bb3aad9",
+      "status": "review required",
+      "subject": "code-simplify"
+    },
+    {
+      "required_sha256": "d6411c0231c6280eafc1417b58c818c2e9d9e4073b335be918b53407d1278388",
+      "status": "review required",
+      "subject": "cross-platform-skill-release"
+    },
+    {
+      "required_sha256": "6ddc1fc11e0c68913cfcb13425b4a6d342ebf01fb15698737ff7e3932c89aac9",
+      "status": "review required",
+      "subject": "cutover-closeout"
+    },
+    {
+      "required_sha256": "19d7ccc480c02d7c26d923ed79b2442d242ba28e3413e63685371149a02316ec",
+      "status": "review required",
+      "subject": "ddoc"
+    },
+    {
+      "required_sha256": "46c2bd353b2861d987ad512e290f8dc630449dae8db5972a78d758d9f2ce7755",
+      "status": "review required",
+      "subject": "deal-desk"
+    },
+    {
+      "required_sha256": "3cf6286947c5377b37a996044640fa83f64202d4c03ad030b8d6a4dcd385c924",
+      "status": "review required",
+      "subject": "deck-builder"
+    },
+    {
+      "required_sha256": "5fca97a9c6b7dcddec9edf6e25646fd0f200e20c94f8c87a36ecefe980daf1b9",
+      "status": "review required",
+      "subject": "delivery-kickoff"
+    },
+    {
+      "required_sha256": "4ce4d752ea445ffeee02c6f2daa47e93eb471b65ea21351a9beabae86794e309",
+      "status": "review required",
+      "subject": "delivery-status"
+    },
+    {
+      "required_sha256": "b701fc7d5d91eab1c2ec4f6fa821c2e80e800be5fe70b61ba72c59dba5f03558",
+      "status": "review required",
+      "subject": "delivery-suite"
+    },
+    {
+      "required_sha256": "66be18581119c33fc97151a216531f38c12abbd4a5777aa3b6534bc5dd680dff",
+      "status": "review required",
+      "subject": "discovery-brief"
+    },
+    {
+      "required_sha256": "b1d74afd1216082659d4d8ca00b1c49842043b121ac1f3fc33dc0dccb5e2f514",
+      "status": "review required",
+      "subject": "discovery-synthesis"
+    },
+    {
+      "required_sha256": "56d4f0507d4c4067f5befa9ac8a1bb69f5b2559e6d2d79e40ecb44563b2ac95e",
+      "status": "review required",
+      "subject": "dx-devops-promote"
+    },
+    {
+      "required_sha256": "7f067f1903bc4e7256169b16d6fa9633c280c7bcf44abf30c4de77858bd47018",
+      "status": "review required",
+      "subject": "dx-devops-work-item-manage"
+    },
+    {
+      "required_sha256": "e17e9a6e20a79e1d4c9964d773e9556368c922c20b844c591392acc950e56050",
+      "status": "review required",
+      "subject": "execution-truth"
+    },
+    {
+      "required_sha256": "374756c96ab7f5773068b6ea9b61164d58380d46fa2c9ceccc533a5a70d4ae86",
+      "status": "review required",
+      "subject": "fortunes-weave"
+    },
+    {
+      "required_sha256": "ca3750103033466c578806b87fc43d9f6b180f9524488d24e7e20532d5b35b06",
+      "status": "review required",
+      "subject": "github-repository-work"
+    },
+    {
+      "required_sha256": "8de820cbc203fb9ffd271e0756cdaac9bb7abd820379e97b094eb3183a5d0fe1",
+      "status": "review required",
+      "subject": "independent-product"
+    },
+    {
+      "required_sha256": "154d5cc1210a20df0e7927c512e37bb3f91366ee5c259d3ed025ed7c457295db",
+      "status": "review required",
+      "subject": "information-architecture"
+    },
+    {
+      "required_sha256": "87a450c65e2c5500808218ea04323e2e919a0da19fb64e51701235a5522de675",
+      "status": "review required",
+      "subject": "megan-writing-style"
+    },
+    {
+      "required_sha256": "cca7a9773fb2d59b321e00905f8a35ab9ee5d0853882c1d417b7ca26f0518507",
+      "status": "review required",
+      "subject": "org-preflight"
+    },
+    {
+      "required_sha256": "83c7c5d9fdb70f04078fa671bcc6b1443c645ea2a81e0d7f5bb7081c56be2771",
+      "status": "review required",
+      "subject": "personal-writing-style-runtime"
+    },
+    {
+      "required_sha256": "ddd30965f82243551a345a43f344e892584376623347d2e9f350aed97994bc57",
+      "status": "review required",
+      "subject": "playbook-builder"
+    },
+    {
+      "required_sha256": "2efba2fbaf770a437d66e8472776018d5d45878645092e3adf9205a4c80566d7",
+      "status": "review required",
+      "subject": "playbook-fit-router"
+    },
+    {
+      "required_sha256": "9715e276e433c033c283d0cc1e7f7526f5d0dc44f0605bc183d20c3e56067f3c",
+      "status": "review required",
+      "subject": "playbook-onepager"
+    },
+    {
+      "required_sha256": "4baacd6b81449d8818581fd58d2e17bc4a8e30d76332c92224c822a985be365d",
+      "status": "review required",
+      "subject": "playbook-suite"
+    },
+    {
+      "required_sha256": "39162c4b9f46cd4689fbf0c782f574168c86ccc031305d832b88679801b03c69",
+      "status": "review required",
+      "subject": "pm-spec-writing"
+    },
+    {
+      "required_sha256": "ad02c29a40e0a57143515f1c5a3741c3270fb3af325f3cec8fb66ac716f340dd",
+      "status": "review required",
+      "subject": "process"
+    },
+    {
+      "required_sha256": "45d3f8a6d9e54474c155f31c8ea2c1824a55677f784c7f933c24566d05740c02",
+      "status": "review required",
+      "subject": "product-development-pathway"
+    },
+    {
+      "required_sha256": "dacd9feff696dac75a3b5aadbbf61a9879d58e6a39971e6b82b11c31d8cc9b74",
+      "status": "review required",
+      "subject": "requirements-capture"
+    },
+    {
+      "required_sha256": "815291e4c9a2642205f51a19207bf74968e451a03be609385346e4cbf30d3b64",
+      "status": "review required",
+      "subject": "resume-numbers-and-keywords"
+    },
+    {
+      "required_sha256": "416c4100e945117e06c0d0a06c070e3096553f5214420e2e8546da16aedf1a83",
+      "status": "review required",
+      "subject": "rom"
+    },
+    {
+      "required_sha256": "a0330adf3e44a0d8adb907e38be1af8ddea96fec2890595877b94aa350003776",
+      "status": "review required",
+      "subject": "s2d-handoff"
+    },
+    {
+      "required_sha256": "3c514e4f6a19ce9c0df3cf8c4bbbbbaebef45de2c49cea51780cc8b40c0ab11d",
+      "status": "review required",
+      "subject": "sales-journey-critique"
+    },
+    {
+      "required_sha256": "45099a166a6513040b584e3ec8fff5fd909aae05824cc71388edfbcaf207825e",
+      "status": "review required",
+      "subject": "sales-process-mapping"
+    },
+    {
+      "required_sha256": "77e0fbfd7d08b9c99f1c16866a175fbdafd53b5137ded3edeee89c9848bc81ed",
+      "status": "review required",
+      "subject": "scoping-agent"
+    },
+    {
+      "required_sha256": "367420ad1a06358993652762e74893029136d9bb38f2bfbbebef60e6cd0a3f94",
+      "status": "review required",
+      "subject": "session-handoff"
+    },
+    {
+      "required_sha256": "f700b645892c39fbebd316c04bd4faaf560e4ae927581062aa852d50b61e5458",
+      "status": "review required",
+      "subject": "sf-delivery-standards"
+    },
+    {
+      "required_sha256": "d11d648e5be99418d804d1097b984bb80ebfa7375bf10d89b9c75ee0009f41f6",
+      "status": "review required",
+      "subject": "sf-deploy-engine"
+    },
+    {
+      "required_sha256": "a05ad70234757f4fa98acb7d920101493be4e63927f784397036af9f4de1e5e8",
+      "status": "review required",
+      "subject": "sf-enterprise-patterns"
+    },
+    {
+      "required_sha256": "7d3afff4bedac0a799602c352038e1167d041affbf190c47df2b11fb00562b38",
+      "status": "review required",
+      "subject": "sf-headless-screenshot"
+    },
+    {
+      "required_sha256": "fe08cda062741a7b13a55687dca70527d077f27c5186ece5e20275a3938f0c37",
+      "status": "review required",
+      "subject": "sf-solo-devops"
+    },
+    {
+      "required_sha256": "51cfe05d63116f8b8476fb753f3314e5a58c964d65254f490176baf6cf29a8e2",
+      "status": "review required",
+      "subject": "skill-creation-walkthrough"
+    },
+    {
+      "required_sha256": "b258c53bc75f14832f1acca139db6c27a88aea0d1d23d93c5f914a31832ed177",
+      "status": "review required",
+      "subject": "skill-estate-sync"
+    },
+    {
+      "required_sha256": "4446f8114f799b04b593eb6c3f20800d017983459c7b23f1715eeebc13e1e13e",
+      "status": "review required",
+      "subject": "solution-brief"
+    },
+    {
+      "required_sha256": "aad1904cdb83d88d2c8904e3822e6410f08877ffa102a6516001c08f085743a6",
+      "status": "review required",
+      "subject": "sow"
+    },
+    {
+      "required_sha256": "4099d301847ad606a6929a4d3340761e0a2e29e781393bcfe1c934623c5c7947",
+      "status": "review required",
+      "subject": "sow-quality"
+    },
+    {
+      "required_sha256": "9a9a1545b2225d37b6c1b123cb911932fe1e0c96dc7de35253f6ed7fc650b807",
+      "status": "review required",
+      "subject": "spec-writer"
+    },
+    {
+      "required_sha256": "ef80c6145b400328cc6f62145a83396f3ec740fa316f2291d3bccc13379f340b",
+      "status": "review required",
+      "subject": "sticker-art-direction"
+    },
+    {
+      "required_sha256": "a90a16e135a19182159ef600532fad0d4aa6cf885c6c2025a97c186128a94462",
+      "status": "review required",
+      "subject": "sticker-sheets"
+    },
+    {
+      "required_sha256": "d3482835b7e9aa197fd294204d29779f931dda85b085d9a0cba0c9493eff59da",
+      "status": "review required",
+      "subject": "system-design"
+    },
+    {
+      "required_sha256": "c2b98e4b2d29f2f3b1506a89bbe0fd20f0e0a11a8b231c6bbd430db82c4508bb",
+      "status": "review required",
+      "subject": "team-onboarding"
+    },
+    {
+      "required_sha256": "c8eae60aacafdb8a6a13de0fd1710f420cc205fbb1238cd409644e5a8793c7c2",
+      "status": "review required",
+      "subject": "transcript-ingestion"
+    },
+    {
+      "required_sha256": "069f3ac8ff5aff69ff10f7246e6d22e1f86e4ccabe562a39f6365d7242c1a000",
+      "status": "review required",
+      "subject": "uat-validation"
+    },
+    {
+      "required_sha256": "7afee0d0d7e8aa32d3178e90ad9c24a9b119cf3f395323bfb8d99e646020e2d9",
+      "status": "review required",
+      "subject": "usability-testing"
+    },
+    {
+      "required_sha256": "5f6253ee593d3807308ba52a2bead86ea505ab494351d8ead9b5bb565a0c2a62",
+      "status": "review required",
+      "subject": "writing-style-builder"
+    }
+  ],
+  "source_sha256": "deae180ba9b42dd74875165505875d575ea721c5bb51500483c91aa6823b57c7",
+  "status": "owner-published"
+}

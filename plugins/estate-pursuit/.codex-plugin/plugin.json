@@ -1,0 +1,6 @@
+{
+  "description": "Skills Estate pursuit workflows and routing.",
+  "name": "estate-pursuit",
+  "skills": "./skills/",
+  "version": "0.1.0"
+}

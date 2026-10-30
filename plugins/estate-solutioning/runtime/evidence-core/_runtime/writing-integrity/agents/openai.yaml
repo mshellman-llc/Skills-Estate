@@ -1,0 +1,4 @@
+interface:
+  display_name: "Writing integrity"
+  short_description: "Review prose and retain verified writing lessons."
+  default_prompt: "Use $writing-integrity to review this draft and load my compact writing profile."

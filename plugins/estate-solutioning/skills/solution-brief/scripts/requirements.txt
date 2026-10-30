@@ -1,0 +1,17 @@
+# Standard library only, Python 3.10+ recommended, for everything except one script.
+#
+# solution_graph.py, solution_graph_selftest.py and build_field_guide.py need
+# nothing here. Install this only when you want the field-guide visual pass.
+#
+# qa_field_guide.py drives a real Chromium, because wkhtmltopdf misrenders the
+# sticky, grid and gradient layouts the field-guide scaffold uses, and a QA pass
+# that lies about the render is worse than no QA pass.
+#
+#   pip install -r requirements.txt
+#   playwright install chromium
+#
+# The browser download is a second, separate step and is roughly 150 MB. Without
+# it, build_field_guide.py still renders and still fails hard on an unresolved
+# palette token; only the screenshot and interaction pass is unavailable, and
+# qa_field_guide.py says so plainly rather than dying on an import.
+playwright>=1.40

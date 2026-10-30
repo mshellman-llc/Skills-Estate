@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "name": "Skills Estate"
+  },
+  "description": "Optional remaining Skills Estate workflows.",
+  "name": "estate-additional-skills",
+  "repository": "https://github.com/mshellman-llc/Skills-Estate",
+  "version": "0.1.0"
+}

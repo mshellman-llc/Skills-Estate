@@ -1,0 +1,1876 @@
+{
+  "graphVersion": "0.2.0",
+  "artifactType": "solution_brief",
+  "outputType": "solution_brief",
+  "mode": "approval",
+  "engagement": {
+    "engagementId": "FIX-APEX-RICH",
+    "clientName": "Apex Industrial Safety",
+    "asOf": "2026-04-30T12:00:00Z"
+  },
+  "sufficiency": {
+    "status": "Sufficient",
+    "terminal": false,
+    "domainCoverage": {
+      "architecture_decisions": "Sufficient",
+      "conditions_next_action": "Sufficient",
+      "critical_interfaces": "Sufficient",
+      "financial_reconciliation": "Sufficient",
+      "risk_concentration": "Sufficient",
+      "scope_solution_trace": "Sufficient",
+      "staffing_delivery_shape": "Sufficient",
+      "system_boundary": "Sufficient",
+      "technical_judgment": "Sufficient",
+      "timeline_decision_gates": "Sufficient"
+    },
+    "blockers": [],
+    "nextGate": "Approve the content model for rendering"
+  },
+  "technicalJudgment": {
+    "statement": "Approve the solution shape with the catalog and BTP conditions explicitly gated before Build.",
+    "force": "approve_with_conditions",
+    "conditionRefs": [
+      "DEP-CATALOG",
+      "RSK-BTP"
+    ],
+    "claimIds": [
+      "CLM-DEP.CATALOG",
+      "CLM-RSK.BTP"
+    ]
+  },
+  "nodes": {
+    "systems": [
+      {
+        "id": "SYS-SF",
+        "name": "Salesforce Sales and Service Cloud",
+        "description": "System of engagement for customer and case context.",
+        "claimIds": [
+          "CLM-SYS.SF"
+        ],
+        "loadBearing": true,
+        "disposition": "keep",
+        "owner": "Apex Sales Operations",
+        "responsibilities": [
+          "Customer and case context"
+        ],
+        "dataDomains": [
+          "accounts",
+          "cases"
+        ],
+        "accessState": "confirmed"
+      },
+      {
+        "id": "SYS-RC",
+        "name": "Revenue Cloud Advanced and Billing",
+        "description": "Contract lifecycle and billing schedule system.",
+        "claimIds": [
+          "CLM-SYS.RC"
+        ],
+        "loadBearing": true,
+        "disposition": "new",
+        "owner": "Apex Sentinel Operations",
+        "responsibilities": [
+          "Quote, contract, amend, renew, billing schedule"
+        ],
+        "dataDomains": [
+          "contracts",
+          "billing schedules"
+        ],
+        "accessState": "pending"
+      },
+      {
+        "id": "SYS-BTP",
+        "name": "SAP BTP Integration Suite",
+        "description": "Integration seam for all net-new Salesforce to SAP exchanges.",
+        "claimIds": [
+          "CLM-SYS.BTP"
+        ],
+        "loadBearing": true,
+        "disposition": "new",
+        "owner": "Apex IT",
+        "responsibilities": [
+          "Orchestration, transformation, retry, alerting"
+        ],
+        "dataDomains": [
+          "orders",
+          "billing events"
+        ],
+        "accessState": "pending"
+      },
+      {
+        "id": "SYS-SAP",
+        "name": "SAP ECC and RAR",
+        "description": "Financial system of record for orders, invoices, revenue recognition, and GL.",
+        "claimIds": [
+          "CLM-SYS.SAP"
+        ],
+        "loadBearing": true,
+        "disposition": "connect",
+        "owner": "Apex Finance and IT",
+        "responsibilities": [
+          "Sales order, invoice, revenue recognition, general ledger"
+        ],
+        "dataDomains": [
+          "sales orders",
+          "invoices",
+          "POBs",
+          "journals"
+        ],
+        "accessState": "confirmed"
+      }
+    ],
+    "interfaces": [
+      {
+        "id": "IFC-ORDER",
+        "name": "New order transmission",
+        "description": "Revenue Cloud sends an accepted quote and contract to SAP through BTP.",
+        "claimIds": [
+          "CLM-IFC.ORDER"
+        ],
+        "loadBearing": true,
+        "fromSystemId": "SYS-RC",
+        "toSystemId": "SYS-BTP",
+        "direction": "event_out",
+        "purpose": "Create a structured order handoff",
+        "trigger": "Quote acceptance",
+        "payloads": [
+          "customer",
+          "products",
+          "contract terms",
+          "billing instructions"
+        ],
+        "protocol": "REST via MuleSoft and BTP",
+        "owner": "Estate Technical Architect",
+        "contractState": "draft",
+        "happyPath": [
+          "Validate payload",
+          "Submit to BTP",
+          "Receive correlation ID"
+        ],
+        "failurePaths": [
+          {
+            "id": "FP-ORDER-01",
+            "condition": "BTP unavailable or rejects payload",
+            "behavior": "Persist failed event, retry with backoff, then route to dead-letter queue without creating duplicate orders",
+            "retry": "Three attempts with idempotency key",
+            "escalation": "Alert integration support and block downstream billing",
+            "owner": "Apex Integration Operations",
+            "observability": [
+              "correlation ID",
+              "retry count",
+              "dead-letter alert"
+            ],
+            "claimIds": [
+              "CLM-IFC.ORDER"
+            ]
+          }
+        ],
+        "securityControls": [
+          "OAuth client credentials",
+          "encrypted transport"
+        ],
+        "observability": [
+          "request log",
+          "response status",
+          "correlation ID"
+        ]
+      },
+      {
+        "id": "IFC-BILL",
+        "name": "Billing schedule synchronization",
+        "description": "Revenue Cloud sends governed billing events through BTP to SAP invoicing and RAR.",
+        "claimIds": [
+          "CLM-IFC.BILL"
+        ],
+        "loadBearing": true,
+        "fromSystemId": "SYS-RC",
+        "toSystemId": "SYS-SAP",
+        "direction": "event_out",
+        "purpose": "Synchronize billing schedule and modification events",
+        "trigger": "RCB billing event or contract amendment",
+        "payloads": [
+          "schedule",
+          "POB",
+          "currency",
+          "modification"
+        ],
+        "protocol": "REST and BTP iFlow",
+        "owner": "Estate Solution Architect",
+        "contractState": "draft",
+        "happyPath": [
+          "Validate billing event",
+          "Transform for SAP",
+          "Post and acknowledge"
+        ],
+        "failurePaths": [
+          {
+            "id": "FP-BILL-01",
+            "condition": "SAP rejects billing event or allocation data",
+            "behavior": "Hold the event, prevent invoice progression, and route to finance review",
+            "retry": "Manual replay after data correction",
+            "escalation": "Notify Finance and Solution Architect",
+            "owner": "Apex Finance Operations",
+            "observability": [
+              "rejection reason",
+              "held-event queue",
+              "finance alert"
+            ],
+            "claimIds": [
+              "CLM-IFC.BILL"
+            ]
+          }
+        ],
+        "securityControls": [
+          "field-level payload minimization",
+          "encrypted transport"
+        ],
+        "observability": [
+          "event ledger",
+          "SAP acknowledgment",
+          "held-event queue"
+        ]
+      }
+    ],
+    "adrs": [
+      {
+        "id": "ADR-BTP",
+        "name": "Use SAP BTP for net-new integrations",
+        "description": "BTP aligns the solution to the S/4HANA direction while existing Boomi flows remain.",
+        "claimIds": [
+          "CLM-ADR.BTP"
+        ],
+        "loadBearing": true,
+        "question": "BTP or Boomi for the new integration surface?",
+        "decision": "Use SAP BTP for all net-new flows.",
+        "state": "resolved",
+        "rationale": "Avoid rebuilding the new integration during the S/4HANA transition.",
+        "alternatives": [
+          "Extend Boomi",
+          "Point-to-point integration"
+        ],
+        "owner": "Apex IT and Estate Technical Architect",
+        "decisionPointRef": "MLS-DESIGN-GATE",
+        "affectedRefs": [
+          "SYS-BTP",
+          "IFC-ORDER",
+          "IFC-BILL",
+          "SCP-INTEGRATION"
+        ]
+      },
+      {
+        "id": "ADR-RCB",
+        "name": "Revenue Cloud owns billing schedules",
+        "description": "RCB manages schedule logic while SAP owns invoicing and revenue recognition.",
+        "claimIds": [
+          "CLM-ADR.RCB"
+        ],
+        "loadBearing": true,
+        "question": "Should billing schedules live in Salesforce or SAP custom logic?",
+        "decision": "Use Revenue Cloud Billing for schedule logic.",
+        "state": "resolved",
+        "rationale": "Keeps subscription configuration in Salesforce and avoids custom SAP schedule logic.",
+        "alternatives": [
+          "SAP-only billing schedules",
+          "Split logic across both systems"
+        ],
+        "owner": "Apex Finance and Estate Solution Architect",
+        "decisionPointRef": "MLS-DESIGN-GATE",
+        "affectedRefs": [
+          "SYS-RC",
+          "SYS-SAP",
+          "IFC-BILL",
+          "SCP-BILLING"
+        ]
+      }
+    ],
+    "scopeItems": [
+      {
+        "id": "SCP-LIFECYCLE",
+        "name": "Subscription lifecycle",
+        "description": "Configure quote, contract, amend, renew, suspend, and cancel for Grid.",
+        "claimIds": [
+          "CLM-SCP.LIFECYCLE"
+        ],
+        "loadBearing": true,
+        "inclusionState": "included",
+        "workstream": "Revenue Cloud",
+        "acceptanceCriteria": [
+          "One contract supports amendment and renewal without spawning duplicate contracts"
+        ]
+      },
+      {
+        "id": "SCP-INTEGRATION",
+        "name": "BTP integration flows",
+        "description": "Design and build the order and billing event interfaces.",
+        "claimIds": [
+          "CLM-SCP.INTEGRATION"
+        ],
+        "loadBearing": true,
+        "inclusionState": "included",
+        "workstream": "Integration",
+        "acceptanceCriteria": [
+          "E2E order and billing scenarios pass with observable failure handling"
+        ]
+      },
+      {
+        "id": "SCP-BILLING",
+        "name": "Billing schedules and modifications",
+        "description": "Configure billing triggers, proration, free months, and credit behavior.",
+        "claimIds": [
+          "CLM-SCP.BILLING"
+        ],
+        "loadBearing": true,
+        "inclusionState": "included",
+        "workstream": "Billing",
+        "acceptanceCriteria": [
+          "Billing schedules match approved scenarios and SAP acknowledgments"
+        ]
+      },
+      {
+        "id": "SCP-RIGHTREV",
+        "name": "Salesforce-native revenue recognition",
+        "description": "RightRev implementation is excluded because SAP RAR remains the revenue-recognition engine.",
+        "claimIds": [
+          "CLM-SCP.RIGHTREV"
+        ],
+        "loadBearing": true,
+        "inclusionState": "excluded",
+        "workstream": "Revenue recognition",
+        "acceptanceCriteria": []
+      }
+    ],
+    "risks": [
+      {
+        "id": "RSK-BTP",
+        "name": "BTP delivery experience",
+        "description": "Neither team has demonstrated the full target iFlow shape.",
+        "claimIds": [
+          "CLM-RSK.BTP"
+        ],
+        "loadBearing": true,
+        "probability": "medium",
+        "impact": "high",
+        "owner": "Estate Technical Architect",
+        "affectedRefs": [
+          "SYS-BTP",
+          "IFC-ORDER",
+          "IFC-BILL",
+          "PHS-DESIGN",
+          "PHS-BUILD"
+        ],
+        "mitigationActions": [
+          "Run a two-week BTP architecture spike",
+          "Staff a BTP-experienced developer"
+        ],
+        "trigger": "Architecture spike fails acceptance criteria",
+        "residualExposure": "Timeline and staffing remain exposed until the spike passes"
+      },
+      {
+        "id": "RSK-CATALOG",
+        "name": "Catalog rationalization delay",
+        "description": "Material-number mapping may not be ready before configuration begins.",
+        "claimIds": [
+          "CLM-RSK.CATALOG"
+        ],
+        "loadBearing": true,
+        "probability": "high",
+        "impact": "high",
+        "owner": "Apex Sentinel Operations",
+        "affectedRefs": [
+          "SCP-LIFECYCLE",
+          "PHS-DESIGN",
+          "PHS-BUILD"
+        ],
+        "mitigationActions": [
+          "Provide mapping template in Analyze",
+          "Gate Design exit on signed catalog mapping"
+        ],
+        "trigger": "Catalog mapping incomplete at Design gate",
+        "residualExposure": "Configuration and integration mapping cannot proceed"
+      }
+    ],
+    "assumptions": [
+      {
+        "id": "ASM-SAP-INVOICE",
+        "name": "SAP owns invoicing",
+        "description": "Invoicing, AR, collections, tax, and revenue recognition stay in SAP.",
+        "claimIds": [
+          "CLM-ASM.SAP.INVOICE"
+        ],
+        "loadBearing": true,
+        "owner": "Apex Finance",
+        "affectedRefs": [
+          "SYS-SAP",
+          "IFC-BILL",
+          "SCP-BILLING",
+          "FIN-BILLING"
+        ],
+        "consequenceIfFalse": "Reopen the architecture and price a materially larger engagement.",
+        "closureCondition": "Finance approves the invoicing boundary at Design gate"
+      },
+      {
+        "id": "ASM-PM",
+        "name": "Apex provides a client-side PM",
+        "description": "Estate PM effort assumes an empowered client project owner.",
+        "claimIds": [
+          "CLM-ASM.PM"
+        ],
+        "loadBearing": true,
+        "owner": "Apex Executive Sponsor",
+        "affectedRefs": [
+          "ROL-PM",
+          "ALC-PM-ANALYZE",
+          "ALC-PM-DESIGN",
+          "ALC-PM-BUILD",
+          "FIN-PM"
+        ],
+        "consequenceIfFalse": "Increase PM allocation and commercial baseline.",
+        "closureCondition": "Name and commit the client PM before Mobilize"
+      }
+    ],
+    "dependencies": [
+      {
+        "id": "DEP-CATALOG",
+        "name": "Approved catalog mapping",
+        "description": "Material numbers must map to Salesforce products before design can close.",
+        "claimIds": [
+          "CLM-DEP.CATALOG"
+        ],
+        "loadBearing": true,
+        "owner": "Apex Sentinel Operations",
+        "affectedRefs": [
+          "SCP-LIFECYCLE",
+          "SCP-INTEGRATION",
+          "PHS-DESIGN"
+        ],
+        "closureCondition": "Signed catalog mapping and data-quality checklist",
+        "blocksRefs": [
+          "MLS-DESIGN-GATE",
+          "PHS-BUILD"
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "id": "ROL-SA",
+        "name": "Solution Architect",
+        "description": "Owns Revenue Cloud lifecycle, billing boundaries, and technical judgment.",
+        "claimIds": [
+          "CLM-ROL.SA"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "Solution architecture",
+          "ADRs",
+          "Billing design"
+        ],
+        "requiredSkills": [
+          "Revenue Cloud",
+          "Subscription lifecycle"
+        ],
+        "owner": "Estate"
+      },
+      {
+        "id": "ROL-TA",
+        "name": "Technical Architect",
+        "description": "Owns BTP topology, interface contracts, security, and failure behavior.",
+        "claimIds": [
+          "CLM-ROL.TA"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "Integration architecture",
+          "Interface contracts",
+          "Observability"
+        ],
+        "requiredSkills": [
+          "SAP BTP",
+          "API-led integration"
+        ],
+        "owner": "Estate"
+      },
+      {
+        "id": "ROL-DEV",
+        "name": "BTP Developer",
+        "description": "Builds and tests the load-bearing integration flows.",
+        "claimIds": [
+          "CLM-ROL.DEV"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "iFlow build",
+          "Error handling",
+          "E2E tests"
+        ],
+        "requiredSkills": [
+          "SAP BTP Integration Suite"
+        ],
+        "owner": "Estate"
+      },
+      {
+        "id": "ROL-PM",
+        "name": "Project Manager",
+        "description": "Owns gates, decisions, dependencies, and delivery coordination.",
+        "claimIds": [
+          "CLM-ROL.PM"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "Governance",
+          "Decision log",
+          "Phase gates"
+        ],
+        "requiredSkills": [
+          "Complex integration delivery"
+        ],
+        "owner": "Estate"
+      }
+    ],
+    "allocations": [
+      {
+        "id": "ALC-SA-ANALYZE",
+        "name": "SA in Analyze",
+        "description": "Solution Architect confirms lifecycle and billing requirements.",
+        "claimIds": [
+          "CLM-ALC.SA.ANALYZE"
+        ],
+        "loadBearing": true,
+        "roleId": "ROL-SA",
+        "phaseId": "PHS-ANALYZE",
+        "scopeItemIds": [
+          "SCP-LIFECYCLE",
+          "SCP-BILLING"
+        ],
+        "hours": 120,
+        "basis": "quoted",
+        "startMilestoneId": "MLS-ANALYZE-START",
+        "endMilestoneId": "MLS-DESIGN-GATE"
+      },
+      {
+        "id": "ALC-SA-DESIGN",
+        "name": "SA in Design",
+        "description": "Solution Architect owns system boundary and billing ADRs.",
+        "claimIds": [
+          "CLM-ALC.SA.DESIGN"
+        ],
+        "loadBearing": true,
+        "roleId": "ROL-SA",
+        "phaseId": "PHS-DESIGN",
+        "scopeItemIds": [
+          "SCP-LIFECYCLE",
+          "SCP-BILLING"
+        ],
+        "hours": 180,
+        "basis": "quoted",
+        "startMilestoneId": "MLS-ANALYZE-START",
+        "endMilestoneId": "MLS-DESIGN-GATE"
+      },
+      {
+        "id": "ALC-TA-DESIGN",
+        "name": "TA in Design",
+        "description": "Technical Architect owns interface contracts and failure design.",
+        "claimIds": [
+          "CLM-ALC.TA.DESIGN"
+        ],
+        "loadBearing": true,
+        "roleId": "ROL-TA",
+        "phaseId": "PHS-DESIGN",
+        "scopeItemIds": [
+          "SCP-INTEGRATION"
+        ],
+        "hours": 160,
+        "basis": "quoted",
+        "startMilestoneId": "MLS-ANALYZE-START",
+        "endMilestoneId": "MLS-DESIGN-GATE"
+      },
+      {
+        "id": "ALC-DEV-BUILD",
+        "name": "BTP developer in Build",
+        "description": "Developer builds and validates the integration flows.",
+        "claimIds": [
+          "CLM-ALC.DEV.BUILD"
+        ],
+        "loadBearing": true,
+        "roleId": "ROL-DEV",
+        "phaseId": "PHS-BUILD",
+        "scopeItemIds": [
+          "SCP-INTEGRATION"
+        ],
+        "hours": 420,
+        "basis": "quoted",
+        "startMilestoneId": "MLS-BUILD-START",
+        "endMilestoneId": "MLS-VALIDATION-EXIT"
+      },
+      {
+        "id": "ALC-PM-ANALYZE",
+        "name": "PM in Analyze",
+        "description": "Project Manager owns Analyze governance.",
+        "claimIds": [
+          "CLM-ALC.PM.ANALYZE"
+        ],
+        "loadBearing": true,
+        "roleId": "ROL-PM",
+        "phaseId": "PHS-ANALYZE",
+        "scopeItemIds": [
+          "SCP-LIFECYCLE",
+          "SCP-INTEGRATION",
+          "SCP-BILLING"
+        ],
+        "hours": 60,
+        "basis": "quoted",
+        "startMilestoneId": "MLS-ANALYZE-START",
+        "endMilestoneId": "MLS-DESIGN-GATE"
+      },
+      {
+        "id": "ALC-PM-DESIGN",
+        "name": "PM in Design",
+        "description": "Project Manager owns Design governance.",
+        "claimIds": [
+          "CLM-ALC.PM.DESIGN"
+        ],
+        "loadBearing": true,
+        "roleId": "ROL-PM",
+        "phaseId": "PHS-DESIGN",
+        "scopeItemIds": [
+          "SCP-LIFECYCLE",
+          "SCP-INTEGRATION",
+          "SCP-BILLING"
+        ],
+        "hours": 80,
+        "basis": "quoted",
+        "startMilestoneId": "MLS-ANALYZE-START",
+        "endMilestoneId": "MLS-DESIGN-GATE"
+      },
+      {
+        "id": "ALC-PM-BUILD",
+        "name": "PM in Build",
+        "description": "Project Manager owns Build and validation governance.",
+        "claimIds": [
+          "CLM-ALC.PM.BUILD"
+        ],
+        "loadBearing": true,
+        "roleId": "ROL-PM",
+        "phaseId": "PHS-BUILD",
+        "scopeItemIds": [
+          "SCP-LIFECYCLE",
+          "SCP-INTEGRATION",
+          "SCP-BILLING"
+        ],
+        "hours": 220,
+        "basis": "quoted",
+        "startMilestoneId": "MLS-BUILD-START",
+        "endMilestoneId": "MLS-VALIDATION-EXIT"
+      }
+    ],
+    "phases": [
+      {
+        "id": "PHS-ANALYZE",
+        "name": "Analyze",
+        "description": "Confirm process, source data, catalog, and interface needs.",
+        "claimIds": [
+          "CLM-PHS.ANALYZE"
+        ],
+        "loadBearing": true,
+        "sequence": 1,
+        "objective": "Turn quoted scope into an evidence-backed baseline.",
+        "entryCriteria": [
+          "Access provisioned"
+        ],
+        "exitCriteria": [
+          "Scope, catalog approach, and interface inventory approved"
+        ],
+        "durationWeeks": 3
+      },
+      {
+        "id": "PHS-DESIGN",
+        "name": "Design",
+        "description": "Approve architecture, ADRs, interface contracts, failure behavior, and acceptance criteria.",
+        "claimIds": [
+          "CLM-PHS.DESIGN"
+        ],
+        "loadBearing": true,
+        "sequence": 2,
+        "objective": "Make the system and delivery logic buildable.",
+        "entryCriteria": [
+          "Analyze exit passed"
+        ],
+        "exitCriteria": [
+          "Architecture, interface contracts, catalog mapping, and test approach approved"
+        ],
+        "durationWeeks": 4
+      },
+      {
+        "id": "PHS-BUILD",
+        "name": "Build and Validate",
+        "description": "Configure Revenue Cloud, build BTP flows, and prove E2E scenarios.",
+        "claimIds": [
+          "CLM-PHS.BUILD"
+        ],
+        "loadBearing": true,
+        "sequence": 3,
+        "objective": "Deliver and validate the approved scope.",
+        "entryCriteria": [
+          "Design gate passed"
+        ],
+        "exitCriteria": [
+          "E2E happy and failure paths pass acceptance criteria"
+        ],
+        "durationWeeks": 11
+      }
+    ],
+    "milestones": [
+      {
+        "id": "MLS-ANALYZE-START",
+        "name": "Analyze start",
+        "description": "Access and kickoff complete.",
+        "claimIds": [
+          "CLM-MLS.ANALYZE.START"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-ANALYZE",
+        "milestoneType": "entry",
+        "date": null,
+        "offset": "Week 1",
+        "owner": "Project Manager"
+      },
+      {
+        "id": "MLS-DESIGN-GATE",
+        "name": "Design approval gate",
+        "description": "Architecture, interface, catalog, and test decisions approved.",
+        "claimIds": [
+          "CLM-MLS.DESIGN.GATE"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-DESIGN",
+        "milestoneType": "decision",
+        "date": null,
+        "offset": "End of week 7",
+        "owner": "Technical approvers"
+      },
+      {
+        "id": "MLS-BUILD-START",
+        "name": "Build start",
+        "description": "All Design gate dependencies closed.",
+        "claimIds": [
+          "CLM-MLS.BUILD.START"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-BUILD",
+        "milestoneType": "entry",
+        "date": null,
+        "offset": "Week 8",
+        "owner": "Project Manager"
+      },
+      {
+        "id": "MLS-VALIDATION-EXIT",
+        "name": "Validation exit",
+        "description": "All E2E scenarios and failure paths pass.",
+        "claimIds": [
+          "CLM-MLS.VALIDATION.EXIT"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-BUILD",
+        "milestoneType": "exit",
+        "date": null,
+        "offset": "End of week 18",
+        "owner": "Client and Estate technical leads"
+      }
+    ],
+    "financialLines": [
+      {
+        "id": "FIN-LIFECYCLE",
+        "name": "Subscription lifecycle services",
+        "description": "Priced baseline for lifecycle configuration.",
+        "claimIds": [
+          "CLM-FIN.LIFECYCLE"
+        ],
+        "loadBearing": true,
+        "basis": "scope",
+        "amount": 180000,
+        "currency": "USD",
+        "inclusionState": "included",
+        "sourceQuoteRef": "Q-FIXTURE"
+      },
+      {
+        "id": "FIN-INTEGRATION",
+        "name": "BTP integration services",
+        "description": "Priced baseline for interface design and build.",
+        "claimIds": [
+          "CLM-FIN.INTEGRATION"
+        ],
+        "loadBearing": true,
+        "basis": "scope",
+        "amount": 260000,
+        "currency": "USD",
+        "inclusionState": "included",
+        "sourceQuoteRef": "Q-FIXTURE"
+      },
+      {
+        "id": "FIN-BILLING",
+        "name": "Billing configuration services",
+        "description": "Priced baseline for billing schedules and modifications.",
+        "claimIds": [
+          "CLM-FIN.BILLING"
+        ],
+        "loadBearing": true,
+        "basis": "scope",
+        "amount": 122725,
+        "currency": "USD",
+        "inclusionState": "included",
+        "sourceQuoteRef": "Q-FIXTURE"
+      },
+      {
+        "id": "FIN-PM",
+        "name": "Project management allocation",
+        "description": "PM cost is included across the priced scope lines.",
+        "claimIds": [
+          "CLM-FIN.PM"
+        ],
+        "loadBearing": false,
+        "basis": "role",
+        "amount": 0,
+        "currency": "USD",
+        "inclusionState": "included",
+        "sourceQuoteRef": "Q-FIXTURE"
+      },
+      {
+        "id": "FIN-RIGHTREV",
+        "name": "RightRev implementation",
+        "description": "Excluded from the baseline.",
+        "claimIds": [
+          "CLM-FIN.RIGHTREV"
+        ],
+        "loadBearing": true,
+        "basis": "excluded",
+        "amount": 0,
+        "currency": "USD",
+        "inclusionState": "excluded",
+        "sourceQuoteRef": null
+      },
+      {
+        "id": "FIN-TOTAL",
+        "name": "Total investment",
+        "description": "Reconciled included baseline.",
+        "claimIds": [
+          "CLM-FIN.TOTAL"
+        ],
+        "loadBearing": true,
+        "basis": "total",
+        "amount": 562725,
+        "currency": "USD",
+        "inclusionState": "included",
+        "sourceQuoteRef": "Q-FIXTURE"
+      }
+    ],
+    "reconciliationControls": [
+      {
+        "id": "REC-SCOPE",
+        "name": "Included scope pricing",
+        "description": "All included scope items map to included financial lines.",
+        "claimIds": [
+          "CLM-REC.SCOPE"
+        ],
+        "loadBearing": true,
+        "controlType": "scope_priced",
+        "leftRefs": [
+          "SCP-LIFECYCLE",
+          "SCP-INTEGRATION",
+          "SCP-BILLING"
+        ],
+        "rightRefs": [
+          "FIN-LIFECYCLE",
+          "FIN-INTEGRATION",
+          "FIN-BILLING"
+        ],
+        "tolerance": 0,
+        "expected": 3,
+        "actual": 3,
+        "variance": 0,
+        "status": "pass"
+      },
+      {
+        "id": "REC-TOTAL",
+        "name": "Investment total",
+        "description": "Included scope lines reconcile to the total investment.",
+        "claimIds": [
+          "CLM-REC.TOTAL"
+        ],
+        "loadBearing": true,
+        "controlType": "phase_cost_total",
+        "leftRefs": [
+          "FIN-LIFECYCLE",
+          "FIN-INTEGRATION",
+          "FIN-BILLING"
+        ],
+        "rightRefs": [
+          "FIN-TOTAL"
+        ],
+        "tolerance": 0,
+        "expected": 562725,
+        "actual": 562725,
+        "variance": 0,
+        "status": "pass"
+      },
+      {
+        "id": "REC-EXCLUSION",
+        "name": "Excluded scope contributes zero",
+        "description": "Excluded RightRev work has no baseline contribution.",
+        "claimIds": [
+          "CLM-REC.EXCLUSION"
+        ],
+        "loadBearing": true,
+        "controlType": "exclusions_zero",
+        "leftRefs": [
+          "SCP-RIGHTREV"
+        ],
+        "rightRefs": [
+          "FIN-RIGHTREV"
+        ],
+        "tolerance": 0,
+        "expected": 0,
+        "actual": 0,
+        "variance": 0,
+        "status": "pass"
+      }
+    ]
+  },
+  "edges": [
+    {
+      "edgeId": "EDG-001",
+      "type": "owns_process",
+      "from": "SYS-SF",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-002",
+      "type": "owns_process",
+      "from": "SYS-RC",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-003",
+      "type": "owns_process",
+      "from": "SYS-RC",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-004",
+      "type": "connects_through",
+      "from": "SYS-RC",
+      "to": "IFC-ORDER",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-005",
+      "type": "connects_through",
+      "from": "IFC-ORDER",
+      "to": "SYS-BTP",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-006",
+      "type": "connects_through",
+      "from": "SYS-RC",
+      "to": "IFC-BILL",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-007",
+      "type": "connects_through",
+      "from": "IFC-BILL",
+      "to": "SYS-SAP",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-008",
+      "type": "implements_scope",
+      "from": "IFC-ORDER",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-009",
+      "type": "implements_scope",
+      "from": "IFC-BILL",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-010",
+      "type": "implements_scope",
+      "from": "SYS-RC",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-011",
+      "type": "implements_scope",
+      "from": "SYS-RC",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-012",
+      "type": "governs",
+      "from": "ADR-BTP",
+      "to": "IFC-ORDER",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-013",
+      "type": "governs",
+      "from": "ADR-BTP",
+      "to": "IFC-BILL",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-014",
+      "type": "governs",
+      "from": "ADR-BTP",
+      "to": "SYS-BTP",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-015",
+      "type": "governs",
+      "from": "ADR-RCB",
+      "to": "SYS-RC",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-016",
+      "type": "governs",
+      "from": "ADR-RCB",
+      "to": "IFC-BILL",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-017",
+      "type": "delivered_in",
+      "from": "SCP-LIFECYCLE",
+      "to": "PHS-ANALYZE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-018",
+      "type": "delivered_in",
+      "from": "SCP-LIFECYCLE",
+      "to": "PHS-DESIGN",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-019",
+      "type": "delivered_in",
+      "from": "SCP-LIFECYCLE",
+      "to": "PHS-BUILD",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-020",
+      "type": "delivered_in",
+      "from": "SCP-INTEGRATION",
+      "to": "PHS-DESIGN",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-021",
+      "type": "delivered_in",
+      "from": "SCP-INTEGRATION",
+      "to": "PHS-BUILD",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-022",
+      "type": "delivered_in",
+      "from": "SCP-BILLING",
+      "to": "PHS-DESIGN",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-023",
+      "type": "delivered_in",
+      "from": "SCP-BILLING",
+      "to": "PHS-BUILD",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-024",
+      "type": "requires_role",
+      "from": "SCP-LIFECYCLE",
+      "to": "ROL-SA",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-025",
+      "type": "requires_role",
+      "from": "SCP-LIFECYCLE",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-026",
+      "type": "requires_role",
+      "from": "SCP-INTEGRATION",
+      "to": "ROL-TA",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-027",
+      "type": "requires_role",
+      "from": "SCP-INTEGRATION",
+      "to": "ROL-DEV",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-028",
+      "type": "requires_role",
+      "from": "SCP-INTEGRATION",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-029",
+      "type": "requires_role",
+      "from": "SCP-BILLING",
+      "to": "ROL-SA",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-030",
+      "type": "requires_role",
+      "from": "SCP-BILLING",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-031",
+      "type": "prices",
+      "from": "FIN-LIFECYCLE",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-032",
+      "type": "prices",
+      "from": "FIN-INTEGRATION",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-033",
+      "type": "prices",
+      "from": "FIN-BILLING",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-034",
+      "type": "prices",
+      "from": "FIN-RIGHTREV",
+      "to": "SCP-RIGHTREV",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-035",
+      "type": "prices",
+      "from": "FIN-PM",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-036",
+      "type": "affects",
+      "from": "RSK-BTP",
+      "to": "SYS-BTP",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-037",
+      "type": "affects",
+      "from": "RSK-BTP",
+      "to": "IFC-ORDER",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-038",
+      "type": "affects",
+      "from": "RSK-BTP",
+      "to": "IFC-BILL",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-039",
+      "type": "affects",
+      "from": "RSK-CATALOG",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-040",
+      "type": "affects",
+      "from": "RSK-CATALOG",
+      "to": "PHS-DESIGN",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-041",
+      "type": "conditions",
+      "from": "ASM-SAP-INVOICE",
+      "to": "IFC-BILL",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-042",
+      "type": "conditions",
+      "from": "ASM-SAP-INVOICE",
+      "to": "FIN-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-043",
+      "type": "conditions",
+      "from": "ASM-PM",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-044",
+      "type": "conditions",
+      "from": "DEP-CATALOG",
+      "to": "PHS-BUILD",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-045",
+      "type": "blocks",
+      "from": "DEP-CATALOG",
+      "to": "PHS-BUILD",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-046",
+      "type": "allocated_to",
+      "from": "ALC-SA-ANALYZE",
+      "to": "ROL-SA",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-047",
+      "type": "allocated_to",
+      "from": "ALC-SA-ANALYZE",
+      "to": "PHS-ANALYZE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-048",
+      "type": "allocated_to",
+      "from": "ALC-SA-ANALYZE",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-049",
+      "type": "allocated_to",
+      "from": "ALC-SA-ANALYZE",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-050",
+      "type": "allocated_to",
+      "from": "ALC-SA-DESIGN",
+      "to": "ROL-SA",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-051",
+      "type": "allocated_to",
+      "from": "ALC-SA-DESIGN",
+      "to": "PHS-DESIGN",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-052",
+      "type": "allocated_to",
+      "from": "ALC-SA-DESIGN",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-053",
+      "type": "allocated_to",
+      "from": "ALC-SA-DESIGN",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-054",
+      "type": "allocated_to",
+      "from": "ALC-TA-DESIGN",
+      "to": "ROL-TA",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-055",
+      "type": "allocated_to",
+      "from": "ALC-TA-DESIGN",
+      "to": "PHS-DESIGN",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-056",
+      "type": "allocated_to",
+      "from": "ALC-TA-DESIGN",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-057",
+      "type": "allocated_to",
+      "from": "ALC-DEV-BUILD",
+      "to": "ROL-DEV",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-058",
+      "type": "allocated_to",
+      "from": "ALC-DEV-BUILD",
+      "to": "PHS-BUILD",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-059",
+      "type": "allocated_to",
+      "from": "ALC-DEV-BUILD",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-060",
+      "type": "allocated_to",
+      "from": "ALC-PM-ANALYZE",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-061",
+      "type": "allocated_to",
+      "from": "ALC-PM-ANALYZE",
+      "to": "PHS-ANALYZE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-062",
+      "type": "allocated_to",
+      "from": "ALC-PM-ANALYZE",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-063",
+      "type": "allocated_to",
+      "from": "ALC-PM-ANALYZE",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-064",
+      "type": "allocated_to",
+      "from": "ALC-PM-ANALYZE",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-065",
+      "type": "allocated_to",
+      "from": "ALC-PM-DESIGN",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-066",
+      "type": "allocated_to",
+      "from": "ALC-PM-DESIGN",
+      "to": "PHS-DESIGN",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-067",
+      "type": "allocated_to",
+      "from": "ALC-PM-DESIGN",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-068",
+      "type": "allocated_to",
+      "from": "ALC-PM-DESIGN",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-069",
+      "type": "allocated_to",
+      "from": "ALC-PM-DESIGN",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-070",
+      "type": "allocated_to",
+      "from": "ALC-PM-BUILD",
+      "to": "ROL-PM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-071",
+      "type": "allocated_to",
+      "from": "ALC-PM-BUILD",
+      "to": "PHS-BUILD",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-072",
+      "type": "allocated_to",
+      "from": "ALC-PM-BUILD",
+      "to": "SCP-LIFECYCLE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-073",
+      "type": "allocated_to",
+      "from": "ALC-PM-BUILD",
+      "to": "SCP-INTEGRATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-074",
+      "type": "allocated_to",
+      "from": "ALC-PM-BUILD",
+      "to": "SCP-BILLING",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-075",
+      "type": "closes",
+      "from": "MLS-DESIGN-GATE",
+      "to": "ADR-BTP",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-076",
+      "type": "closes",
+      "from": "MLS-DESIGN-GATE",
+      "to": "ADR-RCB",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-077",
+      "type": "closes",
+      "from": "MLS-DESIGN-GATE",
+      "to": "DEP-CATALOG",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-078",
+      "type": "excludes",
+      "from": "SCP-RIGHTREV",
+      "to": "FIN-RIGHTREV",
+      "claimIds": [],
+      "derivation": "deterministic"
+    }
+  ],
+  "editorialViews": [
+    {
+      "viewId": "VIEW-01",
+      "viewType": "technical_judgment",
+      "audienceTask": "Know whether the solution is technically deliverable and under which conditions.",
+      "entityRefs": [
+        "ADR-BTP",
+        "ADR-RCB",
+        "RSK-BTP",
+        "DEP-CATALOG"
+      ],
+      "claimIds": [
+        "CLM-ADR.BTP",
+        "CLM-ADR.RCB",
+        "CLM-DEP.CATALOG",
+        "CLM-RSK.BTP"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "decision_condition_statement",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-02",
+      "viewType": "system_boundary",
+      "audienceTask": "Understand systems, ownership, scope, and access boundaries.",
+      "entityRefs": [
+        "SYS-SF",
+        "SYS-RC",
+        "SYS-BTP",
+        "SYS-SAP",
+        "SCP-LIFECYCLE",
+        "SCP-INTEGRATION",
+        "SCP-BILLING"
+      ],
+      "claimIds": [
+        "CLM-SCP.BILLING",
+        "CLM-SCP.INTEGRATION",
+        "CLM-SCP.LIFECYCLE",
+        "CLM-SYS.BTP",
+        "CLM-SYS.RC",
+        "CLM-SYS.SAP",
+        "CLM-SYS.SF"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "layered_system_map",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-03",
+      "viewType": "critical_interfaces",
+      "audienceTask": "Trace load-bearing exchanges and failure behavior.",
+      "entityRefs": [
+        "IFC-ORDER",
+        "IFC-BILL",
+        "SYS-RC",
+        "SYS-BTP",
+        "SYS-SAP"
+      ],
+      "claimIds": [
+        "CLM-IFC.BILL",
+        "CLM-IFC.ORDER",
+        "CLM-SYS.BTP",
+        "CLM-SYS.RC",
+        "CLM-SYS.SAP"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "interface_sequence_and_inventory",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-04",
+      "viewType": "architecture_decisions",
+      "audienceTask": "Know what was decided, why, and what each decision governs.",
+      "entityRefs": [
+        "ADR-BTP",
+        "ADR-RCB",
+        "IFC-ORDER",
+        "IFC-BILL"
+      ],
+      "claimIds": [
+        "CLM-ADR.BTP",
+        "CLM-ADR.RCB",
+        "CLM-IFC.BILL",
+        "CLM-IFC.ORDER"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "expandable_adr_register",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-05",
+      "viewType": "scope_solution_trace",
+      "audienceTask": "Trace included and excluded scope to the solution and phases.",
+      "entityRefs": [
+        "SCP-LIFECYCLE",
+        "SCP-INTEGRATION",
+        "SCP-BILLING",
+        "SCP-RIGHTREV",
+        "PHS-ANALYZE",
+        "PHS-DESIGN",
+        "PHS-BUILD"
+      ],
+      "claimIds": [
+        "CLM-PHS.ANALYZE",
+        "CLM-PHS.BUILD",
+        "CLM-PHS.DESIGN",
+        "CLM-SCP.BILLING",
+        "CLM-SCP.INTEGRATION",
+        "CLM-SCP.LIFECYCLE",
+        "CLM-SCP.RIGHTREV"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "scope_boundary_matrix",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-06",
+      "viewType": "risk_concentration",
+      "audienceTask": "See where risks and conditions attach to the architecture and timeline.",
+      "entityRefs": [
+        "RSK-BTP",
+        "RSK-CATALOG",
+        "ASM-SAP-INVOICE",
+        "ASM-PM",
+        "DEP-CATALOG",
+        "SYS-BTP",
+        "PHS-DESIGN",
+        "PHS-BUILD"
+      ],
+      "claimIds": [
+        "CLM-ASM.PM",
+        "CLM-ASM.SAP.INVOICE",
+        "CLM-DEP.CATALOG",
+        "CLM-PHS.BUILD",
+        "CLM-PHS.DESIGN",
+        "CLM-RSK.BTP",
+        "CLM-RSK.CATALOG",
+        "CLM-SYS.BTP"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "risk_table_and_concentration_overlay",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-07",
+      "viewType": "staffing_delivery_shape",
+      "audienceTask": "Understand technical ownership, allocations, peaks, and feasibility.",
+      "entityRefs": [
+        "ROL-SA",
+        "ROL-TA",
+        "ROL-DEV",
+        "ROL-PM",
+        "ALC-SA-ANALYZE",
+        "ALC-SA-DESIGN",
+        "ALC-TA-DESIGN",
+        "ALC-DEV-BUILD",
+        "ALC-PM-ANALYZE",
+        "ALC-PM-DESIGN",
+        "ALC-PM-BUILD"
+      ],
+      "claimIds": [
+        "CLM-ALC.DEV.BUILD",
+        "CLM-ALC.PM.ANALYZE",
+        "CLM-ALC.PM.BUILD",
+        "CLM-ALC.PM.DESIGN",
+        "CLM-ALC.SA.ANALYZE",
+        "CLM-ALC.SA.DESIGN",
+        "CLM-ALC.TA.DESIGN",
+        "CLM-ROL.DEV",
+        "CLM-ROL.PM",
+        "CLM-ROL.SA",
+        "CLM-ROL.TA"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "staffing_allocation_gantt",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-08",
+      "viewType": "timeline_decision_gates",
+      "audienceTask": "Understand phases, entry and exit criteria, and decision gates.",
+      "entityRefs": [
+        "PHS-ANALYZE",
+        "PHS-DESIGN",
+        "PHS-BUILD",
+        "MLS-ANALYZE-START",
+        "MLS-DESIGN-GATE",
+        "MLS-BUILD-START",
+        "MLS-VALIDATION-EXIT"
+      ],
+      "claimIds": [
+        "CLM-MLS.ANALYZE.START",
+        "CLM-MLS.BUILD.START",
+        "CLM-MLS.DESIGN.GATE",
+        "CLM-MLS.VALIDATION.EXIT",
+        "CLM-PHS.ANALYZE",
+        "CLM-PHS.BUILD",
+        "CLM-PHS.DESIGN"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "gated_timeline",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-09",
+      "viewType": "financial_reconciliation",
+      "audienceTask": "Verify scope, staffing, timing, and investment coherence.",
+      "entityRefs": [
+        "FIN-LIFECYCLE",
+        "FIN-INTEGRATION",
+        "FIN-BILLING",
+        "FIN-RIGHTREV",
+        "FIN-TOTAL",
+        "REC-SCOPE",
+        "REC-TOTAL",
+        "REC-EXCLUSION"
+      ],
+      "claimIds": [
+        "CLM-FIN.BILLING",
+        "CLM-FIN.INTEGRATION",
+        "CLM-FIN.LIFECYCLE",
+        "CLM-FIN.RIGHTREV",
+        "CLM-FIN.TOTAL",
+        "CLM-REC.EXCLUSION",
+        "CLM-REC.SCOPE",
+        "CLM-REC.TOTAL"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "financial_reconciliation_table",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-10",
+      "viewType": "conditions_next_action",
+      "audienceTask": "Know which conditions block progress and the next evidence gate.",
+      "entityRefs": [
+        "DEP-CATALOG",
+        "ASM-SAP-INVOICE",
+        "ASM-PM",
+        "RSK-BTP",
+        "MLS-DESIGN-GATE"
+      ],
+      "claimIds": [
+        "CLM-ASM.PM",
+        "CLM-ASM.SAP.INVOICE",
+        "CLM-DEP.CATALOG",
+        "CLM-MLS.DESIGN.GATE",
+        "CLM-RSK.BTP"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "conditional_logic_ledger",
+      "required": true
+    }
+  ],
+  "referencedClaimIds": [
+    "CLM-ADR.BTP",
+    "CLM-ADR.RCB",
+    "CLM-ALC.DEV.BUILD",
+    "CLM-ALC.PM.ANALYZE",
+    "CLM-ALC.PM.BUILD",
+    "CLM-ALC.PM.DESIGN",
+    "CLM-ALC.SA.ANALYZE",
+    "CLM-ALC.SA.DESIGN",
+    "CLM-ALC.TA.DESIGN",
+    "CLM-ASM.PM",
+    "CLM-ASM.SAP.INVOICE",
+    "CLM-DEP.CATALOG",
+    "CLM-FIN.BILLING",
+    "CLM-FIN.INTEGRATION",
+    "CLM-FIN.LIFECYCLE",
+    "CLM-FIN.PM",
+    "CLM-FIN.RIGHTREV",
+    "CLM-FIN.TOTAL",
+    "CLM-IFC.BILL",
+    "CLM-IFC.ORDER",
+    "CLM-MLS.ANALYZE.START",
+    "CLM-MLS.BUILD.START",
+    "CLM-MLS.DESIGN.GATE",
+    "CLM-MLS.VALIDATION.EXIT",
+    "CLM-PHS.ANALYZE",
+    "CLM-PHS.BUILD",
+    "CLM-PHS.DESIGN",
+    "CLM-REC.EXCLUSION",
+    "CLM-REC.SCOPE",
+    "CLM-REC.TOTAL",
+    "CLM-ROL.DEV",
+    "CLM-ROL.PM",
+    "CLM-ROL.SA",
+    "CLM-ROL.TA",
+    "CLM-RSK.BTP",
+    "CLM-RSK.CATALOG",
+    "CLM-SCP.BILLING",
+    "CLM-SCP.INTEGRATION",
+    "CLM-SCP.LIFECYCLE",
+    "CLM-SCP.RIGHTREV",
+    "CLM-SYS.BTP",
+    "CLM-SYS.RC",
+    "CLM-SYS.SAP",
+    "CLM-SYS.SF"
+  ],
+  "metadata": {
+    "fixturePurpose": "industrial-subscription-shaped rich graph demonstrating distinct semantic components and relationships"
+  }
+}

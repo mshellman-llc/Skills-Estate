@@ -1,0 +1,442 @@
+{
+  "ledgerVersion": "0.1.0",
+  "asOf": "2026-07-16T12:00:00Z",
+  "engagement": {
+    "engagementId": "FIX-RICH-SB",
+    "clientName": "Northstar Manufacturing",
+    "opportunityId": null,
+    "contractId": null
+  },
+  "sources": [
+    {
+      "sourceId": "SRC-001",
+      "sourceType": "executed_contract",
+      "title": "Executed Phase 1 SOW",
+      "authority": 100,
+      "observedAt": "2026-07-16T12:00:00Z",
+      "effectiveAt": "2026-07-15T00:00:00Z",
+      "supersedes": [],
+      "locator": "fixture://rich/executed-sow",
+      "notes": null
+    },
+    {
+      "sourceId": "SRC-002",
+      "sourceType": "approved_design",
+      "title": "Approved architecture and integration design",
+      "authority": 85,
+      "observedAt": "2026-07-16T12:00:00Z",
+      "effectiveAt": "2026-07-15T00:00:00Z",
+      "supersedes": [],
+      "locator": "fixture://rich/approved-design",
+      "notes": null
+    },
+    {
+      "sourceId": "SRC-003",
+      "sourceType": "meeting_transcript",
+      "title": "Technical approval meeting transcript",
+      "authority": 70,
+      "observedAt": "2026-07-16T12:00:00Z",
+      "effectiveAt": "2026-07-15T00:00:00Z",
+      "supersedes": [],
+      "locator": "fixture://rich/approval-transcript",
+      "notes": null
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "CLM-001",
+      "statement": "Phase 1 includes the case-assist workflow and excludes external self-service channels.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "scope"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-002",
+      "statement": "Salesforce Case is the originating system and the client cloud tenant hosts retrieval and orchestration.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "system context"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-003",
+      "statement": "The approved design uses a client-owned API spine and model gateway.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "architecture"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-004",
+      "statement": "Salesforce exchanges requests and cited responses through one versioned Process API.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "integrations"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-005",
+      "statement": "Approved knowledge sources are versioned, permission-filtered, and synchronized on a governed cadence.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "data"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-006",
+      "statement": "Human review, audit logging, permission-aware retrieval, and data-residency controls are mandatory.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "security and governance"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-007",
+      "statement": "Proceed with the client-owned platform shape, subject to the stated technical approval conditions.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "decisions"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-008",
+      "statement": "Low confidence, unavailable sources, and API failure route to human handling without sending an unsupported response.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "failure paths"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-009",
+      "statement": "Content freshness and integration throttling are material delivery risks with named mitigations.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "risks"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-010",
+      "statement": "The client will provide approved content owners and non-production access before Design.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "assumptions"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-011",
+      "statement": "Technical approval requires interface contracts, unhappy-path tests, and residency confirmation before Build.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "asOf": "2026-07-16T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "technical approval conditions"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    }
+  ],
+  "conflicts": [],
+  "coverage": [
+    {
+      "domain": "scope",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "system context",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "architecture",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "integrations",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "data",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "security and governance",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "decisions",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "failure paths",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "risks",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "assumptions",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    },
+    {
+      "domain": "technical approval conditions",
+      "status": "Sufficient",
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-005",
+        "CLM-006",
+        "CLM-007",
+        "CLM-008",
+        "CLM-009",
+        "CLM-010",
+        "CLM-011"
+      ],
+      "notes": "Fixture coverage declaration; evaluator recomputes from claims and conflicts."
+    }
+  ],
+  "registers": {
+    "scope": [],
+    "estimate": [],
+    "decisions": [],
+    "risks": [],
+    "assumptions": [],
+    "stakeholders": [],
+    "timeline": []
+  }
+}

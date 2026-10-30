@@ -1,0 +1,992 @@
+{
+  "graphVersion": "0.3.0",
+  "artifactType": "solution_brief",
+  "outputType": "field_guide",
+  "mode": "field_guide",
+  "engagement": {
+    "engagementId": "ENG-NORTHGATE-FIXTURE",
+    "clientName": "Northgate Mutual Cooperative",
+    "asOf": "2026-08-05T00:00:00Z"
+  },
+  "sufficiency": {
+    "status": "Conditional",
+    "terminal": false,
+    "domainCoverage": {
+      "scope": "Sufficient",
+      "system context": "Sufficient",
+      "architecture": "Sufficient",
+      "integrations": "Conditional",
+      "data": "Sufficient",
+      "security and governance": "Sufficient",
+      "decisions": "Sufficient",
+      "failure paths": "Sufficient",
+      "risks": "Sufficient",
+      "assumptions": "Conditional",
+      "technical approval conditions": "Sufficient"
+    },
+    "blockers": [
+      {
+        "description": "The associate multiplier is 1.5x in the requirements memo and 1.35x in the rate schedule.",
+        "owner": "Rene\u00e9 Okonkwo",
+        "closureCondition": "Confirm in writing which document governs.",
+        "affectedRefs": [
+          "ASM-MULTIPLIER",
+          "SCP-TIERPRICE"
+        ],
+        "claimIds": [
+          "CLM-ASM.MULTIPLIER"
+        ]
+      },
+      {
+        "description": "No equipment and package count exists, so the catalog build is unsized.",
+        "owner": "Tom Bramley",
+        "closureCondition": "Inventory walkthrough with Tom.",
+        "affectedRefs": [
+          "DEP-COUNT",
+          "SCP-CATALOG"
+        ],
+        "claimIds": [
+          "CLM-DEP.COUNT"
+        ]
+      }
+    ],
+    "nextGate": "Close both blockers, then rerun the content-sufficiency gate before any priced artifact."
+  },
+  "technicalJudgment": {
+    "statement": "The reservation and pricing shape is deliverable. Two evidence items must close before any rate is built against.",
+    "force": "approve_with_conditions",
+    "conditionRefs": [
+      "ASM-MULTIPLIER",
+      "DEP-TELEMCREDS"
+    ],
+    "claimIds": [
+      "CLM-ASM.MULTIPLIER",
+      "CLM-DEP.TELEMCREDS"
+    ]
+  },
+  "nodes": {
+    "systems": [
+      {
+        "id": "SYS-SF",
+        "name": "Salesforce Sales Cloud and Scheduler",
+        "claimIds": [
+          "CLM-SYS.SF"
+        ],
+        "loadBearing": true,
+        "description": "System of record for the member, the reservation, and the invoice.",
+        "disposition": "keep",
+        "owner": "Northgate operations",
+        "responsibilities": [
+          "Reservation and member record"
+        ],
+        "dataDomains": [
+          "members",
+          "reservations"
+        ],
+        "accessState": "confirmed"
+      },
+      {
+        "id": "SYS-ACCESS",
+        "name": "Access reservation database",
+        "claimIds": [
+          "CLM-SYS.ACCESS"
+        ],
+        "loadBearing": true,
+        "description": "Holds every reservation and the maintenance history today. Managed by Halverson IT.",
+        "disposition": "retire",
+        "owner": "Halverson IT",
+        "responsibilities": [
+          "Reservation log",
+          "Maintenance history"
+        ],
+        "dataDomains": [
+          "reservations",
+          "maintenance"
+        ],
+        "accessState": "pending"
+      },
+      {
+        "id": "SYS-TELEM",
+        "name": "Equipment telematics tracker",
+        "claimIds": [
+          "CLM-SYS.TELEM"
+        ],
+        "loadBearing": true,
+        "description": "Vendor platform reporting engine hours per machine.",
+        "disposition": "connect",
+        "owner": "Tracker vendor",
+        "responsibilities": [
+          "Engine hours"
+        ],
+        "dataDomains": [
+          "usage"
+        ],
+        "accessState": "blocked"
+      },
+      {
+        "id": "SYS-QB",
+        "name": "QuickBooks",
+        "claimIds": [
+          "CLM-SYS.QB"
+        ],
+        "loadBearing": false,
+        "description": "Accounting system of record. Receives invoices by manual export today.",
+        "disposition": "keep",
+        "owner": "Northgate finance",
+        "responsibilities": [
+          "General ledger"
+        ],
+        "dataDomains": [
+          "invoices"
+        ],
+        "accessState": "confirmed"
+      }
+    ],
+    "interfaces": [
+      {
+        "id": "IFC-TELEM",
+        "name": "Telematics usage feed",
+        "claimIds": [
+          "CLM-IFC.TELEM"
+        ],
+        "loadBearing": true,
+        "description": "Engine hours move from the tracker into Salesforce to drive billable usage.",
+        "fromSystemId": "SYS-TELEM",
+        "toSystemId": "SYS-SF",
+        "direction": "event_in",
+        "purpose": "Convert reported engine hours into billable usage on the reservation.",
+        "trigger": "Machine returns and reports hours",
+        "payloads": [
+          "machine id",
+          "engine hours",
+          "window"
+        ],
+        "protocol": "REST",
+        "owner": "Estate",
+        "contractState": "missing",
+        "happyPath": "Hours land on the reservation and the invoice resolves against the tier rate.",
+        "failurePaths": [
+          {
+            "id": "FP-TELEM-01",
+            "condition": "Credentials are absent or the endpoint rejects the call",
+            "behavior": "Usage stays unset and the reservation holds at returned, so no invoice generates from a guess.",
+            "owner": "Northgate",
+            "observability": "Integration error log plus a queue of reservations awaiting usage",
+            "claimIds": [
+              "CLM-DEP.TELEMCREDS"
+            ]
+          }
+        ],
+        "securityControls": [
+          "Named integration user",
+          "Least-privilege scope"
+        ],
+        "observability": "Feed latency and rejected-call count"
+      }
+    ],
+    "adrs": [
+      {
+        "id": "ADR-CONFLICT",
+        "name": "Double-booking behavior",
+        "claimIds": [
+          "CLM-ADR.CONFLICT",
+          "CLM-SCP.CONFLICT"
+        ],
+        "loadBearing": true,
+        "description": "Northgate overbooks deliberately in harvest season and reallocates by seniority.",
+        "question": "Should a second hold on a booked machine be blocked, warned, or pooled?",
+        "decision": "Soft warning with a conflict queue.",
+        "state": "proposed",
+        "rationale": "Preserves the overbooking the operation depends on, makes clashes visible, and keeps the reservation attached to a machine so usage and invoice still line up.",
+        "alternatives": [
+          "Hard lock refuses the second hold",
+          "Overbooking pool assigns a machine at pickup"
+        ],
+        "owner": "Rene\u00e9 Okonkwo",
+        "decisionPointRef": "Design session, week 1",
+        "affectedRefs": [
+          "SCP-CONFLICT",
+          "ENT-RESERVATION"
+        ]
+      }
+    ],
+    "scopeItems": [
+      {
+        "id": "SCP-CATALOG",
+        "name": "Equipment catalog with classes and attributes",
+        "claimIds": [
+          "CLM-SCP.CATALOG"
+        ],
+        "loadBearing": false,
+        "description": "Nine equipment classes become structured products carrying class, capacity, and attachment attributes.",
+        "inclusionState": "included",
+        "buildDisposition": "native",
+        "workstream": "Reservations",
+        "acceptanceCriteria": [
+          "Equipment catalog with classes and attributes behaves as described without manual re-entry"
+        ]
+      },
+      {
+        "id": "SCP-TIERPRICE",
+        "name": "Tier pricing by membership status",
+        "claimIds": [
+          "CLM-SCP.TIERPRICE"
+        ],
+        "loadBearing": true,
+        "description": "Two price books resolved from the member record, replacing the printed-sheet lookup.",
+        "inclusionState": "included",
+        "buildDisposition": "native",
+        "workstream": "Reservations",
+        "acceptanceCriteria": [
+          "Tier pricing by membership status behaves as described without manual re-entry"
+        ]
+      },
+      {
+        "id": "SCP-CALENDAR",
+        "name": "Availability calendar per machine",
+        "claimIds": [
+          "CLM-SCP.CALENDAR"
+        ],
+        "loadBearing": false,
+        "description": "Each machine becomes a scheduled resource with its own calendar.",
+        "inclusionState": "included",
+        "buildDisposition": "native",
+        "workstream": "Reservations",
+        "acceptanceCriteria": [
+          "Availability calendar per machine behaves as described without manual re-entry"
+        ]
+      },
+      {
+        "id": "SCP-REQFORM",
+        "name": "Member reservation request form",
+        "claimIds": [
+          "CLM-SCP.REQFORM"
+        ],
+        "loadBearing": false,
+        "description": "A screen flow on the member portal replaces the phone call and the paper slip.",
+        "inclusionState": "included",
+        "buildDisposition": "config",
+        "workstream": "Reservations",
+        "acceptanceCriteria": [
+          "Member reservation request form behaves as described without manual re-entry"
+        ]
+      },
+      {
+        "id": "SCP-CONFLICT",
+        "name": "Double-booking conflict rule",
+        "claimIds": [
+          "CLM-SCP.CONFLICT"
+        ],
+        "loadBearing": true,
+        "description": "Deliberate overbooking is expressed as a rule with a resolution queue.",
+        "inclusionState": "included",
+        "buildDisposition": "custom",
+        "workstream": "Reservations",
+        "acceptanceCriteria": [
+          "Double-booking conflict rule behaves as described without manual re-entry"
+        ]
+      },
+      {
+        "id": "SCP-TELEMINGEST",
+        "name": "Telematics usage ingest",
+        "claimIds": [
+          "CLM-SCP.TELEMINGEST"
+        ],
+        "loadBearing": true,
+        "description": "Engine hours arrive from the tracker and drive billable usage.",
+        "inclusionState": "included",
+        "buildDisposition": "custom",
+        "workstream": "Reservations",
+        "acceptanceCriteria": [
+          "Telematics usage ingest behaves as described without manual re-entry"
+        ]
+      },
+      {
+        "id": "SCP-TIERDATA",
+        "name": "Member roster tier cleanup",
+        "claimIds": [
+          "CLM-SCP.TIERDATA"
+        ],
+        "loadBearing": false,
+        "description": "Forty-one roster entries carry no tier. Northgate populates them before pricing is trustworthy.",
+        "inclusionState": "included",
+        "buildDisposition": "dep",
+        "workstream": "Reservations",
+        "acceptanceCriteria": [
+          "Member roster tier cleanup behaves as described without manual re-entry"
+        ]
+      }
+    ],
+    "risks": [
+      {
+        "id": "RSK-HALVERSON",
+        "name": "Incumbent MSP has proposed the build itself",
+        "claimIds": [
+          "CLM-RSK.HALVERSON"
+        ],
+        "loadBearing": true,
+        "description": "Halverson IT sent Northgate an unsolicited proposal to rebuild the system in-house, priced below anything Estate can field.",
+        "probability": "high",
+        "impact": "high",
+        "owner": "Estate pursuit lead",
+        "affectedRefs": [
+          "SCP-CATALOG",
+          "SCP-CONFLICT"
+        ],
+        "mitigationActions": [
+          "Carve the scope split in the design session",
+          "Concede the declarative rows early"
+        ],
+        "trigger": "Northgate compares the two proposals on price alone",
+        "residualExposure": "A reduced first phase rather than the full scope"
+      }
+    ],
+    "assumptions": [
+      {
+        "id": "ASM-MULTIPLIER",
+        "name": "The rate schedule governs the associate multiplier",
+        "claimIds": [
+          "CLM-ASM.MULTIPLIER"
+        ],
+        "loadBearing": true,
+        "description": "The requirements memo says 1.5x. The FY26 rate schedule works out to 1.35x on seven of nine classes.",
+        "owner": "Rene\u00e9 Okonkwo",
+        "affectedRefs": [
+          "SCP-TIERPRICE"
+        ],
+        "consequenceIfFalse": "Price books are built against the wrong multiplier and every associate invoice is wrong.",
+        "closureCondition": "Rene\u00e9 confirms in writing which document governs."
+      }
+    ],
+    "dependencies": [
+      {
+        "id": "DEP-TELEMCREDS",
+        "name": "Telematics API credentials and a test device",
+        "claimIds": [
+          "CLM-DEP.TELEMCREDS"
+        ],
+        "loadBearing": true,
+        "description": "Northgate holds the tracker contract. No credentials have been produced.",
+        "owner": "Northgate",
+        "affectedRefs": [
+          "IFC-TELEM",
+          "SCP-TELEMINGEST"
+        ],
+        "closureCondition": "Credentials and a test device delivered before the design session.",
+        "blocksRefs": [
+          "IFC-TELEM"
+        ]
+      },
+      {
+        "id": "DEP-COUNT",
+        "name": "Equipment and package count",
+        "claimIds": [
+          "CLM-DEP.COUNT"
+        ],
+        "loadBearing": false,
+        "description": "The catalog build sizes off the number of machines and packages. Nobody has produced it.",
+        "owner": "Tom Bramley",
+        "affectedRefs": [
+          "SCP-CATALOG"
+        ],
+        "closureCondition": "Inventory walkthrough with Tom.",
+        "blocksRefs": []
+      },
+      {
+        "id": "DEP-TIERDATA",
+        "name": "Member roster tier values",
+        "claimIds": [
+          "CLM-DEP.TIERDATA"
+        ],
+        "loadBearing": false,
+        "description": "Forty-one roster entries have no tier set.",
+        "owner": "Northgate member services",
+        "affectedRefs": [
+          "SCP-TIERPRICE"
+        ],
+        "closureCondition": "Roster cleaned and verified.",
+        "blocksRefs": []
+      }
+    ],
+    "roles": [],
+    "allocations": [],
+    "phases": [],
+    "milestones": [],
+    "financialLines": [],
+    "reconciliationControls": [],
+    "dataEntities": [
+      {
+        "id": "ENT-RESERVATION",
+        "name": "Reservation",
+        "claimIds": [
+          "CLM-ENT.RESERVATION"
+        ],
+        "loadBearing": true,
+        "description": "The held window on a machine. Carries usage, conflict state, and the resolved rate.",
+        "entityKind": "custom_object",
+        "ownerSystemId": "SYS-SF",
+        "keyFields": [
+          "machine",
+          "member",
+          "window",
+          "resolvedRate"
+        ]
+      },
+      {
+        "id": "ENT-MEMBER",
+        "name": "Member",
+        "claimIds": [
+          "CLM-ENT.MEMBER"
+        ],
+        "loadBearing": false,
+        "description": "Cooperative member record. Carries the tier that pricing resolves against.",
+        "entityKind": "standard_object",
+        "ownerSystemId": "SYS-SF",
+        "keyFields": [
+          "tier",
+          "joinDate"
+        ]
+      }
+    ],
+    "qaEntries": [
+      {
+        "id": "QNA-01",
+        "name": "I built the reservation database. Why pay you?",
+        "claimIds": [
+          "CLM-QNA.01"
+        ],
+        "loadBearing": true,
+        "stakeholder": "Dale Halverson, Halverson IT",
+        "question": "I built the reservation database. Why pay you?",
+        "answer": "The maintenance database should stay with Halverson. What is in front of Northgate is a different problem: tier pricing that resolves from the member record, overbooking expressed as a rule rather than as Tom's memory, and usage arriving as structured data before an invoice can be trusted. Each piece is manageable alone. They interact, and that is the work.",
+        "dependencyAsk": "Which parts do you want to keep, and which do you want handed over end to end?",
+        "affectedRefs": [
+          "SCP-TIERPRICE",
+          "SCP-CONFLICT",
+          "SCP-TELEMINGEST"
+        ]
+      },
+      {
+        "id": "QNA-02",
+        "name": "Two tiers and nine rates. Why is pricing hard?",
+        "claimIds": [
+          "CLM-QNA.02"
+        ],
+        "loadBearing": false,
+        "stakeholder": "Dale Halverson, Halverson IT",
+        "question": "Two tiers and nine rates. Why is pricing hard?",
+        "answer": "The table is easy. Getting the right row every time is what fails today, and 41 roster entries carry no tier at all. Pricing off the member record also surfaces the disagreement in Northgate's own documents about the associate multiplier.",
+        "dependencyAsk": "Which document governs the associate multiplier, and who can settle it this week?",
+        "affectedRefs": [
+          "SCP-TIERPRICE",
+          "ASM-MULTIPLIER"
+        ]
+      },
+      {
+        "id": "QNA-03",
+        "name": "We overbook on purpose. Your system will just block it.",
+        "claimIds": [
+          "CLM-QNA.03"
+        ],
+        "loadBearing": false,
+        "stakeholder": "Dale Halverson, Halverson IT",
+        "question": "We overbook on purpose. Your system will just block it.",
+        "answer": "Only if it is designed badly. The recommended design keeps the overbooking and adds a conflict queue, so double holds stay legal and become visible for the first time. That queue is also the record the member dispute process needs.",
+        "dependencyAsk": "Is reallocation seniority by join date, equity share, or Tom's judgment?",
+        "affectedRefs": [
+          "ADR-CONFLICT",
+          "SCP-CONFLICT"
+        ]
+      },
+      {
+        "id": "QNA-04",
+        "name": "The tracker already reports hours. Isn't billing just reading that?",
+        "claimIds": [
+          "CLM-QNA.04"
+        ],
+        "loadBearing": false,
+        "stakeholder": "Dale Halverson, Halverson IT",
+        "question": "The tracker already reports hours. Isn't billing just reading that?",
+        "answer": "Reading it is the easy half. Nobody has produced credentials or a test device. Then engine hours have to become billable days under a rule that does not exist yet, because a machine idling in a yard reports hours too.",
+        "dependencyAsk": "Who holds the tracker contract, and can we get a test device before the design session?",
+        "affectedRefs": [
+          "DEP-TELEMCREDS",
+          "IFC-TELEM"
+        ]
+      }
+    ]
+  },
+  "edges": [
+    {
+      "edgeId": "EDG-FG-001",
+      "type": "implements_scope",
+      "from": "SYS-SF",
+      "to": "SCP-CATALOG",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-002",
+      "type": "implements_scope",
+      "from": "SYS-SF",
+      "to": "SCP-TIERPRICE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-003",
+      "type": "implements_scope",
+      "from": "SYS-SF",
+      "to": "SCP-CALENDAR",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-004",
+      "type": "implements_scope",
+      "from": "SYS-SF",
+      "to": "SCP-REQFORM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-005",
+      "type": "implements_scope",
+      "from": "SYS-SF",
+      "to": "SCP-CONFLICT",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-006",
+      "type": "implements_scope",
+      "from": "SYS-SF",
+      "to": "SCP-TELEMINGEST",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-007",
+      "type": "implements_scope",
+      "from": "SYS-SF",
+      "to": "SCP-TIERDATA",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-008",
+      "type": "owns_data",
+      "from": "SYS-SF",
+      "to": "ENT-RESERVATION",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-009",
+      "type": "owns_data",
+      "from": "SYS-SF",
+      "to": "ENT-MEMBER",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-010",
+      "type": "connects_through",
+      "from": "IFC-TELEM",
+      "to": "SYS-SF",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-011",
+      "type": "governs",
+      "from": "ADR-CONFLICT",
+      "to": "SCP-CONFLICT",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-012",
+      "type": "affects",
+      "from": "RSK-HALVERSON",
+      "to": "SCP-CATALOG",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-013",
+      "type": "conditions",
+      "from": "ASM-MULTIPLIER",
+      "to": "SCP-TIERPRICE",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-014",
+      "type": "conditions",
+      "from": "DEP-TELEMCREDS",
+      "to": "SCP-TELEMINGEST",
+      "claimIds": [],
+      "derivation": "deterministic"
+    },
+    {
+      "edgeId": "EDG-FG-015",
+      "type": "blocks",
+      "from": "DEP-TELEMCREDS",
+      "to": "IFC-TELEM",
+      "claimIds": [],
+      "derivation": "deterministic"
+    }
+  ],
+  "editorialViews": [
+    {
+      "viewId": "VIEW-FG-01",
+      "viewType": "orientation",
+      "audienceTask": "Know who is in the room and what they already plan to build.",
+      "entityRefs": [
+        "SYS-ACCESS",
+        "RSK-HALVERSON"
+      ],
+      "claimIds": [
+        "CLM-RSK.HALVERSON",
+        "CLM-SYS.ACCESS"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "room_and_competition_brief",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-02",
+      "viewType": "pricing_architecture",
+      "audienceTask": "Resolve a rate the way the client's own model does.",
+      "entityRefs": [
+        "SCP-TIERPRICE",
+        "ASM-MULTIPLIER"
+      ],
+      "claimIds": [
+        "CLM-SCP.TIERPRICE",
+        "CLM-ASM.MULTIPLIER",
+        "CLM-ENT.MEMBER"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "interactive_rate_resolver",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-03",
+      "viewType": "end_to_end_flow",
+      "audienceTask": "Trace the reservation from request to invoice and name each layer.",
+      "entityRefs": [
+        "IFC-TELEM",
+        "SCP-CONFLICT",
+        "SCP-REQFORM"
+      ],
+      "claimIds": [
+        "CLM-IFC.TELEM",
+        "CLM-SCP.CONFLICT",
+        "CLM-SCP.REQFORM"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "clickable_step_flow",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-04",
+      "viewType": "scope_solution_trace",
+      "audienceTask": "See where the platform ends and the build starts.",
+      "entityRefs": [
+        "SCP-CATALOG",
+        "SCP-TIERPRICE",
+        "SCP-CALENDAR",
+        "SCP-REQFORM",
+        "SCP-CONFLICT",
+        "SCP-TELEMINGEST",
+        "SCP-TIERDATA"
+      ],
+      "claimIds": [
+        "CLM-SCP.CATALOG",
+        "CLM-SCP.TIERPRICE",
+        "CLM-SCP.CONFLICT",
+        "CLM-SCP.TELEMINGEST"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "filterable_disposition_ledger",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-05",
+      "viewType": "data_model",
+      "audienceTask": "Understand what a reservation record has to carry.",
+      "entityRefs": [
+        "ENT-RESERVATION",
+        "ENT-MEMBER"
+      ],
+      "claimIds": [
+        "CLM-ENT.RESERVATION",
+        "CLM-ENT.MEMBER"
+      ],
+      "protectedMeaning": true,
+      "visibility": "supporting",
+      "preferredGrammar": "entity_model",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-06",
+      "viewType": "architecture_decisions",
+      "audienceTask": "Carry a recommendation into the room on double booking.",
+      "entityRefs": [
+        "ADR-CONFLICT"
+      ],
+      "claimIds": [
+        "CLM-ADR.CONFLICT",
+        "CLM-SCP.CONFLICT"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "option_table_with_recommendation",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-07",
+      "viewType": "risk_concentration",
+      "audienceTask": "Know what Northgate has to hand over and who owns it.",
+      "entityRefs": [
+        "RSK-HALVERSON",
+        "DEP-TELEMCREDS",
+        "DEP-TIERDATA",
+        "ASM-MULTIPLIER"
+      ],
+      "claimIds": [
+        "CLM-DEP.TELEMCREDS",
+        "CLM-DEP.TIERDATA",
+        "CLM-RSK.HALVERSON"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "dependency_register",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-08",
+      "viewType": "stakeholder_qa",
+      "audienceTask": "Answer the incumbent MSP and hand a dependency back each time.",
+      "entityRefs": [
+        "QNA-01",
+        "QNA-02",
+        "QNA-03",
+        "QNA-04"
+      ],
+      "claimIds": [
+        "CLM-QNA.01",
+        "CLM-QNA.02",
+        "CLM-QNA.03",
+        "CLM-QNA.04"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "question_answer_with_dependency_ask",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-09",
+      "viewType": "conditions_next_action",
+      "audienceTask": "See every unresolved item, its source, and its named decider.",
+      "entityRefs": [
+        "ASM-MULTIPLIER",
+        "DEP-TELEMCREDS",
+        "DEP-COUNT",
+        "ADR-CONFLICT"
+      ],
+      "claimIds": [
+        "CLM-ASM.MULTIPLIER",
+        "CLM-DEP.COUNT",
+        "CLM-DEP.TELEMCREDS",
+        "CLM-ADR.CONFLICT"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "open_decision_register",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-10",
+      "viewType": "sources_evidence",
+      "audienceTask": "Trace any claim in the guide back to its source.",
+      "entityRefs": [
+        "SYS-SF"
+      ],
+      "claimIds": [],
+      "protectedMeaning": true,
+      "visibility": "appendix",
+      "preferredGrammar": "source_inventory",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-11",
+      "viewType": "technical_judgment",
+      "audienceTask": "Understand why the solution holds up and on what conditions.",
+      "entityRefs": [
+        "SCP-TIERPRICE",
+        "SCP-CONFLICT"
+      ],
+      "claimIds": [
+        "CLM-SCP.TIERPRICE",
+        "CLM-ADR.CONFLICT"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "decision_condition_statement",
+      "required": true
+    },
+    {
+      "viewId": "VIEW-FG-12",
+      "viewType": "system_boundary",
+      "audienceTask": "Hold the boundary on which systems stay where they are.",
+      "entityRefs": [
+        "SYS-SF",
+        "SYS-ACCESS",
+        "SYS-QB"
+      ],
+      "claimIds": [
+        "CLM-SYS.SF",
+        "CLM-SYS.TELEM"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "layered_system_map",
+      "required": true
+    }
+  ],
+  "sectionDispositions": [
+    {
+      "viewType": "orientation",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "pricing_architecture",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "end_to_end_flow",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "scope_solution_trace",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "data_model",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "architecture_decisions",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "risk_concentration",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "stakeholder_qa",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "conditions_next_action",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "sources_evidence",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "technical_judgment",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "system_boundary",
+      "disposition": "included",
+      "reason": "Evidence supports the section and the pursuit team confirmed it.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "critical_interfaces",
+      "disposition": "omitted",
+      "reason": "One interface is in scope and its failure path is covered inside the flow section.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "staffing_delivery_shape",
+      "disposition": "omitted",
+      "reason": "The guide does not staff. The design session sets the split with Halverson.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "timeline_decision_gates",
+      "disposition": "omitted",
+      "reason": "No dates are confirmed anywhere in the evidence.",
+      "confirmedInChat": true
+    },
+    {
+      "viewType": "financial_reconciliation",
+      "disposition": "omitted",
+      "reason": "The guide prices nothing. Commercial figures come from the confirmed pricing source.",
+      "confirmedInChat": true
+    }
+  ],
+  "referencedClaimIds": [
+    "CLM-ADR.CONFLICT",
+    "CLM-ASM.MULTIPLIER",
+    "CLM-DEP.COUNT",
+    "CLM-DEP.TELEMCREDS",
+    "CLM-DEP.TIERDATA",
+    "CLM-ENT.MEMBER",
+    "CLM-ENT.RESERVATION",
+    "CLM-IFC.TELEM",
+    "CLM-QNA.01",
+    "CLM-QNA.02",
+    "CLM-QNA.03",
+    "CLM-QNA.04",
+    "CLM-RSK.HALVERSON",
+    "CLM-SCP.CALENDAR",
+    "CLM-SCP.CATALOG",
+    "CLM-SCP.CONFLICT",
+    "CLM-SCP.REQFORM",
+    "CLM-SCP.TELEMINGEST",
+    "CLM-SCP.TIERDATA",
+    "CLM-SCP.TIERPRICE",
+    "CLM-SYS.ACCESS",
+    "CLM-SYS.QB",
+    "CLM-SYS.SF",
+    "CLM-SYS.TELEM"
+  ],
+  "metadata": {
+    "gateArtifactType": "solution_brief",
+    "note": "Synthetic fixture. The gate runs under the solution_brief contract; the rendered output is a field guide."
+  }
+}

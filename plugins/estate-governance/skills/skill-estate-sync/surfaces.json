@@ -1,0 +1,50 @@
+{
+  "_comment": "Compatibility configuration for the retained flat-estate auditor. Canonical installations use tools/estate.py through scripts/manage_estate.py.",
+  "_governed_surfaces": "These are configured comparison and reported-publication destinations, not verified integrations.",
+  "surfaces": [
+    {
+      "name": "claude-code",
+      "path": "~/.claude/skills",
+      "kind": "dir",
+      "note": "Flat-tree comparison destination; canonical installs use the repository tools."
+    },
+    {
+      "name": "codex",
+      "path": "~/.agents/skills",
+      "kind": "dir",
+      "note": "Flat-tree comparison destination; canonical installs use the repository tools."
+    }
+  ],
+  "_cloud_comment": "These four cannot be read from here: publishing is a human step through a web UI or an upload endpoint, and this toolchain holds no credential for any of them. They are tracked by ledger instead. build_bundles.py hashes every bundle it writes; record_publish.py stamps those hashes against a surface once a human has published them. estate_diff.py then reports how many bundles each tier is behind. A ledger row is a publication record, not verification. It says what was last published, which is the difference between a known gap and an invisible one.",
+  "cloud_surfaces": [
+    {
+      "name": "claude.ai-org",
+      "kind": "cloud",
+      "note": "User-selected account or organization. Record only an upload that actually occurred."
+    },
+    {
+      "name": "cowork",
+      "kind": "cloud",
+      "note": "Cowork skill registry. Same bundles."
+    },
+    {
+      "name": "chatgpt",
+      "kind": "cloud",
+      "note": "ChatGPT skill surface. Same bundles, uploaded through the ChatGPT UI."
+    },
+    {
+      "name": "openai-api",
+      "kind": "cloud",
+      "note": "Skills attached to an OpenAI API deployment. Published by whoever owns that deployment, so a record here is the only visibility this repo has."
+    }
+  ],
+  "ledger": "publish-ledger.json",
+  "_optional_surfaces": [
+    {
+      "name": "claude.ai-offline",
+      "path": "~/Downloads/skills-offline/skills",
+      "kind": "tree",
+      "note": "point at an offline export of the claude.ai bundle to diff the cloud tier file by file instead of by ledger"
+    }
+  ]
+}

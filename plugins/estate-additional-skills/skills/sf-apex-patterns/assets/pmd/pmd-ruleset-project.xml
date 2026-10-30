@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Project ruleset template for repos that adopt BOTH the Estate delivery standards
+  (sf-delivery-standards) and the house architecture (sf-enterprise-patterns).
+
+  Install as config/pmd-ruleset.xml with estate-apex.xml beside it in config/.
+  The delivery-standards pre-commit hook (gate 4) resolves config/pmd-ruleset.xml
+  FIRST, so this one file makes the architecture rules blocking at commit time with
+  no extra hook, and `npm run pmd`, the IDE, and the hook all agree.
+
+  Contents = the sf-delivery-standards default ruleset (its curation rationale lives
+  in that skill's references/templates/pmd-ruleset.xml) + the architecture rules,
+  referenced relatively. The relative ref resolves against the working directory:
+  correct for the hook (it cds to the tree root) and for `npm run pmd` from the
+  repo root; running PMD from a subdirectory will not resolve it.
+
+  Enforcement level is the delivery-standards knob: git config estate.pmd
+  block|advise. Per-path legacy downgrades and suppression-reason governance are
+  arch_check's job (scripts/arch_check.py in the sf-enterprise-patterns skill).
+-->
+<ruleset name="Estate Project (delivery + architecture)"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+  <description>
+    Estate delivery defaults plus house architecture rules (service layer, unit of
+    work, selectors, DTOs). Security and correctness enforced; style left to review.
+  </description>
+
+  <!-- ══ Delivery standards defaults (mirrors sf-delivery-standards template) ══ -->
+  <rule ref="category/apex/security.xml" />
+  <rule ref="category/apex/errorprone.xml" />
+  <rule ref="category/apex/bestpractices.xml/ApexUnitTestClassShouldHaveAsserts" />
+  <rule ref="category/apex/bestpractices.xml/ApexUnitTestShouldNotUseSeeAllDataTrue" />
+  <rule ref="category/apex/bestpractices.xml/AvoidGlobalModifier" />
+  <rule ref="category/apex/bestpractices.xml/AvoidLogicInTrigger" />
+  <rule ref="category/apex/bestpractices.xml/DebugsShouldUseLoggingLevel" />
+  <rule ref="category/apex/bestpractices.xml/UnusedLocalVariable" />
+  <!-- OperationWithLimitsInLoop superseded the three Avoid*InLoops rules in
+       PMD 6.29; those deprecated aliases were removed in PMD 7. -->
+  <rule ref="category/apex/performance.xml/OperationWithLimitsInLoop" />
+  <rule ref="category/apex/performance.xml/EagerlyLoadedDescribeSObjectResult" />
+  <rule ref="category/apex/design.xml/CyclomaticComplexity">
+    <properties>
+      <property name="classReportLevel"  value="60" />
+      <property name="methodReportLevel" value="15" />
+    </properties>
+  </rule>
+  <rule ref="category/apex/design.xml/ExcessiveParameterList">
+    <properties><property name="minimum" value="8" /></properties>
+  </rule>
+  <rule ref="category/apex/design.xml/NcssMethodCount">
+    <properties><property name="minimum" value="80" /></properties>
+  </rule>
+
+  <!-- ══ House architecture rules (sf-enterprise-patterns) ══
+       AvoidLogicInTrigger above already covers APX005. To adjust the DML/SOQL
+       allowlists, override the rule properties here (allowedClassPattern /
+       dmlAllowlistPattern) AND mirror the change in .arch-check.json so
+       arch_check's regex fallback agrees. -->
+  <rule ref="config/estate-apex.xml/SoqlOutsideSelector" />
+  <rule ref="config/estate-apex.xml/DmlOutsideUnitOfWork" />
+  <rule ref="config/estate-apex.xml/QueryWithoutUserMode" />
+  <rule ref="config/estate-apex.xml/AuraEnabledReturnsSObject" />
+  <rule ref="config/estate-apex.xml/NonBulkServiceMethod" />
+  <rule ref="config/estate-apex.xml/DeeplyNestedGenerics" />
+</ruleset>
