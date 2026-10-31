@@ -2,5 +2,5 @@
   "description": "Skills Estate quality workflows and routing.",
   "name": "estate-quality",
   "skills": "./skills/",
-  "version": "0.2.6"
+  "version": "0.2.7"
 }

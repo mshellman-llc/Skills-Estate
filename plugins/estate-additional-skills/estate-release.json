@@ -69,7 +69,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "2f07d1a4aa689714ba7b446406a867207fe4d0e43f5dd238fa4c4d2fbb554714",
+      "required_sha256": "6a3ca1a94086667e58dc9d42efbbeb0ecef280f4b3c2be889c43a9b1406376ac",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -189,7 +189,7 @@
       "subject": "case-study-builder"
     },
     {
-      "required_sha256": "0b8db7d4ac9256da8c56c88825232a40500a49beb36f472d58c6f713af4c2fbf",
+      "required_sha256": "3e27219a7c2f9c17a13ddbde53c93d53cadc4612805c96840a4ac6da1a3c54f3",
       "status": "review required",
       "subject": "client-brand"
     },
@@ -509,6 +509,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "ab79930beb78a2c90e0da1ee7bf69cfabb1f1727dc56478a6f202ab6fc31e631",
+  "source_sha256": "0c2c96c7472509c54cbcc6c8ad9803ee121b8ef469e5258dafe221cf71cf1560",
   "status": "owner-published"
 }
