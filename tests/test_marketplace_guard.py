@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import subprocess
 import sys
@@ -5,7 +6,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from marketplace_guard import verified_run, verify_publication, generated_only_parent
+from marketplace_guard import PENDING_EXIT, VerificationPending, verified_run, verify_publication, generated_only_parent
 
 
 class MarketplaceGuardTests(unittest.TestCase):
@@ -32,6 +33,25 @@ class MarketplaceGuardTests(unittest.TestCase):
             with self.subTest(status=status), self.assertRaises(ValueError):
                 verified_run(self.sha, {'workflow_runs': [self.run, newer]})
 
+    def test_unfinished_verification_is_pending_and_a_failed_one_is_final(self):
+        with self.assertRaises(VerificationPending):
+            verified_run(self.sha, {'workflow_runs': [{**self.run, 'status': 'in_progress', 'conclusion': None}]})
+        with self.assertRaises(ValueError) as refused:
+            verified_run(self.sha, {'workflow_runs': [{**self.run, 'conclusion': 'failure'}]})
+        self.assertNotIsInstance(refused.exception, VerificationPending)
+
+    def test_command_exit_separates_waiting_from_refusal_and_success(self):
+        script = Path(__file__).resolve().parents[1] / 'tools/marketplace_guard.py'
+        cases = [({'status': 'queued', 'conclusion': None}, PENDING_EXIT),
+                 ({'conclusion': 'failure'}, 1), ({}, 0)]
+        with tempfile.TemporaryDirectory() as temporary:
+            runs = Path(temporary) / 'runs.json'
+            for change, expected in cases:
+                with self.subTest(change=change):
+                    runs.write_text(json.dumps({'workflow_runs': [{**self.run, **change}]}))
+                    result = subprocess.run([sys.executable, str(script), self.sha, str(runs)], capture_output=True)
+                    self.assertEqual(expected, result.returncode)
+
     def test_short_revision_is_refused(self):
         with self.assertRaises(ValueError):
             verified_run(self.sha[:7], {'workflow_runs': [self.run]})
@@ -39,6 +59,7 @@ class MarketplaceGuardTests(unittest.TestCase):
     def test_workflow_has_no_rebase_and_pins_release_to_publication_commit(self):
         source = (Path(__file__).resolve().parents[1] / '.github/workflows/marketplace.yml').read_text()
         self.assertIn('tools/marketplace_guard.py "$GITHUB_SHA"', source)
+        self.assertIn('"$status" -ne 75', source)
         self.assertNotIn('--rebase', source)
         self.assertIn('"$remote_main" = "$GITHUB_SHA"', source)
         self.assertIn('--target "$PUBLICATION_COMMIT"', source)
@@ -69,7 +90,7 @@ class MarketplaceGuardTests(unittest.TestCase):
             (root / 'source.md').write_text('changed')
             git('add', '.')
             git('commit', '-qm', 'source change')
-            with self.assertRaises(ValueError):
+            with self.assertRaises(VerificationPending):
                 generated_only_parent(root, git('rev-parse', 'HEAD'))
             (root / 'plugins/linked').symlink_to('../source.md')
             git('add', '.')

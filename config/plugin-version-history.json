@@ -32,6 +32,10 @@
     "0.2.7": {
       "content_sha256": "4c2f9959eef32d32c9c07f9035b2ad0b8a9ecaa12bbbfb4d7574071f8f8aa379",
       "note": "Apply Baseline audit, contrast and focus fixes"
+    },
+    "0.2.8": {
+      "content_sha256": "60ba701c68467266c68a2be57e7861c3f41313af68c16a47ec803060912d78c3",
+      "note": "Publication waits for automated verification to finish"
     }
   }
 }
