@@ -144,7 +144,7 @@
       "inputs": "The project’s confirmed colors, typography, assets, and usage rights.",
       "outputs": "A selected or updated profile and an artifact checked against it.",
       "example": "Apply this confirmed brand profile to the document and check the rendered result.",
-      "reviewedEntrypointSha256": "020ab3059f0858bdb4402c8746bb682d968218b6e84fae4d7497c80b189939e4"
+      "reviewedEntrypointSha256": "c6d5ac41111ea61ab2c36ce3f75bb6233f4e9e3ea3d3df205f8033a5120c9e1c"
     },
     "code-simplify": {
       "what": "Improve code clarity while preserving its behavior.",
