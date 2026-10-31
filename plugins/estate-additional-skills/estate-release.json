@@ -69,7 +69,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "aa925e814aea50f3910a1a12f9f9ab504323b0d47bf1f4273015c5245c53a9bb",
+      "required_sha256": "2f07d1a4aa689714ba7b446406a867207fe4d0e43f5dd238fa4c4d2fbb554714",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -149,7 +149,7 @@
       "subject": "brain-work-item"
     },
     {
-      "required_sha256": "52ae6d2db2e99eabd6c584c63e5da7548b417ca5599be748d6c829df7d01a5b5",
+      "required_sha256": "3c4191efff8afff3e0f3a8b721c36dca038bdb6f83f020433ba0a7301f6e4c44",
       "status": "review required",
       "subject": "brand-renderer"
     },
@@ -187,6 +187,11 @@
       "required_sha256": "f3a6b3a66331540f874d467be7ea88a133e2aa6c196f7a718b1f9a25004a9f56",
       "status": "review required",
       "subject": "case-study-builder"
+    },
+    {
+      "required_sha256": "0b8db7d4ac9256da8c56c88825232a40500a49beb36f472d58c6f713af4c2fbf",
+      "status": "review required",
+      "subject": "client-brand"
     },
     {
       "required_sha256": "5c492acc4249b8a42a9fc4ea1911dad5251222ec4796531010e23c8c4bb3aad9",
@@ -287,6 +292,11 @@
       "required_sha256": "d11727f5f93183b97dc9352e87971f5e13121ee476ac841303b66d2ba036ce93",
       "status": "review required",
       "subject": "interactive-proposal"
+    },
+    {
+      "required_sha256": "1241c5c02c2b941d383e15383a23c5aea741835e3a6373ac6d8862af55ddf50e",
+      "status": "review required",
+      "subject": "journey-mapping"
     },
     {
       "required_sha256": "10eb14f8b999587504f2d425089382e6b31a38dc3657168e5ea4aa8681df44fd",
@@ -499,6 +509,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "c4e5c42a0a79588ae2c30c9669602f882bf13c5e37e71fb7a93e31952b771c57",
+  "source_sha256": "ab79930beb78a2c90e0da1ee7bf69cfabb1f1727dc56478a6f202ab6fc31e631",
   "status": "owner-published"
 }

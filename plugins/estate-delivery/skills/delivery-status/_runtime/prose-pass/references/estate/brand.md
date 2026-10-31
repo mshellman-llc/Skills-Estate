@@ -14,45 +14,47 @@ Read exact values from the selected profile. Do not infer colors from a company 
 
 ```json
 {
-  "name": "Neutral",
+  "name": "Baseline",
   "status": "confirmed",
-  "source": "Estate neutral defaults, established 2026-10-19",
+  "source": "Baseline palette F, established as the default on 2026-10-30",
   "colors": {
     "background": "#FFFFFF",
-    "text": "#1A1A1A",
-    "muted": "#5F6368",
-    "border": "#D9DCE1",
-    "surface": "#F5F6F7",
-    "accent": "#2F5D8A",
-    "chart-1": "#2A78D6",
-    "chart-2": "#EB6834",
-    "chart-3": "#1BAF7A",
-    "chart-4": "#EDA100",
-    "chart-5": "#E87BA4",
-    "chart-6": "#008300",
-    "status-good": "#0CA30C",
-    "status-warning": "#FAB219",
-    "status-critical": "#D03B3B"
+    "text": "#11141A",
+    "muted": "#535559",
+    "border": "#E2E2E3",
+    "surface": "#F5F5F5",
+    "accent": "#37437D",
+    "chart-1": "#24265B",
+    "chart-2": "#434D90",
+    "chart-3": "#6577BD",
+    "chart-4": "#8BA1DE",
+    "chart-5": "#B5CAFA",
+    "chart-6": "#535559",
+    "status-good": "#18703F",
+    "status-warning": "#96500A",
+    "status-critical": "#C4302B"
   },
   "type": {
-    "body": "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
-    "headings": "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
+    "body": "Inter, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
+    "headings": "Inter, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
     "office": "Arial",
     "body_min_pt": 11,
     "screen_min_px": 16,
     "slide_min_pt": 18
   },
   "logo": null,
-  "layout": {"border_px": 1, "radius_px": 4, "heading_case": "sentence"},
+  "layout": {"border_px": 1, "radius_px": 6, "heading_case": "sentence"},
   "voice": "Use the author's confirmed voice profile when supplied; otherwise write plainly and preserve meaning."
 }
 ```
 
-The neutral profile has no logo, footer mark, cover imagery, gradients, decorative icons, or bundled fonts. Add a title, date, and author when the format needs them.
+The neutral profile is Baseline, Megan's default design system. Web pages, dashboards and interactive artifacts use its component kit in the `client-brand` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
 
-`chart-1` to `chart-6` are a chart palette, not brand colors. They color data series and the groups on boards, in that fixed order. They are the first six categorical colors of the colorblind-checked data visualization palette (light theme), and they are never used for text, buttons or page chrome. A client profile replaces them with its own recorded chart colors; it does not inherit these.
+The neutral profile has no logo, footer mark, cover imagery, gradients, or bundled fonts. Add a title, date, and author when the format needs them. Do not add colored side accents to cards, rows, badges or callouts.
 
-`status-good`, `status-warning` and `status-critical` mark state (on track, at risk, blocked), never a group. They are the data visualization palette's status steps. Warning and good sit under 3:1 on white, so a status color always appears with its text label, and renderers darken status text toward the text color. A client profile that records no status roles shows state through labels and neutral colors.
+`chart-1` to `chart-5` are a dark-to-light ramp of the profile's own color, and `chart-6` is a neutral for a sixth series. They color data series and the groups on boards, in that fixed order, and they are never used for text, buttons or page chrome. Do not use mixed hues, and keep a legend. A client profile replaces them with its own recorded chart colors; it does not inherit these.
+
+`status-good`, `status-warning` and `status-critical` mark state (on track, at risk, blocked), never a group. A status color always appears with its text label. A client profile that records no status roles shows state through labels and neutral colors.
 
 ## Review the result
 
