@@ -600,7 +600,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:14px}
 .dt th[aria-sort] .sort{color:var(--bl-n900)}
 .dt th[aria-sort] .sort svg.i{color:var(--bl-accent)}
 .dt td{height:48px;padding:0 12px;white-space:nowrap;color:var(--bl-n700);border-bottom:1px solid var(--bl-n100)}
-.dt td.wrap{min-width:280px;padding-block:8px;white-space:normal}
+.dt td.wrap-text{min-width:280px;padding-block:8px;white-space:normal}
 .dt tbody tr:last-child td{border-bottom:0}
 .dt tbody tr:hover td,.dt tr.is-hover td{background:var(--bl-n25)}
 .dt tr.is-selected td{background:var(--bl-accent-soft)}
