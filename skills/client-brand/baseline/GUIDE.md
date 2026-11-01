@@ -12,6 +12,7 @@ F, navy and pastel, is the default and needs no class. E, ink and amber, is the 
 - Charts use a dark-to-light ramp of the palette's own color (`--bl-cat-1` to `--bl-cat-5`), so every series shares one hue. Keep a legend and a fixed series order. Slots 4 and 5 sit under 3:1 on white, so a chart that uses them needs direct labels or a table view.
 - Show category or state with a dot, icon or label. Colored side accents are banned on cards, rows, badges and callouts.
 - Interactive elements show `--bl-focus` on keyboard focus. Keep that ring for focus only.
+- Put a `.dt` table inside `.table-scroll` so it scrolls within its own box on a phone. Long text cells take `.wrap`.
 - Calendar event types use `.ev` markers: `.ev-1` to `.ev-4` are a circle, square, ring and diamond in one tone.
 - A status message says what happened and what to do next. Dates read Oct 15 in text, Oct 15, 2026 with a year and 10/15/2026 in fields.
 - Icons are the Stockholm duotone set. Use `<svg class="i sk" viewBox="0 0 24 24">` with the markup from `baseline-icons.json`, or `<use>` from the sprite. Do not add other icon sets.

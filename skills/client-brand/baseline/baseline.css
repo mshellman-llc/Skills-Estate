@@ -587,10 +587,11 @@
 /* Data table and tree grid */
 .table-wrap{border:1px solid var(--bl-n200);border-radius:var(--bl-r-lg);background:var(--bl-n0);overflow:hidden}
 .table-scroll{overflow-x:auto}
-.table-tools{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--bl-n200)}
+.table-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--bl-n200)}
 .table-tools h3{font-size:15px;font-weight:600;margin-right:8px}
 .table-tools .grow{flex:1}
-.table-tools .input-wrap{width:240px}
+.table-tools .input-wrap{width:240px;max-width:100%}
+.table-tools select.input{width:auto;max-width:100%}
 .selbar{display:flex;align-items:center;gap:12px;padding:8px 16px;background:var(--bl-accent-soft);color:var(--bl-accent-press);font-size:13px;font-weight:500;border-bottom:1px solid var(--bl-accent-line)}
 table.dt{width:100%;border-collapse:collapse;font-size:14px}
 .dt th{height:40px;padding:0 12px;text-align:left;white-space:nowrap;font-size:12px;font-weight:600;color:var(--bl-n600);background:var(--bl-n25);border-bottom:1px solid var(--bl-n200)}
@@ -599,6 +600,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:14px}
 .dt th[aria-sort] .sort{color:var(--bl-n900)}
 .dt th[aria-sort] .sort svg.i{color:var(--bl-accent)}
 .dt td{height:48px;padding:0 12px;white-space:nowrap;color:var(--bl-n700);border-bottom:1px solid var(--bl-n100)}
+.dt td.wrap{min-width:280px;padding-block:8px;white-space:normal}
 .dt tbody tr:last-child td{border-bottom:0}
 .dt tbody tr:hover td,.dt tr.is-hover td{background:var(--bl-n25)}
 .dt tr.is-selected td{background:var(--bl-accent-soft)}

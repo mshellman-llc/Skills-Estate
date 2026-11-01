@@ -32,6 +32,10 @@
     "0.2.7": {
       "content_sha256": "4c2f9959eef32d32c9c07f9035b2ad0b8a9ecaa12bbbfb4d7574071f8f8aa379",
       "note": "Apply Baseline audit, contrast and focus fixes"
+    },
+    "0.2.8": {
+      "content_sha256": "4010315fad00a421c2b06b16c02f3e5bd5c6170ef7c57b9569013542ab3fe6da",
+      "note": "Let Baseline table cells and toolbars wrap"
     }
   }
 }
