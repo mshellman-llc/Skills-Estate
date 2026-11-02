@@ -40,6 +40,10 @@
     "0.2.9": {
       "content_sha256": "1467eac791ad00fb01de0a12ac19ebbf1449cf363aa7be2850994d265f61dc02",
       "note": "Rename the Baseline wrapping cell class to .wrap-text"
+    },
+    "0.2.10": {
+      "content_sha256": "55c2dcea4a501defe6ca152a3cdbcdb7f300ebfe64ae10b9ebf7bb4978c53ee3",
+      "note": "Publication waits for automated verification to finish"
     }
   }
 }

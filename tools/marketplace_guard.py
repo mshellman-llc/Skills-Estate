@@ -3,7 +3,14 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
+
+PENDING_EXIT = 75
+
+
+class VerificationPending(ValueError):
+    """Verification has not finished, so a later check can still pass."""
 
 
 def matching_runs(revision, payload):
@@ -19,7 +26,9 @@ def verified_run(revision, payload):
     if not matches:
         raise ValueError('Publication blocked: no verification run for this exact main revision')
     latest = max(matches, key=lambda run: (run.get('id', 0), run.get('run_attempt', 0)))
-    if latest.get('status') != 'completed' or latest.get('conclusion') != 'success':
+    if latest.get('status') != 'completed':
+        raise VerificationPending('Publication waiting: latest verification for this revision has not finished')
+    if latest.get('conclusion') != 'success':
         raise ValueError('Publication blocked: latest verification for this revision is not successful')
     return latest['id']
 
@@ -35,7 +44,7 @@ def generated_only_parent(root, revision):
     parent = parents[0]
     changed = git('diff', '--name-only', '--no-renames', '-z', parent, revision).decode().split('\0')[:-1]
     if not changed or any(not (name.startswith('plugins/') or name == '.claude-plugin/marketplace.json') for name in changed):
-        raise ValueError('Publication parent has different authoring source; verify this revision')
+        raise VerificationPending('Publication waiting: no verification run has started for this revision')
     for commit in (parent, revision):
         records = git('ls-tree', '-r', '-z', commit, '--', 'plugins', '.claude-plugin/marketplace.json').split(b'\0')
         if any(row and row.split(b' ', 1)[0] not in {b'100644', b'100755'} for row in records):
@@ -59,4 +68,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     payload = {'workflow_runs': [run for file in args.runs
                                 for run in json.loads(file.read_text()).get('workflow_runs', [])]}
-    print(json.dumps(verify_publication(args.root, args.revision, payload)))
+    try:
+        print(json.dumps(verify_publication(args.root, args.revision, payload)))
+    except VerificationPending as pending:
+        print(pending, file=sys.stderr)
+        raise SystemExit(PENDING_EXIT)
