@@ -34,7 +34,15 @@
       "note": "Apply Baseline audit, contrast and focus fixes"
     },
     "0.2.8": {
-      "content_sha256": "60ba701c68467266c68a2be57e7861c3f41313af68c16a47ec803060912d78c3",
+      "content_sha256": "4010315fad00a421c2b06b16c02f3e5bd5c6170ef7c57b9569013542ab3fe6da",
+      "note": "Let Baseline table cells and toolbars wrap"
+    },
+    "0.2.9": {
+      "content_sha256": "1467eac791ad00fb01de0a12ac19ebbf1449cf363aa7be2850994d265f61dc02",
+      "note": "Rename the Baseline wrapping cell class to .wrap-text"
+    },
+    "0.2.10": {
+      "content_sha256": "55c2dcea4a501defe6ca152a3cdbcdb7f300ebfe64ae10b9ebf7bb4978c53ee3",
       "note": "Publication waits for automated verification to finish"
     }
   }
