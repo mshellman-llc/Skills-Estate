@@ -29,6 +29,7 @@
     "estate-solutioning": {
       "description": "Skills Estate solutioning workflows and routing.",
       "entries": [
+        "capability-mapping",
         "feature-spec",
         "journey-mapping",
         "process-design",
@@ -439,6 +440,9 @@
         "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
       },
       "writing-style-builder": {
+        "status": "pending"
+      },
+      "capability-mapping": {
         "status": "pending"
       }
     },

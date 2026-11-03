@@ -1,0 +1,83 @@
+schema_version: 1
+name: capability-mapping
+display_name: Capability Mapping
+summary: Build one business capability map, align it to the customer lifecycle and strategy, assess maturity and impact, and rank the gaps to close.
+status: draft
+tier: situational
+version: 0.1.0
+owner: Skills Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Build or refresh a business capability map or capability model.
+- Run a map-and-gap assessment with current and target maturity and business impact.
+- Align capabilities to customer lifecycle stages and to strategy goals such as V2MOM methods or OKRs.
+- Prepare or debrief a customer lifecycle analysis workshop.
+- Consolidate the capabilities of two companies after an acquisition.
+exclusions:
+- Step-by-step process documentation or redesign belongs to process.
+- One actor's journey and service blueprint belong to journey-mapping.
+- Solution, architecture and technical deliverability belong to solution-brief or system-design.
+- Pricing and effort belong to scoping-agent or rom.
+inputs:
+- name: task_context
+  required: true
+  description: The business, state, decision and audience for the map.
+- name: source_material
+  required: false
+  description: Strategy documents, interview or workshop notes, transcripts, system inventory and any reference capability catalog.
+- name: capability_model
+  required: false
+  description: An existing capability model JSON file to refresh or rescore.
+outputs:
+- name: capability_model
+  format: json
+  audience: internal
+  durable: true
+  hub_target: engagement.requirements_design
+- name: capability_map
+  format: html
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+- name: capability_assessment
+  format: xlsx
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+- name: capability_readout
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on: []
+calls:
+- evidence-core
+- knowledge-hub
+- client-brand
+- quality-gate
+knowledge_hub:
+  requirement: optional
+  reads:
+  - engagement.front_door
+  - engagement.requirements_design
+  - evidence.claims
+  writes:
+  - engagement.requirements_design
+  - deliverables.register
+evidence:
+  required: true
+  control: model-evidence-list
+  governed_engagement_control: evidence-core
+quality:
+  required: true
+  control: quality-gate

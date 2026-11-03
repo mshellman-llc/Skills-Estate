@@ -210,10 +210,11 @@ def check_css_geometry(text: str, label: str, f: Findings) -> None:
             if re.search(r"\bnone\b|\b0\b", decl) and "px" not in decl:
                 continue
             wm = re.search(r"(\d+(?:\.\d+)?)px", decl)
-            if wm and float(wm.group(1)) != T.rules["borderWidthPx"]:
+            widths = T.rules.get("borderWidthsPx") or [T.rules["borderWidthPx"]]
+            if wm and float(wm.group(1)) not in widths:
                 f.add("fail", "BORDER_WIDTH", where,
-                      f"border {wm.group(1)}px; borders are always "
-                      f"{T.rules['borderWidthPx']}px.")
+                      f"border {wm.group(1)}px; the profile allows "
+                      f"{', '.join(f'{w:g}px' for w in widths)}.")
             for h in hexes_in(decl):
                 r, g, b = T.rgb(h)
                 if T.rules.get("borderNeverBlack", False) and max(r, g, b) <= 32:

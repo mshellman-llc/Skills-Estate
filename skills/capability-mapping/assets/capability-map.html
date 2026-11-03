@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capability map</title>
+<!--
+  Capability map dashboard on the Baseline design system. The builder
+  (scripts/build_capability_map.py) inlines Baseline's palette F tokens and the
+  components this page uses, plus its Stockholm icons, and replaces the MODEL
+  object with a computed model. The page displays computed values only. For a
+  confirmed project profile, override the --bl-* tokens and keep their names.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap">
+<style id="baseline">/*__BASELINE_CSS__*/</style>
+<style>
+body{margin:0;background:var(--bl-n25)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.page-h{padding:20px 0 0}
+.page-h .wrap{display:flex;flex-direction:column;gap:6px;width:100%;padding-bottom:20px}
+.page-h h1{font-size:24px;line-height:30px}
+.lede{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end;padding:40px 0 32px}
+.lede h2{font-size:36px;line-height:40px;font-weight:650;letter-spacing:-.02em;color:var(--bl-n900);max-width:18ch}
+.lede .scope{margin-top:16px;font-size:16px;line-height:24px;color:var(--bl-n700);max-width:62ch}
+.lede .basis{margin-top:8px;font-size:13px;line-height:18px;color:var(--bl-n600);max-width:62ch}
+.firsts{display:flex;flex-direction:column;gap:8px}
+.firsts .cap{font-size:12px;line-height:16px;font-weight:500;color:var(--bl-n500)}
+.first{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 14px;border-radius:var(--bl-r-lg);background:var(--bl-seq-600);color:var(--bl-n0)}
+.first.plan{background:var(--bl-seq-500)}
+.first .r{font-size:13px;font-weight:600;color:var(--bl-accent-on-dark);font-variant-numeric:tabular-nums}
+.first b{font-size:14px;font-weight:600;line-height:18px}
+.first span{font-size:12px;color:var(--bl-accent-on-dark);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sections{display:flex;flex-direction:column;gap:16px;padding-bottom:48px}
+.chart-h .actions{flex:none}
+.legend i{border-radius:var(--bl-r-sm)}
+.legend i.ring{background:var(--bl-n0);box-shadow:inset 0 0 0 1.5px var(--bl-n400)}
+.legend i.dash-ring{background:var(--bl-n0);outline:1.5px dashed var(--bl-n400);outline-offset:-1.5px}
+/* Capability heatmap: tonal tiles from the Baseline ramp */
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:20px 12px;align-items:start}
+.dom h4{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:0 2px 8px;font-size:13px;line-height:18px;font-weight:600;color:var(--bl-n900)}
+.dom h4 span{font-size:12px;font-weight:500;color:var(--bl-n500)}
+.stack{display:flex;flex-direction:column;gap:6px}
+.grp{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:var(--bl-r-xl);background:var(--bl-n50)}
+.grp > p{padding:0 4px;font-size:12px;line-height:16px;font-weight:500;color:var(--bl-n600)}
+.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:84px;padding:12px 12px 10px;border:0;border-radius:var(--bl-r-lg);text-align:left;font:inherit;cursor:default}
+.tile b{font-size:14px;line-height:18px;font-weight:600}
+.tile small{font-size:12px;line-height:16px;font-weight:500;font-variant-numeric:tabular-nums}
+.tile.k-invest{background:var(--bl-seq-600);color:var(--bl-n0)}
+.tile.k-plan{background:var(--bl-seq-500);color:var(--bl-n0)}
+.tile.k-monitor{background:var(--bl-seq-200);color:var(--bl-n900)}
+.tile.k-hold{background:var(--bl-seq-50);color:var(--bl-n900);box-shadow:inset 0 0 0 1px var(--bl-n200)}
+.tile.k-retire{background:var(--bl-n0);color:var(--bl-n700);outline:1.5px dashed var(--bl-n400);outline-offset:-1.5px}
+.tile.k-open{background:var(--bl-n0);color:var(--bl-n700);box-shadow:inset 0 0 0 1.5px var(--bl-n400)}
+.tile.m-0{background:var(--bl-n0);color:var(--bl-n700);box-shadow:inset 0 0 0 1px var(--bl-n300)}
+.tile.m-1{background:var(--bl-seq-100);color:var(--bl-n900)}
+.tile.m-2{background:var(--bl-seq-200);color:var(--bl-n900)}
+.tile.m-3{background:var(--bl-seq-300);color:var(--bl-n900)}
+.tile.m-4{background:var(--bl-seq-500);color:var(--bl-n0)}
+.tile.m-5{background:var(--bl-seq-600);color:var(--bl-n0)}
+.tile.m-open{background:var(--bl-n0);color:var(--bl-n700);box-shadow:inset 0 0 0 1.5px var(--bl-n400)}
+.tile:hover,.tile:focus-visible{box-shadow:var(--bl-focus)}
+/* Hover card */
+.tip{position:fixed;z-index:10;display:none;flex-direction:column;gap:6px;width:300px;padding:12px 14px;background:var(--bl-n0);border:1px solid var(--bl-n200);border-radius:var(--bl-r);box-shadow:var(--bl-sh-2);font-size:12px;line-height:16px;color:var(--bl-n600);pointer-events:none}
+.tip b{font-size:13px;font-weight:600;color:var(--bl-n900)}
+.tip dl{display:grid;grid-template-columns:max-content 1fr;gap:2px 12px;margin:0}
+.tip dt{color:var(--bl-n500)}
+.tip dd{margin:0;color:var(--bl-n900);font-variant-numeric:tabular-nums}
+.tip p{color:var(--bl-n700)}
+/* Gap chart */
+svg.gap{display:block;width:100%;height:auto;overflow:visible}
+svg.gap .row:hover .hl,svg.gap .row:focus-visible .hl{fill:var(--bl-n50)}
+svg.gap .row{outline:none}
+/* Strategy coverage */
+.goals{display:flex;flex-direction:column}
+.goal{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid var(--bl-n100)}
+.goal:first-child{border-top:0;padding-top:0}
+.goal > b{font-size:14px;line-height:20px;font-weight:500;color:var(--bl-n900)}
+.goal > small{font-size:12px;line-height:16px;color:var(--bl-n500)}
+.chips{display:flex;flex-wrap:wrap;gap:4px 12px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:16px;color:var(--bl-n700)}
+.chip i{width:10px;height:10px;border-radius:var(--bl-r-sm);flex:none}
+.sw-invest{background:var(--bl-seq-600)}.sw-plan{background:var(--bl-seq-500)}.sw-monitor{background:var(--bl-seq-200)}
+.sw-hold{background:var(--bl-seq-50);box-shadow:inset 0 0 0 1px var(--bl-n300)}
+.sw-retire{background:var(--bl-n0);outline:1.5px dashed var(--bl-n400);outline-offset:-1.5px}
+.sw-open{background:var(--bl-n0);box-shadow:inset 0 0 0 1.5px var(--bl-n400)}
+.gap-flag{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:16px;font-weight:500;color:var(--bl-warning)}
+.gap-flag svg.i{color:var(--bl-warning-mark)}
+/* Lifecycle strip */
+.life{display:grid;grid-template-columns:repeat(var(--cols),minmax(150px,1fr));gap:8px;min-width:calc(var(--cols) * 158px)}
+.stage h4{display:flex;justify-content:space-between;gap:8px;padding:8px 2px;margin-bottom:6px;border-bottom:2px solid var(--bl-n900);font-size:13px;line-height:18px;font-weight:600;color:var(--bl-n900)}
+.stage.enabling h4{border-bottom-color:var(--bl-n300);color:var(--bl-n600)}
+.stage h4 span{font-weight:500;color:var(--bl-n500)}
+.stage .stack{gap:4px}
+.mini{padding:7px 10px;border-radius:var(--bl-r);font-size:12px;line-height:16px;font-weight:500}
+.stage .none{font-size:12px;color:var(--bl-n500);padding:4px 2px}
+/* Notes */
+.notes{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;padding:24px 0 8px}
+.notes h3{font-size:16px;line-height:22px;font-weight:600;margin-bottom:12px}
+ol.why{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+ol.why li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px}
+ol.why .r{font-size:13px;font-weight:600;color:var(--bl-n500);font-variant-numeric:tabular-nums;padding-top:1px}
+ol.why b{display:block;font-size:14px;line-height:20px;font-weight:600}
+ol.why p{font-size:13px;line-height:18px;color:var(--bl-n600);max-width:68ch}
+ul.flat{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+ul.flat li{display:flex;gap:10px;font-size:13px;line-height:18px;color:var(--bl-n700)}
+ul.flat svg.i{margin-top:1px;color:var(--bl-n500);flex:none}
+ul.flat li.warn svg.i{color:var(--bl-warning-mark)}
+details.more{border-top:1px solid var(--bl-n200);padding:16px 0}
+details.more summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--bl-n900);border-radius:var(--bl-r)}
+details.more[open] summary{margin-bottom:12px}
+details.more .table-wrap{margin-top:4px}
+ul.ev{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 24px;font-size:13px;color:var(--bl-n700)}
+ul.ev b{font-weight:600;color:var(--bl-n500);margin-right:8px;font-variant-numeric:tabular-nums}
+@media (max-width:960px){.lede,.notes{grid-template-columns:1fr;gap:24px}.dash > *{grid-column:span 12}}
+@media (max-width:560px){.wrap{padding:0 16px}.lede{padding:24px 0}.lede h2{font-size:28px;line-height:34px}.map{grid-template-columns:1fr}.chart-h{flex-direction:column;align-items:stretch}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="bl">
+<header class="page-h flat">
+  <div class="wrap">
+    <div class="meta" id="meta"></div>
+    <h1 id="title"></h1>
+  </div>
+</header>
+<main class="wrap">
+  <section class="lede" aria-labelledby="headline">
+    <div>
+      <h2 id="headline"></h2>
+      <p class="scope" id="scope"></p>
+      <p class="basis" id="basis"></p>
+    </div>
+    <div class="firsts" id="firsts" aria-label="Where to invest first"></div>
+  </section>
+  <div class="sections">
+    <section class="chart-card" aria-labelledby="map-h">
+      <div class="chart-h">
+        <div class="t"><h3 id="map-h">Capability map</h3><p><span id="map-sub">Tiles are colored by priority band.</span> Point at a tile for its scores and reasons.</p></div>
+        <div class="actions"><div class="seg" role="radiogroup" aria-label="Color tiles by" id="view">
+          <label><input type="radio" name="view" value="priority" checked>Priority</label>
+          <label><input type="radio" name="view" value="maturity">Current maturity</label>
+        </div></div>
+      </div>
+      <div class="chart-b">
+        <div class="legend" id="legend"></div>
+        <div class="map" id="map"></div>
+      </div>
+    </section>
+    <div class="dash" style="align-items:start">
+      <section class="chart-card s8" aria-labelledby="gap-h">
+        <div class="chart-h"><div class="t"><h3 id="gap-h">Gap to target</h3><p>In rank order. The hollow dot is today, the filled dot is the target, and the line is the gap.</p></div></div>
+        <div class="chart-b" id="gapchart"></div>
+      </section>
+      <section class="chart-card s4" aria-labelledby="goal-h">
+        <div class="chart-h"><div class="t"><h3 id="goal-h">Strategy coverage</h3><p>Each goal with the capabilities that deliver it.</p></div></div>
+        <div class="chart-b"><div class="goals" id="goals"></div></div>
+      </section>
+    </div>
+    <section class="chart-card" aria-labelledby="life-h">
+      <div class="chart-h"><div class="t"><h3 id="life-h">Across the customer lifecycle</h3><p>The same tiles placed on the stages they serve. Enabling capabilities serve no customer stage directly.</p></div></div>
+      <div class="chart-b"><div class="table-scroll"><div class="life" id="life"></div></div></div>
+    </section>
+    <section class="notes" aria-label="Decision notes">
+      <div><h3>Why these come first</h3><ol class="why" id="why"></ol></div>
+      <div><h3>Open items and findings</h3><ul class="flat" id="findings"></ul></div>
+    </section>
+    <details class="more">
+      <summary id="all-sum">All scored capabilities</summary>
+      <div class="table-wrap"><div class="table-scroll"><table class="dt" id="ranked"></table></div><div class="table-foot"><span id="formula"></span></div></div>
+    </details>
+    <details class="more">
+      <summary>Evidence</summary>
+      <ul class="ev" id="evidence"></ul>
+    </details>
+  </div>
+</main>
+<div class="tip" id="tip" role="tooltip"></div>
+<script>
+const ICONS = {/*__ICONS__*/};
+const MODEL = {"placeholder": true
+};
+</script>
+<script>
+(function(){
+const BANDS=["Invest now","Plan","Monitor","Hold","Retire review","OPEN"];
+const KEY={"Invest now":"invest","Plan":"plan","Monitor":"monitor","Hold":"hold","Retire review":"retire","OPEN":"open"};
+const LEVELS=["Absent","Initial","Repeatable","Defined","Managed","Optimized"];
+const SVG="http://www.w3.org/2000/svg";
+const el=(tag,attrs={},...kids)=>{const n=document.createElement(tag);for(const [k,v] of Object.entries(attrs)){if(k==="text")n.textContent=v;else n.setAttribute(k,v)}kids.forEach(k=>n.append(k));return n};
+const sv=(tag,attrs={},text)=>{const n=document.createElementNS(SVG,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(text!==undefined)n.textContent=text;return n};
+const v=x=>x===null||x===undefined?"OPEN":String(x);
+const icon=name=>{const s=document.createElementNS(SVG,"svg");s.setAttribute("class","i sk");s.setAttribute("viewBox","0 0 24 24");s.setAttribute("aria-hidden","true");s.innerHTML=ICONS[name]||"";return s};
+const m=MODEL;
+if(!m||!m.meta||!Array.isArray(m.capabilities)||!m.summary){
+  document.querySelector("main").prepend(el("p",{role:"alert",text:"No computed model is embedded. Build this page with scripts/build_capability_map.py."}));
+  return;
+}
+const caps=m.capabilities, byId=Object.fromEntries(caps.map(c=>[c.id,c]));
+const domains=m.domains, dname=Object.fromEntries(domains.map(d=>[d.id,d.name]));
+const scored=caps.filter(c=>c.scored).sort((a,b)=>a.rank-b.rank||a.id.localeCompare(b.id));
+const s=m.summary, t=s.thresholds;
+const words=n=>["No","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve"][n]||String(n);
+const stagesOf=c=>c.stages&&c.stages.length?c.stages:(c.parent&&byId[c.parent].stages)||[];
+
+// Header
+const meta=document.getElementById("meta");
+const fmtDate=d=>{const [y,mo,da]=d.split("-").map(Number);return `${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][mo-1]} ${da}, ${y}`};
+[m.meta.organization,`${m.meta.state.charAt(0).toUpperCase()+m.meta.state.slice(1).replace(/-/g," ")} state`,`Scored ${fmtDate(m.meta.date)}`].forEach(x=>meta.append(el("span",{text:x})));
+const h1=document.getElementById("title");h1.textContent=m.meta.title;
+if((m.meta.status||"draft")==="draft")h1.append(el("span",{class:"badge warning",text:"Draft"}));
+
+// Lede: the decision, then the capabilities that carry it
+const invest=scored.filter(c=>c.final_band==="Invest now"), plan=scored.filter(c=>c.final_band==="Plan");
+document.getElementById("headline").textContent=invest.length
+  ?`${words(invest.length)} of ${s.scored} capabilities need investment now.`
+  :`No capability reaches the Invest now band.`;
+document.getElementById("scope").textContent=m.meta.scope;
+const extra=[];
+if(s.open_values)extra.push(`${words(s.open_values).toLowerCase()} score is still open`);
+if(s.goals_unlinked)extra.push(`${words(s.goals_unlinked).toLowerCase()} goal has no capability behind it`);
+document.getElementById("basis").textContent=m.meta.basis_note+(extra.length?` In this draft, ${extra.join(" and ")}.`:"");
+const firsts=document.getElementById("firsts");
+if(invest.length||plan.length)firsts.append(el("p",{class:"cap",text:"Where to invest first, ranked by gap times impact"}));
+[...invest,...plan].forEach(c=>firsts.append(el("div",{class:"first"+(c.final_band==="Plan"?" plan":"")},
+  el("span",{class:"r",text:String(c.rank)}),el("b",{text:c.name}),el("span",{text:`${v(c.current)} → ${v(c.target)}, score ${v(c.priority_score)}`}))));
+
+// Hover card
+const tip=document.getElementById("tip");
+function showTip(c,x,y){
+  tip.replaceChildren(el("b",{text:c.name}),
+    el("dl",{},el("dt",{text:"Maturity"}),el("dd",{text:`${v(c.current)}${c.current!=null?" "+LEVELS[c.current]:""} → ${v(c.target)}`}),
+      el("dt",{text:"Impact"}),el("dd",{text:v(c.impact)}),el("dt",{text:"Score"}),el("dd",{text:v(c.priority_score)}),
+      el("dt",{text:"Band"}),el("dd",{text:c.final_band!==c.band?`${c.final_band}, computed ${c.band}`:c.final_band}),
+      ...(c.kpis&&c.kpis.length?[el("dt",{text:"KPIs"}),el("dd",{text:c.kpis.join("; ")})]:[])),
+    ...[c.score_reason,c.impact_reason].filter(Boolean).map(r=>el("p",{text:r})));
+  tip.style.display="flex";
+  const w=300,h=tip.offsetHeight;let left=x+16,top=y+16;
+  if(left+w>innerWidth-12)left=x-w-16; if(top+h>innerHeight-12)top=Math.max(12,y-h-16);
+  tip.style.left=left+"px";tip.style.top=top+"px";
+}
+const hideTip=()=>{tip.style.display="none"};
+function hover(node,c){
+  node.addEventListener("mousemove",e=>showTip(c,e.clientX,e.clientY));
+  node.addEventListener("mouseleave",hideTip);
+  node.addEventListener("focus",()=>{const r=node.getBoundingClientRect();showTip(c,r.right,r.top)});
+  node.addEventListener("blur",hideTip);
+}
+
+// Capability map
+const legend=document.getElementById("legend"), map=document.getElementById("map");
+const tileClass=(c,view)=>view==="maturity"?(c.current===null||c.current===undefined?"m-open":"m-"+c.current):"k-"+KEY[c.final_band];
+function tileMeta(c,view){
+  if(view==="maturity")return c.current===null||c.current===undefined?"Maturity OPEN":`${c.current} ${LEVELS[c.current]}, target ${v(c.target)}`;
+  return c.final_band==="OPEN"?"Score OPEN":c.final_band==="Retire review"?"Retire review":`${c.final_band}, ${v(c.current)} → ${v(c.target)}`;
+}
+function tile(c,view){
+  const b=el("button",{type:"button",class:"tile "+tileClass(c,view),"data-id":c.id,
+    "aria-label":`${c.name}. ${c.final_band}. Current ${v(c.current)}, target ${v(c.target)}, impact ${v(c.impact)}.`},
+    el("b",{text:c.name}),el("small",{text:tileMeta(c,view)}));
+  hover(b,c);return b;
+}
+function drawLegend(view){
+  legend.replaceChildren();
+  const add=(cls,label)=>legend.append(el("span",{},el("i",{class:cls}),label));
+  if(view==="maturity"){["m-0","m-1","m-2","m-3","m-4","m-5"].forEach((k,i)=>{const sw=el("i");sw.className="tile "+k;sw.style.cssText="width:12px;height:12px;min-height:0;padding:0;border-radius:var(--bl-r-sm)";legend.append(el("span",{},sw,`${i} ${LEVELS[i]}`))});add("ring","OPEN");}
+  else{add("sw-invest","Invest now");add("sw-plan","Plan");add("sw-monitor","Monitor");add("sw-hold","Hold");add("sw-retire","Retire review");add("sw-open","OPEN");}
+}
+function drawMap(view){
+  map.replaceChildren();
+  for(const d of domains){
+    const top=caps.filter(c=>c.domain===d.id&&c.level===2);
+    if(!top.length)continue;
+    const n=caps.filter(c=>c.domain===d.id&&c.scored).length;
+    const stack=el("div",{class:"stack"});
+    for(const c of top){
+      if(c.scored){stack.append(tile(c,view));continue}
+      const grp=el("div",{class:"grp"},el("p",{text:c.name}));
+      caps.filter(k=>k.parent===c.id).forEach(k=>grp.append(tile(k,view)));
+      stack.append(grp);
+    }
+    map.append(el("div",{class:"dom"},el("h4",{},d.name,el("span",{text:String(n)})),stack));
+  }
+  drawLegend(view);
+  document.getElementById("map-sub").textContent=view==="maturity"
+    ?"Tiles are colored by how well the business performs each capability today."
+    :"Tiles are colored by priority band.";
+}
+document.querySelectorAll("#view input").forEach(i=>i.addEventListener("change",()=>drawMap(i.value)));
+drawMap("priority");
+
+// Gap chart: dumbbells in rank order
+(function(){
+  const box=document.getElementById("gapchart");
+  const W=720,L=272,R=W-88,rowH=30,top=50,H=top+scored.length*rowH+8;
+  const X=x=>L+(R-L)*x/5;
+  const svg=sv("svg",{class:"gap",viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Current and target maturity for each scored capability"});
+  const color={"Invest now":"var(--bl-seq-600)","Plan":"var(--bl-seq-500)","Monitor":"var(--bl-seq-300)","Hold":"var(--bl-n300)","Retire review":"var(--bl-n400)","OPEN":"var(--bl-n400)"};
+  for(let i=0;i<=5;i++){
+    svg.append(sv("line",{x1:X(i),x2:X(i),y1:top-6,y2:H-8,stroke:"var(--bl-grid)"}));
+    svg.append(sv("text",{x:X(i),y:top-16,"text-anchor":"middle","font-size":"11",fill:"var(--bl-n500)"},String(i)));
+  }
+  svg.append(sv("text",{x:L,y:12,"font-size":"11",fill:"var(--bl-n500)"},"Maturity, 0 absent to 5 optimized"));
+  svg.append(sv("text",{x:W,y:12,"text-anchor":"end","font-size":"11",fill:"var(--bl-n500)"},"Score"));
+  scored.forEach((c,i)=>{
+    const y=top+i*rowH+rowH/2, g=sv("g",{class:"row",tabindex:"0","aria-label":`${c.name}: current ${v(c.current)}, target ${v(c.target)}, score ${v(c.priority_score)}`});
+    g.append(sv("rect",{class:"hl",x:0,y:y-rowH/2,width:W,height:rowH,rx:6,fill:"transparent"}));
+    g.append(sv("text",{x:0,y:y+4,"font-size":"13","font-weight":c.final_band==="Invest now"?"600":"400",fill:"var(--bl-n900)"},c.name.length>38?c.name.slice(0,37)+"…":c.name));
+    const col=color[c.final_band];
+    if(c.current!=null&&c.target!=null){
+      if(c.target!==c.current)g.append(sv("line",{x1:X(c.current),x2:X(c.target),y1:y,y2:y,stroke:col,"stroke-width":"4","stroke-linecap":"round"}));
+      g.append(sv("circle",{cx:X(c.current),cy:y,r:6,fill:"var(--bl-n0)",stroke:col,"stroke-width":"2"}));
+      g.append(sv("circle",{cx:X(c.target),cy:y,r:6,fill:col}));
+    }else{
+      if(c.current!=null)g.append(sv("circle",{cx:X(c.current),cy:y,r:6,fill:"var(--bl-n0)",stroke:col,"stroke-width":"2"}));
+      g.append(sv("text",{x:c.current!=null?X(c.current)+14:L,y:y+4,"font-size":"12",fill:"var(--bl-n500)"},c.target==null?"Target OPEN":"Impact OPEN"));
+    }
+    g.append(sv("text",{x:W,y:y+4,"text-anchor":"end","font-size":"13","font-weight":"600",fill:"var(--bl-n900)"},c.priority_score==null?"OPEN":String(c.priority_score)));
+    hover(g,c);svg.append(g);
+  });
+  box.append(svg);
+})();
+
+// Strategy coverage
+const gbox=document.getElementById("goals");
+for(const g of m.goals){
+  const linked=scored.filter(c=>(c.goals||[]).includes(g.id));
+  const chips=el("div",{class:"chips"});
+  if(linked.length)linked.forEach(c=>chips.append(el("span",{class:"chip"},el("i",{class:"sw-"+KEY[c.final_band]}),c.name)));
+  else{const f=el("span",{class:"gap-flag"});f.append(icon("warning"),"No capability delivers this goal");chips.append(f)}
+  gbox.append(el("div",{class:"goal"},el("b",{text:g.statement}),el("small",{text:g.measure?`Measured by ${g.measure.charAt(0).toLowerCase()+g.measure.slice(1)}`:"No measure recorded"}),chips));
+}
+if(!m.goals.length)gbox.append(el("p",{class:"basis",text:"No goals are recorded, so nothing is linked to strategy."}));
+
+// Lifecycle strip
+const cols=[...m.stages.map(x=>({id:x.id,name:x.name})),{id:"",name:"Enabling"}];
+const life=document.getElementById("life");life.style.setProperty("--cols",cols.length);
+for(const col of cols){
+  const list=scored.filter(c=>col.id?stagesOf(c).includes(col.id):!stagesOf(c).length);
+  const stack=el("div",{class:"stack"});
+  list.forEach(c=>{const n=el("div",{class:"mini tile k-"+KEY[c.final_band],tabindex:"0",style:"min-height:0;display:block"},c.name);hover(n,c);stack.append(n)});
+  if(!list.length)stack.append(el("span",{class:"none",text:"No capability"}));
+  life.append(el("div",{class:"stage"+(col.id?"":" enabling")},el("h4",{},col.name,el("span",{text:String(list.length)})),stack));
+}
+
+// Decision notes
+const why=document.getElementById("why");
+[...invest,...plan].forEach(c=>why.append(el("li",{},el("span",{class:"r",text:String(c.rank)}),
+  el("div",{},el("b",{text:`${c.name}, ${c.final_band.toLowerCase()}`}),el("p",{text:[c.impact_reason,c.score_reason].filter(Boolean).join(" ")})))));
+if(!why.children.length)why.append(el("li",{},el("span",{class:"r",text:""}),el("p",{text:"No capability is in the Invest now or Plan band."})));
+const fl=document.getElementById("findings");
+const kindIcon={"goal-unlinked":"warning","priority-unlinked":"warning","open-value":"info","override":"flag","stage-empty":"info"};
+m.findings.forEach(f=>{const li=el("li",{class:kindIcon[f.kind]==="warning"?"warn":""});li.append(icon(kindIcon[f.kind]||"info"),el("span",{text:f.text}));fl.append(li)});
+(m.open_items||[]).forEach(o=>{const li=el("li");li.append(icon("info"),el("span",{text:`${o.question} Owner: ${o.owner||"OPEN"}.`}));fl.append(li)});
+if(!fl.children.length)fl.append(el("li",{text:"No findings or open items."}));
+
+// Full table
+document.getElementById("all-sum").textContent=`All ${s.scored} scored capabilities`;
+const table=document.getElementById("ranked");
+const heads=[["Rank","num"],["Capability",""],["Current","num"],["Target","num"],["Gap","num"],["Impact",""],["Score","num"],["Band",""],["Votes","num"],["Reasons","wrap-text"]];
+table.append(el("thead",{},el("tr",{},...heads.map(([h,c])=>el("th",{scope:"col",class:c,text:h})))));
+const body=el("tbody");table.append(body);
+for(const c of scored){
+  body.append(el("tr",{},el("td",{class:"num",text:String(c.rank)}),
+    el("td",{},el("span",{class:"primary",text:c.name}),el("span",{class:"sub",text:dname[c.domain]+(c.parent?` › ${byId[c.parent].name}`:"")})),
+    el("td",{class:"num",text:v(c.current)}),el("td",{class:"num",text:v(c.target)}),el("td",{class:"num",text:v(c.gap)}),el("td",{text:v(c.impact)}),
+    el("td",{class:"num",text:v(c.priority_score)}),el("td",{text:c.final_band!==c.band?`${c.final_band} (computed ${c.band})`:c.final_band}),
+    el("td",{class:"num",text:c.votes==null?"none":String(c.votes)}),el("td",{class:"wrap-text",text:[c.score_reason,c.impact_reason].filter(Boolean).join(" ")||"OPEN"})));
+}
+document.getElementById("formula").textContent=`Gap is target minus current maturity. Score is gap times impact weight (high 3, medium 2, low 1). Invest now ${t.invest_now}+, Plan ${t.plan} to ${t.invest_now-1}, Monitor ${t.monitor} to ${t.plan-1}, Hold below ${t.monitor}.`;
+const ev=document.getElementById("evidence");
+m.evidence.forEach(e=>ev.append(el("li",{},el("b",{text:e.id}),e.label)));
+if(!m.evidence.length)ev.append(el("li",{text:"No evidence is recorded; every score is a hypothesis."}));
+})();
+</script>
+</body>
+</html>

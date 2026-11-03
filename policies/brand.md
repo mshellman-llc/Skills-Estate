@@ -32,7 +32,27 @@ Read exact values from the selected profile. Do not infer colors from a company 
     "chart-6": "#535559",
     "status-good": "#18703F",
     "status-warning": "#96500A",
-    "status-critical": "#C4302B"
+    "status-critical": "#C4302B",
+    "n25": "#FAFAFA",
+    "n100": "#EEEEF0",
+    "n300": "#8E8F92",
+    "n400": "#7F8185",
+    "n500": "#6C6E72",
+    "n700": "#2E3135",
+    "accent-hover": "#2C3666",
+    "accent-press": "#1C2346",
+    "accent-soft": "#E8F0FF",
+    "accent-line": "#BFD5FF",
+    "status-good-soft": "#E5F3EA",
+    "status-good-line": "#B8DEC6",
+    "status-warning-soft": "#FCEFDD",
+    "status-warning-line": "#F2D3A8",
+    "status-warning-mark": "#C9771A",
+    "status-critical-hover": "#A32621",
+    "status-critical-soft": "#FCEAE9",
+    "status-critical-line": "#F3C1BE",
+    "seq-50": "#F5F8FF",
+    "chart-axis": "#CBCBCC"
   },
   "type": {
     "body": "Inter, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
@@ -43,12 +63,12 @@ Read exact values from the selected profile. Do not infer colors from a company 
     "slide_min_pt": 18
   },
   "logo": null,
-  "layout": {"border_px": 1, "radius_px": 6, "heading_case": "sentence"},
+  "layout": {"border_px": 1, "radius_px": 6, "radius_scale_px": [4, 6, 10, 14], "stroke_px": [1, 1.5, 2], "shadow_max_offset_px": 16, "heading_case": "sentence"},
   "voice": "Use the author's confirmed voice profile when supplied; otherwise write plainly and preserve meaning."
 }
 ```
 
-The neutral profile is Baseline, Megan's default design system. Web pages, dashboards and interactive artifacts use its component kit in the `client-brand` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
+The neutral profile is Baseline, Megan's default design system. Its colors include every palette F token in `baseline.css`, so the brand check accepts those tokens unchanged. Three kit parts fall outside this profile: palette E colors, the color picker's hue gradient and the spinner's 2.5- and 3.5-pixel strokes. Web pages, dashboards and interactive artifacts use its component kit in the `client-brand` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
 
 The neutral profile has no logo, footer mark, cover imagery, gradients, or bundled fonts. Add a title, date, and author when the format needs them. Do not add colored side accents to cards, rows, badges or callouts.
 

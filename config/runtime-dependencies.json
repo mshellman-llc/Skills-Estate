@@ -189,5 +189,11 @@
   "transcript-ingestion": [
     "evidence-core",
     "knowledge-hub"
+  ],
+  "capability-mapping": [
+    "brand-renderer",
+    "client-brand",
+    "evidence-core",
+    "knowledge-hub"
   ]
 }

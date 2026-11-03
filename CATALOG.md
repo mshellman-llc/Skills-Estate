@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 82 source modules and 55 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 83 source modules and 56 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -11,7 +11,7 @@ This candidate contains 82 source modules and 55 proposed task entrypoints. Cons
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 16 | 12 |
-| [Product and experience](browse/product-and-experience/README.md) | 12 | 11 |
+| [Product and experience](browse/product-and-experience/README.md) | 13 | 12 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
@@ -33,6 +33,7 @@ This candidate contains 82 source modules and 55 proposed task entrypoints. Cons
 | build-interactive-explorer | [build-interactive-explorer](skills/build-interactive-explorer/SKILL.md) |  |
 | business-case | [business-case](skills/business-case/SKILL.md) |  |
 | call-prep | [call-prep](skills/call-prep/SKILL.md) |  |
+| capability-mapping | [capability-mapping](skills/capability-mapping/SKILL.md) |  |
 | career-application | [career-application](skills/career-application/SKILL.md) | career-materials-and-outreach, resume-numbers-and-keywords |
 | career-decisions | [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md) |  |
 | code-simplify | [code-simplify](skills/code-simplify/SKILL.md) |  |
@@ -95,6 +96,7 @@ Each module needs a reviewed capability disposition before release.
 - [build-interactive-explorer](skills/build-interactive-explorer/SKILL.md)
 - [business-case](skills/business-case/SKILL.md)
 - [call-prep](skills/call-prep/SKILL.md)
+- [capability-mapping](skills/capability-mapping/SKILL.md)
 - [career-application](skills/career-application/SKILL.md)
 - [career-materials-and-outreach](skills/career-materials-and-outreach/SKILL.md)
 - [career-progression-and-offers](skills/career-progression-and-offers/SKILL.md)

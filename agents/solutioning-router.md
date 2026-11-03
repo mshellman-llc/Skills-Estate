@@ -1,6 +1,6 @@
 ---
 name: solutioning-router
-description: Route requirements, architecture, solution design, scope, ROM estimation, and statements of work. Select the smallest appropriate skill without recreating its method.
+description: Route requirements, capability maps and map-and-gap assessments, architecture, solution design, scope, ROM estimation, and statements of work. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Solutioning Router
@@ -26,6 +26,7 @@ description: Route requirements, architecture, solution design, scope, ROM estim
 - `spec-writer`
 - `process`
 - `journey-mapping`
+- `capability-mapping`
 
 
 ## Required controls

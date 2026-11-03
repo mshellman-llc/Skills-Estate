@@ -13,6 +13,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | `accessibility-audit` | [accessibility-audit](../../skills/accessibility-audit/SKILL.md) |  |
 | `analytics-strategy` | [analytics-strategy](../../skills/analytics-strategy/SKILL.md) |  |
 | `build-interactive-explorer` | [build-interactive-explorer](../../skills/build-interactive-explorer/SKILL.md) |  |
+| `capability-mapping` | [capability-mapping](../../skills/capability-mapping/SKILL.md) |  |
 | `feature-spec` | [pm-spec-writing](../../skills/pm-spec-writing/SKILL.md) | [detailed UI and API specification](../../skills/spec-writer/SKILL.md) |
 | `independent-product` | [independent-product](../../skills/independent-product/SKILL.md) |  |
 | `information-architecture` | [information-architecture](../../skills/information-architecture/SKILL.md) |  |
@@ -27,6 +28,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [accessibility-audit](../../skills/accessibility-audit/SKILL.md)
 - [analytics-strategy](../../skills/analytics-strategy/SKILL.md)
 - [build-interactive-explorer](../../skills/build-interactive-explorer/SKILL.md)
+- [capability-mapping](../../skills/capability-mapping/SKILL.md)
 - [independent-product](../../skills/independent-product/SKILL.md)
 - [information-architecture](../../skills/information-architecture/SKILL.md)
 - [journey-mapping](../../skills/journey-mapping/SKILL.md)

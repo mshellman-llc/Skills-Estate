@@ -1,0 +1,121 @@
+schema_version: 1
+skill: capability-mapping
+lifecycle:
+  status: draft
+job:
+  user: A consultant, architect or business analyst planning a transformation
+  situation: Leaders need a shared view of what the business can do, how well, and which gaps to close first, sometimes across business units or two merging companies.
+  outcome: One evidence-based capability model with lifecycle placement, goal links, maturity and impact scores, and a ranked gap list rendered as an HTML dashboard, an Excel tracker and a readout.
+  complete_when: Every scored capability has a basis and reason or an OPEN marker, the outputs are built from the same model, the readout figures match the computed model, and the rendered page and workbook have been inspected.
+position:
+  closest_skills:
+    - journey-mapping
+    - process
+    - sales-process-mapping
+    - solution-brief
+    - system-design
+    - roadmap-artifacts
+  disposition: separate
+  rationale: Journey mapping follows one actor's experience and process maps the steps; neither owns a stable inventory of business capabilities, maturity scoring or capability-based prioritization. Solution and roadmap skills consume this output downstream.
+contract:
+  inputs:
+    - Business, state, decision and audience
+    - Strategy goals with measures
+    - Interview, workshop, transcript or system evidence
+    - Optional reference capability catalog, cited and paraphrased
+  outputs:
+    - Capability model JSON and its computed copy
+    - HTML capability map
+    - Excel map-and-gap tracker with live formulas
+    - Markdown decision readout
+    - Workshop capture workbook and seeded model when requested
+selection:
+  positive:
+    - Build a business capability map for this client from the discovery notes.
+    - Run a map and gap analysis and show me a capability heatmap.
+    - Prepare a customer lifecycle analysis workshop to derive capabilities.
+    - Combine the two companies' capabilities after the acquisition and find duplicates and gaps.
+  adjacent:
+    - prompt: Document the quote approval process as an SOP.
+      owner: process
+    - prompt: Map the homeowner's journey from first call to installation.
+      owner: journey-mapping
+    - prompt: Design the solution architecture for the top capability gaps.
+      owner: system-design
+    - prompt: Sequence the top gaps into a release roadmap.
+      owner: roadmap-artifacts
+    - prompt: Estimate the effort to close these gaps.
+      owner: scoping-agent
+  negative:
+    - Draw our org chart.
+    - Write the V2MOM for next year.
+    - Assess this employee's skills.
+relationships:
+  requires: []
+  optional:
+    - evidence-core
+    - knowledge-hub
+    - client-brand
+  controls:
+    - quality-gate
+    - writing-integrity
+    - brand-renderer
+  upstream:
+    - solutioning-router
+    - discovery
+    - call-prep
+  downstream:
+    - roadmap-artifacts
+    - solution-brief
+    - system-design
+    - requirements-capture
+    - process
+    - scoping-agent
+    - rom
+capabilities:
+  - name: Python 3 standard library
+    required: true
+    hosts:
+      - Codex
+      - Claude Code
+      - Cowork
+    unavailable_behavior: Apply the method's formula by hand in Markdown, state that the builder did not run, and mark the HTML and workbook as not produced.
+  - name: openpyxl
+    required: false
+    hosts:
+      - Codex
+      - Claude Code
+      - Cowork
+    unavailable_behavior: Build writes the HTML, readout and computed model and reports the workbook as not produced; workshop and ingest refuse with a named dependency.
+  - name: Browser for visual inspection
+    required: false
+    hosts:
+      - Claude Code
+      - Codex
+    unavailable_behavior: Run non-browser checks and report the visual inspection as pending.
+risks:
+  persistent_writes:
+    - Output files in a new directory chosen by the user; the builder refuses to overwrite existing outputs.
+    - Knowledge Hub engagement and deliverable records when a hub is configured.
+  authorization:
+    - Use client names and evidence only inside that client's workspace.
+    - Do not copy a licensed reference catalog into a client deliverable without checking its terms.
+  failure_behavior: Refuse an invalid model with each error named; keep unknown scores OPEN rather than filling them.
+  privacy: Evidence locators can point to private records; leave them out of client-facing copies.
+  rollback: Outputs are written to a new directory; the previous model file remains the dated baseline.
+cost:
+  status: unknown
+  receipt: null
+efficiency:
+  status: unknown
+  receipt: null
+stewardship:
+  steward: Megan Shellman
+  maintainers:
+    - Megan Shellman
+  lifecycle_approver: Megan Shellman
+  review_date: null
+  stale_facts:
+    - Default lifecycle stage names
+    - Default priority band thresholds
+  retirement_path: Move the method and builder into a successor skill and record the mapping in config/retired-entrypoints.json before archival.

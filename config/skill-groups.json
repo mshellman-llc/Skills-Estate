@@ -76,7 +76,8 @@
         "spec-writer",
         "system-design",
         "usability-testing",
-        "build-interactive-explorer"
+        "build-interactive-explorer",
+        "capability-mapping"
       ]
     },
     {

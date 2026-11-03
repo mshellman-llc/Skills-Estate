@@ -45,6 +45,15 @@ function loadProfile(file) {
     if (typeof value !== "number" || !Number.isFinite(value) || value < 0 || value > 100)
       throw new Error(`Missing or invalid layout value: ${key}`);
   }
+  const layoutValue = v => typeof v === "number" && Number.isFinite(v) && v >= 0 && v <= 100;
+  for (const key of ["radius_scale_px", "stroke_px"]) {
+    const values = p.layout[key];
+    if (values !== undefined && values !== null && (!Array.isArray(values) || !values.length || !values.every(layoutValue)))
+      throw new Error(`Invalid layout value: ${key}`);
+  }
+  const offset = p.layout.shadow_max_offset_px;
+  if (offset !== undefined && offset !== null && !layoutValue(offset))
+    throw new Error("Invalid layout value: shadow_max_offset_px");
   return p;
 }
 
@@ -66,6 +75,12 @@ function compileTokens(p, file) {
   for (const [key, role] of Object.entries(mapping.roles)) colors[key] = color(role);
   for (const role of Object.keys(palette)) if (!colors[role]) colors[role] = color(role);
   const radius = p.layout.radius_px;
+  // A profile may declare a radius scale, emphasis stroke widths and shadow
+  // elevation, as Baseline does; without them the single values apply.
+  const scale = (values, single) => [...new Set([...(values && values.length ? values : [single]), single])].sort((a, b) => a - b);
+  const radii = scale(p.layout.radius_scale_px, radius);
+  const strokes = scale(p.layout.stroke_px, p.layout.border_px);
+  const shadowOffset = p.layout.shadow_max_offset_px;
   return {
     provenance: {source: fs.realpathSync(file),
       sourceSha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"),
@@ -73,14 +88,15 @@ function compileTokens(p, file) {
     colors, aliases: mapping.aliases,
     rules: {
       warmAccentsAllowed: true, warmSurfacesAllowed: [],
-      borderWidthPx: p.layout.border_px, borderNeverBlack: false,
+      borderWidthPx: p.layout.border_px, borderWidthsPx: strokes, borderNeverBlack: false,
       borderColorsBySurface: {light: palette.border, sand: palette.border},
-      radius: {allowedPx: [radius], defaultPx: radius, smallPx: radius, capPx: radius,
+      radius: {allowedPx: radii, defaultPx: radius, smallPx: radii[0], capPx: radii[radii.length - 1],
         pillPx: 999, pillUsage: "avatars and status indicators"},
       headingCase: p.layout.heading_case || "sentence",
       labelTrackingEm: p.layout.label_tracking_em || 0, bodyAlign: "left", titleUnderline: false,
       footer: {required: false, convention: false}, markAndLockupTogether: false,
-      shadow: {allowed: false, maxOffsetPx: 0},
+      shadow: shadowOffset === undefined || shadowOffset === null
+        ? {allowed: false, maxOffsetPx: 0} : {allowed: true, maxOffsetPx: shadowOffset},
       eyebrow: {brandHex: palette.muted, defaultHex: palette.muted,
         brandContrastOnWhite: Math.round(contrast(palette.muted, palette.background) * 100) / 100,
         defaultContrastOnWhite: Math.round(contrast(palette.muted, palette.background) * 100) / 100,

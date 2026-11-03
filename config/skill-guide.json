@@ -671,6 +671,14 @@
       "outputs": "A reviewed private profile with supported style rules and update controls.",
       "example": "Build a draft style profile from these authorized samples and identify the rules I need to confirm.",
       "reviewedEntrypointSha256": "e379f9a134e038cc87e2013b0238f114fbad46e874d27dada6e878b688557b02"
+    },
+    "capability-mapping": {
+      "what": "Map what a business can do, score its maturity and impact, and rank the gaps.",
+      "when": "A capability map, capability model or map-and-gap assessment is needed.",
+      "inputs": "Strategy goals, interview or workshop notes, system inventory, and any reference catalog.",
+      "outputs": "A capability model with an HTML dashboard, an Excel tracker and a ranked gap readout.",
+      "example": "Build a capability map for this client from the workshop notes and rank the gaps.",
+      "reviewedEntrypointSha256": "0c06b8dd60655a7e9075a1efeafc75c6e43aa7bfdb9aa12e31c4f6d416562a62"
     }
   }
 }

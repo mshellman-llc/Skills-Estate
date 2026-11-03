@@ -56,6 +56,14 @@ def load_profile(path):
         value = layout.get(key)
         if not isinstance(value, (int, float)) or isinstance(value, bool) or not 0 <= value <= 100:
             raise ValueError(f"Missing or invalid layout value: {key}")
+    for key in ("radius_scale_px", "stroke_px"):
+        values = layout.get(key)
+        if values is not None and (not isinstance(values, list) or not values or not all(
+                isinstance(v, (int, float)) and not isinstance(v, bool) and 0 <= v <= 100 for v in values)):
+            raise ValueError(f"Invalid layout value: {key}")
+    offset = layout.get("shadow_max_offset_px")
+    if offset is not None and (not isinstance(offset, (int, float)) or isinstance(offset, bool) or not 0 <= offset <= 100):
+        raise ValueError("Invalid layout value: shadow_max_offset_px")
     return profile
 
 
@@ -89,20 +97,27 @@ def compile_tokens(profile, path, *, mapping_path=None):
         })
     layout = profile["layout"]
     radius = layout["radius_px"]
+    # A profile may declare a radius scale, emphasis stroke widths and shadow
+    # elevation, as Baseline does; without them the single values apply.
+    radii = sorted(set(layout.get("radius_scale_px") or [radius]) | {radius})
+    strokes = sorted(set(layout.get("stroke_px") or [layout["border_px"]]) | {layout["border_px"]})
+    shadow_offset = layout.get("shadow_max_offset_px")
     rules = {
         "warmAccentsAllowed": True,
         "warmSurfacesAllowed": [],
         "borderWidthPx": layout["border_px"],
+        "borderWidthsPx": strokes,
         "borderNeverBlack": False,
         "borderColorsBySurface": {"light": palette["border"], "sand": palette["border"]},
-        "radius": {"allowedPx": [radius], "defaultPx": radius, "smallPx": radius,
-                   "capPx": radius, "pillPx": 999, "pillUsage": "avatars and status indicators"},
+        "radius": {"allowedPx": radii, "defaultPx": radius, "smallPx": radii[0],
+                   "capPx": radii[-1], "pillPx": 999, "pillUsage": "avatars and status indicators"},
         "headingCase": layout.get("heading_case", "sentence"),
         "labelTrackingEm": layout.get("label_tracking_em", 0),
         "bodyAlign": "left", "titleUnderline": False,
         "footer": {"required": False, "convention": False},
         "markAndLockupTogether": False,
-        "shadow": {"allowed": False, "maxOffsetPx": 0},
+        "shadow": ({"allowed": True, "maxOffsetPx": shadow_offset} if shadow_offset is not None
+                   else {"allowed": False, "maxOffsetPx": 0}),
         "eyebrow": {
             "brandHex": palette["muted"], "defaultHex": palette["muted"],
             "brandContrastOnWhite": round(contrast(palette["muted"], palette["background"]), 2),

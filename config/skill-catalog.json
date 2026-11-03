@@ -56,6 +56,11 @@
       "pack": "core",
       "modes": {}
     },
+    "capability-mapping": {
+      "source": "capability-mapping",
+      "pack": "core",
+      "modes": {}
+    },
     "career-application": {
       "source": "career-application",
       "pack": "career",
