@@ -32,6 +32,7 @@ RAGS = {"red", "amber", "green", "open"}
 DIMENSIONS = ("people", "process", "data", "technology", "organization")
 EVIDENCE_TYPES = {"interview", "workshop", "transcript", "document", "system", "catalog", "analysis"}
 BANDS = ("Invest now", "Plan", "Monitor", "Hold", "Retire review", "OPEN")
+BAND_ORDER = {b: i for i, b in enumerate(BANDS)}
 DEFAULT_THRESHOLDS = {"invest_now": 6, "plan": 3, "monitor": 1}
 MATURITY = [
     (0, "Absent", "The organization cannot do this today."),
@@ -74,10 +75,6 @@ def _ids(items, label, errors):
             errors.append(f"{label} id {item['id']} is duplicated")
         seen.add(item["id"])
     return seen
-
-
-def scored(cap, parents):
-    return cap.get("id") not in parents
 
 
 def validate(model):
@@ -253,9 +250,8 @@ def compute(model):
         c.update(rag=rag(cur), gap=gap, impact_weight=weight, priority_score=score,
                  band=band_for(c["status"], score, thresholds))
         c["final_band"] = (c.get("priority_override") or {}).get("band", c["band"])
-    order = {b: i for i, b in enumerate(BANDS)}
     ranked = sorted((c for c in caps if c["scored"]),
-                    key=lambda c: (order[c["final_band"]], -(c["priority_score"] if c["priority_score"] is not None else -99),
+                    key=lambda c: (BAND_ORDER[c["final_band"]], -(c["priority_score"] if c["priority_score"] is not None else -99),
                                    -(c.get("votes") or 0), c["id"]))
     rank, previous = 0, None
     for i, c in enumerate(ranked, 1):
@@ -399,11 +395,18 @@ def _cell(text):
     return str(text).replace("|", "\\|").replace("\n", " ")
 
 
+def _ranked(computed):
+    return sorted((c for c in computed["capabilities"] if c["scored"]), key=lambda c: (c["rank"], c["id"]))
+
+
+def _rubric_rows():
+    rows = [[f"Maturity {n}", name, text] for n, name, text in MATURITY]
+    return rows + [[f"Dimension: {k}", "red / amber / green", q] for k, q in DIMENSION_QUESTIONS.items()]
+
+
 def render_markdown(computed):
     m, s = computed["meta"], computed["summary"]
-    caps = {c["id"]: c for c in computed["capabilities"]}
-    goals = {g["id"]: g for g in computed["goals"]}
-    ranked = sorted((c for c in caps.values() if c["scored"]), key=lambda c: (c["rank"], c["id"]))
+    ranked = _ranked(computed)
     lines = [f"# {m['title']}", ""]
     if m.get("status", "draft") == "draft":
         lines += ["The sponsor has not yet accepted these scores.", ""]
@@ -465,7 +468,7 @@ def _xl():
 
 
 def _sheet(wb, title, headers, rows, widths=None):
-    openpyxl, Alignment, Font, PatternFill, letter, _ = _xl()
+    _, Alignment, Font, PatternFill, letter, _ = _xl()
     ws = wb.create_sheet(title)
     ws.append(headers)
     for row in rows:
@@ -486,15 +489,16 @@ def _sheet(wb, title, headers, rows, widths=None):
 
 
 def write_xlsx(computed, path):
-    if _xl() is None:
+    xl = _xl()
+    if xl is None:
         return False
-    openpyxl = _xl()[0]
+    openpyxl = xl[0]
     t = computed["summary"]["thresholds"]
     wb = openpyxl.Workbook()
     wb.remove(wb.active)
     domains = {d["id"]: d["name"] for d in computed["domains"]}
     caps = {c["id"]: c for c in computed["capabilities"]}
-    ranked = sorted((c for c in caps.values() if c["scored"]), key=lambda c: (c["rank"], c["id"]))
+    ranked = _ranked(computed)
     headers = ["Rank", "ID", "Capability", "Domain", "Parent", "Status", "Current", "Target", "Impact", "Gap",
                "Impact weight", "Score", "Computed band", "Decided band", "Votes", "People", "Process", "Data",
                "Technology", "Organization", "Score reason", "Impact reason", "Goals", "Stages", "Holders",
@@ -522,18 +526,15 @@ def write_xlsx(computed, path):
         marks = ["●" if s["id"] in (c.get("stages") or []) else "" for s in stages]
         life_rows.append([c["name"], domains[c["domain"]], *marks, "●" if not c.get("stages") else "", c["final_band"]])
     _sheet(wb, "Lifecycle", ["Capability", "Domain", *[s["name"] for s in stages], "Enabling", "Band"], life_rows, {"Capability": 32})
-    order = {b: i for i, b in enumerate(BANDS)}
     trace = []
     for g in computed["goals"]:
         linked = [c for c in ranked if g["id"] in (c.get("goals") or [])]
-        best = min((c["final_band"] for c in linked), key=lambda b: order[b]) if linked else "No linked capability"
+        best = min((c["final_band"] for c in linked), key=BAND_ORDER.get) if linked else "No linked capability"
         trace.append([g["id"], g["statement"], g.get("measure", ""), g.get("framework", ""),
                       "; ".join(c["name"] for c in linked), best])
     _sheet(wb, "Strategy trace", ["Goal", "Statement", "Measure", "Framework", "Linked capabilities", "Best band"], trace,
            {"Statement": 44, "Measure": 36, "Linked capabilities": 48, "Best band": 20})
-    rubric = [[f"Maturity {n}", name, text] for n, name, text in MATURITY]
-    rubric += [[f"Dimension: {k}", "red / amber / green", q] for k, q in DIMENSION_QUESTIONS.items()]
-    rubric += [["Impact weight", k, str(v)] for k, v in IMPACTS.items()]
+    rubric = _rubric_rows() + [["Impact weight", k, str(v)] for k, v in IMPACTS.items()]
     rubric += [["Band", "Invest now", f"Score {t['invest_now']} or more"], ["Band", "Plan", f"Score {t['plan']} to {t['invest_now'] - 1}"],
                ["Band", "Monitor", f"Score {t['monitor']} to {t['plan'] - 1}"], ["Band", "Hold", f"Score below {t['monitor']}"],
                ["Band", "Retire review", "Status redundant"], ["Band", "OPEN", "Current, target or impact missing"],
@@ -570,9 +571,10 @@ def build(model, output_dir):
 # --------------------------------------------------------------------------- workshop and ingest
 
 def workshop(stages, title, output_dir, date):
-    if _xl() is None:
+    xl = _xl()
+    if xl is None:
         raise RuntimeError("The workshop workbook needs openpyxl")
-    openpyxl, Alignment, Font, PatternFill, letter, DataValidation = _xl()
+    openpyxl, _, _, _, letter, DataValidation = xl
     names = [s.strip() for s in stages.split(",") if s.strip()]
     if not names:
         raise ValueError("Give at least one stage name")
@@ -601,9 +603,7 @@ def workshop(stages, title, output_dir, date):
             continue
         ws.add_data_validation(dv)
         dv.add(f"{col}2:{col}500")
-    rubric = [[f"Maturity {n}", name, text] for n, name, text in MATURITY]
-    rubric += [[f"Dimension: {k}", "red / amber / green", q] for k, q in DIMENSION_QUESTIONS.items()]
-    _sheet(wb, "Rubric", ["Item", "Value", "Meaning"], rubric, {"Item": 24, "Value": 22, "Meaning": 70})
+    _sheet(wb, "Rubric", ["Item", "Value", "Meaning"], _rubric_rows(), {"Item": 24, "Value": 22, "Meaning": 70})
     _sheet(wb, "Stages", ["Stage ID", "Stage"], [[s["id"], s["name"]] for s in stage_list])
     wb.properties.title = title
     wb.save(capture)
@@ -633,9 +633,10 @@ def _int(value, label, errors):
 
 
 def ingest(workbook, model):
-    if _xl() is None:
+    xl = _xl()
+    if xl is None:
         raise RuntimeError("Reading the workshop workbook needs openpyxl")
-    openpyxl = _xl()[0]
+    openpyxl = xl[0]
     wb = openpyxl.load_workbook(workbook, data_only=True)
     if "Scoring" not in wb.sheetnames:
         raise ModelError(["The workbook has no Scoring sheet"])

@@ -189,7 +189,7 @@ const SVG="http://www.w3.org/2000/svg";
 const el=(tag,attrs={},...kids)=>{const n=document.createElement(tag);for(const [k,v] of Object.entries(attrs)){if(k==="text")n.textContent=v;else n.setAttribute(k,v)}kids.forEach(k=>n.append(k));return n};
 const sv=(tag,attrs={},text)=>{const n=document.createElementNS(SVG,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(text!==undefined)n.textContent=text;return n};
 const v=x=>x===null||x===undefined?"OPEN":String(x);
-const icon=name=>{const s=document.createElementNS(SVG,"svg");s.setAttribute("class","i sk");s.setAttribute("viewBox","0 0 24 24");s.setAttribute("aria-hidden","true");s.innerHTML=ICONS[name]||"";return s};
+const icon=name=>{const s=sv("svg",{class:"i sk",viewBox:"0 0 24 24","aria-hidden":"true"});s.innerHTML=ICONS[name]||"";return s};
 const m=MODEL;
 if(!m||!m.meta||!Array.isArray(m.capabilities)||!m.summary){
   document.querySelector("main").prepend(el("p",{role:"alert",text:"No computed model is embedded. Build this page with scripts/build_capability_map.py."}));
@@ -248,9 +248,9 @@ function hover(node,c){
 
 // Capability map
 const legend=document.getElementById("legend"), map=document.getElementById("map");
-const tileClass=(c,view)=>view==="maturity"?(c.current===null||c.current===undefined?"m-open":"m-"+c.current):"k-"+KEY[c.final_band];
+const tileClass=(c,view)=>view==="maturity"?(c.current==null?"m-open":"m-"+c.current):"k-"+KEY[c.final_band];
 function tileMeta(c,view){
-  if(view==="maturity")return c.current===null||c.current===undefined?"Maturity OPEN":`${c.current} ${LEVELS[c.current]}, target ${v(c.target)}`;
+  if(view==="maturity")return c.current==null?"Maturity OPEN":`${c.current} ${LEVELS[c.current]}, target ${v(c.target)}`;
   return c.final_band==="OPEN"?"Score OPEN":c.final_band==="Retire review"?"Retire review":`${c.final_band}, ${v(c.current)} → ${v(c.target)}`;
 }
 function tile(c,view){
@@ -263,7 +263,7 @@ function drawLegend(view){
   legend.replaceChildren();
   const add=(cls,label)=>legend.append(el("span",{},el("i",{class:cls}),label));
   if(view==="maturity"){["m-0","m-1","m-2","m-3","m-4","m-5"].forEach((k,i)=>{const sw=el("i");sw.className="tile "+k;sw.style.cssText="width:12px;height:12px;min-height:0;padding:0;border-radius:var(--bl-r-sm)";legend.append(el("span",{},sw,`${i} ${LEVELS[i]}`))});add("ring","OPEN");}
-  else{add("sw-invest","Invest now");add("sw-plan","Plan");add("sw-monitor","Monitor");add("sw-hold","Hold");add("sw-retire","Retire review");add("sw-open","OPEN");}
+  else BANDS.forEach(b=>add("sw-"+KEY[b],b));
 }
 function drawMap(view){
   map.replaceChildren();
