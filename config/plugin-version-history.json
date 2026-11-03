@@ -48,6 +48,10 @@
     "0.2.11": {
       "content_sha256": "18b13cf6c57e5feaf6f1b6735b75c1e77f64c6299c3d9ac17f7e358b5721c00a",
       "note": "Add capability-mapping to estate-solutioning; extend the Baseline brand profile with palette F tokens, radius scale, strokes and shadows"
+    },
+    "0.2.12": {
+      "content_sha256": "50ab382d236b1e086d878944637c67ceb3fa3d8fe2a0d92aa86bd1a0bf104b02",
+      "note": "Install openpyxl in the test environment for the capability-mapping workshop test"
     }
   }
 }
