@@ -44,6 +44,10 @@
     "0.2.10": {
       "content_sha256": "55c2dcea4a501defe6ca152a3cdbcdb7f300ebfe64ae10b9ebf7bb4978c53ee3",
       "note": "Publication waits for automated verification to finish"
+    },
+    "0.2.11": {
+      "content_sha256": "18b13cf6c57e5feaf6f1b6735b75c1e77f64c6299c3d9ac17f7e358b5721c00a",
+      "note": "Add capability-mapping to estate-solutioning; extend the Baseline brand profile with palette F tokens, radius scale, strokes and shadows"
     }
   }
 }
