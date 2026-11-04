@@ -273,7 +273,7 @@
         "create or repair an estate skill": "skill-creation-walkthrough",
         "release to another host or account": "cross-platform-skill-release"
       },
-      "description": "Maintain a Skills Estate checkout: author or repair a workflow, validate and package it, install a reviewed release, or replace a skill in another host or account. Select only the requested operation."
+      "description": "Maintain a Skills Estate checkout: author or repair a workflow, validate and package it, install a reviewed release, or replace a skill in another host or account. Select only the requested operation. Also covers plugin grouping and catalog placement, CI or publish failures, stale installs, and why a skill appears in the wrong plugin."
     },
     "solution-brief": {
       "source": "solution-brief",
@@ -309,7 +309,7 @@
       "modes": {
         "formal architecture reference": "architecture-doc"
       },
-      "description": "Explore a service or product design, or write its formal architecture reference. Cover the requirements, components, interfaces, data, security, operations and trade-offs relevant to the requested decision."
+      "description": "Explore a service or product design, or write its formal architecture reference. Cover the requirements, components, interfaces, data, security, operations and trade-offs relevant to the requested decision. For a client deal's deliverability or build reference, use solution-brief."
     },
     "team-onboarding": {
       "source": "team-onboarding",

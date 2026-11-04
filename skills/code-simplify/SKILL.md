@@ -1,6 +1,6 @@
 ---
 name: code-simplify
-description: 'Review and refine the current code change for reuse, clarity, maintainability, and efficiency without changing behavior. Use when a delivery workflow requires a simplify pass, when the user asks to simplify or clean up a diff, or before committing a non-trivial implementation. Scope work to the current branch diff or an explicit target, preserve public behavior and project conventions, apply only high-confidence edits, and verify the result with focused tests. This is the Codex-native equivalent of Claude Code review with fixes, not a prose-style pass.'
+description: 'Review and refine the current code change for reuse, clarity, maintainability, and efficiency without changing behavior. Use when a delivery workflow requires a simplify pass, when the user asks to simplify or clean up a diff, or before committing a non-trivial implementation. Scope work to the current branch diff or an explicit target, preserve public behavior and project conventions, apply only high-confidence edits, and verify the result with focused tests. In Claude Code, the built-in /simplify does the same job; prefer this skill when an estate workflow names its pass.'
 ---
 
 
