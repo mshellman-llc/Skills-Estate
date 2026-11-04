@@ -52,6 +52,10 @@
     "0.2.12": {
       "content_sha256": "e20d27a45a8540a8f5ad4181903d339710f35f58d56b217922ffc64903d4fd86",
       "note": "Verification tooling: one verify command, auto-run skill selftests, description limit, release review, writing-check authority"
+    },
+    "0.2.13": {
+      "content_sha256": "5d67a62c1d206c382489b0f2497183e9b43b88355cbcc5d16b3cc7eb602b074c",
+      "note": "Retire hosted Hub references: beastmode-health reports the remote gateway instead of the Railway service"
     }
   }
 }
