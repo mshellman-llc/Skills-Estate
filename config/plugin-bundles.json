@@ -74,17 +74,22 @@
         "acceptance-testing",
         "backlog-refinement",
         "cutover-closeout",
+        "decision-register",
         "delivery-kickoff",
         "delivery-status",
+        "moscow-story-map",
+        "review-site",
         "sales-to-delivery-handoff",
         "sf-change-delivery",
         "sf-pipeline-operations",
         "sf-project-setup",
         "sprint-planning",
-        "team-onboarding"
+        "team-onboarding",
+        "tracker-intake"
       ],
       "internal": [
-        "delivery-suite"
+        "delivery-suite",
+        "review-site-kit"
       ],
       "opt_in": false,
       "router_source": "agents/delivery-router.md",

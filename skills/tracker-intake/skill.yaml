@@ -1,0 +1,56 @@
+schema_version: 1
+name: tracker-intake
+display_name: Tracker Intake
+summary: 'Turns a Jira, table or connector export into canonical tickets, an intake record and a delta against the previous export.'
+status: draft
+tier: core
+version: 0.1.0
+owner: estate-maintainer
+category: delivery-planning
+runtimes:
+- claude-code
+- codex
+- cowork
+triggers:
+- 'A new Jira or tracker export arrives for an engagement.'
+- 'The user asks what changed in the tracker since the last export.'
+- 'A review site, status view or backlog view needs a refresh.'
+exclusions:
+- 'Changing tickets in the tracker.'
+- 'Writing requirements (requirements-backlog).'
+- 'Grading sprint readiness (backlog-refinement).'
+inputs:
+- name: export
+  required: true
+  description: 'Tracker export file or connector tickets as JSON.'
+- name: site_config
+  required: true
+  description: 'Engagement site.json with the tracker block.'
+- name: origin_and_scope
+  required: true
+  description: 'Who supplied the export and what it covers.'
+outputs:
+- name: tickets.json
+  format: json
+  audience: internal-or-client-as-requested
+  durable: true
+- name: delta.json
+  format: json
+  audience: internal-or-client-as-requested
+  durable: true
+- name: intake-log.json
+  format: json
+  audience: internal-or-client-as-requested
+  durable: true
+connectors:
+  required: []
+  optional:
+  - jira
+depends_on:
+- review-site-kit
+calls: []
+risk_controls:
+- 'Never changes tracker tickets; exports are prepared for the client to import.'
+- 'Client data, names and brand values stay in the engagement folder, never in the skill.'
+costs:
+  measured: false

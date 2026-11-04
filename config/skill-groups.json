@@ -59,7 +59,12 @@
         "sf-solo-devops",
         "sprint-planning",
         "team-onboarding",
-        "uat-validation"
+        "uat-validation",
+        "tracker-intake",
+        "moscow-story-map",
+        "decision-register",
+        "review-site",
+        "review-site-kit"
       ]
     },
     {
