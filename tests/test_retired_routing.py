@@ -39,7 +39,8 @@ class RetiredRoutingTests(unittest.TestCase):
                          {'skill-creation-walkthrough', 'cross-platform-skill-release'})
         settings = plugins.config(ROOT)
         self.assertEqual(plugins.router_modules(ROOT, settings['bundles']['estate-governance']),
-                         ['skill-estate-sync'])
+                         ['skill-estate-sync', 'beastmode-context', 'beastmode-capture', 'beastmode-health',
+                          'beastmode-reconcile'])
         for old in item['modes'].values():
             self.assertNotIn(old, catalog.entries(ROOT))
 

@@ -30,6 +30,8 @@ Requirements and backlog requests follow the shared planning chain that each of 
 - `sf-delivery-standards`
 - `sf-deploy-engine`
 - `sf-solo-devops`
+- `sf-enterprise-patterns`
+- `dx-devops-work-item-manage`
 
 
 ## Required controls

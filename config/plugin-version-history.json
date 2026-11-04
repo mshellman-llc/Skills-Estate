@@ -60,6 +60,10 @@
     "0.2.14": {
       "content_sha256": "0efc8a4fe68d165e17c08ed3971e4ecfd87ed17da68269fda62fd80e49f12f6b",
       "note": "Skip network-share .smbdelete placeholders when validating and packaging"
+    },
+    "0.2.15": {
+      "content_sha256": "80af77fab6b17cbc049b77f11e8bd64c434397bb58a3d09edd1c0a08495a7648",
+      "note": "Split estate-additional-skills into estate-product, estate-writing and opt-in estate-personal; Hub skills join governance, Salesforce skills join delivery, code-simplify joins quality"
     }
   }
 }

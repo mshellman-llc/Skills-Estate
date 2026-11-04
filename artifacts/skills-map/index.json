@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-04T20:36:33.705131+00:00",
-  "baseCommit": "7cd289adceb7809e3d18dd9b36b2a13c61d9b307",
+  "generatedAt": "2026-11-04T21:07:30.063935+00:00",
+  "baseCommit": "4cc252ec83eeeef4e8230e9b6fa6224984da51a2",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -55,7 +55,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/accessibility-audit/SKILL.md",
       "sourceSha256": "30aae4a806f649376a0039a123b775be7e337a18041f3f55bae04bd41fd6d3ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/accessibility-audit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/accessibility-audit/SKILL.md",
       "taskPackages": [
         {
           "name": "accessibility-audit",
@@ -145,7 +145,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/analytics-strategy/SKILL.md",
       "sourceSha256": "fad5d22b7b107b0a195b036d75966ded0b29433b4b996cfc2022f75bd1192841",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/analytics-strategy/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/analytics-strategy/SKILL.md",
       "taskPackages": [
         {
           "name": "analytics-strategy",
@@ -235,7 +235,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/architecture-doc/SKILL.md",
       "sourceSha256": "704962a9930c507f8002c1b4832d5947542aaf24b09f6a6c7c838028eb15b0d2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/architecture-doc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/architecture-doc/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -386,7 +386,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-writing-style/SKILL.md",
       "sourceSha256": "2c4a88898b19221b63419f21ecc5e0638268b88fd9e84e25e34785e35013b08a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/author-writing-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/author-writing-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -470,7 +470,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/backlog-refinement/SKILL.md",
       "sourceSha256": "89c830ca620b58762d812090bb255fa50050aa9da3f0ccb697063efdd2937f7a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/backlog-refinement/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/backlog-refinement/SKILL.md",
       "taskPackages": [
         {
           "name": "backlog-refinement",
@@ -634,7 +634,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-capture/SKILL.md",
       "sourceSha256": "88b922fc5e1b600a1ace4d0a19bd936945ecddfbbb42bc9aa04964f5968de14a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/beastmode-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/beastmode-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-capture",
@@ -747,7 +747,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-context/SKILL.md",
       "sourceSha256": "02ca69e21b2e17b50e6be9a2cced92534e1ba788ba8759c702d10bd06026f223",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/beastmode-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/beastmode-context/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-context",
@@ -875,7 +875,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-health/SKILL.md",
       "sourceSha256": "5f7bbea9e5aeb96fac9b27ba3195af25d33e152cd44d8b7339e94c28b2f60442",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/beastmode-health/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/beastmode-health/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-health",
@@ -991,7 +991,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-reconcile/SKILL.md",
       "sourceSha256": "70bfeccd296dc9c6f8ee7a290a5b605e1087b1abb0c5bd4794ac969945acc9e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/beastmode-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/beastmode-reconcile/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-reconcile",
@@ -1104,7 +1104,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brain-work-item/SKILL.md",
       "sourceSha256": "d2aa7234b3610505200c90188ad9c60811d6eb3e8288d22b33d15856c0662193",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/brain-work-item/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/brain-work-item/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1171,7 +1171,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "a547727f6e59008212becc0315e6d268f90e46080d99d8cd6a54f75ac29cd852",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -1457,7 +1457,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "b041ce70f2019c9f3c09efd34536ca30f902fe88d61d13ba857a7d90fc2d69ee",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -1602,7 +1602,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/business-case/SKILL.md",
       "sourceSha256": "60d0d5d79bacd66008d85d6fd57e301b98bd66bebdeb913dc23b63dad85c5dd0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "business-case",
@@ -1778,7 +1778,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/call-prep/SKILL.md",
       "sourceSha256": "e12fbf1eacebf3e8d801f837e8453941265cc49ad27c2683da4b9d4b391cff60",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/call-prep/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/call-prep/SKILL.md",
       "taskPackages": [
         {
           "name": "call-prep",
@@ -2008,7 +2008,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-application/SKILL.md",
       "sourceSha256": "f445e838915a95dcf79bcf8a5fe4751ebe44f1201cd4943390c6e010c898b70e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/career-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/career-application/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2153,7 +2153,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-materials-and-outreach/SKILL.md",
       "sourceSha256": "c3dc0019f1bde982446eab7af59904a378479dfe8f3758427fbf79b727bc79ec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/career-materials-and-outreach/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/career-materials-and-outreach/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2254,7 +2254,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-progression-and-offers/SKILL.md",
       "sourceSha256": "4bd8a9469889eee41a03eb6f90e7ffe10879a96556796192538206db652571b0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/career-progression-and-offers/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/career-progression-and-offers/SKILL.md",
       "taskPackages": [
         {
           "name": "career-decisions",
@@ -2350,7 +2350,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/case-study-builder/SKILL.md",
       "sourceSha256": "e78a68ff01fee091589db827b094754fe95b5f7ca303e7779a81a94da3bcd750",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/case-study-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/case-study-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "portfolio-case-study",
@@ -2438,7 +2438,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/client-brand/SKILL.md",
       "sourceSha256": "c6d5ac41111ea61ab2c36ce3f75bb6233f4e9e3ea3d3df205f8033a5120c9e1c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/client-brand/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/client-brand/SKILL.md",
       "taskPackages": [
         {
           "name": "brand-profile",
@@ -2541,7 +2541,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/code-simplify/SKILL.md",
       "sourceSha256": "fb075d05b42680a6664caef6a4ca6c620a663d566eb17eb9212593b799b51ffb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/code-simplify/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/code-simplify/SKILL.md",
       "taskPackages": [
         {
           "name": "code-simplify",
@@ -2619,7 +2619,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cross-platform-skill-release/SKILL.md",
       "sourceSha256": "fe3cdfc727e15ce6301c32f55d1e31be3cac6f01f4bcafef9ffc6282b727afd4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/cross-platform-skill-release/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/cross-platform-skill-release/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -2717,7 +2717,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cutover-closeout/SKILL.md",
       "sourceSha256": "583fb89bee016741de40cafa78ec1a29c44e9d5109a4e67fc68ee4a4de7ce00f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "cutover-closeout",
@@ -2883,7 +2883,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ddoc/SKILL.md",
       "sourceSha256": "b4190b6f05c8fe0301adfc24fb3ba516ed6550f343e0aae0a2b6319abd26799f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/ddoc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/ddoc/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3094,7 +3094,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deal-desk/SKILL.md",
       "sourceSha256": "a994c1f2862ed00ea7f6678f0ff288cf41200066b678d62a505428ed41a94729",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/deal-desk/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/deal-desk/SKILL.md",
       "taskPackages": [
         {
           "name": "commercial-review",
@@ -3272,7 +3272,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deck-builder/SKILL.md",
       "sourceSha256": "f0f27ea1b6fa2ed0bbffa39963b983d4363de43470336f9cae9fdaa435113acb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/deck-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/deck-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3444,7 +3444,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-kickoff/SKILL.md",
       "sourceSha256": "7ed96801bb111c26cc1eee4f37c8fe8c64eeaf6f6b765f3b1f0b52d9c288ef97",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/delivery-kickoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/delivery-kickoff/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-kickoff",
@@ -3675,7 +3675,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-status/SKILL.md",
       "sourceSha256": "d9f5fd583a023be196ed21e40f88e2dcc2c8674fe726c40c3325af5843e2c672",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/delivery-status/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/delivery-status/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-status",
@@ -3868,7 +3868,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-suite/SKILL.md",
       "sourceSha256": "39b3a3e46eae49ae780f245a616eeb4b1a42824a53027735c577768d149d0372",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/delivery-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/delivery-suite/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -4052,7 +4052,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-brief/SKILL.md",
       "sourceSha256": "51d21c7ee14f73df4a09ba9cb86ef8ff3a5a7f938c5f3523c021d662f01d1df3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/discovery-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/discovery-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4252,7 +4252,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-synthesis/SKILL.md",
       "sourceSha256": "12816586f1c4c68c212ccf9571adc18b34cfc8e54f4480de3507a8fecbfb9cc7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/discovery-synthesis/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/discovery-synthesis/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4376,7 +4376,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-promote/SKILL.md",
       "sourceSha256": "9a105d47b6a0d13b91d1ab2327554422afb9c638e33fdaa0a84eb4730e1c2d46",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/dx-devops-promote/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/dx-devops-promote/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4544,7 +4544,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-work-item-manage/SKILL.md",
       "sourceSha256": "d06e708aef3b2bafb70137e5e457b5f0e0786672a1191c0fd10e50b4c4def260",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/dx-devops-work-item-manage/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/dx-devops-work-item-manage/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4664,7 +4664,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "940140ceb630651a43b4c54fbfaa99c3e64f157af5fcf869df979da601794b40",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -4855,7 +4855,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/execution-truth/SKILL.md",
       "sourceSha256": "6541592ce8b7e87ed1375f4213d7d275b71a3719e500c2d0290d702fa3697037",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/execution-truth/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/execution-truth/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4972,7 +4972,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/fortunes-weave/SKILL.md",
       "sourceSha256": "e6878b651358518384bd7068c40229e5626bab1bef4b4a0b9b6f37d24a4ba124",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "fortunes-weave",
@@ -5045,7 +5045,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/github-repository-work/SKILL.md",
       "sourceSha256": "416dd70ad35b0187da9d23fa1168ae095aaa59cbaecd47b79525d33b475156e5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/github-repository-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/github-repository-work/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -5109,7 +5109,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/independent-product/SKILL.md",
       "sourceSha256": "cfeebb0f638e7359af4d6a58b7730e104c8088b9c473b96c4069dcaefc17194c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "independent-product",
@@ -5182,7 +5182,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/information-architecture/SKILL.md",
       "sourceSha256": "6ebd0a149d475ccda8664a397b49ae94b9470a120f0c605d63459c9f6446e6e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "information-architecture",
@@ -5272,7 +5272,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/interactive-proposal/SKILL.md",
       "sourceSha256": "3b993c5d1b1230ef6f5c2dc2b76cd5778eb5346b60c59247693f55a3aac219c5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -5469,7 +5469,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/journey-mapping/SKILL.md",
       "sourceSha256": "044a9b62cc4632caf267af2a4a70a412e71a3889783548063ee340997d0cac63",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/journey-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/journey-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "journey-mapping",
@@ -5595,7 +5595,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/jtbd-framing/SKILL.md",
       "sourceSha256": "dc4e8ee3ebe54647a5c574c0565a6f36e2aa41ba5eda03e9c768d3a9b20e0c98",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/jtbd-framing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/jtbd-framing/SKILL.md",
       "taskPackages": [
         {
           "name": "jtbd-framing",
@@ -5792,7 +5792,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/knowledge-hub/SKILL.md",
       "sourceSha256": "29b7962b049af27078d64360c68c2abd6c15c7263590902d285dc0835689c05b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "knowledge-hub",
@@ -6044,7 +6044,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/org-preflight/SKILL.md",
       "sourceSha256": "114e2469f12d1593364d2befaa2c754d48e7c3ea8c3758aac5a1fda3fa1a9f39",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/org-preflight/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/org-preflight/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "sf-change-delivery"
@@ -6145,7 +6145,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/personal-writing-style-runtime/SKILL.md",
       "sourceSha256": "acdb326d7eae4166a419e6ff07245f9afe6174a826d613d474bb21043e852b90",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/personal-writing-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/personal-writing-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6277,7 +6277,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-builder/SKILL.md",
       "sourceSha256": "733792bc5580e8b71e491f7ef69287e99ff5db1e4eceafed0324fd0a8f49d93b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/playbook-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/playbook-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6408,7 +6408,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-fit-router/SKILL.md",
       "sourceSha256": "190748cd28c50baad5b6260742889081c1effa47bbc8025ab5073a3d12476bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/playbook-fit-router/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/playbook-fit-router/SKILL.md",
       "taskPackages": [
         {
           "name": "offering-fit",
@@ -6507,7 +6507,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-onepager/SKILL.md",
       "sourceSha256": "d968ee8a9d28b50e4de5f049539210e999818df6af2a53c9d5a4ba6adafac605",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/playbook-onepager/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/playbook-onepager/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6685,7 +6685,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-suite/SKILL.md",
       "sourceSha256": "472ad5c6e512f9f142aacbdcf26cef02e30bc9d93bd5bea308092d502715e240",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/playbook-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/playbook-suite/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6831,7 +6831,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/pm-spec-writing/SKILL.md",
       "sourceSha256": "6adc8ca7812b4ae14a7b5278ba1d03d8ef4f3af2dd79bf65db3d67b9345b4259",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/pm-spec-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/pm-spec-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -6927,7 +6927,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritization/SKILL.md",
       "sourceSha256": "1c83aff26fc94e0e6687382b897a3d133f23992d0f1fac399b66f80661e2fc0e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/prioritization/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/prioritization/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritization",
@@ -7096,7 +7096,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/process/SKILL.md",
       "sourceSha256": "b0876f55eab1b43642897b2ff9bb019bfc4e063805612555ebcdb9add823addf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/process/SKILL.md",
       "taskPackages": [
         {
           "name": "process-design",
@@ -7217,7 +7217,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/product-development-pathway/SKILL.md",
       "sourceSha256": "4e17a049ee5b802096c8580c78ce35759d159b0a0f11b469339b59a05c2c8f19",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/product-development-pathway/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/product-development-pathway/SKILL.md",
       "taskPackages": [
         {
           "name": "product-development",
@@ -7378,7 +7378,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prose-pass/SKILL.md",
       "sourceSha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/prose-pass/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/prose-pass/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -7673,7 +7673,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/quality-gate/SKILL.md",
       "sourceSha256": "854448520c20383707e16bddd027fed13a2196e75b083918a894e4f0398b9e1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/quality-gate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/quality-gate/SKILL.md",
       "taskPackages": [
         {
           "name": "deliverable-review",
@@ -7829,7 +7829,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/requirements-capture/SKILL.md",
       "sourceSha256": "285e48420fc2c355305c7d5a5a4e628065fa489f69c5589bda1f3fb2c7c784c9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/requirements-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/requirements-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "requirements-backlog",
@@ -7970,7 +7970,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/resume-numbers-and-keywords/SKILL.md",
       "sourceSha256": "bac682d878466ed29e02267f52a0adf61978ceb3b10d68ecd529552388ada4dd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/resume-numbers-and-keywords/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/resume-numbers-and-keywords/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -8074,7 +8074,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/roadmap-artifacts/SKILL.md",
       "sourceSha256": "f8049332aee2da80393fa10a6ef24133b92effb692626bf6999231c7f0ffb530",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/roadmap-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/roadmap-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "roadmap-artifacts",
@@ -8326,7 +8326,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/rom/SKILL.md",
       "sourceSha256": "5c4e72f9e50282c5c3a43c366fc34a82600b0df5606cace94c7cd48ceac16045",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/rom/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/rom/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -8504,7 +8504,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/s2d-handoff/SKILL.md",
       "sourceSha256": "5a20835369410ea3c73c2a29dbe76ca197f11b23126f9e8eb6305585a99ee0cb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/s2d-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/s2d-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-to-delivery-handoff",
@@ -8707,7 +8707,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-journey-critique/SKILL.md",
       "sourceSha256": "b3017491fc634e10d3e701a494df80578b65d168147fbdc4e4563724a5c46dd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sales-journey-critique/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sales-journey-critique/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -8812,7 +8812,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-process-mapping/SKILL.md",
       "sourceSha256": "4523ee9e6c71fc680ecff67815a0fe189483522dd37d2bf3ad06b23d9c843f03",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sales-process-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sales-process-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -8909,7 +8909,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-reference/SKILL.md",
       "sourceSha256": "5ce4f83358b1c63d3abedd2a09d4258a3642c8d5b6fcba42e525cb313e45c6fc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/scope-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/scope-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -9093,7 +9093,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scoping-agent/SKILL.md",
       "sourceSha256": "5c42af24098dabd808faddcbe450c622c97f2f9ae3c8845cbeb4a446f1b48e52",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/scoping-agent/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/scoping-agent/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -9226,7 +9226,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/session-handoff/SKILL.md",
       "sourceSha256": "76315e6e195546e7bb4722b3782a681f17654707ed822c1f0f266ef263ec484b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "session-handoff",
@@ -9331,7 +9331,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-delivery-standards/SKILL.md",
       "sourceSha256": "cbe0c98f1c39d2808706ed8cea1e1826b72e025324da68a99694a178b7889777",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sf-delivery-standards/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sf-delivery-standards/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-project-setup",
@@ -10005,7 +10005,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-deploy-engine/SKILL.md",
       "sourceSha256": "11dcb9eaee787e9b3008c8ba2ef8ee906572c0883004666d044dbf8757f2fdb0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sf-deploy-engine/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sf-deploy-engine/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-pipeline-operations",
@@ -10195,7 +10195,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-enterprise-patterns/SKILL.md",
       "sourceSha256": "676a08b14eb36d9e9ff9835e02eb4ca0b8b8fe4e917142f4e6105f4ecb1dfe64",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sf-enterprise-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sf-enterprise-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-apex-patterns",
@@ -10374,7 +10374,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-headless-screenshot/SKILL.md",
       "sourceSha256": "06cdf4bb69534ca8360c6e45568165ebed6f98c4d74aa7100a73fef3d453cfe1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sf-headless-screenshot/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sf-headless-screenshot/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -10469,7 +10469,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-solo-devops/SKILL.md",
       "sourceSha256": "7aa22071e02f31275dcdff3bf20170739971f90d31d0563242ef88a520154d73",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sf-solo-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sf-solo-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-change-delivery",
@@ -10780,7 +10780,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-creation-walkthrough/SKILL.md",
       "sourceSha256": "ee26692c205920fa87c71c04af6dcd814fc43606c2da4a7a1a74c154df3778a6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/skill-creation-walkthrough/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/skill-creation-walkthrough/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -10927,11 +10927,11 @@
       "title": "Skill estate sync",
       "family": 7,
       "description": "Maintain a Skills Estate checkout by authoring or repairing workflows, validating and packaging them, installing reviewed releases, or replacing a skill in another host or account. Use for estate maintenance and select only the requested operation.",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/skill-estate-sync/SKILL.md",
-      "sourceSha256": "e6eca666dc36e00dbcf30cf1c8a4a94b8bd79b7d01d3b6a1aba18c30344cc657",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/skill-estate-sync/SKILL.md",
+      "sourceSha256": "9c825654bbc5796ce092366a36a8d9d67a5928156d7addcf3c194c2ef495011d",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/skill-estate-sync/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -10941,24 +10941,17 @@
       "downloadPackages": [
         "skill-estate-sync"
       ],
-      "guide": {
-        "what": "Author, package and release Skills Estate workflows.",
-        "when": "Creating or repairing a workflow, preparing packages, installing a reviewed release or replacing an account copy.",
-        "inputs": "The canonical estate checkout, dependency configuration, and target surface.",
-        "outputs": "The requested workflow or package, validation results, and destination-specific release records.",
-        "example": "Validate the current estate and build candidate packages without promoting them.",
-        "reviewedEntrypointSha256": "e6eca666dc36e00dbcf30cf1c8a4a94b8bd79b7d01d3b6a1aba18c30344cc657"
-      },
-      "guideStatus": "current",
+      "guide": null,
+      "guideStatus": "needs-review",
       "reuse": {
-        "audience": "general",
-        "label": "General use",
-        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
+        "audience": "review",
+        "label": "Needs review",
+        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
         "setup": "Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths.",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "cleanup",
+        "readiness": "review",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -10970,7 +10963,7 @@
           }
         ],
         "textFilesScanned": 13,
-        "packageFingerprint": "16b71479c1f5f5185aa1135e149fa550ba993c0254fdd550096aec226542fc47",
+        "packageFingerprint": "c7419722b8b23020faf727ee29cbb9eed97d9260951fcd42d8b82e9ffd4a43fb",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -10980,8 +10973,8 @@
         ],
         "modes": []
       },
-      "markdown": "---\nname: skill-estate-sync\ndescription: Maintain a Skills Estate checkout by authoring or repairing workflows, validating and packaging them, installing reviewed releases, or replacing a skill in another host or account. Use for estate maintenance and select only the requested operation.\n---\n\n\n# Skill estate sync\n\nKeep one canonical Git checkout. Edit its `skills/`, `policies/`, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same accepted versioned packages locally. Candidate builds and ZIPs remain separate from installed releases. A package includes the workflow, scripts, references, templates, and shared policies it needs.\n\nRead [the skill standard](references/estate/skill-standard.md) before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.\n\n## Choose the maintenance operation\n\n- For an estate addition or behavioral repair, read [estate authoring](../skill-creation-walkthrough/SKILL.md). It carries the governed intake and scaffolder; use the host's general authoring tools when available.\n- For build, package, local installation, drift or rollback, follow the procedures below.\n- For another host or account, read [cross-platform release](../cross-platform-skill-release/SKILL.md). It preserves archive inspection, private-account replacement, ambiguous-upload recovery and destination invocation checks. Its generic method also supports sources outside this estate; do not require an estate checkout for that branch.\n\nRead only the requested mode. A creation request does not authorize installation or account publication.\n\n## Select the estate\n\nUse the checkout already identified by the user or the installation's repository pointer. The bundled bridge resolves an explicit `--repo`, otherwise `~/.config/skills-estate/repository`. It refuses a missing pointer or a checkout without the expected tooling. It does not clone a repository, change accounts, or guess from the current directory.\n\nRun from this skill's directory, replacing the example repository with the confirmed checkout:\n\n```sh\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate validate\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate build\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate bundle\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status\n```\n\nFrom the canonical checkout, the equivalent command is `python3 tools/estate.py <command>`. The bridge invokes that exact tool; it does not maintain a second packaging implementation. Python 3 and a writable canonical checkout are required. Status creates a local lock file and reads the build; it does not contact host services.\n\nIf no checkout is available, report the missing prerequisite and identify the user's existing repository. An isolated upload of this maintainer skill can inspect its own resources but cannot synchronize an estate that is absent from the host.\n\n## Repair and verify before installing\n\n1. Run `validate`. Fix malformed entry metadata, broken local links, missing declared runtime dependencies, or dependency cycles in source. Preserve working implementations when repairing instructions.\n2. Run the changed skill's behavioral tests with representative inputs. Save the actual outputs, failures, and command receipts. Check generated prose and figures against the inputs, and inspect rendered artifacts. Use the checkout's `tools/run_preserved_test.py` for Python tests that create temporary files.\n3. Run the estate's packaging and installation tests after changing shared policies, runtime assembly, or synchronization code. Shared changes can affect every dependent package.\n4. Run `build`, then `bundle`. The builder copies the selected shared policies and transitive runtimes, preserves executable modes, and records source/package hashes. It rejects a source change during assembly. Bundle output is in `dist/`; use the release manifest's filenames instead of assuming an extension.\n5. Confirm that the reviewed output belongs to the current source hash. Do not infer task quality from hashes, file counts, ZIP creation, or a structural selftest. A host invocation is separate evidence from local file installation.\n\nThe current canonical CLI does not automatically run every behavioral test before building. The agent must complete the applicable tests and content review before treating a build as ready. Preserve a skill's failed attempt and fix the capability; do not replace the workflow with a general description to make validation pass.\n\n## Install and keep local hosts consistent\n\nBefore rebuilding a legacy checkout whose installed links point into `build/`, run `pin-installed`. It preserves only the existing managed inventory and exact bytes in a versioned directory; it does not promote new source or change vendor installations.\n\nAfter the requested repairs, independent review, and release checks pass, use the exact reviewed source hash:\n\n```sh\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate install --expected-source REVIEWED_SOURCE_HASH\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status\n```\n\nInstallation copies packages into a verified version under `~/.local/share/skills-estate/releases/` and links that version into `~/.claude/skills` and `~/.agents/skills`. Existing matching legacy entries in `~/.codex/skills` are reconciled as well. Unrelated installed skills remain separate. The repository pointer lets this skill find the same checkout from either host.\n\nAn existing divergent file, directory, or link is a conflict. Inspect its unique work first. If replacement is authorized, `adopt` backs it up and records a restore receipt before linking. A failed install rolls back its changes. Never discard a divergent installation to force a green status.\n\n`restore /absolute/path/to/receipt.json` reverses a recorded install only if its destinations still match what the installer wrote. It refuses to overwrite a subsequent user change.\n\n`sync` runs build and bundle only. It refreshes candidates without changing installed versions. Git commit, checkout, and merge hooks never install or rebuild. Everyday promotion requires the reviewed source hash and completed release gates. `rollback RELEASE_ID` can reactivate a previously installed version after checking its integrity and the current destinations. For a test run, put `--home /absolute/path/to/test-home` before the command. This changes the install destination and repository pointer; build output still belongs to the selected checkout.\n\nStatus inspects the current source, build, ZIP hashes, installed release, local links, and reported account uploads. It continues to inspect ZIPs when the build is stale. Local states include `linked-current`, `pinned-older`, `legacy-mutable`, drift, missing, and broken entries. Overall success requires current build and ZIPs plus matching managed installations. An older pinned installation remains usable but is not the current candidate. A copied package remains outside managed release ownership. Open the updated skill in a fresh host session when discovery requires a reload, then run a representative task there and retain its output. Do not claim Claude Code execution based on a Codex run, or the reverse.\n\nTo promote a reviewed task package without changing other installed skills, use `install --skill writing-integrity --expected-source REVIEWED_SOURCE_HASH`; repeat `--skill` to select more packages. The selected workflows, their runtime dependencies and shared assembly must pass the existing release gates. Other installed links keep their exact versions. Status verifies every retained release and reports a mixed installation without claiming one shared source hash. `rollback RELEASE_ID` restores the complete inventory from the most recent activation of that release ID; use its `restore` receipt to recover originals from an adoption. A conflicting older installation still needs explicit, scoped `adopt --skill NAME --expected-source REVIEWED_SOURCE_HASH` after inspecting its files.\n\n## Shared brand and dependency changes\n\nEdit the canonical brand policy/profile once. Rebuild dependent packages so their vendored policy copies and runtime assets match. Do not edit generated `build/`, `dist/`, or installed package files. Compare a neutral-profile output and an explicitly selected alternate profile when the change affects branding. Missing declared assets must produce an actionable failure rather than silently restoring former company branding.\n\nRuntime relationships belong in `config/runtime-dependencies.json`. A router must carry the scripts and references needed by its declared dependencies when used alone. Test the assembled package away from sibling source directories to reveal accidental source-tree dependencies.\n\n## Prepare functional releases\n\nThe existing catalog contains seven functional plugins. Follow [the release workflow](references/release-workflow.md) to verify changes, raise `config/plugin-bundles.json`'s version, record its content with `python3 tools/plugin_version.py --record 'CHANGE NOTE'`, and generate candidates with `python3 tools/plugins.py --candidate`. Keep explicit context external and preserve retirement mappings. The existing marketplace and owner update command remain the distribution route; source preparation does not authorize publication or installation.\n\n## Account uploads and other surfaces\n\nLocal installation does not upload to Claude's account, a Codex account, Cowork, ChatGPT, or an API deployment. Check the destination's current supported format and available authorized upload method. Do not assume every surface accepts the same ZIP or provides a skill registry.\n\nAfter an actual authorized account upload, record the specific skill and destination reference:\n\n```sh\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate record-publication \\\n  --surface claude-account --skill knowledge-hub --reference 'account and upload record'\n```\n\nThe canonical ledger accepts `claude-account`, `codex-account`, `cowork`, and `chatgpt-personal`. A ledger row remains `verified_live: false`: it records the reported upload hash, not a readback or execution. Retain a separate receipt for a destination readback or task invocation. For another destination, retain its actual receipt and extend the adapter explicitly before claiming managed synchronization.\n\n## Retained standalone audit tools\n\nThe earlier flat-estate tools remain bundled for explicit compatibility work. They are not the canonical release path:\n\n- `scripts/estate_diff.py --source DIR --config FILE --json` compares a flat skills tree to configured local directories. It distinguishes missing skills, SKILL-only stubs, entrypoint drift, and resource drift; each fails the comparison. It also checks the older `_shared/build-card.md` contract, shared references, and declared prose exemptions. Use it on a tree following that contract, not as a substitute for canonical status.\n- `scripts/build_bundles.py --source DIR --out DIR` gates flat-tree bundles on each skill's `*_selftest.py`, carries transitive shared resources, and preserves the original runtime-vendoring mechanism. Its optional release classification filters drafts. `--no-gate` is a diagnostic bypass and is not release evidence. It does not use the canonical dependency graph or manifests.\n- `scripts/record_publish.py` retains the flat-tree publication-ledger format. The bundled ledger starts empty; old organization uploads are not evidence for this estate. Use explicit `--config FILE --dist DIR`; the configuration must name an external `ledger` path and the intended destinations. The shipped template has no configured surfaces and grants no access.\n- `scripts/sync_build_card.py --skills-root DIR --check` checks the older shared-card/runtime references without generating brand literals.\n- `scripts/estate_sync_selftest.py` exercises those compatibility functions with synthetic fixtures. It does not connect to a host or cloud account.\n\nUse [the optional pre-commit hook](references/pre-commit.sh) only after inspecting existing hooks. It validates the canonical source without staging generated files. A hook is not installed or a recurring check scheduled merely because this file describes one.\n\n## Completion record\n\nState which source revision changed, which tasks produced usable outputs, which packages were built, and which destinations were actually updated. Link the outputs and installation or publication receipts. Name any remaining capability or host test and its next action. A missing service does not justify labeling that service's behavior verified; provide a working local path when the task supports one.\n",
-      "html": "<p>Keep one canonical Git checkout. Edit its <code>skills/</code>, <code>policies/</code>, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same accepted versioned packages locally. Candidate builds and ZIPs remain separate from installed releases. A package includes the workflow, scripts, references, templates, and shared policies it needs.</p><p>Read the skill standard <span class=\"ref\">(references/estate/skill-standard.md)</span> before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.</p><h3>Choose the maintenance operation</h3><ul><li>For an estate addition or behavioral repair, read estate authoring <span class=\"ref\">(../skill-creation-walkthrough/SKILL.md)</span>. It carries the governed intake and scaffolder; use the host&#x27;s general authoring tools when available.</li><li>For build, package, local installation, drift or rollback, follow the procedures below.</li><li>For another host or account, read cross-platform release <span class=\"ref\">(../cross-platform-skill-release/SKILL.md)</span>. It preserves archive inspection, private-account replacement, ambiguous-upload recovery and destination invocation checks. Its generic method also supports sources outside this estate; do not require an estate checkout for that branch.</li></ul><p>Read only the requested mode. A creation request does not authorize installation or account publication.</p><h3>Select the estate</h3><p>Use the checkout already identified by the user or the installation&#x27;s repository pointer. The bundled bridge resolves an explicit <code>--repo</code>, otherwise <code>~/.config/skills-estate/repository</code>. It refuses a missing pointer or a checkout without the expected tooling. It does not clone a repository, change accounts, or guess from the current directory.</p><p>Run from this skill&#x27;s directory, replacing the example repository with the confirmed checkout:</p><pre><code>python3 scripts/manage_estate.py --repo /path/to/Skills-Estate validate\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate build\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate bundle\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status</code></pre><p>From the canonical checkout, the equivalent command is <code>python3 tools/estate.py &lt;command&gt;</code>. The bridge invokes that exact tool; it does not maintain a second packaging implementation. Python 3 and a writable canonical checkout are required. Status creates a local lock file and reads the build; it does not contact host services.</p><p>If no checkout is available, report the missing prerequisite and identify the user&#x27;s existing repository. An isolated upload of this maintainer skill can inspect its own resources but cannot synchronize an estate that is absent from the host.</p><h3>Repair and verify before installing</h3><ol><li>Run <code>validate</code>. Fix malformed entry metadata, broken local links, missing declared runtime dependencies, or dependency cycles in source. Preserve working implementations when repairing instructions.</li><li>Run the changed skill&#x27;s behavioral tests with representative inputs. Save the actual outputs, failures, and command receipts. Check generated prose and figures against the inputs, and inspect rendered artifacts. Use the checkout&#x27;s <code>tools/run_preserved_test.py</code> for Python tests that create temporary files.</li><li>Run the estate&#x27;s packaging and installation tests after changing shared policies, runtime assembly, or synchronization code. Shared changes can affect every dependent package.</li><li>Run <code>build</code>, then <code>bundle</code>. The builder copies the selected shared policies and transitive runtimes, preserves executable modes, and records source/package hashes. It rejects a source change during assembly. Bundle output is in <code>dist/</code>; use the release manifest&#x27;s filenames instead of assuming an extension.</li><li>Confirm that the reviewed output belongs to the current source hash. Do not infer task quality from hashes, file counts, ZIP creation, or a structural selftest. A host invocation is separate evidence from local file installation.</li></ol><p>The current canonical CLI does not automatically run every behavioral test before building. The agent must complete the applicable tests and content review before treating a build as ready. Preserve a skill&#x27;s failed attempt and fix the capability; do not replace the workflow with a general description to make validation pass.</p><h3>Install and keep local hosts consistent</h3><p>Before rebuilding a legacy checkout whose installed links point into <code>build/</code>, run <code>pin-installed</code>. It preserves only the existing managed inventory and exact bytes in a versioned directory; it does not promote new source or change vendor installations.</p><p>After the requested repairs, independent review, and release checks pass, use the exact reviewed source hash:</p><pre><code>python3 scripts/manage_estate.py --repo /path/to/Skills-Estate install --expected-source REVIEWED_SOURCE_HASH\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status</code></pre><p>Installation copies packages into a verified version under <code>~/.local/share/skills-estate/releases/</code> and links that version into <code>~/.claude/skills</code> and <code>~/.agents/skills</code>. Existing matching legacy entries in <code>~/.codex/skills</code> are reconciled as well. Unrelated installed skills remain separate. The repository pointer lets this skill find the same checkout from either host.</p><p>An existing divergent file, directory, or link is a conflict. Inspect its unique work first. If replacement is authorized, <code>adopt</code> backs it up and records a restore receipt before linking. A failed install rolls back its changes. Never discard a divergent installation to force a green status.</p><p><code>restore /absolute/path/to/receipt.json</code> reverses a recorded install only if its destinations still match what the installer wrote. It refuses to overwrite a subsequent user change.</p><p><code>sync</code> runs build and bundle only. It refreshes candidates without changing installed versions. Git commit, checkout, and merge hooks never install or rebuild. Everyday promotion requires the reviewed source hash and completed release gates. <code>rollback RELEASE_ID</code> can reactivate a previously installed version after checking its integrity and the current destinations. For a test run, put <code>--home /absolute/path/to/test-home</code> before the command. This changes the install destination and repository pointer; build output still belongs to the selected checkout.</p><p>Status inspects the current source, build, ZIP hashes, installed release, local links, and reported account uploads. It continues to inspect ZIPs when the build is stale. Local states include <code>linked-current</code>, <code>pinned-older</code>, <code>legacy-mutable</code>, drift, missing, and broken entries. Overall success requires current build and ZIPs plus matching managed installations. An older pinned installation remains usable but is not the current candidate. A copied package remains outside managed release ownership. Open the updated skill in a fresh host session when discovery requires a reload, then run a representative task there and retain its output. Do not claim Claude Code execution based on a Codex run, or the reverse.</p><p>To promote a reviewed task package without changing other installed skills, use <code>install --skill writing-integrity --expected-source REVIEWED_SOURCE_HASH</code>; repeat <code>--skill</code> to select more packages. The selected workflows, their runtime dependencies and shared assembly must pass the existing release gates. Other installed links keep their exact versions. Status verifies every retained release and reports a mixed installation without claiming one shared source hash. <code>rollback RELEASE_ID</code> restores the complete inventory from the most recent activation of that release ID; use its <code>restore</code> receipt to recover originals from an adoption. A conflicting older installation still needs explicit, scoped <code>adopt --skill NAME --expected-source REVIEWED_SOURCE_HASH</code> after inspecting its files.</p><h3>Shared brand and dependency changes</h3><p>Edit the canonical brand policy/profile once. Rebuild dependent packages so their vendored policy copies and runtime assets match. Do not edit generated <code>build/</code>, <code>dist/</code>, or installed package files. Compare a neutral-profile output and an explicitly selected alternate profile when the change affects branding. Missing declared assets must produce an actionable failure rather than silently restoring former company branding.</p><p>Runtime relationships belong in <code>config/runtime-dependencies.json</code>. A router must carry the scripts and references needed by its declared dependencies when used alone. Test the assembled package away from sibling source directories to reveal accidental source-tree dependencies.</p><h3>Prepare functional releases</h3><p>The existing catalog contains seven functional plugins. Follow the release workflow <span class=\"ref\">(references/release-workflow.md)</span> to verify changes, raise <code>config/plugin-bundles.json</code>&#x27;s version, record its content with <code>python3 tools/plugin_version.py --record &#x27;CHANGE NOTE&#x27;</code>, and generate candidates with <code>python3 tools/plugins.py --candidate</code>. Keep explicit context external and preserve retirement mappings. The existing marketplace and owner update command remain the distribution route; source preparation does not authorize publication or installation.</p><h3>Account uploads and other surfaces</h3><p>Local installation does not upload to Claude&#x27;s account, a Codex account, Cowork, ChatGPT, or an API deployment. Check the destination&#x27;s current supported format and available authorized upload method. Do not assume every surface accepts the same ZIP or provides a skill registry.</p><p>After an actual authorized account upload, record the specific skill and destination reference:</p><pre><code>python3 scripts/manage_estate.py --repo /path/to/Skills-Estate record-publication \\\n  --surface claude-account --skill knowledge-hub --reference &#x27;account and upload record&#x27;</code></pre><p>The canonical ledger accepts <code>claude-account</code>, <code>codex-account</code>, <code>cowork</code>, and <code>chatgpt-personal</code>. A ledger row remains <code>verified_live: false</code>: it records the reported upload hash, not a readback or execution. Retain a separate receipt for a destination readback or task invocation. For another destination, retain its actual receipt and extend the adapter explicitly before claiming managed synchronization.</p><h3>Retained standalone audit tools</h3><p>The earlier flat-estate tools remain bundled for explicit compatibility work. They are not the canonical release path:</p><ul><li><code>scripts/estate_diff.py --source DIR --config FILE --json</code> compares a flat skills tree to configured local directories. It distinguishes missing skills, SKILL-only stubs, entrypoint drift, and resource drift; each fails the comparison. It also checks the older <code>_shared/build-card.md</code> contract, shared references, and declared prose exemptions. Use it on a tree following that contract, not as a substitute for canonical status.</li><li><code>scripts/build_bundles.py --source DIR --out DIR</code> gates flat-tree bundles on each skill&#x27;s <code>*_selftest.py</code>, carries transitive shared resources, and preserves the original runtime-vendoring mechanism. Its optional release classification filters drafts. <code>--no-gate</code> is a diagnostic bypass and is not release evidence. It does not use the canonical dependency graph or manifests.</li><li><code>scripts/record_publish.py</code> retains the flat-tree publication-ledger format. The bundled ledger starts empty; old organization uploads are not evidence for this estate. Use explicit <code>--config FILE --dist DIR</code>; the configuration must name an external <code>ledger</code> path and the intended destinations. The shipped template has no configured surfaces and grants no access.</li><li><code>scripts/sync_build_card.py --skills-root DIR --check</code> checks the older shared-card/runtime references without generating brand literals.</li><li><code>scripts/estate_sync_selftest.py</code> exercises those compatibility functions with synthetic fixtures. It does not connect to a host or cloud account.</li></ul><p>Use the optional pre-commit hook <span class=\"ref\">(references/pre-commit.sh)</span> only after inspecting existing hooks. It validates the canonical source without staging generated files. A hook is not installed or a recurring check scheduled merely because this file describes one.</p><h3>Completion record</h3><p>State which source revision changed, which tasks produced usable outputs, which packages were built, and which destinations were actually updated. Link the outputs and installation or publication receipts. Name any remaining capability or host test and its next action. A missing service does not justify labeling that service&#x27;s behavior verified; provide a working local path when the task supports one.</p>",
+      "markdown": "---\nname: skill-estate-sync\ndescription: Maintain a Skills Estate checkout by authoring or repairing workflows, validating and packaging them, installing reviewed releases, or replacing a skill in another host or account. Use for estate maintenance and select only the requested operation.\n---\n\n\n# Skill estate sync\n\nKeep one canonical Git checkout. Edit its `skills/`, `policies/`, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same accepted versioned packages locally. Candidate builds and ZIPs remain separate from installed releases. A package includes the workflow, scripts, references, templates, and shared policies it needs.\n\nRead [the skill standard](references/estate/skill-standard.md) before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.\n\n## Choose the maintenance operation\n\n- For an estate addition or behavioral repair, read [estate authoring](../skill-creation-walkthrough/SKILL.md). It carries the governed intake and scaffolder; use the host's general authoring tools when available.\n- For build, package, local installation, drift or rollback, follow the procedures below.\n- For another host or account, read [cross-platform release](../cross-platform-skill-release/SKILL.md). It preserves archive inspection, private-account replacement, ambiguous-upload recovery and destination invocation checks. Its generic method also supports sources outside this estate; do not require an estate checkout for that branch.\n\nRead only the requested mode. A creation request does not authorize installation or account publication.\n\n## Select the estate\n\nUse the checkout already identified by the user or the installation's repository pointer. The bundled bridge resolves an explicit `--repo`, otherwise `~/.config/skills-estate/repository`. It refuses a missing pointer or a checkout without the expected tooling. It does not clone a repository, change accounts, or guess from the current directory.\n\nRun from this skill's directory, replacing the example repository with the confirmed checkout:\n\n```sh\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate validate\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate build\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate bundle\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status\n```\n\nFrom the canonical checkout, the equivalent command is `python3 tools/estate.py <command>`. The bridge invokes that exact tool; it does not maintain a second packaging implementation. Python 3 and a writable canonical checkout are required. Status creates a local lock file and reads the build; it does not contact host services.\n\nIf no checkout is available, report the missing prerequisite and identify the user's existing repository. An isolated upload of this maintainer skill can inspect its own resources but cannot synchronize an estate that is absent from the host.\n\n## Repair and verify before installing\n\n1. Run `validate`. Fix malformed entry metadata, broken local links, missing declared runtime dependencies, or dependency cycles in source. Preserve working implementations when repairing instructions.\n2. Run the changed skill's behavioral tests with representative inputs. Save the actual outputs, failures, and command receipts. Check generated prose and figures against the inputs, and inspect rendered artifacts. Use the checkout's `tools/run_preserved_test.py` for Python tests that create temporary files.\n3. Run the estate's packaging and installation tests after changing shared policies, runtime assembly, or synchronization code. Shared changes can affect every dependent package.\n4. Run `build`, then `bundle`. The builder copies the selected shared policies and transitive runtimes, preserves executable modes, and records source/package hashes. It rejects a source change during assembly. Bundle output is in `dist/`; use the release manifest's filenames instead of assuming an extension.\n5. Confirm that the reviewed output belongs to the current source hash. Do not infer task quality from hashes, file counts, ZIP creation, or a structural selftest. A host invocation is separate evidence from local file installation.\n\nThe current canonical CLI does not automatically run every behavioral test before building. The agent must complete the applicable tests and content review before treating a build as ready. Preserve a skill's failed attempt and fix the capability; do not replace the workflow with a general description to make validation pass.\n\n## Install and keep local hosts consistent\n\nBefore rebuilding a legacy checkout whose installed links point into `build/`, run `pin-installed`. It preserves only the existing managed inventory and exact bytes in a versioned directory; it does not promote new source or change vendor installations.\n\nAfter the requested repairs, independent review, and release checks pass, use the exact reviewed source hash:\n\n```sh\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate install --expected-source REVIEWED_SOURCE_HASH\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status\n```\n\nInstallation copies packages into a verified version under `~/.local/share/skills-estate/releases/` and links that version into `~/.claude/skills` and `~/.agents/skills`. Existing matching legacy entries in `~/.codex/skills` are reconciled as well. Unrelated installed skills remain separate. The repository pointer lets this skill find the same checkout from either host.\n\nAn existing divergent file, directory, or link is a conflict. Inspect its unique work first. If replacement is authorized, `adopt` backs it up and records a restore receipt before linking. A failed install rolls back its changes. Never discard a divergent installation to force a green status.\n\n`restore /absolute/path/to/receipt.json` reverses a recorded install only if its destinations still match what the installer wrote. It refuses to overwrite a subsequent user change.\n\n`sync` runs build and bundle only. It refreshes candidates without changing installed versions. Git commit, checkout, and merge hooks never install or rebuild. Everyday promotion requires the reviewed source hash and completed release gates. `rollback RELEASE_ID` can reactivate a previously installed version after checking its integrity and the current destinations. For a test run, put `--home /absolute/path/to/test-home` before the command. This changes the install destination and repository pointer; build output still belongs to the selected checkout.\n\nStatus inspects the current source, build, ZIP hashes, installed release, local links, and reported account uploads. It continues to inspect ZIPs when the build is stale. Local states include `linked-current`, `pinned-older`, `legacy-mutable`, drift, missing, and broken entries. Overall success requires current build and ZIPs plus matching managed installations. An older pinned installation remains usable but is not the current candidate. A copied package remains outside managed release ownership. Open the updated skill in a fresh host session when discovery requires a reload, then run a representative task there and retain its output. Do not claim Claude Code execution based on a Codex run, or the reverse.\n\nTo promote a reviewed task package without changing other installed skills, use `install --skill writing-integrity --expected-source REVIEWED_SOURCE_HASH`; repeat `--skill` to select more packages. The selected workflows, their runtime dependencies and shared assembly must pass the existing release gates. Other installed links keep their exact versions. Status verifies every retained release and reports a mixed installation without claiming one shared source hash. `rollback RELEASE_ID` restores the complete inventory from the most recent activation of that release ID; use its `restore` receipt to recover originals from an adoption. A conflicting older installation still needs explicit, scoped `adopt --skill NAME --expected-source REVIEWED_SOURCE_HASH` after inspecting its files.\n\n## Shared brand and dependency changes\n\nEdit the canonical brand policy/profile once. Rebuild dependent packages so their vendored policy copies and runtime assets match. Do not edit generated `build/`, `dist/`, or installed package files. Compare a neutral-profile output and an explicitly selected alternate profile when the change affects branding. Missing declared assets must produce an actionable failure rather than silently restoring former company branding.\n\nRuntime relationships belong in `config/runtime-dependencies.json`. A router must carry the scripts and references needed by its declared dependencies when used alone. Test the assembled package away from sibling source directories to reveal accidental source-tree dependencies.\n\n## Prepare functional releases\n\nThe existing catalog contains nine functional plugins: eight domain plugins and the opt-in `estate-personal`. Follow [the release workflow](references/release-workflow.md) to verify changes, raise `config/plugin-bundles.json`'s version, record its content with `python3 tools/plugin_version.py --record 'CHANGE NOTE'`, and generate candidates with `python3 tools/plugins.py --candidate`. Keep explicit context external and preserve retirement mappings. The existing marketplace and owner update command remain the distribution route; source preparation does not authorize publication or installation.\n\n## Account uploads and other surfaces\n\nLocal installation does not upload to Claude's account, a Codex account, Cowork, ChatGPT, or an API deployment. Check the destination's current supported format and available authorized upload method. Do not assume every surface accepts the same ZIP or provides a skill registry.\n\nAfter an actual authorized account upload, record the specific skill and destination reference:\n\n```sh\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate record-publication \\\n  --surface claude-account --skill knowledge-hub --reference 'account and upload record'\n```\n\nThe canonical ledger accepts `claude-account`, `codex-account`, `cowork`, and `chatgpt-personal`. A ledger row remains `verified_live: false`: it records the reported upload hash, not a readback or execution. Retain a separate receipt for a destination readback or task invocation. For another destination, retain its actual receipt and extend the adapter explicitly before claiming managed synchronization.\n\n## Retained standalone audit tools\n\nThe earlier flat-estate tools remain bundled for explicit compatibility work. They are not the canonical release path:\n\n- `scripts/estate_diff.py --source DIR --config FILE --json` compares a flat skills tree to configured local directories. It distinguishes missing skills, SKILL-only stubs, entrypoint drift, and resource drift; each fails the comparison. It also checks the older `_shared/build-card.md` contract, shared references, and declared prose exemptions. Use it on a tree following that contract, not as a substitute for canonical status.\n- `scripts/build_bundles.py --source DIR --out DIR` gates flat-tree bundles on each skill's `*_selftest.py`, carries transitive shared resources, and preserves the original runtime-vendoring mechanism. Its optional release classification filters drafts. `--no-gate` is a diagnostic bypass and is not release evidence. It does not use the canonical dependency graph or manifests.\n- `scripts/record_publish.py` retains the flat-tree publication-ledger format. The bundled ledger starts empty; old organization uploads are not evidence for this estate. Use explicit `--config FILE --dist DIR`; the configuration must name an external `ledger` path and the intended destinations. The shipped template has no configured surfaces and grants no access.\n- `scripts/sync_build_card.py --skills-root DIR --check` checks the older shared-card/runtime references without generating brand literals.\n- `scripts/estate_sync_selftest.py` exercises those compatibility functions with synthetic fixtures. It does not connect to a host or cloud account.\n\nUse [the optional pre-commit hook](references/pre-commit.sh) only after inspecting existing hooks. It validates the canonical source without staging generated files. A hook is not installed or a recurring check scheduled merely because this file describes one.\n\n## Completion record\n\nState which source revision changed, which tasks produced usable outputs, which packages were built, and which destinations were actually updated. Link the outputs and installation or publication receipts. Name any remaining capability or host test and its next action. A missing service does not justify labeling that service's behavior verified; provide a working local path when the task supports one.\n",
+      "html": "<p>Keep one canonical Git checkout. Edit its <code>skills/</code>, <code>policies/</code>, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same accepted versioned packages locally. Candidate builds and ZIPs remain separate from installed releases. A package includes the workflow, scripts, references, templates, and shared policies it needs.</p><p>Read the skill standard <span class=\"ref\">(references/estate/skill-standard.md)</span> before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.</p><h3>Choose the maintenance operation</h3><ul><li>For an estate addition or behavioral repair, read estate authoring <span class=\"ref\">(../skill-creation-walkthrough/SKILL.md)</span>. It carries the governed intake and scaffolder; use the host&#x27;s general authoring tools when available.</li><li>For build, package, local installation, drift or rollback, follow the procedures below.</li><li>For another host or account, read cross-platform release <span class=\"ref\">(../cross-platform-skill-release/SKILL.md)</span>. It preserves archive inspection, private-account replacement, ambiguous-upload recovery and destination invocation checks. Its generic method also supports sources outside this estate; do not require an estate checkout for that branch.</li></ul><p>Read only the requested mode. A creation request does not authorize installation or account publication.</p><h3>Select the estate</h3><p>Use the checkout already identified by the user or the installation&#x27;s repository pointer. The bundled bridge resolves an explicit <code>--repo</code>, otherwise <code>~/.config/skills-estate/repository</code>. It refuses a missing pointer or a checkout without the expected tooling. It does not clone a repository, change accounts, or guess from the current directory.</p><p>Run from this skill&#x27;s directory, replacing the example repository with the confirmed checkout:</p><pre><code>python3 scripts/manage_estate.py --repo /path/to/Skills-Estate validate\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate build\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate bundle\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status</code></pre><p>From the canonical checkout, the equivalent command is <code>python3 tools/estate.py &lt;command&gt;</code>. The bridge invokes that exact tool; it does not maintain a second packaging implementation. Python 3 and a writable canonical checkout are required. Status creates a local lock file and reads the build; it does not contact host services.</p><p>If no checkout is available, report the missing prerequisite and identify the user&#x27;s existing repository. An isolated upload of this maintainer skill can inspect its own resources but cannot synchronize an estate that is absent from the host.</p><h3>Repair and verify before installing</h3><ol><li>Run <code>validate</code>. Fix malformed entry metadata, broken local links, missing declared runtime dependencies, or dependency cycles in source. Preserve working implementations when repairing instructions.</li><li>Run the changed skill&#x27;s behavioral tests with representative inputs. Save the actual outputs, failures, and command receipts. Check generated prose and figures against the inputs, and inspect rendered artifacts. Use the checkout&#x27;s <code>tools/run_preserved_test.py</code> for Python tests that create temporary files.</li><li>Run the estate&#x27;s packaging and installation tests after changing shared policies, runtime assembly, or synchronization code. Shared changes can affect every dependent package.</li><li>Run <code>build</code>, then <code>bundle</code>. The builder copies the selected shared policies and transitive runtimes, preserves executable modes, and records source/package hashes. It rejects a source change during assembly. Bundle output is in <code>dist/</code>; use the release manifest&#x27;s filenames instead of assuming an extension.</li><li>Confirm that the reviewed output belongs to the current source hash. Do not infer task quality from hashes, file counts, ZIP creation, or a structural selftest. A host invocation is separate evidence from local file installation.</li></ol><p>The current canonical CLI does not automatically run every behavioral test before building. The agent must complete the applicable tests and content review before treating a build as ready. Preserve a skill&#x27;s failed attempt and fix the capability; do not replace the workflow with a general description to make validation pass.</p><h3>Install and keep local hosts consistent</h3><p>Before rebuilding a legacy checkout whose installed links point into <code>build/</code>, run <code>pin-installed</code>. It preserves only the existing managed inventory and exact bytes in a versioned directory; it does not promote new source or change vendor installations.</p><p>After the requested repairs, independent review, and release checks pass, use the exact reviewed source hash:</p><pre><code>python3 scripts/manage_estate.py --repo /path/to/Skills-Estate install --expected-source REVIEWED_SOURCE_HASH\npython3 scripts/manage_estate.py --repo /path/to/Skills-Estate status</code></pre><p>Installation copies packages into a verified version under <code>~/.local/share/skills-estate/releases/</code> and links that version into <code>~/.claude/skills</code> and <code>~/.agents/skills</code>. Existing matching legacy entries in <code>~/.codex/skills</code> are reconciled as well. Unrelated installed skills remain separate. The repository pointer lets this skill find the same checkout from either host.</p><p>An existing divergent file, directory, or link is a conflict. Inspect its unique work first. If replacement is authorized, <code>adopt</code> backs it up and records a restore receipt before linking. A failed install rolls back its changes. Never discard a divergent installation to force a green status.</p><p><code>restore /absolute/path/to/receipt.json</code> reverses a recorded install only if its destinations still match what the installer wrote. It refuses to overwrite a subsequent user change.</p><p><code>sync</code> runs build and bundle only. It refreshes candidates without changing installed versions. Git commit, checkout, and merge hooks never install or rebuild. Everyday promotion requires the reviewed source hash and completed release gates. <code>rollback RELEASE_ID</code> can reactivate a previously installed version after checking its integrity and the current destinations. For a test run, put <code>--home /absolute/path/to/test-home</code> before the command. This changes the install destination and repository pointer; build output still belongs to the selected checkout.</p><p>Status inspects the current source, build, ZIP hashes, installed release, local links, and reported account uploads. It continues to inspect ZIPs when the build is stale. Local states include <code>linked-current</code>, <code>pinned-older</code>, <code>legacy-mutable</code>, drift, missing, and broken entries. Overall success requires current build and ZIPs plus matching managed installations. An older pinned installation remains usable but is not the current candidate. A copied package remains outside managed release ownership. Open the updated skill in a fresh host session when discovery requires a reload, then run a representative task there and retain its output. Do not claim Claude Code execution based on a Codex run, or the reverse.</p><p>To promote a reviewed task package without changing other installed skills, use <code>install --skill writing-integrity --expected-source REVIEWED_SOURCE_HASH</code>; repeat <code>--skill</code> to select more packages. The selected workflows, their runtime dependencies and shared assembly must pass the existing release gates. Other installed links keep their exact versions. Status verifies every retained release and reports a mixed installation without claiming one shared source hash. <code>rollback RELEASE_ID</code> restores the complete inventory from the most recent activation of that release ID; use its <code>restore</code> receipt to recover originals from an adoption. A conflicting older installation still needs explicit, scoped <code>adopt --skill NAME --expected-source REVIEWED_SOURCE_HASH</code> after inspecting its files.</p><h3>Shared brand and dependency changes</h3><p>Edit the canonical brand policy/profile once. Rebuild dependent packages so their vendored policy copies and runtime assets match. Do not edit generated <code>build/</code>, <code>dist/</code>, or installed package files. Compare a neutral-profile output and an explicitly selected alternate profile when the change affects branding. Missing declared assets must produce an actionable failure rather than silently restoring former company branding.</p><p>Runtime relationships belong in <code>config/runtime-dependencies.json</code>. A router must carry the scripts and references needed by its declared dependencies when used alone. Test the assembled package away from sibling source directories to reveal accidental source-tree dependencies.</p><h3>Prepare functional releases</h3><p>The existing catalog contains nine functional plugins: eight domain plugins and the opt-in <code>estate-personal</code>. Follow the release workflow <span class=\"ref\">(references/release-workflow.md)</span> to verify changes, raise <code>config/plugin-bundles.json</code>&#x27;s version, record its content with <code>python3 tools/plugin_version.py --record &#x27;CHANGE NOTE&#x27;</code>, and generate candidates with <code>python3 tools/plugins.py --candidate</code>. Keep explicit context external and preserve retirement mappings. The existing marketplace and owner update command remain the distribution route; source preparation does not authorize publication or installation.</p><h3>Account uploads and other surfaces</h3><p>Local installation does not upload to Claude&#x27;s account, a Codex account, Cowork, ChatGPT, or an API deployment. Check the destination&#x27;s current supported format and available authorized upload method. Do not assume every surface accepts the same ZIP or provides a skill registry.</p><p>After an actual authorized account upload, record the specific skill and destination reference:</p><pre><code>python3 scripts/manage_estate.py --repo /path/to/Skills-Estate record-publication \\\n  --surface claude-account --skill knowledge-hub --reference &#x27;account and upload record&#x27;</code></pre><p>The canonical ledger accepts <code>claude-account</code>, <code>codex-account</code>, <code>cowork</code>, and <code>chatgpt-personal</code>. A ledger row remains <code>verified_live: false</code>: it records the reported upload hash, not a readback or execution. Retain a separate receipt for a destination readback or task invocation. For another destination, retain its actual receipt and extend the adapter explicitly before claiming managed synchronization.</p><h3>Retained standalone audit tools</h3><p>The earlier flat-estate tools remain bundled for explicit compatibility work. They are not the canonical release path:</p><ul><li><code>scripts/estate_diff.py --source DIR --config FILE --json</code> compares a flat skills tree to configured local directories. It distinguishes missing skills, SKILL-only stubs, entrypoint drift, and resource drift; each fails the comparison. It also checks the older <code>_shared/build-card.md</code> contract, shared references, and declared prose exemptions. Use it on a tree following that contract, not as a substitute for canonical status.</li><li><code>scripts/build_bundles.py --source DIR --out DIR</code> gates flat-tree bundles on each skill&#x27;s <code>*_selftest.py</code>, carries transitive shared resources, and preserves the original runtime-vendoring mechanism. Its optional release classification filters drafts. <code>--no-gate</code> is a diagnostic bypass and is not release evidence. It does not use the canonical dependency graph or manifests.</li><li><code>scripts/record_publish.py</code> retains the flat-tree publication-ledger format. The bundled ledger starts empty; old organization uploads are not evidence for this estate. Use explicit <code>--config FILE --dist DIR</code>; the configuration must name an external <code>ledger</code> path and the intended destinations. The shipped template has no configured surfaces and grants no access.</li><li><code>scripts/sync_build_card.py --skills-root DIR --check</code> checks the older shared-card/runtime references without generating brand literals.</li><li><code>scripts/estate_sync_selftest.py</code> exercises those compatibility functions with synthetic fixtures. It does not connect to a host or cloud account.</li></ul><p>Use the optional pre-commit hook <span class=\"ref\">(references/pre-commit.sh)</span> only after inspecting existing hooks. It validates the canonical source without staging generated files. A hook is not installed or a recurring check scheduled merely because this file describes one.</p><h3>Completion record</h3><p>State which source revision changed, which tasks produced usable outputs, which packages were built, and which destinations were actually updated. Link the outputs and installation or publication receipts. Name any remaining capability or host test and its next action. A missing service does not justify labeling that service&#x27;s behavior verified; provide a working local path when the task supports one.</p>",
       "excerptHtml": "<p>Keep one canonical Git checkout. Edit its <code>skills/</code>, <code>policies/</code>, and declared runtime dependencies; build complete portable packages from those sources. Claude Code and Codex use the same accepted versioned packages locally. Candidate builds and ZIPs remain separate from installed releases. A package includes the workflow, scripts, references, templates, and shared policies it needs.</p><p>Read the skill standard <span class=\"ref\">(references/estate/skill-standard.md)</span> before deciding whether a change is ready to install. A successful build checks packaging. It does not prove that a skill can perform its task.</p><ul><li>For an estate addition or behavioral repair, read estate authoring <span class=\"ref\">(../skill-creation-walkthrough/SKILL.md)</span>. It carries the governed intake and scaffolder; use the host&#x27;s general authoring tools when available.</li><li>For build, package, local installation, drift or rollback, follow the procedures below.</li><li>For another host or account, read cross-platform release <span class=\"ref\">(../cross-platform-skill-release/SKILL.md)</span>. It preserves archive inspection, private-account replacement, ambiguous-upload recovery and destination invocation checks. Its generic method also supports sources outside this estate; do not require an estate checkout for that branch.</li></ul>",
       "headings": [
         "Choose the maintenance operation",
@@ -11025,9 +11018,9 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "e6eca666dc36e00dbcf30cf1c8a4a94b8bd79b7d01d3b6a1aba18c30344cc657",
-          "bytes": 12813,
-          "gitBlob": "3e2b450dc14a7a3d688aa23399fac30690dc0433"
+          "sha256": "9c825654bbc5796ce092366a36a8d9d67a5928156d7addcf3c194c2ef495011d",
+          "bytes": 12867,
+          "gitBlob": "408dce5de45aa7413deeaccc202bdc4968682ad2"
         },
         {
           "path": "publish-ledger.json",
@@ -11043,9 +11036,9 @@
         },
         {
           "path": "references/release-workflow.md",
-          "sha256": "f7a0d36e7f68cd88080df4f0a884fad7a45dd844df9e4516a5c53029d7222928",
-          "bytes": 4577,
-          "gitBlob": "5c47b6a40029546a16b28bb4d0b2d07e3c461e46"
+          "sha256": "1ef8df7b08455c89eca39de9b4c3f33db475ff6eeb1824a523332749dcbdb452",
+          "bytes": 4575,
+          "gitBlob": "322852bb3ea0e111582e4ba36df4854d16005012"
         },
         {
           "path": "scripts/build_bundles.py",
@@ -11106,7 +11099,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/solution-brief/SKILL.md",
       "sourceSha256": "c0b41a1b53fec95e16a09215f202f939264f1f0d30f02665158b28076552a28b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/solution-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/solution-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "solution-brief",
@@ -11412,7 +11405,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow/SKILL.md",
       "sourceSha256": "4e4d47135eda6b0e5bf6fabff30693368ad61984e4761e705d038d935fcf7db3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sow/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sow/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -11633,7 +11626,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow-quality/SKILL.md",
       "sourceSha256": "f13a0cc56620104bd57e6b8f76a4586488f7d2fdd9fe7ad5424117a6a0fd9ec1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sow-quality/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sow-quality/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -11775,7 +11768,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/spec-writer/SKILL.md",
       "sourceSha256": "7ae4353bc1c856ed2de2a49fef14ef204b420d9e2d46541462c9e6ef750ea61f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/spec-writer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/spec-writer/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -11876,7 +11869,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sprint-planning/SKILL.md",
       "sourceSha256": "9e41c15db883c84ae5377ff1e011cfdb9dc1605eab23fde6a352a2f07ecc0ef9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sprint-planning/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sprint-planning/SKILL.md",
       "taskPackages": [
         {
           "name": "sprint-planning",
@@ -12048,7 +12041,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-art-direction/SKILL.md",
       "sourceSha256": "dcdd4dd6bb05db06865fc642b5d0eb269386f09c5a87bf2a31168f49b62cdf4f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sticker-art-direction/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sticker-art-direction/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-art-direction",
@@ -12143,7 +12136,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-sheets/SKILL.md",
       "sourceSha256": "1b464817a7997c722c9ce4b4ea92ffda707eb21f6aceee9a70aecc3491c02c38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-sheets",
@@ -12216,7 +12209,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/system-design/SKILL.md",
       "sourceSha256": "a85c9e72b9cd4db699a8d758270748b7a18cdd8f08a26ddb03cb99b75e639b56",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/system-design/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/system-design/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -12333,7 +12326,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/team-onboarding/SKILL.md",
       "sourceSha256": "20659fda549fafd71092ba6d71a5cee667b4b4b36e7a13701f068154b4bff265",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "team-onboarding",
@@ -12459,7 +12452,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/transcript-ingestion/SKILL.md",
       "sourceSha256": "990703731119c90008f1f920e37bc97908b55c885fa8458155eb91d7f03f9944",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/transcript-ingestion/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/transcript-ingestion/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -12563,7 +12556,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/uat-validation/SKILL.md",
       "sourceSha256": "b61f0dcd77e5b66e21a3aca25285f5f4dd6e2e3cbcdf12ffd84fb5460bd0056e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/uat-validation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/uat-validation/SKILL.md",
       "taskPackages": [
         {
           "name": "acceptance-testing",
@@ -12750,7 +12743,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/usability-testing/SKILL.md",
       "sourceSha256": "1bd1c6d7af93f9ec601b9d7a13dd252e98af94236d23995d6b509ffe316355a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/usability-testing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/usability-testing/SKILL.md",
       "taskPackages": [
         {
           "name": "usability-testing",
@@ -12840,7 +12833,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-integrity/SKILL.md",
       "sourceSha256": "d803e6989ebbf6222af21a788033f43c48fba6f5d425a5d51312defa8de22fcc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/writing-integrity/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/writing-integrity/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-integrity",
@@ -13070,7 +13063,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-style-builder/SKILL.md",
       "sourceSha256": "e379f9a134e038cc87e2013b0238f114fbad46e874d27dada6e878b688557b02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7cd289adceb7809e3d18dd9b36b2a13c61d9b307/skills/writing-style-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/4cc252ec83eeeef4e8230e9b6fa6224984da51a2/skills/writing-style-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-profile",
@@ -13187,8 +13180,8 @@
     }
   ],
   "counts": {
-    "github": 85,
-    "local-revision": 0,
+    "github": 84,
+    "local-revision": 1,
     "local-addition": 0,
     "canonical": 85,
     "total": 85
