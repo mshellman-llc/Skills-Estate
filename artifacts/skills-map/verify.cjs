@@ -36,6 +36,17 @@ const {chromium}=require('playwright');
   assert(!(await page.locator('#panel-instructions').innerText()).includes('ESTATE-WRITING:'));
   assert(!(await page.locator('#panel-instructions').innerText()).includes('Before writing:'));
   if(skill.id==='writing-integrity')await page.screenshot({path:path.join(output,'writing-instructions.png')});
+  await page.locator('#tab-examples').click();
+  const examples=skill.examples||[];
+  assert.equal(await page.locator('#panel-examples .example').count(),examples.length);
+  for(const [i,example] of examples.entries()){
+   const card=page.locator('#panel-examples .example').nth(i);const text=await card.innerText();
+   assert(text.includes(example.title));
+   assert(text.includes(example.source==='fictional'?'Fictional scenario':'Real work, redacted'));
+   assert.equal(text.includes('From an older version'),!example.current);
+   assert(text.includes('Output'));
+  }
+  if(!examples.length)assert((await page.locator('#panel-examples').innerText()).includes('No recorded example'));
   await page.locator('#tab-connections').click();
   const connections=await page.locator('#panel-connections').innerText();
   assert(!connections.includes('ESTATE-WRITING:'));
@@ -84,6 +95,7 @@ const {chromium}=require('playwright');
   assert.equal(await page.locator('.skill-row').count(),expected.length);
  }
  await page.locator('#reset').click();
+ await page.locator('#has-examples').check();assert.equal(await page.locator('.skill-row').count(),data.skills.filter(s=>(s.examples||[]).length).length);await page.locator('#reset').click();assert.equal(await page.locator('#has-examples').isChecked(),false);
  for(const role of ['task','mode','support']){await page.locator('#role-filter').selectOption(role);assert.equal(await page.locator('.skill-row').count(),data.skills.filter(s=>s.catalogRole.kind===role).length)}
  await page.locator('#reset').click();
  // No external requests, mobile overflow, detail layout, and print media.
@@ -93,6 +105,6 @@ const {chromium}=require('playwright');
  assert(await page.locator('#detail').evaluate(e=>e.scrollWidth<=e.clientWidth));await page.keyboard.press('Escape');
  await page.setViewportSize({width:1440,height:1100});await page.locator('[data-family="0"]').click();await page.emulateMedia({media:'print'});await page.pdf({path:path.join(output,'print.pdf'),format:'Letter',printBackground:true});await page.screenshot({path:path.join(output,'print.png')});
  assert.equal(errors.length,0,errors.join('\n'));assert.equal(requests.length,0,'Offline artifact must not load network resources');
- const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','dialog focus','arrow-key tabs','connections','six workflow routes','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
+ const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','dialog focus','arrow-key tabs','examples tab and labels','examples filter','connections','six workflow routes','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
  fs.writeFileSync(path.join(output,'browser-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

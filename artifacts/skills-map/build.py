@@ -151,6 +151,60 @@ def verified_base(baseline, base, published_ref):
         raise ValueError('Could not check base ancestry against '+published_ref)
     return commit
 
+SHOWCASE_FIELDS = ('skill', 'title', 'source', 'model', 'date', 'skillSha256')
+SHOWCASE_SOURCES = {'fictional', 'real-redacted'}
+SHOWCASE_SECTIONS = ('## Request', '## Output')
+
+def showcase_example(path):
+    """Parse one recorded example. Its output is shown as recorded, rendered without executing HTML."""
+    source = path.read_text(encoding='utf-8')
+    match = re.match(r'^---\s*\n(.*?)\n---\s*\n', source, re.S)
+    if not match:
+        raise ValueError(f'{path}: example needs frontmatter')
+    fields = {}
+    for line in match[1].splitlines():
+        if ':' in line:
+            key, value = line.split(':', 1)
+            fields[key.strip()] = value.strip().strip('"').strip("'")
+    missing = [k for k in SHOWCASE_FIELDS if not fields.get(k)]
+    if missing:
+        raise ValueError(f'{path}: missing {", ".join(missing)}')
+    if fields['source'] not in SHOWCASE_SOURCES:
+        raise ValueError(f'{path}: source must be fictional or real-redacted')
+    if fields['source'] == 'real-redacted' and not fields.get('approvedBy'):
+        raise ValueError(f'{path}: a real-redacted example needs approvedBy')
+    if not re.fullmatch(r'[0-9a-f]{64}', fields['skillSha256']):
+        raise ValueError(f'{path}: skillSha256 must be a SHA-256 hex digest')
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', fields['date']):
+        raise ValueError(f'{path}: date must be YYYY-MM-DD')
+    body = source[match.end():]
+    for heading in SHOWCASE_SECTIONS:
+        if not re.search('^'+re.escape(heading)+r'\s*$', body, re.M):
+            raise ValueError(f'{path}: missing "{heading}" section')
+    return {'id': path.stem, 'title': fields['title'], 'source': fields['source'],
+            'approvedBy': fields.get('approvedBy') or None, 'model': fields['model'], 'date': fields['date'],
+            'skillSha256': fields['skillSha256'], 'skill': fields['skill'], 'markdown': body, 'html': markdown(body)}
+
+def load_showcase(root, current):
+    """Group recorded examples by skill; `current` maps skill id to its SKILL.md SHA-256."""
+    examples = {}
+    folder = root / 'showcase'
+    if not folder.is_dir():
+        return examples
+    for path in sorted(folder.glob('*/*.md')):
+        if path.name == 'README.md' or path.name.startswith('.'):
+            continue
+        item = showcase_example(path)
+        if item['skill'] != path.parent.name:
+            raise ValueError(f'{path}: skill field must match its folder')
+        if item['skill'] not in current:
+            raise ValueError(f'{path}: unknown skill {item["skill"]}')
+        item['current'] = item['skillSha256'] == current[item['skill']]
+        examples.setdefault(item['skill'], []).append(item)
+    for items in examples.values():
+        items.sort(key=lambda x: (x['source'] != 'real-redacted', x['date'], x['id']), reverse=False)
+    return examples
+
 def render_snapshot(data,output):
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     template=(HERE/'template.html').read_text()
@@ -235,11 +289,15 @@ def build(args):
             'catalogRole':role,
             'markdown':source, 'html':markdown(readable_body(body)), 'excerptHtml':''.join(markdown(p) for p in excerpt),
             'headings':headings, 'mentions':links, 'resources':resources})
+    showcase = load_showcase(root, {s['id']: s['sourceSha256'] for s in skills})
+    for s in skills:
+        s['examples'] = showcase.get(s['id'], [])
     data={'schemaVersion':1, 'generatedAt':datetime.now(timezone.utc).isoformat(), 'baseCommit':ref,
           'repository':'mshellman-llc/Skills-Estate', 'families':[{'id':g['id'],'title':g['title'],'description':g['description']} for g in load_groups(HERE.parents[1],check_coverage=False)], 'skills':skills}
     data['counts']={s:sum(x['status']==s for x in skills) for s in ['github','local-revision','local-addition']}
     data['counts']['canonical']=sum(x['id'] in base_skills for x in skills)
     data['counts']['total']=len(skills)
+    data['counts']['withExamples']=sum(bool(x['examples']) for x in skills)
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     output=args.output.resolve(); output.parent.mkdir(parents=True,exist_ok=True)
     render_snapshot(data,output)
