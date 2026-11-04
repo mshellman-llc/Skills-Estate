@@ -100,13 +100,33 @@ def router_modules(root, item):
     return selected
 
 
+# Files that never reach a package or decide what a package contains: reader
+# guides, browse grouping, the version receipt, and local test and verification
+# tooling. Editing them must not reopen review of the shared assembly.
+# tests/test_release_review.py checks that no assembly module reads them.
+SHARED_EXCLUDED = frozenset({
+    'config/plugin-bundles.json',          # hashed above without its release block
+    'config/plugin-version-history.json',  # a receipt, like the release block
+    'config/skill-guide.json',
+    'config/skill-groups.json',
+    'tools/browse.py',
+    'tools/run_preserved_test.py',
+    'tools/run_tests.py',
+    'tools/skill_guide.py',
+    'tools/test_capabilities.py',
+    'tools/upstream_drift.py',
+    'tools/verify.py',
+    'tools/release_review.py',
+})
+
+
 def shared_hash(root, settings):
     # Release receipts do not hash themselves. Membership and routing still do.
     inputs = {key: value for key, value in settings.items() if key != 'release'}
     records = [('bundle-inputs', estate.sha(json.dumps(inputs, sort_keys=True).encode()))]
     for directory in ('policies', 'tools', 'config'):
         for file in estate.files(root / directory):
-            if file == root / 'config/plugin-bundles.json':
+            if file.relative_to(root).as_posix() in SHARED_EXCLUDED or '__pycache__' in file.parts:
                 continue
             records.append((str(file.relative_to(root)), estate.sha(file.read_bytes())))
     for name in estate.DEPENDENCY_INPUTS:

@@ -17,6 +17,7 @@ Role: senior product manager who builds clear, opinionated roadmaps.
 Inputs: product and stage; north-star goal for the period; known initiatives or asks; team capacity and squads; hard dates or constraints; themes.
 Blocks: `board` with columns `now`, `next`, `later`. Legend = themes. Cards: title, `body` = problem, `fields.Outcome` = target metric, `owner`, tags = size (S/M/L) + confidence (`good`/`warn`/`crit`). Header: `northStar` + period stat.
 Follow-up: how Now was separated from Later; which two bets to cut if capacity dropped.
+Outcome mode: write each Outcome as baseline → target and run `scripts/outcome_check.py`; see `references/outcome-roadmaps.md`.
 Example: `examples/01-now-next-later.json`.
 
 ### 2. `quarterly-feature-timeline`: Gantt-style feature timeline

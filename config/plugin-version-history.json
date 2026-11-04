@@ -48,6 +48,10 @@
     "0.2.11": {
       "content_sha256": "60e3d8d8bcff0dcb8cc63f8bcdd14c245de477fb2d1447151190fe03b0c5362c",
       "note": "Add backlog-refinement, sprint-planning and prioritization; JTBD workshop and outcome-roadmap modes; shared planning chain and upstream drift check"
+    },
+    "0.2.12": {
+      "content_sha256": "e20d27a45a8540a8f5ad4181903d339710f35f58d56b217922ffc64903d4fd86",
+      "note": "Verification tooling: one verify command, auto-run skill selftests, description limit, release review, writing-check authority"
     }
   }
 }

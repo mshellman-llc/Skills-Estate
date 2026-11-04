@@ -8,7 +8,7 @@ import subprocess
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
-CAPABILITIES = ('browser', 'loopback', 'generated-map')
+CAPABILITIES = ('browser', 'loopback', 'generated-map', 'skill-toolchain')
 ENVIRONMENT_KEY = 'ESTATE_TEST_INTEGRATIONS'
 
 
@@ -43,9 +43,25 @@ def integration(capability):
     return decorate
 
 
+def toolchain_preflight():
+    """Selftests outside the standard library need jq and python-pptx; CI installs both."""
+    missing = []
+    if not shutil.which('jq'):
+        missing.append('jq (install it with your package manager)')
+    try:
+        import pptx  # noqa: F401
+    except ImportError:
+        missing.append('python-pptx (pip install -r requirements-test.txt)')
+    if missing:
+        raise RuntimeError('Skill toolchain is missing: ' + ', '.join(missing))
+    return {'capability': 'skill-toolchain', 'status': 'tools_available', 'jq': shutil.which('jq')}
+
+
 def preflight(capability):
     if capability not in CAPABILITIES:
         raise ValueError('Unknown integration capability: ' + capability)
+    if capability == 'skill-toolchain':
+        return toolchain_preflight()
     if capability != 'browser':
         return {'capability': capability, 'status': 'selected'}
     node = os.environ.get('ESTATE_NODE') or shutil.which('node')

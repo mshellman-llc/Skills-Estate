@@ -1,6 +1,6 @@
 ---
 name: roadmap-artifacts
-description: Build interactive roadmaps (now/next/later boards, Gantt timelines, swimlanes, sprint trains, launch countdowns, RAID overlays, GTM, content, brand/demand and OKR roadmaps) as embeddable components in the governing org's brand, with data from connected tools such as Google Sheets, Linear, Jira, Asana or Notion. Use whenever the user asks for a roadmap, timeline, release plan, migration plan, launch plan, campaign calendar or delivery plan as an artifact, page section or embedded element, or wants an existing roadmap rebranded or connected to live data.
+description: Build interactive roadmaps (now/next/later boards, Gantt timelines, swimlanes, sprint trains, launch countdowns, RAID overlays, outcome roadmaps, GTM, content, brand/demand and OKR roadmaps) as embeddable components in the governing org's brand, with data from connected tools such as Google Sheets, Linear, Jira, Asana or Notion. Use whenever the user asks for a roadmap, timeline, release plan, migration plan, launch plan, campaign calendar or delivery plan as an artifact, page section or embedded element, or wants an existing roadmap rebranded, connected to live data, or turned from a feature list into outcomes. Do not use it to rank candidates (use prioritization) or to plan a sprint (use sprint-planning).
 ---
 
 Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
@@ -26,6 +26,10 @@ Never write roadmap CSS or markup by hand, and never restyle the kit per roadmap
 4. **Plan.** Write the plan JSON. Fill every column and lane with specifically named work tied to an outcome.
 5. **Build.** `python3 scripts/build.py plan.json --brand <profile> --out <dir>`. It validates the plan, compiles the theme, prints the brand report, and writes a folder of separate files. Relay any neutral substitutions and contrast warnings to the user.
 6. **Deliver** to the right target (below), then write the template's follow-up analysis in chat, not in the page.
+
+## Outcome mode
+
+When a now/next/later roadmap should commit to outcomes rather than features, follow [outcome roadmaps](references/outcome-roadmaps.md). Rank candidates with `prioritization` first, and take jobs and desired outcomes from `jtbd-framing` where they exist. Each Now card has a named owner and an Outcome written as baseline → target. It cites its evidence and lists dependencies by RAID ID. Now holds at most three cards. Later holds problems, not dates. Run `python3 scripts/outcome_check.py plan.json` before `build.py`; it exits 1 when Now is over the cap or a Now Outcome has nothing to measure.
 
 ## Targets
 
@@ -54,6 +58,7 @@ The page has a "Copy plan JSON" button. When the user pastes JSON back, treat it
 
 - `assets/rk.css`, `assets/rk.js`, `assets/rk-live.js`: the kit, with the Relaxed, Compact and Editorial formats.
 - `themes/neutral.json`: the estate neutral profile as kit JSON. `themes/example-brand.md`: a fictional `brand.md` showing the format.
-- `scripts/build.py`: validator and bundle builder. `scripts/brand.py`: brand profile → theme CSS and report. `scripts/rk_embed.py`: single-file estate pages and the inline assets other estate skills embed.
-- `references/schema.md`, `references/catalog.md`, `references/branding.md`, `references/connectors.md`.
+- `scripts/build.py`: validator and bundle builder. `scripts/outcome_check.py`: the outcome-mode check, with `scripts/outcome_check_selftest.py` and its fixtures. `scripts/brand.py`: brand profile → theme CSS and report. `scripts/rk_embed.py`: single-file estate pages and the inline assets other estate skills embed.
+- `references/schema.md`, `references/catalog.md`, `references/branding.md`, `references/connectors.md`, `references/outcome-roadmaps.md`.
+- `UPSTREAM.md` and `LICENSE-UPSTREAM`: provenance and license for the outcome-mode material.
 - `examples/*.json`: six worked plans. `06-sheets-live.json` is the live-data example.

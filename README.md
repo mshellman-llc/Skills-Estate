@@ -35,14 +35,15 @@ Merged pull request branches are deleted automatically.
 Edit `skills/<name>/SKILL.md` and its supporting resources. Edit shared rules only in `policies/`. Before opening a pull request, run:
 
 ```sh
-python3 tools/estate.py validate
-python3 tools/run_tests.py --report .local/test-results.json
+python3 tools/verify.py --refresh
 python3 tools/estate.py sync
 ```
 
+`tools/verify.py` runs CI's checks in CI's order with CI's Node settings: browse pages, validation, the plugin version record and the test suite. `--refresh` first rebuilds the skills map, the reuse review and the browse pages. A failed step prints its output and the next command to run. Every `skills/*/scripts/*_selftest.py` runs as part of the suite without a hand-written test.
+
 `build/`, `dist/` and `.local/` are generated and ignored by Git. Do not edit them, installed links, or `synced/` account downloads as sources.
 
-The runner lists deferred browser, loopback, and generated-map checks explicitly. CI runs `--all-integrations`; a local pass with deferred checks is not full release acceptance. Use a supported browser environment and preserve the browser launch guards.
+The runner lists deferred browser, loopback, generated-map and skill-toolchain checks explicitly. The skill-toolchain checks need `jq` and `python-pptx`. CI runs `--all-integrations`; a local pass with deferred checks is not full release acceptance. Use a supported browser environment and preserve the browser launch guards.
 
 Before generating changed plugins, increase `version` in `config/plugin-bundles.json`, then run `python3 tools/plugin_version.py --record 'Describe the changes'` and `python3 tools/plugins.py --candidate`. The version history binds source, dependencies, routing, and assembly to one version and refuses stale builds or reuse of a version for changed content. Follow the [existing add/update/release workflow](skills/skill-estate-sync/references/release-workflow.md) for review and publication. Candidate creation does not install or publish.
 

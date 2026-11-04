@@ -2,5 +2,5 @@
   "description": "Skills Estate commercial workflows and routing.",
   "name": "estate-commercial",
   "skills": "./skills/",
-  "version": "0.2.10"
+  "version": "0.2.12"
 }
