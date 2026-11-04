@@ -48,28 +48,39 @@ jobs:
           mkdir -p .local/render-verification/field-guide
           python3 skills/solution-brief/scripts/build_field_guide.py skills/solution-brief/assets/field-guide.body.html --output .local/render-verification/field-guide.html
           node skills/solution-brief/scripts/qa_field_guide.mjs "file://$GITHUB_WORKSPACE/.local/render-verification/field-guide.html" .local/render-verification/field-guide > .local/render-verification/field-guide-result.json
+      # Artifacts count against the account's Actions storage. Debug evidence uploads only
+      # when a step fails; downloadable packages upload only from main, where the map
+      # viewer and the browse pages look for them. Each upload sets its own retention.
       - uses: actions/upload-artifact@v7.0.2
-        if: always()
+        if: failure()
         with:
           name: skills-estate-render-evidence
           path: |
             .local/test-results.json
             .local/render-verification/
           if-no-files-found: warn
+          retention-days: 7
       - run: python3 tools/estate.py build
       - run: python3 tools/estate.py bundle
       - run: python3 tools/browse.py --bundle
       - uses: actions/upload-artifact@v7.0.2
+        if: github.ref == 'refs/heads/main'
         with:
           name: skill-collections
           path: dist/groups/*.zip
           if-no-files-found: error
+          retention-days: 14
       - uses: actions/upload-artifact@v7.0.2
+        if: github.ref == 'refs/heads/main'
         with:
           name: skills-estate-bundles
-          path: dist/
+          path: |
+            dist/
+            !dist/groups/
           if-no-files-found: error
+          retention-days: 7
       - uses: actions/upload-artifact@v7.0.2
+        if: github.ref == 'refs/heads/main'
         with:
           name: skills-estate-map
           path: |
@@ -79,3 +90,4 @@ jobs:
             artifacts/skills-map/open-map.command
             artifacts/skills-map/assets/fonts/OFL.txt
           if-no-files-found: error
+          retention-days: 30
