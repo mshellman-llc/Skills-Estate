@@ -2,5 +2,5 @@
   "description": "Skills Estate writing, voice and brand workflows.",
   "name": "estate-writing",
   "skills": "./skills/",
-  "version": "0.2.17"
+  "version": "0.2.18"
 }

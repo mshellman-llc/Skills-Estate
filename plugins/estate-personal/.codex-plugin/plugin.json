@@ -2,5 +2,5 @@
   "description": "Optional personal Skills Estate workflows: career, portfolio, independent products and creative projects.",
   "name": "estate-personal",
   "skills": "./skills/",
-  "version": "0.2.17"
+  "version": "0.2.18"
 }
