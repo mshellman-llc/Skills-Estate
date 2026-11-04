@@ -1,6 +1,6 @@
 ---
 name: build-interactive-explorer
-description: Build a polished interactive website that organizes source material into clear paths, clickable stages and expandable detail. Use for solution explorers, project or research hubs, discovery-to-design narratives, process guides, personas and JTBD, user journeys, capability maps, or requests to reuse this explorer layout for a different subject. Preserve its sidebar, calm visual hierarchy and consolidated source references while adapting content and labels to the topic.
+description: Build a polished interactive website that organizes source material into clear paths, clickable stages and expandable detail. Use for solution explorers, project or research hubs, discovery-to-design narratives, process guides, personas and JTBD, user journeys, capability maps, or requests to reuse this explorer layout for a different subject. Preserve its sidebar, calm visual hierarchy and consolidated source references while adapting content and labels to the topic. Do not use it for a release review site built from tracker exports, which is review-site.
 ---
 
 # Interactive Explorer

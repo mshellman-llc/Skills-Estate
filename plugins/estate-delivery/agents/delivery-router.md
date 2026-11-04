@@ -1,6 +1,6 @@
 ---
 name: delivery-router
-description: Route salesforce delivery engineering, deployment, team onboarding, backlog refinement, sprint planning, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
+description: Route salesforce delivery engineering, deployment, team onboarding, backlog refinement, sprint planning, release review sites, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Delivery Router
@@ -15,6 +15,10 @@ description: Route salesforce delivery engineering, deployment, team onboarding,
 ## Planning chain distinctions
 
 Requirements and backlog requests follow the shared planning chain that each of these skills cites. Writing or changing a requirement is `requirements-capture`. Deciding whether existing requirements are ready for a sprint, estimating them or splitting them is `backlog-refinement`. Committing a sprint against capacity, or diagnosing a missed sprint, is `sprint-planning`. Writing RAID entries, decisions or a status report is `delivery-status`; the other skills propose RAID entries and `delivery-status` records them.
+
+## Release review distinctions
+
+Turning a new tracker export into canonical tickets and a delta is `tracker-intake`. Classifying release stories with MoSCoW, readiness and the critical path is `moscow-story-map`; INVEST grading for a sprint stays with `backlog-refinement`. Keeping refinement questions, owners and answers is `decision-register`; RAID decisions on a signed engagement stay with `delivery-status`. Building or refreshing the multi-page review site, publishing it and answering its comments is `review-site`, which calls the other three.
 
 ## Available workflows
 
@@ -32,6 +36,10 @@ Requirements and backlog requests follow the shared planning chain that each of 
 - [sf-solo-devops](../skills/sf-change-delivery/SKILL.md)
 - [sf-enterprise-patterns](../skills/sf-apex-patterns/SKILL.md)
 - [dx-devops-work-item-manage](../skills/sf-devops-center/SKILL.md)
+- [tracker-intake](../skills/tracker-intake/SKILL.md)
+- [moscow-story-map](../skills/moscow-story-map/SKILL.md)
+- [decision-register](../skills/decision-register/SKILL.md)
+- [review-site](../skills/review-site/SKILL.md)
 - [knowledge-hub](../runtime/knowledge-hub/WORKFLOW.md)
 - [evidence-core](../runtime/evidence-core/WORKFLOW.md)
 - [quality-gate](../runtime/quality-gate/WORKFLOW.md)
