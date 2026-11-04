@@ -64,6 +64,10 @@
     "0.2.15": {
       "content_sha256": "80af77fab6b17cbc049b77f11e8bd64c434397bb58a3d09edd1c0a08495a7648",
       "note": "Split estate-additional-skills into estate-product, estate-writing and opt-in estate-personal; Hub skills join governance, Salesforce skills join delivery, code-simplify joins quality"
+    },
+    "0.2.16": {
+      "content_sha256": "c7530b2970ca1195b62f8b7c73fa3bb844c038452631ec927f9596f9333acf76",
+      "note": "Sharpen twelve skill descriptions from the usefulness audit, rework discovery synthesis, and stop the quality router from selecting writing-integrity"
     }
   }
 }

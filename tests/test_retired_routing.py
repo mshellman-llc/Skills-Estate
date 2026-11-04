@@ -57,11 +57,11 @@ class RetiredRoutingTests(unittest.TestCase):
             catalog.entries(self.root)
 
     def test_router_and_additional_routes_cannot_revive_retired_editor(self):
-        router = self.root / 'agents/quality-router.md'
+        router = self.root / 'agents/writing-router.md'
         router.write_text(router.read_text().replace('- `writing-integrity`', '- `prose-pass`'))
         with self.assertRaisesRegex(ValueError, 'Router selects retired'):
             catalog.entries(self.root)
-        router.write_bytes((ROOT / 'agents/quality-router.md').read_bytes())
+        router.write_bytes((ROOT / 'agents/writing-router.md').read_bytes())
         file = self.root / 'config/plugin-bundles.json'
         data = json.loads(file.read_text())
         data['bundles']['estate-quality']['additional_routes'] = ['prose-pass']
