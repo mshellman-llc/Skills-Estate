@@ -1,11 +1,15 @@
 name: Publish plugin marketplace
+# Publication starts when Verify finishes on a main push, so this job no longer waits,
+# billed, for Verify to complete. The guard below still checks that exact revision.
 on:
-  push:
+  workflow_run:
+    workflows: [Verify skills estate]
+    types: [completed]
     branches: [main]
   workflow_dispatch:
-  # GitHub occasionally skips a push run; the hourly run publishes anything it missed.
+  # A daily run publishes anything a skipped or failed event missed.
   schedule:
-    - cron: '17 * * * *'
+    - cron: '17 6 * * *'
 permissions:
   contents: write
   actions: read
@@ -14,6 +18,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
@@ -27,7 +32,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p .local
-          # Verify starts with this run on a push, so wait for it. Exit 75 means it has not finished.
+          # After a workflow_run event Verify has finished. A dispatch or schedule run waits if it has not. Exit 75 means not finished.
           for attempt in $(seq 1 60); do
             gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/verify.yml/runs?branch=main&head_sha=${GITHUB_SHA}&per_page=100" > .local/verify-runs.json
             parent_sha="$(git rev-parse HEAD^ 2>/dev/null || true)"

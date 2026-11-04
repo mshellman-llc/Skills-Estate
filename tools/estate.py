@@ -24,6 +24,8 @@ from portable import assemble, runtime_closure
 from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint
 
 IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv', 'node_modules'}
+# A network share (SMB) leaves .smbdelete<id> placeholders for files deleted while open.
+IGNORED_PREFIXES = ('.smbdelete',)
 DEPENDENCY_INPUTS = ('package.json', 'pnpm-lock.yaml', 'requirements-test.txt')
 
 
@@ -36,7 +38,7 @@ def files(folder):
                 raise ValueError(f'Symlink inside source package: {Path(parent) / d}')
         for name in sorted(names):
             p = Path(parent) / name
-            if name in IGNORED or name.endswith('.pyc'):
+            if name in IGNORED or name.endswith('.pyc') or name.startswith(IGNORED_PREFIXES):
                 continue
             if p.is_symlink():
                 raise ValueError(f'Symlink inside source package: {p}')
@@ -239,6 +241,32 @@ def runtime_dependencies(name, root=ROOT):
     return runtime_closure(root, name)
 
 
+DESCRIPTION_LIMIT = 1024  # Claude surfaces truncate or reject longer skill descriptions.
+
+
+def frontmatter_description(front):
+    """Return the description value from SKILL.md frontmatter, unquoted and unfolded."""
+    lines = front.split('\n')
+    for index, line in enumerate(lines):
+        match = re.match(r'description:\s*(.*)$', line)
+        if not match:
+            continue
+        value = match.group(1).strip()
+        if value[:1] in {'>', '|'}:
+            block = []
+            for following in lines[index + 1:]:
+                if following and not following[:1].isspace():
+                    break
+                block.append(following.strip())
+            return ' '.join(part for part in block if part)
+        if value[:1] == "'" and value.endswith("'") and len(value) > 1:
+            return value[1:-1].replace("''", "'")
+        if value[:1] == '"' and value.endswith('"') and len(value) > 1:
+            return json.loads(value) if '\\' in value else value[1:-1]
+        return value
+    return ''
+
+
 def validate(root=ROOT):
     errors = []
     skill_names = names(root)
@@ -261,6 +289,8 @@ def validate(root=ROOT):
             errors.append(f'{name}: frontmatter name differs from directory')
         if not re.search(r'^description:\s*\S', front, re.M):
             errors.append(f'{name}: missing description')
+        elif len(frontmatter_description(front)) > DESCRIPTION_LIMIT:
+            errors.append(f'{name}: description is {len(frontmatter_description(front))} characters; the limit is {DESCRIPTION_LIMIT}')
         for p in files(folder):
             if p.suffix in {'.md', '.py', '.json', '.yaml', '.yml', '.sh', '.txt'}:
                 body = p.read_text()
@@ -276,6 +306,10 @@ def validate(root=ROOT):
                             errors.append(f'{name}: missing policy {target}')
                     elif target and not (p.parent / target).exists():
                         errors.append(f'{p.relative_to(root)}: missing reference {target}')
+    for entry, settings in public.items():
+        override = settings.get('description') if isinstance(settings, dict) else None
+        if override and len(override) > DESCRIPTION_LIMIT:
+            errors.append(f'catalog entry {entry}: description is {len(override)} characters; the limit is {DESCRIPTION_LIMIT}')
     for p in files(root / 'policies'):
         if p.suffix != '.md':
             errors.append(f'Unexpected policy type: {p.name}')

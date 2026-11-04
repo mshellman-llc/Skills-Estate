@@ -1,6 +1,6 @@
 # Private plugin candidates
 
-`tools/plugins.py` generates Claude and Codex distributions from the existing portable skill build. `config/plugin-bundles.json` owns membership and review status. The six `agents/*-router.md` files remain the source for the routing method and historical selections. The pursuit configuration adds sales-process-mapping and sales-journey-critique. Remaining public entries belong to the opt-in `estate-additional-skills` bundle.
+`tools/plugins.py` generates Claude and Codex distributions from the existing portable skill build. `config/plugin-bundles.json` owns membership and review status. The eight `agents/*-router.md` files remain the source for the routing method and historical selections. The pursuit configuration adds sales-process-mapping and sales-journey-critique. Career, portfolio and personal project workflows belong to the opt-in `estate-personal` bundle, which has no router.
 
 The current catalog consolidates some historical workflows as modes. A bundle owns each public entry once. A router can still select the complete mode workflow. Cross-bundle routes and controls are copied into that plugin's hidden `runtime/` directory, so resolving them does not depend on another plugin's installation behavior. These resources have `WORKFLOW.md`, not a duplicate discoverable `SKILL.md`.
 

@@ -10,6 +10,8 @@ import re
 import shutil
 
 IGNORED = {".git", ".DS_Store", "__pycache__", ".venv", "node_modules", "_runtime"}
+# A network share (SMB) leaves .smbdelete<id> placeholders for files deleted while open.
+IGNORED_PREFIXES = (".smbdelete",)
 IDENTITY = {"SKILL.md", "skill.yaml", "skill.json", "agent.yaml", "agent.json", "AGENTS.md"}
 
 PACKAGE_STANDARDS = ('\n## Shared standards\n\n'
@@ -61,7 +63,7 @@ def source_files(directory):
                 raise ValueError(f"Source directory symlink is not portable: {Path(parent) / name}")
         for name in sorted(files):
             file = Path(parent) / name
-            if name in IGNORED or name.endswith(".pyc"):
+            if name in IGNORED or name.endswith(".pyc") or name.startswith(IGNORED_PREFIXES):
                 continue
             if file.is_symlink():
                 raise ValueError(f"Source symlink is not portable: {file}")

@@ -20,7 +20,7 @@ Exact source quotations and captured evidence remain unchanged. Executable synta
 
 ## Check every output
 
-Review every authored sentence before returning it. For saved text, run the bundled `writing_check.py` checker, then read the finished result. The checker reports detectable patterns; a passing command does not replace reading.
+Review every authored sentence before returning it. For saved text, run the bundled `writing_check.py` checker, then read the finished result. Inside a Skills Estate checkout that checker is the authority; another scanner's verdict on an estate file does not override it. The checker reports detectable patterns; a passing command does not replace reading.
 
 Fix a finding in the text and rerun the check. Do not dismiss it because the file is internal, technical, AI-facing, temporary, machine-readable, or allegedly outside an audience. Do not rename the file, reformat the same prose, lower a budget, or mark your own text as quoted to obtain a pass. Missing scanner support requires an explicit reading pass; it never means the writing passed.
 

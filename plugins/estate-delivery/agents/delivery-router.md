@@ -30,6 +30,8 @@ Requirements and backlog requests follow the shared planning chain that each of 
 - [sf-delivery-standards](../skills/sf-project-setup/SKILL.md)
 - [sf-deploy-engine](../skills/sf-pipeline-operations/SKILL.md)
 - [sf-solo-devops](../skills/sf-change-delivery/SKILL.md)
+- [sf-enterprise-patterns](../skills/sf-apex-patterns/SKILL.md)
+- [dx-devops-work-item-manage](../skills/sf-devops-center/SKILL.md)
 - [knowledge-hub](../runtime/knowledge-hub/WORKFLOW.md)
 - [evidence-core](../runtime/evidence-core/WORKFLOW.md)
 - [quality-gate](../runtime/quality-gate/WORKFLOW.md)

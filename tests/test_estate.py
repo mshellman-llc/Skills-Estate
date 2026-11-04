@@ -197,6 +197,31 @@ class EstateTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Symlink'):
             estate.validate(self.root)
 
+    def test_description_over_the_limit_fails(self):
+        (self.root / 'skills/demo/SKILL.md').write_text(
+            '---\nname: demo\ndescription: >\n  ' + 'word ' * 200 + '\n  ' + 'more ' * 10 + '\n---\nBody.\n')
+        with self.assertRaisesRegex(ValueError, 'description is 10[0-9]{2} characters; the limit is 1024'):
+            estate.validate(self.root)
+        (self.root / 'skills/demo/SKILL.md').write_text(
+            '---\nname: demo\ndescription: "' + 'x' * estate.DESCRIPTION_LIMIT + '"\n---\nBody.\n')
+        estate.validate(self.root)
+
+    def test_frontmatter_description_reads_every_scalar_form(self):
+        read = estate.frontmatter_description
+        self.assertEqual(read('name: a\ndescription: Plain text here'), 'Plain text here')
+        self.assertEqual(read("description: 'It''s quoted'"), "It's quoted")
+        self.assertEqual(read('description: "Say \\"hi\\""'), 'Say "hi"')
+        self.assertEqual(read('description: >\n  Folded one\n  folded two\nlicense: x'), 'Folded one folded two')
+        self.assertEqual(read('description: |\n  Literal\n\n  block\n'), 'Literal block')
+        self.assertEqual(read('name: a'), '')
+
+    def test_network_share_delete_placeholders_are_ignored(self):
+        (self.root / 'policies/.smbdeleteAAA0001').write_text('deleted policy\n')
+        (self.root / 'skills/demo/.smbdeleteAAA0002').write_text('deleted file\n')
+        estate.validate(self.root)
+        estate.build(self.root)
+        self.assertEqual(list((self.root / 'build/skills/demo').rglob('.smbdelete*')), [])
+
     def test_empty_estate_fails(self):
         (self.root / 'skills/demo/SKILL.md').unlink()
         with self.assertRaisesRegex(ValueError, 'No skills'):

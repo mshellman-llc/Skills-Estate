@@ -1,0 +1,6 @@
+{
+  "description": "Skills Estate product and experience workflows: research, usability, accessibility, analytics and information architecture.",
+  "name": "estate-product",
+  "skills": "./skills/",
+  "version": "0.2.15"
+}

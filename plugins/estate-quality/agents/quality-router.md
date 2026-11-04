@@ -21,5 +21,6 @@ description: Route the shared controls every other skill depends on. Knowledge H
 - [brand-renderer](../runtime/brand-renderer/WORKFLOW.md)
 - [org-preflight](../runtime/org-preflight/WORKFLOW.md)
 - [session-handoff](../skills/session-handoff/SKILL.md)
+- [code-simplify](../skills/code-simplify/SKILL.md)
 
 Select the smallest workflow that fits the request, then read its complete instructions and required references.

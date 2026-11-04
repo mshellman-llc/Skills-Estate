@@ -34,8 +34,8 @@ class PluginTests(unittest.TestCase):
         for bundle in sorted(plugins.BUNDLES):
             domain = bundle.removeprefix('estate-')
             row = {'description': 'Synthetic plugin fixture.', 'entries': ['task'] if domain == 'solutioning' else [],
-                   'internal': ['control'] if domain == 'quality' else [], 'opt_in': domain == 'additional-skills'}
-            if domain != 'additional-skills':
+                   'internal': ['control'] if domain == 'quality' else [], 'opt_in': bundle == plugins.OPT_IN}
+            if bundle != plugins.OPT_IN:
                 name = domain + '-router'
                 (self.root / f'agents/{name}.md').write_text(
                     f'---\nname: {name}\ndescription: Route a synthetic request.\n---\n\n'

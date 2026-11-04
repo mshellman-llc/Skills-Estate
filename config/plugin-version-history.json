@@ -50,8 +50,24 @@
       "note": "Add backlog-refinement, sprint-planning and prioritization; JTBD workshop and outcome-roadmap modes; shared planning chain and upstream drift check"
     },
     "0.2.12": {
-      "content_sha256": "6e8d6f40530e088465e7f77871e7e608cafd75efc6350b413e1b8c85b1fdc901",
-      "note": "Add the review-site series: tracker-intake, moscow-story-map, decision-register, review-site and the review-site-kit runtime; route them in the delivery bundle"
+      "content_sha256": "e20d27a45a8540a8f5ad4181903d339710f35f58d56b217922ffc64903d4fd86",
+      "note": "Verification tooling: one verify command, auto-run skill selftests, description limit, release review, writing-check authority"
+    },
+    "0.2.13": {
+      "content_sha256": "5d67a62c1d206c382489b0f2497183e9b43b88355cbcc5d16b3cc7eb602b074c",
+      "note": "Retire hosted Hub references: beastmode-health reports the remote gateway instead of the Railway service"
+    },
+    "0.2.14": {
+      "content_sha256": "0efc8a4fe68d165e17c08ed3971e4ecfd87ed17da68269fda62fd80e49f12f6b",
+      "note": "Skip network-share .smbdelete placeholders when validating and packaging"
+    },
+    "0.2.15": {
+      "content_sha256": "80af77fab6b17cbc049b77f11e8bd64c434397bb58a3d09edd1c0a08495a7648",
+      "note": "Split estate-additional-skills into estate-product, estate-writing and opt-in estate-personal; Hub skills join governance, Salesforce skills join delivery, code-simplify joins quality"
+    },
+    "0.2.16": {
+      "content_sha256": "92be90502a86201dd3352c5bf9d09518b53aca7aa002010fd25e584e731a05ab",
+      "note": "Add the review-site series: tracker-intake, moscow-story-map, decision-register and review-site in estate-delivery"
     }
   }
 }

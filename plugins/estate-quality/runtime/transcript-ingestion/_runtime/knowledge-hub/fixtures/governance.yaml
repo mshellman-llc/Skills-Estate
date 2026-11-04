@@ -1,0 +1,97 @@
+schema_version: 1
+skill: knowledge-hub
+lifecycle:
+  status: active
+job:
+  user: Independent practitioners and agents working across a client relationship
+  situation: Durable consulting knowledge must be found or changed across client, pursuit, delivery, and outcome stages.
+  outcome: The smallest relevant lifecycle records are resolved from an authorized local, Drive, or supplied-file store and persistence is reported exactly.
+  complete_when: Identity, records read, findings, writes, conflicts, and per-store persistence are recorded without duplicate truth.
+position:
+  closest_skills:
+    - evidence-core
+    - transcript-ingestion
+  disposition: separate
+  rationale: This skill owns lifecycle record resolution and persistence; evidence-core owns claim validity and transcript-ingestion owns source normalization.
+contract:
+  inputs:
+    - Confirmed or resolvable client identity
+    - Task context and requested lifecycle scope
+    - Available Hub manifest, connector, local root, or supplied files
+  outputs:
+    - Bounded lifecycle context
+    - Confirmed write, pending mirror, exact patch, or refusal
+selection:
+  positive:
+    - Find the current scope and status for this engagement.
+    - Update the client relationship record from supported evidence.
+  adjacent:
+    - prompt: Validate whether these claims are sufficiently supported.
+      owner: evidence-core
+    - prompt: File and normalize this call transcript.
+      owner: transcript-ingestion
+  negative:
+    - Rewrite prose without client context.
+    - Create a general document that does not use durable consulting knowledge.
+relationships:
+  requires: []
+  optional:
+    - evidence-core
+    - transcript-ingestion
+  controls:
+    - Lifecycle record identity
+    - Storage resolution
+    - Persistence truth
+  upstream:
+    - Client sources and authorized stores
+  downstream:
+    - Pursuit, solutioning, delivery, and closeout skills
+capabilities:
+  - name: Configured local filesystem
+    required: false
+    hosts:
+      - Codex
+      - Claude Code
+    unavailable_behavior: Use Drive or supplied files; otherwise follow the consuming skill's required or optional branch.
+  - name: Git for the local workspace
+    required: false
+    hosts:
+      - Codex
+      - Claude Code
+    unavailable_behavior: hub_workspace.py init creates the workspace without a repository and says so; audit skips integrity checks and names the gap; the ledger append-only proof is not available.
+  - name: Google Drive connector
+    required: false
+    hosts:
+      - ChatGPT
+      - Codex
+      - Claude.ai
+      - Cowork
+    unavailable_behavior: Use a configured local Hub or supplied files and report that Drive was not read or updated.
+risks:
+  persistent_writes:
+    - Canonical client, opportunity, engagement, evidence, transcript, and deliverable records
+    - Workspace skeleton files, git commits at init, and recovered branch refs written by doctor
+  authorization:
+    - Confirm lifecycle identity and operate only inside the declared primary store.
+    - Do not synchronize divergent mirrors automatically.
+  failure_behavior: Refuse ambiguous identity, stale local hashes, unavailable primary stores, and incompatible mirror changes.
+  privacy: Retrieve the smallest task-relevant record set and avoid copying sensitive source bodies into summaries.
+  rollback: Preserve prior content, Git history when configured, pre-write hashes, and exact patches; never delete live migration inputs.
+cost:
+  status: unknown
+  receipt: null
+efficiency:
+  status: measured
+  receipt: scripts/hub_runtime_selftest.py enforces a four-record default route limit and targeted source retrieval; scripts/hub_workspace_selftest.py proves init is idempotent and the sync-race drill recovers a dropped commit.
+stewardship:
+  steward: estate-maintainer
+  maintainers:
+    - estate-maintainer
+  lifecycle_approver: configured workspace owner
+  review_date: 2026-10-20
+  stale_facts:
+    - Google Drive connector update capabilities
+    - Supported runtime storage surfaces
+    - Consulting lifecycle stages
+    - Google Drive for desktop behaviour when two machines commit to one synced .git in the same window
+  retirement_path: Migrate logical records and adapters to a named successor, verify every consuming skill, then archive this contract.

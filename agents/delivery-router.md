@@ -34,6 +34,8 @@ Turning a new tracker export into canonical tickets and a delta is `tracker-inta
 - `sf-delivery-standards`
 - `sf-deploy-engine`
 - `sf-solo-devops`
+- `sf-enterprise-patterns`
+- `dx-devops-work-item-manage`
 - `tracker-intake`
 - `moscow-story-map`
 - `decision-register`

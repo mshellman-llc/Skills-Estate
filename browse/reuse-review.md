@@ -1,6 +1,6 @@
 # Skill reuse review
 
-82 general-use methods, 0 Megan-specific workflows, and 8 awaiting source review.
+78 general-use methods, 0 Megan-specific workflows, and 12 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -19,7 +19,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `backlog-refinement` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `beastmode-capture` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-capture/SKILL.md:15](../skills/beastmode-capture/SKILL.md#L15); [skills/beastmode-capture/SKILL.md:28](../skills/beastmode-capture/SKILL.md#L28); [skills/beastmode-capture/SKILL.md:2](../skills/beastmode-capture/SKILL.md#L2); [skills/beastmode-capture/agents/openai.yaml:4](../skills/beastmode-capture/agents/openai.yaml#L4) |
 | `beastmode-context` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-context/SKILL.md:15](../skills/beastmode-context/SKILL.md#L15); [skills/beastmode-context/SKILL.md:29](../skills/beastmode-context/SKILL.md#L29); [skills/beastmode-context/SKILL.md:2](../skills/beastmode-context/SKILL.md#L2); [skills/beastmode-context/agents/openai.yaml:4](../skills/beastmode-context/agents/openai.yaml#L4) |
-| `beastmode-health` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-health/SKILL.md:15](../skills/beastmode-health/SKILL.md#L15); [skills/beastmode-health/SKILL.md:27](../skills/beastmode-health/SKILL.md#L27); [skills/beastmode-health/SKILL.md:2](../skills/beastmode-health/SKILL.md#L2); [skills/beastmode-health/agents/openai.yaml:4](../skills/beastmode-health/agents/openai.yaml#L4) |
+| `beastmode-health` | Needs review | Supply the task inputs and its supported runtime. | [skills/beastmode-health/SKILL.md:15](../skills/beastmode-health/SKILL.md#L15); [skills/beastmode-health/SKILL.md:27](../skills/beastmode-health/SKILL.md#L27); [skills/beastmode-health/SKILL.md:2](../skills/beastmode-health/SKILL.md#L2); [skills/beastmode-health/agents/openai.yaml:4](../skills/beastmode-health/agents/openai.yaml#L4) |
 | `beastmode-reconcile` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-reconcile/SKILL.md:15](../skills/beastmode-reconcile/SKILL.md#L15); [skills/beastmode-reconcile/SKILL.md:28](../skills/beastmode-reconcile/SKILL.md#L28); [skills/beastmode-reconcile/SKILL.md:2](../skills/beastmode-reconcile/SKILL.md#L2); [skills/beastmode-reconcile/agents/openai.yaml:4](../skills/beastmode-reconcile/agents/openai.yaml#L4) |
 | `brain-work-item` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `brand-renderer` | General use | Requires the bundled rendering runtime and the artifact format’s dependencies. Select the project brand or neutral profile. | No named personal reference detected in workflow text. |
@@ -35,7 +35,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `cross-platform-skill-release` | General use | Requires the destination hosts and their current supported installation or upload method. | No named personal reference detected in workflow text. |
 | `cutover-closeout` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `ddoc` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `deal-desk` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `deal-desk` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `decision-register` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `deck-builder` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `delivery-kickoff` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
@@ -66,7 +66,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `prioritization` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `process` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `product-development-pathway` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `prose-pass` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `prose-pass` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `quality-gate` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `requirements-capture` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `resume-numbers-and-keywords` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
@@ -86,7 +86,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `sf-headless-screenshot` | General use | Requires sfqa, a supported browser runtime, and an authorized Salesforce connection. | No named personal reference detected in workflow text. |
 | `sf-solo-devops` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
 | `skill-creation-walkthrough` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `skill-estate-sync` | General use | Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths. | No named personal reference detected in workflow text. |
+| `skill-estate-sync` | Needs review | Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths. | No named personal reference detected in workflow text. |
 | `solution-brief` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `sow` | General use | Requires a confirmed quote model, the project’s approved contract profile, and the document runtime. | No named personal reference detected in workflow text. |
 | `sow-quality` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |

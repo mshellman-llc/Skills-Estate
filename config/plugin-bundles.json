@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.2.12",
+  "version": "0.2.16",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -80,7 +80,9 @@
         "moscow-story-map",
         "review-site",
         "sales-to-delivery-handoff",
+        "sf-apex-patterns",
         "sf-change-delivery",
+        "sf-devops-center",
         "sf-pipeline-operations",
         "sf-project-setup",
         "sprint-planning",
@@ -89,6 +91,7 @@
       ],
       "internal": [
         "delivery-suite",
+        "sf-headless-screenshot",
         "review-site-kit"
       ],
       "opt_in": false,
@@ -103,6 +106,7 @@
     "estate-quality": {
       "description": "Skills Estate quality workflows and routing.",
       "entries": [
+        "code-simplify",
         "deliverable-review",
         "knowledge-hub",
         "session-handoff"
@@ -111,7 +115,8 @@
         "brand-renderer",
         "evidence-core",
         "org-preflight",
-        "prose-pass"
+        "prose-pass",
+        "transcript-ingestion"
       ],
       "opt_in": false,
       "router_source": "agents/quality-router.md",
@@ -119,52 +124,72 @@
       "controls": []
     },
     "estate-governance": {
-      "description": "Skills Estate governance workflows and routing.",
+      "description": "Skills Estate governance, personal Hub context and estate maintenance workflows.",
       "entries": [
+        "beastmode-capture",
+        "beastmode-context",
+        "beastmode-health",
+        "beastmode-reconcile",
         "skill-estate-sync"
       ],
-      "internal": [],
+      "internal": [
+        "brain-work-item",
+        "execution-truth",
+        "github-repository-work"
+      ],
       "opt_in": false,
       "router_source": "agents/governance-router.md",
       "additional_routes": [],
       "controls": []
     },
-    "estate-additional-skills": {
-      "description": "Optional remaining Skills Estate workflows.",
+    "estate-product": {
+      "description": "Skills Estate product and experience workflows: research, usability, accessibility, analytics and information architecture.",
       "entries": [
         "accessibility-audit",
         "analytics-strategy",
-        "beastmode-capture",
-        "beastmode-context",
-        "beastmode-health",
-        "beastmode-reconcile",
-        "brand-profile",
         "build-interactive-explorer",
-        "career-application",
-        "career-decisions",
-        "code-simplify",
-        "fortunes-weave",
-        "independent-product",
         "information-architecture",
-        "portfolio-case-study",
         "product-development",
-        "sf-apex-patterns",
-        "sf-devops-center",
-        "sticker-art-direction",
-        "sticker-sheets",
-        "usability-testing",
+        "usability-testing"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/product-router.md",
+      "additional_routes": [],
+      "controls": [
+        "knowledge-hub",
+        "evidence-core",
+        "quality-gate"
+      ]
+    },
+    "estate-writing": {
+      "description": "Skills Estate writing, voice and brand workflows.",
+      "entries": [
+        "brand-profile",
         "writing-integrity",
         "writing-profile"
       ],
       "internal": [
-        "brain-work-item",
-        "execution-truth",
-        "github-repository-work",
         "author-writing-style",
-        "personal-writing-style-runtime",
-        "sf-headless-screenshot",
-        "transcript-ingestion"
+        "personal-writing-style-runtime"
       ],
+      "opt_in": false,
+      "router_source": "agents/writing-router.md",
+      "additional_routes": [],
+      "controls": []
+    },
+    "estate-personal": {
+      "description": "Optional personal Skills Estate workflows: career, portfolio, independent products and creative projects.",
+      "entries": [
+        "career-application",
+        "career-decisions",
+        "fortunes-weave",
+        "independent-product",
+        "portfolio-case-study",
+        "sticker-art-direction",
+        "sticker-sheets"
+      ],
+      "internal": [],
       "opt_in": true
     }
   },
@@ -491,6 +516,12 @@
         "status": "pending"
       },
       "governance-router": {
+        "status": "pending"
+      },
+      "product-router": {
+        "status": "pending"
+      },
+      "writing-router": {
         "status": "pending"
       }
     }

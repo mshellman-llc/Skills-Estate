@@ -1,5 +1,6 @@
 {
   "entries": [
+    "code-simplify",
     "deliverable-review",
     "knowledge-hub",
     "session-handoff"
@@ -8,17 +9,19 @@
   "opt_in": false,
   "required_modules": [
     "brand-renderer",
+    "code-simplify",
     "evidence-core",
     "knowledge-hub",
     "org-preflight",
     "prose-pass",
     "quality-gate",
     "session-handoff",
+    "transcript-ingestion",
     "writing-integrity"
   ],
   "review_gaps": [
     {
-      "required_sha256": "48f5458b6848e2fb56ca22127525df6c50645e52a10e9a659f8d3a1650636e1f",
+      "required_sha256": "3fdda283e14be57eaffd4c0e772dd6c26896ccfec221b0ddfafca0fa2a5a0cd8",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -28,14 +31,19 @@
       "subject": "commercial-router"
     },
     {
-      "required_sha256": "ad2ed19355476ef0e6f4ffa7420d71b0a6481b64e011a7ac8da0a6c70b437c28",
+      "required_sha256": "0c42429c9d9ea804fa2e2bcef92c529d17f2e6025d968bafda13aa8a23a3d1a7",
       "status": "review required",
       "subject": "delivery-router"
     },
     {
-      "required_sha256": "e96d008a88c24dd49c9a44f7f09843a2920045b3ab573cd8dec9cf185d8fc5c8",
+      "required_sha256": "3d56cdc2f85fa5b3ea17cd14f47f9a2d8e12b6829de6e89878a274d081c7ea85",
       "status": "review required",
       "subject": "governance-router"
+    },
+    {
+      "required_sha256": "2d6e9f79dfdf3d1d33089a860855e02975b09c8210043708fcf5a0d5abeeeef8",
+      "status": "review required",
+      "subject": "product-router"
     },
     {
       "required_sha256": "e8c92ee085c11c05e658f0bf8a87bb65227e296608c566f6bb98930de036b4d4",
@@ -43,7 +51,7 @@
       "subject": "pursuit-router"
     },
     {
-      "required_sha256": "3f7028d5971634087218bfee2f9c8a01daae7085f25845f83c1c68cc6168990f",
+      "required_sha256": "9afee7bd46a14395e023d71dbe53996de6a53259f507d114b6e3ffc16d7972a8",
       "status": "review required",
       "subject": "quality-router"
     },
@@ -51,6 +59,11 @@
       "required_sha256": "770a7822fea67b5dbea0db21a670c3388c54c6a338764616a96fbed13eae7d64",
       "status": "review required",
       "subject": "solutioning-router"
+    },
+    {
+      "required_sha256": "38ff3b894e74c93d5192a89a85675a2552d8cf51c90c64e45f1a08b5b035f2f3",
+      "status": "review required",
+      "subject": "writing-router"
     },
     {
       "required_sha256": "c8d7fa0aacc967d84c4f2a528897e4a5655f650499fcc1eef48f37cff364d1aa",
@@ -88,7 +101,7 @@
       "subject": "beastmode-context"
     },
     {
-      "required_sha256": "c5f4533bc881ae6f738ed2c17dcddfb8e88c1de8ade4f9f5920b76e1646368f5",
+      "required_sha256": "e145356078a7e62e1a45060d84e9a5858bfd3d2636b1feb1b520166224aa46f5",
       "status": "review required",
       "subject": "beastmode-health"
     },
@@ -168,12 +181,12 @@
       "subject": "ddoc"
     },
     {
-      "required_sha256": "e1eedbdc79e462b0c96086ae75ab7721ab03d7e498c8272d029fca22f71d5a0a",
+      "required_sha256": "1e772fd322926ff3982ad454a91f54b8432aaac96d83ebdfd3ea3c230b6de8f7",
       "status": "review required",
       "subject": "deal-desk"
     },
     {
-      "required_sha256": "111b7f6236591800de7f996b604ddf6f0ef745c79aee38d4cd43288c5dd88866",
+      "required_sha256": "d4063a038cb97bd20b71fd660e0b3445911d7c497abac9db233c1cd01f66a200",
       "status": "review required",
       "subject": "deck-builder"
     },
@@ -313,7 +326,7 @@
       "subject": "product-development-pathway"
     },
     {
-      "required_sha256": "ec311c65da767bece4e718efd2871be388c15990d2382bb93fc6fb3486d7f0fd",
+      "required_sha256": "3deb577047dde9265a11099ad608f41490b7f3718c835dcfb51f0f6b42647172",
       "status": "review required",
       "subject": "prose-pass"
     },
@@ -403,7 +416,7 @@
       "subject": "skill-creation-walkthrough"
     },
     {
-      "required_sha256": "bf3ca063ea5da81d19c1a4c52f2946a21e34e94a89894dcac514e8a4666a50ae",
+      "required_sha256": "baa9c16a3b1105b183941ac15e2722f153e946c52211f23f18ec73c8409a8fb6",
       "status": "review required",
       "subject": "skill-estate-sync"
     },
@@ -478,6 +491,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "a24818561d97cd90ebff8a998bf2fce2ab51f6719b5a6a26dbc146620ed2a5eb",
+  "source_sha256": "a7b7d17eec2970ad6952f33d995703bf3a5830b5fbaf8b690a33b071e4ae73fc",
   "status": "owner-published"
 }

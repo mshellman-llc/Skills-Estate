@@ -8,6 +8,8 @@ Use `--integration browser` only in an environment approved for browser executio
 
 Use `--integration loopback` to exercise the real local HTTP transport. The default suite separately calls the production request handlers to check host, origin, nonce, body, route and locking rules without binding a socket.
 
+`tests/test_skill_selftests.py` runs every `skills/*/scripts/*_selftest.py`. Selftests that need `jq` or `python-pptx` are listed in its `TOOLCHAIN` table and run with `--integration skill-toolchain`, whose preflight fails when either tool is missing. CI installs python-pptx from requirements-test.txt, and its Ubuntu runner provides jq.
+
 The map tests build an isolated snapshot from current source. Use `--integration generated-map` after rebuilding the published artifact to check its freshness against source. A stale checked-in map must not make the builder's unit fixture stale too.
 
 CI installs the pinned browser runtime, rebuilds the map from its intended Git baseline, and runs `--all-integrations`. `--list` shows test classifications without probing runtimes or running tests. Plain unittest discovery also defers unselected integration methods; it does not provide the runner's consolidated report.

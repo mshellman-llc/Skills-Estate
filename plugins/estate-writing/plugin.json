@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "name": "Skills Estate"
+  },
+  "description": "Skills Estate writing, voice and brand workflows.",
+  "name": "estate-writing",
+  "version": "0.2.15"
+}
