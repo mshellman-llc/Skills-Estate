@@ -42,6 +42,12 @@ class SharedExclusionTests(unittest.TestCase):
         self.settings['release']['shared'] = {'status': 'accepted'}
         self.assertEqual(self.digest(), before)
 
+    def test_showcase_examples_do_not_change_the_shared_hash(self):
+        before = self.digest()
+        (self.root / 'showcase/call-prep').mkdir(parents=True)
+        (self.root / 'showcase/call-prep/example.md').write_text('An example run.\n')
+        self.assertEqual(self.digest(), before)
+
     def test_policy_tool_and_routing_changes_still_change_it(self):
         before = self.digest()
         (self.root / 'policies/writing.md').write_text('Write plainly. Cite sources.\n')

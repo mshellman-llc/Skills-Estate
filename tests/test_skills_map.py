@@ -74,7 +74,7 @@ class SkillsMapTests(unittest.TestCase):
         self.assertEqual(set(expected),set(actual),instruction)
         for name,skill in expected.items():
             with self.subTest(skill=name):
-                for field in ('markdown','sourceSha256','resources'):
+                for field in ('markdown','sourceSha256','resources','examples'):
                     self.assertEqual(skill[field],actual[name][field],instruction)
         html=(MAP/'index.html').read_text()
         embedded=re.search(r'<script type="application/json" id="estate-data">(.*?)</script>',html,re.S)[1]
@@ -132,6 +132,64 @@ class SkillsMapTests(unittest.TestCase):
         for skill in self.data['skills']:
             expected='task' if skill['id'] in primary else 'mode' if skill['id'] in modes else 'support'
             self.assertEqual(skill['catalogRole']['kind'],expected)
+
+def example_text(skill='ddoc', source='fictional', sha='0'*64, extra='', sections=('## Request','## Output')):
+    head=f'---\nskill: {skill}\ntitle: Sample run\nsource: {source}\nmodel: test-model\ndate: 2026-11-04\nskillSha256: {sha}\n{extra}---\n'
+    return head+''.join(f'{s}\n\nText.\n\n' for s in sections)
+
+class ShowcaseTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp=tempfile.TemporaryDirectory()
+        self.addCleanup(self._tmp.cleanup)
+        self.root=Path(self._tmp.name)
+
+    def write(self, rel, text):
+        path=self.root/rel
+        path.parent.mkdir(parents=True,exist_ok=True)
+        path.write_text(text)
+        return path
+
+    def test_examples_group_by_skill_and_flag_older_versions(self):
+        self.write('showcase/ddoc/current.md',example_text(sha='a'*64))
+        self.write('showcase/ddoc/older.md',example_text(sha='b'*64))
+        self.write('showcase/ddoc/README.md','Not an example.\n')
+        examples=builder.load_showcase(self.root,{'ddoc':'a'*64})
+        by_id={x['id']:x for x in examples['ddoc']}
+        self.assertEqual(set(by_id),{'current','older'})
+        self.assertTrue(by_id['current']['current'])
+        self.assertFalse(by_id['older']['current'])
+        self.assertIn('<h3>Output</h3>',by_id['current']['html'])
+
+    def test_real_examples_need_an_approver(self):
+        self.write('showcase/ddoc/real.md',example_text(source='real-redacted'))
+        with self.assertRaisesRegex(ValueError,'approvedBy'):
+            builder.load_showcase(self.root,{'ddoc':'0'*64})
+        self.write('showcase/ddoc/real.md',example_text(source='real-redacted',extra='approvedBy: Megan Shellman\n'))
+        self.assertEqual(builder.load_showcase(self.root,{'ddoc':'0'*64})['ddoc'][0]['approvedBy'],'Megan Shellman')
+
+    def test_malformed_examples_are_rejected(self):
+        cases={'unknown skill':example_text(skill='nope'),'folder':example_text(skill='rom'),
+               'source':example_text(source='imagined'),'sha':example_text(sha='short'),
+               'section':example_text(sections=('## Request',))}
+        for label,text in cases.items():
+            with self.subTest(case=label):
+                folder='nope' if label=='unknown skill' else 'ddoc'
+                path=self.write(f'showcase/{folder}/case.md',text)
+                with self.assertRaises(ValueError):
+                    builder.load_showcase(self.root,{'ddoc':'0'*64,'rom':'0'*64})
+                path.unlink()
+
+    def test_example_output_cannot_execute_html(self):
+        self.write('showcase/ddoc/x.md',example_text()+'<script>alert(1)</script>\n')
+        html=builder.load_showcase(self.root,{'ddoc':'0'*64})['ddoc'][0]['html']
+        self.assertNotIn('<script>',html)
+
+    def test_examples_stay_out_of_skill_packages(self):
+        # Examples are a repository showcase, not runtime material: no assembly module reads them.
+        for module in ('estate','portable','plugins','catalog','releases'):
+            with self.subTest(module=module):
+                self.assertNotIn('showcase',(ROOT/'tools'/f'{module}.py').read_text())
+
 
 GIT_ENV = {'GIT_AUTHOR_NAME': 't', 'GIT_AUTHOR_EMAIL': 't@example.invalid',
            'GIT_COMMITTER_NAME': 't', 'GIT_COMMITTER_EMAIL': 't@example.invalid',

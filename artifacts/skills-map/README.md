@@ -18,6 +18,10 @@ The readable instructions omit managed policy blocks, source comments outside co
 
 Regenerate the GitHub review with `python3 tools/skill_guide.py --report`. Source or policy changes require reviewing the findings. Changing the catalog does not install, promote, or generalize the working skills.
 
+## Show examples
+
+Each skill's Examples tab shows recorded runs from [`showcase/`](../../showcase/README.md): the request, the inputs and the output the skill produced. Fictional and redacted real examples carry different labels. An example recorded against an older SKILL.md stays visible with a "From an older version" label. The "With examples" filter and the example count on each card show which skills have them. Examples never enter a plugin or task package.
+
 ## Refresh the site
 
 Ask Codex to refresh the Skills Estate site from GitHub. The refresh must retrieve a passing build for current main, verify the workflow and group data, update the existing Site, and confirm the deployed GitHub revision.
