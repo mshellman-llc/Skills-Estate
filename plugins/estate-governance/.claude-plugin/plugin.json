@@ -2,7 +2,7 @@
   "author": {
     "name": "Skills Estate"
   },
-  "description": "Skills Estate governance workflows and routing.",
+  "description": "Skills Estate governance, personal Hub context and estate maintenance workflows.",
   "name": "estate-governance",
-  "version": "0.2.14"
+  "version": "0.2.15"
 }

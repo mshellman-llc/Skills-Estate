@@ -1,6 +1,6 @@
 # Maintain the functional plugins
 
-Author each workflow in `skills/`, shared rules in `policies/`, and runtime relationships in `config/runtime-dependencies.json`. `config/skill-catalog.json` maps public tasks and internal modes; `config/plugin-bundles.json` assigns those tasks to the existing seven plugins. Do not edit installed copies or generated `plugins/`, `build/` or `dist/` as source.
+Author each workflow in `skills/`, shared rules in `policies/`, and runtime relationships in `config/runtime-dependencies.json`. `config/skill-catalog.json` maps public tasks and internal modes; `config/plugin-bundles.json` assigns those tasks to the existing nine plugins. Do not edit installed copies or generated `plugins/`, `build/` or `dist/` as source.
 
 ## Change and verify
 
@@ -29,7 +29,7 @@ python3 tools/plugins.py --candidate
 
 ## Existing distribution route
 
-The marketplace is `.claude-plugin/marketplace.json`. The existing GitHub workflow builds seven plugins from main and publishes the generated folders and ZIPs. Publication remains a separate authorized action. Owner publication records unresolved acceptance gaps; it does not convert them into reviewed or host-verified status. Ordinary reviewed packaging still requires matching accepted source, router and shared-assembly evidence. The authoring repository and its history can contain private recovery context; portable package review covers the generated payload, not permission to share the repository.
+The marketplace is `.claude-plugin/marketplace.json`. The existing GitHub workflow builds nine plugins from main and publishes the generated folders and ZIPs. Publication remains a separate authorized action. Owner publication records unresolved acceptance gaps; it does not convert them into reviewed or host-verified status. Ordinary reviewed packaging still requires matching accepted source, router and shared-assembly evidence. The authoring repository and its history can contain private recovery context; portable package review covers the generated payload, not permission to share the repository.
 
 Automated publication requires a successful `verify.yml` run for that source revision. A generated-only publication commit may reuse its immediate verified parent's result; any source change or pending/failed verification blocks that fallback. If main advances while building, publication stops and the next run rebuilds. It never rebases old generated files onto new source. The release targets the actual publication commit, and subsequent runs compare ZIP bytes and repair missing uploads. Unexpected extra ZIPs require review before removal.
 

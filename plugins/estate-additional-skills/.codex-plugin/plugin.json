@@ -1,6 +1,0 @@
-{
-  "description": "Optional remaining Skills Estate workflows.",
-  "name": "estate-additional-skills",
-  "skills": "./skills/",
-  "version": "0.2.14"
-}

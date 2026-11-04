@@ -1,0 +1,58 @@
+schema_version: 1
+name: evidence-core
+display_name: Evidence Core
+summary: Builds and validates the shared evidence ledger for Estate consulting artifacts.
+status: active
+tier: core
+version: 1.3.0
+owner: Estate
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Builds and validates the shared evidence ledger for Estate consulting artifacts.
+  Use before creating or materially revising a Solution Brief, ROM, Business Case,
+  DDOC, Deal Desk, Discovery Brief, One-Pager, Overview, or Sales-to-Delivery Handoff.
+  It governs source authority, provenance, confidence, staleness, conflicts, common
+  registers, content sufficiency, and the terminal readiness-gap branch. It owns the
+  Hub evidence.sources record, maintaining source lineage and evidence
+  status there, and at finalization it fails any artifact claim that names no source.
+  It prevents worked examples and generated artifacts from becoming evidence and stops
+  full generation when load-bearing facts are insufficient.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: evidence.claims
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls: []
+knowledge_hub:
+  requirement: required
+  reads:
+  - engagement.front_door
+  - evidence.sources
+  - evidence.claims
+  writes:
+  - evidence.sources
+  - evidence.claims
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

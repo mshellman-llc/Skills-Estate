@@ -1,6 +1,6 @@
 ---
 name: governance-router
-description: Route authoring, normalizing and validating the Skills Estate itself. Select the smallest appropriate skill without recreating its method.
+description: Route personal Hub context, capture, health and reconciliation, and authoring, normalizing and validating the Skills Estate itself. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Governance Router
@@ -15,5 +15,9 @@ description: Route authoring, normalizing and validating the Skills Estate itsel
 ## Available workflows
 
 - [skill-estate-sync](../skills/skill-estate-sync/SKILL.md)
+- [beastmode-context](../skills/beastmode-context/SKILL.md)
+- [beastmode-capture](../skills/beastmode-capture/SKILL.md)
+- [beastmode-health](../skills/beastmode-health/SKILL.md)
+- [beastmode-reconcile](../skills/beastmode-reconcile/SKILL.md)
 
 Select the smallest workflow that fits the request, then read its complete instructions and required references.
