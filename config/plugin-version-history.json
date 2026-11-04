@@ -72,6 +72,10 @@
     "0.2.17": {
       "content_sha256": "53d775bd02ebdadf8f3ae3480e1d8175fe78e3b69bb6a0d553788f6e170d36cd",
       "note": "Sharpen twelve skill descriptions from the usefulness audit, rework discovery synthesis, and stop the quality router from selecting writing-integrity"
+    },
+    "0.2.18": {
+      "content_sha256": "a6424f5591191577a5401f1aa742154e1b693b0e3edc6a55ab4b4d4ec38d1fa8",
+      "note": "Refresh reader guides for 20 skills whose entrypoints changed"
     }
   }
 }
