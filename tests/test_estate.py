@@ -215,6 +215,13 @@ class EstateTests(unittest.TestCase):
         self.assertEqual(read('description: |\n  Literal\n\n  block\n'), 'Literal block')
         self.assertEqual(read('name: a'), '')
 
+    def test_network_share_delete_placeholders_are_ignored(self):
+        (self.root / 'policies/.smbdeleteAAA0001').write_text('deleted policy\n')
+        (self.root / 'skills/demo/.smbdeleteAAA0002').write_text('deleted file\n')
+        estate.validate(self.root)
+        estate.build(self.root)
+        self.assertEqual(list((self.root / 'build/skills/demo').rglob('.smbdelete*')), [])
+
     def test_empty_estate_fails(self):
         (self.root / 'skills/demo/SKILL.md').unlink()
         with self.assertRaisesRegex(ValueError, 'No skills'):

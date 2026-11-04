@@ -56,6 +56,10 @@
     "0.2.13": {
       "content_sha256": "5d67a62c1d206c382489b0f2497183e9b43b88355cbcc5d16b3cc7eb602b074c",
       "note": "Retire hosted Hub references: beastmode-health reports the remote gateway instead of the Railway service"
+    },
+    "0.2.14": {
+      "content_sha256": "0efc8a4fe68d165e17c08ed3971e4ecfd87ed17da68269fda62fd80e49f12f6b",
+      "note": "Skip network-share .smbdelete placeholders when validating and packaging"
     }
   }
 }

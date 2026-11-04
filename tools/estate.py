@@ -24,6 +24,8 @@ from portable import assemble, runtime_closure
 from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint
 
 IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv', 'node_modules'}
+# A network share (SMB) leaves .smbdelete<id> placeholders for files deleted while open.
+IGNORED_PREFIXES = ('.smbdelete',)
 DEPENDENCY_INPUTS = ('package.json', 'pnpm-lock.yaml', 'requirements-test.txt')
 
 
@@ -36,7 +38,7 @@ def files(folder):
                 raise ValueError(f'Symlink inside source package: {Path(parent) / d}')
         for name in sorted(names):
             p = Path(parent) / name
-            if name in IGNORED or name.endswith('.pyc'):
+            if name in IGNORED or name.endswith('.pyc') or name.startswith(IGNORED_PREFIXES):
                 continue
             if p.is_symlink():
                 raise ValueError(f'Symlink inside source package: {p}')
