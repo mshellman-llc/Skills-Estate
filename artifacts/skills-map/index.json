@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-04T22:11:39.786364+00:00",
-  "baseCommit": "ea1c20012a779602b6da3c268fa8ebcb8cc56aeb",
+  "generatedAt": "2026-11-04T22:26:39.616606+00:00",
+  "baseCommit": "61246a6a531f0be8dd392d9c365d9db3ed9ee56d",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -55,7 +55,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/accessibility-audit/SKILL.md",
       "sourceSha256": "30aae4a806f649376a0039a123b775be7e337a18041f3f55bae04bd41fd6d3ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/accessibility-audit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/accessibility-audit/SKILL.md",
       "taskPackages": [
         {
           "name": "accessibility-audit",
@@ -145,7 +145,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/analytics-strategy/SKILL.md",
       "sourceSha256": "fad5d22b7b107b0a195b036d75966ded0b29433b4b996cfc2022f75bd1192841",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/analytics-strategy/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/analytics-strategy/SKILL.md",
       "taskPackages": [
         {
           "name": "analytics-strategy",
@@ -235,7 +235,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/architecture-doc/SKILL.md",
       "sourceSha256": "704962a9930c507f8002c1b4832d5947542aaf24b09f6a6c7c838028eb15b0d2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/architecture-doc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/architecture-doc/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -386,7 +386,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-writing-style/SKILL.md",
       "sourceSha256": "2c4a88898b19221b63419f21ecc5e0638268b88fd9e84e25e34785e35013b08a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/author-writing-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/author-writing-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -470,7 +470,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/backlog-refinement/SKILL.md",
       "sourceSha256": "89c830ca620b58762d812090bb255fa50050aa9da3f0ccb697063efdd2937f7a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/backlog-refinement/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/backlog-refinement/SKILL.md",
       "taskPackages": [
         {
           "name": "backlog-refinement",
@@ -480,17 +480,24 @@
       "downloadPackages": [
         "backlog-refinement"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Grade backlog items against INVEST and the team definition of ready, and route what cannot be made ready.",
+        "when": "Requirements exist and the team needs to know which items can enter the next sprint.",
+        "inputs": "The requirements-capture Requirements tab, team estimates, the RAID log and the team definition of ready.",
+        "outputs": "A readiness report marking each item READY, REFINE or DISCOVERY, with proposed splits, RAID entries and open questions.",
+        "example": "Refine these ten stories against our definition of ready and tell me which can go into sprint 4.",
+        "reviewedEntrypointSha256": "89c830ca620b58762d812090bb255fa50050aa9da3f0ccb697063efdd2937f7a"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -634,7 +641,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-capture/SKILL.md",
       "sourceSha256": "88b922fc5e1b600a1ace4d0a19bd936945ecddfbbb42bc9aa04964f5968de14a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/beastmode-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/beastmode-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-capture",
@@ -747,7 +754,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-context/SKILL.md",
       "sourceSha256": "02ca69e21b2e17b50e6be9a2cced92534e1ba788ba8759c702d10bd06026f223",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/beastmode-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/beastmode-context/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-context",
@@ -871,11 +878,11 @@
       "title": "Check the hub and explain what needs attention",
       "family": 4,
       "description": "Diagnose the BeastMode knowledge hub when saves fail, context looks stale or missing, connections drop, ingestion or maintenance stops, or budgets run out. Reports scoped evidence. Read-only unless the user also asks for a repair; never starts new recurring jobs.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/beastmode-health/SKILL.md",
       "sourceSha256": "0ce765154b0ab3cdbf638c3cd4e5e7697a89f3444d9dbba89d22a81ee4e20320",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/beastmode-health/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/beastmode-health/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-health",
@@ -885,17 +892,26 @@
       "downloadPackages": [
         "beastmode-health"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Check whether the knowledge hub's context, connections, ingestion, backups and budgets are working.",
+        "when": "Saves fail, context looks stale or missing, a connection drops, or a hub health check is requested.",
+        "inputs": "The permitted hub connection, the named symptom or environment, and an owner-authorized evidence configuration for local checks.",
+        "outputs": "Scoped findings marked verified now, needs attention or not rechecked, with evidence and the next repair; it stays read-only unless a repair is requested.",
+        "example": "Check the local Hub for stale context and report the evidence behind each finding.",
+        "reviewedEntrypointSha256": "0ce765154b0ab3cdbf638c3cd4e5e7697a89f3444d9dbba89d22a81ee4e20320",
+        "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
         "setup": "",
         "cleanup": [
+          "Review the named personal references before sharing this workflow.",
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [
           {
             "path": "skills/beastmode-health/SKILL.md",
@@ -997,7 +1013,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-reconcile/SKILL.md",
       "sourceSha256": "70bfeccd296dc9c6f8ee7a290a5b605e1087b1abb0c5bd4794ac969945acc9e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/beastmode-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/beastmode-reconcile/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-reconcile",
@@ -1110,7 +1126,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brain-work-item/SKILL.md",
       "sourceSha256": "d2aa7234b3610505200c90188ad9c60811d6eb3e8288d22b33d15856c0662193",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/brain-work-item/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/brain-work-item/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1177,7 +1193,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "a547727f6e59008212becc0315e6d268f90e46080d99d8cd6a54f75ac29cd852",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -1467,7 +1483,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "3a8479870a7aa884a1c5739c1d9da9e95e1ea069ffb1c0c924e20dbc0a8852e8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -1608,11 +1624,11 @@
       "title": "Estate business case",
       "family": 1,
       "description": "Write the executive business case the funding approver reads: why now, the cost of waiting in shown arithmetic, alternatives, risks and a bounded ask. Use for a business case, investment or value case, ROI or cost-benefit, a why-now memo, \"should we fund this\", or getting the CFO to yes. Not for the deal decision deck (deck-builder), the priced proposal (scope-options), the internal margin review (commercial-review) or prospect research (call-prep).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/business-case/SKILL.md",
       "sourceSha256": "044b11756dbf2e052006fb336c4a0b800d001cdea716fadc9220bb5c060ab74d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "business-case",
@@ -1622,17 +1638,24 @@
       "downloadPackages": [
         "business-case"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Write the business case a funding approver reads, including the case against and the cost of waiting.",
+        "when": "An approver needs to decide whether to fund an initiative.",
+        "inputs": "A validated evidence ledger, the quote for engagement costs, sourced client value figures and the dated events that drive timing.",
+        "outputs": "A gated business case with sourced figures, shown cost-of-delay arithmetic, sourced risks and a bounded ask, or a readiness gap memo when evidence is insufficient.",
+        "example": "Build the business case for this initiative from the quote, the discovery findings and the renewal date.",
+        "reviewedEntrypointSha256": "044b11756dbf2e052006fb336c4a0b800d001cdea716fadc9220bb5c060ab74d"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -1781,7 +1804,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/call-prep/SKILL.md",
       "sourceSha256": "e12fbf1eacebf3e8d801f837e8453941265cc49ad27c2683da4b9d4b391cff60",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/call-prep/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/call-prep/SKILL.md",
       "taskPackages": [
         {
           "name": "call-prep",
@@ -2011,7 +2034,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-application/SKILL.md",
       "sourceSha256": "f445e838915a95dcf79bcf8a5fe4751ebe44f1201cd4943390c6e010c898b70e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/career-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/career-application/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2156,7 +2179,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-materials-and-outreach/SKILL.md",
       "sourceSha256": "c3dc0019f1bde982446eab7af59904a378479dfe8f3758427fbf79b727bc79ec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/career-materials-and-outreach/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/career-materials-and-outreach/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2257,7 +2280,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-progression-and-offers/SKILL.md",
       "sourceSha256": "4bd8a9469889eee41a03eb6f90e7ffe10879a96556796192538206db652571b0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/career-progression-and-offers/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/career-progression-and-offers/SKILL.md",
       "taskPackages": [
         {
           "name": "career-decisions",
@@ -2353,7 +2376,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/case-study-builder/SKILL.md",
       "sourceSha256": "e78a68ff01fee091589db827b094754fe95b5f7ca303e7779a81a94da3bcd750",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/case-study-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/case-study-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "portfolio-case-study",
@@ -2441,7 +2464,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/client-brand/SKILL.md",
       "sourceSha256": "c6d5ac41111ea61ab2c36ce3f75bb6233f4e9e3ea3d3df205f8033a5120c9e1c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/client-brand/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/client-brand/SKILL.md",
       "taskPackages": [
         {
           "name": "brand-profile",
@@ -2540,11 +2563,11 @@
       "title": "Code Simplify",
       "family": 7,
       "description": "Review and refine the current code change for reuse, clarity, maintainability, and efficiency without changing behavior. Use when a delivery workflow requires a simplify pass, when the user asks to simplify or clean up a diff, or before committing a non-trivial implementation. Scope work to the current branch diff or an explicit target, preserve public behavior and project conventions, apply only high-confidence edits, and verify the result with focused tests. In Claude Code, the built-in /simplify does the same job; prefer this skill when an estate workflow names its pass.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/code-simplify/SKILL.md",
       "sourceSha256": "d43d7322867e6d4267530420631be0734b629ddcbf6d0037685ec09c3cea5ac4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/code-simplify/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/code-simplify/SKILL.md",
       "taskPackages": [
         {
           "name": "code-simplify",
@@ -2554,17 +2577,24 @@
       "downloadPackages": [
         "code-simplify"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Simplify the current code change for reuse, clarity, maintainability and efficiency without changing behavior.",
+        "when": "A delivery workflow names a simplify pass, or a non-trivial diff needs cleanup before commit.",
+        "inputs": "The current branch diff or an explicit target, repository conventions and the relevant tests.",
+        "outputs": "High-confidence refinements with test evidence, plus behavior-changing candidates reported separately instead of applied.",
+        "example": "Review this diff for duplication and unnecessary complexity while preserving its behavior.",
+        "reviewedEntrypointSha256": "d43d7322867e6d4267530420631be0734b629ddcbf6d0037685ec09c3cea5ac4"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -2615,7 +2645,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cross-platform-skill-release/SKILL.md",
       "sourceSha256": "fe3cdfc727e15ce6301c32f55d1e31be3cac6f01f4bcafef9ffc6282b727afd4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/cross-platform-skill-release/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/cross-platform-skill-release/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -2713,7 +2743,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cutover-closeout/SKILL.md",
       "sourceSha256": "583fb89bee016741de40cafa78ec1a29c44e9d5109a4e67fc68ee4a4de7ce00f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "cutover-closeout",
@@ -2879,7 +2909,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ddoc/SKILL.md",
       "sourceSha256": "b4190b6f05c8fe0301adfc24fb3ba516ed6550f343e0aae0a2b6319abd26799f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/ddoc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/ddoc/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3090,7 +3120,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deal-desk/SKILL.md",
       "sourceSha256": "a994c1f2862ed00ea7f6678f0ff288cf41200066b678d62a505428ed41a94729",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/deal-desk/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/deal-desk/SKILL.md",
       "taskPackages": [
         {
           "name": "commercial-review",
@@ -3100,17 +3130,24 @@
       "downloadPackages": [
         "commercial-review"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Prepare the internal Deal Desk packet that shows a deal's computed margin against the approval policy.",
+        "when": "A priced quote needs internal commercial approval before proposal or SOW, or a packet's figures need tie-out.",
+        "inputs": "The quote, the confirmed margin floor and approval ladder, the evidence ledger and the delivery lead's cosign answer.",
+        "outputs": "A gated packet with recomputed margin, flagged risks, routed asks, an empty decisions log and a figure tie-out against the quote.",
+        "example": "Prepare the Deal Desk packet for this quote and tie out the SOW draft's figures against it.",
+        "reviewedEntrypointSha256": "a994c1f2862ed00ea7f6678f0ff288cf41200066b678d62a505428ed41a94729"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -3268,7 +3305,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/decision-register/SKILL.md",
       "sourceSha256": "f4625f40a6198c4297a44a4df43ef2ab2669e146d612f295ccef81fd50616341",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "decision-register",
@@ -3363,7 +3400,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deck-builder/SKILL.md",
       "sourceSha256": "f0f27ea1b6fa2ed0bbffa39963b983d4363de43470336f9cae9fdaa435113acb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/deck-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/deck-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3531,11 +3568,11 @@
       "title": "Estate delivery kickoff",
       "family": 2,
       "description": "Mobilize a signed engagement: the project charter, RAID and decision logs, internal and client kickoff decks and a Sprint 0 plan, built from the accepted sales-to-delivery handoff and signed SOW. Use when delivery is starting: kick off the project, mobilize the engagement, set up the RAID log, or \"the handoff is accepted, what now\". Not for the handoff itself (sales-to-delivery-handoff), status after kickoff (delivery-status), requirements (requirements-backlog) or later sprints (sprint-planning).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/delivery-kickoff/SKILL.md",
       "sourceSha256": "c60d6b255027410268c1b7c8562722d127c380d9435c4851c5817d6f525ac0af",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/delivery-kickoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/delivery-kickoff/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-kickoff",
@@ -3545,17 +3582,24 @@
       "downloadPackages": [
         "delivery-kickoff"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Mobilize a signed engagement from the accepted handoff and the signed SOW.",
+        "when": "The sales-to-delivery handoff is accepted and kickoff is next.",
+        "inputs": "The accepted handoff brief, the signed SOW, the confirmed delivery model and the shared engagement record.",
+        "outputs": "A gated draft charter, seeded RAID and decision logs, internal and client kickoff decks, and a Sprint 0 or mobilization plan.",
+        "example": "Prepare the charter, governance logs and kickoff decks from the signed SOW and the accepted handoff.",
+        "reviewedEntrypointSha256": "c60d6b255027410268c1b7c8562722d127c380d9435c4851c5817d6f525ac0af"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -3766,7 +3810,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-status/SKILL.md",
       "sourceSha256": "d9f5fd583a023be196ed21e40f88e2dcc2c8674fe726c40c3325af5843e2c672",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/delivery-status/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/delivery-status/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-status",
@@ -3776,17 +3820,24 @@
       "downloadPackages": [
         "delivery-status"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Issue the period's delivery status, steward the RAID and decision logs, and check work against the SOW scope.",
+        "when": "A weekly status report, a decision or risk to log, or a check of whether a request is in scope.",
+        "inputs": "The period's transcripts, the RAID and decision logs, the SOW scope baseline, the previous status file and a timesheet or quote for burn.",
+        "outputs": "A gated status report, append-only log entries with stable IDs, and change-order candidates with an evidence trail.",
+        "example": "Write this week's status from the transcripts and logs, and flag anything that looks outside the SOW.",
+        "reviewedEntrypointSha256": "d9f5fd583a023be196ed21e40f88e2dcc2c8674fe726c40c3325af5843e2c672"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -3959,7 +4010,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-suite/SKILL.md",
       "sourceSha256": "39b3a3e46eae49ae780f245a616eeb4b1a42824a53027735c577768d149d0372",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/delivery-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/delivery-suite/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -4143,7 +4194,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-brief/SKILL.md",
       "sourceSha256": "51d21c7ee14f73df4a09ba9cb86ef8ff3a5a7f938c5f3523c021d662f01d1df3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/discovery-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/discovery-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4339,11 +4390,11 @@
       "title": "Discovery Synthesis",
       "family": 0,
       "description": "Synthesize supplied discovery calls, interview notes, transcripts or Granola and Fathom exports into sourced findings: job statements, pain points with severity, exact verbatims, speaker-attributed insights, a TL;DR, open questions and next steps. Use when the user shares meeting content and asks what was learned, to pull insights from a transcript, map pain points or extract JTBDs. For the deal discovery record, ranked ledger or open questions, select the maintain pursuit findings mode and read discovery-brief.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/discovery-synthesis/SKILL.md",
       "sourceSha256": "53a74977869d0e0946aefa1977d7a0ebf5826d6f86a327eb045599245b8510b2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/discovery-synthesis/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/discovery-synthesis/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4353,17 +4404,24 @@
       "downloadPackages": [
         "discovery"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Turn discovery calls and interview notes into sourced research findings.",
+        "when": "Supplied meeting content needs synthesis into what was learned.",
+        "inputs": "Transcripts or notes, the attendees on each side and the research purpose.",
+        "outputs": "A TL;DR, job statements, pain points with severity, exact quotes, speaker insights, open questions and named gaps.",
+        "example": "Synthesize these three discovery calls into findings, pain points and exact quotes with speakers.",
+        "reviewedEntrypointSha256": "53a74977869d0e0946aefa1977d7a0ebf5826d6f86a327eb045599245b8510b2"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -4455,7 +4513,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-promote/SKILL.md",
       "sourceSha256": "9a105d47b6a0d13b91d1ab2327554422afb9c638e33fdaa0a84eb4730e1c2d46",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/dx-devops-promote/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/dx-devops-promote/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4623,7 +4681,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-work-item-manage/SKILL.md",
       "sourceSha256": "d06e708aef3b2bafb70137e5e457b5f0e0786672a1191c0fd10e50b4c4def260",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/dx-devops-work-item-manage/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/dx-devops-work-item-manage/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4743,7 +4801,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "940140ceb630651a43b4c54fbfaa99c3e64f157af5fcf869df979da601794b40",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -4934,7 +4992,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/execution-truth/SKILL.md",
       "sourceSha256": "6541592ce8b7e87ed1375f4213d7d275b71a3719e500c2d0290d702fa3697037",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/execution-truth/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/execution-truth/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -5051,7 +5109,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/fortunes-weave/SKILL.md",
       "sourceSha256": "e6878b651358518384bd7068c40229e5626bab1bef4b4a0b9b6f37d24a4ba124",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "fortunes-weave",
@@ -5124,7 +5182,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/github-repository-work/SKILL.md",
       "sourceSha256": "416dd70ad35b0187da9d23fa1168ae095aaa59cbaecd47b79525d33b475156e5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/github-repository-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/github-repository-work/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -5188,7 +5246,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/independent-product/SKILL.md",
       "sourceSha256": "cfeebb0f638e7359af4d6a58b7730e104c8088b9c473b96c4069dcaefc17194c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "independent-product",
@@ -5261,7 +5319,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/information-architecture/SKILL.md",
       "sourceSha256": "6ebd0a149d475ccda8664a397b49ae94b9470a120f0c605d63459c9f6446e6e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "information-architecture",
@@ -5351,7 +5409,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/interactive-proposal/SKILL.md",
       "sourceSha256": "3b993c5d1b1230ef6f5c2dc2b76cd5778eb5346b60c59247693f55a3aac219c5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -5548,7 +5606,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/journey-mapping/SKILL.md",
       "sourceSha256": "044a9b62cc4632caf267af2a4a70a412e71a3889783548063ee340997d0cac63",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/journey-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/journey-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "journey-mapping",
@@ -5674,7 +5732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/jtbd-framing/SKILL.md",
       "sourceSha256": "dc4e8ee3ebe54647a5c574c0565a6f36e2aa41ba5eda03e9c768d3a9b20e0c98",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/jtbd-framing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/jtbd-framing/SKILL.md",
       "taskPackages": [
         {
           "name": "jtbd-framing",
@@ -5684,17 +5742,24 @@
       "downloadPackages": [
         "jtbd-framing"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Frame the job a person is trying to accomplish and test whether the framing changes a decision.",
+        "when": "Job statements, struggling moments, hire and fire criteria, or an audit of existing JTBD work are needed.",
+        "inputs": "Research about recent struggling moments and switch decisions, or a request for hypotheses with interview prompts when none exists.",
+        "outputs": "Job framing with evidence references, decision implications, remaining research questions and an audit against twelve checks.",
+        "example": "Extract the struggling moments and hire criteria from these interviews before drafting job statements.",
+        "reviewedEntrypointSha256": "dc4e8ee3ebe54647a5c574c0565a6f36e2aa41ba5eda03e9c768d3a9b20e0c98"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -5871,7 +5936,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/knowledge-hub/SKILL.md",
       "sourceSha256": "29b7962b049af27078d64360c68c2abd6c15c7263590902d285dc0835689c05b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "knowledge-hub",
@@ -6123,7 +6188,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/moscow-story-map/SKILL.md",
       "sourceSha256": "407f61974326eb0e046d709d20e0657e3e6ac897af86dae19634ab14af5d63e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "moscow-story-map",
@@ -6212,7 +6277,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/org-preflight/SKILL.md",
       "sourceSha256": "114e2469f12d1593364d2befaa2c754d48e7c3ea8c3758aac5a1fda3fa1a9f39",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/org-preflight/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/org-preflight/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "sf-change-delivery"
@@ -6313,7 +6378,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/personal-writing-style-runtime/SKILL.md",
       "sourceSha256": "acdb326d7eae4166a419e6ff07245f9afe6174a826d613d474bb21043e852b90",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/personal-writing-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/personal-writing-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6445,7 +6510,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-builder/SKILL.md",
       "sourceSha256": "733792bc5580e8b71e491f7ef69287e99ff5db1e4eceafed0324fd0a8f49d93b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/playbook-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/playbook-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6576,7 +6641,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-fit-router/SKILL.md",
       "sourceSha256": "190748cd28c50baad5b6260742889081c1effa47bbc8025ab5073a3d12476bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/playbook-fit-router/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/playbook-fit-router/SKILL.md",
       "taskPackages": [
         {
           "name": "offering-fit",
@@ -6675,7 +6740,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-onepager/SKILL.md",
       "sourceSha256": "d968ee8a9d28b50e4de5f049539210e999818df6af2a53c9d5a4ba6adafac605",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/playbook-onepager/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/playbook-onepager/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6853,7 +6918,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-suite/SKILL.md",
       "sourceSha256": "472ad5c6e512f9f142aacbdcf26cef02e30bc9d93bd5bea308092d502715e240",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/playbook-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/playbook-suite/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6999,7 +7064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/pm-spec-writing/SKILL.md",
       "sourceSha256": "6adc8ca7812b4ae14a7b5278ba1d03d8ef4f3af2dd79bf65db3d67b9345b4259",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/pm-spec-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/pm-spec-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -7095,7 +7160,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritization/SKILL.md",
       "sourceSha256": "1c83aff26fc94e0e6687382b897a3d133f23992d0f1fac399b66f80661e2fc0e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/prioritization/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/prioritization/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritization",
@@ -7105,17 +7170,24 @@
       "downloadPackages": [
         "prioritization"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Rank candidates with a named framework and check the evidence behind each score.",
+        "when": "A team must choose between problems, outcomes, roadmap candidates or backlog items.",
+        "inputs": "Candidates with their scoring inputs and the source for each input.",
+        "outputs": "A ranked proposal with each item's formula, flagged unsourced inputs and ties, and the decision owner named.",
+        "example": "RICE-score these eight roadmap candidates and flag any score that rests on a guess.",
+        "reviewedEntrypointSha256": "1c83aff26fc94e0e6687382b897a3d133f23992d0f1fac399b66f80661e2fc0e"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -7264,7 +7336,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/process/SKILL.md",
       "sourceSha256": "b0876f55eab1b43642897b2ff9bb019bfc4e063805612555ebcdb9add823addf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/process/SKILL.md",
       "taskPackages": [
         {
           "name": "process-design",
@@ -7385,7 +7457,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/product-development-pathway/SKILL.md",
       "sourceSha256": "4e17a049ee5b802096c8580c78ce35759d159b0a0f11b469339b59a05c2c8f19",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/product-development-pathway/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/product-development-pathway/SKILL.md",
       "taskPackages": [
         {
           "name": "product-development",
@@ -7546,7 +7618,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prose-pass/SKILL.md",
       "sourceSha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/prose-pass/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/prose-pass/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -7612,17 +7684,24 @@
         "writing-integrity",
         "writing-profile"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Run the writing diagnostics and figure checks that writing-integrity uses.",
+        "when": "Writing-integrity needs a pattern scan, a figure tie-out or a review receipt.",
+        "inputs": "The saved text, the source version for figure comparison and the house configuration.",
+        "outputs": "Pattern findings, figure comparisons and validated review receipts; it does not rewrite text.",
+        "example": "Check this saved draft for recurring writing patterns and confirm no figure changed from the source.",
+        "reviewedEntrypointSha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -7845,7 +7924,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/quality-gate/SKILL.md",
       "sourceSha256": "854448520c20383707e16bddd027fed13a2196e75b083918a894e4f0398b9e1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/quality-gate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/quality-gate/SKILL.md",
       "taskPackages": [
         {
           "name": "deliverable-review",
@@ -8005,7 +8084,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/requirements-capture/SKILL.md",
       "sourceSha256": "285e48420fc2c355305c7d5a5a4e628065fa489f69c5589bda1f3fb2c7c784c9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/requirements-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/requirements-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "requirements-backlog",
@@ -8015,17 +8094,24 @@
       "downloadPackages": [
         "requirements-backlog"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Turn source material into a structured requirements backlog through a guided conversation.",
+        "when": "Requirements, user stories or a SOW-to-backlog workbook are needed.",
+        "inputs": "The brief, SOW, transcripts or product sources, and confirmation of the proposed hierarchy.",
+        "outputs": "A two-tab Excel workbook of epics, capabilities, business needs, stories, Gherkin acceptance criteria and MoSCoW priorities.",
+        "example": "Turn this SOW into a requirements workbook with stories and testable acceptance criteria.",
+        "reviewedEntrypointSha256": "285e48420fc2c355305c7d5a5a4e628065fa489f69c5589bda1f3fb2c7c784c9"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -8146,7 +8232,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/resume-numbers-and-keywords/SKILL.md",
       "sourceSha256": "bac682d878466ed29e02267f52a0adf61978ceb3b10d68ecd529552388ada4dd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/resume-numbers-and-keywords/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/resume-numbers-and-keywords/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -8250,7 +8336,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site/SKILL.md",
       "sourceSha256": "ebef4607fe151c273003a3065e535d5fb21353e91687bca81207c110e34b8277",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "review-site",
@@ -8379,7 +8465,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-kit/SKILL.md",
       "sourceSha256": "33f4b81ea9544446b46f9b4f4076b80267d4399184c314d0093eb03db1b6ec6a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/review-site-kit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/review-site-kit/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "decision-register",
@@ -8666,7 +8752,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/roadmap-artifacts/SKILL.md",
       "sourceSha256": "f8049332aee2da80393fa10a6ef24133b92effb692626bf6999231c7f0ffb530",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/roadmap-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/roadmap-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "roadmap-artifacts",
@@ -8680,17 +8766,24 @@
         "roadmap-artifacts",
         "scope-options"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Build roadmaps from one fixed set of branded, interactive components.",
+        "when": "A roadmap, timeline, launch plan or delivery plan is needed as a page or inside another page.",
+        "inputs": "The work to plan, the governing brand profile, and connected sources when the data lives in a tool.",
+        "outputs": "A validated plan JSON rendered as a branded page, an embeddable element or a single-file estate page.",
+        "example": "Build a now, next, later roadmap for these initiatives in our confirmed brand.",
+        "reviewedEntrypointSha256": "f8049332aee2da80393fa10a6ef24133b92effb692626bf6999231c7f0ffb530"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -8918,7 +9011,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/rom/SKILL.md",
       "sourceSha256": "5c4e72f9e50282c5c3a43c366fc34a82600b0df5606cace94c7cd48ceac16045",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/rom/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/rom/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -9096,7 +9189,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/s2d-handoff/SKILL.md",
       "sourceSha256": "5a20835369410ea3c73c2a29dbe76ca197f11b23126f9e8eb6305585a99ee0cb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/s2d-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/s2d-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-to-delivery-handoff",
@@ -9299,7 +9392,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-journey-critique/SKILL.md",
       "sourceSha256": "b3017491fc634e10d3e701a494df80578b65d168147fbdc4e4563724a5c46dd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sales-journey-critique/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sales-journey-critique/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -9404,7 +9497,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-process-mapping/SKILL.md",
       "sourceSha256": "4523ee9e6c71fc680ecff67815a0fe189483522dd37d2bf3ad06b23d9c843f03",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sales-process-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sales-process-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -9501,7 +9594,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-reference/SKILL.md",
       "sourceSha256": "5ce4f83358b1c63d3abedd2a09d4258a3642c8d5b6fcba42e525cb313e45c6fc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/scope-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/scope-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -9685,7 +9778,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scoping-agent/SKILL.md",
       "sourceSha256": "5c42af24098dabd808faddcbe450c622c97f2f9ae3c8845cbeb4a446f1b48e52",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/scoping-agent/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/scoping-agent/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -9818,7 +9911,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/session-handoff/SKILL.md",
       "sourceSha256": "76315e6e195546e7bb4722b3782a681f17654707ed822c1f0f266ef263ec484b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "session-handoff",
@@ -9919,11 +10012,11 @@
       "title": "Salesforce Delivery Standards — installer and auditor",
       "family": 2,
       "description": "Install, audit or repair a Salesforce repo''s delivery standards: git and Claude Code or Codex hooks, the CLAUDE.md or AGENTS.md contract, tracker and trunk settings, the DevOps Center local loop, initial retrieve and org-drift baseline. Use for set up delivery standards, install hooks, hooks not running, guard blocked me, switch tracker or trunk, first org commit or org drift. Not for ordinary implementation, deploys, promotion, releases or rollback (sf-pipeline-operations).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/sf-delivery-standards/SKILL.md",
       "sourceSha256": "1f1991ed702e190110684d81701e01a8d34f6ebb9d8e8f216b57c951eef2d69e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sf-delivery-standards/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sf-delivery-standards/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-project-setup",
@@ -9933,17 +10026,24 @@
       "downloadPackages": [
         "sf-project-setup"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Install, audit or repair a Salesforce repository's delivery standards.",
+        "when": "A project needs its hooks, instruction contract, tracker or trunk settings set up, checked or fixed.",
+        "inputs": "The repository, its delivery mode, tracker, host and ownership mode, and authenticated prerequisites.",
+        "outputs": "Installed or repaired hooks and contract blocks, recorded configuration, and an audit result for each piece.",
+        "example": "Audit this Salesforce repository's delivery hooks and project instructions, and fix what is no longer armed.",
+        "reviewedEntrypointSha256": "1f1991ed702e190110684d81701e01a8d34f6ebb9d8e8f216b57c951eef2d69e"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization.",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -10586,11 +10686,11 @@
       "title": "Sf-deploy-engine — operating the pipeline",
       "family": 2,
       "description": "Operate a repo''s sf-deploy-engine Salesforce pipeline (pipeline.yml): validate and deploy to preprod, staging or production, cut a release, roll back by ticket or SHA, revalidate, recover a frozen environment, pause or resume the engine, or provision a new instance. Use for deploy to prod, promote, what needs to ship, rollback, validation failed, environment frozen, or a PR that targets an environment branch. For the local sandbox loop, worktrees and git hooks, use sf-project-setup.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/sf-deploy-engine/SKILL.md",
       "sourceSha256": "8a638326984a888fd4e4f1ede7405a1e9899ece7f7ffc051022438c23252ad4d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sf-deploy-engine/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sf-deploy-engine/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-pipeline-operations",
@@ -10600,17 +10700,24 @@
       "downloadPackages": [
         "sf-pipeline-operations"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Operate an existing sf-deploy-engine Salesforce pipeline.",
+        "when": "A pipeline environment needs status, promotion, a release, rollback, revalidation or freeze recovery.",
+        "inputs": "The repository's pipeline.yml, a privately stored engine token and the authorized tickets or SHAs.",
+        "outputs": "Engine status and the verified result of the requested operation.",
+        "example": "Check the engine's status and release GH-397 from preprod to main.",
+        "reviewedEntrypointSha256": "8a638326984a888fd4e4f1ede7405a1e9899ece7f7ffc051022438c23252ad4d"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization.",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -10769,11 +10876,11 @@
       "title": "Salesforce Enterprise Patterns (Estate House Architecture)",
       "family": 2,
       "description": "Apply the estate''s Salesforce architecture (a service layer shared by trigger, UI and API entry points, a Unit of Work for all DML, selectors for all SOQL in USER_MODE, DTO returns from @AuraEnabled, imperative Apex from LWC) when the project uses it. Use for a new Apex class, trigger or LWC component, adding a service, selector or unit of work, running arch checks or pre-commit, or fixing architecture violations.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/sf-enterprise-patterns/SKILL.md",
       "sourceSha256": "f02a3a9fec328a1b42e89fae6a157071d3fc4ed59452e0c9b0a38ec463cbffff",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sf-enterprise-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sf-enterprise-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-apex-patterns",
@@ -10783,17 +10890,24 @@
       "downloadPackages": [
         "sf-apex-patterns"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Apply the estate Salesforce architecture and check code against it.",
+        "when": "Apex, trigger or LWC work in a project that uses service, selector and unit-of-work conventions.",
+        "inputs": "The codebase, its architecture decisions and the requested feature or review.",
+        "outputs": "Code or a review aligned to the layers, with architecture checker findings reported separately from judgment findings.",
+        "example": "Review this Apex change against the project's service, selector and unit-of-work patterns.",
+        "reviewedEntrypointSha256": "f02a3a9fec328a1b42e89fae6a157071d3fc4ed59452e0c9b0a38ec463cbffff"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization.",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -10945,7 +11059,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-headless-screenshot/SKILL.md",
       "sourceSha256": "06cdf4bb69534ca8360c6e45568165ebed6f98c4d74aa7100a73fef3d453cfe1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sf-headless-screenshot/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sf-headless-screenshot/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -11040,7 +11154,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-solo-devops/SKILL.md",
       "sourceSha256": "7aa22071e02f31275dcdff3bf20170739971f90d31d0563242ef88a520154d73",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sf-solo-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sf-solo-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-change-delivery",
@@ -11351,7 +11465,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-creation-walkthrough/SKILL.md",
       "sourceSha256": "ee26692c205920fa87c71c04af6dcd814fc43606c2da4a7a1a74c154df3778a6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/skill-creation-walkthrough/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/skill-creation-walkthrough/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -11502,7 +11616,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-estate-sync/SKILL.md",
       "sourceSha256": "9c825654bbc5796ce092366a36a8d9d67a5928156d7addcf3c194c2ef495011d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/skill-estate-sync/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/skill-estate-sync/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -11512,17 +11626,24 @@
       "downloadPackages": [
         "skill-estate-sync"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Maintain a Skills Estate checkout by authoring, validating, packaging and releasing workflows.",
+        "when": "A workflow needs creating or repair, packages need building, a reviewed release needs installing, or another host needs an update.",
+        "inputs": "The canonical estate checkout, the reviewed source hash for installation and the target host.",
+        "outputs": "Validation and build results, packages, installation receipts and publication records for the requested operation.",
+        "example": "Validate the current estate and build candidate packages without installing them.",
+        "reviewedEntrypointSha256": "9c825654bbc5796ce092366a36a8d9d67a5928156d7addcf3c194c2ef495011d"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths.",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -11666,11 +11787,11 @@
       "title": "Solution Brief",
       "family": 1,
       "description": "Decide whether a proposed client solution can be delivered, then write the Solution Brief or build reference that explains its systems, interfaces, failure handling, scope, staffing, risks and cost reconciliation. Use for deal-desk approval, \"is this deliverable\", a build reference for developers, or a field guide for a scoping call. Stops at a Technical Readiness Memo when evidence is missing. For a product or service architecture without a deal, use system-design.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/solution-brief/SKILL.md",
       "sourceSha256": "f7f08afe359072e7f542a43e2a827d1e0f425a5d91789f790a69f3282f401978",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/solution-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/solution-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "solution-brief",
@@ -11680,17 +11801,24 @@
       "downloadPackages": [
         "solution-brief"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Decide whether a proposed client solution can be delivered and make its delivery logic inspectable.",
+        "when": "A solution needs deal approval, a build reference for developers or a field guide for a scoping call.",
+        "inputs": "A validated evidence ledger and gate report, plus the systems, interfaces, scope, staffing and commercial baseline.",
+        "outputs": "A validated solution graph rendered as a Solution Brief, build reference or field guide, or a Technical Readiness Memo when evidence is insufficient.",
+        "example": "Explain whether this solution can be delivered, including systems, interfaces, risks and decisions.",
+        "reviewedEntrypointSha256": "f7f08afe359072e7f542a43e2a827d1e0f425a5d91789f790a69f3282f401978"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -11969,7 +12097,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow/SKILL.md",
       "sourceSha256": "4e4d47135eda6b0e5bf6fabff30693368ad61984e4761e705d038d935fcf7db3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sow/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sow/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -12190,7 +12318,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow-quality/SKILL.md",
       "sourceSha256": "f13a0cc56620104bd57e6b8f76a4586488f7d2fdd9fe7ad5424117a6a0fd9ec1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sow-quality/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sow-quality/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -12332,7 +12460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/spec-writer/SKILL.md",
       "sourceSha256": "7ae4353bc1c856ed2de2a49fef14ef204b420d9e2d46541462c9e6ef750ea61f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/spec-writer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/spec-writer/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -12433,7 +12561,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sprint-planning/SKILL.md",
       "sourceSha256": "9e41c15db883c84ae5377ff1e011cfdb9dc1605eab23fde6a352a2f07ecc0ef9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sprint-planning/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sprint-planning/SKILL.md",
       "taskPackages": [
         {
           "name": "sprint-planning",
@@ -12443,17 +12571,24 @@
       "downloadPackages": [
         "sprint-planning"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Plan one sprint against measured team capacity.",
+        "when": "A team is about to commit to a sprint, or sprints keep missing their goal.",
+        "inputs": "Team availability, the backlog-refinement readiness report, the RAID log, recent velocity and the definition of done.",
+        "outputs": "A sprint plan with a goal, capacity, commit and stretch work, owned dependencies and a gate result.",
+        "example": "Plan sprint 5 for a team of four with one person out for three days.",
+        "reviewedEntrypointSha256": "9e41c15db883c84ae5377ff1e011cfdb9dc1605eab23fde6a352a2f07ecc0ef9"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -12605,7 +12740,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-art-direction/SKILL.md",
       "sourceSha256": "dcdd4dd6bb05db06865fc642b5d0eb269386f09c5a87bf2a31168f49b62cdf4f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sticker-art-direction/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sticker-art-direction/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-art-direction",
@@ -12700,7 +12835,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-sheets/SKILL.md",
       "sourceSha256": "1b464817a7997c722c9ce4b4ea92ffda707eb21f6aceee9a70aecc3491c02c38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-sheets",
@@ -12773,7 +12908,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/system-design/SKILL.md",
       "sourceSha256": "a85c9e72b9cd4db699a8d758270748b7a18cdd8f08a26ddb03cb99b75e639b56",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/system-design/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/system-design/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -12890,7 +13025,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/team-onboarding/SKILL.md",
       "sourceSha256": "20659fda549fafd71092ba6d71a5cee667b4b4b36e7a13701f068154b4bff265",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "team-onboarding",
@@ -13016,7 +13151,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tracker-intake/SKILL.md",
       "sourceSha256": "ad155d56dd3ba52562f7e462af4e145db73e621812205a2933adac24c6d21fba",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/tracker-intake/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/tracker-intake/SKILL.md",
       "taskPackages": [
         {
           "name": "tracker-intake",
@@ -13120,7 +13255,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/transcript-ingestion/SKILL.md",
       "sourceSha256": "990703731119c90008f1f920e37bc97908b55c885fa8458155eb91d7f03f9944",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/transcript-ingestion/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/transcript-ingestion/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -13220,11 +13355,11 @@
       "title": "Estate UAT validation",
       "family": 2,
       "description": "Run delivery validation: test scripts traced to the requirements workbook, the defect log and triage, the UAT tracker with coverage, the cutover readiness checklist and the go/no-go evidence pack. Use when testing starts or someone asks for test scripts, a traceability matrix, test coverage, \"are we ready for UAT\" or \"can we go live\". Not for writing requirements (requirements-backlog), executing cutover or hypercare (cutover-closeout) or weekly status (delivery-status).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/uat-validation/SKILL.md",
       "sourceSha256": "df12e4024062a0e9c7a2ee8ac55358d26599110a8acfe9c134f493f8163925ad",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/uat-validation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/uat-validation/SKILL.md",
       "taskPackages": [
         {
           "name": "acceptance-testing",
@@ -13234,17 +13369,24 @@
       "downloadPackages": [
         "acceptance-testing"
       ],
-      "guide": null,
-      "guideStatus": "needs-review",
+      "guide": {
+        "what": "Trace tests to requirements, track UAT and assemble the go or no-go evidence.",
+        "when": "Testing starts, or someone asks for test scripts, coverage or whether the release is ready.",
+        "inputs": "The requirements workbook, the Test Plan, the SOW acceptance section, build status and reported test results.",
+        "outputs": "Traced test scripts, a defect log, a UAT tracker with coverage, and a go or no-go pack with an empty decision block.",
+        "example": "Build the test scripts and traceability check from this requirements workbook.",
+        "reviewedEntrypointSha256": "df12e4024062a0e9c7a2ee8ac55358d26599110a8acfe9c134f493f8163925ad"
+      },
+      "guideStatus": "current",
       "reuse": {
-        "audience": "review",
-        "label": "Needs review",
-        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "review",
+        "readiness": "cleanup",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -13404,7 +13546,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/usability-testing/SKILL.md",
       "sourceSha256": "1bd1c6d7af93f9ec601b9d7a13dd252e98af94236d23995d6b509ffe316355a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/usability-testing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/usability-testing/SKILL.md",
       "taskPackages": [
         {
           "name": "usability-testing",
@@ -13494,7 +13636,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-integrity/SKILL.md",
       "sourceSha256": "d803e6989ebbf6222af21a788033f43c48fba6f5d425a5d51312defa8de22fcc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/writing-integrity/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/writing-integrity/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-integrity",
@@ -13728,7 +13870,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-style-builder/SKILL.md",
       "sourceSha256": "e379f9a134e038cc87e2013b0238f114fbad46e874d27dada6e878b688557b02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/ea1c20012a779602b6da3c268fa8ebcb8cc56aeb/skills/writing-style-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/61246a6a531f0be8dd392d9c365d9db3ed9ee56d/skills/writing-style-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-profile",
@@ -13845,8 +13987,8 @@
     }
   ],
   "counts": {
-    "github": 80,
-    "local-revision": 10,
+    "github": 90,
+    "local-revision": 0,
     "local-addition": 0,
     "canonical": 90,
     "total": 90
