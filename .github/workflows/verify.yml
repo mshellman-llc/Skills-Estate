@@ -13,33 +13,26 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    # Playwright's image ships Chromium and its system libraries, so no run downloads
+    # or installs a browser. Its tag must match the playwright version in package.json;
+    # tests/test_workflow_artifacts.py checks that.
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     steps:
+      - name: Install git, jq and Python tooling
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq --no-install-recommends git jq python3-venv python3-pip >/dev/null
       - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v7.0.0
-        with:
-          python-version: '3.12'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - run: python3 -m pip install -r requirements-test.txt
+      - name: Install Python test requirements
+        run: |
+          python3 -m venv /opt/venv
+          echo "/opt/venv/bin" >> "$GITHUB_PATH"
+          /opt/venv/bin/python -m pip install -q -r requirements-test.txt
       - run: npm install --global pnpm@11.25.0
       - run: pnpm install --frozen-lockfile
-      # The Chromium download is cached by Playwright version. System libraries
-      # still install on every run because the runner image starts clean.
-      - name: Read the Playwright version
-        id: playwright
-        run: echo "version=$(node -p "require('./node_modules/playwright/package.json').version")" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache@v4
-        id: browsers
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}-chromium
-      - if: steps.browsers.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps chromium
-      - if: steps.browsers.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps chromium
       - name: Configure test runtimes
         run: |
           echo "ESTATE_NODE=$(command -v node)" >> "$GITHUB_ENV"

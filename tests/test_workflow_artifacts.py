@@ -1,5 +1,6 @@
 """Keep workflow artifacts from filling the account's Actions storage."""
 from pathlib import Path
+import json
 import re
 import unittest
 
@@ -39,6 +40,15 @@ class WorkflowArtifactTests(unittest.TestCase):
         viewer = (ROOT / 'artifacts/skills-map/viewer.py').read_text()
         self.assertIn("a.get('name')=='skills-estate-map' and not a.get('expired')", viewer,
                       'the viewer must keep handling an expired map artifact')
+
+
+
+class WorkflowBrowserImageTests(unittest.TestCase):
+    def test_container_image_matches_the_installed_playwright(self):
+        version = json.loads((ROOT / 'package.json').read_text())['devDependencies']['playwright']
+        workflow = (ROOT / '.github/workflows/verify.yml').read_text()
+        self.assertIn(f'image: mcr.microsoft.com/playwright:v{version}-noble', workflow)
+        self.assertNotIn('playwright install', workflow, 'the image already holds the browser')
 
 
 if __name__ == '__main__':
