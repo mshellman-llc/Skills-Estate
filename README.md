@@ -25,7 +25,7 @@ The restoration candidate contains 85 source modules and 58 proposed task entryp
 The skills reach every app as plugins from this repository's marketplace. After a change reaches `main` and passes automated verification, GitHub rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the [Plugins (latest)](https://github.com/mshellman-llc/Skills-Estate/releases/tag/plugins-latest) release. Publication starts when that verification finishes, and a daily run retries anything an event missed. It refuses to publish stale or failing source. Do not edit `plugins/`; it is generated.
 
 - Cowork and claude.ai: Customize, Plugins, Add, Add marketplace, `mshellman-llc/Skills-Estate`, with automatic sync on.
-- Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, install the seven `estate-` plugins, and turn on auto-update for the marketplace in `/plugin`.
+- Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, install the eight `estate-` domain plugins (add `estate-personal` for the career and personal workflows), and turn on auto-update for the marketplace in `/plugin`.
 - Codex on the Mac: run `python3 tools/estate.py update` from this folder. It pulls `main`, links every public skill for Codex, and moves other copies of those skills out of `~/.claude/skills` into a dated backup under `~/.local/state/skills-estate/`.
 
 Merged pull request branches are deleted automatically.

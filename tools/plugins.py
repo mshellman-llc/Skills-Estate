@@ -14,7 +14,9 @@ from catalog import entries as catalog_entries, retired_entries
 from portable import assemble, runtime_closure
 
 BUNDLES = {f'estate-{name}' for name in
-           ('pursuit', 'solutioning', 'commercial', 'delivery', 'quality', 'governance', 'additional-skills')}
+           ('pursuit', 'solutioning', 'commercial', 'delivery', 'quality', 'governance', 'product', 'writing',
+            'personal')}
+OPT_IN = 'estate-personal'  # the only bundle a user installs by choice; it has no router
 
 
 def strict_object(pairs):
@@ -29,7 +31,7 @@ def strict_object(pairs):
 def config(root):
     value = json.loads((root / 'config/plugin-bundles.json').read_text(), object_pairs_hook=strict_object)
     if value.get('format') != 1 or set(value.get('bundles', {})) != BUNDLES:
-        raise ValueError('Declare the six domain bundles and estate-additional-skills')
+        raise ValueError('Declare the eight domain bundles and estate-personal')
     if not re.fullmatch(r'\d+\.\d+\.\d+', value.get('version', '')):
         raise ValueError('Plugin version must be major.minor.patch')
     public = catalog_entries(root)
@@ -38,8 +40,8 @@ def config(root):
     for bundle, item in value['bundles'].items():
         if not isinstance(item.get('description'), str) or not item['description'].strip():
             raise ValueError('Bundle needs a description: ' + bundle)
-        if item.get('opt_in') != (bundle == 'estate-additional-skills'):
-            raise ValueError('Only the additional bundle must be opt-in')
+        if item.get('opt_in') != (bundle == OPT_IN):
+            raise ValueError('Only the personal bundle must be opt-in')
         for key, known, claimed in [('entries', public, owners), ('internal', catalog['internal'], internal_owners)]:
             for name in item.get(key, []):
                 if name not in known:
@@ -49,7 +51,7 @@ def config(root):
                 claimed[name] = bundle
         router = item.get('router_source')
         if not router:
-            if bundle != 'estate-additional-skills':
+            if bundle != OPT_IN:
                 raise ValueError('Missing domain router: ' + bundle)
             continue
         path = Path(router)

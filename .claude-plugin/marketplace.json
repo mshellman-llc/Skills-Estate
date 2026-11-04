@@ -8,11 +8,6 @@
   },
   "plugins": [
     {
-      "name": "estate-additional-skills",
-      "description": "Optional remaining Skills Estate workflows.",
-      "source": "./plugins/estate-additional-skills"
-    },
-    {
       "name": "estate-commercial",
       "description": "Skills Estate commercial workflows and routing.",
       "source": "./plugins/estate-commercial"
@@ -24,8 +19,18 @@
     },
     {
       "name": "estate-governance",
-      "description": "Skills Estate governance workflows and routing.",
+      "description": "Skills Estate governance, personal Hub context and estate maintenance workflows.",
       "source": "./plugins/estate-governance"
+    },
+    {
+      "name": "estate-personal",
+      "description": "Optional personal Skills Estate workflows: career, portfolio, independent products and creative projects.",
+      "source": "./plugins/estate-personal"
+    },
+    {
+      "name": "estate-product",
+      "description": "Skills Estate product and experience workflows: research, usability, accessibility, analytics and information architecture.",
+      "source": "./plugins/estate-product"
     },
     {
       "name": "estate-pursuit",
@@ -41,6 +46,11 @@
       "name": "estate-solutioning",
       "description": "Skills Estate solutioning workflows and routing.",
       "source": "./plugins/estate-solutioning"
+    },
+    {
+      "name": "estate-writing",
+      "description": "Skills Estate writing, voice and brand workflows.",
+      "source": "./plugins/estate-writing"
     }
   ]
 }

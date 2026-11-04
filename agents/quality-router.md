@@ -21,4 +21,5 @@ description: Route the shared controls every other skill depends on. Knowledge H
 - `brand-renderer`
 - `org-preflight`
 - `session-handoff`
+- `code-simplify`
 

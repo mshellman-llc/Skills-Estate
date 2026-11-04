@@ -176,6 +176,8 @@ Each module needs a reviewed capability disposition before release.
 - [commercial-router](agents/commercial-router.md)
 - [delivery-router](agents/delivery-router.md)
 - [governance-router](agents/governance-router.md)
+- [product-router](agents/product-router.md)
 - [pursuit-router](agents/pursuit-router.md)
 - [quality-router](agents/quality-router.md)
 - [solutioning-router](agents/solutioning-router.md)
+- [writing-router](agents/writing-router.md)
