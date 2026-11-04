@@ -1,0 +1,1 @@
+{ "kit": 1, "id": "fixture-no-board", "meta": { "title": "Synthetic plan without a Now column" }, "blocks": [{ "type": "table", "columns": [], "rows": [] }] }
