@@ -19,7 +19,7 @@ body{margin:0;background:var(--bl-n25)}
 .page-h{padding:20px 0 0}
 .page-h .wrap{display:flex;flex-direction:column;gap:6px;width:100%;padding-bottom:20px}
 .page-h h1{font-size:24px;line-height:30px}
-.lede{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end;padding:40px 0 32px}
+.lede{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:start;padding:40px 0 32px}
 .lede h2{font-size:36px;line-height:40px;font-weight:650;letter-spacing:-.02em;color:var(--bl-n900);max-width:18ch}
 .lede .scope{margin-top:16px;font-size:16px;line-height:24px;color:var(--bl-n700);max-width:62ch}
 .lede .basis{margin-top:8px;font-size:13px;line-height:18px;color:var(--bl-n600);max-width:62ch}
@@ -67,7 +67,7 @@ body{margin:0;background:var(--bl-n25)}
 .tip dd{margin:0;color:var(--bl-n900);font-variant-numeric:tabular-nums}
 .tip p{color:var(--bl-n700)}
 /* Gap chart */
-svg.gap{display:block;width:100%;height:auto;overflow:visible}
+svg.gap{display:block;width:100%;min-width:600px;height:auto;overflow:visible}
 svg.gap .row:hover .hl,svg.gap .row:focus-visible .hl{fill:var(--bl-n50)}
 svg.gap .row{outline:none}
 /* Strategy coverage */
@@ -105,6 +105,8 @@ ul.flat{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;ga
 ul.flat li{display:flex;gap:10px;font-size:13px;line-height:18px;color:var(--bl-n700)}
 ul.flat svg.i{margin-top:1px;color:var(--bl-n500);flex:none}
 ul.flat li.warn svg.i{color:var(--bl-warning-mark)}
+#release{padding-bottom:32px}
+#release .sub-h{margin-top:24px}
 details.more{border-top:1px solid var(--bl-n200);padding:16px 0}
 details.more summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--bl-n900);border-radius:var(--bl-r)}
 details.more[open] summary{margin-bottom:12px}
@@ -132,6 +134,10 @@ ul.ev b{font-weight:600;color:var(--bl-n500);margin-right:8px;font-variant-numer
     </div>
     <div class="firsts" id="firsts" aria-label="Where to invest first"></div>
   </section>
+  <section class="notes" id="release" aria-labelledby="rel-h" hidden>
+    <div><h3 id="rel-h"></h3><ul class="flat" id="rel-gaps"></ul><h3 id="p2-h" class="sub-h"></h3><ol class="why" id="phase2"></ol></div>
+    <div><h3>Decisions needed</h3><ul class="flat" id="decisions"></ul></div>
+  </section>
   <div class="sections">
     <section class="chart-card" aria-labelledby="map-h">
       <div class="chart-h">
@@ -148,8 +154,8 @@ ul.ev b{font-weight:600;color:var(--bl-n500);margin-right:8px;font-variant-numer
     </section>
     <div class="dash" style="align-items:start">
       <section class="chart-card s8" aria-labelledby="gap-h">
-        <div class="chart-h"><div class="t"><h3 id="gap-h">Gap to target</h3><p>In rank order. The hollow dot is today, the filled dot is the target, and the line is the gap.</p></div></div>
-        <div class="chart-b" id="gapchart"></div>
+        <div class="chart-h"><div class="t"><h3 id="gap-h">Gap to target</h3><p id="gap-sub">In rank order. The hollow dot is today, the filled dot is the target, and the line is the gap.</p></div></div>
+        <div class="chart-b"><div class="table-scroll" id="gapchart"></div></div>
       </section>
       <section class="chart-card s4" aria-labelledby="goal-h">
         <div class="chart-h"><div class="t"><h3 id="goal-h">Strategy coverage</h3><p>Each goal with the capabilities that deliver it.</p></div></div>
@@ -200,6 +206,7 @@ const domains=m.domains, dname=Object.fromEntries(domains.map(d=>[d.id,d.name]))
 const scored=caps.filter(c=>c.scored).sort((a,b)=>a.rank-b.rank||a.id.localeCompare(b.id));
 const s=m.summary, t=s.thresholds;
 const words=n=>["No","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve"][n]||String(n);
+const stories=d=>`${d.in_scope} Must and Should: ${d.done} done, ${d["in-progress"]} in progress, ${d["not-started"]} not started, ${d["not-ticketed"]} not ticketed, ${d.blocked} blocked`;
 const stagesOf=c=>c.stages&&c.stages.length?c.stages:(c.parent&&byId[c.parent].stages)||[];
 
 // Header
@@ -211,18 +218,23 @@ if((m.meta.status||"draft")==="draft")h1.append(el("span",{class:"badge warning"
 
 // Lede: the decision, then the capabilities that carry it
 const invest=scored.filter(c=>c.final_band==="Invest now"), plan=scored.filter(c=>c.final_band==="Plan");
-document.getElementById("headline").textContent=invest.length
+const gapsShort=m.findings.filter(f=>f.kind==="expectation-gap").length;
+const relName=s.release?s.release.charAt(0).toUpperCase()+s.release.slice(1):"";
+document.getElementById("headline").textContent=s.release&&gapsShort
+  ?`${relName} leaves ${words(gapsShort).toLowerCase()} of ${words(m.goals.length).toLowerCase()} goals short.`
+  :invest.length
   ?`${words(invest.length)} of ${s.scored} capabilities need investment now.`
   :`No capability reaches the Invest now band.`;
 document.getElementById("scope").textContent=m.meta.scope;
 const extra=[];
-if(s.open_values)extra.push(`${words(s.open_values).toLowerCase()} score is still open`);
-if(s.goals_unlinked)extra.push(`${words(s.goals_unlinked).toLowerCase()} goal has no capability behind it`);
+if(s.open_values)extra.push(s.open_values===1?"one capability still has an open score":`${words(s.open_values).toLowerCase()} capabilities still have open scores`);
+if(s.decisions_unowned)extra.push(s.decisions_unowned===1?"one decision has no owner":`${words(s.decisions_unowned).toLowerCase()} decisions have no owner`);
+if(s.goals_unlinked)extra.push(s.goals_unlinked===1?"one goal has no capability behind it":`${words(s.goals_unlinked).toLowerCase()} goals have no capability behind them`);
 document.getElementById("basis").textContent=m.meta.basis_note+(extra.length?` In this draft, ${extra.join(" and ")}.`:"");
 const firsts=document.getElementById("firsts");
 if(invest.length||plan.length)firsts.append(el("p",{class:"cap",text:"Where to invest first, ranked by gap times impact"}));
 [...invest,...plan].forEach(c=>firsts.append(el("div",{class:"first"+(c.final_band==="Plan"?" plan":"")},
-  el("span",{class:"r",text:String(c.rank)}),el("b",{text:c.name}),el("span",{text:`${v(c.current)} → ${v(c.target)}, score ${v(c.priority_score)}`}))));
+  el("span",{class:"r",text:String(c.rank)}),el("b",{text:c.name}),el("span",{text:`${c.final_band}, ${v(c.current)} → ${v(c.target)}, score ${v(c.priority_score)}`}))));
 
 // Hover card
 const tip=document.getElementById("tip");
@@ -231,6 +243,8 @@ function showTip(c,x,y){
     el("dl",{},el("dt",{text:"Maturity"}),el("dd",{text:`${v(c.current)}${c.current!=null?" "+LEVELS[c.current]:""} → ${v(c.target)}`}),
       el("dt",{text:"Impact"}),el("dd",{text:v(c.impact)}),el("dt",{text:"Score"}),el("dd",{text:v(c.priority_score)}),
       el("dt",{text:"Band"}),el("dd",{text:c.final_band!==c.band?`${c.final_band}, computed ${c.band}`:c.final_band}),
+      ...(s.release?[el("dt",{text:"After release"}),el("dd",{text:v(c.after_release)})]:[]),
+      ...(c.delivery&&c.delivery.in_scope?[el("dt",{text:"Stories"}),el("dd",{text:stories(c.delivery)})]:[]),
       ...(c.kpis&&c.kpis.length?[el("dt",{text:"KPIs"}),el("dd",{text:c.kpis.join("; ")})]:[])),
     ...[c.score_reason,c.impact_reason].filter(Boolean).map(r=>el("p",{text:r})));
   tip.style.display="flex";
@@ -310,9 +324,10 @@ drawMap("priority");
       if(c.target!==c.current)g.append(sv("line",{x1:X(c.current),x2:X(c.target),y1:y,y2:y,stroke:col,"stroke-width":"4","stroke-linecap":"round"}));
       g.append(sv("circle",{cx:X(c.current),cy:y,r:6,fill:"var(--bl-n0)",stroke:col,"stroke-width":"2"}));
       g.append(sv("circle",{cx:X(c.target),cy:y,r:6,fill:col}));
+      if(c.after_release!=null)g.append(sv("rect",{x:X(c.after_release)-5,y:y-5,width:10,height:10,fill:"var(--bl-n900)",stroke:"var(--bl-n0)","stroke-width":"1.5"}));
     }else{
       if(c.current!=null)g.append(sv("circle",{cx:X(c.current),cy:y,r:6,fill:"var(--bl-n0)",stroke:col,"stroke-width":"2"}));
-      g.append(sv("text",{x:c.current!=null?X(c.current)+14:L,y:y+4,"font-size":"12",fill:"var(--bl-n500)"},c.target==null?"Target OPEN":"Impact OPEN"));
+      g.append(sv("text",{x:c.current!=null?X(c.current)+14:L,y:y+4,"font-size":"12",fill:"var(--bl-n500)"},[c.current==null&&"current",c.target==null&&"target",c.impact==null&&"impact"].filter(Boolean).join(", ").replace(/^./,x=>x.toUpperCase())+" OPEN"));
     }
     g.append(sv("text",{x:W,y:y+4,"text-anchor":"end","font-size":"13","font-weight":"600",fill:"var(--bl-n900)"},c.priority_score==null?"OPEN":String(c.priority_score)));
     hover(g,c);svg.append(g);
@@ -342,15 +357,36 @@ for(const col of cols){
   life.append(el("div",{class:"stage"+(col.id?"":" enabling")},el("h4",{},col.name,el("span",{text:String(list.length)})),stack));
 }
 
+// What the release leaves undone, and the decisions it needs
+if(s.release){
+  document.getElementById("release").hidden=false;
+  document.getElementById("rel-h").textContent=`What ${s.release} leaves undone`;
+  document.getElementById("gap-sub").textContent=`In rank order. The hollow dot is today, the square is after ${s.release}, and the filled dot is the target.`;
+  const rg=document.getElementById("rel-gaps");
+  const order=["expectation-gap","regression","delivery-risk"];
+  m.findings.filter(f=>order.includes(f.kind)).sort((a,b)=>order.indexOf(a.kind)-order.indexOf(b.kind)).forEach(f=>{const li=el("li",{class:"warn"});li.append(icon("warning"),el("span",{text:f.text}));rg.append(li)});
+  if(!rg.children.length)rg.append(el("li",{text:"Every high-impact capability reaches its target."}));
+  document.getElementById("p2-h").textContent=`Still short of target after ${s.release}`;
+  const left=scored.filter(c=>(c.remaining_gap||0)>0).sort((a,b)=>(b.remaining_score||0)-(a.remaining_score||0)||a.rank-b.rank);
+  const p2=document.getElementById("phase2");
+  left.forEach((c,i)=>p2.append(el("li",{},el("span",{class:"r",text:String(i+1)}),el("div",{},el("b",{text:c.name}),
+    el("p",{text:`Today ${v(c.current)}, after ${s.release} ${v(c.after_release)}, target ${v(c.target)}. Remaining score ${v(c.remaining_score)}.`+(c.delivery&&c.delivery.in_scope?` Stories: ${stories(c.delivery)}.`:"")})))));
+  if(!left.length)p2.append(el("li",{},el("span",{class:"r",text:""}),el("p",{text:`Every capability reaches its target in ${s.release}.`})));
+  const dl=document.getElementById("decisions");
+  (m.open_items||[]).forEach(o=>{const li=el("li",{class:o.owner?"":"warn"});li.append(icon(o.owner?"info":"warning"),el("span",{text:`${o.question} ${o.owner?"It is assigned to "+o.owner+".":"It has no owner yet."}`}));dl.append(li)});
+  if(!dl.children.length)dl.append(el("li",{text:"No open decisions."}));
+}
+
 // Decision notes
 const why=document.getElementById("why");
 [...invest,...plan].forEach(c=>why.append(el("li",{},el("span",{class:"r",text:String(c.rank)}),
   el("div",{},el("b",{text:`${c.name}, ${c.final_band.toLowerCase()}`}),el("p",{text:[c.impact_reason,c.score_reason].filter(Boolean).join(" ")})))));
 if(!why.children.length)why.append(el("li",{},el("span",{class:"r",text:""}),el("p",{text:"No capability is in the Invest now or Plan band."})));
 const fl=document.getElementById("findings");
-const kindIcon={"goal-unlinked":"warning","priority-unlinked":"warning","open-value":"info","override":"flag","stage-empty":"info"};
-m.findings.forEach(f=>{const li=el("li",{class:kindIcon[f.kind]==="warning"?"warn":""});li.append(icon(kindIcon[f.kind]||"info"),el("span",{text:f.text}));fl.append(li)});
-(m.open_items||[]).forEach(o=>{const li=el("li");li.append(icon("info"),el("span",{text:`${o.question} Owner: ${o.owner||"OPEN"}.`}));fl.append(li)});
+const kindIcon={"goal-unlinked":"warning","priority-unlinked":"warning","open-value":"info","override":"flag","stage-empty":"info",
+  "regression":"warning","expectation-gap":"warning","delivery-risk":"warning","decision-unowned":"warning"};
+m.findings.filter(f=>!(s.release&&["decision-unowned","expectation-gap","regression","delivery-risk"].includes(f.kind))).forEach(f=>{const li=el("li",{class:kindIcon[f.kind]==="warning"?"warn":""});li.append(icon(kindIcon[f.kind]||"info"),el("span",{text:f.text}));fl.append(li)});
+if(!s.release)(m.open_items||[]).forEach(o=>{const li=el("li");li.append(icon("info"),el("span",{text:`${o.question} Owner: ${o.owner||"OPEN"}.`}));fl.append(li)});
 if(!fl.children.length)fl.append(el("li",{text:"No findings or open items."}));
 
 // Full table

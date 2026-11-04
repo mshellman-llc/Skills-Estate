@@ -17,6 +17,8 @@ Keep the JSON model as the editable source, following [the model schema](referen
 python3 scripts/build_capability_map.py build model.json --output-dir out/
 ```
 
+When a release is already planned, trace it against the map: the stories that move each capability, the score after the release, and an owner for every open decision. The outputs then lead with the goals the release leaves short and the decisions it needs, and `handoffs.json` carries the inputs for `roadmap-artifacts`, `requirements-capture` and `deck-builder`; run those skills on it.
+
 For a lifecycle workshop, use [the workshop kit](references/workshop-kit.md) and its `workshop` and `ingest` commands. The output layout is in [rendered outputs](references/rendered-outputs.md). A Markdown-only request still receives the ranked gaps, goal coverage, findings and open items.
 
 Review the outputs against the sources: compare the readout figures with the computed model, open the HTML and the workbook, and check that stakeholder overrides keep their reasons. Hand top gaps to their next owner as the method describes; this skill does not price work or design the solution. Run the method's applicable release checks and report a missing check instead of claiming a pass.

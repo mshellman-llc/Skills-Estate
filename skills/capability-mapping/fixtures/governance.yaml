@@ -28,6 +28,7 @@ contract:
     - HTML capability map
     - Excel map-and-gap tracker with live formulas
     - Markdown decision readout
+    - Hand-off inputs for roadmap-artifacts, requirements-capture and deck-builder
     - Workshop capture workbook and seeded model when requested
 selection:
   positive:

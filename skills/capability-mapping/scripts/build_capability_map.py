@@ -34,6 +34,9 @@ EVIDENCE_TYPES = {"interview", "workshop", "transcript", "document", "system", "
 BANDS = ("Invest now", "Plan", "Monitor", "Hold", "Retire review", "OPEN")
 BAND_ORDER = {b: i for i, b in enumerate(BANDS)}
 DEFAULT_THRESHOLDS = {"invest_now": 6, "plan": 3, "monitor": 1}
+PRIORITIES = ("must", "should", "could", "wont")
+DELIVERY_STATUSES = ("done", "in-progress", "not-started", "not-ticketed", "blocked")
+IN_SCOPE = ("must", "should")
 MATURITY = [
     (0, "Absent", "The organization cannot do this today."),
     (1, "Initial", "Ad hoc and person-dependent; mostly manual; results vary."),
@@ -96,6 +99,9 @@ def validate(model):
         errors.append("meta.status must be draft or validated")
     if meta.get("date") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(meta["date"])):
         errors.append("meta.date must be an ISO date (YYYY-MM-DD)")
+    release = meta.get("release")
+    if release is not None and (not isinstance(release, dict) or not str(release.get("name", "")).strip()):
+        errors.append("meta.release needs a name")
     bands = meta.get("priority_bands")
     if bands is not None:
         if not isinstance(bands, dict) or set(bands) != set(DEFAULT_THRESHOLDS) or not all(isinstance(v, int) for v in bands.values()):
@@ -164,6 +170,16 @@ def validate(model):
         for s in c.get("sources", []) or []:
             if s not in evidence:
                 errors.append(f"{cid} cites unknown evidence {s}")
+        stories = c.get("delivered_by")
+        if stories is not None:
+            if not isinstance(stories, list):
+                errors.append(f"{cid} delivered_by must be a list")
+            else:
+                for n, story in enumerate(stories):
+                    if (not isinstance(story, dict) or not str(story.get("name", "")).strip()
+                            or story.get("priority") not in PRIORITIES or story.get("status") not in DELIVERY_STATUSES):
+                        errors.append(f"{cid} delivered_by[{n}] needs a name, a priority ({', '.join(PRIORITIES)}) "
+                                      f"and a status ({', '.join(DELIVERY_STATUSES)})")
         for key in ("functions", "kpis"):
             values = c.get(key)
             if values is not None and (not isinstance(values, list)
@@ -183,14 +199,16 @@ def validate(model):
         if c.get("votes") is not None and (not isinstance(c["votes"], int) or c["votes"] < 0):
             errors.append(f"{cid} votes must be a non-negative integer")
         if cid in parents:
-            for key in ("current", "target", "impact"):
+            for key in ("current", "target", "impact", "after_release"):
                 if c.get(key) is not None:
                     errors.append(f"{cid} has Level 3 children, so its {key} belongs on the children")
             continue
-        for key in ("current", "target"):
+        for key in ("current", "target", "after_release"):
             v = c.get(key)
             if v is not None and (not isinstance(v, int) or isinstance(v, bool) or not 0 <= v <= 5):
                 errors.append(f"{cid} {key} must be an integer from 0 to 5 or null")
+        if c.get("after_release") is not None and not meta.get("release"):
+            errors.append(f"{cid} has after_release, so meta.release must name the release")
         if c.get("impact") is not None and c["impact"] not in IMPACTS:
             errors.append(f"{cid} impact must be high, medium, low or null")
         if c.get("status") == "new" and c.get("current") not in (0, None):
@@ -238,7 +256,8 @@ def compute(model):
     caps = out["capabilities"]
     parents = {c.get("parent") for c in caps if c.get("parent")}
     for c in caps:
-        for key in ("rag", "gap", "impact_weight", "priority_score", "band", "final_band", "rank", "scored"):
+        for key in ("rag", "gap", "impact_weight", "priority_score", "band", "final_band", "rank", "scored",
+                    "remaining_gap", "remaining_score", "delivery"):
             c.pop(key, None)
         c["scored"] = c["id"] not in parents
         if not c["scored"]:
@@ -250,6 +269,12 @@ def compute(model):
         c.update(rag=rag(cur), gap=gap, impact_weight=weight, priority_score=score,
                  band=band_for(c["status"], score, thresholds))
         c["final_band"] = (c.get("priority_override") or {}).get("band", c["band"])
+        after = c.get("after_release")
+        remaining = tgt - after if after is not None and tgt is not None else None
+        c["remaining_gap"] = remaining
+        c["remaining_score"] = remaining * weight if remaining is not None and weight is not None else None
+        stories = [st for st in c.get("delivered_by") or [] if st["priority"] in IN_SCOPE]
+        c["delivery"] = {"in_scope": len(stories), **{k: sum(1 for st in stories if st["status"] == k) for k in DELIVERY_STATUSES}}
     ranked = sorted((c for c in caps if c["scored"]),
                     key=lambda c: (BAND_ORDER[c["final_band"]], -(c["priority_score"] if c["priority_score"] is not None else -99),
                                    -(c.get("votes") or 0), c["id"]))
@@ -277,6 +302,28 @@ def compute(model):
     for s in out["stages"]:
         if s["id"] not in placed:
             findings.append({"kind": "stage-empty", "ref": s["id"], "text": f"Stage {s['name']} has no capability."})
+    release = (out["meta"].get("release") or {}).get("name")
+    if release:
+        for c in ranked:
+            cur, after = c.get("current"), c.get("after_release")
+            if cur is not None and after is not None and after < cur:
+                findings.append({"kind": "regression", "ref": c["id"],
+                                 "text": f"{c['name']} drops from {cur} to {after} after {release}."})
+            d = c["delivery"]
+            if d["blocked"] or d["not-ticketed"]:
+                parts = [f"{d['blocked']} blocked" if d["blocked"] else "", f"{d['not-ticketed']} not yet ticketed" if d["not-ticketed"] else ""]
+                findings.append({"kind": "delivery-risk", "ref": c["id"],
+                                 "text": f"{c['name']}: of {d['in_scope']} Must and Should stories, {' and '.join(p for p in parts if p)}."})
+        for g in out["goals"]:
+            short = [c for c in ranked if g["id"] in (c.get("goals") or []) and c.get("impact") == "high"
+                     and (c["remaining_gap"] is None or c["remaining_gap"] > 0)]
+            if short:
+                names = "; ".join(f"{c['name']}, {_fmt(c.get('after_release'))} against a target of {_fmt(c.get('target'))}" for c in short)
+                findings.append({"kind": "expectation-gap", "ref": g["id"],
+                                 "text": f"{release[:1].upper() + release[1:]} leaves goal {g['id']} ({g['statement']}) short: {names}."})
+    for o in out.get("open_items") or []:
+        if not str(o.get("owner") or "").strip():
+            findings.append({"kind": "decision-unowned", "ref": o.get("id"), "text": f"{o.get('id')} has no owner: {o.get('question')}"})
     out["findings"] = findings
     out["summary"] = {
         "capabilities": len(caps),
@@ -284,6 +331,11 @@ def compute(model):
         "bands": {b: sum(1 for c in ranked if c["final_band"] == b) for b in BANDS},
         "open_values": sum(1 for f in findings if f["kind"] == "open-value"),
         "goals_unlinked": sum(1 for f in findings if f["kind"] == "goal-unlinked"),
+        "release": release,
+        "after_release_gaps": sum(1 for c in ranked if (c.get("remaining_gap") or 0) > 0),
+        "regressions": sum(1 for f in findings if f["kind"] == "regression"),
+        "expectation_gaps": sum(1 for f in findings if f["kind"] == "expectation-gap"),
+        "decisions_unowned": sum(1 for f in findings if f["kind"] == "decision-unowned"),
         "thresholds": thresholds,
     }
     return out
@@ -399,6 +451,38 @@ def _ranked(computed):
     return sorted((c for c in computed["capabilities"] if c["scored"]), key=lambda c: (c["rank"], c["id"]))
 
 
+def _phase2(computed):
+    """Capabilities the release leaves short of target, largest remaining score first."""
+    rows = [c for c in _ranked(computed) if (c.get("remaining_gap") or 0) > 0]
+    return sorted(rows, key=lambda c: (-(c["remaining_score"] or 0), c["rank"], c["id"]))
+
+
+def _decisions(computed):
+    return [{"id": o["id"], "question": o["question"], "owner": o.get("owner") or None, "affects": o.get("affects") or []}
+            for o in computed.get("open_items") or []]
+
+
+def handoffs(computed):
+    """Inputs for the skills that take the next steps: sequencing, backlog and the sponsor briefing."""
+    release = computed["summary"]["release"]
+    goals = {g["id"]: g["statement"] for g in computed["goals"]}
+    left = [{"capability": c["name"], "id": c["id"], "after_release": c.get("after_release"), "target": c.get("target"),
+             "remaining_score": c["remaining_score"], "goals": [goals[g] for g in c.get("goals") or []],
+             "deferred_stories": [st["name"] for st in c.get("delivered_by") or [] if st["priority"] in ("could", "wont")]}
+            for c in _phase2(computed)]
+    untracked = [{"capability": c["name"], "story": st["name"], "priority": st["priority"]}
+                 for c in _ranked(computed) for st in c.get("delivered_by") or []
+                 if st["status"] == "not-ticketed" and st["priority"] in IN_SCOPE]
+    brief = [f["text"] for f in computed["findings"] if f["kind"] in ("expectation-gap", "regression")]
+    return {
+        "release": release,
+        "roadmap-artifacts": {"purpose": "Sequence the gaps the release leaves open into the next releases.", "items": left},
+        "requirements-capture": {"purpose": "Write the Must and Should stories the release needs but has not ticketed.", "items": untracked},
+        "deck-builder": {"purpose": "Brief the sponsor on what the release leaves undone and the decisions it needs.",
+                         "findings": brief, "decisions": _decisions(computed)},
+    }
+
+
 def _rubric_rows():
     rows = [[f"Maturity {n}", name, text] for n, name, text in MATURITY]
     return rows + [[f"Dimension: {k}", "red / amber / green", q] for k, q in DIMENSION_QUESTIONS.items()]
@@ -416,6 +500,36 @@ def render_markdown(computed):
     lines += [f"The assessment covers {s['scored']} capabilities: {b['Invest now']} Invest now, {b['Plan']} Plan, {b['Monitor']} Monitor, "
               f"{b['Hold']} Hold, {b['Retire review']} Retire review and {b['OPEN']} OPEN. "
               f"The dashboard is `capability-map.html` and the tracker is `capability-assessment.xlsx`.", ""]
+    release = s.get("release")
+    if computed.get("open_items"):
+        lines += ["## Decisions needed", ""]
+        names = {c["id"]: c["name"] for c in computed["capabilities"]}
+        for o in computed["open_items"]:
+            owner = f"It is assigned to {o['owner']}." if o.get("owner") else "It has no owner yet."
+            affects = [names.get(ref, f"goal {ref}") for ref in o.get("affects") or []]
+            lines.append(f"- {o['question']} {owner}" + (f" It affects {', '.join(affects)}." if affects else ""))
+        lines.append("")
+    if release:
+        gaps = sorted((f for f in computed["findings"] if f["kind"] in ("expectation-gap", "regression")),
+                      key=lambda f: f["kind"] != "expectation-gap")
+        lines += [f"## What {release} leaves undone", ""]
+        lines += [f"- {f['text']}" for f in gaps] or ["- Every high-impact capability reaches its target."]
+        lines.append("")
+        risk = [f for f in computed["findings"] if f["kind"] == "delivery-risk"]
+        if risk:
+            lines += ["## Delivery risk", ""] + [f"- {f['text']}" for f in risk] + [""]
+        left = _phase2(computed)
+        if left:
+            lines += [f"## After {release}", "", f"These capabilities stay short of target after {release}, largest remaining score first.", "",
+                      f"| Capability | Today | After {_cell(release)} | Target | Remaining score |", "| --- | ---: | ---: | ---: | ---: |"]
+            lines += [f"| {_cell(c['name'])} | {_fmt(c.get('current'))} | {_fmt(c.get('after_release'))} | {_fmt(c.get('target'))} | "
+                      f"{_fmt(c['remaining_score'])} |" for c in left]
+            lines.append("")
+        lines += ["## Next steps by skill", "",
+                  "- `roadmap-artifacts` sequences the capabilities above into the next releases.",
+                  "- `requirements-capture` writes the Must and Should stories that are not yet ticketed.",
+                  "- `deck-builder` briefs the sponsor on what the release leaves undone and the decisions it needs.",
+                  "", "Their inputs are in `handoffs.json`.", ""]
     for band in ("Invest now", "Plan"):
         rows = [c for c in ranked if c["final_band"] == band]
         if not rows:
@@ -441,11 +555,10 @@ def render_markdown(computed):
     if not computed["goals"]:
         lines.append("- No goals are recorded, so no capability is linked to strategy.")
     lines.append("")
-    other = [f for f in computed["findings"] if f["kind"] not in ("goal-unlinked",)]
+    other = [f for f in computed["findings"] if f["kind"] not in
+             ("goal-unlinked", "expectation-gap", "regression", "delivery-risk", "decision-unowned")]
     if other:
         lines += ["## Findings", ""] + [f"- {f['text']}" for f in other] + [""]
-    if computed.get("open_items"):
-        lines += ["## Open items", ""] + [f"- {o['id']}: {o['question']} Owner: {o.get('owner') or 'OPEN'}." for o in computed["open_items"]] + [""]
     hyp = [c for c in ranked if c.get("basis") == "hypothesis"]
     if hyp:
         lines += ["## Validation questions", "", "These scores are hypotheses. Confirm each with the people who would own the capability.", ""]
@@ -502,7 +615,11 @@ def write_xlsx(computed, path):
     headers = ["Rank", "ID", "Capability", "Domain", "Parent", "Status", "Current", "Target", "Impact", "Gap",
                "Impact weight", "Score", "Computed band", "Decided band", "Votes", "People", "Process", "Data",
                "Technology", "Organization", "Score reason", "Impact reason", "Goals", "Stages", "Holders",
-               "Systems", "Functions", "KPIs", "Basis", "Sources"]
+               "Systems", "Functions", "KPIs", "Basis", "Sources", "After release", "Remaining gap", "Remaining score",
+               "Stories in scope", "Done", "In progress", "Not started", "Not ticketed", "Blocked"]
+    _, _, _, _, letter, _ = xl
+    after_col = letter(headers.index("After release") + 1)
+    remaining_col = letter(headers.index("Remaining gap") + 1)
     rows = []
     for r, c in enumerate(ranked, 2):
         d = c.get("dimensions") or {}
@@ -518,7 +635,11 @@ def write_xlsx(computed, path):
                      *[d.get(k, "") for k in DIMENSIONS], c.get("score_reason", ""), c.get("impact_reason", ""),
                      ", ".join(c.get("goals") or []), ", ".join(c.get("stages") or []), ", ".join(c.get("holders") or []),
                      ", ".join(c.get("systems") or []), "; ".join(c.get("functions") or []),
-                     "; ".join(c.get("kpis") or []), c["basis"], ", ".join(c.get("sources") or [])])
+                     "; ".join(c.get("kpis") or []), c["basis"], ", ".join(c.get("sources") or []),
+                     c.get("after_release"),
+                     f'=IF(OR(H{r}="",{after_col}{r}=""),"",H{r}-{after_col}{r})',
+                     f'=IF(OR({remaining_col}{r}="",K{r}="OPEN"),"",{remaining_col}{r}*K{r})',
+                     c["delivery"]["in_scope"], *[c["delivery"][k] for k in DELIVERY_STATUSES]])
     _sheet(wb, "Capabilities", headers, rows, {"Capability": 32, "Score reason": 48, "Impact reason": 48, "Computed band": 16, "Decided band": 16})
     stages = computed["stages"]
     life_rows = []
@@ -534,6 +655,10 @@ def write_xlsx(computed, path):
                       "; ".join(c["name"] for c in linked), best])
     _sheet(wb, "Strategy trace", ["Goal", "Statement", "Measure", "Framework", "Linked capabilities", "Best band"], trace,
            {"Statement": 44, "Measure": 36, "Linked capabilities": 48, "Best band": 20})
+    stories = [[c["name"], st["name"], st["priority"], st["status"], st.get("ref", "")]
+               for c in ranked for st in c.get("delivered_by") or []]
+    if stories:
+        _sheet(wb, "Delivery", ["Capability", "Story", "Priority", "Status", "Reference"], stories, {"Capability": 32, "Story": 44})
     rubric = _rubric_rows() + [["Impact weight", k, str(v)] for k, v in IMPACTS.items()]
     rubric += [["Band", "Invest now", f"Score {t['invest_now']} or more"], ["Band", "Plan", f"Score {t['plan']} to {t['invest_now'] - 1}"],
                ["Band", "Monitor", f"Score {t['monitor']} to {t['plan'] - 1}"], ["Band", "Hold", f"Score below {t['monitor']}"],
@@ -555,7 +680,7 @@ def write_xlsx(computed, path):
 def build(model, output_dir):
     computed = compute(model)
     output_dir.mkdir(parents=True, exist_ok=True)
-    names = ["capability-map.html", "capability-assessment.xlsx", "capability-readout.md", "model.computed.json"]
+    names = ["capability-map.html", "capability-assessment.xlsx", "capability-readout.md", "model.computed.json", "handoffs.json"]
     existing = [n for n in names if (output_dir / n).exists()]
     if existing:
         raise FileExistsError("Output exists; choose a new output directory: " + ", ".join(existing))
@@ -563,6 +688,7 @@ def build(model, output_dir):
     workbook = write_xlsx(computed, output_dir / names[1])
     (output_dir / names[2]).write_text(render_markdown(computed), encoding="utf-8")
     (output_dir / names[3]).write_text(json.dumps(computed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (output_dir / names[4]).write_text(json.dumps(handoffs(computed), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return {"outputs": [str(output_dir / n) for n in names if (output_dir / n).exists()],
             "workbook": "written" if workbook else "not produced: openpyxl is unavailable",
             "summary": computed["summary"], "findings": len(computed["findings"])}

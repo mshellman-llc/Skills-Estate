@@ -18,6 +18,7 @@ triggers:
 - Run a map-and-gap assessment with current and target maturity and business impact.
 - Align capabilities to customer lifecycle stages and to strategy goals such as V2MOM methods or OKRs.
 - Prepare or debrief a customer lifecycle analysis workshop.
+- Trace a planned release against the capability map to show which goals it leaves short and what comes next.
 - Consolidate the capabilities of two companies after an acquisition.
 exclusions:
 - Step-by-step process documentation or redesign belongs to process.
@@ -55,6 +56,11 @@ outputs:
   audience: internal-or-client-as-requested
   durable: true
   hub_target: deliverables.register
+- name: capability_handoffs
+  format: json
+  audience: internal
+  durable: true
+  hub_target: engagement.requirements_design
 connectors:
   required: []
   optional:

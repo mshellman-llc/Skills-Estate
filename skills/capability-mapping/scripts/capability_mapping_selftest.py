@@ -108,6 +108,13 @@ expect("new capability above 0 is refused", refused(lambda m: m["capabilities"][
 expect("reported basis without sources is refused", refused(lambda m: m["capabilities"][0].update(sources=[]), "cites no sources"), True)
 expect("unknown stage is refused", refused(lambda m: m["capabilities"][0].update(stages=["S99"]), "unknown stage"), True)
 expect("a KPI list of non-strings is refused", refused(lambda m: m["capabilities"][0].update(kpis=[3]), "kpis must be a list"), True)
+expect("a story without a known status is refused",
+       refused(lambda m: m["capabilities"][8]["delivered_by"].append({"name": "X", "priority": "must", "status": "maybe"}), "delivered_by[3]"), True)
+expect("after_release without a named release is refused",
+       refused(lambda m: m["meta"].pop("release"), "meta.release must name the release"), True)
+expect("goals the release leaves short", sorted(f["ref"] for f in computed["findings"] if f["kind"] == "expectation-gap"), ["G1", "G2"])
+expect("delivery risks", sorted(f["ref"] for f in computed["findings"] if f["kind"] == "delivery-risk"), ["C-SUP-01", "C-SVC-01a"])
+expect("remaining score after the release", caps["C-SUP-01"]["remaining_score"], 3)
 expect("score on a parent is refused", refused(lambda m: m["capabilities"][5].update(current=2), "belongs on the children"), True)
 
 with tempfile.TemporaryDirectory() as tmp:
@@ -118,6 +125,11 @@ with tempfile.TemporaryDirectory() as tmp:
     expect("page embeds the computed model", '"final_band"' in page and '"placeholder": true' not in page, True)
     expect("page inlines the Baseline styles", "/*__BASELINE_CSS__*/" not in page and "--bl-cat-1" in page, True)
     expect("readout lists the Invest now section", "## Invest now" in readout, True)
+    hand = json.loads((out / "handoffs.json").read_text(encoding="utf-8"))
+    expect("hand-off names each next skill", sorted(k for k in hand if k != "release"), ["deck-builder", "requirements-capture", "roadmap-artifacts"])
+    expect("roadmap hand-off ranks the largest remaining gap first", hand["roadmap-artifacts"]["items"][0]["id"], "C-SVC-02")
+    expect("backlog hand-off lists the unticketed Must story", [i["story"] for i in hand["requirements-capture"]["items"]], ["Reserve parts when a visit is booked"])
+    expect("readout leads with the decisions", readout.index("## Decisions needed") < readout.index("## Invest now"), True)
     expect("readout reports the unlinked goal", "G4 Lower fleet emissions per service visit: no linked capability." in readout, True)
     try:
         builder.build(model, out)

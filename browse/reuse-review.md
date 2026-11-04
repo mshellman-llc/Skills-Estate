@@ -1,6 +1,6 @@
 # Skill reuse review
 
-82 general-use methods, 0 Megan-specific workflows, and 1 awaiting source review.
+83 general-use methods, 0 Megan-specific workflows, and 0 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -25,7 +25,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `build-interactive-explorer` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `business-case` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `call-prep` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `capability-mapping` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `capability-mapping` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `career-application` | General use | Supply the task inputs and its supported runtime. | [skills/career-application/SKILL.md:23](../skills/career-application/SKILL.md#L23) |
 | `career-materials-and-outreach` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `career-progression-and-offers` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |

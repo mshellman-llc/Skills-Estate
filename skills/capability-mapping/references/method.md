@@ -10,7 +10,7 @@ Read [shared workflow](estate/workflow.md). For a rendered or branded artifact, 
 
 A business capability is something the organization can do, named as a stable noun phrase such as "Order management" or "Field inventory management". A capability map is the hierarchy of those capabilities for one business. This method builds that map from evidence, places each capability on the customer lifecycle and the strategy it serves, scores how well the organization performs it today, and ranks the gaps worth closing. The sponsor decides from the ranked gap list.
 
-The method is stack-neutral. Systems appear as attributes of a capability, never as capabilities. On a Salesforce engagement, a reference capability catalog from the vendor can seed the model; Salesforce is one supporting system among others.
+The method is stack-neutral. Systems appear as attributes of a capability, never as capabilities. A software vendor's reference capability catalog can seed the model; the vendor's platform is one supporting system among others.
 
 ## Rules that apply throughout
 
@@ -94,7 +94,7 @@ Obstacles recorded in a V2MOM can point to the dimension that needs work (people
 
 ## Assessing capabilities: map and gap
 
-Every scored capability, whether Level 2 or a Level 3 child, gets two independent judgments. Maturity describes today's execution. Business impact describes how much the capability matters to the goals. Keep them independent: a capability can be very mature and matter little (the annual company picnic), or immature and decisive (spare-part inventory that leaks money every month).
+Every scored capability, whether Level 2 or a Level 3 child, gets two independent judgments. Maturity describes today's execution. Business impact describes how much the capability matters to the goals. Keep them independent: a capability can be very mature and matter little (booking rooms for internal events), or immature and decisive (spare-part inventory that leaks money every month).
 
 ### Maturity
 
@@ -138,10 +138,25 @@ The script computes these from the stored values:
 - Gap = target maturity minus current maturity.
 - Impact weight = 3 for high, 2 for medium, 1 for low.
 - Priority score = gap multiplied by impact weight, at most 15. A target below the current score gives a negative score.
-- Band: Invest now for a score of 6 or more, Plan for 3 to 5, Monitor for 1 or 2, Hold for 0 or less. A capability with `status: redundant` goes to Retire review regardless of score. Any missing input makes the band `OPEN`.
+- Band: Invest now for a score of 6 or more, Plan for 3 to 5, Monitor for 1 or 2, Hold for 0 or less. A capability with `status: redundant` goes to Retire review regardless of score or missing inputs. Otherwise, any missing input makes the band `OPEN`.
 - Rank orders the bands, then the score, then votes. Capabilities with the same band, score and votes share a rank.
 
 These bands are the default. If the engagement agrees different thresholds, record them in `meta.priority_bands` and say so in the readout.
+
+### Tracing a planned release
+
+When a release is already planned, trace it against the map before anyone reads the ranking. Record the release in `meta.release`. For each capability, list the stories or epics that move it in `delivered_by`, with their priority and delivery status, and set `after_release` to where the release leaves the capability if its Must and Should stories ship. A release can lower a capability: when it switches off a legacy tool before its replacement is live, `after_release` is below `current`.
+
+The trace answers what the stories alone do not:
+
+- Which goals the release leaves short. A goal is short when a linked high-impact capability ends below target. This is the expectation the sponsor has to reset before launch.
+- Which capabilities the release makes worse, so a transition plan covers them.
+- Where delivery is at risk: Must and Should stories that are blocked or not yet ticketed, counted per capability.
+- What comes next. The remaining gap after the release, times impact, ranks the candidates for the following release.
+
+Give every decision an owner in `open_items`. An open decision without an owner is a finding, because the stories it blocks cannot move until someone takes it.
+
+Transition work such as cutover runbooks and legacy removal belongs to the release plan, not to a capability. Trace it where it changes a capability's score, as with a retired forecast.
 
 ### Redundant capabilities
 
@@ -154,11 +169,12 @@ Gap analysis finds three things: capabilities to add, capabilities to strengthen
 3. Draft the model: domains, Level 2 capabilities with definitions, and stages. Share it early so stakeholders correct names and definitions before anyone scores.
 4. Run the lifecycle workshop or the interviews. Validate names and definitions, add missing capabilities, and merge duplicates.
 5. Link capabilities to stages and goals.
-6. Score current maturity, target maturity and impact with reasons, by breakout group per stage, then review the scores with the whole group.
+6. Score current maturity, target maturity and impact with reasons, in stage breakout groups when the room is large, then review the scores with the whole group.
 7. Build the outputs with the script and inspect them.
 8. Walk the ranked gaps with the decision makers. Record overrides with reasons.
-9. Hand the top gaps to their next owner: `roadmap-artifacts` for sequencing, `solution-brief` or `system-design` for the solution, `requirements-capture` for the backlog, `process` for process redesign, `scoping-agent` or `rom` for effort and price.
-10. Maintain the map. Rescore after a major release, a reorganization or an acquisition; keep the earlier model file as the dated baseline.
+9. When a release is planned, trace it: stories per capability, the score after the release, and an owner for every open decision.
+10. Hand the results to the skills that act on them. The build writes `handoffs.json`: run `roadmap-artifacts` on the capabilities left short after the release, `requirements-capture` on the Must and Should stories not yet ticketed, and `deck-builder` on the goals left short and the decisions needed. Send solution questions to `solution-brief` or `system-design`, process redesign to `process`, and effort and price to `scoping-agent` or `rom`.
+11. Maintain the map. Rescore after a major release, a reorganization or an acquisition; keep the earlier model file as the dated baseline.
 
 ## Producing the outputs
 
@@ -174,6 +190,7 @@ The command validates the model, computes gaps and priorities, and writes:
 - `capability-assessment.xlsx`: the operational tracker with live formulas for gap, score and band, plus lifecycle, strategy, rubric, evidence and open-item sheets. Requires `openpyxl`; without it the command writes the other outputs and reports the workbook as not produced.
 - `capability-readout.md`: the decision narrative with the top gaps, goal coverage findings, open items and validation questions.
 - `model.computed.json`: the model with computed fields, for storage or handoff to another skill.
+- `handoffs.json`: the inputs for `roadmap-artifacts`, `requirements-capture` and `deck-builder`, built from the release trace.
 
 For a workshop, generate the capture workbook and a seeded model first:
 
@@ -198,6 +215,7 @@ The output layout is described in [rendered outputs](rendered-outputs.md). Apply
 - A reference catalog presented as the client's confirmed map.
 - A heatmap filled with guessed scores to look complete.
 - Gaps identified and never handed to a roadmap or backlog.
+- A map built after the release is scoped that only restates the stories. Trace the release instead and report what it leaves short.
 
 ## Before shipping
 

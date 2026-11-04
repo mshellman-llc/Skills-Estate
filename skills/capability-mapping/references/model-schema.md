@@ -12,7 +12,7 @@ The model is one JSON file. Every output is built from it, so edit the model and
 | `goals` | yes; `[]` allowed | Strategy goals the map serves. |
 | `capabilities` | yes | Level 2 and Level 3 capabilities. |
 | `evidence` | yes; `[]` allowed | Sources cited by capabilities and goals. |
-| `open_items` | no | Questions still to answer, each `{"id", "question", "owner", "affects"}`. |
+| `open_items` | no | Decisions and questions still to answer, each `{"id", "question", "owner", "affects"}`. Leave `owner` `null` when nobody owns it; the outputs flag it. |
 
 ## `meta`
 
@@ -26,6 +26,7 @@ The model is one JSON file. Every output is built from it, so edit the model and
 | `basis_note` | yes | A short plain statement of where the scores came from, shown beside the map. |
 | `status` | no | `draft` (default) or `validated`. A draft is labeled on every output. |
 | `priority_bands` | no | Agreed thresholds replacing the defaults: `{"invest_now": 6, "plan": 3, "monitor": 1}`. |
+| `release` | no | `{"name"}` for the planned release the map is traced against, such as `{"name": "the January release"}`. The name is used mid-sentence, so include its article. Required when any capability has `after_release`. |
 
 ## `goals[]`
 
@@ -57,11 +58,13 @@ The model is one JSON file. Every output is built from it, so edit the model and
 | `functions` | no | The business functions the capability groups, as short noun phrases. A reference catalog card usually lists them. |
 | `kpis` | no | Measures that show the capability improving, each with its direction, such as "First-time fix rate, up". |
 | `current`, `target` | scored entries | Whole numbers on the 0 to 5 maturity scale, or `null` for OPEN. `current` must be 0 when `status` is `new`. |
+| `after_release` | no | The maturity the named release leaves the capability at, on the same scale. Set it to `current` when the release does not touch the capability. When a release is named, a high-impact capability without it counts as short of target. |
+| `delivered_by` | no | The stories or epics that move this capability, each `{"name", "priority", "status", "ref"}`. `priority` is `must`, `should`, `could` or `wont`; `status` is `done`, `in-progress`, `not-started`, `not-ticketed` or `blocked`; `ref` is an optional ticket key. |
 | `impact` | scored entries | `high`, `medium`, `low` or `null`. |
 | `dimensions` | no | `{"people", "process", "data", "technology", "organization"}`, each `red`, `amber`, `green` or `open`. |
 | `score_reason` | scored entries | The reason behind the current score. |
 | `impact_reason` | scored entries | Why the capability matters this much. |
-| `votes` | no | Stakeholder votes, an integer. |
+| `votes` | no | Stakeholder votes, a whole number of 0 or more. |
 | `basis` | yes | `observed`, `reported` or `hypothesis`. |
 | `sources` | observed or reported | Evidence IDs. At least one is required unless `basis` is `hypothesis`. |
 | `priority_override` | no | `{"band", "reason", "source"}` recording a stakeholder decision that differs from the computed band. |
@@ -86,10 +89,11 @@ A Level 2 capability with Level 3 children carries no `current`, `target` or `im
 - references to an unknown domain, stage, goal, parent or evidence ID;
 - a Level 3 capability whose parent is missing or is not Level 2, or a parent that carries its own score;
 - `status: new` with `current` above 0;
-- `basis: observed` or `reported` with no `sources`.
+- `basis: observed` or `reported` with no `sources`;
+- a `delivered_by` entry without a name, a known priority or a known status, or `after_release` with no `meta.release`.
 
-These conditions are reported as findings rather than errors: goals with no linked capability, Invest now capabilities with no linked goal, scored entries with OPEN values, stages with no capability, and overrides that change the computed band.
+These conditions are reported as findings rather than errors: goals with no linked capability, Invest now capabilities with no linked goal, scored entries with OPEN values, stages with no capability, overrides that change the computed band, and open items with no owner. With a named release, the outputs also report each goal the release leaves short (a linked high-impact capability below target or without `after_release`), each capability the release leaves lower than today, and each capability whose Must or Should stories are blocked or not yet ticketed.
 
 ## Computed fields
 
-`model.computed.json` adds, per scored capability: `rag` (the display color from current maturity, or `open`), `gap`, `impact_weight`, `priority_score`, `band`, `final_band` (the override when present) and `rank`. It adds `findings` and `summary` at the top level. Treat computed fields as outputs; `build` recomputes them and ignores any values already present.
+`model.computed.json` adds, per scored capability: `rag` (the display color from current maturity, or `open`), `gap`, `impact_weight`, `priority_score`, `band`, `final_band` (the override when present), `rank`, `remaining_gap` and `remaining_score` (target minus `after_release`, and that times the impact weight), and `delivery` (counts of Must and Should stories by status). It adds `findings` and `summary` at the top level. Treat computed fields as outputs; `build` recomputes them and ignores any values already present.

@@ -56,6 +56,10 @@
     "0.2.13": {
       "content_sha256": "63d9154e28871df0d2fcff93830ca0a893e06c07ea63466f4447ac1fef1d64b4",
       "note": "Simplify the capability-mapping builder and dashboard script without changing outputs"
+    },
+    "0.2.14": {
+      "content_sha256": "58d889731616961d45461c5af0c00f02b7e9c919e6263f6fe83e96ca2e68eef1",
+      "note": "Capability mapping: remove course references, review fixes, release tracing with decisions and hand-offs"
     }
   }
 }
