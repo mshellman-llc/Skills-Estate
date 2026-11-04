@@ -2,6 +2,9 @@
   "architecture-doc": [
     "brand-renderer"
   ],
+  "backlog-refinement": [
+    "evidence-core"
+  ],
   "brand-renderer": [
     "prose-pass",
     "quality-gate"
@@ -87,6 +90,9 @@
   "playbook-suite": [
     "brand-renderer"
   ],
+  "prioritization": [
+    "evidence-core"
+  ],
   "process": [
     "brand-renderer",
     "evidence-core",
@@ -140,6 +146,9 @@
   ],
   "spec-writer": [
     "brand-renderer"
+  ],
+  "sprint-planning": [
+    "evidence-core"
   ],
   "system-design": [
     "brand-renderer"

@@ -16,6 +16,11 @@
       "pack": "core",
       "modes": {}
     },
+    "backlog-refinement": {
+      "source": "backlog-refinement",
+      "pack": "core",
+      "modes": {}
+    },
     "beastmode-capture": {
       "source": "beastmode-capture",
       "pack": "personal-context",
@@ -166,6 +171,11 @@
       "pack": "career",
       "modes": {}
     },
+    "prioritization": {
+      "source": "prioritization",
+      "pack": "core",
+      "modes": {}
+    },
     "process-design": {
       "source": "process",
       "pack": "core",
@@ -267,6 +277,11 @@
     },
     "solution-brief": {
       "source": "solution-brief",
+      "pack": "core",
+      "modes": {}
+    },
+    "sprint-planning": {
+      "source": "sprint-planning",
       "pack": "core",
       "modes": {}
     },

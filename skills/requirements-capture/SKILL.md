@@ -1,6 +1,6 @@
 ---
 name: requirements-capture
-description: 'Capture and structure business requirements in the Estate approved format: epics, capabilities, business needs, user stories, and Gherkin acceptance criteria, delivered as a branded two-tab Excel workbook. Use to define, write, organize, or refine requirements, to extract them from an uploaded deck, PRD, brief, spec, or transcript, or to turn a Salesforce SOW into a backlog (BA mode: analyze this SOW, SOW to backlog, Salesforce BA). Triggers on capture requirements, write user stories, define epics, requirements gathering, BRD, acceptance criteria, requirements CSV. Always read the host spreadsheet skill before generating the workbook.'
+description: 'Capture and structure business requirements in the Estate approved format: epics, capabilities, business needs, user stories, and Gherkin acceptance criteria, delivered as a branded two-tab Excel workbook. Use to define, write, organize, or refine requirements, to extract them from an uploaded deck, PRD, brief, spec, or transcript, or to turn a Salesforce SOW into a backlog (BA mode: analyze this SOW, SOW to backlog, Salesforce BA). Triggers on capture requirements, write user stories, define epics, requirements gathering, BRD, acceptance criteria, requirements CSV. Always read the host spreadsheet skill before generating the workbook. Grading sprint readiness is backlog-refinement.'
 ---
 
 
@@ -225,6 +225,11 @@ Once hierarchy is confirmed:
    `requirements_v1.xlsx`, `requirements_v2.xlsx`) for a clear revision
    trail.
 5. Continue iterating until the user is satisfied.
+6. When the team needs to know which stories can enter a sprint, hand the
+   Requirements tab to `backlog-refinement`. It grades readiness and proposes
+   splits and estimates; the stories themselves change here, in this workbook,
+   so Requirement Numbers and Status stay canonical. See
+   `../_shared/planning-chain.md`.
 
 ### Phase 4: Final Delivery
 

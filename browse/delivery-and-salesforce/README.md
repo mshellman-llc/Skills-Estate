@@ -11,6 +11,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | Task | Primary workflow | Additional modes |
 | --- | --- | --- |
 | `acceptance-testing` | [uat-validation](../../skills/uat-validation/SKILL.md) |  |
+| `backlog-refinement` | [backlog-refinement](../../skills/backlog-refinement/SKILL.md) |  |
 | `cutover-closeout` | [cutover-closeout](../../skills/cutover-closeout/SKILL.md) |  |
 | `delivery-kickoff` | [delivery-kickoff](../../skills/delivery-kickoff/SKILL.md) |  |
 | `delivery-status` | [delivery-status](../../skills/delivery-status/SKILL.md) |  |
@@ -21,10 +22,12 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | `sf-devops-center` | [dx-devops-work-item-manage](../../skills/dx-devops-work-item-manage/SKILL.md) | [promote work items or stages](../../skills/dx-devops-promote/SKILL.md) |
 | `sf-pipeline-operations` | [sf-deploy-engine](../../skills/sf-deploy-engine/SKILL.md) |  |
 | `sf-project-setup` | [sf-delivery-standards](../../skills/sf-delivery-standards/SKILL.md) |  |
+| `sprint-planning` | [sprint-planning](../../skills/sprint-planning/SKILL.md) |  |
 | `team-onboarding` | [team-onboarding](../../skills/team-onboarding/SKILL.md) |  |
 
 ## Source workflows
 
+- [backlog-refinement](../../skills/backlog-refinement/SKILL.md)
 - [cutover-closeout](../../skills/cutover-closeout/SKILL.md)
 - [delivery-kickoff](../../skills/delivery-kickoff/SKILL.md)
 - [delivery-status](../../skills/delivery-status/SKILL.md)
@@ -39,6 +42,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [sf-enterprise-patterns](../../skills/sf-enterprise-patterns/SKILL.md)
 - [sf-headless-screenshot](../../skills/sf-headless-screenshot/SKILL.md)
 - [sf-solo-devops](../../skills/sf-solo-devops/SKILL.md)
+- [sprint-planning](../../skills/sprint-planning/SKILL.md)
 - [team-onboarding](../../skills/team-onboarding/SKILL.md)
 - [uat-validation](../../skills/uat-validation/SKILL.md)
 

@@ -1,6 +1,6 @@
 ---
 name: solutioning-router
-description: Route requirements, architecture, solution design, scope, ROM estimation, and statements of work. Select the smallest appropriate skill without recreating its method.
+description: Route requirements, prioritization, architecture, solution design, scope, ROM estimation, and statements of work. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Solutioning Router
@@ -11,6 +11,10 @@ description: Route requirements, architecture, solution design, scope, ROM estim
 4. Explain ambiguous routing and request the missing distinction.
 5. Do not reproduce the selected skill's methodology.
 6. Confirm which Knowledge Hub files the workflow must read and update.
+
+## Prioritization distinctions
+
+Ranking problems, outcomes, roadmap candidates or backlog items with a framework is `prioritization`. Laying ranked work on a now/next/later roadmap, including outcome roadmaps, is `roadmap-artifacts`. Framing customer jobs or running a JTBD workshop is `jtbd-framing`, which hands opportunity scores to `prioritization`. MoSCoW values stay in `requirements-capture`.
 
 ## Available skills
 
@@ -26,6 +30,7 @@ description: Route requirements, architecture, solution design, scope, ROM estim
 - `spec-writer`
 - `process`
 - `journey-mapping`
+- `prioritization`
 
 
 ## Required controls
