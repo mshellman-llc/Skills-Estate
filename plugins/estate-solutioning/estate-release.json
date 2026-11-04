@@ -42,7 +42,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "3fdda283e14be57eaffd4c0e772dd6c26896ccfec221b0ddfafca0fa2a5a0cd8",
+      "required_sha256": "0cac72227d6924215b464fb13d26071eb842b6f02f7b16aea01253e6b803d67e",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -52,7 +52,7 @@
       "subject": "commercial-router"
     },
     {
-      "required_sha256": "0c42429c9d9ea804fa2e2bcef92c529d17f2e6025d968bafda13aa8a23a3d1a7",
+      "required_sha256": "5439323cf693b32d70044298caa086e744b12755d1bbf4b1daac1c4b07ead1b8",
       "status": "review required",
       "subject": "delivery-router"
     },
@@ -142,7 +142,7 @@
       "subject": "brand-renderer"
     },
     {
-      "required_sha256": "37f9698acb4c3690dcd0ea5a19fb58334a27e03ac89ddd2fe098b9faa5807010",
+      "required_sha256": "6c5f8d943de95665bcc7c240599ae2b142ce441c2c1a63b29ad6250abfa18b2f",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
@@ -205,6 +205,11 @@
       "required_sha256": "1e772fd322926ff3982ad454a91f54b8432aaac96d83ebdfd3ea3c230b6de8f7",
       "status": "review required",
       "subject": "deal-desk"
+    },
+    {
+      "required_sha256": "1f4feac393cc8c744ecb0c18a662e4c1a2260fe42cac5a452932af577a7a1345",
+      "status": "review required",
+      "subject": "decision-register"
     },
     {
       "required_sha256": "d4063a038cb97bd20b71fd660e0b3445911d7c497abac9db233c1cd01f66a200",
@@ -297,6 +302,11 @@
       "subject": "knowledge-hub"
     },
     {
+      "required_sha256": "264797713d60a1baaedc2a6171c654b9b236a7bb162edaee5326b50c67bb17c7",
+      "status": "review required",
+      "subject": "moscow-story-map"
+    },
+    {
       "required_sha256": "cca7a9773fb2d59b321e00905f8a35ab9ee5d0853882c1d417b7ca26f0518507",
       "status": "review required",
       "subject": "org-preflight"
@@ -365,6 +375,16 @@
       "required_sha256": "ec7635d2cafc18f2382b731e1df9caee6fa7ffb0912ded6ea7f56cca36aadf1a",
       "status": "review required",
       "subject": "resume-numbers-and-keywords"
+    },
+    {
+      "required_sha256": "f633da225b416f80ff4981fd98e9a8ae35ccbf1bad87381e7a265c2200b24820",
+      "status": "review required",
+      "subject": "review-site"
+    },
+    {
+      "required_sha256": "96b177c8a31da494c1213c0eee3c7012b1179be2d325922c59be556511bfcfdc",
+      "status": "review required",
+      "subject": "review-site-kit"
     },
     {
       "required_sha256": "3f2aa5c8e80c981eaec1b6c4f6c325e77167bf36023c322915f76c1774ef0c6f",
@@ -487,6 +507,11 @@
       "subject": "team-onboarding"
     },
     {
+      "required_sha256": "f590007f8bbabe44ad84a6a9e7fb39b7f13f2d5271360e687c2533143d603cff",
+      "status": "review required",
+      "subject": "tracker-intake"
+    },
+    {
       "required_sha256": "80222a774570a4ae18dba1237e4f535bf61289b1ba2448e86a537e9a86250870",
       "status": "review required",
       "subject": "transcript-ingestion"
@@ -512,6 +537,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "a7b7d17eec2970ad6952f33d995703bf3a5830b5fbaf8b690a33b071e4ae73fc",
+  "source_sha256": "93fb392f8adf1510bb83a9021088dd56f188d33e33584fe524a202a70845e6a8",
   "status": "owner-published"
 }

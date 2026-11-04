@@ -331,6 +331,26 @@
       "source": "writing-style-builder",
       "pack": "writing-profiles",
       "modes": {}
+    },
+    "tracker-intake": {
+      "source": "tracker-intake",
+      "pack": "core",
+      "modes": {}
+    },
+    "moscow-story-map": {
+      "source": "moscow-story-map",
+      "pack": "core",
+      "modes": {}
+    },
+    "decision-register": {
+      "source": "decision-register",
+      "pack": "core",
+      "modes": {}
+    },
+    "review-site": {
+      "source": "review-site",
+      "pack": "core",
+      "modes": {}
     }
   },
   "internal": [
@@ -345,6 +365,7 @@
     "personal-writing-style-runtime",
     "prose-pass",
     "sf-headless-screenshot",
-    "transcript-ingestion"
+    "transcript-ingestion",
+    "review-site-kit"
   ]
 }

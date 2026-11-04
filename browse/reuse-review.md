@@ -1,6 +1,6 @@
 # Skill reuse review
 
-65 general-use methods, 0 Megan-specific workflows, and 20 awaiting source review.
+70 general-use methods, 0 Megan-specific workflows, and 20 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -36,6 +36,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `cutover-closeout` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `ddoc` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `deal-desk` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `decision-register` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `deck-builder` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `delivery-kickoff` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `delivery-status` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
@@ -54,6 +55,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `journey-mapping` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `jtbd-framing` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `knowledge-hub` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `moscow-story-map` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `org-preflight` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
 | `personal-writing-style-runtime` | General use | Requires a confirmed profile for the intended author and an installation adapter. | No named personal reference detected in workflow text. |
 | `playbook-builder` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
@@ -68,6 +70,8 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `quality-gate` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `requirements-capture` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `resume-numbers-and-keywords` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `review-site` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `review-site-kit` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `roadmap-artifacts` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `rom` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `s2d-handoff` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
@@ -92,6 +96,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `sticker-sheets` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `system-design` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `team-onboarding` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `tracker-intake` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `transcript-ingestion` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `uat-validation` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `usability-testing` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |

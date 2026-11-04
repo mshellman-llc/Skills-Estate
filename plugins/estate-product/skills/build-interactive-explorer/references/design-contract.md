@@ -14,6 +14,8 @@
 | Scope | Named categories with calculated counts. Include supported fallbacks and dependencies. Do not force January, MoSCoW or release commitments onto unrelated topics. |
 | Sources | Consolidated IDs and links; text/category filters; visible contextual filter and clear reset. Original permissions still apply. |
 
+Give stage cards a light tint of the accent that gets one shade darker per stage, and make the selected stage solid accent. Pure white cards on a white page made a process hard to follow in review. Use one text size inside a table, links and status labels included, and put long ticket or source lists behind a closed line in the row. Number circles keep one fixed size on every view.
+
 Keep comfortable margins, restrained borders, light surfaces, navy/teal body text and cobalt accents. Reuse bundled typography and spacing; improve body sizes if density makes reading difficult. Avoid metric walls or repeated feature-card filler.
 
 Use semantic buttons, headings and native disclosures. Keep visible focus, meaningful labels, Escape behavior, focus restoration, reduced-motion support and narrow-screen layouts. Escape generated content. Restrict source links to safe HTTP(S) URLs. Load nothing from the network. Add no trackers, client data writes, connector access or authentication bypasses to the presentation shell.

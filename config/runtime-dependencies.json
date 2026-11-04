@@ -198,5 +198,20 @@
   "transcript-ingestion": [
     "evidence-core",
     "knowledge-hub"
+  ],
+  "tracker-intake": [
+    "review-site-kit"
+  ],
+  "moscow-story-map": [
+    "review-site-kit"
+  ],
+  "decision-register": [
+    "review-site-kit"
+  ],
+  "review-site": [
+    "review-site-kit"
+  ],
+  "review-site-kit": [
+    "brand-renderer"
   ]
 }

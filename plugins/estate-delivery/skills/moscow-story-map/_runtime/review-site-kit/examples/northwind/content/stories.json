@@ -1,0 +1,127 @@
+{
+  "format": 1,
+  "steps": [
+    {
+      "id": "intake",
+      "label": "Take the request"
+    },
+    {
+      "id": "plan",
+      "label": "Plan the visit"
+    },
+    {
+      "id": "close",
+      "label": "Close the visit"
+    }
+  ],
+  "stories": [
+    {
+      "id": "st-form",
+      "label": "Request form",
+      "step": "intake",
+      "class": "must",
+      "tickets": [
+        "NW-11"
+      ],
+      "roles": [
+        "coord"
+      ],
+      "what": "Site contacts send a request with a site, a contact and a problem type.",
+      "interim": "Coordinators type requests from email."
+    },
+    {
+      "id": "st-dup",
+      "label": "Duplicate check",
+      "step": "intake",
+      "class": "should",
+      "tickets": [
+        "NW-12"
+      ],
+      "roles": [
+        "coord"
+      ],
+      "what": "A second open request for the same site and problem type is blocked.",
+      "interim": "Coordinators search open requests before booking."
+    },
+    {
+      "id": "st-route",
+      "label": "Region queues",
+      "step": "intake",
+      "class": "must",
+      "tickets": [
+        "NW-13"
+      ],
+      "roles": [
+        "coord"
+      ],
+      "what": "Each new request lands in its region's coordinator queue."
+    },
+    {
+      "id": "st-cal",
+      "label": "Technician calendar",
+      "step": "plan",
+      "class": "must",
+      "tickets": [
+        "NW-21"
+      ],
+      "roles": [
+        "coord",
+        "tech"
+      ],
+      "what": "Coordinators see booked and free slots for each technician."
+    },
+    {
+      "id": "st-book",
+      "label": "Book from the request",
+      "step": "plan",
+      "class": "must",
+      "tickets": [
+        "NW-22"
+      ],
+      "roles": [
+        "coord"
+      ],
+      "what": "The coordinator books a free slot and the visit keeps the request's history.",
+      "depends_on": [
+        "st-cal"
+      ]
+    },
+    {
+      "id": "st-close",
+      "label": "Close with work notes",
+      "step": "close",
+      "class": "could",
+      "tickets": [
+        "NW-31"
+      ],
+      "roles": [
+        "tech"
+      ],
+      "what": "Technicians record work notes on their phone before closing."
+    },
+    {
+      "id": "st-training",
+      "label": "Technician training",
+      "step": "close",
+      "class": "must",
+      "tickets": [],
+      "planned_in": "NW-3",
+      "roles": [
+        "tech"
+      ],
+      "what": "Technicians learn the phone closeout before go-live."
+    },
+    {
+      "id": "st-survey",
+      "label": "Customer survey",
+      "step": "close",
+      "class": "wont",
+      "tickets": [],
+      "planned_in": "NW-3",
+      "roles": [
+        "coord"
+      ],
+      "what": "Site contacts rate the visit after it closes."
+    }
+  ]
+}

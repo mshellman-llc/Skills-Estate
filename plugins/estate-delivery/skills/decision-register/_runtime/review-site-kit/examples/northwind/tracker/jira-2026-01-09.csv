@@ -1,0 +1,38 @@
+Summary,Issue key,Issue id,Issue Type,Status,Priority,Created,Updated,Sprint,Sprint,Labels,Labels,Description,Custom field (Story point estimate),Inward issue link (Blocks),Inward issue link (Blocks),Outward issue link (Blocks),Parent,Parent key,Parent summary,Comment
+Request intake,NW-1,1001,Epic,In Progress,Medium,05-Jan-26 09:00 AM,08-Jan-26 10:00 AM,,,,,,,,,,,,,
+Visit planning,NW-2,1002,Epic,In Progress,Medium,05-Jan-26 09:00 AM,08-Jan-26 10:00 AM,,,,,,,,,,,,,
+Visit closeout,NW-3,1003,Epic,In Progress,Medium,05-Jan-26 09:00 AM,08-Jan-26 10:00 AM,,,,,,,,,,,,,
+Request form for site contacts,NW-11,1011,Story,Done,Medium,05-Jan-26 09:00 AM,09-Jan-26 04:10 PM,Sprint 1,,intake,,"*Background*
+Site contacts submit service requests through one form.
+
+*Acceptance Criteria*
+# A request needs a site, a contact and a problem type.
+# The form confirms the request number on submit.",3,,,NW-12,1001,NW-1,Request intake,Reviewed with the operations lead.
+Duplicate request check,NW-12,1012,Story,In Progress,Medium,05-Jan-26 09:00 AM,09-Jan-26 02:00 PM,Sprint 1,Sprint 2,intake,,"*Background*
+Two open requests for one site and problem type cause double visits.
+
+*Acceptance Criteria*
+# A second open request for the same site and problem type is blocked with a message.",2,NW-11,,,1001,NW-1,Request intake,
+Route requests to the coordinator queue,NW-13,1013,Story,To Do,Medium,05-Jan-26 09:00 AM,08-Jan-26 09:30 AM,Sprint 3,,,,"*Background*
+Coordinators work from one queue per region.
+
+*Acceptance Criteria*
+# A new request lands in its region queue.",,NW-21,,,1001,NW-1,Request intake,
+Technician calendar,NW-21,1021,Story,In Review,Medium,05-Jan-26 09:00 AM,09-Jan-26 01:00 PM,Sprint 2,,,,"*Background*
+Coordinators need technician availability before booking.
+
+*Acceptance Criteria*
+# Each technician has a calendar with booked and free slots.",5,,,NW-22,1002,NW-2,Visit planning,
+Book a visit from the request,NW-22,1022,Story,To Do,Medium,05-Jan-26 09:00 AM,09-Jan-26 01:20 PM,Sprint 3,,,,"*Background*
+Booking happens from the request so the visit keeps its history.
+
+*Acceptance Criteria*
+# The coordinator picks a free slot and the visit links to the request.
+# The site contact gets a confirmation.",3,NW-21,NW-23,,1002,NW-2,Visit planning,
+Parts availability check,NW-23,1023,Story,Canceled,Medium,05-Jan-26 09:00 AM,07-Jan-26 03:00 PM,,,,,,,,,NW-22,1002,NW-2,Visit planning,
+Route optimization for daily visits,NW-24,1024,Story,Needs Refinement,Medium,05-Jan-26 09:00 AM,08-Jan-26 08:00 AM,,,,,,,,,,1002,NW-2,Visit planning,
+Close the visit with work notes,NW-31,1031,Story,To Do,Medium,05-Jan-26 09:00 AM,08-Jan-26 08:15 AM,,,,,"*Background*
+Technicians close visits on their phone.
+
+*Acceptance Criteria*
+# The technician records work notes before closing.",2,,,,1003,NW-3,Visit closeout,

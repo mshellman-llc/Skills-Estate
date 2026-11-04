@@ -1,0 +1,58 @@
+schema_version: 1
+name: moscow-story-map
+display_name: MoSCoW Story Map
+summary: 'Maintains a MoSCoW story map from tracker tickets with computed readiness, Must share, unclassed tickets, critical path and a review queue for changed or new tickets.'
+status: draft
+tier: core
+version: 0.1.0
+owner: estate-maintainer
+category: delivery-planning
+runtimes:
+- claude-code
+- codex
+- cowork
+triggers:
+- 'Classify a release backlog with MoSCoW.'
+- 'Show what is ready to build or on the critical path.'
+- 'Map new tickets after an export.'
+exclusions:
+- 'MoSCoW values on captured requirements in the requirements workbook (requirements-backlog).'
+- 'INVEST grading and sprint readiness reports (backlog-refinement).'
+- 'Ranking by value (prioritization).'
+- 'Writing new stories (requirements-backlog).'
+inputs:
+- name: stories
+  required: true
+  description: 'content/stories.json with authored story fields.'
+- name: tickets
+  required: true
+  description: 'Canonical tickets from tracker-intake.'
+- name: delta
+  required: false
+  description: 'delta.json for the review queue.'
+outputs:
+- name: story map summary
+  format: json
+  audience: internal-or-client-as-requested
+  durable: true
+- name: review-queue.md
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+- name: class-reviews.csv
+  format: csv
+  audience: internal-or-client-as-requested
+  durable: true
+connectors:
+  required: []
+  optional:
+  - jira
+depends_on:
+- review-site-kit
+calls:
+- tracker-intake
+risk_controls:
+- 'Never changes tracker tickets; exports are prepared for the client to import.'
+- 'Client data, names and brand values stay in the engagement folder, never in the skill.'
+costs:
+  measured: false

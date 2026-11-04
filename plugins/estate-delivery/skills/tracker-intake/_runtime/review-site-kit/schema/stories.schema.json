@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Story map content",
+  "type": "object",
+  "required": ["format", "steps", "stories"],
+  "properties": {
+    "format": {"const": 1},
+    "steps": {
+      "type": "array",
+      "items": {"type": "object", "required": ["id", "label"],
+                "properties": {"id": {"type": "string"}, "label": {"type": "string"}}}
+    },
+    "stories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "step", "class"],
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "step": {"type": "string"},
+          "class": {"enum": ["must", "should", "could", "wont"]},
+          "epic": {"type": ["string", "null"]},
+          "tickets": {"type": "array", "items": {"type": "string"}},
+          "planned_in": {"type": ["string", "null"]},
+          "roles": {"type": "array", "items": {"type": "string"}},
+          "what": {"type": "string"},
+          "interim": {"type": "string"},
+          "acceptance": {"type": "array", "items": {"type": "string"}},
+          "depends_on": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "lanes": [
+    {
+      "id": "request",
+      "label": "Request",
+      "lead": "A site contact asks for a visit and the request reaches the right queue.",
+      "steps": [
+        {
+          "id": "submit",
+          "label": "Submit the form",
+          "text": "The site contact enters a site, a contact and a problem type, and gets a request number.",
+          "tickets": [
+            "NW-11"
+          ]
+        },
+        {
+          "id": "dedupe",
+          "label": "Check for duplicates",
+          "text": "A second open request for the same site and problem type is blocked with a message.",
+          "tickets": [
+            "NW-12"
+          ]
+        },
+        {
+          "id": "queue",
+          "label": "Route to a queue",
+          "text": "The request lands in its region's coordinator queue.",
+          "tickets": [
+            "NW-13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "visit",
+      "label": "Visit",
+      "lead": "The coordinator books the visit and the technician closes it.",
+      "steps": [
+        {
+          "id": "book",
+          "label": "Book a slot",
+          "text": "The coordinator picks a free slot on the technician's calendar.",
+          "tickets": [
+            "NW-21",
+            "NW-22"
+          ]
+        },
+        {
+          "id": "close",
+          "label": "Close the visit",
+          "text": "The technician records work notes and closes the visit on their phone.",
+          "tickets": [
+            "NW-31"
+          ]
+        }
+      ]
+    }
+  ],
+  "design": [
+    {
+      "title": "What is standard and what is built",
+      "rows": [
+        {
+          "label": "Standard records",
+          "text": "Requests and visits use the platform's case and appointment records."
+        },
+        {
+          "label": "Built",
+          "text": "The duplicate check and region routing are custom rules."
+        }
+      ]
+    },
+    {
+      "title": "Failure and recovery",
+      "rows": [
+        {
+          "label": "Booking conflict",
+          "text": "A slot booked by two coordinators at once keeps the first booking and returns the second to the queue."
+        }
+      ]
+    }
+  ]
+}

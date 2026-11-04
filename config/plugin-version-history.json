@@ -66,7 +66,11 @@
       "note": "Split estate-additional-skills into estate-product, estate-writing and opt-in estate-personal; Hub skills join governance, Salesforce skills join delivery, code-simplify joins quality"
     },
     "0.2.16": {
-      "content_sha256": "c7530b2970ca1195b62f8b7c73fa3bb844c038452631ec927f9596f9333acf76",
+      "content_sha256": "92be90502a86201dd3352c5bf9d09518b53aca7aa002010fd25e584e731a05ab",
+      "note": "Add the review-site series: tracker-intake, moscow-story-map, decision-register and review-site in estate-delivery"
+    },
+    "0.2.17": {
+      "content_sha256": "53d775bd02ebdadf8f3ae3480e1d8175fe78e3b69bb6a0d553788f6e170d36cd",
       "note": "Sharpen twelve skill descriptions from the usefulness audit, rework discovery synthesis, and stop the quality router from selecting writing-integrity"
     }
   }

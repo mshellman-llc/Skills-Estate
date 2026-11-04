@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 85 source modules and 58 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 90 source modules and 62 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -10,7 +10,7 @@ This candidate contains 85 source modules and 58 proposed task entrypoints. Cons
 | --- | ---: | ---: |
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
-| [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 18 | 14 |
+| [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 23 | 18 |
 | [Product and experience](browse/product-and-experience/README.md) | 13 | 12 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
@@ -39,6 +39,7 @@ This candidate contains 85 source modules and 58 proposed task entrypoints. Cons
 | code-simplify | [code-simplify](skills/code-simplify/SKILL.md) |  |
 | commercial-review | [deal-desk](skills/deal-desk/SKILL.md) |  |
 | cutover-closeout | [cutover-closeout](skills/cutover-closeout/SKILL.md) |  |
+| decision-register | [decision-register](skills/decision-register/SKILL.md) |  |
 | deck-builder | [deck-builder](skills/deck-builder/SKILL.md) | ddoc |
 | deliverable-review | [quality-gate](skills/quality-gate/SKILL.md) |  |
 | delivery-kickoff | [delivery-kickoff](skills/delivery-kickoff/SKILL.md) |  |
@@ -51,6 +52,7 @@ This candidate contains 85 source modules and 58 proposed task entrypoints. Cons
 | journey-mapping | [journey-mapping](skills/journey-mapping/SKILL.md) |  |
 | jtbd-framing | [jtbd-framing](skills/jtbd-framing/SKILL.md) |  |
 | knowledge-hub | [knowledge-hub](skills/knowledge-hub/SKILL.md) |  |
+| moscow-story-map | [moscow-story-map](skills/moscow-story-map/SKILL.md) |  |
 | offering-fit | [playbook-fit-router](skills/playbook-fit-router/SKILL.md) |  |
 | portfolio-case-study | [case-study-builder](skills/case-study-builder/SKILL.md) |  |
 | prioritization | [prioritization](skills/prioritization/SKILL.md) |  |
@@ -58,6 +60,7 @@ This candidate contains 85 source modules and 58 proposed task entrypoints. Cons
 | product-development | [product-development-pathway](skills/product-development-pathway/SKILL.md) |  |
 | project-scoping | [scoping-agent](skills/scoping-agent/SKILL.md) | rom |
 | requirements-backlog | [requirements-capture](skills/requirements-capture/SKILL.md) |  |
+| review-site | [review-site](skills/review-site/SKILL.md) |  |
 | roadmap-artifacts | [roadmap-artifacts](skills/roadmap-artifacts/SKILL.md) |  |
 | sales-process-mapping | [sales-process-mapping](skills/sales-process-mapping/SKILL.md) | sales-journey-critique |
 | sales-to-delivery-handoff | [s2d-handoff](skills/s2d-handoff/SKILL.md) |  |
@@ -77,6 +80,7 @@ This candidate contains 85 source modules and 58 proposed task entrypoints. Cons
 | sticker-sheets | [sticker-sheets](skills/sticker-sheets/SKILL.md) |  |
 | system-design | [system-design](skills/system-design/SKILL.md) | architecture-doc |
 | team-onboarding | [team-onboarding](skills/team-onboarding/SKILL.md) |  |
+| tracker-intake | [tracker-intake](skills/tracker-intake/SKILL.md) |  |
 | usability-testing | [usability-testing](skills/usability-testing/SKILL.md) |  |
 | writing-integrity | [writing-integrity](skills/writing-integrity/SKILL.md) |  |
 | writing-profile | [writing-style-builder](skills/writing-style-builder/SKILL.md) |  |
@@ -109,6 +113,7 @@ Each module needs a reviewed capability disposition before release.
 - [cutover-closeout](skills/cutover-closeout/SKILL.md)
 - [ddoc](skills/ddoc/SKILL.md)
 - [deal-desk](skills/deal-desk/SKILL.md)
+- [decision-register](skills/decision-register/SKILL.md)
 - [deck-builder](skills/deck-builder/SKILL.md)
 - [delivery-kickoff](skills/delivery-kickoff/SKILL.md)
 - [delivery-status](skills/delivery-status/SKILL.md)
@@ -127,6 +132,7 @@ Each module needs a reviewed capability disposition before release.
 - [journey-mapping](skills/journey-mapping/SKILL.md)
 - [jtbd-framing](skills/jtbd-framing/SKILL.md)
 - [knowledge-hub](skills/knowledge-hub/SKILL.md)
+- [moscow-story-map](skills/moscow-story-map/SKILL.md)
 - [org-preflight](skills/org-preflight/SKILL.md)
 - [personal-writing-style-runtime](skills/personal-writing-style-runtime/SKILL.md)
 - [playbook-builder](skills/playbook-builder/SKILL.md)
@@ -141,6 +147,8 @@ Each module needs a reviewed capability disposition before release.
 - [quality-gate](skills/quality-gate/SKILL.md)
 - [requirements-capture](skills/requirements-capture/SKILL.md)
 - [resume-numbers-and-keywords](skills/resume-numbers-and-keywords/SKILL.md)
+- [review-site](skills/review-site/SKILL.md)
+- [review-site-kit](skills/review-site-kit/SKILL.md)
 - [roadmap-artifacts](skills/roadmap-artifacts/SKILL.md)
 - [rom](skills/rom/SKILL.md)
 - [s2d-handoff](skills/s2d-handoff/SKILL.md)
@@ -165,6 +173,7 @@ Each module needs a reviewed capability disposition before release.
 - [sticker-sheets](skills/sticker-sheets/SKILL.md)
 - [system-design](skills/system-design/SKILL.md)
 - [team-onboarding](skills/team-onboarding/SKILL.md)
+- [tracker-intake](skills/tracker-intake/SKILL.md)
 - [transcript-ingestion](skills/transcript-ingestion/SKILL.md)
 - [uat-validation](skills/uat-validation/SKILL.md)
 - [usability-testing](skills/usability-testing/SKILL.md)
