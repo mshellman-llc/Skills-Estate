@@ -1,0 +1,19 @@
+Requirement Number,Name,Epic,Capability,As A,I Want To,So That,Acceptance Criteria,Priority,Status,Assumptions & Notes,Estimate Days,Depends On,Refinement Sessions
+ONB-001,Setup checklist,Guided Setup,Self-serve onboarding,new workspace admin,see the setup steps that must be finished before my team logs in,I can finish setup without opening a support ticket,"Scenario: Admin sees required steps
+Given a new workspace with no completed steps
+When the admin opens setup
+Then the required steps are listed in order
+
+Scenario: Completed step is marked
+Given the admin has invited one teammate
+When the admin returns to setup
+Then the invite step shows as complete",Must Have,Reviewed,Synthetic example,3,D-004,1
+ONB-002,Resume setup later,Guided Setup,Self-serve onboarding,new workspace admin,leave setup and come back to the same step,I do not lose progress when I am interrupted,"Scenario: Progress is kept
+Given the admin completed two steps
+When the admin signs out and back in
+Then setup opens at the third step",Should Have,Approved,Synthetic example,2,,1
+ONB-003,Single sign-on step,Guided Setup,Self-serve onboarding,new workspace admin,connect our identity provider during setup,my team signs in with company accounts from day one,"Scenario: Admin connects the identity provider
+Given the admin has identity provider metadata
+When the admin uploads it
+Then a test sign-in succeeds",Must Have,Draft,Synthetic example,9,Platform IdP sandbox,2
+ONB-004,Setup dashboard,Guided Setup,Self-serve onboarding,admin,build the new dashboard,it works,Shows progress,Could Have,Draft,Synthetic example,,ONB-003,3

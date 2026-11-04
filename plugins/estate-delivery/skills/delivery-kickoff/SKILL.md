@@ -1,6 +1,6 @@
 ---
 name: delivery-kickoff
-description: 'Mobilizes an Estate delivery engagement: turns an accepted sales-to-delivery handoff brief and a signed SOW into a draft Project Charter (scope, team, RACI, cadence, ready for client signature), a live governance pack (RAID log, decision log, weekly status template with stable IDs), internal and client kickoff decks in the correct waterfall or agile variant, a Sprint 0 plan with a seeded backlog, and tracked (never performed) sandbox and access setup. Use when a deal has closed and delivery is starting: "kick off the project", "mobilize the engagement", "draft the charter", "set up the RAID log", "build the kickoff deck", "help me get ready for kickoff", "the handoff is accepted, what now", "stand up governance", "Sprint 0 plan", or any Mobilize-phase request. Do NOT use for the handoff itself (that is sales-to-delivery-handoff), ongoing status reports or RAID upkeep after kickoff (delivery-status), requirements sessions (requirements-backlog), or scoping and pricing (the SOW is fixed input).'
+description: 'Mobilizes an Estate delivery engagement: turns an accepted sales-to-delivery handoff brief and a signed SOW into a draft Project Charter (scope, team, RACI, cadence, ready for client signature), a live governance pack (RAID log, decision log, weekly status template with stable IDs), internal and client kickoff decks in the correct waterfall or agile variant, a Sprint 0 plan with a seeded backlog, and tracked (never performed) sandbox and access setup. Use when a deal has closed and delivery is starting: "kick off the project", "mobilize the engagement", "draft the charter", "set up the RAID log", "build the kickoff deck", "help me get ready for kickoff", "the handoff is accepted, what now", "stand up governance", "Sprint 0 plan", or any Mobilize-phase request. Do NOT use for the handoff itself (sales-to-delivery-handoff), status reports or RAID upkeep after kickoff (delivery-status), requirements sessions (requirements-backlog), later sprints (sprint-planning), or scoping and pricing (the SOW is fixed input).'
 ---
 
 
@@ -124,6 +124,9 @@ workstream, stories only where the SOW gives real basis, every item source-cited
 scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by
 requirements-backlog). The client research pack is a two-page sourced extension of the
 handoff overview, not pursuit-grade research; a meeting-specific prep pack is call-prep.
+On agile engagements, Sprint 0 ends when `backlog-refinement` has graded the first stories and
+`sprint-planning` has planned Sprint 1 against measured capacity; both follow
+`../_shared/planning-chain.md` and read the RAID log this phase seeds.
 
 ## Phase 5: track the operational setup
 

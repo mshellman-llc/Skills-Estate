@@ -1,6 +1,6 @@
 ---
 name: delivery-router
-description: Route salesforce delivery engineering, deployment, team onboarding, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
+description: Route salesforce delivery engineering, deployment, team onboarding, backlog refinement, sprint planning, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Delivery Router
@@ -12,12 +12,18 @@ description: Route salesforce delivery engineering, deployment, team onboarding,
 5. Do not reproduce the selected skill's methodology.
 6. Confirm which Knowledge Hub files the workflow must read and update.
 
+## Planning chain distinctions
+
+Requirements and backlog requests follow the shared planning chain that each of these skills cites. Writing or changing a requirement is `requirements-capture`. Deciding whether existing requirements are ready for a sprint, estimating them or splitting them is `backlog-refinement`. Committing a sprint against capacity, or diagnosing a missed sprint, is `sprint-planning`. Writing RAID entries, decisions or a status report is `delivery-status`; the other skills propose RAID entries and `delivery-status` records them.
+
 ## Available skills
 
 - `delivery-suite`
 - `s2d-handoff`
 - `delivery-kickoff`
 - `delivery-status`
+- `backlog-refinement`
+- `sprint-planning`
 - `uat-validation`
 - `cutover-closeout`
 - `team-onboarding`

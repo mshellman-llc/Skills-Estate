@@ -69,7 +69,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "2ca9c4319ba4417535b0195dc6058d93757ace3b8ef59cdf61ac4f6137160bb7",
+      "required_sha256": "48f5458b6848e2fb56ca22127525df6c50645e52a10e9a659f8d3a1650636e1f",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -79,7 +79,7 @@
       "subject": "commercial-router"
     },
     {
-      "required_sha256": "febcd3f84b0f9cbe25518d6be7976d2ba5eeadc15d2fcff558a4afaf4f4cf1f8",
+      "required_sha256": "ad2ed19355476ef0e6f4ffa7420d71b0a6481b64e011a7ac8da0a6c70b437c28",
       "status": "review required",
       "subject": "delivery-router"
     },
@@ -99,7 +99,7 @@
       "subject": "quality-router"
     },
     {
-      "required_sha256": "b3b53b12c57787b8bdc472785f2e25633ad9482101306c07a5da4f5b58725b78",
+      "required_sha256": "770a7822fea67b5dbea0db21a670c3388c54c6a338764616a96fbed13eae7d64",
       "status": "review required",
       "subject": "solutioning-router"
     },
@@ -122,6 +122,11 @@
       "required_sha256": "cc859084a1a2898e3531af260324a6b3bfbc6e3893060588a7fb0f620f079190",
       "status": "review required",
       "subject": "author-writing-style"
+    },
+    {
+      "required_sha256": "0672d9712a19e962bb61150864726b7ab57b4c6031350cd38668cd62601840f8",
+      "status": "review required",
+      "subject": "backlog-refinement"
     },
     {
       "required_sha256": "32f3133d1627a562a100b16cf2bc9ea2ec631ce8f5d135525306e18fb3556ff2",
@@ -224,17 +229,17 @@
       "subject": "deck-builder"
     },
     {
-      "required_sha256": "d279f05e21e5dbc2d90c7a19a0ec562c84692374c1942574179df2c86729436a",
+      "required_sha256": "b7c2e00b2cd4639e2082cb8f731dac0d28dd45fa1aabe66ad0c3725a9ba0ca9b",
       "status": "review required",
       "subject": "delivery-kickoff"
     },
     {
-      "required_sha256": "ea10d735172f1bb24edc054febca50d1aea470634b9c90ea707c65da193f2f7f",
+      "required_sha256": "a4831eb22e76104bbb6aec4c53a3c088131daf7c3147a6f8ff7ba8754a850aa1",
       "status": "review required",
       "subject": "delivery-status"
     },
     {
-      "required_sha256": "da2560b2bc0d1a0a46c7a8625c144021008a42e9be2c8e5e6ce6688979a573bb",
+      "required_sha256": "8d9f2a6dd13cb58dea199e64c719a6db9168c2a4ebf95e8f341857cc6af285a0",
       "status": "review required",
       "subject": "delivery-suite"
     },
@@ -299,7 +304,7 @@
       "subject": "journey-mapping"
     },
     {
-      "required_sha256": "10eb14f8b999587504f2d425089382e6b31a38dc3657168e5ea4aa8681df44fd",
+      "required_sha256": "cc085271a8fb966bbfeafe5cd11af9b6f65d9f688a73a0b4988e7c6192dcb543",
       "status": "review required",
       "subject": "jtbd-framing"
     },
@@ -344,6 +349,11 @@
       "subject": "pm-spec-writing"
     },
     {
+      "required_sha256": "c35ae4d2853c134ecc22a5cdcf715d1c6359c712441d91e6f5bbda4085c8305a",
+      "status": "review required",
+      "subject": "prioritization"
+    },
+    {
       "required_sha256": "ad02c29a40e0a57143515f1c5a3741c3270fb3af325f3cec8fb66ac716f340dd",
       "status": "review required",
       "subject": "process"
@@ -364,7 +374,7 @@
       "subject": "quality-gate"
     },
     {
-      "required_sha256": "dacd9feff696dac75a3b5aadbbf61a9879d58e6a39971e6b82b11c31d8cc9b74",
+      "required_sha256": "5f5a9245312f7912a552522260486c60e3dd2f2186804472da1851e3c2031d9c",
       "status": "review required",
       "subject": "requirements-capture"
     },
@@ -372,6 +382,11 @@
       "required_sha256": "ec7635d2cafc18f2382b731e1df9caee6fa7ffb0912ded6ea7f56cca36aadf1a",
       "status": "review required",
       "subject": "resume-numbers-and-keywords"
+    },
+    {
+      "required_sha256": "3f2aa5c8e80c981eaec1b6c4f6c325e77167bf36023c322915f76c1774ef0c6f",
+      "status": "review required",
+      "subject": "roadmap-artifacts"
     },
     {
       "required_sha256": "daab6bca7478b1f25cdb371eab08c1a31ce95adc7f1a078dab91a5d7d8ebeefa",
@@ -464,6 +479,11 @@
       "subject": "spec-writer"
     },
     {
+      "required_sha256": "79cb7768e82881eac8913dc2afde23ba69e014a8bee3cc00ce2982ff81761b3f",
+      "status": "review required",
+      "subject": "sprint-planning"
+    },
+    {
       "required_sha256": "ef80c6145b400328cc6f62145a83396f3ec740fa316f2291d3bccc13379f340b",
       "status": "review required",
       "subject": "sticker-art-direction"
@@ -509,6 +529,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "7b8ad6d8d8d1d959bc66f68c69a02f48cc7faa923df0eb431a01d445910eb656",
+  "source_sha256": "a24818561d97cd90ebff8a998bf2fce2ab51f6719b5a6a26dbc146620ed2a5eb",
   "status": "owner-published"
 }

@@ -42,6 +42,7 @@
       "title": "Delivery and Salesforce",
       "description": "Move from an accepted handoff through implementation, testing, and closeout.",
       "skills": [
+        "backlog-refinement",
         "cutover-closeout",
         "delivery-kickoff",
         "delivery-status",
@@ -56,6 +57,7 @@
         "sf-enterprise-patterns",
         "sf-headless-screenshot",
         "sf-solo-devops",
+        "sprint-planning",
         "team-onboarding",
         "uat-validation"
       ]
@@ -67,16 +69,17 @@
       "skills": [
         "accessibility-audit",
         "analytics-strategy",
+        "build-interactive-explorer",
         "independent-product",
         "information-architecture",
         "journey-mapping",
         "pm-spec-writing",
+        "prioritization",
         "process",
         "product-development-pathway",
         "spec-writer",
         "system-design",
-        "usability-testing",
-        "build-interactive-explorer"
+        "usability-testing"
       ]
     },
     {

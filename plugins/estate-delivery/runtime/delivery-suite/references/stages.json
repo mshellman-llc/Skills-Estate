@@ -24,7 +24,7 @@
       "gate_key": "requirements_cosigned",
       "gate": "Requirements Document co-signed",
       "gate_holder": "client",
-      "owner": "requirements-backlog; journey-mapping when needed"
+      "owner": "requirements-backlog; journey-mapping when needed; backlog-refinement before each sprint on agile engagements"
     },
     {
       "id": "03",
@@ -40,7 +40,7 @@
       "gate_key": "build_complete",
       "gate": "Build complete in sandbox",
       "gate_holder": "delivery team",
-      "owner": "the configured project implementation workflow"
+      "owner": "the configured project implementation workflow; sprint-planning for each sprint on agile engagements"
     },
     {
       "id": "05",

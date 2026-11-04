@@ -1,6 +1,6 @@
 ---
 name: jtbd-framing
-description: "Apply Jobs-to-be-Done as product methodology: job statements, struggling moments, hire and fire criteria, functional, emotional, and social dimensions, and the difference between feature-thinking and job-thinking. Use it in discovery, prioritization, positioning, or an audit of existing JTBD work, and for spotting where JTBD has become ritual. Triggers on jobs-to-be-done, JTBD, job statements, struggling moments, hire or fire criteria, switch triggers, outcome-driven innovation, and on teams that lean on feature-request lists or persona archetypes that do not drive decisions. Do not trigger for generic prioritization or research synthesis with no JTBD angle."
+description: "Apply Jobs-to-be-Done as product methodology: job statements, struggling moments, hire and fire criteria, functional, emotional, and social dimensions, and the difference between feature-thinking and job-thinking. Use it in discovery, prioritization, positioning, or an audit of existing JTBD work, and for spotting where JTBD has become ritual. Triggers on jobs-to-be-done, JTBD, job statements, struggling moments, hire or fire criteria, switch triggers, switch interviews, outcome-driven innovation, planning or running a JTBD workshop, and on teams that lean on feature-request lists or persona archetypes that do not drive decisions. Do not trigger for generic prioritization or research synthesis with no JTBD angle."
 license: MIT
 ---
 
@@ -66,6 +66,10 @@ In prioritization, frame each roadmap candidate by the job it addresses, then as
 
 In positioning, lead with the job. "Help product teams turn discovery research into decisions" is job framing; "AI-powered research synthesis with collaboration tools" is feature framing. See [applying JTBD to positioning](references/applying-jtbd-to-positioning.md).
 
+## Running a workshop
+
+Run a workshop only when switch-interview evidence exists and a named decision will use the result. The [workshop facilitation guide](references/workshop-facilitation.md) explains the four methods a workshop combines and sets an evidence minimum for each format, from two hours to a full day. It also gives the workflow, where each output goes next, and the traps to avoid. The agendas, the switch interview script, the forces canvas and the pre-work email are in `assets/`. Score desired outcomes with `prioritization --framework odi`; ratings that participants give on the customer's behalf stay labelled internal.
+
 ## Related skills
 
 `discovery-synthesis` turns raw interviews and transcripts into structured findings, and job statements are one of its outputs; this skill is the bar those statements are held to. `journey-mapping` lays a job across phases: the Goal lane of a journey map is the job at that phase, struggling moments land where the emotional curve drops, and fire criteria often sit in the final phase where a person decides whether to come back. Handle evidence the same way in both: each item carries a short reference to its source or hypothesis entry, and the entries sit together in one evidence list. `feature-spec` takes jobs as input to specifications; its detailed UI and API specification mode covers implementation detail. Positioning and brand work use the job framing but do not replace creative direction. Other strategy frameworks, such as Wardley mapping, North Star metrics, and OKRs, are out of scope.
@@ -107,4 +111,5 @@ Return the job framing that would change a decision, the decision implications, 
 - [Applying JTBD to prioritization](references/applying-jtbd-to-prioritization.md): prioritizing candidates by job.
 - [Applying JTBD to positioning](references/applying-jtbd-to-positioning.md): job-led versus feature-led positioning.
 - [Common JTBD failures](references/common-jtbd-failures.md): eleven patterns with diagnoses and cures.
+- [Workshop facilitation](references/workshop-facilitation.md): how to choose a workshop format, run it from evidence, and hand its outputs on.
 - [Rendering with roadmap components](references/rendering-with-roadmap-components.md): which component carries each output, evidence numbers, and the single-file build.

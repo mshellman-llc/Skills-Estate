@@ -31,6 +31,7 @@
       "entries": [
         "feature-spec",
         "journey-mapping",
+        "prioritization",
         "process-design",
         "project-scoping",
         "requirements-backlog",
@@ -71,6 +72,7 @@
       "description": "Skills Estate delivery workflows and routing.",
       "entries": [
         "acceptance-testing",
+        "backlog-refinement",
         "cutover-closeout",
         "delivery-kickoff",
         "delivery-status",
@@ -78,6 +80,7 @@
         "sf-change-delivery",
         "sf-pipeline-operations",
         "sf-project-setup",
+        "sprint-planning",
         "team-onboarding"
       ],
       "internal": [
@@ -174,6 +177,9 @@
         "status": "pending"
       },
       "architecture-doc": {
+        "status": "pending"
+      },
+      "backlog-refinement": {
         "status": "pending"
       },
       "beastmode-capture": {
@@ -327,6 +333,9 @@
       "pm-spec-writing": {
         "status": "pending"
       },
+      "prioritization": {
+        "status": "pending"
+      },
       "process": {
         "status": "pending"
       },
@@ -410,6 +419,9 @@
         "status": "pending"
       },
       "spec-writer": {
+        "status": "pending"
+      },
+      "sprint-planning": {
         "status": "pending"
       },
       "sticker-art-direction": {

@@ -11,9 +11,9 @@ reference lifecycle does not create contractual obligations.
 | --- | --- |
 | S2D Handoff | Transfer the signed deal and its commitments. Retain the handoff package and receiving team's acceptance. |
 | 01 Mobilize | Prepare the charter and kickoff. Establish governance and an initial backlog. Track access and environment setup separately from performing it. |
-| 02 Analyze | Capture requirements and map the relevant processes. Preserve integration or migration inventories and known approval owners. |
+| 02 Analyze | Capture requirements and map the relevant processes. Preserve integration or migration inventories and known approval owners. On agile engagements, `backlog-refinement` grades stories for the next sprint. |
 | 03 Design | Explain the architecture and configuration. Include relevant integration and migration plans; plan acceptance tests against the requirements. |
-| 04 Build | Use the project's authorized implementation workflow. Keep build evidence and demonstrations separate from signed acceptance. |
+| 04 Build | Use the project's authorized implementation workflow. Keep build evidence and demonstrations separate from signed acceptance. On agile engagements, `sprint-planning` plans each sprint against capacity. |
 | 05 Validate | Prepare and execute the applicable system or user acceptance tests. Track defects and cutover readiness against observed results. |
 | 06 Deploy | Use the project's authorized deployment process. Prepare the cutover runbook and record acceptance under the executed agreement. |
 | 06b Closeout | Complete the agreed hypercare and support transition. Retain lessons and reusable assets in the project's actual destination. |
