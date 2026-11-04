@@ -1,6 +1,6 @@
 ---
 name: solution-brief
-description: 'Produce and validate Solution Briefs from an evidence-governed solution graph: judge whether a proposed solution is technically deliverable and make the delivery logic inspectable across systems, interfaces, failure paths, ADRs, scope, risks, assumptions, dependencies, staffing, phases, milestones, and financial reconciliation. Stops at a Technical Readiness Memo when load-bearing evidence is insufficient. Field guide mode builds the internal pursuit-team guide off the same graph for holding a scoping call or answering the in-house build we are up against. Requires evidence-core first. Do NOT use for the sourced client-facing architecture document (architecture-doc) or the SOW (sow).'
+description: 'Decide whether a proposed client solution can be delivered, then write the Solution Brief or build reference that explains its systems, interfaces, failure handling, scope, staffing, risks and cost reconciliation. Use for deal-desk approval, "is this deliverable", a build reference for developers, or a field guide for a scoping call. Stops at a Technical Readiness Memo when evidence is missing. For a product or service architecture without a deal, use system-design.'
 ---
 
 

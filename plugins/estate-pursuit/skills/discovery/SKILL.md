@@ -23,193 +23,64 @@ Use only the current task's supplied or explicitly authorized account, project s
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
 > [`readout-brief.md`](_runtime/prose-pass/references/registers/readout-brief.md). Inputs, not a final pass.**
 
-Turn discovery calls into sourced research artifacts for the current project. Use its industry, participants and terminology.
+Turn discovery calls into sourced research findings for the current project. Use its industry, participants and terminology.
 
 ## Boundary with the discovery brief
 
-This skill is the pipeline: raw call content in, structured artifacts out (JTBD
-statements, pain points, verbatims, a TL;DR, next steps, a .docx). It produces
-shareable research, ready for NotebookLM, a Claude Project, or a stakeholder
-readout. The primary workflow handles synthesis. The maintain pursuit findings
-mode uses [discovery-brief](_runtime/discovery-brief/WORKFLOW.md), which owns the ranked
-two-column ledger and feeds the pursuit brief. Select that complete workflow
-when the request is to update the deal's structured record or its open questions.
-The portable Discovery package embeds both workflows; no separate installation
+This skill is the synthesis pass: raw call content in, sourced findings out. The
+maintain pursuit findings mode uses [discovery-brief](_runtime/discovery-brief/WORKFLOW.md),
+which owns the deal's ranked two-column ledger, its open questions and the feed
+into the pursuit brief. Select that complete workflow when the request is to
+update the deal's structured record or ask what is still unknown about the
+account. A synthesis can supply new findings to that ledger; it does not replace
+it. The portable Discovery package embeds both workflows; no separate installation
 is needed for the ledger mode.
 
-## Supported Input Types
+## Supported input types
 
-| Input Type | How to Handle |
+| Input type | How to handle |
 |---|---|
-| Pasted text / typed notes | Use directly |
-| Uploaded .txt / .md | Read file contents |
+| Pasted text or typed notes | Use directly |
+| Uploaded .txt or .md | Read the file contents |
 | Uploaded .docx | Use the `docx` skill to extract text first. Find it in your available skills; do not assume a path. |
 | Uploaded .pdf | Use the `pdf` skill to extract text first. Find it in your available skills; do not assume a path. |
 | Granola transcript | Pull it through the Granola MCP connector (`get_meeting_transcript`, `list_meetings`). There is no Granola skill. |
-| Fathom transcript | Ask user to paste or export the transcript |
-| Audio / video file | Inform user that direct audio processing isn't supported; ask them to paste a transcript or use Granola/Fathom to export it first |
+| Fathom transcript | Ask the user to paste or export the transcript |
+| Audio or video file | Direct audio processing is not supported. Ask for a transcript or a Granola or Fathom export. |
 
----
+## Workflow
 
-## Step 1: Intake & Clarification
+1. Confirm the client, meeting type, who attended on each side and any known focus area. Infer what the content makes obvious and ask once for the rest. When the user wants speed, proceed and state the assumptions at the top.
+2. Read the supplied content completely. A summary is secondary evidence and cannot become a verbatim transcript. Keep uncertain speaker labels uncertain.
+3. Separate client voices from consulting-team voices. Client statements are the research signal; consultant questions are context.
+4. Record each finding with its source location and speaker role. Keep one person's observation distinct from a pattern several people share, and retain meaningful dissent.
+5. Rate severity from the source wording. Blocking, repeated or urgent statements are high. Frustration without a block is medium. A single vague mention is low. State the reason for each rating.
+6. Write the output in the format and length the user asked for. Without a narrower request, cover the sections below in plain headings.
+7. Run the release gate.
 
-Before synthesizing, gather the following context, quickly, in one message if possible. If some of this is obvious from the content, skip asking and infer.
+## What the synthesis covers
 
-1. **Client name / industry** (if not in the transcript)
-2. **Meeting type.** Discovery, assessment, stakeholder interview, etc.
-3. **Who was in the room?.** Roles on both sides (consulting team and client)
-4. **Any known focus area?.** E.g., CPQ, quoting process, order management, pricing
+The TL;DR gives the core problem, the most urgent pain and the largest opportunity in two to four sentences, with the session details it draws on.
 
-If the user is in a hurry, proceed with what you have and flag assumptions at the top of the output.
+Job statements use *When [situation], I want to [motivation], so I can [outcome].* Write a job statement only where the source shows the outcome the client wants. Cite the signal and the speaker role for each one. `jtbd-framing` holds the bar these statements must meet.
 
----
+Pain points state what was said in plain language, with severity, frequency, evidence and speaker role. Describe the problem; recommendations belong elsewhere.
 
-## Step 2: Synthesis Analysis
+Opportunity areas are the team's inference from the pain points and job statements. Label them as proposed and link each one to the findings it rests on.
 
-Read the supplied content completely. A summary is secondary evidence and cannot become a verbatim transcript. Keep uncertain speaker labels uncertain. Retain meaningful dissent and distinguish one person's observation from a shared pattern. Before generating output, internally map:
+Verbatims are exact quotations from client speakers. Preserve the exact words and grammar of a quote with its speaker and timestamp or source location. Never invent a representative quote. Label a paraphrase as a paraphrase outside quotation marks. Select only useful quotes present in the source, even when there are few. Include a consultant quote only when it provoked a revealing client response.
 
-- **Speaker attribution.** Identify who is a consulting-team voice vs. a client voice. Client voices are the research signal. Consultant voices provide context and questions.
-- **Signal types.** Distinguish between explicit pain statements ("we can't do X"), implicit friction ("it takes us 3 days to..."), aspirational statements ("what we really want is..."), and workarounds ("so we built a spreadsheet that...").
-- **JTBD signals.** Look for statements about outcomes the client is trying to achieve, not features they want. Use the format: *When [situation], I want to [motivation], so I can [outcome].*
-- **Severity indicators.** Words like "always", "never", "every time", "manual", "hours", "days", "can't", "broken", "nightmare" signal high severity. Vague frustration or one-off mentions signal low severity.
+Speaker-attributed insights describe each distinct client voice: apparent priorities, key concerns and influence signals, each tied to what the person said.
 
----
+Open questions and next steps name what the session left unconfirmed, the follow-up that would answer it and the responsible project role when the source identifies one; otherwise leave ownership open. Send questions that belong to the deal record to the maintain pursuit findings mode.
 
-## Step 3: Generate Research Output
+Gaps and assumptions list information the analysis needed but the source did not contain. When the transcript is thin, say so instead of padding with weak inferences.
 
-Produce the full artifact in this exact structure:
+## Output delivery
 
----
+Render the synthesis in Markdown in chat. Save a Markdown file in the project's existing output folder when files can be saved; otherwise provide the complete content in chat. When the user asks for a Word document, use the `docx` skill from your available skills and save it beside the Markdown file. Link saved files through the host's supported file-link mechanism.
 
-### 🗒️ SESSION SUMMARY
-
-**Client:** [Name / Industry]
-**Date:** [Date if available, otherwise "Not specified"]
-**Meeting Type:** [Discovery / Assessment / Stakeholder Interview]
-**Participants:** [Roles, flag if inferred]
-**Synthesized by:** [Actual assistant or author]
-
-**TL;DR:**
-2–4 sentences. What is the core problem this client is trying to solve? What is the biggest opportunity? What is the most urgent pain?
-
----
-
-### 🎯 JOBS TO BE DONE
-
-Use the canonical JTBD format for each job:
-> *When [situation/trigger], I want to [action/motivation], so I can [desired outcome].*
-
-Group into functional categories if multiple jobs exist (e.g., Quoting, Pricing, Order Management, Approvals, Reporting). Aim for 3–8 JTBD statements. Don't pad, quality over quantity.
-
-For each JTBD, add:
-- **Source:** [Direct quote or paraphrased signal from transcript]
-- **Speaker role:** [e.g., VP of Sales, Ops Manager, anonymized if names used]
-
----
-
-### 🔥 PAIN POINTS
-
-For each pain point:
-
-**[Pain Point Title]**
-- **Description:** What the problem is in plain language
-- **Severity:** 🔴 High / 🟡 Medium / 🟢 Low
-- **Frequency:** Always / Often / Occasionally / Once mentioned
-- **Evidence:** Direct quote or paraphrased signal
-- **Speaker role:** [Role]
-
-Severity rubric:
-- 🔴 **High.** Explicit, repeated, or described with urgency ("we can't", "it breaks every time", "someone has to manually...")
-- 🟡 **Medium.** Mentioned with frustration but not blocking ("it's annoying", "we'd love to fix this")
-- 🟢 **Low.** Mentioned once, vaguely, or as a nice-to-have
-
----
-
-### 💡 OPPORTUNITY AREAS
-
-Synthesized themes where the project team could create value. These are NOT feature requests, they are strategic opportunity spaces inferred from the pain points and JTBDs.
-
-For each opportunity:
-- **Opportunity:** [Name it concisely]
-- **Why it matters:** [Link to specific pain points or JTBDs]
-- **Potential approach:** [1–2 sentences on how this might be addressed, keep high-level]
-
-Aim for 3–5 opportunity areas. These should feel distinct and non-overlapping.
-
----
-
-### 💬 KEY VERBATIMS
-
-5–10 direct quotes from client speakers that are the most revealing, emotionally resonant, or strategically significant. These are the "sticky" moments, the things you'd put on a slide to make a stakeholder lean forward.
-
-Format:
-> *"[Exact source quote]"*
-> [Speaker role], [context if helpful]
-
-Preserve the exact words and grammar of a quote with its speaker and timestamp or source location. Never invent a representative quote. Label a paraphrase as a paraphrase outside quotation marks. Select only useful quotes present in the source, even when fewer than five exist.
-
-Do not include consultant quotes here unless they directly provoked a revealing client response.
-
----
-
-### 👥 SPEAKER-ATTRIBUTED INSIGHTS
-
-Brief profiles of each distinct client voice. Useful for stakeholder mapping.
-
-**[Role / Name if provided]**
-- **Apparent priorities:** [What they seemed to care most about]
-- **Tone:** [e.g., frustrated, optimistic, skeptical, pragmatic]
-- **Key concerns:** [Top 1–2 things they raised]
-- **Influence signals:** [Did they seem like a decision-maker, influencer, or end user?]
-
----
-
-### ✅ RECOMMENDED NEXT STEPS
-
-Recommend specific follow-ups supported by the findings. Name the responsible project role when the source identifies it; otherwise leave ownership open.
-
-Examples:
-- "Follow up with [role] on [specific topic]. They seemed most receptive."
-- "Validate assumption that [X]. It came up once and was not confirmed."
-- "Map current quoting workflow, there are conflicting signals about step ownership"
-- "Flag [Y] as a potential scope risk in the assessment"
-
----
-
-## Step 4: Output Delivery
-
-Use the user's requested format and length. The full structure above is the default when no narrower format is requested.
-
-**Default delivery:**
-1. The full structured artifact above, rendered in clean Markdown in-chat
-2. A Markdown file in the project’s existing output folder when files can be saved; otherwise provide the complete content in chat.
-
-**Also produce a .docx if the user requested it** (or offer it proactively):
-- Use the `docx` skill to render the artifact as a formatted Word document. Find it in your available skills rather than assuming an install path.
-- Apply clean heading hierarchy: H1 for section names, H2 for individual items
-- Save the Word document beside the Markdown output in the project’s output folder.
-- Link the saved files using the host’s supported attachment or file-link mechanism.
-
----
-
-## Tone & Quality Standards
-
-- Write in third person for pain points and JTBDs ("The client cannot..." not "You cannot...")
-- Verbatims preserve exact source wording. Present paraphrases separately and label them; do not put reconstructed wording in quotation marks.
-- Don't editorialize in pain points: describe what was said, not what you think they should do
-- Opportunity areas are where you can add strategic thinking, be sharp and specific
-- If the transcript is thin, say so explicitly rather than padding with weak inferences
-- Flag gaps: if you needed information that wasn't in the transcript, note it under a **⚠️ Gaps & Assumptions** section at the end
-
----
-
-## Integration Notes
-
-**For NotebookLM:** The Markdown output can be used as a source document after an authorized upload is confirmed by the destination. The section headers and structured formatting help NotebookLM generate accurate summaries and Q&A.
-
-**For Claude Projects:** Prepare a Markdown file suitable for the project. A local save does not upload it or establish future-session access. Use an authorized destination write when requested, then read back the saved record before claiming upload or availability.
-
-**For project deliverables:** Use the requested document or research format. Connect opportunity areas to the project’s confirmed assessment framework when one exists.
+A local save does not upload a file to NotebookLM or a Claude Project. Upload only to an authorized destination the user requests, and read back the saved record before claiming it is available there. When the project has a confirmed assessment framework, connect opportunity areas to it.
 
 ## Release gate (required)
 

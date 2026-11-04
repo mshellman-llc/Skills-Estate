@@ -1,6 +1,6 @@
 ---
 name: skill-estate-sync
-description: "Maintain a Skills Estate checkout: author or repair a workflow, validate and package it, install a reviewed release, or replace a skill in another host or account. Select only the requested operation."
+description: "Maintain a Skills Estate checkout: author or repair a workflow, validate and package it, install a reviewed release, or replace a skill in another host or account. Select only the requested operation. Also covers plugin grouping and catalog placement, CI or publish failures, stale installs, and why a skill appears in the wrong plugin."
 ---
 
 ## Choose the requested task

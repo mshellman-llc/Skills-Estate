@@ -1,6 +1,6 @@
 ---
 name: quality-router
-description: Route the shared controls every other skill depends on. Knowledge Hub, evidence with the source register, quality with prose receipts, prose and brand gates, preflight, handoff. Select the smallest appropriate skill without recreating its method.
+description: Route the shared controls every other skill depends on. Knowledge Hub, evidence with the source register, quality with prose receipts, brand rendering, preflight, handoff and code simplification. Prose review itself is writing-integrity in estate-writing. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Quality Router
@@ -17,7 +17,6 @@ description: Route the shared controls every other skill depends on. Knowledge H
 - [knowledge-hub](../skills/knowledge-hub/SKILL.md)
 - [evidence-core](../runtime/evidence-core/WORKFLOW.md)
 - [quality-gate](../skills/deliverable-review/SKILL.md)
-- [writing-integrity](../runtime/writing-integrity/WORKFLOW.md)
 - [brand-renderer](../runtime/brand-renderer/WORKFLOW.md)
 - [org-preflight](../runtime/org-preflight/WORKFLOW.md)
 - [session-handoff](../skills/session-handoff/SKILL.md)

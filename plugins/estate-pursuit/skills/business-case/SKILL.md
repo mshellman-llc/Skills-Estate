@@ -1,6 +1,6 @@
 ---
 name: business-case
-description: 'Authors and gates the Estate executive business case, the artifact for the approver who funds the deal: should we invest, why now, and what exactly is being asked. Argues the case for and against the investment honestly, prices the cost of waiting in shown arithmetic, and bounds the ask so no approval is a blank check. Use when asked for a business case, investment case, exec case, value case, cost-benefit, "the case for", "why now memo", "should we fund this", "help me get the CFO to yes", or when a pursuit needs the document the economic buyer reads before signing off. Trigger on any client name or Q-number paired with "business case" or "funding". Do NOT use for the deal decision deck (that is deck-builder), the priced clickable proposal (that is scope-options), the internal margin gate (that is the Deal Desk readout under evidence-core''s deal_desk contract), or prospect research (that is call-prep).'
+description: 'Write the executive business case the funding approver reads: why now, the cost of waiting in shown arithmetic, alternatives, risks and a bounded ask. Use for a business case, investment or value case, ROI or cost-benefit, a why-now memo, "should we fund this", or getting the CFO to yes. Not for the deal decision deck (deck-builder), the priced proposal (scope-options), the internal margin review (commercial-review) or prospect research (call-prep).'
 ---
 
 

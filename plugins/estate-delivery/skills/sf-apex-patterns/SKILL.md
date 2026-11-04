@@ -1,6 +1,6 @@
 ---
 name: sf-apex-patterns
-description: 'Implement and enforce the Estate house Salesforce architecture: service layer shared by trigger/UI/API entry points, a lean owned Unit of Work for all DML, selector classes for all SOQL (USER_MODE by default), DTO/POJO returns from @AuraEnabled controllers, and imperative Apex from LWC. Use this skill when the project has adopted this architecture or the user asks to evaluate it for Apex, triggers, LWC or a new Salesforce feature. Also use it when asked to set up pre-commit checks, run architecture checks, fix arch-check violations, add a selector/service/UoW, or bring legacy Apex toward the house pattern. Triggers on: "new apex class", "add a trigger", "LWC component", "service layer", "unit of work", "selector", "arch check", "pre-commit", "architecture violation".'
+description: 'Apply the estate''s Salesforce architecture (a service layer shared by trigger, UI and API entry points, a Unit of Work for all DML, selectors for all SOQL in USER_MODE, DTO returns from @AuraEnabled, imperative Apex from LWC) when the project uses it. Use for a new Apex class, trigger or LWC component, adding a service, selector or unit of work, running arch checks or pre-commit, or fixing architecture violations.'
 metadata:
   canon_exempt: 'engineering-doc'
   canon_exempt_reason: 'Enforcement-stack reference an agent must hold in full: rule IDs, exit codes, suppression contract, and engine semantics, punctuation included.'

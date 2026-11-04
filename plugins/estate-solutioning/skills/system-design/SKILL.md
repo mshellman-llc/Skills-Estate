@@ -1,6 +1,6 @@
 ---
 name: system-design
-description: "Explore a service or product design, or write its formal architecture reference. Cover the requirements, components, interfaces, data, security, operations and trade-offs relevant to the requested decision."
+description: "Explore a service or product design, or write its formal architecture reference. Cover the requirements, components, interfaces, data, security, operations and trade-offs relevant to the requested decision. For a client deal's deliverability or build reference, use solution-brief."
 ---
 
 ## Choose the requested task

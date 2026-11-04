@@ -1,6 +1,6 @@
 ---
 name: sf-project-setup
-description: 'Install, audit, and repair Estate Salesforce delivery standards: git hooks, Claude Code or Codex lifecycle hooks, and a CLAUDE.md or AGENTS.md contract for ticket-first, worktree-isolated delivery. Supports direct single-org delivery, sf-deploy-engine, and Salesforce DevOps Center handoff, plus GitHub Issues or Jira and major Git hosts. Trigger on set up delivery standards, init, bootstrap, install hooks, onboard, prerequisites, CLI authentication, audit, hooks not running, guard blocked me, managed block changed, switch tracker or trunk, DevOps Center local loop, WI branch handoff, seed, baseline, initial retrieve, forceignore, first org commit, or org drift. Do not trigger for ordinary implementation, fixes, deploys, PRs, promotion, releases, rollback, or freeze recovery.'
+description: 'Install, audit or repair a Salesforce repo''s delivery standards: git and Claude Code or Codex hooks, the CLAUDE.md or AGENTS.md contract, tracker and trunk settings, the DevOps Center local loop, initial retrieve and org-drift baseline. Use for set up delivery standards, install hooks, hooks not running, guard blocked me, switch tracker or trunk, first org commit or org drift. Not for ordinary implementation, deploys, promotion, releases or rollback (sf-pipeline-operations).'
 metadata:
   canon_exempt: 'engineering-doc'
   canon_exempt_reason: 'install, audit and troubleshooting contracts an agent needs before touching a deploy'

@@ -1,6 +1,6 @@
 ---
 name: beastmode-health
-description: Check whether knowledge-hub context, connections, ingestion, maintenance, budgets, and recovery are working, with scoped evidence. Use for a hub health check or troubleshooting stale context. A check is read-only unless the user also requests repair; it does not start new recurring jobs.
+description: 'Diagnose the BeastMode knowledge hub when saves fail, context looks stale or missing, connections drop, ingestion or maintenance stops, or budgets run out. Reports scoped evidence. Read-only unless the user also asks for a repair; never starts new recurring jobs.'
 metadata:
   version: "2026.10.01.2"
 ---

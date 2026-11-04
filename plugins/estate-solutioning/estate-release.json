@@ -42,7 +42,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "0cac72227d6924215b464fb13d26071eb842b6f02f7b16aea01253e6b803d67e",
+      "required_sha256": "45f91b138047d1b68aab2a105eb26290a4887b02395329107697d91a5c2ea38f",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -72,7 +72,7 @@
       "subject": "pursuit-router"
     },
     {
-      "required_sha256": "9afee7bd46a14395e023d71dbe53996de6a53259f507d114b6e3ffc16d7972a8",
+      "required_sha256": "a521012a6110f997bd19752b242f82d64131e0f8044e8c5b3d1710e8bfdbc029",
       "status": "review required",
       "subject": "quality-router"
     },
@@ -122,7 +122,7 @@
       "subject": "beastmode-context"
     },
     {
-      "required_sha256": "e145356078a7e62e1a45060d84e9a5858bfd3d2636b1feb1b520166224aa46f5",
+      "required_sha256": "6f05da8cadd2353366808997ca5a0eeaced98872ca0da9710c31af0ea4ae9945",
       "status": "review required",
       "subject": "beastmode-health"
     },
@@ -147,7 +147,7 @@
       "subject": "build-interactive-explorer"
     },
     {
-      "required_sha256": "26dad37402bb1e259fe4c9e57e23c2b0690fcfddaaf8445b7832f22eb6a53b81",
+      "required_sha256": "d889d23032d02fcca775295f7e2eac52359a29abc41ae7bbb8062d5eeb3adfce",
       "status": "review required",
       "subject": "business-case"
     },
@@ -182,7 +182,7 @@
       "subject": "client-brand"
     },
     {
-      "required_sha256": "5c492acc4249b8a42a9fc4ea1911dad5251222ec4796531010e23c8c4bb3aad9",
+      "required_sha256": "326757827c69cee4b477a8077792f8dba276fabffb17668a57e9836e30998204",
       "status": "review required",
       "subject": "code-simplify"
     },
@@ -217,7 +217,7 @@
       "subject": "deck-builder"
     },
     {
-      "required_sha256": "b7c2e00b2cd4639e2082cb8f731dac0d28dd45fa1aabe66ad0c3725a9ba0ca9b",
+      "required_sha256": "dc1f654d9c9380eced5e31482058f88b06dc22c19b6c2d85febd7037edd34f01",
       "status": "review required",
       "subject": "delivery-kickoff"
     },
@@ -237,7 +237,7 @@
       "subject": "discovery-brief"
     },
     {
-      "required_sha256": "2f84060c3725134cc49412e70f2f3c9c3db473a5027ef6e52160ae3e00be1be6",
+      "required_sha256": "5094881fed7408f5b16e2931d01480dfe70172762587e255f6797aa3c881ded3",
       "status": "review required",
       "subject": "discovery-synthesis"
     },
@@ -427,17 +427,17 @@
       "subject": "session-handoff"
     },
     {
-      "required_sha256": "b7b038b1b28096b25cc8fa755885a6556c640b49a04d69c922042a2e86b7a953",
+      "required_sha256": "efbfb24e99ee2c25e84c4f16527fe2f6dec0fb183a591d3c4d6d96eb6e3da15b",
       "status": "review required",
       "subject": "sf-delivery-standards"
     },
     {
-      "required_sha256": "b782ccc4b6452747182d1b9b65c9405e3232c24fa87f449f5726abd8598368da",
+      "required_sha256": "d74c7a915eb606a4f07a55ed2ef4ab16eb2767f803a66cd072fe8a0d8e4566b3",
       "status": "review required",
       "subject": "sf-deploy-engine"
     },
     {
-      "required_sha256": "3dc7b5aa6610ce21780b2cc7f5a234cea6ff024a48af6c5aa408b179ed302a3b",
+      "required_sha256": "5b64a1843e35590bc1fedba59212d7b38590305dd16d7f78c3673f861e417abe",
       "status": "review required",
       "subject": "sf-enterprise-patterns"
     },
@@ -462,7 +462,7 @@
       "subject": "skill-estate-sync"
     },
     {
-      "required_sha256": "89be6ea92ec62f1db1255e1f2c31eb5ab4f9e8a95028a394d19d11dd6f20be92",
+      "required_sha256": "a34de1c4f5ffa0a6f42ac4fe77e6921bae96524d7916df4a7fb923e958313a2c",
       "status": "review required",
       "subject": "solution-brief"
     },
@@ -517,7 +517,7 @@
       "subject": "transcript-ingestion"
     },
     {
-      "required_sha256": "8ccbb7099c4c23a3b3786f548c3938ddc37cf9d1bb92f3bd84b8f75ee24fb192",
+      "required_sha256": "b7ab1aecc1041b88681ce7dd2f341629851aa72bb49f40db16fe3c0af84adf44",
       "status": "review required",
       "subject": "uat-validation"
     },
@@ -537,6 +537,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "93fb392f8adf1510bb83a9021088dd56f188d33e33584fe524a202a70845e6a8",
+  "source_sha256": "6cc7de1015318d356d0793586832b685a656c2884dc6b2361d2c29638a04c885",
   "status": "owner-published"
 }

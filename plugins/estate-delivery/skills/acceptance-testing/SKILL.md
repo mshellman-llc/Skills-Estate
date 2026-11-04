@@ -1,6 +1,6 @@
 ---
 name: acceptance-testing
-description: 'Runs the validation stage (05 Validate) of an Estate delivery engagement: test scripts traced one-to-one to the requirements workbook, the defect log with triage, the UAT execution tracker with coverage math, the cutover readiness checklist, and the go/no-go evidence pack the humans co-sign against. Use when a build reaches sandbox-complete and testing starts, and whenever someone asks for test scripts, SIT or UAT planning, a traceability matrix, test coverage, a defect log, defect triage, a UAT tracker, "are we ready for UAT", "what''s our test coverage", cutover readiness, a go/no-go pack, or "can we go live". Trigger even on implicit phrasings like "UAT starts Monday, get us set up" or "the client wants to see where testing stands". Do NOT use for authoring requirements (that is requirements-backlog), executing cutover or hypercare (that is cutover-closeout), weekly status cadence or RAID upkeep (that is delivery-status), or build work.'
+description: 'Run delivery validation: test scripts traced to the requirements workbook, the defect log and triage, the UAT tracker with coverage, the cutover readiness checklist and the go/no-go evidence pack. Use when testing starts or someone asks for test scripts, a traceability matrix, test coverage, "are we ready for UAT" or "can we go live". Not for writing requirements (requirements-backlog), executing cutover or hypercare (cutover-closeout) or weekly status (delivery-status).'
 ---
 
 
