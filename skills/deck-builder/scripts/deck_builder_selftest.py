@@ -93,8 +93,8 @@ has("defers writing review to writing-integrity", r"writing-integrity")
 expect("no hardcoded engagement folder", bool(re.search(r"~/Work", text)), False)
 has("resolves the folder instead of assuming", r"[Rr]esolve it, do not assume|do not assume one")
 
-has("keeps the one-message gate", r"one-message gate|gate up front|GATE 1: One message")
-has("locks the argument before design", r"lock the argument|argument before")
+has("keeps the one-message gate", r"one-message gate|gate up front|GATE 1: One message|Gate 1: Main claim")
+has("locks the argument before design", r"lock the argument|argument before|Before any slides")
 has("keeps the polish loop", r"polish")
 
 if fail:

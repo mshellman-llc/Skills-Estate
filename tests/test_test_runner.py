@@ -110,7 +110,7 @@ class RunnerTests(unittest.TestCase):
         tests=run_tests.collect()
         self.assertEqual(len(tests),len({test.id() for test in tests}))
         categories={run_tests.requirement(test) for test in tests}
-        self.assertEqual(categories,{None,'browser','loopback','generated-map'})
+        self.assertEqual(categories,{None,'browser','loopback','generated-map','skill-toolchain'})
         visual=[test for test in tests if test.__class__.__module__=='test_deck_visuals']
         self.assertEqual(len(visual),5)
         self.assertTrue(all(run_tests.requirement(test) is None for test in visual))

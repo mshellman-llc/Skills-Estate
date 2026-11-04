@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-04T19:22:20.183351+00:00",
-  "baseCommit": "a92dcdbba7011b74bff26f308451e88f51a218f8",
+  "generatedAt": "2026-11-04T19:34:27.964600+00:00",
+  "baseCommit": "95818ae9407e9ab82ca2288c02e40d03bb6107e3",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -55,7 +55,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/accessibility-audit/SKILL.md",
       "sourceSha256": "30aae4a806f649376a0039a123b775be7e337a18041f3f55bae04bd41fd6d3ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/accessibility-audit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/accessibility-audit/SKILL.md",
       "taskPackages": [
         {
           "name": "accessibility-audit",
@@ -145,7 +145,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/analytics-strategy/SKILL.md",
       "sourceSha256": "fad5d22b7b107b0a195b036d75966ded0b29433b4b996cfc2022f75bd1192841",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/analytics-strategy/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/analytics-strategy/SKILL.md",
       "taskPackages": [
         {
           "name": "analytics-strategy",
@@ -235,7 +235,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/architecture-doc/SKILL.md",
       "sourceSha256": "704962a9930c507f8002c1b4832d5947542aaf24b09f6a6c7c838028eb15b0d2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/architecture-doc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/architecture-doc/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -386,7 +386,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-writing-style/SKILL.md",
       "sourceSha256": "2c4a88898b19221b63419f21ecc5e0638268b88fd9e84e25e34785e35013b08a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/author-writing-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/author-writing-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -466,11 +466,11 @@
       "title": "Backlog refinement",
       "family": 2,
       "description": "Get backlog items ready for a sprint: grade each requirement against INVEST and the team definition of ready, record team estimates and dependencies, split oversized items vertically, and send items that cannot be made ready back to discovery. Reads the requirements-capture Requirements tab and writes a readiness report that sprint-planning reads. Use for \"refine the backlog\", \"groom these stories\", \"are these sprint-ready\", \"split this story\", \"definition of ready\", INVEST checks, or a weekly refinement session. Do NOT use for writing requirements or Gherkin from sources (requirements-capture), ranking items (prioritization), building the sprint (sprint-planning), or the Sprint 0 backlog seed (delivery-kickoff).",
-      "status": "local-addition",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/backlog-refinement/SKILL.md",
       "sourceSha256": "89c830ca620b58762d812090bb255fa50050aa9da3f0ccb697063efdd2937f7a",
-      "githubUrl": null,
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/backlog-refinement/SKILL.md",
       "taskPackages": [
         {
           "name": "backlog-refinement",
@@ -634,7 +634,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-capture/SKILL.md",
       "sourceSha256": "88b922fc5e1b600a1ace4d0a19bd936945ecddfbbb42bc9aa04964f5968de14a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/beastmode-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/beastmode-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-capture",
@@ -747,7 +747,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-context/SKILL.md",
       "sourceSha256": "02ca69e21b2e17b50e6be9a2cced92534e1ba788ba8759c702d10bd06026f223",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/beastmode-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/beastmode-context/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-context",
@@ -875,7 +875,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-health/SKILL.md",
       "sourceSha256": "8939e8a9cb9a17000d4ac23d732e204c5fad2c46722e7fec0d5fc44fa479ddbc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/beastmode-health/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/beastmode-health/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-health",
@@ -1000,7 +1000,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-reconcile/SKILL.md",
       "sourceSha256": "70bfeccd296dc9c6f8ee7a290a5b605e1087b1abb0c5bd4794ac969945acc9e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/beastmode-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/beastmode-reconcile/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-reconcile",
@@ -1113,7 +1113,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brain-work-item/SKILL.md",
       "sourceSha256": "d2aa7234b3610505200c90188ad9c60811d6eb3e8288d22b33d15856c0662193",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/brain-work-item/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/brain-work-item/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1180,7 +1180,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "a547727f6e59008212becc0315e6d268f90e46080d99d8cd6a54f75ac29cd852",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -1466,7 +1466,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "b041ce70f2019c9f3c09efd34536ca30f902fe88d61d13ba857a7d90fc2d69ee",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -1611,7 +1611,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/business-case/SKILL.md",
       "sourceSha256": "60d0d5d79bacd66008d85d6fd57e301b98bd66bebdeb913dc23b63dad85c5dd0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "business-case",
@@ -1787,7 +1787,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/call-prep/SKILL.md",
       "sourceSha256": "e12fbf1eacebf3e8d801f837e8453941265cc49ad27c2683da4b9d4b391cff60",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/call-prep/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/call-prep/SKILL.md",
       "taskPackages": [
         {
           "name": "call-prep",
@@ -2017,7 +2017,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-application/SKILL.md",
       "sourceSha256": "f445e838915a95dcf79bcf8a5fe4751ebe44f1201cd4943390c6e010c898b70e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/career-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/career-application/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2162,7 +2162,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-materials-and-outreach/SKILL.md",
       "sourceSha256": "c3dc0019f1bde982446eab7af59904a378479dfe8f3758427fbf79b727bc79ec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/career-materials-and-outreach/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/career-materials-and-outreach/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2263,7 +2263,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-progression-and-offers/SKILL.md",
       "sourceSha256": "4bd8a9469889eee41a03eb6f90e7ffe10879a96556796192538206db652571b0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/career-progression-and-offers/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/career-progression-and-offers/SKILL.md",
       "taskPackages": [
         {
           "name": "career-decisions",
@@ -2359,7 +2359,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/case-study-builder/SKILL.md",
       "sourceSha256": "e78a68ff01fee091589db827b094754fe95b5f7ca303e7779a81a94da3bcd750",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/case-study-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/case-study-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "portfolio-case-study",
@@ -2447,7 +2447,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/client-brand/SKILL.md",
       "sourceSha256": "c6d5ac41111ea61ab2c36ce3f75bb6233f4e9e3ea3d3df205f8033a5120c9e1c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/client-brand/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/client-brand/SKILL.md",
       "taskPackages": [
         {
           "name": "brand-profile",
@@ -2550,7 +2550,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/code-simplify/SKILL.md",
       "sourceSha256": "fb075d05b42680a6664caef6a4ca6c620a663d566eb17eb9212593b799b51ffb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/code-simplify/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/code-simplify/SKILL.md",
       "taskPackages": [
         {
           "name": "code-simplify",
@@ -2628,7 +2628,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cross-platform-skill-release/SKILL.md",
       "sourceSha256": "fe3cdfc727e15ce6301c32f55d1e31be3cac6f01f4bcafef9ffc6282b727afd4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/cross-platform-skill-release/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/cross-platform-skill-release/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -2726,7 +2726,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cutover-closeout/SKILL.md",
       "sourceSha256": "583fb89bee016741de40cafa78ec1a29c44e9d5109a4e67fc68ee4a4de7ce00f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "cutover-closeout",
@@ -2892,7 +2892,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ddoc/SKILL.md",
       "sourceSha256": "b4190b6f05c8fe0301adfc24fb3ba516ed6550f343e0aae0a2b6319abd26799f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/ddoc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/ddoc/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3098,12 +3098,12 @@
       "id": "deal-desk",
       "title": "Estate deal desk",
       "family": 1,
-      "description": "Builds and gates the Estate Deal Desk readout packet, the sole internal commercial approval gate before a client sees numbers. Margin is the headline: computed from the quote, compared with the confirmed project floor and approval policy. Use when asked for a Deal Desk, deal desk readout, deal desk packet, commercial review, internal deal review, margin review, \"is this deal ready for deal desk\", \"take Q-000181 to deal desk\", or when a priced quote needs internal approval before proposal or SOW. Also use to audit an existing packet or re-gate one after figures change, and to tie out the numbers: reconciling every figure in a SOW draft, ROM, or proposal against the source scoping quote (\"tie-out\", \"do the numbers agree\", \"reconcile against the quote\"); the retired quote-tieout skill folded in here. Internal only. Do NOT use for the client-facing decision deck; that is deck-builder. Do NOT use for the business case; that is business-case. Do NOT use to change pricing; scoping-agent owns the quote. Do NOT use for SOW terms; that is statement-of-work.",
-      "status": "github",
-      "entrypointChanged": false,
+      "description": "Builds and gates the Estate Deal Desk readout packet, the sole internal commercial approval gate before a client sees numbers. Margin is the headline: computed from the quote, compared with the confirmed project floor and approval policy. Use when asked for a Deal Desk, deal desk readout, deal desk packet, commercial review, internal deal review, margin review, \"is this deal ready for deal desk\", \"take Q-000181 to deal desk\", or when a priced quote needs internal approval before proposal or SOW. Also use to audit an existing packet or re-gate one after figures change, and to tie out the numbers: reconciling every figure in a SOW draft, ROM, or proposal against the source scoping quote (\"tie-out\", \"do the numbers agree\", \"reconcile against the quote\"); the retired quote-tieout skill folded in here. Internal only. Do NOT use for the client-facing decision deck (deck-builder), the business case (business-case), pricing changes (scoping-agent owns the quote) or SOW terms (statement-of-work).",
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/deal-desk/SKILL.md",
-      "sourceSha256": "6aacdbe555c2007a862aa365ad3676893056be9f3c6783cf1722e6a291b273e5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/deal-desk/SKILL.md",
+      "sourceSha256": "a994c1f2862ed00ea7f6678f0ff288cf41200066b678d62a505428ed41a94729",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/deal-desk/SKILL.md",
       "taskPackages": [
         {
           "name": "commercial-review",
@@ -3113,24 +3113,17 @@
       "downloadPackages": [
         "commercial-review"
       ],
-      "guide": {
-        "what": "Review a deal’s commercial figures and approval conditions.",
-        "when": "An internal commercial review or quote tie-out is needed.",
-        "inputs": "One quote revision, provider economics, and the applicable approval policy.",
-        "outputs": "A commercial review packet with reconciled figures and approval gaps.",
-        "example": "Reconcile this proposal against the quote and prepare the internal commercial review.",
-        "reviewedEntrypointSha256": "6aacdbe555c2007a862aa365ad3676893056be9f3c6783cf1722e6a291b273e5"
-      },
-      "guideStatus": "current",
+      "guide": null,
+      "guideStatus": "needs-review",
       "reuse": {
-        "audience": "general",
-        "label": "General use",
-        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
+        "audience": "review",
+        "label": "Needs review",
+        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "cleanup",
+        "readiness": "review",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -3142,7 +3135,7 @@
           }
         ],
         "textFilesScanned": 13,
-        "packageFingerprint": "a689c786761682bff9dcdd603fd1cc928223de069622652450a5ca795e22eb3c",
+        "packageFingerprint": "f401118252638992492d64595db84f415351df7c58bf0eb753e7d9de012d508d",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -3152,7 +3145,7 @@
         ],
         "modes": []
       },
-      "markdown": "---\nname: deal-desk\ndescription: 'Builds and gates the Estate Deal Desk readout packet, the sole internal commercial approval gate before a client sees numbers. Margin is the headline: computed from the quote, compared with the confirmed project floor and approval policy. Use when asked for a Deal Desk, deal desk readout, deal desk packet, commercial review, internal deal review, margin review, \"is this deal ready for deal desk\", \"take Q-000181 to deal desk\", or when a priced quote needs internal approval before proposal or SOW. Also use to audit an existing packet or re-gate one after figures change, and to tie out the numbers: reconciling every figure in a SOW draft, ROM, or proposal against the source scoping quote (\"tie-out\", \"do the numbers agree\", \"reconcile against the quote\"); the retired quote-tieout skill folded in here. Internal only. Do NOT use for the client-facing decision deck; that is deck-builder. Do NOT use for the business case; that is business-case. Do NOT use to change pricing; scoping-agent owns the quote. Do NOT use for SOW terms; that is statement-of-work.'\n---\n\n\n# Estate deal desk\n\nThe Deal Desk readout answers one question for people who were not in the\nscoping room: should Estate ship this offer, and on what terms. It is the\nlast internal gate before the client sees numbers, so its job is to make the\ncommercial reality legible, not attractive.\n\nThe cardinal rule: **surface everything, smooth nothing.** A reviewer who\napproves a clean-looking packet with hidden problems is not protected; one\nwho approves a packet with explicit flags made a considered decision. Every\nunconfirmed staffing role, every load-bearing assumption, every risk to\nmargin appears as a labeled flag with a named resolution path. Presenting a\nclean deal that is not clean is the exact failure this artifact exists to\ncatch, and it is why the artifact registry lists \"risk smoothed over\" and\n\"real margin hidden behind point estimate\" as hard fails.\n\nMargin is the headline. A reviewer should reach the margin number, and its\nposition against the floor, in the first ten seconds. If the margin is\ntight or provisional, that is the lead, not a footnote.\n\n## Governance, delegated\n\n- **evidence-core** runs first. Sales context, stakeholder\n  postures, risks, and assumptions are load-bearing claims; build the ledger\n  before the packet. If a load-bearing domain is Insufficient, produce the\n  \"Not ready for Deal Desk approval\" memo and stop. A full packet after\n  insufficient evidence is a hard fail.\n- **The quote owns every number.** Hours, rates, fees, and durations come\n  from the Q-number through the scoping MCP (`scoping_get_quote` and\n  friends), never from memory or chat. Margin is computed from those inputs\n  and printed with the computation, never asserted. Fixed fee or T&M, never\n  both. If the quote and any other document disagree, the quote wins and the\n  disagreement becomes a flag.\n- **brand-renderer** owns the rendering and the visual, parity, and\n  brand release gates. Never inline hex values or rebuild the token set.\n- **writing-integrity** owns writing review; a confirmed profile supplies voice. Run its checker on the packet's prose. No em\n  dashes, sentence-case headings, no AI vocabulary in the tagline or\n  anywhere else.\n\nIf a governor is not installed on this surface, state the check it would\nhave run, do the best manual substitute, and say that is what happened.\nNever skip silently.\n\n## One mandatory human input\n\nThe delivery leadership cosign is asked for, never inferred. Ask the\ndelivery lead (or the user relaying them) whether delivery has cosigned\nscope, hours, and assumptions, and record the answer verbatim. The\nfigures block field `delivery_cosign.status` takes exactly one of\n`confirmed`, `conditional`, `pending`, or `declined`; the gate rejects\nblank, `assumed`, `inferred`, and `tbd`. \"Delivery cosign missing\" is a\nregistry hard fail, and it means missing from the record, not missing\napproval: `pending` with a named signer and a date is an honest, passing\nanswer. `confirmed` without a name and date fails.\n\nEverything else in the packet can be harvested. This one field cannot.\n\n## Workflow\n\n**1. Orient.** Pin the opportunity, the Q-number, the deal desk meeting if\none is scheduled, and who reviews. Confirm the quote total and pricing model\nthrough the scoping MCP before writing anything. Stamp the packet with the\nQ-number and an as-of date; record IDs do not survive sandbox refreshes, so\nthe stamp is what makes the packet auditable later.\n\n**2. Read current commercial policy.** Confirm the project's margin floor and\napproval ladder from its named source. Record the verification date and the\nselected values in the figures block. Read [margin policy](references/margin-approval-routing.md)\nfor the input contract. If policy is unavailable, prepare the supported economics\nand identify the approval decision still needed. Never inherit a threshold from\nan example or treat a valid figures record as approval.\n\n**3. Harvest.** Internal first: the quote, the DDOC and its confirmed\noption, the solution brief, the SOW draft if one exists, Salesforce\nopportunity and contacts, transcripts read verbatim, Slack. Evidence-core\ngoverns provenance: every claim carries a source and date, every inference\nis labeled with a confidence band, conflicts show both sides.\n\n**4. Build two ledgers, then the packet.** The commercial ledger: per-role\nhours, rates, cost rates, fee, computed margin, staffing basis, sensitivity\nscenarios with dollar impacts, levers with quantified effects. The risk\nledger: margin risks each paired with a protective clause by number or a\nno-coverage flag (one or the other, never both, never neither), scope risks,\nstaffing prerequisites, load-bearing assumptions with quantified \"if broken\"\nconsequences. Then project the packet from the ledgers using\n`references/section-catalog.md`. Every catalog section is always present;\nan unfillable section becomes a named unknown with an owner, a resolve-by\ndate, and the gate it blocks, never a plausible projection.\n\n**5. Route the asks.** Two to six asks, each with a direct recommendation,\nformatted per `references/asks-and-decisions-log.md`. Compute which ladder\nband the real margin lands in and route price-touching asks to that band's\napprover or higher. The packet requests exactly one overall approval action:\napprove, approve with conditions, reject, or not ready. More than one is a\nhard fail. The decisions log ships empty; it is filled live in the meeting,\nand pre-filling it fabricates approvals.\n\n**6. Embed the figures block and run the gate.**\n\n```bash\npython3 scripts/deal_desk_gate.py packet.md\n```\n\nThe block schema is in `references/margin-approval-routing.md`. The gate\nrecomputes internal cost from role hours and cost rates (and the fee too on\nT&M), checks the stated margin against the recomputed one, checks the floor\ncomparison against the arithmetic, checks the approval route against the\nladder carried in the block, and rejects a blank or non-committal cosign.\nExit 0 or the packet does not ship. Fix the ledger and regenerate; never\nhand-patch the rendered output, because the next regenerate drops the patch.\n\n**7. Tie out every figure across the reviewed artifacts.** Export the quote's\nfigures (fee, per-role hours and rates, phase totals, verified percentages,\nassumptions, scope lines) to JSON per the schema in\n`scripts/quote_tieout_check.py`, then reconcile the packet prose and every\nsibling artifact under review (SOW draft, ROM, proposal) against it:\n\n```bash\npython3 scripts/quote_tieout_check.py quote.json packet.md sow-draft.md rom.md\n```\n\nAny figure that traces to nothing in the quote fails, whether it is fabricated\nor contradicts a quote value; the check prints the offending line and the\nnearest quote value and resolves nothing. A quote figure, assumption, or scope\nline no artifact carries is a warning to confirm. Fix conflicts at their\nsource (the quote through scoping-agent, or the artifact through its owning\nskill) and rerun; this skill never edits a figure to make the tie-out pass.\n\n**8. Render and gate the rendering.** Hand to brand-renderer for\nthe HTML (or docx backup for email and print). Margin is the visually\ndominant figure, rendered against the floor; all economics in monospace.\nVerify by rendering, then apply writing-integrity to the prose. Report counts per\ngate, not adjectives, and write a one-line disposition per gate.\n\n**9. Land and close the loop.** Deliver the file, commit it to the deal's\nfolder, write session memory pointing at the files. Close with the margin\nverdict, the flags a reviewer must not miss, and your biggest judgment call\nargued honestly from the other side. If the packet contains a real fork,\nsay so; never present it as settled.\n\n## Durable output\n\nEvery run leaves a Markdown record per `_shared/output-contract.md`: the\npacket itself on a build, or a review record with the gate and tie-out\nresults, the exceptions, and the remediation list on an audit. The decision\nrecord lands in the engagement hub's `04-decisions-assumptions.md`, which\nthis skill owns for Deal Desk outcomes: what was asked, what the humans\ndecided, and what supersedes what. Deliver or link the file; never just say\nit was written.\n\n## If the margin does not survive\n\nWhen the recomputed margin lands below the floor, or becomes a range whose\npessimistic end does, that is the headline and the packet still ships, with\nthe route escalated per the ladder and the levers section carrying real\noptions with quantified impacts. What never happens: adjusting hours or\nrates to rescue the number. Pricing changes belong to scoping-agent against\nthe quote; this skill renders what the quote says and routes the\nconsequences.\n\n## Boundaries\n\n- Internal only. Nothing in this packet is client-facing; it carries margin,\n  cost rates, and candid risk the client never sees.\n- Does not price and does not touch the quote. scoping-agent owns scope and\n  pricing changes; this skill renders and routes.\n- Not the DDOC. The client-facing decision deck is deck-builder; \"Deal Desk\n  document\" as a client deck is a retired name for that artifact, and this\n  skill is the internal readout only.\n- Not the business case; that is business-case. Not SOW terms;\n  that is statement-of-work, and the protective clauses' text lives in the SOW\n  master, cited here by number only.\n- Reviews and verdicts only. It never authors or silently rewrites the\n  solution, the SOW, or any source evidence; a failed check produces a\n  remediation list for the owning skill, never an edit.\n- Does not approve. Humans clear the gate; the packet prepares it. The\n  decisions log and sign-off table record what humans decided.\n- Post-approval change detection (a material scope or margin change after\n  Deal Desk requiring re-alignment before SOW) is deal governance, not this\n  skill. It is a known gap: when a packet is being rebuilt after approval,\n  flag the delta explicitly and say re-alignment is required.\n\n## Running unattended\n\nThe cosign and the live decisions log need humans. On a scheduled or\nheadless run: build the ledgers, embed the figures block with\n`delivery_cosign.status` set to `pending` and a named owner, run the gate,\nand stop with findings. Say plainly that the cosign is outstanding. Never\nrecord an answer nobody gave.\n\n## When time is short\n\nCut in this order, and say what was cut: methodology detail, the staffing\nGantt (keep the allocation table), sales-context depth below the ROM and\ndeadline rows. Never cut: the figures block and its gate, the cosign ask,\nthe floor comparison, the assumptions table, sourcing, or the flags. A thin\nhonest packet clears review; a full smooth one is the failure mode.\n\n## Files\n\n- `references/section-catalog.md`: every packet section, its field sources\n  (DS, SE, CA, PS), and the bar each must clear.\n- `references/margin-approval-routing.md`: floor, ladder, protective\n  clauses, re-verification rule, and the figures block schema.\n- `references/asks-and-decisions-log.md`: ask format, live decisions log,\n  action items, sign-off, and the cosign protocol.\n- `scripts/deal_desk_gate.py`: the blocking gate. Python 3 stdlib only.\n- `scripts/deal_desk_gate_selftest.py`: run it after any gate change;\n  fixtures in `scripts/fixtures/`.\n- `scripts/quote_tieout_check.py`: the deterministic tie-out. Reconciles\n  every figure, assumption, and scope line in the reviewed artifacts against\n  the quote export. Stdlib only; the quote JSON schema is in its docstring.\n- `scripts/quote_tieout_check_selftest.py`: run it after any tie-out change;\n  fixtures `tieout_quote.json`, `tieout_pass.md`, and `tieout_fail.md` in\n  `scripts/fixtures/`.\n",
+      "markdown": "---\nname: deal-desk\ndescription: 'Builds and gates the Estate Deal Desk readout packet, the sole internal commercial approval gate before a client sees numbers. Margin is the headline: computed from the quote, compared with the confirmed project floor and approval policy. Use when asked for a Deal Desk, deal desk readout, deal desk packet, commercial review, internal deal review, margin review, \"is this deal ready for deal desk\", \"take Q-000181 to deal desk\", or when a priced quote needs internal approval before proposal or SOW. Also use to audit an existing packet or re-gate one after figures change, and to tie out the numbers: reconciling every figure in a SOW draft, ROM, or proposal against the source scoping quote (\"tie-out\", \"do the numbers agree\", \"reconcile against the quote\"); the retired quote-tieout skill folded in here. Internal only. Do NOT use for the client-facing decision deck (deck-builder), the business case (business-case), pricing changes (scoping-agent owns the quote) or SOW terms (statement-of-work).'\n---\n\n\n# Estate deal desk\n\nThe Deal Desk readout answers one question for people who were not in the\nscoping room: should Estate ship this offer, and on what terms. It is the\nlast internal gate before the client sees numbers, so its job is to make the\ncommercial reality legible, not attractive.\n\nThe cardinal rule: **surface everything, smooth nothing.** A reviewer who\napproves a clean-looking packet with hidden problems is not protected; one\nwho approves a packet with explicit flags made a considered decision. Every\nunconfirmed staffing role, every load-bearing assumption, every risk to\nmargin appears as a labeled flag with a named resolution path. Presenting a\nclean deal that is not clean is the exact failure this artifact exists to\ncatch, and it is why the artifact registry lists \"risk smoothed over\" and\n\"real margin hidden behind point estimate\" as hard fails.\n\nMargin is the headline. A reviewer should reach the margin number, and its\nposition against the floor, in the first ten seconds. If the margin is\ntight or provisional, that is the lead, not a footnote.\n\n## Governance, delegated\n\n- **evidence-core** runs first. Sales context, stakeholder\n  postures, risks, and assumptions are load-bearing claims; build the ledger\n  before the packet. If a load-bearing domain is Insufficient, produce the\n  \"Not ready for Deal Desk approval\" memo and stop. A full packet after\n  insufficient evidence is a hard fail.\n- **The quote owns every number.** Hours, rates, fees, and durations come\n  from the Q-number through the scoping MCP (`scoping_get_quote` and\n  friends), never from memory or chat. Margin is computed from those inputs\n  and printed with the computation, never asserted. Fixed fee or T&M, never\n  both. If the quote and any other document disagree, the quote wins and the\n  disagreement becomes a flag.\n- **brand-renderer** owns the rendering and the visual, parity, and\n  brand release gates. Never inline hex values or rebuild the token set.\n- **writing-integrity** owns writing review; a confirmed profile supplies voice. Run its checker on the packet's prose. No em\n  dashes, sentence-case headings, no AI vocabulary in the tagline or\n  anywhere else.\n\nIf a governor is not installed on this surface, state the check it would\nhave run, do the best manual substitute, and say that is what happened.\nNever skip silently.\n\n## One mandatory human input\n\nThe delivery leadership cosign is asked for, never inferred. Ask the\ndelivery lead (or the user relaying them) whether delivery has cosigned\nscope, hours, and assumptions, and record the answer verbatim. The\nfigures block field `delivery_cosign.status` takes exactly one of\n`confirmed`, `conditional`, `pending`, or `declined`; the gate rejects\nblank, `assumed`, `inferred`, and `tbd`. \"Delivery cosign missing\" is a\nregistry hard fail, and it means missing from the record, not missing\napproval: `pending` with a named signer and a date is an honest, passing\nanswer. `confirmed` without a name and date fails.\n\nEverything else in the packet can be harvested. This one field cannot.\n\n## Workflow\n\n**1. Orient.** Pin the opportunity, the Q-number, the deal desk meeting if\none is scheduled, and who reviews. Confirm the quote total and pricing model\nthrough the scoping MCP before writing anything. Stamp the packet with the\nQ-number and an as-of date; record IDs do not survive sandbox refreshes, so\nthe stamp is what makes the packet auditable later.\n\n**2. Read current commercial policy.** Confirm the project's margin floor and\napproval ladder from its named source. Record the verification date and the\nselected values in the figures block. Read [margin policy](references/margin-approval-routing.md)\nfor the input contract. If policy is unavailable, prepare the supported economics\nand identify the approval decision still needed. Never inherit a threshold from\nan example or treat a valid figures record as approval.\n\n**3. Harvest.** Internal first: the quote, the DDOC and its confirmed\noption, the solution brief, the SOW draft if one exists, Salesforce\nopportunity and contacts, transcripts read verbatim, Slack. Evidence-core\ngoverns provenance: every claim carries a source and date, every inference\nis labeled with a confidence band, conflicts show both sides.\n\n**4. Build two ledgers, then the packet.** The commercial ledger: per-role\nhours, rates, cost rates, fee, computed margin, staffing basis, sensitivity\nscenarios with dollar impacts, levers with quantified effects. The risk\nledger: margin risks each paired with a protective clause by number or a\nno-coverage flag (one or the other, never both, never neither), scope risks,\nstaffing prerequisites, load-bearing assumptions with quantified \"if broken\"\nconsequences. Then project the packet from the ledgers using\n`references/section-catalog.md`. Every catalog section is always present;\nan unfillable section becomes a named unknown with an owner, a resolve-by\ndate, and the gate it blocks, never a plausible projection.\n\n**5. Route the asks.** Two to six asks, each with a direct recommendation,\nformatted per `references/asks-and-decisions-log.md`. Compute which ladder\nband the real margin lands in and route price-touching asks to that band's\napprover or higher. The packet requests exactly one overall approval action:\napprove, approve with conditions, reject, or not ready. More than one is a\nhard fail. The decisions log ships empty; it is filled live in the meeting,\nand pre-filling it fabricates approvals.\n\n**6. Embed the figures block and run the gate.**\n\n```bash\npython3 scripts/deal_desk_gate.py packet.md\n```\n\nThe block schema is in `references/margin-approval-routing.md`. The gate\nrecomputes internal cost from role hours and cost rates (and the fee too on\nT&M), checks the stated margin against the recomputed one, checks the floor\ncomparison against the arithmetic, checks the approval route against the\nladder carried in the block, and rejects a blank or non-committal cosign.\nExit 0 or the packet does not ship. Fix the ledger and regenerate; never\nhand-patch the rendered output, because the next regenerate drops the patch.\n\n**7. Tie out every figure across the reviewed artifacts.** Export the quote's\nfigures (fee, per-role hours and rates, phase totals, verified percentages,\nassumptions, scope lines) to JSON per the schema in\n`scripts/quote_tieout_check.py`, then reconcile the packet prose and every\nsibling artifact under review (SOW draft, ROM, proposal) against it:\n\n```bash\npython3 scripts/quote_tieout_check.py quote.json packet.md sow-draft.md rom.md\n```\n\nAny figure that traces to nothing in the quote fails, whether it is fabricated\nor contradicts a quote value; the check prints the offending line and the\nnearest quote value and resolves nothing. A quote figure, assumption, or scope\nline no artifact carries is a warning to confirm. Fix conflicts at their\nsource (the quote through scoping-agent, or the artifact through its owning\nskill) and rerun; this skill never edits a figure to make the tie-out pass.\n\n**8. Render and gate the rendering.** Hand to brand-renderer for\nthe HTML (or docx backup for email and print). Margin is the visually\ndominant figure, rendered against the floor; all economics in monospace.\nVerify by rendering, then apply writing-integrity to the prose. Report counts per\ngate, not adjectives, and write a one-line disposition per gate.\n\n**9. Land and close the loop.** Deliver the file, commit it to the deal's\nfolder, write session memory pointing at the files. Close with the margin\nverdict, the flags a reviewer must not miss, and your biggest judgment call\nargued honestly from the other side. If the packet contains a real fork,\nsay so; never present it as settled.\n\n## Durable output\n\nEvery run leaves a Markdown record per `_shared/output-contract.md`: the\npacket itself on a build, or a review record with the gate and tie-out\nresults, the exceptions, and the remediation list on an audit. The decision\nrecord lands in the engagement hub's `04-decisions-assumptions.md`, which\nthis skill owns for Deal Desk outcomes: what was asked, what the humans\ndecided, and what supersedes what. Deliver or link the file; never just say\nit was written.\n\n## If the margin does not survive\n\nWhen the recomputed margin lands below the floor, or becomes a range whose\npessimistic end does, that is the headline and the packet still ships, with\nthe route escalated per the ladder and the levers section carrying real\noptions with quantified impacts. What never happens: adjusting hours or\nrates to rescue the number. Pricing changes belong to scoping-agent against\nthe quote; this skill renders what the quote says and routes the\nconsequences.\n\n## Boundaries\n\n- Internal only. Nothing in this packet is client-facing; it carries margin,\n  cost rates, and candid risk the client never sees.\n- Does not price and does not touch the quote. scoping-agent owns scope and\n  pricing changes; this skill renders and routes.\n- Not the DDOC. The client-facing decision deck is deck-builder; \"Deal Desk\n  document\" as a client deck is a retired name for that artifact, and this\n  skill is the internal readout only.\n- Not the business case; that is business-case. Not SOW terms;\n  that is statement-of-work, and the protective clauses' text lives in the SOW\n  master, cited here by number only.\n- Reviews and verdicts only. It never authors or silently rewrites the\n  solution, the SOW, or any source evidence; a failed check produces a\n  remediation list for the owning skill, never an edit.\n- Does not approve. Humans clear the gate; the packet prepares it. The\n  decisions log and sign-off table record what humans decided.\n- Post-approval change detection (a material scope or margin change after\n  Deal Desk requiring re-alignment before SOW) is deal governance, not this\n  skill. It is a known gap: when a packet is being rebuilt after approval,\n  flag the delta explicitly and say re-alignment is required.\n\n## Running unattended\n\nThe cosign and the live decisions log need humans. On a scheduled or\nheadless run: build the ledgers, embed the figures block with\n`delivery_cosign.status` set to `pending` and a named owner, run the gate,\nand stop with findings. Say plainly that the cosign is outstanding. Never\nrecord an answer nobody gave.\n\n## When time is short\n\nCut in this order, and say what was cut: methodology detail, the staffing\nGantt (keep the allocation table), sales-context depth below the ROM and\ndeadline rows. Never cut: the figures block and its gate, the cosign ask,\nthe floor comparison, the assumptions table, sourcing, or the flags. A thin\nhonest packet clears review; a full smooth one is the failure mode.\n\n## Files\n\n- `references/section-catalog.md`: every packet section, its field sources\n  (DS, SE, CA, PS), and the bar each must clear.\n- `references/margin-approval-routing.md`: floor, ladder, protective\n  clauses, re-verification rule, and the figures block schema.\n- `references/asks-and-decisions-log.md`: ask format, live decisions log,\n  action items, sign-off, and the cosign protocol.\n- `scripts/deal_desk_gate.py`: the blocking gate. Python 3 stdlib only.\n- `scripts/deal_desk_gate_selftest.py`: run it after any gate change;\n  fixtures in `scripts/fixtures/`.\n- `scripts/quote_tieout_check.py`: the deterministic tie-out. Reconciles\n  every figure, assumption, and scope line in the reviewed artifacts against\n  the quote export. Stdlib only; the quote JSON schema is in its docstring.\n- `scripts/quote_tieout_check_selftest.py`: run it after any tie-out change;\n  fixtures `tieout_quote.json`, `tieout_pass.md`, and `tieout_fail.md` in\n  `scripts/fixtures/`.\n",
       "html": "<p>The Deal Desk readout answers one question for people who were not in the scoping room: should Estate ship this offer, and on what terms. It is the last internal gate before the client sees numbers, so its job is to make the commercial reality legible, not attractive.</p><p>The cardinal rule: <strong>surface everything, smooth nothing.</strong> A reviewer who approves a clean-looking packet with hidden problems is not protected; one who approves a packet with explicit flags made a considered decision. Every unconfirmed staffing role, every load-bearing assumption, every risk to margin appears as a labeled flag with a named resolution path. Presenting a clean deal that is not clean is the exact failure this artifact exists to catch, and it is why the artifact registry lists &quot;risk smoothed over&quot; and &quot;real margin hidden behind point estimate&quot; as hard fails.</p><p>Margin is the headline. A reviewer should reach the margin number, and its position against the floor, in the first ten seconds. If the margin is tight or provisional, that is the lead, not a footnote.</p><h3>Governance, delegated</h3><ul><li><strong>evidence-core</strong> runs first. Sales context, stakeholder</li></ul><p>postures, risks, and assumptions are load-bearing claims; build the ledger before the packet. If a load-bearing domain is Insufficient, produce the &quot;Not ready for Deal Desk approval&quot; memo and stop. A full packet after insufficient evidence is a hard fail.</p><ul><li><strong>The quote owns every number.</strong> Hours, rates, fees, and durations come</li></ul><p>from the Q-number through the scoping MCP (<code>scoping_get_quote</code> and friends), never from memory or chat. Margin is computed from those inputs and printed with the computation, never asserted. Fixed fee or T&amp;M, never both. If the quote and any other document disagree, the quote wins and the disagreement becomes a flag.</p><ul><li><strong>brand-renderer</strong> owns the rendering and the visual, parity, and</li></ul><p>brand release gates. Never inline hex values or rebuild the token set.</p><ul><li><strong>writing-integrity</strong> owns writing review; a confirmed profile supplies voice. Run its checker on the packet&#x27;s prose. No em</li></ul><p>dashes, sentence-case headings, no AI vocabulary in the tagline or anywhere else.</p><p>If a governor is not installed on this surface, state the check it would have run, do the best manual substitute, and say that is what happened. Never skip silently.</p><h3>One mandatory human input</h3><p>The delivery leadership cosign is asked for, never inferred. Ask the delivery lead (or the user relaying them) whether delivery has cosigned scope, hours, and assumptions, and record the answer verbatim. The figures block field <code>delivery_cosign.status</code> takes exactly one of <code>confirmed</code>, <code>conditional</code>, <code>pending</code>, or <code>declined</code>; the gate rejects blank, <code>assumed</code>, <code>inferred</code>, and <code>tbd</code>. &quot;Delivery cosign missing&quot; is a registry hard fail, and it means missing from the record, not missing approval: <code>pending</code> with a named signer and a date is an honest, passing answer. <code>confirmed</code> without a name and date fails.</p><p>Everything else in the packet can be harvested. This one field cannot.</p><h3>Workflow</h3><p><strong>1. Orient.</strong> Pin the opportunity, the Q-number, the deal desk meeting if one is scheduled, and who reviews. Confirm the quote total and pricing model through the scoping MCP before writing anything. Stamp the packet with the Q-number and an as-of date; record IDs do not survive sandbox refreshes, so the stamp is what makes the packet auditable later.</p><p><strong>2. Read current commercial policy.</strong> Confirm the project&#x27;s margin floor and approval ladder from its named source. Record the verification date and the selected values in the figures block. Read margin policy <span class=\"ref\">(references/margin-approval-routing.md)</span> for the input contract. If policy is unavailable, prepare the supported economics and identify the approval decision still needed. Never inherit a threshold from an example or treat a valid figures record as approval.</p><p><strong>3. Harvest.</strong> Internal first: the quote, the DDOC and its confirmed option, the solution brief, the SOW draft if one exists, Salesforce opportunity and contacts, transcripts read verbatim, Slack. Evidence-core governs provenance: every claim carries a source and date, every inference is labeled with a confidence band, conflicts show both sides.</p><p><strong>4. Build two ledgers, then the packet.</strong> The commercial ledger: per-role hours, rates, cost rates, fee, computed margin, staffing basis, sensitivity scenarios with dollar impacts, levers with quantified effects. The risk ledger: margin risks each paired with a protective clause by number or a no-coverage flag (one or the other, never both, never neither), scope risks, staffing prerequisites, load-bearing assumptions with quantified &quot;if broken&quot; consequences. Then project the packet from the ledgers using <code>references/section-catalog.md</code>. Every catalog section is always present; an unfillable section becomes a named unknown with an owner, a resolve-by date, and the gate it blocks, never a plausible projection.</p><p><strong>5. Route the asks.</strong> Two to six asks, each with a direct recommendation, formatted per <code>references/asks-and-decisions-log.md</code>. Compute which ladder band the real margin lands in and route price-touching asks to that band&#x27;s approver or higher. The packet requests exactly one overall approval action: approve, approve with conditions, reject, or not ready. More than one is a hard fail. The decisions log ships empty; it is filled live in the meeting, and pre-filling it fabricates approvals.</p><p><strong>6. Embed the figures block and run the gate.</strong></p><pre><code>python3 scripts/deal_desk_gate.py packet.md</code></pre><p>The block schema is in <code>references/margin-approval-routing.md</code>. The gate recomputes internal cost from role hours and cost rates (and the fee too on T&amp;M), checks the stated margin against the recomputed one, checks the floor comparison against the arithmetic, checks the approval route against the ladder carried in the block, and rejects a blank or non-committal cosign. Exit 0 or the packet does not ship. Fix the ledger and regenerate; never hand-patch the rendered output, because the next regenerate drops the patch.</p><p><strong>7. Tie out every figure across the reviewed artifacts.</strong> Export the quote&#x27;s figures (fee, per-role hours and rates, phase totals, verified percentages, assumptions, scope lines) to JSON per the schema in <code>scripts/quote_tieout_check.py</code>, then reconcile the packet prose and every sibling artifact under review (SOW draft, ROM, proposal) against it:</p><pre><code>python3 scripts/quote_tieout_check.py quote.json packet.md sow-draft.md rom.md</code></pre><p>Any figure that traces to nothing in the quote fails, whether it is fabricated or contradicts a quote value; the check prints the offending line and the nearest quote value and resolves nothing. A quote figure, assumption, or scope line no artifact carries is a warning to confirm. Fix conflicts at their source (the quote through scoping-agent, or the artifact through its owning skill) and rerun; this skill never edits a figure to make the tie-out pass.</p><p><strong>8. Render and gate the rendering.</strong> Hand to brand-renderer for the HTML (or docx backup for email and print). Margin is the visually dominant figure, rendered against the floor; all economics in monospace. Verify by rendering, then apply writing-integrity to the prose. Report counts per gate, not adjectives, and write a one-line disposition per gate.</p><p><strong>9. Land and close the loop.</strong> Deliver the file, commit it to the deal&#x27;s folder, write session memory pointing at the files. Close with the margin verdict, the flags a reviewer must not miss, and your biggest judgment call argued honestly from the other side. If the packet contains a real fork, say so; never present it as settled.</p><h3>Durable output</h3><p>Every run leaves a Markdown record per <code>_shared/output-contract.md</code>: the packet itself on a build, or a review record with the gate and tie-out results, the exceptions, and the remediation list on an audit. The decision record lands in the engagement hub&#x27;s <code>04-decisions-assumptions.md</code>, which this skill owns for Deal Desk outcomes: what was asked, what the humans decided, and what supersedes what. Deliver or link the file; never just say it was written.</p><h3>If the margin does not survive</h3><p>When the recomputed margin lands below the floor, or becomes a range whose pessimistic end does, that is the headline and the packet still ships, with the route escalated per the ladder and the levers section carrying real options with quantified impacts. What never happens: adjusting hours or rates to rescue the number. Pricing changes belong to scoping-agent against the quote; this skill renders what the quote says and routes the consequences.</p><h3>Boundaries</h3><ul><li>Internal only. Nothing in this packet is client-facing; it carries margin,</li></ul><p>cost rates, and candid risk the client never sees.</p><ul><li>Does not price and does not touch the quote. scoping-agent owns scope and</li></ul><p>pricing changes; this skill renders and routes.</p><ul><li>Not the DDOC. The client-facing decision deck is deck-builder; &quot;Deal Desk</li></ul><p>document&quot; as a client deck is a retired name for that artifact, and this skill is the internal readout only.</p><ul><li>Not the business case; that is business-case. Not SOW terms;</li></ul><p>that is statement-of-work, and the protective clauses&#x27; text lives in the SOW master, cited here by number only.</p><ul><li>Reviews and verdicts only. It never authors or silently rewrites the</li></ul><p>solution, the SOW, or any source evidence; a failed check produces a remediation list for the owning skill, never an edit.</p><ul><li>Does not approve. Humans clear the gate; the packet prepares it. The</li></ul><p>decisions log and sign-off table record what humans decided.</p><ul><li>Post-approval change detection (a material scope or margin change after</li></ul><p>Deal Desk requiring re-alignment before SOW) is deal governance, not this skill. It is a known gap: when a packet is being rebuilt after approval, flag the delta explicitly and say re-alignment is required.</p><h3>Running unattended</h3><p>The cosign and the live decisions log need humans. On a scheduled or headless run: build the ledgers, embed the figures block with <code>delivery_cosign.status</code> set to <code>pending</code> and a named owner, run the gate, and stop with findings. Say plainly that the cosign is outstanding. Never record an answer nobody gave.</p><h3>When time is short</h3><p>Cut in this order, and say what was cut: methodology detail, the staffing Gantt (keep the allocation table), sales-context depth below the ROM and deadline rows. Never cut: the figures block and its gate, the cosign ask, the floor comparison, the assumptions table, sourcing, or the flags. A thin honest packet clears review; a full smooth one is the failure mode.</p><h3>Files</h3><ul><li><code>references/section-catalog.md</code>: every packet section, its field sources</li></ul><p>(DS, SE, CA, PS), and the bar each must clear.</p><ul><li><code>references/margin-approval-routing.md</code>: floor, ladder, protective</li></ul><p>clauses, re-verification rule, and the figures block schema.</p><ul><li><code>references/asks-and-decisions-log.md</code>: ask format, live decisions log,</li></ul><p>action items, sign-off, and the cosign protocol.</p><ul><li><code>scripts/deal_desk_gate.py</code>: the blocking gate. Python 3 stdlib only.</li><li><code>scripts/deal_desk_gate_selftest.py</code>: run it after any gate change;</li></ul><p>fixtures in <code>scripts/fixtures/</code>.</p><ul><li><code>scripts/quote_tieout_check.py</code>: the deterministic tie-out. Reconciles</li></ul><p>every figure, assumption, and scope line in the reviewed artifacts against the quote export. Stdlib only; the quote JSON schema is in its docstring.</p><ul><li><code>scripts/quote_tieout_check_selftest.py</code>: run it after any tie-out change;</li></ul><p>fixtures <code>tieout_quote.json</code>, <code>tieout_pass.md</code>, and <code>tieout_fail.md</code> in <code>scripts/fixtures/</code>.</p>",
       "excerptHtml": "<p>The Deal Desk readout answers one question for people who were not in the scoping room: should Estate ship this offer, and on what terms. It is the last internal gate before the client sees numbers, so its job is to make the commercial reality legible, not attractive.</p><p>The cardinal rule: <strong>surface everything, smooth nothing.</strong> A reviewer who approves a clean-looking packet with hidden problems is not protected; one who approves a packet with explicit flags made a considered decision. Every unconfirmed staffing role, every load-bearing assumption, every risk to margin appears as a labeled flag with a named resolution path. Presenting a clean deal that is not clean is the exact failure this artifact exists to catch, and it is why the artifact registry lists &quot;risk smoothed over&quot; and &quot;real margin hidden behind point estimate&quot; as hard fails.</p><p>Margin is the headline. A reviewer should reach the margin number, and its position against the floor, in the first ten seconds. If the margin is tight or provisional, that is the lead, not a footnote.</p>",
       "headings": [
@@ -3201,9 +3194,9 @@
       "resources": [
         {
           "path": "SKILL.md",
-          "sha256": "6aacdbe555c2007a862aa365ad3676893056be9f3c6783cf1722e6a291b273e5",
-          "bytes": 12706,
-          "gitBlob": "07b813766cf405ad08a5ba637b33353ae20789f0"
+          "sha256": "a994c1f2862ed00ea7f6678f0ff288cf41200066b678d62a505428ed41a94729",
+          "bytes": 12645,
+          "gitBlob": "40964d83e12e03f5bbad7804a9c5d6588e0fdef5"
         },
         {
           "path": "references/asks-and-decisions-log.md",
@@ -3284,11 +3277,11 @@
       "title": "Deck Builder",
       "family": 5,
       "description": "Build or repair a presentation or reading deck around an audience decision, supported claims and explanatory visuals. Plans the narrative before rendering, chooses diagrams or charts for the relationships they explain, and verifies the finished artifact. Use for proposals, pitches and technical briefings.",
-      "status": "github",
+      "status": "local-revision",
       "entrypointChanged": false,
       "sourcePath": "skills/deck-builder/SKILL.md",
       "sourceSha256": "f0f27ea1b6fa2ed0bbffa39963b983d4363de43470336f9cae9fdaa435113acb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/deck-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/deck-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -3327,7 +3320,7 @@
           }
         ],
         "textFilesScanned": 13,
-        "packageFingerprint": "aaf1ba6daf0700c7589a695fb1313e71c0d427ac7dafe27fbe7f57d29212fe48",
+        "packageFingerprint": "46b350ca5087d2f35a7f17432eba9534071f6906e43a1a1e561cb17aba5fdcfa",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -3433,9 +3426,9 @@
         },
         {
           "path": "scripts/deck_builder_selftest.py",
-          "sha256": "655d9045022ac34f732c278acad3a7410c703d900a5ad2fbcf97edd8d35289f9",
-          "bytes": 4016,
-          "gitBlob": "95e5ba03a642a99705d49440dbe2bc89b250b045"
+          "sha256": "3367286ad32ecc856d570f87e8f07d4c534071af4fd587d87f4db711796031a2",
+          "bytes": 4053,
+          "gitBlob": "7c8e9ea232b3a574c3824fd3d41c7a9b46d4c467"
         },
         {
           "path": "scripts/visuals.py",
@@ -3456,11 +3449,11 @@
       "title": "Estate delivery kickoff",
       "family": 2,
       "description": "Mobilizes an Estate delivery engagement: turns an accepted sales-to-delivery handoff brief and a signed SOW into a draft Project Charter (scope, team, RACI, cadence, ready for client signature), a live governance pack (RAID log, decision log, weekly status template with stable IDs), internal and client kickoff decks in the correct waterfall or agile variant, a Sprint 0 plan with a seeded backlog, and tracked (never performed) sandbox and access setup. Use when a deal has closed and delivery is starting: \"kick off the project\", \"mobilize the engagement\", \"draft the charter\", \"set up the RAID log\", \"build the kickoff deck\", \"help me get ready for kickoff\", \"the handoff is accepted, what now\", \"stand up governance\", \"Sprint 0 plan\", or any Mobilize-phase request. Do NOT use for the handoff itself (sales-to-delivery-handoff), status reports or RAID upkeep after kickoff (delivery-status), requirements sessions (requirements-backlog), later sprints (sprint-planning), or scoping and pricing (the SOW is fixed input).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/delivery-kickoff/SKILL.md",
       "sourceSha256": "7ed96801bb111c26cc1eee4f37c8fe8c64eeaf6f6b765f3b1f0b52d9c288ef97",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/delivery-kickoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/delivery-kickoff/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-kickoff",
@@ -3687,11 +3680,11 @@
       "title": "Estate delivery status",
       "family": 2,
       "description": "Continuous delivery documentation for Estate engagements: the weekly client status report, stewardship of the RAID and decision logs with stable IDs, and scope-drift detection against the SOW baseline that raises change-order candidates with an evidence trail. Use for a weekly or project status report, delivery update, what moved this week, logging a decision or risk from a meeting, updating the RAID log, or checking did we agree to that in scope. Do NOT use for authoring change orders or SOWs (statement-of-work), kickoff or charter (delivery-kickoff), UAT tracking (acceptance-testing), pricing (the Estate Pricing System), or sales pursuits (call-prep).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/delivery-status/SKILL.md",
       "sourceSha256": "d9f5fd583a023be196ed21e40f88e2dcc2c8674fe726c40c3325af5843e2c672",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/delivery-status/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/delivery-status/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-status",
@@ -3880,11 +3873,11 @@
       "title": "Estate delivery suite",
       "family": 2,
       "description": "Orchestrates the delivery half of the Estate sell-to-deliver lifecycle from signed SOW through hypercare closeout. It owns the Handoff-through-closeout stage map and its human gates. Named skills own the artifacts and the per-engagement DELIVERY-STATE.md records their state. Use when a request concerns a live delivery engagement and the owning skill is not obvious. Do not use for pre-signature work; route directly to the named sales artifact owner.",
-      "status": "local-revision",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-suite/SKILL.md",
       "sourceSha256": "39b3a3e46eae49ae780f245a616eeb4b1a42824a53027735c577768d149d0372",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/delivery-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/delivery-suite/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -4068,7 +4061,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-brief/SKILL.md",
       "sourceSha256": "51d21c7ee14f73df4a09ba9cb86ef8ff3a5a7f938c5f3523c021d662f01d1df3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/discovery-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/discovery-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4268,7 +4261,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-synthesis/SKILL.md",
       "sourceSha256": "12816586f1c4c68c212ccf9571adc18b34cfc8e54f4480de3507a8fecbfb9cc7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/discovery-synthesis/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/discovery-synthesis/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -4392,7 +4385,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-promote/SKILL.md",
       "sourceSha256": "9a105d47b6a0d13b91d1ab2327554422afb9c638e33fdaa0a84eb4730e1c2d46",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/dx-devops-promote/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/dx-devops-promote/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4560,7 +4553,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-work-item-manage/SKILL.md",
       "sourceSha256": "d06e708aef3b2bafb70137e5e457b5f0e0786672a1191c0fd10e50b4c4def260",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/dx-devops-work-item-manage/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/dx-devops-work-item-manage/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -4680,7 +4673,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "940140ceb630651a43b4c54fbfaa99c3e64f157af5fcf869df979da601794b40",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -4871,7 +4864,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/execution-truth/SKILL.md",
       "sourceSha256": "6541592ce8b7e87ed1375f4213d7d275b71a3719e500c2d0290d702fa3697037",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/execution-truth/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/execution-truth/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4988,7 +4981,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/fortunes-weave/SKILL.md",
       "sourceSha256": "e6878b651358518384bd7068c40229e5626bab1bef4b4a0b9b6f37d24a4ba124",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "fortunes-weave",
@@ -5061,7 +5054,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/github-repository-work/SKILL.md",
       "sourceSha256": "416dd70ad35b0187da9d23fa1168ae095aaa59cbaecd47b79525d33b475156e5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/github-repository-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/github-repository-work/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -5125,7 +5118,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/independent-product/SKILL.md",
       "sourceSha256": "cfeebb0f638e7359af4d6a58b7730e104c8088b9c473b96c4069dcaefc17194c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "independent-product",
@@ -5198,7 +5191,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/information-architecture/SKILL.md",
       "sourceSha256": "6ebd0a149d475ccda8664a397b49ae94b9470a120f0c605d63459c9f6446e6e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "information-architecture",
@@ -5288,7 +5281,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/interactive-proposal/SKILL.md",
       "sourceSha256": "3b993c5d1b1230ef6f5c2dc2b76cd5778eb5346b60c59247693f55a3aac219c5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -5485,7 +5478,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/journey-mapping/SKILL.md",
       "sourceSha256": "044a9b62cc4632caf267af2a4a70a412e71a3889783548063ee340997d0cac63",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/journey-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/journey-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "journey-mapping",
@@ -5607,11 +5600,11 @@
       "title": "JTBD framing",
       "family": 0,
       "description": "Apply Jobs-to-be-Done as product methodology: job statements, struggling moments, hire and fire criteria, functional, emotional, and social dimensions, and the difference between feature-thinking and job-thinking. Use it in discovery, prioritization, positioning, or an audit of existing JTBD work, and for spotting where JTBD has become ritual. Triggers on jobs-to-be-done, JTBD, job statements, struggling moments, hire or fire criteria, switch triggers, switch interviews, outcome-driven innovation, planning or running a JTBD workshop, and on teams that lean on feature-request lists or persona archetypes that do not drive decisions. Do not trigger for generic prioritization or research synthesis with no JTBD angle.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/jtbd-framing/SKILL.md",
       "sourceSha256": "dc4e8ee3ebe54647a5c574c0565a6f36e2aa41ba5eda03e9c768d3a9b20e0c98",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/jtbd-framing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/jtbd-framing/SKILL.md",
       "taskPackages": [
         {
           "name": "jtbd-framing",
@@ -5808,7 +5801,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/knowledge-hub/SKILL.md",
       "sourceSha256": "29b7962b049af27078d64360c68c2abd6c15c7263590902d285dc0835689c05b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "knowledge-hub",
@@ -6060,7 +6053,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/org-preflight/SKILL.md",
       "sourceSha256": "114e2469f12d1593364d2befaa2c754d48e7c3ea8c3758aac5a1fda3fa1a9f39",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/org-preflight/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/org-preflight/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "sf-change-delivery"
@@ -6161,7 +6154,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/personal-writing-style-runtime/SKILL.md",
       "sourceSha256": "acdb326d7eae4166a419e6ff07245f9afe6174a826d613d474bb21043e852b90",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/personal-writing-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/personal-writing-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6293,7 +6286,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-builder/SKILL.md",
       "sourceSha256": "733792bc5580e8b71e491f7ef69287e99ff5db1e4eceafed0324fd0a8f49d93b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/playbook-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/playbook-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6424,7 +6417,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-fit-router/SKILL.md",
       "sourceSha256": "190748cd28c50baad5b6260742889081c1effa47bbc8025ab5073a3d12476bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/playbook-fit-router/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/playbook-fit-router/SKILL.md",
       "taskPackages": [
         {
           "name": "offering-fit",
@@ -6523,7 +6516,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-onepager/SKILL.md",
       "sourceSha256": "d968ee8a9d28b50e4de5f049539210e999818df6af2a53c9d5a4ba6adafac605",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/playbook-onepager/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/playbook-onepager/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6701,7 +6694,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-suite/SKILL.md",
       "sourceSha256": "472ad5c6e512f9f142aacbdcf26cef02e30bc9d93bd5bea308092d502715e240",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/playbook-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/playbook-suite/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -6847,7 +6840,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/pm-spec-writing/SKILL.md",
       "sourceSha256": "6adc8ca7812b4ae14a7b5278ba1d03d8ef4f3af2dd79bf65db3d67b9345b4259",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/pm-spec-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/pm-spec-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -6939,11 +6932,11 @@
       "title": "Prioritization",
       "family": 3,
       "description": "Rank problems, jobs, roadmap candidates or backlog items with a named framework (ODI, Opportunity Score, RICE, ICE, WSJF, weighted matrix) and check the evidence behind every score, so the ranking is a sourced proposal for the person who decides. Use for \"prioritize these\", \"RICE score\", \"rank the backlog\", \"what should we build next\", \"which outcomes are under-served\", \"WSJF\", or choosing a framework. Do NOT use for MoSCoW values on captured requirements (requirements-capture), job-led debate without scoring (jtbd-framing), roadmap layout (roadmap-artifacts), or sprint commitment (sprint-planning).",
-      "status": "local-addition",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/prioritization/SKILL.md",
       "sourceSha256": "1c83aff26fc94e0e6687382b897a3d133f23992d0f1fac399b66f80661e2fc0e",
-      "githubUrl": null,
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/prioritization/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritization",
@@ -7112,7 +7105,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/process/SKILL.md",
       "sourceSha256": "b0876f55eab1b43642897b2ff9bb019bfc4e063805612555ebcdb9add823addf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/process/SKILL.md",
       "taskPackages": [
         {
           "name": "process-design",
@@ -7233,7 +7226,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/product-development-pathway/SKILL.md",
       "sourceSha256": "4e17a049ee5b802096c8580c78ce35759d159b0a0f11b469339b59a05c2c8f19",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/product-development-pathway/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/product-development-pathway/SKILL.md",
       "taskPackages": [
         {
           "name": "product-development",
@@ -7390,11 +7383,11 @@
       "title": "Writing diagnostic tools",
       "family": 5,
       "description": "Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/prose-pass/SKILL.md",
-      "sourceSha256": "dbedb0f75e23a6f4a21d3ae9b48d36fb79c1d24a9e0bd56a27e9f062aa5de386",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/prose-pass/SKILL.md",
+      "sourceSha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/prose-pass/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -7456,24 +7449,17 @@
         "writing-integrity",
         "writing-profile"
       ],
-      "guide": {
-        "what": "Run writing diagnostics and preserve figures during revision.",
-        "when": "Writing-integrity needs a scanner or a review record.",
-        "inputs": "The saved text, source figures, and required review configuration.",
-        "outputs": "Diagnostic findings, figure comparisons, or review records.",
-        "example": "Check this saved draft for recurring writing patterns and changed figures.",
-        "reviewedEntrypointSha256": "dbedb0f75e23a6f4a21d3ae9b48d36fb79c1d24a9e0bd56a27e9f062aa5de386"
-      },
-      "guideStatus": "current",
+      "guide": null,
+      "guideStatus": "needs-review",
       "reuse": {
-        "audience": "general",
-        "label": "General use",
-        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
+        "audience": "review",
+        "label": "Needs review",
+        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
         "setup": "",
         "cleanup": [
           "The bundled shared workflow policy names Megan. Generalize that shared wording before distributing a general-use package."
         ],
-        "readiness": "cleanup",
+        "readiness": "review",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [
@@ -7484,8 +7470,8 @@
             "kind": "shared-policy"
           }
         ],
-        "textFilesScanned": 28,
-        "packageFingerprint": "5526859e111e1408e6bab62c40df9e53da084ed08ce624acdac25e38a670d124",
+        "textFilesScanned": 29,
+        "packageFingerprint": "42b160c16f2660f9aa8fd1f4d91e89f227dc6fe079d4f55ddc52e431ebcdf5e9",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -7493,8 +7479,8 @@
         "tasks": [],
         "modes": []
       },
-      "markdown": "---\nname: prose-pass\ndescription: Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.\n---\n\n# Writing diagnostic tools\n\nProse Pass is retired as a standalone skill. The `prose-pass` directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.\n\nRead [writing-integrity](../writing-integrity/SKILL.md) before using these tools.\nThat workflow owns writing review. A confirmed personal profile supplies the\nauthor's voice. A visual brand profile cannot impose a former employer's voice\nor change a fact. These tools report detectable patterns; they do not rewrite\ntext or establish editorial quality.\n\nUse the tools on every kind of authored prose, including instructions and\ninternal records. Keep exact source evidence and executable syntax unchanged.\nReview the new wording around those spans. A file extension or audience label\ndoes not exclude authored language from review.\n\n## Review a saved file\n\n```bash\npython3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE\n```\n\nThe checker reads prose from supported document formats and structured text\nfields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means\nthe check could not finish. Read its output and the complete document. Repair\nthe argument or sentence that caused a finding, then rerun the check.\n\nDo not change the filename, label prose internal or put authored wording in a\nquote to obtain a pass. A literal source span remains verbatim only when its\nsource and exact extent are identified in the internal review record. Keep\nreviewing the surrounding authored text. Do not reclassify an invented claim\nor an awkward sentence as captured evidence.\n\n`prose_check.py` is a compatibility command for the same supported input path.\nThe older lexical engine also reports vocabulary and construction diagnostics.\nRead [surface policy](references/surface-policy.md) for source-span handling.\n\n## Review recurring patterns\n\nRead [construction rules](references/construction-rules.md) and\n[patterns](references/patterns.md) when investigating a recurring construction.\nUse the applicable register for format-specific advice:\n\n| Format | Reference |\n| --- | --- |\n| Slides | [Deck](references/registers/deck.md) |\n| Contract or proposal | [SOW and proposal](references/registers/sow-proposal.md) |\n| Report or brief | [Readout](references/registers/readout-brief.md) |\n| Short message | [Email and Slack](references/registers/email-slack.md) |\n| Other authored text | [General](references/registers/general.md) |\n\nRegisters supply examples and format checks under writing-integrity. Preserve\nrequired terms and confirmed voice when a legacy example uses another style.\nRead headings with their body text. Remove repeated explanations and subtitles\nthat repeat a title. A vocabulary substitution cannot repair an empty claim.\n\n```bash\npython3 scripts/scan.py audit docs \"*.md\"\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE\n```\n\nThe audit command includes supported structured files and returns an error for\nunsupported input. The score command reports lexical density for comparison;\nits success does not establish compliance. It strips some executable spans for\nthat measurement. Use the complete authored-language check for release review.\n\nVocabulary sources remain in `scripts/rewrite_scan.py`. The generated wordlists\ncome from `scripts/sync_wordlists.py`; preserve their synchronization check.\nWeighted lists retain their existing weights. Changes to detection require\nrepresentative positive examples and valid prose examples, not a lower budget\nchosen to pass a particular draft.\n\n## Preserve figures and meaning\n\nBefore a substantive rewrite, retain the source version. Reconcile figures:\n\n```bash\npython3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE\n```\n\nAn added figure needs its source. A missing source figure requires checking\nwhether the omission was authorized. The writing pass cannot approve a price,\nscope change or commercial commitment. Use the confirmed quote or versioned\nestimate and preserve its assumptions. Keep client-stated figures attributed.\n\nCompare the finished text with its source for changed ownership and conditions.\nRetain factual uncertainty and meaningful author choices. Never add a number,\nquotation or anecdote to make vague writing sound specific.\n\n## Record a required review\n\nWhen the producing workflow requires a narrative review record, use:\n\n```bash\npython3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected \"commercial figures from the supplied quote\" \\\n    --change \"replaced the generic claim with the supported action\"\npython3 scripts/prose_receipt.py validate receipt.json\n```\n\nThe record binds the file hash to the checker result and declared edits. The\nvalidator rechecks measurable assertions and figure changes. A no-change result\nneeds an actual reading assessment; arbitrary edits are unnecessary. A record\ndoes not independently establish that an editor understood the document.\n\nBrief replies receive writing review without a receipt. Captured transcripts\nremain evidence and are never rewritten for style. Newly authored descriptions\nin records still receive the same writing review as any other prose.\n\n## Select configuration\n\nThe canonical baseline is `house.json`. An explicit configuration can add\nchecks; it cannot disable the maintained rules. The scripts and word data ship\ntogether and need no neighboring installed skill. See\n[configuration](references/house-overlay.md) when maintaining the diagnostic\nengine. Every supported artifact still needs a complete reading against its\nfacts and intended reader after the commands pass.\n",
-      "html": "<p>Prose Pass is retired as a standalone skill. The <code>prose-pass</code> directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.</p><p>Read writing-integrity <span class=\"ref\">(../writing-integrity/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile cannot impose a former employer&#x27;s voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p><h3>Review a saved file</h3><pre><code>python3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE</code></pre><p>The checker reads prose from supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means the check could not finish. Read its output and the complete document. Repair the argument or sentence that caused a finding, then rerun the check.</p><p>Do not change the filename, label prose internal or put authored wording in a quote to obtain a pass. A literal source span remains verbatim only when its source and exact extent are identified in the internal review record. Keep reviewing the surrounding authored text. Do not reclassify an invented claim or an awkward sentence as captured evidence.</p><p><code>prose_check.py</code> is a compatibility command for the same supported input path. The older lexical engine also reports vocabulary and construction diagnostics. Read surface policy <span class=\"ref\">(references/surface-policy.md)</span> for source-span handling.</p><h3>Review recurring patterns</h3><p>Read construction rules <span class=\"ref\">(references/construction-rules.md)</span> and patterns <span class=\"ref\">(references/patterns.md)</span> when investigating a recurring construction. Use the applicable register for format-specific advice:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Format</th><th scope=\"col\">Reference</th></tr></thead><tbody><tr><td>Slides</td><td>Deck <span class=\"ref\">(references/registers/deck.md)</span></td></tr><tr><td>Contract or proposal</td><td>SOW and proposal <span class=\"ref\">(references/registers/sow-proposal.md)</span></td></tr><tr><td>Report or brief</td><td>Readout <span class=\"ref\">(references/registers/readout-brief.md)</span></td></tr><tr><td>Short message</td><td>Email and Slack <span class=\"ref\">(references/registers/email-slack.md)</span></td></tr><tr><td>Other authored text</td><td>General <span class=\"ref\">(references/registers/general.md)</span></td></tr></tbody></table></div><p>Registers supply examples and format checks under writing-integrity. Preserve required terms and confirmed voice when a legacy example uses another style. Read headings with their body text. Remove repeated explanations and subtitles that repeat a title. A vocabulary substitution cannot repair an empty claim.</p><pre><code>python3 scripts/scan.py audit docs &quot;*.md&quot;\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE</code></pre><p>The audit command includes supported structured files and returns an error for unsupported input. The score command reports lexical density for comparison; its success does not establish compliance. It strips some executable spans for that measurement. Use the complete authored-language check for release review.</p><p>Vocabulary sources remain in <code>scripts/rewrite_scan.py</code>. The generated wordlists come from <code>scripts/sync_wordlists.py</code>; preserve their synchronization check. Weighted lists retain their existing weights. Changes to detection require representative positive examples and valid prose examples, not a lower budget chosen to pass a particular draft.</p><h3>Preserve figures and meaning</h3><p>Before a substantive rewrite, retain the source version. Reconcile figures:</p><pre><code>python3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE</code></pre><p>An added figure needs its source. A missing source figure requires checking whether the omission was authorized. The writing pass cannot approve a price, scope change or commercial commitment. Use the confirmed quote or versioned estimate and preserve its assumptions. Keep client-stated figures attributed.</p><p>Compare the finished text with its source for changed ownership and conditions. Retain factual uncertainty and meaningful author choices. Never add a number, quotation or anecdote to make vague writing sound specific.</p><h3>Record a required review</h3><p>When the producing workflow requires a narrative review record, use:</p><pre><code>python3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected &quot;commercial figures from the supplied quote&quot; \\\n    --change &quot;replaced the generic claim with the supported action&quot;\npython3 scripts/prose_receipt.py validate receipt.json</code></pre><p>The record binds the file hash to the checker result and declared edits. The validator rechecks measurable assertions and figure changes. A no-change result needs an actual reading assessment; arbitrary edits are unnecessary. A record does not independently establish that an editor understood the document.</p><p>Brief replies receive writing review without a receipt. Captured transcripts remain evidence and are never rewritten for style. Newly authored descriptions in records still receive the same writing review as any other prose.</p><h3>Select configuration</h3><p>The canonical baseline is <code>house.json</code>. An explicit configuration can add checks; it cannot disable the maintained rules. The scripts and word data ship together and need no neighboring installed skill. See configuration <span class=\"ref\">(references/house-overlay.md)</span> when maintaining the diagnostic engine. Every supported artifact still needs a complete reading against its facts and intended reader after the commands pass.</p>",
+      "markdown": "---\nname: prose-pass\ndescription: Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.\n---\n\n# Writing diagnostic tools\n\nProse Pass is retired as a standalone skill. The `prose-pass` directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.\n\nRead [writing-integrity](../writing-integrity/SKILL.md) before using these tools.\nThat workflow owns writing review. A confirmed personal profile supplies the\nauthor's voice. A visual brand profile cannot impose a former employer's voice\nor change a fact. These tools report detectable patterns; they do not rewrite\ntext or establish editorial quality.\n\nUse the tools on every kind of authored prose, including instructions and\ninternal records. Keep exact source evidence and executable syntax unchanged.\nReview the new wording around those spans. A file extension or audience label\ndoes not exclude authored language from review.\n\n## Review a saved file\n\n```bash\npython3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE\n```\n\nThe checker reads prose from supported document formats and structured text\nfields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means\nthe check could not finish. Read its output and the complete document. Repair\nthe argument or sentence that caused a finding, then rerun the check.\n\nDo not change the filename, label prose internal or put authored wording in a\nquote to obtain a pass. A literal source span remains verbatim only when its\nsource and exact extent are identified in the internal review record. Keep\nreviewing the surrounding authored text. Do not reclassify an invented claim\nor an awkward sentence as captured evidence.\n\n`prose_check.py` is a compatibility command for the same supported input path.\nThe older lexical engine also reports vocabulary and construction diagnostics.\nRead [surface policy](references/surface-policy.md) for source-span handling.\n\n## Review recurring patterns\n\nRead [construction rules](references/construction-rules.md) and\n[patterns](references/patterns.md) when investigating a recurring construction.\nUse the applicable register for format-specific advice:\n\n| Format | Reference |\n| --- | --- |\n| Slides | [Deck](references/registers/deck.md) |\n| Contract or proposal | [SOW and proposal](references/registers/sow-proposal.md) |\n| Report or brief | [Readout](references/registers/readout-brief.md) |\n| Short message | [Email and Slack](references/registers/email-slack.md) |\n| Other authored text | [General](references/registers/general.md) |\n\nRegisters supply examples and format checks under writing-integrity. Preserve\nrequired terms and confirmed voice when a legacy example uses another style.\nRead headings with their body text. Remove repeated explanations and subtitles\nthat repeat a title. A vocabulary substitution cannot repair an empty claim.\n\n```bash\npython3 scripts/scan.py audit docs \"*.md\"\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE\n```\n\nThe audit command includes supported structured files and returns an error for\nunsupported input. The score command reports lexical density for comparison;\nits success does not establish compliance. It strips some executable spans for\nthat measurement. Use the complete authored-language check for release review.\n\nVocabulary sources remain in `scripts/rewrite_scan.py`. The generated wordlists\ncome from `scripts/sync_wordlists.py`; preserve their synchronization check.\nWeighted lists retain their existing weights. Changes to detection require\nrepresentative positive examples and valid prose examples, not a lower budget\nchosen to pass a particular draft.\n\n## Preserve figures and meaning\n\nBefore a substantive rewrite, retain the source version. Reconcile figures:\n\n```bash\npython3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE\n```\n\nAn added figure needs its source. A missing source figure requires checking\nwhether the omission was authorized. The writing pass cannot approve a price,\nscope change or commercial commitment. Use the confirmed quote or versioned\nestimate and preserve its assumptions. Keep client-stated figures attributed.\n\nCompare the finished text with its source for changed ownership and conditions.\nRetain factual uncertainty and meaningful author choices. Never add a number,\nquotation or anecdote to make vague writing sound specific.\n\n## Record a required review\n\nWhen the producing workflow requires a narrative review record, use:\n\n```bash\npython3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected \"commercial figures from the supplied quote\" \\\n    --change \"replaced the generic claim with the supported action\"\npython3 scripts/prose_receipt.py validate receipt.json\n```\n\nThe record binds the file hash to the checker result and declared edits. The\nvalidator rechecks measurable assertions and figure changes. A no-change result\nneeds an actual reading assessment; arbitrary edits are unnecessary. A record\ndoes not independently establish that an editor understood the document.\n\nBrief replies receive writing review without a receipt. Captured transcripts\nremain evidence and are never rewritten for style. Newly authored descriptions\nin records still receive the same writing review as any other prose.\n\n## Select configuration\n\nThe canonical baseline is `house.json`. An explicit configuration can add\nchecks; it cannot disable the maintained rules. The scripts and word data ship\ntogether and need no neighboring installed skill. See\n[configuration](references/house-overlay.md) and the [tellscan rule map](references/tellscan-rule-map.md) when maintaining the diagnostic\nengine. Every supported artifact still needs a complete reading against its\nfacts and intended reader after the commands pass.\n",
+      "html": "<p>Prose Pass is retired as a standalone skill. The <code>prose-pass</code> directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.</p><p>Read writing-integrity <span class=\"ref\">(../writing-integrity/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile cannot impose a former employer&#x27;s voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p><h3>Review a saved file</h3><pre><code>python3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE</code></pre><p>The checker reads prose from supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means the check could not finish. Read its output and the complete document. Repair the argument or sentence that caused a finding, then rerun the check.</p><p>Do not change the filename, label prose internal or put authored wording in a quote to obtain a pass. A literal source span remains verbatim only when its source and exact extent are identified in the internal review record. Keep reviewing the surrounding authored text. Do not reclassify an invented claim or an awkward sentence as captured evidence.</p><p><code>prose_check.py</code> is a compatibility command for the same supported input path. The older lexical engine also reports vocabulary and construction diagnostics. Read surface policy <span class=\"ref\">(references/surface-policy.md)</span> for source-span handling.</p><h3>Review recurring patterns</h3><p>Read construction rules <span class=\"ref\">(references/construction-rules.md)</span> and patterns <span class=\"ref\">(references/patterns.md)</span> when investigating a recurring construction. Use the applicable register for format-specific advice:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Format</th><th scope=\"col\">Reference</th></tr></thead><tbody><tr><td>Slides</td><td>Deck <span class=\"ref\">(references/registers/deck.md)</span></td></tr><tr><td>Contract or proposal</td><td>SOW and proposal <span class=\"ref\">(references/registers/sow-proposal.md)</span></td></tr><tr><td>Report or brief</td><td>Readout <span class=\"ref\">(references/registers/readout-brief.md)</span></td></tr><tr><td>Short message</td><td>Email and Slack <span class=\"ref\">(references/registers/email-slack.md)</span></td></tr><tr><td>Other authored text</td><td>General <span class=\"ref\">(references/registers/general.md)</span></td></tr></tbody></table></div><p>Registers supply examples and format checks under writing-integrity. Preserve required terms and confirmed voice when a legacy example uses another style. Read headings with their body text. Remove repeated explanations and subtitles that repeat a title. A vocabulary substitution cannot repair an empty claim.</p><pre><code>python3 scripts/scan.py audit docs &quot;*.md&quot;\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE</code></pre><p>The audit command includes supported structured files and returns an error for unsupported input. The score command reports lexical density for comparison; its success does not establish compliance. It strips some executable spans for that measurement. Use the complete authored-language check for release review.</p><p>Vocabulary sources remain in <code>scripts/rewrite_scan.py</code>. The generated wordlists come from <code>scripts/sync_wordlists.py</code>; preserve their synchronization check. Weighted lists retain their existing weights. Changes to detection require representative positive examples and valid prose examples, not a lower budget chosen to pass a particular draft.</p><h3>Preserve figures and meaning</h3><p>Before a substantive rewrite, retain the source version. Reconcile figures:</p><pre><code>python3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE</code></pre><p>An added figure needs its source. A missing source figure requires checking whether the omission was authorized. The writing pass cannot approve a price, scope change or commercial commitment. Use the confirmed quote or versioned estimate and preserve its assumptions. Keep client-stated figures attributed.</p><p>Compare the finished text with its source for changed ownership and conditions. Retain factual uncertainty and meaningful author choices. Never add a number, quotation or anecdote to make vague writing sound specific.</p><h3>Record a required review</h3><p>When the producing workflow requires a narrative review record, use:</p><pre><code>python3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected &quot;commercial figures from the supplied quote&quot; \\\n    --change &quot;replaced the generic claim with the supported action&quot;\npython3 scripts/prose_receipt.py validate receipt.json</code></pre><p>The record binds the file hash to the checker result and declared edits. The validator rechecks measurable assertions and figure changes. A no-change result needs an actual reading assessment; arbitrary edits are unnecessary. A record does not independently establish that an editor understood the document.</p><p>Brief replies receive writing review without a receipt. Captured transcripts remain evidence and are never rewritten for style. Newly authored descriptions in records still receive the same writing review as any other prose.</p><h3>Select configuration</h3><p>The canonical baseline is <code>house.json</code>. An explicit configuration can add checks; it cannot disable the maintained rules. The scripts and word data ship together and need no neighboring installed skill. See configuration <span class=\"ref\">(references/house-overlay.md)</span> and the tellscan rule map <span class=\"ref\">(references/tellscan-rule-map.md)</span> when maintaining the diagnostic engine. Every supported artifact still needs a complete reading against its facts and intended reader after the commands pass.</p>",
       "excerptHtml": "<p>Prose Pass is retired as a standalone skill. The <code>prose-pass</code> directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.</p><p>Read writing-integrity <span class=\"ref\">(../writing-integrity/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile cannot impose a former employer&#x27;s voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p>",
       "headings": [
         "Review a saved file",
@@ -7519,9 +7505,9 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "dbedb0f75e23a6f4a21d3ae9b48d36fb79c1d24a9e0bd56a27e9f062aa5de386",
-          "bytes": 5985,
-          "gitBlob": "28e39796b495d85b3300b1334001845d14ebfb96"
+          "sha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749",
+          "bytes": 6046,
+          "gitBlob": "ae37210f1785f3fe7d28e4eb954d3e3ecd04b26c"
         },
         {
           "path": "house.json",
@@ -7588,6 +7574,12 @@
           "sha256": "1d6d01e47ac7b708a503ec0439648cdb2c098b5fe20419603d871646bc9d05ee",
           "bytes": 2922,
           "gitBlob": "23c8e44cc2adeeb8225a708bfea0021fdc4adfd2"
+        },
+        {
+          "path": "references/tellscan-rule-map.md",
+          "sha256": "83e152ca61f41ee1025f5a2d1ecf1d2ca382d9fd284834f508d41a761456c3f6",
+          "bytes": 1942,
+          "gitBlob": "15df0723719ace3ca70a6312cd63efaf94da4461"
         },
         {
           "path": "scripts/authored_code.py",
@@ -7690,7 +7682,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/quality-gate/SKILL.md",
       "sourceSha256": "854448520c20383707e16bddd027fed13a2196e75b083918a894e4f0398b9e1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/quality-gate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/quality-gate/SKILL.md",
       "taskPackages": [
         {
           "name": "deliverable-review",
@@ -7842,11 +7834,11 @@
       "title": "Estate Requirements Capture",
       "family": 2,
       "description": "Capture and structure business requirements in the Estate approved format: epics, capabilities, business needs, user stories, and Gherkin acceptance criteria, delivered as a branded two-tab Excel workbook. Use to define, write, organize, or refine requirements, to extract them from an uploaded deck, PRD, brief, spec, or transcript, or to turn a Salesforce SOW into a backlog (BA mode: analyze this SOW, SOW to backlog, Salesforce BA). Triggers on capture requirements, write user stories, define epics, requirements gathering, BRD, acceptance criteria, requirements CSV. Always read the host spreadsheet skill before generating the workbook. Grading sprint readiness is backlog-refinement.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/requirements-capture/SKILL.md",
       "sourceSha256": "285e48420fc2c355305c7d5a5a4e628065fa489f69c5589bda1f3fb2c7c784c9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/requirements-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/requirements-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "requirements-backlog",
@@ -7987,7 +7979,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/resume-numbers-and-keywords/SKILL.md",
       "sourceSha256": "bac682d878466ed29e02267f52a0adf61978ceb3b10d68ecd529552388ada4dd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/resume-numbers-and-keywords/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/resume-numbers-and-keywords/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -8087,11 +8079,11 @@
       "title": "Roadmap artifacts",
       "family": 5,
       "description": "Build interactive roadmaps (now/next/later boards, Gantt timelines, swimlanes, sprint trains, launch countdowns, RAID overlays, outcome roadmaps, GTM, content, brand/demand and OKR roadmaps) as embeddable components in the governing org's brand, with data from connected tools such as Google Sheets, Linear, Jira, Asana or Notion. Use whenever the user asks for a roadmap, timeline, release plan, migration plan, launch plan, campaign calendar or delivery plan as an artifact, page section or embedded element, or wants an existing roadmap rebranded, connected to live data, or turned from a feature list into outcomes. Do not use it to rank candidates (use prioritization) or to plan a sprint (use sprint-planning).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/roadmap-artifacts/SKILL.md",
       "sourceSha256": "f8049332aee2da80393fa10a6ef24133b92effb692626bf6999231c7f0ffb530",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/roadmap-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/roadmap-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "roadmap-artifacts",
@@ -8343,7 +8335,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/rom/SKILL.md",
       "sourceSha256": "5c4e72f9e50282c5c3a43c366fc34a82600b0df5606cace94c7cd48ceac16045",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/rom/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/rom/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -8521,7 +8513,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/s2d-handoff/SKILL.md",
       "sourceSha256": "5a20835369410ea3c73c2a29dbe76ca197f11b23126f9e8eb6305585a99ee0cb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/s2d-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/s2d-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-to-delivery-handoff",
@@ -8724,7 +8716,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-journey-critique/SKILL.md",
       "sourceSha256": "b3017491fc634e10d3e701a494df80578b65d168147fbdc4e4563724a5c46dd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sales-journey-critique/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sales-journey-critique/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -8829,7 +8821,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-process-mapping/SKILL.md",
       "sourceSha256": "4523ee9e6c71fc680ecff67815a0fe189483522dd37d2bf3ad06b23d9c843f03",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sales-process-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sales-process-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -8926,7 +8918,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-reference/SKILL.md",
       "sourceSha256": "5ce4f83358b1c63d3abedd2a09d4258a3642c8d5b6fcba42e525cb313e45c6fc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/scope-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/scope-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -9110,7 +9102,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scoping-agent/SKILL.md",
       "sourceSha256": "5c42af24098dabd808faddcbe450c622c97f2f9ae3c8845cbeb4a446f1b48e52",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/scoping-agent/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/scoping-agent/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -9243,7 +9235,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/session-handoff/SKILL.md",
       "sourceSha256": "76315e6e195546e7bb4722b3782a681f17654707ed822c1f0f266ef263ec484b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "session-handoff",
@@ -9348,7 +9340,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-delivery-standards/SKILL.md",
       "sourceSha256": "cbe0c98f1c39d2808706ed8cea1e1826b72e025324da68a99694a178b7889777",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sf-delivery-standards/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sf-delivery-standards/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-project-setup",
@@ -10022,7 +10014,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-deploy-engine/SKILL.md",
       "sourceSha256": "11dcb9eaee787e9b3008c8ba2ef8ee906572c0883004666d044dbf8757f2fdb0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sf-deploy-engine/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sf-deploy-engine/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-pipeline-operations",
@@ -10212,7 +10204,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-enterprise-patterns/SKILL.md",
       "sourceSha256": "676a08b14eb36d9e9ff9835e02eb4ca0b8b8fe4e917142f4e6105f4ecb1dfe64",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sf-enterprise-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sf-enterprise-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-apex-patterns",
@@ -10391,7 +10383,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-headless-screenshot/SKILL.md",
       "sourceSha256": "06cdf4bb69534ca8360c6e45568165ebed6f98c4d74aa7100a73fef3d453cfe1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sf-headless-screenshot/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sf-headless-screenshot/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -10486,7 +10478,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-solo-devops/SKILL.md",
       "sourceSha256": "7aa22071e02f31275dcdff3bf20170739971f90d31d0563242ef88a520154d73",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sf-solo-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sf-solo-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-change-delivery",
@@ -10797,7 +10789,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-creation-walkthrough/SKILL.md",
       "sourceSha256": "ee26692c205920fa87c71c04af6dcd814fc43606c2da4a7a1a74c154df3778a6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/skill-creation-walkthrough/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/skill-creation-walkthrough/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -10948,7 +10940,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-estate-sync/SKILL.md",
       "sourceSha256": "e6eca666dc36e00dbcf30cf1c8a4a94b8bd79b7d01d3b6a1aba18c30344cc657",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/skill-estate-sync/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/skill-estate-sync/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -11123,7 +11115,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/solution-brief/SKILL.md",
       "sourceSha256": "c0b41a1b53fec95e16a09215f202f939264f1f0d30f02665158b28076552a28b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/solution-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/solution-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "solution-brief",
@@ -11429,7 +11421,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow/SKILL.md",
       "sourceSha256": "4e4d47135eda6b0e5bf6fabff30693368ad61984e4761e705d038d935fcf7db3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sow/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sow/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -11650,7 +11642,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow-quality/SKILL.md",
       "sourceSha256": "f13a0cc56620104bd57e6b8f76a4586488f7d2fdd9fe7ad5424117a6a0fd9ec1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sow-quality/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sow-quality/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -11792,7 +11784,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/spec-writer/SKILL.md",
       "sourceSha256": "7ae4353bc1c856ed2de2a49fef14ef204b420d9e2d46541462c9e6ef750ea61f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/spec-writer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/spec-writer/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -11889,11 +11881,11 @@
       "title": "Sprint planning",
       "family": 2,
       "description": "Plan one sprint on an agile engagement or product team: sprint goal, per-person capacity, commit and stretch work sized against that capacity, owned dependencies recorded in the RAID log, risks and the team definition of done, checked by a blocking gate before the team commits. Use for \"plan the next sprint\", \"sprint planning\", \"how much can we commit\", \"capacity for sprint N\", \"why do we keep missing sprints\", or a Sprint 1 plan after kickoff. Do NOT use for grading or splitting backlog items (backlog-refinement), ranking candidates (prioritization), the Sprint 0 mobilization plan (delivery-kickoff), weekly status or RAID upkeep (delivery-status), or a quarter or release roadmap (roadmap-artifacts).",
-      "status": "local-addition",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/sprint-planning/SKILL.md",
       "sourceSha256": "9e41c15db883c84ae5377ff1e011cfdb9dc1605eab23fde6a352a2f07ecc0ef9",
-      "githubUrl": null,
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sprint-planning/SKILL.md",
       "taskPackages": [
         {
           "name": "sprint-planning",
@@ -12065,7 +12057,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-art-direction/SKILL.md",
       "sourceSha256": "dcdd4dd6bb05db06865fc642b5d0eb269386f09c5a87bf2a31168f49b62cdf4f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sticker-art-direction/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sticker-art-direction/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-art-direction",
@@ -12160,7 +12152,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-sheets/SKILL.md",
       "sourceSha256": "1b464817a7997c722c9ce4b4ea92ffda707eb21f6aceee9a70aecc3491c02c38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-sheets",
@@ -12233,7 +12225,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/system-design/SKILL.md",
       "sourceSha256": "a85c9e72b9cd4db699a8d758270748b7a18cdd8f08a26ddb03cb99b75e639b56",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/system-design/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/system-design/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -12350,7 +12342,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/team-onboarding/SKILL.md",
       "sourceSha256": "20659fda549fafd71092ba6d71a5cee667b4b4b36e7a13701f068154b4bff265",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "team-onboarding",
@@ -12476,7 +12468,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/transcript-ingestion/SKILL.md",
       "sourceSha256": "990703731119c90008f1f920e37bc97908b55c885fa8458155eb91d7f03f9944",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/transcript-ingestion/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/transcript-ingestion/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -12580,7 +12572,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/uat-validation/SKILL.md",
       "sourceSha256": "b61f0dcd77e5b66e21a3aca25285f5f4dd6e2e3cbcdf12ffd84fb5460bd0056e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/uat-validation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/uat-validation/SKILL.md",
       "taskPackages": [
         {
           "name": "acceptance-testing",
@@ -12767,7 +12759,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/usability-testing/SKILL.md",
       "sourceSha256": "1bd1c6d7af93f9ec601b9d7a13dd252e98af94236d23995d6b509ffe316355a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/usability-testing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/usability-testing/SKILL.md",
       "taskPackages": [
         {
           "name": "usability-testing",
@@ -12857,7 +12849,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-integrity/SKILL.md",
       "sourceSha256": "d803e6989ebbf6222af21a788033f43c48fba6f5d425a5d51312defa8de22fcc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/writing-integrity/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/writing-integrity/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-integrity",
@@ -13087,7 +13079,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-style-builder/SKILL.md",
       "sourceSha256": "e379f9a134e038cc87e2013b0238f114fbad46e874d27dada6e878b688557b02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/a92dcdbba7011b74bff26f308451e88f51a218f8/skills/writing-style-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/95818ae9407e9ab82ca2288c02e40d03bb6107e3/skills/writing-style-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-profile",
@@ -13204,10 +13196,10 @@
     }
   ],
   "counts": {
-    "github": 76,
-    "local-revision": 6,
-    "local-addition": 3,
-    "canonical": 82,
+    "github": 82,
+    "local-revision": 3,
+    "local-addition": 0,
+    "canonical": 85,
     "total": 85
   }
 }
