@@ -181,11 +181,11 @@ def collect(config, now=None):
             rows.append(result("launchd-"+label.rsplit(".",1)[-1], state, "Job is running" if state == "verified-now" else "Job is not currently running", "launchctl", now))
         except (OSError, subprocess.TimeoutExpired):
             rows.append(result("launchd-"+label.rsplit(".",1)[-1], "not-rechecked", "launchd state unavailable in this session", "launchctl", now))
-    rows.append(result("hosted", "not-rechecked", "This local script did not probe authenticated hosted access", "separate hosted check", now))
+    rows.append(result("remote-gateway", "not-rechecked", "This local script did not probe authenticated remote gateway access", "separate gateway check", now))
     return {"observedAt":now.isoformat(), "mode":"read-only", "runtimeGeneration":generation, "rows":rows,
             "limits":["The hub settings table is the writer-maintained receipt index.",
                       "A historical restore is not a new restore.",
-                      "Local evidence does not prove off-Mac recovery or hosted access."]}
+                      "Local evidence does not prove off-Mac recovery or remote gateway access."]}
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)

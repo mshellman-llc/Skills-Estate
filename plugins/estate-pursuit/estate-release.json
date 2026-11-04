@@ -30,7 +30,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "81af4cca344e22602cb34f2008aa1dff8a121be87f8072fe09693e7d235722fd",
+      "required_sha256": "e499857810ecb9ba2bc5377e532f9a7c70cfd943e531ff1dccbbab4075291f44",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -100,7 +100,7 @@
       "subject": "beastmode-context"
     },
     {
-      "required_sha256": "c5f4533bc881ae6f738ed2c17dcddfb8e88c1de8ade4f9f5920b76e1646368f5",
+      "required_sha256": "e145356078a7e62e1a45060d84e9a5858bfd3d2636b1feb1b520166224aa46f5",
       "status": "review required",
       "subject": "beastmode-health"
     },
@@ -490,6 +490,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "f0c18ec1cf84d0f1e81dcc199d40794662cfb9396f99531bd4f4d9b993d95823",
+  "source_sha256": "bc50c3eddd401bf00141a00d48fcb1e804bafc7ff23901a1d2c9d6aab9af60d7",
   "status": "owner-published"
 }
