@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "roles": [
+    {
+      "id": "coord",
+      "label": "Coordinator",
+      "lead": "The coordinator turns each request into a booked visit.",
+      "steps": [
+        {
+          "label": "Take the request",
+          "question": "Is this a new problem or a repeat?",
+          "today": "Requests arrive by email and phone.",
+          "behind": "The request form checks for an open duplicate.",
+          "handoff": "The request goes to the region queue.",
+          "open": "Which regions get their own queue?"
+        },
+        {
+          "label": "Plan the visit",
+          "question": "Which technician is free and close?",
+          "today": "Coordinators check a shared spreadsheet.",
+          "behind": "The calendar shows booked and free slots.",
+          "handoff": "The technician gets the visit on their phone."
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "Technician",
+      "lead": "The technician works the visit and closes it on site.",
+      "steps": [
+        {
+          "label": "Prepare",
+          "question": "What is the problem and who is the contact?",
+          "today": "Details arrive by text message."
+        },
+        {
+          "label": "Close the visit",
+          "question": "Is the work done?",
+          "today": "Paper work orders go back to the office.",
+          "behind": "Work notes save to the visit.",
+          "open": "Are photos required?"
+        }
+      ]
+    }
+  ],
+  "changes": [
+    {
+      "area": "Taking requests",
+      "today": "Requests arrive by email and phone and coordinators retype them.",
+      "after": "Site contacts submit one form, and a second open request for the same problem is blocked.",
+      "tickets": [
+        "NW-11",
+        "NW-12"
+      ]
+    },
+    {
+      "area": "Booking",
+      "today": "Coordinators check a shared spreadsheet for free technicians.",
+      "after": "Coordinators book a free calendar slot from the request.",
+      "tickets": [
+        "NW-21",
+        "NW-22"
+      ]
+    }
+  ]
+}

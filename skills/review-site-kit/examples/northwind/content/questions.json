@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "groups": [
+    {
+      "id": "NW-1",
+      "label": "Request intake",
+      "nav_label": "Request intake",
+      "ticket": "NW-1"
+    },
+    {
+      "id": "NW-2",
+      "label": "Visit planning",
+      "nav_label": "Visit planning",
+      "ticket": "NW-2"
+    },
+    {
+      "id": "NW-3",
+      "label": "Visit closeout",
+      "nav_label": "Visit closeout",
+      "ticket": "NW-3"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-region",
+      "group": "NW-1",
+      "text": "Which regions get their own queue at launch?",
+      "context": "The routing story needs a region list before it can be estimated.",
+      "owner": "Operations",
+      "status": "Open",
+      "stories": [
+        "st-route"
+      ],
+      "tickets": [
+        "NW-13"
+      ]
+    },
+    {
+      "id": "q-dup",
+      "group": "NW-1",
+      "text": "Does the duplicate check include closed requests from the last week?",
+      "context": "Site contacts sometimes reopen a problem the day after a visit.",
+      "owner": "Operations",
+      "status": "Proposed",
+      "answer": {
+        "label": "Proposed answer",
+        "text": "Only open requests count; a closed request never blocks a new one."
+      },
+      "stories": [
+        "st-dup"
+      ],
+      "tickets": [
+        "NW-12"
+      ]
+    },
+    {
+      "id": "q-slot",
+      "group": "NW-2",
+      "text": "How long is a standard visit slot?",
+      "context": "The calendar needs one slot length for booking.",
+      "status": "Answered",
+      "answer": {
+        "label": "Answer",
+        "text": "Two hours, with a 30-minute travel buffer."
+      },
+      "stories": [
+        "st-cal"
+      ],
+      "tickets": [
+        "NW-21"
+      ]
+    },
+    {
+      "id": "q-parts",
+      "group": "NW-2",
+      "text": "Should booking wait for a parts check?",
+      "context": "The parts check ticket was canceled, so booking does not check stock.",
+      "status": "Deferred",
+      "stories": [
+        "st-book"
+      ],
+      "tickets": [
+        "NW-22",
+        "NW-23"
+      ]
+    },
+    {
+      "id": "q-photo",
+      "group": "NW-3",
+      "text": "Are photos required to close a visit?",
+      "context": "The closeout ticket now mentions photos, and storage limits are unknown.",
+      "owner": "Field operations",
+      "status": "Blocked",
+      "stories": [
+        "st-close"
+      ],
+      "tickets": [
+        "NW-31"
+      ]
+    }
+  ]
+}

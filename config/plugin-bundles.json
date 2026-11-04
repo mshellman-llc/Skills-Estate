@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.2.15",
+  "version": "0.2.16",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -74,8 +74,11 @@
         "acceptance-testing",
         "backlog-refinement",
         "cutover-closeout",
+        "decision-register",
         "delivery-kickoff",
         "delivery-status",
+        "moscow-story-map",
+        "review-site",
         "sales-to-delivery-handoff",
         "sf-apex-patterns",
         "sf-change-delivery",
@@ -83,11 +86,13 @@
         "sf-pipeline-operations",
         "sf-project-setup",
         "sprint-planning",
-        "team-onboarding"
+        "team-onboarding",
+        "tracker-intake"
       ],
       "internal": [
         "delivery-suite",
-        "sf-headless-screenshot"
+        "sf-headless-screenshot",
+        "review-site-kit"
       ],
       "opt_in": false,
       "router_source": "agents/delivery-router.md",
@@ -476,6 +481,21 @@
         "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
       },
       "writing-style-builder": {
+        "status": "pending"
+      },
+      "decision-register": {
+        "status": "pending"
+      },
+      "moscow-story-map": {
+        "status": "pending"
+      },
+      "review-site": {
+        "status": "pending"
+      },
+      "review-site-kit": {
+        "status": "pending"
+      },
+      "tracker-intake": {
         "status": "pending"
       }
     },
