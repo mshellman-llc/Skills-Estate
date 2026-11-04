@@ -1,6 +1,6 @@
 # Skill reuse review
 
-82 general-use methods, 0 Megan-specific workflows, and 0 awaiting source review.
+80 general-use methods, 0 Megan-specific workflows, and 2 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -34,7 +34,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `cross-platform-skill-release` | General use | Requires the destination hosts and their current supported installation or upload method. | No named personal reference detected in workflow text. |
 | `cutover-closeout` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `ddoc` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `deal-desk` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `deal-desk` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `deck-builder` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `delivery-kickoff` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `delivery-status` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
@@ -62,7 +62,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `pm-spec-writing` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `process` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `product-development-pathway` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `prose-pass` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `prose-pass` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `quality-gate` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `requirements-capture` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `resume-numbers-and-keywords` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |

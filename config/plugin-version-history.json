@@ -44,6 +44,10 @@
     "0.2.10": {
       "content_sha256": "55c2dcea4a501defe6ca152a3cdbcdb7f300ebfe64ae10b9ebf7bb4978c53ee3",
       "note": "Publication waits for automated verification to finish"
+    },
+    "0.2.12": {
+      "content_sha256": "1725442a16c1c876fef76d38df6f59cfb2fbd73c08e943b2abc2dda55b7ea8e2",
+      "note": "Verification tooling: one verify command, auto-run skill selftests, description limit, release review, writing-check authority"
     }
   }
 }
