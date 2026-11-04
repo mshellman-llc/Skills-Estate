@@ -1,6 +1,6 @@
 # Skill reuse review
 
-75 general-use methods, 0 Megan-specific workflows, and 10 awaiting source review.
+74 general-use methods, 0 Megan-specific workflows, and 11 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -19,7 +19,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `backlog-refinement` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `beastmode-capture` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-capture/SKILL.md:15](../skills/beastmode-capture/SKILL.md#L15); [skills/beastmode-capture/SKILL.md:28](../skills/beastmode-capture/SKILL.md#L28); [skills/beastmode-capture/SKILL.md:2](../skills/beastmode-capture/SKILL.md#L2); [skills/beastmode-capture/agents/openai.yaml:4](../skills/beastmode-capture/agents/openai.yaml#L4) |
 | `beastmode-context` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-context/SKILL.md:15](../skills/beastmode-context/SKILL.md#L15); [skills/beastmode-context/SKILL.md:29](../skills/beastmode-context/SKILL.md#L29); [skills/beastmode-context/SKILL.md:2](../skills/beastmode-context/SKILL.md#L2); [skills/beastmode-context/agents/openai.yaml:4](../skills/beastmode-context/agents/openai.yaml#L4) |
-| `beastmode-health` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-health/SKILL.md:15](../skills/beastmode-health/SKILL.md#L15); [skills/beastmode-health/SKILL.md:27](../skills/beastmode-health/SKILL.md#L27); [skills/beastmode-health/SKILL.md:2](../skills/beastmode-health/SKILL.md#L2); [skills/beastmode-health/agents/openai.yaml:4](../skills/beastmode-health/agents/openai.yaml#L4) |
+| `beastmode-health` | Needs review | Supply the task inputs and its supported runtime. | [skills/beastmode-health/SKILL.md:15](../skills/beastmode-health/SKILL.md#L15); [skills/beastmode-health/SKILL.md:27](../skills/beastmode-health/SKILL.md#L27); [skills/beastmode-health/SKILL.md:2](../skills/beastmode-health/SKILL.md#L2); [skills/beastmode-health/agents/openai.yaml:4](../skills/beastmode-health/agents/openai.yaml#L4) |
 | `beastmode-reconcile` | General use | Supply the task inputs and its supported runtime. | [skills/beastmode-reconcile/SKILL.md:15](../skills/beastmode-reconcile/SKILL.md#L15); [skills/beastmode-reconcile/SKILL.md:28](../skills/beastmode-reconcile/SKILL.md#L28); [skills/beastmode-reconcile/SKILL.md:2](../skills/beastmode-reconcile/SKILL.md#L2); [skills/beastmode-reconcile/agents/openai.yaml:4](../skills/beastmode-reconcile/agents/openai.yaml#L4) |
 | `brain-work-item` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `brand-renderer` | General use | Requires the bundled rendering runtime and the artifact format’s dependencies. Select the project brand or neutral profile. | No named personal reference detected in workflow text. |
