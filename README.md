@@ -22,7 +22,7 @@ The restoration candidate contains 85 source modules and 58 proposed task entryp
 
 ## Use the skills
 
-The skills reach every app as plugins from this repository's marketplace. After a change reaches `main` and passes automated verification, GitHub rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the [Plugins (latest)](https://github.com/mshellman-llc/Skills-Estate/releases/tag/plugins-latest) release. An hourly run retries pending verification or incomplete uploads. It refuses to publish stale or failing source. Do not edit `plugins/`; it is generated.
+The skills reach every app as plugins from this repository's marketplace. After a change reaches `main` and passes automated verification, GitHub rebuilds the plugin folders under `plugins/`, which `.claude-plugin/marketplace.json` lists, and attaches the plugin ZIPs to the [Plugins (latest)](https://github.com/mshellman-llc/Skills-Estate/releases/tag/plugins-latest) release. Publication starts when that verification finishes, and a daily run retries anything an event missed. It refuses to publish stale or failing source. Do not edit `plugins/`; it is generated.
 
 - Cowork and claude.ai: Customize, Plugins, Add, Add marketplace, `mshellman-llc/Skills-Estate`, with automatic sync on.
 - Claude Code: `/plugin marketplace add mshellman-llc/Skills-Estate`, install the seven `estate-` plugins, and turn on auto-update for the marketplace in `/plugin`.
@@ -51,7 +51,7 @@ Supply personal profiles, client facts, contract policies, accounts, and learnin
 
 ## If something breaks
 
-- A plugin did not update: run the "Publish plugin marketplace" workflow from the Actions tab, or wait for the hourly run.
+- A plugin did not update: run the "Publish plugin marketplace" workflow from the Actions tab, or wait for the daily run.
 - The app cannot add the marketplace: download the ZIPs from the Plugins (latest) release and use Customize, Plugins, Add, Upload plugin.
 - A local install needs undoing: `python3 tools/estate.py rollback RELEASE_ID` restores an earlier version, and `python3 tools/estate.py restore RECEIPT` returns originals moved during an adoption. Release IDs and receipts are under `~/.local/state/skills-estate/`. `python3 tools/estate.py --help` lists the remaining maintenance commands.
 

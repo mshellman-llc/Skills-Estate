@@ -91,15 +91,6 @@ jobs:
       - uses: actions/upload-artifact@v7.0.2
         if: github.ref == 'refs/heads/main'
         with:
-          name: skills-estate-bundles
-          path: |
-            dist/
-            !dist/groups/
-          if-no-files-found: error
-          retention-days: 7
-      - uses: actions/upload-artifact@v7.0.2
-        if: github.ref == 'refs/heads/main'
-        with:
           name: skills-estate-map
           path: |
             artifacts/skills-map/index.html
