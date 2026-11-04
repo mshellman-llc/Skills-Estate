@@ -122,6 +122,6 @@ in records still receive the same writing review as any other prose.
 The canonical baseline is `house.json`. An explicit configuration can add
 checks; it cannot disable the maintained rules. The scripts and word data ship
 together and need no neighboring installed skill. See
-[configuration](references/house-overlay.md) when maintaining the diagnostic
+[configuration](references/house-overlay.md) and the [tellscan rule map](references/tellscan-rule-map.md) when maintaining the diagnostic
 engine. Every supported artifact still needs a complete reading against its
 facts and intended reader after the commands pass.

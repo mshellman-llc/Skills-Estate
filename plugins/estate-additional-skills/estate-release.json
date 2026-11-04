@@ -69,7 +69,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "48f5458b6848e2fb56ca22127525df6c50645e52a10e9a659f8d3a1650636e1f",
+      "required_sha256": "81af4cca344e22602cb34f2008aa1dff8a121be87f8072fe09693e7d235722fd",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -219,12 +219,12 @@
       "subject": "ddoc"
     },
     {
-      "required_sha256": "e1eedbdc79e462b0c96086ae75ab7721ab03d7e498c8272d029fca22f71d5a0a",
+      "required_sha256": "1e772fd322926ff3982ad454a91f54b8432aaac96d83ebdfd3ea3c230b6de8f7",
       "status": "review required",
       "subject": "deal-desk"
     },
     {
-      "required_sha256": "111b7f6236591800de7f996b604ddf6f0ef745c79aee38d4cd43288c5dd88866",
+      "required_sha256": "d4063a038cb97bd20b71fd660e0b3445911d7c497abac9db233c1cd01f66a200",
       "status": "review required",
       "subject": "deck-builder"
     },
@@ -364,7 +364,7 @@
       "subject": "product-development-pathway"
     },
     {
-      "required_sha256": "ec311c65da767bece4e718efd2871be388c15990d2382bb93fc6fb3486d7f0fd",
+      "required_sha256": "3deb577047dde9265a11099ad608f41490b7f3718c835dcfb51f0f6b42647172",
       "status": "review required",
       "subject": "prose-pass"
     },
@@ -529,6 +529,6 @@
       "subject": "writing-style-builder"
     }
   ],
-  "source_sha256": "a24818561d97cd90ebff8a998bf2fce2ab51f6719b5a6a26dbc146620ed2a5eb",
+  "source_sha256": "f0c18ec1cf84d0f1e81dcc199d40794662cfb9396f99531bd4f4d9b993d95823",
   "status": "owner-published"
 }
