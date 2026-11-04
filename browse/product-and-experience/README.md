@@ -17,6 +17,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | `independent-product` | [independent-product](../../skills/independent-product/SKILL.md) |  |
 | `information-architecture` | [information-architecture](../../skills/information-architecture/SKILL.md) |  |
 | `journey-mapping` | [journey-mapping](../../skills/journey-mapping/SKILL.md) |  |
+| `prioritization` | [prioritization](../../skills/prioritization/SKILL.md) |  |
 | `process-design` | [process](../../skills/process/SKILL.md) |  |
 | `product-development` | [product-development-pathway](../../skills/product-development-pathway/SKILL.md) |  |
 | `system-design` | [system-design](../../skills/system-design/SKILL.md) | [formal architecture reference](../../skills/architecture-doc/SKILL.md) |
@@ -31,6 +32,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [information-architecture](../../skills/information-architecture/SKILL.md)
 - [journey-mapping](../../skills/journey-mapping/SKILL.md)
 - [pm-spec-writing](../../skills/pm-spec-writing/SKILL.md)
+- [prioritization](../../skills/prioritization/SKILL.md)
 - [process](../../skills/process/SKILL.md)
 - [product-development-pathway](../../skills/product-development-pathway/SKILL.md)
 - [spec-writer](../../skills/spec-writer/SKILL.md)

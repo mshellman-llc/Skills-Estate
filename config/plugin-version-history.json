@@ -44,6 +44,10 @@
     "0.2.10": {
       "content_sha256": "55c2dcea4a501defe6ca152a3cdbcdb7f300ebfe64ae10b9ebf7bb4978c53ee3",
       "note": "Publication waits for automated verification to finish"
+    },
+    "0.2.11": {
+      "content_sha256": "60e3d8d8bcff0dcb8cc63f8bcdd14c245de477fb2d1447151190fe03b0c5362c",
+      "note": "Add backlog-refinement, sprint-planning and prioritization; JTBD workshop and outcome-roadmap modes; shared planning chain and upstream drift check"
     }
   }
 }

@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 82 source modules and 55 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 85 source modules and 58 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -10,8 +10,8 @@ This candidate contains 82 source modules and 55 proposed task entrypoints. Cons
 | --- | ---: | ---: |
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
-| [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 16 | 12 |
-| [Product and experience](browse/product-and-experience/README.md) | 12 | 11 |
+| [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 18 | 14 |
+| [Product and experience](browse/product-and-experience/README.md) | 13 | 12 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
@@ -25,6 +25,7 @@ This candidate contains 82 source modules and 55 proposed task entrypoints. Cons
 | acceptance-testing | [uat-validation](skills/uat-validation/SKILL.md) |  |
 | accessibility-audit | [accessibility-audit](skills/accessibility-audit/SKILL.md) |  |
 | analytics-strategy | [analytics-strategy](skills/analytics-strategy/SKILL.md) |  |
+| backlog-refinement | [backlog-refinement](skills/backlog-refinement/SKILL.md) |  |
 | beastmode-capture | [beastmode-capture](skills/beastmode-capture/SKILL.md) |  |
 | beastmode-context | [beastmode-context](skills/beastmode-context/SKILL.md) |  |
 | beastmode-health | [beastmode-health](skills/beastmode-health/SKILL.md) |  |
@@ -52,6 +53,7 @@ This candidate contains 82 source modules and 55 proposed task entrypoints. Cons
 | knowledge-hub | [knowledge-hub](skills/knowledge-hub/SKILL.md) |  |
 | offering-fit | [playbook-fit-router](skills/playbook-fit-router/SKILL.md) |  |
 | portfolio-case-study | [case-study-builder](skills/case-study-builder/SKILL.md) |  |
+| prioritization | [prioritization](skills/prioritization/SKILL.md) |  |
 | process-design | [process](skills/process/SKILL.md) |  |
 | product-development | [product-development-pathway](skills/product-development-pathway/SKILL.md) |  |
 | project-scoping | [scoping-agent](skills/scoping-agent/SKILL.md) | rom |
@@ -69,6 +71,7 @@ This candidate contains 82 source modules and 55 proposed task entrypoints. Cons
 | sf-project-setup | [sf-delivery-standards](skills/sf-delivery-standards/SKILL.md) |  |
 | skill-estate-sync | [skill-estate-sync](skills/skill-estate-sync/SKILL.md) | skill-creation-walkthrough, cross-platform-skill-release |
 | solution-brief | [solution-brief](skills/solution-brief/SKILL.md) |  |
+| sprint-planning | [sprint-planning](skills/sprint-planning/SKILL.md) |  |
 | statement-of-work | [sow](skills/sow/SKILL.md) | sow-quality |
 | sticker-art-direction | [sticker-art-direction](skills/sticker-art-direction/SKILL.md) |  |
 | sticker-sheets | [sticker-sheets](skills/sticker-sheets/SKILL.md) |  |
@@ -86,6 +89,7 @@ Each module needs a reviewed capability disposition before release.
 - [analytics-strategy](skills/analytics-strategy/SKILL.md)
 - [architecture-doc](skills/architecture-doc/SKILL.md)
 - [author-writing-style](skills/author-writing-style/SKILL.md)
+- [backlog-refinement](skills/backlog-refinement/SKILL.md)
 - [beastmode-capture](skills/beastmode-capture/SKILL.md)
 - [beastmode-context](skills/beastmode-context/SKILL.md)
 - [beastmode-health](skills/beastmode-health/SKILL.md)
@@ -130,6 +134,7 @@ Each module needs a reviewed capability disposition before release.
 - [playbook-onepager](skills/playbook-onepager/SKILL.md)
 - [playbook-suite](skills/playbook-suite/SKILL.md)
 - [pm-spec-writing](skills/pm-spec-writing/SKILL.md)
+- [prioritization](skills/prioritization/SKILL.md)
 - [process](skills/process/SKILL.md)
 - [product-development-pathway](skills/product-development-pathway/SKILL.md)
 - [prose-pass](skills/prose-pass/SKILL.md)
@@ -155,6 +160,7 @@ Each module needs a reviewed capability disposition before release.
 - [sow](skills/sow/SKILL.md)
 - [sow-quality](skills/sow-quality/SKILL.md)
 - [spec-writer](skills/spec-writer/SKILL.md)
+- [sprint-planning](skills/sprint-planning/SKILL.md)
 - [sticker-art-direction](skills/sticker-art-direction/SKILL.md)
 - [sticker-sheets](skills/sticker-sheets/SKILL.md)
 - [system-design](skills/system-design/SKILL.md)

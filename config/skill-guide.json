@@ -25,6 +25,14 @@
       "example": "Write an architecture reference from this design record, including interfaces and trade-offs.",
       "reviewedEntrypointSha256": "704962a9930c507f8002c1b4832d5947542aaf24b09f6a6c7c838028eb15b0d2"
     },
+    "backlog-refinement": {
+      "what": "Get backlog items ready for a sprint and grade them against INVEST.",
+      "when": "Requirements exist and the team needs to know which items can enter the next sprint.",
+      "inputs": "The requirements-capture Requirements tab, team estimates, dependencies and the RAID log.",
+      "outputs": "A readiness report marking each item READY, REFINE or DISCOVERY, with splits and open questions.",
+      "example": "Refine these ten stories against our definition of ready and tell me which can go into sprint 4.",
+      "reviewedEntrypointSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
     "beastmode-capture": {
       "what": "Save a decision or correction in the user’s knowledge system.",
       "when": "The user asks to retain a supported decision, discovery, or correction.",
@@ -398,6 +406,14 @@
       "example": "Write a feature specification with user behavior, requirements, and acceptance criteria.",
       "reviewedEntrypointSha256": "6adc8ca7812b4ae14a7b5278ba1d03d8ef4f3af2dd79bf65db3d67b9345b4259"
     },
+    "prioritization": {
+      "what": "Rank candidates with a named framework and check the evidence behind each score.",
+      "when": "A team must choose between problems, outcomes, roadmap candidates or backlog items.",
+      "inputs": "Candidates with their scoring inputs and the source for each input.",
+      "outputs": "A ranked proposal with flagged unsourced inputs, ties and the decision owner named.",
+      "example": "RICE-score these eight roadmap candidates and flag any score that rests on a guess.",
+      "reviewedEntrypointSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
     "process": {
       "what": "Document a process or identify improvements.",
       "when": "An SOP, ownership map, or process optimization is needed.",
@@ -598,6 +614,14 @@
       "outputs": "A detailed specification with states, persistence, interfaces, and acceptance checks.",
       "example": "Specify the UI states, API contracts, and data changes for this feature.",
       "reviewedEntrypointSha256": "7ae4353bc1c856ed2de2a49fef14ef204b420d9e2d46541462c9e6ef750ea61f"
+    },
+    "sprint-planning": {
+      "what": "Plan one sprint against measured team capacity.",
+      "when": "A team is about to commit to a sprint, or a sprint missed its goal and needs diagnosis.",
+      "inputs": "Team availability, the readiness report, the RAID log and recent velocity.",
+      "outputs": "A sprint plan with goal, capacity, commit and stretch work, owned dependencies and a gate result.",
+      "example": "Plan sprint 5 for a team of four with one person out for three days.",
+      "reviewedEntrypointSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "sticker-art-direction": {
       "what": "Develop and critique typography-led sticker designs.",

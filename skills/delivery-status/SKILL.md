@@ -145,6 +145,7 @@ In the delivery chain (SOW, then s2d-handoff, then kickoff, then status, then UA
 - Does not author change orders or scope language. Candidates route to authorized humans for a contractual decision; the contract scope and obligation review mode in `statement-of-work` reviews the resulting terms.
 - Does not run kickoff, seed the charter, or create the governance logs from scratch on its own initiative. That is `delivery-kickoff`; this skill stewards what kickoff seeded.
 - Does not track UAT execution or defects. That is `acceptance-testing`.
+- Does not grade backlog readiness or plan sprints. `backlog-refinement` and `sprint-planning` do, and they propose RAID entries (dependencies, risks) that this skill records with stable IDs under `references/log-stewardship.md`. A plan or readiness report that cites a RAID ID not in the log fails their gates, so record proposals before they are cited.
 - Does not price, estimate hours, or compute burn from anything but a named source. The Pricing System and timesheets own the numbers.
 - Does not produce client-facing proposals or sales artifacts.
 

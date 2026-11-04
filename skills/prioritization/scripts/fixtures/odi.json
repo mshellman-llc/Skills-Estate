@@ -1,0 +1,3 @@
+{"items":[
+{"id":"OUT-1","title":"Minimize time to see which setup steps block my team","job":"J1","importance":9,"satisfaction":3,"sources":{"importance":"survey of 40 admins, synthetic"}},
+{"id":"OUT-2","title":"Minimize chance of misconfiguring sign-in","job":"J1","importance":8,"satisfaction":7}]}
