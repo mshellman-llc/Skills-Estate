@@ -1,6 +1,6 @@
 ---
 name: moscow-story-map
-description: Build and maintain a MoSCoW story map from tracker tickets. Places stories by workflow step and class, computes readiness and Must share, lists unclassed tickets, draws the critical path from Blocks links, and queues changed or new tickets for mapping. Use for "classify the backlog", "MoSCoW the release", "what is ready to build", "what's on the critical path", or mapping new tickets after an export. Do NOT use for INVEST grading and sprint readiness reports (backlog-refinement), ranking by value (prioritization), or writing new stories (requirements-backlog).
+description: Build and maintain a MoSCoW story map from tracker tickets. Places stories by workflow step and class, computes readiness and Must share, lists unclassed tickets, draws the critical path from Blocks links, and queues changed or new tickets for mapping. Use for "class the release stories by workflow step", "what is ready to build", "what's on the critical path", or mapping new tickets after an export. Do NOT use for MoSCoW values on captured requirements in the requirements workbook (requirements-backlog), INVEST grading and sprint readiness reports (backlog-refinement), ranking by value (prioritization), or writing new stories (requirements-backlog).
 ---
 
 # MoSCoW story map

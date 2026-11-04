@@ -26,6 +26,6 @@ This runtime gives the four public skills one implementation of the data contrac
 
 Keep pages as fixed templates that read `data/site-data.js`. A page change goes in `assets/site/`, never in a rendered `dist/`. A new field goes in the schema first, then the library, then the page script.
 
-When a reviewer comment produces a new rule, add it to `references/review-rules.md` with the date, and add a check to `checks/browser_checks.cjs` or `lib/rsk/gate.py` when the rule can be tested. Then run the series tests in `tests/test_review_site.py`.
+When a reviewer comment produces a new rule, add it to [the review rules](references/review-rules.md) in the Skills Estate source repository with the date, and add a check to `checks/browser_checks.cjs` or `lib/rsk/gate.py` when the rule can be tested. Then run the series tests in `tests/test_review_site.py`.
 
 Keep client names, tracker URLs, ticket keys, people and brand values out of this folder. They belong in each engagement's `config/site.json`, `content/` files and brand profile.

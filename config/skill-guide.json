@@ -92,7 +92,7 @@
       "inputs": "The topic, its sources, and the intended audience and destination.",
       "outputs": "A static explorer site generated from validated content JSON.",
       "example": "Turn these discovery notes into an interactive explorer with seller and enterprise paths and a delivery roadmap.",
-      "reviewedEntrypointSha256": "b041ce70f2019c9f3c09efd34536ca30f902fe88d61d13ba857a7d90fc2d69ee"
+      "reviewedEntrypointSha256": "3a8479870a7aa884a1c5739c1d9da9e95e1ea069ffb1c0c924e20dbc0a8852e8"
     },
     "business-case": {
       "what": "Build the case for an investment decision.",
@@ -702,7 +702,7 @@
       "inputs": "The export file or connector tickets, the engagement site.json, and who supplied the export and what it covers.",
       "outputs": "tickets.json, delta.json and an intake-log.json record with hash, origin, scope, redactions and conflicts.",
       "example": "Here is this week's Jira export; record it and tell me what changed since last Tuesday.",
-      "reviewedEntrypointSha256": "c60c6d6e4ffbcb6f520481b0c8fc4e55611d4d389d10c22a4255e3bacf1e238e"
+      "reviewedEntrypointSha256": "ad155d56dd3ba52562f7e462af4e145db73e621812205a2933adac24c6d21fba"
     },
     "moscow-story-map": {
       "what": "Keep a MoSCoW story map whose statuses, estimates and readiness come from the tracker.",
@@ -710,7 +710,7 @@
       "inputs": "content/stories.json, canonical tickets and, after an export, delta.json.",
       "outputs": "A summary with readiness, Must share, unclassed tickets and the critical path, plus a review queue and class-review exports.",
       "example": "Which Must stories are not ready to build, and what blocks them?",
-      "reviewedEntrypointSha256": "24baf7c73477b041e71688422b24bf7416a10df7ab11d850b5a306c3ebb1fdeb"
+      "reviewedEntrypointSha256": "407f61974326eb0e046d709d20e0657e3e6ac897af86dae19634ab14af5d63e3"
     },
     "decision-register": {
       "what": "Keep refinement questions with owners, statuses and answers, and export them for the tracker.",
@@ -718,7 +718,7 @@
       "inputs": "content/questions.json and, for exports, the answers saved on the published page.",
       "outputs": "A checked register, decisions.csv for tracker import and a decision log in Markdown.",
       "example": "Add the questions from today's refinement notes and list the ones with no owner.",
-      "reviewedEntrypointSha256": "5eca5b8599f1f8223d4596265966193ea9e6beb3fc76929a4fd5d9589a547f77"
+      "reviewedEntrypointSha256": "f4625f40a6198c4297a44a4df43ef2ab2669e146d612f295ccef81fd50616341"
     },
     "review-site": {
       "what": "Build or refresh a multi-page release review site from tracker exports and content files.",
@@ -726,7 +726,7 @@
       "inputs": "An engagement folder with site.json, content files and tracker exports, plus the brand profile when one is confirmed.",
       "outputs": "A gated, rendered site published as a private artifact, comment replies, and CSV exports for the tracker.",
       "example": "Refresh the review site with the new Jira export and republish it.",
-      "reviewedEntrypointSha256": "c714d2a82811b9479d5b81c854782c7818013021f4df20e395691176a72ba9dd"
+      "reviewedEntrypointSha256": "ebef4607fe151c273003a3065e535d5fb21353e91687bca81207c110e34b8277"
     },
     "review-site-kit": {
       "what": "Shared runtime for the review-site skills: data contract, calculations, page templates and gates.",
@@ -734,7 +734,7 @@
       "inputs": "Engagement config, content files and canonical tickets passed by the calling skill.",
       "outputs": "Computed page data, the rendered site and gate results.",
       "example": "Loaded by review-site when it renders and checks the site.",
-      "reviewedEntrypointSha256": "ed4c72a5fb99780c58439c5bf2e24e33b3b7795bb2078a2c322c52eeedbc6ed1"
+      "reviewedEntrypointSha256": "33f4b81ea9544446b46f9b4f4076b80267d4399184c314d0093eb03db1b6ec6a"
     }
   }
 }

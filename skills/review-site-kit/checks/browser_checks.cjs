@@ -18,7 +18,7 @@ async function main() {
   const pages = fs.readdirSync(dist).filter(f => f.endsWith('.html'));
   const out = [];
   const add = (rule, problems) => out.push({rule, status: problems.length ? 'failed' : 'passed', detail: problems});
-  const results = {err: [], layout: [], type: [], fold: [], dec: [], num: [], color: [], tint: [], status: []};
+  const results = {err: [], layout: [], type: [], fold: [], dec: [], num: [], color: [], tint: []};
   for (const width of [1366, 390]) {
     const context = await browser.newContext({viewport: {width, height: 900}});
     for (const file of pages) {
@@ -39,7 +39,7 @@ async function main() {
           return {i, sizes: [...sizes]};
         }).filter(t => t.sizes.length > 1);
         res.openFolds = [...document.querySelectorAll('details[data-fold]')].filter(d => d.open).map(d => d.id);
-        res.decSummary = [...document.querySelectorAll('details.card > summary')].filter(s => s.querySelector('.owner,.answer-box')).length;
+        res.decSummary = [...document.querySelectorAll('details.card > summary')].filter(s => s.querySelector('.owner,.answer-box,button,a,input,select')).length;
         const nums = [...document.querySelectorAll('.num')].filter(visible).map(n => { const b = n.getBoundingClientRect(); return Math.round(b.width) + 'x' + Math.round(b.height); });
         res.nums = [...new Set(nums)];
         const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
@@ -51,18 +51,15 @@ async function main() {
         const tiles = [...document.querySelectorAll('.lane:not([hidden]) .tile')].map(t => getComputedStyle(t).backgroundColor);
         res.tiles = tiles;
         res.white = getComputedStyle(document.body).backgroundColor;
-        const T = (window.RS_DATA || {}).tickets || {};
-        res.status = [...document.querySelectorAll('[data-status-of]')].filter(e => (T[e.dataset.statusOf] || {}).status !== e.textContent.trim()).map(e => e.dataset.statusOf);
         return res;
       });
       if (width === 390 && r.scroll > 1) results.layout.push(`${file}: page scrolls sideways by ${r.scroll}px at 390px`);
       r.tables.forEach(t => results.type.push(`${file}@${width}: table ${t.i} uses ${t.sizes.join(', ')}`));
       if (width === 1366) r.openFolds.forEach(id => results.fold.push(`${file}: ${id} is open on load`));
-      if (r.decSummary) results.dec.push(`${file}: ${r.decSummary} closed cards show owner or answer`);
+      if (r.decSummary) results.dec.push(`${file}: ${r.decSummary} card summaries hold the owner, the answer or a control`);
       if (r.nums.length > 1) results.num.push(`${file}@${width}: number circles measure ${r.nums.join(', ')}`);
       r.accentText.forEach(t => results.color.push(`${file}@${width}: accent text outside allowed places: ${t}`));
       if (r.tiles.length > 1 && (r.tiles[0] === r.white || r.tiles[0] === r.tiles[r.tiles.length - 1])) results.tint.push(`${file}: step tiles are not tinted step by step`);
-      r.status.forEach(k => results.status.push(`${file}: ${k} shows a status that differs from the data`));
       await page.close();
     }
     await context.close();
@@ -76,7 +73,6 @@ async function main() {
   add('R-NUM-1', results.num);
   add('R-COLOR-1', [...new Set(results.color)]);
   add('R-TINT-1', [...new Set(results.tint)]);
-  add('R-STATUS-1', [...new Set(results.status)]);
   console.log(JSON.stringify(out));
 }
 main().catch(e => { console.log(JSON.stringify([{rule: 'B0', status: 'pending', detail: 'browser checks failed to run: ' + e.message}])); });

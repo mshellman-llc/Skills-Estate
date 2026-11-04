@@ -7,6 +7,7 @@ import datetime as dt
 import hashlib
 import html
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -42,6 +43,65 @@ def load_inputs(config_path, content_dir, tickets_path):
     return config, tickets, content
 
 
+STORE_ID = re.compile(r'[A-Za-z0-9_.~:@+-]+')
+
+
+def _dupes(values):
+    seen, dupes = set(), set()
+    for v in values:
+        (dupes if v in seen else seen).add(v)
+    return sorted(dupes)
+
+
+def _cycles(tickets):
+    """Blocks cycles and self-blocks among the export's tickets."""
+    found, state = set(), {}
+
+    def visit(key, path):
+        state[key] = 'active'
+        for blocker in tickets.get(key, {}).get('blocked_by', []):
+            if blocker == key:
+                found.add(f'{key} blocks itself')
+            elif state.get(blocker) == 'active':
+                found.add('Blocks cycle: ' + ' -> '.join(path[path.index(blocker):] + [blocker]))
+            elif blocker in tickets and blocker not in state:
+                visit(blocker, path + [blocker])
+        state[key] = 'done'
+
+    for key in tickets:
+        if key not in state:
+            visit(key, [key])
+    return sorted(found)
+
+
+def structure_problems(config, stories_doc, questions_doc, tickets):
+    found = []
+    story_ids = [s['id'] for s in stories_doc['stories']]
+    step_ids = {s['id'] for s in stories_doc['steps']}
+    role_ids = {r['id'] for r in config.get('roles', [])}
+    found += [f'duplicate story id {i}' for i in _dupes(story_ids)]
+    found += [f'duplicate step id {i}' for i in _dupes([s['id'] for s in stories_doc['steps']])]
+    for ident in story_ids + [q['id'] for q in questions_doc['questions']]:
+        if not STORE_ID.fullmatch(ident):
+            found.append(f'id {ident!r} may only use letters, digits and _ . ~ : @ + -')
+    primaries = [s['tickets'][0] for s in stories_doc['stories'] if s.get('tickets')]
+    found += [f'two stories share the primary ticket {k}; give one of them another primary ticket' for k in _dupes(primaries)]
+    for s in stories_doc['stories']:
+        if s['step'] not in step_ids:
+            found.append(f'{s["id"]}: unknown step {s["step"]}')
+        for dep in s.get('depends_on', []):
+            if dep not in story_ids:
+                found.append(f'{s["id"]}: depends on unknown story {dep}')
+        for role in s.get('roles', []):
+            if role_ids and role not in role_ids:
+                found.append(f'{s["id"]}: unknown role {role}')
+    for i, action in enumerate(config.get('next_actions', [])):
+        if action.get('story') and action['story'] not in story_ids:
+            found.append(f'next_actions[{i}]: unknown story {action["story"]}')
+    found += _cycles(tickets)
+    return found
+
+
 def compute(config, tickets_doc, content):
     tickets = story_lib.index(tickets_doc)
     stories_doc = content.get('stories', {'format': 1, 'steps': [], 'stories': []})
@@ -49,8 +109,7 @@ def compute(config, tickets_doc, content):
     classes = {k: {**DEFAULT_CLASSES[k], **(config.get('classes') or {}).get(k, {})} for k in DEFAULT_CLASSES}
     synced = story_lib.sync(stories_doc, tickets_doc, questions_doc, config)
     problems = decisions.problems(questions_doc, synced, tickets) if content.get('questions') else []
-    step_ids = {s['id'] for s in stories_doc['steps']}
-    problems += [f'{s["id"]}: unknown step {s["step"]}' for s in stories_doc['stories'] if s['step'] not in step_ids]
+    problems += structure_problems(config, stories_doc, questions_doc, tickets)
     graph = story_lib.critical_path(synced, tickets_doc, config, {k: v['label'] for k, v in classes.items()}) if synced else None
     unclassed = story_lib.unclassed(synced, tickets_doc, config) if synced else []
     referenced = {k for s in synced for k in s.get('tickets', [])}
@@ -123,7 +182,7 @@ def write_site(data, config, config_path, out_dir, force=False):
     tokens = brand.css(profile)
     logo = brand.logo(profile, profile_dir)
     if logo.startswith('<img'):
-        shutil.copy2(Path(profile_dir) / Path(profile['logo']['file']).name, out / 'assets')
+        shutil.copy2(brand.logo_path(profile, profile_dir), out / 'assets')
     shell = (paths.assets() / 'page.html').read_text()
     for page in data['pages']:
         lead = data['leads'].get(page['id'], '')

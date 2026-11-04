@@ -16,6 +16,7 @@ triggers:
 - 'Show what is ready to build or on the critical path.'
 - 'Map new tickets after an export.'
 exclusions:
+- 'MoSCoW values on captured requirements in the requirements workbook (requirements-backlog).'
 - 'INVEST grading and sprint readiness reports (backlog-refinement).'
 - 'Ranking by value (prioritization).'
 - 'Writing new stories (requirements-backlog).'

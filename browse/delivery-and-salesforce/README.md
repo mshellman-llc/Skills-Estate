@@ -13,9 +13,12 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | `acceptance-testing` | [uat-validation](../../skills/uat-validation/SKILL.md) |  |
 | `backlog-refinement` | [backlog-refinement](../../skills/backlog-refinement/SKILL.md) |  |
 | `cutover-closeout` | [cutover-closeout](../../skills/cutover-closeout/SKILL.md) |  |
+| `decision-register` | [decision-register](../../skills/decision-register/SKILL.md) |  |
 | `delivery-kickoff` | [delivery-kickoff](../../skills/delivery-kickoff/SKILL.md) |  |
 | `delivery-status` | [delivery-status](../../skills/delivery-status/SKILL.md) |  |
+| `moscow-story-map` | [moscow-story-map](../../skills/moscow-story-map/SKILL.md) |  |
 | `requirements-backlog` | [requirements-capture](../../skills/requirements-capture/SKILL.md) |  |
+| `review-site` | [review-site](../../skills/review-site/SKILL.md) |  |
 | `sales-to-delivery-handoff` | [s2d-handoff](../../skills/s2d-handoff/SKILL.md) |  |
 | `sf-apex-patterns` | [sf-enterprise-patterns](../../skills/sf-enterprise-patterns/SKILL.md) |  |
 | `sf-change-delivery` | [sf-solo-devops](../../skills/sf-solo-devops/SKILL.md) |  |
@@ -24,18 +27,23 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | `sf-project-setup` | [sf-delivery-standards](../../skills/sf-delivery-standards/SKILL.md) |  |
 | `sprint-planning` | [sprint-planning](../../skills/sprint-planning/SKILL.md) |  |
 | `team-onboarding` | [team-onboarding](../../skills/team-onboarding/SKILL.md) |  |
+| `tracker-intake` | [tracker-intake](../../skills/tracker-intake/SKILL.md) |  |
 
 ## Source workflows
 
 - [backlog-refinement](../../skills/backlog-refinement/SKILL.md)
 - [cutover-closeout](../../skills/cutover-closeout/SKILL.md)
+- [decision-register](../../skills/decision-register/SKILL.md)
 - [delivery-kickoff](../../skills/delivery-kickoff/SKILL.md)
 - [delivery-status](../../skills/delivery-status/SKILL.md)
 - [delivery-suite](../../skills/delivery-suite/SKILL.md)
 - [dx-devops-promote](../../skills/dx-devops-promote/SKILL.md)
 - [dx-devops-work-item-manage](../../skills/dx-devops-work-item-manage/SKILL.md)
+- [moscow-story-map](../../skills/moscow-story-map/SKILL.md)
 - [org-preflight](../../skills/org-preflight/SKILL.md)
 - [requirements-capture](../../skills/requirements-capture/SKILL.md)
+- [review-site](../../skills/review-site/SKILL.md)
+- [review-site-kit](../../skills/review-site-kit/SKILL.md)
 - [s2d-handoff](../../skills/s2d-handoff/SKILL.md)
 - [sf-delivery-standards](../../skills/sf-delivery-standards/SKILL.md)
 - [sf-deploy-engine](../../skills/sf-deploy-engine/SKILL.md)
@@ -44,6 +52,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [sf-solo-devops](../../skills/sf-solo-devops/SKILL.md)
 - [sprint-planning](../../skills/sprint-planning/SKILL.md)
 - [team-onboarding](../../skills/team-onboarding/SKILL.md)
+- [tracker-intake](../../skills/tracker-intake/SKILL.md)
 - [uat-validation](../../skills/uat-validation/SKILL.md)
 
 ## Share this group

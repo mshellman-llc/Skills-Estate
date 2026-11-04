@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.2.11",
+  "version": "0.2.12",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -456,6 +456,21 @@
         "evidence": "Owner approval by Megan Shellman on 2026-10-30 at main 62b39b3, given without an independent review. Basis: GitHub verify passed on main; validate, sync and the local test suite passed except the pptxgenjs tests that CI covers."
       },
       "writing-style-builder": {
+        "status": "pending"
+      },
+      "decision-register": {
+        "status": "pending"
+      },
+      "moscow-story-map": {
+        "status": "pending"
+      },
+      "review-site": {
+        "status": "pending"
+      },
+      "review-site-kit": {
+        "status": "pending"
+      },
+      "tracker-intake": {
         "status": "pending"
       }
     },

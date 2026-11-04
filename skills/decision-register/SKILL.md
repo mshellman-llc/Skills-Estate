@@ -1,6 +1,6 @@
 ---
 name: decision-register
-description: Keep the open questions from refinement or discovery as a decision register grouped by epic. Each question has an editable status and can carry an owner and saved answers; the register exports to the client's tracker as CSV or a decision log. Use to record questions from meeting notes, track which decisions are open or blocked, find questions without an owner, or export recorded answers. Do NOT use for discovery synthesis (discovery), the RAID decision log on a signed engagement (delivery-status), or requirements capture (requirements-backlog).
+description: Keep the client questions awaiting answers during release refinement as a decision register grouped by epic. Each question has an editable status and can carry an owner and saved answers; the register exports to the client's tracker as CSV or a decision log. Use to record questions from meeting notes, track which decisions are open or blocked, find questions without an owner, or export recorded answers. Do NOT use for discovery synthesis (discovery), recording decisions already made in the RAID log (delivery-status), or requirements capture (requirements-backlog).
 ---
 
 # Decision register
@@ -45,4 +45,4 @@ Saved statuses and answers from the page override the authored ones in both file
 
 ## Page behavior
 
-The page behavior follows `review-site-kit/references/review-rules.md`, rules R-DEC-1 and R-DEC-2. A closed card shows the question and its status. The owner, the answer, the context, linked work, the answer form and comments sit inside the card. Hide answered and No owner only filter the list. The epic list counts questions per group.
+The page behavior follows rules R-DEC-1 and R-DEC-2 in [the review rules](../review-site-kit/references/review-rules.md). A closed card shows the question and its status. The owner, the answer, the context, linked work, the answer form and comments sit inside the card. Hide answered and No owner only filter the list. The epic list counts questions per group.

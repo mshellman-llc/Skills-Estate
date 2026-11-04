@@ -17,7 +17,7 @@ triggers:
 - 'Export recorded answers for the tracker.'
 exclusions:
 - 'Discovery synthesis (discovery).'
-- 'The RAID decision log on a signed engagement (delivery-status).'
+- 'Recording decisions already made in the RAID log (delivery-status).'
 - 'Requirements capture (requirements-backlog).'
 inputs:
 - name: questions

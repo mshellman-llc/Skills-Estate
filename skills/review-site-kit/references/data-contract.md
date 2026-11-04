@@ -50,6 +50,6 @@ A published page with the `db` capability keeps:
 
 - `answers/<question id>`: `{status, state, answer, conditions, at, by}`.
 - `moscow/<story id>`: `{class, note, at, by}`.
-- `comments/<question id>/items`: `{text, at, by}`.
+- `comments`: one document per comment, `{question, text, at, by}`. The page holds one subscription for every question, because the store limits how many a page may keep open.
 
 The collection names come from `config.store` and default to these. Read the records with the artifact data tool and save them as JSON for `export`.

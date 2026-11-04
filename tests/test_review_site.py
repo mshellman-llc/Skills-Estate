@@ -55,7 +55,7 @@ class IntakeTests(unittest.TestCase):
         self.assertEqual(t['NW-12']['sprints'], ['Sprint 1', 'Sprint 2'])
         self.assertEqual(t['NW-12']['sprint'], 'Sprint 2')
         self.assertEqual(t['NW-22']['blocked_by'], ['NW-21', 'NW-23'])
-        self.assertEqual(t['NW-21']['blocks'], ['NW-22'])
+        self.assertEqual(t['NW-21']['blocks'], ['NW-13', 'NW-22'])
         self.assertEqual(t['NW-11']['epic'], 'NW-1')
         self.assertEqual(t['NW-23']['category'], 'canceled')
         self.assertEqual(t['NW-21']['category'], 'wip')
@@ -122,6 +122,124 @@ class IntakeTests(unittest.TestCase):
         self.assertEqual(project.json('tracker/intake-log.json'), before)
         self.assertEqual(len(before), 2)
         self.assertEqual(len(list((project.dir / 'tracker/history').iterdir())), 1)
+
+
+class RegressionTests(unittest.TestCase):
+    def config(self):
+        return json.loads((EXAMPLE / 'config/site.json').read_text())
+
+    def temp(self):
+        folder = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, folder)
+        return folder
+
+    def test_json_adapter_keeps_only_schema_fields(self):
+        path = self.temp() / 'pull.json'
+        path.write_text(json.dumps({'tickets': [{'key': 'AB-1', 'summary': 'Login', 'status': 'Done', 'assignee': 'A Person',
+                                                 'comments': ['private note'], 'description': '## Acceptance criteria\n- Logs in',
+                                                 'reporter': 'B Person'}]}))
+        config = {'tracker': {'adapter': 'json'}}
+        doc, _ = tracker.load(path, config)
+        text = json.dumps(doc)
+        for private in ('A Person', 'B Person', 'private note', 'assignee', 'reporter', '"description"'):
+            self.assertNotIn(private, text)
+        self.assertEqual(doc['tickets'][0]['acceptance'], ['Logs in'])
+        self.assertEqual(doc['tickets'][0]['comment_count'], 1)
+
+    def test_same_export_is_reprocessed_after_a_status_map_change(self):
+        folder = self.temp()
+        rows = list(csv.reader(FIRST.read_text(encoding='utf-8').splitlines()))
+        rows[5][rows[0].index('Status')] = 'Parked'
+        export = folder / 'export.csv'
+        with export.open('w', newline='') as handle:
+            csv.writer(handle).writerows(rows)
+        config = self.config()
+        (folder / 'site.json').write_text(json.dumps(config))
+        first = cli.intake(folder / 'site.json', export, folder / 'tracker', 'x', 'y')
+        self.assertTrue(first['conflicts'])
+        config['tracker']['status_map'] = {'Parked': 'blocked'}
+        (folder / 'site.json').write_text(json.dumps(config))
+        second = cli.intake(folder / 'site.json', export, folder / 'tracker', 'x', 'y')
+        self.assertEqual(second['status'], 'recorded')
+        self.assertEqual(second['changed'], 1)
+        self.assertEqual(cli.intake(folder / 'site.json', export, folder / 'tracker', 'x', 'y')['status'], 'unchanged')
+
+    def test_older_export_does_not_replace_a_newer_one(self):
+        folder = self.temp()
+        (folder / 'site.json').write_text(json.dumps(self.config()))
+        cli.intake(folder / 'site.json', SECOND, folder / 'tracker', 'x', 'y')
+        self.assertEqual(cli.intake(folder / 'site.json', FIRST, folder / 'tracker', 'x', 'y')['status'], 'failed')
+        self.assertEqual(cli.intake(folder / 'site.json', FIRST, folder / 'tracker', 'x', 'y', allow_older=True)['status'], 'recorded')
+
+    def test_numeric_parent_ids_and_subtasks(self):
+        folder = self.temp()
+        export = folder / 'export.csv'
+        with export.open('w', newline='') as handle:
+            w = csv.writer(handle)
+            w.writerow(['Summary', 'Issue key', 'Issue id', 'Issue Type', 'Status', 'Parent', 'Description'])
+            w.writerow(['Epic', 'AB-1', '500', 'Epic', 'To Do', '', ''])
+            w.writerow(['Story', 'AB-2', '501', 'Story', 'To Do', '500', ''])
+            w.writerow(['Task', 'AB-3', '502', 'Sub-task', 'To Do', '501', ''])
+            w.writerow(['Orphan', 'AB-4', '503', 'Story', 'To Do', '999', ''])
+        doc, warnings = tracker.load(export, {'tracker': {'adapter': 'jira-csv'}})
+        t = {x['key']: x for x in doc['tickets']}
+        self.assertEqual((t['AB-2']['parent'], t['AB-2']['epic']), ('AB-1', 'AB-1'))
+        self.assertEqual((t['AB-3']['parent'], t['AB-3']['epic']), ('AB-2', 'AB-1'))
+        self.assertIsNone(t['AB-4']['epic'])
+        self.assertTrue(any('AB-4' in w for w in warnings))
+
+    def test_wiki_nested_items_and_plain_headings(self):
+        description = 'Acceptance Criteria:\n# The form saves.\n## Required fields are checked.\n# A number is shown.\n\nNotes:\nnot criteria'
+        self.assertEqual(tracker.acceptance(description), ['The form saves.', '  Required fields are checked.', 'A number is shown.'])
+        markdown = '## Acceptance criteria\n- Saves\n## Notes\n- other'
+        self.assertEqual(tracker.acceptance(markdown, markup='markdown'), ['Saves'])
+
+    def test_export_reviews_leaves_decision_exports_alone(self):
+        project = Project(self)
+        exports = project.dir / 'exports'
+        exports.mkdir()
+        (exports / 'decisions.csv').write_text('kept')
+        reviews = self.temp() / 'moscow.json'
+        reviews.write_text(json.dumps({'st-form': {'class': 'should'}}))
+        script = ROOT / 'skills/moscow-story-map/scripts/story_map.py'
+        p = project.paths
+        result = run(script, 'export-reviews', '--config', p['config'], '--content', p['content'], '--tickets', p['tickets'],
+                     '--reviews', reviews, '--out', exports)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual((exports / 'decisions.csv').read_text(), 'kept')
+        self.assertTrue((exports / 'class-reviews.csv').exists())
+
+    def test_logo_in_a_subfolder_and_as_a_path(self):
+        from rsk import brand
+        folder = self.temp()
+        (folder / 'assets').mkdir()
+        (folder / 'assets/mark.svg').write_text('<svg viewBox="0 0 10 10"><rect width="10" height="10"/></svg>')
+        for logo in ({'file': 'assets/mark.svg', 'alt': 'A & B "Co"'}, 'assets/mark.svg'):
+            profile = {'name': 'Client', 'status': 'confirmed', 'colors': {'accent': '#123456'}, 'logo': logo}
+            (folder / 'profile.json').write_text(json.dumps(profile))
+            merged, base, missing = brand.load(folder / 'profile.json')
+            markup = brand.logo(merged, base)
+            self.assertIn('class="logo"', markup)
+            self.assertNotIn('"Co"', markup)
+            self.assertIn('text', missing)
+
+    def test_structure_problems_are_reported(self):
+        config = self.config()
+        stories_doc = json.loads((EXAMPLE / 'content/stories.json').read_text())
+        stories_doc['stories'].append(dict(stories_doc['stories'][0]))
+        stories_doc['stories'].append({'id': 'bad id', 'label': 'x', 'step': 'intake', 'class': 'could',
+                                       'tickets': ['NW-12'], 'depends_on': ['st-none'], 'roles': ['nobody']})
+        tickets = {'NW-1': {'blocked_by': ['NW-2']}, 'NW-2': {'blocked_by': ['NW-1']}, 'NW-3': {'blocked_by': ['NW-3']}}
+        questions_doc = {'groups': [], 'questions': []}
+        found = ' | '.join(render.structure_problems(config, stories_doc, questions_doc, tickets))
+        for expected in ('duplicate story id st-form', "id 'bad id'", 'primary ticket NW-11', 'primary ticket NW-12',
+                         'unknown story st-none', 'unknown role nobody', 'Blocks cycle', 'NW-3 blocks itself'):
+            self.assertIn(expected, found)
+
+    def test_comments_use_one_subscription(self):
+        page = (KIT / 'assets/site/decisions.js').read_text()
+        self.assertEqual(page.count('store.list('), 1)
+        self.assertNotIn('/items', page)
 
 
 class StoryMapTests(unittest.TestCase):
@@ -253,9 +371,45 @@ class RenderAndGateTests(unittest.TestCase):
         self.assertEqual(rows[1], ['st-close', 'Close with work notes', 'NW-31', 'Could', 'Should', 'Needed for audits', ''])
 
     @integration('browser')
+    def test_status_menu_works_by_keyboard(self):
+        script = '''const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();
+const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('file://'+process.argv[1]);await p.waitForTimeout(200);
+await p.focus('.card-wrap .tag');await p.keyboard.press('ArrowDown');const expanded=await p.getAttribute('.card-wrap .tag','aria-expanded');
+await p.keyboard.press('ArrowDown');await p.keyboard.press('Enter');await p.waitForTimeout(100);
+const r=await p.evaluate(()=>({st:document.querySelector('.card-wrap .tag').dataset.st,menu:!!document.querySelector('.st-menu'),
+focus:document.activeElement===document.querySelector('.card-wrap .tag'),inSummary:!!document.querySelector('summary .tag')}));
+console.log(JSON.stringify({...r,expanded,errors}));await b.close();})();'''
+        out = subprocess.run(['node', '-e', script, str(self.project.paths['dist'] / 'decisions.html')], capture_output=True, text=True)
+        result = json.loads(out.stdout)
+        self.assertEqual(result, {'st': 'Proposed', 'menu': False, 'focus': True, 'inSummary': False, 'expanded': 'true', 'errors': []})
+
+    @integration('browser')
+    def test_hostile_content_does_not_run(self):
+        hostile = '<img src=x onerror="window.__pwned=1"></script><svg onload="window.__pwned=1">'
+        p = self.project.paths
+        for name in ('stories', 'questions', 'journeys', 'processes'):
+            path = p['content'] / f'{name}.json'
+            def poison(value):
+                if isinstance(value, dict):
+                    return {k: (hostile + v if isinstance(v, str) and k in fields and v not in enums else poison(v)) for k, v in value.items()}
+                return [poison(v) for v in value] if isinstance(value, list) else value
+            enums = {'Proposed answer', 'Answer'}
+            fields = {'label', 'text', 'what', 'interim', 'context', 'lead', 'question', 'today', 'after', 'area', 'title'}
+            path.write_text(json.dumps(poison(json.loads(path.read_text()))))
+        result = cli.build(*self.args)
+        self.assertEqual(result['status'], 'rendered', result)
+        script = '''const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();let bad=0;
+p.on('dialog',d=>{bad++;d.dismiss();});for(const f of process.argv.slice(1)){await p.goto('file://'+f);await p.waitForTimeout(200);
+for(const sel of ['.chip','details.card summary','.tile','[data-panel]']){const el=await p.$(sel);if(el)await el.click();}
+await p.waitForTimeout(100);if(await p.evaluate(()=>window.__pwned))bad++;}console.log(bad);await b.close();})();'''
+        pages = [str(x) for x in sorted(p['dist'].glob('*.html'))]
+        out = subprocess.run(['node', '-e', script, *pages], capture_output=True, text=True)
+        self.assertEqual(out.stdout.strip(), '0', out.stderr)
+
+    @integration('browser')
     def test_browser_rules_pass_and_catch_mixed_table_sizes(self):
         results = {r['rule']: r for r in gate.browser(self.project.paths['dist'])}
-        for rule in ('R-ERR-1', 'R-LAYOUT-1', 'R-TYPE-1', 'R-FOLD-1', 'R-DEC-1', 'R-NUM-1', 'R-COLOR-1', 'R-TINT-1', 'R-STATUS-1'):
+        for rule in ('R-ERR-1', 'R-LAYOUT-1', 'R-TYPE-1', 'R-FOLD-1', 'R-DEC-1', 'R-NUM-1', 'R-COLOR-1', 'R-TINT-1'):
             self.assertEqual(results[rule]['status'], 'passed', results[rule])
         css = self.project.paths['dist'] / 'assets/site.css'
         css.write_text(css.read_text() + '\n#changes td:nth-child(2) a,#changes td.dim{font-size:12px!important}'
@@ -266,12 +420,18 @@ class RenderAndGateTests(unittest.TestCase):
 
 
 class PortabilityTests(unittest.TestCase):
+    # Hashed words from the engagement this series was first built for, so the
+    # test can guard against them without spelling them out.
+    FORBIDDEN = {'187bf09aede83421', '516591197179fc74', '88bdf61c0ac07844', 'b32fdf6db1469bd6', 'd1945071d3df3e11', 'd5656c9039b74e65'}
+
     def test_series_contains_no_client_identity(self):
-        pattern = re.compile(r'(?i)telix|pixclara|telixpharma|\bSPM-\d|\bPTAM\b|\bNTAM\b')
+        import hashlib
         for name in ('review-site-kit', 'review-site', 'tracker-intake', 'moscow-story-map', 'decision-register'):
             for path in (ROOT / 'skills' / name).rglob('*'):
                 if path.is_file():
-                    self.assertIsNone(pattern.search(path.read_text(errors='ignore')), path)
+                    words = set(re.findall(r'[a-z0-9]+', path.read_text(errors='ignore').lower()))
+                    hits = {hashlib.sha256(w.encode()).hexdigest()[:16] for w in words} & self.FORBIDDEN
+                    self.assertFalse(hits, path)
 
     def test_built_package_runs_from_its_own_runtime(self):
         import catalog

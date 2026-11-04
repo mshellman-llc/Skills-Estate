@@ -17,6 +17,7 @@ triggers:
 - 'A review site, status view or backlog view needs a refresh.'
 exclusions:
 - 'Changing tickets in the tracker.'
+- 'A weekly status report (delivery-status).'
 - 'Writing requirements (requirements-backlog).'
 - 'Grading sprint readiness (backlog-refinement).'
 inputs:

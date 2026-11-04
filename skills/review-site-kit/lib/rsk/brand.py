@@ -4,6 +4,7 @@ The profile format is the estate brand policy's JSON block. With no profile,
 the policy's neutral profile applies. Missing roles fall back to the neutral
 value and are reported as substitutions.
 """
+import html
 import json
 import re
 from pathlib import Path
@@ -56,16 +57,23 @@ def css(profile):
     return ':root{' + ''.join(lines) + '}'
 
 
+def logo_path(profile, base_dir):
+    item = profile.get('logo')
+    file = item.get('file') if isinstance(item, dict) else item
+    path = Path(base_dir) / str(file)
+    if not path.is_file():
+        raise ValueError(f'logo file missing: {path}')
+    return path
+
+
 def logo(profile, base_dir):
-    """Inline an SVG logo or return an <img> for a raster file; empty when the profile has none."""
+    """Inline an SVG logo or return an <img> for a raster file; empty when the profile has none.
+    The logo is a file path, or an object with `file` and `alt`."""
     item = profile.get('logo')
     if not item:
         return ''
-    file = item.get('file') if isinstance(item, dict) else item
-    alt = (item.get('alt') if isinstance(item, dict) else None) or profile.get('name', 'Logo')
-    path = (Path(base_dir) / file)
-    if not path.is_file():
-        raise ValueError(f'logo file missing: {path}')
+    alt = html.escape((item.get('alt') if isinstance(item, dict) else None) or profile.get('name', 'Logo'), quote=True)
+    path = logo_path(profile, base_dir)
     if path.suffix == '.svg':
         svg = path.read_text()
         svg = re.sub(r'<\?xml[^>]*>', '', svg)

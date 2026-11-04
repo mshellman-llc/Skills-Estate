@@ -20,16 +20,27 @@ def authored_strings(config, content):
         if isinstance(text, str) and text.strip():
             found.append((where, text.strip()))
 
+    add('config.title', config.get('title'))
+    for i, m in enumerate(config.get('mockups', [])):
+        add(f'config.mockups[{i}].title', m['title'])
+    for key, cls in (config.get('classes') or {}).items():
+        add(f'config.classes.{key}.label', cls.get('label'))
     for page, text in (config.get('leads') or {}).items():
         add(f'config.leads.{page}', text)
     for i, item in enumerate(config.get('next_actions', [])):
         add(f'config.next_actions[{i}]', item['text'])
     for i, item in enumerate(config.get('sources', [])):
         add(f'config.sources[{i}]', item['text'])
+    for step in content.get('stories', {}).get('steps', []):
+        add(f'steps.{step["id"]}.label', step['label'])
     for s in content.get('stories', {}).get('stories', []):
+        add(f'stories.{s["id"]}.label', s['label'])
         add(f'stories.{s["id"]}.what', s.get('what'))
         add(f'stories.{s["id"]}.interim', s.get('interim'))
+    for g in content.get('questions', {}).get('groups', []):
+        add(f'groups.{g["id"]}.label', g['label'])
     for q in content.get('questions', {}).get('questions', []):
+        add(f'questions.{q["id"]}.text', q['text'])
         add(f'questions.{q["id"]}.context', q.get('context'))
         if (q.get('answer') or {}).get('label') == 'Proposed answer':
             add(f'questions.{q["id"]}.answer', q['answer']['text'])
@@ -37,18 +48,23 @@ def authored_strings(config, content):
     for role in journeys.get('roles', []):
         add(f'journeys.{role["id"]}.lead', role.get('lead'))
         for i, step in enumerate(role['steps']):
-            for field in ('question', 'today', 'behind', 'handoff', 'open'):
+            for field in ('label', 'question', 'today', 'behind', 'handoff', 'open'):
                 add(f'journeys.{role["id"]}.steps[{i}].{field}', step.get(field))
     for i, change in enumerate(journeys.get('changes', [])):
+        add(f'journeys.changes[{i}].area', change['area'])
         add(f'journeys.changes[{i}].today', change['today'])
         add(f'journeys.changes[{i}].after', change['after'])
     processes = content.get('processes', {})
     for lane in processes.get('lanes', []):
+        add(f'processes.{lane["id"]}.label', lane['label'])
         add(f'processes.{lane["id"]}.lead', lane.get('lead'))
         for step in lane['steps']:
+            add(f'processes.{lane["id"]}.{step["id"]}.label', step['label'])
             add(f'processes.{lane["id"]}.{step["id"]}', step['text'])
     for section in processes.get('design', []):
+        add(f'processes.design.{section["title"]}', section['title'])
         for i, row in enumerate(section['rows']):
+            add(f'processes.design.{section["title"]}[{i}].label', row['label'])
             add(f'processes.design.{section["title"]}[{i}]', row['text'])
     return found
 
@@ -89,12 +105,13 @@ def data(config_path, content_dir, tickets_path, dist):
     expected, problems = render.compute(config, tickets, content)
     results = [{'rule': 'D1', 'status': 'failed' if problems else 'passed', 'detail': problems}]
     shown = render.read_data(dist)
+    expected = json.loads(json.dumps(expected))  # same JSON types as the rendered file
     stale = []
     if shown['source']['sha256'] != expected['source']['sha256']:
         stale.append('rendered from a different tracker export')
-    for key in ('stories', 'questions', 'journeys', 'changes', 'lanes', 'unclassed', 'tickets'):
-        if shown.get(key) != expected.get(key):
-            stale.append(f'{key} differ from the sources')
+    for key in sorted(set(shown) | set(expected)):
+        if key != 'generated' and shown.get(key) != expected.get(key):
+            stale.append(f'{key} differs from the sources')
     results.append({'rule': 'D2', 'status': 'failed' if stale else 'passed', 'detail': stale})
     tickets_by_key = {t['key']: t for t in tickets['tickets']}
     wrong = [f'{s["id"]}: shows {s["computed"]["status"]["label"]}, tracker has {tickets_by_key[s["tickets"][0]]["status"]}'
@@ -114,7 +131,10 @@ def browser(dist, node='node'):
     if policy:
         import os
         env = {**os.environ, 'RS_LAUNCH_POLICY': str(policy)}
-    result = subprocess.run([node, str(script), str(Path(dist).resolve())], capture_output=True, text=True, env=env)
+    try:
+        result = subprocess.run([node, str(script), str(Path(dist).resolve())], capture_output=True, text=True, env=env)
+    except OSError as error:
+        return [{'rule': 'B0', 'status': 'pending', 'detail': f'browser checks did not run: {error}'}]
     try:
         return json.loads(result.stdout)
     except ValueError:

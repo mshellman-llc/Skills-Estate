@@ -142,7 +142,7 @@ def critical_path(stories, tickets_doc, config=None, classes=None):
             if blocker not in nodes and (t is None or t['category'] != 'done'):
                 nodes.add(blocker)
                 stack.append(blocker)
-    edges = [(b, k) for k in nodes for b in tickets.get(k, {}).get('blocked_by', []) if b in nodes]
+    edges = sorted((b, k) for k in nodes for b in tickets.get(k, {}).get('blocked_by', []) if b in nodes)
     untracked = [s for s in must if not s.get('tickets')]
     columns = _sprint_columns(nodes, tickets, config.get('tracker', {}).get('sprint_order'))
     column_of = lambda k: (tickets.get(k, {}).get('sprint') or 'No sprint') if k in tickets else 'No sprint'
@@ -163,7 +163,7 @@ def critical_path(stories, tickets_doc, config=None, classes=None):
     height = Y0 + (max(rows.values(), default=0) + 1) * (H + GY) + 8
     pos = {k: (X0 + c * (W + GX), Y0 + r * (H + GY)) for k, (c, r) in layout.items()}
     base = config.get('tracker', {}).get('base_url', '')
-    out = [f'<svg class="cp" viewBox="0 0 {width} {height}" role="img" aria-label="Open Must stories and their blockers by sprint">',
+    out = [f'<svg class="cp" viewBox="0 0 {width} {height}" role="group" aria-label="Open Must stories and their blockers by sprint">',
            '<defs>' + ''.join(f'<marker id="cp-{n}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="cp-head-{n}"/></marker>' for n in ('fwd', 'back', 'off')) + '</defs>']
     for i, column in enumerate(columns):
         out.append(f'<text class="cp-col" x="{X0 + i * (W + GX)}" y="20">{html.escape(column)}</text>')
@@ -184,7 +184,9 @@ def critical_path(stories, tickets_doc, config=None, classes=None):
         body = (f'<g class="cp-node cp-{kind}"><rect x="{x}" y="{y}" width="{W}" height="{H}"/>'
                 f'<text class="cp-t" x="{x + 10}" y="{y + 21}">{html.escape(title)}</text>'
                 f'<text class="cp-s" x="{x + 10}" y="{y + 39}">{html.escape(sub)}</text></g>')
-        return f'<a href="{html.escape(href)}" target="_blank" rel="noopener">{body}</a>' if href else body
+        label = html.escape(f'{title}, {sub}', quote=True)
+        return (f'<a href="{html.escape(href)}" target="_blank" rel="noopener" aria-label="{label}">{body}</a>'
+                if href else body.replace('<g class=', f'<g role="img" aria-label="{label}" class=', 1))
 
     untracked_by_id = {s['id']: s for s in untracked}
     for key, (x, y) in pos.items():
@@ -202,7 +204,7 @@ def critical_path(stories, tickets_doc, config=None, classes=None):
         else:
             out.append(box(x, y, key, f'{key} · not in this export', 'outside', href))
     out.append('</svg>')
-    return {'svg': ''.join(out), 'nodes': sorted(nodes, key=natural), 'edges': sorted(edges),
+    return {'svg': ''.join(out), 'nodes': sorted(nodes, key=natural), 'edges': edges,
             'untracked': [s['id'] for s in untracked], 'columns': columns}
 
 

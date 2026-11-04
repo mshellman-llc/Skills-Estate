@@ -26,8 +26,10 @@ sys.path.insert(0, str(KIT / 'lib'))
 from rsk import cli  # noqa: E402
 
 
-def refresh(paths, export, origin, scope):
-    result = {'intake': cli.intake(paths['config'], export, paths['tracker'], origin, scope)}
+def refresh(paths, export, origin, scope, allow_older=False):
+    result = {'intake': cli.intake(paths['config'], export, paths['tracker'], origin, scope, allow_older)}
+    if result['intake']['status'] == 'failed':
+        return {**result, 'status': 'failed'}
     delta = paths['tracker'] / 'delta.json'
     if result['intake']['status'] == 'recorded' and (paths['content'] / 'stories.json').exists():
         queue = cli.queue(paths['content'], paths['tickets'], delta, paths['tracker'])
@@ -48,6 +50,7 @@ def main():
     parser.add_argument('--saved')
     parser.add_argument('--reviews')
     parser.add_argument('--skip-browser', action='store_true')
+    parser.add_argument('--allow-older', action='store_true', help='replace a newer export with this older one')
     a = parser.parse_args()
     p = cli.project_paths(a.project)
     if a.command in ('intake', 'refresh') and not (a.input and a.origin and a.scope):
@@ -55,13 +58,13 @@ def main():
     if a.command == 'init':
         return cli.run(cli.init, a.project, KIT / 'examples/northwind')
     if a.command == 'intake':
-        return cli.run(cli.intake, p['config'], a.input, p['tracker'], a.origin, a.scope)
+        return cli.run(cli.intake, p['config'], a.input, p['tracker'], a.origin, a.scope, a.allow_older)
     if a.command == 'build':
         return cli.run(cli.build, p['config'], p['content'], p['tickets'], p['dist'])
     if a.command == 'check':
         return cli.run(cli.check, p['config'], p['content'], p['tickets'], p['dist'], not a.skip_browser)
     if a.command == 'refresh':
-        return cli.run(refresh, p, a.input, a.origin, a.scope)
+        return cli.run(refresh, p, a.input, a.origin, a.scope, a.allow_older)
     return cli.run(cli.export, p['config'], p['content'], p['tickets'], a.saved, a.reviews, p['exports'])
 
 

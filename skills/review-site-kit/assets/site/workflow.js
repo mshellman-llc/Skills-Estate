@@ -8,8 +8,8 @@
   const LAYERS = [['today', 'Today'], ['behind', 'Behind the scenes'], ['handoff', 'Handoff'], ['open', 'Still open']];
   let html = '';
   if (roles.length) {
-    html += '<section id="journeys"><h2>Steps by role</h2><div class="tabs" role="tablist" aria-label="Role">' +
-      roles.map((r, i) => '<button type="button" role="tab" id="tab-' + esc(r.id) + '" aria-controls="panel-' + esc(r.id) + '" aria-selected="' + (i === 0) + '">' + esc(r.label) + '</button>').join('') + '</div>';
+    html += '<section id="journeys"><h2>Steps by role</h2><div class="tabs" role="group" aria-label="Role">' +
+      roles.map((r, i) => '<button type="button" data-panel="panel-' + esc(r.id) + '" aria-pressed="' + (i === 0) + '">' + esc(r.label) + '</button>').join('') + '</div>';
     const used = LAYERS.filter(([k]) => roles.some(r => r.steps.some(s => s[k])));
     if (used.length) html += '<div class="controls"><span class="ctl">Also show</span>' + used.map(([k, l]) => '<label><input type="checkbox" data-layer-toggle="' + k + '"> ' + l + '</label>').join('') + '</div>';
     roles.forEach((r, i) => {
@@ -19,7 +19,7 @@
       used.forEach(([k, l]) => {
         grid += '<div class="bl" data-layer="' + k + '" hidden>' + l + '</div>' + r.steps.map(s => '<div data-layer="' + k + '" hidden>' + esc(s[k] || '') + '</div>').join('');
       });
-      html += '<div role="tabpanel" id="panel-' + esc(r.id) + '" aria-labelledby="tab-' + esc(r.id) + '"' + (i ? ' hidden' : '') + '>' +
+      html += '<div id="panel-' + esc(r.id) + '" role="region" aria-label="' + esc(r.label) + '"' + (i ? ' hidden' : '') + '>' +
         (r.lead ? '<p>' + esc(r.lead) + '</p>' : '') + '<div class="bp-scroll" tabindex="0"><div class="bp" style="' + cols + '">' + grid + '</div></div></div>';
     });
     html += '</section>';
@@ -31,9 +31,9 @@
         '</td></tr>').join('') + '</tbody></table></div></section>';
   }
   app.innerHTML = html;
-  const tabs = [...app.querySelectorAll('[role=tab]')];
+  const tabs = [...app.querySelectorAll('[data-panel]')];
   tabs.forEach(t => t.addEventListener('click', () => {
-    tabs.forEach(x => { x.setAttribute('aria-selected', String(x === t)); document.getElementById(x.getAttribute('aria-controls')).hidden = x !== t; });
+    tabs.forEach(x => { x.setAttribute('aria-pressed', String(x === t)); document.getElementById(x.dataset.panel).hidden = x !== t; });
   }));
   app.querySelectorAll('[data-layer-toggle]').forEach(box => box.addEventListener('change', () => {
     app.querySelectorAll('[data-layer="' + box.dataset.layerToggle + '"]').forEach(el => { el.hidden = !box.checked; });

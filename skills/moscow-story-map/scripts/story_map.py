@@ -48,11 +48,17 @@ def main():
     parser.add_argument('--reviews')
     parser.add_argument('--out', default='.')
     a = parser.parse_args()
+    if a.command in ('summary', 'export-reviews') and not a.config:
+        parser.error(a.command + ' needs --config')
+    if a.command == 'queue' and not a.delta:
+        parser.error('queue needs --delta')
+    if a.command == 'export-reviews' and not a.reviews:
+        parser.error('export-reviews needs --reviews')
     if a.command == 'summary':
         return cli.run(summary, a.config, a.content, a.tickets)
     if a.command == 'queue':
         return cli.run(lambda *x: {'status': 'ok', **cli.queue(*x)}, a.content, a.tickets, a.delta, a.out)
-    return cli.run(cli.export, a.config, a.content, a.tickets, None, a.reviews, a.out)
+    return cli.run(cli.export, a.config, a.content, a.tickets, None, a.reviews, a.out, False)
 
 
 if __name__ == '__main__':

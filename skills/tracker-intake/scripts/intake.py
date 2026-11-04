@@ -29,8 +29,9 @@ def main():
     parser.add_argument('--out', required=True, help='tracker folder; tickets.json, delta.json and intake-log.json go here')
     parser.add_argument('--origin', required=True, help='who supplied the export and how')
     parser.add_argument('--scope', required=True, help='what the export covers')
+    parser.add_argument('--allow-older', action='store_true', help='replace a newer export with this older one')
     a = parser.parse_args()
-    return cli.run(cli.intake, a.config, a.input, a.out, a.origin, a.scope)
+    return cli.run(cli.intake, a.config, a.input, a.out, a.origin, a.scope, a.allow_older)
 
 
 if __name__ == '__main__':

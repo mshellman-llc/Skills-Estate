@@ -1,6 +1,6 @@
 ---
 name: tracker-intake
-description: Turn a tracker export (Jira CSV, another tracker's table export, or tickets pulled through a connector) into canonical tickets, an intake record and a delta against the previous export. Use when a new Jira or tracker export arrives, to see what changed since the last export, or before refreshing a review site, status report or backlog view. Do NOT use to change tickets in the tracker, to write requirements (requirements-backlog) or to grade readiness for a sprint (backlog-refinement).
+description: Turn a tracker export (Jira CSV, another tracker's table export, or tickets pulled through a connector) into canonical tickets, an intake record and a delta against the previous export. Use when a new Jira or tracker export arrives, to see what changed since the last export, or before refreshing a review site, status report or backlog view. Do NOT use to change tickets in the tracker, for a weekly status report (delivery-status), to write requirements (requirements-backlog) or to grade readiness for a sprint (backlog-refinement).
 ---
 
 # Tracker intake
@@ -19,7 +19,7 @@ The `tracker` block in `site.json` selects the adapter:
 
 - `jira-csv`: the default. It reads the repeated Sprint, Labels, link and Comment columns as lists and treats `Inward issue link (Blocks)` as the tickets that block this one.
 - `table-csv`: any tracker's table export. Set `tracker.columns` to map `key`, `summary`, `status` and any of `type`, `epic`, `parent`, `sprint`, `points`, `labels`, `priority`, `created`, `updated`, `description`, `acceptance`, `blocked_by` and `blocks` to the export's column names.
-- `json`: canonical tickets you wrote from a connector. Follow `schema/tickets.schema.json` in the kit.
+- `json`: tickets you pulled through a connector, shaped like [the ticket schema](../review-site-kit/schema/tickets.schema.json). The adapter keeps only the schema's fields, so comments, people and full descriptions are dropped here too.
 
 Set `tracker.status_map` for statuses the default list does not know. Set `tracker.base_url` to the tracker's browse URL so pages can link each ticket.
 

@@ -53,20 +53,29 @@ def clean(text, base_url=''):
     return re.sub(r'[ \t]+', ' ', text).strip()
 
 
-# Jira wiki headings (*Title*, h2. Title) and Markdown headings of level 2 or more.
-# A single '#' starts a numbered list item in Jira wiki markup, so it is never a heading.
-HEADING = re.compile(r'(?:\*[^*]+\*:?|h\d\.\s*.+|#{2,6}\s+.+|\*\*[^*]+\*\*:?)')
+# Section headings differ by markup. Jira wiki uses *Title* or h2. Title, and a
+# leading # or ## starts a numbered list item, so it is never a heading there.
+# Markdown (table exports from other trackers) uses ## Title or **Title**.
+# Both accept a known section name alone on its line, with or without a colon.
+WIKI_HEADING = re.compile(r'(?:\*[^*]+\*:?|h\d\.\s*.+)')
+MARKDOWN_HEADING = re.compile(r'(?:#{1,6}\s+.+|\*\*[^*]+\*\*:?)')
+KNOWN_SECTIONS = ('background', 'acceptance criteria', 'acceptance', 'description', 'notes', 'technical notes',
+                  'dependencies', 'out of scope', 'open questions', 'user story', 'definition of done', 'requirements')
 
 
-def section(description, name):
+def _title(line):
+    return re.sub(r'^(h\d\.|#+)\s*', '', line).strip('*: ').lower()
+
+
+def section(description, name, markup='wiki'):
+    heading = WIKI_HEADING if markup == 'wiki' else MARKDOWN_HEADING
     lines, out, active = (description or '').replace('\r', '').split('\n'), [], False
     for line in lines:
         stripped = line.strip()
-        if HEADING.fullmatch(stripped):
-            title = re.sub(r'^(h\d\.|#+)\s*', '', stripped).strip('*: ').lower()
+        if heading.fullmatch(stripped) or stripped.rstrip(':').strip().lower() in KNOWN_SECTIONS:
             if active:
                 break
-            if title.startswith(name.lower()):
+            if _title(stripped).startswith(name.lower()):
                 active = True
             continue
         if active and stripped:
@@ -74,20 +83,21 @@ def section(description, name):
     return out
 
 
-def acceptance(description, base_url=''):
+def acceptance(description, base_url='', markup='wiki'):
     out = []
-    for line in section(description, 'Acceptance Criteria'):
-        bullet = re.match(r'\s*(#+|\*+|-)\s*(.*)', line)
+    for line in section(description, 'Acceptance Criteria', markup):
+        bullet = re.match(r'\s*(#+|\*+|-)\s+(.*)', line) or re.match(r'\s*(\d+)[.)]\s+(.*)', line)
         text = clean(bullet.group(2) if bullet else line, base_url)
         if not text:
             continue
-        nested = bullet and bullet.group(1)[0] in '#*' and len(bullet.group(1)) > 1
+        marker = bullet.group(1) if bullet else ''
+        nested = marker[:1] in ('#', '*') and len(marker) > 1 or (bullet and line[:1] in ' \t' and markup != 'wiki')
         out.append(('  ' if nested else '') + text)
     return out
 
 
-def background(description, base_url=''):
-    return [t for t in (clean(line, base_url) for line in section(description, 'Background')) if t]
+def background(description, base_url='', markup='wiki'):
+    return [t for t in (clean(line, base_url) for line in section(description, 'Background', markup)) if t]
 
 
 # ---------- adapters ----------
@@ -127,6 +137,26 @@ def _sprint_sort(name):
     return (int(numbers[-1]) if numbers else 10 ** 6, name or '')
 
 
+SUBTASK = re.compile(r'sub-?task', re.I)
+
+
+def _epic_of(key, parent, types, parents):
+    """A story's parent is its epic; a sub-task's epic is its parent's parent.
+
+    When the parent is not in the export, a non-sub-task's parent is taken as its
+    epic, which is how Jira's issue hierarchy works; a sub-task gets no epic.
+    """
+    if not parent:
+        return None
+    kind = types.get(parent)
+    if kind == 'Epic':
+        return parent
+    if SUBTASK.search(types.get(key, '')):
+        grand = parents.get(parent)
+        return grand if grand and types.get(grand) == 'Epic' else None
+    return parent if kind is None else None
+
+
 def jira_csv(path, base_url='', status_map=None):
     """Jira 'All fields' CSV. Repeated headers (Sprint, Labels, links, Comment) become lists."""
     with open(path, encoding='utf-8-sig', newline='') as handle:
@@ -140,10 +170,16 @@ def jira_csv(path, base_url='', status_map=None):
                     record.setdefault(name, []).append(value)
             rows.append(record)
     point_columns = [h for h in dict.fromkeys(header) if re.search(r'story ?point', h, re.I)]
-    types = {}
+    types, ids, parents = {}, {}, {}
     for record in rows:
         key = (record.get('Issue key') or [''])[0]
         types[key] = (record.get('Issue Type') or [''])[0]
+        if record.get('Issue id'):
+            ids[record['Issue id'][0]] = key
+    for record in rows:
+        key = (record.get('Issue key') or [''])[0]
+        raw = (record.get('Parent key') or record.get('Parent') or [None])[0]
+        parents[key] = ids.get(raw, raw) if raw else None
     tickets, warnings, seen = [], [], set()
     for record in rows:
         first = lambda name: (record.get(name) or [None])[0]
@@ -159,10 +195,11 @@ def jira_csv(path, base_url='', status_map=None):
         category, known = categorize(status, status_map)
         if not known:
             warnings.append(f'{key}: status "{status}" mapped to todo; add it to tracker.status_map')
-        parent = first('Parent key') or first('Parent') or None
-        epic = first('Custom field (Epic Link)')
-        if not epic and parent and types.get(parent, 'Epic') == 'Epic':
-            epic = parent
+        parent = parents.get(key)
+        if parent and not re.fullmatch(r'[A-Z][A-Z0-9_]*-\d+', parent):
+            warnings.append(f'{key}: parent {parent} is not in this export; epic left empty')
+            parent = None
+        epic = first('Custom field (Epic Link)') or _epic_of(key, parent, types, parents)
         sprints = sorted(set(record.get('Sprint', [])), key=_sprint_sort)
         description = first('Description') or ''
         points = next((_points(first(c)) for c in point_columns if _points(first(c)) is not None), None)
@@ -194,12 +231,16 @@ def table_csv(path, columns, base_url='', status_map=None):
         raise ValueError('tracker.columns must name key, summary and status')
     with open(path, encoding='utf-8-sig', newline='') as handle:
         rows = list(csv.DictReader(handle))
-    tickets, warnings = [], []
+    tickets, warnings, seen = [], [], set()
     get = lambda row, field: (row.get(columns[field]) if field in columns else None) or ''
     for row in rows:
         key = get(row, 'key').strip()
         if not key:
             continue
+        if key in seen:
+            warnings.append(f'duplicate key {key}; first row kept')
+            continue
+        seen.add(key)
         status = get(row, 'status')
         category, known = categorize(status, status_map)
         if not known:
@@ -213,18 +254,65 @@ def table_csv(path, columns, base_url='', status_map=None):
             'labels': _split(get(row, 'labels')), 'priority': get(row, 'priority') or None,
             'created': _date(get(row, 'created')), 'updated': _date(get(row, 'updated')),
             'description_sha': hashlib.sha256(description.encode()).hexdigest()[:12],
-            'acceptance': acceptance(description, base_url) or _split(get(row, 'acceptance')),
-            'background': background(description, base_url),
+            'acceptance': acceptance(description, base_url, 'markdown') or _split(get(row, 'acceptance')),
+            'background': background(description, base_url, 'markdown'),
             'blocked_by': _split(get(row, 'blocked_by')), 'blocks': _split(get(row, 'blocks')),
             'comment_count': 0,
         })
     return tickets, warnings
 
 
-def json_tickets(path):
+FIELDS_KEPT = ('key', 'summary', 'type', 'status', 'category', 'epic', 'parent', 'sprint', 'sprints', 'points',
+               'labels', 'priority', 'created', 'updated', 'description_sha', 'acceptance', 'background',
+               'blocked_by', 'blocks', 'comment_count')
+
+
+def json_tickets(path, base_url='', status_map=None):
+    """Tickets pulled through a connector. Each is rebuilt from the kept fields only,
+    so comments, people and full descriptions never reach tickets.json."""
     data = json.loads(Path(path).read_text())
     items = data['tickets'] if isinstance(data, dict) else data
-    return items, []
+    tickets, warnings, seen = [], [], set()
+    for item in items:
+        key = str(item.get('key') or '').strip()
+        if not key or key in seen:
+            warnings.append(f'ticket without a key or duplicate key {key!r} skipped')
+            continue
+        seen.add(key)
+        status = str(item.get('status') or '')
+        category, known = categorize(status, status_map)
+        if item.get('category') in ('todo', 'wip', 'done', 'canceled', 'blocked') and not status_map:
+            category, known = item['category'], True
+        if not known:
+            warnings.append(f'{key}: status "{status}" mapped to todo; add it to tracker.status_map')
+        description = item.get('description') or ''
+        sprints = list(item.get('sprints') or ([item['sprint']] if item.get('sprint') else []))
+        ticket = {name: item.get(name) for name in FIELDS_KEPT}
+        ticket.update({
+            'key': key, 'summary': str(item.get('summary') or ''), 'type': str(item.get('type') or ''),
+            'status': status, 'category': category, 'sprints': sprints, 'sprint': sprints[-1] if sprints else None,
+            'points': _points(item.get('points')), 'labels': list(item.get('labels') or []),
+            'created': _date(item.get('created')), 'updated': _date(item.get('updated')),
+            'description_sha': item.get('description_sha') or hashlib.sha256(description.encode()).hexdigest()[:12],
+            'acceptance': list(item.get('acceptance') or acceptance(description, base_url, 'markdown')),
+            'background': list(item.get('background') or background(description, base_url, 'markdown')),
+            'blocked_by': sorted(set(item.get('blocked_by') or [])), 'blocks': sorted(set(item.get('blocks') or [])),
+            'comment_count': int(item.get('comment_count') or len(item.get('comments') or [])),
+        })
+        tickets.append(ticket)
+    return tickets, warnings
+
+
+def _inverse_links(tickets):
+    """A Blocks link recorded on only one side is copied to the other side."""
+    by_key = {t['key']: t for t in tickets}
+    for t in tickets:
+        for other in t['blocks']:
+            if other in by_key and t['key'] not in by_key[other]['blocked_by']:
+                by_key[other]['blocked_by'] = sorted(by_key[other]['blocked_by'] + [t['key']])
+        for other in t['blocked_by']:
+            if other in by_key and t['key'] not in by_key[other]['blocks']:
+                by_key[other]['blocks'] = sorted(by_key[other]['blocks'] + [t['key']])
 
 
 def load(path, config):
@@ -236,9 +324,10 @@ def load(path, config):
     elif adapter == 'table-csv':
         tickets, warnings = table_csv(path, tracker.get('columns', {}), base_url, tracker.get('status_map'))
     elif adapter == 'json':
-        tickets, warnings = json_tickets(path)
+        tickets, warnings = json_tickets(path, base_url, tracker.get('status_map'))
     else:
         raise ValueError(f'unknown tracker adapter: {adapter}')
+    _inverse_links(tickets)
     document = {'format': 1,
                 'source': {'adapter': adapter, 'file': Path(path).name, 'sha256': _sha(path),
                            'rows': len(tickets), 'base_url': base_url},
@@ -249,7 +338,7 @@ def load(path, config):
 
 # ---------- intake record and delta ----------
 
-FIELDS = ('summary', 'status', 'sprint', 'points', 'epic', 'type', 'description_sha', 'blocked_by')
+FIELDS = ('summary', 'status', 'category', 'sprint', 'points', 'epic', 'type', 'description_sha', 'blocked_by')
 
 
 def delta(previous, current):

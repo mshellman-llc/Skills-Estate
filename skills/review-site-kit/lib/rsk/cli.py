@@ -28,14 +28,21 @@ def project_paths(project):
             'tickets': p / 'tracker/tickets.json', 'dist': p / 'dist', 'exports': p / 'exports'}
 
 
-def intake(config_path, export, out_dir, origin, scope):
+def _latest(document):
+    return max((t.get('updated') or '' for t in document['tickets']), default='')
+
+
+def intake(config_path, export, out_dir, origin, scope, allow_older=False):
     config = validate.load(config_path, 'site')
     out = Path(out_dir)
     current_path = out / 'tickets.json'
     previous = json.loads(current_path.read_text()) if current_path.exists() else None
     document, warnings = tracker.load(export, config)
-    if previous and previous['source']['sha256'] == document['source']['sha256']:
+    if previous and previous == document:
         return {'status': 'unchanged', 'sha256': document['source']['sha256']}
+    if previous and not allow_older and _latest(document) and _latest(document) < _latest(previous):
+        return {'status': 'failed', 'error': f'this export\'s latest update ({_latest(document)}) is older than the '
+                f'current one ({_latest(previous)}); pass --allow-older to replace it anyway'}
     record = tracker.intake_record(export, document, warnings, origin, scope, previous)
     change = tracker.delta(previous, document)
     if previous:
@@ -98,12 +105,12 @@ def check(config_path, content_dir, tickets_path, dist, browser=True):
     return gate.summarize(results)
 
 
-def export(config_path, content_dir, tickets_path, saved_path, reviews_path, out_dir):
+def export(config_path, content_dir, tickets_path, saved_path, reviews_path, out_dir, decisions_too=True):
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     written = []
     questions_path = Path(content_dir) / 'questions.json'
-    if questions_path.exists():
+    if decisions_too and questions_path.exists():
         questions_doc = validate.load(questions_path, 'questions')
         saved = decisions.load_saved(saved_path)
         (out / 'decisions.csv').write_text(decisions.export_csv(questions_doc, saved))
@@ -140,6 +147,6 @@ def emit(result):
 def run(fn, *args):
     try:
         return emit(fn(*args))
-    except (ValueError, FileNotFoundError, KeyError) as error:
+    except (ValueError, FileNotFoundError, KeyError, TypeError) as error:
         print(json.dumps({'status': 'error', 'error': str(error)}), file=sys.stderr)
         return 2
