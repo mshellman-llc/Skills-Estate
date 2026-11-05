@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build a portable, offline map from complete SKILL.md entrypoints (stdlib only)."""
-import argparse, base64, hashlib, html, json, re, subprocess
+import argparse, hashlib, html, json, re, subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -205,17 +205,17 @@ def load_showcase(root, current):
         items.sort(key=lambda x: (x['source'] != 'real-redacted', x['date'], x['id']), reverse=False)
     return examples
 
-def render_snapshot(data,output):
+DOWNLOADS=re.compile(r'<!--downloads-->.*?<!--/downloads-->|/\*downloads\*/.*?/\*/downloads\*/',re.S)
+
+def render_snapshot(data,output,downloads=True):
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     template=(HERE/'template.html').read_text()
-    faces=[]
-    for weight,name in [(400,'Regular'),(600,'SemiBold'),(700,'Bold')]:
-        font=base64.b64encode((HERE/f'assets/fonts/PlusJakartaSans-{name}.ttf').read_bytes()).decode()
-        faces.append('@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:'+str(weight)+';font-display:swap;src:url(data:font/ttf;base64,'+font+') format("truetype")}')
-    notice=html.escape((HERE/'assets/fonts/OFL.txt').read_text())
-    result=template.replace('__MAP_FONT_FACES__','\n'.join(faces)).replace('__ESTATE_DATA__',encoded)
-    result=result.replace('</head>','<script type="text/plain" id="font-license">'+notice+'</script>\n</head>')
-    Path(output).write_text(result)
+    if not downloads:
+        # Hosts that cannot save files (the claude.ai artifact viewer) get no download controls or download code.
+        template=DOWNLOADS.sub('',template)
+    else:
+        template=template.replace('<!--downloads-->','').replace('<!--/downloads-->','').replace('/*downloads*/','').replace('/*/downloads*/','')
+    Path(output).write_text(template.replace('__ESTATE_DATA__',encoded))
 
 def build(args):
     root = args.repo.resolve(); baseline = (args.baseline_repo or root).resolve()
@@ -300,7 +300,7 @@ def build(args):
     data['counts']['withExamples']=sum(bool(x['examples']) for x in skills)
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     output=args.output.resolve(); output.parent.mkdir(parents=True,exist_ok=True)
-    render_snapshot(data,output)
+    render_snapshot(data,output,downloads=not getattr(args,'no_downloads',False))
     output.with_suffix('.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'output':str(output),'base':ref,'counts':data['counts']}))
     return data
@@ -312,4 +312,5 @@ if __name__=='__main__':
     p.add_argument('--baseline-repo',type=Path,help='Git checkout containing the compared commit; defaults to --repo')
     p.add_argument('--extra',type=Path,action='append',default=[],help='Explicit local skill folder; can repeat')
     p.add_argument('--output',type=Path,default=HERE/'index.html')
+    p.add_argument('--no-downloads',action='store_true',help='Omit download buttons and code, for hosts that cannot save files such as the claude.ai artifact viewer')
     build(p.parse_args())
