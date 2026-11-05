@@ -48,7 +48,7 @@ Read exact values from the selected profile. Do not infer colors from a company 
 }
 ```
 
-The neutral profile is Baseline, Megan's default design system. Web pages, dashboards and interactive artifacts use its component kit in the `client-brand` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
+The neutral profile is Baseline, the estate's default design system. Web pages, dashboards and interactive artifacts use its component kit in the `client-brand` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
 
 The neutral profile has no logo, footer mark, cover imagery, gradients, or bundled fonts. Add a title, date, and author when the format needs them. Do not add colored side accents to cards, rows, badges or callouts.
 
