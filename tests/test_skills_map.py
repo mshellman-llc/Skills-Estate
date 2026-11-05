@@ -21,6 +21,27 @@ spec = importlib.util.spec_from_file_location('map_builder', MAP / 'build.py')
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
 
+class DownloadVariantTests(unittest.TestCase):
+    def render(self, downloads):
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp)/'map.html'
+            builder.render_snapshot({'skills': []}, out, downloads=downloads)
+            return out.read_text()
+
+    def test_default_build_keeps_download_controls(self):
+        page = self.render(True)
+        self.assertIn('id="export"', page)
+        self.assertIn('data-download', page)
+        self.assertNotIn('downloads-->', page)
+        self.assertNotIn('downloads*/', page)
+
+    def test_artifact_build_has_no_download_controls_or_code(self):
+        page = self.render(False)
+        for text in ('id="export"', 'data-download', 'packageDownload', 'function download(', '.download=', 'downloads-->', 'downloads*/'):
+            self.assertNotIn(text, page)
+        self.assertIn('id="print-map"', page)
+        self.assertIn('data-print-detail', page)
+
 class SkillsMapTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

@@ -1,5 +1,3 @@
 # Skills map design
 
-The map uses the design already selected for Megan's interactive skills artifact: navy headers, teal controls, sand surfaces, and Plus Jakarta Sans. The October 28 GitHub update retains that appearance.
-
-The source is the maintained Editorial design system. Its font files are included unchanged with their SIL Open Font License. The build embeds the regular, semibold, and bold weights for offline use. Global estate brand defaults remain in `policies/brand.md`.
+The map uses navy headers, teal controls and sand surfaces from the Editorial design system. Since November 5, 2026 it uses the reader's system font instead of embedded Plus Jakarta Sans, which keeps the page small and plain. The Plus Jakarta Sans files and their SIL Open Font License remain in `assets/fonts/` but are no longer embedded. Global estate brand defaults remain in `policies/brand.md`.
