@@ -50,13 +50,7 @@
     "uat-validation",
     "writing-integrity"
   ],
-  "review_gaps": [
-    {
-      "required_sha256": "b3be560d73bea400e63bf9daa8d6586e5d7a8233d0fc514f7744287e783ed5b5",
-      "status": "review required",
-      "subject": "shared assembly"
-    }
-  ],
-  "source_sha256": "f59e2730e01489f1845a78a36bae60efb3892c3793f390224a4d884a1848d9f3",
-  "status": "owner-published"
+  "review_gaps": [],
+  "source_sha256": "a4842d1349178b948a421df9ee998806aea84ec95070a25195ee8e07e2fe6681",
+  "status": "reviewed"
 }
