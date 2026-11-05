@@ -21,6 +21,38 @@ spec = importlib.util.spec_from_file_location('map_builder', MAP / 'build.py')
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
 
+class SkillProfileTests(unittest.TestCase):
+    def test_manifest_reader_handles_margin_lists_mappings_and_connectors(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp)/'skill.yaml'
+            path.write_text('name: demo\nsummary: One line\n  wrapped\nruntimes:\n- codex\n- claude-ai\noutputs:\n- name: run_record\n  format: markdown\nconnectors:\n  required: []\n  optional:\n  - google-drive\ncalls:\n- evidence-core\n')
+            data = builder.manifest_fields(path)
+        self.assertEqual(data['runtimes'], ['codex', 'claude-ai'])
+        self.assertEqual(data['outputs'], [{'name': 'run_record', 'format': 'markdown'}])
+        self.assertEqual(data['connectors'], {'required': [], 'optional': ['google-drive']})
+        self.assertEqual(data['calls'], ['evidence-core'])
+
+    def test_profile_prefers_manifest_connectors_and_falls_back_to_guide(self):
+        role = {'kind': 'task', 'tasks': ['demo'], 'modes': []}
+        resources = [{'path': 'scripts/run.py'}, {'path': 'scripts/run_selftest.py'}, {'path': 'references/x.md'}]
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            guide = {'expect': 'Asks for sources first.', 'connectors': {'required': ['salesforce'], 'optional': []}, 'requires': 'A live org.'}
+            profile = builder.skill_profile('demo', folder, resources, guide, {'setup': ''}, role, {'demo': ['evidence-core']}, {'demo': ['other']}, {'demo': ['solutioning-router']}, {'estate-x': {'demo'}})
+            self.assertEqual(profile['tools'], ['scripts/run.py', 'scripts/run_selftest.py'])
+            self.assertEqual(profile['connectors'], {'required': ['salesforce'], 'optional': [], 'source': 'guide'})
+            self.assertEqual(profile['setup'], 'A live org.')
+            self.assertEqual((profile['agents'], profile['plugins'], profile['bundles'], profile['usedBy']), (['solutioning-router'], ['estate-x'], ['evidence-core'], ['other']))
+            (folder/'skill.yaml').write_text('connectors:\n  required: []\n  optional: []\n')
+            profile = builder.skill_profile('demo', folder, resources, guide, {'setup': 'Needs a CLI.'}, role, {}, {}, {}, {})
+            self.assertEqual(profile['connectors']['source'], 'skill.yaml')
+            self.assertEqual(profile['setup'], 'Needs a CLI.')
+
+    def test_every_router_listed_skill_exists(self):
+        routes = builder.router_skills(ROOT)
+        missing = sorted(n for n in routes if not (ROOT/'skills'/n/'SKILL.md').is_file())
+        self.assertEqual(missing, [])
+
 class DownloadVariantTests(unittest.TestCase):
     def render(self, downloads):
         with tempfile.TemporaryDirectory() as temp:
