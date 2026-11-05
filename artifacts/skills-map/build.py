@@ -207,6 +207,84 @@ def load_showcase(root, current):
 
 DOWNLOADS=re.compile(r'<!--downloads-->.*?<!--/downloads-->|/\*downloads\*/.*?/\*/downloads\*/',re.S)
 
+TOOL_SUFFIXES = ('.py', '.cjs', '.mjs', '.js', '.sh')
+
+def manifest_fields(path):
+    """Read the few skill.yaml fields the map shows. The estate uses only the standard library, so
+    this handles the manifest's simple layout: top-level keys, scalar lists, lists of mappings with
+    scalar values, and one level of nested mappings with scalar lists (connectors)."""
+    if not path.is_file():
+        return None
+    data, key, sub, item = {}, None, None, None
+    for line in path.read_text().splitlines():
+        if not line.strip() or line.lstrip().startswith('#'):
+            continue
+        indent = len(line) - len(line.lstrip())
+        text = line.strip()
+        if text.startswith('- ') and indent <= 2 and key and not isinstance(data.get(key), dict):
+            indent = 1  # list items may sit at the key's own margin
+        if indent == 0 and ':' not in text:
+            continue  # continuation of a wrapped scalar
+        if indent == 0:
+            key, sub, item = text.split(':', 1)[0], None, None
+            value = text.split(':', 1)[1].strip()
+            data[key] = [] if value in ('', '[]') else value.strip('"\'')
+        elif text.startswith('- '):
+            value = text[2:].strip()
+            target = data[key][sub] if isinstance(data.get(key), dict) and sub else data.setdefault(key, [])
+            if not isinstance(target, list):
+                target = data[key] = []
+            if ':' in value and not value.startswith(('"', "'")):
+                k, v = value.split(':', 1); item = {k.strip(): v.strip().strip('"\'')}; target.append(item)
+            else:
+                item = None; target.append(value.strip('"\''))
+        elif ':' in text:
+            k, v = text.split(':', 1); k, v = k.strip(), v.strip()
+            if item is not None and (indent >= 4 or not isinstance(data.get(key), dict)):
+                item[k] = v.strip('"\'')
+            else:
+                if not isinstance(data.get(key), dict):
+                    data[key] = {}
+                sub = k; item = None
+                data[key][k] = [] if v in ('', '[]') else v.strip('"\'')
+    return data
+
+def router_skills(root):
+    """Map each skill to the router agents that list it under Available skills."""
+    routes = {}
+    for path in sorted((root / 'agents').glob('*-router.md')):
+        text = path.read_text()
+        section = re.search(r'^## Available skills\n(.*?)(?=^## |\Z)', text, re.M | re.S)
+        for name in re.findall(r'^- `([a-z0-9-]+)`', section[1] if section else '', re.M):
+            routes.setdefault(name, []).append(path.stem)
+    return routes
+
+def skill_profile(name, folder, resources, guide, reuse, role, dependencies, used_by, routes, bundle_entries={}):
+    manifest = manifest_fields(folder / 'skill.yaml') or {}
+    connectors = manifest.get('connectors') if isinstance(manifest.get('connectors'), dict) else None
+    authored = (guide or {}).get('connectors')
+    if connectors is not None:
+        connectors = {'required': connectors.get('required') or [], 'optional': connectors.get('optional') or [], 'source': 'skill.yaml'}
+    elif isinstance(authored, dict):
+        connectors = {'required': authored.get('required', []), 'optional': authored.get('optional', []), 'source': 'guide'}
+    outputs = [o for o in manifest.get('outputs', []) if isinstance(o, dict)]
+    return {
+        'tools': [r['path'] for r in resources if r['path'].startswith('scripts/') and r['path'].endswith(TOOL_SUFFIXES)],
+        'connectors': connectors,
+        'outputs': [{'name': o.get('name', ''), 'format': o.get('format', '')} for o in outputs],
+        'modes': role['modes'],
+        'agents': routes.get(name, []),
+        'plugins': sorted(n for n, entries in bundle_entries.items() if entries & ({*role['tasks'], *(m['task'] for m in role['modes'])})),
+        'bundles': dependencies.get(name, []),
+        'usedBy': sorted(used_by.get(name, [])),
+        'calls': [c for c in manifest.get('calls', []) if isinstance(c, str)],
+        'dependsOn': [c for c in manifest.get('depends_on', []) if isinstance(c, str)],
+        'runtimes': [r for r in manifest.get('runtimes', []) if isinstance(r, str)],
+        'setup': (reuse or {}).get('setup', '') or (guide or {}).get('requires', ''),
+        'expect': (guide or {}).get('expect', ''),
+        'declared': bool(manifest),
+    }
+
 def render_snapshot(data,output,downloads=True):
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     template=(HERE/'template.html').read_text()
@@ -241,6 +319,13 @@ def build(args):
     from portable import runtime_closure
     task_catalog=task_entries(root)
     package_members={task:{item['source'],*task_dependencies(root,item,runtime_closure)} for task,item in task_catalog.items()}
+    dependencies = json.loads((root/'config/runtime-dependencies.json').read_text()) if (root/'config/runtime-dependencies.json').is_file() else {}
+    used_by = {}
+    for owner, needs in dependencies.items():
+        for need in needs:
+            used_by.setdefault(need, []).append(owner)
+    routes = router_skills(root)
+    bundle_entries = {n: set(b.get('entries', [])) for n, b in json.loads((root/'config/plugin-bundles.json').read_text())['bundles'].items()} if (root/'config/plugin-bundles.json').is_file() else {}
     skills = []
     for name, (folder, extra) in sorted(folders.items()):
         if name not in GROUPS: raise ValueError('Assign a family before building: '+name)
@@ -287,6 +372,7 @@ def build(args):
             'downloadPackages':[task for task,members in package_members.items() if name in members],
             'guide':guide if guide_current else None, 'guideStatus':'current' if guide_current else 'needs-review', 'reuse':reuse,
             'catalogRole':role,
+            'profile':skill_profile(name, folder, resources, guide if guide_current else None, reuse, role, dependencies, used_by, routes, bundle_entries),
             'markdown':source, 'html':markdown(readable_body(body)), 'excerptHtml':''.join(markdown(p) for p in excerpt),
             'headings':headings, 'mentions':links, 'resources':resources})
     showcase = load_showcase(root, {s['id']: s['sourceSha256'] for s in skills})

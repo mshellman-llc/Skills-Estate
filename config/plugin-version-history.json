@@ -84,6 +84,10 @@
     "0.2.20": {
       "content_sha256": "53c28d80dd18072f20d8b5ca8e75a80fa91221e7239b9cd54d6251c222b7176e",
       "note": "Add showcase examples for brand-renderer, review-site-kit and sf-headless-screenshot"
+    },
+    "0.2.21": {
+      "content_sha256": "a2b7f0d2914006c610dcfdfa100dfc5260f5ef0ffc8db479fa79009b7ec84130",
+      "note": "Skill profiles on the map: what to expect, connectors and requirements in the skill guide"
     }
   }
 }
