@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.2.20",
+  "version": "0.2.21",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -196,8 +196,8 @@
   "release": {
     "shared": {
       "status": "accepted",
-      "reviewed_sha256": "b3be560d73bea400e63bf9daa8d6586e5d7a8233d0fc514f7744287e783ed5b5",
-      "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Direct owner re-approval in Claude Code on 2026-11-05 of the shared assembly as changed by PRs #51 and #52 (main aa030be); no separate per-subject review note"
+      "reviewed_sha256": "6c6889a22327d3e21c9213b8c7b695a38ec461cad1a7fbe4acd8bdec34519c73",
+      "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Writing Integrity 0.2.21 release approval on 2026-11-05; reviewed label guidance and version-only shared update; 601 executed checks passed, 14 integrations deferred to CI; targeted isolated installation verified."
     },
     "modules": {
       "accessibility-audit": {
@@ -617,8 +617,8 @@
       },
       "writing-integrity": {
         "status": "accepted",
-        "reviewed_sha256": "429a2314ab0f03ba2d855fae48f028705989a718ac49e3c0ff3eef806ee84e27",
-        "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Direct owner approval in Claude Code on 2026-11-05 covering every pending and stale subject at main 3076350 (after PRs #42-#48); no separate per-subject review note"
+        "reviewed_sha256": "7c7a63f8d9a6670820d8bfdb74104316500ed6e709fe493ed67e5dc8f2fb353f",
+        "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Writing Integrity 0.2.21 release approval on 2026-11-05; reviewed label guidance and version-only shared update; 601 executed checks passed, 14 integrations deferred to CI; targeted isolated installation verified."
       },
       "writing-style-builder": {
         "status": "accepted",
