@@ -92,6 +92,10 @@
     "0.2.22": {
       "content_sha256": "b4d6a64e69864d8affeeeca18aa53d4bc6f41f908903b48cefffffd4133a625c",
       "note": "Skill profiles on the map: what to expect, connectors and requirements in the skill guide"
+    },
+    "0.2.24": {
+      "content_sha256": "f9b958f0e7b63aad1f85793fedc68d5b9822735422616f78d87744cc1a29b0cf",
+      "note": "Broaden The-plus-noun review across authored text and preserve each claim scope when removing repeated frames; replaces the tested, unpublished 0.2.23 candidate."
     }
   }
 }
