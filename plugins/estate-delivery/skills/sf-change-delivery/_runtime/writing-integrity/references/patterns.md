@@ -24,7 +24,7 @@ Preserve ordinary articles, meaningful proper names, informative headings and pu
 
 Retain version and decision identifiers such as `v2`, `v3` and `DEC-014` when they distinguish records; add a plain-language explanation if needed. “The copy Priya has, sent Monday” cannot replace `v2` when exact version identity matters. Remove a decorative code only when it has no identifying or operational purpose.
 
-This is an editorial review of the recurring construction and its context. Do not claim that the bundled scanner detects it unless its output demonstrates that capability.
+This remains an editorial review of the recurring construction and its context. The bundled `C24-formulaic-the-framing` diagnostic reports candidates: two distinct anchored frames, or three distinct short “The” labels. It includes headings, structured labels and repeated prose announcements. Three labels can trigger without any known noun vocabulary; prose announcements use a limited set of anchors. Sparse, longer or unfamiliar prose frames can be missed. Legitimate titles and purposeful repetition can also match. Read the context, preserve justified wording and exact quotations, and never treat the diagnostic as an instruction to rename everything it reports. It does not rewrite text or prove complete editorial coverage.
 
 ## Claims of authority or importance
 

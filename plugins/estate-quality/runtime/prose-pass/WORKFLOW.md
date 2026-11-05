@@ -33,6 +33,16 @@ fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 mean
 the check could not finish. Read its output and the complete document. Repair
 the argument or sentence that caused a finding, then rerun the check.
 
+`C24-formulaic-the-framing` reports recurring label and announcement shapes as
+review candidates. It does not establish that a name or quotation is wrong.
+Keep a justified match unchanged and record the reason when a review record is
+required. A retained candidate still produces exit 1; do not claim a clean scan
+or change a valid passage solely to obtain exit 0.
+For a receipt, use `--retain-framing-reason "REASON" --retention-source "SOURCE"`
+with `prose_receipt.py emit` after reading every candidate. The assessment is
+bound to the artifact hash and applies only to C24; it cannot waive other rules.
+The validator checks the record. The reviewer remains responsible for the judgment.
+
 Do not change the filename, label prose internal or put authored wording in a
 quote to obtain a pass. A literal source span remains verbatim only when its
 source and exact extent are identified in the internal review record. Keep

@@ -60,6 +60,30 @@ Fingerprints left by an editor managing AI output rather than patterns AI wrote:
 - **Class C, correction hedging**: cut `It's important to clarify...`, `Results may vary...`, and `In most cases...`. Name any genuine exception.
 - **Class D, editorial framing**: cut `To provide context...`, `With that in mind...`, and `Building on the above...`. Connect the sentences directly or fix the paragraph order.
 
+## Repeated framing candidates (C24)
+
+`C24-formulaic-the-framing` reports recurring “The + noun” labels and prose
+announcements as `WARN` candidates. Two distinct anchored frames, or three
+distinct short labels, trigger a document-level review. Repeated copies of one
+stable name do not trigger it. Anchors help identify vague framing in prose;
+they are not banned words. Three short labels can trigger with unfamiliar nouns.
+
+The detector reads extracted authored text from the existing input adapters.
+Its sample line numbers refer to that extracted text, not original slide or
+source coordinates. Quotes, code formatting and internal file names do not
+disable review. The scanner never changes those spans. Preserve exact evidence,
+identifiers, meaningful names and deliberate repetition when reviewing a match.
+An intentional set such as “The Witness,” “The Messenger” and “The Keeper” can
+match when presented as standalone labels. That needs a contextual decision,
+not forced renaming. A clean result can miss long labels and unfamiliar prose
+frames. The broader Writing Integrity review still applies.
+
+New prose receipts identify the checker code and configuration. A retained C24
+assessment requires that fingerprint as well as the artifact hash, reason and
+source reference. A changed checker requires renewed review. Older installed
+validators cannot gain this capability from a new receipt alone; migrate the
+whole scanner, receipt and quality-gate dependency chain together.
+
 ## Word choice (scanner-enforced: C18-C21, C23)
 
 - **Copula avoidance** (C18): `serves as` and `stands as` replace is or are. Keep another verb only when it adds meaning.

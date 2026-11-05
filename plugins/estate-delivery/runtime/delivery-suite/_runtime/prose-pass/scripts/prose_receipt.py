@@ -79,6 +79,17 @@ def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def checker_fingerprint() -> str:
+    """Identify the code/config used by this receipt's actual check path."""
+    names = ['authored_code.py', 'framing.py', 'prose_check.py', 'writing_check.py']
+    try:
+        rows = [(name, sha256_file(HERE / name)) for name in names]
+        rows.append(('house.json', sha256_file(CONFIG)))
+    except OSError as exc:
+        raise RuntimeError('Cannot inspect the bundled checker: ' + str(exc)) from exc
+    return hashlib.sha256(json.dumps(rows).encode()).hexdigest()
+
+
 def run_checker(path: Path) -> dict:
     """The checker's findings for one file, keyed by rule, with severities."""
     proc = subprocess.run(
@@ -138,6 +149,7 @@ def emit(args: argparse.Namespace) -> int:
         "artifact": str(artifact),
         "before_sha256": before_hash,
         "after_sha256": after_hash,
+        "checker_fingerprint": checker_fingerprint(),
         "protected": list(args.protected or []),
         "issues_found": {
             "before": issues_before,
@@ -146,6 +158,11 @@ def emit(args: argparse.Namespace) -> int:
         "changes_made": list(args.change or []),
         "no_change_justification": args.no_change_justification or None,
         "unresolved_flags": [],
+        "candidate_reviews": ([{
+            "rule": "C24-formulaic-the-framing", "decision": "retain",
+            "reason": args.retain_framing_reason,
+            "source_ref": args.retention_source,
+        }] if args.retain_framing_reason or args.retention_source else []),
         "figures_added": figures_added,
         "figure_check": {
             "ran": bool(args.before_file),
@@ -211,6 +228,29 @@ def validate_receipt(receipt: dict, quiet: bool = True) -> list:
 
     issues_now = run_checker(artifact)
     standing_findings = set(issues_now)
+    # C24 is a contextual candidate, not a mechanical defect. Its disposition
+    # is an explicit reading assessment bound to the artifact hash above.
+    # This never waives any other rule or proves the assessment is true.
+    reviews = receipt.get('candidate_reviews', [])
+    fingerprint = receipt.get('checker_fingerprint')
+    if fingerprint is not None and fingerprint != checker_fingerprint():
+        fail('checker-mismatch', 'The checker changed; recheck the artifact and its candidate assessments.')
+    if reviews and not fingerprint:
+        fail('checker-missing', 'A candidate assessment must name the checker fingerprint.')
+    if not isinstance(reviews, list) or len(reviews) > 1:
+        fail('candidate-review-shape', 'Supply at most one C24 retention assessment.')
+    else:
+        for review in reviews:
+            if (not isinstance(review, dict)
+                    or review.get('rule') != 'C24-formulaic-the-framing'
+                    or review.get('decision') != 'retain'
+                    or any(not isinstance(review.get(k), str) or not review[k].strip()
+                           for k in ('reason', 'source_ref'))):
+                fail('candidate-review-shape', 'C24 retention needs a reason and source reference.')
+            elif review['rule'] not in issues_now:
+                fail('candidate-review-stale', 'The retained C24 candidate is absent; review the current artifact.')
+            else:
+                standing_findings.discard(review['rule'])
     unresolved = receipt.get("unresolved_flags") or []
     if unresolved:
         fail("unresolved-not-allowed",
@@ -284,6 +324,10 @@ def main(argv=None) -> int:
                         help="why sound prose was left alone, when nothing changed")
     p_emit.add_argument("--added-figure", action="append",
                         help="VALUE:SOURCE for a number the rewrite added from evidence (repeatable)")
+    p_emit.add_argument('--retain-framing-reason',
+                        help='Contextual reason for retaining all C24 candidates in this artifact; waives no other rule')
+    p_emit.add_argument('--retention-source',
+                        help='Source reference supporting the C24 retention assessment')
     p_emit.set_defaults(func=emit)
 
     p_val = sub.add_parser("validate", help="re-derive and judge an existing receipt")

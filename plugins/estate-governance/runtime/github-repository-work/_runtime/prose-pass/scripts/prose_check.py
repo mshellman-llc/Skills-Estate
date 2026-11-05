@@ -29,6 +29,7 @@ import sys
 import zipfile
 from collections import Counter
 from pathlib import Path
+from framing import framing_candidates
 
 # --------------------------------------------------------------------------
 # Text extraction
@@ -412,6 +413,17 @@ def check(text: str, cfg=None):
     wordcount = max(len(words(text)), 1)
     lines = text.splitlines()
     sents = list(sentences(text))
+
+    framing = framing_candidates(text)
+    if framing:
+        findings.append(Finding(
+            'C24-formulaic-the-framing', 'WARN',
+            f'{len(framing)} distinct repeated The + noun frames are review candidates. '
+            'Read their content and purpose; this is not a verdict or a rename instruction. '
+            'Preserve ordinary grammar, deliberate names and repetition, exact quotations '
+            'and required identifiers. Locations refer to extracted text.',
+            [f"line {item['line']} ({item['shape']}): {item['sample']}" for item in framing],
+        ))
 
     def per(n, unit):
         return round(n * unit / wordcount, 2)

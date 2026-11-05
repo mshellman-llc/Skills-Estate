@@ -26,6 +26,42 @@ class Block:
         self.text, self.citation = text, citation
 
 
+class FramingText(str):
+    """Keep legacy extraction intact while supplying C24's formatted text view."""
+
+
+class HTMLFramingWords(HTMLParser):
+    """Join inline runs and separate visible block/navigation labels for C24."""
+    BLOCKS = {'p', 'div', 'br', 'li', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+              'dt', 'dd', 'blockquote', 'pre', 'tr', 'td', 'th', 'nav', 'section',
+              'article', 'header', 'footer', 'figcaption', 'button'}
+    VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
+            'meta', 'param', 'source', 'track', 'wbr'}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.parts, self.stack = [], []
+
+    def boundary(self, tag):
+        if tag in self.BLOCKS or tag == 'a' and 'nav' in self.stack:
+            self.parts.append('\n')
+
+    def handle_starttag(self, tag, attrs):
+        self.boundary(tag)
+        if tag not in self.VOID:
+            self.stack.append(tag)
+
+    def handle_endtag(self, tag):
+        self.boundary(tag)
+        if tag in self.stack:
+            index = len(self.stack) - 1 - self.stack[::-1].index(tag)
+            del self.stack[index:]
+
+    def handle_data(self, data):
+        if not {'script', 'style'}.intersection(self.stack):
+            self.parts.append(data)
+
+
 def structured_parts(value, path=()):
     if isinstance(value, str):
         yield Block(value, citation=path[-3:] == ('metadata', 'sourceLabels', '[]'))
@@ -189,14 +225,23 @@ def string_values(value):
 def authored_text(path):
     suffix = path.suffix.lower()
     if suffix in {'.docx', '.pptx', '.xlsx'}:
-        parts = []
+        parts, framing_parts = [], []
         with zipfile.ZipFile(path) as archive:
             for name in sorted(archive.namelist()):
                 if name.endswith('.xml'):
                     tree = ET.fromstring(archive.read(name))
                     parts.extend(node.text for node in tree.iter()
                                  if node.tag.rsplit('}', 1)[-1] in {'t', 'v'} and node.text)
-        return AuthoredText([Block('\n'.join(parts))]) if suffix == '.xlsx' else '\n'.join(parts)
+                    # Word/slide paragraphs and spreadsheet rich strings group
+                    # text runs that must not become separate label fragments.
+                    for unit in tree.iter():
+                        if unit.tag.rsplit('}', 1)[-1] in {'p', 'si', 'is'}:
+                            framing_parts.append(''.join(
+                                '\n' if node.tag.rsplit('}', 1)[-1] in {'br', 'cr'} else node.text or ''
+                                for node in unit.iter() if node.tag.rsplit('}', 1)[-1] in {'t', 'br', 'cr'}))
+        result = AuthoredText([Block('\n'.join(parts))]) if suffix == '.xlsx' else FramingText('\n'.join(parts))
+        result.framing_text = str(result) + '\n' + '\n'.join(framing_parts)
+        return result
     raw = path.read_text(encoding='utf-8')
     if '\x00' in raw:
         raise ValueError('Binary content is not supported; extract the text and review it explicitly.')
@@ -242,7 +287,11 @@ def authored_text(path):
     if suffix in {'.html', '.htm'}:
         parser = HTMLWords()
         parser.feed(raw)
-        return AuthoredText(parser.parts)
+        result = AuthoredText(parser.parts)
+        framing = HTMLFramingWords()
+        framing.feed(raw)
+        result.framing_text = str(result) + '\n' + ''.join(framing.parts)
+        return result
     # Markdown quoting, fences and audience labels do not exempt authored words.
     # Other UTF-8 source formats remain visible rather than silently disappearing.
     return raw
