@@ -24,7 +24,13 @@
     "usability-testing",
     "writing-integrity"
   ],
-  "review_gaps": [],
-  "source_sha256": "4509d95cf23ad40a51e57b86c626633bb998d8698d30d0b8d1cfffc02a5341be",
-  "status": "reviewed"
+  "review_gaps": [
+    {
+      "required_sha256": "d2cf20f6d6265b2ba4c85ec25db7349ee8f81f4ba238fccebc80cbc5878b06ee",
+      "status": "review required",
+      "subject": "shared assembly"
+    }
+  ],
+  "source_sha256": "1a37f133d76af17012f40b5b8667d579db6b1540f6e122b5cd176048cbc2ee51",
+  "status": "owner-published"
 }

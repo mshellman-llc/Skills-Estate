@@ -4,7 +4,7 @@
 
 Browse the workflows by work group, sort their names, and copy links to the matching GitHub groups. The site opens directly in a browser.
 
-Each overview explains the task and when to use it. It lists what to provide, what the skill produces and in which formats, an example request, and how to install it: the marketplace plugin, the Claude Code command and the runtimes its bundled scripts need. Filter by output format, intended audience or required setup.
+Each overview explains the task and when to use it. It lists what to provide, what the skill produces and in which formats, an example request, and how to install it: the marketplace plugin and the Claude Code command. Filter by output format, intended audience or required setup.
 
 The Follow a workflow view lists common jobs, such as building test cases from tracker tickets. Each step names the skill, what to give it and what it returns, and each workflow names the plugins to install. [The reuse review](../../browse/reuse-review.md) separates general-use methods from Megan-specific workflows and lists personal references that need attention before sharing.
 
@@ -14,7 +14,7 @@ The readable instructions omit managed policy blocks, source comments outside co
 
 ## Maintain the reader guides
 
-`config/skill-guide.json` holds the reader-facing summaries, each skill's output `formats`, the newcomer `workflows`, and the reviewed entrypoint hashes. Formats come from a fixed list checked by `tests/test_skill_guide.py`. Each workflow step names a mapped skill with `give` and `get` text; the builder rejects a step that names an unmapped skill. Install lines are computed from `config/plugin-bundles.json` and `.claude-plugin/marketplace.json`, and runtimes from each skill's bundled scripts. Review a guide against its source after changing the entrypoint. An unmatched hash makes the map show current source excerpts and a review notice instead of the old guide. Keep the full instructions and downloads unchanged when editing a summary.
+`config/skill-guide.json` holds the reader-facing summaries, each skill's output `formats`, the newcomer `workflows`, and the reviewed entrypoint hashes. Formats come from a fixed list checked by `tests/test_skill_guide.py`. Each workflow step names a mapped skill with `give` and `get` text; the builder rejects a step that names an unmapped skill. Install lines are computed from `config/plugin-bundles.json` and `.claude-plugin/marketplace.json`. Review a guide against its source after changing the entrypoint. An unmatched hash makes the map show current source excerpts and a review notice instead of the old guide. Keep the full instructions and downloads unchanged when editing a summary.
 
 `tools/skill_guide.py` scans workflow text, supporting files, declared runtime dependencies, and shared policies for named personal references. It separates examples and tests from workflow text. The audience classification describes intended use; it does not certify that a package works in another environment. The sharing review also identifies shared policy wording copied into every assembled package.
 
@@ -85,7 +85,7 @@ The full map embeds every instruction and example, about 5.5 MB. For a link that
 python3 artifacts/skills-map/share.py --output build/skills-map-share.html
 ```
 
-It keeps each skill's guide, formats, install line and runtimes, and every workflow, in about 120 KB. It leaves out full instructions, examples, connections and package downloads. `tests/test_map_share.py` checks that every skill and workflow appears and that the page stays under 150 KB.
+It keeps each skill's guide, formats, install line and setup requirement, and every workflow, in about 120 KB. It leaves out full instructions, examples, connections and package downloads. `tests/test_map_share.py` checks that every skill and workflow appears and that the page stays under 150 KB.
 
 ## Verify updates
 

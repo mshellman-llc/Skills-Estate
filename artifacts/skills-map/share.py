@@ -64,7 +64,7 @@ def formats(s):
 def card(s, market):
     g = s['guide'] or {'what': s['description'], 'when': '', 'inputs': '', 'outputs': '', 'example': ''}
     tags = f'<span class="tag">{ROLE[s["catalogRole"]["kind"]]}</span>' + ''.join(f'<span class="tag fmt">{e(f)}</span>' for f in formats(s))
-    needs = ([' and '.join(s['runtimes'])] if s.get('runtimes') else []) + ([s['reuse']['setup']] if (s.get('reuse') or {}).get('setup') else [])
+    needs = [s['profile']['setup']] if (s.get('profile') or {}).get('setup') else []
     needs_html = ('<p><strong>Needs:</strong> ' + '. '.join(e(n).rstrip('.') for n in needs) + '.</p>') if needs else ''
     return (f'<details class="skill" id="skill-{e(s["id"])}"><summary><span class="t">{e(s["title"])}</span><span class="w">{e(g["what"])}</span><span class="tags">{tags}</span></summary>'
             f'<dl><dt>When to use it</dt><dd>{e(g["when"])}</dd><dt>What to give it</dt><dd>{e(g["inputs"])}</dd><dt>What you get</dt><dd>{e(g["outputs"])}</dd>'

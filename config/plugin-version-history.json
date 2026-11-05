@@ -90,7 +90,11 @@
       "note": "Add Writing Integrity guidance for repeated The-plus-noun labels while preserving meaningful names, intentional style and exact identifiers."
     },
     "0.2.22": {
-      "content_sha256": "ef906ae99322941a2c75f4042575629aea4e818a8941ffbae08dfdb44454d92a",
+      "content_sha256": "b4d6a64e69864d8affeeeca18aa53d4bc6f41f908903b48cefffffd4133a625c",
+      "note": "Skill profiles on the map: what to expect, connectors and requirements in the skill guide"
+    },
+    "0.2.23": {
+      "content_sha256": "a895d1433f3f416de460ca5fcdcf2c3af8637e105c56525a2b220b806912bc2b",
       "note": "Map reader guides gain output formats and newcomer workflows; the map adds install lines and a sharing edition"
     }
   }
