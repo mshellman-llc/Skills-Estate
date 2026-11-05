@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build a portable, offline map from complete SKILL.md entrypoints (stdlib only)."""
-import argparse, base64, hashlib, html, json, re, subprocess
+import argparse, hashlib, html, json, re, subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -208,14 +208,42 @@ def load_showcase(root, current):
 def render_snapshot(data,output):
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     template=(HERE/'template.html').read_text()
-    faces=[]
-    for weight,name in [(400,'Regular'),(600,'SemiBold'),(700,'Bold')]:
-        font=base64.b64encode((HERE/f'assets/fonts/PlusJakartaSans-{name}.ttf').read_bytes()).decode()
-        faces.append('@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:'+str(weight)+';font-display:swap;src:url(data:font/ttf;base64,'+font+') format("truetype")}')
-    notice=html.escape((HERE/'assets/fonts/OFL.txt').read_text())
-    result=template.replace('__MAP_FONT_FACES__','\n'.join(faces)).replace('__ESTATE_DATA__',encoded)
-    result=result.replace('</head>','<script type="text/plain" id="font-license">'+notice+'</script>\n</head>')
-    Path(output).write_text(result)
+    Path(output).write_text(template.replace('__ESTATE_DATA__',encoded))
+
+RUNTIMES = (('Python 3', ('.py',)), ('Node.js', ('.js', '.cjs', '.mjs')))
+
+def runtimes(resources):
+    """Name the interpreters a skill's bundled scripts need, from its own package files."""
+    scripts=[x['path'] for x in resources if x['path'].startswith('scripts/') and '_selftest' not in x['path'] and not x['path'].startswith('scripts/test')]
+    return [label for label,suffixes in RUNTIMES if any(p.endswith(suffixes) for p in scripts)]
+
+def plugin_map(root):
+    """Map each task package to the marketplace plugin that installs it."""
+    path=root/'config/plugin-bundles.json'
+    if not path.is_file(): return {}
+    bundles=json.loads(path.read_text())['bundles']
+    return {task:{'plugin':name,'optIn':bool(item.get('opt_in'))} for name,item in bundles.items() for task in item['entries']}
+
+def marketplace(root):
+    path=root/'.claude-plugin/marketplace.json'
+    return json.loads(path.read_text())['name'] if path.is_file() else None
+
+def load_workflows(root, names):
+    """Newcomer workflows from the reader-guide config; every step must name a mapped skill."""
+    path=root/'config/skill-guide.json'
+    items=json.loads(path.read_text()).get('workflows',[]) if path.is_file() else []
+    seen=set()
+    for item in items:
+        if item['id'] in seen: raise ValueError('Duplicate workflow id: '+item['id'])
+        seen.add(item['id'])
+        for field in ('title','when','note'):
+            if not str(item.get(field,'')).strip(): raise ValueError(f'Workflow {item["id"]} needs {field}')
+        if not item.get('steps'): raise ValueError(f'Workflow {item["id"]} needs steps')
+        for step in item['steps']:
+            if step.get('skill') not in names: raise ValueError(f'Workflow {item["id"]} names an unmapped skill: {step.get("skill")}')
+            for field in ('give','get'):
+                if not str(step.get(field,'')).strip(): raise ValueError(f'Workflow {item["id"]} step {step["skill"]} needs {field}')
+    return items
 
 def build(args):
     root = args.repo.resolve(); baseline = (args.baseline_repo or root).resolve()
@@ -240,6 +268,7 @@ def build(args):
     from catalog import entries as task_entries, dependencies as task_dependencies
     from portable import runtime_closure
     task_catalog=task_entries(root)
+    plugins=plugin_map(root)
     package_members={task:{item['source'],*task_dependencies(root,item,runtime_closure)} for task,item in task_catalog.items()}
     skills = []
     for name, (folder, extra) in sorted(folders.items()):
@@ -287,13 +316,19 @@ def build(args):
             'downloadPackages':[task for task,members in package_members.items() if name in members],
             'guide':guide if guide_current else None, 'guideStatus':'current' if guide_current else 'needs-review', 'reuse':reuse,
             'catalogRole':role,
+            'install':[{'task':task,**plugins[task]} for task in dict.fromkeys(primary+[m['task'] for m in modes]) if task in plugins],
+            'runtimes':runtimes(resources),
             'markdown':source, 'html':markdown(readable_body(body)), 'excerptHtml':''.join(markdown(p) for p in excerpt),
             'headings':headings, 'mentions':links, 'resources':resources})
     showcase = load_showcase(root, {s['id']: s['sourceSha256'] for s in skills})
     for s in skills:
+        if not s['install'] and s['catalogRole']['kind']=='support':
+            bundled={plugins[task]['plugin']:plugins[task] for task in s['downloadPackages'] if task in plugins}
+            s['install']=[{'task':None,**item,'bundled':True} for _,item in sorted(bundled.items())]
+    for s in skills:
         s['examples'] = showcase.get(s['id'], [])
     data={'schemaVersion':1, 'generatedAt':datetime.now(timezone.utc).isoformat(), 'baseCommit':ref,
-          'repository':'mshellman-llc/Skills-Estate', 'families':[{'id':g['id'],'title':g['title'],'description':g['description']} for g in load_groups(HERE.parents[1],check_coverage=False)], 'skills':skills}
+          'repository':'mshellman-llc/Skills-Estate', 'marketplace':marketplace(root), 'workflows':load_workflows(root,{s['id'] for s in skills}), 'families':[{'id':g['id'],'title':g['title'],'description':g['description']} for g in load_groups(HERE.parents[1],check_coverage=False)], 'skills':skills}
     data['counts']={s:sum(x['status']==s for x in skills) for s in ['github','local-revision','local-addition']}
     data['counts']['canonical']=sum(x['id'] in base_skills for x in skills)
     data['counts']['total']=len(skills)

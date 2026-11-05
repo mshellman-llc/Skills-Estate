@@ -80,6 +80,10 @@
     "0.2.19": {
       "content_sha256": "53c28d80dd18072f20d8b5ca8e75a80fa91221e7239b9cd54d6251c222b7176e",
       "note": "Remove personal references flagged for sharing cleanup: brand policy wording, career-application folder name, beastmode-health description; the reuse scan no longer counts skill identifiers as personal references"
+    },
+    "0.2.20": {
+      "content_sha256": "56212be83156e6c73d59c88ba13a5549685534835d9cf4ce1ab0fe4e3d1123a6",
+      "note": "Map reader guides gain output formats and newcomer workflows; the map drops its embedded font and adds a sharing edition"
     }
   }
 }

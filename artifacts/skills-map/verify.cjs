@@ -27,7 +27,7 @@ const {chromium}=require('playwright');
   assert.equal(await page.locator('#detail-title').textContent(),skill.title);
   if(skill.guide){
    const overview=await page.locator('#panel-overview').innerText();
-   for(const phrase of ['What it does','When to use it','What to give it','What you get','How to start','Built for'])assert(overview.includes(phrase));
+   for(const phrase of ['What it does','When to use it','What to give it','What you get','How to start','How to install','Built for'])assert(overview.includes(phrase));
    assert(!overview.includes('ESTATE-WRITING'));
    assert(overview.includes(skill.reuse.label));
   }
@@ -56,6 +56,8 @@ const {chromium}=require('playwright');
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
   await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').evaluate(e=>e.open),false);
  }
+ // Secondary filters sit in a collapsed panel; open it before using them.
+ await page.locator('#more-options > summary').click();
  // Combined query/family/status filtering and empty recovery.
  await page.locator('#search').fill('scope');
  const scopeIds=await page.locator('.skill-row').evaluateAll(es=>es.map(e=>e.dataset.skill));assert(scopeIds.length>0&&scopeIds.length<data.skills.length);
@@ -82,7 +84,7 @@ const {chromium}=require('playwright');
  await page.locator(`.skill-row[data-skill="${chosen.id}"]`).click();await page.screenshot({path:path.join(output,'detail.png')});
  await page.locator('#tab-connections').click();
  if(chosen.mentions.length){await page.locator('#panel-connections [data-skill]').first().click();assert.notEqual(await page.locator('#detail-title').textContent(),chosen.title)}
- await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),6);await page.screenshot({path:path.join(output,'workflows.png')});
+ await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),data.workflows.length);for(const w of data.workflows){const text=await page.locator('#workflow-'+w.id).innerText();for(const step of w.steps){assert(text.includes(step.give));assert(text.includes(step.get))}}await page.screenshot({path:path.join(output,'workflows.png')});
  await page.locator('.route [data-skill]').first().click();assert(await page.locator('#detail').evaluate(e=>e.open));await page.keyboard.press('Escape');await page.locator('#browse-view').click();
  // Full instruction search and status counts.
  await page.locator('#full-search').check();await page.locator('#search').fill('ESTATE-WRITING');assert.equal(await page.locator('.skill-row').count(),0);await page.locator('#search').fill('expected-source');assert((await page.locator('.skill-row').count())>0);await page.locator('#reset').click();
@@ -98,6 +100,9 @@ const {chromium}=require('playwright');
  await page.locator('#has-examples').check();assert.equal(await page.locator('.skill-row').count(),data.skills.filter(s=>(s.examples||[]).length).length);await page.locator('#reset').click();assert.equal(await page.locator('#has-examples').isChecked(),false);
  for(const role of ['task','mode','support']){await page.locator('#role-filter').selectOption(role);assert.equal(await page.locator('.skill-row').count(),data.skills.filter(s=>s.catalogRole.kind===role).length)}
  await page.locator('#reset').click();
+ const formats=[...new Set(data.skills.flatMap(s=>s.guide?.formats||[]))];
+ for(const f of formats){await page.locator('#format-filter').selectOption(f);assert.equal(await page.locator('.skill-row').count(),data.skills.filter(s=>(s.guide?.formats||[]).includes(f)).length)}
+ await page.locator('#reset').click();
  // No external requests, mobile overflow, detail layout, and print media.
  await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(output,'mobile.png'),fullPage:false});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));
@@ -105,6 +110,6 @@ const {chromium}=require('playwright');
  assert(await page.locator('#detail').evaluate(e=>e.scrollWidth<=e.clientWidth));await page.keyboard.press('Escape');
  await page.setViewportSize({width:1440,height:1100});await page.locator('[data-family="0"]').click();await page.emulateMedia({media:'print'});await page.pdf({path:path.join(output,'print.pdf'),format:'Letter',printBackground:true});await page.screenshot({path:path.join(output,'print.png')});
  assert.equal(errors.length,0,errors.join('\n'));assert.equal(requests.length,0,'Offline artifact must not load network resources');
- const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','dialog focus','arrow-key tabs','examples tab and labels','examples filter','connections','six workflow routes','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
+ const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','dialog focus','arrow-key tabs','examples tab and labels','examples filter','connections','workflow steps and install lines','output format filter','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
  fs.writeFileSync(path.join(output,'browser-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

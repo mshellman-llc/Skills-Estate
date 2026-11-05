@@ -9,6 +9,9 @@ sys.path.insert(0, str(ROOT/'tools'))
 from skill_guide import load, assessment, overview_excerpt, readable_body, report
 from catalog import source_names
 
+OUTPUT_FORMATS = {'Chat reply', 'Markdown file', 'Excel workbook', 'Word document', 'PowerPoint deck', 'PDF', 'CSV', 'JSON',
+                  'HTML page', 'Images', 'Code or repository change', 'Record update', 'ZIP package'}
+
 class ReaderGuideTests(unittest.TestCase):
     def test_every_workflow_has_a_hash_bound_guide(self):
         guides = load(ROOT)
@@ -20,6 +23,24 @@ class ReaderGuideTests(unittest.TestCase):
                     self.assertTrue(guide[field].strip())
                     self.assertNotIn('ESTATE-WRITING', guide[field])
                 self.assertRegex(guide['reviewedEntrypointSha256'], r'^[a-f0-9]{64}$')
+                self.assertTrue(guide['formats'])
+                self.assertLessEqual(set(guide['formats']), OUTPUT_FORMATS)
+                self.assertEqual(len(guide['formats']), len(set(guide['formats'])))
+
+    def test_workflows_name_mapped_skills_and_say_what_each_step_takes_and_returns(self):
+        config = json.loads((ROOT/'config/skill-guide.json').read_text())
+        names = source_names(ROOT)
+        ids = [w['id'] for w in config['workflows']]
+        self.assertEqual(len(ids), len(set(ids)))
+        for workflow in config['workflows']:
+            with self.subTest(workflow=workflow['id']):
+                for field in ('title', 'when', 'note'):
+                    self.assertTrue(workflow[field].strip())
+                self.assertGreaterEqual(len(workflow['steps']), 2)
+                for step in workflow['steps']:
+                    self.assertIn(step['skill'], names)
+                    self.assertTrue(step['give'].strip())
+                    self.assertTrue(step['get'].strip())
 
     def test_shared_workflow_no_longer_assigns_personal_ownership(self):
         original = load(ROOT)['journey-mapping']
