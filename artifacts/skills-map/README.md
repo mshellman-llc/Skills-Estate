@@ -65,7 +65,15 @@ python3 tools/browse.py --bundle
 
 Each mapped workflow retains its exact entrypoint Markdown and hash. Connections quote literal skill-name references from those instructions. Supporting files are inventoried; their contents remain in the skill packages. Families and suggested routes support navigation; the instructions determine which workflow applies.
 
-The map retains the navy, teal, sand, and embedded Plus Jakarta Sans design of the current artifact. The fonts' SIL Open Font License is included. The artifact-specific design leaves the global brand policy unchanged.
+The map keeps the navy, teal and sand colors and uses the reader's system font. The default view shows search, the family list and a short legend. Secondary filters and the sharing review sit under "More filters and sharing details". The GitHub status and group links are in the footer. The artifact-specific design leaves the global brand policy unchanged.
+
+The claude.ai artifact viewer cannot save files, so the copy published there is built without download buttons or download code:
+
+```bash
+python3 artifacts/skills-map/build.py --base origin/main --no-downloads --output <scratch path>/skills-map.html
+```
+
+The default build, which the local viewer and the hosted site use, keeps the "Download SKILL.md" and "Download skill packages" buttons. The template marks those parts with `<!--downloads-->` and `/*downloads*/` comments.
 
 ## Verify updates
 
