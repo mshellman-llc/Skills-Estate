@@ -86,7 +86,11 @@
       "note": "Add showcase examples for brand-renderer, review-site-kit and sf-headless-screenshot"
     },
     "0.2.21": {
-      "content_sha256": "56212be83156e6c73d59c88ba13a5549685534835d9cf4ce1ab0fe4e3d1123a6",
+      "content_sha256": "9637d162469f56240264445752fffd848ef0fadec1d7e29e324e2604546a1b62",
+      "note": "Add Writing Integrity guidance for repeated The-plus-noun labels while preserving meaningful names, intentional style and exact identifiers."
+    },
+    "0.2.22": {
+      "content_sha256": "ef906ae99322941a2c75f4042575629aea4e818a8941ffbae08dfdb44454d92a",
       "note": "Map reader guides gain output formats and newcomer workflows; the map adds install lines and a sharing edition"
     }
   }
