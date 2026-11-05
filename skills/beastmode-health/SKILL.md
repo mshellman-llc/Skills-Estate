@@ -1,6 +1,6 @@
 ---
 name: beastmode-health
-description: 'Diagnose the BeastMode knowledge hub when saves fail, context looks stale or missing, connections drop, ingestion or maintenance stops, or budgets run out. Reports scoped evidence. Read-only unless the user also asks for a repair; never starts new recurring jobs.'
+description: 'Diagnose the knowledge hub when saves fail, context looks stale or missing, connections drop, ingestion or maintenance stops, or budgets run out. Reports scoped evidence. Read-only unless the user also asks for a repair; never starts new recurring jobs.'
 metadata:
   version: "2026.10.01.2"
 ---
