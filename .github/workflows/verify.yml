@@ -97,5 +97,6 @@ jobs:
             artifacts/skills-map/index.json
             artifacts/skills-map/viewer.py
             artifacts/skills-map/open-map.command
+            artifacts/skills-map/assets/fonts/OFL.txt
           if-no-files-found: error
           retention-days: 30

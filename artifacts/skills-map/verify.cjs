@@ -15,7 +15,9 @@ const {chromium}=require('playwright');
  page.on('pageerror',e=>errors.push(e.message));
  const preview=process.env.MAP_PREVIEW_URL;
  page.on('request',r=>{if(/^https?:/.test(r.url())&&(!preview||new URL(r.url()).origin!==new URL(preview).origin))requests.push(r.url())});
- await page.goto(preview||pathToFileURL(input).href);await page.evaluate(()=>document.fonts.ready);
+ await page.goto(preview||pathToFileURL(input).href);
+ // Secondary filters live in a collapsed panel; open it so every control is reachable.
+ await page.locator('#more-options > summary').click();assert.equal(await page.locator('#more-options').evaluate(e=>e.open),true);await page.evaluate(()=>document.fonts.ready);
  assert.equal(await page.locator('.skill-row').count(),data.skills.length);
  await page.screenshot({path:path.join(output,'desktop.png')});
  fs.writeFileSync(path.join(output,'rendered.html'),await page.content());
@@ -56,8 +58,6 @@ const {chromium}=require('playwright');
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
   await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').evaluate(e=>e.open),false);
  }
- // Secondary filters sit in a collapsed panel; open it before using them.
- await page.locator('#more-options > summary').click();
  // Combined query/family/status filtering and empty recovery.
  await page.locator('#search').fill('scope');
  const scopeIds=await page.locator('.skill-row').evaluateAll(es=>es.map(e=>e.dataset.skill));assert(scopeIds.length>0&&scopeIds.length<data.skills.length);

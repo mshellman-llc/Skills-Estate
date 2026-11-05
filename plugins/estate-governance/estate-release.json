@@ -24,7 +24,13 @@
     "skill-estate-sync",
     "writing-integrity"
   ],
-  "review_gaps": [],
-  "source_sha256": "dfaebe91e8a7edb688ddee0b8537b2d67ee62414d3b75a9449297aadda883798",
-  "status": "reviewed"
+  "review_gaps": [
+    {
+      "required_sha256": "b3be560d73bea400e63bf9daa8d6586e5d7a8233d0fc514f7744287e783ed5b5",
+      "status": "review required",
+      "subject": "shared assembly"
+    }
+  ],
+  "source_sha256": "f59e2730e01489f1845a78a36bae60efb3892c3793f390224a4d884a1848d9f3",
+  "status": "owner-published"
 }

@@ -205,9 +205,16 @@ def load_showcase(root, current):
         items.sort(key=lambda x: (x['source'] != 'real-redacted', x['date'], x['id']), reverse=False)
     return examples
 
-def render_snapshot(data,output):
+DOWNLOADS=re.compile(r'<!--downloads-->.*?<!--/downloads-->|/\*downloads\*/.*?/\*/downloads\*/',re.S)
+
+def render_snapshot(data,output,downloads=True):
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     template=(HERE/'template.html').read_text()
+    if not downloads:
+        # Hosts that cannot save files (the claude.ai artifact viewer) get no download controls or download code.
+        template=DOWNLOADS.sub('',template)
+    else:
+        template=template.replace('<!--downloads-->','').replace('<!--/downloads-->','').replace('/*downloads*/','').replace('/*/downloads*/','')
     Path(output).write_text(template.replace('__ESTATE_DATA__',encoded))
 
 RUNTIMES = (('Python 3', ('.py',)), ('Node.js', ('.js', '.cjs', '.mjs')))
@@ -335,7 +342,7 @@ def build(args):
     data['counts']['withExamples']=sum(bool(x['examples']) for x in skills)
     encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     output=args.output.resolve(); output.parent.mkdir(parents=True,exist_ok=True)
-    render_snapshot(data,output)
+    render_snapshot(data,output,downloads=not getattr(args,'no_downloads',False))
     output.with_suffix('.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'output':str(output),'base':ref,'counts':data['counts']}))
     return data
@@ -347,4 +354,5 @@ if __name__=='__main__':
     p.add_argument('--baseline-repo',type=Path,help='Git checkout containing the compared commit; defaults to --repo')
     p.add_argument('--extra',type=Path,action='append',default=[],help='Explicit local skill folder; can repeat')
     p.add_argument('--output',type=Path,default=HERE/'index.html')
+    p.add_argument('--no-downloads',action='store_true',help='Omit download buttons and code, for hosts that cannot save files such as the claude.ai artifact viewer')
     build(p.parse_args())

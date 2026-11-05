@@ -6,7 +6,7 @@ Browse the workflows by work group, sort their names, and copy links to the matc
 
 Each overview explains the task and when to use it. It lists what to provide, what the skill produces and in which formats, an example request, and how to install it: the marketplace plugin, the Claude Code command and the runtimes its bundled scripts need. Filter by output format, intended audience or required setup.
 
-The Follow a workflow view lists common jobs, such as building test cases from tracker tickets. Each step names the skill, what to give it and what it returns, and each workflow names the plugins to install. The default view shows search, the output filter and the guide; the other filters and the sharing review sit under More filters and sharing details. [The reuse review](../../browse/reuse-review.md) separates general-use methods from Megan-specific workflows and lists personal references that need attention before sharing.
+The Follow a workflow view lists common jobs, such as building test cases from tracker tickets. Each step names the skill, what to give it and what it returns, and each workflow names the plugins to install. [The reuse review](../../browse/reuse-review.md) separates general-use methods from Megan-specific workflows and lists personal references that need attention before sharing.
 
 The catalog distinguishes primary task packages, their included modes, and supporting modules. Its [maintenance review](../../docs/skill-maintenance-review.md) identifies consolidation candidates, conflicting older guidance, and capabilities to preserve before retirement.
 
@@ -65,9 +65,17 @@ python3 tools/browse.py --bundle
 
 `sync` refreshes candidate build and package ZIPs. The group bundler uses those complete task ZIPs, including their existing dependencies and modes. Collection manifests record the source hash and ZIP hashes. Package readiness follows the current catalog and release gates.
 
-Each mapped workflow retains its exact entrypoint Markdown and hash. Connections quote literal skill-name references from those instructions. Supporting files are inventoried; their contents remain in the skill packages. Families and suggested routes support navigation; the instructions determine which workflow applies.
+Each mapped workflow retains its exact entrypoint Markdown and hash. Connections quote literal skill-name references from those instructions. Supporting files are inventoried; their contents remain in the skill packages. Families and workflows support navigation; the instructions determine which workflow applies.
 
-The map keeps the navy, teal and sand design of the current artifact and uses the system font stack. The artifact-specific design leaves the global brand policy unchanged.
+The map keeps the navy, teal and sand colors and uses the reader's system font. The default view shows search, the family list and a short legend. Secondary filters and the sharing review sit under "More filters and sharing details". The GitHub status and group links are in the footer. The artifact-specific design leaves the global brand policy unchanged.
+
+The claude.ai artifact viewer cannot save files, so the copy published there is built without download buttons or download code:
+
+```bash
+python3 artifacts/skills-map/build.py --base origin/main --no-downloads --output <scratch path>/skills-map.html
+```
+
+The default build, which the local viewer and the hosted site use, keeps the "Download SKILL.md" and "Download skill packages" buttons. The template marks those parts with `<!--downloads-->` and `/*downloads*/` comments.
 
 ## Share a small edition
 
