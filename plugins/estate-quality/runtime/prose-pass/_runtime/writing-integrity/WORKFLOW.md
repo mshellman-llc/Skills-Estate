@@ -27,6 +27,8 @@ Return complete edits. For an audit without rewriting, give supported findings a
 
 Open with the answer or decision. Name the subject and action, use plain verbs and put evidence beside the claim it supports. Remove generic setup, repeated explanations, staged reversals and automatic closing offers. Use the actual number of ideas; choose paragraphs, lists or tables for their content. Keep useful humor and the author's directness.
 
+Review headings, cards and agent roles together for repeated “The + noun” naming. Replace vague or theatrical labels with the actual content or function; keep ordinary articles, meaningful names and intentional style. See [label review](references/patterns.md#headings-cards-and-agent-names).
+
 Preserve required figures and literals, ownership, scope, legal meaning, approval conditions and uncertainty. Select facts for the reader's purpose. Keep internal evidence notes out of finished copy unless they affect the reader's interpretation or action. Facts and explicit constraints take precedence over style; use the confirmed author profile when writing as someone else.
 
 After a correction, restore the reader's task throughout the artifact. Keep explanations of the AI's mistake in the accompanying conversation unless the audience needs a correction notice. Inspect records before attributing an action or explaining a cause.

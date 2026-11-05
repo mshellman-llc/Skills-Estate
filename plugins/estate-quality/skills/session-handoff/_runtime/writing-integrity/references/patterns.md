@@ -12,6 +12,16 @@ Use this reference with [expanded-writing-review.md](expanded-writing-review.md)
 | Scripted question and answer | “The result? Faster delivery.” “Why does this matter? Because...” State the answer unless the question is one the reader needs addressed. |
 | Slogan ending | A slogan, metaphor, fragment or prediction replaces the final fact. End with the supported decision, consequence or next action. |
 
+## Headings, cards and agent names
+
+Review neighboring labels and the full artifact for repeated “The + noun” naming, regardless of capitalization. “The Bet,” “The Call,” “The Problem,” “THE Workspace” and “THE Project” can turn ordinary sections into vague or theatrical titles. A roster of “The Researcher,” “The Surveyor” and “The Cartographer” can hide what the agents do. Check the label against its content or function before changing it.
+
+Use specific, informative labels supported by the content. A pilot recommendation might become “Pilot recommendation”; a call recap might become “Discovery call notes.” Name an agent for its actual responsibility. Merely deleting “The” or swapping in another dramatic noun can leave the problem intact. Let structures vary with the content, while keeping one consistent name for each concept. Do not force variation into useful parallel labels.
+
+Preserve ordinary articles in sentences, informative headings such as “The cost of delayed approvals,” meaningful proper names and deliberate stylistic choices that serve the piece. An isolated “the” is not a defect. Keep exact quotations and required identifiers unchanged. Retain version and decision identifiers such as `v2`, `v3` and `DEC-014` when they distinguish records; add a plain-language explanation if needed. “The copy Priya has, sent Monday” cannot replace `v2` when exact version identity matters. Remove a decorative code only when it has no identifying or operational purpose.
+
+This is an editorial review across labels and their context. Do not claim that the bundled scanner detects the pattern unless its output demonstrates that capability.
+
 ## Claims of authority or importance
 
 | Pattern | Example and repair |

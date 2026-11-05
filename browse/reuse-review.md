@@ -1,6 +1,6 @@
 # Skill reuse review
 
-90 general-use methods, 0 Megan-specific workflows, and 0 awaiting source review.
+89 general-use methods, 0 Megan-specific workflows, and 1 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -100,7 +100,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `transcript-ingestion` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `uat-validation` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `usability-testing` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `writing-integrity` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
+| `writing-integrity` | Needs review | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `writing-style-builder` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 
 Refresh this review with `python3 tools/skill_guide.py --report`. The map recomputes reference findings on each build. Reader-guide copy is bound to its reviewed entrypoint hash; a changed entrypoint shows current instructions until the guide is reviewed again.

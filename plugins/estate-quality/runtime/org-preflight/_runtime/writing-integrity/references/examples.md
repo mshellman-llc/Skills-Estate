@@ -139,3 +139,13 @@ A supported release note is:
 Keep the date, availability limit and per-person naming rule. Do not broaden uniqueness to the whole workspace. The measurement gap prevents a claim about time saved; it does not require a disclaimer when the release note makes no such claim.
 
 If the request instead asks whether saved filters reduced search time, answer that time savings have not been measured. If a draft claims they save ten minutes, remove that unsupported claim. If the requested copy must include a legal disclosure or a material approval condition, retain it. Source selection does not authorize hiding information the reader needs.
+
+## Name sections and agents for their work
+
+A solution brief has “The Bet” above a recommendation to pilot intake routing and “The Call” above discovery call notes. Agent cards use “The Surveyor” for reviewing intake requests and “The Cartographer” for mapping handoffs. Navigation uses “THE Workspace” for shared project files and “THE Project” for the intake-routing pilot.
+
+Supported labels are “Intake-routing pilot recommendation,” “Discovery call notes,” “Intake review agent,” “Handoff mapping agent,” “Project files” and “Intake-routing pilot.” Review the whole set. “Bet” and “Call” alone still leave readers guessing. If the source does not explain an agent's responsibility, flag the missing detail rather than inventing one.
+
+Keep “The project owner approved v3; Priya has v2.” Both articles and version identifiers carry meaning. Keep a decision reference such as `DEC-014` when readers need it to find the record. A memorable description may accompany an identifier but cannot replace it. An invented card code with no reference or operational use can be removed.
+
+Keep an informative heading such as “The cost of delayed approvals,” the proper name “The Atlantic,” and character names in an intentionally theatrical piece. The recurring naming formula warrants review; it does not justify stripping every article or renaming meaningful entities.

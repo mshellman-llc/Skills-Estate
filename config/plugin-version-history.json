@@ -86,7 +86,11 @@
       "note": "Add showcase examples for brand-renderer, review-site-kit and sf-headless-screenshot"
     },
     "0.2.21": {
-      "content_sha256": "a2b7f0d2914006c610dcfdfa100dfc5260f5ef0ffc8db479fa79009b7ec84130",
+      "content_sha256": "9637d162469f56240264445752fffd848ef0fadec1d7e29e324e2604546a1b62",
+      "note": "Add Writing Integrity guidance for repeated The-plus-noun labels while preserving meaningful names, intentional style and exact identifiers."
+    },
+    "0.2.22": {
+      "content_sha256": "b4d6a64e69864d8affeeeca18aa53d4bc6f41f908903b48cefffffd4133a625c",
       "note": "Skill profiles on the map: what to expect, connectors and requirements in the skill guide"
     }
   }
