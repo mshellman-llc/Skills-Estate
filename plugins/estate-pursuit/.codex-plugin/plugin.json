@@ -2,5 +2,5 @@
   "description": "Skills Estate pursuit workflows and routing.",
   "name": "estate-pursuit",
   "skills": "./skills/",
-  "version": "0.2.19"
+  "version": "0.2.20"
 }
