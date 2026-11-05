@@ -196,8 +196,8 @@
   "release": {
     "shared": {
       "status": "accepted",
-      "reviewed_sha256": "538abec1c8fbbc648459d30ee7f7dade6dc2bde2fc37c3caec678a40412e08ca",
-      "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Direct owner approval in Claude Code on 2026-11-05 covering every pending and stale subject at main 3076350 (after PRs #42-#48); no separate per-subject review note"
+      "reviewed_sha256": "b3be560d73bea400e63bf9daa8d6586e5d7a8233d0fc514f7744287e783ed5b5",
+      "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Direct owner re-approval in Claude Code on 2026-11-05 of the shared assembly as changed by PRs #51 and #52 (main aa030be); no separate per-subject review note"
     },
     "modules": {
       "accessibility-audit": {
