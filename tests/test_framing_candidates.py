@@ -79,6 +79,45 @@ class FramingCandidateTests(unittest.TestCase):
                      '`The Bet`\n`The Call`', '"The Bet"\n"The Call"']:
             self.assertTrue(self.candidates(text))
 
+    def test_wrapped_prose_nonbreaking_spaces_and_nested_markdown(self):
+        for text in ['The knot\nis missing ownership. The route\u00a0is assigning an owner.',
+                     '> ## The Bet\n> ## The Call',
+                     '# The bottom\u00a0line\n# The big\tpicture',
+                     'The big\npicture is routing. The bottom\u00a0line is approval.']:
+            with self.subTest(text=text):
+                self.assertTrue(self.candidates(text))
+
+    def test_rich_text_headings_keep_their_label_boundaries(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            html = root/'headings.html'
+            html.write_text('<h2>The <em>Bet</em></h2><p>Pilot routing.</p>'
+                            '<h2>The <strong>Call</strong></h2><p>Discovery notes.</p>')
+            nav = root/'nav.html'
+            nav.write_text('<nav><a>The <em>Bet</em></a><a>The <strong>Call</strong></a></nav>')
+            paths = [html, nav]
+            for suffix, member, unit in [('docx', 'word/document.xml', 'p'),
+                                        ('pptx', 'ppt/slides/slide1.xml', 'p'),
+                                        ('xlsx', 'xl/sharedStrings.xml', 'si')]:
+                path = root/('headings.'+suffix)
+                with zipfile.ZipFile(path, 'w') as archive:
+                    archive.writestr(member, '<root>'+''.join(
+                        f'<{unit}><r><t>The </t></r><r><t>{word}</t></r></{unit}>'
+                        for word in ['Bet', 'Call'])+'</root>')
+                paths.append(path)
+            for path in paths:
+                with self.subTest(path=path.name):
+                    extracted = authored_text(path)
+                    self.assertTrue(self.candidates(extracted))
+                    # The dedicated C24 view must not change existing rules.
+                    with_view = [f.as_dict() for f in check(extracted)[0] if f.rule != RULE]
+                    del extracted.framing_text
+                    without_view = [f.as_dict() for f in check(extracted)[0] if f.rule != RULE]
+                    self.assertEqual(with_view, without_view)
+            html.write_text('<p>The <em>analyst</em> checked the figures.</p>'
+                            '<p>The <strong>editor</strong> corrected the caption.</p>')
+            self.assertFalse(self.candidates(authored_text(html)))
+
     def test_structured_and_document_extraction(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

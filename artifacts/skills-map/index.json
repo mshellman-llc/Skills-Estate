@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T19:49:31.758039+00:00",
+  "generatedAt": "2026-11-05T20:06:15.473788+00:00",
   "baseCommit": "cb9db86d2102a63700f05010c11f41732fd4fdab",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -10184,7 +10184,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 30,
-        "packageFingerprint": "16c5ea26981236b143354819c521cbaa5eabf7fdb2d1cd3b70da0744829948d9",
+        "packageFingerprint": "84ae8329d3e88441296c6ae3b40cfb2d5eff51b8ec5fc1dd56714538d7e5307e",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -10348,9 +10348,9 @@
         },
         {
           "path": "scripts/framing.py",
-          "sha256": "aaed6923968484cbe76aeb854eae87d89a4bb01cb19e0019fb4896ffd6daa77d",
-          "bytes": 3180,
-          "gitBlob": "f0015462e850763d5b52306b862047b197b33e6a"
+          "sha256": "552d3ef9bb0b920486e04cee05fd2f266e5f6a199a08fee3f3411f66aeacc515",
+          "bytes": 3567,
+          "gitBlob": "3319596d29febaf1f55ca0d7af9c31846aa88b16"
         },
         {
           "path": "scripts/prose_check.py",
@@ -10402,9 +10402,9 @@
         },
         {
           "path": "scripts/writing_check.py",
-          "sha256": "d52e5e9e2798dea87f7c329fa2386a2946f1c775cf71150f37504e8c7a5127bd",
-          "bytes": 13465,
-          "gitBlob": "d2daf759e79f15066a0c0e80c0705a5cd80a514e"
+          "sha256": "af8e9fba3c8055200bf71ff72af1110293ff0df8ae9f08f831a7ffe911b7d7d0",
+          "bytes": 15621,
+          "gitBlob": "31722fb77f18b1918f4cce0f8adc5f51fca2f0bf"
         },
         {
           "path": "skill.yaml",

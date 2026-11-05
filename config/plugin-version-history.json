@@ -100,6 +100,10 @@
     "0.2.26": {
       "content_sha256": "fbc1af2a911b1f91b1b56c4cc083e43dc91ba0e29c68b17cd8586f141435e215",
       "note": "Add contextual C24 framing candidates and artifact/checker-bound retention assessments; preserve other diagnostic enforcement. Replaces unpublished 0.2.25 test draft."
+    },
+    "0.2.27": {
+      "content_sha256": "6a437369d192d8b4381871faac35adbb145a5dfe0dc78bfdf50091aecde7d1a6",
+      "note": "Add C24 recurring The + noun candidates and hash-bound contextual retention. Local audit fixes inline HTML, rich Office runs, wrapped prose, nonbreaking spaces and nested Markdown; preserve prior diagnostic extraction. Shared-rule architecture remains a proposal."
     }
   }
 }
