@@ -16,13 +16,7 @@
     "writing-integrity",
     "writing-style-builder"
   ],
-  "review_gaps": [
-    {
-      "required_sha256": "d2cf20f6d6265b2ba4c85ec25db7349ee8f81f4ba238fccebc80cbc5878b06ee",
-      "status": "review required",
-      "subject": "shared assembly"
-    }
-  ],
-  "source_sha256": "1a37f133d76af17012f40b5b8667d579db6b1540f6e122b5cd176048cbc2ee51",
-  "status": "owner-published"
+  "review_gaps": [],
+  "source_sha256": "129433211018db6f17bac8a162b4d026a3991b868b52dd51ed9fdf6ea543e192",
+  "status": "reviewed"
 }

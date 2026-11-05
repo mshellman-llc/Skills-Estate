@@ -93,8 +93,12 @@
       "content_sha256": "b4d6a64e69864d8affeeeca18aa53d4bc6f41f908903b48cefffffd4133a625c",
       "note": "Skill profiles on the map: what to expect, connectors and requirements in the skill guide"
     },
-    "0.2.23": {
-      "content_sha256": "a895d1433f3f416de460ca5fcdcf2c3af8637e105c56525a2b220b806912bc2b",
+    "0.2.24": {
+      "content_sha256": "f9b958f0e7b63aad1f85793fedc68d5b9822735422616f78d87744cc1a29b0cf",
+      "note": "Broaden The-plus-noun review across authored text and preserve each claim scope when removing repeated frames; replaces the tested, unpublished 0.2.23 candidate."
+    },
+    "0.2.25": {
+      "content_sha256": "cdb642b4c571ee881454c8a91438ee36e0c7a47f4bec69c3b6f6b6a8c5ce6085",
       "note": "Map reader guides gain output formats and newcomer workflows; the map adds install lines and a sharing edition"
     }
   }
