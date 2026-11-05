@@ -20,7 +20,7 @@ Read `00_Master/Career_Application_Operating_Context.md` first. Then load only:
 - the current role's `Role_Work_Record.md`, when one exists; and
 - the source files named by the operating context for the current mode.
 
-Do not load every prior application or reconstruct the full JobHunt folder unless a cross-surface correction requires it.
+Do not load every prior application or reconstruct the full job-search folder unless a cross-surface correction requires it.
 
 This estate package contains workflow instructions and validation code. Private career evidence, submitted applications, and resumes remain in the subject authority. If that source is unavailable, ask for the specific current evidence needed for the request or use an explicitly supplied dated bundle. Do not assume this package includes those private records. Return proposed record changes for the user to save when the live destination is unavailable.
 

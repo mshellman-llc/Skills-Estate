@@ -57,7 +57,7 @@
       "inputs": "The permitted hub connection, the named symptom or environment, and an owner-authorized evidence configuration for local checks.",
       "outputs": "Scoped findings marked verified now, needs attention or not rechecked, with evidence and the next repair; it stays read-only unless a repair is requested.",
       "example": "Check the local Hub for stale context and report the evidence behind each finding.",
-      "reviewedEntrypointSha256": "0ce765154b0ab3cdbf638c3cd4e5e7697a89f3444d9dbba89d22a81ee4e20320",
+      "reviewedEntrypointSha256": "cfee684db742def5fffcee148074182fd34804784a0486f51b27a0e3bdc3303e",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "beastmode-reconcile": {
@@ -116,7 +116,7 @@
       "inputs": "The current posting, the user’s career sources, and the role work record.",
       "outputs": "Role assessment, tailored materials, interview preparation, or authorized form work.",
       "example": "Assess this posting against my current career direction and prepare the selected application materials.",
-      "reviewedEntrypointSha256": "f445e838915a95dcf79bcf8a5fe4751ebe44f1201cd4943390c6e010c898b70e",
+      "reviewedEntrypointSha256": "9a9cd94e9d1bbaeffd4bd3d14f2233361b9f27ea54c95c4ed4f73524202d9fa8",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow."
     },
     "career-materials-and-outreach": {

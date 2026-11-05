@@ -29,14 +29,20 @@ def text_files(folder):
         except (UnicodeError, OSError):
             continue
 
+def skill_names(root):
+    # A skill's own identifier (for example `/beastmode-context`) is how it is invoked, not a personal reference.
+    names = sorted((p.name for p in (root / 'skills').iterdir() if p.is_dir() and PERSONAL.search(p.name)), key=len, reverse=True)
+    return re.compile(r'(?<![\w-])(?:' + '|'.join(map(re.escape, names)) + r')(?![\w-])', re.I) if names else None
+
 def scan(root, folder):
     findings, count = [], 0
+    names = skill_names(root)
     for path, text in text_files(folder):
         count += 1
         rel = path.relative_to(root).as_posix()
         example = any(x in path.parts for x in ('fixtures', 'examples')) or 'selftest' in path.name or path.name.startswith('test_')
         for line, value in enumerate(text.splitlines(), 1):
-            if PERSONAL.search(value):
+            if PERSONAL.search(names.sub('', value) if names else value):
                 findings.append({'path': rel, 'line': line, 'text': value.strip(),
                                  'kind': 'example-or-test' if example else 'workflow-or-reference'})
     return findings, count
