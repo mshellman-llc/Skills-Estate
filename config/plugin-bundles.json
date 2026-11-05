@@ -196,8 +196,8 @@
   "release": {
     "shared": {
       "status": "accepted",
-      "reviewed_sha256": "8a9a86b39962098d547e0723bd87d6ba1f42c0567385ef6e257f09f4542b3e83",
-      "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Explicit approval to release Writing Integrity 0.2.24 and its version-only shared-assembly update to Claude and Codex; reviewed candidate b34f7f66766e7e849fa674a65039efc38b90682e and scope test evidence."
+      "reviewed_sha256": "943a0ed0efea5bde322c206167634e5533d578c70ba808eb419eae2b969d2b9b",
+      "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Owner accepted scanner 0.2.27 at c190176 for Writing Integrity, Prose Pass and shared assembly after PR 57 verification run 42102613096; targeted Claude and Codex release."
     },
     "modules": {
       "accessibility-audit": {
@@ -462,8 +462,8 @@
       },
       "prose-pass": {
         "status": "accepted",
-        "reviewed_sha256": "3deb577047dde9265a11099ad608f41490b7f3718c835dcfb51f0f6b42647172",
-        "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Direct owner approval in Claude Code on 2026-11-05 covering every pending and stale subject at main 3076350 (after PRs #42-#48); no separate per-subject review note"
+        "reviewed_sha256": "14b159e813959871793b1b3bc0a82c84d5711e8a9ccd489ee4416ee2ebe756d7",
+        "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Owner accepted scanner 0.2.27 at c190176 for Writing Integrity, Prose Pass and shared assembly after PR 57 verification run 42102613096; targeted Claude and Codex release."
       },
       "quality-gate": {
         "status": "accepted",
@@ -617,8 +617,8 @@
       },
       "writing-integrity": {
         "status": "accepted",
-        "reviewed_sha256": "dfc6993969423c02b426e396c0393effa4f80f382b4d4fa8cab0e5d7715d9b54",
-        "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Explicit approval to release Writing Integrity 0.2.24 and its version-only shared-assembly update to Claude and Codex; reviewed candidate b34f7f66766e7e849fa674a65039efc38b90682e and scope test evidence."
+        "reviewed_sha256": "47536aaee56a94364d85d80ae92ecb3f69dbf45b03f50e7a37397f66e2316ea8",
+        "evidence": "Owner approval by Megan Shellman on 2026-11-05. Basis: Owner accepted scanner 0.2.27 at c190176 for Writing Integrity, Prose Pass and shared assembly after PR 57 verification run 42102613096; targeted Claude and Codex release."
       },
       "writing-style-builder": {
         "status": "accepted",
