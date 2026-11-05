@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T18:40:51.250758+00:00",
-  "baseCommit": "b5280b2dceee40de1a15783cc580f0f29f9f23aa",
+  "generatedAt": "2026-11-05T19:49:31.758039+00:00",
+  "baseCommit": "cb9db86d2102a63700f05010c11f41732fd4fdab",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -55,7 +55,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/accessibility-audit/SKILL.md",
       "sourceSha256": "30aae4a806f649376a0039a123b775be7e337a18041f3f55bae04bd41fd6d3ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/accessibility-audit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/accessibility-audit/SKILL.md",
       "taskPackages": [
         {
           "name": "accessibility-audit",
@@ -180,7 +180,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/analytics-strategy/SKILL.md",
       "sourceSha256": "fad5d22b7b107b0a195b036d75966ded0b29433b4b996cfc2022f75bd1192841",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/analytics-strategy/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/analytics-strategy/SKILL.md",
       "taskPackages": [
         {
           "name": "analytics-strategy",
@@ -305,7 +305,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/architecture-doc/SKILL.md",
       "sourceSha256": "704962a9930c507f8002c1b4832d5947542aaf24b09f6a6c7c838028eb15b0d2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/architecture-doc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/architecture-doc/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -515,7 +515,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-writing-style/SKILL.md",
       "sourceSha256": "2c4a88898b19221b63419f21ecc5e0638268b88fd9e84e25e34785e35013b08a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/author-writing-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/author-writing-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -634,7 +634,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/backlog-refinement/SKILL.md",
       "sourceSha256": "89c830ca620b58762d812090bb255fa50050aa9da3f0ccb697063efdd2937f7a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/backlog-refinement/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/backlog-refinement/SKILL.md",
       "taskPackages": [
         {
           "name": "backlog-refinement",
@@ -852,7 +852,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-capture/SKILL.md",
       "sourceSha256": "88b922fc5e1b600a1ace4d0a19bd936945ecddfbbb42bc9aa04964f5968de14a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/beastmode-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-capture",
@@ -979,7 +979,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-context/SKILL.md",
       "sourceSha256": "02ca69e21b2e17b50e6be9a2cced92534e1ba788ba8759c702d10bd06026f223",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/beastmode-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-context/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-context",
@@ -1121,7 +1121,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-health/SKILL.md",
       "sourceSha256": "cfee684db742def5fffcee148074182fd34804784a0486f51b27a0e3bdc3303e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/beastmode-health/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-health/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-health",
@@ -1262,7 +1262,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-reconcile/SKILL.md",
       "sourceSha256": "70bfeccd296dc9c6f8ee7a290a5b605e1087b1abb0c5bd4794ac969945acc9e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/beastmode-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-reconcile/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-reconcile",
@@ -1389,7 +1389,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brain-work-item/SKILL.md",
       "sourceSha256": "d2aa7234b3610505200c90188ad9c60811d6eb3e8288d22b33d15856c0662193",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/brain-work-item/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/brain-work-item/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1488,7 +1488,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "a547727f6e59008212becc0315e6d268f90e46080d99d8cd6a54f75ac29cd852",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -1881,7 +1881,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "3a8479870a7aa884a1c5739c1d9da9e95e1ea069ffb1c0c924e20dbc0a8852e8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -2066,7 +2066,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/business-case/SKILL.md",
       "sourceSha256": "044b11756dbf2e052006fb336c4a0b800d001cdea716fadc9220bb5c060ab74d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "business-case",
@@ -2284,7 +2284,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/call-prep/SKILL.md",
       "sourceSha256": "e12fbf1eacebf3e8d801f837e8453941265cc49ad27c2683da4b9d4b391cff60",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/call-prep/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/call-prep/SKILL.md",
       "taskPackages": [
         {
           "name": "call-prep",
@@ -2575,7 +2575,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-application/SKILL.md",
       "sourceSha256": "9a9cd94e9d1bbaeffd4bd3d14f2233361b9f27ea54c95c4ed4f73524202d9fa8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/career-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/career-application/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2751,7 +2751,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-materials-and-outreach/SKILL.md",
       "sourceSha256": "c3dc0019f1bde982446eab7af59904a378479dfe8f3758427fbf79b727bc79ec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/career-materials-and-outreach/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/career-materials-and-outreach/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2895,7 +2895,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-progression-and-offers/SKILL.md",
       "sourceSha256": "4bd8a9469889eee41a03eb6f90e7ffe10879a96556796192538206db652571b0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/career-progression-and-offers/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/career-progression-and-offers/SKILL.md",
       "taskPackages": [
         {
           "name": "career-decisions",
@@ -3025,7 +3025,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/case-study-builder/SKILL.md",
       "sourceSha256": "e78a68ff01fee091589db827b094754fe95b5f7ca303e7779a81a94da3bcd750",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/case-study-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/case-study-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "portfolio-case-study",
@@ -3147,7 +3147,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/client-brand/SKILL.md",
       "sourceSha256": "c6d5ac41111ea61ab2c36ce3f75bb6233f4e9e3ea3d3df205f8033a5120c9e1c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/client-brand/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/client-brand/SKILL.md",
       "taskPackages": [
         {
           "name": "brand-profile",
@@ -3287,7 +3287,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/code-simplify/SKILL.md",
       "sourceSha256": "d43d7322867e6d4267530420631be0734b629ddcbf6d0037685ec09c3cea5ac4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/code-simplify/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/code-simplify/SKILL.md",
       "taskPackages": [
         {
           "name": "code-simplify",
@@ -3401,7 +3401,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cross-platform-skill-release/SKILL.md",
       "sourceSha256": "fe3cdfc727e15ce6301c32f55d1e31be3cac6f01f4bcafef9ffc6282b727afd4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/cross-platform-skill-release/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/cross-platform-skill-release/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -3548,7 +3548,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cutover-closeout/SKILL.md",
       "sourceSha256": "583fb89bee016741de40cafa78ec1a29c44e9d5109a4e67fc68ee4a4de7ce00f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "cutover-closeout",
@@ -3772,7 +3772,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ddoc/SKILL.md",
       "sourceSha256": "b4190b6f05c8fe0301adfc24fb3ba516ed6550f343e0aae0a2b6319abd26799f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/ddoc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/ddoc/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -4048,7 +4048,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deal-desk/SKILL.md",
       "sourceSha256": "a994c1f2862ed00ea7f6678f0ff288cf41200066b678d62a505428ed41a94729",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/deal-desk/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/deal-desk/SKILL.md",
       "taskPackages": [
         {
           "name": "commercial-review",
@@ -4282,7 +4282,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/decision-register/SKILL.md",
       "sourceSha256": "f4625f40a6198c4297a44a4df43ef2ab2669e146d612f295ccef81fd50616341",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "decision-register",
@@ -4430,7 +4430,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deck-builder/SKILL.md",
       "sourceSha256": "f0f27ea1b6fa2ed0bbffa39963b983d4363de43470336f9cae9fdaa435113acb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/deck-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/deck-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -4660,7 +4660,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-kickoff/SKILL.md",
       "sourceSha256": "c60d6b255027410268c1b7c8562722d127c380d9435c4851c5817d6f525ac0af",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/delivery-kickoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/delivery-kickoff/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-kickoff",
@@ -4940,7 +4940,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-status/SKILL.md",
       "sourceSha256": "d9f5fd583a023be196ed21e40f88e2dcc2c8674fe726c40c3325af5843e2c672",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/delivery-status/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/delivery-status/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-status",
@@ -5198,7 +5198,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-suite/SKILL.md",
       "sourceSha256": "39b3a3e46eae49ae780f245a616eeb4b1a42824a53027735c577768d149d0372",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/delivery-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/delivery-suite/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -5447,7 +5447,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-brief/SKILL.md",
       "sourceSha256": "51d21c7ee14f73df4a09ba9cb86ef8ff3a5a7f938c5f3523c021d662f01d1df3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/discovery-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/discovery-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -5709,7 +5709,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-synthesis/SKILL.md",
       "sourceSha256": "53a74977869d0e0946aefa1977d7a0ebf5826d6f86a327eb045599245b8510b2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/discovery-synthesis/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/discovery-synthesis/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -5884,7 +5884,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-promote/SKILL.md",
       "sourceSha256": "9a105d47b6a0d13b91d1ab2327554422afb9c638e33fdaa0a84eb4730e1c2d46",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/dx-devops-promote/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/dx-devops-promote/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -6106,7 +6106,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-work-item-manage/SKILL.md",
       "sourceSha256": "d06e708aef3b2bafb70137e5e457b5f0e0786672a1191c0fd10e50b4c4def260",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/dx-devops-work-item-manage/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/dx-devops-work-item-manage/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -6268,7 +6268,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "940140ceb630651a43b4c54fbfaa99c3e64f157af5fcf869df979da601794b40",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -6537,7 +6537,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/execution-truth/SKILL.md",
       "sourceSha256": "6541592ce8b7e87ed1375f4213d7d275b71a3719e500c2d0290d702fa3697037",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/execution-truth/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/execution-truth/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6692,7 +6692,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/fortunes-weave/SKILL.md",
       "sourceSha256": "e6878b651358518384bd7068c40229e5626bab1bef4b4a0b9b6f37d24a4ba124",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "fortunes-weave",
@@ -6799,7 +6799,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/github-repository-work/SKILL.md",
       "sourceSha256": "416dd70ad35b0187da9d23fa1168ae095aaa59cbaecd47b79525d33b475156e5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/github-repository-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/github-repository-work/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6895,7 +6895,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/independent-product/SKILL.md",
       "sourceSha256": "cfeebb0f638e7359af4d6a58b7730e104c8088b9c473b96c4069dcaefc17194c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "independent-product",
@@ -7002,7 +7002,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/information-architecture/SKILL.md",
       "sourceSha256": "6ebd0a149d475ccda8664a397b49ae94b9470a120f0c605d63459c9f6446e6e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "information-architecture",
@@ -7127,7 +7127,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/interactive-proposal/SKILL.md",
       "sourceSha256": "3b993c5d1b1230ef6f5c2dc2b76cd5778eb5346b60c59247693f55a3aac219c5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -7390,7 +7390,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/journey-mapping/SKILL.md",
       "sourceSha256": "044a9b62cc4632caf267af2a4a70a412e71a3889783548063ee340997d0cac63",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/journey-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/journey-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "journey-mapping",
@@ -7588,7 +7588,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/jtbd-framing/SKILL.md",
       "sourceSha256": "dc4e8ee3ebe54647a5c574c0565a6f36e2aa41ba5eda03e9c768d3a9b20e0c98",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/jtbd-framing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/jtbd-framing/SKILL.md",
       "taskPackages": [
         {
           "name": "jtbd-framing",
@@ -7833,7 +7833,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/knowledge-hub/SKILL.md",
       "sourceSha256": "29b7962b049af27078d64360c68c2abd6c15c7263590902d285dc0835689c05b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "knowledge-hub",
@@ -8160,7 +8160,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/moscow-story-map/SKILL.md",
       "sourceSha256": "407f61974326eb0e046d709d20e0657e3e6ac897af86dae19634ab14af5d63e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "moscow-story-map",
@@ -8308,7 +8308,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/org-preflight/SKILL.md",
       "sourceSha256": "114e2469f12d1593364d2befaa2c754d48e7c3ea8c3758aac5a1fda3fa1a9f39",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/org-preflight/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/org-preflight/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "sf-change-delivery"
@@ -8457,7 +8457,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/personal-writing-style-runtime/SKILL.md",
       "sourceSha256": "acdb326d7eae4166a419e6ff07245f9afe6174a826d613d474bb21043e852b90",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/personal-writing-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/personal-writing-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8637,7 +8637,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-builder/SKILL.md",
       "sourceSha256": "733792bc5580e8b71e491f7ef69287e99ff5db1e4eceafed0324fd0a8f49d93b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/playbook-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -8809,7 +8809,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-fit-router/SKILL.md",
       "sourceSha256": "190748cd28c50baad5b6260742889081c1effa47bbc8025ab5073a3d12476bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/playbook-fit-router/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-fit-router/SKILL.md",
       "taskPackages": [
         {
           "name": "offering-fit",
@@ -8958,7 +8958,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-onepager/SKILL.md",
       "sourceSha256": "d968ee8a9d28b50e4de5f049539210e999818df6af2a53c9d5a4ba6adafac605",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/playbook-onepager/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-onepager/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -9187,7 +9187,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-suite/SKILL.md",
       "sourceSha256": "472ad5c6e512f9f142aacbdcf26cef02e30bc9d93bd5bea308092d502715e240",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/playbook-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-suite/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -9380,7 +9380,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/pm-spec-writing/SKILL.md",
       "sourceSha256": "6adc8ca7812b4ae14a7b5278ba1d03d8ef4f3af2dd79bf65db3d67b9345b4259",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/pm-spec-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/pm-spec-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -9511,7 +9511,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritization/SKILL.md",
       "sourceSha256": "1c83aff26fc94e0e6687382b897a3d133f23992d0f1fac399b66f80661e2fc0e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/prioritization/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/prioritization/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritization",
@@ -9728,7 +9728,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/process/SKILL.md",
       "sourceSha256": "b0876f55eab1b43642897b2ff9bb019bfc4e063805612555ebcdb9add823addf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/process/SKILL.md",
       "taskPackages": [
         {
           "name": "process-design",
@@ -9904,7 +9904,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/product-development-pathway/SKILL.md",
       "sourceSha256": "4e17a049ee5b802096c8580c78ce35759d159b0a0f11b469339b59a05c2c8f19",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/product-development-pathway/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/product-development-pathway/SKILL.md",
       "taskPackages": [
         {
           "name": "product-development",
@@ -10101,11 +10101,11 @@
       "title": "Writing diagnostic tools",
       "family": 5,
       "description": "Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/prose-pass/SKILL.md",
-      "sourceSha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/prose-pass/SKILL.md",
+      "sourceSha256": "f72a0367beadea47fe644ed123d0f18421c3f3a744d667419142aaf979006fc9",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/prose-pass/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -10171,29 +10171,20 @@
         "writing-integrity",
         "writing-profile"
       ],
-      "guide": {
-        "what": "Run the writing diagnostics and figure checks that writing-integrity uses.",
-        "when": "Writing-integrity needs a pattern scan, a figure tie-out or a review receipt.",
-        "inputs": "The saved text, the source version for figure comparison and the house configuration.",
-        "outputs": "Pattern findings, figure comparisons and validated review receipts; it does not rewrite text.",
-        "example": "Check this saved draft for recurring writing patterns and confirm no figure changed from the source.",
-        "reviewedEntrypointSha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749",
-        "expect": "It is an internal checker used by the writing review, not an editor, and it reports detectable patterns in a saved file by exit code without rewriting anything. It can reconcile figures between a source and a rewrite and emit a review receipt, but a clean scan does not show the prose was read.",
-        "requires": "Needs Python 3 and a saved file to check."
-      },
-      "guideStatus": "current",
+      "guide": null,
+      "guideStatus": "needs-review",
       "reuse": {
-        "audience": "general",
-        "label": "General use",
-        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
+        "audience": "review",
+        "label": "Needs review",
+        "reason": "The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.",
         "setup": "",
         "cleanup": [],
-        "readiness": "reusable",
+        "readiness": "review",
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [],
-        "textFilesScanned": 29,
-        "packageFingerprint": "42b160c16f2660f9aa8fd1f4d91e89f227dc6fe079d4f55ddc52e431ebcdf5e9",
+        "textFilesScanned": 30,
+        "packageFingerprint": "16c5ea26981236b143354819c521cbaa5eabf7fdb2d1cd3b70da0744829948d9",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -10204,6 +10195,7 @@
       "profile": {
         "tools": [
           "scripts/authored_code.py",
+          "scripts/framing.py",
           "scripts/prose_check.py",
           "scripts/prose_check_selftest.py",
           "scripts/prose_receipt.py",
@@ -10242,12 +10234,12 @@
           "claude-ai",
           "cowork"
         ],
-        "setup": "Needs Python 3 and a saved file to check.",
-        "expect": "It is an internal checker used by the writing review, not an editor, and it reports detectable patterns in a saved file by exit code without rewriting anything. It can reconcile figures between a source and a rewrite and emit a review receipt, but a clean scan does not show the prose was read.",
+        "setup": "",
+        "expect": "",
         "declared": true
       },
-      "markdown": "---\nname: prose-pass\ndescription: Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.\n---\n\n# Writing diagnostic tools\n\nProse Pass is retired as a standalone skill. The `prose-pass` directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.\n\nRead [writing-integrity](../writing-integrity/SKILL.md) before using these tools.\nThat workflow owns writing review. A confirmed personal profile supplies the\nauthor's voice. A visual brand profile cannot impose a former employer's voice\nor change a fact. These tools report detectable patterns; they do not rewrite\ntext or establish editorial quality.\n\nUse the tools on every kind of authored prose, including instructions and\ninternal records. Keep exact source evidence and executable syntax unchanged.\nReview the new wording around those spans. A file extension or audience label\ndoes not exclude authored language from review.\n\n## Review a saved file\n\n```bash\npython3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE\n```\n\nThe checker reads prose from supported document formats and structured text\nfields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means\nthe check could not finish. Read its output and the complete document. Repair\nthe argument or sentence that caused a finding, then rerun the check.\n\nDo not change the filename, label prose internal or put authored wording in a\nquote to obtain a pass. A literal source span remains verbatim only when its\nsource and exact extent are identified in the internal review record. Keep\nreviewing the surrounding authored text. Do not reclassify an invented claim\nor an awkward sentence as captured evidence.\n\n`prose_check.py` is a compatibility command for the same supported input path.\nThe older lexical engine also reports vocabulary and construction diagnostics.\nRead [surface policy](references/surface-policy.md) for source-span handling.\n\n## Review recurring patterns\n\nRead [construction rules](references/construction-rules.md) and\n[patterns](references/patterns.md) when investigating a recurring construction.\nUse the applicable register for format-specific advice:\n\n| Format | Reference |\n| --- | --- |\n| Slides | [Deck](references/registers/deck.md) |\n| Contract or proposal | [SOW and proposal](references/registers/sow-proposal.md) |\n| Report or brief | [Readout](references/registers/readout-brief.md) |\n| Short message | [Email and Slack](references/registers/email-slack.md) |\n| Other authored text | [General](references/registers/general.md) |\n\nRegisters supply examples and format checks under writing-integrity. Preserve\nrequired terms and confirmed voice when a legacy example uses another style.\nRead headings with their body text. Remove repeated explanations and subtitles\nthat repeat a title. A vocabulary substitution cannot repair an empty claim.\n\n```bash\npython3 scripts/scan.py audit docs \"*.md\"\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE\n```\n\nThe audit command includes supported structured files and returns an error for\nunsupported input. The score command reports lexical density for comparison;\nits success does not establish compliance. It strips some executable spans for\nthat measurement. Use the complete authored-language check for release review.\n\nVocabulary sources remain in `scripts/rewrite_scan.py`. The generated wordlists\ncome from `scripts/sync_wordlists.py`; preserve their synchronization check.\nWeighted lists retain their existing weights. Changes to detection require\nrepresentative positive examples and valid prose examples, not a lower budget\nchosen to pass a particular draft.\n\n## Preserve figures and meaning\n\nBefore a substantive rewrite, retain the source version. Reconcile figures:\n\n```bash\npython3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE\n```\n\nAn added figure needs its source. A missing source figure requires checking\nwhether the omission was authorized. The writing pass cannot approve a price,\nscope change or commercial commitment. Use the confirmed quote or versioned\nestimate and preserve its assumptions. Keep client-stated figures attributed.\n\nCompare the finished text with its source for changed ownership and conditions.\nRetain factual uncertainty and meaningful author choices. Never add a number,\nquotation or anecdote to make vague writing sound specific.\n\n## Record a required review\n\nWhen the producing workflow requires a narrative review record, use:\n\n```bash\npython3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected \"commercial figures from the supplied quote\" \\\n    --change \"replaced the generic claim with the supported action\"\npython3 scripts/prose_receipt.py validate receipt.json\n```\n\nThe record binds the file hash to the checker result and declared edits. The\nvalidator rechecks measurable assertions and figure changes. A no-change result\nneeds an actual reading assessment; arbitrary edits are unnecessary. A record\ndoes not independently establish that an editor understood the document.\n\nBrief replies receive writing review without a receipt. Captured transcripts\nremain evidence and are never rewritten for style. Newly authored descriptions\nin records still receive the same writing review as any other prose.\n\n## Select configuration\n\nThe canonical baseline is `house.json`. An explicit configuration can add\nchecks; it cannot disable the maintained rules. The scripts and word data ship\ntogether and need no neighboring installed skill. See\n[configuration](references/house-overlay.md) and the [tellscan rule map](references/tellscan-rule-map.md) when maintaining the diagnostic\nengine. Every supported artifact still needs a complete reading against its\nfacts and intended reader after the commands pass.\n",
-      "html": "<p>Prose Pass is retired as a standalone skill. The <code>prose-pass</code> directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.</p><p>Read writing-integrity <span class=\"ref\">(../writing-integrity/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile cannot impose a former employer&#x27;s voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p><h3>Review a saved file</h3><pre><code>python3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE</code></pre><p>The checker reads prose from supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means the check could not finish. Read its output and the complete document. Repair the argument or sentence that caused a finding, then rerun the check.</p><p>Do not change the filename, label prose internal or put authored wording in a quote to obtain a pass. A literal source span remains verbatim only when its source and exact extent are identified in the internal review record. Keep reviewing the surrounding authored text. Do not reclassify an invented claim or an awkward sentence as captured evidence.</p><p><code>prose_check.py</code> is a compatibility command for the same supported input path. The older lexical engine also reports vocabulary and construction diagnostics. Read surface policy <span class=\"ref\">(references/surface-policy.md)</span> for source-span handling.</p><h3>Review recurring patterns</h3><p>Read construction rules <span class=\"ref\">(references/construction-rules.md)</span> and patterns <span class=\"ref\">(references/patterns.md)</span> when investigating a recurring construction. Use the applicable register for format-specific advice:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Format</th><th scope=\"col\">Reference</th></tr></thead><tbody><tr><td>Slides</td><td>Deck <span class=\"ref\">(references/registers/deck.md)</span></td></tr><tr><td>Contract or proposal</td><td>SOW and proposal <span class=\"ref\">(references/registers/sow-proposal.md)</span></td></tr><tr><td>Report or brief</td><td>Readout <span class=\"ref\">(references/registers/readout-brief.md)</span></td></tr><tr><td>Short message</td><td>Email and Slack <span class=\"ref\">(references/registers/email-slack.md)</span></td></tr><tr><td>Other authored text</td><td>General <span class=\"ref\">(references/registers/general.md)</span></td></tr></tbody></table></div><p>Registers supply examples and format checks under writing-integrity. Preserve required terms and confirmed voice when a legacy example uses another style. Read headings with their body text. Remove repeated explanations and subtitles that repeat a title. A vocabulary substitution cannot repair an empty claim.</p><pre><code>python3 scripts/scan.py audit docs &quot;*.md&quot;\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE</code></pre><p>The audit command includes supported structured files and returns an error for unsupported input. The score command reports lexical density for comparison; its success does not establish compliance. It strips some executable spans for that measurement. Use the complete authored-language check for release review.</p><p>Vocabulary sources remain in <code>scripts/rewrite_scan.py</code>. The generated wordlists come from <code>scripts/sync_wordlists.py</code>; preserve their synchronization check. Weighted lists retain their existing weights. Changes to detection require representative positive examples and valid prose examples, not a lower budget chosen to pass a particular draft.</p><h3>Preserve figures and meaning</h3><p>Before a substantive rewrite, retain the source version. Reconcile figures:</p><pre><code>python3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE</code></pre><p>An added figure needs its source. A missing source figure requires checking whether the omission was authorized. The writing pass cannot approve a price, scope change or commercial commitment. Use the confirmed quote or versioned estimate and preserve its assumptions. Keep client-stated figures attributed.</p><p>Compare the finished text with its source for changed ownership and conditions. Retain factual uncertainty and meaningful author choices. Never add a number, quotation or anecdote to make vague writing sound specific.</p><h3>Record a required review</h3><p>When the producing workflow requires a narrative review record, use:</p><pre><code>python3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected &quot;commercial figures from the supplied quote&quot; \\\n    --change &quot;replaced the generic claim with the supported action&quot;\npython3 scripts/prose_receipt.py validate receipt.json</code></pre><p>The record binds the file hash to the checker result and declared edits. The validator rechecks measurable assertions and figure changes. A no-change result needs an actual reading assessment; arbitrary edits are unnecessary. A record does not independently establish that an editor understood the document.</p><p>Brief replies receive writing review without a receipt. Captured transcripts remain evidence and are never rewritten for style. Newly authored descriptions in records still receive the same writing review as any other prose.</p><h3>Select configuration</h3><p>The canonical baseline is <code>house.json</code>. An explicit configuration can add checks; it cannot disable the maintained rules. The scripts and word data ship together and need no neighboring installed skill. See configuration <span class=\"ref\">(references/house-overlay.md)</span> and the tellscan rule map <span class=\"ref\">(references/tellscan-rule-map.md)</span> when maintaining the diagnostic engine. Every supported artifact still needs a complete reading against its facts and intended reader after the commands pass.</p>",
+      "markdown": "---\nname: prose-pass\ndescription: Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.\n---\n\n# Writing diagnostic tools\n\nProse Pass is retired as a standalone skill. The `prose-pass` directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.\n\nRead [writing-integrity](../writing-integrity/SKILL.md) before using these tools.\nThat workflow owns writing review. A confirmed personal profile supplies the\nauthor's voice. A visual brand profile cannot impose a former employer's voice\nor change a fact. These tools report detectable patterns; they do not rewrite\ntext or establish editorial quality.\n\nUse the tools on every kind of authored prose, including instructions and\ninternal records. Keep exact source evidence and executable syntax unchanged.\nReview the new wording around those spans. A file extension or audience label\ndoes not exclude authored language from review.\n\n## Review a saved file\n\n```bash\npython3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE\n```\n\nThe checker reads prose from supported document formats and structured text\nfields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means\nthe check could not finish. Read its output and the complete document. Repair\nthe argument or sentence that caused a finding, then rerun the check.\n\n`C24-formulaic-the-framing` reports recurring label and announcement shapes as\nreview candidates. It does not establish that a name or quotation is wrong.\nKeep a justified match unchanged and record the reason when a review record is\nrequired. A retained candidate still produces exit 1; do not claim a clean scan\nor change a valid passage solely to obtain exit 0.\nFor a receipt, use `--retain-framing-reason \"REASON\" --retention-source \"SOURCE\"`\nwith `prose_receipt.py emit` after reading every candidate. The assessment is\nbound to the artifact hash and applies only to C24; it cannot waive other rules.\nThe validator checks the record. The reviewer remains responsible for the judgment.\n\nDo not change the filename, label prose internal or put authored wording in a\nquote to obtain a pass. A literal source span remains verbatim only when its\nsource and exact extent are identified in the internal review record. Keep\nreviewing the surrounding authored text. Do not reclassify an invented claim\nor an awkward sentence as captured evidence.\n\n`prose_check.py` is a compatibility command for the same supported input path.\nThe older lexical engine also reports vocabulary and construction diagnostics.\nRead [surface policy](references/surface-policy.md) for source-span handling.\n\n## Review recurring patterns\n\nRead [construction rules](references/construction-rules.md) and\n[patterns](references/patterns.md) when investigating a recurring construction.\nUse the applicable register for format-specific advice:\n\n| Format | Reference |\n| --- | --- |\n| Slides | [Deck](references/registers/deck.md) |\n| Contract or proposal | [SOW and proposal](references/registers/sow-proposal.md) |\n| Report or brief | [Readout](references/registers/readout-brief.md) |\n| Short message | [Email and Slack](references/registers/email-slack.md) |\n| Other authored text | [General](references/registers/general.md) |\n\nRegisters supply examples and format checks under writing-integrity. Preserve\nrequired terms and confirmed voice when a legacy example uses another style.\nRead headings with their body text. Remove repeated explanations and subtitles\nthat repeat a title. A vocabulary substitution cannot repair an empty claim.\n\n```bash\npython3 scripts/scan.py audit docs \"*.md\"\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE\n```\n\nThe audit command includes supported structured files and returns an error for\nunsupported input. The score command reports lexical density for comparison;\nits success does not establish compliance. It strips some executable spans for\nthat measurement. Use the complete authored-language check for release review.\n\nVocabulary sources remain in `scripts/rewrite_scan.py`. The generated wordlists\ncome from `scripts/sync_wordlists.py`; preserve their synchronization check.\nWeighted lists retain their existing weights. Changes to detection require\nrepresentative positive examples and valid prose examples, not a lower budget\nchosen to pass a particular draft.\n\n## Preserve figures and meaning\n\nBefore a substantive rewrite, retain the source version. Reconcile figures:\n\n```bash\npython3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE\n```\n\nAn added figure needs its source. A missing source figure requires checking\nwhether the omission was authorized. The writing pass cannot approve a price,\nscope change or commercial commitment. Use the confirmed quote or versioned\nestimate and preserve its assumptions. Keep client-stated figures attributed.\n\nCompare the finished text with its source for changed ownership and conditions.\nRetain factual uncertainty and meaningful author choices. Never add a number,\nquotation or anecdote to make vague writing sound specific.\n\n## Record a required review\n\nWhen the producing workflow requires a narrative review record, use:\n\n```bash\npython3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected \"commercial figures from the supplied quote\" \\\n    --change \"replaced the generic claim with the supported action\"\npython3 scripts/prose_receipt.py validate receipt.json\n```\n\nThe record binds the file hash to the checker result and declared edits. The\nvalidator rechecks measurable assertions and figure changes. A no-change result\nneeds an actual reading assessment; arbitrary edits are unnecessary. A record\ndoes not independently establish that an editor understood the document.\n\nBrief replies receive writing review without a receipt. Captured transcripts\nremain evidence and are never rewritten for style. Newly authored descriptions\nin records still receive the same writing review as any other prose.\n\n## Select configuration\n\nThe canonical baseline is `house.json`. An explicit configuration can add\nchecks; it cannot disable the maintained rules. The scripts and word data ship\ntogether and need no neighboring installed skill. See\n[configuration](references/house-overlay.md) and the [tellscan rule map](references/tellscan-rule-map.md) when maintaining the diagnostic\nengine. Every supported artifact still needs a complete reading against its\nfacts and intended reader after the commands pass.\n",
+      "html": "<p>Prose Pass is retired as a standalone skill. The <code>prose-pass</code> directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.</p><p>Read writing-integrity <span class=\"ref\">(../writing-integrity/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile cannot impose a former employer&#x27;s voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p><h3>Review a saved file</h3><pre><code>python3 scripts/writing_check.py --config house.json FILE\npython3 scripts/writing_check.py --config house.json --json FILE</code></pre><p>The checker reads prose from supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means the check could not finish. Read its output and the complete document. Repair the argument or sentence that caused a finding, then rerun the check.</p><p><code>C24-formulaic-the-framing</code> reports recurring label and announcement shapes as review candidates. It does not establish that a name or quotation is wrong. Keep a justified match unchanged and record the reason when a review record is required. A retained candidate still produces exit 1; do not claim a clean scan or change a valid passage solely to obtain exit 0. For a receipt, use <code>--retain-framing-reason &quot;REASON&quot; --retention-source &quot;SOURCE&quot;</code> with <code>prose_receipt.py emit</code> after reading every candidate. The assessment is bound to the artifact hash and applies only to C24; it cannot waive other rules. The validator checks the record. The reviewer remains responsible for the judgment.</p><p>Do not change the filename, label prose internal or put authored wording in a quote to obtain a pass. A literal source span remains verbatim only when its source and exact extent are identified in the internal review record. Keep reviewing the surrounding authored text. Do not reclassify an invented claim or an awkward sentence as captured evidence.</p><p><code>prose_check.py</code> is a compatibility command for the same supported input path. The older lexical engine also reports vocabulary and construction diagnostics. Read surface policy <span class=\"ref\">(references/surface-policy.md)</span> for source-span handling.</p><h3>Review recurring patterns</h3><p>Read construction rules <span class=\"ref\">(references/construction-rules.md)</span> and patterns <span class=\"ref\">(references/patterns.md)</span> when investigating a recurring construction. Use the applicable register for format-specific advice:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Format</th><th scope=\"col\">Reference</th></tr></thead><tbody><tr><td>Slides</td><td>Deck <span class=\"ref\">(references/registers/deck.md)</span></td></tr><tr><td>Contract or proposal</td><td>SOW and proposal <span class=\"ref\">(references/registers/sow-proposal.md)</span></td></tr><tr><td>Report or brief</td><td>Readout <span class=\"ref\">(references/registers/readout-brief.md)</span></td></tr><tr><td>Short message</td><td>Email and Slack <span class=\"ref\">(references/registers/email-slack.md)</span></td></tr><tr><td>Other authored text</td><td>General <span class=\"ref\">(references/registers/general.md)</span></td></tr></tbody></table></div><p>Registers supply examples and format checks under writing-integrity. Preserve required terms and confirmed voice when a legacy example uses another style. Read headings with their body text. Remove repeated explanations and subtitles that repeat a title. A vocabulary substitution cannot repair an empty claim.</p><pre><code>python3 scripts/scan.py audit docs &quot;*.md&quot;\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE</code></pre><p>The audit command includes supported structured files and returns an error for unsupported input. The score command reports lexical density for comparison; its success does not establish compliance. It strips some executable spans for that measurement. Use the complete authored-language check for release review.</p><p>Vocabulary sources remain in <code>scripts/rewrite_scan.py</code>. The generated wordlists come from <code>scripts/sync_wordlists.py</code>; preserve their synchronization check. Weighted lists retain their existing weights. Changes to detection require representative positive examples and valid prose examples, not a lower budget chosen to pass a particular draft.</p><h3>Preserve figures and meaning</h3><p>Before a substantive rewrite, retain the source version. Reconcile figures:</p><pre><code>python3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE</code></pre><p>An added figure needs its source. A missing source figure requires checking whether the omission was authorized. The writing pass cannot approve a price, scope change or commercial commitment. Use the confirmed quote or versioned estimate and preserve its assumptions. Keep client-stated figures attributed.</p><p>Compare the finished text with its source for changed ownership and conditions. Retain factual uncertainty and meaningful author choices. Never add a number, quotation or anecdote to make vague writing sound specific.</p><h3>Record a required review</h3><p>When the producing workflow requires a narrative review record, use:</p><pre><code>python3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected &quot;commercial figures from the supplied quote&quot; \\\n    --change &quot;replaced the generic claim with the supported action&quot;\npython3 scripts/prose_receipt.py validate receipt.json</code></pre><p>The record binds the file hash to the checker result and declared edits. The validator rechecks measurable assertions and figure changes. A no-change result needs an actual reading assessment; arbitrary edits are unnecessary. A record does not independently establish that an editor understood the document.</p><p>Brief replies receive writing review without a receipt. Captured transcripts remain evidence and are never rewritten for style. Newly authored descriptions in records still receive the same writing review as any other prose.</p><h3>Select configuration</h3><p>The canonical baseline is <code>house.json</code>. An explicit configuration can add checks; it cannot disable the maintained rules. The scripts and word data ship together and need no neighboring installed skill. See configuration <span class=\"ref\">(references/house-overlay.md)</span> and the tellscan rule map <span class=\"ref\">(references/tellscan-rule-map.md)</span> when maintaining the diagnostic engine. Every supported artifact still needs a complete reading against its facts and intended reader after the commands pass.</p>",
       "excerptHtml": "<p>Prose Pass is retired as a standalone skill. The <code>prose-pass</code> directory is a retained internal runtime for Writing Integrity. Do not select or install it as a separate editor. Existing script paths and receipt identifiers remain compatible.</p><p>Read writing-integrity <span class=\"ref\">(../writing-integrity/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile cannot impose a former employer&#x27;s voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p>",
       "headings": [
         "Review a saved file",
@@ -10272,9 +10264,9 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "0daa9be3fbb824299b036c91f0b07559db7558fffab208cf9e1bcee383167749",
-          "bytes": 6046,
-          "gitBlob": "ae37210f1785f3fe7d28e4eb954d3e3ecd04b26c"
+          "sha256": "f72a0367beadea47fe644ed123d0f18421c3f3a744d667419142aaf979006fc9",
+          "bytes": 6737,
+          "gitBlob": "3a5c151fe2cdb1953b7a812dfca076a053373586"
         },
         {
           "path": "house.json",
@@ -10296,9 +10288,9 @@
         },
         {
           "path": "references/patterns.md",
-          "sha256": "d52715cb223df18b641cac0674c507f94459cbe4817d4baf11feda735f92ce88",
-          "bytes": 8284,
-          "gitBlob": "01d02a6c8f832a1413aa6444ecf8e5d3eff2623b"
+          "sha256": "9c8aae0e165462fbc73cb75ad8e2113e23e2ab4a1b3c0221fa52608aa88fd8ac",
+          "bytes": 9789,
+          "gitBlob": "f90093a7a6c0fb862c3794be7066330b9805754d"
         },
         {
           "path": "references/registers/deck.md",
@@ -10355,10 +10347,16 @@
           "gitBlob": "3209f741dc18351356d3c1b230ab07f12aebef1c"
         },
         {
+          "path": "scripts/framing.py",
+          "sha256": "aaed6923968484cbe76aeb854eae87d89a4bb01cb19e0019fb4896ffd6daa77d",
+          "bytes": 3180,
+          "gitBlob": "f0015462e850763d5b52306b862047b197b33e6a"
+        },
+        {
           "path": "scripts/prose_check.py",
-          "sha256": "e6667deccbd27d1e687d6e30cf5821f9377308f8765a587d858d6ff0d3c8d6c8",
-          "bytes": 31382,
-          "gitBlob": "f0d54e2a5c32dc4292a6d21ceb0397cc948e794d"
+          "sha256": "b8f5dc4e25822ca8715b5493abc313838122e5dafffcf0d02ddcf567c250c6f3",
+          "bytes": 32016,
+          "gitBlob": "be74c31bc76e06bd7d4ff31a7e3b4e4b40c3ec4a"
         },
         {
           "path": "scripts/prose_check_selftest.py",
@@ -10368,9 +10366,9 @@
         },
         {
           "path": "scripts/prose_receipt.py",
-          "sha256": "3c873d1804085360fd25b8fc985f82bf90edbf018abec602fd3f0b815ebd400a",
-          "bytes": 12305,
-          "gitBlob": "08db1a7f61674aaec177d80924fcdcb3275249e2"
+          "sha256": "7f6a18e3180661c93c2eb633bc737b83f6a60c88a2983d1edefb2328cdbadf38",
+          "bytes": 14955,
+          "gitBlob": "99aee5537699757fd37ae8826a9c53a1d6b9c76d"
         },
         {
           "path": "scripts/prose_receipt_selftest.py",
@@ -10451,7 +10449,7 @@
           "skill": "prose-pass",
           "markdown": "## Request\n\nCan you fix my draft email to the facilities committee about the pool roof delay? It reads stiff and I don't want it to sound machine-written. My project notes are in inputs/ and every figure has to stay as it is.\n\n## Inputs\n\nRun of the `prose-pass` source module, which has no task package of its own. The recording session invented this scenario, the request and the inputs below before running the skill. It had no connectors, accounts or network access and could not execute scripts, so any scripted step was done by hand and the answer says so. Other files it produced, not shown here: `revised-email.txt`.\n\n#### draft-email.txt\n\nSubject: Exciting Update: Pool Reopening Timeline\n\nDear Committee Members,\n\nI hope this email finds you well. I am thrilled to share a transformative update on the Alderbank Pool roof project. Navigating unforeseen challenges, our team has worked tirelessly to ensure a seamless path forward.\n\nThe reopening, originally planned for 3 March, is now expected on 14 April. This delay is not about quality, it's about safety. Inspectors found corroded steel in 6 of the 22 roof trusses, and replacing them adds $38,400 to the $212,000 contract. Fortunately, our contingency fund of $45,000 can absorb the cost, so no new money is needed.\n\nTime is of the essence, as the steel quote expires soon. We will need your approval promptly to keep the project on track. Feel free to reach out with any questions, and thank you for your continued support and partnership.\n\nWarm regards,\nTomasz Weber\nFacilities Manager\n\n#### project-notes.md\n\n#### Alderbank Pool roof: notes, 3 November\n\n- Old cladding came off the week of 20 October. Inspector (Dana Okafor, Ridgeway Structural) found corrosion in 6 of the 22 trusses.\n- Contract with Calloway Roofing: $212,000. Change order for replacing the 6 trusses: $38,400, quote Q-2291.\n- Quote Q-2291 holds until 25 November. After that the steel price is re-quoted.\n- Contingency fund balance: $45,000. Change order needs committee approval because it is over the $25,000 delegated limit.\n- Facilities committee meets 18 November.\n- Original reopening: 3 March. New reopening: 14 April, only if the steel arrives within 5 weeks of the order.\n- Swim club has been told the pool stays closed until the new date; they have asked for a written update.\n\n## Output\n\nI rewrote the email and saved it as `out/revised-email.txt`. Your original stays in `inputs/draft-email.txt`. The text is below.\n\n```\nSubject: Alderbank Pool roof: approval needed on 18 November for a 14 April reopening\n\nDear committee members,\n\nThe pool will reopen on 14 April instead of 3 March. After the old cladding came off, Dana Okafor of Ridgeway Structural inspected the roof and found corrosion in 6 of the 22 trusses.\n\nCalloway Roofing quotes $38,400 to replace those six (Q-2291), on top of the $212,000 contract. The contingency fund holds $45,000, so the cost fits inside it. Because the change order is over the $25,000 limit delegated to me, it needs a committee vote.\n\nThe quote holds until 25 November, after which the steel is re-quoted. I am asking for approval at your 18 November meeting so the order goes in before the quote lapses. The 14 April date also depends on the steel arriving within 5 weeks of the order.\n\nThe swim club has asked for a written update. I would like to send it after your vote.\n\nTomasz Weber\nFacilities Manager\n```\n\n#### What changed\n\n- **Opening and subject.** The draft started with \"I hope this email finds you well\" and \"thrilled to share a transformative update\". The new version opens with the reopening date and puts the decision and its deadline in the subject.\n- **Vague wording replaced with your notes.** \"Unforeseen challenges\", \"worked tirelessly\" and \"expires soon\" are gone. In their place are the inspector, the 6 of 22 trusses, the quote number and the 25 November lapse date.\n- **Ask with a date.** \"We will need your approval promptly\" now reads \"approval at your 18 November meeting\". The notes explain why a vote is needed: the change order is over the $25,000 delegated limit.\n- **Forced contrast removed.** \"Not about quality, it's about safety\" is deleted. Your notes don't say the delay was about safety, so that claim was not supported.\n- **Dependency added.** The draft gave 14 April as firm. Your notes say it holds only if the steel arrives within 5 weeks of the order, so that condition is now in the email.\n- **Closers removed.** \"Feel free to reach out\", \"continued support and partnership\" and \"Warm regards\" are cut. The email ends on the swim club item.\n- **Ownership made explicit.** \"The delegated limit\" now says it is yours (\"delegated to me\"), and the approver is the committee.\n\n#### Figures check\n\nI did the tie-out by hand because I can't run `rewrite_scan.py --tie-out` here. Every figure and date in the revision matches your notes: 14 April, 3 March, 6 of 22 trusses, $38,400, $212,000, $45,000, $25,000, 25 November, 18 November, 5 weeks and Q-2291. I added no figures. Your draft said \"no new money is needed\"; I replaced it with \"the cost fits inside\" the contingency fund, which is the only claim the $45,000 balance supports. I did not compute a remaining balance, since your notes don't give one.\n\n#### Checks I could not run\n\n- I could not run `writing_check.py`, so there is no checker result. I read the text by hand against the construction rules instead: balanced clauses, antithesis, triads, stacked fragments, deference phrasing, chatbot closers and repeated phrases. I found none left, and I made a second pass to remove two sentences I had added without a source. This is a reading pass, not a scanner pass.\n- No review receipt was produced, because this was a short message. The skill treats short messages as a quick pass without one.\n\n#### Please confirm\n\n- **Swim club line.** \"I would like to send it after your vote\" is my wording. Your notes say only that the club wants a written update. Change or delete it if you plan to send it sooner.\n- **Dana Okafor's mention.** I named the inspector because your notes do. Remove the name if the committee doesn't need it.\n- **Cladding timing.** I kept \"after the old cladding came off\" without a date. Your notes say the week of 20 October, so add it if you want.\n\nFiles:\n- `out/revised-email.txt`: the revised email shown above.\n",
           "html": "<h3>Request</h3><p>Can you fix my draft email to the facilities committee about the pool roof delay? It reads stiff and I don&#x27;t want it to sound machine-written. My project notes are in inputs/ and every figure has to stay as it is.</p><h3>Inputs</h3><p>Run of the <code>prose-pass</code> source module, which has no task package of its own. The recording session invented this scenario, the request and the inputs below before running the skill. It had no connectors, accounts or network access and could not execute scripts, so any scripted step was done by hand and the answer says so. Other files it produced, not shown here: <code>revised-email.txt</code>.</p><h5>draft-email.txt</h5><p>Subject: Exciting Update: Pool Reopening Timeline</p><p>Dear Committee Members,</p><p>I hope this email finds you well. I am thrilled to share a transformative update on the Alderbank Pool roof project. Navigating unforeseen challenges, our team has worked tirelessly to ensure a seamless path forward.</p><p>The reopening, originally planned for 3 March, is now expected on 14 April. This delay is not about quality, it&#x27;s about safety. Inspectors found corroded steel in 6 of the 22 roof trusses, and replacing them adds $38,400 to the $212,000 contract. Fortunately, our contingency fund of $45,000 can absorb the cost, so no new money is needed.</p><p>Time is of the essence, as the steel quote expires soon. We will need your approval promptly to keep the project on track. Feel free to reach out with any questions, and thank you for your continued support and partnership.</p><p>Warm regards, Tomasz Weber Facilities Manager</p><h5>project-notes.md</h5><h5>Alderbank Pool roof: notes, 3 November</h5><ul><li>Old cladding came off the week of 20 October. Inspector (Dana Okafor, Ridgeway Structural) found corrosion in 6 of the 22 trusses.</li><li>Contract with Calloway Roofing: $212,000. Change order for replacing the 6 trusses: $38,400, quote Q-2291.</li><li>Quote Q-2291 holds until 25 November. After that the steel price is re-quoted.</li><li>Contingency fund balance: $45,000. Change order needs committee approval because it is over the $25,000 delegated limit.</li><li>Facilities committee meets 18 November.</li><li>Original reopening: 3 March. New reopening: 14 April, only if the steel arrives within 5 weeks of the order.</li><li>Swim club has been told the pool stays closed until the new date; they have asked for a written update.</li></ul><h3>Output</h3><p>I rewrote the email and saved it as <code>out/revised-email.txt</code>. Your original stays in <code>inputs/draft-email.txt</code>. The text is below.</p><pre><code>Subject: Alderbank Pool roof: approval needed on 18 November for a 14 April reopening\n\nDear committee members,\n\nThe pool will reopen on 14 April instead of 3 March. After the old cladding came off, Dana Okafor of Ridgeway Structural inspected the roof and found corrosion in 6 of the 22 trusses.\n\nCalloway Roofing quotes $38,400 to replace those six (Q-2291), on top of the $212,000 contract. The contingency fund holds $45,000, so the cost fits inside it. Because the change order is over the $25,000 limit delegated to me, it needs a committee vote.\n\nThe quote holds until 25 November, after which the steel is re-quoted. I am asking for approval at your 18 November meeting so the order goes in before the quote lapses. The 14 April date also depends on the steel arriving within 5 weeks of the order.\n\nThe swim club has asked for a written update. I would like to send it after your vote.\n\nTomasz Weber\nFacilities Manager</code></pre><h5>What changed</h5><ul><li><strong>Opening and subject.</strong> The draft started with &quot;I hope this email finds you well&quot; and &quot;thrilled to share a transformative update&quot;. The new version opens with the reopening date and puts the decision and its deadline in the subject.</li><li><strong>Vague wording replaced with your notes.</strong> &quot;Unforeseen challenges&quot;, &quot;worked tirelessly&quot; and &quot;expires soon&quot; are gone. In their place are the inspector, the 6 of 22 trusses, the quote number and the 25 November lapse date.</li><li><strong>Ask with a date.</strong> &quot;We will need your approval promptly&quot; now reads &quot;approval at your 18 November meeting&quot;. The notes explain why a vote is needed: the change order is over the $25,000 delegated limit.</li><li><strong>Forced contrast removed.</strong> &quot;Not about quality, it&#x27;s about safety&quot; is deleted. Your notes don&#x27;t say the delay was about safety, so that claim was not supported.</li><li><strong>Dependency added.</strong> The draft gave 14 April as firm. Your notes say it holds only if the steel arrives within 5 weeks of the order, so that condition is now in the email.</li><li><strong>Closers removed.</strong> &quot;Feel free to reach out&quot;, &quot;continued support and partnership&quot; and &quot;Warm regards&quot; are cut. The email ends on the swim club item.</li><li><strong>Ownership made explicit.</strong> &quot;The delegated limit&quot; now says it is yours (&quot;delegated to me&quot;), and the approver is the committee.</li></ul><h5>Figures check</h5><p>I did the tie-out by hand because I can&#x27;t run <code>rewrite_scan.py --tie-out</code> here. Every figure and date in the revision matches your notes: 14 April, 3 March, 6 of 22 trusses, $38,400, $212,000, $45,000, $25,000, 25 November, 18 November, 5 weeks and Q-2291. I added no figures. Your draft said &quot;no new money is needed&quot;; I replaced it with &quot;the cost fits inside&quot; the contingency fund, which is the only claim the $45,000 balance supports. I did not compute a remaining balance, since your notes don&#x27;t give one.</p><h5>Checks I could not run</h5><ul><li>I could not run <code>writing_check.py</code>, so there is no checker result. I read the text by hand against the construction rules instead: balanced clauses, antithesis, triads, stacked fragments, deference phrasing, chatbot closers and repeated phrases. I found none left, and I made a second pass to remove two sentences I had added without a source. This is a reading pass, not a scanner pass.</li><li>No review receipt was produced, because this was a short message. The skill treats short messages as a quick pass without one.</li></ul><h5>Please confirm</h5><ul><li><strong>Swim club line.</strong> &quot;I would like to send it after your vote&quot; is my wording. Your notes say only that the club wants a written update. Change or delete it if you plan to send it sooner.</li><li><strong>Dana Okafor&#x27;s mention.</strong> I named the inspector because your notes do. Remove the name if the committee doesn&#x27;t need it.</li><li><strong>Cladding timing.</strong> I kept &quot;after the old cladding came off&quot; without a date. Your notes say the week of 20 October, so add it if you want.</li></ul><p>Files:</p><ul><li><code>out/revised-email.txt</code>: the revised email shown above.</li></ul>",
-          "current": true
+          "current": false
         }
       ]
     },
@@ -10464,7 +10462,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/quality-gate/SKILL.md",
       "sourceSha256": "854448520c20383707e16bddd027fed13a2196e75b083918a894e4f0398b9e1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/quality-gate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/quality-gate/SKILL.md",
       "taskPackages": [
         {
           "name": "deliverable-review",
@@ -10677,7 +10675,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/requirements-capture/SKILL.md",
       "sourceSha256": "285e48420fc2c355305c7d5a5a4e628065fa489f69c5589bda1f3fb2c7c784c9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/requirements-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/requirements-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "requirements-backlog",
@@ -10882,7 +10880,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/resume-numbers-and-keywords/SKILL.md",
       "sourceSha256": "bac682d878466ed29e02267f52a0adf61978ceb3b10d68ecd529552388ada4dd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/resume-numbers-and-keywords/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/resume-numbers-and-keywords/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -11025,7 +11023,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site/SKILL.md",
       "sourceSha256": "ebef4607fe151c273003a3065e535d5fb21353e91687bca81207c110e34b8277",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "review-site",
@@ -11218,7 +11216,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-kit/SKILL.md",
       "sourceSha256": "33f4b81ea9544446b46f9b4f4076b80267d4399184c314d0093eb03db1b6ec6a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/review-site-kit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/review-site-kit/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "decision-register",
@@ -11544,7 +11542,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/roadmap-artifacts/SKILL.md",
       "sourceSha256": "f8049332aee2da80393fa10a6ef24133b92effb692626bf6999231c7f0ffb530",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/roadmap-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/roadmap-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "roadmap-artifacts",
@@ -11862,7 +11860,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/rom/SKILL.md",
       "sourceSha256": "5c4e72f9e50282c5c3a43c366fc34a82600b0df5606cace94c7cd48ceac16045",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/rom/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/rom/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -12102,7 +12100,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/s2d-handoff/SKILL.md",
       "sourceSha256": "5a20835369410ea3c73c2a29dbe76ca197f11b23126f9e8eb6305585a99ee0cb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/s2d-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/s2d-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-to-delivery-handoff",
@@ -12363,7 +12361,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-journey-critique/SKILL.md",
       "sourceSha256": "b3017491fc634e10d3e701a494df80578b65d168147fbdc4e4563724a5c46dd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sales-journey-critique/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sales-journey-critique/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -12506,7 +12504,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-process-mapping/SKILL.md",
       "sourceSha256": "4523ee9e6c71fc680ecff67815a0fe189483522dd37d2bf3ad06b23d9c843f03",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sales-process-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sales-process-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -12636,7 +12634,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-reference/SKILL.md",
       "sourceSha256": "5ce4f83358b1c63d3abedd2a09d4258a3642c8d5b6fcba42e525cb313e45c6fc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/scope-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/scope-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -12881,7 +12879,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scoping-agent/SKILL.md",
       "sourceSha256": "5c42af24098dabd808faddcbe450c622c97f2f9ae3c8845cbeb4a446f1b48e52",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/scoping-agent/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/scoping-agent/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -13071,7 +13069,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/session-handoff/SKILL.md",
       "sourceSha256": "76315e6e195546e7bb4722b3782a681f17654707ed822c1f0f266ef263ec484b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "session-handoff",
@@ -13222,7 +13220,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-delivery-standards/SKILL.md",
       "sourceSha256": "1f1991ed702e190110684d81701e01a8d34f6ebb9d8e8f216b57c951eef2d69e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sf-delivery-standards/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-delivery-standards/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-project-setup",
@@ -13948,7 +13946,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-deploy-engine/SKILL.md",
       "sourceSha256": "8a638326984a888fd4e4f1ede7405a1e9899ece7f7ffc051022438c23252ad4d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sf-deploy-engine/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-deploy-engine/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-pipeline-operations",
@@ -14187,7 +14185,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-enterprise-patterns/SKILL.md",
       "sourceSha256": "f02a3a9fec328a1b42e89fae6a157071d3fc4ed59452e0c9b0a38ec463cbffff",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sf-enterprise-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-enterprise-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-apex-patterns",
@@ -14412,7 +14410,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-headless-screenshot/SKILL.md",
       "sourceSha256": "06cdf4bb69534ca8360c6e45568165ebed6f98c4d74aa7100a73fef3d453cfe1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sf-headless-screenshot/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-headless-screenshot/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -14547,7 +14545,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-solo-devops/SKILL.md",
       "sourceSha256": "7aa22071e02f31275dcdff3bf20170739971f90d31d0563242ef88a520154d73",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sf-solo-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-solo-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-change-delivery",
@@ -14905,7 +14903,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-creation-walkthrough/SKILL.md",
       "sourceSha256": "ee26692c205920fa87c71c04af6dcd814fc43606c2da4a7a1a74c154df3778a6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/skill-creation-walkthrough/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/skill-creation-walkthrough/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -15109,7 +15107,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-estate-sync/SKILL.md",
       "sourceSha256": "9c825654bbc5796ce092366a36a8d9d67a5928156d7addcf3c194c2ef495011d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/skill-estate-sync/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/skill-estate-sync/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -15336,7 +15334,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/solution-brief/SKILL.md",
       "sourceSha256": "f7f08afe359072e7f542a43e2a827d1e0f425a5d91789f790a69f3282f401978",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/solution-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/solution-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "solution-brief",
@@ -15704,7 +15702,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow/SKILL.md",
       "sourceSha256": "4e4d47135eda6b0e5bf6fabff30693368ad61984e4761e705d038d935fcf7db3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sow/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sow/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -15986,7 +15984,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow-quality/SKILL.md",
       "sourceSha256": "f13a0cc56620104bd57e6b8f76a4586488f7d2fdd9fe7ad5424117a6a0fd9ec1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sow-quality/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sow-quality/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -16186,7 +16184,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/spec-writer/SKILL.md",
       "sourceSha256": "7ae4353bc1c856ed2de2a49fef14ef204b420d9e2d46541462c9e6ef750ea61f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/spec-writer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/spec-writer/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -16340,7 +16338,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sprint-planning/SKILL.md",
       "sourceSha256": "9e41c15db883c84ae5377ff1e011cfdb9dc1605eab23fde6a352a2f07ecc0ef9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sprint-planning/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sprint-planning/SKILL.md",
       "taskPackages": [
         {
           "name": "sprint-planning",
@@ -16566,7 +16564,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-art-direction/SKILL.md",
       "sourceSha256": "dcdd4dd6bb05db06865fc642b5d0eb269386f09c5a87bf2a31168f49b62cdf4f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sticker-art-direction/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sticker-art-direction/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-art-direction",
@@ -16694,7 +16692,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-sheets/SKILL.md",
       "sourceSha256": "1b464817a7997c722c9ce4b4ea92ffda707eb21f6aceee9a70aecc3491c02c38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-sheets",
@@ -16801,7 +16799,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/system-design/SKILL.md",
       "sourceSha256": "a85c9e72b9cd4db699a8d758270748b7a18cdd8f08a26ddb03cb99b75e639b56",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/system-design/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/system-design/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -16964,7 +16962,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/team-onboarding/SKILL.md",
       "sourceSha256": "20659fda549fafd71092ba6d71a5cee667b4b4b36e7a13701f068154b4bff265",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "team-onboarding",
@@ -17136,7 +17134,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tracker-intake/SKILL.md",
       "sourceSha256": "ad155d56dd3ba52562f7e462af4e145db73e621812205a2933adac24c6d21fba",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/tracker-intake/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/tracker-intake/SKILL.md",
       "taskPackages": [
         {
           "name": "tracker-intake",
@@ -17297,7 +17295,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/transcript-ingestion/SKILL.md",
       "sourceSha256": "990703731119c90008f1f920e37bc97908b55c885fa8458155eb91d7f03f9944",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/transcript-ingestion/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/transcript-ingestion/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -17456,7 +17454,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/uat-validation/SKILL.md",
       "sourceSha256": "df12e4024062a0e9c7a2ee8ac55358d26599110a8acfe9c134f493f8163925ad",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/uat-validation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/uat-validation/SKILL.md",
       "taskPackages": [
         {
           "name": "acceptance-testing",
@@ -17685,7 +17683,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/usability-testing/SKILL.md",
       "sourceSha256": "1bd1c6d7af93f9ec601b9d7a13dd252e98af94236d23995d6b509ffe316355a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/usability-testing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/usability-testing/SKILL.md",
       "taskPackages": [
         {
           "name": "usability-testing",
@@ -17807,10 +17805,10 @@
       "family": 5,
       "description": "Review prose, preserve meaning and voice, and learn from writing corrections through a compact private profile. Use for replies, documents, instructions and UI text.",
       "status": "local-revision",
-      "entrypointChanged": true,
+      "entrypointChanged": false,
       "sourcePath": "skills/writing-integrity/SKILL.md",
       "sourceSha256": "20964c8b697918f1603ef59744ecaeda512c62f396477c6070a5d68c9e5dbe8a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/writing-integrity/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/writing-integrity/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-integrity",
@@ -17894,7 +17892,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 16,
-        "packageFingerprint": "2432c07e500f1f40ee8b305c517bde3548aafbdcd2dcb48c28de4a026ffad669",
+        "packageFingerprint": "bbe19ee1ce09ef1a5faf0f8519c0bc3f943a957f47c725ceded00d90babc7df0",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -18014,9 +18012,9 @@
         },
         {
           "path": "references/patterns.md",
-          "sha256": "1a62ae1810d1b8160db9bd809bdb000547bd2ebda8b8140f1897cf260cc91d33",
-          "bytes": 8260,
-          "gitBlob": "3cb8c58e09a212d0bf8b463ecf0d4226c435ae4c"
+          "sha256": "661473e584390dbc7775e11b6cd5e0a66fdeeb68bd1cef712944a0c8c1e691d5",
+          "bytes": 8824,
+          "gitBlob": "8010fd67a4262201e2fbb423adac584395eb89cc"
         },
         {
           "path": "scripts/build_kit.py",
@@ -18068,7 +18066,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-style-builder/SKILL.md",
       "sourceSha256": "e379f9a134e038cc87e2013b0238f114fbad46e874d27dada6e878b688557b02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b5280b2dceee40de1a15783cc580f0f29f9f23aa/skills/writing-style-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/writing-style-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-profile",
@@ -18240,8 +18238,8 @@
     }
   ],
   "counts": {
-    "github": 89,
-    "local-revision": 1,
+    "github": 88,
+    "local-revision": 2,
     "local-addition": 0,
     "canonical": 90,
     "total": 90,

@@ -96,6 +96,10 @@
     "0.2.24": {
       "content_sha256": "f9b958f0e7b63aad1f85793fedc68d5b9822735422616f78d87744cc1a29b0cf",
       "note": "Broaden The-plus-noun review across authored text and preserve each claim scope when removing repeated frames; replaces the tested, unpublished 0.2.23 candidate."
+    },
+    "0.2.26": {
+      "content_sha256": "fbc1af2a911b1f91b1b56c4cc083e43dc91ba0e29c68b17cd8586f141435e215",
+      "note": "Add contextual C24 framing candidates and artifact/checker-bound retention assessments; preserve other diagnostic enforcement. Replaces unpublished 0.2.25 test draft."
     }
   }
 }
