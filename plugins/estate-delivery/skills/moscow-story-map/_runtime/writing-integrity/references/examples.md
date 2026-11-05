@@ -140,12 +140,14 @@ Keep the date, availability limit and per-person naming rule. Do not broaden uni
 
 If the request instead asks whether saved filters reduced search time, answer that time savings have not been measured. If a draft claims they save ten minutes, remove that unsupported claim. If the requested copy must include a legal disclosure or a material approval condition, retain it. Source selection does not authorize hiding information the reader needs.
 
-## Name sections and agents for their work
+## Repair the recurring frame across surfaces
 
-A solution brief has “The Bet” above a recommendation to pilot intake routing and “The Call” above discovery call notes. Agent cards use “The Surveyor” for reviewing intake requests and “The Cartographer” for mapping handoffs. Navigation uses “THE Workspace” for shared project files and “THE Project” for the intake-routing pilot.
+A paragraph says, “The snag is a missing owner. The move is to assign one owner per request. The finish is an agreed review date.” A supported revision is, “Requests lack an owner. Assign one owner to each request. Agree a review date.” Preserve the facts and instructions while removing the repeated announcement. The same formula can appear in an email, article or internal note without becoming a heading.
 
-Supported labels are “Intake-routing pilot recommendation,” “Discovery call notes,” “Intake review agent,” “Handoff mapping agent,” “Project files” and “Intake-routing pilot.” Review the whole set. “Bet” and “Call” alone still leave readers guessing. If the source does not explain an agent's responsibility, flag the missing detail rather than inventing one.
+A solution brief has “The Bet” above a pilot recommendation and “The Call” above discovery notes. A dashboard labels shared files “THE Workspace.” Use the supported content or function: “Pilot recommendation,” “Discovery notes” and “Shared files.” Removing the article from “Bet” or “Call” alone still leaves readers guessing. Apply the same reasoning to captions, display names and other authored text; the format does not define the rule.
 
-Keep “The project owner approved v3; Priya has v2.” Both articles and version identifiers carry meaning. Keep a decision reference such as `DEC-014` when readers need it to find the record. A memorable description may accompany an identifier but cannot replace it. An invented card code with no reference or operational use can be removed.
+A set of generated role names hides the responsibilities stated beneath it. Name each role for its actual responsibility. If that responsibility is missing, flag the gap rather than inventing one. Role naming is one instance of the broader framing pattern.
 
-Keep an informative heading such as “The cost of delayed approvals,” the proper name “The Atlantic,” and character names in an intentionally theatrical piece. The recurring naming formula warrants review; it does not justify stripping every article or renaming meaningful entities.
+Keep “The project owner approved v3; Priya has v2.” The ordinary articles and exact versions carry meaning. Keep a decision reference such as `DEC-014` when readers need it to find the record. A memorable description may accompany an identifier but cannot replace it.
+
+Keep an informative heading such as “The cost of delayed approvals,” a proper name such as “The Atlantic,” and intentional character names. Preserve “The first trial used saline. The second trial used water” when it accurately distinguishes the cases. A requested refrain can deliberately repeat a construction. Review its purpose instead of treating repetition itself as a violation.
