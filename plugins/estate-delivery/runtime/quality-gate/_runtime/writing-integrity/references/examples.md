@@ -151,3 +151,51 @@ A set of generated role names hides the responsibilities stated beneath it. Name
 Keep “The project owner approved v3; Priya has v2.” The ordinary articles and exact versions carry meaning. Keep a decision reference such as `DEC-014` when readers need it to find the record. A memorable description may accompany an identifier but cannot replace it.
 
 Keep an informative heading such as “The cost of delayed approvals,” a proper name such as “The Atlantic,” and intentional character names. Preserve “The first trial used saline. The second trial used water” when it accurately distinguishes the cases. A requested refrain can deliberately repeat a construction. Review its purpose instead of treating repetition itself as a violation.
+
+## Prose beside a table
+
+A short status table already lists two checks:
+
+| Check | Status |
+| --- | --- |
+| Import | Passed |
+| Export | Failed |
+
+“The import passed. The export failed” immediately below the table adds no
+information for a reader who can use that table. Remove that sentence. Do not
+invent a release blocker or a next step from these statuses alone.
+
+Keep “Only the export check failed” when it is a useful summary of a long test
+table or appears in a standalone update. Keep an accessible text alternative
+when the table cannot be used in that format. If the source establishes that a
+release requires both checks, “The failed export check blocks release” adds a
+supported consequence. Preserve that dependency; do not infer it from the table.
+
+## Earn an action or urgency
+
+An informational review lists two optional improvements and no approval request.
+The heading “What has to close to approve” creates a requirement the source does
+not contain. “Optional improvements” preserves the status. Do not replace the
+heading with another demand to act.
+
+If an actual release policy requires both a successful export and written owner
+approval, “Release approval requirements” is useful, and both conditions must
+remain. “Submit by 17:00 UTC on Friday to meet the signed filing deadline” is a
+valid instruction when the source supplies that deadline and consequence. Keep
+that deadline, timezone and obligation. “Choose a delivery address” can be a
+useful UI instruction without a deadline or a claim of urgency.
+
+## Remove repeated reassurance; keep a recheck
+
+A report opens “The scope excludes data migration,” then repeats “That exclusion
+still holds” and “The original boundary remains intact” without a change or new
+evidence. State the exclusion once where the reader needs it. Do not replace
+all three sentences with different assurances, remove the exclusion, or imply
+that somebody rechecked it.
+
+If a later signed amendment was checked and preserves the exclusion, “The signed
+amendment also excludes data migration” records a new comparison and should stay.
+Likewise, “The invariant holds for every input in the tested set” can be a precise
+technical finding when those tests establish it. Preserve the tested scope; do
+not turn it into a universal guarantee or delete the verb merely because it
+matches an example of reassurance.

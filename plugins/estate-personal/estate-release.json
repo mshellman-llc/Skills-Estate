@@ -23,7 +23,23 @@
     "sticker-sheets",
     "writing-integrity"
   ],
-  "review_gaps": [],
-  "source_sha256": "0fc63b9c025043d81a0c067163af7eb449ec94483e9355ea9560dd6ae1100fbb",
-  "status": "reviewed"
+  "review_gaps": [
+    {
+      "required_sha256": "ef674ec80755a692999eb6663128cf4c1afd4b82ced67c7244170ecb449fde86",
+      "status": "review required",
+      "subject": "shared assembly"
+    },
+    {
+      "required_sha256": "02daeac599c04ff8d5b1ee05e05172e4bc20b2bcdcbf9f90d5f7b197139c7a69",
+      "status": "review required",
+      "subject": "prose-pass"
+    },
+    {
+      "required_sha256": "81b6b524944ae89268e1e7cefb6a3e441fe6a888f1c4458abeb4b396513524d4",
+      "status": "review required",
+      "subject": "writing-integrity"
+    }
+  ],
+  "source_sha256": "235957b731ab028856866f5d6f90869e4cf27f8deb7d096532e17db48a956a4e",
+  "status": "owner-published"
 }

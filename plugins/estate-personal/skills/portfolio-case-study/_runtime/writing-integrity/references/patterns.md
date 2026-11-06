@@ -26,6 +26,49 @@ Retain version and decision identifiers such as `v2`, `v3` and `DEC-014` when th
 
 This remains an editorial review of the recurring construction and its context. The bundled `C24-formulaic-the-framing` diagnostic reports candidates: two distinct anchored frames, or three distinct short “The” labels. It includes headings, structured labels and repeated prose announcements. Three labels can trigger without any known noun vocabulary; prose announcements use a limited set of anchors. Sparse, longer or unfamiliar prose frames can be missed. Legitimate titles and purposeful repetition can also match. Read the context, preserve justified wording and exact quotations, and never treat the diagnostic as an instruction to rename everything it reports. It does not rewrite text or prove complete editorial coverage.
 
+## Repetition and urgency
+
+Apply these checks across replies, reports, slides, headings, labels and UI text.
+Judge the passage in context and against its evidence; matching a phrase is not
+enough. Check for repetition that crosses section boundaries.
+
+**Prose that repeats a display.** A paragraph can simply read out a table, chart,
+list or status panel that already gives the reader the same facts. Check what
+it adds. Keep interpretation, an evidenced implication, an exception, a decision
+or a short summary that helps the intended reader. When the display carries the
+whole point, remove the duplicate prose. Do not manufacture an insight to justify
+keeping it. Preserve necessary definitions and qualifications, accessible text
+alternatives, and summaries that must stand alone or help readers find a result
+in a large display. Different formats can serve different readers without being
+redundant; avoid a rigid rule against facts appearing in both places.
+
+**Manufactured urgency or unearned action.** A heading, transition or closing line
+can turn an ordinary status into a demand to act, invent a deadline, or suggest
+that approval depends on work the source never required. Review “What has to close to
+approve” against the source: keep it when there is an actual approval decision
+and those items are required to resolve it.
+Use the supported subject and status when no action is needed. When action is
+justified, name the action and preserve the real owner, condition, deadline and
+consequence supplied by the evidence. Do not invent these details to make a
+call to action sound specific. Keep genuine deadlines, safety instructions,
+contractual obligations and requests that serve the reader’s task. A clear
+instruction can be useful without being urgent.
+
+**Repeated assertions or assurances.** A fact stated in the opening may return
+as “still holds,” “remains true,” “is unchanged,” or a different paraphrase in
+several sections without new evidence or consequence. Keep the statement where
+it helps the reader and remove later repetitions that add nothing. Do not merely
+swap the reassurance for another synonym. Preserve a fresh verification, a
+comparison over time, a material caveat or an answer to a specific challenge;
+state what was checked and the limits of that evidence. A local recheck cannot
+establish that the claim holds everywhere or indefinitely. Keep necessary
+reminders in independently used instructions and standalone summaries.
+
+These are contextual editorial checks. The scanner does not detect whether a
+summary adds value, an action is warranted, or an assurance has evidence. Read
+and compare the surrounding content even after a clean scan; do not add phrase
+blacklists or present lexical matches as proof of these behaviors.
+
 ## Claims of authority or importance
 
 | Pattern | Example and repair |

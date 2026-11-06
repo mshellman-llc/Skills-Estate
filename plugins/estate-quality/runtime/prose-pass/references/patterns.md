@@ -96,7 +96,7 @@ whole scanner, receipt and quality-gate dependency chain together.
 
 The house uses colon headings deliberately ("Gating: run the checker"), so this stays judgment rather than a hard rule.
 
-- Name the topic in a couple of words. No verbs, no sentence-shaped headings.
+- Use a short topic heading when the reader needs a label. Keep an action-oriented or sentence-shaped heading when it helps the reader perform a real task; verbs alone do not create urgency. Preserve required headings and genuine deadlines or approval conditions.
 - Avoid "Topic: clause" where the clause is an explanation. Move the explanation into the body.
 - Sentence case, not title case.
 
@@ -112,3 +112,16 @@ The house uses colon headings deliberately ("Gating: run the checker"), so this 
 
 - No punchy journalistic cadence: dramatic one-sentence paragraphs, a rhetorical question then its answer ("The result? X."), or escalating triads.
 - Match the sender's plain voice. A message that could go to any recipient unchanged is filler.
+
+## Contextual repetition and urgency
+
+Review prose beside tables, charts and lists for information it adds. Remove
+mere readouts when the display already serves the reader; retain interpretation,
+useful summaries, qualifications and accessible alternatives. Review headings
+and calls to action for an actual task, requirement or consequence. Preserve real
+deadlines and approval conditions; do not invent pressure or new prerequisites.
+Across the piece, remove repeated assurances of the same fact unless they add
+new verification, a changed condition or a needed reminder. Keep valid uses of
+“holds,” “unchanged” and similar wording. These judgments require the surrounding
+content and sources; the scanner has no detector for them. Apply the full
+[Writing Integrity guidance](../_runtime/writing-integrity/references/patterns.md#repetition-and-urgency).

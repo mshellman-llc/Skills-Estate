@@ -26,6 +26,8 @@ Open with the answer or decision. Name the subject and action, use plain verbs a
 
 Review repeated, formulaic “The + noun” framing wherever it appears in authored text. The check applies across prose and naming as well as headings, labels and other surfaces; examples do not limit its scope. Repair vague emphasis, added ceremony or mechanical repetition while preserving ordinary articles, purposeful repetition and meaningful names. See [framing review](references/patterns.md#repeated-the--noun-framing).
 
+Review what each passage adds. Prose beside a table or other clear display should add interpretation, a useful summary or necessary access to its content, rather than repeat it. Ground urgency and calls to action in a real requirement, consequence or reader task; preserve genuine deadlines and approval conditions. State an established fact once unless new evidence, a changed condition or the reader’s needs justify returning to it. Review these behaviors across headings and prose; examples are not banned phrases. See [repetition and urgency](references/patterns.md#repetition-and-urgency).
+
 Preserve required figures and literals, ownership, scope, legal meaning, approval conditions and uncertainty. Select facts for the reader's purpose. Keep internal evidence notes out of finished copy unless they affect the reader's interpretation or action. Facts and explicit constraints take precedence over style; use the confirmed author profile when writing as someone else.
 
 After a correction, restore the reader's task throughout the artifact. Keep explanations of the AI's mistake in the accompanying conversation unless the audience needs a correction notice. Inspect records before attributing an action or explaining a cause.

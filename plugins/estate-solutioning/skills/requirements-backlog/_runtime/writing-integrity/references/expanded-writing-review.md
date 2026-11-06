@@ -27,6 +27,12 @@ Kim and colleagues found differences in discourse structure, with greater struct
 | Automatic optimistic endings | A missing workflow becomes a generic promise about future success. End on the unresolved task or supported recommendation. Do not manufacture reassurance. |
 | Generic scene-setting | The introduction explains how fast the industry is changing before addressing the artifact. Start at the actual subject, task, or decision unless background is necessary to understand it. |
 
+For prose beside a table or another display, compare the information in both.
+Keep a useful synthesis, qualification or accessible alternative; remove a
+row-by-row paraphrase that adds nothing. Across the full artifact, distinguish
+an established fact repeated for reassurance from a new verification or a
+reminder the reader needs. See [repetition and urgency in sentence patterns](patterns.md).
+
 ## Claims and usefulness
 
 Wikipedia's editors describe vague relationships and conclusions that follow a challenge with automatic optimism. Those are editorial observations. The remaining checks below come from this skill; they make no claim about how often AI produces these patterns. [Wikipedia editors' guidance](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
@@ -43,6 +49,10 @@ Wikipedia's editors describe vague relationships and conclusions that follow a c
 | Unnecessary disclaimers repeated throughout | A source limitation appears without a claim or decision that needs it, or repeats after every finding. Omit it when irrelevant; otherwise state it where it affects interpretation. Keep qualifications required to preserve a claim’s meaning and relevant evidence gaps in an audit or status report. |
 | A correction displaces the reader’s purpose | The revised opening, labels or flow revolve around rebutting the AI’s earlier misunderstanding, even without mentioning the AI. Rebuild the passage around the audience’s actual task and supported facts. Remove explanations that only make sense to someone who saw the correction conversation. Keep a correction notice only when the reader needs the change itself. |
 | Assistant commentary inside the deliverable | Promises to help, praise for the user, editing narration, or offers to continue interrupt the requested copy. Deliver the finding or requested copy directly. |
+
+Review headings and calls to action against the actual task and evidence. A
+status update does not create an approval gate or deadline. Preserve real
+requirements and useful instructions, with their original scope and conditions.
 
 ## Agreement and the author's voice
 
