@@ -17,9 +17,10 @@ def reviewed_candidate(candidate, expected_source):
     manifest = estate.current_build(candidate)
     if expected_source != manifest['source_sha256']:
         raise ValueError('Candidate differs from the reviewed source hash')
-    settings = plugins.config(candidate)
-    gaps = plugins.release_gaps(candidate, settings, settings['bundles'], manifest,
-                                entrypoints=[PACKAGE])
+    with estate.source_snapshot(candidate) as (source, _):
+        settings = plugins.config(source)
+        gaps = plugins.release_gaps(source, settings, settings['bundles'], manifest,
+                                    entrypoints=[PACKAGE])
     if gaps:
         raise ValueError('Maintenance review pending: ' + ', '.join(x['subject'] for x in gaps))
     for mode in MODES:
@@ -54,7 +55,7 @@ def promote(candidate, repository, home, expected_source):
         _, record = releases.load(home, release_id, estate.tree_hash)
         if record['packages'][PACKAGE]['sha256'] != manifest['packages'][PACKAGE]['sha256']:
             raise ValueError('Candidate package changed after review')
-        if estate.source_hash(candidate) != expected_source:
+        if estate.committed_identity(candidate)['source_sha256'] != expected_source:
             raise ValueError('Candidate source changed after review')
         # Confirm review and build state again immediately before activation.
         reviewed_candidate(candidate, expected_source)
