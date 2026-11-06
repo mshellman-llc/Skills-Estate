@@ -549,11 +549,17 @@ def restore(receipt_path):
                 raise ValueError(f'Changed retired destination; refusing restore: {dest}')
             if op['backup'] and not os.path.lexists(op['backup']):
                 raise ValueError(f'Missing backup: {op["backup"]}')
+            if op['backup'] and 'backup_state' in op:
+                releases.require_state(Path(op['backup']), op['backup_state'])
         for op in reversed(operations):
             dest = Path(op['destination'])
+            if op['backup'] and 'backup_state' in op:
+                releases.require_state(Path(op['backup']), op['backup_state'])
             if op['source']:
                 dest.unlink()
             if op['backup']:
+                if 'backup_state' in op:
+                    releases.require_state(Path(op['backup']), op['backup_state'])
                 Path(op['backup']).rename(dest)
         if receipt.get('format') == 2:
             if receipt['previous_active']:

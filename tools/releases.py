@@ -12,6 +12,7 @@ import json
 import os
 import re
 import shutil
+import stat
 import tempfile
 import uuid
 
@@ -176,14 +177,57 @@ def linked_inventory(home, repository, links, tree_hash):
     return versions, packages
 
 
+def path_state(path):
+    """Fingerprint one destination without following links or omitting user files."""
+    path = Path(path)
+    if not os.path.lexists(path):
+        return None
+    info = path.lstat()
+    if stat.S_ISLNK(info.st_mode):
+        return {'kind': 'symlink', 'target': os.readlink(path)}
+    if stat.S_ISREG(info.st_mode):
+        value = {'kind': 'file', 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+                 'mode': stat.S_IMODE(info.st_mode)}
+    elif stat.S_ISDIR(info.st_mode):
+        value = {'kind': 'directory', 'sha256': digest([
+            (child.name, path_state(child)) for child in sorted(path.iterdir())]),
+                 'mode': stat.S_IMODE(info.st_mode)}
+    else:
+        raise ValueError('Unsupported installation destination: ' + str(path))
+    after = path.lstat()
+    if (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_mode) != (
+            after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_mode):
+        raise ValueError('Destination changed while inspecting: ' + str(path))
+    return value
+
+
+def require_state(path, expected):
+    safe_parents(Path(path).parent)
+    if path_state(path) != expected:
+        raise ValueError('Installation path changed during transaction: ' + str(path))
+
+
+def require_no_pending(home):
+    pending = sorted(state(home).glob('backup-*/pending.json'))
+    if pending:
+        raise ValueError('Unfinished installation transaction requires recovery: ' + str(pending[0]))
+
+
 def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, preserve_existing=False, links=None,
-             account_provided=()):
+             account_provided=(), policy_root=None, remove_paths=()):
+    """Activate under the caller's home lock; retain a journal if recovery is uncertain."""
     root, home = Path(root).resolve(), Path(home).absolute()
+    policy_root = Path(policy_root or root).resolve()
+    require_no_pending(home)
     folder, record = load(home, release_id, tree_hash)
     if record['repository'] != str(root):
         raise ValueError('Release belongs to another repository')
     active_file = state(home) / 'active.json'
-    previous = json.loads(active_file.read_text()) if active_file.exists() else None
+    active_before = path_state(active_file)
+    if active_before and active_before['kind'] != 'file':
+        raise ValueError('Active installation record must be a regular file')
+    previous = json.loads(active_file.read_text()) if active_before else None
+    require_state(active_file, active_before)
     if previous and previous['repository'] != str(root):
         raise ValueError('This home already has another managed repository')
     if preserve_existing and previous and not inspect(home, tree_hash)['ok']:
@@ -204,18 +248,24 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, 
                 raise ValueError('Destination package absent from release')
             desired[str(dest)] = str(folder / 'skills' / name)
     if preserve_existing:
-        # Keep owned aliases for selected packages aligned with their native-host entries.
         for destination, target in (previous or {}).get('links', {}).items():
             if Path(target).name in record['packages']:
                 desired[destination] = str(folder / 'skills' / Path(target).name)
-    # Claude Code already reads these from the Claude account; a local link would list them twice.
     for name in account_provided:
         desired.pop(str(home / '.claude/skills' / name), None)
+    from catalog import check_public_names, entries as catalog_entries
+    removals = {Path(path) for path in remove_paths}
+    public = catalog_entries(policy_root) if removals else {}
+    for dest in removals:
+        if (dest.parent != home / '.claude/skills' or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', dest.name)
+                or dest.name not in record['packages'] or dest.name not in public):
+            raise ValueError('Removal must name a public Claude skill in this release: ' + str(dest))
+        safe_parents(dest.parent)
+        desired.pop(str(dest), None)
     pointer = home / '.config/skills-estate/repository'
     desired[str(pointer)] = str(root)
-    from catalog import check_public_names
-    check_public_names(root, [Path(dest).name for dest in desired if Path(dest) != pointer])
-    check_public_names(root, [Path(target).name for dest, target in desired.items() if Path(dest) != pointer])
+    check_public_names(policy_root, [Path(dest).name for dest in desired if Path(dest) != pointer])
+    check_public_names(policy_root, [Path(target).name for dest, target in desired.items() if Path(dest) != pointer])
     versions, _ = linked_inventory(home, root, desired, tree_hash)
     operations = []
     verified_releases = {}
@@ -234,53 +284,129 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, 
         if name in desired:
             continue
         dest = Path(name)
+        safe_parents(dest.parent)
         if not os.path.lexists(dest):
             continue
-        if not dest.is_symlink() or dest.resolve() != Path(target).resolve():
+        if dest not in removals and (not dest.is_symlink() or dest.resolve() != Path(target).resolve()):
             raise ValueError(f'Changed retired destination: {dest}')
         operations.append((dest, None))
+    planned = {dest for dest, _ in operations}
+    for dest in sorted(removals - planned):
+        if os.path.lexists(dest):
+            operations.append((dest, None))
+    require_state(active_file, active_before)
     if not operations and previous and previous['release_id'] == release_id and previous['links'] == desired:
         return {'release_id': release_id, 'links_changed': 0, 'backup': None}
     backup = state(home) / ('backup-' + dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8])
+    plan = []
+    for dest, target in operations:
+        before = path_state(dest)
+        plan.append({'destination': str(dest), 'source': target,
+                     'backup': str(backup / dest.relative_to(home)) if before is not None else None,
+                     'before': before, 'backup_state': before,
+                     'after': {'kind': 'symlink', 'target': target} if target else None})
+    pending = backup / 'pending.json'
+    current = {'format': 2 if len(versions) > 1 else 1, 'release_id': release_id, 'repository': str(root), 'links': desired}
+    pending_record = {'home': str(home), 'operations': plan, 'previous_active': previous,
+                      'active_before': active_before, 'active': current, 'phase': 'prepared'}
+    write_json(pending, pending_record)
     journal = []
     active_written = False
-    plan = [{'destination': str(dest), 'source': target,
-             'backup': str(backup / dest.relative_to(home)) if os.path.lexists(dest) else None}
-            for dest, target in operations]
-    write_json(backup / 'pending.json', {'home': str(home), 'operations': plan, 'previous_active': previous})
+    active_after = None
     try:
-        for dest, target in operations:
+        require_state(active_file, active_before)
+        for op in plan:
+            dest = Path(op['destination'])
+            require_state(dest, op['before'])
             dest.parent.mkdir(parents=True, exist_ok=True)
-            saved = None
-            if os.path.lexists(dest):
-                saved = backup / dest.relative_to(home)
+            journal.append(op)
+            if op['backup']:
+                saved = Path(op['backup'])
                 saved.parent.mkdir(parents=True, exist_ok=True)
+                require_state(saved, None)
+                require_state(dest, op['before'])
                 dest.rename(saved)
-            journal.append({'destination': str(dest), 'backup': str(saved) if saved else None, 'source': target})
-            if target:
-                dest.symlink_to(target, target_is_directory=True)
-        current = {'format': 2 if len(versions) > 1 else 1, 'release_id': release_id, 'repository': str(root), 'links': desired}
-        receipt = {'format': 2, 'phase': 'committed', 'home': str(home), 'operations': journal, 'previous_active': previous, 'active': current}
+                require_state(saved, op['backup_state'])
+            require_state(dest, None)
+            if op['source']:
+                dest.symlink_to(op['source'], target_is_directory=True)
+            require_state(dest, op['after'])
+        # Check the complete result, including retained links and backed-up originals.
+        for destination, target in desired.items():
+            dest = Path(destination)
+            if not dest.is_symlink() or dest.resolve() != Path(target).resolve():
+                raise ValueError('Installation changed before commit: ' + destination)
+        for op in plan:
+            require_state(Path(op['destination']), op['after'])
+            if op['backup']:
+                require_state(Path(op['backup']), op['backup_state'])
+        linked_inventory(home, root, desired, tree_hash)
+        require_state(active_file, active_before)
+        receipt = {'format': 2, 'phase': 'committed', 'home': str(home), 'operations': journal,
+                   'previous_active': previous, 'active': current}
         write_json(active_file, current)
         active_written = True
+        active_after = path_state(active_file)
+        if json.loads(active_file.read_text()) != current:
+            raise ValueError('Active installation changed before receipt')
         write_json(backup / 'receipt.json', receipt)
-        (backup / 'pending.json').unlink()
+        require_state(active_file, active_after)
+        pending.unlink()
         return {'release_id': release_id, 'links_changed': len(journal), 'backup': str(backup)}
-    except BaseException:
-        for op in reversed(journal):
-            dest = Path(op['destination'])
-            if dest.is_symlink() and op['source'] and dest.resolve() == Path(op['source']).resolve():
-                dest.unlink()
-            if op['backup'] and os.path.lexists(op['backup']):
-                Path(op['backup']).rename(dest)
+    except BaseException as original:
+        # Never overwrite another writer's destination or active record during recovery.
+        uncertain = []
         if active_written:
-            if previous:
-                write_json(active_file, previous)
-            else:
-                active_file.unlink(missing_ok=True)
+            try:
+                if active_after is None or json.loads(active_file.read_text()) != current:
+                    raise ValueError('Active record changed after transaction write')
+                require_state(active_file, active_after)
+            except (OSError, ValueError) as exc:
+                uncertain.append(str(exc))
+        else:
+            try:
+                require_state(active_file, active_before)
+            except (OSError, ValueError) as exc:
+                uncertain.append(str(exc))
+        if not uncertain:
+            for op in reversed(journal):
+                dest = Path(op['destination'])
+                try:
+                    observed = path_state(dest)
+                    saved = Path(op['backup']) if op['backup'] else None
+                    if saved and not os.path.lexists(saved):
+                        # The original rename failed before it changed the destination.
+                        require_state(dest, op['before'])
+                        continue
+                    if saved:
+                        require_state(saved, op['backup_state'])
+                    if observed not in (None, op['after']):
+                        raise ValueError('Later destination edit preserved: ' + str(dest))
+                    require_state(dest, observed)
+                    if observed is not None:
+                        dest.unlink()
+                    if saved:
+                        require_state(dest, None)
+                        saved.rename(dest)
+                        require_state(dest, op['before'])
+                except (OSError, ValueError) as exc:
+                    uncertain.append(str(exc))
+            if not uncertain and active_written:
+                try:
+                    require_state(active_file, active_after)
+                    if previous:
+                        write_json(active_file, previous)
+                    else:
+                        active_file.unlink()
+                except (OSError, ValueError) as exc:
+                    uncertain.append(str(exc))
+        if uncertain:
+            pending_record.update(phase='recovery-required', errors=uncertain)
+            write_json(pending, pending_record)
+            raise ValueError('Installation recovery incomplete; preserve ' + str(pending) + ': ' + '; '.join(uncertain)) from original
         if (backup / 'receipt.json').exists():
             (backup / 'receipt.json').rename(backup / 'failed-receipt.json')
-        (backup / 'pending.json').rename(backup / 'failed-plan.json')
+        pending.rename(backup / 'failed-plan.json')
         raise
 
 
