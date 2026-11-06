@@ -120,6 +120,10 @@
     "0.2.34": {
       "content_sha256": "f1fa8468776f820a2a702f42cae5e619c359fb101f9c9f29a4a1313fbf6e0b57",
       "note": "Complete contextual scanner and expanded structural guidance with portable setup-library links; committed-source packaging includes the reviewed 4608298 build fix."
+    },
+    "0.2.35": {
+      "content_sha256": "b25ea5aba78e45a4502799c8be01188373250bd050f67d7c1a4f5860bf9f6d7c",
+      "note": "Update from exact verified GitHub main in isolation; preserve authoring work, transactionally back up Claude duplicates, retain verification and rollback evidence."
     }
   }
 }

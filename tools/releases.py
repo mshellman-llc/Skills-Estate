@@ -425,6 +425,7 @@ def inspect(home, tree_hash):
         return {'state': 'modified-links' if changed else 'pinned', 'ok': not changed,
                 'release_id': active['release_id'], 'source_sha256': record['source_sha256'] if len(versions) <= 1 else None,
                 'kind': record['kind'] if len(versions) <= 1 else 'mixed-pinned',
+                'source_commit': (record.get('provenance', {}).get('source_commit') or record.get('provenance', {}).get('git_head')) if len(versions) <= 1 else None,
                 'release_ids': sorted(versions), 'changed_links': changed, 'packages': packages}
     except (OSError, ValueError, KeyError) as exc:
         return {'state': 'damaged', 'ok': False, 'error': str(exc)}

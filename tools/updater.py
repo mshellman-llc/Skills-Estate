@@ -150,10 +150,17 @@ def activate_candidate(repository, candidate, home, manifest, evidence, provenan
 def update(repository, home=None):
     repository = Path(repository).resolve()
     home = Path(home or Path.home()).expanduser().resolve()
+    with releases.home_lock(home):
+        releases.require_no_pending(home)
+        before = installation_state(home)
+        if before['active']:
+            if before['active']['repository'] != str(repository):
+                raise ValueError('This home already has another managed repository')
+            if not releases.inspect(home, estate.tree_hash)['ok']:
+                raise ValueError('Current installation drift must be resolved before updating')
     evidence = releases.state(home) / ('update-' + dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8])
     releases.safe_parents(evidence)
     evidence.mkdir(parents=True)
-    before = installation_state(home)
     receipt = {'repository': str(repository), 'remote': REMOTE, 'previous_release': (before['active'] or {}).get('release_id'),
                'state': 'preparing'}
     estate.write_json(evidence / 'update.json', receipt)

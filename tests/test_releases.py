@@ -136,7 +136,7 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(before, estate.tree_hash(host.resolve()))
         report = estate.status(self.root, self.home)
         self.assertEqual(report['dist']['demo'], 'current')
-        self.assertEqual(report['local']['codex']['demo'], 'pinned-older')
+        self.assertEqual(report['local']['codex']['demo'], 'pinned-other-source')
         self.assertTrue(report['installed_release']['ok'])
         second = estate.install(self.root, self.home)
         self.assertNotEqual(first['release_id'], second['release_id'])

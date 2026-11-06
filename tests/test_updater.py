@@ -88,7 +88,18 @@ if (r/'fail-tests').exists(): raise SystemExit(1)
         self.assertEqual(record['repository'],str(self.repo))
         self.assertEqual(record['provenance']['source_commit'],revision)
         self.assertEqual(record['provenance']['verification']['verified_run'],123)
-        self.assertTrue(releases.inspect(self.home,estate.tree_hash)['ok'])
+        inspected=releases.inspect(self.home,estate.tree_hash)
+        self.assertTrue(inspected['ok'])
+        self.assertEqual(inspected['source_commit'],revision)
+
+    def test_pending_transaction_is_reported_before_network_or_tests(self):
+        pending = releases.state(self.home) / 'backup-unfinished/pending.json'
+        pending.parent.mkdir(parents=True)
+        pending.write_text('{}')
+        with patch.object(updater, 'fetch_main') as fetch:
+            with self.assertRaisesRegex(ValueError, 'Unfinished installation'):
+                self.update()
+        fetch.assert_not_called()
 
     def test_fetch_failure_preserves_installed_release_and_claude_copy(self):
         self.update()

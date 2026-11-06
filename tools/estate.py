@@ -657,7 +657,7 @@ def status(root=ROOT, home=None):
                     actual = content_cache[resolved]
                     same = bool(entry and actual == entry['sha256'])
                     pinned = releases.managed_link(dest, home, root, tree_hash, verified_releases) and '/releases/' in str(dest.resolve())
-                    value = ('linked-current' if pinned else 'legacy-mutable') if same and build_state == 'current' else ('pinned-older' if pinned else 'drift')
+                    value = ('linked-current' if pinned else 'legacy-mutable') if same and build_state == 'current' else ('pinned-other-source' if pinned else 'drift')
                 except (ValueError, OSError, KeyError, TypeError) as exc:
                     inspection_errors[str(dest)] = str(exc)
                     value = 'drift'
