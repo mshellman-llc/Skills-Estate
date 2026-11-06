@@ -1,0 +1,169 @@
+#!/bin/bash
+# estate-merge <branch> — the local review gate, for repos with no remote.
+#
+# WHAT THIS REPLACES, AND WHAT IT CANNOT
+# --------------------------------------
+# A pull request does four things. Three of them are reproducible locally:
+#   - it shows a human the diff before it counts        -> this script does
+#   - it refuses to land unvalidated code               -> this script does
+#   - it produces a record of who approved what         -> this script does
+#   - it makes a SECOND person possible                 -> this script cannot
+#
+# It also cannot give you off-machine backup or a review artifact that outlives
+# the laptop. So: if the client will allow a private remote, use one. This exists
+# for the case where they genuinely will not, and the alternative is no gate at
+# all rather than a slightly weaker one.
+#
+# THE GREEN BUTTON IS THE HUMAN RUNNING THIS
+# ------------------------------------------
+# The approval is not a checkbox this script ticks. It is the fact that a person
+# read the summary and chose to run the command (or, through Claude Code, saw the
+# command and approved it). That is exactly the same authority model as clicking
+# "Merge pull request", which is also just a human deciding after looking.
+#
+# Sequence: verify -> show -> confirm -> squash -> record.
+
+set -u
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+. "$HERE/../claude-hooks/_config.sh"
+
+die() { { echo ""; echo "estate-merge: $*"; } >&2; exit 1; }
+
+BRANCH="${1:-}"
+[ -n "$BRANCH" ] || die "usage: estate-merge <branch>"
+
+git rev-parse --git-dir >/dev/null 2>&1 || die "not a git repository."
+[ -n "$(mode)" ] || die "this repo is not initialised — run /configure-salesforce-project init first."
+
+TRUNK=$(trunk)
+ROOT=$(git rev-parse --show-toplevel)
+SD=$(state_dir ".")
+
+# ── 1. Preconditions ─────────────────────────────────────────
+HEAD_SHA=$(git rev-parse --verify --quiet "$BRANCH" 2>/dev/null) \
+  || die "no such branch: $BRANCH"
+
+CUR=$(git rev-parse --abbrev-ref HEAD)
+[ "$CUR" = "$TRUNK" ] || die "run this from the main checkout on '$TRUNK' (you are on '$CUR').
+  git checkout $TRUNK"
+
+in_wt=$(git rev-parse --absolute-git-dir)
+common=$(git rev-parse --git-common-dir); case "$common" in /*) ;; *) common="$ROOT/$common" ;; esac
+[ "$in_wt" = "$(cd "$common" && pwd)" ] || die "run this from the main checkout, not a worktree."
+
+[ -z "$(git status --porcelain -- force-app/)" ] \
+  || die "'$TRUNK' has uncommitted force-app/ changes. Commit or discard them first."
+
+# ── 2. The validate gate, before anything is shown ───────────
+#
+# Checked first on purpose: there is no point asking a human to review a diff that
+# cannot land anyway, and asking costs their attention.
+DEPLOYABLE=$(git diff --name-only "$TRUNK...$BRANCH" -- force-app/ 2>/dev/null)
+if [ -n "$DEPLOYABLE" ]; then
+  if ! grep -q "^${HEAD_SHA}[[:space:]]" "$SD/validate-log" 2>/dev/null; then
+    die "commit ${HEAD_SHA:0:8} on '$BRANCH' has no recorded validate.
+
+  Deployable files in this branch:
+$(printf '%s\n' "$DEPLOYABLE" | sed 's/^/    /')
+
+  From the worktree, run the merge gate first:
+    sf project deploy start --dry-run \\
+      --source-dir <each changed file> \\
+      --test-level RunSpecifiedTests --tests <TestClasses>
+
+  The record is per-commit: if you committed again after validating, validate again."
+  fi
+fi
+
+# ── 3. Show the human what they are approving ────────────────
+TICKETS=$(git log --pretty=%B "$TRUNK..$BRANCH" 2>/dev/null | extract_refs | tr '\n' ' ')
+
+cat <<EOF
+
+────────────────────────────────────────────────────────────────
+ LOCAL REVIEW GATE      $BRANCH  ->  $TRUNK
+────────────────────────────────────────────────────────────────
+ head       ${HEAD_SHA:0:12}
+ tickets    ${TICKETS:-(none found — see below)}
+ validate   $(grep "^${HEAD_SHA}[[:space:]]" "$SD/validate-log" 2>/dev/null | head -1 || echo 'not required (no force-app/ changes)')
+
+ commits
+$(git log --oneline "$TRUNK..$BRANCH" 2>/dev/null | sed 's/^/   /')
+
+ files
+$(git diff --stat "$TRUNK...$BRANCH" 2>/dev/null | sed 's/^/  /')
+────────────────────────────────────────────────────────────────
+
+EOF
+
+if [ -z "$TICKETS" ]; then
+  die "no ticket reference found in any commit on this branch.
+
+  With no remote there is no PR to carry the reference, so the commit messages are
+  the only audit trail this project has. Amend them, or record the exception:
+    echo \"\$(date -u +%FT%TZ) $BRANCH <why>\" >> $SD/ship-log"
+fi
+
+# Review the actual diff, not just the stat — the stat tells you nothing about
+# what the change does. Skipped when the caller is not a terminal (an agent
+# running this: the agent has the diff in context already and the human is
+# approving the command itself, which is the same decision).
+if [ -t 0 ] && [ -t 1 ]; then
+  printf ' Show the full diff before approving? [Y/n] '
+  read -r ans
+  case "$ans" in [Nn]*) ;; *) git diff "$TRUNK...$BRANCH" | ${PAGER:-less -R} ;; esac
+  printf '\n Squash-merge %s into %s? [y/N] ' "$BRANCH" "$TRUNK"
+  read -r go
+  case "$go" in [Yy]*) ;; *) echo " aborted — nothing was merged."; exit 1 ;; esac
+fi
+
+# ── 4. Record the approval BEFORE the merge ──────────────────
+#
+# Order matters: pre-commit's gate-1 carve-out reads both records to decide
+# whether the force-app commit landing on trunk is the legitimate squash. Writing
+# them after the commit would deadlock the very step this script exists to perform.
+printf '%s %s %s %s\n' "$HEAD_SHA" "$BRANCH" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  "$(git config user.email 2>/dev/null || whoami)" >> "$SD/approve-log"
+printf '%s %s\n' "$HEAD_SHA" "$BRANCH" > "$SD/pending-approve"
+
+cleanup() { rm -f "$SD/pending-approve"; }
+trap cleanup EXIT
+
+# ── 5. Squash ────────────────────────────────────────────────
+SUBJECT=$(git log -1 --pretty=%s "$BRANCH")
+if ! git merge --squash "$BRANCH" >/dev/null 2>&1; then
+  git merge --abort 2>/dev/null
+  die "squash merge hit conflicts. Sync the branch first, from the worktree:
+    git merge $TRUNK        # or: git fetch && git reset --hard $TRUNK
+  then re-validate (the gate is per-commit) and run this again."
+fi
+
+MSG="$SUBJECT
+
+Squash-merged from $BRANCH (${HEAD_SHA:0:12}).
+Tickets: $TICKETS
+Approved locally by $(git config user.email 2>/dev/null || whoami) at $(date -u +%Y-%m-%dT%H:%M:%SZ)."
+
+if ! git commit -m "$MSG"; then
+  die "the commit was rejected — read the hook output above. Nothing landed; the
+  staged squash is still in your index (git reset --hard $TRUNK to discard it)."
+fi
+
+NEW=$(git rev-parse HEAD)
+cleanup; trap - EXIT
+
+cat <<EOF
+
+ MERGED to $TRUNK as ${NEW:0:12}.
+
+ '$TRUNK' is now AHEAD OF THE ORG. Close the gap before anything else:
+
+   sf project deploy start \\
+$(printf '%s\n' "$DEPLOYABLE" | sed 's|^|     --source-dir |; s|$| \\|')
+     --test-level RunSpecifiedTests --tests <TestClasses>
+
+ Then: verify acceptance criteria, get the green light, close $TICKETS,
+ and remove the worktree when the ticket closes.
+
+EOF

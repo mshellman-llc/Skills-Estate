@@ -1,0 +1,176 @@
+#!/bin/bash
+# Apply one accepted shared-sandbox WI delta to its DevOps Center packaging
+# branch and write the scope ledger used by the review handoff gate.
+
+set -euo pipefail
+
+DEV_BRANCH=""
+WI=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --development-branch) DEV_BRANCH="$2"; shift ;;
+    --work-item) WI="$2"; shift ;;
+    -h|--help)
+      sed -n '1,12p' "$0"
+      exit 0
+      ;;
+    *) printf 'estate-devops-package: unknown argument: %s\n' "$1" >&2; exit 2 ;;
+  esac
+  shift
+done
+
+die() { printf 'estate-devops-package: %s\n' "$*" >&2; exit 1; }
+command -v jq >/dev/null 2>&1 || die "jq is required"
+git rev-parse --git-dir >/dev/null 2>&1 || die "not a git repository"
+[ "$(git config --get estate.delivery 2>/dev/null || echo direct)" = "devops-center" ] \
+  || die "estate.delivery is not devops-center"
+[ "$(git config --get estate.devops.workmodel 2>/dev/null || echo isolated)" = "shared" ] \
+  || die "estate.devops.workmodel is not shared"
+
+CURRENT=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")
+[ -n "$WI" ] || WI="$CURRENT"
+printf '%s\n' "$WI" | grep -qE '^WI-[0-9]+$' || die "work item must match WI-######"
+[ "$CURRENT" = "$WI" ] || die "run from the generated $WI packaging branch, not '$CURRENT'"
+[ -n "$DEV_BRANCH" ] || DEV_BRANCH="dev/$WI"
+[ "$DEV_BRANCH" = "dev/$WI" ] || die "development branch must be dev/$WI"
+
+INTEGRATION=$(git config --get estate.devops.integrationbranch 2>/dev/null || echo "")
+TRUNK=$(git config --get estate.trunk 2>/dev/null || echo "")
+[ -n "$INTEGRATION" ] || die "estate.devops.integrationbranch is unset"
+[ -n "$TRUNK" ] || die "estate.trunk is unset"
+git rev-parse --verify --quiet "$DEV_BRANCH" >/dev/null 2>&1 \
+  || git rev-parse --verify --quiet "origin/$DEV_BRANCH" >/dev/null 2>&1 \
+  || die "development branch '$DEV_BRANCH' does not resolve"
+DEV_REF="$DEV_BRANCH"
+git rev-parse --verify --quiet "$DEV_REF" >/dev/null 2>&1 || DEV_REF="origin/$DEV_BRANCH"
+git rev-parse --verify --quiet "origin/$INTEGRATION" >/dev/null 2>&1 \
+  || die "origin/$INTEGRATION does not resolve; fetch it first"
+git rev-parse --verify --quiet "origin/$TRUNK" >/dev/null 2>&1 \
+  || die "origin/$TRUNK does not resolve; fetch it first"
+
+STATUS_BIN="$(cd "$(dirname "$0")" && pwd)/estate-devops-shared-status"
+STATUS=$($STATUS_BIN --json) || die "shared development branch has no current successful deployment receipt: $STATUS"
+DEPLOYED_SHA=$(printf '%s' "$STATUS" | jq -er 'select(.synced == true) | .deployedSha') \
+  || die "origin/$INTEGRATION is not the latest successfully deployed commit"
+
+[ -z "$(git status --porcelain --untracked-files=all 2>/dev/null)" ] \
+  || die "packaging worktree must be clean before applying the WI patch"
+
+DEV_HEAD=$(git rev-parse "$DEV_REF")
+DEV_BASE=$(git merge-base "origin/$INTEGRATION" "$DEV_HEAD" 2>/dev/null) \
+  || die "could not derive the development base against origin/$INTEGRATION"
+PACKAGE_BASE=$(git merge-base "origin/$TRUNK" HEAD 2>/dev/null) \
+  || die "could not derive the packaging base against origin/$TRUNK"
+[ -z "$(git diff --name-only "$PACKAGE_BASE" HEAD 2>/dev/null)" ] \
+  || die "$WI already differs from its $TRUNK base; start from the generated clean WI branch"
+
+TMP=$(mktemp -d "${TMPDIR:-/tmp}/estate-devops-package.XXXXXX") || die "could not create a temporary directory"
+cleanup() { rm -rf "$TMP"; }
+trap cleanup EXIT
+PATHS="$TMP/paths"
+PATCH="$TMP/wi.patch"
+ROWS="$TMP/rows.jsonl"
+MEMBERS="$TMP/members.json"
+
+git diff --name-only "$DEV_BASE" "$DEV_HEAD" -- . ':(exclude).estate/work-items/**' > "$PATHS"
+[ -s "$PATHS" ] || die "$DEV_BRANCH has no ticket delta from its integration base"
+git diff --binary "$DEV_BASE" "$DEV_HEAD" -- . ':(exclude).estate/work-items/**' > "$PATCH"
+
+# Every owned file must still equal the accepted development head in the current
+# deployed integration commit. A later WI touching the same file is an overlap,
+# not permission to copy the sandbox's accumulated version into this package.
+while IFS= read -r path; do
+  [ -n "$path" ] || continue
+  if ! git diff --quiet "$DEV_HEAD" "$DEPLOYED_SHA" -- "$path"; then
+    die "shared component overlap at '$path'; promote/order/combine the dependent WIs before packaging"
+  fi
+done < "$PATHS"
+
+git apply --3way "$PATCH" || die "the WI patch does not apply cleanly to $TRUNK; resolve dependency order instead of copying integration files"
+
+while IFS= read -r path; do
+  [ -n "$path" ] || continue
+  STATUS_CODE=$(git diff --name-status "$DEV_BASE" "$DEV_HEAD" -- "$path" | awk 'NR==1{print $1}')
+  SOURCE_BLOB=$(git rev-parse "$DEV_HEAD:$path" 2>/dev/null || echo "")
+  if [ -n "$SOURCE_BLOB" ]; then
+    [ -f "$path" ] || die "patch did not materialize '$path'"
+    PACKAGE_BLOB=$(git hash-object "$path")
+    [ "$PACKAGE_BLOB" = "$SOURCE_BLOB" ] \
+      || die "packaged '$path' is not byte-identical to the accepted development file"
+  else
+    [ ! -e "$path" ] || die "patch did not delete '$path'"
+    PACKAGE_BLOB=""
+  fi
+  if command -v shasum >/dev/null 2>&1; then
+    PATCH_SHA=$(git diff --binary "$DEV_BASE" "$DEV_HEAD" -- "$path" | shasum -a 256 | awk '{print $1}')
+  else
+    PATCH_SHA=$(git diff --binary "$DEV_BASE" "$DEV_HEAD" -- "$path" | sha256sum | awk '{print $1}')
+  fi
+  jq -cn --arg path "$path" --arg status "$STATUS_CODE" \
+    --arg sourceBlob "$SOURCE_BLOB" --arg patchSha256 "$PATCH_SHA" \
+    '{path:$path,status:$status,sourceBlob:(if $sourceBlob == "" then null else $sourceBlob end),patchSha256:$patchSha256}' \
+    >> "$ROWS"
+done < "$PATHS"
+
+# Resolve the file set through the Salesforce CLI's metadata registry. Path
+# heuristics are not enough for bundles, decomposed objects, layouts with spaces,
+# or source-format companions. Deleted files are restored only in the temporary
+# resolver tree so the registry can still identify their component.
+FORCE_COUNT=$(grep -c '^force-app/' "$PATHS" 2>/dev/null || true)
+if [ "$FORCE_COUNT" -gt 0 ]; then
+  command -v sf >/dev/null 2>&1 || die "sf CLI is required to resolve Salesforce metadata members"
+  command -v python3 >/dev/null 2>&1 || die "python3 is required to parse the generated component manifest"
+  RESOLVER="$TMP/resolver"
+  MANIFEST_DIR="$TMP/manifest"
+  mkdir -p "$RESOLVER" "$MANIFEST_DIR"
+  git archive "$DEV_HEAD" sfdx-project.json force-app 2>/dev/null | tar -x -C "$RESOLVER" \
+    || die "could not materialize the accepted development source for component resolution"
+  while IFS= read -r path; do
+    [ -n "$path" ] || continue
+    case "$path" in force-app/*) ;; *) continue ;; esac
+    if ! git cat-file -e "$DEV_HEAD:$path" 2>/dev/null; then
+      mkdir -p "$RESOLVER/$(dirname "$path")"
+      git show "$DEV_BASE:$path" > "$RESOLVER/$path" 2>/dev/null \
+        || die "could not materialize deleted source '$path' for component resolution"
+    fi
+  done < "$PATHS"
+  SOURCE_ARGS=()
+  while IFS= read -r path; do
+    [ -n "$path" ] || continue
+    case "$path" in force-app/*) SOURCE_ARGS+=(--source-dir "$path") ;; esac
+  done < "$PATHS"
+  (cd "$RESOLVER" && SF_DISABLE_LOG_FILE=true sf project generate manifest \
+    "${SOURCE_ARGS[@]}" --name scope.xml --output-dir "$MANIFEST_DIR" >/dev/null) \
+    || die "Salesforce CLI could not resolve the WI file set into metadata components"
+  python3 - "$MANIFEST_DIR/scope.xml" > "$MEMBERS" <<'PY'
+import json
+import sys
+import xml.etree.ElementTree as ET
+
+root = ET.parse(sys.argv[1]).getroot()
+ns = {"m": "http://soap.sforce.com/2006/04/metadata"}
+members = []
+for type_node in root.findall("m:types", ns):
+    name = type_node.findtext("m:name", default="", namespaces=ns)
+    for member in type_node.findall("m:members", ns):
+        members.append({"type": name, "fullName": member.text or ""})
+print(json.dumps(sorted(members, key=lambda item: (item["type"], item["fullName"])), separators=(",", ":")))
+PY
+else
+  printf '[]\n' > "$MEMBERS"
+fi
+
+LEDGER_DIR=".estate/work-items"
+LEDGER="$LEDGER_DIR/$WI.json"
+mkdir -p "$LEDGER_DIR"
+jq -s --arg workItem "$WI" --arg developmentBranch "$DEV_BRANCH" \
+  --arg developmentBase "$DEV_BASE" --arg acceptedDevelopmentHead "$DEV_HEAD" \
+  --arg acceptedIntegrationSha "$DEPLOYED_SHA" --arg packagingBranch "$CURRENT" \
+  --arg packagingBase "$PACKAGE_BASE" --arg landingBranch "$TRUNK" \
+  --slurpfile metadataMembers "$MEMBERS" \
+  '{schemaVersion:1,workItem:$workItem,developmentBranch:$developmentBranch,developmentBase:$developmentBase,acceptedDevelopmentHead:$acceptedDevelopmentHead,acceptedIntegrationSha:$acceptedIntegrationSha,packagingBranch:$packagingBranch,packagingBase:$packagingBase,landingBranch:$landingBranch,metadataMembers:$metadataMembers[0],files:.}' \
+  "$ROWS" > "$LEDGER"
+
+printf 'Packaged %s from %s (%s files).\n' "$WI" "$DEV_BRANCH" "$(wc -l < "$PATHS" | tr -d ' ')"
+printf 'Scope ledger: %s\n' "$LEDGER"
+printf 'Review the diff, commit %s and the ledger, run a scoped dry run, then create the DevOps Center review.\n' "$WI"

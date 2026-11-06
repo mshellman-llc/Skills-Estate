@@ -1,0 +1,6 @@
+{"sprint_name":"Sprint 15","dates":"2026-11-23 to 2026-12-04","goal":"",
+"capacity":{"sprint_days":10,"hours_per_day":8,"team_members":[{"name":"Ana","available_hours":30}]},
+"items":[
+ {"id":"ONB-003","title":"Single sign-on step","type":"commit","estimated_hours":40,"assignee":"Raj",
+  "dependencies":[{"raid_id":"D-009","description":"IdP sandbox","owner":"","needed_by":"","confirmed":false}]},
+ {"id":"ONB-999","title":"Not in backlog","type":"stretch","estimated_hours":4,"assignee":"Ana"}]}

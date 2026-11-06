@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{PAGE_TITLE}} · {{TITLE}}</title>
+<style>{{TOKENS}}</style>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="{{PAGE}}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast"><div class="wrap">{{LOGO}}<span class="mast-title">{{TITLE}}</span></div></header>
+<nav class="nav" aria-label="Pages"><div class="wrap">{{NAV}}</div></nav>
+<main id="main"><div class="wrap">
+<header class="ph"><h1>{{PAGE_TITLE}}</h1>{{LEAD}}</header>
+<div id="app"></div>
+</div></main>
+<script src="data/site-data.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/{{PAGE}}.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "description": "Unreviewed candidate for isolated testing. Skills Estate commercial workflows and routing.",
+  "name": "estate-commercial",
+  "skills": "./skills/",
+  "version": "0.3.0"
+}

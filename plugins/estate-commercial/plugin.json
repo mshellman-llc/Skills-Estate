@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "name": "Skills Estate"
+  },
+  "description": "Unreviewed candidate for isolated testing. Skills Estate commercial workflows and routing.",
+  "name": "estate-commercial",
+  "version": "0.3.0"
+}

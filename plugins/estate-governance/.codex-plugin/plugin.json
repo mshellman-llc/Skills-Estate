@@ -1,0 +1,6 @@
+{
+  "description": "Unreviewed candidate for isolated testing. Skills Estate governance, personal Hub context and estate maintenance workflows.",
+  "name": "estate-governance",
+  "skills": "./skills/",
+  "version": "0.3.0"
+}

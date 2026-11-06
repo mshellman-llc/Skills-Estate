@@ -1,0 +1,49 @@
+schema_version: 1
+name: manage-decision-register
+display_name: Decision Register
+summary: 'Keeps refinement and discovery questions as a decision register with owners, editable status and saved answers, and exports them back to the tracker.'
+status: draft
+tier: core
+version: 0.1.0
+owner: estate-maintainer
+category: delivery-planning
+runtimes:
+- claude-code
+- codex
+- cowork
+triggers:
+- 'Record open questions from refinement or meeting notes.'
+- 'Find questions without an owner or still blocked.'
+- 'Export recorded answers for the tracker.'
+exclusions:
+- 'Discovery synthesis (discovery).'
+- 'Recording decisions already made in the RAID log (track-delivery).'
+- 'Requirements capture (capture-requirements).'
+inputs:
+- name: questions
+  required: true
+  description: 'content/questions.json.'
+- name: saved_answers
+  required: false
+  description: 'The answers collection read from the published page.'
+outputs:
+- name: decisions.csv
+  format: csv
+  audience: internal-or-client-as-requested
+  durable: true
+- name: decisions.md
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+connectors:
+  required: []
+  optional:
+  - jira
+depends_on:
+- review-site-runtime
+calls: []
+risk_controls:
+- 'Never changes tracker tickets; exports are prepared for the client to import.'
+- 'Client data, names and brand values stay in the engagement folder, never in the skill.'
+costs:
+  measured: false

@@ -1,0 +1,46 @@
+schema_version: 1
+name: manage-salesforce-devops
+display_name: DevOps Center Work Item Management
+summary: Create, update, commit, push, and open reviews for Salesforce DevOps Center
+  work items.
+status: active
+tier: situational
+version: 1.1.0
+owner: Estate
+category: delivery-lifecycle
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- List, find, create, or update a Salesforce DevOps Center work item; commit or
+  push its generated branch; transition its status; or create its review.
+exclusions:
+- Promotion, stage deployment, and stale-branch recovery belong to promote-salesforce-changes.
+inputs:
+- name: task_context
+  required: true
+  description: The requested work-item operation and its project, work-item, branch, or field inputs.
+outputs:
+- name: work_item_result
+  format: code-and-terminal-output
+  audience: internal
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

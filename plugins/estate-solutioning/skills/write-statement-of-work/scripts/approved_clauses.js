@@ -1,0 +1,136 @@
+'use strict';
+// Shape-only synthetic fixture. Actual clause text must come from an explicit contract profile.
+// These markers are not legal language or approval for an engagement.
+module.exports = {
+  "LOE_ACCEPTANCE": "Synthetic fixture loe acceptance. ",
+  "CLIENT_RESOURCES_ASSESS": [
+    {
+      "role": "Synthetic fixture client resources assess 1 role. ",
+      "responsibility": "Synthetic fixture client resources assess 1 responsibility. ",
+      "commitment": "Synthetic fixture client resources assess 1 commitment. "
+    },
+    {
+      "role": "Synthetic fixture client resources assess 2 role. ",
+      "responsibility": "Synthetic fixture client resources assess 2 responsibility. ",
+      "commitment": "Synthetic fixture client resources assess 2 commitment. "
+    },
+    {
+      "role": "Synthetic fixture client resources assess 3 role. ",
+      "responsibility": "Synthetic fixture client resources assess 3 responsibility. ",
+      "commitment": "Synthetic fixture client resources assess 3 commitment. "
+    },
+    {
+      "role": "Synthetic fixture client resources assess 4 role. ",
+      "responsibility": "Synthetic fixture client resources assess 4 responsibility. ",
+      "commitment": "Synthetic fixture client resources assess 4 commitment. "
+    }
+  ],
+  "CLIENT_RESOURCES_NOTE_ASSESS": "Synthetic fixture client resources note assess. ",
+  "PROJECT_MANAGEMENT_INTRO_ASSESS": "Synthetic fixture project management intro assess. ",
+  "PROJECT_MANAGEMENT_BULLETS_ASSESS": [
+    "Synthetic fixture project management bullets assess 1. ",
+    "Synthetic fixture project management bullets assess 2. ",
+    "Synthetic fixture project management bullets assess 3. ",
+    "Synthetic fixture project management bullets assess 4. ",
+    "Synthetic fixture project management bullets assess 5. "
+  ],
+  "CLIENT_RESOURCES_INTRO_ASSESS": "Synthetic fixture client resources intro assess. ",
+  "PREAMBLE": "Synthetic fixture preamble. {PROVIDER} {CLIENT}",
+  "NOTICE_SP_LABEL": "Synthetic fixture notice sp label. ",
+  "NOTICE_CLIENT_LABEL": "Synthetic fixture notice client label. ",
+  "PROJECT_SCOPE_INTRO": "Synthetic fixture project scope intro. ",
+  "OUT_OF_SCOPE_HEADER": "Synthetic fixture out of scope header. ",
+  "ELAPSED_PERIOD": "Synthetic fixture elapsed period. {N}",
+  "PROJECT_MANAGEMENT_INTRO": "Synthetic fixture project management intro. ",
+  "PROJECT_MANAGEMENT_BULLETS": [
+    "Synthetic fixture project management bullets 1. ",
+    "Synthetic fixture project management bullets 2. ",
+    "Synthetic fixture project management bullets 3. ",
+    "Synthetic fixture project management bullets 4. ",
+    "Synthetic fixture project management bullets 5. ",
+    "Synthetic fixture project management bullets 6. "
+  ],
+  "CLIENT_RELIANCE": "Synthetic fixture client reliance. ",
+  "CLIENT_RESOURCES_INTRO": "Synthetic fixture client resources intro. ",
+  "CLIENT_RESOURCES": [
+    {
+      "role": "Synthetic fixture client resources 1 role. ",
+      "responsibility": "Synthetic fixture client resources 1 responsibility. ",
+      "commitment": "Synthetic fixture client resources 1 commitment. "
+    },
+    {
+      "role": "Synthetic fixture client resources 2 role. ",
+      "responsibility": "Synthetic fixture client resources 2 responsibility. ",
+      "commitment": "Synthetic fixture client resources 2 commitment. "
+    },
+    {
+      "role": "Synthetic fixture client resources 3 role. ",
+      "responsibility": "Synthetic fixture client resources 3 responsibility. ",
+      "commitment": "Synthetic fixture client resources 3 commitment. "
+    },
+    {
+      "role": "Synthetic fixture client resources 4 role. ",
+      "responsibility": "Synthetic fixture client resources 4 responsibility. ",
+      "commitment": "Synthetic fixture client resources 4 commitment. "
+    },
+    {
+      "role": "Synthetic fixture client resources 5 role. ",
+      "responsibility": "Synthetic fixture client resources 5 responsibility. ",
+      "commitment": "Synthetic fixture client resources 5 commitment. "
+    }
+  ],
+  "CLIENT_RESOURCES_NOTE": "Synthetic fixture client resources note. ",
+  "COMMENCEMENT_STAFFING": "Synthetic fixture commencement staffing. ",
+  "COMMENCEMENT_STAFFING_ASSESS": "Synthetic fixture commencement staffing assess. ",
+  "PROTECTIVE_ASSUMPTIONS": [
+    "Synthetic fixture protective assumptions 1. ",
+    "Synthetic fixture protective assumptions 2. ",
+    "Synthetic fixture protective assumptions 3. ",
+    "Synthetic fixture protective assumptions 4. ",
+    "Synthetic fixture protective assumptions 5. ",
+    "Synthetic fixture protective assumptions 6. ",
+    "Synthetic fixture protective assumptions 7. ",
+    "Synthetic fixture protective assumptions 8. ",
+    "Synthetic fixture protective assumptions 9. ",
+    "Synthetic fixture protective assumptions 10. "
+  ],
+  "CATCH_ALL_EXCLUSION": "Synthetic fixture catch all exclusion. ",
+  "LOCATION_OF_SERVICES": "Synthetic fixture location of services. ",
+  "DEFECT_SEVERITY_INTRO": "Synthetic fixture defect severity intro. ",
+  "DEFECT_GONOGO": "Synthetic fixture defect gonogo. ",
+  "DEEMED_ACCEPTANCE": "Synthetic acceptance marker A. This is test text, not an agreement term.",
+  "TM_CLOSE": "Synthetic fixture tm close. {TOTAL}",
+  "TM_UPFRONT": "Synthetic fixture tm upfront. {UPFRONT_PERCENT} {UPFRONT}",
+  "FIXED_CLOSE": "Synthetic fixture fixed close. {TOTAL}",
+  "FIXED_INVOICES": "Synthetic fixture fixed invoices. ",
+  "EXPENSES_CARVEOUT": "Synthetic fixture expenses carveout. ",
+  "REMITTANCE_BILLTO_LABEL": "Synthetic fixture remittance billto label. ",
+  "REMITTANCE_PAY_LABEL": "Synthetic fixture remittance pay label. ",
+  "REMITTANCE_CHECK": [
+    "Synthetic fixture remittance check 1. "
+  ],
+  "REMITTANCE_ELECTRONIC": [
+    "Synthetic fixture remittance electronic 1. "
+  ],
+  "MISC_TERMS": [
+    {
+      "title": "Synthetic fixture misc terms 1 title. ",
+      "body": "Synthetic fixture misc terms 1 body. "
+    },
+    {
+      "title": "Synthetic fixture misc terms 2 title. ",
+      "body": "Synthetic fixture misc terms 2 body. "
+    },
+    {
+      "title": "Synthetic fixture misc terms 3 title. ",
+      "body": "Synthetic fixture misc terms 3 body. "
+    },
+    {
+      "title": "Synthetic fixture misc terms 4 title. ",
+      "body": "Synthetic fixture misc terms 4 body. "
+    }
+  ],
+  "SIGNATURE_PREAMBLE": "Synthetic fixture signature preamble. {DATE}",
+  "AUTHORITY_BIND": "Synthetic fixture authority bind. ",
+  "LOE_FIXED_CLOSE": "Synthetic fixture loe fixed close. {TOTAL}"
+};

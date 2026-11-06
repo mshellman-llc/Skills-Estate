@@ -1,0 +1,31 @@
+---
+name: check-knowledge-hub
+description: 'Diagnose the knowledge hub when saves fail, context looks stale or missing, connections drop, ingestion or maintenance stops, or budgets run out. Reports scoped evidence. Read-only unless the user also asks for a repair; never starts new recurring jobs.'
+metadata:
+  version: "2026.10.01.2"
+---
+
+
+# Check knowledge hub
+
+## Host access
+
+Resolve the hub endpoint, router, local roots and permitted account from explicit task or project configuration. No personal drive, owner profile, schedule or account is a default. Confirm that the selected adapter implements the named operations; if it does not, use its supported equivalent and preserve the same revision, authorization and acceptance checks.
+
+Use only tools and files actually available in this session. In Claude Code invoke `/check-knowledge-hub`; in Codex use `$check-knowledge-hub`; in Claude chat/Cowork ask to use `check-knowledge-hub`. Mac paths identify local authorities; in Cowork resolve them only through a folder already shared with this session. Cloud chat cannot read a Mac path or localhost merely because this skill names it. When hub access or a required foundation is unavailable, report that gap and continue only work supported by accessible evidence. Use named companion skills when available; otherwise apply the safeguards below and identify any required review gate you cannot complete. Do not install dependencies or broaden permissions automatically.
+
+1. Read the current configured hub router when available. Call `get_context`, then `check_health` on the existing permitted hub connection. Record the observation time, the route (the local service or the remote gateway that web assistants use), actor scope, and returned contract revision. Do not silently substitute a different account or endpoint.
+2. Interpret the response within that scope. Null backup, budget, or bridge fields mean unavailable to this check, not absent or healthy. Zero visible findings in a common-contract-only view does not mean the private hub is healthy. “Verified connected” means retrieval was observed; it does not prove that the tool followed guidance, accessed private records, or completed a cloud connection.
+3. For authorized Mac-local maintenance, run `python3 scripts/collect_evidence.py --index CONFIG.json` from this skill directory first. Require an explicitly selected, owner-authorized configuration outside the package; `references/evidence-index.json` is an unconfigured schema template, not a live destination. Read the configuration before executing and confirm its paths, selected skill entrypoints, optional launchd labels and expected heartbeat age. The script reads the hub’s existing writer-maintained SQLite receipt pointers in read-only mode, verifies the current backup file and skill links, and reports bridge and launchd state. It does not perform a restore or print raw private records, login keys, or recovery material. If this session cannot run local scripts or reach the runtime, label these areas `not-rechecked`; do not infer a current failure from an old receipt. Do not create a second Store/writer or reuse local owner authentication for a cloud caller. Then inspect current operator documentation or bounded logs only for gaps the script cannot cover.
+4. Check the dimensions the task and access support: source mounts and registered coverage; source/retrieval revision parity; current adapters and actual account probes; failed/overdue jobs and backlog; unresolved freshness/dependency findings; monthly usage plus infrastructure reserve; backup age, isolated restoration evidence, off-service delivery, and separate key recovery. Verify timestamps and expected schedules from the current configuration. File presence does not prove installation, a schedule does not prove execution, and local restoration does not prove off-service recovery.
+5. Use each script row as the starting status for its area. Its `verified-now` restore status means the latest recorded isolated restore covers the current generation and its encrypted backup hash still matches; it does not mean a restore ran during this health check. It reads receipt pointers by database key, not filename, so newer receipts in nested folders count when written by the hub. Classify remaining dimensions as verified now, needs attention, or not rechecked, with timestamp and evidence. Carry stable finding IDs across reviews. A narrower check leaves prior findings not rechecked; it does not resolve them. Mark resolution only after passing evidence and reopen on recurrence. Do not turn old field-guide counts or previous healthy receipts into present status.
+6. For connection behavior, make a harmless read probe against a record the actor is allowed to see, fully fetch the pinned revision, and compare it with the expected revision. If two tools are being verified, test each actual account. Use synthetic nonprivate material for write-path tests, only within an authorized test scope; never mutate production merely to prove a check worked.
+7. Prioritize findings by consequence: wrong authority/private leakage or data loss, failed capture/retrieval, recovery gaps, blocked jobs, then cosmetic drift. If repair was requested, fix reversible failures within that scope and recheck. Otherwise return the concrete repair needed. Changing account access, sharing, contracts, spending commitments, or destructive state requires the applicable user authorization. Do not create another maintenance scheduler by default.
+
+Report a short, useful status with evidence and the most important next action. Explicitly separate local service availability from remote gateway access and ledger accounting from provider billing enforcement. Explain that the Hub runs only on the Mac, so Mac-local agents and every remote client lose access while the Mac is asleep or offline. Use `verify-work-state` for repairs and state changed now, verified, still unchanged, and exact next action.
+
+Examples: `$check-knowledge-hub Check what is working and what needs attention.` / `$check-knowledge-hub Diagnose the stale context and repair reversible local failures.`
+
+## Shared standards
+
+Apply the [shared workflow](references/estate/workflow.md) and [writing standard](references/estate/writing.md).

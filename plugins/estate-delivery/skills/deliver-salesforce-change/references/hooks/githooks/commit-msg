@@ -1,0 +1,50 @@
+#!/bin/bash
+# Tracked commit-msg hook. Armed via: git config core.hooksPath .githooks
+#
+# Require a GitHub issue reference in any commit that touches force-app/.
+# Ticket-first is the step agents skip most often, and without it there is no
+# audit trail from an org change back to the reason for it.
+#
+# The reference must be KEYWORD-ANCHORED — 'refs #12', not a bare '#12'.
+# Everything downstream reads these refs out of commit messages:
+# auto-label-deploy.sh labels the ticket, guard-issue-close.sh permits the close,
+# stop-dod-check.sh notices a deployed ticket still open. A bare-#N scan also
+# picks numbers out of ordinary prose, which is enough to label and unlock
+# tickets nobody touched.
+#
+# Docs-only and config-only commits are exempt by design.
+
+set -u
+
+STAGED_FORCE=$(git diff --cached --name-only --diff-filter=ACMR -- 'force-app/')
+[ -z "$STAGED_FORCE" ] && exit 0   # nothing deployable staged — no requirement
+
+# Ignore comment lines so a "#123" inside git's commented template never counts.
+MSG_BODY=$(grep -v '^[[:space:]]*#' "$1")
+
+if ! printf '%s\n' "$MSG_BODY" \
+  | grep -qiE '(refs?|fix(es|ed)?|close[sd]?|resolve[sd]?)[[:space:]]+#[0-9]+'; then
+  {
+    echo ""
+    echo "BLOCKED: commits touching force-app/ must reference a GitHub issue by keyword."
+    echo ""
+    echo "  refs #N    work in progress"
+    echo "  fixes #N   the final squash merge"
+    echo ""
+    echo "  feat: add hail matrix cell resolution (refs #24)"
+    echo ""
+    if printf '%s\n' "$MSG_BODY" | grep -qE '#[0-9]+'; then
+      echo "This message mentions an issue number but without a keyword, which is not"
+      echo "enough — the label/close automation only reads keyword-anchored refs, so the"
+      echo "ticket would go un-updated and could never be closed against this deploy."
+      echo ""
+    fi
+    echo "Staged force-app/ files:"
+    echo "$STAGED_FORCE" | sed 's/^/  /'
+    echo ""
+    echo "No ticket yet?  gh issue create"
+  } >&2
+  exit 1
+fi
+
+exit 0

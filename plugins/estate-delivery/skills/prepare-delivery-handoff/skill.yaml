@@ -1,0 +1,67 @@
+schema_version: 1
+name: prepare-delivery-handoff
+display_name: Sales-to-Delivery Handoff
+summary: 'Owns the Estate sales-to-delivery handoff, both sides of the seam: the
+  handoff package assembled at signature from the executed SOW, quote, and deal record,
+  and the incoming delivery team''s 12-section handoff brief accepted before kickoff,
+  with its readiness view, week-one discovery agenda, and definition of done.'
+status: active
+tier: situational
+version: 0.2.1
+owner: Estate
+category: delivery-lifecycle
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Owns the Estate sales-to-delivery handoff, both sides of the seam: the handoff
+  package assembled at signature from the executed SOW, quote, and deal record, and
+  the incoming delivery team''s 12-section handoff brief accepted before kickoff,
+  with its readiness view, week-one discovery agenda, and definition of done. Use
+  when a deal signs and someone asks for the handoff, the handoff package, the sales-to-delivery
+  handoff, the delivery handoff brief, "what delivery inherits", "the warm transfer",
+  "get delivery up to speed on the signed deal", "what was promised on this deal",
+  or a kickoff brief for a signed engagement. Trigger on any signed SOW paired with
+  a transfer-to-delivery request, even when no deliverable is named. Do NOT use for
+  technical deliverability judgment (that is assess-solution-delivery), the kickoff
+  meeting or project charter (start-delivery), requirements extraction
+  (capture-requirements), or pre-sale research and call prep (prepare-sales-pursuit).'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- review-deliverable
+knowledge_hub:
+  requirement: required
+  reads:
+  - opportunity.pursuit_history
+  - engagement.front_door
+  - engagement.contract_commitments
+  - engagement.control
+  writes:
+  - engagement.handoff_mobilization
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: review-deliverable
+license: Proprietary to Estate LLC.

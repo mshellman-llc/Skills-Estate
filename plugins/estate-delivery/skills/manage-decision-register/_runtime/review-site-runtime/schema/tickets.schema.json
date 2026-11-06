@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical tracker tickets",
+  "type": "object",
+  "required": ["format", "source", "tickets"],
+  "properties": {
+    "format": {"const": 1},
+    "source": {
+      "type": "object",
+      "required": ["adapter", "file", "sha256", "rows"],
+      "properties": {
+        "adapter": {"enum": ["jira-csv", "table-csv", "json"]},
+        "file": {"type": "string"},
+        "sha256": {"type": "string"},
+        "rows": {"type": "integer"},
+        "base_url": {"type": "string"}
+      }
+    },
+    "tickets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "summary", "status", "category"],
+        "properties": {
+          "key": {"type": "string"},
+          "summary": {"type": "string"},
+          "type": {"type": "string"},
+          "status": {"type": "string"},
+          "category": {"enum": ["todo", "wip", "done", "canceled", "blocked"]},
+          "epic": {"type": ["string", "null"]},
+          "parent": {"type": ["string", "null"]},
+          "sprint": {"type": ["string", "null"]},
+          "sprints": {"type": "array", "items": {"type": "string"}},
+          "points": {"type": ["number", "null"]},
+          "labels": {"type": "array", "items": {"type": "string"}},
+          "priority": {"type": ["string", "null"]},
+          "created": {"type": ["string", "null"]},
+          "updated": {"type": ["string", "null"]},
+          "description_sha": {"type": "string"},
+          "acceptance": {"type": "array", "items": {"type": "string"}},
+          "background": {"type": "array", "items": {"type": "string"}},
+          "blocked_by": {"type": "array", "items": {"type": "string"}},
+          "blocks": {"type": "array", "items": {"type": "string"}},
+          "comment_count": {"type": "integer"}
+        }
+      }
+    }
+  }
+}

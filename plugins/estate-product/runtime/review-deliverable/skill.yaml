@@ -1,0 +1,50 @@
+schema_version: 1
+name: review-deliverable
+display_name: Quality Gate
+summary: Run the required Estate release controls and refuse finalization without
+  the prose review and evidence records, plus brand review when the artifact is styled.
+status: active
+tier: core
+version: 1.2.0
+owner: Estate
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Use before finalizing any Estate Word document, PowerPoint deck, Excel workbook,
+  PDF, HTML page, proposal, report, email, Slack message, or decision-bearing artifact.
+  Require inspected evidence from the prose review and, for styled output, from
+  brand-renderer and the rendered result, not a claim that another skill was
+  mentioned.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls:
+- writing-diagnostics
+- review-contract-scope
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Engagement configuration",
+  "type": "object",
+  "required": ["format", "title", "tracker", "pages"],
+  "properties": {
+    "format": {"const": 1},
+    "title": {"type": "string"},
+    "brand_profile": {"type": ["string", "null"]},
+    "tracker": {
+      "type": "object",
+      "required": ["adapter"],
+      "properties": {
+        "adapter": {"enum": ["jira-csv", "table-csv", "json"]},
+        "base_url": {"type": "string"},
+        "status_map": {"type": "object"},
+        "columns": {"type": "object"},
+        "sprint_order": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "roles": {"type": "array", "items": {"type": "object", "required": ["id", "label"],
+              "properties": {"id": {"type": "string"}, "label": {"type": "string"}}}},
+    "classes": {"type": "object"},
+    "release_epics": {"type": "array", "items": {"type": "string"}},
+    "readiness": {"type": "array", "items": {"enum": ["acceptance", "estimate", "no_open_questions", "no_blocked_dependency", "ticketed"]}},
+    "must_ceiling": {"type": "number"},
+    "pages": {"type": "array", "items": {"enum": ["scope", "decisions", "workflow", "build", "mockups"]}},
+    "leads": {"type": "object"},
+    "next_actions": {"type": "array", "items": {"type": "object", "required": ["text"],
+                     "properties": {"text": {"type": "string"}, "story": {"type": "string"}, "href": {"type": "string"}}}},
+    "sources": {"type": "array", "items": {"type": "object", "required": ["title", "text"],
+                "properties": {"title": {"type": "string"}, "text": {"type": "string"}}}},
+    "mockups": {"type": "array", "items": {"type": "object", "required": ["title", "file"],
+                "properties": {"title": {"type": "string"}, "file": {"type": "string"}}}},
+    "store": {"type": "object"}
+  }
+}

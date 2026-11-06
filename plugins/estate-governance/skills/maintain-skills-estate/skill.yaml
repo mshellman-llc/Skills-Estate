@@ -1,0 +1,43 @@
+schema_version: 1
+name: maintain-skills-estate
+display_name: Skill maintenance
+summary: Author, validate, package and release workflows through the estate maintenance tools.
+status: active
+tier: maintainer
+version: 1.3.0
+owner: Estate maintainer
+category: skill-governance
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Author, validate, package and release workflows through the estate maintenance tools.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

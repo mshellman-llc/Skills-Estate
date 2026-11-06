@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision register content",
+  "type": "object",
+  "required": ["format", "groups", "questions"],
+  "properties": {
+    "format": {"const": 1},
+    "groups": {
+      "type": "array",
+      "items": {"type": "object", "required": ["id", "label"],
+                "properties": {"id": {"type": "string"}, "label": {"type": "string"},
+                               "nav_label": {"type": "string"}, "ticket": {"type": ["string", "null"]}}}
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "group", "text", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "group": {"type": "string"},
+          "text": {"type": "string"},
+          "context": {"type": "string"},
+          "owner": {"type": ["string", "null"]},
+          "status": {"enum": ["Open", "Proposed", "Partly answered", "Answered", "Deferred", "Blocked", "Sandbox check"]},
+          "answer": {"type": ["object", "null"],
+                     "required": ["label", "text"],
+                     "properties": {"label": {"enum": ["Proposed answer", "Answer"]}, "text": {"type": "string"}}},
+          "stories": {"type": "array", "items": {"type": "string"}},
+          "tickets": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

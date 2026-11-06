@@ -1,0 +1,4 @@
+{"items":[
+{"id":"A","title":"Unsourced confidence","reach":1000,"impact":3,"confidence":0.9,"effort":2},
+{"id":"B","title":"Missing effort","reach":1000,"impact":3,"confidence":0.5},
+{"id":"A","title":"Duplicate ID","reach":10,"impact":1,"confidence":0.5,"effort":1}]}

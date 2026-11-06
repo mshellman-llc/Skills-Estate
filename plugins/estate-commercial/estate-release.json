@@ -1,0 +1,521 @@
+{
+  "entries": [
+    "review-deal-economics",
+    "assess-offering-fit",
+    "manage-service-offering"
+  ],
+  "host_adapter": "claude",
+  "opt_in": false,
+  "required_modules": [
+    "assess-offering-fit",
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge",
+    "manage-service-offering",
+    "plan-offering-artifacts",
+    "render-offering-brief",
+    "review-deal-economics",
+    "review-deliverable",
+    "review-writing",
+    "writing-diagnostics"
+  ],
+  "review_gaps": [
+    {
+      "required_sha256": "555d8bd2b311366e8464061d503be78af8bf4d237d7e8e6b49c9a774458d5e48",
+      "status": "review required",
+      "subject": "shared assembly"
+    },
+    {
+      "required_sha256": "2f793efc1f8f4a40d188ac5b57551f3a560cd5f1c7c701b1e3337546fe1b55b6",
+      "status": "review required",
+      "subject": "commercial-router"
+    },
+    {
+      "required_sha256": "e491e61fae624a0beddc9648166d58d8229765880c65350e0c5a75869d5fd928",
+      "status": "review required",
+      "subject": "delivery-router"
+    },
+    {
+      "required_sha256": "4883034306405ced89bd339b751fcecd533a4f57d9e0ed958b62086e727dd020",
+      "status": "review required",
+      "subject": "governance-router"
+    },
+    {
+      "required_sha256": "aa313456d5f7d53660a3b2e271ff615498138b8dcc6afc453c148836a327df23",
+      "status": "review required",
+      "subject": "product-router"
+    },
+    {
+      "required_sha256": "eebee3e6c212b308fc6ac6421c51fa3c655797ca03d01d6d4527495676b50494",
+      "status": "review required",
+      "subject": "pursuit-router"
+    },
+    {
+      "required_sha256": "25e861cf9d9ca54961375376e3392ebb0e0bb305a2dd8f86c00570446264be48",
+      "status": "review required",
+      "subject": "quality-router"
+    },
+    {
+      "required_sha256": "69582aa589ee9c99630d021f3fd69cd13e21559098861aa2c2aa52f6ee157c12",
+      "status": "review required",
+      "subject": "solutioning-router"
+    },
+    {
+      "required_sha256": "498df003396ebc50cdf826dee619c9d8bc3b3020e8ad50a863bea8804aa2c848",
+      "status": "review required",
+      "subject": "writing-router"
+    },
+    {
+      "required_sha256": "dc33f4ecd02e0528cba6ebcf4e578fdbde10607e5c93c7c01ea22b83b393bdaf",
+      "status": "review required",
+      "subject": "apply-author-style"
+    },
+    {
+      "required_sha256": "bd0449ee7860e8ca67f033f6fc32d7542e39a602c91a3a7f749ef62af5b18ff7",
+      "status": "review required",
+      "subject": "apply-salesforce-patterns"
+    },
+    {
+      "required_sha256": "65b53b59f04f09a43a162e3d4792655efa0ec7e8562df305daa2ad15afe82ead",
+      "status": "review required",
+      "subject": "assess-career-options"
+    },
+    {
+      "required_sha256": "81bc7a8e35c5f7d9eb7d2d70ce75901353605176ac3ebcff4ced8880da74e751",
+      "status": "review required",
+      "subject": "assess-offering-fit"
+    },
+    {
+      "required_sha256": "34b73a6f6a6067a43ba28be4f9d530abc1ef4860867b08cb134fd3c93975e973",
+      "status": "review required",
+      "subject": "assess-solution-delivery"
+    },
+    {
+      "required_sha256": "5e857a917a980ca78553c6fc3f3d943b0ca5d39c8a61d50bb0e8be4f5986cf25",
+      "status": "review required",
+      "subject": "audit-accessibility"
+    },
+    {
+      "required_sha256": "8301244befdb9dc9c96c9b2fa040ea931a7284b1f7b0e80440ba28429a6c7c81",
+      "status": "review required",
+      "subject": "author-estate-skill"
+    },
+    {
+      "required_sha256": "999417a95fbe083796a1e9f562e01047ed873aa50c88b0361868f9d6416245dd",
+      "status": "review required",
+      "subject": "author-style-runtime"
+    },
+    {
+      "required_sha256": "92ccfcea1ba5d49423a317840a0c287f24ba994ad40bca262880dce5c5e567b7",
+      "status": "review required",
+      "subject": "brand-renderer"
+    },
+    {
+      "required_sha256": "7e7e98f2bec4b834485629e9dd32f785f95a2a8ec19c09c850622878a24a2bc6",
+      "status": "review required",
+      "subject": "build-deal-decision-deck"
+    },
+    {
+      "required_sha256": "a3250943142802fda2303cbd263fa0e66e9f211fe0420ecf1a794334fc89edb7",
+      "status": "review required",
+      "subject": "build-deck"
+    },
+    {
+      "required_sha256": "0945f62671fa7021a6d87cb515ce577635e43ba8175d8ad59e7f95783b8164cb",
+      "status": "review required",
+      "subject": "build-interactive-explorer"
+    },
+    {
+      "required_sha256": "670ffb56b2818d0aa7d07890207c422671414240891d59b8984638a707347cb2",
+      "status": "review required",
+      "subject": "build-interactive-proposal"
+    },
+    {
+      "required_sha256": "1a5299887b8e0910d9c41a4dd8387a2a758543478a5e7fd23637d83b638eac56",
+      "status": "review required",
+      "subject": "build-moscow-story-map"
+    },
+    {
+      "required_sha256": "e0febcc12bcb23c3edc228f80315a4e4b10d164089d393390c27ae1b5dbf651d",
+      "status": "review required",
+      "subject": "build-review-site"
+    },
+    {
+      "required_sha256": "43c4881320a274b31b82f314c5588df3ab7da96565ea32b595cfbe68bdccd2f7",
+      "status": "review required",
+      "subject": "build-roadmap"
+    },
+    {
+      "required_sha256": "098c3a0816f635457ff4b3ac4cae153e34cdd8a7a2e4fb19a9743eb72728c7d7",
+      "status": "review required",
+      "subject": "capture-knowledge"
+    },
+    {
+      "required_sha256": "02314587bc4f964b1f7a7e7d875a1caceab630f7c006abd9c4cb9510c85008f3",
+      "status": "review required",
+      "subject": "capture-requirements"
+    },
+    {
+      "required_sha256": "52bf1f790973c0ba4709b54598bbe63587eb32e6c394c04d5aa459a1a1ae902b",
+      "status": "review required",
+      "subject": "capture-salesforce-screens"
+    },
+    {
+      "required_sha256": "9d44b78635d6c459cc97564dd44fe4afe36c68059e703cdce5446dcf3145af72",
+      "status": "review required",
+      "subject": "check-knowledge-hub"
+    },
+    {
+      "required_sha256": "56c5d5ddc568971d92c5a47bbeca2066e72c137ad8ad25b293e79de1243e080f",
+      "status": "review required",
+      "subject": "compare-scope-options"
+    },
+    {
+      "required_sha256": "854b01282f1b0b34cc177e2a7d0767a7e5312c816fce5b95dd359c2af1c25a62",
+      "status": "review required",
+      "subject": "configure-salesforce-project"
+    },
+    {
+      "required_sha256": "e800861a20149c1340ccb00bac6441300543e7fc57b19b351b035ad740a62742",
+      "status": "review required",
+      "subject": "deliver-salesforce-change"
+    },
+    {
+      "required_sha256": "56d7e1d9b056170266d043e19ec8e08a76746ba5378cba81ee803d2256058775",
+      "status": "review required",
+      "subject": "delivery-orchestrator"
+    },
+    {
+      "required_sha256": "3af4b71be36b6bc14b0a6ec659c0dc596b80e01a1fd56dac872f06e25db6f8d0",
+      "status": "review required",
+      "subject": "design-analytics-plan"
+    },
+    {
+      "required_sha256": "68354d2950ef585a69caea7b87ff459fef95502964490d71a4ba2608bf9a70c7",
+      "status": "review required",
+      "subject": "design-information-architecture"
+    },
+    {
+      "required_sha256": "eaa2a79a60fbe182390d394ffca186a06a18a4d437dc048cd023305bd97a86ce",
+      "status": "review required",
+      "subject": "design-process"
+    },
+    {
+      "required_sha256": "6e57d949f401ef0d14c81463223b19849109983f3fbc4d6d3be025a88b9c713a",
+      "status": "review required",
+      "subject": "design-software-system"
+    },
+    {
+      "required_sha256": "60721c1a19c051c97abba69dc9ce3182d9226d485dfb49e6b840f7d58b9f2f92",
+      "status": "review required",
+      "subject": "design-sticker"
+    },
+    {
+      "required_sha256": "2197bda50cdc949a0acb62c832ecaab91b630d74caf11c6a63a96048cee13f09",
+      "status": "review required",
+      "subject": "develop-independent-product"
+    },
+    {
+      "required_sha256": "c7fbbe573bf1b1b3ab00dcada63962f7b8a98c4328a383d017fbbee516b0e0bb",
+      "status": "review required",
+      "subject": "develop-product"
+    },
+    {
+      "required_sha256": "5abc1ed8c86f90fb3dff7e81731addf3054d1a833a61a14ae6d2cb39ed4d799c",
+      "status": "review required",
+      "subject": "draft-application-materials"
+    },
+    {
+      "required_sha256": "eaf058f2164807986c3fbd584668ba662a4cbd99aa357884832769c2be355d90",
+      "status": "review required",
+      "subject": "estimate-project"
+    },
+    {
+      "required_sha256": "04bfeb1eb8f9a567973dc4fbcbd1b1b3f9b0c6169d99d8334dee6b210639805c",
+      "status": "review required",
+      "subject": "evidence-core"
+    },
+    {
+      "required_sha256": "11f22892c7e435955ff07eaeeb8b4048e54465ebe18b94fbbfc1902b3207a4de",
+      "status": "review required",
+      "subject": "frame-jobs-to-be-done"
+    },
+    {
+      "required_sha256": "520ba2be313cd65844168d5b25d2ef5cf76e6e3298a10c9633c584962eb6edd2",
+      "status": "review required",
+      "subject": "guide-fortunes-weave"
+    },
+    {
+      "required_sha256": "fe6c9524d083dc1f27d020e82cd45aa1ed52a218d92b61932cfccb4666eb48c9",
+      "status": "review required",
+      "subject": "import-tracker-export"
+    },
+    {
+      "required_sha256": "f32524bc231c9fd52397e89821bb6e0b1454287e2ac26490363dec1f6160e666",
+      "status": "review required",
+      "subject": "ingest-transcript"
+    },
+    {
+      "required_sha256": "8c66ea8db84572ef804f9d96db75d6ca76e712597edd90fd3acf6ab1223d8f23",
+      "status": "review required",
+      "subject": "lay-out-sticker-sheets"
+    },
+    {
+      "required_sha256": "605747f99adb9cc35ef66f8deb46360deadf0706c6f3c6fa3875f6650d18461e",
+      "status": "review required",
+      "subject": "load-project-context"
+    },
+    {
+      "required_sha256": "581f26c72f8cb083d8b24b34d47646482dfa2884b462cc70dbd48840acd43fc8",
+      "status": "review required",
+      "subject": "maintain-discovery-record"
+    },
+    {
+      "required_sha256": "26da436d8ea140bcd46cbd690551d371a02b4b23aa9ac8d2146efaf46975b0ae",
+      "status": "review required",
+      "subject": "maintain-skills-estate"
+    },
+    {
+      "required_sha256": "e1d10ac920eb6e2921a3f57f24b03eb157cc5aae0f6f3b9de5abc28a7c63411d",
+      "status": "review required",
+      "subject": "manage-brand-profile"
+    },
+    {
+      "required_sha256": "9296b5df2781e11fbb3bf4a7933dbec119c5b23d281074eb10159a5f80de9ab7",
+      "status": "review required",
+      "subject": "manage-consulting-knowledge"
+    },
+    {
+      "required_sha256": "d4a18d47dce304c505fb91079417788192c4de7a13ed744ec9647731796fe1dd",
+      "status": "review required",
+      "subject": "manage-cutover-closeout"
+    },
+    {
+      "required_sha256": "f0d483713aeddc3ec5a232f0c9a4c727cdb66a2e97f5b63780444a51cb4ce355",
+      "status": "review required",
+      "subject": "manage-decision-register"
+    },
+    {
+      "required_sha256": "9d27891adb256c4dd3153fcf233763b122f80fff86ff438eb4106f5331d51fa9",
+      "status": "review required",
+      "subject": "manage-linked-task"
+    },
+    {
+      "required_sha256": "35a67ba83106c5a03d81f5a732d05af860ee5332a022e1356aff39de9a8b087a",
+      "status": "review required",
+      "subject": "manage-salesforce-devops"
+    },
+    {
+      "required_sha256": "d798d4271a1cc261987f79b8195fe1c73a7881189c044937287405ffb9947396",
+      "status": "review required",
+      "subject": "manage-service-offering"
+    },
+    {
+      "required_sha256": "bd916a0ceb48a22bcff4dc404bb33e214ca02b64eeb6d360692e0670c7b3ac5a",
+      "status": "review required",
+      "subject": "manage-writing-profile"
+    },
+    {
+      "required_sha256": "5a9f937f5d8f228e6ed2350ff2e93e4d83ad7f47571291cb258a32e705e02ee9",
+      "status": "review required",
+      "subject": "map-journey"
+    },
+    {
+      "required_sha256": "58251dd66aafc68a4ec1e9babbdb8ae1fe3149809c3290f76b2aca0248c84d8c",
+      "status": "review required",
+      "subject": "map-sales-process"
+    },
+    {
+      "required_sha256": "c31b1bcede6f6dfc02b02dda6865e3982c5c674bc1803f632e3e65052457ce60",
+      "status": "review required",
+      "subject": "operate-salesforce-pipeline"
+    },
+    {
+      "required_sha256": "71f8fbb93975c76051311c3c417014e55f1b0ac24356b7b7a39e036bd44bf691",
+      "status": "review required",
+      "subject": "plan-offering-artifacts"
+    },
+    {
+      "required_sha256": "70b59ca0c2fd3da583bce03f5b136b698d248a850cc8bbc326b925fb873a815b",
+      "status": "review required",
+      "subject": "plan-sprint"
+    },
+    {
+      "required_sha256": "5c435b023a52a904e25b8f7a161b7381c1e014ba91b736dc540a746c77650368",
+      "status": "review required",
+      "subject": "plan-team-onboarding"
+    },
+    {
+      "required_sha256": "16eea993ee5f027bc7d717de07570f7a8dce8f4ac0639f3cb8043b46698c73da",
+      "status": "review required",
+      "subject": "plan-usability-study"
+    },
+    {
+      "required_sha256": "8baf35f9e35e8c619f9f23fd3970395002bc3c41fb57f1b9d7461d483621c577",
+      "status": "review required",
+      "subject": "prepare-delivery-handoff"
+    },
+    {
+      "required_sha256": "1dddc88a1566ff72a3c32a7ff23272d41efa5298d7b41b3504b375ac4f660954",
+      "status": "review required",
+      "subject": "prepare-job-application"
+    },
+    {
+      "required_sha256": "f3187df89177c487ab018ab447e11a7ed87754e704a0c42125b6ed7aad12ee16",
+      "status": "review required",
+      "subject": "prepare-sales-pursuit"
+    },
+    {
+      "required_sha256": "12e2b27f7a27412fcb19158fc44cd949dff74bbb3fa12f0cd8bfbf44a2c1b041",
+      "status": "review required",
+      "subject": "prepare-session-handoff"
+    },
+    {
+      "required_sha256": "1ef568662a413fdafa9b9681ca528589b0183d342a0be14e186deaef295e508f",
+      "status": "review required",
+      "subject": "prioritize-work"
+    },
+    {
+      "required_sha256": "3ef6838781283d43114fac39c8685aba78bbb6a756cb93270a31683afc1e72b8",
+      "status": "review required",
+      "subject": "promote-salesforce-changes"
+    },
+    {
+      "required_sha256": "eda9aeba56dc687dd755e42e2bbcfe272a1c66fd18996397004e3de5a1c46636",
+      "status": "review required",
+      "subject": "reconcile-knowledge"
+    },
+    {
+      "required_sha256": "e80495b6721f2938206520731d0d03febc59c7828b560ee89b4edf53d6f4b821",
+      "status": "review required",
+      "subject": "refine-backlog"
+    },
+    {
+      "required_sha256": "c39c7e1717c4ca4318f787887995990f6fc76d8066aefde9c4e5786695b0a504",
+      "status": "review required",
+      "subject": "release-skill-package"
+    },
+    {
+      "required_sha256": "1073a5e967686bb66c6278014ede22eb5b83ad28d3ac11c171694dadfa2eb215",
+      "status": "review required",
+      "subject": "render-offering-brief"
+    },
+    {
+      "required_sha256": "b1f2b2694c91db0d41555af16f0e0e9d9bd2c55e3e9e2d86ec7beced62a85ded",
+      "status": "review required",
+      "subject": "review-contract-scope"
+    },
+    {
+      "required_sha256": "152713738de04f22def7b0046255f7fb1bfe4a5c79def61a18fcdb4b08487189",
+      "status": "review required",
+      "subject": "review-deal-economics"
+    },
+    {
+      "required_sha256": "8570592775956ff21b2411a310344460671fe912cf515110441310515d7910a0",
+      "status": "review required",
+      "subject": "review-deliverable"
+    },
+    {
+      "required_sha256": "7cf3be58344eac57708bc9d61b0f0e05ce5f87c48286a34f9baba85f80c2f081",
+      "status": "review required",
+      "subject": "review-sales-journey"
+    },
+    {
+      "required_sha256": "6c85fe0f21ce83acc03bd2c94aee03070be6b18532f6cc68ab582ac00e23ee75",
+      "status": "review required",
+      "subject": "review-site-runtime"
+    },
+    {
+      "required_sha256": "72f636cfb0449b00748a707e95f1d5a1dbe861d7d61f702b634fa7a9e33b39d8",
+      "status": "review required",
+      "subject": "review-writing"
+    },
+    {
+      "required_sha256": "15557fd8b7093f2207c164ed4ecc27a9ef6bffabaf86d40655a6fc635e452f0e",
+      "status": "review required",
+      "subject": "scope-project"
+    },
+    {
+      "required_sha256": "5319b9f29c2996c1334d9d57c8191e3fcf789ead56ad743b4551a3ffca9a97de",
+      "status": "review required",
+      "subject": "simplify-code"
+    },
+    {
+      "required_sha256": "308a8050ae675f8476570071996e317314a8987ede6128e7f4234db26d0985d8",
+      "status": "review required",
+      "subject": "specify-implementation"
+    },
+    {
+      "required_sha256": "396c7de7ae9047effd82c8c5676e4ec7ec850a32d526782d354355a92b0d2973",
+      "status": "review required",
+      "subject": "start-delivery"
+    },
+    {
+      "required_sha256": "d9c623ebb9ceead20599d75b8b7996e8bfcd02d4486b97e260e1b58b7338e64f",
+      "status": "review required",
+      "subject": "synthesize-discovery"
+    },
+    {
+      "required_sha256": "fc4e1e7a59bff7ac429ef32acfb5af908bc7c695e5953cea8da009ade0cf6dee",
+      "status": "review required",
+      "subject": "tailor-resume"
+    },
+    {
+      "required_sha256": "a8a83d3116cb9cfe4e363adb65d4a325dd5459998485d75db2e347eeed18710d",
+      "status": "review required",
+      "subject": "track-delivery"
+    },
+    {
+      "required_sha256": "e3b37524d14b5636dcb109431e9f895de2aed75c2302208c8eefa6c57f2857f6",
+      "status": "review required",
+      "subject": "validate-delivery"
+    },
+    {
+      "required_sha256": "1a940fc76e066e86a1f596fff89afc938d4f4361a83c2d6d629daf22e3e98c14",
+      "status": "review required",
+      "subject": "verify-salesforce-org"
+    },
+    {
+      "required_sha256": "4807f98dd4720a54e328a7363a93ce045ffbb4aa47c588ea4b370877d43b65c4",
+      "status": "review required",
+      "subject": "verify-work-state"
+    },
+    {
+      "required_sha256": "5b26cff72c2c9a81c5e2fa88f9c15e4fe495d728cec82cd386703cd938ff776e",
+      "status": "review required",
+      "subject": "work-in-github-repository"
+    },
+    {
+      "required_sha256": "e6b80cb73bdedf55c90f2fbc67a3717a24ba100fedada3f1319215895596ed0e",
+      "status": "review required",
+      "subject": "write-architecture-reference"
+    },
+    {
+      "required_sha256": "c657965d255ad6c421965c6b5d6f352ad9d8b68a453fef21ac5c0fbeff4c5c40",
+      "status": "review required",
+      "subject": "write-business-case"
+    },
+    {
+      "required_sha256": "bd7ca83d762d355ef9d24238d5cb4af08e48569adbfd198e681c22b2907d5c19",
+      "status": "review required",
+      "subject": "write-feature-spec"
+    },
+    {
+      "required_sha256": "1b8dcc55c9b5f8db606679c53ccd0879ebd861106f1fc161415d7b353165a7e5",
+      "status": "review required",
+      "subject": "write-portfolio-case-study"
+    },
+    {
+      "required_sha256": "7f82904fac9716645280a7b635929e65ffe320fefc27751bbf8b7fd98b1221ce",
+      "status": "review required",
+      "subject": "write-statement-of-work"
+    },
+    {
+      "required_sha256": "266f8ef797e0ab22abd30a70c78e582746d62d3b9b1322e897af3d49c9939b4c",
+      "status": "review required",
+      "subject": "writing-diagnostics"
+    }
+  ],
+  "source_sha256": "305e1f581b98c737c588d30f34d2363a69e87b8bca245dd2b7e5113d066d2497",
+  "status": "candidate-unreviewed"
+}
