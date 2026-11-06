@@ -132,6 +132,10 @@
     "0.2.37": {
       "content_sha256": "347eca50f1737743e1d5b7eaf7f59475b06332d09719567542a0649dca01c16a",
       "note": "Recheck recovery journals under the final update lock before reusing an installed release."
+    },
+    "0.2.38": {
+      "content_sha256": "5a04770ded3a496286e3b265f40a2cab37e6330ff5a14ce9e726783774f6b0c9",
+      "note": "Support running merged updater tooling from a clean checkout with explicit durable repository identity; clarify development commands."
     }
   }
 }

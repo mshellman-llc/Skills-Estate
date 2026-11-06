@@ -753,8 +753,11 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--home', type=Path, default=Path.home(), help='Local install root; use a temporary home for tests')
     sub = ap.add_subparsers(dest='command', required=True)
-    for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed', 'update', 'test-local']:
+    for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed', 'test-local']:
         sub.add_parser(command)
+    update_parser = sub.add_parser('update')
+    update_parser.add_argument('--repository', type=Path, default=ROOT,
+                               help='Durable authoring repository identity when running updater tooling from a clean checkout')
     for command in ['install', 'adopt']:
         install_parser = sub.add_parser(command)
         install_parser.add_argument('--expected-source')
@@ -776,7 +779,7 @@ def main():
             elif args.command == 'bundle': result = bundle()
             elif args.command in {'install', 'adopt'}: result = install(home=args.home, adopt=args.command == 'adopt', expected_source=args.expected_source, skills=args.skill)
             elif args.command == 'pin-installed': result = pin_installed(home=args.home)
-            elif args.command == 'update': result = update(home=args.home)
+            elif args.command == 'update': result = update(root=args.repository, home=args.home)
             elif args.command == 'test-local': result = test_local(home=args.home)
             elif args.command == 'rollback': result = rollback(ROOT, args.home, args.release_id)
             elif args.command == 'restore': result = restore(args.receipt)

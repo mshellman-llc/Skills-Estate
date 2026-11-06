@@ -276,6 +276,14 @@ class EstateTests(unittest.TestCase):
             self.assertEqual(estate.update(self.root, self.home), {'source_commit': 'remote'})
         update_main.assert_called_once_with(self.root, self.home)
 
+    def test_update_cli_accepts_durable_repository_from_clean_tooling_checkout(self):
+        import contextlib
+        with patch.object(estate.sys, 'argv', ['estate.py', '--home', str(self.home), 'update', '--repository', str(self.root)]), \
+             patch.object(estate, 'update', return_value={'state': 'installed'}) as update, \
+             patch.object(estate, 'lock', return_value=contextlib.nullcontext()):
+            self.assertEqual(estate.main(), 0)
+        update.assert_called_once_with(root=self.root, home=self.home)
+
     def test_local_development_path_never_installs(self):
         with patch.object(estate.subprocess, 'run') as run, patch.object(estate, 'install') as install:
             run.return_value.returncode = 0

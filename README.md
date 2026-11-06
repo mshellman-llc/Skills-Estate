@@ -30,6 +30,8 @@ The skills reach every app as plugins from this repository's marketplace. After 
 
 Update receipts under `~/.local/state/skills-estate/update-*/` identify the fetched commit, verified Actions run, local tests, previous release and restore receipt. A failed preparation leaves installations unchanged. A failed activation restores its prior state; a detected concurrent edit is preserved with its recovery journal. The repository pointer always names the durable authoring checkout.
 
+To run a merged updater repair without changing an older authoring branch, use `python3 /path/to/clean-checkout/tools/estate.py update --repository /path/to/canonical-checkout`. The clean checkout supplies the updater code; releases and the repository pointer retain the canonical identity.
+
 For local development, run `python3 tools/estate.py test-local`. It checks the working tree and builds committed `HEAD` candidates without installing. Commit reviewed source and the version record before building. Ordinary `update` always selects GitHub main.
 
 Merged pull request branches are deleted automatically.

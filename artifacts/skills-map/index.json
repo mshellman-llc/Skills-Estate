@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T19:43:27.400844+00:00",
+  "generatedAt": "2026-11-06T19:56:40.681059+00:00",
   "baseCommit": "d4a167ba990ac17adc1ef0b9c38eb0684b48fe61",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -15143,7 +15143,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 13,
-        "packageFingerprint": "16f0f1964a78df400ec0c1cedefcb6213589abb5ab5c31965a7e393ab67823af",
+        "packageFingerprint": "baa1becd1544daa849e80257e2c8f4778cbf4ccda008d3078392b2c7fbc14ac4",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -15262,9 +15262,9 @@
         },
         {
           "path": "references/release-workflow.md",
-          "sha256": "9432b68ed777e3af7ad8aa85d8fed2984ff28e5e78fff36c4c819f3ec70d8f1c",
-          "bytes": 5159,
-          "gitBlob": "c6dd03da6b01a485aecd3173be6b4924172563dc"
+          "sha256": "bbeb22cddccdfb48b591f1b4ceea2ff353334217935561ba5a8c47125fc6853d",
+          "bytes": 5539,
+          "gitBlob": "c1fe059b553b64e9207bde5028578b094a1e5f83"
         },
         {
           "path": "scripts/build_bundles.py",
