@@ -124,6 +124,10 @@
     "0.2.35": {
       "content_sha256": "b25ea5aba78e45a4502799c8be01188373250bd050f67d7c1a4f5860bf9f6d7c",
       "note": "Update from exact verified GitHub main in isolation; preserve authoring work, transactionally back up Claude duplicates, retain verification and rollback evidence."
+    },
+    "0.2.36": {
+      "content_sha256": "a45588df2376e5d604ce85237e6c0da920a2bb4dc9c8abc107ca40fcb0ed8e06",
+      "note": "Keep repeat verified-main updates idempotent while retaining the current run evidence."
     }
   }
 }

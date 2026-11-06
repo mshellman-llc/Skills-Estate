@@ -130,6 +130,25 @@ def activate_candidate(repository, candidate, home, manifest, evidence, provenan
         if before['active'] and not releases.inspect(home, estate.tree_hash)['ok']:
             raise ValueError('Current installation drift must be resolved before updating')
         packages = {name: candidate / 'build/skills' / name for name in manifest['packages']}
+        duplicates = [home / '.claude/skills' / name for name in packages
+                      if os.path.lexists(home / '.claude/skills' / name)]
+        current = releases.inspect(home, estate.tree_hash)
+        expected = {name: {'sha256': row['sha256']} for name, row in manifest['packages'].items()}
+        active = before['active'] or {}
+        folder = releases.store(home) / current.get('release_id', '') / 'skills'
+        desired = {str(home / '.agents/skills' / name): str(folder / name) for name in packages}
+        desired.update({str(home / '.codex/skills' / name): str(folder / name) for name in packages
+                        if os.path.lexists(home / '.codex/skills' / name)})
+        desired[str(home / '.config/skills-estate/repository')] = str(repository)
+        inventory_matches = active.get('repository') == str(repository) and active.get('links') == desired
+        if (current.get('ok') and len(current.get('release_ids', [])) == 1 and inventory_matches
+                and current.get('source_commit') == manifest['source_commit']
+                and current.get('packages') == expected and not duplicates):
+            return {'release_id': current['release_id'], 'links_changed': 0, 'backup': None,
+                    'source_commit': manifest['source_commit'], 'evidence': str(evidence),
+                    'previous_release': current['release_id'], 'already_current': True,
+                    'claude': {'route': 'skills-estate marketplace', 'cache_changed': False,
+                               'local_duplicates_backed_up': []}}
         release_id = releases.snapshot(repository, home, packages, manifest['source_sha256'], 'owner',
                                        estate.tree_hash, provenance=provenance)
         _, release = releases.load(home, release_id, estate.tree_hash)
@@ -137,8 +156,6 @@ def activate_candidate(repository, candidate, home, manifest, evidence, provenan
             raise ValueError('Prepared packages changed before activation')
         # Policy comes from the fetched source; the release and pointer belong to
         # the durable authoring repository, never the disposable checkout.
-        duplicates = [home / '.claude/skills' / name for name in packages
-                      if os.path.lexists(home / '.claude/skills' / name)]
         result = releases.activate(repository, home, release_id, estate.tree_hash,
                                    account_provided=packages, policy_root=candidate, remove_paths=duplicates)
         return {**result, 'source_commit': manifest['source_commit'], 'evidence': str(evidence),

@@ -101,6 +101,26 @@ if (r/'fail-tests').exists(): raise SystemExit(1)
                 self.update()
         fetch.assert_not_called()
 
+    def test_same_verified_commit_reuses_release_and_links_after_checks(self):
+        first = self.update()
+        before = self.state()
+        second = self.update()
+        self.assertEqual(second['release_id'], first['release_id'])
+        self.assertEqual(second['links_changed'], 0)
+        self.assertIsNone(second['backup'])
+        self.assertTrue(second['already_current'])
+        self.assertEqual(self.state(), before)
+        self.assertTrue((Path(second['evidence']) / 'local-tests.json').is_file())
+
+    def test_noop_does_not_skip_new_unmanaged_legacy_alias(self):
+        self.update()
+        legacy = self.home / '.codex/skills/demo'
+        legacy.mkdir(parents=True)
+        (legacy / 'work').write_text('Preserve unexpected work')
+        with self.assertRaisesRegex(ValueError, 'Existing skills preserved'):
+            self.update()
+        self.assertEqual((legacy / 'work').read_text(), 'Preserve unexpected work')
+
     def test_fetch_failure_preserves_installed_release_and_claude_copy(self):
         self.update()
         duplicate=self.home/'.claude/skills/demo';duplicate.mkdir(parents=True);(duplicate/'work').write_text('keep')
