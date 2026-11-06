@@ -112,13 +112,20 @@ def portable_readme(text,group,revision):
 def collections(root=ROOT):
     from catalog import entries
     import estate
-    root=Path(root);public=entries(root);estate.current_build(root)
-    revision=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
+    root=Path(root)
+    with estate.source_snapshot(root) as (source, commit):
+        return committed_collections(root, source, commit)
+
+def committed_collections(root, source, commit):
+    from catalog import entries
+    import estate
+    public=entries(source);estate.current_build(root)
+    revision=commit or subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
     release=json.loads((root/'dist/release.json').read_text())
-    if release['source_sha256']!=estate.source_hash(root):raise ValueError('Package ZIPs are stale; run sync first')
+    if release['source_sha256']!=estate.source_hash(source):raise ValueError('Package ZIPs are stale; run sync first')
     output=root/'dist/groups';output.mkdir(exist_ok=True)
     result=[]
-    for g in load_groups(root):
+    for g in load_groups(source):
         packages=sorted(n for n,item in public.items() if item['source'] in g['skills'] or set(item.get('modes',{}).values()) & set(g['skills']))
         manifest={'group':g['id'],'title':g['title'],'source_sha256':release['source_sha256'],'source_commit':revision,'packages':[]}
         payloads={}
@@ -126,7 +133,7 @@ def collections(root=ROOT):
             path=root/'dist'/f'{name}.zip';raw=path.read_bytes();digest=hashlib.sha256(raw).hexdigest()
             if digest!=release['packages'][name]['sha256']:raise ValueError('Task ZIP changed: '+name)
             payloads[f'skills/{name}.zip']=raw;manifest['packages'].append({'name':name,'sha256':digest})
-        payloads['README.md']=portable_readme((root/f"browse/{g['id']}/README.md").read_text(),g['id'],revision).encode()
+        payloads['README.md']=portable_readme((source/f"browse/{g['id']}/README.md").read_text(),g['id'],revision).encode()
         payloads['manifest.json']=(json.dumps(manifest,indent=2)+'\n').encode()
         path=output/f"{g['id']}.zip"
         with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as z:

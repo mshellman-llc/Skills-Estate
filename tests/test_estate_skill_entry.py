@@ -23,18 +23,27 @@ class EntryTests(unittest.TestCase):
         self.home.mkdir()
         for directory in ("tools", "policies", "skills/demo/scripts"):
             (self.repo / directory).mkdir(parents=True)
-        for name in ("estate.py", "portable.py", "catalog.py", "releases.py"):
+        for name in ("estate.py", "portable.py", "catalog.py", "releases.py", "committed_source.py",
+                     "plugins.py", "plugin_version.py", "browse.py", "promote_maintenance.py"):
             shutil.copy2(ROOT / "tools" / name, self.repo / "tools" / name)
         (self.repo / "policies/skill-standard.md").write_text("# Test skill standard\n")
         (self.repo / "skills/demo/SKILL.md").write_text(
             "---\nname: demo\ndescription: Produce a local example\n---\n"
             "Run scripts/work.py to produce a local example.\n")
         (self.repo / "skills/demo/scripts/work.py").write_text("print('example')\n")
+        subprocess.run(['git', 'init', '-q', str(self.repo)], check=True)
+        self.commit_source()
         self.package = self.base / "isolated/skill-estate-sync"
         assemble(ROOT, "skill-estate-sync", self.package, [])
         self.bridge = self.package / "scripts/manage_estate.py"
         self.commands = []
         self.addCleanup(lambda: (self.base / "commands.json").write_text(json.dumps(self.commands, indent=2)))
+
+    def commit_source(self):
+        subprocess.run(['git', '-C', str(self.repo), 'add', 'tools', 'skills', 'policies'], check=True)
+        subprocess.run(['git', '-C', str(self.repo), '-c', 'user.name=Test',
+                        '-c', 'user.email=test@example.com', '-c', 'core.hooksPath=/dev/null',
+                        'commit', '-qm', 'fixture'], check=True)
 
     def run_cli(self, *args, explicit=True, expected=0):
         command = [sys.executable, str(self.bridge), "--home", str(self.home)]
@@ -106,6 +115,7 @@ class EntryTests(unittest.TestCase):
         status = json.loads(self.run_cli("status", expected=1).stdout)
         self.assertIn("drift", [rows["demo"] for rows in status["local"].values()])
         (self.repo / "policies/skill-standard.md").write_text("# Changed policy\n")
+        self.commit_source()
         self.run_cli("install", expected=2)
         self.assertEqual((dest / "scripts/work.py").read_text(), "print('changed')\n")
 
