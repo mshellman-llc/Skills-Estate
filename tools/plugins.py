@@ -2,6 +2,7 @@
 """Generate private Claude and Codex candidates from the canonical skill build."""
 import argparse
 import json
+import os
 from pathlib import Path
 import posixpath
 import re
@@ -203,15 +204,20 @@ def write_json(path, value):
 
 
 def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False):
+    with estate.source_snapshot(root) as (source, commit):
+        return _build_plugins(Path(root), source, commit, selected, candidate, owner)
+
+
+def _build_plugins(root, source_root, commit, selected, candidate, owner):
     root = Path(root)
-    settings = config(root)
+    settings = config(source_root)
     selected = sorted(set(selected or settings['bundles']))
     if set(selected) - set(settings['bundles']):
         raise ValueError('Unknown selected bundle')
     from plugin_version import check as check_version
-    check_version(root, settings)
-    manifest = estate.build(root)
-    gaps = release_gaps(root, settings, selected, manifest)
+    check_version(source_root, settings)
+    manifest = estate._build(root, None, source_root, commit)
+    gaps = release_gaps(source_root, settings, selected, manifest)
     if gaps and not (candidate or owner):
         raise ValueError('Release blocked: ' + ', '.join(x['subject'] for x in gaps))
     # The owner publishes their own marketplace from main; gaps are recorded, not enforced.
@@ -229,7 +235,7 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
                 package.mkdir(parents=True)
                 # Preserve the pinned environment inputs without running an installer.
                 for dependency in estate.DEPENDENCY_INPUTS:
-                    source = root / dependency
+                    source = source_root / dependency
                     if source.is_file():
                         shutil.copy2(source, package / dependency)
                 targets = {}
@@ -241,17 +247,17 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
                     targets[record['source_module']] = f'skills/{entry}/SKILL.md'
                     for module in record.get('modes', {}).values():
                         targets[module] = f'skills/{entry}/_runtime/{module}/WORKFLOW.md'
-                for module in sorted(set(item['internal']) | set(router_modules(root, item))):
+                for module in sorted(set(item['internal']) | set(router_modules(source_root, item))):
                     if module in targets:
                         continue
                     target = package / 'runtime' / module
-                    assemble(root, module, target, runtime_closure(root, module), entrypoint_name='WORKFLOW.md')
+                    assemble(source_root, module, target, runtime_closure(source_root, module), entrypoint_name='WORKFLOW.md')
                     targets[module] = f'runtime/{module}/WORKFLOW.md'
                 if item.get('router_source'):
                     router = Path(item['router_source']).stem
                     target = package / ('agents/' + router + '.md' if host == 'claude' else 'skills/' + router + '/SKILL.md')
                     target.parent.mkdir(parents=True, exist_ok=True)
-                    target.write_text(router_text(root, item, targets, host))
+                    target.write_text(router_text(source_root, item, targets, host))
                 description = item['description']
                 if gaps and not owner:
                     description = 'Unreviewed candidate for isolated testing. ' + description
@@ -263,7 +269,7 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
                 write_json(package / '.codex-plugin/plugin.json', {'name': name, 'version': settings['version'],
                            'description': description, 'skills': './skills/'})
                 receipt = {'status': state, 'host_adapter': host, 'source_sha256': manifest['source_sha256'],
-                           'entries': item['entries'], 'required_modules': required_modules(root, item, manifest),
+                           'entries': item['entries'], 'required_modules': required_modules(source_root, item, manifest),
                            'opt_in': item['opt_in'], 'review_gaps': gaps}
                 write_json(package / 'estate-release.json', receipt)
                 # Verify every generated router link against the actual candidate.
@@ -287,9 +293,10 @@ def build_plugins(root=estate.ROOT, selected=None, candidate=False, owner=False)
             if host == 'claude':
                 market['owner'] = {'name': 'Skills Estate'}
             write_json(host_root / ('.claude-plugin/marketplace.json' if host == 'claude' else '.agents/plugins/marketplace.json'), market)
-        if estate.source_hash(root) != manifest['source_sha256']:
+        if estate.source_hash(source_root) != manifest['source_sha256']:
             raise ValueError('Source changed during plugin build')
-        result = {'status': state, 'source_sha256': manifest['source_sha256'], 'selected': selected,
+        estate.assert_head(root, commit)
+        result = {'source_commit': commit, 'status': state, 'source_sha256': manifest['source_sha256'], 'selected': selected,
                   'packages': outputs, 'review_gaps': gaps,
                   'states': {'built': True, 'source_reviewed': not gaps, 'host_verified': False,
                              'installed': False, 'published': False}}
@@ -346,6 +353,8 @@ def main():
     if args.root_marketplace:
         print(json.dumps({'written': write_root_marketplace()}))
         return
+    if not os.path.lexists(estate.ROOT / '.git'):
+        parser.error('Packaging requires a Git checkout with a committed HEAD')
     with estate.lock():
         result = build_plugins(selected=args.bundle, candidate=args.candidate, owner=args.owner)
     print(json.dumps(result, indent=2))

@@ -11,7 +11,6 @@ From the repository root:
 ```sh
 python3 tools/estate.py validate
 python3 tools/run_tests.py --report .local/test-results.json
-python3 tools/estate.py sync
 ```
 
 The runner reports browser, loopback and generated-map coverage separately. Use `--all-integrations` in a supported environment. Never launch installed macOS Chrome through Node or Playwright; use the guarded supported browser route. A deferred check stays pending, not passed.
@@ -22,10 +21,12 @@ After source, dependencies and assembly are stable, raise the `version` in `conf
 
 ```sh
 python3 tools/plugin_version.py --record 'Describe the functional changes and relevant verification.'
+# Commit the reviewed source and version record before packaging.
+python3 tools/estate.py sync
 python3 tools/plugins.py --candidate
 ```
 
-`config/plugin-version-history.json` binds each version to the source, dependency, routing and assembly inputs. Reusing a version for changed content fails. The history is excluded from its own fingerprint; changing review receipts alone does not alter functional content. Keep previous notes and records for rollback. Package assembly includes all transitive dependencies. Inspect the actual generated files and host manifests before authorizing distribution.
+`config/plugin-version-history.json` binds each version to the source, dependency, routing and assembly inputs. Reusing a version for changed content fails. The history is excluded from its own fingerprint; changing review receipts alone does not alter functional content. Keep previous notes and records for rollback. Package assembly reads committed `HEAD` contents and includes all transitive dependencies. Local changes, including staged files, are excluded; manifests name the commit. Inspect the actual generated files and host manifests before authorizing distribution.
 
 ## Existing distribution route
 

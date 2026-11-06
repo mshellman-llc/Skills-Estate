@@ -41,6 +41,8 @@ python3 tools/estate.py sync
 
 `tools/verify.py` runs CI's checks in CI's order with CI's Node settings: browse pages, validation, the plugin version record and the test suite. `--refresh` first rebuilds the skills map, the reuse review and the browse pages. A failed step prints its output and the next command to run. Every `skills/*/scripts/*_selftest.py` runs as part of the suite without a hand-written test.
 
+Builds and plugin candidates read a clean snapshot of `HEAD`. Commit the reviewed source, version record and generated source pages before running `sync` or creating plugin candidates. Local edits, staged changes, ignored files and untracked folders are excluded without being moved or inspected. Manifests record the commit and content hash. Packaging code must match the commit; commit tooling edits before generating packages. `validate` and the test runner still check working files during development.
+
 `build/`, `dist/` and `.local/` are generated and ignored by Git. Do not edit them, installed links, or `synced/` account downloads as sources.
 
 The runner lists deferred browser, loopback, generated-map and skill-toolchain checks explicitly. The skill-toolchain checks need `jq` and `python-pptx`. CI runs `--all-integrations`; a local pass with deferred checks is not full release acceptance. Use a supported browser environment and preserve the browser launch guards.

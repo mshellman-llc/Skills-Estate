@@ -112,6 +112,14 @@
     "0.2.32": {
       "content_sha256": "101d62a75850ad0f611c5c4e9f8cc3ed2118c48836d1f43e1c200c4f5d84973e",
       "note": "Preserve contextual repetition and urgency guidance in portable account setup kits."
+    },
+    "0.2.33": {
+      "content_sha256": "16e9fb298bb5e50102d83072200373535bbf2807ad63c81c63f3e21c09fb082b",
+      "note": "Add contextual review signals and accurate-structure guidance; integrate committed-source packaging from 4608298 while preserving prior version records."
+    },
+    "0.2.34": {
+      "content_sha256": "f1fa8468776f820a2a702f42cae5e619c359fb101f9c9f29a4a1313fbf6e0b57",
+      "note": "Complete contextual scanner and expanded structural guidance with portable setup-library links; committed-source packaging includes the reviewed 4608298 build fix."
     }
   }
 }

@@ -20,6 +20,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import releases
+from committed_source import snapshot as source_snapshot, assert_head, check_builder
 from portable import assemble, runtime_closure
 from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint
 
@@ -334,7 +335,19 @@ def lock(root=ROOT):
             fcntl.flock(f, fcntl.LOCK_UN)
 
 
+def committed_identity(root=ROOT):
+    with source_snapshot(root) as (source, commit):
+        check_builder(source)
+        return {'source_sha256': source_hash(source), 'source_commit': commit}
+
+
 def build(root=ROOT, home=None):
+    with source_snapshot(root) as (source, commit):
+        return _build(root, home, source, commit)
+
+
+def _build(root, home, source, commit):
+    check_builder(source)
     root = Path(root).resolve()
     homes = {Path.home().resolve(), Path(home or Path.home()).expanduser().resolve()}
     parents = [parent for destination in homes for parent in [*local_targets(destination).values(), destination / '.codex/skills']]
@@ -343,11 +356,13 @@ def build(root=ROOT, home=None):
             for dest in parent.iterdir():
                 if dest.is_symlink() and dest.exists() and dest.resolve().parent == Path(root).resolve() / 'build/skills':
                     raise ValueError('Build would change a legacy installation; run pin-installed first')
-    result = validate(root)
+    result = validate(source)
     # Keep unchanged packages in place, especially on mounted volumes. Verify
     # their bytes before accepting the existing build; repair damaged builds.
     try:
-        return current_build(root)
+        cached = current_build(root, identity={**result, 'source_commit': commit})
+        assert_head(root, commit)
+        return cached
     except ValueError:
         pass
     stage = Path(tempfile.mkdtemp(prefix='estate-build-')).resolve()
@@ -356,19 +371,20 @@ def build(root=ROOT, home=None):
     entries = {}
     mode_cache = {}
     try:
-        for name, item in catalog_entries(root).items():
+        for name, item in catalog_entries(source).items():
             target = package_dir / name
-            source = item['source']
-            dependencies = catalog_dependencies(root, item, runtime_closure)
-            mapping = assemble(root, source, target, dependencies)
+            module = item['source']
+            dependencies = catalog_dependencies(source, item, runtime_closure)
+            mapping = assemble(source, module, target, dependencies)
             apply_entrypoint(target, name, item)
             output_modes(root, target, mode_cache)
             entries[name] = {'sha256': tree_hash(target), 'runtime_dependencies': dependencies,
-                             'source_files': len(mapping), 'source_module': source,
+                             'source_files': len(mapping), 'source_module': module,
                              'pack': item['pack'], 'modes': item.get('modes', {})}
-        if source_hash(root) != result['source_sha256']:
+        if source_hash(source) != result['source_sha256']:
             raise ValueError('Sources changed during the build; rerun from a stable source tree')
-        manifest = {**result, 'packages': entries, 'format': 2}
+        assert_head(root, commit)
+        manifest = {**result, 'source_commit': commit, 'packages': entries, 'format': 3}
         write_json(stage / 'manifest.json', manifest)
         output_modes(root, stage, mode_cache)
         destination = root / 'build'
@@ -379,14 +395,15 @@ def build(root=ROOT, home=None):
             shutil.rmtree(stage)
 
 
-def current_build(root=ROOT):
+def current_build(root=ROOT, identity=None):
     if (root / '.local/pending-build.json').exists():
         raise ValueError('Interrupted build replacement requires review before use')
     path = root / 'build' / 'manifest.json'
     if not path.exists():
         raise ValueError('No build. Run build first.')
     manifest = json.loads(path.read_text())
-    if manifest['source_sha256'] != source_hash(root):
+    identity = identity or committed_identity(root)
+    if any(manifest.get(key) != identity.get(key) for key in ('source_sha256', 'source_commit')):
         raise ValueError('Build is stale. Run build before installing or packaging.')
     for name, entry in manifest['packages'].items():
         folder = root / 'build' / 'skills' / name
@@ -424,18 +441,20 @@ def install(root=ROOT, home=None, adopt=False, expected_source=None, skills=None
         if expected_source != manifest['source_sha256']:
             raise ValueError('Everyday promotion requires --expected-source with the reviewed source hash')
         import plugins
-        settings = plugins.config(root)
-        gaps = plugins.release_gaps(root, settings, settings['bundles'], manifest, entrypoints=sorted(selected) if skills is not None else None)
+        with source_snapshot(root) as (source, commit):
+            settings = plugins.config(source)
+            gaps = plugins.release_gaps(source, settings, settings['bundles'], manifest, entrypoints=sorted(selected) if skills is not None else None)
         if gaps:
             raise ValueError('Everyday release review pending: ' + ', '.join(x['subject'] for x in gaps))
     with releases.home_lock(home):
         release_id = releases.snapshot(root, home,
             {name: root / 'build/skills' / name for name in sorted(selected)},
-            manifest['source_sha256'], 'owner' if owner else 'reviewed' if home == Path.home().resolve() else 'isolated-candidate', tree_hash)
+            manifest['source_sha256'], 'owner' if owner else 'reviewed' if home == Path.home().resolve() else 'isolated-candidate', tree_hash,
+            provenance={'git_head': manifest.get('source_commit')})
         _, record = releases.load(home, release_id, tree_hash)
         if any(record['packages'][name]['sha256'] != entry['sha256'] for name, entry in manifest['packages'].items() if name in selected):
             raise ValueError('Build changed after verification; refusing promotion')
-        if source_hash(root) != manifest['source_sha256']:
+        if committed_identity(root) != {key: manifest.get(key) for key in ('source_sha256', 'source_commit')}:
             raise ValueError('Source changed after verification; refusing promotion')
         # Skills Claude Code already gets elsewhere (the account, or the marketplace plugins) are linked for Codex only.
         provided = account_skills(home) | (set() if claude_code else set(manifest['packages']))
@@ -576,9 +595,10 @@ def bundle(root=ROOT):
                     info.external_attr = ((0o100755 if p.stat().st_mode & 0o111 else 0o100644) << 16)
                     z.writestr(info, p.read_bytes())
             entries[name] = {'file': path.name, 'sha256': sha(path.read_bytes()), 'content_sha256': entry['sha256']}
-        release = {'format': 1, 'source_sha256': manifest['source_sha256'], 'packages': entries}
+        release = {'format': 2, 'source_sha256': manifest['source_sha256'], 'source_commit': manifest.get('source_commit'), 'packages': entries}
         write_json(stage / 'release.json', release)
         output_modes(root, stage, {})
+        assert_head(root, manifest.get('source_commit'))
         destination = root / 'dist'
         replace_outputs(root, stage, destination)
         return release
@@ -591,7 +611,7 @@ def status(root=ROOT, home=None):
     home = Path(home or Path.home()).expanduser().resolve()
     inspection_errors = {}
     try:
-        desired_source = source_hash(root)
+        desired_source = committed_identity(root)['source_sha256']
     except (ValueError, OSError) as exc:
         desired_source = None
         inspection_errors['source'] = str(exc)
@@ -615,7 +635,8 @@ def status(root=ROOT, home=None):
         build_state = str(exc)
     installed = releases.inspect(home, tree_hash)
     try:
-        catalog_names = set(catalog_entries(root))
+        with source_snapshot(root) as (source, _):
+            catalog_names = set(catalog_entries(source))
     except (ValueError, OSError, KeyError, TypeError) as exc:
         inspection_errors['catalog'] = str(exc)
         catalog_names = set()
@@ -709,7 +730,8 @@ def status(root=ROOT, home=None):
                 legacy_rows[name] = 'drift'
             ok &= legacy_rows[name] == 'current'
     try:
-        renamed = account_renames(root, account)
+        with source_snapshot(root) as (source, _):
+            renamed = account_renames(source, account)
     except (ValueError, OSError, KeyError, TypeError) as exc:
         inspection_errors['account_renames'] = str(exc)
         renamed = {}
@@ -723,7 +745,7 @@ def status(root=ROOT, home=None):
 def record_publication(root, surface, skill, reference):
     current_build(root)
     release = json.loads((root / 'dist' / 'release.json').read_text())
-    if release['source_sha256'] != source_hash(root):
+    if any(release.get(key) != value for key, value in committed_identity(root).items()):
         raise ValueError('Bundles are stale; rebuild and upload the new version')
     if skill not in release['packages']:
         raise ValueError(f'Unknown package: {skill}')
@@ -756,6 +778,8 @@ def main():
     pub.add_argument('--reference', required=True, help='Account and upload record; a report, not independent verification')
     args = ap.parse_args()
     try:
+        if args.command in {'build', 'sync', 'bundle', 'install', 'adopt', 'update'} and not os.path.lexists(ROOT / '.git'):
+            raise ValueError('Packaging requires a Git checkout with a committed HEAD')
         with lock():
             if args.command == 'validate': result = validate()
             elif args.command == 'build': result = build(home=args.home)

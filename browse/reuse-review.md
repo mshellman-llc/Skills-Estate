@@ -1,6 +1,6 @@
 # Skill reuse review
 
-88 general-use methods, 0 Megan-specific workflows, and 2 awaiting source review.
+87 general-use methods, 0 Megan-specific workflows, and 3 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -86,7 +86,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `sf-headless-screenshot` | General use | Requires sfqa, a supported browser runtime, and an authorized Salesforce connection. | No named personal reference detected in workflow text. |
 | `sf-solo-devops` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
 | `skill-creation-walkthrough` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
-| `skill-estate-sync` | General use | Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths. | No named personal reference detected in workflow text. |
+| `skill-estate-sync` | Needs review | Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths. | No named personal reference detected in workflow text. |
 | `solution-brief` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `sow` | General use | Requires a confirmed quote model, the project’s approved contract profile, and the document runtime. | No named personal reference detected in workflow text. |
 | `sow-quality` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
