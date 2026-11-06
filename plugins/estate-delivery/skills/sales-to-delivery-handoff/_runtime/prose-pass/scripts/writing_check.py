@@ -19,6 +19,7 @@ import xml.etree.ElementTree as ET
 
 from prose_check import check, load_config
 from authored_code import javascript_parts, comment_words, interpolated_words
+from context_signals import html_blocks, office_blocks
 
 
 class Block:
@@ -27,7 +28,7 @@ class Block:
 
 
 class FramingText(str):
-    """Keep legacy extraction intact while supplying C24's formatted text view."""
+    """Keep legacy extraction intact while supplying structured review views."""
 
 
 class HTMLFramingWords(HTMLParser):
@@ -225,11 +226,12 @@ def string_values(value):
 def authored_text(path):
     suffix = path.suffix.lower()
     if suffix in {'.docx', '.pptx', '.xlsx'}:
-        parts, framing_parts = [], []
+        parts, framing_parts, review_trees = [], [], []
         with zipfile.ZipFile(path) as archive:
             for name in sorted(archive.namelist()):
                 if name.endswith('.xml'):
                     tree = ET.fromstring(archive.read(name))
+                    review_trees.append((name, tree))
                     parts.extend(node.text for node in tree.iter()
                                  if node.tag.rsplit('}', 1)[-1] in {'t', 'v'} and node.text)
                     # Word/slide paragraphs and spreadsheet rich strings group
@@ -241,6 +243,9 @@ def authored_text(path):
                                 for node in unit.iter() if node.tag.rsplit('}', 1)[-1] in {'t', 'br', 'cr'}))
         result = AuthoredText([Block('\n'.join(parts))]) if suffix == '.xlsx' else FramingText('\n'.join(parts))
         result.framing_text = str(result) + '\n' + '\n'.join(framing_parts)
+        grouped = office_blocks(review_trees) if suffix != '.xlsx' else []
+        if grouped: result.review_blocks = grouped
+        result.context_structure = 'paragraphs-and-simple-tables' if grouped else 'flattened-text-only'
         return result
     raw = path.read_text(encoding='utf-8')
     if '\x00' in raw:
@@ -291,6 +296,8 @@ def authored_text(path):
         framing = HTMLFramingWords()
         framing.feed(raw)
         result.framing_text = str(result) + '\n' + ''.join(framing.parts)
+        result.review_blocks = html_blocks(raw)
+        result.context_structure = 'visible-paragraphs-and-simple-tables'
         return result
     # Markdown quoting, fences and audience labels do not exempt authored words.
     # Other UTF-8 source formats remain visible rather than silently disappearing.
@@ -338,9 +345,12 @@ def main(argv=None):
     try:
         config = strict_config(args.config)
         for path in args.files:
-            findings, words = check(authored_text(path), config)
+            extracted = authored_text(path)
+            findings, words = check(extracted, config)
             report[str(path)] = {'wordcount': words, 'findings': [item.as_dict() for item in findings],
-                                 'scope': 'authored language; no audience-category exemption'}
+                                 'scope': 'authored language; no audience-category exemption',
+                                 'context_signals': {'mode': 'read-only review candidates; not semantic verdicts',
+                                     'structure': getattr(extracted, 'context_structure', 'text-and-markdown-tables')}}
             if findings:
                 worst = 1
     except (OSError, ValueError, SyntaxError, RecursionError, ET.ParseError, zipfile.BadZipFile, tokenize.TokenError) as exc:

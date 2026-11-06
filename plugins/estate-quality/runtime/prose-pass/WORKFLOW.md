@@ -41,6 +41,10 @@ or change a valid passage solely to obtain exit 0.
 For a receipt, use `--retain-framing-reason "REASON" --retention-source "SOURCE"`
 with `prose_receipt.py emit` after reading every candidate. The assessment is
 bound to the artifact hash and applies only to C24; it cannot waive other rules.
+C25–C27 add narrow review candidates for table readouts, action basis and repeated
+reassurance. Read [contextual signals](references/context-signals.md) for their
+observable conditions, format limits and rule-specific retention procedure.
+These candidates cannot establish redundancy, unearned urgency or lack of evidence.
 The validator checks the record. The reviewer remains responsible for the judgment.
 
 Do not change the filename, label prose internal or put authored wording in a

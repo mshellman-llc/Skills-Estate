@@ -18,21 +18,26 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "ef674ec80755a692999eb6663128cf4c1afd4b82ced67c7244170ecb449fde86",
+      "required_sha256": "d740f94b4239ef52d5e1c84e507544bba3bf0215eccbc0734afd7df4882823b0",
       "status": "review required",
       "subject": "shared assembly"
     },
     {
-      "required_sha256": "02daeac599c04ff8d5b1ee05e05172e4bc20b2bcdcbf9f90d5f7b197139c7a69",
+      "required_sha256": "535bef3d0c5c028e30a1770a81290ffcc69bacdbdb6e06693df887865eb25450",
       "status": "review required",
       "subject": "prose-pass"
     },
     {
-      "required_sha256": "81b6b524944ae89268e1e7cefb6a3e441fe6a888f1c4458abeb4b396513524d4",
+      "required_sha256": "58e3c5acd32d71a82eb1fb846593ddbaf6d6af09f9f91bb43c25c2c6f4915d45",
+      "status": "review required",
+      "subject": "skill-estate-sync"
+    },
+    {
+      "required_sha256": "2e5bccd5ae645d20b36b1bea551488171630bbdedb80eb02172255f27cb412f3",
       "status": "review required",
       "subject": "writing-integrity"
     }
   ],
-  "source_sha256": "235957b731ab028856866f5d6f90869e4cf27f8deb7d096532e17db48a956a4e",
+  "source_sha256": "7706cf17e3a66c3c12caa011b2ad936ddb0b2b6ae2266dd877583b9446736a3c",
   "status": "owner-published"
 }

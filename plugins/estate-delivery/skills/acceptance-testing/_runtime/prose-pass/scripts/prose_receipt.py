@@ -59,6 +59,7 @@ CHECKER = HERE / "writing_check.py"
 CONFIG = HERE.parent / "house.json"
 
 RECEIPT_VERSION = "1"
+REVIEWABLE = frozenset({"C24-formulaic-the-framing", "C25-table-narration-candidate", "C26-action-basis-candidate", "C27-reaffirmation-candidate"})
 
 REQUIRED_FIELDS = (
     "receipt_version",
@@ -81,7 +82,7 @@ def sha256_file(path: Path) -> str:
 
 def checker_fingerprint() -> str:
     """Identify the code/config used by this receipt's actual check path."""
-    names = ['authored_code.py', 'framing.py', 'prose_check.py', 'writing_check.py']
+    names = ['authored_code.py', 'framing.py', 'context_signals.py', 'prose_check.py', 'writing_check.py']
     try:
         rows = [(name, sha256_file(HERE / name)) for name in names]
         rows.append(('house.json', sha256_file(CONFIG)))
@@ -144,6 +145,13 @@ def emit(args: argparse.Namespace) -> int:
         figures_added.append({"value": value.strip().replace(",", ""),
                               "source": source.strip() or "unstated"})
 
+    context_reviews = []
+    for entry in args.retain_candidate or []:
+        rule, separator, reason = entry.partition('=')
+        if not separator or rule not in REVIEWABLE or not reason.strip() or not args.retention_source:
+            raise RuntimeError('Use --retain-candidate RULE=REASON for a reviewable candidate, with --retention-source.')
+        context_reviews.append({'rule': rule, 'decision': 'retain', 'reason': reason.strip(), 'source_ref': args.retention_source})
+
     receipt = {
         "receipt_version": RECEIPT_VERSION,
         "artifact": str(artifact),
@@ -162,7 +170,7 @@ def emit(args: argparse.Namespace) -> int:
             "rule": "C24-formulaic-the-framing", "decision": "retain",
             "reason": args.retain_framing_reason,
             "source_ref": args.retention_source,
-        }] if args.retain_framing_reason or args.retention_source else []),
+        }] if args.retain_framing_reason else []) + context_reviews,
         "figures_added": figures_added,
         "figure_check": {
             "ran": bool(args.before_file),
@@ -228,7 +236,7 @@ def validate_receipt(receipt: dict, quiet: bool = True) -> list:
 
     issues_now = run_checker(artifact)
     standing_findings = set(issues_now)
-    # C24 is a contextual candidate, not a mechanical defect. Its disposition
+    # Contextual candidates are not mechanical defects. Their disposition
     # is an explicit reading assessment bound to the artifact hash above.
     # This never waives any other rule or proves the assessment is true.
     reviews = receipt.get('candidate_reviews', [])
@@ -237,18 +245,19 @@ def validate_receipt(receipt: dict, quiet: bool = True) -> list:
         fail('checker-mismatch', 'The checker changed; recheck the artifact and its candidate assessments.')
     if reviews and not fingerprint:
         fail('checker-missing', 'A candidate assessment must name the checker fingerprint.')
-    if not isinstance(reviews, list) or len(reviews) > 1:
-        fail('candidate-review-shape', 'Supply at most one C24 retention assessment.')
+    if (not isinstance(reviews, list) or len(reviews) > len(REVIEWABLE) or
+            len({r.get('rule') for r in reviews if isinstance(r, dict) and isinstance(r.get('rule'), str)}) != len(reviews)):
+        fail('candidate-review-shape', 'Supply at most one assessment per reviewable candidate rule.')
     else:
         for review in reviews:
             if (not isinstance(review, dict)
-                    or review.get('rule') != 'C24-formulaic-the-framing'
+                    or not isinstance(review.get('rule'), str) or review.get('rule') not in REVIEWABLE
                     or review.get('decision') != 'retain'
                     or any(not isinstance(review.get(k), str) or not review[k].strip()
                            for k in ('reason', 'source_ref'))):
-                fail('candidate-review-shape', 'C24 retention needs a reason and source reference.')
+                fail('candidate-review-shape', 'Candidate retention needs an eligible rule, reason and source reference.')
             elif review['rule'] not in issues_now:
-                fail('candidate-review-stale', 'The retained C24 candidate is absent; review the current artifact.')
+                fail('candidate-review-stale', 'The retained candidate is absent; review the current artifact.')
             else:
                 standing_findings.discard(review['rule'])
     unresolved = receipt.get("unresolved_flags") or []
@@ -327,7 +336,9 @@ def main(argv=None) -> int:
     p_emit.add_argument('--retain-framing-reason',
                         help='Contextual reason for retaining all C24 candidates in this artifact; waives no other rule')
     p_emit.add_argument('--retention-source',
-                        help='Source reference supporting the C24 retention assessment')
+                        help='Source reference supporting explicit contextual retention assessments')
+    p_emit.add_argument('--retain-candidate', action='append',
+                        help='RULE=REASON to retain a C24/C25/C26/C27 review candidate; requires --retention-source, waives no other rule')
     p_emit.set_defaults(func=emit)
 
     p_val = sub.add_parser("validate", help="re-derive and judge an existing receipt")

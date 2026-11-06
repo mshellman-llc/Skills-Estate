@@ -123,5 +123,6 @@ deadlines and approval conditions; do not invent pressure or new prerequisites.
 Across the piece, remove repeated assurances of the same fact unless they add
 new verification, a changed condition or a needed reminder. Keep valid uses of
 “holds,” “unchanged” and similar wording. These judgments require the surrounding
-content and sources; the scanner has no detector for them. Apply the full
+content and sources. [C25–C27](context-signals.md) surface narrow review candidates;
+they do not automate these judgments. Apply the full
 [Writing Integrity guidance](../_runtime/writing-integrity/references/patterns.md#repetition-and-urgency).

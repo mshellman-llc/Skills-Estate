@@ -199,3 +199,37 @@ Likewise, “The invariant holds for every input in the tested set” can be a p
 technical finding when those tests establish it. Preserve the tested scope; do
 not turn it into a universal guarantee or delete the verb merely because it
 matches an example of reassurance.
+
+## Keep headings and structure accurate
+
+A heading promises “Three recovery options” but the body describes only a backup
+code and a recovery email. Use “Two recovery options”; do not invent a third.
+Keep “Three examples from eight options” when three examples are intentionally
+shown and eight options exist. Count the distinct units named, not every nested
+bullet or repeated label.
+
+A section titled “Validated recovery” contains an unexecuted test plan. Label it
+“Recovery test plan.” Keep “Recovery validated for the tested configuration” when
+the completed tests and their scope support that finding. “Which recovery method
+should I use?” is appropriate when the section answers that reader question.
+
+An option table compares one service's monthly price with another's annual price
+as if directly comparable. Show equivalent periods if conversion is supported,
+or label the different bases and defer the comparison. Do not supply unknown
+prices, feature results or costs to fill a parallel table. Keep a comparison with
+explicitly labeled noncomparable evidence when exposing that gap is its purpose.
+
+Two cards repeat the same migration exclusion without a new use. Combine them
+when both address the same reader in the same place. Keep the exclusion on two
+independently used work instructions when each reader needs it.
+
+A legend already says “Blue: completed.” “Blue indicates completed work” beside
+it adds no explanation for a reader using that legend. Remove the duplicate
+narration. Keep an explanation of an unfamiliar encoding, a required legend key,
+a color-independent text alternative, or “Completed work rose from 12 to 18”
+when the source supports that useful comparison.
+
+A report says “Everything is preserved” after comparing only row counts. State
+what was checked: “Source and destination both contain 24 rows; field values have
+not been compared.” Do not turn that limited check into a complete preservation
+claim. Keep a bounded assurance when its evidence covers the stated scope.

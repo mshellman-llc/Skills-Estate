@@ -33,6 +33,13 @@ row-by-row paraphrase that adds nothing. Across the full artifact, distinguish
 an established fact repeated for reassurance from a new verification or a
 reminder the reader needs. See [repetition and urgency in sentence patterns](patterns.md).
 
+Verify the structure's own claims: counts must agree with the distinct items,
+comparisons must use equivalent bases, and separate containers must serve a
+reader purpose. Check heading/content agreement and evidence for even a single
+assurance. Review restated figures and legend narration for added meaning while
+preserving needed keys, accessible alternatives and standalone summaries. See
+[heading and structural accuracy](patterns.md).
+
 ## Claims and usefulness
 
 Wikipedia's editors describe vague relationships and conclusions that follow a challenge with automatic optimism. Those are editorial observations. The remaining checks below come from this skill; they make no claim about how often AI produces these patterns. [Wikipedia editors' guidance](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)

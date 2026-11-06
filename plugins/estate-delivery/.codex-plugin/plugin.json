@@ -2,5 +2,5 @@
   "description": "Skills Estate delivery workflows and routing.",
   "name": "estate-delivery",
   "skills": "./skills/",
-  "version": "0.2.32"
+  "version": "0.2.34"
 }

@@ -64,10 +64,49 @@ state what was checked and the limits of that evidence. A local recheck cannot
 establish that the claim holds everywhere or indefinitely. Keep necessary
 reminders in independently used instructions and standalone summaries.
 
-These are contextual editorial checks. The scanner does not detect whether a
+These are contextual editorial checks. The scanner provides narrow
+C25–C27 review candidates in the diagnostic toolkit, but does not detect whether a
 summary adds value, an action is warranted, or an assurance has evidence. Read
 and compare the surrounding content even after a clean scan; do not add phrase
 blacklists or present lexical matches as proof of these behaviors.
+
+## Headings, assurances and structural accuracy
+
+A heading must accurately describe the content beneath it and its status. Check
+whether a question introduces an actual question, a verdict is supported, and an
+approval label describes a real approval decision. A status report must not turn
+optional improvements into conditions for approval. Preserve useful questions,
+accurate conclusions and supplied requirements; neither question marks nor
+verdict-shaped headings are defects by themselves. Repair the underlying
+mislabel or unsupported claim rather than swapping punctuation or a keyword.
+
+Check assurances even when they appear only once. “This is safe” or “Everything
+is preserved” needs evidence matching its scope. A local test, partial inspection
+or successful build does not establish universal safety, complete preservation
+or future behavior. State the supported result and its material limits; do not
+invent a verification or weaken a genuinely established finding into vagueness.
+
+Structure also makes factual claims. Verify a promised number of reasons,
+options, changes or results against the actual distinct items and any stated
+subset. Compare alternatives on equivalent dimensions, units, time periods and
+scope; label missing or inapplicable evidence instead of inventing symmetry.
+Combine duplicate sections, cards or other containers when they repeat one point
+without a separate reader purpose. Preserve independently used instructions,
+intentional navigation, accessible alternatives and repeated summaries needed in
+another context. A requested template may need separate fields even where a
+shared fact recurs. Let those real purposes determine the structure.
+
+For figures and legends, compare information rather than wording. Repeating
+values or narrating that a colored symbol means the label already beside it may
+add no value. Keep a useful comparison, calculation, consequence, qualification,
+standalone summary or explanation of an unfamiliar encoding. Retain accessible
+text alternatives and required legend keys. Never delete a figure merely because
+it appears twice or invent an insight to justify keeping redundant prose.
+
+These checks need content, source and audience review. C25–C27 provide only the
+narrow signals documented in the diagnostic toolkit; they do not detect heading
+truth, arbitrary count errors, unfair comparisons, duplicate containers, legend
+redundancy or every unsupported assurance.
 
 ## Claims of authority or importance
 

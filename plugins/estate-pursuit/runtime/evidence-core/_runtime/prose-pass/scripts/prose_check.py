@@ -30,6 +30,7 @@ import zipfile
 from collections import Counter
 from pathlib import Path
 from framing import framing_candidates
+from context_signals import context_candidates
 
 # --------------------------------------------------------------------------
 # Text extraction
@@ -424,6 +425,9 @@ def check(text: str, cfg=None):
             'and required identifiers. Locations refer to extracted text.',
             [f"line {item['line']} ({item['shape']}): {item['sample']}" for item in framing],
         ))
+
+    for rule, message, samples in context_candidates(text):
+        findings.append(Finding(rule, "WARN", message, samples))
 
     def per(n, unit):
         return round(n * unit / wordcount, 2)
