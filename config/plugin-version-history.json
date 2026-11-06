@@ -108,6 +108,10 @@
     "0.2.31": {
       "content_sha256": "971d91ecad0d5a6df9b0a88d37a0d4ab4eaaff48fc4c8340258645a5fd298713",
       "note": "Review display duplication, manufactured urgency and repeated reassurance while preserving useful summaries, real requirements and reader actions."
+    },
+    "0.2.32": {
+      "content_sha256": "101d62a75850ad0f611c5c4e9f8cc3ed2118c48836d1f43e1c200c4f5d84973e",
+      "note": "Preserve contextual repetition and urgency guidance in portable account setup kits."
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T16:00:02.812294+00:00",
+  "generatedAt": "2026-11-06T16:04:02.922431+00:00",
   "baseCommit": "66717cd0acf1eb14a419eb9fcb3161d3d7f35619",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -17892,7 +17892,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 16,
-        "packageFingerprint": "8ea4011f91b091009fbea892612885259b3aa0ab485ec83047bb393ee77964b1",
+        "packageFingerprint": "6f4b6256d37915fbae34d977cf6c2a247caa4b684a46412e45fca2b22e719e4e",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -17994,9 +17994,9 @@
         },
         {
           "path": "references/expanded-writing-review.md",
-          "sha256": "b1540ae352c9cf6031168a3f3dd65e447d26022a7685c4025ef2ddafeb60f196",
-          "bytes": 10514,
-          "gitBlob": "2a1db0ce24a1acfb934b5a478a2fdbcbe4b99e1e"
+          "sha256": "1741d285aa139d5b3f3cfea5b6c7937b922c383e374c9c1048cdf354d0bf8087",
+          "bytes": 10512,
+          "gitBlob": "284468d191e0ef4b4919ed9e86c8f1a5e292c6f0"
         },
         {
           "path": "references/host-setup.md",

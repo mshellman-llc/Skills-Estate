@@ -31,7 +31,7 @@ For prose beside a table or another display, compare the information in both.
 Keep a useful synthesis, qualification or accessible alternative; remove a
 row-by-row paraphrase that adds nothing. Across the full artifact, distinguish
 an established fact repeated for reassurance from a new verification or a
-reminder the reader needs. See [repetition and urgency](patterns.md#repetition-and-urgency).
+reminder the reader needs. See [repetition and urgency in sentence patterns](patterns.md).
 
 ## Claims and usefulness
 
