@@ -45,6 +45,14 @@ If no checkout is available, report the missing prerequisite and identify the us
 
 The current canonical CLI does not automatically run every behavioral test before building. The agent must complete the applicable tests and content review before treating a build as ready. Preserve a skill's failed attempt and fix the capability; do not replace the workflow with a general description to make validation pass.
 
+## Update from GitHub main
+
+Use `python3 tools/estate.py update` for the owner's ordinary update. It fetches GitHub main into a fresh temporary checkout without pulling into the authoring branch. The existing verification guard requires a successful run for the exact revision, retaining the generated-publication commit exception for its immediately verified source parent. The fetched tooling runs local checks and builds before activation. Tests deferred locally remain named in the receipt; GitHub's accepted workflow supplies the full integration result.
+
+Codex uses the existing immutable release store and durable repository pointer. Duplicate local Claude skills are backed up within the same activation transaction; Claude continues to use its marketplace plugin manager. This command does not update platform-managed plugin caches. Fetch, verification, local test and build failures leave installed links unchanged. Installation failures restore prior links and backups unless a concurrent edit requires preserving the recovery journal. Receipts identify the installed commit, remote run, local checks, previous release and restore operation.
+
+Use `test-local` explicitly to test the authoring checkout and build committed HEAD candidates without installation. Keep normal GitHub updates separate from local development promotion.
+
 ## Install and keep local hosts consistent
 
 Before rebuilding a legacy checkout whose installed links point into `build/`, run `pin-installed`. It preserves only the existing managed inventory and exact bytes in a versioned directory; it does not promote new source or change vendor installations.

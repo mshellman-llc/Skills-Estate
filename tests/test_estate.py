@@ -271,22 +271,18 @@ class EstateTests(unittest.TestCase):
         self.assertTrue((self.home / '.agents/skills/demo').is_dir())
         self.assertTrue(estate.status(self.root, self.home)['ok'])
 
-    def test_update_links_codex_only_and_backs_up_old_claude_copies(self):
-        old = self.home / '.claude/skills/demo'
-        old.mkdir(parents=True); (old / 'SKILL.md').write_text('Old copy\n')
-        stray = self.home / '.agents/skills/demo'
-        stray.mkdir(parents=True); (stray / 'SKILL.md').write_text('Old Codex copy\n')
-        result = estate.update(self.root, self.home, pull=False)
-        self.assertFalse(os.path.lexists(old))
-        moved = Path(result['cleared_from_claude_code'][str(old)])
-        self.assertEqual((moved / 'SKILL.md').read_text(), 'Old copy\n')
-        self.assertTrue((moved.parent / 'receipt.json').is_file())
-        self.assertTrue((self.home / '.agents/skills/demo').is_symlink())
-        status = estate.status(self.root, self.home)
-        self.assertEqual(status['local']['claude-code']['demo'], 'marketplace')
-        self.assertEqual(status['local']['codex']['demo'], 'linked-current')
-        self.assertTrue(status['ok'])
-        self.assertEqual(estate.update(self.root, self.home, pull=False)['cleared_from_claude_code'], {})
+    def test_update_delegates_to_verified_main_without_building_local_head(self):
+        with patch('updater.update', return_value={'source_commit': 'remote'}) as update_main:
+            self.assertEqual(estate.update(self.root, self.home), {'source_commit': 'remote'})
+        update_main.assert_called_once_with(self.root, self.home)
+
+    def test_local_development_path_never_installs(self):
+        with patch.object(estate.subprocess, 'run') as run, patch.object(estate, 'install') as install:
+            run.return_value.returncode = 0
+            result = estate.test_local(self.root, self.home)
+        self.assertFalse(result['installed'])
+        install.assert_not_called()
+        self.assertFalse((self.home / '.agents').exists())
 
     def test_account_names_replaced_by_packages_are_reported(self):
         root = Path(__file__).resolve().parents[1]

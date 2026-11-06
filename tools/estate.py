@@ -462,38 +462,22 @@ def install(root=ROOT, home=None, adopt=False, expected_source=None, skills=None
                                  account_provided=provided)
 
 
-def clear_claude_copies(home, names):
-    """Move other copies of estate skills out of ~/.claude/skills into a dated backup with a receipt."""
-    moved = {}
-    backup = releases.state(home) / ('claude-copies-' + dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
-    for name in names:
-        dest = home / '.claude/skills' / name
-        if os.path.lexists(dest):
-            backup.mkdir(parents=True, exist_ok=True)
-            os.rename(dest, backup / name)
-            moved[str(dest)] = str(backup / name)
-    if moved:
-        write_json(backup / 'receipt.json', {'moved': moved})
-    return moved
+def update(root=ROOT, home=None):
+    """Fetch, verify and install exact GitHub main without changing the authoring tree."""
+    from updater import update as update_main
+    return update_main(root, home)
 
 
-def update(root=ROOT, home=None, pull=True):
-    """The owner's one-step refresh from GitHub main.
-
-    Gets the latest skills, rebuilds, links every public skill for Codex, and moves other
-    copies of the same skills out of Claude Code, which uses the marketplace plugins instead.
-    """
-    home = Path(home or Path.home()).expanduser().resolve()
-    if pull:
-        pulled = subprocess.run(['git', '-C', str(root), 'pull', '--ff-only', 'origin', 'main'], capture_output=True, text=True)
-        if pulled.returncode:
-            raise ValueError('Could not get the latest skills from GitHub: ' + (pulled.stderr or pulled.stdout).strip())
+def test_local(root=ROOT, home=None):
+    """Explicit development path: test/build this checkout; never install it."""
+    command = [sys.executable, str(root / 'tools/verify.py'), '--refresh', '--integration', 'generated-map']
+    checked = subprocess.run(command, cwd=root)
+    if checked.returncode:
+        raise ValueError('Local development verification failed; candidate was not built')
     build(root, home=home)
     bundle(root)
-    cleared = clear_claude_copies(home, sorted(current_build(root)['packages']))
-    result = install(root, home, adopt=True, owner=True, claude_code=False)
-    return {**result, 'cleared_from_claude_code': cleared,
-            'next': 'Claude Code and Cowork: install the plugins from the skills-estate marketplace.'}
+    return {'mode': 'local-development', 'source_commit': current_build(root).get('source_commit'),
+            'installed': False}
 
 
 def pin_installed(root=ROOT, home=None):
@@ -763,7 +747,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--home', type=Path, default=Path.home(), help='Local install root; use a temporary home for tests')
     sub = ap.add_subparsers(dest='command', required=True)
-    for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed', 'update']:
+    for command in ['validate', 'build', 'bundle', 'sync', 'status', 'pin-installed', 'update', 'test-local']:
         sub.add_parser(command)
     for command in ['install', 'adopt']:
         install_parser = sub.add_parser(command)
@@ -787,6 +771,7 @@ def main():
             elif args.command in {'install', 'adopt'}: result = install(home=args.home, adopt=args.command == 'adopt', expected_source=args.expected_source, skills=args.skill)
             elif args.command == 'pin-installed': result = pin_installed(home=args.home)
             elif args.command == 'update': result = update(home=args.home)
+            elif args.command == 'test-local': result = test_local(home=args.home)
             elif args.command == 'rollback': result = rollback(ROOT, args.home, args.release_id)
             elif args.command == 'restore': result = restore(args.receipt)
             elif args.command == 'status': result = status(home=args.home)
