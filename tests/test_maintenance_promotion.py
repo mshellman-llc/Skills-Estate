@@ -24,6 +24,9 @@ class MaintenancePromotionTests(unittest.TestCase):
             folder = self.root / 'skills' / name
             folder.mkdir()
             (folder / 'SKILL.md').write_text(f'---\nname: {name}\ndescription: Test this workflow.\n---\nPreserve the supplied input.\n')
+        # The maintenance package carries the accepted updater implementation.
+        shutil.copytree(estate.ROOT / 'tools', self.root / 'tools',
+                        ignore=shutil.ignore_patterns('__pycache__'))
         estate.build(self.root)
         estate.install(self.root, self.home)
         self.candidate = fixture.base / 'candidate'
