@@ -1,0 +1,6 @@
+interface:
+  display_name: "Load project context"
+  short_description: "Start or resume work from current sources"
+  default_prompt: "Use $load-project-context to resume my work from the current sources."
+policy:
+  allow_implicit_invocation: true

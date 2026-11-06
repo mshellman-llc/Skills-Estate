@@ -1,0 +1,96 @@
+schema_version: 1
+name: manage-consulting-knowledge
+display_name: Knowledge Hub
+summary: Resolve, retrieve, and safely update consulting knowledge across local files, Google Drive, and supplied files.
+status: active
+tier: core
+version: 1.1.0
+owner: estate-maintainer
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Resolve, retrieve, or update durable consulting knowledge through a configured Hub store.
+- Find bounded client, pursuit, delivery, evidence, transcript, outcome, or firm-learning context without scanning an entire knowledge estate.
+- Create, audit, repair, or gate a pursuit workspace inside a hub on a local filesystem, including the git sync-race check at session start.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: resolved_records_and_persistence
+  format: markdown-and-json
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: client.front_door
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: required
+  reads:
+  - client.front_door
+  - client.profile
+  - client.relationships
+  - client.business_strategy
+  - client.technology
+  - client.engagement_history
+  - opportunity.front_door
+  - opportunity.qualification
+  - opportunity.discovery
+  - opportunity.solution_scope
+  - opportunity.commercial
+  - opportunity.pursuit_history
+  - engagement.front_door
+  - engagement.contract_commitments
+  - engagement.handoff_mobilization
+  - engagement.requirements_design
+  - engagement.delivery_status
+  - engagement.control
+  - engagement.test_acceptance
+  - engagement.outcomes_closeout
+  - engagement.expansion
+  - evidence.sources
+  - evidence.claims
+  - transcripts.index
+  - deliverables.register
+  writes:
+  - client.front_door
+  - client.profile
+  - client.relationships
+  - client.business_strategy
+  - client.technology
+  - client.engagement_history
+  - opportunity.front_door
+  - opportunity.qualification
+  - opportunity.discovery
+  - opportunity.solution_scope
+  - opportunity.commercial
+  - opportunity.pursuit_history
+  - engagement.front_door
+  - engagement.contract_commitments
+  - engagement.handoff_mobilization
+  - engagement.requirements_design
+  - engagement.delivery_status
+  - engagement.control
+  - engagement.test_acceptance
+  - engagement.outcomes_closeout
+  - engagement.expansion
+  - evidence.sources
+  - evidence.claims
+  - transcripts.index
+  - deliverables.register
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

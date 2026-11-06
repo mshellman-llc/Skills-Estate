@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://estate.example/schemas/evidence-ledger.schema.json",
+  "title": "Estate Shared Evidence Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ledgerVersion", "sources", "claims", "conflicts", "coverage", "asOf"],
+  "properties": {
+    "ledgerVersion": {"type": "string"},
+    "asOf": {"type": "string", "format": "date-time"},
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clientId", "clientName", "scopeType", "contextId"],
+      "properties": {
+        "clientId": {"type": "string", "pattern": "^client-[a-z0-9][a-z0-9-]*$"},
+        "clientName": {"type": "string", "minLength": 1},
+        "scopeType": {"enum": ["client", "opportunity", "engagement"]},
+        "contextId": {"type": "string", "minLength": 1},
+        "opportunityId": {"type": ["string", "null"]},
+        "engagementId": {"type": ["string", "null"]},
+        "contractId": {"type": ["string", "null"]}
+      }
+    },
+    "engagement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engagementId", "clientName"],
+      "properties": {
+        "engagementId": {"type": "string", "minLength": 1},
+        "clientName": {"type": "string", "minLength": 1},
+        "opportunityId": {"type": ["string", "null"]},
+        "contractId": {"type": ["string", "null"]}
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "claims": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/claim"}
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/conflict"}
+    },
+    "coverage": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/coverageItem"}
+    },
+    "registers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {"type": "array", "items": {"$ref": "#/$defs/registerItem"}},
+        "estimate": {"type": "array", "items": {"$ref": "#/$defs/registerItem"}},
+        "decisions": {"type": "array", "items": {"$ref": "#/$defs/registerItem"}},
+        "risks": {"type": "array", "items": {"$ref": "#/$defs/registerItem"}},
+        "assumptions": {"type": "array", "items": {"$ref": "#/$defs/registerItem"}},
+        "stakeholders": {"type": "array", "items": {"$ref": "#/$defs/registerItem"}},
+        "timeline": {"type": "array", "items": {"$ref": "#/$defs/registerItem"}}
+      }
+    }
+  },
+  "anyOf": [
+    {"required": ["context"]},
+    {"required": ["engagement"]}
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "sourceType", "title", "authority", "observedAt", "locator"],
+      "properties": {
+        "sourceId": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"},
+        "sourceType": {"type": "string", "enum": ["executed_contract", "current_sow", "current_quote", "crm_record", "approved_design", "meeting_transcript", "client_document", "internal_model", "message", "generated_artifact", "worked_example", "other"]},
+        "title": {"type": "string"},
+        "authority": {"type": "integer", "minimum": 0, "maximum": 100},
+        "observedAt": {"type": "string", "format": "date-time"},
+        "effectiveAt": {"type": ["string", "null"], "format": "date-time"},
+        "supersedes": {"type": "array", "items": {"type": "string"}},
+        "locator": {"type": "string"},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claimId", "statement", "status", "sourceIds", "asOf", "loadBearing", "domains"],
+      "properties": {
+        "claimId": {"type": "string", "pattern": "^CLM-[0-9]{3,}$"},
+        "statement": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "enum": ["Confirmed", "Inferred", "Unknown", "Contested", "Superseded"]},
+        "sourceIds": {"type": "array", "items": {"type": "string"}},
+        "asOf": {"type": "string", "format": "date-time"},
+        "loadBearing": {"type": "boolean"},
+        "domains": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "confidenceRationale": {"type": ["string", "null"]},
+        "closureCondition": {"type": ["string", "null"]},
+        "owner": {"type": ["string", "null"]}
+      }
+    },
+    "conflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conflictId", "claimIds", "materiality", "status", "description"],
+      "properties": {
+        "conflictId": {"type": "string", "pattern": "^CNF-[0-9]{3,}$"},
+        "claimIds": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+        "materiality": {"type": "string", "enum": ["load_bearing", "material", "minor"]},
+        "status": {"type": "string", "enum": ["open", "resolved", "accepted_exception"]},
+        "description": {"type": "string"},
+        "resolutionClaimId": {"type": ["string", "null"]},
+        "owner": {"type": ["string", "null"]},
+        "closureCondition": {"type": ["string", "null"]}
+      }
+    },
+    "coverageItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domain", "status", "requiredClaimIds", "notes"],
+      "properties": {
+        "domain": {"type": "string"},
+        "status": {"type": "string", "enum": ["Sufficient", "Conditional", "Insufficient", "NotApplicable"]},
+        "requiredClaimIds": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": "string"}
+      }
+    },
+    "registerItem": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["itemId", "claimIds"],
+      "properties": {
+        "itemId": {"type": "string"},
+        "claimIds": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

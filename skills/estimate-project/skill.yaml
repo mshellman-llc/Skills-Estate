@@ -1,0 +1,65 @@
+schema_version: 1
+name: estimate-project
+display_name: ROM
+summary: 'Builds a sourced rough-order-of-magnitude effort or cost range and its basis
+  of estimate from a supplied scope, comparables or quote, and gates quote-anchored
+  figures when a quote exists.'
+status: active
+tier: core
+version: 1.0.0
+owner: Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Builds a sourced effort or cost range and its basis of estimate from a supplied
+  scope, comparables or quote. Buyer-facing or deal-desk-facing. Use when asked for
+  a "ROM", "rough order of magnitude", "early pricing range", "investment range",
+  "ballpark", "basis of estimate", or when a quote reference is paired with a range,
+  sizing, or early-pricing request. Also fires when deal desk wants the range and
+  its basis before scope review, or a playbook tier needs its ROM artifact. A quote
+  is not required: a standalone effort range is supported when its scope and estimating
+  basis are supplied, and a missing rate leaves cost unresolved. Do NOT use for scoping
+  or quote creation (that is scope-project), the SOW (sow), or the firm proposal
+  (build-interactive-proposal).'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- review-deliverable
+knowledge_hub:
+  requirement: optional
+  reads:
+  - opportunity.front_door
+  - opportunity.solution_scope
+  - opportunity.commercial
+  - evidence.claims
+  writes:
+  - opportunity.commercial
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: review-deliverable
+license: Proprietary to Estate LLC.

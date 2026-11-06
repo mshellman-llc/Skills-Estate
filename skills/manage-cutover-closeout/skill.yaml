@@ -1,0 +1,72 @@
+schema_version: 1
+name: manage-cutover-closeout
+display_name: Cutover Closeout
+summary: 'Runs stage 06 Deploy of the Estate delivery lifecycle: assembles the cutover
+  runbook, tracks Go-Live Acceptance against the executed SOW''s deemed-acceptance
+  clause (reads the clause, extracts the period, computes and surfaces the deadline),
+  triages hypercare issues with an explicit hypercare-vs-change-order boundary, drafts
+  the Hypercare Closeout Report and transition docs, and harvests lessons, actuals
+  vs estimate, and reusable assets back to the knowledge base.'
+status: active
+tier: situational
+version: 0.2.1
+owner: Estate
+category: delivery-lifecycle
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Runs stage 06 Deploy of the Estate delivery lifecycle: assembles the cutover
+  runbook, tracks Go-Live Acceptance against the executed SOW''s deemed-acceptance
+  clause (reads the clause, extracts the period, computes and surfaces the deadline),
+  triages hypercare issues with an explicit hypercare-vs-change-order boundary, drafts
+  the Hypercare Closeout Report and transition docs, and harvests lessons, actuals
+  vs estimate, and reusable assets back to the knowledge base. Use after go / no-go
+  is approved, or whenever someone says cutover, go-live, deployment weekend, runbook,
+  hypercare, acceptance clock, deemed acceptance, closeout, close out the project,
+  wrap up the engagement, transition to support, lessons learned, or post-go-live
+  issues ("we go live Friday, what do we need"). Do NOT use for UAT or the go / no-go
+  itself (that is validate-delivery), ongoing status and change orders (track-delivery),
+  managed-services operations after transition, or SOW authoring (sow).'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- review-deliverable
+knowledge_hub:
+  requirement: required
+  reads:
+  - engagement.front_door
+  - engagement.contract_commitments
+  - engagement.delivery_status
+  - engagement.test_acceptance
+  - deliverables.register
+  writes:
+  - engagement.test_acceptance
+  - engagement.outcomes_closeout
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: review-deliverable
+license: Proprietary to Estate LLC.

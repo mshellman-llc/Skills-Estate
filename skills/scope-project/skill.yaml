@@ -1,0 +1,64 @@
+schema_version: 1
+name: scope-project
+display_name: Scoping Agent
+summary: Develop project scope and effort estimates from the user's brief, supplied models or a configured pricing system, with or without a CRM.
+status: active
+tier: core
+version: 1.0.0
+owner: Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Develop project scope and effort estimates from the user''s brief, supplied models
+  or a configured pricing system. Use whenever the user wants to scope, estimate,
+  size, or price out work for a client or prospect, starting from scratch, refining
+  draft scope, reviewing transcripts, or revising existing scope (e.g., "mark items
+  inactive", "add CTI scope"). Trigger on: scoping, estimate, scope items, pricing
+  a deal, sizing a project, RFP response, discovery notes, prospect, "break this into
+  scope items", quote references (e.g., Q-000042) when a quote exists, capability
+  taxonomy, team presets, staffing ratios, gap analysis against existing scope. Also
+  trigger when editing scope items or managing quote resources and timelines through
+  a project pricing adapter that the project has supplied and authorized. A rough
+  estimate does not require an existing quote or a CRM connection; the local calculator
+  covers that case. Rough order of magnitude ranges and their basis use the rom mode.
+  Do NOT trigger for: project delivery, timesheets, or anything post-sale.'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- review-deliverable
+knowledge_hub:
+  requirement: optional
+  reads:
+  - opportunity.front_door
+  - opportunity.discovery
+  - opportunity.solution_scope
+  - evidence.claims
+  writes:
+  - opportunity.solution_scope
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: review-deliverable

@@ -1,0 +1,6 @@
+{
+  "_comment": "Inactive template for explicit flat-estate compatibility work. Copy to an authorized workspace and supply only task-selected destinations. Canonical releases use manage_estate.py.",
+  "surfaces": [],
+  "cloud_surfaces": [],
+  "_configuration": "Local rows require name, path and kind (dir or tree). Reported-publication rows require name and kind (cloud). Set ledger to an explicit path outside the reusable skill; relative paths resolve beside this configuration. Destination names do not establish account access, upload support or authorization."
+}

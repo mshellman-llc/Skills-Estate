@@ -1,0 +1,63 @@
+schema_version: 1
+name: operate-salesforce-pipeline
+display_name: Salesforce Deploy Engine
+summary: 'Operate an sf-deploy-engine Salesforce CI/CD pipeline: engine-managed validation
+  and deploy to pipeline environments (preprod, staging, production), selective and
+  multi-source releases, rollback by ticket or SHA, re-validation, freeze recovery,
+  pause/resume, route topology and hotfix entry gates, smart test skip, pre/post-deploy
+  Apex hooks, GitHub or Jira ticket providers, and provisioning a new engine instance.'
+status: active
+tier: situational
+version: 1.0.0
+owner: Estate
+category: delivery-lifecycle
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Operate an sf-deploy-engine Salesforce CI/CD pipeline: engine-managed validation
+  and deploy to pipeline environments (preprod, staging, production), selective and
+  multi-source releases, rollback by ticket or SHA, re-validation, freeze recovery,
+  pause/resume, route topology and hotfix entry gates, smart test skip, pre/post-deploy
+  Apex hooks, GitHub or Jira ticket providers, and provisioning a new engine instance.
+  Use whenever the repo has a pipeline.yml. Trigger on: ''deploy to prod'', ''promote'',
+  ''release'', ''cut a release'', ''what needs to ship'', ''rollback'', ''revert ticket'',
+  ''retry'', ''engine status'', ''validation failed'', ''environment frozen'', ''pause
+  the engine'', ''revalidate'', pipeline.yml, deploy engine, deploy_hooks, back_merge,
+  entry_requires_label, smart_tests, provision the engine, engine init. Also when
+  a PR targets an environment branch. Do NOT trigger for the local loop against your
+  own dev sandbox — worktrees, feature branches, local deploys, git hooks — that is
+  configure-salesforce-project.'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null
+canon_exempt: engineering-doc
+waivers:
+- auth contract, API payloads and the refusal matrix must be in hand before the agent
+  acts on an org

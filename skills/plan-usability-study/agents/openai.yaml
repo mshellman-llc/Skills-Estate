@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan usability study"
+  short_description: "Plan sessions and assess participant evidence"
+  default_prompt: "Use $plan-usability-study to plan a usability study for this interface."

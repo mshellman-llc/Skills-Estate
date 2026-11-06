@@ -1,0 +1,4 @@
+interface:
+  display_name: "Develop product"
+  short_description: "Develop products from evidence through release"
+  default_prompt: "Use $develop-product to continue this product from its current stage and record the next action in its product home."

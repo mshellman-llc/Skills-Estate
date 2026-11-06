@@ -1,0 +1,31 @@
+{
+  "client": "Fixture Manufacturing Co",
+  "engagement": "Quote-to-cash foundation, phase 1",
+  "moment": "brief",
+  "as_of": "2026-08-11",
+  "source_snapshot": {"sow": "SOW-FIX-001", "quote": "Q-000999"},
+  "sections": {
+    "01": {"content": ["What was sold."], "sources": [{"name": "SOW-FIX-001 section 2", "date": "2026-08-01"}]},
+    "02": {},
+    "03": {"content": ["Unsourced claim about the current process."]},
+    "04": {"gaps": [{"question": "Sandbox access", "owner": "", "resolve_by": "2026-08-18", "gate_blocked": "kickoff"}]},
+    "05": {"content": ["Boundaries."], "sources": [{"name": "Solution Brief v1.2", "date": "2026-07-10"}]},
+    "06": {"content": ["Decisions."], "sources": [{"name": "Deal desk notes", "date": "2026-07-08"}]},
+    "07": {"content": ["Promises."], "sources": [{"name": "Transcript", "date": "2026-07-15"}]},
+    "08": {"content": ["Risks."], "sources": [{"name": "SOW-FIX-001 exhibit A", "date": "2026-08-01"}]},
+    "09": {"content": ["People."], "sources": [{"name": "Salesforce contact roles", "date": "2026-08-05"}]},
+    "10": {"content": ["Prior work."], "sources": [{"name": "Prior engagement record", "date": "2026-08-05"}]},
+    "11": {"gaps": [{"question": "Sessions to be shaped later", "owner": "Solution Lead", "resolve_by": "2026-08-14", "gate_blocked": "kickoff"}]},
+    "12": {"criteria": [{"criterion": "The team feels confident"}], "sources": [{"name": "SOW-FIX-001", "date": "2026-08-01"}]}
+  },
+  "scope": [
+    {"item": "Sales Cloud quoting configuration", "in_or_out": "in", "source": "SOW-FIX-001 section 3.1"},
+    {"item": "ERP-side customization", "source": "SOW-FIX-001 section 3.4"}
+  ],
+  "promises": [
+    {"text": "A report pack will be included", "in_sow": false}
+  ],
+  "figures": [
+    {"label": "total fee", "value": "a number", "source": "proposal deck v3"}
+  ]
+}

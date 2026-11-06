@@ -1,0 +1,6 @@
+interface:
+  display_name: "Capture knowledge"
+  short_description: "Save decisions and corrections with evidence"
+  default_prompt: "Use $capture-knowledge to save this decision with its evidence and review state."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,698 @@
+{
+  "format": 1,
+  "version": "0.3.0",
+  "marketplace": "skills-estate-private",
+  "bundles": {
+    "estate-pursuit": {
+      "description": "Skills Estate pursuit workflows and routing.",
+      "entries": [
+        "write-business-case",
+        "prepare-sales-pursuit",
+        "build-deck",
+        "synthesize-discovery",
+        "frame-jobs-to-be-done",
+        "map-sales-process"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/pursuit-router.md",
+      "additional_routes": [
+        "map-sales-process",
+        "review-sales-journey"
+      ],
+      "controls": [
+        "manage-consulting-knowledge",
+        "evidence-core",
+        "review-deliverable"
+      ]
+    },
+    "estate-solutioning": {
+      "description": "Skills Estate solutioning workflows and routing.",
+      "entries": [
+        "write-feature-spec",
+        "map-journey",
+        "prioritize-work",
+        "design-process",
+        "scope-project",
+        "capture-requirements",
+        "build-roadmap",
+        "compare-scope-options",
+        "assess-solution-delivery",
+        "write-statement-of-work",
+        "design-software-system"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/solutioning-router.md",
+      "additional_routes": [],
+      "controls": [
+        "manage-consulting-knowledge",
+        "evidence-core",
+        "review-deliverable"
+      ]
+    },
+    "estate-commercial": {
+      "description": "Skills Estate commercial workflows and routing.",
+      "entries": [
+        "review-deal-economics",
+        "assess-offering-fit",
+        "manage-service-offering"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/commercial-router.md",
+      "additional_routes": [],
+      "controls": [
+        "manage-consulting-knowledge",
+        "evidence-core",
+        "review-deliverable"
+      ]
+    },
+    "estate-delivery": {
+      "description": "Skills Estate delivery workflows and routing.",
+      "entries": [
+        "validate-delivery",
+        "refine-backlog",
+        "manage-cutover-closeout",
+        "manage-decision-register",
+        "start-delivery",
+        "track-delivery",
+        "build-moscow-story-map",
+        "build-review-site",
+        "prepare-delivery-handoff",
+        "apply-salesforce-patterns",
+        "deliver-salesforce-change",
+        "manage-salesforce-devops",
+        "operate-salesforce-pipeline",
+        "configure-salesforce-project",
+        "plan-sprint",
+        "plan-team-onboarding",
+        "import-tracker-export"
+      ],
+      "internal": [
+        "delivery-orchestrator",
+        "capture-salesforce-screens",
+        "review-site-runtime"
+      ],
+      "opt_in": false,
+      "router_source": "agents/delivery-router.md",
+      "additional_routes": [],
+      "controls": [
+        "manage-consulting-knowledge",
+        "evidence-core",
+        "review-deliverable"
+      ]
+    },
+    "estate-quality": {
+      "description": "Skills Estate quality workflows and routing.",
+      "entries": [
+        "simplify-code",
+        "review-deliverable",
+        "manage-consulting-knowledge",
+        "prepare-session-handoff"
+      ],
+      "internal": [
+        "brand-renderer",
+        "evidence-core",
+        "verify-salesforce-org",
+        "writing-diagnostics",
+        "ingest-transcript"
+      ],
+      "opt_in": false,
+      "router_source": "agents/quality-router.md",
+      "additional_routes": [],
+      "controls": []
+    },
+    "estate-governance": {
+      "description": "Skills Estate governance, personal Hub context and estate maintenance workflows.",
+      "entries": [
+        "capture-knowledge",
+        "load-project-context",
+        "check-knowledge-hub",
+        "reconcile-knowledge",
+        "maintain-skills-estate"
+      ],
+      "internal": [
+        "manage-linked-task",
+        "verify-work-state",
+        "work-in-github-repository"
+      ],
+      "opt_in": false,
+      "router_source": "agents/governance-router.md",
+      "additional_routes": [],
+      "controls": []
+    },
+    "estate-product": {
+      "description": "Skills Estate product and experience workflows: research, usability, accessibility, analytics and information architecture.",
+      "entries": [
+        "audit-accessibility",
+        "design-analytics-plan",
+        "build-interactive-explorer",
+        "design-information-architecture",
+        "develop-product",
+        "plan-usability-study"
+      ],
+      "internal": [],
+      "opt_in": false,
+      "router_source": "agents/product-router.md",
+      "additional_routes": [],
+      "controls": [
+        "manage-consulting-knowledge",
+        "evidence-core",
+        "review-deliverable"
+      ]
+    },
+    "estate-writing": {
+      "description": "Skills Estate writing, voice and brand workflows.",
+      "entries": [
+        "manage-brand-profile",
+        "review-writing",
+        "manage-writing-profile"
+      ],
+      "internal": [
+        "apply-author-style",
+        "author-style-runtime"
+      ],
+      "opt_in": false,
+      "router_source": "agents/writing-router.md",
+      "additional_routes": [],
+      "controls": []
+    },
+    "estate-personal": {
+      "description": "Optional personal Skills Estate workflows: career, portfolio, independent products and creative projects.",
+      "entries": [
+        "prepare-job-application",
+        "assess-career-options",
+        "guide-fortunes-weave",
+        "develop-independent-product",
+        "write-portfolio-case-study",
+        "design-sticker",
+        "lay-out-sticker-sheets"
+      ],
+      "internal": [],
+      "opt_in": true
+    }
+  },
+  "release": {
+    "shared": {
+      "status": "pending",
+      "reviewed_sha256": "",
+      "evidence": ""
+    },
+    "modules": {
+      "audit-accessibility": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "design-analytics-plan": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "write-architecture-reference": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "refine-backlog": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "capture-knowledge": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "load-project-context": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "check-knowledge-hub": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "reconcile-knowledge": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-linked-task": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "brand-renderer": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "build-interactive-explorer": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "write-business-case": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "prepare-sales-pursuit": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "prepare-job-application": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "draft-application-materials": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "assess-career-options": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "write-portfolio-case-study": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-brand-profile": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "simplify-code": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "release-skill-package": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-cutover-closeout": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "build-deal-decision-deck": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "review-deal-economics": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "build-deck": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "start-delivery": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "track-delivery": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "delivery-orchestrator": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "maintain-discovery-record": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "synthesize-discovery": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "promote-salesforce-changes": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-salesforce-devops": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "evidence-core": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "verify-work-state": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "guide-fortunes-weave": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "work-in-github-repository": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "develop-independent-product": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "design-information-architecture": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "build-interactive-proposal": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "map-journey": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "frame-jobs-to-be-done": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-consulting-knowledge": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "apply-author-style": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "verify-salesforce-org": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "author-style-runtime": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-service-offering": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "assess-offering-fit": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "render-offering-brief": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "plan-offering-artifacts": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "write-feature-spec": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "prioritize-work": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "design-process": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "develop-product": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "writing-diagnostics": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "review-deliverable": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "capture-requirements": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "tailor-resume": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "build-roadmap": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "estimate-project": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "prepare-delivery-handoff": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "review-sales-journey": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "map-sales-process": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "compare-scope-options": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "scope-project": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "prepare-session-handoff": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "configure-salesforce-project": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "operate-salesforce-pipeline": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "apply-salesforce-patterns": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "capture-salesforce-screens": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "deliver-salesforce-change": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "author-estate-skill": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "maintain-skills-estate": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "assess-solution-delivery": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "write-statement-of-work": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "review-contract-scope": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "specify-implementation": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "plan-sprint": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "design-sticker": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "lay-out-sticker-sheets": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "design-software-system": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "plan-team-onboarding": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "ingest-transcript": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "validate-delivery": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "plan-usability-study": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "review-writing": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-writing-profile": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "manage-decision-register": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "build-moscow-story-map": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "build-review-site": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "review-site-runtime": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "import-tracker-export": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      }
+    },
+    "routers": {
+      "pursuit-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "solutioning-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "commercial-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "delivery-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "quality-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "governance-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "product-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "writing-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      }
+    }
+  },
+  "version_policy": 1
+}

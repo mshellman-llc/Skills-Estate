@@ -1,0 +1,43 @@
+schema_version: 1
+name: writing-diagnostics
+display_name: Writing diagnostics (internal runtime)
+summary: Supply diagnostic tools and figure checks to Writing Integrity; the standalone Prose Pass skill is retired.
+status: internal
+tier: core
+version: 1.5.0
+owner: Estate maintainer
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Internal invocation by Writing Integrity for saved-file diagnostics or required review receipts.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

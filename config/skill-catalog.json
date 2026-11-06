@@ -1,0 +1,371 @@
+{
+  "format": 1,
+  "entries": {
+    "validate-delivery": {
+      "source": "validate-delivery",
+      "pack": "core",
+      "modes": {}
+    },
+    "audit-accessibility": {
+      "source": "audit-accessibility",
+      "pack": "core",
+      "modes": {}
+    },
+    "design-analytics-plan": {
+      "source": "design-analytics-plan",
+      "pack": "core",
+      "modes": {}
+    },
+    "refine-backlog": {
+      "source": "refine-backlog",
+      "pack": "core",
+      "modes": {}
+    },
+    "capture-knowledge": {
+      "source": "capture-knowledge",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "load-project-context": {
+      "source": "load-project-context",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "check-knowledge-hub": {
+      "source": "check-knowledge-hub",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "reconcile-knowledge": {
+      "source": "reconcile-knowledge",
+      "pack": "personal-context",
+      "modes": {}
+    },
+    "manage-brand-profile": {
+      "source": "manage-brand-profile",
+      "pack": "core",
+      "modes": {}
+    },
+    "build-interactive-explorer": {
+      "source": "build-interactive-explorer",
+      "pack": "core",
+      "modes": {}
+    },
+    "write-business-case": {
+      "source": "write-business-case",
+      "pack": "core",
+      "modes": {}
+    },
+    "prepare-sales-pursuit": {
+      "source": "prepare-sales-pursuit",
+      "pack": "core",
+      "modes": {}
+    },
+    "prepare-job-application": {
+      "source": "prepare-job-application",
+      "pack": "career",
+      "modes": {
+        "supporting application materials": "draft-application-materials",
+        "resume figures and ATS wording": "tailor-resume"
+      },
+      "description": "Prepare a role-specific application, supporting materials or interview work from current career authority. Preserve sourced resume figures, ATS methods and submission boundaries."
+    },
+    "assess-career-options": {
+      "source": "assess-career-options",
+      "pack": "career",
+      "modes": {}
+    },
+    "simplify-code": {
+      "source": "simplify-code",
+      "pack": "core",
+      "modes": {}
+    },
+    "review-deal-economics": {
+      "source": "review-deal-economics",
+      "pack": "core",
+      "modes": {},
+      "description": "Review provider economics, risks and commercial conditions, and reconcile figures across a quote, proposal or statement of work. Use current project policy; do not change pricing or infer approval."
+    },
+    "manage-cutover-closeout": {
+      "source": "manage-cutover-closeout",
+      "pack": "core",
+      "modes": {}
+    },
+    "build-deck": {
+      "source": "build-deck",
+      "pack": "core",
+      "modes": {
+        "scope decision deck": "build-deal-decision-deck"
+      },
+      "description": "Build or repair a pitch, briefing or scope decision deck around the audience decision, supported claims and explanatory visuals. Preserve editable output and inspect the rendered slides."
+    },
+    "review-deliverable": {
+      "source": "review-deliverable",
+      "pack": "core",
+      "modes": {},
+      "description": "Review a finished artifact against its sources, requested task, writing, format and actual completion state. Inspect meaningful content and rendered output; receipts do not replace review."
+    },
+    "start-delivery": {
+      "source": "start-delivery",
+      "pack": "core",
+      "modes": {}
+    },
+    "track-delivery": {
+      "source": "track-delivery",
+      "pack": "core",
+      "modes": {}
+    },
+    "synthesize-discovery": {
+      "source": "synthesize-discovery",
+      "pack": "core",
+      "modes": {
+        "maintain pursuit findings": "maintain-discovery-record"
+      },
+      "description": "Synthesize supplied interviews and meeting notes into supported findings, or maintain a pursuit discovery ledger and ranked unanswered questions. Preserve exact quotations and distinguish research from proposed actions."
+    },
+    "write-feature-spec": {
+      "source": "write-feature-spec",
+      "pack": "core",
+      "modes": {
+        "detailed UI and API specification": "specify-implementation"
+      },
+      "description": "Write a feature specification, PRD or implementation brief from supplied product evidence. Include relevant user flows, UI states, APIs, data changes and testable acceptance criteria. Use for requested specifications; ordinary bug fixes do not require a separate spec."
+    },
+    "guide-fortunes-weave": {
+      "source": "guide-fortunes-weave",
+      "pack": "personal-projects",
+      "modes": {}
+    },
+    "develop-independent-product": {
+      "source": "develop-independent-product",
+      "pack": "personal-projects",
+      "modes": {}
+    },
+    "design-information-architecture": {
+      "source": "design-information-architecture",
+      "pack": "core",
+      "modes": {}
+    },
+    "map-journey": {
+      "source": "map-journey",
+      "pack": "core",
+      "modes": {}
+    },
+    "frame-jobs-to-be-done": {
+      "source": "frame-jobs-to-be-done",
+      "pack": "core",
+      "modes": {}
+    },
+    "manage-consulting-knowledge": {
+      "source": "manage-consulting-knowledge",
+      "pack": "core",
+      "modes": {}
+    },
+    "assess-offering-fit": {
+      "source": "assess-offering-fit",
+      "pack": "core",
+      "modes": {}
+    },
+    "write-portfolio-case-study": {
+      "source": "write-portfolio-case-study",
+      "pack": "career",
+      "modes": {}
+    },
+    "prioritize-work": {
+      "source": "prioritize-work",
+      "pack": "core",
+      "modes": {}
+    },
+    "design-process": {
+      "source": "design-process",
+      "pack": "core",
+      "modes": {}
+    },
+    "develop-product": {
+      "source": "develop-product",
+      "pack": "core",
+      "modes": {}
+    },
+    "scope-project": {
+      "source": "scope-project",
+      "pack": "core",
+      "modes": {
+        "rough estimate": "estimate-project"
+      },
+      "description": "Develop project scope, effort, staffing and timelines, including rough estimates and confirmed quote models. Use supplied exports, rate cards and comparables; use a CRM connector only when configured for the project."
+    },
+    "capture-requirements": {
+      "source": "capture-requirements",
+      "pack": "core",
+      "modes": {}
+    },
+    "build-roadmap": {
+      "source": "build-roadmap",
+      "pack": "core",
+      "modes": {}
+    },
+    "map-sales-process": {
+      "source": "map-sales-process",
+      "pack": "core",
+      "modes": {
+        "review a sales journey or demo": "review-sales-journey"
+      }
+    },
+    "prepare-delivery-handoff": {
+      "source": "prepare-delivery-handoff",
+      "pack": "core",
+      "modes": {}
+    },
+    "compare-scope-options": {
+      "source": "compare-scope-options",
+      "pack": "core",
+      "modes": {
+        "interactive proposal or explorer": "build-interactive-proposal"
+      },
+      "description": "Compare sourced scope options as a static document or an interactive proposal. Preserve inclusions, exclusions, hours, price, timeline and assumptions from the same versioned input."
+    },
+    "manage-service-offering": {
+      "source": "manage-service-offering",
+      "pack": "core",
+      "modes": {
+        "offering package planning": "plan-offering-artifacts",
+        "internal brief or external handout": "render-offering-brief"
+      },
+      "description": "Define, compare and maintain productized service offerings; plan their artifact packages or render internal briefs and external handouts. Use for an offering catalog, not an operational SOP."
+    },
+    "prepare-session-handoff": {
+      "source": "prepare-session-handoff",
+      "pack": "core",
+      "modes": {}
+    },
+    "apply-salesforce-patterns": {
+      "source": "apply-salesforce-patterns",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "deliver-salesforce-change": {
+      "source": "deliver-salesforce-change",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "manage-salesforce-devops": {
+      "source": "manage-salesforce-devops",
+      "pack": "salesforce",
+      "modes": {
+        "promote work items or stages": "promote-salesforce-changes"
+      },
+      "description": "Manage configured Salesforce DevOps Center work items or perform authorized promotion. Select the operation before mutation and retain distinct target, capability, dependency and promotion checks."
+    },
+    "operate-salesforce-pipeline": {
+      "source": "operate-salesforce-pipeline",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "configure-salesforce-project": {
+      "source": "configure-salesforce-project",
+      "pack": "salesforce",
+      "modes": {}
+    },
+    "maintain-skills-estate": {
+      "source": "maintain-skills-estate",
+      "pack": "maintainer",
+      "modes": {
+        "create or repair an estate skill": "author-estate-skill",
+        "release to another host or account": "release-skill-package"
+      },
+      "description": "Maintain a Skills Estate checkout: author or repair a workflow, validate and package it, install a reviewed release, or replace a skill in another host or account. Select only the requested operation. Also covers plugin grouping and catalog placement, CI or publish failures, stale installs, and why a skill appears in the wrong plugin."
+    },
+    "assess-solution-delivery": {
+      "source": "assess-solution-delivery",
+      "pack": "core",
+      "modes": {}
+    },
+    "plan-sprint": {
+      "source": "plan-sprint",
+      "pack": "core",
+      "modes": {}
+    },
+    "write-statement-of-work": {
+      "source": "write-statement-of-work",
+      "pack": "core",
+      "modes": {
+        "contract scope and obligation review": "review-contract-scope"
+      },
+      "description": "Draft or review a statement of work from confirmed scope, commercial data and a selected contract profile. Preserve clause coverage, estimate assumptions and obligations; no default employer terms apply."
+    },
+    "design-sticker": {
+      "source": "design-sticker",
+      "pack": "core",
+      "modes": {}
+    },
+    "lay-out-sticker-sheets": {
+      "source": "lay-out-sticker-sheets",
+      "pack": "personal-projects",
+      "modes": {}
+    },
+    "design-software-system": {
+      "source": "design-software-system",
+      "pack": "core",
+      "modes": {
+        "formal architecture reference": "write-architecture-reference"
+      },
+      "description": "Explore a service or product design, or write its formal architecture reference. Cover the requirements, components, interfaces, data, security, operations and trade-offs relevant to the requested decision. For a client deal's deliverability or build reference, use solution-brief."
+    },
+    "plan-team-onboarding": {
+      "source": "plan-team-onboarding",
+      "pack": "management",
+      "modes": {}
+    },
+    "plan-usability-study": {
+      "source": "plan-usability-study",
+      "pack": "core",
+      "modes": {}
+    },
+    "review-writing": {
+      "source": "review-writing",
+      "pack": "core",
+      "modes": {},
+      "description": "Review prose, preserve meaning and voice, and learn from writing corrections through a compact private profile. Use for replies, documents, instructions and UI text."
+    },
+    "manage-writing-profile": {
+      "source": "manage-writing-profile",
+      "pack": "writing-profiles",
+      "modes": {}
+    },
+    "import-tracker-export": {
+      "source": "import-tracker-export",
+      "pack": "core",
+      "modes": {}
+    },
+    "build-moscow-story-map": {
+      "source": "build-moscow-story-map",
+      "pack": "core",
+      "modes": {}
+    },
+    "manage-decision-register": {
+      "source": "manage-decision-register",
+      "pack": "core",
+      "modes": {}
+    },
+    "build-review-site": {
+      "source": "build-review-site",
+      "pack": "core",
+      "modes": {}
+    }
+  },
+  "internal": [
+    "manage-linked-task",
+    "brand-renderer",
+    "delivery-orchestrator",
+    "evidence-core",
+    "verify-work-state",
+    "work-in-github-repository",
+    "apply-author-style",
+    "verify-salesforce-org",
+    "author-style-runtime",
+    "writing-diagnostics",
+    "capture-salesforce-screens",
+    "ingest-transcript",
+    "review-site-runtime"
+  ]
+}

@@ -1,0 +1,102 @@
+name: Publish plugin marketplace
+# Publication starts when Verify finishes on a main push, so this job no longer waits,
+# billed, for Verify to complete. The guard below still checks that exact revision.
+on:
+  workflow_run:
+    workflows: [Verify skills estate]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+  # A daily run publishes anything a skipped or failed event missed.
+  schedule:
+    - cron: '17 6 * * *'
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: marketplace
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Require verification of this exact source revision
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .local
+          # After a workflow_run event Verify has finished. A dispatch or schedule run waits if it has not. Exit 75 means not finished.
+          for attempt in $(seq 1 60); do
+            gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/verify.yml/runs?branch=main&head_sha=${GITHUB_SHA}&per_page=100" > .local/verify-runs.json
+            parent_sha="$(git rev-parse HEAD^ 2>/dev/null || true)"
+            if [ -n "$parent_sha" ]; then
+              gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/verify.yml/runs?branch=main&head_sha=${parent_sha}&per_page=100" > .local/parent-verify-runs.json
+            else
+              printf '{"workflow_runs":[]}' > .local/parent-verify-runs.json
+            fi
+            status=0
+            python3 tools/marketplace_guard.py "$GITHUB_SHA" .local/verify-runs.json .local/parent-verify-runs.json > .local/publication-verification.json || status=$?
+            if [ "$status" -ne 75 ]; then exit "$status"; fi
+            sleep 30
+          done
+          echo "::error::Verification did not finish within 30 minutes"
+          exit 1
+      - name: Build the plugins from main
+        run: |
+          mkdir -p .local
+          python3 tools/plugins.py --root-marketplace
+          python3 tools/plugins.py --owner
+      - name: Commit the plugin folders to main
+        id: commit
+        shell: bash
+        run: |
+          git fetch --no-tags origin main
+          remote_main="$(git rev-parse FETCH_HEAD)"
+          test "$remote_main" = "$GITHUB_SHA" || { echo "Main advanced; rebuild and verify the new revision on the next run."; exit 1; }
+          rm -rf plugins
+          cp -R dist/plugins/claude/plugins plugins
+          git add -A plugins .claude-plugin/marketplace.json
+          if git diff --cached --quiet; then echo "Plugins unchanged"; echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"; exit 0; fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Publish plugins from ${GITHUB_SHA::7} [skip ci]"
+          git push -q origin HEAD:main
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Attach plugin ZIPs to the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLICATION_COMMIT: ${{ steps.commit.outputs.commit }}
+        run: |
+          lookup_succeeded=false
+          if current_target="$(gh release view plugins-latest --json targetCommitish --jq .targetCommitish)"; then
+            lookup_succeeded=true
+          fi
+          if [ "$current_target" = "$PUBLICATION_COMMIT" ]; then
+            mkdir -p .local/remote-release
+            if gh release download plugins-latest --dir .local/remote-release --pattern '*.zip'; then
+              for file in .local/remote-release/*.zip; do
+                [ -f "$file" ] || continue
+                [ -f "dist/plugins/claude/$(basename "$file")" ] || { echo "Unexpected release ZIP needs review before removal: $(basename "$file")"; exit 1; }
+              done
+              identical=true
+              for file in dist/plugins/claude/*.zip; do
+                cmp -s "$file" ".local/remote-release/$(basename "$file")" || identical=false
+              done
+              if [ "$identical" = true ]; then echo "Release contents already match"; exit 0; fi
+            fi
+            gh release upload plugins-latest dist/plugins/claude/*.zip --clobber
+            exit 0
+          fi
+          if [ "$lookup_succeeded" = true ]; then
+            gh release delete plugins-latest --yes --cleanup-tag
+          fi
+          gh release create plugins-latest dist/plugins/claude/*.zip --target "$PUBLICATION_COMMIT" \
+            --title "Plugins (latest)" \
+            --notes "Built from main at ${GITHUB_SHA::7}. To install by hand in Cowork or claude.ai: Customize, Plugins, Add, Upload plugin, then choose each ZIP."

@@ -1,0 +1,66 @@
+schema_version: 1
+name: review-contract-scope
+display_name: SOW Quality
+summary: Quality gate for Estate client-facing Statements of Work and other contract-class
+  deliverables (MSAs, Change Orders, proposals with contractual scope).
+status: active
+tier: core
+version: 1.0.0
+owner: Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Quality gate for Estate client-facing Statements of Work and other contract-class
+  deliverables (MSAs, Change Orders, proposals with contractual scope). Use whenever
+  the user asks to review, audit, de-slop, tighten, or finalize a SOW or contract;
+  whenever a SOW is generated and needs a final authoring pass before scope review;
+  or when applying the Basis of Estimate framework to a new tier or playbook. It audits
+  structure and language; it does not compute pricing (the Pricing System does that)
+  or generate the artifact set (playbook system). It enforces structural de-slop (kill
+  repetition-as-thoroughness and clause-justification), the Basis of Estimate framework
+  (volumetric assumptions into Exhibit A, with soft and hard Change Order triggers),
+  and cross-reference discipline (one authoritative home per mechanic). Trigger on
+  'review this SOW', 'de-slop the SOW', 'audit the Tier 2 SOW', 'apply the Basis of
+  Estimate', or when a SOW .docx needs a quality pass before scope review or Deal
+  Desk.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls: []
+knowledge_hub:
+  requirement: required
+  reads:
+  - opportunity.front_door
+  - opportunity.solution_scope
+  - opportunity.commercial
+  - evidence.claims
+  - deliverables.register
+  writes:
+  - opportunity.commercial
+  - deliverables.register
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null
+license: Proprietary to Estate LLC.

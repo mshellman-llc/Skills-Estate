@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prepare job application"
+  short_description: "Assess and prepare leadership-level applications"
+  default_prompt: "Use $prepare-job-application to assess this job posting and recommend whether I should pursue it: <URL>"
+policy:
+  allow_implicit_invocation: false

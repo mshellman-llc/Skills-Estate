@@ -1,0 +1,711 @@
+{
+  "source_commit": "28aba6ef4367072b56c0c0a284c30ad5ba5cae5e",
+  "planner_sha256": "eec0a446175dbc11e4d854da28515189becb2c1df6feb494be0c8451fbfd18fe",
+  "cases": [
+    {
+      "input": {
+        "code": "TEST",
+        "name": "Fictional service",
+        "shape": "Front Door",
+        "spec_version": "1.1",
+        "band_spread": 3,
+        "options": [
+          {
+            "name": "One",
+            "quote_number": "Q-TEST",
+            "timeline_snapshot_id": "synthetic-revision"
+          }
+        ]
+      },
+      "output": {
+        "playbook": "TEST",
+        "playbook_name": "Fictional service",
+        "spec_version": "1.1",
+        "stage": null,
+        "totals": {
+          "required": 10,
+          "complete": 0,
+          "outstanding": 10,
+          "ready_now": 3
+        },
+        "findings": [
+          "No verified margin floor is available; commercial approval remains unresolved"
+        ],
+        "next_step": {
+          "artifact": 2,
+          "name": "Overview",
+          "option": null,
+          "format": "docx",
+          "builder": "estate-playbook-suite",
+          "filename": null,
+          "status": "missing",
+          "gates": {
+            "parity": "not_run",
+            "visual": "not_run",
+            "prose": "not_run"
+          },
+          "gate_failures": [],
+          "blocked_by_artifacts": [],
+          "action": "build"
+        },
+        "steps": [
+          {
+            "artifact": 2,
+            "name": "Overview",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          },
+          {
+            "artifact": 5,
+            "name": "Qualifier",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 3,
+            "name": "One-pager",
+            "option": null,
+            "format": "pdf",
+            "builder": "estate-onepager",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 4,
+            "name": "Talk Track and Objections",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 9,
+            "name": "Pre-Engagement Stage Gate",
+            "option": null,
+            "format": "xlsx",
+            "builder": "template copy",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          },
+          {
+            "artifact": 6,
+            "name": "ROM deck",
+            "option": "One",
+            "format": "pptx",
+            "builder": "estate-brand-renderer",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 7,
+            "name": "DDOC",
+            "option": null,
+            "format": "pptx",
+            "builder": "estate-ddoc",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2,
+              5
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 8,
+            "name": "Proposal",
+            "option": "One",
+            "format": "pptx",
+            "builder": "estate-brand-renderer",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              7
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 10,
+            "name": "SOW",
+            "option": "One",
+            "format": "docx",
+            "builder": "estate-sow",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              7
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 1,
+            "name": "README",
+            "option": null,
+            "format": "md",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "code": "TEST",
+        "name": "Fictional service",
+        "shape": "Assess",
+        "spec_version": "1.1",
+        "band_spread": 3,
+        "options": [
+          {
+            "name": "One",
+            "quote_number": "Q-TEST",
+            "timeline_snapshot_id": "synthetic-revision"
+          }
+        ]
+      },
+      "output": {
+        "playbook": "TEST",
+        "playbook_name": "Fictional service",
+        "spec_version": "1.1",
+        "stage": null,
+        "totals": {
+          "required": 10,
+          "complete": 0,
+          "outstanding": 10,
+          "ready_now": 3
+        },
+        "findings": [
+          "No verified margin floor is available; commercial approval remains unresolved"
+        ],
+        "next_step": {
+          "artifact": 2,
+          "name": "Overview",
+          "option": null,
+          "format": "docx",
+          "builder": "estate-playbook-suite",
+          "filename": null,
+          "status": "missing",
+          "gates": {
+            "parity": "not_run",
+            "visual": "not_run",
+            "prose": "not_run"
+          },
+          "gate_failures": [],
+          "blocked_by_artifacts": [],
+          "action": "build"
+        },
+        "steps": [
+          {
+            "artifact": 2,
+            "name": "Overview",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          },
+          {
+            "artifact": 5,
+            "name": "Qualifier",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 3,
+            "name": "One-pager",
+            "option": null,
+            "format": "pdf",
+            "builder": "estate-onepager",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 4,
+            "name": "Talk Track and Objections",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 9,
+            "name": "Pre-Engagement Stage Gate",
+            "option": null,
+            "format": "xlsx",
+            "builder": "template copy",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          },
+          {
+            "artifact": 6,
+            "name": "ROM deck",
+            "option": "One",
+            "format": "pptx",
+            "builder": "estate-brand-renderer",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 7,
+            "name": "DDOC",
+            "option": null,
+            "format": "pptx",
+            "builder": "estate-ddoc",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2,
+              5
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 8,
+            "name": "Proposal",
+            "option": "One",
+            "format": "pptx",
+            "builder": "estate-brand-renderer",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              7
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 10,
+            "name": "SOW",
+            "option": "One",
+            "format": "docx",
+            "builder": "estate-sow",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              7
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 1,
+            "name": "README",
+            "option": null,
+            "format": "md",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          }
+        ]
+      }
+    },
+    {
+      "input": {
+        "code": "TEST",
+        "name": "Fictional service",
+        "shape": "Migrate",
+        "spec_version": "1.1",
+        "band_spread": 3,
+        "options": [
+          {
+            "name": "One",
+            "quote_number": "Q-TEST",
+            "timeline_snapshot_id": "synthetic-revision"
+          }
+        ]
+      },
+      "output": {
+        "playbook": "TEST",
+        "playbook_name": "Fictional service",
+        "spec_version": "1.1",
+        "stage": null,
+        "totals": {
+          "required": 10,
+          "complete": 0,
+          "outstanding": 10,
+          "ready_now": 3
+        },
+        "findings": [
+          "No verified margin floor is available; commercial approval remains unresolved"
+        ],
+        "next_step": {
+          "artifact": 2,
+          "name": "Overview",
+          "option": null,
+          "format": "docx",
+          "builder": "estate-playbook-suite",
+          "filename": null,
+          "status": "missing",
+          "gates": {
+            "parity": "not_run",
+            "visual": "not_run",
+            "prose": "not_run"
+          },
+          "gate_failures": [],
+          "blocked_by_artifacts": [],
+          "action": "build"
+        },
+        "steps": [
+          {
+            "artifact": 2,
+            "name": "Overview",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          },
+          {
+            "artifact": 5,
+            "name": "Qualifier",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 3,
+            "name": "One-pager",
+            "option": null,
+            "format": "pdf",
+            "builder": "estate-onepager",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 4,
+            "name": "Talk Track and Objections",
+            "option": null,
+            "format": "docx",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 9,
+            "name": "Pre-Engagement Stage Gate",
+            "option": null,
+            "format": "xlsx",
+            "builder": "template copy",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          },
+          {
+            "artifact": 6,
+            "name": "ROM deck",
+            "option": "One",
+            "format": "pptx",
+            "builder": "estate-brand-renderer",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 7,
+            "name": "DDOC",
+            "option": null,
+            "format": "pptx",
+            "builder": "estate-ddoc",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              2,
+              5
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 8,
+            "name": "Proposal",
+            "option": "One",
+            "format": "pptx",
+            "builder": "estate-brand-renderer",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              7
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 10,
+            "name": "SOW",
+            "option": "One",
+            "format": "docx",
+            "builder": "estate-sow",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [
+              7
+            ],
+            "action": "build"
+          },
+          {
+            "artifact": 1,
+            "name": "README",
+            "option": null,
+            "format": "md",
+            "builder": "estate-playbook-suite",
+            "filename": null,
+            "status": "missing",
+            "gates": {
+              "parity": "not_run",
+              "visual": "not_run",
+              "prose": "not_run"
+            },
+            "gate_failures": [],
+            "blocked_by_artifacts": [],
+            "action": "build"
+          }
+        ]
+      }
+    }
+  ]
+}

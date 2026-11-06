@@ -1,0 +1,62 @@
+schema_version: 1
+name: build-review-site
+display_name: Review Site
+summary: 'Builds or refreshes a multi-page release review site (story map, decisions, workflow, mockups, build steps) from tracker exports and content files, gated by data, writing and browser checks, and published as a private artifact.'
+status: draft
+tier: core
+version: 0.1.0
+owner: estate-maintainer
+category: delivery-planning
+runtimes:
+- claude-code
+- codex
+- cowork
+triggers:
+- 'Update the review site with a new Jira export.'
+- 'Build a site for a MoSCoW or MVP review.'
+- 'Handle reviewer comments on a review site.'
+exclusions:
+- 'A one-page explorer without tracker data (build-interactive-explorer).'
+- 'A roadmap (build-roadmap).'
+- 'A slide deck (build-deck).'
+inputs:
+- name: engagement_folder
+  required: true
+  description: 'config/site.json, content/*.json and tracker/ for one engagement.'
+- name: export
+  required: false
+  description: 'A new tracker export for refresh mode.'
+- name: brand_profile
+  required: false
+  description: 'The project brand profile; neutral when absent.'
+outputs:
+- name: dist/
+  format: html
+  audience: internal-or-client-as-requested
+  durable: true
+- name: published artifact
+  format: artifact
+  audience: internal-or-client-as-requested
+  durable: true
+- name: exports/
+  format: csv and markdown
+  audience: internal-or-client-as-requested
+  durable: true
+connectors:
+  required: []
+  optional:
+  - jira
+depends_on:
+- review-site-runtime
+calls:
+- import-tracker-export
+- build-moscow-story-map
+- manage-decision-register
+- map-journey
+- map-sales-process
+- review-writing
+risk_controls:
+- 'Never changes tracker tickets; exports are prepared for the client to import.'
+- 'Client data, names and brand values stay in the engagement folder, never in the skill.'
+costs:
+  measured: false
