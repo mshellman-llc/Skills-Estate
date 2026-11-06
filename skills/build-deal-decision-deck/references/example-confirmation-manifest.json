@@ -1,0 +1,525 @@
+{
+  "mode": "confirmation",
+  "client": "[Client name]",
+  "title": "Migrating off CPQ at functional parity",
+  "date": "[Month YYYY]",
+  "quote_number": "[Q-number]",
+  "quote_snapshot": {
+    "quote.timelineRevenue": 68000
+  },
+  "deck_lead": "The fictional studio has chosen to evaluate a replacement for its current quoting system. This document sets out one scoped path off it: what it covers, what it leaves out, and what it costs. Client-specific slides are marked and filled during the pursuit.",
+  "meta": [
+    {
+      "k": "Engagement",
+      "v": "CPQ to Revenue Cloud"
+    },
+    {
+      "k": "Approach",
+      "v": "Lift and shift"
+    },
+    {
+      "k": "Duration",
+      "v": "12 weeks"
+    },
+    {
+      "k": "Reference",
+      "v": "[Q-number]"
+    }
+  ],
+  "_note": "Illustrative example for the skill. Not a live client quote.",
+  "options": [
+    {
+      "name": "Lift and shift",
+      "recommended": true,
+      "duration": "12 weeks",
+      "investment": "$68,000"
+    }
+  ],
+  "figures": [
+    {
+      "label": "Investment",
+      "value": 68000,
+      "quote_field": "quote.timelineRevenue"
+    }
+  ],
+  "slides": [
+    {
+      "kind": "divider",
+      "num": 1,
+      "title": "The situation",
+      "subtitle": "Why the client is moving and what the timing is driven by."
+    },
+    {
+      "kind": "heard",
+      "num": 2,
+      "section": {
+        "num": 1,
+        "name": "The situation"
+      },
+      "title": "What we heard",
+      "items": [
+        {
+          "text": "[Their stated driver, in their words]",
+          "evidence": "client_stated",
+          "source": "[Name, session, date]"
+        },
+        {
+          "text": "[What the current platform costs them today]",
+          "evidence": "client_stated",
+          "source": "[Name, session, date]"
+        },
+        {
+          "text": "[What they want the end state to be]",
+          "evidence": "client_stated",
+          "source": "[Name, session, date]"
+        }
+      ],
+      "subtitle": "[Fill from discovery. Three to five statements, attributable to a person and a session.]"
+    },
+    {
+      "kind": "exec_summary",
+      "num": 3,
+      "section": {
+        "num": 1,
+        "name": "The situation"
+      },
+      "title": "What changes",
+      "left_label": "Today",
+      "left_lead": "A supported process running on an unsupported platform.",
+      "left": [
+        "Quoting, pricing, and approvals run through CPQ.",
+        "The order handoff depends on a CPQ endpoint.",
+        "Active subscriptions are tracked against CPQ records.",
+        "No new functionality ships after end of sale."
+      ],
+      "right_label": "After twelve weeks",
+      "right_lead": "The same process on Revenue Cloud, validated against the old one.",
+      "right": [
+        "Catalog, pricing, and approvals reproduced at parity.",
+        "The integration re-pointed and re-tested.",
+        "Subscriptions migrated with account relationships intact.",
+        "A reconciled cutover with rollback readiness proven."
+      ],
+      "subtitle": null
+    },
+    {
+      "kind": "divider",
+      "num": 4,
+      "title": "The engagement",
+      "subtitle": "What the engagement covers and how it runs."
+    },
+    {
+      "kind": "recommendation",
+      "num": 5,
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "Why this approach fits",
+      "pick": "Lift and shift",
+      "pick_note": "Functional parity migration over twelve weeks. Scope is confirmed from the Analyze inventory and re-baselined before Design if the source org exceeds the basis of estimate.",
+      "reasons": [
+        {
+          "head": "The inventory does not justify remediation",
+          "body": "Discovery points to a small custom-code footprint. Reconstructing that logic into the rules engine is a service we offer and this engagement is not expected to need it."
+        },
+        {
+          "head": "Parity is the stated goal",
+          "body": "The client asked for the same process on a supported platform. A redesign extends the timeline past the deadline that created the project."
+        },
+        {
+          "head": "The deadline binds the schedule",
+          "body": "Twelve weeks clears end of sale with margin. The heavier options run seventeen and twenty four weeks."
+        }
+      ]
+    },
+    {
+      "kind": "deliverables",
+      "num": 6,
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "What you get",
+      "items": [
+        {
+          "name": "Source system inventory",
+          "detail": "Catalog, pricing, integration, and Apex footprint assessed against the basis of estimate.",
+          "format": "Document",
+          "when": "End of Analyze"
+        },
+        {
+          "name": "Target configuration design",
+          "detail": "Revenue Cloud configuration mapped from the confirmed inventory.",
+          "format": "Document",
+          "when": "End of Design"
+        },
+        {
+          "name": "Migrated Revenue Cloud org",
+          "detail": "Catalog, pricing, quoting, approvals, orders, and the re-pointed integration.",
+          "format": "Configured org",
+          "when": "End of Build"
+        },
+        {
+          "name": "Data migration reconciliation",
+          "detail": "Record counts and validation results against source, with exceptions listed.",
+          "format": "Report",
+          "when": "End of Validate"
+        },
+        {
+          "name": "Cutover and rollback plan",
+          "detail": "Sequenced cutover steps with rollback criteria and a go or no-go checkpoint.",
+          "format": "Document",
+          "when": "Before cutover"
+        },
+        {
+          "name": "Admin handoff guide",
+          "detail": "Configuration reference and enablement for the client administrator.",
+          "format": "Document",
+          "when": "At cutover"
+        }
+      ]
+    },
+    {
+      "kind": "scope",
+      "num": 7,
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "Scope boundaries",
+      "in_label": "Included",
+      "in_scope": [
+        "Product catalog migrated one to one, with hierarchy, attributes, and rules.",
+        "Pricing procedures, discount schedules, and decision tables.",
+        "Quoting, the transaction line editor, and approvals up to three chains.",
+        "Order creation and activation from accepted quotes.",
+        "One documented integration, re-pointed and re-tested.",
+        "Data migration for product, pricing, and contract records.",
+        "Subscriptions migrated as flat assets.",
+        "Admin enablement and handoff."
+      ],
+      "out_label": "Not included",
+      "out_scope": [
+        {
+          "item": "Billing and revenue recognition",
+          "route": "Revenue Cloud billing play"
+        },
+        {
+          "item": "Pre-migration cleanup of the source org",
+          "route": "CPQ remediation play"
+        },
+        {
+          "item": "A second org, a split, or a merge",
+          "route": "Change Order"
+        },
+        {
+          "item": "Integrations beyond the one in the approach",
+          "route": "Change Order"
+        },
+        {
+          "item": "Training and change management",
+          "route": "Sold separately"
+        },
+        {
+          "item": "Hypercare beyond the support window",
+          "route": "Sold separately"
+        }
+      ],
+      "callout": "Each exclusion routes to a scoped next step."
+    },
+    {
+      "kind": "timeline",
+      "num": 8,
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "Twelve week delivery sequence",
+      "phases": [
+        {
+          "name": "Mobilize",
+          "weeks": 1,
+          "detail": "Team, access, governance, backlog"
+        },
+        {
+          "name": "Analyze",
+          "weeks": 2,
+          "milestone": "Inventory gate",
+          "detail": "Inventory the source org and confirm the approach"
+        },
+        {
+          "name": "Design",
+          "weeks": 2,
+          "detail": "Target configuration on the confirmed inventory"
+        },
+        {
+          "name": "Build",
+          "weeks": 4,
+          "detail": "Catalog, pricing, quoting, orders, integration"
+        },
+        {
+          "name": "Validate",
+          "weeks": 2,
+          "milestone": "Cutover gate",
+          "detail": "QA, dry run, reconciliation, UAT"
+        },
+        {
+          "name": "Cutover",
+          "weeks": 1,
+          "detail": "Migrate, cut over, support window opens"
+        }
+      ]
+    },
+    {
+      "kind": "team",
+      "num": 9,
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "Role engagement windows",
+      "weeks": 12,
+      "roles": [
+        {
+          "role": "Solution Architect",
+          "windows": [
+            {
+              "from": 1,
+              "to": 5
+            },
+            {
+              "from": 6,
+              "to": 12,
+              "weight": "support"
+            }
+          ]
+        },
+        {
+          "role": "Technical Architect",
+          "windows": [
+            {
+              "from": 2,
+              "to": 4
+            },
+            {
+              "from": 5,
+              "to": 10,
+              "weight": "support"
+            }
+          ]
+        },
+        {
+          "role": "Business Analyst",
+          "windows": [
+            {
+              "from": 2,
+              "to": 11
+            }
+          ]
+        },
+        {
+          "role": "Developer",
+          "windows": [
+            {
+              "from": 4,
+              "to": 10
+            }
+          ]
+        },
+        {
+          "role": "QA",
+          "windows": [
+            {
+              "from": 8,
+              "to": 12
+            }
+          ]
+        },
+        {
+          "role": "Project Manager",
+          "windows": [
+            {
+              "from": 1,
+              "to": 12,
+              "weight": "support"
+            }
+          ]
+        },
+        {
+          "role": "Client Services Executive",
+          "windows": [
+            {
+              "from": 1,
+              "to": 2
+            },
+            {
+              "from": 11,
+              "to": 12
+            }
+          ]
+        }
+      ],
+      "legend": "Solid marks the weeks a role leads. Pale marks the weeks it supports. Bar weight is engagement emphasis rather than a weekly hour commitment."
+    },
+    {
+      "kind": "divider",
+      "num": 10,
+      "title": "Commercials",
+      "subtitle": "What it costs and what the estimate depends on."
+    },
+    {
+      "kind": "investment",
+      "num": 11,
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "Investment",
+      "amount": "$68,000",
+      "qualifier": "Time and materials against the hours in the quote. Figures come from the Pricing System, not from this document.",
+      "terms": [
+        {
+          "k": "Duration",
+          "v": "12 weeks"
+        },
+        {
+          "k": "Billing",
+          "v": "Monthly in arrears"
+        },
+        {
+          "k": "Client load",
+          "v": "[n] FTE"
+        },
+        {
+          "k": "Support window",
+          "v": "2 weeks included"
+        }
+      ],
+      "distribution_label": "Where the hours go",
+      "distribution": [
+        {
+          "name": "Mobilize",
+          "value": 95
+        },
+        {
+          "name": "Analyze",
+          "value": 285
+        },
+        {
+          "name": "Design",
+          "value": 290
+        },
+        {
+          "name": "Build",
+          "value": 700
+        },
+        {
+          "name": "Validate",
+          "value": 320
+        },
+        {
+          "name": "Cutover",
+          "value": 90
+        }
+      ]
+    },
+    {
+      "kind": "assumptions",
+      "num": 12,
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "Assumptions behind this estimate",
+      "rows": [
+        {
+          "text": "The catalog stays within the basis of estimate.",
+          "if_false": "A materially larger catalog extends Build and re-opens the estimate."
+        },
+        {
+          "text": "Pricing is expressible in native procedures.",
+          "if_false": "Pricing that needs custom logic moves the engagement to the remediate and migrate approach."
+        },
+        {
+          "text": "Approval chains number three or fewer.",
+          "if_false": "A fourth chain is a Change Order against Transaction Management scope."
+        },
+        {
+          "text": "The Apex footprint is migration compatible.",
+          "if_false": "Reconstruction into the rules engine moves the engagement to the remediate and migrate approach."
+        },
+        {
+          "text": "Sandbox and production read access land five business days before kickoff.",
+          "if_false": "Access delay compresses Analyze and Design against a fixed cutover date."
+        }
+      ],
+      "subtitle": null
+    },
+    {
+      "kind": "need_from_you",
+      "num": 13,
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "What we need from you",
+      "steps": [
+        {
+          "text": "Sandbox and production read access, credentialed for the delivery team.",
+          "owner": "[Client administrator]",
+          "when": "5 business days before kickoff"
+        },
+        {
+          "text": "A named decision owner with authority to accept deliverables.",
+          "owner": "[Client sponsor]",
+          "when": "Before kickoff"
+        },
+        {
+          "text": "Recurring calendar holds for the named stakeholders.",
+          "owner": "[Client sponsor]",
+          "when": "Before kickoff"
+        }
+      ]
+    },
+    {
+      "kind": "confirm",
+      "num": 14,
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "Next steps",
+      "steps": [
+        {
+          "text": "Confirm the approach and the assumptions.",
+          "owner": "[Client sponsor]",
+          "when": "[Date]"
+        },
+        {
+          "text": "We issue the Statement of Work.",
+          "owner": "Client Services Executive",
+          "when": "+3 business days"
+        },
+        {
+          "text": "Pre-engagement checklist opens, access requested.",
+          "owner": "Joint",
+          "when": "At signature"
+        },
+        {
+          "text": "Kickoff and Mobilize begins.",
+          "owner": "Project Manager",
+          "when": "[Date]"
+        }
+      ]
+    },
+    {
+      "kind": "closing",
+      "title": "Twelve weeks to a supported platform.",
+      "subtitle": "Gated at the Analyze inventory, then again before cutover."
+    }
+  ],
+  "template": true,
+  "_fixture": true,
+  "_source": "Synthetic training-studio scenario: test figures and interview statements created for renderer regression; no real quote or engagement."
+}

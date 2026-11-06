@@ -1,0 +1,55 @@
+schema_version: 1
+name: brand-renderer
+display_name: Brand Renderer
+summary: 'Renders and release-gates the requested branded document, deck,
+  workbook, PDF, webpage, email, Slack message, and piece of UI copy after proving
+  the bundled brand and prose runtimes are present.'
+status: active
+tier: core
+version: 1.3.0
+owner: estate-maintainer
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Use for the requested branded Word or DOCX document, PowerPoint or PPTX
+  deck, Excel or XLSX workbook, PDF, HTML page, report, proposal, email, Slack
+  message, and piece of UI copy. Run the bundled runtime preflight before creating,
+  reviewing, editing, exporting, or finalizing the artifact. Enforce parity, visual,
+  prose, and brand gates before delivery.'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+- writing-diagnostics
+calls:
+- review-deliverable
+knowledge_hub:
+  requirement: optional
+  reads:
+  - client.front_door
+  - client.profile
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

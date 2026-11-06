@@ -1,0 +1,157 @@
+{
+  "format": 1,
+  "groups": [
+    {
+      "id": "pursuit-and-discovery",
+      "title": "Pursuit and discovery",
+      "description": "Understand the account, the customer journey, and the next conversation.",
+      "skills": [
+        "prepare-sales-pursuit",
+        "maintain-discovery-record",
+        "synthesize-discovery",
+        "frame-jobs-to-be-done",
+        "assess-offering-fit",
+        "map-sales-process",
+        "review-sales-journey",
+        "live-meeting-synthesis"
+      ]
+    },
+    {
+      "id": "scope-and-proposals",
+      "title": "Scope and proposals",
+      "description": "Define an offer, compare options, and put scope and commercials in writing.",
+      "skills": [
+        "write-architecture-reference",
+        "write-business-case",
+        "build-deal-decision-deck",
+        "review-deal-economics",
+        "build-interactive-proposal",
+        "manage-service-offering",
+        "render-offering-brief",
+        "plan-offering-artifacts",
+        "estimate-project",
+        "compare-scope-options",
+        "scope-project",
+        "assess-solution-delivery",
+        "write-statement-of-work",
+        "review-contract-scope"
+      ]
+    },
+    {
+      "id": "delivery-and-salesforce",
+      "title": "Delivery and Salesforce",
+      "description": "Move from an accepted handoff through implementation, testing, and closeout.",
+      "skills": [
+        "refine-backlog",
+        "manage-cutover-closeout",
+        "start-delivery",
+        "track-delivery",
+        "delivery-orchestrator",
+        "promote-salesforce-changes",
+        "manage-salesforce-devops",
+        "verify-salesforce-org",
+        "capture-requirements",
+        "prepare-delivery-handoff",
+        "configure-salesforce-project",
+        "operate-salesforce-pipeline",
+        "apply-salesforce-patterns",
+        "capture-salesforce-screens",
+        "deliver-salesforce-change",
+        "plan-sprint",
+        "plan-team-onboarding",
+        "validate-delivery",
+        "import-tracker-export",
+        "build-moscow-story-map",
+        "manage-decision-register",
+        "build-review-site",
+        "review-site-runtime"
+      ]
+    },
+    {
+      "id": "product-and-experience",
+      "title": "Product and experience",
+      "description": "Research needs, define products, and review the experience people use.",
+      "skills": [
+        "audit-accessibility",
+        "design-analytics-plan",
+        "build-interactive-explorer",
+        "develop-independent-product",
+        "design-information-architecture",
+        "map-journey",
+        "write-feature-spec",
+        "prioritize-work",
+        "design-process",
+        "develop-product",
+        "specify-implementation",
+        "design-software-system",
+        "plan-usability-study"
+      ]
+    },
+    {
+      "id": "knowledge-and-context",
+      "title": "Knowledge and context",
+      "description": "Find the current record, preserve evidence, and carry work between sessions.",
+      "skills": [
+        "capture-knowledge",
+        "load-project-context",
+        "check-knowledge-hub",
+        "reconcile-knowledge",
+        "manage-linked-task",
+        "evidence-core",
+        "manage-consulting-knowledge",
+        "prepare-session-handoff",
+        "ingest-transcript"
+      ]
+    },
+    {
+      "id": "writing-and-presentation",
+      "title": "Writing and presentation",
+      "description": "Shape the words, visual structure, and author voice of an artifact.",
+      "skills": [
+        "brand-renderer",
+        "writing-diagnostics",
+        "manage-brand-profile",
+        "build-deck",
+        "build-roadmap",
+        "editorial-design",
+        "apply-author-style",
+        "author-style-runtime",
+        "review-writing",
+        "manage-writing-profile"
+      ]
+    },
+    {
+      "id": "career-and-personal",
+      "title": "Career and personal",
+      "description": "Prepare career materials and work with the private planning and creative tools.",
+      "skills": [
+        "prepare-job-application",
+        "draft-application-materials",
+        "assess-career-options",
+        "write-portfolio-case-study",
+        "tailor-resume",
+        "guide-fortunes-weave",
+        "design-sticker",
+        "lay-out-sticker-sheets"
+      ]
+    },
+    {
+      "id": "estate-and-engineering-controls",
+      "title": "Estate and engineering controls",
+      "description": "Maintain skills, review changes, and verify where a result actually exists.",
+      "skills": [
+        "simplify-code",
+        "release-skill-package",
+        "verify-work-state",
+        "work-in-github-repository",
+        "review-deliverable",
+        "author-estate-skill",
+        "maintain-skills-estate"
+      ]
+    }
+  ],
+  "optionalSkills": [
+    "editorial-design",
+    "live-meeting-synthesis"
+  ]
+}

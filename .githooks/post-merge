@@ -1,0 +1,4 @@
+#!/bin/sh
+# Git operations never build or install into an everyday host.
+# Run estate.py sync for candidate packages; promote separately after review.
+exit 0

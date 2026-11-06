@@ -1,0 +1,47 @@
+schema_version: 1
+name: specify-implementation
+display_name: Spec Writer
+summary: Detailed interface, persistence and interaction specification for requested design work.
+status: active
+tier: situational
+version: 1.0.0
+owner: Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Use with write-feature-spec when the requested specification needs interface contracts,
+  persistence, recovery, accessibility behavior, or interactive-state detail. Select
+  applicable sections and the requested output format; use mockups when they resolve
+  an interface decision. A defect fix does not automatically require a specification
+  or a separate approval.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

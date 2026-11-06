@@ -1,0 +1,105 @@
+{
+  "_fixture": "Entirely synthetic; no real client, approval, or commercial commitment.",
+  "slots": {
+    "CLIENT_NAME": "Example Manufacturing",
+    "AUDIENCE": "Internal pursuit team; synthetic verification example",
+    "CALL_TIME_ISO": "2030-01-15T15:00:00-05:00",
+    "CALL_TIME_LABEL": "15:00 Eastern",
+    "WHEN": "2030-01-15 at 15:00 Eastern",
+    "PREP_DATE": "2030-01-14",
+    "ORGANIZER": "Example account owner",
+    "SELLER": "Example account owner",
+    "ATTENDEE_COUNTS": "Two client roles and one delivery lead",
+    "DEAL_STAGE": "Discovery",
+    "COMPETITORS": "No competitor has been confirmed",
+    "COMPETITOR_NAMES": "Competitive context is unconfirmed",
+    "SITUATION_SENTENCE": "The sales operations team wants to test approval routing for one pilot team.",
+    "WHAT_THESE_ARE_AND_WHY": "Confirm who approves requests and what happens when a request needs an exception.",
+    "KEYWORDS": "approval pilot routing ownership",
+    "HEADLINE_CLAIM": "Approval requests arrive by email",
+    "EVIDENCE": "The synthetic sales operations lead described the email-based process in discovery.",
+    "KEY": "synthesize-discovery",
+    "THE_EXACT_MOVE": "Which approval requests need an exception path?",
+    "SOURCE_CAVEAT": "All names, roles, and statements in this example are synthetic.",
+    "INITIALS": "EL",
+    "NAME": "Example lead",
+    "TITLE": "Sales operations lead",
+    "ORG": "Example Manufacturing",
+    "FACT": "Owns the approval-routing policy for the pilot.",
+    "BAND": "unconfirmed",
+    "THE_READ": "The lead may also own final pilot acceptance. Ask before assigning that responsibility.",
+    "HOW": "Ask the lead to walk through one standard request and one exception.",
+    "ONE_LINE_CHARACTERISATION": "A manufacturer testing one approval process",
+    "CONTEXT": "The discovery note covers one sales team and its approval process.",
+    "LABEL": "Pilot scope",
+    "VALUE": "One sales team",
+    "FLOW_KEY": "requests",
+    "NODE_NAME": "Approval request",
+    "HEADLINE_NUMBER": "One policy in the pilot",
+    "ONE_LINE": "A request reaches a named approver before the offer is released.",
+    "TRANSCRIPT_PROVENANCE": "Synthetic discovery note D-001, created for verification.",
+    "WHAT_THIS_SHOWS": "The current routing method depends on email",
+    "VERBATIM": "We send approval requests to the sales manager by email.",
+    "SPEAKER": "Synthetic sales operations lead, D-001",
+    "WHY_IT_MATTERS": "The pilot needs to show who owns each request and how exceptions reach an approver.",
+    "TIMELINE_OF_THEIR_INVOLVEMENT": "No competitive timeline is established in the supplied synthetic note.",
+    "WHO_IN_THE_ROOM_WILL_TEST_THIS": "The delivery lead will ask which system owns approval status.",
+    "TOPIC": "Approval ownership",
+    "CONTENT": "Confirm which system records approval status and who approves the routing rules.",
+    "WHAT_THIS_CALL_IS_FOR": "Confirm which team joins the pilot and collect its routing rules.",
+    "MINUTES": "First 10 minutes",
+    "SEGMENT": "Confirm the current process",
+    "SPEAKABLE_LINE": "Please walk us through the last approval request that needed an exception.",
+    "WHY_AND_WHAT_TO_DO": "Do not promise a deployment date before access and acceptance cases are confirmed.",
+    "FLOW_HEADING": "Approval flow",
+    "FLOW_DESCRIPTION": "How a request reaches its approver"
+  },
+  "footnotes": {
+    "synthesize-discovery": [
+      "Synthetic discovery note D-001",
+      "Test fixture: the sales operations lead describes an email approval process.",
+      ""
+    ]
+  },
+  "flow": {
+    "requests": {
+      "t": "Approval requests enter the pilot",
+      "b": [
+        "A sales representative submits a request with the required context.",
+        "The policy owner identifies the approver and any exception route."
+      ]
+    }
+  },
+  "questions": [
+    [
+      "T1",
+      "Policy ownership",
+      "Who approves the routing policy?",
+      "Identify who can approve the routing rules."
+    ],
+    [
+      "T1",
+      "Exceptions",
+      "Which requests need an exception path?",
+      "Include these requests in the pilot tests."
+    ]
+  ],
+  "assumptions": [
+    [
+      "A-01",
+      "The sales operations lead owns final pilot acceptance.",
+      "Unconfirmed",
+      "No; ask who owns acceptance."
+    ]
+  ],
+  "drill": [
+    [
+      "Which team and policy does the pilot cover?",
+      "One sales team and one approval policy."
+    ],
+    [
+      "What remains unconfirmed?",
+      "Acceptance ownership, access, and the exception rules."
+    ]
+  ]
+}

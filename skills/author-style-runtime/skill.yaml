@@ -1,0 +1,48 @@
+schema_version: 1
+name: author-style-runtime
+display_name: Personal Writing Style Runtime
+summary: Generic template that applies one person's confirmed private writing-style
+  profile when they are the intended author or speaker.
+status: active
+tier: situational
+version: 0.1.0
+owner: Estate
+category: internal-tooling
+runtimes:
+- generic-agent-skills
+- claude-ai
+- cowork
+- chatgpt
+- codex
+triggers:
+- Not invoked directly. A per-person install adapter names a specific profile and
+  person and inherits this routing template.
+exclusions:
+- Building, correcting, or revoking a profile. That is manage-writing-profile.
+inputs:
+- name: confirmed_profile_path
+  required: true
+  description: Path to the person's confirmed profile, per manage-writing-profile's schema.
+outputs:
+- name: routed_voice_application
+  format: n/a
+  audience: whoever the drafted artifact is for
+  durable: false
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on:
+- manage-writing-profile
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: true
+  control: review-deliverable
+license: Proprietary to Estate LLC.

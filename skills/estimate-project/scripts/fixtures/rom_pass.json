@@ -1,0 +1,47 @@
+{
+  "q_number": "Q-000900",
+  "as_of": "2026-08-11",
+  "pricing_model": "fixed_fee",
+  "model_card": "fixed_price",
+  "quote_total_hours": 1200,
+  "blended_rate": 250.0,
+  "quote_total_fee": 300000.0,
+  "range_low": 270000.0,
+  "range_high": 345000.0,
+  "phases": [
+    {
+      "name": "Analyze",
+      "hours": 240
+    },
+    {
+      "name": "Build",
+      "hours": 720
+    },
+    {
+      "name": "Deploy",
+      "hours": 240
+    }
+  ],
+  "roles": [
+    {
+      "name": "Solution Architect",
+      "hours": 400
+    },
+    {
+      "name": "Consultant",
+      "hours": 800
+    }
+  ],
+  "work_packages": [
+    {
+      "name": "Pricing rule migration",
+      "hours": 700
+    },
+    {
+      "name": "Integration build",
+      "hours": 500
+    }
+  ],
+  "fee_source": "Fictional quote Q-000900 revision 1",
+  "fixed_fee_basis": "Fictional independently agreed milestone fee"
+}

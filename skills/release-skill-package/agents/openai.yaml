@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release skill package"
+  short_description: "Package and inspect shared Codex and Claude skills"
+  default_prompt: "Use $release-skill-package to package this shared skill, update the authorized destinations, and verify the installed contents."

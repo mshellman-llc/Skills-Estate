@@ -1,0 +1,51 @@
+schema_version: 1
+name: release-skill-package
+display_name: Cross-platform skill release
+summary: Package, replace, and inspect a shared skill across Codex and Claude.
+status: active
+tier: maintainer
+version: 1.0.0
+owner: Estate maintainer
+category: skill-governance
+runtimes:
+- codex
+- claude-code
+- claude-ai
+triggers:
+- Prepare a portable skill release and inspect its intended destinations.
+- Replace an existing account skill with a reviewed local package.
+- Compare a shared skill's local and account copies after a release.
+exclusions:
+- Design a new skill's substantive behavior.
+- Repair estate-wide installation drift without an account release.
+- Publish a plugin or change global assistant instructions.
+inputs:
+- name: release_request
+  required: true
+  description: Skill identity, maintained source, intended change, and requested destinations.
+outputs:
+- name: skill_package
+  format: zip
+  audience: skill-owner
+  durable: true
+  hub_target: null
+- name: release_record
+  format: markdown
+  audience: skill-owner
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: true
+  control: Package hash and destination observations in the existing release record.
+quality:
+  required: true
+  control: Extracted package comparison, representative invocation, and destination inspection.

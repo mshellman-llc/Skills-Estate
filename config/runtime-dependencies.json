@@ -1,0 +1,217 @@
+{
+  "write-architecture-reference": [
+    "brand-renderer"
+  ],
+  "refine-backlog": [
+    "evidence-core"
+  ],
+  "brand-renderer": [
+    "writing-diagnostics",
+    "review-deliverable"
+  ],
+  "write-business-case": [
+    "brand-renderer",
+    "evidence-core"
+  ],
+  "prepare-sales-pursuit": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "manage-cutover-closeout": [
+    "brand-renderer",
+    "delivery-orchestrator",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "build-deal-decision-deck": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "build-deck": [
+    "brand-renderer"
+  ],
+  "track-delivery": [
+    "brand-renderer",
+    "delivery-orchestrator",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "delivery-orchestrator": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "maintain-discovery-record": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "synthesize-discovery": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "evidence-core": [
+    "brand-renderer",
+    "manage-consulting-knowledge"
+  ],
+  "build-interactive-proposal": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge",
+    "build-roadmap"
+  ],
+  "map-journey": [
+    "brand-renderer",
+    "manage-brand-profile",
+    "evidence-core",
+    "manage-consulting-knowledge",
+    "build-roadmap"
+  ],
+  "frame-jobs-to-be-done": [
+    "brand-renderer",
+    "build-roadmap"
+  ],
+  "author-style-runtime": [
+    "brand-renderer",
+    "manage-writing-profile"
+  ],
+  "manage-service-offering": [
+    "brand-renderer"
+  ],
+  "assess-offering-fit": [
+    "brand-renderer"
+  ],
+  "render-offering-brief": [
+    "brand-renderer"
+  ],
+  "plan-offering-artifacts": [
+    "brand-renderer"
+  ],
+  "prioritize-work": [
+    "evidence-core"
+  ],
+  "design-process": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "review-deliverable": [
+    "writing-diagnostics"
+  ],
+  "capture-requirements": [
+    "brand-renderer",
+    "delivery-orchestrator",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "estimate-project": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "prepare-delivery-handoff": [
+    "brand-renderer",
+    "delivery-orchestrator",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "compare-scope-options": [
+    "brand-renderer"
+  ],
+  "prepare-session-handoff": [
+    "brand-renderer"
+  ],
+  "configure-salesforce-project": [
+    "brand-renderer"
+  ],
+  "author-estate-skill": [
+    "brand-renderer"
+  ],
+  "assess-solution-delivery": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "write-statement-of-work": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "review-contract-scope": [
+    "brand-renderer",
+    "manage-consulting-knowledge"
+  ],
+  "specify-implementation": [
+    "brand-renderer"
+  ],
+  "plan-sprint": [
+    "evidence-core"
+  ],
+  "design-software-system": [
+    "brand-renderer"
+  ],
+  "plan-team-onboarding": [
+    "brand-renderer"
+  ],
+  "manage-writing-profile": [
+    "brand-renderer"
+  ],
+  "deliver-salesforce-change": [
+    "verify-salesforce-org"
+  ],
+  "write-feature-spec": [
+    "specify-implementation"
+  ],
+  "start-delivery": [
+    "delivery-orchestrator",
+    "evidence-core"
+  ],
+  "validate-delivery": [
+    "delivery-orchestrator",
+    "evidence-core"
+  ],
+  "maintain-skills-estate": [
+    "author-estate-skill",
+    "release-skill-package"
+  ],
+  "build-roadmap": [
+    "brand-renderer"
+  ],
+  "build-interactive-explorer": [
+    "build-roadmap"
+  ],
+  "apply-author-style": [
+    "author-style-runtime",
+    "manage-writing-profile"
+  ],
+  "scope-project": [
+    "brand-renderer",
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "review-deal-economics": [
+    "evidence-core"
+  ],
+  "ingest-transcript": [
+    "evidence-core",
+    "manage-consulting-knowledge"
+  ],
+  "import-tracker-export": [
+    "review-site-runtime"
+  ],
+  "build-moscow-story-map": [
+    "review-site-runtime"
+  ],
+  "manage-decision-register": [
+    "review-site-runtime"
+  ],
+  "build-review-site": [
+    "review-site-runtime"
+  ],
+  "review-site-runtime": [
+    "brand-renderer"
+  ]
+}

@@ -1,0 +1,64 @@
+schema_version: 1
+name: ingest-transcript
+display_name: Transcript Ingestion
+summary: Preserves, normalizes, identifies, and indexes consulting transcripts as governed Knowledge Hub sources.
+status: active
+version: 1.0.0
+owner: Estate
+category: evidence-quality
+runtimes:
+  - generic-agent-skills
+  - chatgpt
+  - codex
+  - claude-ai
+  - cowork
+triggers:
+  - File, normalize, index, or ingest a call transcript, meeting export, VTT, or conversation record for a client opportunity or engagement.
+exclusions:
+  - Do not use for call preparation or ordinary meeting summarization without durable filing.
+inputs:
+  - name: transcript
+    required: true
+    description: Raw Markdown, text, VTT, or equivalent transcript content.
+  - name: hub_identity
+    required: true
+    description: Confirmed client and opportunity or engagement context identifiers.
+outputs:
+  - name: normalized_transcript
+    format: markdown
+    audience: internal
+    durable: true
+    hub_target: transcripts.index
+  - name: ingestion_record
+    format: markdown
+    audience: internal
+    durable: true
+    hub_target: evidence.sources
+connectors:
+  required: []
+  optional:
+    - google-drive
+depends_on:
+  - knowledge-hub
+calls:
+  - evidence-core
+knowledge_hub:
+  requirement: required
+  reads:
+    - client.front_door
+    - opportunity.front_door
+    - engagement.front_door
+    - transcripts.index
+    - evidence.sources
+  writes:
+    - transcripts.index
+    - evidence.sources
+    - evidence.claims
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: false
+  control: null
+license: Proprietary to Estate LLC.
+tier: core

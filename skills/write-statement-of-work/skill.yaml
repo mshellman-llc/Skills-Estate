@@ -1,0 +1,64 @@
+schema_version: 1
+name: write-statement-of-work
+display_name: SOW
+summary: Generate Statements of Work (.docx) from a confirmed quote JSON and a contract profile, in
+  Waterfall (fixed scope), Agile (adaptive scope), Assess (advisory, readout-gated), and LOE (engagement letter)
+  variants.
+status: active
+tier: core
+version: 1.0.0
+owner: Estate maintainer
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Generate Statements of Work (.docx) from a confirmed quote JSON and a contract profile, in Waterfall
+  (fixed scope), Agile (adaptive scope), Assess (advisory, readout-gated), and LOE (engagement letter) variants.
+  Use when asked to "generate the SOW", "draft the SOW from the quote", "build the
+  SOW for Q-000043", or "turn this quote into a Statement of Work". The quote is the
+  source of truth; this skill renders it. It does not price (the confirmed quote owns figures)
+  and does not author scope language (scope-project does). It takes a JSON quote model,
+  builds the document through the docx library, resolves placeholders with a printed
+  audit trail, verifies the required-clause gate, and hands off to the embedded contract review mode.
+  Do NOT use for the DDOC; that is ddoc.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: statement_of_work
+  format: docx
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- review-deliverable
+knowledge_hub:
+  requirement: optional
+  reads:
+  - opportunity.front_door
+  - opportunity.solution_scope
+  - opportunity.commercial
+  - evidence.claims
+  writes:
+  - opportunity.commercial
+  - opportunity.pursuit_history
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: review-deliverable
