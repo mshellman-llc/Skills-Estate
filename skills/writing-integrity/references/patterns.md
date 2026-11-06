@@ -58,6 +58,16 @@ This remains an editorial review of the recurring construction and its context. 
 
 Repeated clusters of words such as “delve,” “tapestry,” “pivotal,” “crucial,” “robust,” “seamless,” “leverage,” “landscape,” “foster,” “underscore” and “showcase” warrant a closer reading. Replace vague claims with plain words and supported details. Keep any word that is the accurate term in context.
 
+## Telling readers what they can already see
+
+These patterns assume the reader cannot infer. They repeat what the page shows, push toward an action the content does not call for, or keep reasserting a conclusion. Readers find them tiring and condescending.
+
+| Pattern | Example and repair |
+| --- | --- |
+| Redundant table narration | “Two decisions are open” and “Each has an owner and a date” tell the reader what the table already shows without adding insight. Cut sentences that restate counts, statuses, owners, dates or values visible in an adjacent table, list, chart or card set. Keep a sentence only when it adds what the structure cannot show, such as a supported cause, condition, exception or consequence. |
+| Unearned action framing | “What has to close to approve” presents the information as a push toward approval. The heading itself doesn’t prove urgency, but it imposes an approval-oriented frame that may not be warranted. Name what the section contains, such as “Open decisions and unpriced scope.” Keep a real gate, deadline or approval step, stated plainly with its rule, date and owner. |
+| Repeated reassurance or reaffirmation | “None changes the recommendation” and “The recommendation holds either way” keep asserting the same conclusion instead of explaining something useful. Cut the reassurance. Keep any fact it carries, such as a fallback option. Check whether the content supports the assurance; when it does not, remove the claim rather than soften it. |
+
 ## Repairs that cause more problems
 
 Changing words leaves a formula intact when the sentence still makes the same empty claim. Rewrite the thought first. Do not add typos, odd punctuation, invented anecdotes, numbers, citations or feelings to sound human.
