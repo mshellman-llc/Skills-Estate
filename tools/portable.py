@@ -12,6 +12,8 @@ import shutil
 IGNORED = {".git", ".DS_Store", "__pycache__", ".venv", "node_modules", "_runtime"}
 # A network share (SMB) leaves .smbdelete<id> placeholders for files deleted while open.
 IGNORED_PREFIXES = (".smbdelete",)
+UPDATER_MODULES = ('estate', 'updater', 'releases', 'committed_source', 'portable', 'catalog', 'marketplace_guard')
+
 IDENTITY = {"SKILL.md", "skill.yaml", "skill.json", "agent.yaml", "agent.json", "AGENTS.md"}
 
 PACKAGE_STANDARDS = ('\n## Shared standards\n\n'
@@ -97,6 +99,8 @@ def assemble(root, name, destination, dependencies, *, entrypoint_name='SKILL.md
         prefix = Path() if skill == name else Path("_runtime") / skill
         for file in source_files(source):
             relative = file.relative_to(source)
+            if skill == 'skill-estate-sync' and relative.parts[:2] == ('scripts', 'estate_tools'):
+                raise ValueError('scripts/estate_tools is generated, not authoring source')
             if relative.parts[:2] == ("references", "estate"):
                 raise ValueError(f"references/estate is generated, not authoring source: {file}")
             if skill != name and len(relative.parts) == 1 and file.name in IDENTITY:
@@ -106,6 +110,18 @@ def assemble(root, name, destination, dependencies, *, entrypoint_name='SKILL.md
                     mapping[file] = prefix / "WORKFLOW.md"
                 continue
             mapping[file] = prefix / (entrypoint_name if skill == name and relative == Path('SKILL.md') else relative)
+    # Ship the same reviewed implementation inside the maintenance package. Its
+    # release link selects both workflows and updater code, including on rollback.
+    if 'skill-estate-sync' in selected:
+        prefix = Path() if name == 'skill-estate-sync' else Path('_runtime/skill-estate-sync')
+        for module in UPDATER_MODULES:
+            source = root / 'tools' / (module + '.py')
+            if not source.is_file() or source.is_symlink():
+                raise ValueError('Missing portable updater module: ' + module)
+            relative = prefix / 'scripts/estate_tools' / source.name
+            if relative in mapping.values():
+                raise ValueError('scripts/estate_tools is generated, not authoring source')
+            mapping[source] = relative
     shared = root / "skills" / "_shared"
     if shared.exists():
         pending = []

@@ -31,7 +31,7 @@ python3 scripts/manage_estate.py --repo /path/to/Skills-Estate bundle
 python3 scripts/manage_estate.py --repo /path/to/Skills-Estate status
 ```
 
-From the canonical checkout, the equivalent command is `python3 tools/estate.py <command>`. The bridge invokes that exact tool; it does not maintain a second packaging implementation. Python 3 and a writable canonical checkout are required. Status creates a local lock file and reads the build; it does not contact host services.
+From the canonical checkout, the equivalent command is `python3 tools/estate.py <command>`. Development commands invoke that checkout’s tooling. Ordinary `update` runs the same updater implementation bundled in the installed maintenance package; its version follows activation and rollback, independently of the authoring branch. Python 3 and a writable canonical checkout are required. Status creates a local lock file and reads the build; it does not contact host services.
 
 If no checkout is available, report the missing prerequisite and identify the user's existing repository. An isolated upload of this maintainer skill can inspect its own resources but cannot synchronize an estate that is absent from the host.
 
@@ -47,7 +47,7 @@ The current canonical CLI does not automatically run every behavioral test befor
 
 ## Update from GitHub main
 
-Use `python3 tools/estate.py update` for the owner's ordinary update. It fetches GitHub main into a fresh temporary checkout without pulling into the authoring branch. The existing verification guard requires a successful run for the exact revision, retaining the generated-publication commit exception for its immediately verified source parent. The fetched tooling runs local checks and builds before activation. Tests deferred locally remain named in the receipt; GitHub's accepted workflow supplies the full integration result.
+From this installed skill’s directory, use `python3 scripts/manage_estate.py update` for the owner's ordinary update. It fetches GitHub main into a fresh temporary checkout without pulling into the authoring branch. The existing verification guard requires a successful run for the exact revision, retaining the generated-publication commit exception for its immediately verified source parent. The fetched tooling runs local checks and builds before activation. Tests deferred locally remain named in the receipt; GitHub's accepted workflow supplies the full integration result.
 
 Codex uses the existing immutable release store and durable repository pointer. Duplicate local Claude skills are backed up within the same activation transaction; Claude continues to use its marketplace plugin manager. This command does not update platform-managed plugin caches. Fetch, verification, local test and build failures leave installed links unchanged. Installation failures restore prior links and backups unless a concurrent edit requires preserving the recovery journal. Receipts identify the installed commit, remote run, local checks, previous release and restore operation.
 

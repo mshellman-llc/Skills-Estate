@@ -1,5 +1,6 @@
 """Exercise the portable maintainer entry against real isolated estate tooling."""
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -55,6 +56,106 @@ class EntryTests(unittest.TestCase):
                               "stdout": result.stdout, "stderr": result.stderr})
         self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
         return result
+
+    def test_installed_update_uses_bundled_code_and_preserves_authoring_checkout(self):
+        # This is an old/dirty authoring checkout: invoking its CLI is a failure.
+        old = self.repo / 'tools/estate.py'
+        old.write_text("raise SystemExit('WRONG AUTHORING UPDATER')\n")
+        untracked = self.repo / 'skills/unfinished.txt'
+        untracked.write_text('unfinished work')
+        pointer = self.home / '.config/skills-estate/repository'
+        pointer.parent.mkdir(parents=True)
+        pointer.symlink_to(self.repo)
+        fake_bin = self.base / 'bin'
+        fake_bin.mkdir()
+        git = fake_bin / 'git'
+        git.write_text('#!/bin/sh\necho "offline fixture fetch" >&2\nexit 1\n')
+        git.chmod(0o755)
+        before = {p: p.read_bytes() for p in (old, untracked)}
+        # The package is detached from its builder and has no .git directory.
+        env = dict(os.environ, PATH=str(fake_bin) + os.pathsep + os.environ['PATH'])
+        result = subprocess.run([sys.executable, str(self.bridge), '--home', str(self.home), 'update'],
+                                cwd=self.base, env=env, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+        self.assertIn('offline fixture fetch', result.stderr)
+        self.assertNotIn('WRONG AUTHORING', result.stderr)
+        self.assertEqual(before, {p: p.read_bytes() for p in before})
+        self.assertEqual(pointer.resolve(), self.repo.resolve())
+        self.assertFalse((self.package / 'scripts/.local').exists())
+        self.assertFalse((self.home / '.local/state/skills-estate/active.json').exists())
+        receipts = list((self.home / '.local/state/skills-estate').glob('update-*/update.json'))
+        self.assertEqual(len(receipts), 1)
+        self.assertEqual(json.loads(receipts[0].read_text())['state'], 'failed')
+
+    def test_release_activation_and_rollback_select_bundled_updater_bytes(self):
+        import estate
+        import releases
+        repo, home = self.repo.resolve(), self.home.resolve()
+        package_a = self.package.resolve()
+        module_a = package_a / 'scripts/estate_tools/updater.py'
+        module_a.write_text("print('SELECTED-UPDATER-A')\n" + module_a.read_text())
+        package_b = self.base.resolve() / 'second-package'
+        shutil.copytree(package_a, package_b)
+        module_b = package_b / 'scripts/estate_tools/updater.py'
+        module_b.write_text(module_b.read_text().replace('SELECTED-UPDATER-A', 'SELECTED-UPDATER-B'))
+        # Any fallback to the authoring checkout would fail differently.
+        old = repo / 'tools/estate.py'
+        old.write_text("raise SystemExit('WRONG AUTHORING UPDATER')\n")
+        fake_bin = self.base.resolve() / 'rollback-bin'
+        fake_bin.mkdir()
+        fake_git = fake_bin / 'git'
+        fake_git.write_text('#!/bin/sh\necho offline-rollback-fixture >&2\nexit 1\n')
+        fake_git.chmod(0o755)
+        env = dict(os.environ, PATH=str(fake_bin) + os.pathsep + os.environ['PATH'])
+        installed = home / '.agents/skills/skill-estate-sync'
+
+        def activate(package):
+            with releases.home_lock(home):
+                release_id = releases.snapshot(repo, home, {'skill-estate-sync': package},
+                                               'synthetic-test', 'owner', estate.tree_hash)
+                releases.activate(repo, home, release_id, estate.tree_hash,
+                                  account_provided=['skill-estate-sync'])
+            return release_id
+
+        def check_selected(marker, release_id):
+            before = estate.tree_hash(installed.resolve())
+            command = [sys.executable, str(installed / 'scripts/manage_estate.py'),
+                       '--home', str(home), 'update']
+            result = subprocess.run(command, cwd=self.base, env=env, capture_output=True, text=True)
+            self.commands.append({'command': command, 'exit': result.returncode,
+                                  'stdout': result.stdout, 'stderr': result.stderr})
+            self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+            self.assertEqual(result.stdout.strip(), marker)
+            self.assertIn('offline-rollback-fixture', result.stderr)
+            self.assertNotIn('WRONG AUTHORING', result.stderr)
+            self.assertEqual(estate.tree_hash(installed.resolve()), before)
+            self.assertEqual((home / '.config/skills-estate/repository').resolve(), repo)
+            observed = releases.inspect(home, estate.tree_hash)
+            self.assertTrue(observed['ok'])
+            self.assertEqual(observed['release_id'], release_id)
+
+        first = activate(package_a)
+        check_selected('SELECTED-UPDATER-A', first)
+        second = activate(package_b)
+        self.assertNotEqual(first, second)
+        check_selected('SELECTED-UPDATER-B', second)
+        estate.rollback(repo, home, first)
+        check_selected('SELECTED-UPDATER-A', first)
+        self.assertEqual(old.read_text(), "raise SystemExit('WRONG AUTHORING UPDATER')\n")
+
+    def test_updater_modules_are_exact_and_authoring_collisions_are_rejected(self):
+        from portable import UPDATER_MODULES
+        for module in UPDATER_MODULES:
+            self.assertEqual((self.package / 'scripts/estate_tools' / (module + '.py')).read_bytes(),
+                             (ROOT / 'tools' / (module + '.py')).read_bytes())
+        source = self.base / 'fixture-source'
+        shutil.copytree(SKILL, source / 'skills/skill-estate-sync')
+        shutil.copytree(ROOT / 'tools', source / 'tools')
+        collision = source / 'skills/skill-estate-sync/scripts/estate_tools/unexpected.py'
+        collision.parent.mkdir()
+        collision.write_text('unreviewed replacement')
+        with self.assertRaisesRegex(ValueError, 'generated'):
+            assemble(source, 'skill-estate-sync', self.base / 'bad-package', [])
 
     def test_detached_entry_builds_installs_detects_drift_and_restores(self):
         self.run_cli("validate")

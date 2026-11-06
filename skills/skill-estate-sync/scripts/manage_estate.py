@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the selected canonical checkout's estate CLI from an installed skill.
+"""Run estate maintenance using its registered repository identity.
 
 This bridge never downloads tooling or guesses a repository from the working
 directory. Select --repo, or use the repository pointer written by installation.
@@ -35,6 +35,11 @@ def main():
     args = parser.parse_args()
     try:
         root = repository(args.repo, args.home.expanduser().resolve())
+        if args.command == "update":
+            command = [sys.executable, str(Path(__file__).resolve().with_name("run_update.py")),
+                       "--repository", str(root), "--home", str(args.home.expanduser().resolve()),
+                       *args.arguments]
+            return subprocess.run(command, cwd=args.home.expanduser().resolve(), check=False).returncode
         command = [sys.executable, str(root / "tools/estate.py"),
                    "--home", str(args.home.expanduser().resolve()), args.command, *args.arguments]
         return subprocess.run(command, cwd=root, check=False).returncode
