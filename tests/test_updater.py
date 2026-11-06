@@ -121,6 +121,21 @@ if (r/'fail-tests').exists(): raise SystemExit(1)
             self.update()
         self.assertEqual((legacy / 'work').read_text(), 'Preserve unexpected work')
 
+    def test_pending_journal_created_during_preparation_blocks_noop(self):
+        self.update()
+        before = self.state()
+        original = updater.test_candidate
+        def pending(*args):
+            result = original(*args)
+            path = releases.state(self.home) / 'backup-concurrent/pending.json'
+            path.parent.mkdir()
+            path.write_text('{}')
+            return result
+        with patch.object(updater, 'test_candidate', side_effect=pending):
+            with self.assertRaisesRegex(ValueError, 'Unfinished installation'):
+                self.update()
+        self.assertEqual(self.state(), before)
+
     def test_fetch_failure_preserves_installed_release_and_claude_copy(self):
         self.update()
         duplicate=self.home/'.claude/skills/demo';duplicate.mkdir(parents=True);(duplicate/'work').write_text('keep')

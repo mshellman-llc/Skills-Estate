@@ -128,6 +128,10 @@
     "0.2.36": {
       "content_sha256": "a45588df2376e5d604ce85237e6c0da920a2bb4dc9c8abc107ca40fcb0ed8e06",
       "note": "Keep repeat verified-main updates idempotent while retaining the current run evidence."
+    },
+    "0.2.37": {
+      "content_sha256": "347eca50f1737743e1d5b7eaf7f59475b06332d09719567542a0649dca01c16a",
+      "note": "Recheck recovery journals under the final update lock before reusing an installed release."
     }
   }
 }

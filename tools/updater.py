@@ -125,6 +125,7 @@ def installation_state(home):
 
 def activate_candidate(repository, candidate, home, manifest, evidence, provenance, before):
     with releases.home_lock(home):
+        releases.require_no_pending(home)
         if installation_state(home) != before:
             raise ValueError('Installation changed while preparing update; current state preserved')
         if before['active'] and not releases.inspect(home, estate.tree_hash)['ok']:
