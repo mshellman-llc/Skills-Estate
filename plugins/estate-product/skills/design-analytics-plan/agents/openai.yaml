@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design analytics plan"
+  short_description: "Define metrics and a minimal event tracking plan"
+  default_prompt: "Use $design-analytics-plan to design a measurement plan for this product decision."

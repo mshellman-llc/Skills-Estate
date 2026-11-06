@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills-estate.example/schemas/consulting-knowledge-hub-manifest.schema.json",
+  "title": "Consulting Knowledge Hub manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "client", "primaryStore", "persistence"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "client": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clientId", "canonicalName", "aliases"],
+      "properties": {
+        "clientId": {"type": "string", "minLength": 1},
+        "canonicalName": {"type": "string", "minLength": 1},
+        "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "opportunities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["opportunityId", "name", "status"],
+        "properties": {
+          "opportunityId": {"type": "string", "minLength": 1},
+          "name": {"type": "string", "minLength": 1},
+          "status": {"enum": ["active", "won", "lost", "paused", "withdrawn"]}
+        }
+      }
+    },
+    "engagements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["engagementId", "name", "stage", "status"],
+        "properties": {
+          "engagementId": {"type": "string", "minLength": 1},
+          "opportunityId": {"type": ["string", "null"]},
+          "name": {"type": "string", "minLength": 1},
+          "stage": {"enum": ["handoff", "mobilize", "analyze", "design", "build", "validate", "deploy", "closeout", "operate"]},
+          "status": {"enum": ["active", "on-hold", "complete", "cancelled"]}
+        }
+      }
+    },
+    "primaryStore": {"enum": ["local", "google-drive", "supplied-files"]},
+    "mirrors": {
+      "type": "array",
+      "items": {"enum": ["local", "google-drive", "supplied-files"]},
+      "uniqueItems": true
+    },
+    "stores": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "local": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["root"],
+          "properties": {
+            "root": {"type": "string", "minLength": 1},
+            "gitRepository": {"type": "boolean"},
+            "syncedFilesystem": {"type": "boolean"}
+          }
+        },
+        "google-drive": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "folderId": {"type": "string", "minLength": 1},
+            "clientFolderId": {"type": "string", "minLength": 1},
+            "hubFolderId": {"type": "string", "minLength": 1}
+          }
+        },
+        "supplied-files": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "packageId": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conflictPolicy"],
+      "properties": {
+        "conflictPolicy": {"const": "stop-and-report"},
+        "lastVerified": {"type": ["string", "null"], "format": "date-time"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"primaryStore": {"const": "local"}}},
+      "then": {
+        "required": ["stores"],
+        "properties": {"stores": {"required": ["local"]}}
+      }
+    },
+    {
+      "if": {"properties": {"primaryStore": {"const": "google-drive"}}},
+      "then": {
+        "required": ["stores"],
+        "properties": {
+          "stores": {
+            "required": ["google-drive"],
+            "properties": {
+              "google-drive": {"required": ["hubFolderId"]}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"primaryStore": {"const": "supplied-files"}}},
+      "then": {
+        "required": ["stores"],
+        "properties": {
+          "stores": {
+            "required": ["supplied-files"],
+            "properties": {
+              "supplied-files": {"required": ["packageId"]}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

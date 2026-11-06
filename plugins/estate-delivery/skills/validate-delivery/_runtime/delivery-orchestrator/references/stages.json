@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "purpose": "Reference delivery lifecycle; the executed agreement and accepted project plan determine applicable gates.",
+  "stages": [
+    {
+      "id": "S2D",
+      "name": "Handoff",
+      "gate_key": "brief_accepted",
+      "gate": "Handoff brief accepted by the delivery team",
+      "gate_holder": "delivery team",
+      "owner": "prepare-delivery-handoff"
+    },
+    {
+      "id": "01",
+      "name": "Mobilize",
+      "gate_key": "charter_signed",
+      "gate": "Project Charter delivered and signed off",
+      "gate_holder": "client",
+      "owner": "start-delivery"
+    },
+    {
+      "id": "02",
+      "name": "Analyze",
+      "gate_key": "requirements_cosigned",
+      "gate": "Requirements Document co-signed",
+      "gate_holder": "client",
+      "owner": "capture-requirements; map-journey when needed; refine-backlog before each sprint on agile engagements"
+    },
+    {
+      "id": "03",
+      "name": "Design",
+      "gate_key": "sdd_cosigned",
+      "gate": "Solution Design Document co-signed",
+      "gate_holder": "client",
+      "owner": "design-software-system; assess-solution-delivery for delivery feasibility"
+    },
+    {
+      "id": "04",
+      "name": "Build",
+      "gate_key": "build_complete",
+      "gate": "Build complete in sandbox",
+      "gate_holder": "delivery team",
+      "owner": "the configured project implementation workflow; plan-sprint for each sprint on agile engagements"
+    },
+    {
+      "id": "05",
+      "name": "Validate",
+      "gate_key": "go_no_go",
+      "gate": "Go / no-go co-signed",
+      "gate_holder": "client",
+      "owner": "validate-delivery"
+    },
+    {
+      "id": "06",
+      "name": "Deploy",
+      "gate_key": "golive_acceptance",
+      "gate": "Go-Live Acceptance issued (deemed-acceptance clock per the SOW clause)",
+      "gate_holder": "client",
+      "owner": "manage-cutover-closeout"
+    },
+    {
+      "id": "06b",
+      "name": "Closeout",
+      "gate_key": "hypercare_closeout",
+      "gate": "Hypercare Closeout delivered (lessons and asset harvest complete)",
+      "gate_holder": "delivery team",
+      "owner": "manage-cutover-closeout"
+    }
+  ]
+}

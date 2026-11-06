@@ -1,0 +1,20 @@
+{
+  "kit": 1,
+  "id": "fixture-outcome-fail",
+  "template": "product-now-next-later",
+  "meta": { "title": "Synthetic outcome-check failure plan", "source": "Synthetic fixture for outcome_check.py." },
+  "blocks": [
+    {
+      "type": "board",
+      "columns": [{ "id": "now", "title": "Now" }, { "id": "next", "title": "Next" }, { "id": "later", "title": "Later" }],
+      "cards": [
+        { "id": "n1", "col": "now", "title": "Bulk client import", "fields": { "Outcome": "Time to first invoice 42 → 10 min" }, "owner": "Squad A", "cite": [1] },
+        { "id": "n2", "col": "now", "title": "Pay link on invoices", "owner": "Squad B", "cite": [2] },
+        { "id": "n3", "col": "now", "title": "Faster dashboards", "fields": { "Outcome": "Users are more productive" }, "owner": "Squad A", "cite": [3] },
+        { "id": "n4", "col": "now", "title": "Reminder emails", "fields": { "Outcome": "Time to first invoice 42 → 10 min" }, "owner": "Squad B", "cite": [4] },
+        { "id": "x1", "col": "next", "title": "Timesheet line items" },
+        { "id": "l1", "col": "later", "title": "Late-payment prediction", "body": "P1 for Q3 2027 with mockups attached." }
+      ]
+    }
+  ]
+}

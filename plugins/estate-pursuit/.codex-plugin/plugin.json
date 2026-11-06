@@ -1,0 +1,6 @@
+{
+  "description": "Unreviewed candidate for isolated testing. Skills Estate pursuit workflows and routing.",
+  "name": "estate-pursuit",
+  "skills": "./skills/",
+  "version": "0.3.0"
+}

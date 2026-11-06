@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="brand.css"></head><body>
+<div class="page">
+  <div class="top">
+    <img class="logo" src="__LOGO__">
+    {% if kicker %}<div class="kick">{{ kicker }}</div>{% endif %}
+  </div>
+  <div class="rule"></div>
+  <div class="eyebrow">{{ eyebrow }}</div>
+  <h1 class="big">{{ title }}</h1>
+  {% if subtitle %}<div class="subtitle">{{ subtitle }}</div>{% endif %}
+  {% if intro %}<div class="intro">{{ intro }}</div>{% endif %}
+
+  <div class="block"><h3 class="sh">What you get</h3>
+    <div class="grid2">{% for g in what_you_get %}<div class="gcard"><div class="n">{{ loop.index }}</div><div class="t">{{ g }}</div></div>{% endfor %}</div>
+  </div>
+
+  {% if columns %}<div class="block"><h3 class="sh">{{ columns_heading | default("Who it's for") }}</h3>
+    <div class="cols2">{% for c in columns %}<div class="col"><div class="lbl">{{ c.k }}</div><div class="t">{{ c.v }}</div></div>{% endfor %}</div>
+    {% if center_note %}<div class="center-note">{{ center_note }}</div>{% endif %}
+  </div>{% endif %}
+
+  <div class="block"><h3 class="sh">How it works</h3>
+    <div class="how">{{ how | safe }}</div>
+  </div>
+
+  <div class="foot">
+    <div class="fl">{{ footer_line | safe }}</div>
+    <div class="fr"><div class="note cta">{{ footer_note }}</div></div>
+  </div>
+</div>
+</body></html>

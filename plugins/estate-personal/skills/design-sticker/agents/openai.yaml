@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design sticker"
+  short_description: "Develop and critique expressive sticker typography"
+  default_prompt: "Use $design-sticker to develop a sticker from the current project brief, compare distinct compositions, and critique the typography at its intended size."

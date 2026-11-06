@@ -1,0 +1,47 @@
+schema_version: 1
+skill: replace-with-skill-name
+lifecycle:
+  status: draft
+job:
+  user: TODO
+  situation: TODO
+  outcome: TODO
+  complete_when: TODO
+position:
+  closest_skills: []
+  disposition: undecided
+  rationale: TODO
+contract:
+  inputs: []
+  outputs: []
+selection:
+  positive: []
+  adjacent: []
+  negative: []
+relationships:
+  requires: []
+  optional: []
+  controls: []
+  upstream: []
+  downstream: []
+capabilities: []
+risks:
+  persistent_writes: []
+  authorization: []
+  failure_behavior: TODO
+  privacy: TODO
+  rollback: TODO
+cost:
+  status: unknown
+  receipt: null
+efficiency:
+  status: unknown
+  receipt: null
+stewardship:
+  steward: team-or-person
+  maintainers:
+    - team-or-person
+  lifecycle_approver: TODO
+  review_date: null
+  stale_facts: []
+  retirement_path: TODO

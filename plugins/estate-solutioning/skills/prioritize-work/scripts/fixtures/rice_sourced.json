@@ -1,0 +1,6 @@
+{"items":[
+{"id":"SRCH","title":"Advanced search","problem":"Admins cannot find records quickly","reach":5000,"impact":2,"confidence":0.8,"effort":3,"sources":{"confidence":"search log study, synthetic","effort":"eng sizing, synthetic"}},
+{"id":"MOB","title":"Mobile app","problem":"Field users cannot work away from a desk","reach":8000,"impact":3,"confidence":0.5,"effort":8,"sources":{"effort":"eng sizing, synthetic"}},
+{"id":"SSO","title":"SSO integration","problem":"Enterprise users need company sign-in","reach":1200,"impact":2,"confidence":0.9,"effort":2,"sources":{"confidence":"8 enterprise requests, synthetic","effort":"eng sizing, synthetic"}},
+{"id":"DASH","title":"Dashboard redesign","problem":"Admins miss usage limits","reach":6000,"impact":1,"confidence":0.7,"effort":4,"sources":{"confidence":"support tickets, synthetic","effort":"eng sizing, synthetic"}},
+{"id":"RATE","title":"API rate limiting","problem":"Bursts degrade service for everyone","reach":300,"impact":3,"confidence":0.95,"effort":1,"sources":{"confidence":"incident log, synthetic","effort":"eng sizing, synthetic"}}]}

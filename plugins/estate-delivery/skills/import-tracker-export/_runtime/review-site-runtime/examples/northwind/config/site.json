@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "title": "Field Service MVP",
+  "brand_profile": null,
+  "tracker": {
+    "adapter": "jira-csv",
+    "base_url": "https://example.atlassian.net/browse/",
+    "sprint_order": [
+      "Sprint 1",
+      "Sprint 2",
+      "Sprint 3"
+    ]
+  },
+  "roles": [
+    {
+      "id": "coord",
+      "label": "Coordinator"
+    },
+    {
+      "id": "tech",
+      "label": "Technician"
+    }
+  ],
+  "classes": {
+    "must": {
+      "definition": "The release cannot go live without it."
+    },
+    "should": {
+      "definition": "Needs a manual workaround if it is left out."
+    },
+    "could": {
+      "definition": "Planned if time allows."
+    },
+    "wont": {
+      "label": "Won't (next release)",
+      "definition": "Moves to a later release."
+    }
+  },
+  "release_epics": [
+    "NW-1",
+    "NW-2",
+    "NW-3"
+  ],
+  "readiness": [
+    "acceptance",
+    "estimate",
+    "no_open_questions",
+    "no_blocked_dependency"
+  ],
+  "must_ceiling": 0.6,
+  "pages": [
+    "scope",
+    "decisions",
+    "workflow",
+    "build",
+    "mockups"
+  ],
+  "leads": {
+    "decisions": "Record answers here during refinement. Everyone who opens the page sees them.",
+    "build": "Click a step to see its tickets, open questions and acceptance criteria."
+  },
+  "next_actions": [
+    {
+      "text": "Create a ticket for technician training. It is a Must.",
+      "story": "st-training"
+    },
+    {
+      "text": "Class the route optimization ticket or move it out of the epic.",
+      "href": "#unclassed"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Tracker export",
+      "text": "Statuses and summaries come from the 16 January 2026 export."
+    },
+    {
+      "title": "Refinement notes",
+      "text": "Questions and proposed answers come from the 14 January 2026 refinement session."
+    }
+  ],
+  "mockups": [
+    {
+      "title": "Coordinator home",
+      "file": "../mockups/coordinator-home.html"
+    }
+  ],
+  "store": {
+    "answers": "answers",
+    "reviews": "moscow",
+    "comments": "comments"
+  }
+}

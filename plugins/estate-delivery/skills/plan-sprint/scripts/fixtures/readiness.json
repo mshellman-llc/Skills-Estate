@@ -1,0 +1,158 @@
+{
+  "summary": {
+    "graded": 4,
+    "threshold": 5,
+    "max_days": 5.0,
+    "READY": 2,
+    "REFINE": 1,
+    "DISCOVERY": 1
+  },
+  "items": [
+    {
+      "id": "ONB-001",
+      "name": "Setup checklist",
+      "epic": "Guided Setup",
+      "priority": "Must Have",
+      "score": 6,
+      "verdict": "READY",
+      "criteria": {
+        "Independent": {
+          "pass": true,
+          "reason": "Dependencies are tracked in the RAID log: D-004."
+        },
+        "Negotiable": {
+          "pass": true,
+          "reason": "The I Want To statement leaves the build open."
+        },
+        "Valuable": {
+          "pass": true,
+          "reason": "The So That statement gives a reason."
+        },
+        "Estimable": {
+          "pass": true,
+          "reason": "The team estimated 3 days."
+        },
+        "Small": {
+          "pass": true,
+          "reason": "3 days fits the 5-day limit."
+        },
+        "Testable": {
+          "pass": true,
+          "reason": "2 of 2 scenarios have Given, When and Then."
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "ONB-002",
+      "name": "Resume setup later",
+      "epic": "Guided Setup",
+      "priority": "Should Have",
+      "score": 6,
+      "verdict": "READY",
+      "criteria": {
+        "Independent": {
+          "pass": true,
+          "reason": "No dependencies."
+        },
+        "Negotiable": {
+          "pass": true,
+          "reason": "The I Want To statement leaves the build open."
+        },
+        "Valuable": {
+          "pass": true,
+          "reason": "The So That statement gives a reason."
+        },
+        "Estimable": {
+          "pass": true,
+          "reason": "The team estimated 2 days."
+        },
+        "Small": {
+          "pass": true,
+          "reason": "2 days fits the 5-day limit."
+        },
+        "Testable": {
+          "pass": true,
+          "reason": "1 of 1 scenarios have Given, When and Then."
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "ONB-003",
+      "name": "Single sign-on step",
+      "epic": "Guided Setup",
+      "priority": "Must Have",
+      "score": 4,
+      "verdict": "REFINE",
+      "criteria": {
+        "Independent": {
+          "pass": false,
+          "reason": "Untracked dependencies: Platform IdP sandbox. Record each in the RAID log or split the item."
+        },
+        "Negotiable": {
+          "pass": true,
+          "reason": "The I Want To statement leaves the build open."
+        },
+        "Valuable": {
+          "pass": true,
+          "reason": "The So That statement gives a reason."
+        },
+        "Estimable": {
+          "pass": true,
+          "reason": "The team estimated 9 days."
+        },
+        "Small": {
+          "pass": false,
+          "reason": "9 days exceeds the 5-day limit. Split it with a recipe from references/splitting.md."
+        },
+        "Testable": {
+          "pass": true,
+          "reason": "1 of 1 scenarios have Given, When and Then."
+        }
+      },
+      "notes": [
+        "Status is Draft; stakeholders have not reviewed it."
+      ]
+    },
+    {
+      "id": "ONB-004",
+      "name": "Setup dashboard",
+      "epic": "Guided Setup",
+      "priority": "Could Have",
+      "score": 1,
+      "verdict": "DISCOVERY",
+      "criteria": {
+        "Independent": {
+          "pass": false,
+          "reason": "Untracked dependencies: ONB-003. Record each in the RAID log or split the item."
+        },
+        "Negotiable": {
+          "pass": true,
+          "reason": "The I Want To statement leaves the build open."
+        },
+        "Valuable": {
+          "pass": false,
+          "reason": "The So That statement does not say what changes for the user or the business."
+        },
+        "Estimable": {
+          "pass": false,
+          "reason": "No team estimate. Estimates come from the delivery team during refinement."
+        },
+        "Small": {
+          "pass": false,
+          "reason": "No estimate to compare."
+        },
+        "Testable": {
+          "pass": false,
+          "reason": "No scenario has all of Given, When and Then."
+        }
+      },
+      "notes": [
+        "1 scenario(s) lack Given, When or Then.",
+        "Status is Draft; stakeholders have not reviewed it.",
+        "Refined 3 times without becoming ready; route the open question to discovery with an owner."
+      ]
+    }
+  ]
+}

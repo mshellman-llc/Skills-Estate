@@ -1,0 +1,459 @@
+{
+  "mode": "confirmation",
+  "template": true,
+  "client": "[Client name]",
+  "title": "A clear read on the health of your Salesforce org",
+  "date": "[Month YYYY]",
+  "quote_number": "[Q-number]",
+  "quote_snapshot": {
+    "quote.totalBuPrice": 18000
+  },
+  "deck_lead": "A two week diagnostic that inventories the org, scores capability maturity, and returns a prioritised roadmap with rough investment ranges. Client-specific slides are marked and filled during the pursuit.",
+  "meta": [
+    {
+      "k": "Engagement",
+      "v": "Org health assessment"
+    },
+    {
+      "k": "Approach",
+      "v": "Diagnostic"
+    },
+    {
+      "k": "Duration",
+      "v": "2 weeks"
+    },
+    {
+      "k": "Reference",
+      "v": "[Q-number]"
+    }
+  ],
+  "_source": "Synthetic training-studio scenario: test figures and interview statements created for renderer regression; no real quote or engagement.",
+  "options": [
+    {
+      "name": "Org health assessment",
+      "recommended": true,
+      "duration": "2 weeks",
+      "investment": "$18,000"
+    }
+  ],
+  "figures": [
+    {
+      "label": "Investment",
+      "value": 18000,
+      "quote_field": "quote.totalBuPrice"
+    }
+  ],
+  "slides": [
+    {
+      "kind": "divider",
+      "title": "The situation",
+      "subtitle": "Why the client is moving and what the timing is driven by.",
+      "num": 1
+    },
+    {
+      "kind": "heard",
+      "section": {
+        "num": 1,
+        "name": "The situation"
+      },
+      "title": "What we heard",
+      "subtitle": "[Fill from discovery. Three to five statements, attributable to a person and a session.]",
+      "items": [
+        {
+          "text": "[Their stated driver, in their words]",
+          "evidence": "client_stated",
+          "source": "[Name, session, date]"
+        },
+        {
+          "text": "[What the current state costs them today]",
+          "evidence": "client_stated",
+          "source": "[Name, session, date]"
+        },
+        {
+          "text": "[What they want to be able to do afterwards]",
+          "evidence": "client_stated",
+          "source": "[Name, session, date]"
+        }
+      ],
+      "num": 2
+    },
+    {
+      "kind": "exec_summary",
+      "section": {
+        "num": 1,
+        "name": "The situation"
+      },
+      "title": "What changes",
+      "left_label": "Today",
+      "left_lead": "Decisions made without an agreed picture of the org.",
+      "left": [
+        "Technical debt is known anecdotally rather than inventoried.",
+        "Automation has accumulated across tools with no single view.",
+        "Security and access questions surface during audits.",
+        "Roadmap debates run on opinion because no scorecard exists."
+      ],
+      "right_label": "After the engagement",
+      "right_lead": "An evidenced picture of the org and a ranked list of what to fix.",
+      "right": [
+        "A metadata and technical inventory of the org as it stands.",
+        "Capability maturity scored against a defined model.",
+        "Findings ranked by business impact with owners suggested.",
+        "A prioritised roadmap with rough investment ranges."
+      ],
+      "num": 3
+    },
+    {
+      "kind": "divider",
+      "title": "The engagement",
+      "subtitle": "What the engagement covers and how it runs.",
+      "num": 4
+    },
+    {
+      "kind": "recommendation",
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "Why this approach fits",
+      "pick": "Org health assessment",
+      "pick_note": "A two week diagnostic led by a solution architect with analyst and project management support. It produces evidence and a ranked roadmap.",
+      "reasons": [
+        {
+          "head": "Two weeks buys an evidenced baseline",
+          "body": "An inventory and a scorecard replace anecdote as the basis for the roadmap conversation."
+        },
+        {
+          "head": "Findings are ranked by impact",
+          "body": "The output is a prioritised list rather than an undifferentiated register, so remediation can be sequenced and funded."
+        },
+        {
+          "head": "It sizes the next step",
+          "body": "The roadmap carries rough investment ranges, which is what a sponsor needs before committing to remediation."
+        }
+      ],
+      "num": 5
+    },
+    {
+      "kind": "deliverables",
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "What you get",
+      "items": [
+        {
+          "name": "Discovery and stakeholder facilitation",
+          "detail": "Structured sessions with the named stakeholders across the agreed functions.",
+          "format": "Workshop",
+          "when": "Week 1"
+        },
+        {
+          "name": "Org metadata and technical inventory",
+          "detail": "Inventory of objects, automation, and customisation as configured today.",
+          "format": "Document",
+          "when": "Week 1"
+        },
+        {
+          "name": "Automation and technical debt review",
+          "detail": "Assessment of automation across tools, with duplication and risk called out.",
+          "format": "Document",
+          "when": "Week 1"
+        },
+        {
+          "name": "Security and data access review",
+          "detail": "Review of the sharing model, roles, and access against intent.",
+          "format": "Document",
+          "when": "Week 2"
+        },
+        {
+          "name": "Data quality assessment",
+          "detail": "Duplication, completeness, and validation findings on the core objects.",
+          "format": "Document",
+          "when": "Week 2"
+        },
+        {
+          "name": "Capability maturity scoring",
+          "detail": "Scored assessment against a defined capability model.",
+          "format": "Scorecard",
+          "when": "Week 2"
+        },
+        {
+          "name": "Findings report and capability scorecard",
+          "detail": "Ranked findings with business impact and suggested owners.",
+          "format": "Report",
+          "when": "Week 2"
+        },
+        {
+          "name": "Prioritised roadmap with ROM ranges",
+          "detail": "Sequenced remediation roadmap with rough investment ranges.",
+          "format": "Report",
+          "when": "Week 2"
+        },
+        {
+          "name": "Executive readout",
+          "detail": "Findings and roadmap presented to the sponsor group.",
+          "format": "Session",
+          "when": "Week 2"
+        }
+      ],
+      "num": 6
+    },
+    {
+      "kind": "scope",
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "Scope boundaries",
+      "in_label": "Included",
+      "in_scope": [
+        "Structured discovery with named stakeholders.",
+        "Metadata and technical inventory of the org.",
+        "Automation and technical debt review.",
+        "Security and data access review.",
+        "Data quality assessment on the core objects.",
+        "Capability maturity scoring.",
+        "Ranked findings with a prioritised roadmap and rough ranges.",
+        "Executive readout."
+      ],
+      "out_label": "Not included",
+      "out_scope": [
+        {
+          "item": "Integration assessment",
+          "route": "Add-on to this engagement"
+        },
+        {
+          "item": "Remediation of any finding",
+          "route": "Follow-on engagement, sized from the roadmap"
+        },
+        {
+          "item": "Managed services or ongoing support",
+          "route": "Sold separately"
+        },
+        {
+          "item": "Assessment of clouds outside the agreed scope",
+          "route": "Change Order"
+        },
+        {
+          "item": "Training and change management",
+          "route": "Sold separately"
+        }
+      ],
+      "callout": "Each exclusion routes to a scoped next step.",
+      "num": 7
+    },
+    {
+      "kind": "timeline",
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "2 week delivery sequence",
+      "phases": [
+        {
+          "name": "Discover",
+          "weeks": 1,
+          "detail": "Stakeholder sessions and metadata inventory"
+        },
+        {
+          "name": "Assess and report",
+          "weeks": 1,
+          "milestone": "Executive readout",
+          "detail": "Scoring, findings, roadmap, readout"
+        }
+      ],
+      "num": 8
+    },
+    {
+      "kind": "team",
+      "section": {
+        "num": 2,
+        "name": "The engagement"
+      },
+      "title": "Role engagement windows",
+      "weeks": 2,
+      "roles": [
+        {
+          "role": "Solution Architect",
+          "windows": [
+            {
+              "from": 1,
+              "to": 2
+            }
+          ]
+        },
+        {
+          "role": "Business Analyst",
+          "windows": [
+            {
+              "from": 1,
+              "to": 2
+            }
+          ]
+        },
+        {
+          "role": "Project Manager",
+          "windows": [
+            {
+              "from": 1,
+              "to": 2,
+              "weight": "support"
+            }
+          ]
+        },
+        {
+          "role": "Client Services Executive",
+          "windows": [
+            {
+              "from": 1,
+              "to": 1
+            },
+            {
+              "from": 2,
+              "to": 2,
+              "weight": "support"
+            }
+          ]
+        }
+      ],
+      "legend": "Solid marks the weeks a role leads. Pale marks the weeks it supports. Bar weight is engagement emphasis rather than a weekly hour commitment.",
+      "num": 9
+    },
+    {
+      "kind": "divider",
+      "title": "Commercials",
+      "subtitle": "What it costs and what the estimate depends on.",
+      "num": 10
+    },
+    {
+      "kind": "investment",
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "Investment",
+      "amount": "$18,000",
+      "qualifier": "Fixed fee. Figures come from the Pricing System, not from this document.",
+      "terms": [
+        {
+          "k": "Duration",
+          "v": "2 weeks"
+        },
+        {
+          "k": "Fee type",
+          "v": "Fixed fee"
+        },
+        {
+          "k": "Integrations",
+          "v": "Add-on"
+        },
+        {
+          "k": "Readout",
+          "v": "Included"
+        }
+      ],
+      "distribution_label": "Where the hours go",
+      "distribution": [
+        {
+          "name": "Discover",
+          "value": 85
+        },
+        {
+          "name": "Assess and report",
+          "value": 85
+        }
+      ],
+      "num": 11
+    },
+    {
+      "kind": "assumptions",
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "Assumptions behind this estimate",
+      "rows": [
+        {
+          "text": "Read access to the org is granted before week one begins.",
+          "if_false": "The inventory cannot start and the two week window compresses."
+        },
+        {
+          "text": "The assessment covers one org and the clouds agreed at kickoff.",
+          "if_false": "Additional orgs or clouds are a Change Order."
+        },
+        {
+          "text": "Stakeholders are available for sessions inside the two weeks.",
+          "if_false": "Findings rest on metadata alone and lose business context."
+        },
+        {
+          "text": "Integration assessment is excluded from the base engagement.",
+          "if_false": "Integration review is added as a scoped add-on."
+        }
+      ],
+      "num": 12
+    },
+    {
+      "kind": "need_from_you",
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "What we need from you",
+      "steps": [
+        {
+          "text": "Read access to the org, granted for the assessment team.",
+          "owner": "[Client administrator]",
+          "when": "Before week 1"
+        },
+        {
+          "text": "Calendar holds for the named stakeholders inside the two weeks.",
+          "owner": "[Client sponsor]",
+          "when": "Before week 1"
+        },
+        {
+          "text": "The clouds and org in scope, agreed in writing.",
+          "owner": "[Client sponsor]",
+          "when": "At kickoff"
+        }
+      ],
+      "num": 13
+    },
+    {
+      "kind": "confirm",
+      "section": {
+        "num": 3,
+        "name": "Commercials"
+      },
+      "title": "Next steps",
+      "steps": [
+        {
+          "text": "Confirm the scope and the assumptions.",
+          "owner": "[Client sponsor]",
+          "when": "[Date]"
+        },
+        {
+          "text": "We issue the Statement of Work.",
+          "owner": "Client Services Executive",
+          "when": "+3 business days"
+        },
+        {
+          "text": "Pre-engagement checklist opens, access requested.",
+          "owner": "Joint",
+          "when": "At signature"
+        },
+        {
+          "text": "Kickoff and mobilisation begins.",
+          "owner": "Project Manager",
+          "when": "[Date]"
+        }
+      ],
+      "num": 14
+    },
+    {
+      "kind": "closing",
+      "title": "Two weeks to an evidenced baseline.",
+      "subtitle": "A ranked set of findings with a roadmap the sponsor group can act on."
+    }
+  ],
+  "_fixture": true
+}

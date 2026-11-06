@@ -1,0 +1,81 @@
+schema_version: 1
+skill: ingest-transcript
+lifecycle:
+  status: active
+job:
+  user: A practitioner or agent with a consulting meeting transcript
+  situation: A raw call record must be preserved, normalized, indexed, and connected to the correct pursuit or engagement.
+  outcome: The raw bytes remain intact, a searchable Markdown copy exists, and proposed claims retain transcript provenance.
+  complete_when: Identity, raw and normalized locations, source hash, index update, evidence result, and persistence state are recorded.
+position:
+  closest_skills:
+    - knowledge-hub
+    - maintain-discovery-record
+  disposition: separate
+  rationale: Transcript ingestion is a distinct source-processing job; Knowledge Hub owns storage and maintain-discovery-record owns the pursuit discovery record.
+contract:
+  inputs:
+    - Raw Markdown, text, or VTT transcript
+    - Confirmed client and opportunity or engagement context
+  outputs:
+    - Preserved raw source
+    - Normalized Markdown transcript
+    - Transcript index entry and proposed evidence claims
+selection:
+  positive:
+    - File this client call transcript in the Hub.
+    - Normalize and index this VTT for the pursuit.
+  adjacent:
+    - prompt: Update the discovery questions from this call.
+      owner: maintain-discovery-record
+    - prompt: Prepare for the next call.
+      owner: prepare-sales-pursuit
+  negative:
+    - Summarize this meeting without filing it.
+    - Prepare a discovery agenda.
+relationships:
+  requires:
+    - knowledge-hub
+  optional:
+    - evidence-core
+  controls:
+    - Raw transcript preservation
+    - Normalized transcript identity
+  upstream:
+    - Meeting transcript providers and supplied files
+  downstream:
+    - evidence-core
+    - maintain-discovery-record
+capabilities:
+  - name: Local transcript normalizer
+    required: false
+    hosts:
+      - Codex
+      - Claude Code
+    unavailable_behavior: Normalize with available file tools, or return the exact Markdown and intended targets as a patch.
+risks:
+  persistent_writes:
+    - Raw and normalized transcript files
+    - Knowledge Hub transcript index and evidence records
+  authorization:
+    - Confirm the client and lifecycle context before filing.
+  failure_behavior: Preserve the raw file, refuse ambiguous identity and overwrite attempts, and report any conversion gap.
+  privacy: Keep transcripts inside the authorized client context and avoid loading full bodies when the index answers the task.
+  rollback: Raw source files are immutable; remove a newly created normalized copy only through an authorized corrective change.
+cost:
+  status: unknown
+  receipt: null
+efficiency:
+  status: unknown
+  receipt: null
+stewardship:
+  steward: Estate consulting methods owners
+  maintainers:
+    - Project-designated transcript maintainer
+    - Project-designated methods reviewer
+  lifecycle_approver: The lifecycle approver designated by the adopting project
+  review_date: 2026-09-30
+  stale_facts:
+    - Supported transcript formats
+    - Transcript provider exports
+  retirement_path: Preserve every raw source and migrate normalized records, indexes, and provenance before archival.

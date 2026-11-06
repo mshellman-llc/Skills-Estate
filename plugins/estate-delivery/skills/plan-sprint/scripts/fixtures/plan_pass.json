@@ -1,0 +1,11 @@
+{"sprint_name":"Sprint 14","dates":"2026-11-09 to 2026-11-20","goal":"A new admin can finish guided setup without a support ticket",
+"definition_of_done":["code reviewed","tests added","docs updated"],
+"capacity":{"sprint_days":10,"hours_per_day":8,"focus_factor":0.7,"commit_target_pct":80,"stretch_pct":15,
+ "team_members":[{"name":"Ana","meeting_hours":10,"interrupt_hours":6},{"name":"Raj","pto_days":1,"meeting_hours":10,"on_call_hours":12,"interrupt_hours":6}]},
+"velocity_history_points":[10,12,11],
+"items":[
+ {"id":"ONB-001","title":"Setup checklist","type":"commit","estimated_hours":24,"estimated_points":5,"assignee":"Ana",
+  "dependencies":[{"raid_id":"D-004","description":"Auth scope","owner":"Platform lead","needed_by":"2026-11-11","confirmed":true}],
+  "risks":[{"description":"Design not final","mitigation":"Review day 2","owner":"Ana"}],"dod_items":["code reviewed","tests added","docs updated"]},
+ {"id":"ONB-002","title":"Resume setup later","type":"commit","estimated_hours":16,"estimated_points":3,"assignee":"Raj","dependencies":[],
+  "risks":[{"description":"Session storage edge cases","mitigation":"Pair on day 1","owner":"Raj"}],"dod_items":["code reviewed","tests added","docs updated"]}]}

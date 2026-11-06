@@ -1,0 +1,55 @@
+{
+  "description": "Estate Salesforce delivery standards. Commands are inert outside repositories configured with estate.mode.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/verify-git-hooks.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/session-status.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "apply_patch|Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-force-app.sh" }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/ensure-worktree-config.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-force-app-bash.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-sf-deploy.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-sf-flags.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-worktree-nesting.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-closing-keywords.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-devops-shared.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-devops-handoff.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-local-merge.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-pr-merge.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/guard-push.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/record-escape-hatch.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/record-validate.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/auto-label-deploy.sh" },
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/post-merge-nudge.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.estate/claude-hooks/stop-dod-check.sh" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "records": {
+    "client.front_door": {"scope": "client", "path": "00-CLIENT.md", "legacy": ["00-hub-index.md", "00-INDEX.md"]},
+    "client.profile": {"scope": "client", "path": "account/profile.md", "legacy": ["01-client-engagement-profile.md", "01-company-profile.md"]},
+    "client.relationships": {"scope": "client", "path": "account/relationships.md", "legacy": ["04-org-and-stakeholders.md"]},
+    "client.business_strategy": {"scope": "client", "path": "account/business-and-strategy.md", "legacy": ["02-business-model-money-flow.md", "03-financials-and-pressures.md", "06-competitive-landscape.md"]},
+    "client.technology": {"scope": "client", "path": "account/technology-landscape.md", "legacy": ["07-product-and-tech-context.md"]},
+    "client.engagement_history": {"scope": "client", "path": "account/engagement-history.md", "legacy": []},
+    "opportunity.front_door": {"scope": "opportunity", "path": "opportunities/{opportunity_id}/00-OPPORTUNITY.md", "legacy": []},
+    "opportunity.qualification": {"scope": "opportunity", "path": "opportunities/{opportunity_id}/qualification.md", "legacy": ["08-deal-strategy.md"]},
+    "opportunity.discovery": {"scope": "opportunity", "path": "opportunities/{opportunity_id}/discovery.md", "legacy": ["05-current-state-and-requirements.md", "09-discovery-questions.md"]},
+    "opportunity.solution_scope": {"scope": "opportunity", "path": "opportunities/{opportunity_id}/solution-and-scope.md", "legacy": ["05-scope-plan-status.md", "10-assumptions-register.md"]},
+    "opportunity.commercial": {"scope": "opportunity", "path": "opportunities/{opportunity_id}/commercial.md", "legacy": []},
+    "opportunity.pursuit_history": {"scope": "opportunity", "path": "opportunities/{opportunity_id}/pursuit-history.md", "legacy": []},
+    "engagement.front_door": {"scope": "engagement", "path": "engagements/{engagement_id}/00-ENGAGEMENT.md", "legacy": ["00-hub-index.md"]},
+    "engagement.contract_commitments": {"scope": "engagement", "path": "engagements/{engagement_id}/contract-and-commitments.md", "legacy": ["01-contract-and-commitments.md", "05-scope-plan-status.md"]},
+    "engagement.handoff_mobilization": {"scope": "engagement", "path": "engagements/{engagement_id}/handoff-and-mobilization.md", "legacy": ["02-handoff-and-mobilization.md", "06-meetings-handoffs.md"]},
+    "engagement.requirements_design": {"scope": "engagement", "path": "engagements/{engagement_id}/requirements-and-design.md", "legacy": ["03-requirements-and-design.md", "05-current-state-and-requirements.md"]},
+    "engagement.delivery_status": {"scope": "engagement", "path": "engagements/{engagement_id}/track-delivery.md", "legacy": ["04-delivery-plan-and-status.md", "05-scope-plan-status.md"]},
+    "engagement.control": {"scope": "engagement", "path": "engagements/{engagement_id}/risks-decisions-and-changes.md", "legacy": ["05-raid-decisions-and-changes.md", "04-decisions-assumptions.md", "10-assumptions-register.md"]},
+    "engagement.test_acceptance": {"scope": "engagement", "path": "engagements/{engagement_id}/testing-and-acceptance.md", "legacy": ["06-testing-deployment-and-acceptance.md"]},
+    "engagement.outcomes_closeout": {"scope": "engagement", "path": "engagements/{engagement_id}/outcomes-and-closeout.md", "legacy": ["07-outcomes-and-closeout.md"]},
+    "engagement.expansion": {"scope": "engagement", "path": "engagements/{engagement_id}/expansion.md", "legacy": ["08-expansion-and-follow-on.md"]},
+    "evidence.sources": {"scope": "context", "path": "{context_path}/evidence/source-register.md", "legacy": ["02-source-register.md", "11-sources.md"]},
+    "evidence.claims": {"scope": "context", "path": "{context_path}/evidence/evidence-ledger.json", "legacy": ["03-evidence-ledger.md"]},
+    "transcripts.index": {"scope": "context", "path": "{context_path}/transcripts/00-INDEX.md", "legacy": ["06-meetings-handoffs.md"]},
+    "deliverables.register": {"scope": "context", "path": "{context_path}/deliverables/register.md", "legacy": ["07-deliverables-register.md"]}
+  },
+  "routes": {
+    "call-preparation": ["client.front_door", "client.relationships", "opportunity.front_door", "opportunity.discovery"],
+    "qualification": ["client.front_door", "opportunity.front_door", "opportunity.qualification", "opportunity.discovery"],
+    "proposal": ["opportunity.front_door", "opportunity.discovery", "opportunity.solution_scope", "opportunity.commercial"],
+    "delivery-handoff": ["engagement.front_door", "engagement.contract_commitments", "engagement.handoff_mobilization", "evidence.claims"],
+    "weekly-status": ["engagement.front_door", "engagement.delivery_status", "engagement.control"],
+    "requirements": ["engagement.front_door", "engagement.contract_commitments", "engagement.requirements_design", "evidence.claims"],
+    "change-request": ["engagement.contract_commitments", "engagement.delivery_status", "engagement.control", "evidence.claims"],
+    "closeout": ["engagement.front_door", "engagement.test_acceptance", "engagement.outcomes_closeout", "deliverables.register"],
+    "expansion": ["client.front_door", "client.engagement_history", "engagement.outcomes_closeout", "engagement.expansion"]
+  }
+}
