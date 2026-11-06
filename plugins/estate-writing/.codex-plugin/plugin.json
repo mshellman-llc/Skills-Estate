@@ -1,5 +1,5 @@
 {
-  "description": "Unreviewed candidate for isolated testing. Skills Estate writing, voice and brand workflows.",
+  "description": "Skills Estate writing, voice and brand workflows.",
   "name": "estate-writing",
   "skills": "./skills/",
   "version": "0.3.0"
