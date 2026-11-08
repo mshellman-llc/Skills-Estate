@@ -1098,6 +1098,20 @@
         "optional": []
       },
       "requires": "Needs Python 3 for its library, and Node.js with Playwright for the browser checks."
+    },
+    "build-editorial-chart": {
+      "what": "Build an editorial chart or small dashboard from supplied numbers, with the finding in the headline, one highlighted series and direct labels.",
+      "when": "Numbers with a known source need a chart that reads clearly on a phone and a desktop, including progress against plan, estimate ranges and targets.",
+      "inputs": "The numbers with their source, unit and timeframe, the finding or question, and optionally a brand profile.",
+      "outputs": "A self-contained HTML chart page in light and dark themes, checked by check_html.py.",
+      "example": "Chart these phase hours, planned against used, and highlight the workstream that hasn't started.",
+      "reviewedEntrypointSha256": "59a66f33d0ac0cded91a8d5fafa93d28ef60f0ad1acde0109542d34cd614f5d5",
+      "expect": "It picks the chart type, writes a JSON spec or D3 panel, renders the page in the selected brand profile (Baseline by default), runs the HTML check, and inspects the page at desktop width and 375px. It uses only the supplied numbers, draws targets and projections dashed, and keeps any hosted page private.",
+      "connectors": {
+        "required": [],
+        "optional": []
+      },
+      "requires": "Python 3 for the scripts, Node for the inline script syntax check, and a browser for the visual check."
     }
   }
 }
