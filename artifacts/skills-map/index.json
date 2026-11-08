@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T21:19:14.540441+00:00",
-  "baseCommit": "cb9db86d2102a63700f05010c11f41732fd4fdab",
+  "generatedAt": "2026-11-08T20:50:32.495167+00:00",
+  "baseCommit": "b308503dcf03cb5914acbb77dac985ce73ec7377",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -55,7 +55,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/accessibility-audit/SKILL.md",
       "sourceSha256": "30aae4a806f649376a0039a123b775be7e337a18041f3f55bae04bd41fd6d3ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/accessibility-audit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/accessibility-audit/SKILL.md",
       "taskPackages": [
         {
           "name": "accessibility-audit",
@@ -180,7 +180,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/analytics-strategy/SKILL.md",
       "sourceSha256": "fad5d22b7b107b0a195b036d75966ded0b29433b4b996cfc2022f75bd1192841",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/analytics-strategy/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/analytics-strategy/SKILL.md",
       "taskPackages": [
         {
           "name": "analytics-strategy",
@@ -305,7 +305,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/architecture-doc/SKILL.md",
       "sourceSha256": "704962a9930c507f8002c1b4832d5947542aaf24b09f6a6c7c838028eb15b0d2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/architecture-doc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/architecture-doc/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -515,7 +515,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-writing-style/SKILL.md",
       "sourceSha256": "2c4a88898b19221b63419f21ecc5e0638268b88fd9e84e25e34785e35013b08a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/author-writing-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/author-writing-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -634,7 +634,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/backlog-refinement/SKILL.md",
       "sourceSha256": "89c830ca620b58762d812090bb255fa50050aa9da3f0ccb697063efdd2937f7a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/backlog-refinement/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/backlog-refinement/SKILL.md",
       "taskPackages": [
         {
           "name": "backlog-refinement",
@@ -852,7 +852,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-capture/SKILL.md",
       "sourceSha256": "88b922fc5e1b600a1ace4d0a19bd936945ecddfbbb42bc9aa04964f5968de14a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/beastmode-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-capture",
@@ -979,7 +979,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-context/SKILL.md",
       "sourceSha256": "02ca69e21b2e17b50e6be9a2cced92534e1ba788ba8759c702d10bd06026f223",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/beastmode-context/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-context",
@@ -1121,7 +1121,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-health/SKILL.md",
       "sourceSha256": "cfee684db742def5fffcee148074182fd34804784a0486f51b27a0e3bdc3303e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-health/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/beastmode-health/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-health",
@@ -1262,7 +1262,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/beastmode-reconcile/SKILL.md",
       "sourceSha256": "70bfeccd296dc9c6f8ee7a290a5b605e1087b1abb0c5bd4794ac969945acc9e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/beastmode-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/beastmode-reconcile/SKILL.md",
       "taskPackages": [
         {
           "name": "beastmode-reconcile",
@@ -1389,7 +1389,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brain-work-item/SKILL.md",
       "sourceSha256": "d2aa7234b3610505200c90188ad9c60811d6eb3e8288d22b33d15856c0662193",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/brain-work-item/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/brain-work-item/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1488,7 +1488,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "a547727f6e59008212becc0315e6d268f90e46080d99d8cd6a54f75ac29cd852",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -1881,7 +1881,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "3a8479870a7aa884a1c5739c1d9da9e95e1ea069ffb1c0c924e20dbc0a8852e8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -2066,7 +2066,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/business-case/SKILL.md",
       "sourceSha256": "044b11756dbf2e052006fb336c4a0b800d001cdea716fadc9220bb5c060ab74d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "business-case",
@@ -2284,7 +2284,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/call-prep/SKILL.md",
       "sourceSha256": "e12fbf1eacebf3e8d801f837e8453941265cc49ad27c2683da4b9d4b391cff60",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/call-prep/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/call-prep/SKILL.md",
       "taskPackages": [
         {
           "name": "call-prep",
@@ -2575,7 +2575,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-application/SKILL.md",
       "sourceSha256": "9a9cd94e9d1bbaeffd4bd3d14f2233361b9f27ea54c95c4ed4f73524202d9fa8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/career-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/career-application/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2751,7 +2751,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-materials-and-outreach/SKILL.md",
       "sourceSha256": "c3dc0019f1bde982446eab7af59904a378479dfe8f3758427fbf79b727bc79ec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/career-materials-and-outreach/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/career-materials-and-outreach/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -2895,7 +2895,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/career-progression-and-offers/SKILL.md",
       "sourceSha256": "4bd8a9469889eee41a03eb6f90e7ffe10879a96556796192538206db652571b0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/career-progression-and-offers/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/career-progression-and-offers/SKILL.md",
       "taskPackages": [
         {
           "name": "career-decisions",
@@ -3025,7 +3025,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/case-study-builder/SKILL.md",
       "sourceSha256": "e78a68ff01fee091589db827b094754fe95b5f7ca303e7779a81a94da3bcd750",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/case-study-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/case-study-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "portfolio-case-study",
@@ -3147,7 +3147,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/client-brand/SKILL.md",
       "sourceSha256": "c6d5ac41111ea61ab2c36ce3f75bb6233f4e9e3ea3d3df205f8033a5120c9e1c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/client-brand/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/client-brand/SKILL.md",
       "taskPackages": [
         {
           "name": "brand-profile",
@@ -3287,7 +3287,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/code-simplify/SKILL.md",
       "sourceSha256": "d43d7322867e6d4267530420631be0734b629ddcbf6d0037685ec09c3cea5ac4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/code-simplify/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/code-simplify/SKILL.md",
       "taskPackages": [
         {
           "name": "code-simplify",
@@ -3401,7 +3401,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cross-platform-skill-release/SKILL.md",
       "sourceSha256": "fe3cdfc727e15ce6301c32f55d1e31be3cac6f01f4bcafef9ffc6282b727afd4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/cross-platform-skill-release/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/cross-platform-skill-release/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -3548,7 +3548,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/cutover-closeout/SKILL.md",
       "sourceSha256": "583fb89bee016741de40cafa78ec1a29c44e9d5109a4e67fc68ee4a4de7ce00f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "cutover-closeout",
@@ -3772,7 +3772,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ddoc/SKILL.md",
       "sourceSha256": "b4190b6f05c8fe0301adfc24fb3ba516ed6550f343e0aae0a2b6319abd26799f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/ddoc/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/ddoc/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -4048,7 +4048,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deal-desk/SKILL.md",
       "sourceSha256": "a994c1f2862ed00ea7f6678f0ff288cf41200066b678d62a505428ed41a94729",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/deal-desk/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/deal-desk/SKILL.md",
       "taskPackages": [
         {
           "name": "commercial-review",
@@ -4282,7 +4282,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/decision-register/SKILL.md",
       "sourceSha256": "f4625f40a6198c4297a44a4df43ef2ab2669e146d612f295ccef81fd50616341",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "decision-register",
@@ -4430,7 +4430,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deck-builder/SKILL.md",
       "sourceSha256": "f0f27ea1b6fa2ed0bbffa39963b983d4363de43470336f9cae9fdaa435113acb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/deck-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/deck-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "deck-builder",
@@ -4660,7 +4660,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-kickoff/SKILL.md",
       "sourceSha256": "c60d6b255027410268c1b7c8562722d127c380d9435c4851c5817d6f525ac0af",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/delivery-kickoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/delivery-kickoff/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-kickoff",
@@ -4940,7 +4940,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-status/SKILL.md",
       "sourceSha256": "d9f5fd583a023be196ed21e40f88e2dcc2c8674fe726c40c3325af5843e2c672",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/delivery-status/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/delivery-status/SKILL.md",
       "taskPackages": [
         {
           "name": "delivery-status",
@@ -5198,7 +5198,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-suite/SKILL.md",
       "sourceSha256": "39b3a3e46eae49ae780f245a616eeb4b1a42824a53027735c577768d149d0372",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/delivery-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/delivery-suite/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -5447,7 +5447,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-brief/SKILL.md",
       "sourceSha256": "51d21c7ee14f73df4a09ba9cb86ef8ff3a5a7f938c5f3523c021d662f01d1df3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/discovery-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/discovery-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -5709,7 +5709,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/discovery-synthesis/SKILL.md",
       "sourceSha256": "53a74977869d0e0946aefa1977d7a0ebf5826d6f86a327eb045599245b8510b2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/discovery-synthesis/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/discovery-synthesis/SKILL.md",
       "taskPackages": [
         {
           "name": "discovery",
@@ -5884,7 +5884,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-promote/SKILL.md",
       "sourceSha256": "9a105d47b6a0d13b91d1ab2327554422afb9c638e33fdaa0a84eb4730e1c2d46",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/dx-devops-promote/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/dx-devops-promote/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -6106,7 +6106,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/dx-devops-work-item-manage/SKILL.md",
       "sourceSha256": "d06e708aef3b2bafb70137e5e457b5f0e0786672a1191c0fd10e50b4c4def260",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/dx-devops-work-item-manage/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/dx-devops-work-item-manage/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-devops-center",
@@ -6260,6 +6260,246 @@
       ]
     },
     {
+      "id": "editorial-charts",
+      "title": "Editorial charts",
+      "family": 3,
+      "description": "Build charts, small dashboards and data stories with newspaper-graphics discipline from New York Times and Upshot practice: one hero color with grey context, direct labels, a headline that states the finding, in-place annotation, 375px-first layout and D3 hover that snaps to the nearest mark. Renders static Observable Plot pages from a JSON spec (line, area, bar, scatter, small multiples, estimate ranges, progress against plan, dashed targets and projections) in the selected brand profile, Baseline by default. Use when a chart, graph or data panel should read as editorial and trustworthy rather than a default library chart. Not for measurement plans or tracking design (analytics-strategy), explorer sites (build-interactive-explorer) or slide decks (deck-builder). Does not publish or share anything.",
+      "status": "local-addition",
+      "entrypointChanged": false,
+      "sourcePath": "skills/editorial-charts/SKILL.md",
+      "sourceSha256": "057e517c0bf71997087683bc9807c1e792ff7c8d3c78eb5d730af8e8b5915d09",
+      "githubUrl": null,
+      "taskPackages": [
+        {
+          "name": "editorial-charts",
+          "mode": null
+        }
+      ],
+      "downloadPackages": [
+        "editorial-charts"
+      ],
+      "guide": {
+        "what": "Build an editorial chart or small dashboard from supplied numbers, with the finding in the headline, one highlighted series and direct labels.",
+        "when": "Numbers with a known source need a chart that reads clearly on a phone and a desktop, including progress against plan, estimate ranges and targets.",
+        "inputs": "The numbers with their source, unit and timeframe, the finding or question, and optionally a brand profile.",
+        "outputs": "A self-contained HTML chart page in light and dark themes, checked by check_html.py.",
+        "example": "Chart these phase hours, planned against used, and highlight the workstream that hasn't started.",
+        "reviewedEntrypointSha256": "057e517c0bf71997087683bc9807c1e792ff7c8d3c78eb5d730af8e8b5915d09",
+        "expect": "It picks the chart type, writes a JSON spec or D3 panel, renders the page in the selected brand profile (Baseline by default), runs the HTML check, and inspects the page at desktop width and 375px. It uses only the supplied numbers, draws targets and projections dashed, and keeps any hosted page private.",
+        "connectors": {
+          "required": [],
+          "optional": []
+        },
+        "requires": "Python 3 for the scripts, Node for the inline script syntax check, and a browser for the visual check."
+      },
+      "guideStatus": "current",
+      "reuse": {
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and does not require Megan’s biography or private records.",
+        "setup": "",
+        "cleanup": [],
+        "readiness": "reusable",
+        "references": [
+          {
+            "path": "skills/editorial-charts/fixtures/governance.yaml",
+            "line": 70,
+            "text": "steward: \"Megan Shellman\"",
+            "kind": "example-or-test"
+          },
+          {
+            "path": "skills/editorial-charts/fixtures/governance.yaml",
+            "line": 72,
+            "text": "- \"Megan Shellman\"",
+            "kind": "example-or-test"
+          },
+          {
+            "path": "skills/editorial-charts/fixtures/governance.yaml",
+            "line": 73,
+            "text": "lifecycle_approver: \"Megan Shellman\"",
+            "kind": "example-or-test"
+          },
+          {
+            "path": "skills/editorial-charts/fixtures/scaffold-receipt.json",
+            "line": 4,
+            "text": "\"destination\": \"/private/tmp/claude-501/-Volumes-BeastMode/7e9ae851-f705-4278-9777-8e679330ce43/scratchpad/estate/skills/editorial-charts\",",
+            "kind": "example-or-test"
+          }
+        ],
+        "dependencyReferences": [],
+        "sharedReferences": [],
+        "textFilesScanned": 15,
+        "packageFingerprint": "c932674b8942665c678ba7a27703ee4f98e2f8b4c3267d9e687ce427a9119ef8",
+        "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
+      },
+      "catalogRole": {
+        "kind": "task",
+        "tasks": [
+          "editorial-charts"
+        ],
+        "modes": []
+      },
+      "profile": {
+        "tools": [
+          "scripts/annotate.py",
+          "scripts/chart_selector.py",
+          "scripts/check_html.py",
+          "scripts/interactive.py",
+          "scripts/palette.py",
+          "scripts/render.py",
+          "scripts/selftest.py",
+          "scripts/typography.py"
+        ],
+        "connectors": {
+          "required": [],
+          "optional": [],
+          "source": "guide"
+        },
+        "outputs": [],
+        "modes": [],
+        "agents": [
+          "product-router"
+        ],
+        "plugins": [
+          "estate-product"
+        ],
+        "bundles": [],
+        "usedBy": [],
+        "calls": [],
+        "dependsOn": [],
+        "runtimes": [],
+        "setup": "Python 3 for the scripts, Node for the inline script syntax check, and a browser for the visual check.",
+        "expect": "It picks the chart type, writes a JSON spec or D3 panel, renders the page in the selected brand profile (Baseline by default), runs the HTML check, and inspects the page at desktop width and 375px. It uses only the supplied numbers, draws targets and projections dashed, and keeps any hosted page private.",
+        "declared": true
+      },
+      "markdown": "---\nname: editorial-charts\ndescription: \"Build charts, small dashboards and data stories with newspaper-graphics discipline from New York Times and Upshot practice: one hero color with grey context, direct labels, a headline that states the finding, in-place annotation, 375px-first layout and D3 hover that snaps to the nearest mark. Renders static Observable Plot pages from a JSON spec (line, area, bar, scatter, small multiples, estimate ranges, progress against plan, dashed targets and projections) in the selected brand profile, Baseline by default. Use when a chart, graph or data panel should read as editorial and trustworthy rather than a default library chart. Not for measurement plans or tracking design (analytics-strategy), explorer sites (build-interactive-explorer) or slide decks (deck-builder). Does not publish or share anything.\"\n---\n\n# Editorial charts\n\nMake each chart answer one question, show the answer without interaction, and state it in the headline. The method follows the graphics desks credited in [sources.md](references/sources.md). Colors and fonts come from the selected brand profile under [the brand policy](references/estate/brand.md). Without a named profile or a project `brand.md`, use the neutral Baseline profile, which these scripts emit by default.\n\nScripts live in `scripts/`. Run them with `python3 -I scripts/<name>.py`. Every script runs standalone with no network access and no third-party Python packages. The pages they write load pinned D3 and Observable Plot builds from jsDelivr and fonts from Google Fonts.\n\n## When to use\n\nUse for a chart, graph, small dashboard or data story that should read as editorial and trustworthy: a finding stated in the headline, one highlighted series, direct labels and a source line. Typical requests: chart these numbers for a stakeholder page, show progress against plan, compare estimate ranges, show actual against target, or build an interactive panel that snaps to the nearest point.\n\n## When not to use\n\n- A measurement plan, event tracking or metric definitions belong to `analytics-strategy`.\n- A clickable explorer site built from source material belongs to `build-interactive-explorer`.\n- A slide deck belongs to `deck-builder`; this skill can supply a chart for one of its slides.\n- Applying a client identity across a whole document or site belongs to `client-brand`. This skill takes a resolved profile as its `brand` input.\n\n## Five rules for every chart\n\n1. **Color.** Give the series that matters the hero color. Draw everything else in one grey. Sequential data uses a one-hue tonal ramp with monotonic lightness, never a rainbow. Use a diverging scale only when the midpoint means something you can name. Past five categories, split into small multiples instead of adding colors. `palette.py` holds the Baseline ramps and checks lightness order.\n2. **Type.** Use one sans family, with `tabular-nums` on every number so digits stay aligned, and never a monospace face. `typography.py` emits the head block and tokens: Inter for the neutral profile. The `newsroom` profile adds a display serif for headlines; use it only when the user asks for a newspaper look. When a project or client profile governs, map its font and colors into a `brand` dict (a Google Fonts family plus light and dark token overrides) and pass it to `render.py` or `interactive.scaffold()`. `typography.py` documents the format. Read exact values from the profile; do not infer them.\n3. **Chart choice.** Use a line first for change over time and a bar second. Never use a pie chart or a second y-axis, and start every bar at zero. Past five series, use small multiples. `chart_selector.py` returns a recommendation, the reason, what to avoid and reference examples. Its patterns cover progress against a plan and comparisons of estimates. They also cover actual values against a target.\n4. **Annotation.** The headline is a sentence stating the finding. The subtitle names the unit and timeframe. A source line sits under the chart. Label series directly at their ends; the direct labels act as the legend. Keep a separate legend only when labels cannot fit. Annotate known turning points on the chart. Write axis labels in plain English. `annotate.py` lints a chart spec and scores it.\n5. **Visible without interaction.** Anything the reader needs must show without hover or click, and tooltips only add depth. Design at 375px wide first, then widen.\n\nA target or a projection never shares the style of actual values. Draw them as dashed outlines or dashed continuations and say \"target\" or \"projected\" in the label.\n\n## Choose the build path\n\n- **Static chart:** write a JSON spec and run `python3 -I scripts/render.py spec.json out.html`. It renders a standalone Observable Plot page with hero and grey series, end labels and haloed annotations. The page supports both themes, and its width follows the container. The chart types are line, area, bar, scatter and small multiples, plus the range and progress row charts. A range row is a low-to-high estimate; a row with `either: true` is two discrete outcomes, drawn as two dots joined by a dashed line. A progress row draws the plan as a track with the work done so far filled in. Rows marked `target` or `projected` draw dashed. On phones, row charts put each label above its bar. The spec format is in the script's docstring.\n- **Interactive dashboard:** import `scripts/interactive.py`, write per-panel D3 render functions, and pass them to `scaffold(title, body_html, extra_js, brand=...)`. It supplies the tokens, the gliding tooltip and `voronoiHover()`. Before building, read [interaction-rules.md](references/interaction-rules.md) and [panel-patterns.md](references/panel-patterns.md).\n\nBefore building any panel of a dashboard, match it to one reference graphic in [sources.md](references/sources.md) and follow that graphic's discipline.\n\n## Check before delivery\n\nRun `python3 -I scripts/check_html.py out.html`. It parses every inline script with `node --check` (reported as skipped when Node is absent), runs a JSON parse on each embedded JSON block, rejects unpinned CDN URLs, and flags monospace fonts and pie or dual-axis markers. Then check the remaining items:\n\n1. Value domains come from the data maximum, not a typed round number, and an added maximum tick does not collide with its neighbor (Rule D).\n2. Every hover rectangle sits in the same translated `<g>` as its marks (Rule A).\n3. Hover finds the closest mark through Delaunay (Rule B).\n4. The tooltip anchors to the mark and glides (Rule C).\n5. Annotations carry a background-colored halo, and edge labels use a leader line (Rule E).\n6. A connected scatterplot appears only when both axes move in one direction over time.\n7. Open the page in a browser at desktop width and at 375px, in light and dark themes, and confirm every panel draws with no overlapping labels or horizontal scroll. When no browser is available, report the visual check as pending.\n8. Cut the editorial text to about half of the first draft: headline, one-line subtitle, source and a short note per panel.\n\n`python3 -I scripts/selftest.py [out_dir]` exercises every script and writes demo pages for each chart type.\n\n## Output\n\nDeliver self-contained HTML. Where the host offers private hosted pages, such as Claude artifacts, publish there; a private page is not permission to share it. Pin every CDN script to an exact version, as `render.py` and `interactive.py` do. Use only numbers from the supplied sources, and name the source on the page.\n",
+      "html": "<p>Make each chart answer one question, show the answer without interaction, and state it in the headline. The method follows the graphics desks credited in sources.md <span class=\"ref\">(references/sources.md)</span>. Colors and fonts come from the selected brand profile under the brand policy <span class=\"ref\">(references/estate/brand.md)</span>. Without a named profile or a project <code>brand.md</code>, use the neutral Baseline profile, which these scripts emit by default.</p><p>Scripts live in <code>scripts/</code>. Run them with <code>python3 -I scripts/&lt;name&gt;.py</code>. Every script runs standalone with no network access and no third-party Python packages. The pages they write load pinned D3 and Observable Plot builds from jsDelivr and fonts from Google Fonts.</p><h3>When to use</h3><p>Use for a chart, graph, small dashboard or data story that should read as editorial and trustworthy: a finding stated in the headline, one highlighted series, direct labels and a source line. Typical requests: chart these numbers for a stakeholder page, show progress against plan, compare estimate ranges, show actual against target, or build an interactive panel that snaps to the nearest point.</p><h3>When not to use</h3><ul><li>A measurement plan, event tracking or metric definitions belong to <code>analytics-strategy</code>.</li><li>A clickable explorer site built from source material belongs to <code>build-interactive-explorer</code>.</li><li>A slide deck belongs to <code>deck-builder</code>; this skill can supply a chart for one of its slides.</li><li>Applying a client identity across a whole document or site belongs to <code>client-brand</code>. This skill takes a resolved profile as its <code>brand</code> input.</li></ul><h3>Five rules for every chart</h3><ol><li><strong>Color.</strong> Give the series that matters the hero color. Draw everything else in one grey. Sequential data uses a one-hue tonal ramp with monotonic lightness, never a rainbow. Use a diverging scale only when the midpoint means something you can name. Past five categories, split into small multiples instead of adding colors. <code>palette.py</code> holds the Baseline ramps and checks lightness order.</li><li><strong>Type.</strong> Use one sans family, with <code>tabular-nums</code> on every number so digits stay aligned, and never a monospace face. <code>typography.py</code> emits the head block and tokens: Inter for the neutral profile. The <code>newsroom</code> profile adds a display serif for headlines; use it only when the user asks for a newspaper look. When a project or client profile governs, map its font and colors into a <code>brand</code> dict (a Google Fonts family plus light and dark token overrides) and pass it to <code>render.py</code> or <code>interactive.scaffold()</code>. <code>typography.py</code> documents the format. Read exact values from the profile; do not infer them.</li><li><strong>Chart choice.</strong> Use a line first for change over time and a bar second. Never use a pie chart or a second y-axis, and start every bar at zero. Past five series, use small multiples. <code>chart_selector.py</code> returns a recommendation, the reason, what to avoid and reference examples. Its patterns cover progress against a plan and comparisons of estimates. They also cover actual values against a target.</li><li><strong>Annotation.</strong> The headline is a sentence stating the finding. The subtitle names the unit and timeframe. A source line sits under the chart. Label series directly at their ends; the direct labels act as the legend. Keep a separate legend only when labels cannot fit. Annotate known turning points on the chart. Write axis labels in plain English. <code>annotate.py</code> lints a chart spec and scores it.</li><li><strong>Visible without interaction.</strong> Anything the reader needs must show without hover or click, and tooltips only add depth. Design at 375px wide first, then widen.</li></ol><p>A target or a projection never shares the style of actual values. Draw them as dashed outlines or dashed continuations and say &quot;target&quot; or &quot;projected&quot; in the label.</p><h3>Choose the build path</h3><ul><li><strong>Static chart:</strong> write a JSON spec and run <code>python3 -I scripts/render.py spec.json out.html</code>. It renders a standalone Observable Plot page with hero and grey series, end labels and haloed annotations. The page supports both themes, and its width follows the container. The chart types are line, area, bar, scatter and small multiples, plus the range and progress row charts. A range row is a low-to-high estimate; a row with <code>either: true</code> is two discrete outcomes, drawn as two dots joined by a dashed line. A progress row draws the plan as a track with the work done so far filled in. Rows marked <code>target</code> or <code>projected</code> draw dashed. On phones, row charts put each label above its bar. The spec format is in the script&#x27;s docstring.</li><li><strong>Interactive dashboard:</strong> import <code>scripts/interactive.py</code>, write per-panel D3 render functions, and pass them to <code>scaffold(title, body_html, extra_js, brand=...)</code>. It supplies the tokens, the gliding tooltip and <code>voronoiHover()</code>. Before building, read interaction-rules.md <span class=\"ref\">(references/interaction-rules.md)</span> and panel-patterns.md <span class=\"ref\">(references/panel-patterns.md)</span>.</li></ul><p>Before building any panel of a dashboard, match it to one reference graphic in sources.md <span class=\"ref\">(references/sources.md)</span> and follow that graphic&#x27;s discipline.</p><h3>Check before delivery</h3><p>Run <code>python3 -I scripts/check_html.py out.html</code>. It parses every inline script with <code>node --check</code> (reported as skipped when Node is absent), runs a JSON parse on each embedded JSON block, rejects unpinned CDN URLs, and flags monospace fonts and pie or dual-axis markers. Then check the remaining items:</p><ol><li>Value domains come from the data maximum, not a typed round number, and an added maximum tick does not collide with its neighbor (Rule D).</li><li>Every hover rectangle sits in the same translated <code>&lt;g&gt;</code> as its marks (Rule A).</li><li>Hover finds the closest mark through Delaunay (Rule B).</li><li>The tooltip anchors to the mark and glides (Rule C).</li><li>Annotations carry a background-colored halo, and edge labels use a leader line (Rule E).</li><li>A connected scatterplot appears only when both axes move in one direction over time.</li><li>Open the page in a browser at desktop width and at 375px, in light and dark themes, and confirm every panel draws with no overlapping labels or horizontal scroll. When no browser is available, report the visual check as pending.</li><li>Cut the editorial text to about half of the first draft: headline, one-line subtitle, source and a short note per panel.</li></ol><p><code>python3 -I scripts/selftest.py [out_dir]</code> exercises every script and writes demo pages for each chart type.</p><h3>Output</h3><p>Deliver self-contained HTML. Where the host offers private hosted pages, such as Claude artifacts, publish there; a private page is not permission to share it. Pin every CDN script to an exact version, as <code>render.py</code> and <code>interactive.py</code> do. Use only numbers from the supplied sources, and name the source on the page.</p>",
+      "excerptHtml": "<p>Make each chart answer one question, show the answer without interaction, and state it in the headline. The method follows the graphics desks credited in sources.md <span class=\"ref\">(references/sources.md)</span>. Colors and fonts come from the selected brand profile under the brand policy <span class=\"ref\">(references/estate/brand.md)</span>. Without a named profile or a project <code>brand.md</code>, use the neutral Baseline profile, which these scripts emit by default.</p><p>Scripts live in <code>scripts/</code>. Run them with <code>python3 -I scripts/&lt;name&gt;.py</code>. Every script runs standalone with no network access and no third-party Python packages. The pages they write load pinned D3 and Observable Plot builds from jsDelivr and fonts from Google Fonts.</p><p>Use for a chart, graph, small dashboard or data story that should read as editorial and trustworthy: a finding stated in the headline, one highlighted series, direct labels and a source line. Typical requests: chart these numbers for a stakeholder page, show progress against plan, compare estimate ranges, show actual against target, or build an interactive panel that snaps to the nearest point.</p>",
+      "headings": [
+        "When to use",
+        "When not to use",
+        "Five rules for every chart",
+        "Choose the build path",
+        "Check before delivery",
+        "Output"
+      ],
+      "mentions": [
+        {
+          "name": "build-interactive-explorer",
+          "context": "- A measurement plan, event tracking or metric definitions belong to `analytics-strategy`.\n- A clickable explorer site built from source material belongs to `build-interactive-explorer`.\n- A slide deck belongs to `deck-builder`; this skill can supply a chart for one of its slides.\n- Applying a client identity across a whole document or site belongs to `client-brand`. This skill takes a resolved profile as its `brand` input.",
+          "contextHtml": "<ul><li>A measurement plan, event tracking or metric definitions belong to <code>analytics-strategy</code>.</li><li>A clickable explorer site built from source material belongs to <code>build-interactive-explorer</code>.</li><li>A slide deck belongs to <code>deck-builder</code>; this skill can supply a chart for one of its slides.</li><li>Applying a client identity across a whole document or site belongs to <code>client-brand</code>. This skill takes a resolved profile as its <code>brand</code> input.</li></ul>"
+        },
+        {
+          "name": "client-brand",
+          "context": "- A measurement plan, event tracking or metric definitions belong to `analytics-strategy`.\n- A clickable explorer site built from source material belongs to `build-interactive-explorer`.\n- A slide deck belongs to `deck-builder`; this skill can supply a chart for one of its slides.\n- Applying a client identity across a whole document or site belongs to `client-brand`. This skill takes a resolved profile as its `brand` input.",
+          "contextHtml": "<ul><li>A measurement plan, event tracking or metric definitions belong to <code>analytics-strategy</code>.</li><li>A clickable explorer site built from source material belongs to <code>build-interactive-explorer</code>.</li><li>A slide deck belongs to <code>deck-builder</code>; this skill can supply a chart for one of its slides.</li><li>Applying a client identity across a whole document or site belongs to <code>client-brand</code>. This skill takes a resolved profile as its <code>brand</code> input.</li></ul>"
+        },
+        {
+          "name": "deck-builder",
+          "context": "- A measurement plan, event tracking or metric definitions belong to `analytics-strategy`.\n- A clickable explorer site built from source material belongs to `build-interactive-explorer`.\n- A slide deck belongs to `deck-builder`; this skill can supply a chart for one of its slides.\n- Applying a client identity across a whole document or site belongs to `client-brand`. This skill takes a resolved profile as its `brand` input.",
+          "contextHtml": "<ul><li>A measurement plan, event tracking or metric definitions belong to <code>analytics-strategy</code>.</li><li>A clickable explorer site built from source material belongs to <code>build-interactive-explorer</code>.</li><li>A slide deck belongs to <code>deck-builder</code>; this skill can supply a chart for one of its slides.</li><li>Applying a client identity across a whole document or site belongs to <code>client-brand</code>. This skill takes a resolved profile as its <code>brand</code> input.</li></ul>"
+        },
+        {
+          "name": "analytics-strategy",
+          "context": "- A measurement plan, event tracking or metric definitions belong to `analytics-strategy`.\n- A clickable explorer site built from source material belongs to `build-interactive-explorer`.\n- A slide deck belongs to `deck-builder`; this skill can supply a chart for one of its slides.\n- Applying a client identity across a whole document or site belongs to `client-brand`. This skill takes a resolved profile as its `brand` input.",
+          "contextHtml": "<ul><li>A measurement plan, event tracking or metric definitions belong to <code>analytics-strategy</code>.</li><li>A clickable explorer site built from source material belongs to <code>build-interactive-explorer</code>.</li><li>A slide deck belongs to <code>deck-builder</code>; this skill can supply a chart for one of its slides.</li><li>Applying a client identity across a whole document or site belongs to <code>client-brand</code>. This skill takes a resolved profile as its <code>brand</code> input.</li></ul>"
+        }
+      ],
+      "resources": [
+        {
+          "path": "SKILL.md",
+          "sha256": "057e517c0bf71997087683bc9807c1e792ff7c8d3c78eb5d730af8e8b5915d09",
+          "bytes": 7531,
+          "gitBlob": "39d0dbf9d98c6d3fc6737a1a4b24c7504aad3591"
+        },
+        {
+          "path": "fixtures/governance.yaml",
+          "sha256": "7d57e6451eacfc3600a875eb769c7888aa90dfe0f1da1a41a327e6787ecb6524",
+          "bytes": 3662,
+          "gitBlob": "e61665956c8c2eada9954544c3d9cfdddca559b5"
+        },
+        {
+          "path": "fixtures/scaffold-receipt.json",
+          "sha256": "3d825709009f81c8a6cbf80977cdd2f1c536e43563bd05d85cae401909b90b25",
+          "bytes": 793,
+          "gitBlob": "4255cde03b3b79aec8f9776adb9bda895ca9df3d"
+        },
+        {
+          "path": "references/interaction-rules.md",
+          "sha256": "506a8318ae80ff518c7770263dbc9e42f3aee5659078bb802b262d027a5d7658",
+          "bytes": 4335,
+          "gitBlob": "7dd0e9160b8afb788212bbe9f5aa28ca40435ae3"
+        },
+        {
+          "path": "references/panel-patterns.md",
+          "sha256": "0d5eb474cda34cb687aa183f5d5cc8ca2ce1afed99f414fea9e2f69965971ec9",
+          "bytes": 1633,
+          "gitBlob": "cce521c0e1e3ce7ea9ca553788ebd81f5c00d72a"
+        },
+        {
+          "path": "references/sources.md",
+          "sha256": "29c09b6823e1add2e53b790ca5f0f426c2bd5e7b6989600dfc51010a96023f8f",
+          "bytes": 2764,
+          "gitBlob": "862cfd4950a8ed6d0aedd4c9beec5bfe28de79aa"
+        },
+        {
+          "path": "scripts/annotate.py",
+          "sha256": "ce426d5d2e97a5cc919d034123179bc72ca866d970bf68cb4b2f680bb5ff5e2e",
+          "bytes": 6692,
+          "gitBlob": "30f39faf9361617729b9d9e187009957c3512def"
+        },
+        {
+          "path": "scripts/chart_selector.py",
+          "sha256": "ce5f41a9ba35d2934a7b9f5e491fb64b73aa1903c605f915d9c15cd9bcb714cf",
+          "bytes": 10257,
+          "gitBlob": "d605d260e88443691c44bb235ebaf9a3e375e83c"
+        },
+        {
+          "path": "scripts/check_html.py",
+          "sha256": "bdc9c835fab6e926af8c88770c7b8ab7ba5f89bae17d08b28e447d038c6e1d11",
+          "bytes": 3706,
+          "gitBlob": "2536a1d3eb06b032790a4fcf453a1fcb30920ea6"
+        },
+        {
+          "path": "scripts/interactive.py",
+          "sha256": "87d18afbf594bfdba9eacd9799dc20a2ca044b711d4f1dc02dc84358862e0ae1",
+          "bytes": 9549,
+          "gitBlob": "ac2c6ebe39be88dc36623a657b9ca32494dd5e36"
+        },
+        {
+          "path": "scripts/palette.py",
+          "sha256": "0d8ebce0bd60df441fe2546ecbe756e30e84084b73afea8bd160f2506abeadb9",
+          "bytes": 7008,
+          "gitBlob": "da919a08ed1be744f07300eba9bfec55242504c6"
+        },
+        {
+          "path": "scripts/render.py",
+          "sha256": "9136e80877e0786e251ffcfda43a49e41e10258e52cf7196239245a122c9dbf1",
+          "bytes": 17647,
+          "gitBlob": "44a58cd4bb1eb192fbc7032bb7b8e887fc2e942a"
+        },
+        {
+          "path": "scripts/selftest.py",
+          "sha256": "35b208732179bc7553c5edc5f8d42e75409fe070d2d257ce3f995cbed59022e3",
+          "bytes": 8034,
+          "gitBlob": "d3c5b9cc510f38ee61f57fbedff84c8c90ba03dc"
+        },
+        {
+          "path": "scripts/typography.py",
+          "sha256": "b3ed47e6d2f7e8c9ee93b6372e2a2b5c155bd1c31fc601c7afd1df8284df545d",
+          "bytes": 6985,
+          "gitBlob": "ff04e275c05f967c7cd905a9dd0bc909c1d2de54"
+        },
+        {
+          "path": "skill.yaml",
+          "sha256": "3b381f9895b74835a1960db9cd5936146e20899e18fa4624e869cdbd8104da84",
+          "bytes": 2916,
+          "gitBlob": "4741def19bad63d76164370f62fd19ce63e13570"
+        }
+      ],
+      "examples": []
+    },
+    {
       "id": "evidence-core",
       "title": "Estate evidence core",
       "family": 4,
@@ -6268,7 +6508,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "940140ceb630651a43b4c54fbfaa99c3e64f157af5fcf869df979da601794b40",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -6537,7 +6777,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/execution-truth/SKILL.md",
       "sourceSha256": "6541592ce8b7e87ed1375f4213d7d275b71a3719e500c2d0290d702fa3697037",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/execution-truth/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/execution-truth/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6692,7 +6932,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/fortunes-weave/SKILL.md",
       "sourceSha256": "e6878b651358518384bd7068c40229e5626bab1bef4b4a0b9b6f37d24a4ba124",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "fortunes-weave",
@@ -6799,7 +7039,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/github-repository-work/SKILL.md",
       "sourceSha256": "416dd70ad35b0187da9d23fa1168ae095aaa59cbaecd47b79525d33b475156e5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/github-repository-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/github-repository-work/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -6895,7 +7135,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/independent-product/SKILL.md",
       "sourceSha256": "cfeebb0f638e7359af4d6a58b7730e104c8088b9c473b96c4069dcaefc17194c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "independent-product",
@@ -7002,7 +7242,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/information-architecture/SKILL.md",
       "sourceSha256": "6ebd0a149d475ccda8664a397b49ae94b9470a120f0c605d63459c9f6446e6e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "information-architecture",
@@ -7127,7 +7367,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/interactive-proposal/SKILL.md",
       "sourceSha256": "3b993c5d1b1230ef6f5c2dc2b76cd5778eb5346b60c59247693f55a3aac219c5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -7390,7 +7630,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/journey-mapping/SKILL.md",
       "sourceSha256": "044a9b62cc4632caf267af2a4a70a412e71a3889783548063ee340997d0cac63",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/journey-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/journey-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "journey-mapping",
@@ -7588,7 +7828,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/jtbd-framing/SKILL.md",
       "sourceSha256": "dc4e8ee3ebe54647a5c574c0565a6f36e2aa41ba5eda03e9c768d3a9b20e0c98",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/jtbd-framing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/jtbd-framing/SKILL.md",
       "taskPackages": [
         {
           "name": "jtbd-framing",
@@ -7833,7 +8073,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/knowledge-hub/SKILL.md",
       "sourceSha256": "29b7962b049af27078d64360c68c2abd6c15c7263590902d285dc0835689c05b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "knowledge-hub",
@@ -8160,7 +8400,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/moscow-story-map/SKILL.md",
       "sourceSha256": "407f61974326eb0e046d709d20e0657e3e6ac897af86dae19634ab14af5d63e3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "moscow-story-map",
@@ -8308,7 +8548,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/org-preflight/SKILL.md",
       "sourceSha256": "114e2469f12d1593364d2befaa2c754d48e7c3ea8c3758aac5a1fda3fa1a9f39",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/org-preflight/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/org-preflight/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "sf-change-delivery"
@@ -8457,7 +8697,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/personal-writing-style-runtime/SKILL.md",
       "sourceSha256": "acdb326d7eae4166a419e6ff07245f9afe6174a826d613d474bb21043e852b90",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/personal-writing-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/personal-writing-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8637,7 +8877,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-builder/SKILL.md",
       "sourceSha256": "733792bc5580e8b71e491f7ef69287e99ff5db1e4eceafed0324fd0a8f49d93b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/playbook-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -8809,7 +9049,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-fit-router/SKILL.md",
       "sourceSha256": "190748cd28c50baad5b6260742889081c1effa47bbc8025ab5073a3d12476bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-fit-router/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/playbook-fit-router/SKILL.md",
       "taskPackages": [
         {
           "name": "offering-fit",
@@ -8958,7 +9198,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-onepager/SKILL.md",
       "sourceSha256": "d968ee8a9d28b50e4de5f049539210e999818df6af2a53c9d5a4ba6adafac605",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-onepager/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/playbook-onepager/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -9187,7 +9427,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/playbook-suite/SKILL.md",
       "sourceSha256": "472ad5c6e512f9f142aacbdcf26cef02e30bc9d93bd5bea308092d502715e240",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/playbook-suite/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/playbook-suite/SKILL.md",
       "taskPackages": [
         {
           "name": "service-offering",
@@ -9380,7 +9620,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/pm-spec-writing/SKILL.md",
       "sourceSha256": "6adc8ca7812b4ae14a7b5278ba1d03d8ef4f3af2dd79bf65db3d67b9345b4259",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/pm-spec-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/pm-spec-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -9511,7 +9751,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritization/SKILL.md",
       "sourceSha256": "1c83aff26fc94e0e6687382b897a3d133f23992d0f1fac399b66f80661e2fc0e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/prioritization/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/prioritization/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritization",
@@ -9728,7 +9968,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/process/SKILL.md",
       "sourceSha256": "b0876f55eab1b43642897b2ff9bb019bfc4e063805612555ebcdb9add823addf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/process/SKILL.md",
       "taskPackages": [
         {
           "name": "process-design",
@@ -9904,7 +10144,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/product-development-pathway/SKILL.md",
       "sourceSha256": "4e17a049ee5b802096c8580c78ce35759d159b0a0f11b469339b59a05c2c8f19",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/product-development-pathway/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/product-development-pathway/SKILL.md",
       "taskPackages": [
         {
           "name": "product-development",
@@ -10101,11 +10341,11 @@
       "title": "Writing diagnostic tools",
       "family": 5,
       "description": "Internal diagnostic and figure-preservation tools used by writing-integrity. This module supplies scanners and review records; it does not select an author voice or act as a second editor.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/prose-pass/SKILL.md",
       "sourceSha256": "f72a0367beadea47fe644ed123d0f18421c3f3a744d667419142aaf979006fc9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/prose-pass/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/prose-pass/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "acceptance-testing",
@@ -10131,6 +10371,7 @@
         "delivery-kickoff",
         "delivery-status",
         "discovery",
+        "editorial-charts",
         "feature-spec",
         "fortunes-weave",
         "independent-product",
@@ -10462,7 +10703,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/quality-gate/SKILL.md",
       "sourceSha256": "854448520c20383707e16bddd027fed13a2196e75b083918a894e4f0398b9e1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/quality-gate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/quality-gate/SKILL.md",
       "taskPackages": [
         {
           "name": "deliverable-review",
@@ -10675,7 +10916,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/requirements-capture/SKILL.md",
       "sourceSha256": "285e48420fc2c355305c7d5a5a4e628065fa489f69c5589bda1f3fb2c7c784c9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/requirements-capture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/requirements-capture/SKILL.md",
       "taskPackages": [
         {
           "name": "requirements-backlog",
@@ -10880,7 +11121,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/resume-numbers-and-keywords/SKILL.md",
       "sourceSha256": "bac682d878466ed29e02267f52a0adf61978ceb3b10d68ecd529552388ada4dd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/resume-numbers-and-keywords/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/resume-numbers-and-keywords/SKILL.md",
       "taskPackages": [
         {
           "name": "career-application",
@@ -11023,7 +11264,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site/SKILL.md",
       "sourceSha256": "ebef4607fe151c273003a3065e535d5fb21353e91687bca81207c110e34b8277",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "review-site",
@@ -11216,7 +11457,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-kit/SKILL.md",
       "sourceSha256": "33f4b81ea9544446b46f9b4f4076b80267d4399184c314d0093eb03db1b6ec6a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/review-site-kit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/review-site-kit/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "decision-register",
@@ -11542,7 +11783,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/roadmap-artifacts/SKILL.md",
       "sourceSha256": "f8049332aee2da80393fa10a6ef24133b92effb692626bf6999231c7f0ffb530",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/roadmap-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/roadmap-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "roadmap-artifacts",
@@ -11860,7 +12101,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/rom/SKILL.md",
       "sourceSha256": "5c4e72f9e50282c5c3a43c366fc34a82600b0df5606cace94c7cd48ceac16045",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/rom/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/rom/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -12100,7 +12341,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/s2d-handoff/SKILL.md",
       "sourceSha256": "5a20835369410ea3c73c2a29dbe76ca197f11b23126f9e8eb6305585a99ee0cb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/s2d-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/s2d-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-to-delivery-handoff",
@@ -12361,7 +12602,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-journey-critique/SKILL.md",
       "sourceSha256": "b3017491fc634e10d3e701a494df80578b65d168147fbdc4e4563724a5c46dd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sales-journey-critique/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sales-journey-critique/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -12504,7 +12745,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sales-process-mapping/SKILL.md",
       "sourceSha256": "4523ee9e6c71fc680ecff67815a0fe189483522dd37d2bf3ad06b23d9c843f03",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sales-process-mapping/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sales-process-mapping/SKILL.md",
       "taskPackages": [
         {
           "name": "sales-process-mapping",
@@ -12634,7 +12875,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-reference/SKILL.md",
       "sourceSha256": "5ce4f83358b1c63d3abedd2a09d4258a3642c8d5b6fcba42e525cb313e45c6fc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/scope-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/scope-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-options",
@@ -12879,7 +13120,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scoping-agent/SKILL.md",
       "sourceSha256": "5c42af24098dabd808faddcbe450c622c97f2f9ae3c8845cbeb4a446f1b48e52",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/scoping-agent/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/scoping-agent/SKILL.md",
       "taskPackages": [
         {
           "name": "project-scoping",
@@ -13069,7 +13310,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/session-handoff/SKILL.md",
       "sourceSha256": "76315e6e195546e7bb4722b3782a681f17654707ed822c1f0f266ef263ec484b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "session-handoff",
@@ -13220,7 +13461,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-delivery-standards/SKILL.md",
       "sourceSha256": "1f1991ed702e190110684d81701e01a8d34f6ebb9d8e8f216b57c951eef2d69e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-delivery-standards/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sf-delivery-standards/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-project-setup",
@@ -13946,7 +14187,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-deploy-engine/SKILL.md",
       "sourceSha256": "8a638326984a888fd4e4f1ede7405a1e9899ece7f7ffc051022438c23252ad4d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-deploy-engine/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sf-deploy-engine/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-pipeline-operations",
@@ -14185,7 +14426,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-enterprise-patterns/SKILL.md",
       "sourceSha256": "f02a3a9fec328a1b42e89fae6a157071d3fc4ed59452e0c9b0a38ec463cbffff",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-enterprise-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sf-enterprise-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-apex-patterns",
@@ -14410,7 +14651,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-headless-screenshot/SKILL.md",
       "sourceSha256": "06cdf4bb69534ca8360c6e45568165ebed6f98c4d74aa7100a73fef3d453cfe1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-headless-screenshot/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sf-headless-screenshot/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -14545,7 +14786,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sf-solo-devops/SKILL.md",
       "sourceSha256": "7aa22071e02f31275dcdff3bf20170739971f90d31d0563242ef88a520154d73",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sf-solo-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sf-solo-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "sf-change-delivery",
@@ -14903,7 +15144,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-creation-walkthrough/SKILL.md",
       "sourceSha256": "ee26692c205920fa87c71c04af6dcd814fc43606c2da4a7a1a74c154df3778a6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/skill-creation-walkthrough/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/skill-creation-walkthrough/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -15107,7 +15348,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/skill-estate-sync/SKILL.md",
       "sourceSha256": "9c825654bbc5796ce092366a36a8d9d67a5928156d7addcf3c194c2ef495011d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/skill-estate-sync/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/skill-estate-sync/SKILL.md",
       "taskPackages": [
         {
           "name": "skill-estate-sync",
@@ -15334,7 +15575,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/solution-brief/SKILL.md",
       "sourceSha256": "f7f08afe359072e7f542a43e2a827d1e0f425a5d91789f790a69f3282f401978",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/solution-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/solution-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "solution-brief",
@@ -15702,7 +15943,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow/SKILL.md",
       "sourceSha256": "4e4d47135eda6b0e5bf6fabff30693368ad61984e4761e705d038d935fcf7db3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sow/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sow/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -15984,7 +16225,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sow-quality/SKILL.md",
       "sourceSha256": "f13a0cc56620104bd57e6b8f76a4586488f7d2fdd9fe7ad5424117a6a0fd9ec1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sow-quality/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sow-quality/SKILL.md",
       "taskPackages": [
         {
           "name": "statement-of-work",
@@ -16184,7 +16425,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/spec-writer/SKILL.md",
       "sourceSha256": "7ae4353bc1c856ed2de2a49fef14ef204b420d9e2d46541462c9e6ef750ea61f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/spec-writer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/spec-writer/SKILL.md",
       "taskPackages": [
         {
           "name": "feature-spec",
@@ -16338,7 +16579,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sprint-planning/SKILL.md",
       "sourceSha256": "9e41c15db883c84ae5377ff1e011cfdb9dc1605eab23fde6a352a2f07ecc0ef9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sprint-planning/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sprint-planning/SKILL.md",
       "taskPackages": [
         {
           "name": "sprint-planning",
@@ -16564,7 +16805,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-art-direction/SKILL.md",
       "sourceSha256": "dcdd4dd6bb05db06865fc642b5d0eb269386f09c5a87bf2a31168f49b62cdf4f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sticker-art-direction/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sticker-art-direction/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-art-direction",
@@ -16692,7 +16933,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/sticker-sheets/SKILL.md",
       "sourceSha256": "1b464817a7997c722c9ce4b4ea92ffda707eb21f6aceee9a70aecc3491c02c38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "sticker-sheets",
@@ -16799,7 +17040,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/system-design/SKILL.md",
       "sourceSha256": "a85c9e72b9cd4db699a8d758270748b7a18cdd8f08a26ddb03cb99b75e639b56",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/system-design/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/system-design/SKILL.md",
       "taskPackages": [
         {
           "name": "system-design",
@@ -16962,7 +17203,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/team-onboarding/SKILL.md",
       "sourceSha256": "20659fda549fafd71092ba6d71a5cee667b4b4b36e7a13701f068154b4bff265",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "team-onboarding",
@@ -17134,7 +17375,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tracker-intake/SKILL.md",
       "sourceSha256": "ad155d56dd3ba52562f7e462af4e145db73e621812205a2933adac24c6d21fba",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/tracker-intake/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/tracker-intake/SKILL.md",
       "taskPackages": [
         {
           "name": "tracker-intake",
@@ -17295,7 +17536,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/transcript-ingestion/SKILL.md",
       "sourceSha256": "990703731119c90008f1f920e37bc97908b55c885fa8458155eb91d7f03f9944",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/transcript-ingestion/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/transcript-ingestion/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -17454,7 +17695,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/uat-validation/SKILL.md",
       "sourceSha256": "df12e4024062a0e9c7a2ee8ac55358d26599110a8acfe9c134f493f8163925ad",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/uat-validation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/uat-validation/SKILL.md",
       "taskPackages": [
         {
           "name": "acceptance-testing",
@@ -17683,7 +17924,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/usability-testing/SKILL.md",
       "sourceSha256": "1bd1c6d7af93f9ec601b9d7a13dd252e98af94236d23995d6b509ffe316355a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/usability-testing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/usability-testing/SKILL.md",
       "taskPackages": [
         {
           "name": "usability-testing",
@@ -17804,11 +18045,11 @@
       "title": "Writing integrity",
       "family": 5,
       "description": "Review prose, preserve meaning and voice, and learn from writing corrections through a compact private profile. Use for replies, documents, instructions and UI text.",
-      "status": "local-revision",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/writing-integrity/SKILL.md",
       "sourceSha256": "20964c8b697918f1603ef59744ecaeda512c62f396477c6070a5d68c9e5dbe8a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/writing-integrity/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/writing-integrity/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-integrity",
@@ -17839,6 +18080,7 @@
         "delivery-kickoff",
         "delivery-status",
         "discovery",
+        "editorial-charts",
         "feature-spec",
         "fortunes-weave",
         "independent-product",
@@ -18066,7 +18308,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-style-builder/SKILL.md",
       "sourceSha256": "e379f9a134e038cc87e2013b0238f114fbad46e874d27dada6e878b688557b02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/cb9db86d2102a63700f05010c11f41732fd4fdab/skills/writing-style-builder/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/b308503dcf03cb5914acbb77dac985ce73ec7377/skills/writing-style-builder/SKILL.md",
       "taskPackages": [
         {
           "name": "writing-profile",
@@ -18238,11 +18480,11 @@
     }
   ],
   "counts": {
-    "github": 88,
-    "local-revision": 2,
-    "local-addition": 0,
+    "github": 90,
+    "local-revision": 0,
+    "local-addition": 1,
     "canonical": 90,
-    "total": 90,
+    "total": 91,
     "withExamples": 90
   }
 }

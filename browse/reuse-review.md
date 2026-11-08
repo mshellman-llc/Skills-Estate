@@ -1,6 +1,6 @@
 # Skill reuse review
 
-88 general-use methods, 0 Megan-specific workflows, and 2 awaiting source review.
+89 general-use methods, 0 Megan-specific workflows, and 2 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -45,6 +45,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `discovery-synthesis` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `dx-devops-promote` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
 | `dx-devops-work-item-manage` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No named personal reference detected in workflow text. |
+| `editorial-charts` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `evidence-core` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `execution-truth` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |
 | `fortunes-weave` | General use | Supply the task inputs and its supported runtime. | No named personal reference detected in workflow text. |

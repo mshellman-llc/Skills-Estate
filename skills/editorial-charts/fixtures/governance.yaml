@@ -1,0 +1,77 @@
+schema_version: 1
+skill: editorial-charts
+lifecycle:
+  status: draft
+job:
+  user: Anyone in the estate who needs a chart or small data dashboard for a stakeholder page, proposal, status update or product screen.
+  situation: Numbers with a known source need to show one finding clearly, on a phone as well as a desktop, in the governing brand.
+  outcome: A self-contained HTML chart page with a headline stating the finding, a highlighted series, direct labels, a source line, and light and dark themes.
+  complete_when: check_html.py passes and the page has been inspected in a browser at desktop width and 375px in both themes, or the visual check is reported pending.
+position:
+  closest_skills:
+    - analytics-strategy
+    - build-interactive-explorer
+    - client-brand
+    - deck-builder
+  disposition: separate
+  rationale: analytics-strategy designs what to measure and stops before drawing; build-interactive-explorer builds multi-stage explorer sites from source material; client-brand resolves and applies an identity but has no chart method; deck-builder owns slides. None owns chart-type choice, the hero-and-grey color rule, chart annotation or the chart renderers. The host-provided dataviz skill covers general palette method but is not part of this estate.
+contract:
+  inputs:
+    - data with source, unit and timeframe
+    - the question or finding
+    - optional brand profile
+  outputs:
+    - self-contained HTML chart page
+selection:
+  positive:
+    - Chart these phase hours, planned against used, for the project page.
+    - Show the effort ranges by scope item and make clear which item depends on the decision.
+    - Build an interactive panel where hover snaps to the nearest point.
+  adjacent:
+    - Design the event tracking plan for the onboarding funnel. (analytics-strategy)
+    - Turn these discovery notes into a clickable explorer site. (build-interactive-explorer)
+    - Make a ten-slide deck for the steering committee. (deck-builder)
+  negative:
+    - Explain what a p-value means.
+    - Rewrite this paragraph in plain English.
+relationships:
+  requires: []
+  optional:
+    - client-brand
+  controls: []
+  upstream:
+    - analytics-strategy
+  downstream:
+    - deck-builder
+capabilities:
+  - name: local Python 3
+    hosts: Claude Code and Codex run the scripts locally.
+    when_absent: Write the chart spec and HTML by hand from the rules and references, and report that the scripts and checks did not run.
+  - name: browser inspection
+    hosts: Claude Code uses its built-in browser pane; Codex uses an available connected browser.
+    when_absent: Run check_html.py and report the visual check at desktop and 375px as pending.
+  - name: Node for script syntax checks
+    hosts: Optional on both hosts.
+    when_absent: check_html.py reports that inline scripts were not syntax-checked.
+risks:
+  persistent_writes:
+    - The output HTML file at the path the user names.
+  authorization: []
+  failure_behavior: A failing check_html.py or self-test stops delivery; the failure is reported with its output.
+  privacy: Pages embed the supplied data. Client numbers stay in the client's project; the skill bundles no client data.
+  rollback: Delete or regenerate the output page. Nothing else changes.
+cost:
+  status: unknown
+  receipt: null
+efficiency:
+  status: unknown
+  receipt: null
+stewardship:
+  steward: "Megan Shellman"
+  maintainers:
+    - "Megan Shellman"
+  lifecycle_approver: "Megan Shellman"
+  review_date: null
+  stale_facts:
+    - Pinned CDN versions d3 7.9.0 and Observable Plot 0.6.16.
+  retirement_path: Merge into a broader charting skill if one is added to the estate, keeping the renderers and checks.

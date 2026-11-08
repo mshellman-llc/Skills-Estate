@@ -14,7 +14,7 @@ description: Route product and experience work. Product definition from evidence
 
 ## Product distinctions
 
-Developing or resuming a product across evidence, definition, release and delivery readiness is `product-development-pathway`. Planning or synthesizing sessions with participants is `usability-testing`; an agent walkthrough is not participant evidence. Checking an interface against WCAG is `accessibility-audit`. Designing events, metrics or a decision dashboard is `analytics-strategy`. Designing navigation, labels or a sitemap is `information-architecture`. Turning source material into a clickable explorer site is `build-interactive-explorer`.
+Developing or resuming a product across evidence, definition, release and delivery readiness is `product-development-pathway`. Planning or synthesizing sessions with participants is `usability-testing`; an agent walkthrough is not participant evidence. Checking an interface against WCAG is `accessibility-audit`. Designing events, metrics or a decision dashboard is `analytics-strategy`. Designing navigation, labels or a sitemap is `information-architecture`. Turning source material into a clickable explorer site is `build-interactive-explorer`. Charting supplied numbers as an editorial chart or small dashboard is `editorial-charts`.
 
 ## Available skills
 
@@ -24,6 +24,7 @@ Developing or resuming a product across evidence, definition, release and delive
 - `analytics-strategy`
 - `information-architecture`
 - `build-interactive-explorer`
+- `editorial-charts`
 
 
 ## Required controls

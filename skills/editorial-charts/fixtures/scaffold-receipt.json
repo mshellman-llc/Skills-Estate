@@ -1,0 +1,17 @@
+{
+  "state": "draft",
+  "created_at": "2026-11-08T20:45:24.924367+00:00",
+  "destination": "/private/tmp/claude-501/-Volumes-BeastMode/7e9ae851-f705-4278-9777-8e679330ce43/scratchpad/estate/skills/editorial-charts",
+  "runtime_declarations": [
+    "claude-code",
+    "codex"
+  ],
+  "runtime_verified": [],
+  "workflow_sha256": "36805fb242c278730494f0c979c084c6dcf21685bef9cc1de0174c0e20ba6d48",
+  "files": {
+    "SKILL.md": "14190c72f0551fb78f93b6512ae116eb9854489f4d26a61d71a1d850237163c2",
+    "skill.yaml": "063504bea88c03bd4f79151bc6167810b95228fb5845f63c6b64b5d0524edde0",
+    "fixtures/governance.yaml": "2f16c75ce6703bb4746d9b1dbd32eacfc53ad3a8433ab3fbeb1812a2406df6f0"
+  },
+  "next": "Complete the intake and run the workflow on representative inputs; creation is not installation."
+}

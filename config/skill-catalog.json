@@ -351,6 +351,11 @@
       "source": "review-site",
       "pack": "core",
       "modes": {}
+    },
+    "editorial-charts": {
+      "source": "editorial-charts",
+      "pack": "core",
+      "modes": {}
     }
   },
   "internal": [

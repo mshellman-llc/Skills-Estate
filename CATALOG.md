@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 90 source modules and 62 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 91 source modules and 63 proposed task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -11,7 +11,7 @@ This candidate contains 90 source modules and 62 proposed task entrypoints. Cons
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 23 | 18 |
-| [Product and experience](browse/product-and-experience/README.md) | 13 | 12 |
+| [Product and experience](browse/product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
@@ -45,6 +45,7 @@ This candidate contains 90 source modules and 62 proposed task entrypoints. Cons
 | delivery-kickoff | [delivery-kickoff](skills/delivery-kickoff/SKILL.md) |  |
 | delivery-status | [delivery-status](skills/delivery-status/SKILL.md) |  |
 | discovery | [discovery-synthesis](skills/discovery-synthesis/SKILL.md) | discovery-brief |
+| editorial-charts | [editorial-charts](skills/editorial-charts/SKILL.md) |  |
 | feature-spec | [pm-spec-writing](skills/pm-spec-writing/SKILL.md) | spec-writer |
 | fortunes-weave | [fortunes-weave](skills/fortunes-weave/SKILL.md) |  |
 | independent-product | [independent-product](skills/independent-product/SKILL.md) |  |
@@ -122,6 +123,7 @@ Each module needs a reviewed capability disposition before release.
 - [discovery-synthesis](skills/discovery-synthesis/SKILL.md)
 - [dx-devops-promote](skills/dx-devops-promote/SKILL.md)
 - [dx-devops-work-item-manage](skills/dx-devops-work-item-manage/SKILL.md)
+- [editorial-charts](skills/editorial-charts/SKILL.md)
 - [evidence-core](skills/evidence-core/SKILL.md)
 - [execution-truth](skills/execution-truth/SKILL.md)
 - [fortunes-weave](skills/fortunes-weave/SKILL.md)
