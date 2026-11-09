@@ -5,7 +5,7 @@ description: Internal diagnostic and figure-preservation tools used by review-wr
 
 # Writing diagnostics
 
-This internal runtime supplies scanners and review records for `review-writing`. Load it through that workflow.
+This internal runtime holds the checkers and record tools that `review-writing` calls. Load it through that workflow.
 
 Read [review-writing](../review-writing/SKILL.md) before using these tools.
 That workflow owns writing review. A confirmed personal profile supplies the
@@ -21,12 +21,11 @@ does not exclude authored language from review.
 ## Review a saved file
 
 ```bash
-python3 scripts/writing_check.py --config house.json FILE
-python3 scripts/writing_check.py --config house.json --json FILE
+python3 scripts/writing_check.py --config house.json [--json] FILE
 ```
 
-The checker reads prose from supported document formats and structured text
-fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means
+Add `--json` for a machine-readable report. The checker reads prose from
+supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means
 the check could not finish. Read its output and the complete document. Repair
 the argument or sentence that caused a finding, then rerun the check.
 
