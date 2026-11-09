@@ -351,6 +351,11 @@
       "source": "build-review-site",
       "pack": "core",
       "modes": {}
+    },
+    "build-editorial-chart": {
+      "source": "build-editorial-chart",
+      "pack": "core",
+      "modes": {}
     }
   },
   "internal": [
