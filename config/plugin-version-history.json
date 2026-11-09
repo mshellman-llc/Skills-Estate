@@ -34,7 +34,7 @@
       "note": "Make ESTATE_ the only Salesforce kit prefix: rename the old variables in configure-salesforce-project and operate-salesforce-pipeline, and retire the older aliases in configure-salesforce-project and deliver-salesforce-change."
     },
     "0.4.4": {
-      "content_sha256": "4dd054f2a4ba7cf34ab48437ffc5169e750464a8e1b7d94b9194bbaf5c4f0f51",
+      "content_sha256": "8a948072efe657e6dc890052ffab24a2b296eec7a81a4616c98ff576c79cc374",
       "note": "Replace the skill standard; add the writing gate with receipts, the private terms check and not-for-sale marks for the Commons Clause skills; bring Writing Integrity and the brand policy to a writing pass."
     }
   }

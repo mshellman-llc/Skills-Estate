@@ -1,6 +1,6 @@
 # Test execution
 
-Run `python3 tools/run_tests.py --report .local/test-results.json` for the local default. It runs parsing, package assembly, document generation, validation, request-handler, and synthetic browser-policy checks. It never selects real browser or loopback tests. Its report lists every deferred test and distinguishes `passed_with_deferred` from a complete pass. Any other skipped test reports `incomplete` and returns a failure status.
+Run `python3 tools/run_tests.py --report .local/test-results.json` for the local default. It runs parsing, package assembly, document generation, validation, request-handler, and synthetic browser-policy checks. It never selects real browser or loopback tests. Its report lists every deferred test and distinguishes `passed_with_deferred` from a complete pass. A test that needs a local setting, such as the private terms list, is also deferred while that setting is absent. Any other skipped test reports `incomplete` and returns a failure status.
 
 Install the pinned Python and Node dependencies before running the suite. Node-based DOCX/PPTX generation and fake browser-policy tests remain part of default coverage; missing required tools are errors. `ESTATE_NODE` selects Node, while `ESTATE_NODE_MODULES` and `NODE_PATH` locate its dependencies.
 

@@ -43,6 +43,23 @@ def integration(capability):
     return decorate
 
 
+def configured(name, present):
+    """Defer a test until a setting it needs is present, as an unselected integration defers.
+
+    present() reports whether the setting exists. The runner lists a test whose setting is
+    missing as deferred, so the run stays complete; an unexplained skip still fails it.
+    """
+    def decorate(method):
+        @wraps(method)
+        def selected(self, *args, **kwargs):
+            if not present():
+                self.skipTest('Deferred configuration: ' + name)
+            return method(self, *args, **kwargs)
+        selected.estate_configuration = (name, present)
+        return selected
+    return decorate
+
+
 def toolchain_preflight():
     """Selftests outside the standard library need jq and python-pptx; CI installs both."""
     missing = []

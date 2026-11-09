@@ -11,6 +11,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 import private_terms  # noqa: E402
+from test_capabilities import configured  # noqa: E402
 
 
 class PrivateTermsTests(unittest.TestCase):
@@ -61,11 +62,15 @@ class PrivateTermsTests(unittest.TestCase):
         self.assertEqual(private_terms.scan(self.root, ['Example.Co'], staged=True)[0][0], 'docs/guide.md')
 
 
+def terms_configured():
+    return bool(os.environ.get('ESTATE_PRIVATE_TERMS', '').strip() or os.environ.get('ESTATE_PRIVATE_TERMS_FILE'))
+
+
 class RepositoryPrivateTermsTests(unittest.TestCase):
+    @configured('private terms in ESTATE_PRIVATE_TERMS or ESTATE_PRIVATE_TERMS_FILE', terms_configured)
     def test_tracked_files_carry_no_configured_private_term(self):
         terms = private_terms.load_terms()
-        if terms is None:
-            self.skipTest('No private terms configured')
+        self.assertIsNotNone(terms, 'The configured private terms list is empty.')
         hits = [f'{path}:{line}: private term #{number}' for path, line, number in private_terms.scan(ROOT, terms)]
         self.assertEqual(hits, [], 'Remove the matches, or rebuild a generated file that still quotes one.')
 
