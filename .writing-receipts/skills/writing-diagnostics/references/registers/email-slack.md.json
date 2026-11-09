@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "artifact": "skills/writing-diagnostics/references/registers/email-slack.md",
+  "protected": [
+    {
+      "kind": "example",
+      "reason": "The outreach hook this section tells readers not to open with.",
+      "text": "\"What most RevOps teams get wrong...\""
+    },
+    {
+      "kind": "example",
+      "reason": "The worked example's input, written in the vocabulary the rewrite removes.",
+      "text": "\"We are excited to announce a transformative new initiative that leverages cutting-edge technology to streamline operations and empower our teams. The future looks bright as we embark on this journey together.\""
+    },
+    {
+      "kind": "example",
+      "reason": "The rewrite's closing fragment, which the note below explains is natural only in an internal register.",
+      "text": "That's it. That's the update.\""
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/writing-diagnostics/references/registers/pr-review.md",
+  "protected": [
+    {
+      "kind": "example",
+      "reason": "The bad PR description this register teaches readers to avoid.",
+      "text": "> This PR is added to ensure that the system seamlessly handles a robust set of\n> cases. It's worth noting that all 14 tests are passing. The result? Safer\n> deploys, not riskier ones."
+    }
+  ]
+}

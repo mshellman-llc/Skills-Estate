@@ -82,6 +82,22 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(report['deferred_count'],0)
         self.assertEqual(report['other_skips'][0]['reason'],'Synthetic unavailable capability')
 
+    def test_missing_configuration_defers_and_present_configuration_runs(self):
+        state={'present':False};calls=[]
+        class Fixture(unittest.TestCase):
+            @capabilities.configured('synthetic setting',lambda:state['present'])
+            def test_configured(self):calls.append('configured')
+        tests=list(run_tests.flatten(unittest.defaultTestLoader.loadTestsFromTestCase(Fixture)))
+        report,code=run_tests.run(tests,stream=io.StringIO())
+        self.assertEqual(code,0);self.assertEqual(calls,[])
+        self.assertEqual(report['status'],'passed_with_deferred')
+        self.assertEqual(report['deferred'][0]['configuration'],'synthetic setting')
+        self.assertEqual(report['other_skips'],[])
+        state['present']=True
+        report,code=run_tests.run(tests,stream=io.StringIO())
+        self.assertEqual(code,0);self.assertEqual(calls,['configured'])
+        self.assertEqual(report['status'],'passed')
+
     def test_browser_dependency_probe_contains_no_launch_and_rejects_missing_files(self):
         with tempfile.TemporaryDirectory() as tmp:
             base=Path(tmp);entry=base/'playwright/index.mjs';entry.parent.mkdir();entry.write_text('// Synthetic module')

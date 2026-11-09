@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "artifact": "skills/writing-diagnostics/references/construction-rules.md",
+  "protected": [
+    {
+      "kind": "example",
+      "reason": "A quoted before or after example for this rule.",
+      "text": "> Before: The demo has not started, and the presenter is still checking the microphone.\n> After: The demo has not started. The presenter is still checking the microphone."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted before or after example for this rule.",
+      "text": "> Before: The importer reads it and the validator rejects it.\n> After: The importer reads the file. The validator rejects its missing header."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted before or after example for this rule.",
+      "text": "> the job marks the draft complete, failing during export silently\n> 27 validation rules run on the sample importer, so releases stopped\n> WRITTEN, WAITING FOR REVIEW"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`Seven screens, two decisions`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`Five figures`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`The September 8 question, answered`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`The panels you asked to see`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`As requested`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`Thousands of`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`The majority of`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`Countless`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`Uses the same file format as countless teams`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`20-35%`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the construction this rule bans or recommends.",
+      "text": "`2-6`"
+    }
+  ]
+}

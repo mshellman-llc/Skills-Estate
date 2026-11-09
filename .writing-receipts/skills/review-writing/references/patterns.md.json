@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "artifact": "skills/review-writing/references/patterns.md",
+  "protected": [
+    {
+      "kind": "example",
+      "reason": "Importance labels the row teaches readers to replace.",
+      "text": "“Pivotal,” “transformative,” “a testament to,” “critical,” “marks a shift,” or “game-changing”"
+    },
+    {
+      "kind": "example",
+      "reason": "Inflated verbs the row teaches readers to replace.",
+      "text": "“leverage,” “utilize,” “empower,” “facilitate,” “streamline,” “serve as,” “stand as,” or “boast”"
+    },
+    {
+      "kind": "example",
+      "reason": "Vocabulary cluster the paragraph tells readers to watch for.",
+      "text": "“delve,” “tapestry,” “pivotal,” “crucial,” “robust,” “seamless,” “leverage,” “landscape,” “foster,” “underscore” and “showcase”"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run deterministic tests by default; report deferred integration checks."""
+"""Run deterministic tests by default; report deferred integration and configuration checks."""
 import argparse
 from collections import Counter
 import contextlib
@@ -39,6 +39,11 @@ def requirement(test):
     return getattr(method, 'estate_integration', None)
 
 
+def configuration(test):
+    method = getattr(test, getattr(test, '_testMethodName', ''), None)
+    return getattr(method, 'estate_configuration', None)
+
+
 @contextlib.contextmanager
 def selected_environment(enabled):
     previous = os.environ.get(ENVIRONMENT_KEY)
@@ -59,6 +64,9 @@ def run(tests, enabled=(), stream=None):
         raise ValueError('Unknown integration capabilities: ' + ', '.join(sorted(unknown)))
     pending = [{'test': test.id(), 'capability': requirement(test)} for test in tests
                if requirement(test) and requirement(test) not in enabled]
+    waiting = {item['test'] for item in pending}
+    pending += [{'test': test.id(), 'configuration': configuration(test)[0]} for test in tests
+                if configuration(test) and test.id() not in waiting and not configuration(test)[1]()]
     summary = {'selected_integrations': sorted(enabled), 'discovered': len(tests),
                'deferred': pending, 'deferred_count': len(pending)}
     with selected_environment(enabled):

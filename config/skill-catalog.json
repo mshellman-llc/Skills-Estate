@@ -19,7 +19,9 @@
     "refine-backlog": {
       "source": "refine-backlog",
       "pack": "core",
-      "modes": {}
+      "modes": {},
+      "license": "Adapted portions: MIT with the Commons Clause (UPSTREAM.md)",
+      "commercial_use": "not-for-sale"
     },
     "capture-knowledge": {
       "source": "capture-knowledge",
@@ -154,7 +156,9 @@
     "frame-jobs-to-be-done": {
       "source": "frame-jobs-to-be-done",
       "pack": "core",
-      "modes": {}
+      "modes": {},
+      "license": "Adapted portions: MIT with the Commons Clause (UPSTREAM.md)",
+      "commercial_use": "not-for-sale"
     },
     "manage-consulting-knowledge": {
       "source": "manage-consulting-knowledge",
@@ -174,7 +178,9 @@
     "prioritize-work": {
       "source": "prioritize-work",
       "pack": "core",
-      "modes": {}
+      "modes": {},
+      "license": "Adapted portions: MIT with the Commons Clause (UPSTREAM.md)",
+      "commercial_use": "not-for-sale"
     },
     "design-process": {
       "source": "design-process",
@@ -202,7 +208,9 @@
     "build-roadmap": {
       "source": "build-roadmap",
       "pack": "core",
-      "modes": {}
+      "modes": {},
+      "license": "Adapted portions: MIT with the Commons Clause (UPSTREAM.md)",
+      "commercial_use": "not-for-sale"
     },
     "map-sales-process": {
       "source": "map-sales-process",
@@ -283,7 +291,9 @@
     "plan-sprint": {
       "source": "plan-sprint",
       "pack": "core",
-      "modes": {}
+      "modes": {},
+      "license": "Adapted portions: MIT with the Commons Clause (UPSTREAM.md)",
+      "commercial_use": "not-for-sale"
     },
     "write-statement-of-work": {
       "source": "write-statement-of-work",

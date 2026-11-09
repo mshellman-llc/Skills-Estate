@@ -45,7 +45,7 @@ Read the complete result for meaning and structure. Review the claim, author rep
 | Resume, commercial, personal or regulated copy | [Context rules](references/context-rules.md) |
 | Consequential review, conflicting constraints or a full audit | [Detailed review](references/detailed-review.md) |
 | An uncertain repair | [Editing examples](references/examples.md) |
-| Saved files, figure comparisons or required review records | [Diagnostic toolkit](../writing-diagnostics/SKILL.md) and the scanner procedure in [Detailed review](references/detailed-review.md) |
+| Saved files, figure comparisons or required review records | [Diagnostic toolkit](../writing-diagnostics/SKILL.md) and the [scanner procedure](references/detailed-review.md) |
 
 ## Capture and consolidate corrections
 

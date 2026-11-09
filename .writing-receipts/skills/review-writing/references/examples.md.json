@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "artifact": "skills/review-writing/references/examples.md",
+  "protected": [
+    {
+      "kind": "example",
+      "reason": "The recurring The + noun frame this section teaches readers to repair.",
+      "text": "“The snag is a missing owner. The move is to assign one owner per request. The finish is an agreed review date.”"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted draft or revision in an editing example; the revision repeats the source facts by design.",
+      "text": "> Great progress! This isn't just a build milestone—it's a major leap toward a seamless release. The result? Production-ready confidence."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted draft or revision in an editing example; the revision repeats the source facts by design.",
+      "text": "> The local build passed. Deployment has not been attempted."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted draft or revision in an editing example; the revision repeats the source facts by design.",
+      "text": "> Unlock effortless scale with a $4,320 investment, ensuring immediate momentum."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted draft or revision in an editing example; the revision repeats the source facts by design.",
+      "text": "> The proposed option adds 24 hours at $180/hour, totaling $4,320. Work starts after written approval."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted draft or revision in an editing example; the revision repeats the source facts by design.",
+      "text": "> This robust enhancement streamlines error handling, ensuring a seamless experience across the ecosystem."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted draft or revision in an editing example; the revision repeats the source facts by design.",
+      "text": "> The parser rejects requests without `account_id` before calling the API. The validation test passed locally."
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted draft or revision in an editing example; the revision repeats the source facts by design.",
+      "text": "> Book appointments, assign clinicians and manage schedule changes."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "artifact": "skills/review-writing/references/expanded-writing-review.md",
+  "protected": [
+    {
+      "kind": "identifier",
+      "reason": "Address of a cited source; the link text names the authors.",
+      "text": "https://arxiv.org/html/2410.16107v2"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Address of a cited source; the link text names the authors.",
+      "text": "https://aclanthology.org/2024.acl-long.298/"
+    }
+  ]
+}
