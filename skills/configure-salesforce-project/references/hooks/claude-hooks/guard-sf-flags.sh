@@ -26,7 +26,7 @@
 #
 # Everything else still blocks.
 #
-# The retrieve block has an escape hatch: ESTATE_/SOLO_ALLOW_RETRIEVE. Since
+# The retrieve block has an escape hatch: ESTATE_ALLOW_RETRIEVE. Since
 # this hook is now the only layer (the settings.json deny was removed), the hatch
 # is a real bypass — it lets one retrieve through and records it to the hatch-log
 # so an override is on the record rather than silent. Initial seeding needs
@@ -252,7 +252,7 @@ while IFS= read -r SEG; do
     esac
   fi
 
-  if [ "${ESTATE_ALLOW_RETRIEVE:-}" = "1" ] || [ "${SOLO_ALLOW_RETRIEVE:-}" = "1" ] || [ "${SOLO_ALLOW_RETRIEVE:-}" = "1" ]; then
+  if [ "${ESTATE_ALLOW_RETRIEVE:-}" = "1" ]; then
     record_hatch ALLOW_RETRIEVE "$COMMAND"
     if [ "$RETRIEVE_NOTED" = 0 ]; then
       RETRIEVE_NOTED=1

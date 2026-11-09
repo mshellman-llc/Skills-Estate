@@ -1350,7 +1350,7 @@
       "inputs": "The repository, its delivery mode, tracker, host and ownership mode, and authenticated prerequisites.",
       "outputs": "Installed or repaired hooks and contract blocks, recorded configuration, and an audit result for each piece.",
       "example": "Audit this Salesforce repository's delivery hooks and project instructions, and fix what is no longer armed.",
-      "reviewedEntrypointSha256": "0a972420b12d9eb7672d3f0f54f7a539cc344f9967cd602240246b77653edfac",
+      "reviewedEntrypointSha256": "145ef59d022916f681f558bb20026039ece312c93b7d0d1a8801a5cdb47fc8ce",
       "expect": "It runs a prerequisites check first, asks only for settings it cannot detect (tracker, trunk branch, platform), then installs hooks and a managed instruction block, audits what it installed and prints a client-conversation checklist. It never accepts a pasted credential, directing you to the browser login commands instead, and the audit is read-only unless you add --fix.",
       "overview": "It runs a prerequisites check first, asks only for settings it cannot detect (tracker, trunk branch, platform), then installs hooks and a managed instruction block, audits what it installed and prints a client-conversation checklist. It never accepts a pasted credential, directing you to the browser login commands instead, and the audit is read-only unless you add --fix.",
       "value": "Set up or audit the repository checks and project instructions that govern Salesforce delivery. It connects hooks, tracker conventions and the chosen delivery mode, then checks that the installed pieces are actually armed.",
@@ -1419,7 +1419,7 @@
       "inputs": "The issue, repository, target org, configuration, and requested change.",
       "outputs": "The change with separate validation, review, deployment, and acceptance evidence.",
       "example": "Prepare this authorized Salesforce change using the project’s isolated delivery workflow.",
-      "reviewedEntrypointSha256": "ac14575a4e4d1c4a00839c4a5485327738ca6e947af857909f043613e677324b",
+      "reviewedEntrypointSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
       "expect": "It requires a GitHub issue first, then works in an isolated worktree with local checks, a per-commit dry run against a confirmed org, a squash merge and a deploy from main. With no org it stops at 'prepared locally' and never records a validation or deployment as done, and it counts the task finished only when the ticket is closed and the worktree removed.",
       "connectors": {
         "required": [

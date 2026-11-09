@@ -57,7 +57,7 @@ pmd_policy()     { cfg pmd block; }                  # block | advise
 chainhooks()     { cfg chainhooks; }                 # path to the client's hook dir
 drift_policy()   { cfg drift off; }                  # tracking | off (audittrail retired)
 qa_policy()      { cfg qa ask; }                     # auto | ask | off — acceptance-criteria QA at step 7
-org_alias()      { local a; a=$(cfg orgalias); printf '%s' "${a:-${ESTATE_ORG_ALIAS:-${SOLO_ORG_ALIAS:-}}}"; }
+org_alias()      { local a; a=$(cfg orgalias); printf '%s' "${a:-${ESTATE_ORG_ALIAS:-}}"; }
 devops_org_alias(){ cfg devops.orgalias; }            # DevOps Center control org
 devops_project_id(){ cfg devops.projectid; }          # DevOps Center project record id
 devops_pipeline_id(){ cfg devops.pipelineid; }        # pipeline whose topology owns the landing branch

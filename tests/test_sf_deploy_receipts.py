@@ -73,7 +73,7 @@ class ReceiptTests(unittest.TestCase):
             executable = fake / tool
             executable.write_text('#!/bin/sh\ntouch "' + str(self.path / (tool + '-called')) + '"\nexit 1\n')
             executable.chmod(0o755)
-        env = {**os.environ, 'PATH': str(fake) + ':' + os.environ['PATH'], 'SOLO_GITHUB_UPDATES': '0'}
+        env = {**os.environ, 'PATH': str(fake) + ':' + os.environ['PATH'], 'ESTATE_GITHUB_UPDATES': '0'}
         event = {'tool_input': {'command': command}, 'tool_response': {
             'stdout': json.dumps(payload) if isinstance(payload, dict) else payload, 'stderr': stderr}}
         process = subprocess.run(['bash', str(HOOKS / hook)], cwd=project, env=env,

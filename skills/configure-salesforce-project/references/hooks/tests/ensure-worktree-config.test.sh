@@ -31,8 +31,8 @@
 #                   compares a physical git dir against a resolved common dir; an
 #                   unresolved root makes the MAIN checkout read as a worktree and
 #                   this hook starts symlinking things into the clone itself.
-#   unset ESTATE_*    org_alias() falls back to $ESTATE_ORG_ALIAS / $SOLO_ORG_ALIAS. If
-#                   the developer running the suite has either exported, the
+#   unset ESTATE_*  org_alias() falls back to $ESTATE_ORG_ALIAS. If
+#                   the developer running the suite has exported it, the
 #                   "nothing knows the alias" cases would take a different branch
 #                   and invoke the real `sf` CLI.
 #
@@ -63,7 +63,7 @@ HOOK="$HERE/../claude-hooks/ensure-worktree-config.sh"
 
 command -v python3 >/dev/null 2>&1 || { echo "python3 required; skipping"; exit 0; }
 
-unset ESTATE_ORG_ALIAS SOLO_ORG_ALIAS
+unset ESTATE_ORG_ALIAS
 
 TMP=$(mktemp -d "${TMPDIR:-/tmp}/ensure wt.XXXXXX") || exit 1
 TMP=$(cd "$TMP" && pwd -P)

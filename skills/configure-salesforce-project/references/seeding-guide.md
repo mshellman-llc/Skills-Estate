@@ -348,7 +348,7 @@ A retrieve is blocked by **one** layer — `guard-sf-flags.sh`, this skill's Pre
 and only in the **main** checkout. An earlier version also shipped a `permissions.deny` rule
 in `settings.json`, but that was removed: a user-level deny fires in *every* repo on the
 machine, which broke non-interference with unrelated projects. So blocking now lives only in
-the gated hook, which honours the `ESTATE_/SOLO_ALLOW_RETRIEVE=1` hatch (recorded to the
+the gated hook, which honours the `ESTATE_ALLOW_RETRIEVE=1` hatch (recorded to the
 hatch-log). The hatch is therefore a real bypass — use it only for the rare operation the
 scratch-dir path genuinely cannot express. A retrieve run from a **linked worktree** is
 allowed outright and needs no hatch: it can only clobber that branch's own files, and the PR
@@ -371,7 +371,7 @@ existing WI branch, validate, push, and create the DevOps Center review. DevOps
 Center merges and promotes it through the configured stages.
 
 **For the rare case the scratch-dir path cannot express**, `ESTATE_ALLOW_RETRIEVE=1`
-(the `SOLO_` prefixes still work) lets one retrieve through and appends a line to
+lets one retrieve through and appends a line to
 `.git/estate/hatch-log`. Like every hatch in this stack it does not block and does not
 argue — it makes the override a decision on record instead of a silent one.
 

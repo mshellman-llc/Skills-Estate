@@ -124,7 +124,7 @@ The merge gate is **per-commit**. `record-validate.sh` logs the SHA of each succ
 3. The dry run did not actually succeed. Check the output for `Status: Failed`; only successes are recorded.
 4. You validated in a different clone. The log is machine-local by design.
 
-If the org is genuinely unavailable, `SOLO_ALLOW_UNVALIDATED_MERGE=1 gh pr merge --squash ...` — and say so on the ticket.
+If the org is genuinely unavailable, `ESTATE_ALLOW_UNVALIDATED_MERGE=1 gh pr merge --squash ...` — and say so on the ticket.
 
 ## Close Blocked: "No Deploy Has Ever Been Recorded"
 
@@ -163,7 +163,7 @@ Spurious comments are worth deleting (`gh api -X DELETE repos/{owner}/{repo}/iss
 
 **Symptom:** the Stop hook reports incomplete DoD items and the turn continues.
 
-It found one of two things: `main` ahead of the org, or a deployed ticket still open. Each comes with its command. It reports each distinct state only once, so finishing the work — or telling the user plainly what you are leaving open and why — both end the loop. "Deployed, waiting on your testing before I close #N" is a complete answer. `SOLO_SKIP_DOD=1` disables it.
+It found one of two things: `main` ahead of the org, or a deployed ticket still open. Each comes with its command. It reports each distinct state only once, so finishing the work — or telling the user plainly what you are leaving open and why — both end the loop. "Deployed, waiting on your testing before I close #N" is a complete answer. `ESTATE_SKIP_DOD=1` disables it.
 
 It says nothing about open worktrees. Keeping one alive after a deploy for follow-up fixes on the same ticket is a supported way to work; `session-status.sh` reports open worktrees at session start instead.
 

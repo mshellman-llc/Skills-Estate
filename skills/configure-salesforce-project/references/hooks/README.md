@@ -10,7 +10,7 @@
 > | `.claude/.deploy-log`, `.validate-log`, `.hatch-log` | `.git/estate/deploy-log`, `validate-log`, `hatch-log`, plus `approve-log`, `drift-log`, `ship-log`, `dod-state`, `client-checklist` |
 > | hardcoded `main` | `trunk()` from `estate.trunk` |
 > | hardcoded `gh` | the ticket adapter (`_ticket.sh`) |
-> | `SOLO_*` escape hatches | `ESTATE_*` (the `SOLO_` names still work) |
+> | `SOLO_*` escape hatches | `ESTATE_*` |
 >
 > **New in this skill:** `_config.sh` (config + the master mode gate), `_ticket.sh` (tracker
 > adapter), `_block.sh` (the CLAUDE.md hash fence), `guard-closing-keywords.sh`,
@@ -282,7 +282,7 @@ Nothing needs editing for a standard project, but confirm:
   The development environment has no branch of its own.
 - **Org alias.** `ensure-worktree-config.sh` reads it from the main clone's
   `.sf/config.json` — set that first (`sf config set target-org=<alias>`) or
-  export `SOLO_ORG_ALIAS`.
+  export `ESTATE_ORG_ALIAS`.
 - **Source root.** The guards assume `force-app/`.
 - **Toolchain.** The prettier / ESLint / PMD / Jest gates skip with a warning when
   the binaries are absent, so a project without them still commits.
@@ -298,15 +298,14 @@ people route around; the log only makes using one a decision on record.
 
 | Hatch | Effect |
 |---|---|
-| `SOLO_ALLOW_UNVALIDATED_MERGE=1` | skip the validate-before-merge gate |
-| `SOLO_SKIP_DOD=1` | skip the Stop-hook Definition-of-Done check |
-| `SOLO_ALLOW_RETRIEVE=1` | allow a retrieve into the **main** checkout — recorded, see below (a linked worktree needs no key) |
+| `ESTATE_ALLOW_UNVALIDATED_MERGE=1` | skip the validate-before-merge gate |
+| `ESTATE_SKIP_DOD=1` | skip the Stop-hook Definition-of-Done check |
+| `ESTATE_ALLOW_RETRIEVE=1` | allow a retrieve into the **main** checkout — recorded, see below (a linked worktree needs no key) |
 | `git commit --no-verify` | skip every pre-commit gate |
 | `docs-only` / `no-deploy` issue label | close a ticket that produced no deploy |
 
-All three env vars also answer to an `SOLO_`-prefixed alias. If you rename a hatch,
-rename it in the hook and in `CLAUDE.md` together — a documented override that
-silently does nothing reads as a broken hook.
+If you rename a hatch, rename it in the hook and in `CLAUDE.md` together — a
+documented override that silently does nothing reads as a broken hook.
 
 There is deliberately **no** escape hatch on the force-app-outside-a-worktree
 guards. That one is a wall, not a gate.
@@ -325,7 +324,7 @@ init (requirement 1), and it could not be scoped to one project. It is gone;
 gated, so it blocks retrieve-into-tree only in a managed repo — the correct
 scope. And within a managed repo it blocks only the **main** checkout: a retrieve
 run from a linked worktree is allowed, because it can only clobber that branch's
-own files and the PR diff catches it before merge. `SOLO_ALLOW_RETRIEVE=1`
+own files and the PR diff catches it before merge. `ESTATE_ALLOW_RETRIEVE=1`
 relaxes the main-checkout block, and the hatch records the override instead of
 leaving it silent — for an operation that should happen about once a year.
 

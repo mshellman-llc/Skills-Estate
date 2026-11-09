@@ -28,6 +28,10 @@
     "0.4.2": {
       "content_sha256": "bd30bba9532cb028e6cb8dc50fe44b8c5bc1073ac4ed42e0ea8f4dda0fabd2e2",
       "note": "Repair role-specific application selection, claim authority and factual review; update the corresponding source-bound reader guides."
+    },
+    "0.4.3": {
+      "content_sha256": "d3e4e4e6d01c017fb7a7c904ac5dc06cfe90baf8b85df68ae50bcee90ffcacac",
+      "note": "Make ESTATE_ the only Salesforce kit prefix: rename the old variables in configure-salesforce-project and operate-salesforce-pipeline, and retire the older aliases in configure-salesforce-project and deliver-salesforce-change."
     }
   }
 }

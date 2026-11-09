@@ -294,9 +294,7 @@ Deliberate, **recorded**, never silent. Each appends `<utc> <kind> <sha> <detail
 
 `ESTATE_ALLOW_UNVALIDATED_MERGE=1` · `ESTATE_SKIP_DOD=1` · `ESTATE_ALLOW_RETRIEVE=1` ·
 `ESTATE_ALLOW_UNVALIDATED_PUSH=1` (bitbucket only) · `git commit --no-verify` · the
-`docs-only` / `no-deploy` ticket labels. The `SOLO_` prefixes from
-the predecessor still work — a documented override that silently does nothing looks
-like a broken gate, and gates that look broken get removed.
+`docs-only` / `no-deploy` ticket labels.
 
 There is **no** hatch on the force-app-outside-a-worktree guards, and none on
 `guard-closing-keywords.sh`. Those are walls, not gates.

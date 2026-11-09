@@ -46,13 +46,13 @@ fi
 
 # Inline env-var hatches. The guards they disable log too; this catches the case
 # where the guard never runs at all.
-if echo "$COMMAND" | grep -qE "${CMDPOS}(SOLO)_ALLOW_UNVALIDATED_MERGE=1([[:space:]]|\$)"; then
+if echo "$COMMAND" | grep -qE "${CMDPOS}ESTATE_ALLOW_UNVALIDATED_MERGE=1([[:space:]]|\$)"; then
   record_hatch ALLOW_UNVALIDATED_MERGE_INLINE "$COMMAND"
   USED="$USED
   - the validate-before-merge gate was disabled for this command."
 fi
 
-if echo "$COMMAND" | grep -qE "${CMDPOS}(SOLO)_SKIP_DOD=1([[:space:]]|\$)"; then
+if echo "$COMMAND" | grep -qE "${CMDPOS}ESTATE_SKIP_DOD=1([[:space:]]|\$)"; then
   record_hatch SKIP_DOD_INLINE "$COMMAND"
   USED="$USED
   - the Definition-of-Done Stop check was disabled for this command."

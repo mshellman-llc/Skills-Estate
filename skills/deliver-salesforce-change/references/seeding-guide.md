@@ -317,11 +317,7 @@ Two layers block a retrieve, and they are separate on purpose:
 | Layer | What it is | How it behaves |
 |---|---|---|
 | `permissions.deny` in `.claude/settings.json` | Claude Code refuses the command before any hook runs | not bypassable by an environment variable |
-| `guard-sf-flags.sh` | this skill's PreToolUse hook | honours `SOLO_ALLOW_RETRIEVE=1`, recorded to `.claude/.hatch-log` |
-
-The deny rule fires first, so the hatch alone does not open the door. That is
-deliberate: a once-a-year operation should not be one env var away from an
-agent's reach.
+| `guard-sf-flags.sh` | this skill's PreToolUse hook | refuses every retrieve, with no environment override |
 
 **The recommended path keeps both layers intact.** Retrieve into a scratch tree,
 outside `force-app/`, from a plain terminal:
@@ -337,11 +333,6 @@ guards. Then, in a worktree, on a ticket, copy across the specific files you
 meant to bring over, read them, and take them through the normal validate →
 merge → deploy sequence. The deploy is what makes the org's copy and the repo's
 copy the same thing again.
-
-**If a project has deliberately relaxed its deny rules**, `SOLO_ALLOW_RETRIEVE=1`
-is the second key, and using it appends a line to `.claude/.hatch-log`. Like
-every hatch in this stack it does not block and does not argue — it makes the
-override a decision on record instead of a silent one.
 
 **Never `sf project retrieve start --source-dir force-app`.** That overwrites the
 tracked tree with org state and silently reverts anything deployed but not yet

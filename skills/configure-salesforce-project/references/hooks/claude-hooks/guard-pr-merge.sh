@@ -33,9 +33,7 @@
 # Fails OPEN when the host CLI is absent or the remote is unreachable: an offline
 # tool should not stop work, and the deploy-side guards still protect the org.
 #
-# Escape hatch (deliberate, visible, recorded): ESTATE_ALLOW_UNVALIDATED_MERGE=1
-# (SOLO_ prefixes still work — a documented override that silently does
-# nothing looks like a broken gate, and gates that look broken get removed).
+# Escape hatch (deliberate, visible, recorded): ESTATE_ALLOW_UNVALIDATED_MERGE=1.
 
 set -u
 HOOK_EVENT="PreToolUse"
@@ -215,8 +213,7 @@ if [ -n "$PROTECTED" ]; then
   fi
 fi
 
-if [ "${ESTATE_ALLOW_UNVALIDATED_MERGE:-}" = "1" ] || [ "${SOLO_ALLOW_UNVALIDATED_MERGE:-}" = "1" ] \
-   || [ "${SOLO_ALLOW_UNVALIDATED_MERGE:-}" = "1" ]; then
+if [ "${ESTATE_ALLOW_UNVALIDATED_MERGE:-}" = "1" ]; then
   record_hatch ALLOW_UNVALIDATED_MERGE "$COMMAND"
   note "ESCAPE HATCH USED: the validate-before-merge gate was skipped for this merge." \
        "Recorded to the hatch-log. Say so on the ticket — a merge with no recorded dry" \

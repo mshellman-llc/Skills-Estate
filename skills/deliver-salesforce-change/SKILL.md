@@ -419,7 +419,7 @@ Shared helpers live in `_lib.sh`: event parsing, `block()`/`note()`, worktree de
 | Hook | What it does |
 |------|-------------|
 | `record-validate.sh` | Records the commit SHA of each **successful** dry run to `.claude/.validate-log` — the proof `guard-pr-merge.sh` requires |
-| `auto-label-deploy.sh` | On a **successful** real deploy from `main`: records the SHA and job from structured JSON; GitHub labels/comments require explicit `SOLO_GITHUB_UPDATES=1` opt-in |
+| `auto-label-deploy.sh` | On a **successful** real deploy from `main`: records the SHA and job from structured JSON; GitHub labels/comments require explicit `ESTATE_GITHUB_UPDATES=1` opt-in |
 | `post-merge-nudge.sh` | After a squash merge, hands over the exact deploy command with the merged `force-app/` files already listed |
 
 **Lifecycle:**
@@ -464,7 +464,7 @@ Each describes *this clone's* history against the org, so none of it is shared. 
 
 ### Escape hatches
 
-Deliberate, **recorded**, never silent: `SOLO_ALLOW_UNVALIDATED_MERGE=1`, `SOLO_SKIP_DOD=1`, `git commit --no-verify`, and the `docs-only` / `no-deploy` issue labels. There is **no** escape hatch on the force-app-outside-a-worktree guards — that one is a wall, not a gate.
+Deliberate, **recorded**, never silent: `ESTATE_ALLOW_UNVALIDATED_MERGE=1`, `ESTATE_SKIP_DOD=1`, `git commit --no-verify`, and the `docs-only` / `no-deploy` issue labels. There is **no** escape hatch on the force-app-outside-a-worktree guards — that one is a wall, not a gate.
 
 Each hatch appends `<utc> <kind> <sha> <detail>` to `.claude/.hatch-log` and emits a `note()`. None of them block: a hatch that argues with you is one people route around. The log makes using one a decision on record.
 

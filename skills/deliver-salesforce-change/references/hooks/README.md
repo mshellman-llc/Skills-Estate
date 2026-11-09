@@ -38,7 +38,7 @@ The interpreter reads JSON from stdout; a CLI notice on stderr does not corrupt 
 
 These files are evidence indexes for one clone, not proof of current org parity. They do not replace the raw result or runtime acceptance checks. Keep them gitignored and private.
 
-`auto-label-deploy.sh` records locally by default. GitHub issue labels and comments require explicit project opt-in through `SOLO_GITHUB_UPDATES=1`, after the user has authorized those updates. A deployment does not establish that acceptance criteria passed or that a ticket can be closed.
+`auto-label-deploy.sh` records locally by default. GitHub issue labels and comments require explicit project opt-in through `ESTATE_GITHUB_UPDATES=1`, after the user has authorized those updates. A deployment does not establish that acceptance criteria passed or that a ticket can be closed.
 
 ## Wire the hooks
 
