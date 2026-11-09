@@ -1,6 +1,6 @@
 # Skill reuse review
 
-88 general-use methods, 0 Context-specific workflows, and 3 awaiting source review.
+91 general-use methods, 0 Context-specific workflows, and 0 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -54,7 +54,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `lay-out-sticker-sheets` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `load-project-context` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `maintain-discovery-record` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `maintain-skills-estate` | Needs review | Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths. | No local path or configured private term detected in workflow text. |
+| `maintain-skills-estate` | General use | Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths. | No local path or configured private term detected in workflow text. |
 | `manage-brand-profile` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `manage-consulting-knowledge` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `manage-cutover-closeout` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
@@ -85,7 +85,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `review-deliverable` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `review-sales-journey` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `review-site-runtime` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `review-writing` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `review-writing` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `scope-project` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `simplify-code` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `specify-implementation` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
@@ -102,6 +102,6 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `write-feature-spec` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `write-portfolio-case-study` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `write-statement-of-work` | General use | Requires a confirmed quote model, the project’s approved contract profile, and the document runtime. | No local path or configured private term detected in workflow text. |
-| `writing-diagnostics` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `writing-diagnostics` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 
 Refresh this review with `python3 tools/skill_guide.py --report`. The map recomputes reference findings on each build. Reader-guide copy is bound to its reviewed entrypoint hash; a changed entrypoint shows current instructions until the guide is reviewed again.
