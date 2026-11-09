@@ -16,6 +16,10 @@
     "0.3.4": {
       "content_sha256": "f4e1be2ef83545760e4361f8ca040d1dd36fe37bb9d8a38a381d947b3c549e47",
       "note": "Separate Salesforce development and personal/creative browsing groups; keep career applications distinct and resolve included helper chains in overview links."
+    },
+    "0.4.0": {
+      "content_sha256": "27411c7d4c46d0dd6460c2a2c063ea9ee46b7adf287f35d425cb989afc4197f8",
+      "note": "Separate Salesforce development, career and personal plugins; move independent product development to the product plugin."
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.3.4",
+  "version": "0.4.0",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -69,7 +69,7 @@
       ]
     },
     "estate-delivery": {
-      "description": "Skills Estate delivery workflows and routing.",
+      "description": "Project delivery: handoffs, requirements, sprint planning, status, release review and closeout.",
       "entries": [
         "validate-delivery",
         "refine-backlog",
@@ -80,18 +80,12 @@
         "build-moscow-story-map",
         "build-review-site",
         "prepare-delivery-handoff",
-        "apply-salesforce-patterns",
-        "deliver-salesforce-change",
-        "manage-salesforce-devops",
-        "operate-salesforce-pipeline",
-        "configure-salesforce-project",
         "plan-sprint",
         "plan-team-onboarding",
         "import-tracker-export"
       ],
       "internal": [
         "delivery-orchestrator",
-        "capture-salesforce-screens",
         "review-site-runtime"
       ],
       "opt_in": false,
@@ -114,7 +108,6 @@
       "internal": [
         "brand-renderer",
         "evidence-core",
-        "verify-salesforce-org",
         "writing-diagnostics",
         "ingest-transcript"
       ],
@@ -151,7 +144,8 @@
         "build-editorial-chart",
         "design-information-architecture",
         "develop-product",
-        "plan-usability-study"
+        "plan-usability-study",
+        "develop-independent-product"
       ],
       "internal": [],
       "opt_in": false,
@@ -180,15 +174,39 @@
       "controls": []
     },
     "estate-personal": {
-      "description": "Optional personal Skills Estate workflows: career, portfolio, independent products and creative projects.",
+      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune\u2019s Weave planning.",
+      "entries": [
+        "guide-fortunes-weave",
+        "design-sticker",
+        "lay-out-sticker-sheets"
+      ],
+      "internal": [],
+      "opt_in": true
+    },
+    "estate-salesforce": {
+      "description": "Salesforce development: Apex and LWC patterns, Claude coding hooks, checks, DevOps and deployment.",
+      "entries": [
+        "apply-salesforce-patterns",
+        "deliver-salesforce-change",
+        "manage-salesforce-devops",
+        "operate-salesforce-pipeline",
+        "configure-salesforce-project"
+      ],
+      "internal": [
+        "capture-salesforce-screens",
+        "verify-salesforce-org"
+      ],
+      "opt_in": false,
+      "router_source": "agents/salesforce-router.md",
+      "additional_routes": [],
+      "controls": []
+    },
+    "estate-career": {
+      "description": "Career and applications: assess roles and offers, prepare applications and resumes, and write portfolio case studies.",
       "entries": [
         "prepare-job-application",
         "assess-career-options",
-        "guide-fortunes-weave",
-        "develop-independent-product",
-        "write-portfolio-case-study",
-        "design-sticker",
-        "lay-out-sticker-sheets"
+        "write-portfolio-case-study"
       ],
       "internal": [],
       "opt_in": true
@@ -694,6 +712,11 @@
         "evidence": ""
       },
       "writing-router": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": ""
+      },
+      "salesforce-router": {
         "status": "pending",
         "reviewed_sha256": "",
         "evidence": ""

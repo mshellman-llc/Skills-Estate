@@ -1,6 +1,6 @@
 ---
 name: delivery-router
-description: Route salesforce delivery engineering, deployment, team onboarding, backlog refinement, sprint planning, release review sites, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
+description: Route project delivery, team onboarding, backlog refinement, sprint planning, release review sites, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Delivery Router
@@ -31,11 +31,6 @@ Turning a new tracker export into canonical tickets and a delta is `import-track
 - `validate-delivery`
 - `manage-cutover-closeout`
 - `plan-team-onboarding`
-- `configure-salesforce-project`
-- `operate-salesforce-pipeline`
-- `deliver-salesforce-change`
-- `apply-salesforce-patterns`
-- `manage-salesforce-devops`
 - `import-tracker-export`
 - `build-moscow-story-map`
 - `manage-decision-register`
