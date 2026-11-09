@@ -8,9 +8,9 @@ An end reader is not a participant in the drafting conversation. After correctin
 
 ## Leadership and career
 
-Preserve career progression, senior leadership and ownership. Do not recast a leader as a generic individual contributor or assume the work was primarily billable delivery. Include technical go-to-market, pre-sales, program leadership and applied AI when the source supports them.
+Keep roles, dates, responsibilities and ownership accurate. Select emphasis from the posting, current request and reader’s purpose. Supported leadership, technical, client, commercial, product and other experience is available evidence; no category must appear in every résumé.
 
-Describe people leadership without inventing team size, reporting lines or hiring authority. Make the hiring case clear through the person's work. Remove generic praise for the employer, keyword stuffing, defensive disclaimers and inflated claims. Distinguish base salary from total compensation.
+When people leadership is selected, describe it without inventing team size, reporting lines or hiring authority. Make the hiring case clear through the person's work. Remove generic praise for the employer, keyword stuffing, defensive disclaimers and inflated claims. Distinguish base salary from total compensation.
 
 ## Commercial and delivery
 

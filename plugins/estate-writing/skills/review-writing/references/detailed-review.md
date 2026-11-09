@@ -51,7 +51,7 @@ Use the confirmed author profile when writing as that person. Apply a client's v
 
 Check facts, privacy, clarity and the requested action in a routine update. Read hiring materials, public work, client proposals and other consequential documents from beginning to end. Review factual accuracy, fair representation of the author's work, prose and layout separately. A render or script verifies only what it checks.
 
-Before revising a résumé, read the person's career sources and relevant prior résumé. Preserve career progression, leadership scope, client decisions, commercial ownership and supported results. Record the reason for material omissions in working notes. Choose length for the hiring reader's needs and keep the résumé's hiring purpose; a short portfolio handout is a different deliverable.
+Before revising a résumé, read the person's career sources and relevant prior résumé. Keep career facts and ownership accurate. Select evidence for the posting and current request, and record the reason for material omissions in working notes. No leadership, client, commercial, product or other theme is required merely because an earlier draft omitted it. Choose length for the hiring reader's needs and keep the résumé's hiring purpose; a short portfolio handout is a different deliverable.
 
 For a portfolio case, explain the problem, what the author owned, how the work functioned and the supported result. Record, package and test counts need that explanation to convey the work.
 

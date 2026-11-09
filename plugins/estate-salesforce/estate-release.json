@@ -24,7 +24,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "33dbd138756cff1dcf17ed2d477d7e1c91dd080145e9b011cf765e517f382981",
+      "required_sha256": "193765f15a97f41cf1768579ff28678e69ff1ba3623d6d0233b456a67c0b8ff3",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -84,7 +84,7 @@
       "subject": "apply-salesforce-patterns"
     },
     {
-      "required_sha256": "65b53b59f04f09a43a162e3d4792655efa0ec7e8562df305daa2ad15afe82ead",
+      "required_sha256": "0894047bba3b8e0785e82d3fea09bcdb0e55bd329b8409eb80e9741f76e6cfb6",
       "status": "review required",
       "subject": "assess-career-options"
     },
@@ -234,7 +234,7 @@
       "subject": "develop-product"
     },
     {
-      "required_sha256": "5abc1ed8c86f90fb3dff7e81731addf3054d1a833a61a14ae6d2cb39ed4d799c",
+      "required_sha256": "364c17b1090c87e95af8e32ea9c10a91f6c4a160ec77461916902d180c1781dd",
       "status": "review required",
       "subject": "draft-application-materials"
     },
@@ -369,7 +369,7 @@
       "subject": "prepare-delivery-handoff"
     },
     {
-      "required_sha256": "1dddc88a1566ff72a3c32a7ff23272d41efa5298d7b41b3504b375ac4f660954",
+      "required_sha256": "25936caef0e16a7a7c2803912d591e26602190f83009736da07052c421f45c45",
       "status": "review required",
       "subject": "prepare-job-application"
     },
@@ -439,7 +439,7 @@
       "subject": "review-site-runtime"
     },
     {
-      "required_sha256": "72f636cfb0449b00748a707e95f1d5a1dbe861d7d61f702b634fa7a9e33b39d8",
+      "required_sha256": "3d08dfe364a8769a0a9b5ad9ab2aeb8ad2ea53a70b0f4a1b18397a0a3ec78b3e",
       "status": "review required",
       "subject": "review-writing"
     },
@@ -469,7 +469,7 @@
       "subject": "synthesize-discovery"
     },
     {
-      "required_sha256": "fc4e1e7a59bff7ac429ef32acfb5af908bc7c695e5953cea8da009ade0cf6dee",
+      "required_sha256": "1d7b4ceabf6804edee3ef7c375fe2cfcb94aaae7021ea0752a3cd2fb659d89ef",
       "status": "review required",
       "subject": "tailor-resume"
     },
@@ -529,6 +529,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "e940d61270ed87cd52c179feab0874c17f765effa0067e54410b2dffa31fe443",
+  "source_sha256": "cfea796880ec5c7705ee6e68d6b08a70b948c65d2b99142023fc9e1d526c9be6",
   "status": "owner-published"
 }

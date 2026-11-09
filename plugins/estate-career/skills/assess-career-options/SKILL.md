@@ -34,7 +34,7 @@ Choose discovery questions that resolve the candidate's gaps: who held the role 
 
 ## Portfolio view
 
-On request, run the gates and the matrix across every nonterminal row in the tracker and add one line per role on lane coherence against the primary identity in `Career_Paths.md` (the candidate’s supplied function, differentiator and domain foundation). Note where an in-house IT seat, a RevOps lens or a consulting title pulls away from that identity. When a role closes, record why in its work record so the next search learns from it.
+On request, run the gates and the matrix across every nonterminal row in the tracker and assess each role against the candidate’s current opportunity criteria and the actual mandate. Do not infer a primary identity or reject a role because its category differs from earlier applications. When a role closes, record why in its work record so the next search learns from it.
 
 ## Negotiation
 
