@@ -21,6 +21,16 @@ class SkillGroupTests(unittest.TestCase):
         self.assertEqual([g['id'] for g in groups],[g['id'] for g in data['families']])
         for skill in data['skills']:self.assertIn(skill['id'],groups[skill['family']]['skills'])
 
+    def test_salesforce_development_and_creative_work_are_separate(self):
+        groups = {g['id']: g for g in browse.load_groups(ROOT)}
+        sf = set(groups['salesforce-development']['skills'])
+        self.assertTrue({'apply-salesforce-patterns', 'configure-salesforce-project', 'deliver-salesforce-change', 'operate-salesforce-pipeline'} <= sf)
+        self.assertFalse(sf & set(groups['delivery-and-salesforce']['skills']))
+        creative = set(groups['personal-and-creative']['skills'])
+        self.assertEqual(creative, {'design-sticker', 'lay-out-sticker-sheets', 'guide-fortunes-weave'})
+        self.assertFalse(creative & set(groups['career-and-personal']['skills']))
+        self.assertEqual(groups['career-and-personal']['title'], 'Career and applications')
+
     def test_duplicate_missing_and_unknown_group_members_are_rejected(self):
         data=json.loads((ROOT/'config/skill-groups.json').read_text())
         with tempfile.TemporaryDirectory() as tmp:
