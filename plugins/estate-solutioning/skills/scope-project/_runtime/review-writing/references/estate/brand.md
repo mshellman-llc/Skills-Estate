@@ -58,4 +58,4 @@ The neutral profile has no logo, footer mark, cover imagery, gradients, or bundl
 
 ## Review the result
 
-Inspect the rendered artifact for the selected colors, fonts, logo treatment, and readable contrast. Body text needs at least 4.5:1 contrast; large text needs at least 3:1. Check file properties, speaker notes, headers, and footers for another identity. A profile or checker alone does not prove that a renderer applied it. Report the profile used and any substitutions.
+Inspect the rendered artifact for the selected colors, fonts, logo treatment, and readable contrast. Body text needs a contrast ratio of at least 4.5:1, and large text 3:1. Check file properties, speaker notes, headers, and footers for another identity. A profile or checker alone does not prove that a renderer applied it. Report the profile used and any substitutions.

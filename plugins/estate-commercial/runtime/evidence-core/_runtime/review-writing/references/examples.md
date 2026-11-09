@@ -64,7 +64,7 @@ Replace it with:
 
 > After submission, the page is blank. Show a confirmation and the next step.
 
-The recommendation must follow from the observed behavior. Do not invent an abandonment rate, customer emotion or measured conversion benefit.
+The recommendation must follow from the observed behavior. Leave out any abandonment rate, customer emotion or conversion benefit that nobody measured.
 
 ## Preserve technical conditions
 
@@ -72,7 +72,7 @@ A parser now rejects a missing `account_id` before making an API request. The va
 
 > This robust enhancement streamlines error handling, ensuring a seamless experience across the ecosystem.
 
-A supported revision is:
+Revise it to:
 
 > The parser rejects requests without `account_id` before calling the API. The validation test passed locally.
 
@@ -90,7 +90,7 @@ Keep the sentence. The dash introduces a real list. A scanner match cannot justi
 
 A study observed task completion in 12 participants. It did not measure revenue. The draft cites the study after a claim about revenue growth and repeats that claim in its conclusion.
 
-Remove both instances of the unsupported revenue claim. Cite the study beside its task-completion finding and retain the sample size. Do not invent how many participants completed the task; retrieve that number if the answer needs it.
+Remove both instances of the unsupported revenue claim. Cite the study beside its task-completion finding and retain the sample size. Never guess the completion count; retrieve it if the answer needs it.
 
 Review the source and the entire draft. Changing promotional words or moving the citation cannot repair an unsupported claim.
 
@@ -138,11 +138,11 @@ A supported release note is:
 
 Keep the date, availability limit and per-person naming rule. Do not broaden uniqueness to the whole workspace. The measurement gap prevents a claim about time saved; it does not require a disclaimer when the release note makes no such claim.
 
-If the request instead asks whether saved filters reduced search time, answer that time savings have not been measured. If a draft claims they save ten minutes, remove that unsupported claim. If the requested copy must include a legal disclosure or a material approval condition, retain it. Source selection does not authorize hiding information the reader needs.
+If the request instead asks whether saved filters reduced search time, answer that nobody has measured the savings. If a draft claims they save ten minutes, remove that unsupported claim. If the requested copy must include a legal disclosure or a material approval condition, retain it. Source selection does not authorize hiding information the reader needs.
 
 ## Repair the recurring frame across surfaces
 
-A paragraph says, “The snag is a missing owner. The move is to assign one owner per request. The finish is an agreed review date.” A supported revision is, “Requests lack an owner. Assign one owner to each request. Agree a review date.” Preserve the facts and instructions while removing the repeated announcement. The same formula can appear in an email, article or internal note without becoming a heading.
+A paragraph says, “The snag is a missing owner. The move is to assign one owner per request. The finish is an agreed review date.” Revise it to “Requests lack an owner. Assign one owner to each request. Agree a review date.” Preserve the facts and instructions while removing the repeated announcement. The same formula can appear in an email, article or internal note without becoming a heading.
 
 A solution brief has “The Bet” above a pilot recommendation and “The Call” above discovery notes. A dashboard labels shared files “THE Workspace.” Use the supported content or function: “Pilot recommendation,” “Discovery notes” and “Shared files.” Removing the article from “Bet” or “Call” alone still leaves readers guessing. Apply the same reasoning to captions, display names and other authored text; the format does not define the rule.
 

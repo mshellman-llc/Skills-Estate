@@ -85,8 +85,7 @@ Use [the diagnostic toolkit](../_runtime/writing-diagnostics/WORKFLOW.md) for do
 If the owner has configured the optional tellscan scanner, resolve its actual executable path and supported options before use. Set `SCANNER` to that path and `PROFILE` to a confirmed profile supported by that scanner. Scan finished prose files:
 
 ```bash
-python3 "$SCANNER" scan <file>
-python3 "$SCANNER" scan <file> --profile "$PROFILE"
+python3 "$SCANNER" scan <file> [--profile "$PROFILE"]
 ```
 
 Use a named scanner profile only when the owner confirmed it for this author's copy. Inspect flags in context, repair the sentence or argument and rerun after editing. Preserve required terms, meaningful contrasts and deliberate author choices. Quoted bad examples remain examples to examine.

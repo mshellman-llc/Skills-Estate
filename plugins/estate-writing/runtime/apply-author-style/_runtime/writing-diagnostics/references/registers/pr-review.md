@@ -1,6 +1,6 @@
 # Register: pull requests and code review
 
-PR descriptions, review comments, and commit messages. Terse, active, factual.
+This register covers PR descriptions, review comments and commit messages, which stay terse, active and factual.
 
 ## Rules
 
@@ -9,8 +9,8 @@ PR descriptions, review comments, and commit messages. Terse, active, factual.
 - Describe what tests cover, not how many. Never "12 tests pass" or "all green"; write "covers the empty-quote and multi-org cases".
 - No CI status narration. The pipeline reports itself.
 - State the positive. Not "handles X, not Y", just "handles X".
-- No trailing hedge adverbs ("regardless.", "nonetheless.").
-- One change per sentence. Reviewers scan; compound sentences hide the diff.
+- Cut hedge adverbs such as regardless and nonetheless from the end of a sentence.
+- Give each change its own sentence. Reviewers scan, and compound sentences hide the diff.
 
 ## What good looks like
 

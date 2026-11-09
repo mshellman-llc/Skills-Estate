@@ -27,7 +27,7 @@ Two evidence notes shape how to apply it. Expert human judgment with a checklist
 
 ## Lexical judgment (beyond the scanner's lists)
 
-- **Synonym cycling**: rotating "developers... engineers... practitioners... builders" to avoid repetition. Repeat the clearest word.
+- **Synonym cycling**: rotating "developers... engineers... practitioners... builders" to avoid repetition. The fix is to repeat the clearest word.
 - **Copula avoidance**: `serves as`, `boasts`, `represents`, and `features` replace `is` and `has`. Default to is or has unless a specific verb adds meaning.
 - **Quiet-riser density**: "significant," "notable," "potential," "findings," "crucial" are each fine alone and still climbing in LLM output. Three in a paragraph: rewrite the paragraph.
 - **Template phrases**: slot-fill constructions ("a [adjective] step towards [adjective] infrastructure"). Describe the specific capability or outcome.
@@ -41,7 +41,7 @@ Two evidence notes shape how to apply it. Expert human judgment with a checklist
 
 - Meta-signposting ("here's the thing," "the key is"), rhetorical question + immediate answer, false binaries, over-explaining.
 - **Significance inflation**: delete clauses such as `marking a pivotal moment in the evolution of...` when the sentence works without them.
-- **Stakes inflation**: ordinary friction escalated to existential crisis. Test for severity language with no anchoring number. Name the impact, such as deals lost or cycle time. Significance inflation puffs importance. Stakes inflation manufactures threat.
+- **Stakes inflation**: ordinary friction escalated to existential crisis. Test for severity language with no anchoring number. Name the impact, such as deals lost or cycle time. Significance inflation puffs up importance, while stakes inflation invents a threat.
 - **Audience indictment**: the reader is positioned as failing before the solution arrives. Examples include `What most companies get wrong about X` and `leaving money on the table`. State the problem as a condition with a fact attached.
 - **False balance**: "While challenges exist, the opportunities far outweigh them." Take the position.
 - **Too-polished quotes**: "As one stakeholder noted, 'This solution transformed our ability to...'" Real quotes have texture. Use a real one or none.

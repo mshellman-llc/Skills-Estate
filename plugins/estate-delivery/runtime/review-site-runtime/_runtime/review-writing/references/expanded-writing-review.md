@@ -80,4 +80,4 @@ For each suspected pattern, identify what it does to this passage before editing
 
 Compare the revision with the source. Preserve required findings, conditions, figures, sources and acceptance checks within the requested scope; a summary need not reproduce every source detail. If a sentence contains both filler and a necessary qualification, rewrite around the qualification. Do not add anecdotes, errors or arbitrary changes in sentence length.
 
-Read the argument even when the scanner finds nothing. The text must support its claims and give the reader a usable action when the task calls for one. Check that editing has not erased approval conditions, created robotic fragments or replaced justified warmth with bluntness. Stop when the passage communicates its meaning in the required voice.
+Read the argument even when the scanner finds nothing. The text must support its claims and, when the task calls for one, end with a step the reader can act on. Check that editing has not erased approval conditions, created robotic fragments or replaced justified warmth with bluntness. Stop when the passage communicates its meaning in the required voice.

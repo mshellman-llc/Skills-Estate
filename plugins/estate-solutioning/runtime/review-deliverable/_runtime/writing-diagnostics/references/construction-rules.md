@@ -24,7 +24,7 @@ The rules preserve the original construction guidance. All examples in this port
 
 **Why.** This is the em dash in disguise. In a house that bans the em dash it becomes the highest-frequency structural tell, because the ban removed the punctuation without addressing the construction underneath it.
 
-**Replace with.** Split into two sentences of deliberately unequal length. Or subordinate the weaker clause. Or cut it.
+**Replace with.** Split into two sentences of deliberately unequal length, subordinate the weaker clause, or cut it.
 
 Do not substitute a semicolon, a colon, or a dash of any width. Those preserve the rhythm and only change the paint.
 
@@ -129,7 +129,7 @@ Headings and table cells are legitimately verbless. This rule is about body pros
 
 **Why.** A section that contains the meaning does not need a label announcing that meaning follows. This is the written equivalent of explaining a joke.
 
-**Replace with.** The content.
+**Replace with.** Let the content carry the meaning without the label.
 
 ---
 

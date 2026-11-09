@@ -101,10 +101,10 @@ values or narrating that a colored symbol means the label already beside it may
 add no value. Keep a useful comparison, calculation, consequence, qualification,
 standalone summary or explanation of an unfamiliar encoding. Retain accessible
 text alternatives and required legend keys. Never delete a figure merely because
-it appears twice or invent an insight to justify keeping redundant prose.
+it appears twice, and never invent a finding to keep redundant prose.
 
 These checks need content, source and audience review. C25–C27 provide only the
-narrow signals documented in the diagnostic toolkit; they do not detect heading
+narrow signals that writing-diagnostics documents; they do not detect heading
 truth, arbitrary count errors, unfair comparisons, duplicate containers, legend
 redundancy or every unsupported assurance.
 

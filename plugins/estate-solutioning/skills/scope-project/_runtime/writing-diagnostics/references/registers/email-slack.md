@@ -1,6 +1,6 @@
 # Register: client email, internal Slack, outreach
 
-Short-form, high-frequency, and the register where perceived AI costs the most per word: 47% of B2B professionals say they'd be less likely to reply to a cold email they thought was AI-written, and what triggers the perception isn't provenance — it's formulaic structure, templated sentence rhythm, and generic non-personalization (Hunter.io 2025; recipients tested under 50% accurate at actually identifying AI). Managers who over-rely on AI for messages lose sincerity ratings, worst on relational/motivational messages (UF/USC 2025). Write like one specific person writing to one specific person.
+Short-form, high-frequency, and the register where perceived AI costs the most per word: 47% of B2B professionals say they'd be less likely to reply to a cold email they thought was AI-written. Recipients react to formulaic structure, templated sentence rhythm and generic non-personalization, and in testing they identified AI-written email correctly less than half the time (Hunter.io 2025). Managers who over-rely on AI for messages lose sincerity ratings, worst on relational/motivational messages (UF/USC 2025). Write like one specific person writing to one specific person.
 
 ## Client email
 
@@ -13,8 +13,8 @@ Short-form, high-frequency, and the register where perceived AI costs the most p
 ## Internal Slack
 
 - Casual, efficient, fragments fine, personality welcome. "FYI — updating the quick wins sheet, don't touch rows 4-12 until I'm done."
-- Action and owner up front. Skip preamble entirely.
-- This is the one register where staccato is natural — the deck rules do not apply here.
+- Put the action and its owner up front, and skip the preamble.
+- This is the one register where staccato is natural, so the deck rules do not apply.
 
 ## Outreach / prospecting
 
@@ -36,4 +36,4 @@ Rewrite: "We're launching a new initiative to simplify operations and give teams
 
 That's it. That's the update."
 
-Why it works: the buzzwords became one concrete fact with a number; the closing fragment is natural in an internal register (and only there — don't transplant it into client deliverables).
+Why it works: the buzzwords became one concrete fact with a number; the closing fragment is natural in an internal register (and only there; don't transplant it into client deliverables).
