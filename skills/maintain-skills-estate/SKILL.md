@@ -84,7 +84,7 @@ Runtime relationships belong in `config/runtime-dependencies.json`. A router mus
 
 ## Prepare functional releases
 
-The existing catalog contains nine functional plugins: eight domain plugins and the opt-in `estate-personal`. Follow [the release workflow](references/release-workflow.md) to verify changes, raise `config/plugin-bundles.json`'s version, record its content with `python3 tools/plugin_version.py --record 'CHANGE NOTE'`, and generate candidates with `python3 tools/plugins.py --candidate`. Keep explicit context external and preserve retirement mappings. The existing marketplace and owner update command remain the distribution route; source preparation does not authorize publication or installation.
+The existing catalog contains eleven functional plugins: nine domain plugins and the separate opt-in `estate-career` and `estate-personal` packages. Follow [the release workflow](references/release-workflow.md) to verify changes, raise `config/plugin-bundles.json`'s version, record its content with `python3 tools/plugin_version.py --record 'CHANGE NOTE'`, and generate candidates with `python3 tools/plugins.py --candidate`. Keep explicit context external and preserve retirement mappings. The existing marketplace and owner update command remain the distribution route; source preparation does not authorize publication or installation.
 
 ## Account uploads and other surfaces
 

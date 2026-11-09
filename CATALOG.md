@@ -192,5 +192,6 @@ Each module needs a reviewed capability disposition before release.
 - [product-router](agents/product-router.md)
 - [pursuit-router](agents/pursuit-router.md)
 - [quality-router](agents/quality-router.md)
+- [salesforce-router](agents/salesforce-router.md)
 - [solutioning-router](agents/solutioning-router.md)
 - [writing-router](agents/writing-router.md)

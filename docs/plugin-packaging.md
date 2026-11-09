@@ -1,6 +1,12 @@
 # Private plugin candidates
 
-`tools/plugins.py` generates Claude and Codex distributions from the existing portable skill build. `config/plugin-bundles.json` owns membership and review status. The eight `agents/*-router.md` files remain the source for the routing method and historical selections. The pursuit configuration adds map-sales-process and review-sales-journey. Career, portfolio and personal project workflows belong to the opt-in `estate-personal` bundle, which has no router.
+`tools/plugins.py` generates Claude and Codex distributions from the existing portable skill build. `config/plugin-bundles.json` owns membership and review status. The nine `agents/*-router.md` files remain the source for the routing method and historical selections. The pursuit configuration adds map-sales-process and review-sales-journey. Salesforce development belongs to `estate-salesforce`, separate from project delivery. Career, applications and portfolio workflows belong to the opt-in `estate-career`; stickers and game planning belong to the opt-in `estate-personal`. These two optional bundles have no router. Independent product development belongs to `estate-product`. Each plugin is installable on its own and includes its required runtime helpers.
+
+## Separate installation and sharing
+
+Choose `estate-salesforce` for Salesforce development, `estate-career` for applications and portfolio work, or `estate-personal` for stickers and game planning. Each has its own marketplace entry and plugin ZIP on the Plugins (latest) GitHub release. Share the selected plugin ZIP; its required helpers travel with it.
+
+When updating from 0.3.x, install `estate-salesforce` if you previously used the Salesforce skills inside `estate-delivery`, and install `estate-career` if you used career skills inside `estate-personal`. The updated delivery plugin contains project delivery work, and the updated personal plugin contains the creative workflows. Independent product development is in `estate-product`. Updating the repository does not select or install these new plugins in an existing Claude profile.
 
 The current catalog consolidates some historical workflows as modes. A bundle owns each public entry once. A router can still select the complete mode workflow. Cross-bundle routes and controls are copied into that plugin's hidden `runtime/` directory, so resolving them does not depend on another plugin's installation behavior. These resources have `WORKFLOW.md`, not a duplicate discoverable `SKILL.md`.
 

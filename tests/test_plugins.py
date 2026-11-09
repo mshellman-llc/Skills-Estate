@@ -34,8 +34,8 @@ class PluginTests(unittest.TestCase):
         for bundle in sorted(plugins.BUNDLES):
             domain = bundle.removeprefix('estate-')
             row = {'description': 'Synthetic plugin fixture.', 'entries': ['task'] if domain == 'solutioning' else [],
-                   'internal': ['control'] if domain == 'quality' else [], 'opt_in': bundle == plugins.OPT_IN}
-            if bundle != plugins.OPT_IN:
+                   'internal': ['control'] if domain == 'quality' else [], 'opt_in': bundle in plugins.OPT_IN}
+            if bundle not in plugins.OPT_IN:
                 name = domain + '-router'
                 (self.root / f'agents/{name}.md').write_text(
                     f'---\nname: {name}\ndescription: Route a synthetic request.\n---\n\n'
@@ -112,6 +112,24 @@ class PluginTests(unittest.TestCase):
 
     def test_repository_marketplace_is_current(self):
         self.assertEqual(plugins.write_root_marketplace(Path(__file__).resolve().parents[1], check=True), [])
+
+    def test_salesforce_career_and_personal_are_independent_packages(self):
+        settings = plugins.config(ROOT)
+        bundles = settings['bundles']
+        salesforce = {'apply-salesforce-patterns', 'configure-salesforce-project',
+                     'deliver-salesforce-change', 'manage-salesforce-devops', 'operate-salesforce-pipeline'}
+        career = {'prepare-job-application', 'assess-career-options', 'write-portfolio-case-study'}
+        creative = {'design-sticker', 'lay-out-sticker-sheets', 'guide-fortunes-weave'}
+        self.assertEqual(salesforce, set(bundles['estate-salesforce']['entries']))
+        self.assertEqual(career, set(bundles['estate-career']['entries']))
+        self.assertEqual(creative, set(bundles['estate-personal']['entries']))
+        delivery_routes = set(plugins.router_modules(ROOT, bundles['estate-delivery']))
+        self.assertFalse(salesforce & delivery_routes)
+        self.assertIn('verify-salesforce-org', bundles['estate-salesforce']['internal'])
+        self.assertNotIn('verify-salesforce-org', plugins.router_modules(ROOT, bundles['estate-quality']))
+        self.assertTrue(bundles['estate-career']['opt_in'])
+        self.assertTrue(bundles['estate-personal']['opt_in'])
+        self.assertIn('develop-independent-product', bundles['estate-product']['entries'])
 
     def accept_fixture_reviews(self):
         settings = self.settings

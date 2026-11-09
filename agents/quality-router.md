@@ -18,7 +18,6 @@ description: Route the shared controls every other skill depends on. Knowledge H
 - `evidence-core`
 - `review-deliverable`
 - `brand-renderer`
-- `verify-salesforce-org`
 - `prepare-session-handoff`
 - `simplify-code`
 
