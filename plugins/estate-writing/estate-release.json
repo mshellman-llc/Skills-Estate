@@ -18,7 +18,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "555d8bd2b311366e8464061d503be78af8bf4d237d7e8e6b49c9a774458d5e48",
+      "required_sha256": "2a28046f6efa1f289a80957860d705fa9096dce1d06a5dcc358c8cee46b92352",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -38,7 +38,7 @@
       "subject": "governance-router"
     },
     {
-      "required_sha256": "aa313456d5f7d53660a3b2e271ff615498138b8dcc6afc453c148836a327df23",
+      "required_sha256": "96e061f47abb1a30a16b72ef51cd53ce5cb9ef1e0280936dc77d14715137e2ad",
       "status": "review required",
       "subject": "product-router"
     },
@@ -116,6 +116,11 @@
       "required_sha256": "a3250943142802fda2303cbd263fa0e66e9f211fe0420ecf1a794334fc89edb7",
       "status": "review required",
       "subject": "build-deck"
+    },
+    {
+      "required_sha256": "8e660fd627f50d5458131ac556d27598dafd34550e733e485266295de7e5be28",
+      "status": "review required",
+      "subject": "build-editorial-chart"
     },
     {
       "required_sha256": "0945f62671fa7021a6d87cb515ce577635e43ba8175d8ad59e7f95783b8164cb",
@@ -513,6 +518,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "305e1f581b98c737c588d30f34d2363a69e87b8bca245dd2b7e5113d066d2497",
+  "source_sha256": "7512f8f5cde1dedbfce839a7419d29f260aeccaae7559bf29f7920b87c62d512",
   "status": "owner-published"
 }
