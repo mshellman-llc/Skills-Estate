@@ -143,15 +143,13 @@ one "a commit MESSAGE quoting the flag (known over-record)" "NO_VERIFY;" \
     'git commit -m "docs: explain why --no-verify is banned"'
 
 echo
-echo "== inline env hatches, all three accepted prefixes =="
+echo "== inline env hatches: ESTATE_ only, retired names are not hatches =="
 one "ESTATE_ALLOW_UNVALIDATED_MERGE"  "ALLOW_UNVALIDATED_MERGE_INLINE;" \
     'ESTATE_ALLOW_UNVALIDATED_MERGE=1 gh pr merge 5 --squash --delete-branch'
-one "SOLO_ALLOW_UNVALIDATED_MERGE"    "ALLOW_UNVALIDATED_MERGE_INLINE;" \
-    'SOLO_ALLOW_UNVALIDATED_MERGE=1 gh pr merge 5 --squash'
-one "SOLO_ALLOW_UNVALIDATED_MERGE"  "ALLOW_UNVALIDATED_MERGE_INLINE;" \
+one "retired SOLO_ALLOW_UNVALIDATED_MERGE" "NONE" \
     'SOLO_ALLOW_UNVALIDATED_MERGE=1 gh pr merge 5 --squash'
 one "ESTATE_SKIP_DOD"                 "SKIP_DOD_INLINE;" 'ESTATE_SKIP_DOD=1 gh pr merge 5 --squash'
-one "SOLO_SKIP_DOD"                 "SKIP_DOD_INLINE;" 'SOLO_SKIP_DOD=1 echo done'
+one "retired SOLO_SKIP_DOD"         "NONE" 'SOLO_SKIP_DOD=1 echo done'
 one "=0 is not a hatch"             "NONE" 'ESTATE_SKIP_DOD=0 gh pr merge 5 --squash'
 one "a lookalike variable"          "NONE" 'ESTATE_SKIP_DODGY=1 gh pr merge 5 --squash'
 

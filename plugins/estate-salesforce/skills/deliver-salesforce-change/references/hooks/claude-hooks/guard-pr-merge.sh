@@ -12,10 +12,7 @@
 #
 # Fails OPEN when GitHub cannot be reached: an offline gh should not stop work,
 # and the deploy-side guards still protect the org.
-# Escape hatch (deliberate, visible, auditable): SOLO_ALLOW_UNVALIDATED_MERGE=1,
-# the name CLAUDE.md documents, or SOLO_ALLOW_UNVALIDATED_MERGE=1, the name the
-# deliver-salesforce-change skill ships. Both work — a documented override that silently
-# does nothing looks like a broken gate, and gates that look broken get removed.
+# Escape hatch (deliberate, visible, auditable): ESTATE_ALLOW_UNVALIDATED_MERGE=1.
 
 set -u
 HOOK_EVENT="PreToolUse"
@@ -26,7 +23,7 @@ COMMAND=$(hook_command_text)
 
 echo "$COMMAND" | grep -qE '\bgh[[:space:]]+pr[[:space:]]+merge\b' || exit 0
 
-if [ "${SOLO_ALLOW_UNVALIDATED_MERGE:-}" = "1" ] || [ "${SOLO_ALLOW_UNVALIDATED_MERGE:-}" = "1" ]; then
+if [ "${ESTATE_ALLOW_UNVALIDATED_MERGE:-}" = "1" ]; then
   record_hatch ALLOW_UNVALIDATED_MERGE "$COMMAND"
   note "ESCAPE HATCH USED: the validate-before-merge gate was skipped for this merge." \
        "Recorded to .claude/.hatch-log. Say so on the ticket — a merge with no recorded" \
@@ -88,5 +85,5 @@ block \
   "Validated an earlier commit and then pushed another? Re-validate — the gate is" \
   "per-commit on purpose. Also confirm the branch is pushed: gh reads the remote tip." \
   "" \
-  "Genuinely not validatable (org down, etc.)? SOLO_ALLOW_UNVALIDATED_MERGE=1 gh pr merge ..." \
+  "Genuinely not validatable (org down, etc.)? ESTATE_ALLOW_UNVALIDATED_MERGE=1 gh pr merge ..." \
   "and say so on the ticket."

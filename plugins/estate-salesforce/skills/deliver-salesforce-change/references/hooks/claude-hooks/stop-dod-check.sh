@@ -10,7 +10,7 @@
 # Local git state plus at most one gh call, fingerprinted so an identical set of
 # findings blocks once. With the stop_hook_active guard, it cannot loop.
 #
-# Escape hatch: SOLO_SKIP_DOD=1 or SOLO_SKIP_DOD=1.
+# Escape hatch: ESTATE_SKIP_DOD=1.
 
 set -u
 HOOK_EVENT="Stop"
@@ -18,7 +18,7 @@ HOOK_EVENT="Stop"
 
 hook_read_input
 
-if [ "${SOLO_SKIP_DOD:-}" = "1" ] || [ "${SOLO_SKIP_DOD:-}" = "1" ]; then
+if [ "${ESTATE_SKIP_DOD:-}" = "1" ]; then
   record_hatch SKIP_DOD "Stop-hook Definition-of-Done check disabled for this turn"
   note "ESCAPE HATCH USED: the Definition-of-Done check was skipped for this turn." \
        "Recorded to .claude/.hatch-log. Whatever is incomplete — main ahead of the org," \

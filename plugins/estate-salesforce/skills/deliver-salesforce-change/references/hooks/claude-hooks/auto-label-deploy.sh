@@ -127,8 +127,8 @@ if [ -z "$ISSUES" ]; then
   exit 0
 fi
 
-if [ "${SOLO_GITHUB_UPDATES:-0}" != "1" ]; then
-  note "Deployment recorded locally. GitHub issue updates require explicit project opt-in (SOLO_GITHUB_UPDATES=1)."
+if [ "${ESTATE_GITHUB_UPDATES:-0}" != "1" ]; then
+  note "Deployment recorded locally. GitHub issue updates require explicit project opt-in (ESTATE_GITHUB_UPDATES=1)."
   exit 0
 fi
 

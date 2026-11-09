@@ -13,7 +13,7 @@
 #                                                       the PR diff catches it) — but an
 #                                                       explicit --output-dir force-app
 #                                                       still blocks, even from a worktree
-#         ESTATE_/SOLO_ALLOW_RETRIEVE=1              allowed, recorded to the hatch-log
+#         ESTATE_ALLOW_RETRIEVE=1                       allowed, recorded to the hatch-log
 #
 # Both directions are tested. This hook's cheapest failure mode is a FALSE BLOCK:
 # it inspects a text segment cut out of the command line, and every `-o` in the
@@ -252,15 +252,15 @@ echo
 echo "== retrieve: the escape hatch is allowed AND recorded =="
 rm -f "$HATCHLOG"
 ESTATE_ALLOW_RETRIEVE=1 run allow "ESTATE_ALLOW_RETRIEVE=1"  "sf project retrieve start --metadata ApexClass:Foo"
-SOLO_ALLOW_RETRIEVE=1   run allow "SOLO_ALLOW_RETRIEVE=1"    "sf project retrieve start --metadata ApexClass:Foo"
-SOLO_ALLOW_RETRIEVE=1 run allow "SOLO_ALLOW_RETRIEVE=1"  "sf project retrieve start --metadata ApexClass:Foo"
-# A hatch that allows without recording is a silent override — the whole point of
-# the log. Three uses, three lines.
-if [ "$(grep -c ALLOW_RETRIEVE "$HATCHLOG" 2>/dev/null || echo 0)" -eq 3 ]; then
-  PASS=$((PASS+1)); echo "  PASS [allow] all three hatch uses landed in the hatch-log"
+# The retired SOLO_ name no longer opens the retrieve block.
+SOLO_ALLOW_RETRIEVE=1 run block "retired SOLO_ALLOW_RETRIEVE=1"  "sf project retrieve start --metadata ApexClass:Foo" "$RET_MSG"
+# A hatch that allows without recording is a silent override, which defeats
+# the log. One use, one line, and nothing from the retired name.
+if [ "$(grep -c ALLOW_RETRIEVE "$HATCHLOG" 2>/dev/null || echo 0)" -eq 1 ]; then
+  PASS=$((PASS+1)); echo "  PASS [allow] the one hatch use landed in the hatch-log"
 else
   FAIL=$((FAIL+1))
-  echo "  FAIL hatch-log did not record 3 ALLOW_RETRIEVE lines: $HATCHLOG"
+  echo "  FAIL hatch-log did not record exactly 1 ALLOW_RETRIEVE line: $HATCHLOG"
   sed -n '1,5p' "$HATCHLOG" 2>/dev/null
 fi
 # The hook reads its OWN environment. A PreToolUse hook does not inherit an

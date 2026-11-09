@@ -41,7 +41,7 @@ Git hooks run only when configured. Claude Code event hooks run only in the host
 
 The reference hooks use `.claude/.validate-log`, `.deploy-log`, `.pending-jobs`, `.dod-state`, and `.hatch-log` as clone-local indexes. Preserve the raw structured results as evidence; indexes alone do not establish current org state. Missing results stay unknown. Do not invent log entries to unblock a merge or close an issue.
 
-GitHub comments and labels from the deployment recorder are off by default. Set `SOLO_GITHUB_UPDATES=1` only when the user has authorized those project updates. Other workflow overrides also require a justified, authorized exception; recording an override does not prove the skipped check passed.
+GitHub comments and labels from the deployment recorder are off by default. Set `ESTATE_GITHUB_UPDATES=1` only when the user has authorized those project updates. Other workflow overrides also require a justified, authorized exception; recording an override does not prove the skipped check passed.
 
 Use subagents only when permitted by the active instructions and useful for a bounded task. Give each one the relevant acceptance criteria and source boundaries. Each worktree retains its own implementation evidence; one integration owner regenerates shared metadata and verifies the combined commit.
 

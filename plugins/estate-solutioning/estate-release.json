@@ -42,7 +42,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "193765f15a97f41cf1768579ff28678e69ff1ba3623d6d0233b456a67c0b8ff3",
+      "required_sha256": "de6bd76bd5c1fad205598e9d829ae711eb8770fcef1aa9c856bf871ea4783109",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -202,12 +202,12 @@
       "subject": "compare-scope-options"
     },
     {
-      "required_sha256": "854b01282f1b0b34cc177e2a7d0767a7e5312c816fce5b95dd359c2af1c25a62",
+      "required_sha256": "9051c7a61822dbf4c8e34e51b29f0a27b01d2fcf990d67b01f85e22d312eba7a",
       "status": "review required",
       "subject": "configure-salesforce-project"
     },
     {
-      "required_sha256": "e800861a20149c1340ccb00bac6441300543e7fc57b19b351b035ad740a62742",
+      "required_sha256": "e0c103294e64d52d53c9dcdc2b76df69417aa8773c2c074038daa6655910c548",
       "status": "review required",
       "subject": "deliver-salesforce-change"
     },
@@ -357,7 +357,7 @@
       "subject": "map-sales-process"
     },
     {
-      "required_sha256": "c31b1bcede6f6dfc02b02dda6865e3982c5c674bc1803f632e3e65052457ce60",
+      "required_sha256": "4a57ab24946b9928d1bcc9f7ddbfb4b0a5511ea99e91ad48e0996d070737eef8",
       "status": "review required",
       "subject": "operate-salesforce-pipeline"
     },
@@ -547,6 +547,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "cfea796880ec5c7705ee6e68d6b08a70b948c65d2b99142023fc9e1d526c9be6",
+  "source_sha256": "ba067b9ac3be47b0efbd45e9c02c10ae493e3b126674d72c3f65f21d1e867722",
   "status": "owner-published"
 }

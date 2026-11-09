@@ -13,7 +13,7 @@
 # Local git state plus at most one gh call, fingerprinted so an identical set of
 # findings blocks once. With the stop_hook_active guard, it cannot loop.
 #
-# Escape hatch: ESTATE_SKIP_DOD=1 (SOLO_ prefixes still honoured).
+# Escape hatch: ESTATE_SKIP_DOD=1.
 
 set -u
 HOOK_EVENT="Stop"
@@ -27,7 +27,7 @@ hook_read_input
 # agent to deploy staging manually, which is exactly the action this mode forbids.
 is_devops_center && exit 0
 
-if [ "${ESTATE_SKIP_DOD:-}" = "1" ] || [ "${SOLO_SKIP_DOD:-}" = "1" ] || [ "${SOLO_SKIP_DOD:-}" = "1" ]; then
+if [ "${ESTATE_SKIP_DOD:-}" = "1" ]; then
   record_hatch SKIP_DOD "Stop-hook Definition-of-Done check disabled for this turn"
   note "ESCAPE HATCH USED: the Definition-of-Done check was skipped for this turn." \
        "Recorded to the hatch-log. Whatever is incomplete — trunk ahead of the org —" \

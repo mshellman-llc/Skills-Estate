@@ -208,11 +208,8 @@ check "so the finding still blocks on the next stop" "block" "$(verdict)"
 
 rm -f "$DODS" "$HLOG"
 SOLO_SKIP_DOD=1 stop "$R"
-check "SOLO_ prefix still honoured" "allow(0)" "$(verdict)"
-rm -f "$DODS" "$HLOG"
-SOLO_SKIP_DOD=1 stop "$R"
-check "SOLO_ prefix still honoured" "allow(0)" "$(verdict)"
-check "and recorded too" "SKIP_DOD;" \
+check "the retired SOLO_ name no longer skips the check" "block" "$(verdict)"
+check "and nothing is recorded as a hatch" "" \
       "$(awk 'NF{printf "%s;", $2}' "$HLOG" 2>/dev/null)"
 
 echo

@@ -341,7 +341,7 @@ The hooks are generic, but confirm:
 
 ### 3f — Verify installation
 
-Run synthetic hook events against the installed copies. Include both allowed local preparation and refused missing-target cases. A path or settings entry does not prove host-level enforcement. GitHub comments remain off unless the user explicitly authorizes them and the project sets `SOLO_GITHUB_UPDATES=1`.
+Run synthetic hook events against the installed copies. Include both allowed local preparation and refused missing-target cases. A path or settings entry does not prove host-level enforcement. GitHub comments remain off unless the user explicitly authorizes them and the project sets `ESTATE_GITHUB_UPDATES=1`.
 
 ```bash
 npm run hooks:verify          # inspects configuration without changing it
