@@ -39,24 +39,16 @@
     },
     {
       "id": "delivery-and-salesforce",
-      "title": "Delivery and Salesforce",
-      "description": "Move from an accepted handoff through implementation, testing, and closeout.",
+      "title": "Delivery and project work",
+      "description": "Plan, coordinate and validate delivery from accepted handoff through closeout.",
       "skills": [
         "refine-backlog",
         "manage-cutover-closeout",
         "start-delivery",
         "track-delivery",
         "delivery-orchestrator",
-        "promote-salesforce-changes",
-        "manage-salesforce-devops",
-        "verify-salesforce-org",
         "capture-requirements",
         "prepare-delivery-handoff",
-        "configure-salesforce-project",
-        "operate-salesforce-pipeline",
-        "apply-salesforce-patterns",
-        "capture-salesforce-screens",
-        "deliver-salesforce-change",
         "plan-sprint",
         "plan-team-onboarding",
         "validate-delivery",
@@ -65,6 +57,21 @@
         "manage-decision-register",
         "build-review-site",
         "review-site-runtime"
+      ]
+    },
+    {
+      "id": "salesforce-development",
+      "title": "Salesforce development",
+      "description": "Develop Apex and LWC, configure Claude coding hooks, and operate Salesforce checks, DevOps and deployment.",
+      "skills": [
+        "promote-salesforce-changes",
+        "manage-salesforce-devops",
+        "verify-salesforce-org",
+        "configure-salesforce-project",
+        "operate-salesforce-pipeline",
+        "apply-salesforce-patterns",
+        "capture-salesforce-screens",
+        "deliver-salesforce-change"
       ]
     },
     {
@@ -123,14 +130,21 @@
     },
     {
       "id": "career-and-personal",
-      "title": "Career and personal",
-      "description": "Prepare career materials and work with the private planning and creative tools.",
+      "title": "Career and applications",
+      "description": "Assess roles, prepare applications and resumes, and explain career experience.",
       "skills": [
         "prepare-job-application",
         "draft-application-materials",
         "assess-career-options",
         "write-portfolio-case-study",
-        "tailor-resume",
+        "tailor-resume"
+      ]
+    },
+    {
+      "id": "personal-and-creative",
+      "title": "Personal and creative",
+      "description": "Design stickers, prepare print sheets and work with personal game and planning tools.",
+      "skills": [
         "guide-fortunes-weave",
         "design-sticker",
         "lay-out-sticker-sheets"

@@ -149,15 +149,19 @@ const rows=[['Tools',toolText],['Connectors',conn],['Saved output',outs],['Modes
 return '<section class="guide-section skill-profile"><h3>Skill profile</h3><dl class="profile-facts">'+rows.map(([k,v])=>'<dt>'+esc(k)+'</dt><dd>'+v+'</dd>').join('')+'</dl></section>'}
 function preparationMarkup(s){
  const g=s.guide,p=s.profile||{},steps=g?.preparationSkills||[];
- const packaged=(p.bundles||[]).filter(n=>byId[n]);
+ const canonical=n=>({'knowledge-hub':'manage-consulting-knowledge'}[n]||n);
+ const collected=new Set();
+ function collect(n){n=canonical(n);if(collected.has(n)||!byId[n])return;collected.add(n);for(const child of byId[n].profile?.bundles||[])collect(child)}
+ for(const n of p.bundles||[])collect(n);
+ const packaged=[...collected];
  const included=packaged.filter(n=>!steps.some(x=>x.skill===n));
- const external=[...(p.dependsOn||[]),...(p.calls||[])].filter((n,i,a)=>!included.includes(n)&&a.indexOf(n)===i&&!steps.some(x=>x.skill===n));
+ const external=[...(p.dependsOn||[]),...(p.calls||[])].map(canonical).filter((n,i,a)=>!packaged.includes(n)&&a.indexOf(n)===i&&!steps.some(x=>x.skill===n));
  const skillLink=n=>byId[n]?`<button class="link-button" data-skill="${esc(n)}">${esc(byId[n].title)}</button>`:`<code>${esc(n)}</code>`;
  const connector=p.connectors;
  const required=connector?.required||[],optional=connector?.optional||[];
  const stepHtml=steps.length?`<h4>Preparation and related work</h4><p>The note beside each link explains whether it is preparation, an alternative or optional. Included helpers do not need a separate installation.</p><ul class="preparation-links">${steps.map(x=>`<li>${skillLink(x.skill)}${packaged.includes(x.skill)?'<span class="skill-tag">Included in the complete download</span>':''}<p>${esc(x.reason)}</p></li>`).join('')}</ul>`:'';
  const includedHtml=included.length?`<details class="included-skills"><summary>Included helpers (${included.length})</summary><p>The complete task download carries these helpers and their declared resources. You do not need to install each one separately. They support the workflow; they do not supply your project documents, permissions or accounts.</p><ul class="preparation-links">${included.map(n=>`<li>${skillLink(n)}<p>${esc(byId[n].guide?.what||byId[n].title)}</p></li>`).join('')}</ul></details>`:'';
- const externalHtml=external.length?`<h4>Other workflow references</h4><p>These are declared calls or dependencies beyond the helper list above. Check the linked overview for its inputs and setup; a reference alone does not show that it is installed or connected.</p><div class="action-row">${external.map(skillLink).join('')}</div>`:'';
+ const externalHtml=external.length?`<h4>Other workflow references</h4><p>These are declared calls or dependencies beyond the helper list above. Check the linked overview for its inputs and setup; a reference alone does not show that it is installed or connected.</p><ul class="preparation-links">${external.map(n=>`<li>${skillLink(n)}<p>${esc(byId[n]?.guide?.what||'This reference is not a registered workflow in this catalog. Check the source instructions before relying on it.')}</p></li>`).join('')}</ul>`:'';
  const connections=connector?required.length||optional.length?`<h4>Connections</h4>${required.length?`<p>Required for the connected operation: ${required.map(esc).join(', ')}. The connection must be available and authorized in your assistant; installing a skill does not create it.</p>`:''}${optional.length?`<p>Optional connections: ${optional.map(esc).join(', ')}. Use the supplied-file path described above when its inputs are sufficient; tool-specific actions still require access to that tool.</p>`:''}`:`<p class="connection-note">No external connector is declared as a requirement. File access and any local runtimes still apply.</p>`:`<p class="connection-note">Connector requirements are not declared in the catalog. Check the instructions before planning a connected operation.</p>`;
  if(!stepHtml&&!includedHtml&&!externalHtml&&!connections)return '';
  return `<section class="guide-section prerequisites"><h3>Other skills and connections</h3>${stepHtml}${includedHtml}${externalHtml}${connections}</section>`;
