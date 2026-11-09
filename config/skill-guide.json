@@ -296,16 +296,16 @@
       "inputs": "The current posting, the user’s career sources, and the role work record.",
       "outputs": "Role assessment, tailored materials, interview preparation, or authorized form work.",
       "example": "Assess this posting against my current career direction and prepare the selected application materials.",
-      "reviewedEntrypointSha256": "35d6267166c52ceda202f0e6fd22cd804abe21e54c12761e1501f123eadefd59",
+      "reviewedEntrypointSha256": "9e83433f28b4848b2e1164c2cdcc2f263c3ca7423488a4b63100db8ea78d5ca4",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It reads the candidate's operating context and the live posting first, then runs one role in the mode you name (assess, find, tailor, interview, fill, status or continue). It fills form fields but pauses for salary, work authorization, attestations, CAPTCHA and the final submit, and it marks a role submitted only with a confirmation receipt.",
+      "expect": "It reads the current posting, career authorities and role record, then selects evidence for that application. It checks role fit, career accuracy and evidence selection without requiring a people, practice or client theme. Form work retains its existing authorization and confirmation boundaries.",
       "connectors": {
         "required": [],
         "optional": []
       },
       "requires": "The candidate's career evidence records (operating context, role work record, base resume), the live posting, and python3 for the readiness checker.",
-      "overview": "It reads the candidate's operating context and the live posting first, then runs one role in the mode you name (assess, find, tailor, interview, fill, status or continue). It fills form fields but pauses for salary, work authorization, attestations, CAPTCHA and the final submit, and it marks a role submitted only with a confirmation receipt.",
-      "value": "Carry one role from assessment through tailored materials and interview preparation while keeping claims tied to your own experience. It helps avoid rewriting the same career story differently across each application surface.",
+      "overview": "It reads the current posting, career authorities and role record, then selects evidence for that application. It checks role fit, career accuracy and evidence selection without requiring a people, practice or client theme. Form work retains its existing authorization and confirmation boundaries.",
+      "value": "Select supported experience for the actual hiring mandate while keeping career facts and application state consistent.",
       "preparation": {
         "where": "Supply the posting, your resume, career evidence and preferences. A role work record is the working file for this application: role requirements, evidence matches and decisions. The operating context is your career goals and constraints, supplied as notes or an existing record.",
         "missing": "If those records are absent, identify what evidence and decisions must be assembled first; a general resume alone may not support tailored claims. Form answers involving salary, authorization, attestations or submission still require your input."
@@ -327,9 +327,9 @@
       "inputs": "The role record, current career evidence, and the requested audience.",
       "outputs": "Complete drafts tied to the role and the user’s supported experience.",
       "example": "Draft a cover letter for this role from my current role work record.",
-      "reviewedEntrypointSha256": "26b7da77ddda4bf495ea8458d8c65f00659a51a9b38423a3510a92c33651fd70",
+      "reviewedEntrypointSha256": "b3df2a2fb127157eb1b77f37cdf6ddd13ee6a6cfea687005e6a4fea087599eec",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It starts from a role work record with a completed translation table and the tailored resume, then drafts the letter, form answers, outreach, LinkedIn sections or reference packets. Everything is a draft, it pauses without drafting for salary and authorization questions, and sending or publishing needs your separate approval.",
+      "expect": "It drafts each requested letter, form answer or supporting piece for its question and audience. Facts stay consistent with the résumé, while the examples may differ. It uses corrected claim authority and preserves the existing boundaries for private material, sensitive form answers, sending and publication.",
       "connectors": {
         "required": [],
         "optional": [
@@ -337,8 +337,8 @@
         ]
       },
       "requires": "The candidate's role work record, tailored resume, live posting, professional profile and a confirmed author profile.",
-      "overview": "It starts from a role work record with a completed translation table and the tailored resume, then drafts the letter, form answers, outreach, LinkedIn sections or reference packets. Everything is a draft, it pauses without drafting for salary and authorization questions, and sending or publishing needs your separate approval.",
-      "value": "Write the pieces around a tailored resume, such as a cover letter, application answer or outreach draft, so each addresses the role with supported examples and the intended author's voice.",
+      "overview": "It drafts each requested letter, form answer or supporting piece for its question and audience. Facts stay consistent with the résumé, while the examples may differ. It uses corrected claim authority and preserves the existing boundaries for private material, sensitive form answers, sending and publication.",
+      "value": "Give each application surface useful supported content rather than repeating the résumé’s examples or a standing differentiator.",
       "preparation": {
         "where": "Use the role's work record, tailored resume and posting. The translation table connects the employer's requirements to your experience; it belongs in that role record. A writing profile is an optional separately authorized source of voice preferences, not permission to read private messages.",
         "missing": "For the full application workflow, prepare the role translation table through Prepare job application or supply an equivalent mapping. For a short bounded draft, you can provide relevant facts inline; missing optional records limit claims rather than forcing an outline. Salary and work-authorization questions still need your answer."
@@ -356,16 +356,16 @@
       "inputs": "Role or offer terms, the user’s criteria, and the current career record.",
       "outputs": "A comparison, open questions, and negotiation drafts for the user’s decision.",
       "example": "Compare these offers against my recorded career gates and list the unresolved terms.",
-      "reviewedEntrypointSha256": "58e0bb4861f2b42033d40d71c05f09fa3a661d78bdc75ff67f3b246844460ad4",
+      "reviewedEntrypointSha256": "f28c082d3d2bc502c3125006fb9591bc28bf9d00476f2cc1c2258badd452e4c6",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It runs your supplied pay, billability and scope gates and a verified, inferred or unknown progression matrix against a role, the tracker or an offer, and shows each gate result without averaging. It asks for your numbers and weights instead of inventing defaults, drafts negotiation text only after you give a figure, and does not pick between offers.",
+      "expect": "It compares the actual opportunity with the candidate’s current pay, scope, billability and progression criteria. Unknown terms remain questions. It does not infer a permanent market identity or downgrade an opportunity merely because its category differs from earlier applications.",
       "connectors": {
         "required": [],
         "optional": []
       },
       "requires": "The candidate's operating context, tracker, role work record, pay thresholds and the posting or written offer.",
-      "overview": "It runs your supplied pay, billability and scope gates and a verified, inferred or unknown progression matrix against a role, the tracker or an offer, and shows each gate result without averaging. It asks for your numbers and weights instead of inventing defaults, drafts negotiation text only after you give a figure, and does not pick between offers.",
-      "value": "Compare opportunities against the career direction and trade-offs you actually chose. It makes unmet pay, scope or progression requirements visible rather than hiding them inside an average score.",
+      "overview": "It compares the actual opportunity with the candidate’s current pay, scope, billability and progression criteria. Unknown terms remain questions. It does not infer a permanent market identity or downgrade an opportunity merely because its category differs from earlier applications.",
+      "value": "Assess opportunities against the criteria the candidate chose, with role facts and uncertainties visible.",
       "preparation": {
         "where": "Provide the posting or written offer and your criteria, including pay thresholds and any weights. Your tracker and role record are your own records of opportunities and evidence; supplied files can explain those terms without adopting someone else's career goals.",
         "missing": "Missing thresholds or weights require your decision. Unknown offer terms remain questions for the employer; a negotiation figure is not invented. The skill prepares the comparison and draft wording, while you choose the offer."
@@ -1172,16 +1172,16 @@
       "inputs": "Current career evidence, the posting, and the draft resume.",
       "outputs": "Revised bullets and layout that preserve the user’s stated scope and evidence.",
       "example": "Review my resume bullets against this posting and the current source figures.",
-      "reviewedEntrypointSha256": "a39970c130dbe6b529d59ff40d01d4ed12c6e22a834f7bc59a90c5d090ffa9db",
+      "reviewedEntrypointSha256": "4f3dedf48a065ea98d6ef096cdfc37739321c95a00cdcf8273121e1f1debeffd",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It loads the role's work record, master resume, live posting and claim records first, and stops if the narrative translation table is empty. Figures are stated or estimated with the arithmetic recorded, keywords go in only where the evidence supports them, and a bullet never gets an ownership claim the sources do not make.",
+      "expect": "It starts with the posting and selected evidence, checks claims against corrections, original sources and the ledger, then writes the relevant résumé copy. Keywords and platform names appear where they explain supported work, without numerical quotas or a required leadership or client example.",
       "connectors": {
         "required": [],
         "optional": []
       },
       "requires": "Needs the candidate's confirmed career records (operating context, role work record, master resume and evidence ledger) and the live posting or its saved snapshot.",
-      "overview": "It loads the role's work record, master resume, live posting and claim records first, and stops if the narrative translation table is empty. Figures are stated or estimated with the arithmetic recorded, keywords go in only where the evidence supports them, and a bullet never gets an ownership claim the sources do not make.",
-      "value": "Translate supported experience into role-relevant resume bullets without inflating ownership or figures. It checks whether keywords and quantified statements are justified by the candidate's evidence.",
+      "overview": "It starts with the posting and selected evidence, checks claims against corrections, original sources and the ledger, then writes the relevant résumé copy. Keywords and platform names appear where they explain supported work, without numerical quotas or a required leadership or client example.",
+      "value": "Translate relevant experience into accurate hiring copy without forcing a repeated theme or adding unsupported ownership.",
       "preparation": {
         "where": "Supply the master resume, posting and role work record. The translation table maps role requirements to specific experience; career claim records hold the underlying figures and ownership. These are your evidence documents, not built-in personal history.",
         "missing": "An empty translation table stops this wording step. Prepare job application can establish the role record first, or you can supply an equivalent mapping. Missing numerical support is not replaced with an invented accomplishment."
