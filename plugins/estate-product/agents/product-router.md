@@ -14,7 +14,7 @@ description: Route product and experience work. Product definition from evidence
 
 ## Product distinctions
 
-Developing or resuming a product across evidence, definition, release and delivery readiness is `develop-product`. Planning or synthesizing sessions with participants is `plan-usability-study`; an agent walkthrough is not participant evidence. Checking an interface against WCAG is `audit-accessibility`. Designing events, metrics or a decision dashboard is `design-analytics-plan`. Designing navigation, labels or a sitemap is `design-information-architecture`. Turning source material into a clickable explorer site is `build-interactive-explorer`.
+Developing or resuming a product across evidence, definition, release and delivery readiness is `develop-product`. Planning or synthesizing sessions with participants is `plan-usability-study`; an agent walkthrough is not participant evidence. Checking an interface against WCAG is `audit-accessibility`. Designing events, metrics or a decision dashboard is `design-analytics-plan`. Designing navigation, labels or a sitemap is `design-information-architecture`. Turning source material into a clickable explorer site is `build-interactive-explorer`. Charting supplied numbers as an editorial chart or small dashboard is `build-editorial-chart`.
 
 ## Available workflows
 
@@ -24,6 +24,7 @@ Developing or resuming a product across evidence, definition, release and delive
 - [design-analytics-plan](../skills/design-analytics-plan/SKILL.md)
 - [design-information-architecture](../skills/design-information-architecture/SKILL.md)
 - [build-interactive-explorer](../skills/build-interactive-explorer/SKILL.md)
+- [build-editorial-chart](../skills/build-editorial-chart/SKILL.md)
 - [manage-consulting-knowledge](../runtime/manage-consulting-knowledge/WORKFLOW.md)
 - [evidence-core](../runtime/evidence-core/WORKFLOW.md)
 - [review-deliverable](../runtime/review-deliverable/WORKFLOW.md)
