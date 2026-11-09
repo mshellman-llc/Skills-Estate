@@ -11,6 +11,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | Task | Primary workflow | Additional modes |
 | --- | --- | --- |
 | `audit-accessibility` | [audit-accessibility](../../skills/audit-accessibility/SKILL.md) |  |
+| `build-editorial-chart` | [build-editorial-chart](../../skills/build-editorial-chart/SKILL.md) |  |
 | `build-interactive-explorer` | [build-interactive-explorer](../../skills/build-interactive-explorer/SKILL.md) |  |
 | `design-analytics-plan` | [design-analytics-plan](../../skills/design-analytics-plan/SKILL.md) |  |
 | `design-information-architecture` | [design-information-architecture](../../skills/design-information-architecture/SKILL.md) |  |
@@ -26,6 +27,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 ## Source workflows
 
 - [audit-accessibility](../../skills/audit-accessibility/SKILL.md)
+- [build-editorial-chart](../../skills/build-editorial-chart/SKILL.md)
 - [build-interactive-explorer](../../skills/build-interactive-explorer/SKILL.md)
 - [design-analytics-plan](../../skills/design-analytics-plan/SKILL.md)
 - [design-information-architecture](../../skills/design-information-architecture/SKILL.md)

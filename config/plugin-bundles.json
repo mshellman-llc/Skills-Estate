@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.3.0",
+  "version": "0.3.1",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -148,6 +148,7 @@
         "audit-accessibility",
         "design-analytics-plan",
         "build-interactive-explorer",
+        "build-editorial-chart",
         "design-information-architecture",
         "develop-product",
         "plan-usability-study"
@@ -649,6 +650,11 @@
         "status": "pending",
         "reviewed_sha256": "",
         "evidence": ""
+      },
+      "build-editorial-chart": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": "Added 2026-11-08 as a draft. Self-test 45 of 45 and browser checks at desktop width and 375px; awaiting owner review."
       }
     },
     "routers": {

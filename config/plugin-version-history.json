@@ -4,6 +4,10 @@
     "0.3.0": {
       "content_sha256": "c02d91c281cc0e1a18187e0bd18aa5ec06aeacf4aebd1d5ee597baa91fb56875",
       "note": "Initial consistent skill catalog and portable packages"
+    },
+    "0.3.1": {
+      "content_sha256": "3320dc9acb0962aad8ad2e90d5d2850bdbdb0a930a4e54526fd68f3089ef2998",
+      "note": "Add build-editorial-chart to estate-product as a pending draft"
     }
   }
 }

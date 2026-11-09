@@ -2,7 +2,7 @@
 
 Reusable workflows for Claude Code and Codex. Author each skill once in `skills/`. Branding belongs in [policies/brand.md](policies/brand.md); the build includes the current policy in every portable package.
 
-The catalog contains 90 source modules and 62 task entrypoints. It separates task entrypoints from supporting runtime modules. [CATALOG.md](CATALOG.md) lists their current names and relationships. Supply private project records and credentials through the configured task inputs.
+The catalog contains 91 source modules and 63 task entrypoints. It separates task entrypoints from supporting runtime modules. [CATALOG.md](CATALOG.md) lists their current names and relationships. Supply private project records and credentials through the configured task inputs.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -13,7 +13,7 @@ The catalog contains 90 source modules and 62 task entrypoints. It separates tas
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 23 | 18 |
-| [Product and experience](browse/product-and-experience/README.md) | 13 | 12 |
+| [Product and experience](browse/product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |

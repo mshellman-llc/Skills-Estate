@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 90 source modules and 62 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 91 source modules and 63 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -11,7 +11,7 @@ This candidate contains 90 source modules and 62 task entrypoints. Consolidation
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 23 | 18 |
-| [Product and experience](browse/product-and-experience/README.md) | 13 | 12 |
+| [Product and experience](browse/product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
 | [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
@@ -28,6 +28,7 @@ This candidate contains 90 source modules and 62 task entrypoints. Consolidation
 | assess-solution-delivery | [assess-solution-delivery](skills/assess-solution-delivery/SKILL.md) |  |
 | audit-accessibility | [audit-accessibility](skills/audit-accessibility/SKILL.md) |  |
 | build-deck | [build-deck](skills/build-deck/SKILL.md) | build-deal-decision-deck |
+| build-editorial-chart | [build-editorial-chart](skills/build-editorial-chart/SKILL.md) |  |
 | build-interactive-explorer | [build-interactive-explorer](skills/build-interactive-explorer/SKILL.md) |  |
 | build-moscow-story-map | [build-moscow-story-map](skills/build-moscow-story-map/SKILL.md) |  |
 | build-review-site | [build-review-site](skills/build-review-site/SKILL.md) |  |
@@ -100,6 +101,7 @@ Each module needs a reviewed capability disposition before release.
 - [brand-renderer](skills/brand-renderer/SKILL.md)
 - [build-deal-decision-deck](skills/build-deal-decision-deck/SKILL.md)
 - [build-deck](skills/build-deck/SKILL.md)
+- [build-editorial-chart](skills/build-editorial-chart/SKILL.md)
 - [build-interactive-explorer](skills/build-interactive-explorer/SKILL.md)
 - [build-interactive-proposal](skills/build-interactive-proposal/SKILL.md)
 - [build-moscow-story-map](skills/build-moscow-story-map/SKILL.md)

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "build-editorial-chart",
+  "display_name": "Build editorial chart",
+  "summary": "Build charts, small dashboards and data stories with newspaper-graphics discipline from New York Times and Upshot practice: one hero color with grey context, direct labels, a headline that states the finding, in-place annotation, 375px-first layout and D3 hover that snaps to the nearest mark. Renders static Observable Plot pages from a JSON spec (line, area, bar, scatter, small multiples, estimate ranges, progress against plan, dashed targets and projections) in the selected brand profile, Baseline by default. Use when a chart, graph or data panel should read as editorial and trustworthy rather than a default library chart. Not for measurement plans or tracking design (design-analytics-plan), explorer sites (build-interactive-explorer) or slide decks (build-deck). Does not publish or share anything.",
+  "status": "draft",
+  "version": "0.1.0",
+  "owner": "Estate",
+  "category": "evidence-quality",
+  "tier": "situational",
+  "runtimes": [
+    "claude-code",
+    "codex"
+  ],
+  "triggers": [
+    "Build charts, small dashboards and data stories with newspaper-graphics discipline from New York Times and Upshot practice: one hero color with grey context, direct labels, a headline that states the finding, in-place annotation, 375px-first layout and D3 hover that snaps to the nearest mark. Renders static Observable Plot pages from a JSON spec (line, area, bar, scatter, small multiples, estimate ranges, progress against plan, dashed targets and projections) in the selected brand profile, Baseline by default. Use when a chart, graph or data panel should read as editorial and trustworthy rather than a default library chart. Not for measurement plans or tracking design (design-analytics-plan), explorer sites (build-interactive-explorer) or slide decks (build-deck). Does not publish or share anything."
+  ],
+  "exclusions": [],
+  "inputs": [
+    {
+      "name": "data",
+      "required": true,
+      "description": "The numbers to chart, with their source, unit and timeframe."
+    },
+    {
+      "name": "question",
+      "required": true,
+      "description": "The finding the chart should show, or the question it answers."
+    },
+    {
+      "name": "brand_profile",
+      "required": false,
+      "description": "A named or project brand profile; Baseline when absent."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "chart_page",
+      "format": "html",
+      "audience": "internal-or-client-as-requested",
+      "durable": true,
+      "hub_target": null
+    }
+  ],
+  "connectors": {
+    "required": [],
+    "optional": []
+  },
+  "depends_on": [],
+  "calls": [],
+  "knowledge_hub": {
+    "requirement": "not-applicable",
+    "reads": [],
+    "writes": []
+  },
+  "evidence": {
+    "required": false,
+    "control": null
+  },
+  "quality": {
+    "required": false,
+    "control": null
+  }
+}
