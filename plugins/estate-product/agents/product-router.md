@@ -18,6 +18,7 @@ Developing or resuming a product across evidence, definition, release and delive
 
 ## Available workflows
 
+- [develop-independent-product](../skills/develop-independent-product/SKILL.md)
 - [develop-product](../skills/develop-product/SKILL.md)
 - [plan-usability-study](../skills/plan-usability-study/SKILL.md)
 - [audit-accessibility](../skills/audit-accessibility/SKILL.md)
