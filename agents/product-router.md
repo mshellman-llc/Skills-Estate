@@ -18,6 +18,7 @@ Developing or resuming a product across evidence, definition, release and delive
 
 ## Available skills
 
+- `develop-independent-product`
 - `develop-product`
 - `plan-usability-study`
 - `audit-accessibility`

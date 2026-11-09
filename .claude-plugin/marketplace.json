@@ -8,13 +8,18 @@
   },
   "plugins": [
     {
+      "name": "estate-career",
+      "description": "Career and applications: assess roles and offers, prepare applications and resumes, and write portfolio case studies.",
+      "source": "./plugins/estate-career"
+    },
+    {
       "name": "estate-commercial",
       "description": "Skills Estate commercial workflows and routing.",
       "source": "./plugins/estate-commercial"
     },
     {
       "name": "estate-delivery",
-      "description": "Skills Estate delivery workflows and routing.",
+      "description": "Project delivery: handoffs, requirements, sprint planning, status, release review and closeout.",
       "source": "./plugins/estate-delivery"
     },
     {
@@ -24,7 +29,7 @@
     },
     {
       "name": "estate-personal",
-      "description": "Optional personal Skills Estate workflows: career, portfolio, independent products and creative projects.",
+      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune\u2019s Weave planning.",
       "source": "./plugins/estate-personal"
     },
     {
@@ -41,6 +46,11 @@
       "name": "estate-quality",
       "description": "Skills Estate quality workflows and routing.",
       "source": "./plugins/estate-quality"
+    },
+    {
+      "name": "estate-salesforce",
+      "description": "Salesforce development: Apex and LWC patterns, Claude coding hooks, checks, DevOps and deployment.",
+      "source": "./plugins/estate-salesforce"
     },
     {
       "name": "estate-solutioning",
