@@ -25,7 +25,7 @@ class ResumeReadinessTests(unittest.TestCase):
         self.write_docx(self.body)
         brief = dict(audience='hiring', purpose='resume', readerAction='Assess leadership mandate', voice='Direct and specific', risk='consequential')
         sources = [dict(id=name, path=str(p), sha256=sha256(p.read_bytes()).hexdigest(), revision=1) for name,p in [('master',self.master),('prior',self.prior),('ledger',self.ledger)]]
-        self.receipt = dict(artifact_sha256=sha256(self.resume.read_bytes()).hexdigest(), brief=brief, source_files=sources, review=dict(brief=brief, bodyHash=sha256(self.body.encode()).hexdigest(), depth='deep', reviewer='fixture reviewer', sources=[dict(id=s['id'],revision=1,hash=s['sha256']) for s in sources], coverage=[dict(dimension=d,action='covered',quote=self.body,reason='Synthetic hiring coverage review.') for d in ['career-progression','leadership-scope','client-decision','commercial-ownership','major-results']], checks={k:dict(result='pass',notes='Synthetic completed direct review.') for k in ['accuracy','representation','writing','layout']}))
+        self.receipt = dict(artifact_sha256=sha256(self.resume.read_bytes()).hexdigest(), brief=brief, source_files=sources, review=dict(brief=brief, bodyHash=sha256(self.body.encode()).hexdigest(), depth='deep', reviewer='fixture reviewer', sources=[dict(id=s['id'],revision=1,hash=s['sha256']) for s in sources], coverage=[dict(dimension=d,action='covered',quote=self.body,reason='Synthetic hiring coverage review.') for d in ['role-fit','career-accuracy','evidence-selection']], checks={k:dict(result='pass',notes='Synthetic completed direct review.') for k in ['accuracy','representation','writing','layout']}))
         self.write_record()
     def write_docx(self, body):
         with ZipFile(self.resume,'w') as z:
@@ -47,12 +47,17 @@ class ResumeReadinessTests(unittest.TestCase):
         self.receipt['source_files'] = self.receipt['source_files'][1:]
         self.write_record()
         with self.assertRaisesRegex(ValueError,'foundation'):check(self.record)
-    def test_narrow_handout_cannot_omit_progression(self):
+    def test_resume_cannot_omit_role_fit_review(self):
         self.receipt['review']['coverage'][0].update(action='omitted',quote='',reason='Short handout')
         self.write_record()
-        with self.assertRaisesRegex(ValueError,'career-progression'):check(self.record)
-    def test_valid_selective_tailoring_can_omit_nonessential_dimension(self):
-        self.receipt['review']['coverage'][-1].update(action='omitted',quote='',reason='Role asks for technical governance; commercial results covered in supporting case study.')
+        with self.assertRaisesRegex(ValueError,'role-fit'):check(self.record)
+    def test_technical_resume_passes_without_people_or_practice_theme(self):
+        self.body = 'Designed a technical integration and its error handling.'
+        self.write_docx(self.body)
+        self.receipt['artifact_sha256']=sha256(self.resume.read_bytes()).hexdigest()
+        self.receipt['review']['bodyHash']=sha256(self.body.encode()).hexdigest()
+        for row in self.receipt['review']['coverage']:
+            row.update(quote=self.body,reason='Posting prioritizes integration design; people and practice themes are not selected.')
         self.write_record()
         check(self.record)
     def test_deep_review_cannot_be_light(self):

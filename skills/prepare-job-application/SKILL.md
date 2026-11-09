@@ -35,7 +35,7 @@ Infer the mode from the candidate's request. The candidate can also state it dir
 - `$prepare-job-application assess <URL>`: verify the live posting, screen the role, and recommend pursue or skip.
 - `$prepare-job-application find <criteria>`: find current roles, screen them, and return a shortlist. Do not create application folders until the candidate chooses a role.
 - `$prepare-job-application tailor <URL>`: create or update the role work record and a role-specific resume copy. Do not overwrite a master resume.
-- `$prepare-job-application interview <company or role>`: build a role-specific leadership interview plan from the current posting and evidence-backed story bank.
+- `$prepare-job-application interview <company or role>`: build a role-specific interview plan from the current posting and evidence-backed story bank.
 - `$prepare-job-application fill <URL>`: open the form, fill supported factual fields, upload approved materials, and stop at the authorization boundaries below.
 - `$prepare-job-application status <company or role>`: read the tracker and role work record, then report the verified state and next action.
 - `$prepare-job-application continue <company or role>`: resume from the saved role work record rather than from prior chat history.
@@ -45,7 +45,7 @@ If the request does not specify a mode, use `assess` for a new URL and `continue
 ## Assess
 
 1. Verify the employer's current posting. Treat reposts, aggregators, and old snapshots as secondary.
-2. Screen leadership scope, decision authority, reporting shape, compensation, location, technical GTM or transformation relevance, and billable-delivery expectations.
+2. Screen the role against the candidate’s confirmed opportunity criteria. Derive the work requirements from the live posting; do not score it against a fixed career identity.
 3. Map requirements into four groups: strong evidence, transferable evidence, real gaps, and unsupported or unanswered questions.
 4. Give a direct pursue or skip recommendation. Do not tailor materials for a skip.
 5. When the candidate explicitly chooses pursue or skip, update `03_Tracker/applications.md` in the live source. A skip needs no application folder unless notes would prevent repeated research. In a portable session, create an updated tracker copy for the candidate instead of claiming the live tracker changed.
@@ -54,9 +54,9 @@ If the request does not specify a mode, use `assess` for a new URL and `continue
 
 1. Create `01_Applications/Current/YYYY-MM-DD_Company_Role/` under the live source.
 2. Copy `02_Templates/Role_Work_Record_Template.md` into that folder as `Role_Work_Record.md` and fill it from evidence.
-3. Read `00_Master/Career_Narrative_Translation_Guide.md`. Map the role's three or four primary mandates to programs in the role record before drafting.
+3. Read `00_Master/Career_Narrative_Translation_Guide.md`. Map the role’s actual requirements to relevant evidence in the role record before drafting. Derive emphasis from the posting and current request rather than a standing career theme.
 4. Select program records through the confirmed evidence map for the role's mandates. For a reusable product or governed system, preserve its problem, user, mechanism, risk-specific tests, growth path and verified state. Keep distribution, persistence and adoption claims distinct; do not lead with artifact counts.
-5. For client-facing or transformation roles, select at least one supported client decision and one portfolio, people or practice mechanism. Keep pursuit, project, authored-quote and realized-outcome counts distinct. No named historical client or metric is a default input.
+5. For client-facing or transformation roles, select the supported decisions and results that demonstrate the posting. Client, portfolio, people and practice examples are available when relevant; no pair is mandatory. Keep pursuit, project, authored-quote and realized-outcome counts distinct. No named historical client or metric is a default input.
 6. For product, platform, identity, security or responsible-AI roles, select relevant product evidence from the supplied map. Keep local build and test proof separate from deployment, access, usage and adoption.
 7. For assessment, workforce, enablement or people-system roles, preserve source-bank authorship, human-review boundaries, and the difference between built, published privately, shared, run and adopted.
 8. For each selected program, preserve the problem or decision, the candidate's ownership, the mechanism, the evidence-backed result, and the real gap or state boundary. Retain the constraint or pivot when it proves leadership or judgment. For governed skills, distinguish original authorship, later estate governance or integration, and later contributor authorship; admission, repair, rename, or consolidation does not establish sole authorship of every package.
@@ -73,7 +73,7 @@ If the request does not specify a mode, use `assess` for a new URL and `continue
 
 1. Verify the current posting and read the role work record. Do not prepare from a remembered title or an expired posting when a live source is available.
 2. Read `00_Master/Leadership_Interview_Evidence_Map.md`, `04_Interview/Interview_Preparation.md`, and `05_Reference/Story_Bank/Success_Stories.md`. Add only the program records needed for the role's primary mandates.
-3. Translate the posting into five or six likely decision areas: business ownership, technical or solution judgment, executive influence, delivery or recovery, people leadership, and adversity or learning. Do not turn the result into a generic question dump.
+3. Derive likely interview areas from the posting and current request. Select relevant evidence rather than requiring a standard set of career themes. Do not turn the result into a generic question dump.
 4. Select no more than six anchor stories. For each one, prepare a 30-second headline, a two-minute causal answer, likely follow-ups, the difficult decision or conversation, the turnaround mechanism, the result, and the evidence boundary.
 5. Use the order: problem or stakes, the candidate's mandate, decision, mechanism, resistance or constraint, turning point, evidence-backed result, and learning. Name what changed because of the candidate rather than only describing the artifact.
 6. Preserve ownership boundaries. Do not claim that the candidate performed every delivery task, that forecast value was realized, that UAT equals production, or that an opportunity became a win without evidence.
@@ -120,7 +120,7 @@ End material work with four facts: **changed now**, **verified**, **still unchan
 
 Before drafting, declare the audience, document purpose, intended reader action, author voice, and consequence level. These determine style, density, terminology, and prose-review depth. Internal updates use light review; hiring, public portfolio, client proposals, and consequential work use deep review. Accuracy and privacy are required at every depth. Do not apply a word blacklist or AI-detector scoring.
 
-For a résumé, retrieve the career foundation and relevant prior résumé before selecting examples. Preserve career progression and leadership scope; record audience-specific reasons for other omissions. A portfolio handout is a separate purpose and must not replace a résumé. Choose length after selecting substantive coverage.
+For a résumé, retrieve the career foundation and relevant prior résumé before selecting examples. Check roles, dates, responsibilities and ownership for accuracy. Review why the selected evidence fits the role; leadership, client, commercial and product examples are not universally required sections. A portfolio handout is a separate purpose and must not replace a résumé. Choose length after selecting substantive coverage.
 
 The source-review section must include `Content review` pointing to an absolute JSON receipt. The receipt contains `artifact_sha256` for the entire DOCX, `brief`, `review`, and `source_files` with IDs, absolute paths, exact file SHA256 hashes, and snapshot revisions. `review` binds the exact DOCX paragraph text hash, pins all reviewed sources, names the reviewer, supplies exact draft excerpts for required coverage, and separately records accuracy, representation, writing, and layout reviews with concrete notes. The shared `content-review.ts` module supplies the schema, required dimensions, and audience-derived depth. Review the full finished prose; a passing gate checks bindings and attestations, not semantic truth. Changing the draft, source, or brief invalidates the review. Run the readiness checker before replacing or uploading the artifact. Existing prepared artifacts are dated history until rechecked; never rewrite submitted packets.
 

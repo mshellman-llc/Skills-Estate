@@ -10,7 +10,7 @@ Use only the candidate identity, career records, thresholds, author profile and 
 
 This skill supplies the wording method that `prepare-job-application` tailor step 11 leaves open. It does not choose the master, select programs or decide claims; those come from `00_Master/Career_Application_Operating_Context.md` and the role's `Role_Work_Record.md`, whose narrative translation table must be complete. If it is empty, stop and run `prepare-job-application tailor` first.
 
-Before writing, load the operating context, the role work record, the master copy in the role folder, the live posting (if it is down, the record's posting snapshot, and say so), and `00_Master/Career_Narrative_Translation_Guide.md`. Claim authority is Professional_Profile → program records → `05_Reference/Claim_Governance/Career_Program_Evidence_Ledger.md`. Portfolio case studies are public copies and never a source for a resume figure.
+Before writing, load the operating context, the role work record, the master copy in the role folder, the live posting (if it is down, the record's posting snapshot, and say so), and `00_Master/Career_Narrative_Translation_Guide.md`. Claim authority starts with the candidate’s corrections and confirmed facts, then original evidence and the claim ledger, then detailed program records. The professional profile is a summary for navigation. Portfolio case studies are public copies and never a source for a resume figure.
 
 Before combining facts in a bullet, verify that the source explicitly connects the actor, work, figure and period. Separate records for a team activity and a candidate's platform experience do not establish that the candidate led that activity or that it used that platform. An unnamed team's count stays off the candidate's bullet until ownership is supported.
 
@@ -34,19 +34,19 @@ Paths such as `00_Master/`, `03_Tracker/` and `06_System/` name records under th
 
 - In: scale and outcome figures — dollars, portfolio size, cycles, attendees, time saved, contract value, deals, pipeline.
 - Exclude counts the candidate or rights ledger prohibits. Inventory counts can describe scale when they matter to the role, but must not stand in for a supported outcome.
-- State people-leadership responsibilities and headcount only when evidence and disclosure authority support them.
+- When people leadership is relevant, state responsibilities and headcount only when evidence and disclosure authority support them.
 - Prefer the figures that explain scope and outcome. Do not invent a ratio merely to compress several unrelated counts.
 
 ## Keywords
 
-the candidate wants posting keywords on the resume, placed by judgment: an exact-match search finds each critical term, a hiring reader sees ordinary sentences.
+Use supported language from the posting where it helps the hiring reader recognize relevant work.
 
 - Extract in four groups: role identity (title nouns, function); platforms and methods (Salesforce Revenue Cloud, CPQ, Billing, quote-to-cash, Agentforce, integration, named AI tooling); outcomes the posting measures (adoption, cycle time, platform roadmap, budget); leadership verbs the posting repeats. A term is critical when it is in the title, the first three responsibilities, or repeated.
 - Map each keyword to the evidence line where it is true. No evidence → a gap in the role work record for the letter or interview, and off the resume. Never add a tool, certification or title the candidate does not hold.
-- Headline and profile: the role-identity terms and the two or three platforms the role is built on, as sentences about what the candidate led.
+- Headline and profile: describe the supported work that fits the role. Include platform names where they help the reader understand that work; no platform count or leadership verb is required.
 - Expertise line: the posting's exact phrasing for things the candidate has done.
 - Bullets: the keyword that names the work, in the most recent instance; rewrite around it only when the sentence stays accurate.
-- Frequency: critical terms two or three times across the document, other once.
+- Use relevant posting terms naturally where supported. Review omissions and excess repetition; no keyword frequency is prescribed.
 - Synonym precedence: the posting's term in the expertise line, the candidate’s term once elsewhere, never both in one line. "Managed managers and individual contributors" is permitted where the source says people leaders.
 - Internal project names appear only with a plain description. Check exact phrases: "revenue recognition" is not matched by "rev rec"; "managing managers" is not matched by "leadership".
 
@@ -54,7 +54,7 @@ the candidate wants posting keywords on the resume, placed by judgment: an exact
 
 A bullet format cannot supply missing evidence. If the source establishes experience with API design but no ownership or leadership, retain that level of claim; do not add led, designed, built or managed. Record missing ownership, mechanism and outcome as gaps instead of presenting an invented achievement with placeholders.
 
-When supported by evidence, a bullet names what the candidate decided or owned, the mechanism the candidate built or used, and the result. When those elements are absent, keep a bounded activity or experience statement and record the missing evidence separately. Use plain verbs (led, designed, built, priced, decided, managed, hired, coached). Vary the order. End at the fact; a consequence gets its own sentence. No trailing "resulting in" or "ensuring", no power verbs (spearheaded, orchestrated, championed), no builder constructions, no X-not-Y. Solution and transformation roles keep one concrete client decision and one scaling mechanism, as the operating context requires. Titles and dates exactly as locked, month and year (for example, the synthetic span “Mar 2023–Jun 2024”).
+When supported by evidence, a bullet names what the candidate decided or owned, the mechanism the candidate built or used, and the result. When those elements are absent, keep a bounded activity or experience statement and record the missing evidence separately. Use plain verbs (led, designed, built, priced, decided, managed, hired, coached). Vary the order. End at the fact; a consequence gets its own sentence. No trailing "resulting in" or "ensuring", no power verbs (spearheaded, orchestrated, championed), no builder constructions, no X-not-Y. Select client decisions, scaling mechanisms or other evidence when they demonstrate the role’s actual requirements. Titles and dates exactly as locked, month and year (for example, the synthetic span “Mar 2023–Jun 2024”).
 
 ## Layout and gate
 
