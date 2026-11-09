@@ -8,9 +8,9 @@ description: "Draft the pieces around the candidate's tailored resume (cover let
 
 Use only the candidate identity, career records, thresholds, author profile and destinations explicitly supplied or authorized for this task. Record names below describe a suggested source map; resolve them under the confirmed career root or accept equivalent supplied records. None is a bundled personal default. Missing optional context does not block a bounded draft from supplied facts.
 
-Runs beside `prepare-job-application` once a role has a work record with a completed narrative translation table; if the table is empty, run `prepare-job-application tailor` first. These pieces select from the same three or four programs the resume uses, so the resume and the letter say the same things.
+Runs beside `prepare-job-application` once a role has a work record with a completed narrative translation table; if the table is empty, run `prepare-job-application tailor` first. Select evidence for each piece’s question, audience and purpose. Keep facts consistent across materials without requiring the same examples or repeating the résumé.
 
-Before drafting, load `00_Master/Career_Application_Operating_Context.md`, the role's `Role_Work_Record.md` (including its Estimate basis section), the tailored resume copy, the live posting, `00_Master/Professional_Profile.md`. Claim authority is Professional_Profile → program records → `05_Reference/Claim_Governance/Career_Program_Evidence_Ledger.md`; Portfolio case studies are public copies, not a source of figures. LinkedIn work starts from `00_Master/LinkedIn_Profile_Draft.md` and `00_Master/LinkedIn_Profile_Positioning_Brief.md`. Behavioral answers draw on `05_Reference/Story_Bank/Success_Stories.md` and the anchor stories in `04_Interview/Interview_Preparation.md`. References use `02_Templates/References_Template_One_Page.docx`.
+Before drafting, load `00_Master/Career_Application_Operating_Context.md`, the role's `Role_Work_Record.md` (including its Estimate basis section), the tailored resume copy, the live posting, `00_Master/Professional_Profile.md`. Claim authority starts with the candidate’s corrections and confirmed facts, then original evidence and the claim ledger, then detailed program records. The professional profile is a summary for navigation; Portfolio case studies are public copies, not a source of figures. LinkedIn work starts from `00_Master/LinkedIn_Profile_Draft.md` and `00_Master/LinkedIn_Profile_Positioning_Brief.md`. Behavioral answers draw on `05_Reference/Story_Bank/Success_Stories.md` and the anchor stories in `04_Interview/Interview_Preparation.md`. References use `02_Templates/References_Template_One_Page.docx`.
 
 the candidate is the author. Before drafting, state audience, purpose, reader action and consequence level; hiring material gets deep review. Write under `apply-author-style` with an explicitly supplied confirmed profile and `review-writing`; run the bundled writing diagnostics on each finished file where installed, fix structure rather than swapping words, and say plainly when no scan ran.
 
@@ -21,7 +21,7 @@ When the user supplies the relevant role facts inline and asks for a short draft
 ## Rules for every piece
 
 - Open with the point. Each sentence carries a name, number, system, decision or date.
-- Posting keywords appear where they describe real work, once or twice a paragraph.
+- Use posting language where it describes real work; do not repeat terms to meet a frequency target.
 - Preserve who did what and what was observed. Leading work does not establish personal design or implementation ownership. A named property such as retry-safe does not prove zero failures, a particular mechanism, or a production guarantee. Keep the source's trial, time and outcome qualifiers; an observed reduction does not mean elimination. Omit a missing mechanism rather than inventing one to complete a paragraph.
 - State only supported people-leadership responsibilities and counts. Use the candidate’s supplied disclosure preferences; no headcount is implied by a title.
 - Figures are locked or stated figures from the sources above, or estimates already in the record's Estimate basis. Years-per-skill for a form field count as an estimate: compute from role dates, record in Estimate basis, then use.
@@ -37,7 +37,7 @@ When the user supplies the relevant role facts inline and asks for a short draft
 
 1. The specific reason this role fits, tied to one program from the translation table.
 2. Two or three posting requirements, each answered with one program, its mechanism and its result.
-3. The largest real gap from the record answered with adjacent evidence, or the applied-AI work that distinguishes the candidate’s in this lane; skipped when the gap is minor.
+3. Use another relevant example or address a material question with supported adjacent evidence when that helps the hiring reader. No career category is a default differentiator.
 4. What the candidate would want to discuss first.
 
 No "I am excited to apply", no trait statements, no closing moral. Deliver one letter as a Codex doc; when a file is required, a DOCX beside the resume as `Candidate_Name_<Company>_<Role>_Cover_Letter.docx`.
@@ -61,7 +61,7 @@ Subject under eight words, specific to their team or the role. Body under 150 wo
 
 ## LinkedIn sections
 
-Headline under 220 characters in the brief’s confirmed professional identity and evidence-backed differentiator. About: first person, three to five short paragraphs, opening with what the candidate led and built, two or three named results, a closing line on what the candidate wants only if the candidate wants open-to-work visible. Experience entries carry the resume's titles, dates and figures exactly and may add context the resume cut. Skills: top three pinned to the lane the candidate is prioritizing. Output is a section-by-section diff against the staged draft. Publication is the candidate's action and a separate approval boundary.
+Headline under 220 characters, selected for the current brief and supported work. A prior headline or positioning correction does not establish a permanent professional identity. About: first person, three to five short paragraphs, opening with what the candidate led and built, two or three named results, a closing line on what the candidate wants only if the candidate wants open-to-work visible. Experience entries carry the resume's titles, dates and figures exactly and may add context the resume cut. Skills: top three pinned to the lane the candidate is prioritizing. Output is a section-by-section diff against the staged draft. Publication is the candidate's action and a separate approval boundary.
 
 ## References
 
