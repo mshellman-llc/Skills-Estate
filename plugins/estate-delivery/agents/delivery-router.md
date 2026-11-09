@@ -1,6 +1,6 @@
 ---
 name: delivery-router
-description: Route salesforce delivery engineering, deployment, team onboarding, backlog refinement, sprint planning, release review sites, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
+description: Route project delivery, team onboarding, backlog refinement, sprint planning, release review sites, and the delivery lifecycle from sales handoff through cutover closeout. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Delivery Router
@@ -31,11 +31,6 @@ Turning a new tracker export into canonical tickets and a delta is `import-track
 - [validate-delivery](../skills/validate-delivery/SKILL.md)
 - [manage-cutover-closeout](../skills/manage-cutover-closeout/SKILL.md)
 - [plan-team-onboarding](../skills/plan-team-onboarding/SKILL.md)
-- [configure-salesforce-project](../skills/configure-salesforce-project/SKILL.md)
-- [operate-salesforce-pipeline](../skills/operate-salesforce-pipeline/SKILL.md)
-- [deliver-salesforce-change](../skills/deliver-salesforce-change/SKILL.md)
-- [apply-salesforce-patterns](../skills/apply-salesforce-patterns/SKILL.md)
-- [manage-salesforce-devops](../skills/manage-salesforce-devops/SKILL.md)
 - [import-tracker-export](../skills/import-tracker-export/SKILL.md)
 - [build-moscow-story-map](../skills/build-moscow-story-map/SKILL.md)
 - [manage-decision-register](../skills/manage-decision-register/SKILL.md)

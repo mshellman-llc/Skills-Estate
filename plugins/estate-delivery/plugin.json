@@ -3,7 +3,7 @@
   "author": {
     "name": "Skills Estate"
   },
-  "description": "Skills Estate delivery workflows and routing.",
+  "description": "Project delivery: handoffs, requirements, sprint planning, status, release review and closeout.",
   "name": "estate-delivery",
-  "version": "0.3.4"
+  "version": "0.4.0"
 }

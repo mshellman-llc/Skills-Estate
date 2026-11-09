@@ -6,7 +6,8 @@
     "build-editorial-chart",
     "design-information-architecture",
     "develop-product",
-    "plan-usability-study"
+    "plan-usability-study",
+    "develop-independent-product"
   ],
   "host_adapter": "claude",
   "opt_in": false,
@@ -18,6 +19,7 @@
     "build-roadmap",
     "design-analytics-plan",
     "design-information-architecture",
+    "develop-independent-product",
     "develop-product",
     "evidence-core",
     "manage-consulting-knowledge",
@@ -28,7 +30,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "a01d6a10971c9da8d81713320cc8804cd3a407bd38091a565c97653f350d46b6",
+      "required_sha256": "33dbd138756cff1dcf17ed2d477d7e1c91dd080145e9b011cf765e517f382981",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -38,7 +40,7 @@
       "subject": "commercial-router"
     },
     {
-      "required_sha256": "e491e61fae624a0beddc9648166d58d8229765880c65350e0c5a75869d5fd928",
+      "required_sha256": "311df932b05b812fce2ea5f843df86ae43a43879f3edab939fb4835792211997",
       "status": "review required",
       "subject": "delivery-router"
     },
@@ -48,7 +50,7 @@
       "subject": "governance-router"
     },
     {
-      "required_sha256": "96e061f47abb1a30a16b72ef51cd53ce5cb9ef1e0280936dc77d14715137e2ad",
+      "required_sha256": "34651d0bbd21e40daf4954445d9e625aee878bbff71c70a64a5b8e9c342d3ba8",
       "status": "review required",
       "subject": "product-router"
     },
@@ -58,9 +60,14 @@
       "subject": "pursuit-router"
     },
     {
-      "required_sha256": "25e861cf9d9ca54961375376e3392ebb0e0bb305a2dd8f86c00570446264be48",
+      "required_sha256": "dd759d07b0d555e8a641382ffed4d3a0e6cf799eafb054bf23a14b55a14d3171",
       "status": "review required",
       "subject": "quality-router"
+    },
+    {
+      "required_sha256": "7c11834db4e75fe93f6795f0c827ceff75345dc53e54bb61a608b9cde4d205ce",
+      "status": "review required",
+      "subject": "salesforce-router"
     },
     {
       "required_sha256": "69582aa589ee9c99630d021f3fd69cd13e21559098861aa2c2aa52f6ee157c12",
@@ -283,7 +290,7 @@
       "subject": "maintain-discovery-record"
     },
     {
-      "required_sha256": "26da436d8ea140bcd46cbd690551d371a02b4b23aa9ac8d2146efaf46975b0ae",
+      "required_sha256": "06b8af668c32618227c0569c310b2ee62b32cd44288872b20353ac6cd36f0a9e",
       "status": "review required",
       "subject": "maintain-skills-estate"
     },
@@ -528,6 +535,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "bf7cac6eaaea3983242700ead5f4ba00414961a4854d44d96b68ba1c2f92efae",
+  "source_sha256": "e940d61270ed87cd52c179feab0874c17f765effa0067e54410b2dffa31fe443",
   "status": "owner-published"
 }

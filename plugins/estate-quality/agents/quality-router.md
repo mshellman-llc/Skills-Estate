@@ -18,7 +18,6 @@ description: Route the shared controls every other skill depends on. Knowledge H
 - [evidence-core](../runtime/evidence-core/WORKFLOW.md)
 - [review-deliverable](../skills/review-deliverable/SKILL.md)
 - [brand-renderer](../runtime/brand-renderer/WORKFLOW.md)
-- [verify-salesforce-org](../runtime/verify-salesforce-org/WORKFLOW.md)
 - [prepare-session-handoff](../skills/prepare-session-handoff/SKILL.md)
 - [simplify-code](../skills/simplify-code/SKILL.md)
 
