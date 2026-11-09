@@ -98,6 +98,27 @@ class SkillsMapTests(unittest.TestCase):
         self.assertEqual(len(actual), len(set(actual)))
         self.assertEqual(self.data['counts']['total'], len(expected))
 
+    def test_every_overview_explains_value_and_missing_project_inputs(self):
+        names = {s['id'] for s in self.data['skills']}
+        for skill in self.data['skills']:
+            with self.subTest(skill=skill['id']):
+                guide = skill['guide']
+                self.assertIsNotNone(guide, 'Every current workflow needs a source-bound overview')
+                self.assertNotEqual(guide['overview'], guide['what'])
+                self.assertGreater(len(guide['overview'].split()), 25)
+                self.assertTrue(guide['value'].strip())
+                for key in ('where', 'missing'):
+                    self.assertTrue(guide['preparation'][key].strip())
+                for link in guide['preparationSkills']:
+                    self.assertIn(link['skill'], names)
+                    self.assertTrue(link['reason'].strip())
+
+    def test_salesforce_architecture_has_a_document_free_start_and_optional_design_link(self):
+        guide = next(s['guide'] for s in self.data['skills'] if s['id'] == 'apply-salesforce-patterns')
+        self.assertIn('No document with a specific name is required', guide['preparation']['where'])
+        self.assertIn('leaves enforcement uninstalled', guide['preparation']['missing'])
+        self.assertIn('not a required step', guide['preparationSkills'][0]['reason'])
+
     def test_exact_sources_and_resource_bytes_survive(self):
         for s in self.data['skills']:
             with self.subTest(skill=s['id']):

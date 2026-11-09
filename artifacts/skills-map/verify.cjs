@@ -30,6 +30,11 @@ const {chromium}=require('playwright');
   if(skill.guide){
    const overview=await page.locator('#panel-overview').innerText();
    for(const phrase of ['What it does','When to use it','What to give it','What you get','How to start','Built for'])assert(overview.includes(phrase));
+   for(const phrase of ['Why use it','Before you start','Where this comes from',"If you don't have it",'Other skills and connections'])assert(overview.includes(phrase),skill.id+': missing '+phrase);
+   assert(overview.includes(skill.guide.overview));assert(overview.includes(skill.guide.value));
+   assert.notEqual(skill.guide.overview,skill.guide.what);
+   assert(overview.includes(skill.guide.preparation.where));assert(overview.includes(skill.guide.preparation.missing));
+   for(const item of skill.guide.preparationSkills||[])assert(await page.locator('#panel-overview [data-skill="'+item.skill+'"]').count(),skill.id+': missing preparation link '+item.skill);
    assert(!overview.includes('ESTATE-WRITING'));
    assert(overview.includes(skill.reuse.label));
   }
