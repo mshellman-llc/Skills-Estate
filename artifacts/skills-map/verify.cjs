@@ -35,6 +35,11 @@ const {chromium}=require('playwright');
    assert.notEqual(skill.guide.overview,skill.guide.what);
    assert(overview.includes(skill.guide.preparation.where));assert(overview.includes(skill.guide.preparation.missing));
    for(const item of skill.guide.preparationSkills||[])assert(await page.locator('#panel-overview [data-skill="'+item.skill+'"]').count(),skill.id+': missing preparation link '+item.skill);
+   if(skill.id==='evidence-core'){
+    assert(await page.locator('#panel-overview .included-skills [data-skill="manage-consulting-knowledge"]').count());
+    assert(!overview.includes('knowledge-hub'));
+   }
+   if(skill.id==='write-business-case')assert(await page.locator('#panel-overview .included-skills [data-skill="review-deliverable"]').count());
    assert(!overview.includes('ESTATE-WRITING'));
    assert(overview.includes(skill.reuse.label));
   }

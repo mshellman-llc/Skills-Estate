@@ -10,11 +10,13 @@ Open a group to find its workflows and task packages. The interactive map uses t
 | --- | ---: | ---: |
 | [Pursuit and discovery](pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](scope-and-proposals/README.md) | 14 | 9 |
-| [Delivery and Salesforce](delivery-and-salesforce/README.md) | 23 | 18 |
+| [Delivery and project work](delivery-and-salesforce/README.md) | 15 | 13 |
+| [Salesforce development](salesforce-development/README.md) | 8 | 5 |
 | [Product and experience](product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](writing-and-presentation/README.md) | 9 | 5 |
-| [Career and personal](career-and-personal/README.md) | 8 | 6 |
+| [Career and applications](career-and-personal/README.md) | 5 | 3 |
+| [Personal and creative](personal-and-creative/README.md) | 3 | 3 |
 | [Estate and engineering controls](estate-and-engineering-controls/README.md) | 7 | 3 |
 
 [Open the interactive map](../artifacts/skills-map/README.md) · [Get the collections](https://github.com/mshellman-llc/Skills-Estate/actions/workflows/verify.yml)

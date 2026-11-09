@@ -10,11 +10,13 @@ This candidate contains 91 source modules and 63 task entrypoints. Consolidation
 | --- | ---: | ---: |
 | [Pursuit and discovery](browse/pursuit-and-discovery/README.md) | 7 | 5 |
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
-| [Delivery and Salesforce](browse/delivery-and-salesforce/README.md) | 23 | 18 |
+| [Delivery and project work](browse/delivery-and-salesforce/README.md) | 15 | 13 |
+| [Salesforce development](browse/salesforce-development/README.md) | 8 | 5 |
 | [Product and experience](browse/product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
-| [Career and personal](browse/career-and-personal/README.md) | 8 | 6 |
+| [Career and applications](browse/career-and-personal/README.md) | 5 | 3 |
+| [Personal and creative](browse/personal-and-creative/README.md) | 3 | 3 |
 | [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
 <!-- SKILL-GROUPS:END -->
 

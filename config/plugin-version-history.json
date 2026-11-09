@@ -12,6 +12,10 @@
     "0.3.3": {
       "content_sha256": "cdb087e9de5d567fc73f3ec9082840a4d721a6ad7a360775e4ba2932591e66d5",
       "note": "Explain every workflow overview, practical value, input sources and missing prerequisites; distinguish bundled helpers, preparation workflows and external connections."
+    },
+    "0.3.4": {
+      "content_sha256": "f4e1be2ef83545760e4361f8ca040d1dd36fe37bb9d8a38a381d947b3c549e47",
+      "note": "Separate Salesforce development and personal/creative browsing groups; keep career applications distinct and resolve included helper chains in overview links."
     }
   }
 }
