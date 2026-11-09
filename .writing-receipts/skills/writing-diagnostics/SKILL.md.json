@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/writing-diagnostics/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Commands the reader runs, quoted exactly.",
+      "text": "```bash\npython3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected \"commercial figures from the supplied quote\" \\\n    --change \"replaced the generic claim with the supported action\"\npython3 scripts/prose_receipt.py validate receipt.json\n```"
+    }
+  ]
+}

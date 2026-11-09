@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/review-writing/references/host-setup.md",
+  "protected": [
+    {
+      "kind": "identifier",
+      "reason": "Address of the Claude help article the link names.",
+      "text": "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills"
+    }
+  ]
+}

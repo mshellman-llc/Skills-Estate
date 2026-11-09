@@ -1111,7 +1111,7 @@
       "inputs": "The saved text, the source version for figure comparison and the house configuration.",
       "outputs": "Pattern findings, figure comparisons and validated review receipts; it does not rewrite text.",
       "example": "Check this saved draft for recurring writing patterns and confirm no figure changed from the source.",
-      "reviewedEntrypointSha256": "decde0931c875f9a51cae024d2969dea1ded12a71f730c18625b93f9f9a8da28",
+      "reviewedEntrypointSha256": "1cd817de3b987c38739ab33f564c35763f69dcb0fae2c1b005d319dbfb78e2be",
       "expect": "It is an internal checker used by the writing review, not an editor, and it reports detectable patterns in a saved file by exit code without rewriting anything. It can reconcile figures between a source and a rewrite and emit a review receipt, but a clean scan does not show the prose was read.",
       "requires": "Needs Python 3 and a saved file to check.",
       "overview": "It scans saved text for detectable writing patterns, compares figures between source and revised versions, and validates review receipts. The scripts return findings and exit codes; they do not rewrite the draft or select an author voice. A human or writing-review workflow still has to read the prose and judge whether a finding applies.",
@@ -1737,7 +1737,7 @@
       "inputs": "The brief or draft, controlling sources, and an authorized profile when available.",
       "outputs": "Complete reviewed prose and, when enabled, private correction-learning records.",
       "example": "Review this draft for clarity, repetition, and unsupported claims. Preserve its meaning and intended voice; return the complete revision.",
-      "reviewedEntrypointSha256": "15f78a2f30b11081956393100cf8fc729867e63e2b20ea2a2b5d3ebd2f9d99f1",
+      "reviewedEntrypointSha256": "f665c6395c2a0be444de0283b55fad9700a078f34c36bee8f2cef7709b7c0ba3",
       "expect": "It reviews your text for meaning, structure and sentence patterns, returns complete edits, and keeps quotations, figures and executable syntax exact. Learned preferences are loaded and saved only from a private profile store you have authorized, and it reports a saved correction only when it has a storage receipt.",
       "connectors": {
         "required": [],

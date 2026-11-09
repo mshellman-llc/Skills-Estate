@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "policies/brand.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The heading font stack in the default brand profile JSON; it repeats the body stack by design.",
+      "text": "    \"headings\": \"Inter, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif\","
+    }
+  ]
+}

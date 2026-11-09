@@ -4,7 +4,6 @@
     python3 tools/verify.py            # check only; report what is stale
     python3 tools/verify.py --refresh  # rebuild generated pages first, then check
     python3 tools/verify.py --all-integrations   # also run browser, loopback, map and toolchain tests
-    python3 tools/verify.py --strict-writing     # fail when changed Markdown has writing findings
 
 The command sets the Node variables CI sets (ESTATE_NODE, ESTATE_NODE_MODULES,
 NODE_PATH, PW_MODULE) when they are unset, so local results match CI instead of
@@ -12,10 +11,11 @@ failing on a missing pptxgenjs or docx module. It never installs, promotes or
 records a plugin version; when the version record is stale it prints the
 command to run.
 
-The last step runs writing-diagnostics `writing_check.py`, the estate's authoritative
-writing check, on Markdown under skills/, agents/ and policies/ that differs
-from origin/main. Its findings are advisory unless --strict-writing is given,
-because CI does not run it and a finding can be a quoted example.
+The last step runs tools/writing_gate.py against origin/main, as CI does for a
+pull request. It holds Markdown under skills/, agents/, policies/ and docs/ to
+writing-diagnostics `writing_check.py`, the estate's authoritative writing
+check, and fails on any finding a receipt does not cover. The gate's
+docstring and policies/skill-standard.md explain receipts and older findings.
 
 Exit codes: 0 every step passed, 1 a step failed, 2 the checkout cannot be checked.
 """
@@ -76,45 +76,27 @@ def steps(args, env):
     return plan
 
 
-WRITING_SCOPES = ('skills/', 'agents/', 'policies/')
 CHECKER = 'skills/writing-diagnostics/scripts/writing_check.py'
 
 
-def changed_markdown(env):
+def writing_step(env):
     base = map_baseline(env)
+    row = {'step': 'writing gate (changed Markdown)'}
     if not base:
-        return None
-    listed = subprocess.run(['git', 'diff', '--name-only', '--diff-filter=d', base, '--'],
-                            cwd=ROOT, capture_output=True, text=True, env=env)
-    untracked = subprocess.run(['git', 'ls-files', '--others', '--exclude-standard'],
-                               cwd=ROOT, capture_output=True, text=True, env=env)
-    names = set(listed.stdout.splitlines()) | set(untracked.stdout.splitlines())
-    return sorted(n for n in names if n.endswith('.md') and n.startswith(WRITING_SCOPES)
-                  and (ROOT / n).is_file())
-
-
-def writing_step(env, strict):
-    files = changed_markdown(env)
-    row = {'step': 'writing check (changed Markdown)', 'advisory': not strict}
-    if files is None:
-        row.update(ok=not strict, output='No origin/main ref to compare with.', hint=HINTS['rebuild skills map'])
+        row.update(ok=False, output='No origin/main ref to compare with.', hint=HINTS['rebuild skills map'])
         return row
-    if not files:
-        row.update(ok=True, files=0, findings=0)
-        return row
-    done = subprocess.run([sys.executable, CHECKER, '--json', *files], cwd=ROOT, env=env,
-                          capture_output=True, text=True)
+    done = subprocess.run([sys.executable, 'tools/writing_gate.py', '--json', '--base', base],
+                          cwd=ROOT, env=env, capture_output=True, text=True)
     try:
         report = json.loads(done.stdout)
     except json.JSONDecodeError:
         row.update(ok=False, output=(done.stdout + done.stderr).strip()[-3000:])
         return row
-    counts = {name: len(entry.get('findings', [])) for name, entry in report.items()}
-    total = sum(counts.values())
-    row.update(ok=not (strict and total), files=len(files), findings=total)
-    if total:
-        row['output'] = '\n'.join(f'{name}: {n}' for name, n in sorted(counts.items()) if n)
-        row['hint'] = f'Run python3 {CHECKER} <file> to read the findings, then rewrite those sentences.'
+    failed = [entry for entry in report if not entry['passed']]
+    row.update(ok=done.returncode == 0 and not failed, files=len(report), failed=len(failed))
+    if failed:
+        row['output'] = '\n'.join(entry['path'] + ': ' + entry['note'] for entry in failed)
+        row['hint'] = f'Run python3 {CHECKER} --config skills/writing-diagnostics/house.json <file>, then rewrite those sentences.'
     return row
 
 
@@ -132,8 +114,7 @@ def main(argv=None):
     parser.add_argument('--all-integrations', action='store_true')
     parser.add_argument('--integration', action='append', default=[])
     parser.add_argument('--json', action='store_true')
-    parser.add_argument('--strict-writing', action='store_true',
-                        help='Fail when changed Markdown has writing findings')
+    parser.add_argument('--strict-writing', action='store_true', help=argparse.SUPPRESS)  # the gate is always strict now
     args = parser.parse_args(argv)
     if not (ROOT / 'tools/estate.py').is_file():
         print('error: not a Skills Estate checkout', file=sys.stderr)
@@ -156,21 +137,20 @@ def main(argv=None):
                 row['tests'] = {key: summary.get(key) for key in
                                 ('executed', 'passed', 'failures', 'errors', 'deferred_count', 'status')}
         results.append(row)
-    results.append(writing_step(env, args.strict_writing))
+    results.append(writing_step(env))
     ok = all(row['ok'] for row in results)
     if args.json:
         print(json.dumps({'ok': ok, 'steps': results}, indent=2))
     else:
         for row in results:
             line = ('PASS ' if row['ok'] else 'FAIL ') + row['step']
-            if 'findings' in row:
-                line += f" ({row['findings']} findings in {row['files']} files"
-                line += ', advisory)' if row.get('advisory') else ')'
+            if 'failed' in row:
+                line += f" ({row['failed']} of {row['files']} files failed)"
             if row.get('tests'):
                 t = row['tests']
                 line += f" ({t['passed']}/{t['executed']} passed, {t['deferred_count']} deferred, {t['status']})"
             print(line)
-            if not row['ok'] or row.get('findings'):
+            if not row['ok']:
                 if row.get('output'):
                     print('  ' + row['output'].replace('\n', '\n  '))
                 if row.get('hint'):

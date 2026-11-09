@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "artifact": "skills/writing-diagnostics/references/patterns.md",
+  "protected": [
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`Leveraging X... Building on that... Recognizing the need...`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`serves as`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`What most companies get wrong about X`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`In most cases...`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`the honest answer`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`worth flagging`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`the full picture`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`the cleanup story`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`make no mistake`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`at its core`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`dig into`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`dive into`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`deep dive`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`appears to`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`regardless.`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`nonetheless.`"
+    },
+    {
+      "kind": "example",
+      "reason": "A quoted instance of the pattern this entry defines.",
+      "text": "`nevertheless.`"
+    }
+  ]
+}

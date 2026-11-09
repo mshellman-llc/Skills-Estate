@@ -1,0 +1,36 @@
+{
+  "format": 1,
+  "artifact": "skills/review-writing/references/learning.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "learning.py commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/learning.py --store \"$PROFILE_STORE\" init --owner \"OWNER\" --profile-id PROFILE --host HOST --durability persistent --enable-learning\npython3 scripts/learning.py --store \"$PROFILE_STORE\" status\npython3 scripts/learning.py --store \"$PROFILE_STORE\" context --host HOST --tags general,FORMAT --markdown\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "learning.py commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/learning.py --store \"$PROFILE_STORE\" capture correction.json\npython3 scripts/learning.py --store \"$PROFILE_STORE\" pending\npython3 scripts/learning.py --store \"$PROFILE_STORE\" examples --pattern direct-claim --limit 2\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "learning.py commands the reader runs, quoted exactly.",
+      "text": "```json\n{\n  \"pattern\": \"direct-claim\",\n  \"scope\": \"general\",\n  \"instruction\": \"State the outcome directly.\",\n  \"exception\": \"Keep a question when the reader needs it answered.\",\n  \"tags\": [\"general\"],\n  \"evidence\": [\"EVENT_ID_FROM_CAPTURE\"],\n  \"review\": {\n    \"basis\": \"user-correction\",\n    \"meaning\": \"The repair preserves the saved-file result.\",\n    \"scope\": \"The instruction applies to routine replies.\",\n    \"valid_example\": \"A question that identifies a missing decision is retained.\",\n    \"cases\": [\n      {\"kind\": \"repair\", \"input\": \"The result? Saved.\", \"output\": \"The file is saved.\", \"assessment\": \"States the result directly.\", \"result\": \"pass\"},\n      {\"kind\": \"keep\", \"input\": \"Which account should receive the file?\", \"output\": \"Which account should receive the file?\", \"assessment\": \"Keeps the necessary decision question.\", \"result\": \"pass\"}\n    ]\n  }\n}\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "learning.py commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/learning.py --store \"$PROFILE_STORE\" promote proposal.json\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "learning.py commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/learning.py --store \"$PROFILE_STORE\" retire --id RULE_ID --reason \"The rule caused an unnecessary edit.\"\npython3 scripts/learning.py --store \"$PROFILE_STORE\" context --host HOST --project PROJECT --tags general,FORMAT --markdown\npython3 scripts/learning.py --store \"$PROFILE_STORE\" finish --session TASK_ID --host HOST\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "learning.py commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/learning.py --store \"$PROFILE_STORE\" export --out profile-transfer.json\npython3 scripts/learning.py --store \"$PROFILE_STORE\" import profile-transfer.json --owner \"OWNER\"\npython3 scripts/learning.py --store \"$PROFILE_STORE\" transfers\n```"
+    }
+  ]
+}
