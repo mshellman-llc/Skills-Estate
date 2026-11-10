@@ -68,6 +68,10 @@
     "0.4.13": {
       "content_sha256": "b6fd7de9311fd55db84be02677900a6460e99a12bebc0cb38581aeb6595cfd94",
       "note": "Add portable website visibility exclusions, the owner manager and the portfolio embed on top of the 0.4.12 source."
+    },
+    "0.4.14": {
+      "content_sha256": "5682a38e336606f0d1681035a7bd9c2dd671edb5c9207f300267e3f8fcd10f64",
+      "note": "Add writing-integrity, independent visual inspection and web-app interaction assessment for material explorers; preserve current publication controls and approved design direction."
     }
   },
   "source_conflicts": [

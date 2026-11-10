@@ -21,6 +21,10 @@ Compare actual states with the supplied references: first view, selected detail,
 
 Record content accuracy, working behavior and visual/UX observations separately. A successful interaction test is not user approval of the design.
 
+Inspect supplied references for initial view, hierarchy, reading density, diagram geometry, navigation, control placement and revealed detail. Preserve the explanatory method where it serves the current subject; do not copy private content or assume the same styling is required.
+
+Use the selected design system for tokens and primitives while choosing the composition for the reader's task. A requested UI/UX redesign may replace the rejected structure. Align comparisons so the changed step is apparent.
+
 ## Preserve accessibility and safe behavior
 
 - Use semantic headings, landmarks, buttons and links. Prefer native disclosures where suitable.
@@ -31,3 +35,5 @@ Record content accuracy, working behavior and visual/UX observations separately.
 - Escape untrusted content and restrict source links to safe HTTP(S) URLs. Do not introduce trackers, client data writes, connector access or authentication bypasses merely to present the content.
 
 Validate the interactions and responsive states actually implemented. Keep the depth of testing proportionate to the request and disclose unverified behavior.
+
+For material deliverables, use [deliverable review](deliverable-review.md). Content accuracy, working controls, visual quality and user acceptance are separate findings.
