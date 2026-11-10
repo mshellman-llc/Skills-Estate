@@ -33,7 +33,7 @@ spec.json:
   "value_label": "Hours used", "total_label": "Hours planned",   # progress key, optional
   "annotations": [{"date": "2020-03-15", "value": 65000, "label": "Lockdowns begin"}],
        # scatter annotations use x + y
-  "scheme": "F" | "E",                                   # Baseline palette, default F
+  "scheme": "neutral",                                   # optional; the only scheme
   "profile": "default" | "newsroom",                     # typography, default Inter only
   "brand": {"font": "...", "light": {...}, "dark": {...}} # optional; see typography.py
 }
@@ -324,7 +324,7 @@ def _json_for_script(obj):
 
 def render_html(spec):
     profile = spec.get("profile", "default")
-    scheme = spec.get("scheme", "F")
+    scheme = spec.get("scheme", "neutral")
     brand = spec.get("brand")
     e = html.escape
     return f"""<!DOCTYPE html>

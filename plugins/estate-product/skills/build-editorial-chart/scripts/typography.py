@@ -2,7 +2,7 @@
 """
 Editorial chart typography.
 
-Default profile: Inter for everything (Baseline). Numbers use tabular figures so
+Default profile: Inter for everything. Numbers use tabular figures so
 digits stay aligned in tables, axes and transitions. No monospace.
 
 Optional `newsroom` profile, only when the newspaper look is requested: a display
@@ -19,7 +19,7 @@ Scale:
   source line    400, 12px, --ink3
 
 Brand override: when the chart belongs to a product or client with its own
-design system, pass a `brand` dict instead of relying on Inter and Baseline:
+design system, pass a `brand` dict instead of relying on Inter and the neutral colors:
     {"font": "Hanken Grotesk",                    # one Google Fonts sans family
      "light": {"--bg": "#F7F9FB", "--hero": ...},  # any chart token to replace
      "dark":  {"--bg": "#131316", ...}}
@@ -137,7 +137,7 @@ def brand_css(brand):
     return css
 
 
-def font_css(profile="default", scheme="F", brand=None):
+def font_css(profile="default", scheme="neutral", brand=None):
     if profile not in FONT_LINKS:
         raise ValueError(f"Unknown profile '{profile}'. Choose default or newsroom.")
     css = css_variables(scheme) + ":root{\n" + FONT_VARS[profile] + "}\n"
@@ -146,7 +146,7 @@ def font_css(profile="default", scheme="F", brand=None):
     return css + BASE_CSS
 
 
-def emit_head(title="Chart", profile="default", scheme="F", extra_css="", brand=None):
+def emit_head(title="Chart", profile="default", scheme="neutral", extra_css="", brand=None):
     """Return a complete <head> block."""
     return (
         "<head>\n<meta charset=\"utf-8\">\n"
@@ -158,5 +158,5 @@ def emit_head(title="Chart", profile="default", scheme="F", extra_css="", brand=
 
 if __name__ == "__main__":
     prof = sys.argv[1] if len(sys.argv) > 1 else "default"
-    sch = sys.argv[2] if len(sys.argv) > 2 else "F"
+    sch = sys.argv[2] if len(sys.argv) > 2 else "neutral"
     print(emit_head("Chart", prof, sch))

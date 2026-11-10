@@ -15,7 +15,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "dc61c87a71878404d166051562f41f1049b1f3dbd2a7ea52dd2ca663ffa21477",
+      "required_sha256": "bfa01070cee3b9f96d9eb98d8ac435f83f306036bb885a320bcd67e719652075",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -120,12 +120,12 @@
       "subject": "build-deck"
     },
     {
-      "required_sha256": "8e660fd627f50d5458131ac556d27598dafd34550e733e485266295de7e5be28",
+      "required_sha256": "38d542525ce3b95123ff330a5af98ca711e80667f54a9288c09e5991dc49b021",
       "status": "review required",
       "subject": "build-editorial-chart"
     },
     {
-      "required_sha256": "6694ab0616a70612940a1f952343135a308ee22592467f92007088a5d149aadb",
+      "required_sha256": "0186be48a96ef7dcade38ddbc532edb7c9d84466a35b2c5545de1da6f0d2c2d5",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
@@ -280,7 +280,7 @@
       "subject": "maintain-skills-estate"
     },
     {
-      "required_sha256": "e1d10ac920eb6e2921a3f57f24b03eb157cc5aae0f6f3b9de5abc28a7c63411d",
+      "required_sha256": "0cb362f39724d6697095752412cde9036399f189ef68f6771d9521cd524a6446",
       "status": "review required",
       "subject": "manage-brand-profile"
     },
@@ -520,6 +520,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "b625a46a81b083e5ce4075809906b071a103bcd54ce66872e13c74ce66def462",
+  "source_sha256": "30bc2f071d5e6f7ebfb4d01f53c3d495cb5d6ee37ff56bf82130e2be8cb221a0",
   "status": "owner-published"
 }

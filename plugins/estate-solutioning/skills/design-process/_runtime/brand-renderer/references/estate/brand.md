@@ -14,9 +14,9 @@ Read exact values from the selected profile. Do not infer colors from a company 
 
 ```json
 {
-  "name": "Baseline",
+  "name": "Neutral",
   "status": "confirmed",
-  "source": "Baseline palette F, established as the default on 2026-10-30",
+  "source": "Estate default for artifacts with no selected brand",
   "colors": {
     "background": "#FFFFFF",
     "text": "#11141A",
@@ -47,10 +47,6 @@ Read exact values from the selected profile. Do not infer colors from a company 
   "voice": "Use the author's confirmed voice profile when supplied; otherwise write plainly and preserve meaning."
 }
 ```
-
-The neutral profile is Baseline, the estate's default design system. Web pages, dashboards and interactive artifacts use its component kit in the `manage-brand-profile` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
-
-The kit supplies visual tokens and reusable primitives; its examples are not required page layouts. The producing workflow may compose custom diagrams, connected flows, contextual detail, comparisons or rehearsal controls using those tokens. Preserve typography, contrast, semantic color and keyboard focus while choosing the structure for the reader's task. An existing card or sidebar example does not require a rejected composition to be retained during an authorized redesign.
 
 The neutral profile has no logo, footer mark, cover imagery, gradients, or bundled fonts. Add a title, date, and author when the format needs them. Do not add colored side accents to cards, rows, badges or callouts.
 

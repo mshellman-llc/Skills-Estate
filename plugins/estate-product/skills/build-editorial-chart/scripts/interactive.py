@@ -116,7 +116,7 @@ PREPUBLISH_CHECKLIST = [
 ]
 
 
-def scaffold(title, body_html, extra_js="", profile="default", scheme="F", brand=None):
+def scaffold(title, body_html, extra_js="", profile="default", scheme="neutral", brand=None):
     """Return a complete, self-contained dashboard page.
 
     body_html: the <div class="wrap"> ... </div> markup (header and panels).
