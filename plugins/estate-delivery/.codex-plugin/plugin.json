@@ -2,5 +2,5 @@
   "description": "Project delivery: handoffs, requirements, sprint planning, status, release review and closeout.",
   "name": "estate-delivery",
   "skills": "./skills/",
-  "version": "0.4.16"
+  "version": "0.4.17"
 }

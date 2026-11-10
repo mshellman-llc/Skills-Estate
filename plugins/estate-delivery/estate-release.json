@@ -39,7 +39,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "adeba8d6c0d7e3f3c77dd33e1a3e7bed44bad62635531ee7a944999e33417259",
+      "required_sha256": "981d62b2aff72320faf8763cb2204162eb41643e519c3e09431ae521520fd402",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -149,7 +149,7 @@
       "subject": "build-editorial-chart"
     },
     {
-      "required_sha256": "a06cadfd9161e745859f7f458bddc07bb94fad502d2678effb09e0a8981ef12a",
+      "required_sha256": "d91fce79604efe29d8ca8ab0f178ad10d9462b11732deb61a8149194ee649bd6",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
@@ -544,6 +544,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "e67b1e1f67b2d6be4747b11058bfd767551e9eb4e641a5e3c98d35fabf839d95",
+  "source_sha256": "01772f6118fa83b58fd37f83a7bf92c2a2fc231e1cd90b229d7af6f0a6613cd7",
   "status": "owner-published"
 }

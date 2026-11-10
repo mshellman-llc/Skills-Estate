@@ -9,7 +9,7 @@ Turn source material into an explorable explanation. Use the supported site work
 
 ## Choose the representation
 
-Name the reader's task and the relationship the artifact must explain. A service process may need stages that expose the responsible role, handoff and exception. A system explanation may need a diagram with labeled exchanges and ownership. A call rehearsal may need question, answer and follow-up prompts. Preserve these differences when selecting the workflow. Use `prepare-sales-pursuit` for a sales call brief and `build-review-site` for tracker-based release review. Keep a simple standalone visual in the requested format when a full website adds no useful capability.
+Establish the requested deliverable and its substantive scope before choosing a focal question. Name the reader's tasks and the relationships the artifact must explain. A service process may need stages that expose the responsible role, handoff and exception. A system explanation may need a diagram with labeled exchanges and ownership. A call rehearsal may need question, answer and follow-up prompts. Preserve these differences when selecting the workflow. Use `prepare-sales-pursuit` for a sales call brief and `build-review-site` for tracker-based release review. Keep a simple standalone visual in the requested format when a full website adds no useful capability. A focused explainer can supplement a requested full guide; do not silently substitute it for that guide.
 
 Use an available renderer that supports the chosen representation, or implement and test the missing interaction explicitly. A set of selectable cards does not by itself explain a system relationship or provide a rehearsal exercise. When the user requests an existing layout, use their supplied reference and make its content serve the reader's task.
 
@@ -21,6 +21,10 @@ Use an available renderer that supports the chosen representation, or implement 
 - Ask only for a missing fact that prevents a useful result; otherwise choose a reasonable structure and proceed.
 - Never reuse another client's text, private links, pricing, transcripts, credentials or hosting identity.
 
+## Preserve the requested depth
+
+For a substantial guide, adaptation or rebuild, read [scope, depth and usefulness review](references/depth-usefulness-review.md) before authoring and give it to both reviewers. Map the requested substance and relevant reference capabilities to the output. Preserve mechanisms, designs, examples, visuals, assumptions and failure paths; disclose unsupported or unavailable material. Progressive disclosure keeps the complete depth reachable. Writing-integrity improves expression without deleting relevant technical substance.
+
 ## Organize the content
 
 Read [the content guidance](references/content-model.md). Choose an information structure that supports what the reader needs to understand or do. There is no required schema or section list.
@@ -28,7 +32,7 @@ Read [the content guidance](references/content-model.md). Choose an information 
 - Use paths and ordered stages only when the subject has meaningful sequences or distinct routes. A thematic collection, comparison, map or searchable reference may fit better. Do not invent paths to satisfy a layout.
 - For planned work over time, use `build-roadmap` and its validated snapshot plan. Embed its components through the supported roadmap workflow, keeping its brand settings consistent with the project. Keep sequence separate from scope priorities.
 - Offer additional angles such as people and jobs, journeys, capabilities, priorities and open decisions only when supported by useful content.
-- Adapt labels and depth to the domain. Keep the initial view concise and place supporting detail near the claim it explains.
+- Adapt labels and depth to the domain. Keep the initial view readable and place supporting detail near the claim it explains. A clean overview does not authorize reducing the underlying scope or depth.
 - Keep raw reference IDs in a consolidated source index when useful. Show human-readable titles elsewhere and link details to the relevant evidence.
 - Let the evidence determine counts. Do not invent roles, research, quotations, metrics, emotions, approvals or current system behavior to fill the layout.
 
@@ -49,6 +53,7 @@ For local-only work, follow the requested destination and skip deployment. Use t
 ## Validate and finish
 
 - Run the checks appropriate to the implementation, including build or syntax checks where applicable. Check counts, links, empty states, escaping and unresolved references.
+- Compare the complete output with the requested scope and substantive reference methods. Missing material coverage is a delivery failure even when one section is excellent.
 - Check that the overview and navigation fit the topic. Verify that any sequences, roles, findings, actions and handoffs reflect the source material. Remove placeholder content and unsupported sections.
 - Walk through a concrete reader question using the output. The initial view should explain the relationship; opening detail should add the mechanism, example or next action needed to answer it. Preserve explanatory depth when shortening overview copy.
 - Check semantic structure, keyboard operability, focus handling, contrast and narrow-screen behavior. Exercise the interactions actually implemented rather than requiring a standard set of widgets.

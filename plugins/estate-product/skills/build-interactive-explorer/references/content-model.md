@@ -22,6 +22,8 @@ Choose the content model for the project. Do not require a particular JSON schem
 
 ## Check completeness without adding filler
 
+Preserve the requested full work before optimizing its overview. For substantial guides, use the [depth comparison](depth-usefulness-review.md) to locate mechanisms, designs, assumptions, examples and exceptions in the finished artifact. Collapsing complete detail is different from deleting it. A narrower working example needs to be identified as a supplement unless the user chose narrower scope.
+
 Ensure each visible section has a clear purpose and substantive content. Remove empty optional sections and derive counts from the actual content. Do not invent research, quotations, metrics, emotions, roles or approvals to complete a visual pattern. Identify material gaps and the questions needed to resolve them.
 
 ## Optional roadmaps
