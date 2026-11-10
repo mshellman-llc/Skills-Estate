@@ -232,7 +232,7 @@
       "inputs": "The topic, its sources, and the intended audience and destination.",
       "outputs": "A website organized around the audience and source material, with optional validated roadmap snapshots.",
       "example": "Turn these discovery notes into an interactive explorer with seller and enterprise paths and a delivery roadmap.",
-      "reviewedEntrypointSha256": "be95b1b9483d2d4310e7531349f9d25eb075d7a744b945a63f1bc5c03ef801c9",
+      "reviewedEntrypointSha256": "eff19bc59a2e2927d772b72b79b1d57f79b6d0e649cae9026dcdacc120e9b641",
       "expect": "It reads the sources, chooses a structure for the reader’s task, and builds through the available site workflow. Paths appear when the material has distinct routes. Claims retain their evidence, and publishing stays private unless a wider audience is approved. Material deliverables receive writing-integrity, visual and web-app interaction assessments; source facts, working behavior and user design acceptance remain distinct.",
       "connectors": {
         "required": [],
