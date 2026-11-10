@@ -14,6 +14,16 @@ Restore the audience’s actual purpose across copy, titles, diagrams, UI and in
 
 Before delivery, compare the finished content against the source and request, compute any totals, inspect the rendered result when layout matters, and verify the destination when a write was requested. State the actual layer reached: prepared locally, installed, committed, pushed, published, or verified in the destination.
 
+## Choose visuals and interactions for the reader's task
+
+When the user asks for visuals or interactive elements, identify the question to explain, comparison to make, response to rehearse, information to find or decision to support. Choose the representation from that task and the source material before choosing a layout. A system map can show ownership and exchanges; a process view can show sequence, handoffs and exceptions; a comparison can show what changes between options; a rehearsal view can hide an answer until the reader attempts it. These are examples, not required sections.
+
+Keep the main explanation visible. Use detail on demand for mechanics, examples, evidence and follow-up actions. A selected node should explain that node's role and relationships; a decision should expose its consequences; a rehearsal answer should help the reader respond. Navigation and expand/collapse controls can improve access, but their presence alone does not satisfy a request for a substantive visual explanation. A static diagram is sufficient when it answers the question clearly.
+
+When the user supplies good examples, inspect the relevant content and interactions. Record which reader task each supports and apply that pattern to the new subject. Preserve useful explanatory depth. Do not infer approval of every sentence, historical fact, visual style or implementation detail in an example. Keep private examples outside reusable packages.
+
+Check the finished result with a concrete reader question: can someone trace the relationship, explain the mechanism, compare the consequence or perform the intended action using this artifact? Exercise the relevant interaction when possible and inspect the revealed content as well as the initial view. Record unavailable browser verification separately from source inspection.
+
 ## Verify before agreeing or assigning responsibility
 
 When a factual claim is challenged, check the available records before agreeing,

@@ -1,31 +1,33 @@
-# Explorer layout and behavior
+# Design and interaction guidance
 
-Apply this shell after the task-fit check in `SKILL.md`. The rows below describe its available views when reusing the shell; they do not mandate the composition of a different visual or an authorized redesign. Choose supported views that help the reader. A collection of selectable cards does not establish a system relationship, causal explanation or rehearsal exercise. Show the relationship explicitly or use a representation that can.
+Design for the current audience, content, reading context and brand. Use an existing project design system or an explicitly requested reference when available. Resolve branding through the shared policy and confirmed project profile, falling back to the estate neutral profile. Choose a coherent project-specific visual direction; no fixed sidebar, hero, colors, typography or card composition is required.
 
-| Area | Contract |
-| --- | --- |
-| Navigation | Fixed light sidebar; distinct active view; mobile menu at narrow widths. Topic at top, evidence context at bottom. |
-| Header | Small breadcrumb and accurate access/status label. Never use a privacy badge as authentication. |
-| Hero | Large plain-language title with an accent phrase, short introduction and useful actions. Use the side note to connect need, work and outcome. |
-| Main paths | Small number of audience/process paths. Ordered stage cards have a title, one-sentence summary and explicit expansion affordance. |
-| Stage detail | Reveal action, decision, handoff, reported finding, capability fit and open question. Hide deeper evidence/acceptance detail behind another disclosure. Closing restores focus to the stage. |
-| People | Search role/audience cards. Native modal exposes context, triggers, jobs, information needs and research gaps. Link to the person's journey. |
-| Journeys | One role and one unit of work. Each step exposes context, action, decision, handoff, acceptance direction and exceptions. Offer expand/collapse all. |
-| Solution | Compact area list beside detail. Separate User experience, Design & records and Decisions & checks; adapt labels for other domains. |
-| Roadmap | Drawn by the `build-roadmap` components from its plan, with tabs when there are several. Never restyle them per explorer. |
-| Scope | Named categories with calculated counts. Include supported fallbacks and dependencies. Do not force January, MoSCoW or release commitments onto unrelated topics. |
-| Sources | Consolidated IDs and links; text/category filters; visible contextual filter and clear reset. Original permissions still apply. |
+## Make the information navigable
 
-Give stage cards a light tint of the accent that gets one shade darker per stage, and make the selected stage solid accent. Pure white cards on a white page made a process hard to follow in review. Use one text size inside a table, links and status labels included, and put long ticket or source lists behind a closed line in the row. Number circles keep one fixed size on every view.
+Show the relationship the reader needs to understand explicitly. Selectable cards alone do not establish a causal explanation, system interaction or rehearsal exercise. Choose a representation that can express it.
 
-Keep comfortable margins and restrained borders. Apply the current selected brand profile to typography, colors and spacing; historical shell colors do not override it. Improve body sizes if density makes reading difficult. Avoid metric walls or repeated feature-card filler.
+- Choose navigation for the content's size and relationships. Use in-page anchors, top navigation, search, a sidebar or another suitable pattern only when it serves the reader.
+- Establish a clear hierarchy and readable density. Use meaningful headings, comfortable spacing and clear labels. Avoid decorative metrics and repeated card filler.
+- Keep the initial view understandable. Reveal supporting detail near its context with clear controls and a way back. Do not hide essential conclusions behind unnecessary interactions.
+- Use stage expansion, dialogs, accordions, tabs or filters only where they fit the content. If filtering is present, show its current state and offer a clear reset and useful empty state.
+- Provide contextual source links and, where useful, a consolidated source view. Preserve source access restrictions.
+- Show an access or status label only when verified. Never use a privacy badge as authentication.
 
-Use semantic buttons, headings and native disclosures. Keep visible focus, meaningful labels, Escape behavior, focus restoration, reduced-motion support and narrow-screen layouts. Escape generated content. Restrict source links to safe HTTP(S) URLs. Load nothing from the network. Add no trackers, client data writes, connector access or authentication bypasses to the presentation shell.
+## Compare composition and meaningful states
 
-## Assess the composition
+Inspect supplied references for initial view, hierarchy, reading density, diagram geometry, navigation, control placement and revealed detail. Preserve the explanatory method where it serves the current subject; do not copy private content or assume the same styling is required.
 
-Inspect the overview before opening details. The reader should see the main relationship and recognize the useful controls without reading a large introductory block. Keep a selected object visible alongside its explanation, and show changes in the represented flow or comparison when an interaction changes the outcome. Use a lookup panel only when lookup is the task.
+Keep the main explanation within reach. Use the selected design system for tokens and primitives while choosing the composition for the reader's task. A requested UI/UX redesign may replace the rejected structure. Keep a selected object in its map, show how a changed state affects the path and outcome, and align comparisons so the changed step is apparent. On narrow screens, keep detail near its selected context.
 
-Compare actual states with the supplied references: first view, selected detail, consequential exception, and return to context. Preserve explanatory depth and use different structures where the information differs. A repeated grid of equal cards can obscure sequence, priority and ownership even when its text is correct. At narrow widths, reconnect each detail to its selected object instead of simply stacking detached panels.
+## Preserve accessibility and safe behavior
 
-Record content accuracy, working behavior and visual/UX observations separately. A successful interaction test is not user approval of the design.
+- Use semantic headings, landmarks, buttons and links. Prefer native disclosures where suitable.
+- Keep controls keyboard-operable, focus visible and labels meaningful. For dialogs, support Escape, appropriate focus management and focus restoration on close.
+- Make selected and expanded states perceivable beyond color. Maintain readable contrast and text sizes.
+- Support narrow screens and reduced motion. Avoid hover-only access to essential information.
+- Keep presentation assets local and load nothing from the network. Use the `build-roadmap` components for optional roadmaps without restyling their internals.
+- Escape untrusted content and restrict source links to safe HTTP(S) URLs. Do not introduce trackers, client data writes, connector access or authentication bypasses merely to present the content.
+
+Validate the interactions and responsive states actually implemented. Keep the depth of testing proportionate to the request and disclose unverified behavior.
+
+For material deliverables, use [deliverable review](deliverable-review.md). Content accuracy, working controls, visual quality and user acceptance are separate findings.

@@ -1,9 +1,9 @@
 interface:
-  display_name: "Build interactive explorer"
+  display_name: Build interactive explorer
   short_description: Turn source material into a clear, clickable explorer
   default_prompt: Use $build-interactive-explorer to create a polished interactive
-    explorer from my sources, with clear paths, expandable detail and consolidated
-    references.
+    explorer from my sources, with project-specific design, useful navigation,
+    expandable detail and source references.
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:
