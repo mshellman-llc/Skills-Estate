@@ -68,3 +68,9 @@ python3 scripts/extract_review_text.py receipt REVIEW/before REVIEW/after --out 
 The receipt records, for each file: its hash, source lines, extracted lines, parts, parts read, lines read and lines changed, with findings by action. It lists gaps: a missing or wrong read token, a changed line with no finding, a finding marked fixed on a line that did not change, an unfixed finding with no note, and a source that changed after the final extraction. The command exits 0 and prints `COMPLETE` only when no gap remains.
 
 Report coverage from the receipt. A read token shows the part was opened to its end; it does not prove attention to every line, factual accuracy or editorial quality. State that limit when the review is consequential. Keep the receipt and log with the project's review records, outside the reader-facing copy.
+
+## Read guard hook
+
+`scripts/rendered_read_guard.py` is an optional PreToolUse hook for Claude Code and Codex. It denies one tool call when that call would read a whole HTML or SVG file over 100,000 bytes or with a line over 2,000 characters, or any `.xlsx`, `.docx` or `.pptx` file. Its denial message names the extractor. Reads with an offset and limit, line ranges such as `sed -n`, readers piped into a filter such as `head` or `grep`, and redirects to a file all pass. If the guard fails, the call goes through.
+
+Claude Code runs it from `~/.claude/settings.json` under `PreToolUse` with the matcher `Read|Bash`. Codex runs it from `~/.codex/hooks.json` under `PreToolUse`, and asks you to trust the new hook the first time it runs. Both point at the installed copy of this script.
