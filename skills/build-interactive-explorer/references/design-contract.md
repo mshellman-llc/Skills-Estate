@@ -1,5 +1,7 @@
 # Explorer layout and behavior
 
+Apply this shell after the task-fit check in `SKILL.md`. The rows below describe its available views; choose supported views that help the reader. A collection of selectable cards does not establish a system relationship, causal explanation or rehearsal exercise. Show the relationship explicitly or use a representation that can.
+
 | Area | Contract |
 | --- | --- |
 | Navigation | Fixed light sidebar; distinct active view; mobile menu at narrow widths. Topic at top, evidence context at bottom. |
