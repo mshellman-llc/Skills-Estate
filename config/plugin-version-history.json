@@ -64,6 +64,10 @@
     "0.4.12": {
       "content_sha256": "53b05464dd0811932af31073195684a61f4eceb109a3c078e3f00b710383a11a",
       "note": "Make composition and reader context part of visual design guidance; add composition review to build-interactive-explorer on top of main's template-free explorer."
+    },
+    "0.4.13": {
+      "content_sha256": "a0abd62216aee46795da4ba91064d1000e9a6cf9e74dfd58803420bf7699cec4",
+      "note": "Add writing-integrity, visual-inspector and web-app interaction review for material explorers; preserve task-specific composition and approved design direction."
     }
   }
 }
