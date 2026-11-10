@@ -43,7 +43,7 @@ No file, identifier, commit or pull request may carry the name, abbreviation, pr
 
 Keep upstream LICENSE and NOTICE files verbatim, add an attribution line to `SKILL.md`, and record the upstream source in the catalog. Check the license of new third-party material before it merges.
 
-Material under the Commons Clause can be used and changed but cannot be sold, which includes paid hosting or support built around it. Mark those skills in the catalog as not for sale and keep them out of anything sold until they are rewritten without the upstream material or licensed. This applies today to build-roadmap, frame-jobs-to-be-done, plan-sprint, prioritize-work and refine-backlog.
+Material under the Commons Clause can be used and changed but cannot be sold, which includes paid hosting or support built around it. Mark those skills in the catalog as not for sale and keep them out of anything sold until they are rewritten without the upstream material or licensed. This applies today to build-roadmap, frame-jobs-to-be-done, plan-sprint and refine-backlog.
 
 ## Host builds
 

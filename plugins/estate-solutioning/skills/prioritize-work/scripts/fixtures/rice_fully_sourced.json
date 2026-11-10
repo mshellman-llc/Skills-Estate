@@ -1,0 +1,70 @@
+{
+  "about": "Synthetic RICE candidates for an invented island ferry booking app; reach counts riders per quarter.",
+  "items": [
+    {
+      "id": "FRY-011",
+      "title": "Offline boarding pass",
+      "problem": "Riders lose phone signal at the pier and cannot show a ticket",
+      "reach": 2400,
+      "impact": 2,
+      "confidence": 0.8,
+      "effort": 6,
+      "sources": {
+        "confidence": "synthetic pier survey of 64 riders",
+        "effort": "invented sizing from the mobile squad"
+      }
+    },
+    {
+      "id": "FRY-012",
+      "title": "Sailing delay alerts",
+      "job": "Know before leaving home whether my sailing is late",
+      "reach": 3000,
+      "impact": 1,
+      "confidence": 100,
+      "effort": 4,
+      "sources": {
+        "confidence": "synthetic app analytics for one quarter",
+        "effort": "invented estimate, platform engineers"
+      }
+    },
+    {
+      "id": "FRY-013",
+      "title": "Vehicle deck booking",
+      "problem": "Drivers queue for hours without knowing if the car deck has room",
+      "reach": 600,
+      "impact": 3,
+      "confidence": 0.5,
+      "effort": 5,
+      "sources": {
+        "confidence": "invented interviews with 8 freight drivers",
+        "effort": "synthetic sizing workshop, booking team"
+      }
+    },
+    {
+      "id": "FRY-014",
+      "title": "Group fare split",
+      "job": "Pay my share when a family group books together",
+      "reach": 450,
+      "impact": 0.5,
+      "confidence": 0.8,
+      "effort": 2,
+      "sources": {
+        "confidence": "synthetic support tickets, 31 requests",
+        "effort": "invented payments-team estimate"
+      }
+    },
+    {
+      "id": "FRY-015",
+      "title": "Return trip reminder",
+      "problem": "Day-trip riders miss the last boat home",
+      "reach": 1800,
+      "impact": 0.25,
+      "confidence": 80,
+      "effort": 1.5,
+      "sources": {
+        "confidence": "invented A/B test on a sister route",
+        "effort": "synthetic notification-team sizing"
+      }
+    }
+  ]
+}

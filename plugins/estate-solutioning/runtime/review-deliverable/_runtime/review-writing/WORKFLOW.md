@@ -39,6 +39,18 @@ After a correction, restore the reader's task throughout the artifact. Keep expl
 
 Read the complete result for meaning and structure. Review the claim, author representation, prose and layout separately when the work is consequential. A clean scan establishes only what the scanner checks. Review for the reader; never infer authorship or optimize for an AI detector.
 
+## Review saved files on extracted text
+
+When a review covers a rendered or generated file, review its extracted text instead of its markup. This covers HTML and SVG pages, pages built by scripts, workbooks, Word documents and slide decks. Follow [file review](references/file-review.md) every time, using `scripts/extract_review_text.py`:
+
+1. Run its `extract` command on the files with `--out REVIEW/before --root PROJECT`, then `init-log REVIEW/before`.
+2. Read every part to its end and record its read token. Review every line against these rules, including lines no scanner flags, and log each finding with its line ID and action.
+3. Fix each finding at its source: the HTML line, the generator or its data, or the workbook string the locator names. Rebuild generated files. Then check the rest of the piece for the same failure.
+4. Extract again into `REVIEW/after`, run `diff` on the two folders and read every changed line.
+5. Run `receipt` on the two folders. Claim full coverage only when it prints `COMPLETE`, and report its files, lines read and lines changed.
+
+A read token shows that a part was opened to its end. It does not prove attention to every line or the quality of the edit.
+
 ## Load details for the problem
 
 | Need | Reference |
@@ -48,6 +60,7 @@ Read the complete result for meaning and structure. Review the claim, author rep
 | Resume, commercial, personal or regulated copy | [Context rules](references/context-rules.md) |
 | Consequential review, conflicting constraints or a full audit | [Detailed review](references/detailed-review.md) |
 | An uncertain repair | [Editing examples](references/examples.md) |
+| HTML pages, script-built pages, workbooks, Word documents or decks | [Extracted-text procedure](references/file-review.md) |
 | Saved files, figure comparisons or required review records | [Diagnostic toolkit](../writing-diagnostics/WORKFLOW.md) and the [scanner procedure](references/detailed-review.md) |
 
 ## Capture and consolidate corrections

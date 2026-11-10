@@ -1,0 +1,15 @@
+{
+  "about": "Synthetic weighted file whose criterion weights are all zero; the scorer refuses it.",
+  "criteria": [
+    {"name": "rider value", "weight": 0},
+    {"name": "fare revenue", "weight": 0}
+  ],
+  "items": [
+    {
+      "id": "OPT-Z",
+      "title": "Keep the paper ticket office",
+      "problem": "PRB-07 peak-day timeouts",
+      "scores": {"rider value": 3, "fare revenue": 2}
+    }
+  ]
+}
