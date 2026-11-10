@@ -34,7 +34,7 @@ Read [the content guidance](references/content-model.md). Choose an information 
 
 ## Design the experience
 
-Read [design and interaction guidance](references/design-contract.md). Choose the layout, navigation, typography, colors, spacing and disclosure patterns for this project's audience, content and brand. Resolve branding through the shared brand policy and the confirmed project profile; use the estate neutral profile when none is supplied. Follow a user-supplied reference or established project design system when requested.
+Read [design and interaction guidance](references/design-contract.md). Choose the layout, navigation, typography, colors, spacing and disclosure patterns for this project's audience, content and brand. Resolve branding through the shared brand policy and the confirmed project profile; use the estate neutral profile when none is supplied. Follow a user-supplied reference or established project design system when requested. For a UI/UX redesign, inspect the supplied reference patterns and reconsider the composition.
 
 Do not default to a fixed sidebar, hero, palette, path switcher or card arrangement. Use only interactions that make the content easier to understand. Make the reader's next action clear where the material supports one.
 
@@ -53,5 +53,6 @@ For local-only work, follow the requested destination and skip deployment. Use t
 - Walk through a concrete reader question using the output. The initial view should explain the relationship; opening detail should add the mechanism, example or next action needed to answer it. Preserve explanatory depth when shortening overview copy.
 - Check semantic structure, keyboard operability, focus handling, contrast and narrow-screen behavior. Exercise the interactions actually implemented rather than requiring a standard set of widgets.
 - Use browser checks when explicitly requested or needed for an observed UI issue. Do not add automatic browser sessions or extensive testing by default. Follow Sites/browser guidance when used.
+- Assess the UI/UX separately from content and working controls: inspect whether the main relationship is immediately legible, selection keeps its context, changed states show consequences, and narrow-screen use preserves the task. Use the supplied examples as comparison evidence and record user acceptance separately.
 - Report explorer checks separately from real-world process/system validation. A functioning website does not prove implementation.
 - Confirm terminal private-deployment success and access before returning a URL. State material verification limits. Never broaden the audience as a workaround.

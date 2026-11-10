@@ -61,9 +61,13 @@
       "content_sha256": "e33340089561909be06295148e09b58b6ba621d31012942c480d50d874fd1991",
       "note": "Combine the explorer design update with current prioritization and writing-review source; restore valid release history without replacing published receipts."
     },
-    "0.4.11": {
-      "content_sha256": "ef48ca6f1dcf91667f92697e4424c4bfe821d5f3e0232540d1399d3afbd65bff",
-      "note": "Add portable website visibility exclusions on top of the 0.4.10 source, which includes the explorer update, prioritize-work and the review-writing extract and read-guard scripts."
+    "0.4.12": {
+      "content_sha256": "53b05464dd0811932af31073195684a61f4eceb109a3c078e3f00b710383a11a",
+      "note": "Make composition and reader context part of visual design guidance; add composition review to build-interactive-explorer on top of main's template-free explorer."
+    },
+    "0.4.13": {
+      "content_sha256": "b6fd7de9311fd55db84be02677900a6460e99a12bebc0cb38581aeb6595cfd94",
+      "note": "Add portable website visibility exclusions, the owner manager and the portfolio embed on top of the 0.4.12 source."
     }
   },
   "source_conflicts": [
