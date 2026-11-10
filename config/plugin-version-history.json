@@ -38,14 +38,25 @@
       "note": "Replace the skill standard; add the writing gate with receipts, the private terms check and not-for-sale marks for the Commons Clause skills; bring Writing Integrity and the brand policy to a writing pass."
     },
     "0.4.5": {
-      "content_sha256": "6f89027adaa994562cc13877e438bea1d2ad43421780794ec2dbc2501b5750b9",
-      "note": "Rewrite prioritize-work as original work: new SKILL.md, references, scorer, selftest and fixtures, with its upstream license files and not-for-sale mark removed."
       "content_sha256": "dc27030e2a0427cd5e1a8863e54ffc07a029c7901a2a1ccf603f9c96815ea68e",
       "note": "Add extracted-text file review to review-writing: extract_review_text.py writes line-numbered reader text from HTML, SVG, script-built pages, .xlsx, .docx and .pptx in single-read parts, diffs two extractions and writes a coverage receipt. SKILL.md requires the extract, review, source-fix, re-extract and receipt flow for file reviews. Selftest covers synthetic fixtures and, when EXTRACT_REVIEW_TEXT_PAGES is set, the assessment field card, review console and assessment page."
     },
     "0.4.6": {
       "content_sha256": "634c827518e789826d8077882df5eda70c5db607daf4dc129deee899583efc37",
       "note": "Add rendered_read_guard.py to review-writing: an optional PreToolUse hook for Claude Code and Codex that denies whole-file reads of large HTML and SVG files and of .xlsx, .docx and .pptx files, and names extract_review_text.py. Bounded reads, line ranges, filtered pipes and redirects pass. file-review.md describes installing it."
+    },
+    "0.4.7": {
+      "content_sha256": "fec28c42a5bf7dcd7c5b397a0699190be0001b441e9ec0dfd4faa7644a010e69",
+      "note": "Add portable website visibility exclusions and record the combined current skill source after the version-history merge repair"
     }
-  }
+  },
+  "source_conflicts": [
+    {
+      "version": "0.4.5",
+      "observed_at_commit": "50c87818d215a820a2d75b8e6fa1a4d0f1473008",
+      "reason": "Concurrent edits inserted a second 0.4.5 record into the existing record without a delimiter. Retained here; the next version records the combined source.",
+      "content_sha256": "6f89027adaa994562cc13877e438bea1d2ad43421780794ec2dbc2501b5750b9",
+      "note": "Rewrite prioritize-work as original work: new SKILL.md, references, scorer, selftest and fixtures, with its upstream license files and not-for-sale mark removed."
+    }
+  ]
 }
