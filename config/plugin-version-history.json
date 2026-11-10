@@ -60,6 +60,10 @@
     "0.4.10": {
       "content_sha256": "e33340089561909be06295148e09b58b6ba621d31012942c480d50d874fd1991",
       "note": "Combine the explorer design update with current prioritization and writing-review source; restore valid release history without replacing published receipts."
+    },
+    "0.4.12": {
+      "content_sha256": "53b05464dd0811932af31073195684a61f4eceb109a3c078e3f00b710383a11a",
+      "note": "Make composition and reader context part of visual design guidance; add composition review to build-interactive-explorer on top of main's template-free explorer."
     }
   }
 }

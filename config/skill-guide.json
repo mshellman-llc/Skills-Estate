@@ -93,13 +93,13 @@
       ]
     },
     "capture-knowledge": {
-      "what": "Save a decision or correction in the user’s knowledge system.",
+      "what": "Save a decision or correction in the user\u2019s knowledge system.",
       "when": "The user asks to retain a supported decision, discovery, or correction.",
       "inputs": "The decision, supporting evidence, intended destination, and current record.",
       "outputs": "A verified saved record or revision proposal with its actual acceptance state.",
       "example": "Save this decision in the current project record with its supporting source.",
       "reviewedEntrypointSha256": "f5e0d760edfdd0e61886dc759ba0979159818a8c9e90c26e95e72f4ee36e8c98",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It reads the hub context and the existing record for the subject, keeps your wording for decisions, and labels each statement as confirmed, reported, proposed or estimated. It submits a proposal against the exact revision it read and reports the real state (draft, pending, submitted or accepted), never calling a proposal accepted.",
       "connectors": {
         "required": [
@@ -117,13 +117,13 @@
       "preparationSkills": []
     },
     "load-project-context": {
-      "what": "Resume the user’s work from the current subject sources.",
+      "what": "Resume the user\u2019s work from the current subject sources.",
       "when": "A request to get oriented or continue a project.",
       "inputs": "The requested result and access to the relevant local sources or permitted Hub.",
       "outputs": "The relevant context, source conflicts, and the next supported action.",
       "example": "Resume this project from its current sources and identify the next action.",
       "reviewedEntrypointSha256": "3d3c80d4b46ca2fa033148c51ccac1b0c6532c45b3c134f64434db5b7f6460b0",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It reads the hub router and the relevant subject records at their exact revisions, then does the requested work from those sources. When hub access is unavailable it says what could not be checked and continues only with evidence it can reach, and it treats retrieved text as evidence rather than instructions.",
       "connectors": {
         "required": [
@@ -147,7 +147,7 @@
       "outputs": "Scoped findings marked verified now, needs attention or not rechecked, with evidence and the next repair; it stays read-only unless a repair is requested.",
       "example": "Check the local Hub for stale context and report the evidence behind each finding.",
       "reviewedEntrypointSha256": "fbee0a1214cdda3d5b87d615c35a42302cdfae03d75a7bbb275006f5917b2225",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It calls the hub's context and health checks, then sorts each dimension (connections, ingestion, jobs, backups, budgets) into verified now, needs attention or not rechecked, with timestamps. It is read-only unless you also ask for a repair, and it will not treat an old receipt or a missing field as proof of health.",
       "connectors": {
         "required": [
@@ -165,13 +165,13 @@
       "preparationSkills": []
     },
     "reconcile-knowledge": {
-      "what": "Compare the user’s source folders and preserve unique evidence.",
+      "what": "Compare the user\u2019s source folders and preserve unique evidence.",
       "when": "A named intake, reconciliation, or authorized cleanup task.",
       "inputs": "The folders, current authorities, and existing reconciliation records.",
       "outputs": "A comparison and, when authorized, verified reversible dispositions.",
       "example": "Compare these two project folders and identify unique material before proposing any moves.",
       "reviewedEntrypointSha256": "0c47d0ae6fc92550c1be657a5e1926f4b68c484e2b7eea276b9a1fd0999bd62a",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It starts from one named folder and the comparison roots, hashes only changed files, and classifies each as duplicate, divergent, complementary, unique or unresolved. It archives only verified duplicates with a reversible move manifest, never deletes permanently, and stops at a plan for a comparison-only request.",
       "connectors": {
         "required": [
@@ -189,13 +189,13 @@
       "preparationSkills": []
     },
     "manage-linked-task": {
-      "what": "Connect a Codex work item to the user’s Brain task record.",
+      "what": "Connect a Codex work item to the user\u2019s Brain task record.",
       "when": "Starting, continuing, or completing a Brain-linked task.",
       "inputs": "The task ID, current Brain note, and access to the task bridge.",
-      "outputs": "The task’s supported state, work receipt, and linked chat where applicable.",
+      "outputs": "The task\u2019s supported state, work receipt, and linked chat where applicable.",
       "example": "Continue this Brain task and record the result when its acceptance checks pass.",
       "reviewedEntrypointSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It sets a linked task to in-progress, finds or creates its working chat through the task bridge, and records a receipt with specific verification at a work boundary. An idle or archived chat never closes a task, and it creates a chat only when that is explicitly authorized.",
       "connectors": {
         "required": [],
@@ -232,14 +232,14 @@
       "inputs": "The topic, its sources, and the intended audience and destination.",
       "outputs": "A website organized around the audience and source material, with optional validated roadmap snapshots.",
       "example": "Turn these discovery notes into an interactive explorer with seller and enterprise paths and a delivery roadmap.",
-      "reviewedEntrypointSha256": "59b2d80bd2ff54ff09fcfdadf40de84ea87c37f7b70c7bd42e5feb08df4ee866",
-      "expect": "It reads the sources, chooses a structure for the reader’s task, and builds through the available site workflow. Paths appear when the material has distinct routes. Claims retain their evidence, and publishing stays private unless a wider audience is approved.",
+      "reviewedEntrypointSha256": "be95b1b9483d2d4310e7531349f9d25eb075d7a744b945a63f1bc5c03ef801c9",
+      "expect": "It reads the sources, chooses a structure for the reader\u2019s task, and builds through the available site workflow. Paths appear when the material has distinct routes. Claims retain their evidence, and publishing stays private unless a wider audience is approved. Material deliverables receive writing-integrity, visual and web-app interaction assessments; source facts, working behavior and user design acceptance remain distinct.",
       "connectors": {
         "required": [],
         "optional": []
       },
       "requires": "A supported website implementation workflow and the dependencies needed by the chosen project. Optional roadmaps use the bundled roadmap tooling.",
-      "overview": "It turns source material into a website whose structure fits the reader’s task and the relationship being explained. Readers can compare findings, browse themes or follow a meaningful sequence, with supporting evidence beside the claims. Visual design follows the project profile rather than a fixed shell.",
+      "overview": "It turns source material into a website whose structure fits the reader\u2019s task and the relationship being explained. Readers can compare findings, browse themes or follow a meaningful sequence, with supporting evidence beside the claims. Visual design follows the project profile rather than a fixed shell.",
       "value": "Help readers find the relevant explanation and inspect its evidence without reading every source document in full.",
       "preparation": {
         "where": "Provide source documents or notes, the intended readers, their questions and the desired destination. Include an existing project brand or design reference when one governs the work.",
@@ -291,13 +291,13 @@
       "preparationSkills": []
     },
     "prepare-job-application": {
-      "what": "Prepare the user’s application and interview work for a selected role.",
+      "what": "Prepare the user\u2019s application and interview work for a selected role.",
       "when": "Assessing a posting, tailoring materials, or preparing an interview.",
-      "inputs": "The current posting, the user’s career sources, and the role work record.",
+      "inputs": "The current posting, the user\u2019s career sources, and the role work record.",
       "outputs": "Role assessment, tailored materials, interview preparation, or authorized form work.",
       "example": "Assess this posting against my current career direction and prepare the selected application materials.",
       "reviewedEntrypointSha256": "9e83433f28b4848b2e1164c2cdcc2f263c3ca7423488a4b63100db8ea78d5ca4",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It reads the current posting, career authorities and role record, then selects evidence for that application. It checks role fit, career accuracy and evidence selection without requiring a people, practice or client theme. Form work retains its existing authorization and confirmation boundaries.",
       "connectors": {
         "required": [],
@@ -322,14 +322,14 @@
       ]
     },
     "draft-application-materials": {
-      "what": "Draft supporting application materials in the user’s voice.",
+      "what": "Draft supporting application materials in the user\u2019s voice.",
       "when": "A cover letter, form answer, outreach draft, or LinkedIn section is needed.",
       "inputs": "The role record, current career evidence, and the requested audience.",
-      "outputs": "Complete drafts tied to the role and the user’s supported experience.",
+      "outputs": "Complete drafts tied to the role and the user\u2019s supported experience.",
       "example": "Draft a cover letter for this role from my current role work record.",
       "reviewedEntrypointSha256": "b3df2a2fb127157eb1b77f37cdf6ddd13ee6a6cfea687005e6a4fea087599eec",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It drafts each requested letter, form answer or supporting piece for its question and audience. Facts stay consistent with the résumé, while the examples may differ. It uses corrected claim authority and preserves the existing boundaries for private material, sensitive form answers, sending and publication.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "expect": "It drafts each requested letter, form answer or supporting piece for its question and audience. Facts stay consistent with the r\u00e9sum\u00e9, while the examples may differ. It uses corrected claim authority and preserves the existing boundaries for private material, sensitive form answers, sending and publication.",
       "connectors": {
         "required": [],
         "optional": [
@@ -337,8 +337,8 @@
         ]
       },
       "requires": "The candidate's role work record, tailored resume, live posting, professional profile and a confirmed author profile.",
-      "overview": "It drafts each requested letter, form answer or supporting piece for its question and audience. Facts stay consistent with the résumé, while the examples may differ. It uses corrected claim authority and preserves the existing boundaries for private material, sensitive form answers, sending and publication.",
-      "value": "Give each application surface useful supported content rather than repeating the résumé’s examples or a standing differentiator.",
+      "overview": "It drafts each requested letter, form answer or supporting piece for its question and audience. Facts stay consistent with the r\u00e9sum\u00e9, while the examples may differ. It uses corrected claim authority and preserves the existing boundaries for private material, sensitive form answers, sending and publication.",
+      "value": "Give each application surface useful supported content rather than repeating the r\u00e9sum\u00e9\u2019s examples or a standing differentiator.",
       "preparation": {
         "where": "Use the role's work record, tailored resume and posting. The translation table connects the employer's requirements to your experience; it belongs in that role record. A writing profile is an optional separately authorized source of voice preferences, not permission to read private messages.",
         "missing": "For the full application workflow, prepare the role translation table through Prepare job application or supply an equivalent mapping. For a short bounded draft, you can provide relevant facts inline; missing optional records limit claims rather than forcing an outline. Salary and work-authorization questions still need your answer."
@@ -351,20 +351,20 @@
       ]
     },
     "assess-career-options": {
-      "what": "Compare roles and offers against the candidate’s chosen career direction.",
+      "what": "Compare roles and offers against the candidate\u2019s chosen career direction.",
       "when": "A role screen, tracker review, negotiation, or offer comparison.",
-      "inputs": "Role or offer terms, the user’s criteria, and the current career record.",
-      "outputs": "A comparison, open questions, and negotiation drafts for the user’s decision.",
+      "inputs": "Role or offer terms, the user\u2019s criteria, and the current career record.",
+      "outputs": "A comparison, open questions, and negotiation drafts for the user\u2019s decision.",
       "example": "Compare these offers against my recorded career gates and list the unresolved terms.",
       "reviewedEntrypointSha256": "f28c082d3d2bc502c3125006fb9591bc28bf9d00476f2cc1c2258badd452e4c6",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It compares the actual opportunity with the candidate’s current pay, scope, billability and progression criteria. Unknown terms remain questions. It does not infer a permanent market identity or downgrade an opportunity merely because its category differs from earlier applications.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "expect": "It compares the actual opportunity with the candidate\u2019s current pay, scope, billability and progression criteria. Unknown terms remain questions. It does not infer a permanent market identity or downgrade an opportunity merely because its category differs from earlier applications.",
       "connectors": {
         "required": [],
         "optional": []
       },
       "requires": "The candidate's operating context, tracker, role work record, pay thresholds and the posting or written offer.",
-      "overview": "It compares the actual opportunity with the candidate’s current pay, scope, billability and progression criteria. Unknown terms remain questions. It does not infer a permanent market identity or downgrade an opportunity merely because its category differs from earlier applications.",
+      "overview": "It compares the actual opportunity with the candidate\u2019s current pay, scope, billability and progression criteria. Unknown terms remain questions. It does not infer a permanent market identity or downgrade an opportunity merely because its category differs from earlier applications.",
       "value": "Assess opportunities against the criteria the candidate chose, with role facts and uncertainties visible.",
       "preparation": {
         "where": "Provide the posting or written offer and your criteria, including pay thresholds and any weights. Your tracker and role record are your own records of opportunities and evidence; supplied files can explain those terms without adopting someone else's career goals.",
@@ -373,13 +373,13 @@
       "preparationSkills": []
     },
     "write-portfolio-case-study": {
-      "what": "Turn the user’s work into a portfolio case study.",
-      "when": "A project or engagement needs a case study for the user’s portfolio.",
-      "inputs": "Project evidence, the user’s template, and current claims and rights decisions.",
+      "what": "Turn the user\u2019s work into a portfolio case study.",
+      "when": "A project or engagement needs a case study for the user\u2019s portfolio.",
+      "inputs": "Project evidence, the user\u2019s template, and current claims and rights decisions.",
       "outputs": "A working copy and a clean publish copy with unresolved gaps kept in the working record.",
       "example": "Turn this project into a working case study and publish copy using my claims ledger.",
       "reviewedEntrypointSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It produces two copies each time: a working copy with evidence labels on every figure and a clean publish copy in first person. It brackets missing facts instead of filling them and checks six publish gates, including sanitization and ownership, before anything is called ready.",
       "connectors": {
         "required": [],
@@ -402,7 +402,7 @@
     "manage-brand-profile": {
       "what": "Apply the confirmed project or client identity.",
       "when": "An artifact needs a brand profile or existing profile applied.",
-      "inputs": "The project’s confirmed colors, typography, assets, and usage rights.",
+      "inputs": "The project\u2019s confirmed colors, typography, assets, and usage rights.",
       "outputs": "A selected or updated profile and an artifact checked against it.",
       "example": "Apply this confirmed brand profile to the document and check the rendered result.",
       "reviewedEntrypointSha256": "ff8000d5f1880496041f7b5fb10d415f7f6d769da8fe73cf54740766c34c6200",
@@ -525,7 +525,7 @@
       "preparationSkills": []
     },
     "build-deck": {
-      "what": "Build a presentation around the audience’s decision.",
+      "what": "Build a presentation around the audience\u2019s decision.",
       "when": "A pitch, proposal, reading deck, or technical briefing is needed.",
       "inputs": "The audience, decision, source evidence, and output requirements.",
       "outputs": "An editable deck with reviewed copy, explanatory visuals, and rendered checks.",
@@ -589,7 +589,7 @@
       "when": "A signed engagement needs coordination across delivery stages.",
       "inputs": "Executed scope, current delivery state, and the requested decision.",
       "outputs": "An updated stage record and the next owning workflow or gate.",
-      "example": "Review this engagement’s delivery state and route the next work to its owner.",
+      "example": "Review this engagement\u2019s delivery state and route the next work to its owner.",
       "reviewedEntrypointSha256": "efbc0207a4238bf598b33d8aac2d7bb6e078290d3311712031fa3703251c37ac",
       "expect": "It reads the engagement's DELIVERY-STATE.md, runs the planner to find the current stage and the next gate, and hands the work to the skill that owns it by name. It builds no artifacts itself, never marks a gate passed without its signed record, and does not touch pre-signature work.",
       "requires": "Needs the engagement's DELIVERY-STATE.md (or the hard evidence to write one) and python3 to run the planner.",
@@ -712,13 +712,13 @@
       "preparationSkills": []
     },
     "guide-fortunes-weave": {
-      "what": "Answer questions and maintain the user’s Fortune’s Weave planner.",
-      "when": "A question concerns the user’s current route, roster, or planner.",
+      "what": "Answer questions and maintain the user\u2019s Fortune\u2019s Weave planner.",
+      "when": "A question concerns the user\u2019s current route, roster, or planner.",
       "inputs": "The planner project location, current roster, route sources and live planner state.",
       "outputs": "A sourced answer or an authorized, verified planner update.",
       "example": "Check my current route and roster before recommending the next planner update.",
       "reviewedEntrypointSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It reads the live roster and planner state before recommending a team or changing a build, and pulls only the researched section it needs. It will not state niche game mechanics from memory or treat a suggested team as a confirmed roster, and it asks for a roster export if it cannot reach the planner.",
       "connectors": {
         "required": [],
@@ -734,13 +734,13 @@
       "preparationSkills": []
     },
     "work-in-github-repository": {
-      "what": "Work with the user’s GitHub repositories.",
+      "what": "Work with the user\u2019s GitHub repositories.",
       "when": "A repository needs inspection, a commit, a PR, or release work.",
       "inputs": "The explicitly identified repository, intended account and authorized change.",
       "outputs": "Verified repository changes and separate PR, merge, or deployment state.",
       "example": "Review this specified repository change and prepare a pull request.",
       "reviewedEntrypointSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It inspects the remote, branch and working tree, then checks that the GitHub CLI can reach the named host, owner and repository before acting. It reads back the remote commit or pull request after a push, and it does not bypass protected branches, reviews or environment approvals or ask for a token.",
       "connectors": {
         "required": [],
@@ -756,13 +756,13 @@
       "preparationSkills": []
     },
     "develop-independent-product": {
-      "what": "Develop the user’s independent work from supplied historical projects.",
+      "what": "Develop the user\u2019s independent work from supplied historical projects.",
       "when": "An employer-era artifact is being translated into an independent product or offer.",
       "inputs": "Authorized historical sources, a project brief, and claims and rights decisions.",
       "outputs": "A usable independent artifact or backlog with source and publication questions resolved where possible.",
       "example": "Translate these authorized historical materials into an independent offering brief.",
       "reviewedEntrypointSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It first confirms the user's authority and the reuse scope from the task, then drafts a short migration map of the useful mechanism, its original dependencies and the independent form. It rebuilds examples with synthetic data, removes client details before anything leaves the private workspace, and treats publication as a separate decision.",
       "connectors": {
         "required": [],
@@ -782,7 +782,7 @@
       "when": "A website or product needs better findability.",
       "inputs": "The audience, content inventory, tasks, and current navigation.",
       "outputs": "A sitemap, taxonomy, navigation proposal, or structural review.",
-      "example": "Reorganize this site’s navigation around the tasks visitors need to complete.",
+      "example": "Reorganize this site\u2019s navigation around the tasks visitors need to complete.",
       "reviewedEntrypointSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
       "expect": "It reads the current content inventory and navigation before proposing anything, then gives a sitemap or structure with reasons tied to the audience's tasks. It keeps existing URLs unless a change is authorized, and it labels the result provisional because only real card sorts or tree tests count as validation.",
       "connectors": {
@@ -815,7 +815,7 @@
       "preparationSkills": []
     },
     "map-journey": {
-      "what": "Map a customer or role’s experience and the service underneath.",
+      "what": "Map a customer or role\u2019s experience and the service underneath.",
       "when": "A journey map, service blueprint, or opportunity map is needed.",
       "inputs": "Touchpoints, research, goals, friction, roles, and system evidence.",
       "outputs": "A journey or blueprint with sourced findings and labeled hypotheses.",
@@ -853,7 +853,7 @@
       "preparationSkills": []
     },
     "manage-consulting-knowledge": {
-      "what": "Retrieve and maintain a project’s durable knowledge.",
+      "what": "Retrieve and maintain a project\u2019s durable knowledge.",
       "when": "Work needs current client, pursuit, engagement, or evidence records.",
       "inputs": "The confirmed project identity, permitted storage, and relevant sources.",
       "outputs": "Retrieved context or verified workspace and record updates.",
@@ -870,13 +870,13 @@
       "preparationSkills": []
     },
     "apply-author-style": {
-      "what": "Apply an explicitly selected author’s confirmed writing profile.",
+      "what": "Apply an explicitly selected author\u2019s confirmed writing profile.",
       "when": "The task names an author and provides or authorizes their profile.",
       "inputs": "The draft, sources, intended author and confirmed profile.",
       "outputs": "Complete prose preserving supported claims and confirmed author preferences.",
       "example": "Rewrite this About draft in my voice while preserving its supported claims.",
       "reviewedEntrypointSha256": "60ef56102eed4f9de4cf6ea78a4ad0949e98ee1f6c38f5d33db43bc868ab10ed",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It uses a writing profile only when one for the named author is supplied or authorized for the task, and reads the profile's ownership and revocation state first. With no profile it falls back to plain drafting, and it will not claim a profile was loaded or a scan was run when it was not.",
       "connectors": {
         "required": [],
@@ -913,10 +913,10 @@
       "preparationSkills": []
     },
     "author-style-runtime": {
-      "what": "Apply one person’s confirmed writing profile.",
+      "what": "Apply one person\u2019s confirmed writing profile.",
       "when": "The intended author has an approved private style profile.",
-      "inputs": "That author’s profile, its scope, and a configured installation adapter.",
-      "outputs": "Writing reviewed against the selected author’s profile.",
+      "inputs": "That author\u2019s profile, its scope, and a configured installation adapter.",
+      "outputs": "Writing reviewed against the selected author\u2019s profile.",
       "example": "Apply the confirmed author profile to this draft within its stated scope.",
       "reviewedEntrypointSha256": "7b23bdc5ee4e8e997a2840cd5d55f8122f158aed37d55cac6fb82c9edc10d4a5",
       "expect": "It first decides who the author is, plus the surface, audience and purpose, and applies a confirmed profile only when the profiled person is the author. It falls back to plain drafting when the profile has no confirmed entry for that case, and never applies it to quotations or organizational voice.",
@@ -950,11 +950,11 @@
       "preparationSkills": []
     },
     "assess-offering-fit": {
-      "what": "Match a prospect’s needs to an offering.",
+      "what": "Match a prospect\u2019s needs to an offering.",
       "when": "Discovery needs to become an assess-offering-fit decision.",
       "inputs": "The current offering catalog and supported prospect findings.",
       "outputs": "Ranked fit, evidence behind the score, disqualifiers, and open questions.",
-      "example": "Compare this prospect’s discovery findings with our current offering catalog.",
+      "example": "Compare this prospect\u2019s discovery findings with our current offering catalog.",
       "reviewedEntrypointSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
       "expect": "It reads the discovery material and scores signals against each playbook's qualifier, citing the source of every point. It returns a ranked top three with the unanswered gates as the next call's agenda, does not price or lock a tier, and treats a run without the approved qualifier schema as diagnostic only.",
       "connectors": {
@@ -1005,7 +1005,7 @@
       "when": "An offering needs a complete artifact package or readiness review.",
       "inputs": "The offering definition, manifest, existing artifacts, and commercial policy.",
       "outputs": "An artifact plan, owning workflows, and remaining readiness checks.",
-      "example": "Review this offering’s artifact manifest and identify what remains before release.",
+      "example": "Review this offering\u2019s artifact manifest and identify what remains before release.",
       "reviewedEntrypointSha256": "9ba84a3b73f6164dd701c5bcfcef89001eb67b025f55be917c841e78bd59f48e",
       "expect": "It runs a planner against the playbook's manifest and reports the ordered build plan with every finding, then works one ready artifact at a time. Nothing is marked complete without three written gate results, and because the approved specification is supplied by the caller its output says release readiness is unverified.",
       "connectors": {
@@ -1167,20 +1167,20 @@
       ]
     },
     "tailor-resume": {
-      "what": "Apply the user’s resume methods for figures and ATS wording.",
+      "what": "Apply the user\u2019s resume methods for figures and ATS wording.",
       "when": "A tailored resume needs supported quantified bullets or role-relevant keyword placement.",
       "inputs": "Current career evidence, the posting, and the draft resume.",
-      "outputs": "Revised bullets and layout that preserve the user’s stated scope and evidence.",
+      "outputs": "Revised bullets and layout that preserve the user\u2019s stated scope and evidence.",
       "example": "Review my resume bullets against this posting and the current source figures.",
       "reviewedEntrypointSha256": "4f3dedf48a065ea98d6ef096cdfc37739321c95a00cdcf8273121e1f1debeffd",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It starts with the posting and selected evidence, checks claims against corrections, original sources and the ledger, then writes the relevant résumé copy. Keywords and platform names appear where they explain supported work, without numerical quotas or a required leadership or client example.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "expect": "It starts with the posting and selected evidence, checks claims against corrections, original sources and the ledger, then writes the relevant r\u00e9sum\u00e9 copy. Keywords and platform names appear where they explain supported work, without numerical quotas or a required leadership or client example.",
       "connectors": {
         "required": [],
         "optional": []
       },
       "requires": "Needs the candidate's confirmed career records (operating context, role work record, master resume and evidence ledger) and the live posting or its saved snapshot.",
-      "overview": "It starts with the posting and selected evidence, checks claims against corrections, original sources and the ledger, then writes the relevant résumé copy. Keywords and platform names appear where they explain supported work, without numerical quotas or a required leadership or client example.",
+      "overview": "It starts with the posting and selected evidence, checks claims against corrections, original sources and the ledger, then writes the relevant r\u00e9sum\u00e9 copy. Keywords and platform names appear where they explain supported work, without numerical quotas or a required leadership or client example.",
       "value": "Translate relevant experience into accurate hiring copy without forcing a repeated theme or adding unsupported ownership.",
       "preparation": {
         "where": "Supply the master resume, posting and role work record. The translation table maps role requirements to specific experience; career claim records hold the underlying figures and ownership. These are your evidence documents, not built-in personal history.",
@@ -1259,7 +1259,7 @@
       "when": "A journey needs specific corrections to steps, systems, or measures.",
       "inputs": "The journey or demo, customer task, current workflow, and proposed change.",
       "outputs": "A critique tracing the task and recommending supported corrections.",
-      "example": "Trace this demo against the customer’s task and recommend specific workflow corrections.",
+      "example": "Trace this demo against the customer\u2019s task and recommend specific workflow corrections.",
       "reviewedEntrypointSha256": "893a37e12a8a86177e88bb0903c20d9812c411a534edb074e3207b7d3bda6a9d",
       "expect": "It reads the artifact and its source evidence first, then checks five things: customer flow, current versus future state, systems, click paths and measures. It returns a prioritized critique with the first repair to make, and it stops before any purchase, submission, message or live record change unless you authorize it.",
       "connectors": {
@@ -1331,7 +1331,7 @@
     "prepare-session-handoff": {
       "what": "Prepare another session to resume the same work.",
       "when": "The current session is ending or needs a handoff.",
-      "inputs": "The session’s decisions, files, running state, and completed checks.",
+      "inputs": "The session\u2019s decisions, files, running state, and completed checks.",
       "outputs": "A handoff with the current state, verification, open questions, and exact next action.",
       "example": "Prepare a handoff with the current files, decisions, verification, and exact next action.",
       "reviewedEntrypointSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
@@ -1418,7 +1418,7 @@
       "when": "An authorized Salesforce change needs the project delivery workflow.",
       "inputs": "The issue, repository, target org, configuration, and requested change.",
       "outputs": "The change with separate validation, review, deployment, and acceptance evidence.",
-      "example": "Prepare this authorized Salesforce change using the project’s isolated delivery workflow.",
+      "example": "Prepare this authorized Salesforce change using the project\u2019s isolated delivery workflow.",
       "reviewedEntrypointSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
       "expect": "It requires a GitHub issue first, then works in an isolated worktree with local checks, a per-commit dry run against a confirmed org, a squash merge and a deploy from main. With no org it stops at 'prepared locally' and never records a validation or deployment as done, and it counts the task finished only when the ticket is closed and the worktree removed.",
       "connectors": {
@@ -1509,7 +1509,7 @@
     "write-statement-of-work": {
       "what": "Draft a statement of work from confirmed scope.",
       "when": "A fixed-scope, adaptive, or assessment agreement needs drafting.",
-      "inputs": "The confirmed quote model and the project’s approved contract and brand profiles.",
+      "inputs": "The confirmed quote model and the project\u2019s approved contract and brand profiles.",
       "outputs": "A reconciled Word document and checks against the selected scope and terms.",
       "example": "Draft the selected SOW variant from this confirmed quote and approved contract profile.",
       "reviewedEntrypointSha256": "39b45b3eab1db80cf07e6e7b705d17d2d81e50f9e929d34b80266d5630dbd128",
@@ -1605,13 +1605,13 @@
       "preparationSkills": []
     },
     "lay-out-sticker-sheets": {
-      "what": "Lay out the user’s sticker designs for Cricut printing.",
+      "what": "Lay out the user\u2019s sticker designs for Cricut printing.",
       "when": "PNG designs need exact-count Print Then Cut sheets.",
-      "inputs": "The designs, requested sizes and counts, and the user’s project generator.",
+      "inputs": "The designs, requested sizes and counts, and the user\u2019s project generator.",
       "outputs": "Generated sheets and layout checks before a physical print test.",
       "example": "Lay out these PNGs in the requested sizes and counts using my current sheet generator.",
       "reviewedEntrypointSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
+      "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It finds the project's sheet generator, reads its help, and confirms paper size separately from the cut area before laying out your PNGs. It runs with branding off unless you ask for a maker mark, then checks the manifest, contact sheet, DPI and every requested count, reporting any skipped duplicates.",
       "connectors": {
         "required": [],
@@ -1653,11 +1653,11 @@
       ]
     },
     "plan-team-onboarding": {
-      "what": "Plan a role’s first 30, 60, and 90 days.",
+      "what": "Plan a role\u2019s first 30, 60, and 90 days.",
       "when": "A new starter or team transition needs a structured ramp.",
       "inputs": "The role, success criteria, mentors, existing materials, access, and time budget.",
       "outputs": "A role-specific onboarding plan with learning, contribution, and feedback milestones.",
-      "example": "Create a 30/60/90-day plan for this role using the team’s mentoring and access constraints.",
+      "example": "Create a 30/60/90-day plan for this role using the team\u2019s mentoring and access constraints.",
       "reviewedEntrypointSha256": "963b3dacfb4eab19ab14df999646300adda52e988d3b8e507604778737013144",
       "expect": "It asks for the role, existing docs, who will mentor, the access needed and how much team time is available, then produces a pre-day-1 checklist, day-1 schedule, reading list, 30/60/90 milestones, buddy guide and retrospective template. It delivers in chat unless you ask for a file.",
       "overview": "It asks for the role, existing docs, who will mentor, the access needed and how much team time is available, then produces a pre-day-1 checklist, day-1 schedule, reading list, 30/60/90 milestones, buddy guide and retrospective template. It delivers in chat unless you ask for a file.",
@@ -1752,7 +1752,7 @@
       "preparationSkills": []
     },
     "manage-writing-profile": {
-      "what": "Build or revise a person’s private writing profile.",
+      "what": "Build or revise a person\u2019s private writing profile.",
       "when": "Someone authorizes a profile from their writing samples.",
       "inputs": "Authorized samples, the intended author, profile scope, and confirmation.",
       "outputs": "A reviewed private profile with supported style rules and update controls.",

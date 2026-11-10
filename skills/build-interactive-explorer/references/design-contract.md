@@ -13,7 +13,13 @@ Show the relationship the reader needs to understand explicitly. Selectable card
 - Provide contextual source links and, where useful, a consolidated source view. Preserve source access restrictions.
 - Show an access or status label only when verified. Never use a privacy badge as authentication.
 
-## Compare composition and meaningful states
+## Assess the composition
+
+Inspect the overview before opening details. The reader should see the main relationship and recognize the useful controls without reading a large introductory block. Keep a selected object visible alongside its explanation, and show changes in the represented flow or comparison when an interaction changes the outcome. Use a lookup panel only when lookup is the task.
+
+Compare actual states with the supplied references: first view, selected detail, consequential exception, and return to context. Preserve explanatory depth and use different structures where the information differs. A repeated grid of equal cards can obscure sequence, priority and ownership even when its text is correct. At narrow widths, reconnect each detail to its selected object instead of simply stacking detached panels.
+
+Record content accuracy, working behavior and visual/UX observations separately. A successful interaction test is not user approval of the design.
 
 Inspect supplied references for initial view, hierarchy, reading density, diagram geometry, navigation, control placement and revealed detail. Preserve the explanatory method where it serves the current subject; do not copy private content or assume the same styling is required.
 

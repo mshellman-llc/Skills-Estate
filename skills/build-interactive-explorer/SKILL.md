@@ -34,7 +34,7 @@ Read [the content guidance](references/content-model.md). Choose an information 
 
 ## Design the experience
 
-Read [design and interaction guidance](references/design-contract.md). Choose the layout, navigation, typography, colors, spacing and disclosure patterns for this project's audience, content and brand. Resolve branding through the shared brand policy and the confirmed project profile; use the estate neutral profile when none is supplied. Follow a user-supplied reference or established project design system when requested.
+Read [design and interaction guidance](references/design-contract.md). Choose the layout, navigation, typography, colors, spacing and disclosure patterns for this project's audience, content and brand. Resolve branding through the shared brand policy and the confirmed project profile; use the estate neutral profile when none is supplied. Follow a user-supplied reference or established project design system when requested. For a UI/UX redesign, inspect the supplied reference patterns and reconsider the composition.
 
 Do not default to a fixed sidebar, hero, palette, path switcher or card arrangement. Use only interactions that make the content easier to understand. Make the reader's next action clear where the material supports one.
 
