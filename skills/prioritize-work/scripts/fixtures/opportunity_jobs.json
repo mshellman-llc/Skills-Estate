@@ -1,0 +1,29 @@
+[
+  {
+    "id": "JOB-1",
+    "job": "Get a refund when a sailing is canceled",
+    "importance": 8,
+    "satisfaction": 0.25,
+    "sources": {
+      "importance": "synthetic quick poll, 12 riders"
+    }
+  },
+  {
+    "id": "JOB-2",
+    "job": "Plan a trip that links the bus and the boat",
+    "importance": 6,
+    "satisfaction": 4,
+    "sources": {
+      "importance": "invented commuter interviews"
+    }
+  },
+  {
+    "id": "JOB-3",
+    "job": "Bring a bicycle without paying twice",
+    "importance": 9,
+    "satisfaction": 0.5,
+    "sources": {
+      "importance": "synthetic cyclist forum thread"
+    }
+  }
+]

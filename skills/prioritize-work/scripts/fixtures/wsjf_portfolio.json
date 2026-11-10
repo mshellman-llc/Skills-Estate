@@ -1,0 +1,50 @@
+{
+  "about": "Synthetic portfolio epics for an invented ferry operator. One app team shares its capacity across them for three quarters. Scores use a modified Fibonacci scale.",
+  "items": [
+    {
+      "id": "PF-1",
+      "title": "Ticketing back-office rebuild",
+      "problem": "Staff spend a full day processing each batch of refunds",
+      "business_value": 8,
+      "time_criticality": 5,
+      "risk_reduction": 3,
+      "job_size": 2,
+      "sources": {
+        "effort": "synthetic sizing against reference epic PF-0"
+      }
+    },
+    {
+      "id": "PF-2",
+      "title": "Timetable data feed",
+      "job": "Let journey planners show live sailings",
+      "business_value": 5,
+      "time_criticality": 8,
+      "risk_reduction": 8,
+      "job_size": 3
+    },
+    {
+      "id": "PF-3",
+      "title": "Kiosk retirement",
+      "problem": "Old pier kiosks break down each winter",
+      "business_value": 3,
+      "time_criticality": 2,
+      "risk_reduction": 1,
+      "job_size": 0,
+      "sources": {
+        "effort": "invented placeholder size"
+      }
+    },
+    {
+      "id": "PF-4",
+      "title": "Fleet telemetry",
+      "job": "Spot engine faults before they cancel a sailing",
+      "business_value": 13,
+      "time_criticality": 1,
+      "risk_reduction": 2,
+      "job_size": 8,
+      "sources": {
+        "effort": "invented estimate anchored to PF-1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "about": "Synthetic file that lists its candidates under the wrong key; the scorer finds no items array here.",
+  "candidates": [
+    {
+      "id": "FRY-041",
+      "title": "Smartwatch ticket",
+      "job": "Show a ticket from my wrist",
+      "reach": 100,
+      "impact": 1,
+      "confidence": 0.5,
+      "effort": 1
+    }
+  ]
+}
