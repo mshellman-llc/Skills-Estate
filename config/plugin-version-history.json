@@ -36,6 +36,10 @@
     "0.4.4": {
       "content_sha256": "8a948072efe657e6dc890052ffab24a2b296eec7a81a4616c98ff576c79cc374",
       "note": "Replace the skill standard; add the writing gate with receipts, the private terms check and not-for-sale marks for the Commons Clause skills; bring Writing Integrity and the brand policy to a writing pass."
+    },
+    "0.4.5": {
+      "content_sha256": "dc27030e2a0427cd5e1a8863e54ffc07a029c7901a2a1ccf603f9c96815ea68e",
+      "note": "Add extracted-text file review to review-writing: extract_review_text.py writes line-numbered reader text from HTML, SVG, script-built pages, .xlsx, .docx and .pptx in single-read parts, diffs two extractions and writes a coverage receipt. SKILL.md requires the extract, review, source-fix, re-extract and receipt flow for file reviews. Selftest covers synthetic fixtures and, when EXTRACT_REVIEW_TEXT_PAGES is set, the assessment field card, review console and assessment page."
     }
   }
 }
