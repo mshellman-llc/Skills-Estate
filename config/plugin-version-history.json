@@ -45,9 +45,9 @@
       "content_sha256": "634c827518e789826d8077882df5eda70c5db607daf4dc129deee899583efc37",
       "note": "Add rendered_read_guard.py to review-writing: an optional PreToolUse hook for Claude Code and Codex that denies whole-file reads of large HTML and SVG files and of .xlsx, .docx and .pptx files, and names extract_review_text.py. Bounded reads, line ranges, filtered pipes and redirects pass. file-review.md describes installing it."
     },
-    "0.4.7": {
+    "0.4.8": {
       "content_sha256": "fec28c42a5bf7dcd7c5b397a0699190be0001b441e9ec0dfd4faa7644a010e69",
-      "note": "Add portable website visibility exclusions and record the combined current skill source after the version-history merge repair"
+      "note": "Add portable website visibility exclusions while retaining the current combined skill source"
     }
   },
   "source_conflicts": [
