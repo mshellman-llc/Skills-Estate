@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Editorial chart palettes built on the Baseline design system.
+Editorial chart palettes for the neutral brand profile.
 
 Rules (from Times graphics practice and ColorBrewer):
 1. Never use rainbow or evenly spaced HSV hues. Sequential ramps keep lightness
@@ -10,37 +10,31 @@ Rules (from Times graphics practice and ColorBrewer):
    multiples instead of more colors.
 4. One hero color per chart. Every other series is one grey.
 
-Default scheme is Baseline palette F (navy). Palette E (ink and amber) is the
-alternate. Pass scheme="E" to switch.
+The neutral scheme uses the neutral profile's chart colors. A project brand
+replaces them through the `brand` override in typography.py.
 
 Usage:
-    python3 -I palette.py sequential [F|E] [n]
-    python3 -I palette.py series [F|E] [n]
-    python3 -I palette.py hero [F|E] [series_count]
+    python3 -I palette.py sequential [neutral] [n]
+    python3 -I palette.py series [neutral] [n]
+    python3 -I palette.py hero [neutral] [series_count]
     python3 -I palette.py diverging [name] [n]
     python3 -I palette.py check "#hex,#hex,..."
-    python3 -I palette.py css [F|E]
+    python3 -I palette.py css [neutral]
 """
 import json
 import sys
 
-# Baseline palette tokens. Ramps run dark to light (600 -> 50).
+# Neutral palette tokens. Ramps run dark to light (600 -> 50).
 SCHEMES = {
-    "F": {
+    "neutral": {
         "name": "navy and pastel",
         "hero": "#37437D",
         "hero_dark": "#B5CAFA",  # hero on dark backgrounds
         "ramp": ["#24265B", "#434D90", "#6577BD", "#8BA1DE", "#B5CAFA", "#E8F0FF", "#F5F8FF"],
     },
-    "E": {
-        "name": "ink and amber",
-        "hero": "#B16F25",
-        "hero_dark": "#FBC27B",
-        "ramp": ["#362C20", "#6E4C27", "#B16F25", "#E69228", "#FBC27B", "#FDE7C8", "#FFF9F0"],
-    },
 }
 
-# Baseline neutrals, shared by both schemes.
+# Neutral greys.
 NEUTRALS = {
     "n0": "#FFFFFF", "n25": "#FAFAFA", "n50": "#F5F5F5", "n100": "#EEEEF0",
     "n200": "#E2E2E3", "n300": "#CBCBCC", "n400": "#B2B3B5", "n500": "#797B7E",
@@ -63,7 +57,7 @@ MAX_SERIES = 5
 
 
 def _scheme(scheme):
-    s = SCHEMES.get((scheme or "F").upper())
+    s = SCHEMES.get((scheme or "neutral").lower())
     if s is None:
         raise ValueError(f"Unknown scheme '{scheme}'. Choose from {list(SCHEMES)}.")
     return s
@@ -98,7 +92,7 @@ def is_monotonic(colors):
     return up or down
 
 
-def palette(kind, scheme="F", n=5, name=None):
+def palette(kind, scheme="neutral", n=5, name=None):
     """
     kind: 'sequential' | 'series' | 'hero' | 'diverging'
     sequential: n steps of the scheme ramp, dark to light, all 7 steps available.
@@ -128,7 +122,7 @@ def palette(kind, scheme="F", n=5, name=None):
     raise ValueError(f"Unknown palette kind '{kind}'.")
 
 
-def css_variables(scheme="F"):
+def css_variables(scheme="neutral"):
     """Chart tokens for light and dark themes, following the artifact theming contract."""
     s = _scheme(scheme)
     r = s["ramp"]
@@ -168,10 +162,10 @@ if __name__ == "__main__":
         print(json.dumps({"monotonic": is_monotonic(cols),
                           "luminance": [round(relative_luminance(c), 4) for c in cols]}))
     elif kind == "css":
-        print(css_variables(args[1] if len(args) > 1 else "F"))
+        print(css_variables(args[1] if len(args) > 1 else "neutral"))
     elif kind == "diverging":
         print(json.dumps(palette(kind, name=args[1] if len(args) > 1 else None,
                                  n=int(args[2]) if len(args) > 2 else 7)))
     else:
-        print(json.dumps(palette(kind, scheme=args[1] if len(args) > 1 else "F",
+        print(json.dumps(palette(kind, scheme=args[1] if len(args) > 1 else "neutral",
                                  n=int(args[2]) if len(args) > 2 else 5)))

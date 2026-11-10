@@ -327,7 +327,7 @@ class RenderAndGateTests(unittest.TestCase):
             text = page.read_text()
             self.assertIn('data/site-data.js', text)
             self.assertNotIn('NW-', text)
-        self.assertEqual(json.loads((dist / 'manifest.json').read_text())['brand'], 'Baseline')
+        self.assertEqual(json.loads((dist / 'manifest.json').read_text())['brand'], 'Neutral')
 
     def test_data_gate_passes_then_catches_a_stale_status(self):
         results = {r['rule']: r for r in gate.data(*self.args)}

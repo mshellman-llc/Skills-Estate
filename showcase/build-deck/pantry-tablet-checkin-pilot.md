@@ -100,7 +100,7 @@ Your four concerns appear as follows:
 
 #### Gaps and assumptions to check
 - **Owners and dates:** on slide 7, Tomasz Wells for the vendor question and the run, and Ife Okafor for training, are my proposals. So is the 2 Dec 2026 target for the vendor's answer. Please confirm them with the people named. The results review has no date yet.
-- **Brand:** you gave no brand profile, so the deck uses the neutral Baseline profile (navy accent, Inter with system fallback, no logo). I worked that out by hand from the brand rules.
+- **Brand:** you gave no brand profile, so the deck uses the neutral profile (navy accent, Inter with system fallback, no logo). I worked that out by hand from the brand rules.
 - **Training and licences:** I took the $600 training cost and the 2 billing months of licences straight from your notes. Please check that 2 months is right for a six-week pilot.
 - **Not run:** the writing and brand checkers and the review-deliverable receipt. I reviewed the writing by hand, including every title in order and every figure.
 - **Layout risks:** the most likely overflow is slides 5, 6 and 7, which have long tables. Slide 3's diagram labels and slide 4's diamond text also need a look.

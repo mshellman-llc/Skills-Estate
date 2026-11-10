@@ -105,6 +105,6 @@ These are marked in the document and need the steering group's agreement:
 #### How I checked it
 
 - **Scripts:** I could not run any scripts here, so the brand and prose checks, the receipt and the quality gate were not run. I applied the rules by hand instead.
-- **Styling:** I used the neutral Baseline profile. It has no logo, uses the Baseline palette, system fonts, 1px borders and sentence-case headings, with no colored side accents. I did not render the page in a browser or run an automated contrast check. Body text uses the profile's text and muted colors on white.
+- **Styling:** I used the neutral profile. It has no logo, uses the neutral palette, system fonts, 1px borders and sentence-case headings, with no colored side accents. I did not render the page in a browser or run an automated contrast check. Body text uses the profile's text and muted colors on white.
 - **Prose and sources:** I read all text and interface labels against the writing standard. I checked every figure and locator against `brief.md` and `decisions.md`, and no figure appears that isn't in them or derived from them in the document.
 - **Not delivered:** this is HTML only, with no separate export.

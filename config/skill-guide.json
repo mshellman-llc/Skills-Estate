@@ -405,13 +405,13 @@
       "inputs": "The project’s confirmed colors, typography, assets, and usage rights.",
       "outputs": "A selected or updated profile and an artifact checked against it.",
       "example": "Apply this confirmed brand profile to the document and check the rendered result.",
-      "reviewedEntrypointSha256": "ff8000d5f1880496041f7b5fb10d415f7f6d769da8fe73cf54740766c34c6200",
-      "expect": "It chooses the brand from your explicit choice or the project's brand file, falling back to the neutral Baseline profile, and says which one governs. It marks a new profile as draft until you confirm it and checks the output for mixed identities.",
+      "reviewedEntrypointSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
+      "expect": "It chooses the brand from your explicit choice or the project's brand file, falling back to the neutral profile, and says which one governs. It marks a new profile as draft until you confirm it and checks the output for mixed identities.",
       "connectors": {
         "required": [],
         "optional": []
       },
-      "overview": "It chooses the brand from your explicit choice or the project's brand file, falling back to the neutral Baseline profile, and says which one governs. It marks a new profile as draft until you confirm it and checks the output for mixed identities.",
+      "overview": "It chooses the brand from your explicit choice or the project's brand file, falling back to the neutral profile, and says which one governs. It marks a new profile as draft until you confirm it and checks the output for mixed identities.",
       "value": "Apply one consistent visual identity to an artifact, or turn a supplied brand guide into a profile that future work can use. It helps prevent mixed client identities and guessed colors or logos.",
       "preparation": {
         "where": "Provide a confirmed brand.md file or the brand guide and authorized logo/font assets. A brand profile is that record of exact values and usage rights; it is not an account connection. Select a brand explicitly when more than one could apply.",
@@ -1896,8 +1896,8 @@
       "inputs": "The numbers with their source, unit and timeframe, the finding or question, and optionally a brand profile.",
       "outputs": "A self-contained HTML chart page in light and dark themes, checked by check_html.py.",
       "example": "Chart these phase hours, planned against used, and highlight the workstream that hasn't started.",
-      "reviewedEntrypointSha256": "59a66f33d0ac0cded91a8d5fafa93d28ef60f0ad1acde0109542d34cd614f5d5",
-      "expect": "It picks the chart type, writes a JSON spec or D3 panel, renders the page in the selected brand profile (Baseline by default), runs the HTML check, and inspects the page at desktop width and 375px. It uses only the supplied numbers, draws targets and projections dashed, and keeps any hosted page private.",
+      "reviewedEntrypointSha256": "7bf17a10eee34d17be76ecc81297c47fac50eaa646ad2610446ff2675b8eac6a",
+      "expect": "It picks the chart type, writes a JSON spec or D3 panel, renders the page in the selected brand profile (the neutral profile by default), runs the HTML check, and inspects the page at desktop width and 375px. It uses only the supplied numbers, draws targets and projections dashed, and keeps any hosted page private.",
       "connectors": {
         "required": [],
         "optional": []
