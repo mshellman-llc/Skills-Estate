@@ -1,0 +1,26 @@
+[
+  {
+    "id": "INIT-23",
+    "title": "Sunset cruise listing",
+    "job": "Book an evening sightseeing trip",
+    "impact": 3,
+    "confidence": 0.5,
+    "ease": 4
+  },
+  {
+    "id": "INIT-22",
+    "title": "Quiet deck signup",
+    "problem": "Remote workers cannot find a calm seat on board",
+    "impact": 4,
+    "confidence": 0.5,
+    "ease": 6
+  },
+  {
+    "id": "INIT-21",
+    "title": "Galley pre-order",
+    "job": "Order food before boarding",
+    "impact": 6,
+    "confidence": 0.5,
+    "ease": 4
+  }
+]

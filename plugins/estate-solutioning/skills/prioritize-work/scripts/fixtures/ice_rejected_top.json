@@ -1,0 +1,50 @@
+[
+  {
+    "id": "INIT-11",
+    "title": "Storm cancellation texts",
+    "problem": "Riders hear about canceled sailings after they reach the pier",
+    "impact": 9,
+    "confidence": 0.5,
+    "ease": 4
+  },
+  {
+    "id": "INIT-12",
+    "title": "Weather routing",
+    "job": "Choose the calmer of two routes",
+    "impact": 9,
+    "confidence": "high",
+    "ease": 3
+  },
+  {
+    "id": "INIT-13",
+    "title": "Port parking finder",
+    "job": "Park near the terminal on a busy morning",
+    "impact": 9,
+    "confidence": 0.5,
+    "ease": null
+  },
+  {
+    "id": "INIT-14",
+    "title": "Rider feedback button",
+    "job": "Report a broken seat without queuing at the kiosk",
+    "impact": 4,
+    "confidence": 0.5,
+    "ease": 7
+  },
+  {
+    "id": "INIT-15",
+    "title": "Multi-leg journeys",
+    "job": "Book two connecting crossings at once",
+    "impact": 6,
+    "confidence": 0.5,
+    "ease": 3
+  },
+  {
+    "id": "INIT-16",
+    "title": "Language toggle",
+    "problem": "Visitors cannot read the booking screens",
+    "impact": 2,
+    "confidence": 0.5,
+    "ease": 8
+  }
+]

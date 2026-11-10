@@ -1,0 +1,38 @@
+{
+  "about": "Synthetic desired-outcome ratings for an invented ferry booking app; customers rated each statement 0-10.",
+  "items": [
+    {
+      "id": "OUT-01",
+      "job": "Minimize the wait to learn a sailing is delayed",
+      "importance": 9,
+      "satisfaction": 3,
+      "sources": {
+        "importance": "synthetic rider survey, 140 replies"
+      }
+    },
+    {
+      "id": "OUT-02",
+      "job": "Reduce the effort of buying a single ticket",
+      "importance": 7,
+      "satisfaction": 8,
+      "sources": {
+        "importance": "invented outcome survey, second wave"
+      }
+    },
+    {
+      "id": "OUT-03",
+      "job": "Lower the likelihood of arriving to a full car deck",
+      "importance": 8.5,
+      "satisfaction": 4,
+      "sources": {
+        "importance": "synthetic driver panel ratings"
+      }
+    },
+    {
+      "id": "OUT-04",
+      "job": "Cut the steps needed to change a booked crossing",
+      "importance": 6,
+      "satisfaction": 2.5
+    }
+  ]
+}
