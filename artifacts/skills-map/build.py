@@ -6,6 +6,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 import sys
+sys.path.insert(0,str(HERE))
 sys.path.insert(0,str(HERE.parents[1]/'tools'))
 from browse import load_groups
 from skill_guide import load as load_guides, assessment, overview_excerpt, readable_body, scan
@@ -285,15 +286,7 @@ def skill_profile(name, folder, resources, guide, reuse, role, dependencies, use
         'declared': bool(manifest),
     }
 
-def render_snapshot(data,output,downloads=True):
-    encoded=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
-    template=(HERE/'template.html').read_text()
-    if not downloads:
-        # Hosts that cannot save files (the claude.ai artifact viewer) get no download controls or download code.
-        template=DOWNLOADS.sub('',template)
-    else:
-        template=template.replace('<!--downloads-->','').replace('<!--/downloads-->','').replace('/*downloads*/','').replace('/*/downloads*/','')
-    Path(output).write_text(template.replace('__ESTATE_DATA__',encoded))
+from rendering import render_snapshot
 
 def build(args):
     root = args.repo.resolve(); baseline = (args.baseline_repo or root).resolve()
@@ -380,6 +373,8 @@ def build(args):
         s['examples'] = showcase.get(s['id'], [])
     data={'schemaVersion':1, 'generatedAt':datetime.now(timezone.utc).isoformat(), 'baseCommit':ref,
           'repository':'mshellman-llc/Skills-Estate', 'families':[{'id':g['id'],'title':g['title'],'description':g['description']} for g in load_groups(HERE.parents[1],check_coverage=False)], 'skills':skills}
+    bundle_config=json.loads((root/'config/plugin-bundles.json').read_text()) if (root/'config/plugin-bundles.json').is_file() else {'bundles':{}}
+    data['pluginInventory']=[{'id':key,'description':item['description']} for key,item in bundle_config['bundles'].items()]
     data['counts']={s:sum(x['status']==s for x in skills) for s in ['github','local-revision','local-addition']}
     data['counts']['canonical']=sum(x['id'] in base_skills for x in skills)
     data['counts']['total']=len(skills)

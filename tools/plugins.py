@@ -108,6 +108,7 @@ def router_modules(root, item):
 # tooling. Editing them must not reopen review of the shared assembly.
 # tests/test_release_review.py checks that no assembly module reads them.
 SHARED_EXCLUDED = frozenset({
+    'config/skills-publication.json',  # Website visibility does not change skill packages.
     'config/plugin-bundles.json',          # hashed above without its release block
     'config/plugin-version-history.json',  # a receipt, like the release block
     'config/skill-guide.json',
