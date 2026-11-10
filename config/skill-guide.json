@@ -227,23 +227,23 @@
       "preparationSkills": []
     },
     "build-interactive-explorer": {
-      "what": "Build an interactive explorer website from source material, with paths, clickable stages, expandable detail and optional roadmaps.",
+      "what": "Build an interactive website with project-specific navigation, expandable details and source references.",
       "when": "Source material needs a clickable explanation such as a solution explorer, research hub, process guide or journey view.",
       "inputs": "The topic, its sources, and the intended audience and destination.",
-      "outputs": "A static explorer site generated from validated content JSON.",
+      "outputs": "A website organized around the audience and source material, with optional validated roadmap snapshots.",
       "example": "Turn these discovery notes into an interactive explorer with seller and enterprise paths and a delivery roadmap.",
-      "reviewedEntrypointSha256": "aa9e581945c4c2d800c71c8303d14b530e70999cff84824cd1e11a05419a7f25",
-      "expect": "It determines the subject from your request and sources, picks one to three paths with ordered stages, and generates a static site from the bundled shell with a content file it validates. It leaves unsupported sections out, does not invent roles, quotes or metrics, and keeps any hosted result private unless you approve otherwise.",
+      "reviewedEntrypointSha256": "59b2d80bd2ff54ff09fcfdadf40de84ea87c37f7b70c7bd42e5feb08df4ee866",
+      "expect": "It reads the sources, chooses a structure for the reader’s task, and builds through the available site workflow. Paths appear when the material has distinct routes. Claims retain their evidence, and publishing stays private unless a wider audience is approved.",
       "connectors": {
         "required": [],
         "optional": []
       },
-      "requires": "Python 3 for the generator, Node for the JavaScript syntax check, and a new or empty output directory.",
-      "overview": "It determines the subject from your request and sources, picks one to three paths with ordered stages, and generates a static site from the bundled shell with a content file it validates. It leaves unsupported sections out, does not invent roles, quotes or metrics, and keeps any hosted result private unless you approve otherwise.",
-      "value": "Make a large body of source material easier to explore by audience or task. A reader can follow an ordered path, open a stage for detail and inspect the supporting explanation without reading a long report from beginning to end.",
+      "requires": "A supported website implementation workflow and the dependencies needed by the chosen project. Optional roadmaps use the bundled roadmap tooling.",
+      "overview": "It turns source material into a website whose structure fits the reader’s task and the relationship being explained. Readers can compare findings, browse themes or follow a meaningful sequence, with supporting evidence beside the claims. Visual design follows the project profile rather than a fixed shell.",
+      "value": "Help readers find the relevant explanation and inspect its evidence without reading every source document in full.",
       "preparation": {
-        "where": "Provide the documents or notes, the intended readers and what they need to understand or decide. The generator uses a content JSON file, meaning structured page content it prepares from those sources. Python, Node and a new or empty output directory are needed locally.",
-        "missing": "You do not need to write the JSON first. Thin sources limit what can be shown: unsupported roles, sections and figures are omitted rather than invented. Hosting is separate from creating the static site."
+        "where": "Provide source documents or notes, the intended readers, their questions and the desired destination. Include an existing project brand or design reference when one governs the work.",
+        "missing": "Choose a useful structure from the available material and identify important gaps. Omit unsupported content. If publication tools are unavailable, deliver the local website and explain what remains."
       },
       "preparationSkills": []
     },
