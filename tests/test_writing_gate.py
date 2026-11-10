@@ -147,6 +147,11 @@ class RepositoryHookTests(unittest.TestCase):
         for name, mode in modes.items():
             self.assertEqual(mode, '100755', name + ' needs its executable bit, or Git skips it')
 
+    def test_no_pre_push_hook_duplicates_ci(self):
+        # The verify workflow runs the full suite on every pull request; a local
+        # pre-push copy only slowed pushes and failed without CI's Node settings.
+        self.assertFalse((ROOT / '.githooks/pre-push').exists())
+
 
 class RepositoryGateTests(unittest.TestCase):
     """CI fetches origin/main before the tests, so this holds each pull request to the gate."""
