@@ -40,6 +40,8 @@
     "0.4.5": {
       "content_sha256": "6f89027adaa994562cc13877e438bea1d2ad43421780794ec2dbc2501b5750b9",
       "note": "Rewrite prioritize-work as original work: new SKILL.md, references, scorer, selftest and fixtures, with its upstream license files and not-for-sale mark removed."
+      "content_sha256": "dc27030e2a0427cd5e1a8863e54ffc07a029c7901a2a1ccf603f9c96815ea68e",
+      "note": "Add extracted-text file review to review-writing: extract_review_text.py writes line-numbered reader text from HTML, SVG, script-built pages, .xlsx, .docx and .pptx in single-read parts, diffs two extractions and writes a coverage receipt. SKILL.md requires the extract, review, source-fix, re-extract and receipt flow for file reviews. Selftest covers synthetic fixtures and, when EXTRACT_REVIEW_TEXT_PAGES is set, the assessment field card, review console and assessment page."
     }
   }
 }

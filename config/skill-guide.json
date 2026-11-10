@@ -1737,13 +1737,13 @@
       "inputs": "The brief or draft, controlling sources, and an authorized profile when available.",
       "outputs": "Complete reviewed prose and, when enabled, private correction-learning records.",
       "example": "Review this draft for clarity, repetition, and unsupported claims. Preserve its meaning and intended voice; return the complete revision.",
-      "reviewedEntrypointSha256": "f665c6395c2a0be444de0283b55fad9700a078f34c36bee8f2cef7709b7c0ba3",
+      "reviewedEntrypointSha256": "ae1c35a0ac5ec6ab9e60723b83e8e4e5e9702f6f40b3d6e4309ab74d8aaf743d",
       "expect": "It reviews your text for meaning, structure and sentence patterns, returns complete edits, and keeps quotations, figures and executable syntax exact. Learned preferences are loaded and saved only from a private profile store you have authorized, and it reports a saved correction only when it has a storage receipt.",
       "connectors": {
         "required": [],
         "optional": []
       },
-      "overview": "It reads the whole draft for meaning and structure, repairs vague or repetitive passages and sentence patterns, and returns complete revised text while preserving facts, uncertainty, quotations and executable syntax. Available diagnostic tools support the reading review with pattern and figure checks. Optional preference learning uses only an authorized private profile store.",
+      "overview": "It reads the whole draft for meaning and structure, repairs vague or repetitive passages and sentence patterns, and returns complete revised text while preserving facts, uncertainty, quotations and executable syntax. Available diagnostic tools support the reading review with pattern and figure checks. Optional preference learning uses only an authorized private profile store. For HTML pages, workbooks, documents and decks, it reviews the extracted text line by line, fixes each finding at its source and writes a coverage receipt.",
       "value": "Improve a draft's meaning, structure and wording while preserving facts, uncertainty and the intended author. It returns the full revised text rather than leaving the writer to assemble a list of isolated edits.",
       "preparation": {
         "where": "Provide the draft or writing brief and sources needed to preserve its claims. An authorized private profile is optional for learned preferences; ordinary review uses the core rules without a profile store. Saved files and Python are needed for executable diagnostics, not for a manual text review.",
