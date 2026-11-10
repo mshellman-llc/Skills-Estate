@@ -24,6 +24,14 @@ When the user supplies good examples, inspect the relevant content and interacti
 
 Check the finished result with a concrete reader question: can someone trace the relationship, explain the mechanism, compare the consequence or perform the intended action using this artifact? Exercise the relevant interaction when possible and inspect the revealed content as well as the initial view. Record unavailable browser verification separately from source inspection.
 
+Design the interaction and the composition together. With supplied references, examine the initial view, information density, navigation, diagram geometry, control placement and revealed state. Identify the useful pattern before authoring. Keep context visible as details change: a selected object should remain located in its map; an exception should expose the affected path and next action; a comparison should keep the alternatives aligned. A dropdown that swaps paragraphs is appropriate for simple lookup, but does not by itself explain a changing system.
+
+Use hierarchy, alignment and space to distinguish the main explanation from supporting detail. Put the useful content within reach of the initial viewport; avoid a large introductory banner that pushes the requested visual away. Vary the structure with the content: connected flows, comparison rows and rehearsal questions need different treatments. Preserve readable detail rather than placing every paragraph in an equal card or hiding it behind another click. On narrow screens, preserve the sequence, labels and relationship between a selection and its detail.
+
+Resolve visual instructions before building. The user's current request and selected project or workspace profile take precedence over a skill's older visual defaults. A component kit supplies tokens and reusable primitives, not a required page composition. When the user rejects the UI/UX or asks for a redesign, reconsider structure and interaction rather than applying a polish-only rule to preserve the rejected layout. Name a genuine instruction conflict and the chosen resolution; do not attribute a failure to an unloaded skill.
+
+Evaluate content accuracy, functional behavior and UI/UX separately. For a UI/UX repair, inspect the rendered overview and meaningful changed states at desktop and narrow widths, including keyboard navigation. Compare how the reader finds, understands and uses the content with the supplied examples. Record the agent's assessment separately from the user's acceptance. Working controls, token compliance and clean tests do not make an artifact an approved design reference.
+
 ## Verify before agreeing or assigning responsibility
 
 When a factual claim is challenged, check the available records before agreeing,
