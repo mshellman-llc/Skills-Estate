@@ -23,7 +23,7 @@ Record content accuracy, working behavior and visual/UX observations separately.
 
 Inspect supplied references for initial view, hierarchy, reading density, diagram geometry, navigation, control placement and revealed detail. Preserve the explanatory method where it serves the current subject; do not copy private content or assume the same styling is required.
 
-Keep the main explanation within reach. Use the selected design system for tokens and primitives while choosing the composition for the reader's task. A requested UI/UX redesign may replace the rejected structure. Keep a selected object in its map, show how a changed state affects the path and outcome, and align comparisons so the changed step is apparent. On narrow screens, keep detail near its selected context.
+Use the selected design system for tokens and primitives while choosing the composition for the reader's task. A requested UI/UX redesign may replace the rejected structure. Align comparisons so the changed step is apparent.
 
 ## Preserve accessibility and safe behavior
 
