@@ -69,7 +69,7 @@ I've built the page, but I could not run the packaged builder, the browser QA or
 
 #### What I built
 
-`out/explorer.html` is one self-contained file. It has no external resources and no logo, because the neutral Baseline profile defines none. It opens from an email attachment.
+`out/explorer.html` is one self-contained file. It has no external resources and no logo, because the neutral profile defines none. It opens from an email attachment.
 
 Four tabs let the reader switch versions. The versions come from Fernlea's two open decisions from the 21 October workshop, not from a good/better/best split:
 
@@ -132,7 +132,7 @@ Tie-out   n/a in explorer mode, no quote exists
 
 1. **Packaged builder and its receipt:** I did not run `build_proposal.py`, so there is no source hash.
 2. **Browser QA:** I did not run `qa_proposal.py`. Please check every tab at 1280 and 390 px, the metric landing on its exact value, open disclosures, and the print PDF.
-3. **Parity, prose and brand checks:** the scripts did not run, and the brand preflight did not run either. The palette is Baseline's neutral values, copied by hand.
+3. **Parity, prose and brand checks:** the scripts did not run, and the brand preflight did not run either. The palette is the neutral profile's values, copied by hand.
 4. **Quality gate:** not run, so please treat the page as a candidate and not as final.
 
 #### Files

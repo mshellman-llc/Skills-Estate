@@ -36,4 +36,4 @@ The chart-choice and annotation rules draw on published work and talks by Mike B
 
 ## Provenance
 
-This skill adapts "NYT Data Viz" by the Hyperagent Team, from the Hyperagent marketplace, supplied by the estate owner on 2026-11-08. The adaptation replaced the source's fonts and colors with the Baseline profile and a brand override, fixed rendering bugs, and pinned CDN versions. It also added `check_html.py` and the range and progress chart types. It has no affiliation with The New York Times.
+This skill adapts "NYT Data Viz" by the Hyperagent Team, from the Hyperagent marketplace, supplied by the estate owner on 2026-11-08. The adaptation replaced the source's fonts and colors with the neutral profile and a brand override, fixed rendering bugs, and pinned CDN versions. It also added `check_html.py` and the range and progress chart types. It has no affiliation with The New York Times.

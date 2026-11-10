@@ -72,6 +72,10 @@
     "0.4.14": {
       "content_sha256": "5682a38e336606f0d1681035a7bd9c2dd671edb5c9207f300267e3f8fcd10f64",
       "note": "Add writing-integrity, independent visual inspection and web-app interaction assessment for material explorers; preserve current publication controls and approved design direction."
+    },
+    "0.4.15": {
+      "content_sha256": "9e0b3fd7c7d0a4bc7a068e7c167b9921e8633bf155937a1a45b4465bd7eea5c2",
+      "note": "Remove the Baseline design system: delete the manage-brand-profile kit (CSS, icons, guide, example) and the policy rules that required it. The no-brand fallback is the Neutral profile with the same color and type values. build-editorial-chart keeps one neutral palette and drops the alternate ink-and-amber palette."
     }
   },
   "source_conflicts": [

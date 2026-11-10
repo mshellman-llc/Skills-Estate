@@ -41,11 +41,11 @@ for name, ramp in palette.DIVERGING.items():
            f"diverging {name} is monotonic on each side")
 expect(not palette.is_monotonic(["#ff0000", "#00ff00", "#0000ff", "#ffff00"]), "rainbow fails the check")
 try:
-    palette.palette("series", "F", 6)
+    palette.palette("series", "neutral", 6)
     expect(False, "six series raises")
 except ValueError:
     expect(True, "six series raises")
-expect(palette.palette("hero", "F", 3) == ["#37437D", "#B2B3B5", "#B2B3B5"], "hero is one accent plus one grey")
+expect(palette.palette("hero", "neutral", 3) == ["#37437D", "#B2B3B5", "#B2B3B5"], "hero is one accent plus one grey")
 expect(len(palette.palette("diverging", n=6)) == 7, "diverging forces an odd count")
 
 # typography

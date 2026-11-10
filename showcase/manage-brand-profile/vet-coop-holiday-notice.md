@@ -64,7 +64,7 @@ Contact for questions: reception@example.com.
 
 I wrote the Fernhill brand profile and built the holiday-hours notice as a one-page web page. Both are saved locally and neither has been published. I have not rendered the page in a browser. I checked the markup and the contrast figures by reading and by hand calculation.
 
-**Governing profile:** Fernhill Veterinary Cooperative, status **draft**. The brand sheet (v2, from Priya Raman, Sep 12, 2026) is not board-approved. Your instruction authorises these values for this notice only. The Baseline kit was not used, because a project profile was selected instead.
+**Governing profile:** Fernhill Veterinary Cooperative, status **draft**. The brand sheet (v2, from Priya Raman, Sep 12, 2026) is not board-approved. Your instruction authorises these values for this notice only.
 
 #### What the page contains
 
@@ -98,7 +98,7 @@ Copy follows the sheet's voice rules: "we" and "you", no exclamation marks, "pet
 
 - **Logo omitted.** The file has not arrived. I did not redraw the fern mark. The sheet limits it to the co-op's own pages, which this page is.
 - **Fonts.** No font files were supplied and the page makes no network request. It names Lora and Source Sans 3 first, then the sheet's fallback of Georgia and Arial. Readers without those fonts installed will see the fallback. Add the licensed files from the co-op's font account to show the real faces.
-- **Muted text color.** The sheet has none, so I used Baseline's neutral #535559 (6.6:1 on cream).
+- **Muted text color.** The sheet has none, so I used the neutral profile's #535559 (6.6:1 on cream).
 - **Charts and status colors.** The sheet defines none and the page uses none.
 
 #### Contrast
@@ -170,7 +170,7 @@ Status: draft. The brand sheet is not yet signed off by the board. The requester
 
 | Role | Treatment | Reason |
 |---|---|---|
-| muted | #535559 from the Baseline neutral profile | The sheet defines no muted color |
+| muted | #535559 from the neutral profile | The sheet defines no muted color |
 | chart colors | none | The sheet defines none; no chart is used |
 | status colors | none; state shown by text label and neutral styling | The sheet defines none |
 | fonts | Lora and Source Sans 3 named first; Georgia and Arial as the sheet's fallback | Font files were not supplied |

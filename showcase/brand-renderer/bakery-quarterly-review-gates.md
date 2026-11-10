@@ -13,7 +13,7 @@ Check this one-page Q3 wholesale review for Harbor Lane Bakery before it goes to
 
 ## Inputs
 
-A short HTML page (`draft.html`) and a parity manifest, both written for this run. Harbor Lane Bakery is a made-up company. No project profile was selected, so the runtime used the packaged neutral profile, Baseline. The bundled scripts ran for real: `runtime_preflight.py`, `parity_audit.py` and `brand_check.py`. The prose gate and the visual gate are outside this record.
+A short HTML page (`draft.html`) and a parity manifest, both written for this run. Harbor Lane Bakery is a made-up company. No project profile was selected, so the runtime used the packaged neutral profile. The bundled scripts ran for real: `runtime_preflight.py`, `parity_audit.py` and `brand_check.py`. The prose gate and the visual gate are outside this record.
 
 ```json
 {"manifestVersion": "1.0",
@@ -30,7 +30,7 @@ The draft's style rules included `border:2px solid #E2E2E3` on the card, `color:
 
 ## Output
 
-`runtime_preflight.py --json` [trimmed]: `"ok": true`, `"profile_name": "Baseline"`, `"logo": null`, `"uses_system_fonts": true`, `"missing": []`.
+`runtime_preflight.py --json` [trimmed]: `"ok": true`, `"profile_name": "Neutral"`, `"logo": null`, `"uses_system_fonts": true`, `"missing": []`.
 
 First pass, `parity_audit.py manifest.json draft.html --strict` [trimmed to findings and summary]:
 
@@ -50,7 +50,7 @@ First pass, `parity_audit.py manifest.json draft.html --strict` [trimmed to find
 Exit 1. `brand_check.py draft.html`:
 
 ```
-  BRAND CHECK   tokens: authoritative (Baseline)
+  BRAND CHECK   tokens: authoritative (Neutral)
 
   draft.html
     FAIL  OFF_PALETTE        draft.html:7  #ff7a00 has no token in the selected brand profile.
@@ -70,7 +70,7 @@ Exit 1. The fixes changed the page, not the claims:
 Second pass on `fixed.html`. `parity_audit.py --strict` returns `"errorCount": 0, "warningCount": 0, "lexicalStructuralPass": true, "releasePass": false` and exits 0. `brand_check.py`:
 
 ```
-  BRAND CHECK   tokens: authoritative (Baseline)
+  BRAND CHECK   tokens: authoritative (Neutral)
 
   fixed.html
     clean

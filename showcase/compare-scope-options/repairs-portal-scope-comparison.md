@@ -128,7 +128,7 @@ Three points in the matrix are easy to misread:
 
 - **Reconciliation, by hand:** The 8 matrix items are the union of both quotes' items, with unique IDs. Every active ID is in its full list, and the active snapshots match the export. Snapshot figures were copied exactly. Absent items have null hours.
 - **Descriptions:** Every description is the export's own wording, so I added no claims. There was no `effort_basis` field to cite.
-- **Brand:** No project `brand.md` was supplied, so the page uses the neutral Baseline profile, with no logo. Its colours, type and 1px borders are inlined. I did not check contrast or the page's appearance, because I could not render it.
+- **Brand:** No project `brand.md` was supplied, so the page uses the neutral profile, with no logo. Its colours, type and 1px borders are inlined. I did not check contrast or the page's appearance, because I could not render it.
 - **Not done:** No desktop, narrow-width or print inspection, and no scripted prose or brand check. I read the authored sentences. The option summaries (Core and Extended) follow the item states in the matrix. They give no recommendation, because you supplied no decision criteria.
 - **Not published:** Creating this file doesn't change either quote or update any knowledge hub.
 

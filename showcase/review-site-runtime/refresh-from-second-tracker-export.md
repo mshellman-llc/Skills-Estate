@@ -46,7 +46,7 @@ Second refresh, as printed by `review_site.py refresh`:
     "status": "rendered",
     "dist": "site/dist",
     "files": 14,
-    "brand": "Baseline",
+    "brand": "Neutral",
     "brand_substitutions": [],
     "must_share": 0.8462,
     "unclassed": 2
