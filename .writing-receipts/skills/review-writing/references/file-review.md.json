@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "artifact": "skills/review-writing/references/file-review.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/extract_review_text.py extract PAGE.html BOOK.xlsx --out REVIEW/before --root PROJECT\npython3 scripts/extract_review_text.py init-log REVIEW/before\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/extract_review_text.py extract PAGE.html BOOK.xlsx --out REVIEW/after --root PROJECT\npython3 scripts/extract_review_text.py diff REVIEW/before REVIEW/after\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/extract_review_text.py receipt REVIEW/before REVIEW/after --out REVIEW/receipt.json\n```"
+    }
+  ]
+}

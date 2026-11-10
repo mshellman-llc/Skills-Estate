@@ -7,6 +7,12 @@ description: Build a polished interactive website that makes source material eas
 
 Turn source material into an explorable explanation. Use the supported site workflow to implement a design for this project. Keep the main view understandable before anything is expanded.
 
+## Choose the representation
+
+Name the reader's task and the relationship the artifact must explain. A service process may need stages that expose the responsible role, handoff and exception. A system explanation may need a diagram with labeled exchanges and ownership. A call rehearsal may need question, answer and follow-up prompts. Preserve these differences when selecting the workflow. Use `prepare-sales-pursuit` for a sales call brief and `build-review-site` for tracker-based release review. Keep a simple standalone visual in the requested format when a full website adds no useful capability.
+
+Use an available renderer that supports the chosen representation, or implement and test the missing interaction explicitly. A set of selectable cards does not by itself explain a system relationship or provide a rehearsal exercise. When the user requests an existing layout, use their supplied reference and make its content serve the reader's task.
+
 ## Establish the subject and sources
 
 - Use the current request and visible conversation to determine the topic, audience and purpose. Retrieve unseen prior decisions only when they materially affect this work.
@@ -44,6 +50,7 @@ For local-only work, follow the requested destination and skip deployment. Use t
 
 - Run the checks appropriate to the implementation, including build or syntax checks where applicable. Check counts, links, empty states, escaping and unresolved references.
 - Check that the overview and navigation fit the topic. Verify that any sequences, roles, findings, actions and handoffs reflect the source material. Remove placeholder content and unsupported sections.
+- Walk through a concrete reader question using the output. The initial view should explain the relationship; opening detail should add the mechanism, example or next action needed to answer it. Preserve explanatory depth when shortening overview copy.
 - Check semantic structure, keyboard operability, focus handling, contrast and narrow-screen behavior. Exercise the interactions actually implemented rather than requiring a standard set of widgets.
 - Use browser checks when explicitly requested or needed for an observed UI issue. Do not add automatic browser sessions or extensive testing by default. Follow Sites/browser guidance when used.
 - Report explorer checks separately from real-world process/system validation. A functioning website does not prove implementation.

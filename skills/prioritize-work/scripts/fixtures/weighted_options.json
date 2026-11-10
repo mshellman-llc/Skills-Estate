@@ -1,0 +1,34 @@
+{
+  "about": "Synthetic build-or-buy options for an invented ferry booking app; the weights add up to 10 on purpose to exercise rescaling.",
+  "criteria": [
+    {"name": "rider value", "weight": 3},
+    {"name": "fare revenue", "weight": 2},
+    {"name": "build certainty", "weight": 5}
+  ],
+  "items": [
+    {
+      "id": "OPT-A",
+      "title": "Extend the current booking engine",
+      "problem": "PRB-07 peak-day timeouts",
+      "scores": {"rider value": 4, "fare revenue": 3, "build certainty": 2}
+    },
+    {
+      "id": "OPT-B",
+      "title": "Buy a hosted reservations service",
+      "problem": "PRB-07 peak-day timeouts",
+      "scores": {"rider value": 5, "fare revenue": 2, "build certainty": 4}
+    },
+    {
+      "id": "OPT-C",
+      "title": "Rebuild in-house",
+      "problem": "PRB-07 peak-day timeouts",
+      "scores": {"rider value": 2, "fare revenue": 5, "build certainty": 3}
+    },
+    {
+      "id": "OPT-D",
+      "title": "Partner with a travel portal",
+      "problem": "PRB-07 peak-day timeouts",
+      "scores": {"rider value": 3, "build certainty": 4}
+    }
+  ]
+}

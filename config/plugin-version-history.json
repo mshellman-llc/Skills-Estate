@@ -38,12 +38,12 @@
       "note": "Replace the skill standard; add the writing gate with receipts, the private terms check and not-for-sale marks for the Commons Clause skills; bring Writing Integrity and the brand policy to a writing pass."
     },
     "0.4.5": {
-      "content_sha256": "86e3cfacd535c0aea3c0c455db7eab8c6f38a3a0d471e2e350a5af74e7f8d477",
-      "note": "Remove the fixed explorer template; keep project-specific design, evidence checks and optional roadmap components."
+      "content_sha256": "dc27030e2a0427cd5e1a8863e54ffc07a029c7901a2a1ccf603f9c96815ea68e",
+      "note": "Add extracted-text file review to review-writing: extract_review_text.py writes line-numbered reader text from HTML, SVG, script-built pages, .xlsx, .docx and .pptx in single-read parts, diffs two extractions and writes a coverage receipt. SKILL.md requires the extract, review, source-fix, re-extract and receipt flow for file reviews. Selftest covers synthetic fixtures and, when EXTRACT_REVIEW_TEXT_PAGES is set, the assessment field card, review console and assessment page."
     },
     "0.4.6": {
-      "content_sha256": "a4144171fe19c01a0a758878edeb25e9aa989d9b53cc7e1d25d1efe8ddf2a642",
-      "note": "Validate roadmap snapshots through their supported renderer and refine the explorer guidance for publication review."
+      "content_sha256": "634c827518e789826d8077882df5eda70c5db607daf4dc129deee899583efc37",
+      "note": "Add rendered_read_guard.py to review-writing: an optional PreToolUse hook for Claude Code and Codex that denies whole-file reads of large HTML and SVG files and of .xlsx, .docx and .pptx files, and names extract_review_text.py. Bounded reads, line ranges, filtered pipes and redirects pass. file-review.md describes installing it."
     },
     "0.4.7": {
       "content_sha256": "3e6940e65fa7ae7e4fa40ff4fa3796c6d3e1ad3a93d99ed4febbe2ac7b4a387a",
@@ -52,6 +52,14 @@
     "0.4.8": {
       "content_sha256": "c11a7b86a405c6dc7f0ae7676d2c98249f071bffb7061c1a2e11087f325c5e34",
       "note": "Refresh the reader guide to describe audience-led navigation and the supported site workflow."
+    },
+    "0.4.9": {
+      "content_sha256": "a486b53f9120ddc939b11106f5394b892e135a85c98d5d9592203d8919828b8e",
+      "note": "Reconcile the explorer update with reader-task guidance while retaining current writing-review capabilities."
+    },
+    "0.4.10": {
+      "content_sha256": "e33340089561909be06295148e09b58b6ba621d31012942c480d50d874fd1991",
+      "note": "Combine the explorer design update with current prioritization and writing-review source; restore valid release history without replacing published receipts."
     }
   }
 }

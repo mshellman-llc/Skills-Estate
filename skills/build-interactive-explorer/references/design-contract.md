@@ -4,6 +4,8 @@ Design for the current audience, content, reading context and brand. Use an exis
 
 ## Make the information navigable
 
+Show the relationship the reader needs to understand explicitly. Selectable cards alone do not establish a causal explanation, system interaction or rehearsal exercise. Choose a representation that can express it.
+
 - Choose navigation for the content's size and relationships. Use in-page anchors, top navigation, search, a sidebar or another suitable pattern only when it serves the reader.
 - Establish a clear hierarchy and readable density. Use meaningful headings, comfortable spacing and clear labels. Avoid decorative metrics and repeated card filler.
 - Keep the initial view understandable. Reveal supporting detail near its context with clear controls and a way back. Do not hide essential conclusions behind unnecessary interactions.
