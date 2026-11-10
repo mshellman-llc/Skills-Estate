@@ -1,6 +1,6 @@
 # Explorer layout and behavior
 
-Apply this shell after the task-fit check in `SKILL.md`. The rows below describe its available views; choose supported views that help the reader. A collection of selectable cards does not establish a system relationship, causal explanation or rehearsal exercise. Show the relationship explicitly or use a representation that can.
+Apply this shell after the task-fit check in `SKILL.md`. The rows below describe its available views when reusing the shell; they do not mandate the composition of a different visual or an authorized redesign. Choose supported views that help the reader. A collection of selectable cards does not establish a system relationship, causal explanation or rehearsal exercise. Show the relationship explicitly or use a representation that can.
 
 | Area | Contract |
 | --- | --- |
@@ -18,6 +18,14 @@ Apply this shell after the task-fit check in `SKILL.md`. The rows below describe
 
 Give stage cards a light tint of the accent that gets one shade darker per stage, and make the selected stage solid accent. Pure white cards on a white page made a process hard to follow in review. Use one text size inside a table, links and status labels included, and put long ticket or source lists behind a closed line in the row. Number circles keep one fixed size on every view.
 
-Keep comfortable margins, restrained borders, light surfaces, navy/teal body text and cobalt accents. Reuse bundled typography and spacing; improve body sizes if density makes reading difficult. Avoid metric walls or repeated feature-card filler.
+Keep comfortable margins and restrained borders. Apply the current selected brand profile to typography, colors and spacing; historical shell colors do not override it. Improve body sizes if density makes reading difficult. Avoid metric walls or repeated feature-card filler.
 
 Use semantic buttons, headings and native disclosures. Keep visible focus, meaningful labels, Escape behavior, focus restoration, reduced-motion support and narrow-screen layouts. Escape generated content. Restrict source links to safe HTTP(S) URLs. Load nothing from the network. Add no trackers, client data writes, connector access or authentication bypasses to the presentation shell.
+
+## Assess the composition
+
+Inspect the overview before opening details. The reader should see the main relationship and recognize the useful controls without reading a large introductory block. Keep a selected object visible alongside its explanation, and show changes in the represented flow or comparison when an interaction changes the outcome. Use a lookup panel only when lookup is the task.
+
+Compare actual states with the supplied references: first view, selected detail, consequential exception, and return to context. Preserve explanatory depth and use different structures where the information differs. A repeated grid of equal cards can obscure sequence, priority and ownership even when its text is correct. At narrow widths, reconnect each detail to its selected object instead of simply stacking detached panels.
+
+Record content accuracy, working behavior and visual/UX observations separately. A successful interaction test is not user approval of the design.

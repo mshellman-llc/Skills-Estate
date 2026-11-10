@@ -25,6 +25,8 @@ The bundled schema supports paths, details and references; it has no dedicated g
 
 ## Choose paths and layers
 
+The remaining schema, generator and shell-preservation steps apply when the task-fit check selects this explorer. For another representation, follow the selected renderer and the shared visual workflow; do not force its content into this schema.
+
 Read [the schema](references/content-model.md) and use `assets/site/content.example.json` as the executable shape.
 
 - Start with 1–3 meaningful paths, each with a short sequence of ordered stages. Make each stage explain what happens, the decision, handoff, supporting capability and open question.
@@ -34,13 +36,13 @@ Read [the schema](references/content-model.md) and use `assets/site/content.exam
 - Add a roadmap when the sources describe planned work over time. Read the `build-roadmap` skill, write its plan JSON, and place it in `roadmaps`. Use the roadmap for sequence and `priorities` for scope categories.
 - Let the evidence determine counts. Do not invent roles, research, quotations, metrics, emotions, approvals or current system behavior to fill the layout.
 
-## Preserve the experience
+## Compose the experience
 
-Read [layout and interaction rules](references/design-contract.md). Generate from the bundled HTML/CSS/JS instead of recreating a generic dashboard.
+Read [layout and interaction rules](references/design-contract.md). When the bundled shell fits or the user requests it, generate from its HTML/CSS/JS. For a UI/UX redesign, inspect the supplied reference patterns and reconsider the composition before retaining that shell.
 
-Preserve left navigation, compact context header, generous hero, switchable paths and stage cards. Selected stages reveal a focused detail panel. Retain persona dialogs, journey accordions, solution tabs, roadmap views, scope filters and searchable consolidated sources when applicable. Make the next action and handoff legible.
+For explicit reuse of this shell, preserve its left navigation, compact context header, hero, switchable paths and stage cards. Size the introduction so the main explanation remains within reach. Selected stages reveal a focused detail panel. Retain persona dialogs, journey accordions, solution tabs, roadmap views, scope filters and searchable consolidated sources when applicable. Make the next action and handoff legible.
 
-Use the calm teal/cobalt/light-surface palette, or apply the user's requested brand without weakening readability. Avoid inline technical identifiers, dense overview tables and decorative metrics.
+Apply the selected brand profile and its component tokens. The shell's historical teal/cobalt styling does not override current project or workspace defaults. Avoid inline technical identifiers, dense overview tables and decorative metrics.
 
 ## Create the website
 
@@ -64,6 +66,7 @@ For local-only work, follow the requested destination and skip deployment. Use t
 - Check that the overview fits the topic; distinguish the stage's finding, action, handoff and open decision. Confirm sample material is replaced and optional sections have substance.
 - Walk through a concrete reader question using the output. The initial view should explain the relationship; opening detail should add the mechanism, example or next action needed to answer it. Clicking through paraphrases of the overview is insufficient. Preserve explanatory depth when shortening overview copy.
 - Use browser checks when explicitly requested or needed for an observed UI issue. Do not add automatic browser sessions or extensive testing by default. Follow Sites/browser guidance when used; exercise path switching, stage expansion/closure, persona-to-journey navigation, tabs, source filters and keyboard focus at desktop and narrow widths.
+- Assess the UI/UX separately from content and working controls: inspect whether the main relationship is immediately legible, selection keeps its context, changed states show consequences, and narrow-screen use preserves the task. Use the supplied examples as comparison evidence and record user acceptance separately.
 - Report explorer checks separately from real-world process/system validation. A functioning website does not prove implementation.
 - Confirm terminal private-deployment success and access before returning a URL. State material verification limits. Never broaden the audience as a workaround.
 
