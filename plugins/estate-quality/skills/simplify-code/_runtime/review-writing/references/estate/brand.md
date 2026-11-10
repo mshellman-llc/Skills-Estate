@@ -50,6 +50,8 @@ Read exact values from the selected profile. Do not infer colors from a company 
 
 The neutral profile is Baseline, the estate's default design system. Web pages, dashboards and interactive artifacts use its component kit in the `manage-brand-profile` skill: `baseline/baseline.css`, the Stockholm icons in `baseline/baseline-icons.svg` and `baseline/baseline-icons.json`, and the rules in `baseline/GUIDE.md`. Palette F, navy and pastel, is the default. Use palette E, ink and amber, only when requested, through `class="bl theme-ink"`.
 
+The kit supplies visual tokens and reusable primitives; its examples are not required page layouts. The producing workflow may compose custom diagrams, connected flows, contextual detail, comparisons or rehearsal controls using those tokens. Preserve typography, contrast, semantic color and keyboard focus while choosing the structure for the reader's task. An existing card or sidebar example does not require a rejected composition to be retained during an authorized redesign.
+
 The neutral profile has no logo, footer mark, cover imagery, gradients, or bundled fonts. Add a title, date, and author when the format needs them. Do not add colored side accents to cards, rows, badges or callouts.
 
 `chart-1` to `chart-5` are a dark-to-light ramp of the profile's own color, and `chart-6` is a neutral for a sixth series. They color data series and the groups on boards, in that fixed order, and they are never used for text, buttons or page chrome. Do not use mixed hues, and keep a legend. A client profile replaces them with its own recorded chart colors; it does not inherit these.

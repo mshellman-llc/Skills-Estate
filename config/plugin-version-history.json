@@ -66,8 +66,21 @@
       "note": "Make composition and reader context part of visual design guidance; add composition review to build-interactive-explorer on top of main's template-free explorer."
     },
     "0.4.13": {
-      "content_sha256": "a0abd62216aee46795da4ba91064d1000e9a6cf9e74dfd58803420bf7699cec4",
-      "note": "Add writing-integrity, visual-inspector and web-app interaction review for material explorers; preserve task-specific composition and approved design direction."
+      "content_sha256": "b6fd7de9311fd55db84be02677900a6460e99a12bebc0cb38581aeb6595cfd94",
+      "note": "Add portable website visibility exclusions, the owner manager and the portfolio embed on top of the 0.4.12 source."
+    },
+    "0.4.14": {
+      "content_sha256": "5682a38e336606f0d1681035a7bd9c2dd671edb5c9207f300267e3f8fcd10f64",
+      "note": "Add writing-integrity, independent visual inspection and web-app interaction assessment for material explorers; preserve current publication controls and approved design direction."
     }
-  }
+  },
+  "source_conflicts": [
+    {
+      "version": "0.4.5",
+      "observed_at_commit": "50c87818d215a820a2d75b8e6fa1a4d0f1473008",
+      "reason": "Concurrent edits inserted a second 0.4.5 record into the existing record without a delimiter. Retained here; the next version records the combined source.",
+      "content_sha256": "6f89027adaa994562cc13877e438bea1d2ad43421780794ec2dbc2501b5750b9",
+      "note": "Rewrite prioritize-work as original work: new SKILL.md, references, scorer, selftest and fixtures, with its upstream license files and not-for-sale mark removed."
+    }
+  ]
 }

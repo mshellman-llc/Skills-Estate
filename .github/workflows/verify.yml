@@ -81,6 +81,16 @@ jobs:
       - run: python3 tools/estate.py build
       - run: python3 tools/estate.py bundle
       - run: python3 tools/browse.py --bundle
+      - name: Build portable websites and local owner kit
+        if: github.ref == 'refs/heads/main'
+        run: python3 artifacts/skills-map/package_portable.py --output dist/portable --packages dist
+      - uses: actions/upload-artifact@v7.0.2
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: skills-estate-portable
+          path: dist/portable/*
+          if-no-files-found: error
+          retention-days: 30
       - uses: actions/upload-artifact@v7.0.2
         if: github.ref == 'refs/heads/main'
         with:
@@ -97,6 +107,15 @@ jobs:
             artifacts/skills-map/index.json
             artifacts/skills-map/viewer.py
             artifacts/skills-map/open-map.command
-            artifacts/skills-map/assets/fonts/OFL.txt
+            artifacts/skills-map/assets/
+            artifacts/skills-map/owner.py
+            artifacts/skills-map/publication.py
+            artifacts/skills-map/rendering.py
+            artifacts/skills-map/manage.html
+            artifacts/skills-map/template.html
+            artifacts/skills-map/explorer.css
+            artifacts/skills-map/workflows.json
+            artifacts/skills-map/README.md
+            artifacts/skills-map/INTEGRATION.md
           if-no-files-found: error
           retention-days: 30

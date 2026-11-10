@@ -15,6 +15,11 @@ import tempfile
 import threading
 import webbrowser
 import zipfile
+import mimetypes
+
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from owner import OwnerStore, Conflict
 
 REPOSITORY='mshellman-llc/Skills-Estate'
 MAX_ARCHIVE=96*1024*1024
@@ -93,8 +98,9 @@ def refresh(output, api=github):
 
 class MapServer(ThreadingHTTPServer):
     daemon_threads=True
-    def __init__(self, output, port=0):
+    def __init__(self, output, port=0, settings=None):
         self.output=Path(output);self.token=secrets.token_urlsafe(32);self.lock=threading.Lock();self.last_error=None
+        self.owner=OwnerStore(output,settings)
         super().__init__(('127.0.0.1',port),MapHandler)
         self.origin=f'http://127.0.0.1:{self.server_port}'
 
@@ -110,15 +116,28 @@ class MapHandler(BaseHTTPRequestHandler):
         if self.path=='/':
             if not self.server.output.is_file():self.respond(404,{'error':'No map has been downloaded yet'});return
             text=self.server.output.read_text()
-            config=json.dumps({'csrf':self.server.token,'origin':self.server.origin}).replace('<','\\u003c')
+            config=json.dumps({'csrf':self.server.token,'origin':self.server.origin,'manage':True}).replace('<','\\u003c')
             text=text.replace('__MAP_VIEWER_CONFIG__',config)
             self.respond(200,text.encode(),'text/html; charset=utf-8')
+        elif self.path=='/manage':
+            text=Path(__file__).with_name('manage.html').read_text().replace('__OWNER_CONFIG__',json.dumps({'csrf':self.server.token}).replace('<','\\u003c'))
+            self.respond(200,text.encode(),'text/html; charset=utf-8')
+        elif self.path=='/api/publication':
+            if not secrets.compare_digest(self.headers.get('X-Map-CSRF',''),self.server.token):self.respond(403,{'error':'Open the local content manager first'});return
+            try:self.respond(200,self.server.owner.read())
+            except (ValueError,OSError,KeyError) as error:self.respond(400,{'error':str(error)})
+        elif self.path.startswith('/exports/'):
+            file=self.server.owner.file(self.path)
+            if not file:self.respond(404,{'error':'Unknown export file'});return
+            self.respond(200,file.read_bytes(),mimetypes.guess_type(str(file))[0] or 'application/octet-stream')
         elif self.path=='/api/status':self.respond(200,{'error':self.server.last_error})
         elif self.path=='/favicon.ico':self.respond(204,b'','image/x-icon')
         else:self.respond(404,{'error':'Unknown map route'})
     def do_POST(self):
         if not self.allowed_host() or self.headers.get('Origin')!=self.server.origin or not secrets.compare_digest(self.headers.get('X-Map-CSRF',''),self.server.token):
             self.respond(403,{'error':'Update must come from this map window'});return
+        if self.path.startswith('/api/publication/'):
+            self.publication_post();return
         if self.path!='/api/update':self.respond(404,{'error':'Unknown map route'});return
         if self.headers.get('Transfer-Encoding') or self.headers.get('Content-Length','0')!='0':
             self.respond(400,{'error':'This update accepts no request body'});return
@@ -129,8 +148,29 @@ class MapHandler(BaseHTTPRequestHandler):
             self.server.last_error=str(error);self.respond(502,{'error':str(error)})
         finally:self.server.lock.release()
 
+    def publication_post(self):
+        if self.path not in {'/api/publication/save','/api/publication/preview','/api/publication/restore'}:
+            self.respond(404,{'error':'Unknown publication action'});return
+        if self.headers.get('Transfer-Encoding'):
+            self.respond(400,{'error':'Use a bounded JSON request'});return
+        try:
+            size=int(self.headers.get('Content-Length','0'))
+            if not 0<size<=1024*1024:raise ValueError('Choices must be a bounded JSON request')
+            payload=json.loads(self.rfile.read(size))
+            if not isinstance(payload,dict):raise ValueError('Publication requests must be objects')
+        except (ValueError,TypeError):self.respond(400,{'error':'Invalid publication request'});return
+        if not self.server.lock.acquire(blocking=False):self.respond(409,{'error':'Another operation is running'});return
+        try:
+            if self.path.endswith('/save'):result=self.server.owner.save(payload['settings'],payload['expectedRevision'])
+            elif self.path.endswith('/restore'):result=self.server.owner.restore(payload['expectedRevision'])
+            else:result=self.server.owner.preview(payload['settings'],payload['target'])
+            self.respond(200,result)
+        except Conflict as error:self.respond(409,{'error':str(error)})
+        except (ValueError,OSError,KeyError,zipfile.BadZipFile) as error:self.respond(400,{'error':str(error)})
+        finally:self.server.lock.release()
+
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,default=Path(__file__).with_name('index.html'));p.add_argument('--once',action='store_true');p.add_argument('--open',action='store_true');p.add_argument('--port',type=int,default=0);p.add_argument('--skip-refresh',action='store_true',help=argparse.SUPPRESS);args=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,default=Path(__file__).with_name('index.html'));p.add_argument('--once',action='store_true');p.add_argument('--open',action='store_true');p.add_argument('--port',type=int,default=0);p.add_argument('--settings',type=Path,help='Owner visibility choices; defaults to the checkout configuration');p.add_argument('--skip-refresh',action='store_true',help=argparse.SUPPRESS);args=p.parse_args()
     output=args.output.expanduser().absolute()
     startup_error=None
     if not args.skip_refresh:
@@ -139,7 +179,7 @@ def main():
             startup_error=str(error);print(startup_error)
             if args.once or not output.is_file():return 1
     if args.once:return 0
-    server=MapServer(output,args.port);server.last_error=startup_error;print('Skills Estate map: '+server.origin,flush=True)
+    server=MapServer(output,args.port,args.settings);server.last_error=startup_error;print('Skills Estate map: '+server.origin,flush=True)
     if args.open:webbrowser.open(server.origin)
     try:server.serve_forever()
     except KeyboardInterrupt:pass

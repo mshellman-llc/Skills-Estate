@@ -16,20 +16,22 @@ const {chromium}=require('playwright');
  const preview=process.env.MAP_PREVIEW_URL;
  page.on('request',r=>{if(/^https?:/.test(r.url())&&(!preview||new URL(r.url()).origin!==new URL(preview).origin))requests.push(r.url())});
  await page.goto(preview||pathToFileURL(input).href);
- // Secondary filters live in a collapsed panel; open it so every control is reachable.
- await page.locator('#more-options > summary').click();assert.equal(await page.locator('#more-options').evaluate(e=>e.open),true);await page.evaluate(()=>document.fonts.ready);
+ await page.evaluate(()=>document.fonts.ready);
  assert.equal(await page.locator('.skill-row').count(),data.skills.length);
+ assert.equal(await page.locator('.skill-row .skill-tag').count(),0);
+ assert((await page.locator('.skill-row').first().boundingBox()).y<600);
  await page.screenshot({path:path.join(output,'desktop.png')});
+ await page.locator('#more-options > summary').click();assert.equal(await page.locator('#more-options').evaluate(e=>e.open),true);
  fs.writeFileSync(path.join(output,'rendered.html'),await page.content());
- assert.equal(await page.locator('body').evaluate(e=>getComputedStyle(e).fontSize),'16px');
- assert.equal(await page.locator('body').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 255, 255)');
+ assert.equal(await page.locator('body').evaluate(e=>getComputedStyle(e).fontSize),'15px');
+ assert.equal(await page.locator('body').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(246, 245, 241)');
  // All exact sources remain downloadable and all detail panes populate for every skill.
  for(const skill of data.skills){
   await page.locator(`.skill-row[data-skill="${skill.id}"]`).click();
   assert.equal(await page.locator('#detail-title').textContent(),skill.title);
   if(skill.guide){
    const overview=await page.locator('#panel-overview').innerText();
-   for(const phrase of ['What it does','When to use it','What to give it','What you get','How to start','Built for'])assert(overview.includes(phrase));
+   for(const phrase of ['What it does','When to use it','What to give it','What you get','How to start'])assert(overview.includes(phrase));
    for(const phrase of ['Why use it','Before you start','Where this comes from',"If you don't have it",'Other skills and connections'])assert(overview.includes(phrase),skill.id+': missing '+phrase);
    assert(overview.includes(skill.guide.overview));assert(overview.includes(skill.guide.value));
    assert.notEqual(skill.guide.overview,skill.guide.what);
@@ -41,7 +43,6 @@ const {chromium}=require('playwright');
    }
    if(skill.id==='write-business-case')assert(await page.locator('#panel-overview .included-skills [data-skill="review-deliverable"]').count());
    assert(!overview.includes('ESTATE-WRITING'));
-   assert(overview.includes(skill.reuse.label));
   }
   await page.locator('#tab-instructions').click();
   assert((await page.locator('#panel-instructions .instructions').innerText()).length>100);
@@ -66,7 +67,7 @@ const {chromium}=require('playwright');
   if(skill.id==='review-writing'){assert.equal(await page.locator('#panel-connections .connection-context table tbody tr').count(),1);assert(!connections.includes('| ---'));assert(!connections.includes('[Diagnostic toolkit]'));await page.screenshot({path:path.join(output,'writing-connections.png')});}
   await page.locator('#tab-files').click();
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
-  await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').evaluate(e=>e.open),false);
+  await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').isVisible(),false);
  }
  // Combined query/family/status filtering and empty recovery.
  await page.locator('#search').fill('scope');
@@ -84,18 +85,18 @@ const {chromium}=require('playwright');
  }
  await page.evaluate(()=>document.querySelector('#toast').hidden=true);
  await page.locator('#search').fill('no-such-skill-52948');assert.equal(await page.locator('.skill-row').count(),0);await page.locator('[data-reset]').click();assert.equal(await page.locator('.skill-row').count(),data.skills.length);
- // Keyboard activation, dialog focus trapping, and arrow-key tab navigation.
- await page.locator('.skill-row').first().focus();await page.keyboard.press('Enter');assert(await page.locator('#detail').evaluate(e=>e.open));
+ // Keyboard activation, inline expansion and collapse, and arrow-key tab navigation.
+ await page.locator('.skill-row').first().focus();await page.keyboard.press('Enter');assert(await page.locator('#detail').isVisible());
  await page.locator('#tab-overview').focus();await page.keyboard.press('ArrowRight');assert.equal(await page.locator('#tab-instructions').getAttribute('aria-selected'),'true');
- for(let i=0;i<25;i++){await page.keyboard.press('Tab');assert(await page.evaluate(()=>document.querySelector('#detail').contains(document.activeElement)))}
+ assert.equal(await page.locator('#detail').evaluate(e=>e.tagName),'SECTION');assert.equal(await page.locator('.skill-row').first().getAttribute('aria-expanded'),'true');await page.locator('.skill-row').first().click();assert.equal(await page.locator('#detail').isVisible(),false);await page.locator('.skill-row').first().click();
  await page.keyboard.press('Escape');
  const chosen=byName('map-sales-process')||byName('prepare-sales-pursuit');
  function byName(name){return data.skills.find(s=>s.id===name)}
  await page.locator(`.skill-row[data-skill="${chosen.id}"]`).click();await page.screenshot({path:path.join(output,'detail.png')});
  await page.locator('#tab-connections').click();
  if(chosen.mentions.length){await page.locator('#panel-connections [data-skill]').first().click();assert.notEqual(await page.locator('#detail-title').textContent(),chosen.title)}
- await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),6);await page.screenshot({path:path.join(output,'workflows.png')});
- await page.locator('.route [data-skill]').first().click();assert(await page.locator('#detail').evaluate(e=>e.open));await page.keyboard.press('Escape');await page.locator('#browse-view').click();
+ await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),19);await page.screenshot({path:path.join(output,'workflows.png')});
+ await page.locator('.route > summary').first().click();await page.locator('.route [data-skill]').first().click();assert(await page.locator('#detail').isVisible());await page.keyboard.press('Escape');await page.locator('#browse-view').click();
  // Full instruction search and status counts.
  await page.locator('#full-search').check();await page.locator('#search').fill('ESTATE-WRITING');assert.equal(await page.locator('.skill-row').count(),0);await page.locator('#search').fill('expected-source');assert((await page.locator('.skill-row').count())>0);await page.locator('#reset').click();
  for(const status of ['github','local-revision','local-addition']){await page.locator('#source-filter').selectOption(status);assert.equal(await page.locator('.skill-row').count(),data.counts[status])}
@@ -117,6 +118,6 @@ const {chromium}=require('playwright');
  assert(await page.locator('#detail').evaluate(e=>e.scrollWidth<=e.clientWidth));await page.keyboard.press('Escape');
  await page.setViewportSize({width:1440,height:1100});await page.locator('[data-family="0"]').click();await page.emulateMedia({media:'print'});await page.pdf({path:path.join(output,'print.pdf'),format:'Letter',printBackground:true});await page.screenshot({path:path.join(output,'print.png')});
  assert.equal(errors.length,0,errors.join('\n'));assert.equal(requests.length,0,'Offline artifact must not load network resources');
- const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','dialog focus','arrow-key tabs','examples tab and labels','examples filter','connections','six workflow routes','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
+ const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','inline accordion focus','arrow-key tabs','examples tab and labels','examples filter','connections','nineteen workflow examples','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
  fs.writeFileSync(path.join(output,'browser-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
