@@ -1,0 +1,77 @@
+[
+  {
+    "id": "FRY-021",
+    "title": "Seat map preview",
+    "job": "Pick a seat on the upper deck before boarding",
+    "reach": 1000,
+    "impact": 2,
+    "confidence": 0.9,
+    "effort": 4,
+    "sources": {
+      "effort": "invented sizing, seating squad"
+    }
+  },
+  {
+    "id": "FRY-022",
+    "title": "Luggage drop tags",
+    "problem": "Riders with bags wait at a single counter",
+    "reach": 800,
+    "impact": 1,
+    "confidence": 0.5,
+    "effort": 2,
+    "sources": {
+      "confidence": "synthetic counter timing study"
+    }
+  },
+  {
+    "id": "FRY-023",
+    "title": "Pet cabin request",
+    "job": "Travel with a dog without phoning the office",
+    "reach": 500,
+    "impact": 1.5,
+    "confidence": 0.8,
+    "effort": 2.5,
+    "sources": {
+      "confidence": "invented pet-owner poll",
+      "effort": "synthetic estimate, booking squad"
+    }
+  },
+  {
+    "id": "FRY-024",
+    "title": "Ticket transfer",
+    "problem": "A friend cannot use a ticket bought in my name",
+    "reach": 1200,
+    "impact": 1,
+    "confidence": 80,
+    "effort": 3,
+    "sources": {
+      "confidence": "synthetic refund-desk log",
+      "effort": "invented platform sizing"
+    }
+  },
+  {
+    "id": "FRY-025",
+    "title": "Accessible boarding notes",
+    "job": "Tell the crew ahead of time that I need help boarding",
+    "reach": 2000,
+    "impact": 1,
+    "confidence": 8,
+    "effort": 4,
+    "sources": {
+      "confidence": "invented accessibility panel",
+      "effort": "synthetic crew-app sizing"
+    }
+  },
+  {
+    "id": "FRY-026",
+    "title": "Dark mode",
+    "reach": 300,
+    "impact": 0.5,
+    "confidence": 0.5,
+    "effort": 1,
+    "sources": {
+      "confidence": "synthetic settings-page clicks",
+      "effort": "invented front-end estimate"
+    }
+  }
+]

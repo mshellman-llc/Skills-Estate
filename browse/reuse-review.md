@@ -1,6 +1,6 @@
 # Skill reuse review
 
-90 general-use methods, 0 Context-specific workflows, and 1 awaiting source review.
+91 general-use methods, 0 Context-specific workflows, and 0 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -24,7 +24,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `build-deal-decision-deck` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-deck` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-editorial-chart` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `build-interactive-explorer` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `build-interactive-explorer` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-interactive-proposal` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-moscow-story-map` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-review-site` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |

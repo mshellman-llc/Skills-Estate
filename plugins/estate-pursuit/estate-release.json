@@ -30,7 +30,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "29a938a49040f226a0b97ac1b522144f458bc669fc9143c84144ba6b85b17865",
+      "required_sha256": "44edcfa972d8b426bd2665fd9610d6ddb696cee260f804e9d92e97758ff05a17",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -140,7 +140,7 @@
       "subject": "build-editorial-chart"
     },
     {
-      "required_sha256": "0945f62671fa7021a6d87cb515ce577635e43ba8175d8ad59e7f95783b8164cb",
+      "required_sha256": "40c6aad7d5e9618fd52eb1067fd1ff43a96d93329dff7e61cb91f223eb32f9f7",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
@@ -390,7 +390,7 @@
       "subject": "prepare-session-handoff"
     },
     {
-      "required_sha256": "1ef568662a413fdafa9b9681ca528589b0183d342a0be14e186deaef295e508f",
+      "required_sha256": "bce547174a80a61deb0b20ae6aa1505539d4dfe357c8b3057ed34e7bc6e717de",
       "status": "review required",
       "subject": "prioritize-work"
     },
@@ -445,7 +445,7 @@
       "subject": "review-site-runtime"
     },
     {
-      "required_sha256": "25b11aa7da232a850dc232dd4e9b22f0a6b62041a8de3eafc5fb59b7c6af3461",
+      "required_sha256": "6322f6646d3668ed0721f39e6a1b3661c991d70688fd4a382e0419563f3bb46a",
       "status": "review required",
       "subject": "review-writing"
     },
@@ -535,6 +535,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "0b40cb56832dad1e2fb4f6a301a2f33516d1fe9e921b258165561eb2b225f74a",
+  "source_sha256": "13e94d52cc4a2b94a3c2af5e1de7197157bd42ec05b3c39e87a98786366ac083",
   "status": "owner-published"
 }

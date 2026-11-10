@@ -1,0 +1,48 @@
+[
+  {
+    "id": "INIT-01",
+    "title": "Crossing countdown widget",
+    "job": "Glance at how long until the next boat leaves",
+    "impact": 8,
+    "confidence": 0.5,
+    "ease": 6
+  },
+  {
+    "id": "INIT-02",
+    "title": "Saved payment cards",
+    "problem": "Riders retype card details at every booking",
+    "impact": 8,
+    "confidence": 0.75,
+    "ease": 5,
+    "sources": {
+      "confidence": "synthetic checkout drop-off data"
+    }
+  },
+  {
+    "id": "INIT-03",
+    "title": "Printable timetable",
+    "job": "Pin the summer timetable on a noticeboard",
+    "impact": 5,
+    "confidence": 0.5,
+    "ease": 9
+  },
+  {
+    "id": "INIT-04",
+    "title": "Harbor webcam link",
+    "job": "Check the sea state before driving down",
+    "impact": 3,
+    "confidence": 0.4,
+    "ease": 10
+  },
+  {
+    "id": "INIT-05",
+    "title": "Loyalty stamps",
+    "problem": "Regular riders get nothing for coming back",
+    "impact": 6,
+    "confidence": 80,
+    "ease": 2,
+    "sources": {
+      "confidence": "invented loyalty pilot results"
+    }
+  }
+]

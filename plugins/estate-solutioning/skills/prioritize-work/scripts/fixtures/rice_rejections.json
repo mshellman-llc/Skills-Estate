@@ -1,0 +1,100 @@
+{
+  "about": "Synthetic RICE file mixing valid candidates with malformed ones for an invented ferry booking app.",
+  "items": [
+    {
+      "id": "FRY-031",
+      "title": "Fare calendar",
+      "job": "See the cheapest day to cross",
+      "reach": 900,
+      "impact": 1,
+      "confidence": 0.5,
+      "effort": 3,
+      "sources": {
+        "confidence": "synthetic fare-page analytics",
+        "effort": "invented pricing-team sizing"
+      }
+    },
+    {
+      "id": "FRY-032",
+      "title": "Cabin reservations",
+      "job": "Sleep through the overnight crossing",
+      "reach": 400,
+      "impact": 2,
+      "confidence": 0.5,
+      "sources": {
+        "confidence": "invented overnight-route survey"
+      }
+    },
+    {
+      "id": "FRY-033",
+      "title": "Live queue camera",
+      "problem": "Drivers cannot see the boarding queue from town",
+      "reach": null,
+      "impact": 1,
+      "confidence": 0.5,
+      "effort": 2
+    },
+    {
+      "id": "FRY-031",
+      "title": "Fare calendar copy",
+      "job": "Compare weekday and weekend fares",
+      "reach": 50,
+      "impact": 1,
+      "confidence": 0.5,
+      "effort": 1
+    },
+    {
+      "id": "FRY-034",
+      "title": "Bike rack booking",
+      "job": "Reserve space for a bicycle",
+      "reach": 350,
+      "impact": 1,
+      "confidence": "80%",
+      "effort": 2
+    },
+    {
+      "id": "FRY-035",
+      "title": "Lost property form",
+      "problem": "Riders phone the office to report a lost bag",
+      "reach": 120,
+      "impact": 0.5,
+      "confidence": 0.5,
+      "effort": 0
+    },
+    "FRY-036",
+    {
+      "title": "Cabin upgrade",
+      "job": "Move to a cabin after boarding",
+      "reach": 100,
+      "impact": 1,
+      "confidence": 0.5,
+      "effort": 1
+    },
+    {
+      "id": "FRY-037",
+      "title": "Pier map",
+      "job": "Find the right ramp for my car",
+      "reach": 400,
+      "impact": 2,
+      "confidence": 0.5,
+      "effort": 2,
+      "sources": {
+        "confidence": "synthetic wayfinding study",
+        "effort": "invented maps-team estimate"
+      }
+    },
+    {
+      "id": "FRY-038",
+      "title": "Season pass renewal",
+      "problem": "Commuters forget to renew and pay the full fare",
+      "reach": "1500",
+      "impact": "1",
+      "confidence": "0.5",
+      "effort": "4",
+      "sources": {
+        "confidence": "synthetic renewal-email data",
+        "effort": "invented billing estimate"
+      }
+    }
+  ]
+}

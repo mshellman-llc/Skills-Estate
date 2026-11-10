@@ -1,39 +1,29 @@
-# Content model
+# Content guidance
 
-Start with `assets/site/content.example.json`. Supply UTF-8 JSON with these top-level fields. IDs are local linking keys, not UI copy.
+Choose the content model for the project. Do not require a particular JSON schema, paths, stages, personas or section count. Store content in the format appropriate to the chosen implementation.
 
-| Field | Contents |
-| --- | --- |
-| `meta` | Required `title`, `brand`, `headline`, `intro`. Optional `eyebrow`, `accent` (a phrase shown after the headline, so leave it out of `headline`), `evidenceDate`, `evidenceBoundary`, `scopeNote`, `accessLabel`, `labels`. |
-| `paths` | Required nonempty array. Each path has `id`, `title`, `summary`, `roleLabel`, and nonempty `stages`. |
-| `people` | Optional roles/audiences, each with `id`, `name`, `mission`, context, jobs and steps. |
-| `modules` | Optional capabilities, findings or design areas. |
-| `priorities` | Optional scope categories: `id`, `title`, `description`, `items`. |
-| `decisions` | Optional unresolved questions and working direction. |
-| `roadmaps` | Optional planned work: `id`, `title`, `plan`; optional `summary`, `sourceIds`. |
-| `sources` | Source entries: `id`, `title`, `group`, `kind`, `note`; optional `url`, `reviewed`, `locator`. |
+## Structure around the reader's task
 
-## Detail objects
+- Use ordered stages for an actual sequence, decision process or journey. Where supported, explain the goal, action, decision, handoff, finding and open question. Omit irrelevant fields rather than filling them with invented material.
+- Use distinct paths when audiences or tasks genuinely need different routes. A single shared view may be clearer.
+- Use thematic sections for research findings, a comparison for choices, a map for relationships, or search and filters for a large reference collection when these better fit the material.
+- Add people and jobs, role journeys, capabilities, priorities, dependencies and open decisions only when supported by sources and relevant to the reader.
+- Adapt domain labels and level of detail. Do not import another project's roles, phases, release commitments or terminology.
 
-- Stage: `id`, `title`, `summary`, `goal`, `action`, `decision`, `handoff`, `finding`, `openQuestion`; optional `details` (`title`/`body` pairs), `moduleIds`, `sourceIds`.
-- Person: `id`, `name`, `roleLabel`, `group`, `mission`, `context`, `trigger`, `scope`, `home`; string arrays `needs`, `questions`; `jobs` (`title`, `statement`, `implication`); `steps`; `sourceIds`.
-- Journey step: `title`, `touchpoint`, `current`, `friction`, `action`, `decision`, `proposed`, `handoff`, `check`, `openQuestion`, `sourceIds`.
-- Module: `id`, `title`, `fit`, `goal`; string arrays `experience`, `records`, `build`, `questions`, `checks`; optional `capabilityNote`, `planningNote`, `roleIds`, `sourceIds`.
-- Priority item: `title`, `description`; optional `fallback`, `dependency`, `sourceIds`.
-- Roadmap: `plan` is a complete `build-roadmap` plan (`kit`, `id`, `meta`, `legend`, `blocks`). The generator checks it with the roadmap validator and refuses `live` bindings.
-- Decision: `id`, `title`, `question`, `direction`, `gap`, `participants`, `sourceIds`.
+## Preserve evidence and relationships
 
-Every `sourceIds` entry must resolve. Use `moduleIds`/`roleIds` only for present entries. Use real, safe URLs; omit unavailable links. `reviewed` records an actual review date, not an assumed current state.
+- Give claims human-readable source titles and useful locators. Provide a consolidated source index when it helps readers audit the material, with contextual links from the relevant details.
+- Use internal IDs only as linking keys, not as primary UI copy. Ensure every internal reference resolves to a present item.
+- Use real, safe HTTP(S) URLs; omit unavailable links. A review date must record an actual review, not an assumed current state.
+- Record source date and authority. Distinguish findings, proposals, hypotheses, approved decisions, verified behavior and unresolved questions. Mark fictional examples explicitly if the task calls for them.
+- Keep newer scope decisions visible with their dates when they qualify rather than replace earlier evidence.
+- Verify current product capabilities through official sources rather than carrying over claims from another project.
+- Store original evidence outside the skill. Summarize only for the authorized audience and preserve original source permissions.
 
-Override section labels with `meta.labels`: `people`, `journeys`, `solution`, `roadmap`, `scope`, `decisions`, `sources`. Override module tabs with `experience`, `design`, `checks`.
+## Check completeness without adding filler
 
-| Topic | Possible paths | Optional views |
-| --- | --- | --- |
-| Solution design | Site seller / Enterprise account | People & jobs, Journeys, Solution, Rollout scope |
-| Research | Understand / Compare / Apply | Perspectives, Research paths, Findings, Next questions |
-| Service launch | Customer / Operations | Audiences, Journeys, Capabilities, Launch priorities |
-| Learning | Beginner / Practitioner | Learning paths, Concepts, Practice, Open questions |
+Ensure each visible section has a clear purpose and substantive content. Remove empty optional sections and derive counts from the actual content. Do not invent research, quotations, metrics, emotions, roles or approvals to complete a visual pattern. Identify material gaps and the questions needed to resolve them.
 
-Translate decisions and handoffs into meaningful domain choices or next actions. Omit unsupported optional fields; retain a clear stage goal and action.
+## Optional roadmaps
 
-Store original evidence outside the skill. Task-specific outputs can summarize it under the authorized audience. Keep source IDs in source notes. Label fictional examples, proposals, hypotheses, date boundaries and unresolved questions. Verify current product capabilities through official sources rather than carrying over sample claims.
+Use `build-roadmap` when sources describe planned work over time. Validate its plan with that skill’s tooling before embedding the snapshot components. Reject live bindings in an explorer; keep source access read-only and preserve the no-network presentation behavior. Use the roadmap for sequence and separate scope categories for priorities. If a dependency is missing or the plan is invalid, report the exact issue and leave the roadmap unbuilt rather than inventing an implementation.

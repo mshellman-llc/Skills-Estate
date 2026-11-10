@@ -45,9 +45,25 @@
       "content_sha256": "634c827518e789826d8077882df5eda70c5db607daf4dc129deee899583efc37",
       "note": "Add rendered_read_guard.py to review-writing: an optional PreToolUse hook for Claude Code and Codex that denies whole-file reads of large HTML and SVG files and of .xlsx, .docx and .pptx files, and names extract_review_text.py. Bounded reads, line ranges, filtered pipes and redirects pass. file-review.md describes installing it."
     },
+    "0.4.7": {
+      "content_sha256": "3e6940e65fa7ae7e4fa40ff4fa3796c6d3e1ad3a93d99ed4febbe2ac7b4a387a",
+      "note": "Complete Explorer metadata and whitespace checks for the review candidate."
+    },
     "0.4.8": {
-      "content_sha256": "fec28c42a5bf7dcd7c5b397a0699190be0001b441e9ec0dfd4faa7644a010e69",
-      "note": "Add portable website visibility exclusions while retaining the current combined skill source"
+      "content_sha256": "c11a7b86a405c6dc7f0ae7676d2c98249f071bffb7061c1a2e11087f325c5e34",
+      "note": "Refresh the reader guide to describe audience-led navigation and the supported site workflow."
+    },
+    "0.4.9": {
+      "content_sha256": "a486b53f9120ddc939b11106f5394b892e135a85c98d5d9592203d8919828b8e",
+      "note": "Reconcile the explorer update with reader-task guidance while retaining current writing-review capabilities."
+    },
+    "0.4.10": {
+      "content_sha256": "e33340089561909be06295148e09b58b6ba621d31012942c480d50d874fd1991",
+      "note": "Combine the explorer design update with current prioritization and writing-review source; restore valid release history without replacing published receipts."
+    },
+    "0.4.11": {
+      "content_sha256": "ef48ca6f1dcf91667f92697e4424c4bfe821d5f3e0232540d1399d3afbd65bff",
+      "note": "Add portable website visibility exclusions on top of the 0.4.10 source, which includes the explorer update, prioritize-work and the review-writing extract and read-guard scripts."
     }
   },
   "source_conflicts": [
