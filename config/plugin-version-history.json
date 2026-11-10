@@ -40,6 +40,10 @@
     "0.4.5": {
       "content_sha256": "dc27030e2a0427cd5e1a8863e54ffc07a029c7901a2a1ccf603f9c96815ea68e",
       "note": "Add extracted-text file review to review-writing: extract_review_text.py writes line-numbered reader text from HTML, SVG, script-built pages, .xlsx, .docx and .pptx in single-read parts, diffs two extractions and writes a coverage receipt. SKILL.md requires the extract, review, source-fix, re-extract and receipt flow for file reviews. Selftest covers synthetic fixtures and, when EXTRACT_REVIEW_TEXT_PAGES is set, the assessment field card, review console and assessment page."
+    },
+    "0.4.6": {
+      "content_sha256": "634c827518e789826d8077882df5eda70c5db607daf4dc129deee899583efc37",
+      "note": "Add rendered_read_guard.py to review-writing: an optional PreToolUse hook for Claude Code and Codex that denies whole-file reads of large HTML and SVG files and of .xlsx, .docx and .pptx files, and names extract_review_text.py. Bounded reads, line ranges, filtered pipes and redirects pass. file-review.md describes installing it."
     }
   }
 }
