@@ -1051,7 +1051,7 @@
       "inputs": "Candidates with their scoring inputs and the source for each input.",
       "outputs": "A ranked proposal with each item's formula, flagged unsourced inputs and ties, and the decision owner named.",
       "example": "RICE-score these eight roadmap candidates and flag any score that rests on a guess.",
-      "reviewedEntrypointSha256": "24bc7a48d24964b786fa0dc6e55fb8f8d297c18b03d78a39f8271faf66a3de0e",
+      "reviewedEntrypointSha256": "02573c165d2a1d23a1d6f30adfeb3c7598f6849abec8bdcce8d34ed3f6958fc0",
       "expect": "It names what is being ranked and picks one framework with a stated reason, then collects each score input with a source and runs a scoring script. The output is a ranked proposal with formulas, flags and a named decision owner, and the flags are carried forward, not cleared by raising a number.",
       "connectors": {
         "required": [],

@@ -21,6 +21,8 @@ SELFTESTS = [
     'frame-jobs-to-be-done/scripts/jtbd_framing_selftest.py',
 ]
 CHAIN_SKILLS = ['refine-backlog', 'plan-sprint', 'prioritize-work']
+# Skills that still adapt upstream material. A skill rewritten as original work leaves this list.
+ADAPTED_SKILLS = ['refine-backlog', 'plan-sprint', 'frame-jobs-to-be-done', 'build-roadmap']
 
 
 def run(*args, cwd=None):
@@ -64,7 +66,7 @@ class PlanningChainTests(unittest.TestCase):
 
     def test_adapted_skills_record_provenance_and_license(self):
         declared = sorted(p.parent.name for p in SKILLS.glob('*/UPSTREAM.md'))
-        self.assertEqual(declared, sorted(CHAIN_SKILLS + ['frame-jobs-to-be-done', 'build-roadmap']))
+        self.assertEqual(declared, sorted(ADAPTED_SKILLS))
         for name in declared:
             with self.subTest(skill=name):
                 skill = SKILLS / name

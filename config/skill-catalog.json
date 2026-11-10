@@ -178,9 +178,7 @@
     "prioritize-work": {
       "source": "prioritize-work",
       "pack": "core",
-      "modes": {},
-      "license": "Adapted portions: MIT with the Commons Clause (UPSTREAM.md)",
-      "commercial_use": "not-for-sale"
+      "modes": {}
     },
     "design-process": {
       "source": "design-process",

@@ -36,6 +36,10 @@
     "0.4.4": {
       "content_sha256": "8a948072efe657e6dc890052ffab24a2b296eec7a81a4616c98ff576c79cc374",
       "note": "Replace the skill standard; add the writing gate with receipts, the private terms check and not-for-sale marks for the Commons Clause skills; bring Writing Integrity and the brand policy to a writing pass."
+    },
+    "0.4.5": {
+      "content_sha256": "6f89027adaa994562cc13877e438bea1d2ad43421780794ec2dbc2501b5750b9",
+      "note": "Rewrite prioritize-work as original work: new SKILL.md, references, scorer, selftest and fixtures, with its upstream license files and not-for-sale mark removed."
     }
   }
 }
