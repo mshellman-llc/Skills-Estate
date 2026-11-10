@@ -83,4 +83,6 @@ Author skills and supporting resources here. Keep client data, account configura
 
 ## Interactive skills map
 
-Open the [Skills Estate site](https://megan-skills-estate.livelaughcod-8893.chatgpt.site) to browse workflows, sort by name, and copy group links. Ask Codex to refresh the site from GitHub when needed. The [browse pages](browse/README.md) use the same eight groups; GitHub also builds their shareable collections.
+The [portable explorer](artifacts/skills-map/README.md) includes inline skill details, a local show/hide manager, separate Skills Estate and portfolio exports, and a reusable browser component. The [integration guide](artifacts/skills-map/INTEGRATION.md) explains how to add it to a future site without choosing a framework now.
+
+Open the [Skills Estate site](https://megan-skills-estate.livelaughcod-8893.chatgpt.site) to browse workflows, sort by name, and copy group links. Ask Codex to refresh the site from GitHub when needed. The [browse pages](browse/README.md) use the same ten groups; GitHub also builds their shareable collections.

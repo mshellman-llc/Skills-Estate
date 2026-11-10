@@ -6,4 +6,4 @@ if [ -f "$map_dir/skills-estate-map.html" ]; then
 else
   map_file="$map_dir/index.html"
 fi
-exec python3 "$map_dir/viewer.py" --output "$map_file" --open
+exec python3 "$map_dir/viewer.py" --output "$map_file" --settings "$map_dir/visibility.json" --open

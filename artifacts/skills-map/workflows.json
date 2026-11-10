@@ -1,0 +1,414 @@
+[
+  {
+    "id": "interview-to-decision",
+    "audience": "Product and research",
+    "title": "Turn interviews into a product decision",
+    "desc": "For a researcher or product manager with notes but no agreed next move.",
+    "inputs": "Interview notes or transcripts, the research question, and the decision you need to make.",
+    "prompt": "Use these interview notes to identify supported needs, frame the underlying job, and recommend which problems deserve investigation next.",
+    "outcome": "Findings tied to source passages, a job statement, and a prioritized set of problems with the evidence gaps visible.",
+    "steps": [
+      {
+        "skill": "synthesize-discovery",
+        "why": "Extract supported findings and disagreements from the interviews."
+      },
+      {
+        "skill": "frame-jobs-to-be-done",
+        "why": "Use those findings to describe the progress the person is trying to make."
+      },
+      {
+        "skill": "prioritize-work",
+        "why": "Compare the resulting problems using a suitable framework and the evidence available."
+      }
+    ],
+    "note": "If you only have internal opinions, use them as hypotheses. They cannot stand in for interview findings."
+  },
+  {
+    "id": "idea-to-spec",
+    "audience": "Product and research",
+    "title": "Make a feature idea ready to discuss with engineers",
+    "desc": "For a product owner, founder or designer who needs behavior defined before implementation.",
+    "inputs": "The user problem, existing product behavior, constraints, and any research or support evidence.",
+    "prompt": "Turn this feature idea into a specification with user flows, edge cases and testable acceptance criteria. Identify the decisions we still need to make.",
+    "outcome": "A feature specification that explains the user problem, intended behavior, constraints and acceptance criteria.",
+    "steps": [
+      {
+        "skill": "develop-product",
+        "why": "Check the current product evidence and identify the release decision the feature serves."
+      },
+      {
+        "skill": "write-feature-spec",
+        "why": "Translate that context into flows, states, rules and acceptance criteria."
+      },
+      {
+        "skill": "build-roadmap",
+        "why": "If sequencing is part of the decision, show the feature alongside dependencies and other planned work."
+      }
+    ],
+    "note": "A small, well-understood change can start at Write feature spec. A roadmap is optional when you only need one specification."
+  },
+  {
+    "id": "navigation-repair",
+    "audience": "Product and research",
+    "title": "Fix a website people cannot find their way around",
+    "desc": "For a designer, founder or content owner reviewing a confusing site.",
+    "inputs": "A URL, sitemap or page inventory, the main visitor tasks, and any search or usability observations.",
+    "prompt": "Review this site against the tasks visitors need to complete. Propose clearer navigation and labels, then prepare a usability study to test the changes.",
+    "outcome": "A proposed site structure, the reasons behind its labels, and research tasks that can test whether people find the right content.",
+    "steps": [
+      {
+        "skill": "design-information-architecture",
+        "why": "Compare the content structure with visitor tasks and propose navigation and labels."
+      },
+      {
+        "skill": "plan-usability-study",
+        "why": "Turn the risky navigation assumptions into neutral participant tasks."
+      },
+      {
+        "skill": "audit-accessibility",
+        "why": "Check the specified interface for barriers that could prevent people using the navigation."
+      }
+    ],
+    "note": "You can begin with a page inventory. Usability findings require actual participant observations; an agent walkthrough is not a substitute."
+  },
+  {
+    "id": "process-handoffs",
+    "audience": "Operations and delivery",
+    "title": "Find the gaps in an everyday business process",
+    "desc": "For an operations lead improving approvals, onboarding or another recurring handoff.",
+    "inputs": "An existing SOP, staff notes, forms, system exports or a description of what happens today.",
+    "prompt": "Map how this process currently works, including triggers, owners, systems and exceptions. Show the handoffs that need clarification and propose improvements.",
+    "outcome": "A sourced current process, unresolved ownership questions, and proposed changes with the assumptions identified.",
+    "steps": [
+      {
+        "skill": "design-process",
+        "why": "Document the actual steps and exceptions, or use optimization mode to investigate improvement opportunities."
+      },
+      {
+        "skill": "map-journey",
+        "why": "Where the experience matters, connect those steps to the people involved and the systems supporting them."
+      },
+      {
+        "skill": "prioritize-work",
+        "why": "Compare the proposed fixes using agreed criteria instead of treating every issue as equally urgent."
+      }
+    ],
+    "note": "Use only the first skill for an SOP. For a sales process spread across CRM exports and discovery files, use Map sales process instead."
+  },
+  {
+    "id": "sprint-plan",
+    "audience": "Operations and delivery",
+    "title": "Choose a sprint the team can actually commit to",
+    "desc": "For a team lead or product owner with more backlog than capacity.",
+    "inputs": "Backlog items, the definition of ready, team availability, estimates and dependencies.",
+    "prompt": "Review this backlog for readiness, then propose a sprint goal with commit and stretch work that fits our available capacity.",
+    "outcome": "Readiness gaps, a sprint goal, a capacity-based commitment and explicit stretch work.",
+    "steps": [
+      {
+        "skill": "refine-backlog",
+        "why": "Identify unclear, oversized or blocked items before selecting the sprint."
+      },
+      {
+        "skill": "plan-sprint",
+        "why": "Size the commitment against each person’s available capacity and the sprint goal."
+      },
+      {
+        "skill": "track-delivery",
+        "why": "During delivery, record status, risks and decisions against the accepted plan."
+      }
+    ],
+    "note": "If estimates or capacity are missing, establish them before presenting a firm commitment. Status reporting is an ongoing follow-up, not a prerequisite to planning."
+  },
+  {
+    "id": "signed-project",
+    "audience": "Operations and delivery",
+    "title": "Start and validate a signed client project",
+    "desc": "For a project manager receiving work from a sales or account team.",
+    "inputs": "The signed scope, confirmed commercials, delivery owners, constraints and the handoff material available.",
+    "prompt": "Check the handoff for this signed engagement, prepare kickoff and the first delivery plan, and identify what we will need for acceptance.",
+    "outcome": "An accepted handoff, kickoff and delivery records, and an approach to testing the agreed requirements.",
+    "steps": [
+      {
+        "skill": "prepare-delivery-handoff",
+        "why": "Resolve the receiving owner and assemble the signed scope, decisions and delivery constraints."
+      },
+      {
+        "skill": "start-delivery",
+        "why": "Use the accepted handoff to prepare kickoff, project records and initial planning."
+      },
+      {
+        "skill": "validate-delivery",
+        "why": "As work becomes testable, trace tests and UAT evidence back to the requirements."
+      }
+    ],
+    "note": "This is a lifecycle path, not a request to perform every stage immediately. Missing signed scope or an unaccepted handoff needs resolution before kickoff is treated as ready."
+  },
+  {
+    "id": "salesforce-code",
+    "audience": "Salesforce development",
+    "title": "Develop or review a Salesforce feature with Claude",
+    "desc": "For a developer working on Apex, triggers or LWC in an existing repository.",
+    "inputs": "The repository or relevant files, the requested behavior, and the project instructions and tests available.",
+    "prompt": "Review this Salesforce change against the project’s conventions. Keep business logic reusable across entry points, explain design issues and prepare the change for the configured delivery checks.",
+    "outcome": "A code change or specific review findings, architecture checks, and the applicable delivery evidence.",
+    "steps": [
+      {
+        "skill": "apply-salesforce-patterns",
+        "why": "Read existing conventions, then review or implement the service, query, transaction and controller responsibilities."
+      },
+      {
+        "skill": "deliver-salesforce-change",
+        "why": "When the change is ready for delivery, use the project’s worktree and verification workflow."
+      }
+    ],
+    "note": "No specially named architecture document is required. Configure Salesforce project is a separate option when you want to install or repair repository standards and Claude hooks; do not run it just to review code."
+  },
+  {
+    "id": "salesforce-hooks",
+    "audience": "Salesforce development",
+    "title": "Set up or repair a Salesforce repository’s Claude hooks",
+    "desc": "For a maintainer who wants consistent checks in the development workflow.",
+    "inputs": "The Salesforce repository, existing CLAUDE.md or AGENTS.md, hook configuration, and the standards the team has adopted.",
+    "prompt": "Audit this Salesforce repository’s delivery standards and Claude hooks. Preserve working configuration, explain gaps, and repair the agreed checks.",
+    "outcome": "A standards audit or repaired repository setup, with the changed hooks and checks verified.",
+    "steps": [
+      {
+        "skill": "configure-salesforce-project",
+        "why": "Inspect the current setup and apply the selected install, audit or repair operation."
+      },
+      {
+        "skill": "apply-salesforce-patterns",
+        "why": "Use a real Apex or LWC change to inspect how the agreed architecture applies to code."
+      }
+    ],
+    "note": "Choose audit when adoption is undecided. A repository configuration change does not authorize a Salesforce organization deployment."
+  },
+  {
+    "id": "salesforce-release",
+    "audience": "Salesforce development",
+    "title": "Run an existing Salesforce release pipeline",
+    "desc": "For a release owner operating a repository that already uses sf-deploy-engine.",
+    "inputs": "The repository, pipeline.yml, target environment, configured authentication and the requested validation or deployment operation.",
+    "prompt": "Check the configured Salesforce pipeline and target environment, then run the authorized validation and report the evidence and any blockers.",
+    "outcome": "The requested pipeline result, target identity, validation or deployment evidence, and a clear failure report if it cannot proceed.",
+    "steps": [
+      {
+        "skill": "operate-salesforce-pipeline",
+        "why": "Use the existing pipeline’s environment checks and selected validation or deployment path."
+      }
+    ],
+    "note": "This route requires an existing pipeline. For a team using Salesforce DevOps Center instead, use Manage Salesforce DevOps and its promotion mode; the two tools are alternative delivery paths."
+  },
+  {
+    "id": "sales-discovery",
+    "audience": "Sales and consulting",
+    "title": "Prepare a useful next conversation with a prospect",
+    "desc": "For a seller or consultant who needs a focused conversation rather than a generic pitch.",
+    "inputs": "The account context, prior discovery notes, current offering descriptions and the decision the next call should advance.",
+    "prompt": "Use this account context and discovery evidence to prepare the next call. Identify the open questions and assess which offering fits, with evidence for the recommendation.",
+    "outcome": "A focused call plan, supported fit assessment and the questions that still need an answer.",
+    "steps": [
+      {
+        "skill": "prepare-sales-pursuit",
+        "why": "Use the account context to prepare the pursuit record or one upcoming call."
+      },
+      {
+        "skill": "synthesize-discovery",
+        "why": "After the conversation, turn the notes into supported findings and unresolved questions."
+      },
+      {
+        "skill": "assess-offering-fit",
+        "why": "Compare the findings with the actual offering criteria and explain the fit."
+      }
+    ],
+    "note": "Offering fit requires supplied offering definitions. Do not assume a stranger uses Megan’s or a former employer’s service catalog."
+  },
+  {
+    "id": "scope-agreement",
+    "audience": "Sales and consulting",
+    "title": "Compare project options before writing an agreement",
+    "desc": "For a consultant or account lead choosing what to include in a proposal.",
+    "inputs": "Candidate scope, assumptions, effort and staffing information, commercial inputs and the relevant contract profile.",
+    "prompt": "Develop and compare these scope options. Explain inclusions, exclusions, effort and tradeoffs, then draft the selected statement of work from confirmed terms.",
+    "outcome": "Comparable scope options and, once the choice and terms are confirmed, a statement-of-work draft.",
+    "steps": [
+      {
+        "skill": "scope-project",
+        "why": "Build the scope, effort and staffing assumptions behind the options."
+      },
+      {
+        "skill": "compare-scope-options",
+        "why": "Make the options and their tradeoffs comparable in the requested format."
+      },
+      {
+        "skill": "write-statement-of-work",
+        "why": "Use the confirmed selection, commercials and contract profile to draft the agreement."
+      }
+    ],
+    "note": "A statement of work needs confirmed terms. Use Review deal economics if provider margin and approval conditions are also part of the decision."
+  },
+  {
+    "id": "career-application",
+    "audience": "Career and applications",
+    "title": "Prepare an application for a specific role",
+    "desc": "For a job seeker turning a verified career record into a focused application.",
+    "inputs": "The job description, career evidence, current resume, preferred career direction and any writing profile you want applied.",
+    "prompt": "Assess this role against my goals, then prepare the application. Tailor my resume and supporting materials using only the experience and results my sources support.",
+    "outcome": "A role assessment, role-specific application record, tailored resume and supporting draft materials.",
+    "steps": [
+      {
+        "skill": "assess-career-options",
+        "why": "Compare the role with the candidate’s chosen progression path and decision gates."
+      },
+      {
+        "skill": "prepare-job-application",
+        "why": "Establish the role interpretation and application context from the supplied career record."
+      },
+      {
+        "skill": "tailor-resume",
+        "why": "Apply the role context to resume wording and supported figures."
+      },
+      {
+        "skill": "draft-application-materials",
+        "why": "Prepare the requested cover letter, outreach or other supporting copy."
+      }
+    ],
+    "note": "Resume tailoring and application materials are modes included in Prepare job application. Other people supply their own career evidence; these skills do not need Megan’s private records. Submission remains a separate authorized action."
+  },
+  {
+    "id": "portfolio-story",
+    "audience": "Career and applications",
+    "title": "Turn a project into a portfolio case study",
+    "desc": "For a designer, product professional or consultant explaining their own work.",
+    "inputs": "The project evidence, personal contribution, decisions, approved outcomes and publication or confidentiality constraints.",
+    "prompt": "Turn this project into a case study that explains the problem, my contribution, the decisions and the supported outcome. Identify anything that needs permission before publication.",
+    "outcome": "A case-study draft and approved public translation, with claims checked against the project evidence.",
+    "steps": [
+      {
+        "skill": "write-portfolio-case-study",
+        "why": "Separate the person’s contribution and supported results from the wider project history."
+      },
+      {
+        "skill": "review-writing",
+        "why": "Improve clarity and the selected voice while preserving the supported claims."
+      }
+    ],
+    "note": "Use Develop independent product first only if you want to create a company-neutral product or offer from historical work. It is not a prerequisite to writing a case study."
+  },
+  {
+    "id": "writing-review",
+    "audience": "Writing and presentation",
+    "title": "Improve a draft without losing its meaning",
+    "desc": "For anyone editing a report, article, email or internal document.",
+    "inputs": "The draft, intended reader, purpose, required facts and an optional confirmed author-style profile.",
+    "prompt": "Review this draft for clarity and repetition. Preserve its meaning, qualifications and voice, and explain any change that needs my judgment.",
+    "outcome": "A revised draft, with material meaning changes or unresolved choices made visible.",
+    "steps": [
+      {
+        "skill": "review-writing",
+        "why": "Inspect the sentences and argument, repair the writing, and preserve facts and voice."
+      }
+    ],
+    "note": "A private writing profile is optional. Use Manage writing profile only when you want to create or revise an explicitly chosen person’s profile."
+  },
+  {
+    "id": "decision-deck",
+    "audience": "Writing and presentation",
+    "title": "Build a presentation that supports a decision",
+    "desc": "For a team lead, founder or consultant briefing an audience.",
+    "inputs": "The audience, the decision, source material, supported numbers and any confirmed brand or template.",
+    "prompt": "Build a briefing deck for this audience and decision. Use the supplied evidence to explain the options and recommendation, with visuals that clarify the argument.",
+    "outcome": "A presentation whose structure, claims and visuals support the audience’s decision.",
+    "steps": [
+      {
+        "skill": "build-deck",
+        "why": "Choose the argument and slide structure from the audience decision and available evidence."
+      },
+      {
+        "skill": "review-deliverable",
+        "why": "Check the finished deck against the sources, requested task, writing and rendered format."
+      }
+    ],
+    "note": "A confirmed brand is an input when branding matters. The workflow can use its neutral profile when no brand is supplied; it does not need a former employer’s identity."
+  },
+  {
+    "id": "sticker-project",
+    "audience": "Personal and creative",
+    "title": "Take a sticker idea through design and sheet layout",
+    "desc": "For a maker developing typography-led stickers for printing.",
+    "inputs": "The message, intended size, visual references and production constraints; later, the approved PNG designs.",
+    "prompt": "Explore distinct sticker compositions for this message and size. Once I choose a design and supply the approved PNGs, lay them out as Cricut Print Then Cut sheets.",
+    "outcome": "Design directions and selected artwork, followed by print-sheet files made from the approved designs.",
+    "steps": [
+      {
+        "skill": "design-sticker",
+        "why": "Develop and critique the composition, type and production fit before settling on artwork."
+      },
+      {
+        "skill": "lay-out-sticker-sheets",
+        "why": "Arrange the supplied PNGs using the available project generator and print constraints."
+      }
+    ],
+    "note": "Sheet layout needs actual approved PNGs and the supported generator. It does not create a physical test print or confirm that a cutter accepted the files."
+  },
+  {
+    "id": "game-planner",
+    "audience": "Personal and creative",
+    "title": "Answer a game question from your own planner",
+    "desc": "For a Fortune’s Weave player checking a route, roster or planning decision.",
+    "inputs": "The current route, roster and planner or other project sources, plus the question you want answered.",
+    "prompt": "Use my current Fortune’s Weave planner to answer this question. Separate what the game sources establish from any planning recommendation, and propose a planner update if needed.",
+    "outcome": "A source-based answer or a scoped planner update using the player’s current project.",
+    "steps": [
+      {
+        "skill": "guide-fortunes-weave",
+        "why": "Resolve the current game and planner sources before answering or changing the requested record."
+      }
+    ],
+    "note": "Another player supplies their own route and planner context. If those sources are absent, establish the project context instead of using Megan’s history."
+  },
+  {
+    "id": "resume-project",
+    "audience": "Skills and knowledge",
+    "title": "Resume a project after a break",
+    "desc": "For someone returning to an ongoing project or handing it to another assistant.",
+    "inputs": "The project folder or configured knowledge system, current decisions, and any previous handoff.",
+    "prompt": "Find the current project state and controlling sources. Explain what is complete, what is open and the next useful action, then prepare a handoff another session can use.",
+    "outcome": "A current context summary and a handoff tied to the actual project sources.",
+    "steps": [
+      {
+        "skill": "load-project-context",
+        "why": "Read the available subject authorities and distinguish current facts from historical records."
+      },
+      {
+        "skill": "prepare-session-handoff",
+        "why": "Capture the state, source references and exact remaining work for the next session."
+      }
+    ],
+    "note": "Connected retrieval needs the person’s configured knowledge system. Supplied project files can provide context where supported; the skill does not grant access to someone else’s private Hub."
+  },
+  {
+    "id": "reusable-skill",
+    "audience": "Skills and knowledge",
+    "title": "Package a repeated workflow as a reusable skill",
+    "desc": "For someone maintaining their own skills collection.",
+    "inputs": "The repeated task, representative inputs and outputs, failure cases, and the target host or existing estate checkout.",
+    "prompt": "Turn this repeated workflow into a skill with clear triggers, required inputs, examples and failure behavior. Verify its package for the target host and explain its dependencies.",
+    "outcome": "A source skill and checked package that preserve the actual workflow and required resources.",
+    "steps": [
+      {
+        "skill": "author-estate-skill",
+        "why": "Define and implement the workflow using the estate’s authoring mode."
+      },
+      {
+        "skill": "review-deliverable",
+        "why": "Compare the result with representative inputs, expected outputs and the requested behavior."
+      },
+      {
+        "skill": "release-skill-package",
+        "why": "Prepare and inspect the target-host package through the maintenance skill’s release mode."
+      }
+    ],
+    "note": "Authoring and release are modes of Maintain skills estate. Estate maintenance requires the selected checkout; packaging is separate from installation or an account upload."
+  }
+]

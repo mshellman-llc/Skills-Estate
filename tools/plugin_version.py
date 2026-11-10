@@ -15,7 +15,7 @@ def fingerprint(root):
             if not path.is_file() or any(p in {'__pycache__', '.local', 'node_modules'} for p in path.relative_to(root).parts):
                 continue
             relative = path.relative_to(root).as_posix()
-            if relative == HISTORY or path.name in {'.DS_Store'} or path.name.startswith('.smbdelete'):
+            if relative in {HISTORY, 'config/skills-publication.json'} or path.name in {'.DS_Store'} or path.name.startswith('.smbdelete'):
                 continue
             if path.is_symlink():
                 raise ValueError('Release input cannot be a symlink: ' + relative)

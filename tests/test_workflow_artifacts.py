@@ -10,6 +10,7 @@ EXPECTED = {
     'skills-estate-render-evidence': (7, 'failure()'),
     'skill-collections': (14, "github.ref == 'refs/heads/main'"),
     'skills-estate-map': (30, "github.ref == 'refs/heads/main'"),
+    'skills-estate-portable': (30, "github.ref == 'refs/heads/main'"),
 }
 
 
