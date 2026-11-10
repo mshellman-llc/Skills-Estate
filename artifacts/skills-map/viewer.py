@@ -157,6 +157,7 @@ class MapHandler(BaseHTTPRequestHandler):
             size=int(self.headers.get('Content-Length','0'))
             if not 0<size<=1024*1024:raise ValueError('Choices must be a bounded JSON request')
             payload=json.loads(self.rfile.read(size))
+            if not isinstance(payload,dict):raise ValueError('Publication requests must be objects')
         except (ValueError,TypeError):self.respond(400,{'error':'Invalid publication request'});return
         if not self.server.lock.acquire(blocking=False):self.respond(409,{'error':'Another operation is running'});return
         try:

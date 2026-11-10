@@ -25,3 +25,9 @@
 
 /* The expanded row already supplies its name and summary. */
 .inline-detail #detail-family,.inline-detail #detail-description{display:none}.inline-detail #detail-title{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.inline-detail .dialog-head{padding:8px 24px 0}.inline-detail .detail-tabs{margin:0;padding-right:84px}.inline-detail .close{top:8px}.inline-detail .detail-tabs button{min-height:44px}.inline-detail .dialog-body{padding-top:20px}
+
+/* Keep Collapse beside the scrollable tabs, including narrow embeds. */
+.inline-detail .dialog-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px}
+.inline-detail .detail-tabs{grid-column:1;grid-row:1;min-width:0;padding-right:0;overflow-x:auto;flex-wrap:nowrap}
+.inline-detail .detail-tabs button{white-space:nowrap}
+.inline-detail .close{position:static;grid-column:2;grid-row:1;align-self:center;margin-bottom:4px}

@@ -51,7 +51,7 @@ const byId=Object.fromEntries(DATA.skills.map(s=>[s.id,s]));
 let selectedFamily=-1, current=null, currentTrigger=null, shown=[], toastTimer;
 const date=new Date(DATA.generatedAt).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
 const roleCounts=Object.fromEntries(['task','mode','support'].map(k=>[k,DATA.skills.filter(s=>s.catalogRole?.kind===k).length]));
-$('#total-count').textContent=roleCounts.task+' tasks';
+$('#total-count').textContent=roleCounts.task+(roleCounts.task===1?' task':' tasks');
 $('#scope-summary').textContent=DATA.skills.length+' source workflows · '+roleCounts.mode+' modes · '+roleCounts.support+' supporting modules';
 $('#snapshot-date').textContent='Snapshot · '+date;
 $('#footer-scope').textContent='Snapshot generated on '+date+' from Skills Estate instructions. '+(DATA.counts['local-revision']?DATA.counts['local-revision']+' canonical packages have local revisions. ':'')+'Source status describes files, not installation or runtime availability.';

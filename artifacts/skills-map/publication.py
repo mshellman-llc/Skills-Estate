@@ -26,16 +26,17 @@ def revision(value):
 
 
 def validate(settings):
-    if settings.get('format') != 1 or set(settings.get('targets', {})) != set(TARGETS):
+    if not isinstance(settings, dict) or settings.get('format') != 1 or not isinstance(settings.get('targets'), dict) or set(settings['targets']) != set(TARGETS):
         raise ValueError('Publication settings need estate and portfolio targets')
     for target in TARGETS:
-        if set(settings['targets'][target]) != set(KINDS):
+        if not isinstance(settings['targets'][target], dict) or set(settings['targets'][target]) != set(KINDS):
             raise ValueError('Each target needs skills, workflows and plugins')
         for kind in KINDS:
+            if not isinstance(settings['targets'][target][kind], dict):raise ValueError('Content choices must be keyed by ID')
             for key, item in settings['targets'][target][kind].items():
                 if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', key):
                     raise ValueError('Invalid publication content ID')
-                if set(item) != {'visible', 'download', 'featured', 'order'}:
+                if not isinstance(item, dict) or set(item) != {'visible', 'download', 'featured', 'order'}:
                     raise ValueError('Invalid publication controls for ' + key)
                 if any(type(item[x]) is not bool for x in ('visible', 'download', 'featured')):
                     raise ValueError('Publication switches must be booleans')
@@ -179,7 +180,7 @@ def export(data, settings, target, output, packages=None):
     (output / 'catalog.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
     (output / 'workflows.json').write_text(json.dumps(payload['workflows'], ensure_ascii=False, indent=2) + '\n')
     (output / 'skills-estate.js').write_text(component_source())
-    css = ':host{display:block;min-width:0}\n'+(HERE / 'explorer.css').read_text().replace(':root', ':host').replace('html{', ':host{').replace('body{', '.estate-root{').replace('body.printing-detail','.estate-root.printing-detail')
+    css = ':host{display:block;min-width:0}\n'+re.sub(r'(?<![\w.-])body(?=[.{])', '.estate-root', (HERE / 'explorer.css').read_text().replace(':root', ':host').replace('html{', ':host{'))
     (output / 'explorer.css').write_text(css)
     (output / 'integration-example.html').write_text('''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Skills Estate integration example</title><style>body{font:16px system-ui;margin:0;background:white;color:#242521}.host-heading{padding:24px;margin:0}skills-estate-explorer{display:block;--estate-accent:#a3401d}</style><h1 class="host-heading">Skills Estate integration example</h1><p class="host-heading">This host page imports the reusable component. Its styles remain scoped to the explorer.</p><script type="module" src="./skills-estate.js"></script><skills-estate-explorer catalog-src="./catalog.json"></skills-estate-explorer></html>''')
     shutil.copytree(HERE / 'assets', output / 'assets', dirs_exist_ok=True)

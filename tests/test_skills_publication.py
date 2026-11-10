@@ -1,17 +1,26 @@
 """Exercise publication selection, durable owner choices and portable boundaries."""
 import copy
+import hashlib
+import http.client
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sys
+import subprocess
 import tempfile
+import threading
 import unittest
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 MAP = ROOT / 'artifacts/skills-map'
 sys.path.insert(0, str(MAP))
 import publication
 from owner import OwnerStore, Conflict
+sys.path.insert(0, str(ROOT / 'tools'))
+from test_capabilities import integration
+import viewer
 
 
 class PublicationTests(unittest.TestCase):
@@ -93,10 +102,65 @@ class PublicationTests(unittest.TestCase):
         self.assertIn('export function mountSkillsEstate', (output / 'skills-estate.js').read_text())
         self.assertIn('skills-estate-explorer', (output / 'skills-estate.js').read_text())
         self.assertIn('assets/inter-license.txt', manifest['files'])
+        css = (output / 'explorer.css').read_text()
+        self.assertIn('.inline-detail .dialog-body{', css)
+        self.assertNotIn('.dialog-.estate-root', css)
+        self.assertIn('integration-example.html', manifest['files'])
         self.assertIn('index.html', manifest['files'])
         self.assertFalse(manifest['taskDownloadsIncluded'])
         self.assertNotIn('__ESTATE_', (output / 'index.html').read_text())
         with self.assertRaises(ValueError):publication.export(data, settings, 'portfolio', output)
+
+    def test_download_archive_requires_exact_commit_and_hash(self):
+        data = json.loads((MAP / 'index.json').read_text());settings = publication.load()
+        packages = self.root / 'packages';packages.mkdir()
+        manifest = {'commit': 'b'*40, 'packages': {}}
+        (packages / 'manifest.json').write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, 'match the catalog'):
+            publication.export(data, settings, 'estate', self.root / 'bad-commit', packages)
+        manifest['commit'] = data['baseCommit']
+        for name in {n for s in data['skills'] for n in s['downloadPackages']}:
+            path = packages / (name + '.zip')
+            with zipfile.ZipFile(path, 'w') as z:z.writestr('SKILL.md', '# Fixture')
+            manifest['packages'][name] = {'file': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+        (packages / 'manifest.json').write_text(json.dumps(manifest))
+        result, _ = publication.export(data, settings, 'estate', self.root / 'valid', packages)
+        self.assertTrue(result['taskDownloadsIncluded'])
+        first = next(iter(manifest['packages']));(packages / (first + '.zip')).write_bytes(b'changed')
+        with self.assertRaisesRegex(ValueError, 'hash mismatch'):
+            publication.export(data, settings, 'estate', self.root / 'bad-hash', packages)
+
+    @integration('loopback')
+    def test_owner_http_boundaries_save_conflict_and_filtered_preview(self):
+        output = self.root / 'index.html';output.write_text((MAP / 'index.html').read_text())
+        output.with_suffix('.json').write_text((MAP / 'index.json').read_text())
+        settings = publication.load();path = self.root / 'choices.json';path.write_text(json.dumps(settings))
+        server = viewer.MapServer(output, settings=path)
+        server.owner.state = self.root / 'state';server.owner.history = server.owner.state / 'history';server.owner.exports = server.owner.state / 'exports'
+        thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()
+        self.addCleanup(thread.join);self.addCleanup(server.server_close);self.addCleanup(server.shutdown)
+        headers = {'Origin': server.origin, 'X-Map-CSRF': server.token}
+        def request(method, route, body=None, extra=None):
+            connection = http.client.HTTPConnection('127.0.0.1', server.server_port)
+            connection.request(method, route, body=None if body is None else json.dumps(body), headers=extra if extra is not None else headers)
+            response = connection.getresponse();content = response.read();status = response.status;connection.close()
+            return status, content
+        self.assertEqual(request('GET', '/api/publication', extra={})[0], 403)
+        self.assertEqual(request('GET', '/manage', extra={'Host':'other.example'})[0], 403)
+        self.assertEqual(request('POST', '/api/publication/save', {}, {**headers,'Origin':'https://other.example'})[0], 403)
+        self.assertEqual(request('POST', '/api/publication/save', [])[0], 400)
+        status, content = request('GET', '/api/publication');self.assertEqual(status, 200)
+        initial = json.loads(content);settings['targets']['estate']['skills']['assess-offering-fit']['visible'] = False
+        body = {'settings':settings,'expectedRevision':initial['revision']}
+        self.assertEqual(request('POST', '/api/publication/save', body)[0], 200)
+        self.assertEqual(request('POST', '/api/publication/save', body)[0], 409)
+        status, content = request('POST', '/api/publication/preview', {'settings': settings, 'target':'estate'})
+        self.assertEqual(status, 200);preview = json.loads(content)
+        self.assertEqual(preview['counts']['skills'], 90);self.assertTrue(preview['blockedWorkflows'])
+        status, content = request('GET', preview['preview'].replace('index.html','catalog.json'))
+        self.assertEqual(status, 200)
+        self.assertNotIn('assess-offering-fit', {s['id'] for s in json.loads(content)['skills']})
+        self.assertEqual(request('GET', preview['preview'].replace('index.html','manage.html'))[0],404)
 
     def test_export_path_cannot_escape_owner_directory(self):
         store = OwnerStore(self.root / 'map.html', self.root / 'choices.json');store.exports = self.root / 'exports';store.exports.mkdir()
@@ -118,6 +182,19 @@ class PublicationTests(unittest.TestCase):
             for step in route['steps']:
                 self.assertIn(step['skill'], ids)
                 self.assertGreater(len(step['why']), 45)
+
+    @integration('browser')
+    def test_owner_and_embedded_component_in_browser(self):
+        output = self.root / 'index.html';output.write_text((MAP / 'index.html').read_text())
+        output.with_suffix('.json').write_text((MAP / 'index.json').read_text())
+        choices = self.root / 'visibility.json';choices.write_text(json.dumps(publication.load()))
+        server = viewer.MapServer(output, settings=choices)
+        server.owner.state = self.root / 'state';server.owner.history = server.owner.state / 'history';server.owner.exports = server.owner.state / 'exports'
+        thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()
+        try:
+            result = subprocess.run([os.environ.get('ESTATE_NODE','node'),str(MAP / 'verify_portable.cjs'),server.origin],cwd=ROOT,capture_output=True,text=True,timeout=120)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+        finally:server.shutdown();server.server_close();thread.join()
 
 
 if __name__ == '__main__':unittest.main()
