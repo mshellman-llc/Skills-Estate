@@ -80,6 +80,10 @@
     "0.4.16": {
       "content_sha256": "5423b9deb709feaa44f465343aafe189deef0324054174addcd0d4e87303f312",
       "note": "Require concrete reference comparison and explanatory-value judgments in visual and interaction reviews; distinguish working discussion from rehearsal and preserve reader context."
+    },
+    "0.4.17": {
+      "content_sha256": "4506ebf9490c9fb9ecf9b2fe3d2ea00282b0bdde607380dd14b765a670f5d172",
+      "note": "Preserve full artifact scope and require whole-deliverable depth/usefulness comparison against applicable supplied reference methods; reject polished narrow substitutes."
     }
   },
   "source_conflicts": [
