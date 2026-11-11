@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "task_id": "ms-20260926-22",
+  "career_selftest": {
+    "chunk_id": "429a7a",
+    "wall_time_seconds": 0.412207375,
+    "exit_code": 0,
+    "original_token_count": 16,
+    "output": "PASS: career-application skill and live sources are consistent\n"
+  },
+  "sunday_readiness": {
+    "chunk_id": "e2a195",
+    "wall_time_seconds": 0.950216917,
+    "exit_code": 0,
+    "original_token_count": 50,
+    "output": "PASS: source and content hashes, readable draft, audience-specific coverage, and separate review attestations checked\nContent truth, editorial quality, and visual layout still require direct review.\n"
+  },
+  "standard_validator": {
+    "chunk_id": "40dcf4",
+    "wall_time_seconds": 0.000007917,
+    "exit_code": 1,
+    "original_token_count": 53,
+    "output": "Traceback (most recent call last):\n  File \"/Users/meganshellman/.codex/skills/.system/skill-creator/scripts/quick_validate.py\", line 10, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+  },
+  "execution_truth_file_receipt": {
+    "chunk_id": "59eb0c",
+    "wall_time_seconds": 0.129276833,
+    "exit_code": 0,
+    "original_token_count": 94,
+    "output": "{\n  \"kind\": \"file\",\n  \"state\": \"saved-locally\",\n  \"location\": \"/Volumes/BeastMode/90-inbox/unsorted/codex/skills/writing-integrity/SKILL.md\",\n  \"bytes\": 14853,\n  \"sha256\": \"953ec708262903f884cabb0604fdd2ec4f5eb8c3f33d188bafd34c592caecd64\",\n  \"verification\": \"Byte equality with the active entrypoint, preserved prior file, parsed YAML and resolved references\",\n  \"cloudChanged\": \"not-proven\"\n}\n"
+  },
+  "writing_check": {
+    "chunk_id": "8f8d69",
+    "wall_time_seconds": 0.062422625,
+    "exit_code": 0,
+    "original_token_count": 36,
+    "output": "/Volumes/BeastMode/40-skills/work/governance/2026-10-06/Skill_Use_Receipt.md: ok, 767 words, score 0, 0.0 per 500 words, sentence-length CV 0.44\n"
+  }
+}

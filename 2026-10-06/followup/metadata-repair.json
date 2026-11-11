@@ -1,0 +1,10 @@
+{
+  "task_id": "ms-20260926-22",
+  "before_activity_id": "products",
+  "after_activity_id": "skill-estate",
+  "before_sha256": "8d45185838cac54878d2ccae9a5139e29235fb1c50ba2d7c8252de684206aa62",
+  "after_sha256": "ca9cdc2cf5f11f3807533b95116a71f8eb225b08ac306552637a29ad93bcd7f6",
+  "helper": "brain_tasks.update_fields",
+  "status_preserved": "complete",
+  "other_fields_and_history_preserved": true
+}

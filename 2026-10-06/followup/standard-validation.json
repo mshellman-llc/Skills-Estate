@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-10-06T14:00:51-04:00",
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "interpreter": "/Volumes/BeastMode/40-skills/work/.validation-venv/bin/python",
+  "pyyaml_version": "6.0.3",
+  "validator": "/Users/meganshellman/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+  "validator_sha256": "ee6dba90f44d37171c5a6edb8095979c54919ff6822c1a907afca2e78c48738c",
+  "checks": [
+    {
+      "skill": "career-application",
+      "command": [
+        "/Volumes/BeastMode/40-skills/work/.validation-venv/bin/python",
+        "/Users/meganshellman/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/Users/meganshellman/.codex/skills/career-application"
+      ],
+      "exit_code": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": "",
+      "entrypoint": "/Users/meganshellman/.codex/skills/career-application/SKILL.md",
+      "resolved_entrypoint": "/Volumes/BeastMode/AIMemory/JobHunt/06_System/career-application/SKILL.md",
+      "sha256": "60bbbef25818739fa18705825c5112de765d756eaaf75dfb0e357bdb2d723553"
+    },
+    {
+      "skill": "brain-work-item",
+      "command": [
+        "/Volumes/BeastMode/40-skills/work/.validation-venv/bin/python",
+        "/Users/meganshellman/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/Users/meganshellman/.codex/skills/brain-work-item"
+      ],
+      "exit_code": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": "",
+      "entrypoint": "/Users/meganshellman/.codex/skills/brain-work-item/SKILL.md",
+      "resolved_entrypoint": "/Volumes/BeastMode/40-skills/work/brain-work-item/SKILL.md",
+      "sha256": "d0d9cddb4ef2d17ac20544512b2fcc44d9bc4c5f55cd169361ff65367120636a"
+    },
+    {
+      "skill": "execution-truth",
+      "command": [
+        "/Volumes/BeastMode/40-skills/work/.validation-venv/bin/python",
+        "/Users/meganshellman/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/Users/meganshellman/.agents/skills/execution-truth"
+      ],
+      "exit_code": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": "",
+      "entrypoint": "/Users/meganshellman/.agents/skills/execution-truth/SKILL.md",
+      "resolved_entrypoint": "/Users/meganshellman/.agents/skills/execution-truth/SKILL.md",
+      "sha256": "1c52084c56afdd962b8c891c8ea4411789ac7c268ffe8fbff33bc97b648fd8cb"
+    },
+    {
+      "skill": "writing-integrity",
+      "command": [
+        "/Volumes/BeastMode/40-skills/work/.validation-venv/bin/python",
+        "/Users/meganshellman/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/Users/meganshellman/.agents/skills/writing-integrity"
+      ],
+      "exit_code": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": "",
+      "entrypoint": "/Users/meganshellman/.agents/skills/writing-integrity/SKILL.md",
+      "resolved_entrypoint": "/Users/meganshellman/.agents/skills/writing-integrity/SKILL.md",
+      "sha256": "953ec708262903f884cabb0604fdd2ec4f5eb8c3f33d188bafd34c592caecd64"
+    },
+    {
+      "skill": "independent-product",
+      "command": [
+        "/Volumes/BeastMode/40-skills/work/.validation-venv/bin/python",
+        "/Users/meganshellman/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/Users/meganshellman/.codex/skills/independent-product"
+      ],
+      "exit_code": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": "",
+      "entrypoint": "/Users/meganshellman/.codex/skills/independent-product/SKILL.md",
+      "resolved_entrypoint": "/Volumes/BeastMode/40-skills/work/independent-product/SKILL.md",
+      "sha256": "3164141e85e7ea6bbbc6e447501327201c070946f42c5273f3b8fda422682b69"
+    }
+  ],
+  "all_passed": true
+}

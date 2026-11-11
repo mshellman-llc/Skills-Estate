@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "task_id": "ms-20260926-22",
+  "observed_at": "2026-10-06T12:48:07-04:00",
+  "state": "saved-locally",
+  "hub": {
+    "contractRevision": 5,
+    "common_contract_record_revision": 2,
+    "permitted_subject_records": 0,
+    "basis": "separately authorized current local files"
+  },
+  "skills": [
+    {
+      "name": "career-application",
+      "entrypoint": "/Users/meganshellman/.codex/skills/career-application/SKILL.md",
+      "resolved_entrypoint": "/Volumes/BeastMode/AIMemory/JobHunt/06_System/career-application/SKILL.md",
+      "sha256": "60bbbef25818739fa18705825c5112de765d756eaaf75dfb0e357bdb2d723553",
+      "catalog_observation": "explicit-only; absent from initial catalog",
+      "yaml_parser": "Ruby Psych 3.1.0 safe_load",
+      "name_matches": true,
+      "description_length": 186,
+      "relative_markdown_links": [],
+      "missing_relative_markdown_links": []
+    },
+    {
+      "name": "brain-work-item",
+      "entrypoint": "/Users/meganshellman/.codex/skills/brain-work-item/SKILL.md",
+      "resolved_entrypoint": "/Volumes/BeastMode/40-skills/work/brain-work-item/SKILL.md",
+      "sha256": "d0d9cddb4ef2d17ac20544512b2fcc44d9bc4c5f55cd169361ff65367120636a",
+      "catalog_observation": "present in initial catalog",
+      "yaml_parser": "Ruby Psych 3.1.0 safe_load",
+      "name_matches": true,
+      "description_length": 161,
+      "relative_markdown_links": [],
+      "missing_relative_markdown_links": []
+    },
+    {
+      "name": "execution-truth",
+      "entrypoint": "/Users/meganshellman/.codex/skills/execution-truth/SKILL.md",
+      "resolved_entrypoint": "/Volumes/BeastMode/AI Workstreams/MeganOS/megan-os-fw/skills/execution-truth/SKILL.md",
+      "sha256": "1c52084c56afdd962b8c891c8ea4411789ac7c268ffe8fbff33bc97b648fd8cb",
+      "catalog_observation": "present in initial catalog",
+      "yaml_parser": "Ruby Psych 3.1.0 safe_load",
+      "name_matches": true,
+      "description_length": 343,
+      "relative_markdown_links": [
+        "references/git.md",
+        "references/local-files.md",
+        "references/cloud-documents.md",
+        "references/deployments.md",
+        "references/client-data.md",
+        "references/publishing.md",
+        "references/automations.md"
+      ],
+      "missing_relative_markdown_links": []
+    },
+    {
+      "name": "writing-integrity",
+      "entrypoint": "/Users/meganshellman/.agents/skills/writing-integrity/SKILL.md",
+      "resolved_entrypoint": "/Users/meganshellman/.agents/skills/writing-integrity/SKILL.md",
+      "sha256": "953ec708262903f884cabb0604fdd2ec4f5eb8c3f33d188bafd34c592caecd64",
+      "catalog_observation": "present in initial catalog",
+      "yaml_parser": "Ruby Psych 3.1.0 safe_load",
+      "name_matches": true,
+      "description_length": 326,
+      "relative_markdown_links": [
+        "references/patterns.md",
+        "references/context-rules.md"
+      ],
+      "missing_relative_markdown_links": []
+    },
+    {
+      "name": "independent-product",
+      "entrypoint": "/Users/meganshellman/.codex/skills/independent-product/SKILL.md",
+      "resolved_entrypoint": "/Volumes/BeastMode/40-skills/work/independent-product/SKILL.md",
+      "sha256": "3164141e85e7ea6bbbc6e447501327201c070946f42c5273f3b8fda422682b69",
+      "catalog_observation": "present in initial catalog",
+      "yaml_parser": "Ruby Psych 3.1.0 safe_load",
+      "name_matches": true,
+      "description_length": 226,
+      "relative_markdown_links": [],
+      "missing_relative_markdown_links": []
+    }
+  ],
+  "source_snapshots": [
+    {
+      "path": "/Volumes/BeastMode/AGENTS.md",
+      "sha256": "a59b04ab1df9aaa410c682362515c97af549a3099bfd7df730afc6f77768d00a"
+    },
+    {
+      "path": "/Volumes/BeastMode/AI Workstreams/MeganOS/Brain/System/Projects/skill-estate.md",
+      "sha256": "7c7e6706cca036a07b32e9fb54121962575896af5058624d3c9ff262fddc0d96"
+    },
+    {
+      "path": "/Volumes/BeastMode/AI Workstreams/MeganOS/Brain/Today/Tasks/ms-20260926-22.md",
+      "sha256": "ffa5ff076473466be912120bd74fd36e5de1b21f4860cee285590880b85f0e6a"
+    },
+    {
+      "path": "/Volumes/BeastMode/AI Workstreams/MeganOS/Brain/Today/Tasks/ms-20260928-24.md",
+      "sha256": "98dbef0844b73979a1cbc8e7d0e8416cfd66d14549fbe20f41f921ac35053af6"
+    },
+    {
+      "path": "/Volumes/BeastMode/AI Workstreams/MeganOS/Brain/System/Projects/career.md",
+      "sha256": "cfba2d8e2d0a6a4bc8f7cee7de72688072fa2cd6fdcf2530b31ea3ecdaf13e66"
+    },
+    {
+      "path": "/Volumes/BeastMode/AI Workstreams/MeganOS/megan-os/bin/brain_tasks.py",
+      "sha256": "b88c8a51b44ca393d841a6d8b47e07c1ace95c80c020cb6e22a6ad029229a213"
+    },
+    {
+      "path": "/Volumes/BeastMode/AI Workstreams/MeganOS/megan-os/bin/task_bridge.py",
+      "sha256": "35c291504eb4443452f79641a1b0c3783b879fecef38054a343343276a81cb45"
+    },
+    {
+      "path": "/Volumes/BeastMode/AIMemory/JobHunt/06_System/career-application/agents/openai.yaml",
+      "sha256": "83c6790045354daaa3b7d5d917cd8f54d9238212cb0621a86071b952013bf371"
+    },
+    {
+      "path": "/Volumes/BeastMode/AIMemory/JobHunt/06_System/career-application/scripts/career_application_selftest.py",
+      "sha256": "c98d42bf985b7efb79b0697ed66ae804b13250edc0f8b3701d4a4b98f39a7ca7"
+    },
+    {
+      "path": "/Volumes/BeastMode/AIMemory/JobHunt/06_System/career-application/scripts/check_role_resume_readiness.py",
+      "sha256": "8d369f5b817bbfbff38c2d8885325cb4bd1eddbec3c8fc2b676aa096d1ce63a6"
+    },
+    {
+      "path": "/Volumes/BeastMode/AIMemory/JobHunt/01_Applications/Current/2026-09-26_Sunday_Head_Revenue_Operations/Role_Work_Record.md",
+      "sha256": "e55d266d17c0faafde7b5648c16691001769ec4b1fce760c287545654a34f8b5"
+    },
+    {
+      "path": "/Volumes/BeastMode/AIMemory/JobHunt/01_Applications/Current/2026-09-26_Sunday_Head_Revenue_Operations/Application_Review_2026-10-06/Resume_Content_Review.json",
+      "sha256": "70ce7af570b7c3d86d6e6cef79d6838c07fb9c31af35f6492a313bfde050f52c"
+    },
+    {
+      "path": "/Volumes/BeastMode/AIMemory/JobHunt/01_Applications/Current/2026-09-26_Sunday_Head_Revenue_Operations/Megan_Shellman_Sunday_Head_Revenue_Operations_Resume.docx",
+      "sha256": "8b893094e3e2b324c2720f5cee62cedfe56ff8d9802aafd605f9702158955646"
+    },
+    {
+      "path": "/Volumes/BeastMode/90-inbox/unsorted/codex/skills/writing-integrity/SKILL.md",
+      "sha256": "953ec708262903f884cabb0604fdd2ec4f5eb8c3f33d188bafd34c592caecd64"
+    },
+    {
+      "path": "/Volumes/BeastMode/40-skills/work/governance/2026-10-06/writing-integrity.entrypoint.before.md",
+      "sha256": "8babb1feb03246e92186b8b8d1a442d50209339b6613987ce976112539ef18e0"
+    }
+  ],
+  "real_work": {
+    "career_thread": "01a111a1-6853-77e0-ad9c-1f88111975ec",
+    "rollout_path": "/Users/meganshellman/.codex/sessions/2026/10/06/rollout-2026-10-06T10-32-33-01a111a1-6853-77e0-ad9c-1f88111975ec.jsonl",
+    "career_skill_read": {
+      "call_line": 162,
+      "output_line": 167,
+      "read_at": "2026-10-06T14:49:31.142Z",
+      "exit_code": 0,
+      "complete_line_count": 124,
+      "matches_current_skill": true,
+      "sha256": "60bbbef25818739fa18705825c5112de765d756eaaf75dfb0e357bdb2d723553"
+    },
+    "resume_readiness_run": {
+      "call_line": 463,
+      "output_line": 467,
+      "at": "2026-10-06T15:02:29.160Z",
+      "exit_code": 0
+    },
+    "brain_receipt": {
+      "task_id": "ms-20260928-24",
+      "receipt_at": "2026-10-06T11:03:30-04:00",
+      "persisted_status": "in-progress"
+    },
+    "brain_bridge_run": {
+      "state": "healthy",
+      "checked_at": "2026-10-06T12:45:52-04:00",
+      "queued": 0,
+      "conflicts": 0
+    }
+  },
+  "repair": {
+    "path": "/Volumes/BeastMode/90-inbox/unsorted/codex/skills/writing-integrity/SKILL.md",
+    "before_sha256": "8babb1feb03246e92186b8b8d1a442d50209339b6613987ce976112539ef18e0",
+    "after_sha256": "953ec708262903f884cabb0604fdd2ec4f5eb8c3f33d188bafd34c592caecd64",
+    "basis": "October 2 user decision recorded in active skill; matches current user writing kernel",
+    "active_installation_unchanged": true,
+    "archive": "/Volumes/BeastMode/40-skills/work/governance/2026-10-06/writing-integrity.entrypoint.before.md"
+  },
+  "known_gaps": [
+    {
+      "issue": "PyYAML absent in default and bundled Python; official quick_validate.py cannot import yaml",
+      "owner": "Skills governance",
+      "impact": "standard validator unavailable; Ruby YAML parsing and reference checks completed; career/Brain checks do not need PyYAML"
+    },
+    {
+      "issue": "task activity_id remains products while project_id, workspace_brief and current assignment say skill-estate",
+      "owner": "MeganOS Brain task coordination",
+      "impact": "bridge resolves current project/chat correctly; retained as metadata discrepancy"
+    }
+  ],
+  "limits": [
+    "No proof of automatic invocation for career-application; explicit-only policy retained.",
+    "No universal compliance, cloud installation, publication, adoption, or market claim.",
+    "independent-product structurally inspected; product workflow not exercised in this task.",
+    "Career packet prose and rendered pages were reviewed by the owning career activity; this task reran the current binding gate."
+  ]
+}

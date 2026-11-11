@@ -1,0 +1,20 @@
+{
+  "task_id": "ms-20260926-22",
+  "task_status": "complete",
+  "receipt_at": "2026-10-06T12:51:20-04:00",
+  "bridge": {
+    "checked_at": "2026-10-06T12:51:40-04:00",
+    "state": "queued",
+    "queued": [
+      "ms-20260926-22: thread 01a111ec-8621-7aa0-844e-f1a1d09d7a36 already has an active writer"
+    ],
+    "conflicts": [],
+    "archive_completed": false
+  },
+  "preview": {
+    "status": "queued",
+    "thread_id": "01a111ec-8621-7aa0-844e-f1a1d09d7a36"
+  },
+  "owner_activity": "MeganOS Brain coordination",
+  "next_sync": "Existing Brain task sync; no new automation created"
+}
