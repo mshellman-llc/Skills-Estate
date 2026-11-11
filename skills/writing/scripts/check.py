@@ -31,6 +31,7 @@ Other options:
     --verdicts FILE       line-pass verdicts to validate
     --document-map FILE   document-pass map to validate
     --audit FILE          spot-audit verdicts to validate
+    --sources FILE        the source list for the claims check (JSON list of names)
     --full                require the line pass and the document pass
     --verify-receipt FILE recheck a saved receipt against the current file
 
@@ -64,6 +65,10 @@ GIT_MESSAGES = {'COMMIT_EDITMSG', 'MERGE_MSG', 'TAG_EDITMSG', 'SQUASH_MSG'}
 TRAILER = re.compile(r'^(?:co-authored-by|signed-off-by|reviewed-by|acked-by|claude-session|change-id)\s*:', re.I)
 WORD = re.compile(r"[A-Za-z0-9][\w'’-]*")
 HEADING = re.compile(r'^(?:> )?#{1,6} ')
+SINGLE_LINE_FAULTS = ('heading does not match its content', 'recap of another section',
+                      'line exists only because of an earlier mistake', 'provenance in finished copy',
+                      'reader would not act on this section')
+TITLE_SECTION_LINES = 3     # a title section is a heading and at most two lines under it
 MAP_KEYS = ('reader', 'sections', 'headings', 'repeated_facts', 'counts', 'recaps', 'terms',
             'leftover_lines', 'numbers', 'confidentiality', 'provenance')
 
@@ -124,6 +129,27 @@ def load_rules(arg):
             return ledger, info
     raise Incomplete('no pattern ledger found; pass --rules-dir, set WRITING_HOME or write the rules '
                      'folder path to ~/.agents/writing/home')
+
+
+def valid_registers(home, ledger):
+    """Names --register accepts: entries in registers.md, ledger scopes and the built-in commit."""
+    names = {'commit'}
+    for rule in ledger['rules']:
+        if rule.get('scope', 'general') != 'general':
+            names.add(rule['scope'])
+        names.update(rule.get('registers') or [])
+    listing = Path(home) / 'registers.md' if home else None
+    if listing and listing.is_file():
+        names.update(m.strip() for m in re.findall(r'^### +(.+?)\s*$', listing.read_text(encoding='utf-8'), re.M))
+    return sorted(names)
+
+
+def check_registers(registers, home, ledger):
+    known = valid_registers(home, ledger)
+    unknown = [r for r in registers if r not in known]
+    if unknown:
+        raise Incomplete('unknown register ' + ', '.join(repr(u) for u in unknown) + '. Valid names: ' + ', '.join(known)
+                         + '. When two fit, pass both with a comma. For a channel with no entry, run with no --register.')
 
 
 def compile_rule(rule):
@@ -408,12 +434,25 @@ NOT_FIGURES = re.compile(
     r'\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\.? \d{1,2}(?:st|nd|rd|th)?\b|'
     r'\b(?:19|20)\d{2}\b|^\s*(?:[-*|>#]\s*)*\d+[.)](?=\s)')
 FIGURE = re.compile(r'(?<![\w.])[$€£]?\d[\d,]*(?:\.\d+)?(?:%|[kKmMbB]\b|x\b)?')
+# A number that names a thing: Phase 2, Steps 1 and 3, Table 4. These are labels, and no source is owed.
+LABELS = re.compile(
+    r'\b(?:phase|step|stage|section|figure|table|option|tier|round|part|sprint|wave|release|version|level|item|'
+    r'appendix|chapter|page|line|rule|slide|tab|week|day|track|workstream|milestone|gate|exhibit|annex)s? '
+    r'\d+(?:(?:, \d+)*,? (?:and|or|to|through) \d+)?\b', re.I)
+WORD_NUMBER = re.compile(
+    r'\b(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|'
+    r'eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|billion|dozen)\b', re.I)
 
 
 def figures(masked):
     """Numbers a reader could take as a claim. Dates, times, years, versions and list numbers are left out."""
-    cleaned = NOT_FIGURES.sub(blank, masked)
+    cleaned = LABELS.sub(blank, NOT_FIGURES.sub(blank, masked))
     return [m.group(0).rstrip(',') for m in FIGURE.finditer(cleaned)]
+
+
+def word_numbers(masked):
+    """Numbers written as words, from two upward. Each needs a source or a counts entry in the map."""
+    return [m.group(0) for m in WORD_NUMBER.finditer(masked)]
 
 
 def repeats(records):
@@ -528,6 +567,40 @@ def line_pass(records, data, rules_sha256, flags=None):
     return findings, rejected, missing
 
 
+def source_names(path):
+    """Names in the source list given with --sources: a JSON list of strings or of objects with a name."""
+    try:
+        data = json.loads(Path(path).read_text(encoding='utf-8'))
+    except (OSError, ValueError) as error:
+        raise Incomplete(f'source list {path} cannot be read: {error}')
+    items = data.get('sources') if isinstance(data, dict) else data
+    names = [str(i.get('name') if isinstance(i, dict) else i).strip() for i in (items or [])]
+    names = [n for n in names if n and n != 'None']
+    if not names:
+        raise Incomplete(f'source list {path} names no sources')
+    return names
+
+
+def claims_check(records, data, names):
+    """Each line's verdict says whether the line states a factual claim and which listed source supports it."""
+    scope = {r['id'] for r in in_scope(records)}
+    problems, seen = [], set()
+    for v in data.get('verdicts') or []:
+        vid = v.get('id') if isinstance(v, dict) else None
+        if vid not in scope or vid in seen:
+            continue
+        seen.add(vid)
+        claims = v.get('claims')
+        if claims not in ('none', 'supported', 'unsupported'):
+            problems.append({'id': vid, 'reason': 'claims must be none, supported or unsupported'})
+        elif claims == 'supported' and str(v.get('source') or '').strip() not in names:
+            problems.append({'id': vid, 'reason': 'a supported claim names a source from the source list'})
+        elif claims == 'unsupported' and v.get('verdict') != 'fix':
+            problems.append({'id': vid, 'reason': 'an unsupported claim needs a fix'})
+    problems += [{'id': i, 'reason': 'no claims answer'} for i in sorted(scope - seen)]
+    return problems
+
+
 def audit_sample(records, verdicts):
     """A fifth of the lines the line pass marked ok, chosen from the text so the choice repeats."""
     ok = sorted(v['id'] for v in verdicts.get('verdicts') or [] if isinstance(v, dict) and v.get('verdict') == 'ok')
@@ -545,7 +618,11 @@ def spot_audit(records, verdicts, data, rules_sha256, flags=None):
     findings, rejected, missing = line_pass(sub, data, rules_sha256, flags)
     for f in findings:
         f['rule'] = 'spot-audit miss, full line pass required: ' + f['rule'].split(': ', 1)[-1]
-    return findings, rejected, missing
+    first, second = str(verdicts.get('reviewer') or '').strip(), str(data.get('reviewer') or '').strip()
+    marked_ok = sum(1 for v in verdicts.get('verdicts') or [] if isinstance(v, dict) and v.get('verdict') == 'ok')
+    info = {'sampled': len(wanted), 'lines_marked_ok': marked_ok, 'line_pass_reviewer': first or None,
+            'audit_reviewer': second or None, 'independent': bool(first and second and first != second)}
+    return findings, rejected, missing, info
 
 
 def document_pass(records, data, rules_sha256):
@@ -567,8 +644,14 @@ def document_pass(records, data, rules_sha256):
             return False
         return True
 
-    def add(record, rule, text, fix):
-        findings.append({'id': record['id'], 'rule': 'document-pass: ' + rule, 'text': text[:160], 'fix': fix})
+    def add(record, rule, text, fix, merged_with=None, ids=()):
+        item = {'id': record['id'], 'rule': 'document-pass: ' + rule, 'text': text[:160], 'fix': fix}
+        if merged_with is not None:
+            if merged_with not in ids:
+                problems.append(f'merged_with {merged_with!r} is not one of the lines of {text[:40]!r}')
+            else:
+                item['id'], item['merged_with'] = merged_with, merged_with
+        findings.append(item)
 
     for key in MAP_KEYS:
         if key not in data:
@@ -593,6 +676,12 @@ def document_pass(records, data, rules_sha256):
         covered.add(record['section'])
         if len(str(item.get('point') or '').split()) < 3:
             problems.append(f'section at line {record["id"]} has no point written out')
+        if item.get('role') == 'title':
+            size = sum(1 for r in scope.values() if r['section'] == record['section'])
+            if size > TITLE_SECTION_LINES:
+                problems.append(f'section at line {record["id"]} has {size} lines; a title section has at most '
+                                f'{TITLE_SECTION_LINES}')
+            continue
         if not isinstance(item.get('reader_acts'), bool):
             problems.append(f'section at line {record["id"]} does not say whether the reader acts on it')
         elif not item['reader_acts']:
@@ -616,15 +705,35 @@ def document_pass(records, data, rules_sha256):
     for missing in sorted(wanted):
         problems.append(f'heading {missing} is missing from the map')
 
+    structure = data.get('structural_repeat')
+    allowed = set()
+    if structure is not None:
+        named = [scope[i]['section'] for i in (structure.get('sections') or []) if i in scope] \
+            if isinstance(structure, dict) else []
+        if len(set(named)) < 2 or len(named) != len(structure.get('sections') or []) \
+                or len(str(structure.get('reason') or '').split()) < 5:
+            problems.append('structural_repeat needs a reason of five or more words and the first line IDs of '
+                            'two or more sections')
+        else:
+            allowed = set(named)
+    declared = []
     for item in data['repeated_facts']:
         found = [scope[i] for i in (item.get('ids') or []) if i in scope]
         if len(found) < 2 or len(found) != len(item.get('ids') or []):
             problems.append(f'repeated fact {item.get("quote")!r} needs two or more in-scope line IDs')
         elif not any(isinstance(item.get('quote'), str) and item['quote'] and item['quote'] in r['text'] for r in found):
             problems.append(f'quote {item.get("quote")!r} is in none of its lines')
+        elif item.get('structural'):
+            sections = {r['section'] for r in found}
+            if not allowed or not sections <= allowed or len(sections) < 2:
+                problems.append(f'repeated fact {item["quote"]!r} is marked structural, but its lines are not spread '
+                                'across the sections named in structural_repeat')
+            else:
+                declared.append({'quote': item['quote'], 'ids': [r['id'] for r in found]})
         else:
             add(found[1], 'fact stated more than once', item['quote'],
-                'State the fact once; lines ' + ', '.join(r['id'] for r in found) + ' repeat it.')
+                'State the fact once; lines ' + ', '.join(r['id'] for r in found) + ' repeat it.',
+                merged_with=item.get('merged_with'), ids=[r['id'] for r in found])
     for item in data['counts']:
         record = line(item)
         if record is None or not quoted(item, record):
@@ -634,7 +743,8 @@ def document_pass(records, data, rules_sha256):
             problems.append(f'count at line {record["id"]} needs whole numbers for stated and listed')
         elif stated != listed:
             add(record, 'count does not match the items listed', item['quote'],
-                f'The text says {stated} and lists {listed}; make them agree.')
+                f'The text says {stated} and lists {listed}; make them agree.',
+                merged_with=item.get('merged_with'), ids=[record['id']])
     for key, rule, fix in (
             ('recaps', 'recap of another section', 'Cut the recap; the other section already says it.'),
             ('leftover_lines', 'line exists only because of an earlier mistake', 'Cut the line.'),
@@ -650,9 +760,14 @@ def document_pass(records, data, rules_sha256):
             problems.append(f'terms entry {names!r} needs two or more terms and the line IDs that use them')
         else:
             add(found[0], 'more than one term for one thing', ' / '.join(names),
-                'Keep one of these terms and use it on lines ' + ', '.join(r['id'] for r in found) + '.')
+                'Keep one of these terms and use it on lines ' + ', '.join(r['id'] for r in found) + '.',
+                merged_with=item.get('merged_with'), ids=[r['id'] for r in found])
 
-    needed = {(r['id'], f) for r in scope.values() for f in figures(r['masked'])}
+    needed = {(r['id'], f) for r in scope.values() for f in figures(r['masked']) + word_numbers(r['masked'])}
+    for item in data['counts']:      # a count of the document's own items is its own source
+        if isinstance(item, dict) and isinstance(item.get('quote'), str):
+            needed = {(i, f) for i, f in needed
+                      if not (i == item.get('id') and WORD_NUMBER.fullmatch(f) and f in item['quote'])}
     for item in data['numbers']:
         record = line(item)
         if record is None or not quoted(item, record):
@@ -668,14 +783,36 @@ def document_pass(records, data, rules_sha256):
         problems.append(f'the number {figure} on line {rid} is not in the map')
 
     conf = data['confidentiality'] if isinstance(data['confidentiality'], dict) else {}
-    if not str(conf.get('list') or '').strip():
-        problems.append('confidentiality.list does not name the list that was checked, or say why none applies')
+    if len(str(conf.get('none_applies') or '').split()) >= 3:
+        pass
+    elif conf.get('retrieved') is not True:
+        problems.append('the confidentiality list was not retrieved (confidentiality.retrieved is not true); stop and '
+                        'report the review as incomplete, and do not rebuild the list from other documents')
+    elif not str(conf.get('list') or '').strip():
+        problems.append('confidentiality.list does not name the list that was checked')
     for item in conf.get('hits') or []:
         record = line(item)
         if record is not None:
             add(record, 'confidential material', str(item.get('quote') or record['text']),
                 'Remove it; the project confidentiality list covers it.')
-    return findings, problems
+    return findings, problems, declared
+
+
+def merge_faults(findings):
+    """Count one fault once: a document finding joins the line fix on the same line when both name one fault.
+
+    That holds for the single-line document rules, and for any entry the map marks with merged_with.
+    """
+    line_fix = {f['id']: f for f in findings if f['rule'].startswith('line-pass: ')}
+    kept = []
+    for f in findings:
+        rule = f['rule'][len('document-pass: '):] if f['rule'].startswith('document-pass: ') else None
+        target = line_fix.get(f['id'])
+        if rule and target is not None and (rule in SINGLE_LINE_FAULTS or f.get('merged_with')):
+            target.setdefault('also', []).append(f['rule'])
+            continue
+        kept.append(f)
+    return kept
 
 
 # ---------------------------------------------------------------------------
@@ -706,7 +843,7 @@ def workers(records):
     return groups
 
 
-def prepare(path, records, rules, out, verdicts=None, review=()):
+def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
     out = Path(out)
     (out / 'text').mkdir(parents=True, exist_ok=True)
     for old in (out / 'text').glob('part-*.md'):
@@ -735,7 +872,9 @@ def prepare(path, records, rules, out, verdicts=None, review=()):
                     for n, group in enumerate(workers(records), 1)],
         'sections': [{'id': head['id'], 'text': head['text']} for head in section_heads(records).values()],
         'headings': [r['id'] for r in scope if HEADING.match(r['text'])],
-        'numbers': [{'id': r['id'], 'quote': f} for r in scope for f in figures(r['masked'])],
+        'numbers': [{'id': r['id'], 'quote': f} for r in scope for f in figures(r['masked'])]
+        + [{'id': r['id'], 'quote': f, 'kind': 'word'} for r in scope for f in word_numbers(r['masked'])],
+        'sources': sources or [],
         'repeats': repeats(records),
     }
     if verdicts:
@@ -756,7 +895,8 @@ def receipt_dir(arg):
 def run(args):
     path = Path(args.file).expanduser().resolve()
     registers = [x.strip() for x in (args.register or '').split(',') if x.strip()]
-    full = bool(args.full or args.verdicts or args.document_map or args.audit)
+    full = bool(args.full or args.verdicts or args.document_map or args.audit) and not (
+        args.prepare and not (args.full or args.document_map or args.audit))
     record = {'tool': 'writing check', 'version': VERSION, 'started': now(), 'file': str(path),
               'register': registers, 'status': 'incomplete', 'reason': '',
               'coverage': {'lines_total': 0, 'lines_reviewed': 0}, 'steps': [], 'parts': [],
@@ -771,10 +911,15 @@ def run(args):
     records, findings = [], []
     try:
         ledger, rules_info = load_rules(args.rules_dir)
+        check_registers(registers, rules_info['home'], ledger)
         rules = active_rules(ledger, registers)
-        record['rules'] = dict(rules_info, rules_applied=len(rules),
-                               register_rules=sum(1 for r, _ in rules if r.get('scope', 'general') != 'general'))
-        step('rules', 'ok', f'{len(rules)} rules from {rules_info["ledger"]} ({rules_info["ledger_source"]})')
+        added = {name: sum(1 for r, _ in rules if r.get('scope') == name or name in (r.get('registers') or []))
+                 for name in registers}
+        record['rules'] = dict(rules_info, rules_applied=len(rules), register_rules=added)
+        detail = f'{len(rules)} rules from {rules_info["ledger"]} ({rules_info["ledger_source"]})'
+        for name, count in added.items():
+            detail += f'; register {name} adds {count} rules' + ('' if count else ', its guidance is in registers.md')
+        step('rules', 'ok', detail)
         records, source_lines = extract(path, 'commit' in registers)
         record.update(sha256=sha(path.read_bytes()), bytes=path.stat().st_size, text_sha256=text_sha(records))
     except Incomplete as error:
@@ -851,43 +996,73 @@ def run(args):
                 step('line pass', 'failed', str(error))
         else:
             step('line pass', 'failed', 'no verdict file was given')
+        try:
+            names = source_names(args.sources) if args.sources else None
+            if names is None:
+                step('claims check', 'failed', 'no source list was given with --sources')
+            elif verdicts is None:
+                step('claims check', 'failed', 'no verdict file to read the claims answers from')
+            else:
+                unanswered = claims_check(records, verdicts, names)
+                if unanswered:
+                    record['claims_check'] = {'problems': unanswered}
+                    step('claims check', 'failed', f'{len(unanswered)} lines have no valid claims answer; the first: '
+                         f'{unanswered[0]["id"]}, {unanswered[0]["reason"]}')
+                else:
+                    step('claims check', 'ok', f'{len(scope)} lines answered against {len(names)} listed sources')
+        except Incomplete as error:
+            step('claims check', 'failed', str(error))
         if args.document_map:
             try:
-                found, problems = document_pass(records, load_json(args.document_map, 'document map'), rules_info['rules_sha256'])
+                found, problems, declared = document_pass(records, load_json(args.document_map, 'document map'),
+                                                          rules_info['rules_sha256'])
                 findings += found
+                record['document_pass'] = {'problems': problems, 'declared_repeats': declared}
                 if problems:
-                    record['document_pass'] = {'problems': problems}
                     step('document pass', 'failed', f'{len(problems)} problems in the map; the first: {problems[0]}')
                 else:
-                    step('document pass', 'ok', f'map complete, {len(found)} findings')
+                    step('document pass', 'ok', f'map complete, {len(found)} findings'
+                         + (f', {len(declared)} repeats declared as structure' if declared else ''))
             except Incomplete as error:
                 step('document pass', 'failed', str(error))
         else:
             step('document pass', 'failed', 'no document map was given')
+        findings = merge_faults(findings)
         if args.audit and verdicts is not None:
             try:
-                found, rejected, absent = spot_audit(records, verdicts, load_json(args.audit, 'audit file'),
-                                                        rules_info['rules_sha256'], flags)
+                found, rejected, absent, info = spot_audit(records, verdicts, load_json(args.audit, 'audit file'),
+                                                           rules_info['rules_sha256'], flags)
+                record['spot_audit'] = info
+                scope_note = f'{info["sampled"]} of the {info["lines_marked_ok"]} lines marked ok were re-reviewed'
+                independence = '' if info['independent'] else (
+                    '; not independent, because the audit file does not name a reviewer other than the line-pass reviewer')
                 if found:
                     findings += found
-                    step('spot audit', 'failed', f'{len(found)} audited lines need a fix; every line goes back through the line pass')
+                    step('spot audit', 'failed', f'{scope_note}; {len(found)} need a fix, so every line goes back '
+                         f'through the line pass{independence}')
                 elif rejected or absent:
                     step('spot audit', 'failed', f'{len(absent)} sampled lines have no verdict and {len(rejected)} were rejected')
                 else:
-                    step('spot audit', 'ok', 'every sampled line was re-reviewed and stands')
+                    step('spot audit', 'ok', scope_note + ' and stand'
+                         + (f'; the round still fails on its {len(findings)} findings' if findings else '') + independence)
             except Incomplete as error:
                 step('spot audit', 'failed', str(error))
+        elif findings or reasons:
+            step('spot audit', 'not_run', 'optional in a round that does not pass; the lines marked ok were not re-reviewed')
         else:
-            step('spot audit', 'not_run', 'runs after a clean round')
+            step('spot audit', 'failed', 'a clean round passes only after the spot audit; run --prepare with --verdicts '
+                 'for the sample, then pass --audit')
     else:
-        for name in ('line pass', 'document pass', 'spot audit'):
+        for name in ('line pass', 'claims check', 'document pass', 'spot audit'):
             step(name, 'not_run', 'not part of this run; a pass here covers the scan only')
 
     if args.prepare:
         try:
             made = prepare(path, records, rules_info, args.prepare,
-                           load_json(args.verdicts, 'verdict file') if args.verdicts else None, review)
-            step('prepare', 'ok', str(made))
+                           load_json(args.verdicts, 'verdict file') if args.verdicts else None, review,
+                           source_names(args.sources) if args.sources else None)
+            record['purpose'] = 'prepare'
+            step('prepare', 'ok', f'{made} and the text parts were rewritten; verdict, map and audit files were not touched')
         except (OSError, Incomplete) as error:
             step('prepare', 'failed', str(error))
     record['findings'] = [present(f, by_id) for f in sorted(findings, key=lambda f: f['id'])]
@@ -896,7 +1071,10 @@ def run(args):
 
 def present(item, by_id):
     r = by_id[item['id']]
-    return {'line': r['line'], 'rule': item['rule'], 'text': item['text'], 'fix': item['fix'], 'id': r['id'], 'loc': r['loc']}
+    out = {'line': r['line'], 'rule': item['rule'], 'text': item['text'], 'fix': item['fix'], 'id': r['id'], 'loc': r['loc']}
+    if item.get('also'):
+        out['also'] = item['also']
+    return out
 
 
 def finish(record, args, reasons, records):
@@ -973,6 +1151,7 @@ def main(argv=None):
     parser.add_argument('--verdicts', metavar='FILE')
     parser.add_argument('--document-map', metavar='FILE')
     parser.add_argument('--audit', metavar='FILE')
+    parser.add_argument('--sources', metavar='FILE')
     parser.add_argument('--full', action='store_true')
     parser.add_argument('--verify-receipt', metavar='FILE')
     try:

@@ -11,7 +11,7 @@ One entry point for writing and reviewing every word a person will read. It repl
 | `scripts/extract_review_text.py` | Text extraction for rendered and generated files |
 | `references/line-pass.md` | Verdict record and its required questions |
 | `references/document-pass.md` | The fixed map |
-| `scripts/check_selftest.py` | 30 cases on synthetic files |
+| `scripts/check_selftest.py` | 37 cases on synthetic files |
 
 ## The check
 
@@ -42,7 +42,7 @@ Exit 0 is `pass`, 1 is `fail` and 2 is `incomplete`. The output has `status`, `c
 9. A ledger rule marked `"judge": "line-pass"` never blocks from the scan. Its hits are counted under `review`, listed in the receipt, and each one needs a `true` or `false` answer in that line's verdict. Lists of three use this mark, because a pattern cannot tell a true count from a padded one. For every other rule, blocking follows the ledger's own settings. A hit on an active rule at or above `hard_weight` blocks at any length. Lighter rules block when the text reaches `flag_density` or a rule repeats past `repeat_limit` and `repeat_density`, in a text of at least `min_words`. Other hits, and every candidate rule, are counted under `advisories` and listed in the receipt.
 10. `line` is the source line when the locator is a line number. For workbooks, Word files and decks it is the extracted line number. Each finding also carries `id` and `loc`.
 11. The output adds `steps`, `advisories`, `review`, `coverage.lines_exempt`, and on an incomplete run `reason` and `not_reviewed`. The four agreed keys are unchanged.
-12. `--register` takes one name or several separated by commas. It adds ledger rules whose `scope` or `registers` list names it. A name with no rules is accepted, because registers are not a fixed list.
+12. `--register` takes one name or several separated by commas, and adds ledger rules whose `scope` or `registers` list names it. The valid names are the entries in `registers.md`, the ledger's scopes and `commit`. An unknown name returns `incomplete` with that list. The design says registers are not a fixed list; a channel with no entry is checked with no `--register`. The receipt gives the count of rules each name added.
 
 ### Coverage and failures
 
@@ -57,6 +57,23 @@ Exit 0 is `pass`, 1 is `fail` and 2 is `incomplete`. The output has `status`, `c
 18. The document pass traces every number except dates, times, years from 1900 to 2099, version strings and list numbering. Numbers written as words are covered by the map's `counts` entry.
 19. The spot audit sample is one in five of the lines marked `ok`, rounded up, chosen with the text hash as the seed so the same text gives the same sample.
 20. The regression set holds the two failing lines the design quotes. The other lines from that session need its transcript, with client details removed, before they can be added.
+
+### Changes after the first full review, 2026-11-11
+
+A full review of one executive page listed 15 places where the skill was unclear. These decisions answer them.
+
+24. The spot audit samples from every `ok` verdict in any round. A clean round returns `incomplete` until the audit has run. In a round that fails, the audit is optional and its step states how many `ok` lines it covered.
+25. The verdict file and the audit file each carry `reviewer`. The receipt records the audit as not independent when either name is missing or the two match.
+26. A `--prepare` run is a scan plus the working files. Its receipt carries `"purpose": "prepare"`. `--prepare` with `--verdicts` alone only adds the audit sample.
+27. A number after a label word such as phase, step, table or section is a label, and the map owes it no source.
+28. A number written as a word, from two upward, needs a `numbers` entry or a `counts` entry on its line. "One" is left out because it is too common as a pronoun.
+29. The claims check is its own step. Each verdict carries `claims`, and a `supported` claim names a source from the `--sources` list. A full review with no source list returns `incomplete`.
+30. The map's `confidentiality` entry needs `retrieved: true`, or `none_applies` with a reason. A list rebuilt from other documents returns `incomplete`.
+31. A section marked `"role": "title"` needs no `reader_acts`. It may hold a heading and two lines.
+32. `structural_repeat` declares a deliberate repeat between named sections once. Entries marked `structural` inside it do not block.
+33. A document finding joins the line fix on the same line and is counted once. This is automatic for five single-line rules, and by `merged_with` for repeats, terms and counts.
+34. A scanner flag answer and a fix are independent: `false` on the flag with a fix for another rule is valid.
+35. How `portable` and the verbless-sentence limit apply to headings, tiles and labels, and the order of the estimate rule and the source rule, are stated in the owner's `rules.md`. `references/line-pass.md` gives the method.
 
 ### Scope of this skill
 

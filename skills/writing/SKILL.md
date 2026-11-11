@@ -41,7 +41,7 @@ Writing in another person's voice is outside this skill.
 
 ## Set the register
 
-Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. Pass the channel or author name to the check with `--register`.
+Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. `--register` takes only a name from `registers.md`, a scope in the ledger or `commit`. An unknown name stops the check, which prints the valid ones. When two entries fit, pass both with a comma, as in `client-facing,executive-page`. For a channel with no entry, run the check with no `--register`.
 
 ## Run the check
 
@@ -67,19 +67,21 @@ Fix each finding by rewriting the sentence, then run the check again. Replacing 
 
 A full review adds two passes to the scan. Each one writes a record that `check.py` validates.
 
-1. Run `check.py --file PATH --prepare REVIEW`. It writes the text in parts under `REVIEW/text/`, an outline and `REVIEW/assignments.json` with about 40 lines for each worker.
+1. List the documents the piece was written from in a JSON file of names, `SOURCES.json`. Run `check.py --file PATH --prepare REVIEW --sources SOURCES.json`. It writes the text in parts under `REVIEW/text/`, an outline and `REVIEW/assignments.json` with about 40 lines for each worker. Every `--prepare` run replaces those three outputs and writes its own receipt, marked `prepare`. It leaves the verdict, map and audit files alone.
 2. Fix every scanner finding first.
-3. Run the line pass in [line pass](references/line-pass.md). Each worker gets its lines and the full outline, and writes one verdict for every line.
+3. Run the line pass in [line pass](references/line-pass.md). Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.
 4. Run the document pass in [document pass](references/document-pass.md). One worker reads the whole text and fills the fixed map.
-5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --json`. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.
+5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json`. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.
 6. Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again. A verdict stops counting when its line changed, when another line in its section changed, or when `rules.md` or `patterns.json` changed. The document pass runs on the full text in every round.
-7. After a clean round, run `--prepare` again with `--verdicts`. `assignments.json` then lists an `audit` sample of one line in five. A separate worker reviews those lines without seeing the first verdicts, and `--audit FILE` validates them. One audited line marked `fix` sends every line back through the line pass.
+7. Run the [spot audit](references/line-pass.md#spot-audit). The sample is one in five of the lines marked `ok`. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered.
 8. Log a miss the owner finds through Learn as a review miss.
+
+With no workers available, one agent runs every step under one `reviewer` name, following the [single-reviewer steps](references/line-pass.md#one-reviewer).
 
 A part or worker that fails is retried twice with half its lines. Lines still unreviewed after the retries make the result incomplete. List them in the reply and on the project's status page.
 
 ## Report
 
-Read the receipt before reporting. State which steps ran and each step's status. A `failed` step makes the review incomplete. A clean round is final only after the spot audit has run. Report line counts as coverage only.
+Read the receipt before reporting. State which steps ran and each step's status. A `failed` step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.
 
 In ordinary work, fix the wording and deliver it without describing the review.

@@ -45,6 +45,11 @@ class WritingCheckInterface(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertEqual([f['rule'] for f in result['findings']], ['residue', 'channel-only'])
 
+    def test_unknown_register_exits_2_and_lists_the_valid_names(self):
+        code, result = self.run_check('pass.md', '--register', 'weekly-update')
+        self.assertEqual((code, result['status']), (2, 'incomplete'))
+        self.assertIn('Valid names: commit, status-update', result['reason'])
+
     def test_unparsed_file_exits_2_and_is_never_a_pass(self):
         code, result = self.run_check('open-fence.md')
         self.assertEqual((code, result['status']), (2, 'incomplete'))
@@ -61,7 +66,7 @@ class WritingCheckInterface(unittest.TestCase):
             self.assertIn(key, result)
         receipt = json.loads(Path(result['receipt']).read_text())
         steps = {s['step']: s['status'] for s in receipt['steps']}
-        self.assertEqual(steps, {'rules': 'ok', 'extract': 'ok', 'scan': 'ok', 'line pass': 'not_run',
+        self.assertEqual(steps, {'rules': 'ok', 'extract': 'ok', 'scan': 'ok', 'line pass': 'not_run', 'claims check': 'not_run',
                                  'document pass': 'not_run', 'spot audit': 'not_run'})
 
     def test_skill_carries_no_copy_of_the_rules(self):
