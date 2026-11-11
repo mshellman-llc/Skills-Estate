@@ -2,7 +2,8 @@
   "entries": [
     "manage-brand-profile",
     "review-writing",
-    "manage-writing-profile"
+    "manage-writing-profile",
+    "writing"
   ],
   "host_adapter": "claude",
   "opt_in": false,
@@ -14,11 +15,12 @@
     "manage-writing-profile",
     "review-deliverable",
     "review-writing",
+    "writing",
     "writing-diagnostics"
   ],
   "review_gaps": [
     {
-      "required_sha256": "b3bd89cad1f93defe5a8e477ecc3d4d52fe59f085f65eb750a8725e01263974b",
+      "required_sha256": "62a1e8c30a5bce918acf0caf63079f2d3360669600b4af4b364b90ec57c3e7ab",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -63,7 +65,7 @@
       "subject": "solutioning-router"
     },
     {
-      "required_sha256": "498df003396ebc50cdf826dee619c9d8bc3b3020e8ad50a863bea8804aa2c848",
+      "required_sha256": "0477c0310fc45bb2d0f90fa982fb4b44da3f8ea7022745e1abf95cbefc60ee00",
       "status": "review required",
       "subject": "writing-router"
     },
@@ -518,11 +520,16 @@
       "subject": "write-statement-of-work"
     },
     {
+      "required_sha256": "e34c3a3d6a42acca13f563f706ca19d9a88e83216c633778f75a1f3c5f0cf62e",
+      "status": "review required",
+      "subject": "writing"
+    },
+    {
       "required_sha256": "9bef6f5d81c4d4b4862562f48ba909630c2ce0db00f069fba2b4d3f01dbb95e2",
       "status": "review required",
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "fa4f30ad60f185589c5b32cfd3f7be5820882b5585621e97c3b6e4e2c6c016cb",
+  "source_sha256": "c9502d307e80700d9405faa0e3c3f61a910c6d1ae9a072ea36d148161a07ddcd",
   "status": "owner-published"
 }
