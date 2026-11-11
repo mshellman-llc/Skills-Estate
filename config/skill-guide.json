@@ -1915,6 +1915,29 @@
           "reason": "Use this if you need to define measurements; it is unnecessary when chart-ready data already exists."
         }
       ]
+    },
+    "writing": {
+      "what": "Write or review every word a person will read against the owner's writing rules folder, with a check that proves which lines it covered.",
+      "when": "Any reply, document, page, deck, message, interface label, commit message or pull request description is about to go to a reader, or another tool needs a pass or fail on a saved file. Use review-writing until this skill's three proof runs are done.",
+      "inputs": "The draft or the saved file, the writing rules folder, and the channel and audience for the piece.",
+      "outputs": "The reviewed text, and for a saved file a JSON result with status, line coverage, findings and a receipt.",
+      "example": "Check this proposal page before it goes to the client, then run the full review with the line pass and the document pass.",
+      "reviewedEntrypointSha256": "4ab155d6586eb215ed1a5f26e1272dfacf87e716d0a72370e0b9f2b705f0adc1",
+      "expect": "It reads the rules from the owner's folder each time, picks review, owner voice or brand voice, and sets the register from the channel and audience. For a file, check.py extracts the reader text, scans every in-scope line in parts of at most 300 lines and exits 0, 1 or 2. A full review adds a verdict for every line and a document map, and the script rejects a missing verdict, a misquoted line or an untraced number. Code and quotations are exempt.",
+      "connectors": {
+        "required": [],
+        "optional": [
+          "knowledge-hub"
+        ]
+      },
+      "requires": "Python 3 for check.py, and a writing rules folder with patterns.json named by --rules-dir, WRITING_HOME or the path in ~/.agents/writing/home.",
+      "overview": "It loads the owner's writing rules from their folder for each task and carries no copy of them. For a draft it picks the mode and register, then reviews each line. For a saved file, check.py extracts the text a reader sees, exempts code and quotations, scans every in-scope line and writes a receipt that counts the lines scanned against the lines extracted. A full review adds a verdict for every line and a document map that the script validates.",
+      "value": "Give other tools one command that returns pass, fail or incomplete for a file, and stop a review from being reported as done when lines were skipped.",
+      "preparation": {
+        "where": "Provide the draft or the file path, and a writing rules folder that holds patterns.json. Name the folder with --rules-dir, the WRITING_HOME variable or the path in ~/.agents/writing/home. A full review also needs rules.md in that folder and the project's confidentiality list.",
+        "missing": "With no pattern ledger the check exits 2. With no rules.md the scan still runs and a full review is reported incomplete. A format the script does not read exits 2."
+      },
+      "preparationSkills": []
     }
   }
 }

@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 91 source modules and 63 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 92 source modules and 64 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -14,7 +14,7 @@ This candidate contains 91 source modules and 63 task entrypoints. Consolidation
 | [Salesforce development](browse/salesforce-development/README.md) | 8 | 5 |
 | [Product and experience](browse/product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
-| [Writing and presentation](browse/writing-and-presentation/README.md) | 9 | 5 |
+| [Writing and presentation](browse/writing-and-presentation/README.md) | 10 | 6 |
 | [Career and applications](browse/career-and-personal/README.md) | 5 | 3 |
 | [Personal and creative](browse/personal-and-creative/README.md) | 3 | 3 |
 | [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
@@ -87,6 +87,7 @@ This candidate contains 91 source modules and 63 task entrypoints. Consolidation
 | write-feature-spec | [write-feature-spec](skills/write-feature-spec/SKILL.md) | specify-implementation |
 | write-portfolio-case-study | [write-portfolio-case-study](skills/write-portfolio-case-study/SKILL.md) |  |
 | write-statement-of-work | [write-statement-of-work](skills/write-statement-of-work/SKILL.md) | review-contract-scope |
+| writing | [writing](skills/writing/SKILL.md) |  |
 
 ## Source modules
 
@@ -182,6 +183,7 @@ Each module needs a reviewed capability disposition before release.
 - [write-feature-spec](skills/write-feature-spec/SKILL.md)
 - [write-portfolio-case-study](skills/write-portfolio-case-study/SKILL.md)
 - [write-statement-of-work](skills/write-statement-of-work/SKILL.md)
+- [writing](skills/writing/SKILL.md)
 - [writing-diagnostics](skills/writing-diagnostics/SKILL.md)
 
 ## Routing agents
