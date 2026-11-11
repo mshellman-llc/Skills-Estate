@@ -1,0 +1,117 @@
+"""Assemble an isolated skill with explicit executable dependencies.
+
+This is an assembly primitive, not a release decision. Callers must validate and
+exercise the assembled result before installation or publication.
+"""
+from pathlib import Path
+import os
+import re
+import shutil
+
+IGNORED = {".git", ".DS_Store", "__pycache__", ".venv", "node_modules", "_runtime"}
+IDENTITY = {"SKILL.md", "skill.yaml", "skill.json", "agent.yaml", "agent.json", "AGENTS.md"}
+
+
+def source_files(directory):
+    for parent, dirs, files in os.walk(directory, followlinks=False):
+        dirs[:] = sorted(d for d in dirs if d not in IGNORED)
+        for name in dirs:
+            if (Path(parent) / name).is_symlink():
+                raise ValueError(f"Source directory symlink is not portable: {Path(parent) / name}")
+        for name in sorted(files):
+            file = Path(parent) / name
+            if name in IGNORED or name.endswith(".pyc"):
+                continue
+            if file.is_symlink():
+                raise ValueError(f"Source symlink is not portable: {file}")
+            yield file
+
+
+def assemble(root, name, destination, dependencies):
+    root, destination = Path(root).resolve(), Path(destination)
+    if destination.exists():
+        raise ValueError(f"Refusing to replace an existing package: {destination}")
+    if name in dependencies or len(dependencies) != len(set(dependencies)):
+        raise ValueError("Runtime dependencies must be unique and cannot include the entrypoint")
+    selected = [name, *dependencies]
+    for skill in selected:
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", skill):
+            raise ValueError(f"Invalid skill name: {skill}")
+        if not (root / "skills" / skill / "SKILL.md").is_file():
+            raise ValueError(f"Missing skill dependency: {skill}")
+
+    mapping = {}
+    for skill in selected:
+        source = root / "skills" / skill
+        prefix = Path() if skill == name else Path("_runtime") / skill
+        for file in source_files(source):
+            relative = file.relative_to(source)
+            if relative.parts[:2] == ("references", "estate"):
+                raise ValueError(f"references/estate is generated, not authoring source: {file}")
+            if skill != name and len(relative.parts) == 1 and file.name in IDENTITY:
+                if file.name == "SKILL.md":
+                    # Preserve the complete workflow as a reference, with one
+                    # discoverable SKILL.md at the package's top level.
+                    mapping[file] = prefix / "WORKFLOW.md"
+                continue
+            mapping[file] = prefix / relative
+    shared = root / "skills" / "_shared"
+    if shared.exists():
+        pending = []
+        for file in list(mapping):
+            if file.suffix in {".md", ".py", ".js", ".sh"}:
+                pending.extend(re.findall(r"_shared/([A-Za-z0-9_.-]+\.md)", file.read_text()))
+        seen = set()
+        while pending:
+            name_of_shared_file = pending.pop()
+            if name_of_shared_file in seen:
+                continue
+            seen.add(name_of_shared_file)
+            file = shared / name_of_shared_file
+            if not file.is_file():
+                raise ValueError(f"Missing shared reference: {file}")
+            mapping[file] = Path("_shared") / file.name
+            for reference in re.findall(r"\]\(([^()\s]+)\)", file.read_text()):
+                candidate = (file.parent / reference.split("#")[0]).resolve()
+                if candidate.parent == shared and candidate.suffix == ".md":
+                    pending.append(candidate.name)
+
+    destination.mkdir(parents=True)
+    try:
+        for source, relative in mapping.items():
+            target = destination / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if source.suffix == ".md":
+                text = source.read_text()
+
+                def link(match):
+                    href = match.group(1)
+                    if href.startswith(("http:", "https:", "#", "/", "mailto:", "app:", "codex:")):
+                        return match.group(0)
+                    pathname, marker, fragment = href.partition("#")
+                    resolved = (source.parent / pathname).resolve()
+                    if resolved in mapping:
+                        target_relative = os.path.relpath(destination / mapping[resolved], target.parent)
+                        return "](" + target_relative + (marker + fragment if marker else "") + ")"
+                    return match.group(0)
+
+                text = re.sub(r"\]\(([^()\s]+)\)", link, text)
+                # Shell snippets in entrypoints run from the package root.
+                if source == root / "skills" / name / "SKILL.md":
+                    for dep in dependencies:
+                        text = text.replace(f"../{dep}/scripts/", f"_runtime/{dep}/scripts/")
+                        text = text.replace(f"../{dep}/house.json", f"_runtime/{dep}/house.json")
+                target.write_text(text)
+                shutil.copymode(source, target)
+            else:
+                shutil.copy2(source, target)
+        for skill in selected:
+            package_root = destination if skill == name else destination / "_runtime" / skill
+            policies = package_root / "references" / "estate"
+            policies.mkdir(parents=True, exist_ok=True)
+            for file in (root / "policies").glob("*.md"):
+                shutil.copy2(file, policies / file.name)
+        return {str(source.relative_to(root)): str(relative) for source, relative in mapping.items()}
+    except BaseException:
+        shutil.rmtree(destination)
+        raise

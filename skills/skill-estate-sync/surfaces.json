@@ -1,0 +1,50 @@
+{
+  "_comment": "Every surface that must mirror the house-skills source of truth. `source` is optional and defaults to this repo's own skills/ dir, which is what makes a fresh clone work with no local config; set it only to point at a checkout elsewhere, and never commit an absolute path that only exists on one machine. `surfaces` is the list of local mounts to check file by file. estate_diff.py discovers skills by scanning source, so new skills are covered automatically. `path` supports ~ expansion. `kind` is dir for a local mount, cloud for a tier reachable only through a web UI.",
+  "_governed_surfaces": "Six: Claude Code, Claude.ai, Cowork, ChatGPT, Codex, and the OpenAI API. Two of them mount locally and are diffed file by file. The other four are reached through a web UI or an upload endpoint that this toolchain cannot read, so they are tracked as publication records instead.",
+  "surfaces": [
+    {
+      "name": "claude-code",
+      "path": "~/.claude/skills",
+      "kind": "dir",
+      "note": "Installed from source by install.sh --platform claude."
+    },
+    {
+      "name": "codex",
+      "path": "~/.agents/skills",
+      "kind": "dir",
+      "note": "Installed from source by install.sh --platform codex. The open SKILL.md package format."
+    }
+  ],
+  "_cloud_comment": "These four cannot be read from here: publishing is a human step through a web UI or an upload endpoint, and this toolchain holds no credential for any of them. They are tracked by ledger instead. build_bundles.py hashes every bundle it writes; record_publish.py stamps those hashes against a surface once a human has published them. estate_diff.py then reports how many bundles each tier is behind. A ledger row is a publication record, not verification. It says what was last published, which is the difference between a known gap and an invisible one.",
+  "cloud_surfaces": [
+    {
+      "name": "claude.ai-org",
+      "kind": "cloud",
+      "note": "Aleysian organization tier. Upload dist/*.skill through claude.ai settings. Needs org admin."
+    },
+    {
+      "name": "cowork",
+      "kind": "cloud",
+      "note": "Cowork skill registry. Same bundles."
+    },
+    {
+      "name": "chatgpt",
+      "kind": "cloud",
+      "note": "ChatGPT skill surface. Same bundles, uploaded through the ChatGPT UI."
+    },
+    {
+      "name": "openai-api",
+      "kind": "cloud",
+      "note": "Skills attached to an OpenAI API deployment. Published by whoever owns that deployment, so a record here is the only visibility this repo has."
+    }
+  ],
+  "ledger": "publish-ledger.json",
+  "_optional_surfaces": [
+    {
+      "name": "claude.ai-offline",
+      "path": "~/Downloads/aleysian-skills-offline/skills",
+      "kind": "tree",
+      "note": "point at an offline export of the claude.ai bundle to diff the cloud tier file by file instead of by ledger"
+    }
+  ]
+}

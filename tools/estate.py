@@ -16,7 +16,10 @@ import uuid
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv'}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from portable import assemble
+
+IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv', 'node_modules'}
 
 
 def files(folder):
@@ -41,7 +44,8 @@ def sha(data):
 
 
 def tree_hash(folder):
-    return sha(json.dumps([(str(p.relative_to(folder)), sha(p.read_bytes())) for p in files(folder)], separators=(',', ':')).encode())
+    return sha(json.dumps([(str(p.relative_to(folder)), sha(p.read_bytes()), p.stat().st_mode & 0o111)
+                          for p in files(folder)], separators=(',', ':')).encode())
 
 
 def names(root=ROOT):
@@ -57,9 +61,33 @@ def write_json(path, value):
 
 def source_hash(root=ROOT):
     records = []
-    for directory in ('skills', 'policies'):
-        records += [(str(p.relative_to(root)), sha(p.read_bytes())) for p in files(root / directory)]
+    for directory in ('skills', 'policies', 'tools', 'agents', 'tests', 'examples', 'config'):
+        records += [(str(p.relative_to(root)), sha(p.read_bytes()), p.stat().st_mode & 0o111)
+                    for p in files(root / directory)]
     return sha(json.dumps(records, separators=(',', ':')).encode())
+
+
+def runtime_dependencies(name, root=ROOT):
+    path = root / 'config' / 'runtime-dependencies.json'
+    graph = json.loads(path.read_text()) if path.exists() else {}
+    known = set(names(root))
+    result = set()
+    visiting = set()
+
+    def visit(current):
+        if current in visiting:
+            raise ValueError(f'Runtime dependency cycle at {current}')
+        visiting.add(current)
+        for dependency in graph.get(current, []):
+            if dependency not in known:
+                raise ValueError(f'{current}: missing runtime dependency {dependency}')
+            if dependency not in result:
+                visit(dependency)
+                result.add(dependency)
+        visiting.remove(current)
+
+    visit(name)
+    return sorted(result)
 
 
 def validate(root=ROOT):
@@ -68,6 +96,7 @@ def validate(root=ROOT):
     if not skill_names:
         errors.append('No skills found')
     for name in skill_names:
+        runtime_dependencies(name, root)
         folder = root / 'skills' / name
         text = (folder / 'SKILL.md').read_text()
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name) or len(name) > 64:
@@ -135,17 +164,13 @@ def build(root=ROOT):
     try:
         for name in names(root):
             target = package_dir / name
-            shutil.copytree(root / 'skills' / name, target, ignore=shutil.ignore_patterns(*IGNORED, '*.pyc'))
-            refs = target / 'references' / 'estate'
-            if refs.exists():
-                raise ValueError(f'{name}: references/estate is generated; remove it from authoring source')
-            refs.mkdir(parents=True)
-            for p in files(root / 'policies'):
-                shutil.copy2(p, refs / p.name)
-            entries[name] = {'sha256': tree_hash(target)}
+            dependencies = runtime_dependencies(name, root)
+            mapping = assemble(root, name, target, dependencies)
+            entries[name] = {'sha256': tree_hash(target), 'runtime_dependencies': dependencies,
+                             'source_files': len(mapping)}
         if source_hash(root) != result['source_sha256']:
             raise ValueError('Sources changed during the build; rerun from a stable source tree')
-        manifest = {**result, 'packages': entries, 'format': 1}
+        manifest = {**result, 'packages': entries, 'format': 2}
         write_json(stage / 'manifest.json', manifest)
         destination = root / 'build'
         previous = root / '.local' / ('previous-build-' + uuid.uuid4().hex)
@@ -268,7 +293,7 @@ def bundle(root=ROOT):
                 for p in files(package):
                     info = zipfile.ZipInfo(str(Path(name) / p.relative_to(package)), date_time=(2020, 1, 1, 0, 0, 0))
                     info.compress_type = zipfile.ZIP_DEFLATED
-                    info.external_attr = (0o100644 << 16)
+                    info.external_attr = ((0o100755 if p.stat().st_mode & 0o111 else 0o100644) << 16)
                     z.writestr(info, p.read_bytes())
             entries[name] = {'file': path.name, 'sha256': sha(path.read_bytes()), 'content_sha256': entry['sha256']}
         release = {'format': 1, 'source_sha256': manifest['source_sha256'], 'packages': entries}

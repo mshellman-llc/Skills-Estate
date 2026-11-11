@@ -1,0 +1,218 @@
+{
+  "mode": "decision",
+  "client": "Northwind Industrial Controls",
+  "title": "Three bands, one decision",
+  "date": "2026-08-14",
+  "quote_number": "Q-000101",
+  "options": [
+    {
+      "name": "Lift and shift",
+      "recommended": false,
+      "duration": "12 weeks",
+      "summary": [
+        "Quoting and pricing only.",
+        "One integration in scope."
+      ],
+      "investment": "$321,100"
+    },
+    {
+      "name": "Remediate and migrate",
+      "recommended": true,
+      "duration": "17 weeks",
+      "summary": [
+        "Quoting, pricing, and order management.",
+        "Two integrations in scope.",
+        "Migration of active subscriptions."
+      ],
+      "investment": "$450,900"
+    },
+    {
+      "name": "Re-architect and migrate",
+      "recommended": false,
+      "duration": "24 weeks",
+      "summary": [
+        "Full revenue lifecycle.",
+        "Four integrations in scope."
+      ],
+      "investment": "$599,900"
+    }
+  ],
+  "figures": [
+    {
+      "label": "Tier 2 investment",
+      "value": 412500,
+      "quote_field": "quote.total_fixed_fee"
+    }
+  ],
+  "slides": [
+    {
+      "kind": "heard",
+      "title": "What we heard",
+      "items": [
+        {
+          "text": "Quotes take eleven days to leave the building.",
+          "evidence": "client_stated",
+          "source": "R. Alvarez, discovery call 2026-07-08"
+        },
+        {
+          "text": "Pricing lives in a spreadsheet outside the system.",
+          "evidence": "client_stated",
+          "source": "R. Alvarez, discovery call 2026-07-08"
+        }
+      ]
+    },
+    {
+      "kind": "recommendation",
+      "title": "We recommend Tier 2",
+      "subtitle": "It closes the quoting delay without taking on the order management rebuild in the same phase.",
+      "bullets": [
+        "Tier 2 covers the two systems that produce the eleven day cycle.",
+        "Tier 1 leaves order management untouched, which is where the second delay sits."
+      ]
+    },
+    {
+      "kind": "comparison",
+      "title": "The three options side by side",
+      "label": "Options"
+    },
+    {
+      "kind": "option_block",
+      "option": "Lift and shift",
+      "title": "Lift and shift in detail",
+      "sections": {
+        "In scope": [
+          "Quote configuration and approval routing."
+        ],
+        "Not in scope": [
+          "Order management, available as a later phase."
+        ],
+        "Assumptions": [
+          "One integration endpoint."
+        ],
+        "Timeline": [
+          "Eight weeks from kickoff."
+        ]
+      }
+    },
+    {
+      "kind": "option_block",
+      "option": "Remediate and migrate",
+      "title": "Remediate and migrate in detail",
+      "sections": {
+        "In scope": [
+          "Quote configuration, approval routing, and order handoff."
+        ],
+        "Not in scope": [
+          "Billing configuration, available as a later phase."
+        ],
+        "Assumptions": [
+          "Two integration endpoints."
+        ],
+        "Timeline": [
+          "Fourteen weeks from kickoff."
+        ]
+      }
+    },
+    {
+      "kind": "option_block",
+      "option": "Re-architect and migrate",
+      "title": "Re-architect and migrate in detail",
+      "sections": {
+        "In scope": [
+          "The full revenue lifecycle through billing."
+        ],
+        "Not in scope": [
+          "Field service, available as a later phase."
+        ],
+        "Assumptions": [
+          "Four integration endpoints."
+        ],
+        "Timeline": [
+          "Twenty two weeks from kickoff."
+        ]
+      }
+    },
+    {
+      "kind": "outside_all",
+      "title": "What sits outside every option",
+      "bullets": [
+        "Data warehouse reporting stays with your team.",
+        "Field service remains out of scope in all three."
+      ],
+      "callout": "Each exclusion above routes to a scoped next step."
+    },
+    {
+      "kind": "timeline",
+      "title": "Where the recommended band spends its time",
+      "phases": [
+        {
+          "name": "Mobilize",
+          "weeks": 1
+        },
+        {
+          "name": "Analyze",
+          "weeks": 3,
+          "milestone": "Inventory gate"
+        },
+        {
+          "name": "Design",
+          "weeks": 3
+        },
+        {
+          "name": "Build",
+          "weeks": 5
+        },
+        {
+          "name": "Validate",
+          "weeks": 3,
+          "milestone": "Cutover gate"
+        },
+        {
+          "name": "Cutover",
+          "weeks": 2
+        }
+      ],
+      "bullets": [
+        "Seventeen weeks for remediate and migrate, gated at Analyze and at cutover.",
+        "The other bands run the same shape at twelve and twenty four weeks."
+      ]
+    },
+    {
+      "kind": "need_from_you",
+      "title": "What we need from you",
+      "steps": [
+        {
+          "text": "A sandbox provisioned and credentialed for the Aleysian team.",
+          "when": "5 days before"
+        },
+        {
+          "text": "A named decision owner with authority to accept deliverables.",
+          "when": "10 days before"
+        },
+        {
+          "text": "Recurring calendar holds for your named stakeholders.",
+          "when": "5 days before"
+        }
+      ]
+    },
+    {
+      "kind": "decision",
+      "title": "Decision and next step",
+      "steps": [
+        {
+          "text": "Confirm a band and the assumptions behind it.",
+          "when": "By Aug 21"
+        },
+        {
+          "text": "We issue the Statement of Work for the selected band.",
+          "when": "Within 3 days"
+        },
+        {
+          "text": "Pre-engagement checklist opens and kickoff is scheduled.",
+          "when": "Sep"
+        }
+      ]
+    }
+  ],
+  "_note": "Illustrative example for the skill. Figures are not a live client quote."
+}

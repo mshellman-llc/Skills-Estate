@@ -1,0 +1,558 @@
+{
+  "graphVersion": "0.2.0",
+  "artifactType": "solution_brief",
+  "outputType": "solution_brief",
+  "mode": "approval",
+  "engagement": {
+    "engagementId": "FIX-APEX-RICH",
+    "clientName": "Apex Industrial Safety",
+    "asOf": "2026-04-30T12:00:00Z"
+  },
+  "sufficiency": {
+    "status": "Sufficient",
+    "terminal": false,
+    "domainCoverage": {
+      "architecture_decisions": "Sufficient",
+      "conditions_next_action": "Sufficient",
+      "critical_interfaces": "Sufficient",
+      "financial_reconciliation": "Sufficient",
+      "risk_concentration": "Sufficient",
+      "scope_solution_trace": "Sufficient",
+      "staffing_delivery_shape": "Sufficient",
+      "system_boundary": "Sufficient",
+      "technical_judgment": "Sufficient",
+      "timeline_decision_gates": "Sufficient"
+    },
+    "blockers": [],
+    "nextGate": "Approve the content model for rendering"
+  },
+  "technicalJudgment": {
+    "statement": "Approve the solution shape with the catalog and BTP conditions explicitly gated before Build.",
+    "force": "approve_with_conditions",
+    "conditionRefs": [
+      "DEP-CATALOG",
+      "RSK-BTP"
+    ],
+    "claimIds": [
+      "CLM-DEP.CATALOG",
+      "CLM-RSK.BTP"
+    ]
+  },
+  "nodes": {
+    "systems": [
+      {
+        "id": "SYS-SF",
+        "name": "Salesforce Sales and Service Cloud",
+        "description": "System of engagement for customer and case context.",
+        "claimIds": [
+          "CLM-SYS.SF"
+        ],
+        "loadBearing": true,
+        "disposition": "keep",
+        "owner": "Apex Sales Operations",
+        "responsibilities": [
+          "Customer and case context"
+        ],
+        "dataDomains": [
+          "accounts",
+          "cases"
+        ],
+        "accessState": "confirmed"
+      },
+      {
+        "id": "SYS-RC",
+        "name": "Revenue Cloud Advanced and Billing",
+        "description": "Contract lifecycle and billing schedule system.",
+        "claimIds": [
+          "CLM-SYS.RC"
+        ],
+        "loadBearing": true,
+        "disposition": "new",
+        "owner": "Apex Sentinel Operations",
+        "responsibilities": [
+          "Quote, contract, amend, renew, billing schedule"
+        ],
+        "dataDomains": [
+          "contracts",
+          "billing schedules"
+        ],
+        "accessState": "pending"
+      },
+      {
+        "id": "SYS-BTP",
+        "name": "SAP BTP Integration Suite",
+        "description": "Integration seam for all net-new Salesforce to SAP exchanges.",
+        "claimIds": [
+          "CLM-SYS.BTP"
+        ],
+        "loadBearing": true,
+        "disposition": "new",
+        "owner": "Apex IT",
+        "responsibilities": [
+          "Orchestration, transformation, retry, alerting"
+        ],
+        "dataDomains": [
+          "orders",
+          "billing events"
+        ],
+        "accessState": "pending"
+      },
+      {
+        "id": "SYS-SAP",
+        "name": "SAP ECC and RAR",
+        "description": "Financial system of record for orders, invoices, revenue recognition, and GL.",
+        "claimIds": [
+          "CLM-SYS.SAP"
+        ],
+        "loadBearing": true,
+        "disposition": "connect",
+        "owner": "Apex Finance and IT",
+        "responsibilities": [
+          "Sales order, invoice, revenue recognition, general ledger"
+        ],
+        "dataDomains": [
+          "sales orders",
+          "invoices",
+          "POBs",
+          "journals"
+        ],
+        "accessState": "confirmed"
+      }
+    ],
+    "interfaces": [],
+    "adrs": [],
+    "scopeItems": [
+      {
+        "id": "SCP-LIFECYCLE",
+        "name": "Subscription lifecycle",
+        "description": "Configure quote, contract, amend, renew, suspend, and cancel for Grid.",
+        "claimIds": [
+          "CLM-SCP.LIFECYCLE"
+        ],
+        "loadBearing": true,
+        "inclusionState": "included",
+        "workstream": "Revenue Cloud",
+        "acceptanceCriteria": [
+          "One contract supports amendment and renewal without spawning duplicate contracts"
+        ]
+      },
+      {
+        "id": "SCP-INTEGRATION",
+        "name": "BTP integration flows",
+        "description": "Design and build the order and billing event interfaces.",
+        "claimIds": [
+          "CLM-SCP.INTEGRATION"
+        ],
+        "loadBearing": true,
+        "inclusionState": "included",
+        "workstream": "Integration",
+        "acceptanceCriteria": [
+          "E2E order and billing scenarios pass with observable failure handling"
+        ]
+      },
+      {
+        "id": "SCP-BILLING",
+        "name": "Billing schedules and modifications",
+        "description": "Configure billing triggers, proration, free months, and credit behavior.",
+        "claimIds": [
+          "CLM-SCP.BILLING"
+        ],
+        "loadBearing": true,
+        "inclusionState": "included",
+        "workstream": "Billing",
+        "acceptanceCriteria": [
+          "Billing schedules match approved scenarios and SAP acknowledgments"
+        ]
+      },
+      {
+        "id": "SCP-RIGHTREV",
+        "name": "Salesforce-native revenue recognition",
+        "description": "RightRev implementation is excluded because SAP RAR remains the revenue-recognition engine.",
+        "claimIds": [
+          "CLM-SCP.RIGHTREV"
+        ],
+        "loadBearing": true,
+        "inclusionState": "excluded",
+        "workstream": "Revenue recognition",
+        "acceptanceCriteria": []
+      }
+    ],
+    "risks": [
+      {
+        "id": "RSK-BTP",
+        "name": "BTP delivery experience",
+        "description": "Neither team has demonstrated the full target iFlow shape.",
+        "claimIds": [
+          "CLM-RSK.BTP"
+        ],
+        "loadBearing": true,
+        "probability": "medium",
+        "impact": "high",
+        "owner": "Aleysian Technical Architect",
+        "affectedRefs": [
+          "SYS-BTP",
+          "IFC-ORDER",
+          "IFC-BILL",
+          "PHS-DESIGN",
+          "PHS-BUILD"
+        ],
+        "mitigationActions": [
+          "Run a two-week BTP architecture spike",
+          "Staff a BTP-experienced developer"
+        ],
+        "trigger": "Architecture spike fails acceptance criteria",
+        "residualExposure": "Timeline and staffing remain exposed until the spike passes"
+      },
+      {
+        "id": "RSK-CATALOG",
+        "name": "Catalog rationalization delay",
+        "description": "Material-number mapping may not be ready before configuration begins.",
+        "claimIds": [
+          "CLM-RSK.CATALOG"
+        ],
+        "loadBearing": true,
+        "probability": "high",
+        "impact": "high",
+        "owner": "Apex Sentinel Operations",
+        "affectedRefs": [
+          "SCP-LIFECYCLE",
+          "PHS-DESIGN",
+          "PHS-BUILD"
+        ],
+        "mitigationActions": [
+          "Provide mapping template in Analyze",
+          "Gate Design exit on signed catalog mapping"
+        ],
+        "trigger": "Catalog mapping incomplete at Design gate",
+        "residualExposure": "Configuration and integration mapping cannot proceed"
+      }
+    ],
+    "assumptions": [
+      {
+        "id": "ASM-SAP-INVOICE",
+        "name": "SAP owns invoicing",
+        "description": "Invoicing, AR, collections, tax, and revenue recognition stay in SAP.",
+        "claimIds": [
+          "CLM-ASM.SAP.INVOICE"
+        ],
+        "loadBearing": true,
+        "owner": "Apex Finance",
+        "affectedRefs": [
+          "SYS-SAP",
+          "IFC-BILL",
+          "SCP-BILLING",
+          "FIN-BILLING"
+        ],
+        "consequenceIfFalse": "Reopen the architecture and price a materially larger engagement.",
+        "closureCondition": "Finance approves the invoicing boundary at Design gate"
+      },
+      {
+        "id": "ASM-PM",
+        "name": "Apex provides a client-side PM",
+        "description": "Aleysian PM effort assumes an empowered client project owner.",
+        "claimIds": [
+          "CLM-ASM.PM"
+        ],
+        "loadBearing": true,
+        "owner": "Apex Executive Sponsor",
+        "affectedRefs": [
+          "ROL-PM",
+          "ALC-PM-ANALYZE",
+          "ALC-PM-DESIGN",
+          "ALC-PM-BUILD",
+          "FIN-PM"
+        ],
+        "consequenceIfFalse": "Increase PM allocation and commercial baseline.",
+        "closureCondition": "Name and commit the client PM before Mobilize"
+      }
+    ],
+    "dependencies": [
+      {
+        "id": "DEP-CATALOG",
+        "name": "Approved catalog mapping",
+        "description": "Material numbers must map to Salesforce products before design can close.",
+        "claimIds": [
+          "CLM-DEP.CATALOG"
+        ],
+        "loadBearing": true,
+        "owner": "Apex Sentinel Operations",
+        "affectedRefs": [
+          "SCP-LIFECYCLE",
+          "SCP-INTEGRATION",
+          "PHS-DESIGN"
+        ],
+        "closureCondition": "Signed catalog mapping and data-quality checklist",
+        "blocksRefs": [
+          "MLS-DESIGN-GATE",
+          "PHS-BUILD"
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "id": "ROL-SA",
+        "name": "Solution Architect",
+        "description": "Owns Revenue Cloud lifecycle, billing boundaries, and technical judgment.",
+        "claimIds": [
+          "CLM-ROL.SA"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "Solution architecture",
+          "ADRs",
+          "Billing design"
+        ],
+        "requiredSkills": [
+          "Revenue Cloud",
+          "Subscription lifecycle"
+        ],
+        "owner": "Aleysian"
+      },
+      {
+        "id": "ROL-TA",
+        "name": "Technical Architect",
+        "description": "Owns BTP topology, interface contracts, security, and failure behavior.",
+        "claimIds": [
+          "CLM-ROL.TA"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "Integration architecture",
+          "Interface contracts",
+          "Observability"
+        ],
+        "requiredSkills": [
+          "SAP BTP",
+          "API-led integration"
+        ],
+        "owner": "Aleysian"
+      },
+      {
+        "id": "ROL-DEV",
+        "name": "BTP Developer",
+        "description": "Builds and tests the load-bearing integration flows.",
+        "claimIds": [
+          "CLM-ROL.DEV"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "iFlow build",
+          "Error handling",
+          "E2E tests"
+        ],
+        "requiredSkills": [
+          "SAP BTP Integration Suite"
+        ],
+        "owner": "Aleysian"
+      },
+      {
+        "id": "ROL-PM",
+        "name": "Project Manager",
+        "description": "Owns gates, decisions, dependencies, and delivery coordination.",
+        "claimIds": [
+          "CLM-ROL.PM"
+        ],
+        "loadBearing": true,
+        "responsibilities": [
+          "Governance",
+          "Decision log",
+          "Phase gates"
+        ],
+        "requiredSkills": [
+          "Complex integration delivery"
+        ],
+        "owner": "Aleysian"
+      }
+    ],
+    "allocations": [],
+    "phases": [
+      {
+        "id": "PHS-ANALYZE",
+        "name": "Analyze",
+        "description": "Confirm process, source data, catalog, and interface needs.",
+        "claimIds": [
+          "CLM-PHS.ANALYZE"
+        ],
+        "loadBearing": true,
+        "sequence": 1,
+        "objective": "Turn quoted scope into an evidence-backed baseline.",
+        "entryCriteria": [
+          "Access provisioned"
+        ],
+        "exitCriteria": [
+          "Scope, catalog approach, and interface inventory approved"
+        ],
+        "durationWeeks": 3
+      },
+      {
+        "id": "PHS-DESIGN",
+        "name": "Design",
+        "description": "Approve architecture, ADRs, interface contracts, failure behavior, and acceptance criteria.",
+        "claimIds": [
+          "CLM-PHS.DESIGN"
+        ],
+        "loadBearing": true,
+        "sequence": 2,
+        "objective": "Make the system and delivery logic buildable.",
+        "entryCriteria": [
+          "Analyze exit passed"
+        ],
+        "exitCriteria": [
+          "Architecture, interface contracts, catalog mapping, and test approach approved"
+        ],
+        "durationWeeks": 4
+      },
+      {
+        "id": "PHS-BUILD",
+        "name": "Build and Validate",
+        "description": "Configure Revenue Cloud, build BTP flows, and prove E2E scenarios.",
+        "claimIds": [
+          "CLM-PHS.BUILD"
+        ],
+        "loadBearing": true,
+        "sequence": 3,
+        "objective": "Deliver and validate the approved scope.",
+        "entryCriteria": [
+          "Design gate passed"
+        ],
+        "exitCriteria": [
+          "E2E happy and failure paths pass acceptance criteria"
+        ],
+        "durationWeeks": 11
+      }
+    ],
+    "milestones": [
+      {
+        "id": "MLS-ANALYZE-START",
+        "name": "Analyze start",
+        "description": "Access and kickoff complete.",
+        "claimIds": [
+          "CLM-MLS.ANALYZE.START"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-ANALYZE",
+        "milestoneType": "entry",
+        "date": null,
+        "offset": "Week 1",
+        "owner": "Project Manager"
+      },
+      {
+        "id": "MLS-DESIGN-GATE",
+        "name": "Design approval gate",
+        "description": "Architecture, interface, catalog, and test decisions approved.",
+        "claimIds": [
+          "CLM-MLS.DESIGN.GATE"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-DESIGN",
+        "milestoneType": "decision",
+        "date": null,
+        "offset": "End of week 7",
+        "owner": "Technical approvers"
+      },
+      {
+        "id": "MLS-BUILD-START",
+        "name": "Build start",
+        "description": "All Design gate dependencies closed.",
+        "claimIds": [
+          "CLM-MLS.BUILD.START"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-BUILD",
+        "milestoneType": "entry",
+        "date": null,
+        "offset": "Week 8",
+        "owner": "Project Manager"
+      },
+      {
+        "id": "MLS-VALIDATION-EXIT",
+        "name": "Validation exit",
+        "description": "All E2E scenarios and failure paths pass.",
+        "claimIds": [
+          "CLM-MLS.VALIDATION.EXIT"
+        ],
+        "loadBearing": true,
+        "phaseId": "PHS-BUILD",
+        "milestoneType": "exit",
+        "date": null,
+        "offset": "End of week 18",
+        "owner": "Client and Aleysian technical leads"
+      }
+    ],
+    "financialLines": [],
+    "reconciliationControls": []
+  },
+  "edges": [],
+  "editorialViews": [
+    {
+      "viewId": "VIEW-01",
+      "viewType": "technical_judgment",
+      "audienceTask": "Know whether the solution is technically deliverable and under which conditions.",
+      "entityRefs": [
+        "ADR-BTP",
+        "ADR-RCB",
+        "RSK-BTP",
+        "DEP-CATALOG"
+      ],
+      "claimIds": [
+        "CLM-ADR.BTP",
+        "CLM-ADR.RCB",
+        "CLM-DEP.CATALOG",
+        "CLM-RSK.BTP"
+      ],
+      "protectedMeaning": true,
+      "visibility": "primary",
+      "preferredGrammar": "decision_condition_statement",
+      "required": true
+    }
+  ],
+  "referencedClaimIds": [
+    "CLM-ADR.BTP",
+    "CLM-ADR.RCB",
+    "CLM-ALC.DEV.BUILD",
+    "CLM-ALC.PM.ANALYZE",
+    "CLM-ALC.PM.BUILD",
+    "CLM-ALC.PM.DESIGN",
+    "CLM-ALC.SA.ANALYZE",
+    "CLM-ALC.SA.DESIGN",
+    "CLM-ALC.TA.DESIGN",
+    "CLM-ASM.PM",
+    "CLM-ASM.SAP.INVOICE",
+    "CLM-DEP.CATALOG",
+    "CLM-FIN.BILLING",
+    "CLM-FIN.INTEGRATION",
+    "CLM-FIN.LIFECYCLE",
+    "CLM-FIN.PM",
+    "CLM-FIN.RIGHTREV",
+    "CLM-FIN.TOTAL",
+    "CLM-IFC.BILL",
+    "CLM-IFC.ORDER",
+    "CLM-MLS.ANALYZE.START",
+    "CLM-MLS.BUILD.START",
+    "CLM-MLS.DESIGN.GATE",
+    "CLM-MLS.VALIDATION.EXIT",
+    "CLM-PHS.ANALYZE",
+    "CLM-PHS.BUILD",
+    "CLM-PHS.DESIGN",
+    "CLM-REC.EXCLUSION",
+    "CLM-REC.SCOPE",
+    "CLM-REC.TOTAL",
+    "CLM-ROL.DEV",
+    "CLM-ROL.PM",
+    "CLM-ROL.SA",
+    "CLM-ROL.TA",
+    "CLM-RSK.BTP",
+    "CLM-RSK.CATALOG",
+    "CLM-SCP.BILLING",
+    "CLM-SCP.INTEGRATION",
+    "CLM-SCP.LIFECYCLE",
+    "CLM-SCP.RIGHTREV",
+    "CLM-SYS.BTP",
+    "CLM-SYS.RC",
+    "CLM-SYS.SAP",
+    "CLM-SYS.SF"
+  ],
+  "metadata": {
+    "fixturePurpose": "industrial-subscription-shaped rich graph demonstrating distinct semantic components and relationships"
+  }
+}

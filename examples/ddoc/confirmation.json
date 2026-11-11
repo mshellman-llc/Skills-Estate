@@ -1,0 +1,211 @@
+{
+  "mode": "confirmation",
+  "client": "Example Manufacturing",
+  "title": "Quote approval pilot",
+  "date": "2026-10-20",
+  "author": "Skills Estate test fixture",
+  "provider": "Example Consulting",
+  "quote_number": "SYNTHETIC-001",
+  "quote_snapshot": {
+    "quote.total": 24000
+  },
+  "figures": [
+    {
+      "label": "Pilot fee",
+      "value": 24000,
+      "quote_field": "quote.total"
+    }
+  ],
+  "deck_lead": "A pilot for one sales team, with approval rules and a tested handoff.",
+  "options": [
+    {
+      "name": "Approval pilot",
+      "recommended": true,
+      "duration": "4 weeks",
+      "investment": "$24,000"
+    }
+  ],
+  "meta": [
+    {
+      "k": "Scenario",
+      "v": "Synthetic example"
+    },
+    {
+      "k": "Duration",
+      "v": "4 weeks"
+    }
+  ],
+  "slides": [
+    {
+      "kind": "heard",
+      "title": "Approval ownership is unclear",
+      "items": [
+        {
+          "text": "Sales managers assign approval requests by email.",
+          "evidence": "client_stated",
+          "source": "Synthetic discovery note D-001"
+        },
+        {
+          "text": "The pilot must cover one sales team before expansion.",
+          "evidence": "client_stated",
+          "source": "Synthetic discovery note D-001"
+        }
+      ]
+    },
+    {
+      "kind": "recommendation",
+      "title": "Start with the approval pilot",
+      "pick": "Approval pilot",
+      "pick_note": "One team, one approval policy, and a reviewed exception path.",
+      "reasons": [
+        {
+          "head": "The pilot has a named owner",
+          "body": "The sales operations lead will approve the routing rules."
+        },
+        {
+          "head": "The scope can be tested",
+          "body": "A fixed test set will cover standard requests and exceptions."
+        }
+      ]
+    },
+    {
+      "kind": "deliverables",
+      "title": "Pilot deliverables",
+      "items": [
+        {
+          "name": "Approval configuration",
+          "detail": "Routing rules for the pilot team.",
+          "format": "Configuration",
+          "when": "Week 2"
+        },
+        {
+          "name": "Acceptance test record",
+          "detail": "Results and resolved defects for agreed cases.",
+          "format": "Workbook",
+          "when": "Week 4"
+        }
+      ]
+    },
+    {
+      "kind": "scope",
+      "title": "Pilot scope",
+      "in_scope": [
+        "Configure one approval policy for one sales team.",
+        "Test standard requests and the exception path."
+      ],
+      "out_scope": [
+        {
+          "item": "Other sales teams",
+          "route": "Estimate expansion after pilot acceptance."
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "title": "Four weeks to test the pilot",
+      "phases": [
+        {
+          "name": "Agree rules",
+          "weeks": 1,
+          "detail": "Confirm the policy and acceptance cases."
+        },
+        {
+          "name": "Configure",
+          "weeks": 2,
+          "detail": "Build routing and test exceptions."
+        },
+        {
+          "name": "Accept",
+          "weeks": 1,
+          "detail": "Run acceptance cases and record results."
+        }
+      ]
+    },
+    {
+      "kind": "team",
+      "title": "Owners through the pilot",
+      "weeks": 4,
+      "roles": [
+        {
+          "role": "Sales operations lead",
+          "windows": [
+            {
+              "from": 1,
+              "to": 4,
+              "weight": "lead"
+            }
+          ]
+        },
+        {
+          "role": "Delivery lead",
+          "windows": [
+            {
+              "from": 1,
+              "to": 4,
+              "weight": "lead"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "investment",
+      "title": "Pilot investment",
+      "amount": "$24,000",
+      "qualifier": "Synthetic fixed-fee example for the stated pilot scope.",
+      "terms": [
+        {
+          "k": "Duration",
+          "v": "4 weeks"
+        },
+        {
+          "k": "Source",
+          "v": "SYNTHETIC-001"
+        }
+      ]
+    },
+    {
+      "kind": "assumptions",
+      "title": "Conditions for the estimate",
+      "rows": [
+        {
+          "text": "The owner supplies approved routing rules before build.",
+          "if_false": "Reassess the start date before committing the team."
+        }
+      ]
+    },
+    {
+      "kind": "need_from_you",
+      "title": "Inputs needed before kickoff",
+      "steps": [
+        {
+          "text": "Supply the approved routing policy.",
+          "owner": "Sales operations lead",
+          "when": "Before kickoff"
+        },
+        {
+          "text": "Name the pilot participants.",
+          "owner": "Sponsor",
+          "when": "Before kickoff"
+        }
+      ]
+    },
+    {
+      "kind": "confirm",
+      "title": "Confirm the pilot boundary",
+      "steps": [
+        {
+          "text": "Confirm the included team and routing policy.",
+          "owner": "Sales operations lead",
+          "when": "Before kickoff"
+        },
+        {
+          "text": "Confirm the acceptance cases.",
+          "owner": "Delivery lead",
+          "when": "Week 1"
+        }
+      ]
+    }
+  ],
+  "_fixture": "Entirely synthetic. Generated for skill verification; no client approval or commercial offer is implied."
+}

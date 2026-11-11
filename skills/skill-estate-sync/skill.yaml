@@ -1,0 +1,48 @@
+schema_version: 1
+name: skill-estate-sync
+display_name: Skill Estate Sync
+summary: Keeps house-skills the single source of truth and every Claude, ChatGPT,
+  and Codex surface a mirror of it.
+status: active
+tier: maintainer
+version: 1.2.0
+owner: Aleysian
+category: skill-governance
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Keeps house-skills the single source of truth and every Claude, ChatGPT, and Codex
+  surface a mirror of it. Use when a skill changes and needs to reach all surfaces,
+  when a skill behaves differently between hosts, or to check whether mounted copies match source. Reports drift, gates
+  on selftests, and builds uploadable .skill bundles. Fixes the failure where working
+  scripts live in a repo but a surface mounts a SKILL.md-only stub.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

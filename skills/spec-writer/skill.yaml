@@ -1,0 +1,45 @@
+schema_version: 1
+name: spec-writer
+display_name: Spec Writer
+summary: Rigorous feature specification process.
+status: active
+tier: situational
+version: 1.0.0
+owner: Aleysian
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Rigorous feature specification process. Produces a self-contained HTML spec with
+  rendered mockups, all UI states, complete file manifest (CREATE/UPDATE/DELETE/READ/MIGRATION),
+  and verifiable done criteria. Use before writing any code for a non-trivial feature.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

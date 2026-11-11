@@ -1,0 +1,97 @@
+{
+  "_comment": [
+    "The hook and permission entries this stack needs in the USER-level settings file",
+    "(~/.claude/settings.json). install.sh jq-merges these in rather than overwriting,",
+    "and backs the file up first — the user almost certainly has hooks of their own.",
+    "",
+    "WHY USER LEVEL, NOT THE REPO. Two reasons, and the second is the important one:",
+    "  1. In a client's repo, .claude/settings.json would be a visible change to their",
+    "     tree for a reason that is none of their business.",
+    "  2. A worktree agent can edit .claude/hooks/ in its own branch. It cannot edit",
+    "     ~/.aleysian/. 'the repo must not disarm itself' becomes 'the repo CANNOT'.",
+    "",
+    "Every path is absolute and every hook exits 0 immediately in a repo with no",
+    "aleysian.mode set (see _config.sh's sfds_gate), so this is inert in every other",
+    "repo on the machine.",
+    "",
+    "__HOME__ is replaced with $HOME at install time — Claude Code does not expand ~."
+  ],
+
+  "_comment_deny": [
+    "There are deliberately NO permission-deny rules here anymore. Earlier versions",
+    "denied `sf project retrieve start` and the two sfdx equivalents. But a deny rule",
+    "in the USER-level settings file is enforced by the harness in EVERY repo on the",
+    "machine, gate or no gate — so it blocked legitimate retrieves in unrelated",
+    "Salesforce projects that never went through init. That is the requirement-1",
+    "(non-interference) violation this removal closes.",
+    "",
+    "Nothing is lost where it matters: guard-sf-flags.sh blocks every retrieve INTO",
+    "the tree in a MANAGED repo, and only there — which is exactly the scope req 1",
+    "wants. install.sh RETRACTS the old rules from an existing settings.json on",
+    "re-arm (see the $retired list there), so this is self-cleaning. Do not add",
+    "deny rules back here: a machine-wide deny cannot be scoped to one project."
+  ],
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/verify-git-hooks.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/session-status.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-force-app.sh" }
+        ]
+      },
+      {
+        "_comment": "No MCP matcher group. Jira runs agent-side through the Atlassian Rovo MCP, and a hook is a bash subprocess that cannot reach the session's MCP — there is nothing for a PreToolUse hook to gate there. Ticket closure is also out of this loop's scope, so there is no close gate to install.",
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/ensure-worktree-config.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-force-app-bash.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-sf-deploy.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-sf-flags.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-worktree-nesting.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-closing-keywords.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-devops-shared.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-devops-handoff.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-local-merge.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-pr-merge.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/guard-push.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/record-escape-hatch.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/record-validate.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/auto-label-deploy.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/post-merge-nudge.sh" }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "_comment": "The harness auto-backgrounds Bash commands that exceed its timeout. PostToolUse fires with an incomplete result (command still running), so the recorders cannot see the verdict. TaskCompleted fires when the background command actually finishes, carrying the real output. The same scripts handle both events — they derive HOOK_EVENT from the input JSON.",
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/record-validate.sh" },
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/auto-label-deploy.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "__HOME__/.aleysian/claude-hooks/stop-dod-check.sh" }
+        ]
+      }
+    ]
+  }
+}

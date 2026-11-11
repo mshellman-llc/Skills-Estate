@@ -1,0 +1,65 @@
+schema_version: 1
+name: discovery-synthesis
+display_name: Discovery Synthesis
+summary: 'Transform raw discovery call content, notes, transcripts, Granola/Fathom
+  recordings, or uploaded files, into structured research outputs: JTBD statements,
+  pain points with severity signals, opportunity areas, key verbatims, speaker-attributed
+  insights, a TL;DR, and next steps.'
+status: active
+tier: core
+version: 1.0.0
+owner: Aleysian
+category: pursuit-intelligence
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Transform raw discovery call content, notes, transcripts, Granola/Fathom recordings,
+  or uploaded files, into structured research outputs: JTBD statements, pain points
+  with severity signals, opportunity areas, key verbatims, speaker-attributed insights,
+  a TL;DR, and next steps. Eliminates hours of manual mapping. Outputs clean Markdown
+  and .docx artifacts ready for NotebookLM, Claude Projects, or stakeholder sharing.
+  Trigger when user shares meeting content or says: "synthesize this call", "pull
+  insights from this transcript", "map the pain points", "extract JTBDs", "what did
+  we learn", or "turn this into research output". If a transcript or discovery notes
+  appear in context, proactively offer to run synthesis.'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: required
+  reads:
+  - opportunity.front_door
+  - opportunity.discovery
+  - transcripts.index
+  - evidence.sources
+  writes:
+  - opportunity.discovery
+  - evidence.sources
+  - evidence.claims
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate

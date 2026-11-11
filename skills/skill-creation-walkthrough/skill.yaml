@@ -1,0 +1,52 @@
+schema_version: 1
+name: skill-creation-walkthrough
+display_name: Skill Creation Walkthrough
+summary: Step-by-step guide for creating your own Claude Skills, from deciding whether
+  a skill is the right tool to writing the SKILL.md file, structuring reference material,
+  and making it trigger reliably.
+status: active
+tier: maintainer
+version: 1.0.0
+owner: Aleysian
+category: skill-governance
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Step-by-step guide for creating your own Claude Skills, from deciding whether a
+  skill is the right tool to writing the SKILL.md file, structuring reference material,
+  and making it trigger reliably. Use when you want to package a workflow, framework,
+  or repeated task into a reusable Skill, when an existing skill is not triggering
+  or not loading the right context, when you are auditing a skill that is underperforming,
+  or when you want to publish a skill for others. Also triggers when someone asks
+  "how do I make a skill" or "what makes a good skill". Useful for individuals, teams,
+  and anyone publishing skills publicly.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

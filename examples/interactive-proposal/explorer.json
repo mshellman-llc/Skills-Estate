@@ -1,0 +1,151 @@
+{
+  "_fixture": true,
+  "meta": {
+    "client": "Example Manufacturing",
+    "opportunity": "Service intake scope options",
+    "prepared_by": "Example Delivery Team",
+    "date": "2026-10-20",
+    "validity": "Synthetic example for skill testing. Scope decisions remain open.",
+    "confidentiality": "Synthetic example. No client information.",
+    "mode": "explorer"
+  },
+  "sources": [
+    {
+      "id": "requirements",
+      "title": "Example requirements",
+      "reference": "REQ-EXAMPLE-001",
+      "revision": "1"
+    }
+  ],
+  "versions": [
+    {
+      "key": "A",
+      "name": "Queue only",
+      "tagline": "Coverage follows the selected requirement IDs.",
+      "source": "requirements",
+      "metric": 1,
+      "metric_label": "requirement included",
+      "scope_sections": [
+        {
+          "title": "Request handling",
+          "items": [
+            {
+              "id": "R1",
+              "name": "Request queue",
+              "description": "Route requests into one queue with a named owner.",
+              "source": "requirements"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        "The client supplies example requests and assignment rules."
+      ],
+      "not_included": [
+        {
+          "item": "Escalation path",
+          "route": "Include this requirement in a separately confirmed scope."
+        },
+        {
+          "item": "Response report",
+          "route": "Include this requirement in a separately confirmed scope."
+        }
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Queue and escalation",
+      "tagline": "Coverage follows the selected requirement IDs.",
+      "source": "requirements",
+      "metric": 2,
+      "metric_label": "requirements included",
+      "scope_sections": [
+        {
+          "title": "Request handling",
+          "items": [
+            {
+              "id": "R1",
+              "name": "Request queue",
+              "description": "Route requests into one queue with a named owner.",
+              "source": "requirements"
+            },
+            {
+              "id": "R2",
+              "name": "Escalation path",
+              "description": "Escalate requests that remain unassigned.",
+              "source": "requirements"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        "The client supplies example requests and assignment rules."
+      ],
+      "not_included": [
+        {
+          "item": "Response report",
+          "route": "Include this requirement in a separately confirmed scope."
+        }
+      ]
+    },
+    {
+      "key": "C",
+      "name": "Queue, escalation and reporting",
+      "tagline": "Coverage follows the selected requirement IDs.",
+      "source": "requirements",
+      "metric": 3,
+      "metric_label": "requirements included",
+      "scope_sections": [
+        {
+          "title": "Request handling",
+          "items": [
+            {
+              "id": "R1",
+              "name": "Request queue",
+              "description": "Route requests into one queue with a named owner.",
+              "source": "requirements"
+            },
+            {
+              "id": "R2",
+              "name": "Escalation path",
+              "description": "Escalate requests that remain unassigned.",
+              "source": "requirements"
+            },
+            {
+              "id": "R3",
+              "name": "Response report",
+              "description": "Report assignment and response times.",
+              "source": "requirements"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        "The client supplies example requests and assignment rules."
+      ],
+      "not_included": []
+    }
+  ],
+  "counting_method": "Count each distinct included requirement ID once. The source contains R1, R2 and R3.",
+  "phase_zero": {
+    "name": "Scope confirmation",
+    "description": "Confirm the selected workflow and its estimate before preparing a quote.",
+    "outputs": [
+      "Confirmed scope",
+      "Team and schedule",
+      "Priced quote"
+    ]
+  },
+  "decisions": [
+    {
+      "question": "Does the first release need response reporting?",
+      "owner": "Example Operations Lead",
+      "source": "requirements"
+    }
+  ],
+  "architecture": "The service platform owns request status. Options that include reporting add a view of that status.",
+  "next_steps": [
+    "Review the requirement coverage with the workflow owner.",
+    "Confirm the selected scope and prepare its quote."
+  ]
+}

@@ -1,0 +1,52 @@
+schema_version: 1
+name: writing-style-builder
+display_name: Writing Style Builder
+summary: Build, confirm, update, correct, or revoke one person's private writing-style
+  profile from material they intentionally supply or authorize.
+status: active
+tier: situational
+version: 0.1.0
+owner: Aleysian
+category: internal-tooling
+runtimes:
+- generic-agent-skills
+- claude-ai
+- cowork
+- chatgpt
+- codex
+triggers:
+- Someone wants a personal voice profile created, confirmed, corrected, evolved,
+  revoked, or deleted. Requires explicit authorization before analyzing any personal
+  material; connector access alone is not consent.
+exclusions:
+- Applying anyone's voice to output. That is personal-writing-style-runtime.
+inputs:
+- name: authorized_evidence
+  required: true
+  description: Material the profiled person has explicitly authorized for this purpose,
+    tagged by provenance.
+outputs:
+- name: writing_style_profile
+  format: json
+  audience: the profiled person only
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional:
+  - email
+  - chat
+  - documents
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: true
+  control: quality-gate
+license: Proprietary to Aleysian LLC.

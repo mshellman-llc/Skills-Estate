@@ -1,0 +1,468 @@
+#!/bin/bash
+# Machine-local pre-commit hook. Lives in ~/.aleysian/githooks/, armed per-clone
+# via: git config core.hooksPath ~/.aleysian/githooks
+#
+# WHY NOT .githooks/ IN THE REPO
+# ------------------------------
+# The predecessor tracked its hooks, which is right in a repo we own: a fresh clone
+# and every worktree get the whole stack for free. In a CLIENT's repo it means
+# committing our tooling to their tree. So the hooks move to the machine and the
+# repo carries nothing. Two consequences worth knowing:
+#   - core.hooksPath is local config, so it must be re-armed. verify-git-hooks.sh
+#     does that at every session start.
+#   - a worktree agent can no longer edit the hooks that constrain it, because
+#     they are not in any branch. That is a strict improvement.
+#
+# Five gates, cheapest-first, all scoped to the effective WI delta so this stays fast
+# enough to run on every commit:
+#
+#   1. Block force-app/ commits directly on trunk     (worktree isolation) BLOCKS
+#  1b. Block husky — NATIVE MODE ONLY                 (self-protection)    BLOCKS
+#   2. Prettier, per aleysian.format                  (formatting)
+#   3. ESLint on staged LWC/Aura JS                   (linting)            BLOCKS
+#   4. PMD on staged Apex, per aleysian.pmd           (workflow step 3a)   BLOCKS
+#   5. Jest on tests related to staged LWC            (workflow step 4a)   BLOCKS
+#
+# Then: exec the project's own pre-commit hook, if init found one. We go first
+# because our gates are cheap and blocking; theirs is authoritative about their
+# codebase and must not be displaced. Never fight a client's hooks.
+#
+# Gates 2-5 skip entirely when no relevant files are staged, so a docs-only or
+# metadata-only commit pays almost nothing.
+#
+# NOT enforced here: /simplify (workflow step 3b). It is an AI judgment step with
+# no mechanical signal. Do not fake it with a marker file — trivially gamed, and
+# it would give false confidence.
+#
+# Escape hatch: git commit --no-verify. Deliberate and recorded (by
+# record-escape-hatch.sh, which sees it because no git hook can report its own
+# bypass) — but reaching for it on a force-app/ change means opting out of the
+# gate, not satisfying it.
+
+set -u
+
+HOOKS_HOME="$(cd "$(dirname "$0")" && pwd)"
+. "$HOOKS_HOME/../claude-hooks/_config.sh"
+
+# Inert in any repo that has not been initialised.
+[ -n "$(mode)" ] || exit 0
+
+# ─────────────────────────────────────────────────────────────
+# Make the node toolchain work HERE, in whichever working tree this is.
+#
+# node_modules/ is gitignored, so it exists only in the main clone; a worktree
+# materialises tracked content only. Running the binaries from the main clone is
+# not enough — eslint resolves plugins relative to eslint.config.js, jest and
+# prettier likewise resolve relative to the working tree — so tools must run with
+# THIS tree as cwd, against a node_modules reachable from it.
+#
+# An earlier version ran the tools from the main clone against worktree-relative
+# paths. eslint reported "no files matching the pattern" and the gate blocked every
+# worktree commit; had a same-named file existed in the main clone it would
+# silently have linted the WRONG file. A symlink is the honest fix.
+# ─────────────────────────────────────────────────────────────
+COMMON_DIR=$(git rev-parse --git-common-dir)
+case "$COMMON_DIR" in /*) ;; *) COMMON_DIR="$(pwd)/$COMMON_DIR" ;; esac
+MAIN_ROOT=$(cd "$(dirname "$COMMON_DIR")" && pwd)
+TREE_ROOT=$(git rev-parse --show-toplevel)
+cd "$TREE_ROOT" || exit 1
+
+if [ ! -e node_modules ] && [ -d "$MAIN_ROOT/node_modules" ]; then
+  ln -s "$MAIN_ROOT/node_modules" node_modules 2>/dev/null \
+    && echo "  pre-commit: linked node_modules -> $MAIN_ROOT/node_modules"
+fi
+BIN="$TREE_ROOT/node_modules/.bin"
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+TRUNK=$(trunk)
+
+warn() { { echo ""; echo "⚠  $*"; } >&2; }
+
+# A merge commit normally compares the index to the WI branch's old HEAD. During
+# a DevOps Center stage sync that includes every file imported from the stage,
+# even though those files are already promoted and are not part of this WI. If
+# MERGE_HEAD is the tip of a configured protected stage branch, compare against
+# that stage commit instead. The result is the net WI delta after reconciliation.
+MERGE_DIFF_BASE=""
+MERGE_HEAD_PATH=$(git rev-parse --git-path MERGE_HEAD 2>/dev/null || true)
+if is_devops_center && is_devops_source_branch "$BRANCH" \
+    && [ -f "$MERGE_HEAD_PATH" ]; then
+  CANDIDATE=$(sed -n '1p' "$MERGE_HEAD_PATH")
+  for STAGE_BRANCH in $(protected); do
+    for STAGE_REF in "refs/remotes/origin/$STAGE_BRANCH" "refs/heads/$STAGE_BRANCH"; do
+      STAGE_SHA=$(git rev-parse --verify "$STAGE_REF^{commit}" 2>/dev/null || true)
+      if [ -n "$STAGE_SHA" ] && [ "$STAGE_SHA" = "$CANDIDATE" ]; then
+        MERGE_DIFF_BASE="$CANDIDATE"
+        break 2
+      fi
+    done
+  done
+fi
+
+staged_names() {
+  if [ -n "$MERGE_DIFF_BASE" ]; then
+    git diff --cached "$MERGE_DIFF_BASE" --name-only --diff-filter=ACM -- "$@"
+  else
+    git diff --cached --name-only --diff-filter=ACM -- "$@"
+  fi
+}
+
+# Files with BOTH staged and unstaged changes must never be rewritten and
+# re-staged — that would sweep unstaged work into the commit silently.
+is_partially_staged() {
+  git diff --name-only --diff-filter=ACM -- "$1" | grep -qxF "$1"
+}
+
+# The client's own hook, run last. Sourced through exec so their exit code is the
+# commit's exit code — if their gate says no, the answer is no.
+chain_client_hook() {
+  local dir; dir=$(chainhooks)
+  [ -n "$dir" ] || return 0
+  [ -x "$dir/pre-commit" ] || return 0
+  if [ -n "$MERGE_DIFF_BASE" ] && [ -x "$BIN/lint-staged" ]; then
+    # A pure lint-staged client hook can be invoked safely with the same diff
+    # base. Do not guess when the hook also performs other work.
+    local commands
+    commands=$(sed -e '/^[[:space:]]*#/d' -e '/^[[:space:]]*$/d' \
+      -e '/^[[:space:]]*#!\/.*$/d' -e '/^[[:space:]]*set[[:space:]]/d' \
+      "$dir/pre-commit")
+    if [ "$(printf '%s\n' "$commands" | wc -l | tr -d ' ')" -eq 1 ] \
+        && printf '%s\n' "$commands" | grep -Eq '(^|[[:space:]])(npx[[:space:]]+|pnpm[[:space:]]+exec[[:space:]]+|yarn[[:space:]]+|bunx[[:space:]]+)?lint-staged([[:space:]]|$)'; then
+      echo "  pre-commit: running the project's lint-staged against the net WI delta"
+      exec "$BIN/lint-staged" --diff "$MERGE_DIFF_BASE"
+    fi
+    warn "The project's chained pre-commit hook is not lint-staged-only; running it unchanged.
+   It can read ALEY_MERGE_DIFF_BASE=$MERGE_DIFF_BASE to apply the same WI-delta scope."
+  fi
+  echo "  pre-commit: handing off to the project's own hook ($dir/pre-commit)"
+  ALEY_MERGE_DIFF_BASE="$MERGE_DIFF_BASE" exec "$dir/pre-commit" "$@"
+}
+
+# ═════════════════════════════════════════════════════════════
+# GATE 1 — no force-app/ commits on trunk
+# ═════════════════════════════════════════════════════════════
+STAGED_FORCE=$(staged_names 'force-app/')
+
+if is_devops_center && [ -n "$STAGED_FORCE" ]; then
+  if [ "$TREE_ROOT" = "$MAIN_ROOT" ]; then
+    {
+      echo ""
+      echo "BLOCKED: DevOps Center source commits must come from a linked WI worktree."
+      echo ""
+      echo "Move the work item to In Progress, fetch its existing WI-###### branch,"
+      echo "and add that branch as a linked worktree. The main checkout holds pipeline"
+      echo "branches and is inspection-only for force-app/."
+    } >&2
+    exit 1
+  fi
+  if ! is_devops_source_branch "$BRANCH"; then
+    {
+      echo ""
+      echo "BLOCKED: '$BRANCH' is not a configured DevOps Center work branch."
+      echo ""
+      echo "Packaging branch pattern: $(devops_branch_pattern)"
+      if is_devops_shared; then
+        echo "Development branch pattern: $(devops_development_branch_pattern)"
+        echo "Use dev/WI-###### for shared-sandbox development or the exact WI-######"
+        echo "branch DevOps Center created for packaging."
+      else
+        echo "Use the exact branch DevOps Center created for the work item."
+      fi
+    } >&2
+    exit 1
+  fi
+fi
+
+if is_devops_center && [ -n "$STAGED_FORCE" ]; then
+  for PIPELINE_BRANCH in $(protected); do
+    if [ "$BRANCH" = "$PIPELINE_BRANCH" ]; then
+      {
+        echo ""
+        echo "BLOCKED: '$BRANCH' is a DevOps Center pipeline branch."
+        echo ""
+        echo "Do not commit force-app/ changes directly here. DevOps Center owns what"
+        echo "lands in protected branches: $(protected)"
+      } >&2
+      exit 1
+    fi
+  done
+fi
+
+if [ "$BRANCH" = "$TRUNK" ] && [ -n "$STAGED_FORCE" ]; then
+  # ── The local-review carve-out ──────────────────────────────
+  #
+  # With no remote (aleysian.host=none) there is no server-side merge, so the
+  # squash commit ON TRUNK is the legitimate landing step — the one thing this
+  # gate would otherwise make impossible. Three conditions, all checkable from
+  # inside the hook, and all three required:
+  #
+  #   1. git is mid-squash-merge          ($GIT_DIR/SQUASH_MSG exists)
+  #   2. aleysian-merge staged it         (pending-approve names the branch head)
+  #   3. that head is validated AND approved (both logs agree)
+  #
+  # Anything else touching force-app/ on trunk still blocks. In particular a hand
+  # -written `git merge --squash` satisfies 1 and fails 2, which is the point:
+  # bin/aleysian-merge is the reviewed path, not a convenience wrapper.
+  LANDING=0
+  if [ "$(host)" = "none" ]; then
+    GITDIR=$(git rev-parse --git-dir); case "$GITDIR" in /*) ;; *) GITDIR="$TREE_ROOT/$GITDIR" ;; esac
+    SD="$COMMON_DIR/aleysian"
+    if [ -f "$GITDIR/SQUASH_MSG" ] && [ -f "$SD/pending-approve" ]; then
+      PSHA=$(head -1 "$SD/pending-approve" | awk '{print $1}')
+      if [ -n "$PSHA" ] \
+         && grep -q "^${PSHA}[[:space:]]" "$SD/validate-log" 2>/dev/null \
+         && grep -q "^${PSHA}[[:space:]]" "$SD/approve-log" 2>/dev/null; then
+        LANDING=1
+        echo "  pre-commit: landing reviewed squash ${PSHA:0:8} on $TRUNK (validated + approved)"
+      fi
+    fi
+  fi
+
+  if [ "$LANDING" = "0" ]; then
+    {
+      echo ""
+      echo "BLOCKED: cannot commit force-app/ changes directly to '$TRUNK'."
+      echo ""
+      echo "All deployable changes go through a branch in a worktree first:"
+      echo "  git worktree add ../$(basename "$TREE_ROOT")-N -b feat/N-description"
+      echo ""
+      if [ "$(host)" = "none" ]; then
+        echo "This repo has no remote, so the landing step is the local review gate:"
+        echo "  aleysian-merge <branch>"
+        echo "A hand-written 'git merge --squash' does not count — the gate is what records"
+        echo "that a human read the diff, and there is no PR here to do that job."
+        echo ""
+      fi
+      echo "Staged force-app/ files:"
+      echo "$STAGED_FORCE" | sed 's/^/  /'
+    } >&2
+    exit 1
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 1b — the enforcement stack must not disarm itself
+#
+# NATIVE MODE ONLY. In a repo we own, husky repointing core.hooksPath at .husky
+# silently disables every gate here, and adding it back is a self-inflicted wound
+# invisible in a diff review.
+#
+# In STEALTH mode the client has every right to use husky, and blocking it would
+# be a vendor tool vetoing their toolchain. We coexist instead: verify-git-hooks.sh
+# re-arms our hooksPath and records theirs as aleysian.chainhooks, and
+# chain_client_hook() below runs it. Both stacks fire.
+# ═════════════════════════════════════════════════════════════
+if is_native && staged_names package.json | grep -q .; then
+  if git show :package.json 2>/dev/null | grep -q '"husky"'; then
+    {
+      echo ""
+      echo "BLOCKED: package.json reintroduces husky."
+      echo ""
+      echo "husky sets core.hooksPath=.husky, which silently disables every gate in"
+      echo "~/.aleysian/githooks — including the ones that keep force-app/ off '$TRUNK' and"
+      echo "require a ticket reference."
+      echo ""
+      echo "If husky is genuinely needed here, this repo should be in stealth mode, where"
+      echo "the two stacks chain instead of fighting:  git config aleysian.mode stealth"
+    } >&2
+    exit 1
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 2 — Prettier, per aleysian.format
+#
+#   client  run --write with THEIR config, staged files only (default when a repo
+#           prettier config exists) — their rules, our discipline
+#   check   --check only, never write, never block (default in stealth with no
+#           config): auto-formatting a client's code with our defaults creates
+#           diff noise that buries the real change and reads as vendor sloppiness
+#   off     skip entirely
+# ═════════════════════════════════════════════════════════════
+FMT=$(format_policy)
+if [ "$FMT" != "off" ]; then
+STAGED_FMT=$(staged_names \
+  '*.cls' '*.trigger' '*.js' '*.html' '*.css' '*.json' '*.xml' '*.md' '*.yaml' '*.yml')
+
+if [ -n "$STAGED_FMT" ]; then
+  if [ ! -x "$BIN/prettier" ]; then
+    warn "prettier not found at $BIN — formatting SKIPPED. Run 'npm install' in $MAIN_ROOT."
+  elif [ "$FMT" = "check" ]; then
+    BADFMT=()
+    while IFS= read -r f; do
+      [ -f "$f" ] || continue
+      "$BIN/prettier" --check "$f" >/dev/null 2>&1 || BADFMT+=("$f")
+    done <<< "$STAGED_FMT"
+    if [ "${#BADFMT[@]}" -gt 0 ]; then
+      warn "prettier would reformat these, but aleysian.format=check so nothing was rewritten:"
+      printf '     %s\n' "${BADFMT[@]}" >&2
+      echo "   This repo has no prettier config of its own. Introducing one is a conversation" >&2
+      echo "   to have with the project owner, not a change to make quietly." >&2
+    fi
+  else
+    FORMATTED=0
+    SKIPPED_PARTIAL=()
+    while IFS= read -r f; do
+      [ -f "$f" ] || continue
+      if is_partially_staged "$f"; then
+        # Rewriting would pull unstaged hunks into the commit. Check only.
+        "$BIN/prettier" --check "$f" >/dev/null 2>&1 || SKIPPED_PARTIAL+=("$f")
+        continue
+      fi
+      BEFORE=$(git hash-object "$f")
+      "$BIN/prettier" --write "$f" >/dev/null 2>&1 || continue
+      AFTER=$(git hash-object "$f")
+      if [ "$BEFORE" != "$AFTER" ]; then
+        git add -- "$f"
+        FORMATTED=$((FORMATTED+1))
+      fi
+    done <<< "$STAGED_FMT"
+
+    [ "$FORMATTED" -gt 0 ] && echo "  pre-commit: prettier reformatted and re-staged $FORMATTED file(s)"
+
+    if [ "${#SKIPPED_PARTIAL[@]}" -gt 0 ]; then
+      warn "These files are partially staged and badly formatted, so they were NOT auto-fixed
+   (rewriting them would sweep your unstaged changes into the commit):"
+      printf '     %s\n' "${SKIPPED_PARTIAL[@]}" >&2
+      echo "   Run 'npm run prettier' and stage the result when ready." >&2
+    fi
+  fi
+fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 3 — ESLint on staged LWC / Aura JS
+# ═════════════════════════════════════════════════════════════
+STAGED_JS=$(staged_names \
+  'force-app/**/lwc/**/*.js' 'force-app/**/aura/**/*.js')
+
+if [ -n "$STAGED_JS" ]; then
+  if [ ! -x "$BIN/eslint" ]; then
+    warn "eslint not found at $BIN — linting SKIPPED. Run 'npm install' in $MAIN_ROOT."
+  else
+    JS_TARGETS=()
+    while IFS= read -r f; do [ -f "$f" ] && JS_TARGETS+=("$f"); done <<< "$STAGED_JS"
+    if [ "${#JS_TARGETS[@]}" -gt 0 ]; then
+      echo "  pre-commit: linting ${#JS_TARGETS[@]} staged JS file(s)..."
+      if ! LINT_OUT=$("$BIN/eslint" "${JS_TARGETS[@]}" 2>&1); then
+        {
+          echo ""
+          echo "BLOCKED: ESLint errors in staged JS."
+          echo ""
+          echo "$LINT_OUT" | tail -40
+          echo ""
+          echo "Fix these before committing. Full run:  npm run lint"
+        } >&2
+        exit 1
+      fi
+    fi
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 4 — PMD on staged Apex (workflow step 3a)
+#
+# Runs in stealth mode too: analysing OUR OWN staged changes against OUR OWN bar
+# modifies nothing of theirs and leaves no trace in their repo.
+#
+# aleysian.pmd=advise reports without blocking, for codebases whose existing
+# patterns make `block` unusable on day one. Ratchet it to `block` later.
+# ═════════════════════════════════════════════════════════════
+STAGED_APEX=$(staged_names '*.cls' '*.trigger')
+
+if [ -n "$STAGED_APEX" ]; then
+  if ! command -v pmd >/dev/null 2>&1; then
+    warn "pmd is not installed — Apex static analysis SKIPPED.
+   Staged Apex is going in unchecked. Install it:  brew install pmd
+   (Not blocking, but this is a real hole in the quality gate.)"
+  else
+    FILE_LIST=$(mktemp)
+    while IFS= read -r f; do [ -f "$f" ] && printf '%s\n' "$f"; done <<< "$STAGED_APEX" > "$FILE_LIST"
+
+    if [ -s "$FILE_LIST" ]; then
+      # Resolution order: the project's own ruleset, then ours, then built-in
+      # categories. The project's comes first so this hook and `npm run pmd`
+      # cannot disagree about thresholds — an agent that gets a clean manual run
+      # and a blocked commit will assume the hook is broken and route around it.
+      #
+      # The built-in fallback matters because a worktree branched before the
+      # ruleset landed would otherwise hit a PMD *execution* error, which degrades
+      # to a warning below and lets Apex through unchecked. A missing config file
+      # must never silently disarm a gate.
+      if   [ -f "config/pmd-ruleset.xml" ];              then PMD_RULES="config/pmd-ruleset.xml"
+      elif [ -f "$HOOKS_HOME/../templates/pmd-ruleset.xml" ]; then PMD_RULES="$HOOKS_HOME/../templates/pmd-ruleset.xml"
+      else
+        PMD_RULES="category/apex/bestpractices.xml,category/apex/security.xml,category/apex/design.xml,category/apex/errorprone.xml"
+        warn "No project or Aleysian ruleset found — using default category thresholds.
+   Class-level aggregate rules (complexity, size) are tuned for whole classes and
+   will fire on ordinary Apex. If that is noisy, add config/pmd-ruleset.xml."
+      fi
+
+      echo "  pre-commit: running PMD on $(wc -l < "$FILE_LIST" | tr -d ' ') staged Apex file(s)..."
+      PMD_OUT=$(pmd check --file-list "$FILE_LIST" -R "$PMD_RULES" -f text 2>&1)
+      PMD_RC=$?
+      rm -f "$FILE_LIST"
+
+      # PMD 7: 0 = clean, 4 = violations found, anything else = execution error.
+      if [ "$PMD_RC" -eq 4 ]; then
+        if [ "$(pmd_policy)" = "advise" ]; then
+          warn "PMD found violations (aleysian.pmd=advise, so not blocking):
+$(echo "$PMD_OUT" | head -30)
+   Fix what is yours. Ratchet to blocking when the file is clean: git config aleysian.pmd block"
+        else
+          {
+            echo ""
+            echo "BLOCKED: PMD found violations in staged Apex."
+            echo ""
+            echo "$PMD_OUT"
+            echo ""
+            echo "Fix these before committing. To see them again:  npm run pmd"
+            echo "Pre-existing violations in code you did not write? git config aleysian.pmd advise"
+          } >&2
+          exit 1
+        fi
+      elif [ "$PMD_RC" -ne 0 ]; then
+        warn "PMD exited $PMD_RC (execution error, not violations):
+$(echo "$PMD_OUT" | tail -15)
+   Not blocking, but PMD did not actually verify anything."
+      fi
+    else
+      rm -f "$FILE_LIST"
+    fi
+  fi
+fi
+
+# ═════════════════════════════════════════════════════════════
+# GATE 5 — Jest on tests related to staged LWC (workflow step 4a)
+# ═════════════════════════════════════════════════════════════
+STAGED_LWC=$(staged_names 'force-app/**/lwc/**/*.js')
+
+if [ -n "$STAGED_LWC" ]; then
+  if [ ! -x "$BIN/sfdx-lwc-jest" ]; then
+    warn "sfdx-lwc-jest not found at $BIN — LWC tests SKIPPED.
+   Run 'npm install' in $MAIN_ROOT.
+   (Not blocking, but staged LWC code is going in untested.)"
+  else
+    JEST_TARGETS=()
+    while IFS= read -r f; do [ -f "$f" ] && JEST_TARGETS+=("$f"); done <<< "$STAGED_LWC"
+    if [ "${#JEST_TARGETS[@]}" -gt 0 ]; then
+      echo "  pre-commit: running Jest related to ${#JEST_TARGETS[@]} staged LWC file(s)..."
+      if ! JEST_OUT=$("$BIN/sfdx-lwc-jest" -- \
+            --bail --passWithNoTests --findRelatedTests "${JEST_TARGETS[@]}" 2>&1); then
+        {
+          echo ""
+          echo "BLOCKED: Jest failures in tests related to staged LWC files."
+          echo ""
+          echo "$JEST_OUT" | tail -40
+          echo ""
+          echo "Fix the failing tests before committing. Full run:  npm test"
+        } >&2
+        exit 1
+      fi
+    fi
+  fi
+fi
+
+# The project's own hook has the last word.
+chain_client_hook "$@"
+exit 0

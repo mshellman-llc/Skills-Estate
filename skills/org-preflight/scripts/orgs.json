@@ -1,0 +1,8 @@
+{
+  "_comment": "Known Salesforce orgs, keyed by Organization.Id. Ships empty on purpose: an unpopulated registry makes every alias unresolvable, and preflight.py fails closed on an unresolvable --expect. Populate it and aliases start working; until then pass the full 00D... org id. `kind` must be exactly 'production' or 'sandbox'. If the registry and the live org disagree about kind, the org wins and the gate refuses until the registry is corrected.",
+  "_example": {
+    "00D000000000000EAA": { "alias": "example-production", "kind": "production" },
+    "00D000000000001EAA": { "alias": "example-test", "kind": "sandbox" }
+  },
+  "orgs": {}
+}

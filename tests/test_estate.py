@@ -90,15 +90,52 @@ class EstateTests(unittest.TestCase):
             estate.install(self.root, self.home)
 
     def test_concurrent_source_edit_does_not_publish_a_mixed_build(self):
-        original = estate.shutil.copytree
+        original = estate.assemble
         def changed(*args, **kwargs):
             result = original(*args, **kwargs)
             (self.root / 'policies/brand.md').write_text('Concurrent change')
             return result
-        with patch.object(estate.shutil, 'copytree', side_effect=changed):
+        with patch.object(estate, 'assemble', side_effect=changed):
             with self.assertRaisesRegex(ValueError, 'changed during'):
                 estate.build(self.root)
         self.assertFalse((self.root / 'build').exists())
+
+    def test_builder_changes_invalidate_cached_packages(self):
+        (self.root / 'tools').mkdir()
+        code = self.root / 'tools/builder.py'
+        code.write_text('print("first")\n')
+        estate.build(self.root)
+        code.write_text('print("second")\n')
+        with self.assertRaisesRegex(ValueError, 'stale'):
+            estate.current_build(self.root)
+
+    def test_runtime_is_vendored_once_and_entrypoint_links_are_rewritten(self):
+        dep = self.root / 'skills/helper'
+        dep.mkdir()
+        (dep / 'SKILL.md').write_text('---\nname: helper\ndescription: Helper workflow\n---\nSpecific helper instructions.\n')
+        (dep / 'run.py').write_text('print("helper executed")\n')
+        (self.root / 'skills/demo/SKILL.md').write_text(
+            '---\nname: demo\ndescription: Test dependency\n---\nUse [helper](../helper/SKILL.md).\n')
+        (self.root / 'config').mkdir()
+        (self.root / 'config/runtime-dependencies.json').write_text('{"demo":["helper"]}\n')
+        estate.build(self.root)
+        package = self.root / 'build/skills/demo'
+        self.assertEqual(1, len(list(package.rglob('SKILL.md'))))
+        self.assertIn('_runtime/helper/WORKFLOW.md', (package / 'SKILL.md').read_text())
+        self.assertIn('Specific helper instructions', (package / '_runtime/helper/WORKFLOW.md').read_text())
+        self.assertTrue((package / '_runtime/helper/run.py').exists())
+
+    def test_executable_permissions_survive_packaging_and_affect_drift(self):
+        script = self.root / 'skills/demo/run.sh'
+        script.write_text('#!/bin/sh\nexit 0\n')
+        script.chmod(0o755)
+        estate.build(self.root)
+        estate.bundle(self.root)
+        with zipfile.ZipFile(self.root / 'dist/demo.zip') as archive:
+            self.assertEqual(0o755, (archive.getinfo('demo/run.sh').external_attr >> 16) & 0o777)
+        (self.root / 'build/skills/demo/run.sh').chmod(0o644)
+        with self.assertRaisesRegex(ValueError, 'modified'):
+            estate.current_build(self.root)
 
     def test_bundle_is_deterministic_and_self_contained(self):
         estate.build(self.root)

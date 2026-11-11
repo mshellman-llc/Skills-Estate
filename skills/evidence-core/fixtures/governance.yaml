@@ -1,0 +1,80 @@
+schema_version: 1
+skill: evidence-core
+lifecycle:
+  status: active
+job:
+  user: A practitioner or agent producing factual consulting work
+  situation: Sources must become governed claims before a client artifact or lifecycle record relies on them.
+  outcome: Atomic claims retain source IDs, authority, status, confidence, conflicts, and closure conditions.
+  complete_when: Required evidence domains are sufficient or the workflow stops with a named readiness gap.
+position:
+  closest_skills:
+    - knowledge-hub
+    - quality-gate
+  disposition: component
+  rationale: Evidence Core is the shared claim control inside Knowledge Hub and downstream artifact workflows; it does not own storage or final artifact quality.
+contract:
+  inputs:
+    - Stable client, opportunity, or engagement context
+    - Source files and source metadata
+    - Requested artifact evidence contract
+  outputs:
+    - Governed evidence ledger
+    - Sufficiency result or readiness gap memo
+selection:
+  positive:
+    - Validate the claims supporting this ROM.
+    - Build a source and claim ledger for this pursuit.
+  adjacent:
+    - prompt: Find and update the durable engagement records.
+      owner: knowledge-hub
+    - prompt: Run final artifact release checks.
+      owner: quality-gate
+  negative:
+    - Store these files in Drive.
+    - Rewrite this document for tone only.
+relationships:
+  requires:
+    - knowledge-hub
+  optional: []
+  controls:
+    - Source authority
+    - Claim status and conflicts
+    - Evidence sufficiency
+  upstream:
+    - Source artifacts and transcript ingestion
+  downstream:
+    - Pursuit, solutioning, delivery, and client artifact skills
+capabilities:
+  - name: Python standard library
+    required: false
+    hosts:
+      - Codex
+      - Claude Code
+    unavailable_behavior: Apply the published evidence rules manually and disclose that the deterministic gate did not run.
+risks:
+  persistent_writes:
+    - Knowledge Hub evidence.sources and evidence.claims records
+  authorization:
+    - Preserve source access boundaries and use the confirmed lifecycle context.
+  failure_behavior: Stop the requested full artifact when a load-bearing domain is Insufficient.
+  privacy: Store source locators and necessary claim text without duplicating sensitive source bodies.
+  rollback: Retain superseded sources and claims with lineage; restore the prior ledger version from repository or Hub history.
+cost:
+  status: unknown
+  receipt: null
+efficiency:
+  status: unknown
+  receipt: null
+stewardship:
+  steward: Aleysian evidence methods owners
+  maintainers:
+    - Megan Shellman
+    - Designated consulting methods co-owner
+  lifecycle_approver: Megan Shellman and the designated consulting methods co-owner
+  review_date: 2026-09-30
+  stale_facts:
+    - Source authority caps
+    - Artifact evidence contracts
+    - Claim status vocabulary
+  retirement_path: Map every governed source, claim, conflict, and consumer to a successor control before archival.

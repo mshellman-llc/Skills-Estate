@@ -1,0 +1,418 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aleysian.example/schemas/solution-brief-graph.schema.json",
+  "title": "Aleysian Solution Brief Relational Graph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["graphVersion", "artifactType", "outputType", "mode", "engagement", "sufficiency", "nodes", "edges", "editorialViews", "referencedClaimIds"],
+  "properties": {
+    "graphVersion": {"type": "string", "minLength": 1},
+    "artifactType": {"const": "solution_brief"},
+    "outputType": {"type": "string", "enum": ["solution_brief", "field_guide", "readiness_gap_memo"]},
+    "mode": {"type": "string", "enum": ["approval", "build_reference", "field_guide", "readiness"]},
+    "engagement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engagementId", "clientName", "asOf"],
+      "properties": {
+        "engagementId": {"type": "string", "minLength": 1},
+        "clientName": {"type": "string", "minLength": 1},
+        "asOf": {"type": "string", "format": "date-time"}
+      }
+    },
+    "sufficiency": {"$ref": "#/$defs/sufficiency"},
+    "technicalJudgment": {"$ref": "#/$defs/technicalJudgment"},
+    "nodes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["systems", "interfaces", "adrs", "scopeItems", "risks", "assumptions", "dependencies", "roles", "allocations", "phases", "milestones", "financialLines", "reconciliationControls"],
+      "properties": {
+        "systems": {"type": "array", "items": {"$ref": "#/$defs/system"}},
+        "interfaces": {"type": "array", "items": {"$ref": "#/$defs/interface"}},
+        "adrs": {"type": "array", "items": {"$ref": "#/$defs/adr"}},
+        "scopeItems": {"type": "array", "items": {"$ref": "#/$defs/scopeItem"}},
+        "risks": {"type": "array", "items": {"$ref": "#/$defs/risk"}},
+        "assumptions": {"type": "array", "items": {"$ref": "#/$defs/assumption"}},
+        "dependencies": {"type": "array", "items": {"$ref": "#/$defs/dependency"}},
+        "roles": {"type": "array", "items": {"$ref": "#/$defs/role"}},
+        "allocations": {"type": "array", "items": {"$ref": "#/$defs/allocation"}},
+        "phases": {"type": "array", "items": {"$ref": "#/$defs/phase"}},
+        "milestones": {"type": "array", "items": {"$ref": "#/$defs/milestone"}},
+        "financialLines": {"type": "array", "items": {"$ref": "#/$defs/financialLine"}},
+        "reconciliationControls": {"type": "array", "items": {"$ref": "#/$defs/reconciliationControl"}},
+        "dataEntities": {"type": "array", "items": {"$ref": "#/$defs/dataEntity"}},
+        "qaEntries": {"type": "array", "items": {"$ref": "#/$defs/qaEntry"}}
+      }
+    },
+    "edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
+    "editorialViews": {"type": "array", "items": {"$ref": "#/$defs/editorialView"}},
+    "sectionDispositions": {"type": "array", "items": {"$ref": "#/$defs/sectionDisposition"}},
+    "referencedClaimIds": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/claimId"}},
+    "metadata": {"type": "object", "additionalProperties": true}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"sufficiency": {"properties": {"status": {"const": "Insufficient"}}}}},
+      "then": {
+        "properties": {
+          "outputType": {"const": "readiness_gap_memo"},
+          "mode": {"const": "readiness"},
+          "sufficiency": {"properties": {"terminal": {"const": true}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"outputType": {"const": "solution_brief"}}},
+      "then": {
+        "required": ["technicalJudgment"],
+        "properties": {
+          "mode": {"enum": ["approval", "build_reference"]},
+          "sufficiency": {"properties": {"status": {"enum": ["Sufficient", "Conditional"]}, "terminal": {"const": false}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"outputType": {"const": "field_guide"}}},
+      "then": {
+        "required": ["technicalJudgment", "sectionDispositions"],
+        "properties": {
+          "mode": {"const": "field_guide"},
+          "sufficiency": {"properties": {"status": {"enum": ["Sufficient", "Conditional"]}, "terminal": {"const": false}}}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "claimId": {"type": "string", "pattern": "^CLM-[A-Za-z0-9._-]+$"},
+    "nodeId": {"type": "string", "pattern": "^(SYS|IFC|ADR|SCP|RSK|ASM|DEP|ROL|ALC|PHS|MLS|FIN|REC|ENT|QNA)-[A-Za-z0-9._-]+$"},
+    "claimIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/claimId"}},
+    "viewTypeName": {"type": "string", "enum": ["technical_judgment", "system_boundary", "critical_interfaces", "architecture_decisions", "scope_solution_trace", "risk_concentration", "staffing_delivery_shape", "timeline_decision_gates", "financial_reconciliation", "conditions_next_action", "orientation", "end_to_end_flow", "data_model", "pricing_architecture", "stakeholder_qa", "sources_evidence"]},
+    "sectionDisposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["viewType", "disposition", "reason", "confirmedInChat"],
+      "properties": {
+        "viewType": {"$ref": "#/$defs/viewTypeName"},
+        "disposition": {"type": "string", "enum": ["included", "thinned", "omitted"]},
+        "reason": {"type": "string", "minLength": 1},
+        "confirmedInChat": {"const": true}
+      }
+    },
+    "dataEntity": {
+      "allOf": [
+        {"$ref": "#/$defs/baseNode"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name", "claimIds", "loadBearing", "entityKind", "ownerSystemId"],
+          "properties": {
+            "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+            "entityKind": {"type": "string", "enum": ["standard_object", "custom_object", "external_table", "document", "record_type"]},
+            "ownerSystemId": {"$ref": "#/$defs/nodeId"},
+            "keyFields": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      ]
+    },
+    "qaEntry": {
+      "allOf": [
+        {"$ref": "#/$defs/baseNode"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name", "claimIds", "loadBearing", "stakeholder", "question", "answer", "dependencyAsk"],
+          "properties": {
+            "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+            "stakeholder": {"type": "string", "minLength": 1},
+            "question": {"type": "string", "minLength": 1},
+            "answer": {"type": "string", "minLength": 1},
+            "dependencyAsk": {"type": "string", "minLength": 1},
+            "affectedRefs": {"type": "array", "items": {"$ref": "#/$defs/nodeId"}}
+          }
+        }
+      ]
+    },
+    "baseNode": {
+      "type": "object",
+      "required": ["id", "name", "claimIds", "loadBearing"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"},
+        "name": {"type": "string", "minLength": 1},
+        "description": {"type": "string"},
+        "claimIds": {"$ref": "#/$defs/claimIds"},
+        "loadBearing": {"type": "boolean"},
+        "status": {"type": "string"}
+      }
+    },
+    "sufficiency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "terminal", "domainCoverage", "blockers", "nextGate"],
+      "properties": {
+        "status": {"type": "string", "enum": ["Sufficient", "Conditional", "Insufficient"]},
+        "terminal": {"type": "boolean"},
+        "domainCoverage": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "enum": ["Sufficient", "Conditional", "Insufficient", "NotApplicable"]}
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["description", "owner", "closureCondition", "affectedRefs"],
+            "properties": {
+              "description": {"type": "string"},
+              "owner": {"type": ["string", "null"]},
+              "closureCondition": {"type": "string"},
+              "affectedRefs": {"type": "array", "items": {"$ref": "#/$defs/nodeId"}},
+              "claimIds": {"type": "array", "items": {"$ref": "#/$defs/claimId"}}
+            }
+          }
+        },
+        "nextGate": {"type": "string", "minLength": 1}
+      }
+    },
+    "technicalJudgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "force", "conditionRefs", "claimIds"],
+      "properties": {
+        "statement": {"type": "string", "minLength": 1},
+        "force": {"type": "string", "enum": ["recommend", "approve", "approve_with_conditions", "reject", "stop"]},
+        "conditionRefs": {"type": "array", "items": {"$ref": "#/$defs/nodeId"}},
+        "claimIds": {"$ref": "#/$defs/claimIds"}
+      }
+    },
+    "system": {
+      "allOf": [
+        {"$ref": "#/$defs/baseNode"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name", "claimIds", "loadBearing", "disposition", "owner", "responsibilities", "dataDomains", "accessState"],
+          "properties": {
+            "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+            "disposition": {"type": "string", "enum": ["keep", "replace", "connect", "new", "retire"]},
+            "owner": {"type": "string", "minLength": 1},
+            "responsibilities": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "dataDomains": {"type": "array", "items": {"type": "string"}},
+            "accessState": {"type": "string", "enum": ["confirmed", "pending", "blocked", "not_required"]}
+          }
+        }
+      ]
+    },
+    "failurePath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "condition", "behavior", "owner", "observability", "claimIds"],
+      "properties": {
+        "id": {"type": "string"},
+        "condition": {"type": "string"},
+        "behavior": {"type": "string"},
+        "retry": {"type": "string"},
+        "escalation": {"type": "string"},
+        "owner": {"type": "string"},
+        "observability": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "claimIds": {"$ref": "#/$defs/claimIds"}
+      }
+    },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "fromSystemId", "toSystemId", "direction", "purpose", "trigger", "payloads", "protocol", "owner", "contractState", "happyPath", "failurePaths", "securityControls", "observability"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "fromSystemId": {"$ref": "#/$defs/nodeId"},
+        "toSystemId": {"$ref": "#/$defs/nodeId"},
+        "direction": {"type": "string", "enum": ["unidirectional", "bidirectional", "event_out", "event_in"]},
+        "purpose": {"type": "string"},
+        "trigger": {"type": "string"},
+        "payloads": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "protocol": {"type": "string"},
+        "owner": {"type": "string"},
+        "contractState": {"type": "string", "enum": ["approved", "draft", "missing", "not_applicable"]},
+        "happyPath": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "failurePaths": {"type": "array", "items": {"$ref": "#/$defs/failurePath"}},
+        "securityControls": {"type": "array", "items": {"type": "string"}},
+        "observability": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "adr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "question", "decision", "state", "rationale", "alternatives", "owner", "decisionPointRef", "affectedRefs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "question": {"type": "string"}, "decision": {"type": "string"},
+        "state": {"type": "string", "enum": ["proposed", "resolved", "open", "deferred", "superseded", "rejected"]},
+        "rationale": {"type": "string"},
+        "alternatives": {"type": "array", "items": {"type": "string"}},
+        "owner": {"type": "string"},
+        "decisionPointRef": {"type": ["string", "null"]},
+        "affectedRefs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}}
+      }
+    },
+    "scopeItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "inclusionState", "workstream", "acceptanceCriteria"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "inclusionState": {"type": "string", "enum": ["included", "excluded", "conditional", "future"]},
+        "buildDisposition": {"type": "string", "enum": ["native", "config", "custom", "dep"]},
+        "workstream": {"type": "string"},
+        "acceptanceCriteria": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "probability", "impact", "owner", "affectedRefs", "mitigationActions", "trigger", "residualExposure"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "probability": {"type": "string", "enum": ["low", "medium", "high", "unknown"]},
+        "impact": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+        "owner": {"type": "string"},
+        "affectedRefs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}},
+        "mitigationActions": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "trigger": {"type": "string"},
+        "residualExposure": {"type": "string"}
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "owner", "affectedRefs", "consequenceIfFalse", "closureCondition"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "owner": {"type": "string"},
+        "affectedRefs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}},
+        "consequenceIfFalse": {"type": "string"},
+        "closureCondition": {"type": "string"}
+      }
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "owner", "affectedRefs", "closureCondition", "blocksRefs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "owner": {"type": "string"},
+        "affectedRefs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}},
+        "closureCondition": {"type": "string"},
+        "blocksRefs": {"type": "array", "items": {"$ref": "#/$defs/nodeId"}}
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "responsibilities", "requiredSkills", "owner"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "responsibilities": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "requiredSkills": {"type": "array", "items": {"type": "string"}},
+        "owner": {"type": "string"}
+      }
+    },
+    "allocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "roleId", "phaseId", "scopeItemIds", "hours", "basis", "startMilestoneId", "endMilestoneId"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "roleId": {"$ref": "#/$defs/nodeId"},
+        "phaseId": {"$ref": "#/$defs/nodeId"},
+        "scopeItemIds": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}},
+        "hours": {"type": "number", "minimum": 0},
+        "basis": {"type": "string", "enum": ["quoted", "estimated", "actual"]},
+        "startMilestoneId": {"type": ["string", "null"]},
+        "endMilestoneId": {"type": ["string", "null"]}
+      }
+    },
+    "phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "sequence", "objective", "entryCriteria", "exitCriteria", "durationWeeks"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "sequence": {"type": "integer", "minimum": 1},
+        "objective": {"type": "string"},
+        "entryCriteria": {"type": "array", "items": {"type": "string"}},
+        "exitCriteria": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "durationWeeks": {"type": "number", "minimum": 0}
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "phaseId", "milestoneType", "owner"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "phaseId": {"$ref": "#/$defs/nodeId"},
+        "milestoneType": {"type": "string", "enum": ["entry", "exit", "decision", "dependency", "commercial", "delivery"]},
+        "date": {"type": ["string", "null"], "format": "date"},
+        "offset": {"type": ["string", "null"]},
+        "owner": {"type": "string"}
+      }
+    },
+    "financialLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "basis", "amount", "currency", "inclusionState", "sourceQuoteRef"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"}, "status": {"type": "string"},
+        "basis": {"type": "string", "enum": ["role", "scope", "phase", "total", "future_directional", "excluded"]},
+        "amount": {"type": ["number", "null"], "minimum": 0},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "inclusionState": {"type": "string", "enum": ["included", "excluded", "conditional", "future"]},
+        "sourceQuoteRef": {"type": ["string", "null"]}
+      }
+    },
+    "reconciliationControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "claimIds", "loadBearing", "controlType", "leftRefs", "rightRefs", "tolerance", "expected", "actual", "variance", "status"],
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeId"}, "name": {"type": "string"}, "description": {"type": "string"}, "claimIds": {"$ref": "#/$defs/claimIds"}, "loadBearing": {"type": "boolean"},
+        "controlType": {"type": "string", "enum": ["scope_priced", "role_hours_cost", "phase_cost_total", "timeline_staffing", "exclusions_zero", "custom"]},
+        "leftRefs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}},
+        "rightRefs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}},
+        "tolerance": {"type": "number", "minimum": 0},
+        "expected": {"type": "number"},
+        "actual": {"type": "number"},
+        "variance": {"type": "number"},
+        "status": {"type": "string", "enum": ["pass", "fail", "pending"]}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edgeId", "type", "from", "to", "claimIds", "derivation"],
+      "properties": {
+        "edgeId": {"type": "string", "pattern": "^EDG-[A-Za-z0-9._-]+$"},
+        "type": {"type": "string", "enum": ["owns_process", "owns_data", "connects_through", "implements_scope", "depends_on", "governs", "affects", "requires_role", "allocated_to", "delivered_in", "closes", "blocks", "prices", "conditions", "excludes", "supersedes", "motivates", "closes_pain"]},
+        "from": {"$ref": "#/$defs/nodeId"},
+        "to": {"$ref": "#/$defs/nodeId"},
+        "claimIds": {"type": "array", "items": {"$ref": "#/$defs/claimId"}},
+        "derivation": {"type": "string", "enum": ["evidence", "deterministic"]}
+      }
+    },
+    "editorialView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["viewId", "viewType", "audienceTask", "entityRefs", "claimIds", "protectedMeaning", "visibility", "preferredGrammar", "required"],
+      "properties": {
+        "viewId": {"type": "string", "pattern": "^VIEW-[A-Za-z0-9._-]+$"},
+        "viewType": {"$ref": "#/$defs/viewTypeName"},
+        "audienceTask": {"type": "string", "minLength": 1},
+        "entityRefs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nodeId"}},
+        "claimIds": {"type": "array", "items": {"$ref": "#/$defs/claimId"}},
+        "protectedMeaning": {"type": "boolean"},
+        "visibility": {"type": "string", "enum": ["primary", "supporting", "appendix"]},
+        "preferredGrammar": {"type": "string", "minLength": 1},
+        "required": {"type": "boolean"}
+      }
+    }
+  }
+}

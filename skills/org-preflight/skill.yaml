@@ -1,0 +1,51 @@
+schema_version: 1
+name: org-preflight
+display_name: Org Preflight
+summary: Hard safety gate that asserts which Salesforce org is live before any write,
+  DML, deploy, or scoping-app mutation.
+status: active
+tier: core
+version: 1.0.0
+owner: estate-maintainer
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-code
+- claude-ai
+- cowork
+triggers:
+- Hard safety gate that asserts which Salesforce org is live before any write, DML,
+  deploy, or scoping-app mutation. Use before creating or updating a Quote, running
+  DML, uploading a file, or any Salesforce write, and whenever a task could touch
+  production versus a sandbox. Blocks the action until the target org is confirmed
+  by org id, not by a tool label. Prevents a production write meant for the sandbox,
+  an unbounded-cost error with a ten-line fix.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: org_identity_receipt
+  format: json
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional:
+  - salesforce-cli-or-query-connector
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

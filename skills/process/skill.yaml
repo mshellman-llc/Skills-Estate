@@ -1,0 +1,57 @@
+schema_version: 1
+name: process
+display_name: Process
+summary: Work with a business or operational process in two modes, document it as a
+  standard operating procedure, or optimize it for speed, cost, and reliability.
+status: active
+tier: situational
+version: 1.0.0
+owner: Aleysian
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Work with a business or operational process in two modes. Document mode formalizes
+  a process into an SOP with purpose, scope, a RACI matrix, process flow, step detail,
+  exceptions, and metrics. Optimize mode maps, diagnoses, and redesigns a process to
+  cut delay, rework, hand-offs, and manual effort, then quantifies the change. Use it
+  when someone wants a process written down, standardized, or made faster, cheaper, or
+  more reliable. Not for one-off project plans, org charts, product requirements, or
+  incident runbooks.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: optional
+  reads:
+  - client.front_door
+  - client.profile
+  - opportunity.discovery
+  writes: []
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate

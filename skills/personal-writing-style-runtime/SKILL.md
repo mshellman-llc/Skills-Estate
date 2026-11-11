@@ -1,16 +1,92 @@
 ---
 name: personal-writing-style-runtime
-description: "Apply a supplied or project-configured confirmed writing-style profile when that person is the intended author. Use for writing in a specific person's voice without rebuilding their profile."
+description: 'Generic template that applies one person''s confirmed private writing-style profile when they are the intended author or speaker. Not a runnable skill on its own; an install names a specific profile path and person, producing a thin per-person adapter. Does not build or change a profile; that is writing-style-builder. Do not apply a personal profile to output written on behalf of another person, to quoted or verbatim material, or where organizational, legal, or contractual voice governs.'
 ---
 
-# Personal writing style runtime
+# Personal Writing Style Runtime
 
-Read [shared workflow](references/estate/workflow.md). For a rendered or branded artifact, read [brand policy](references/estate/brand.md) before choosing visual values. These references are generated from the canonical policies when the estate builds.
+A routing template, not a voice. Every install points it at exactly one
+confirmed profile (see [writing-style-builder](../writing-style-builder/SKILL.md)
+schema) and one person. This file describes the routing and precedence logic
+every such adapter runs; it carries no one's actual voice.
 
-Identify the intended author and read the confirmed profile supplied by the user or named in project context. If no profile is accessible, use ordinary clear writing and state the limitation only when it matters; do not reconstruct a person from memory.
+Before writing an Aleysian artifact, read
+[`_shared/build-card.md`](../_shared/build-card.md). For personal output that is
+not an Aleysian artifact, use the confirmed profile and the precedence rules
+below without importing Aleysian organizational voice.
 
-Apply the profile's context-specific structure, cadence, vocabulary, and level of formality while preserving the task's facts and meaning. Read supporting examples only when needed for the current format. A personal profile does not override legal language, contractual requirements, or a confirmed client voice that governs this artifact.
+## Route before applying anything
 
-Keep quotes verbatim and do not apply one person's voice to another person's message. Avoid impersonating a private person whose profile the user has not authorized. Do not invent anecdotes, opinions, achievements, or personal details to make prose sound natural.
+Determine, from the request and available context:
 
-Review the result for protected facts and the profile's actual patterns. Do not turn a drafting correction into a permanent profile update unless the user asks. Route profile creation and changes to writing-style-builder.
+1. **Authorship.** Is the profiled person the author or speaker, an
+   organizational voice, or someone else?
+2. **Mode.** Written or spoken.
+3. **Surface.** Chat, email, document, brief, deck, talk track, call, or other.
+4. **Audience.** Peer, internal group, leadership, client, prospect, public.
+5. **Relationship.** New, transactional, established, close.
+6. **Communication job.** Informing, requesting, correcting, persuading,
+   deciding, setting a boundary, coordinating a group, or supporting someone.
+
+Apply the profile only when authorship resolves to the profiled person.
+Explicit invocation, such as being asked to write something in the person's
+voice, still requires authorship to resolve correctly. It skips ambiguity
+about whether the person wants voice applied at all; it does not override
+authorship.
+
+## Do not apply the profile when
+
+- another named person is the author, even if the profiled person asked for
+  the draft;
+- the text is a quotation or verbatim excerpt of someone else's words;
+- the artifact requires organizational, brand, legal, contractual, or
+  regulatory voice that overrides personal style;
+- the routed surface, audience, or job has no confirmed profile entry, in
+  which case fall back to plain, unstyled drafting rather than extrapolating
+  a pattern the profile does not contain (see the profile's
+  `insufficient_evidence_for` list);
+- the profile's `revoked` field is true.
+
+## Precedence
+
+1. Verified facts, legal meaning, and explicit user instruction.
+2. Surface, audience, and communication job.
+3. Governing organizational or artifact requirements.
+4. The confirmed personal profile.
+5. Prose and quality checks the artifact's surface already requires.
+
+A voice adjustment never weakens a scope boundary, changes a fact, or
+overrides a format-specific requirement ranked above it.
+
+## Progressive disclosure and context budget
+
+Load only what the current step needs. Approximate costs below are for
+planning purposes, not measured per-token guarantees; a specific install
+should confirm against its own profile size.
+
+| Level | What loads | When | Rough cost |
+|---|---|---|---|
+| Routing metadata | `routing` block only: modes, surfaces, audiences, relationships, jobs | Every request, to decide whether to apply the profile at all | 50 to 150 tokens |
+| Base profile | `base_profile.<mode>.core_tendencies` for the resolved mode | Routing resolves to this person as author | 200 to 800 tokens depending on profile size |
+| Channel overlay | One `channel_overlays` entry matching surface, audience, and job | Only when that specific combination has a confirmed overlay | 50 to 200 tokens per overlay |
+| Examples | Paired before-and-after examples, if the install's profile store carries them | Only to resolve a genuine ambiguity between two plausible readings | 300 to 1000 tokens, loaded rarely |
+| Full builder workflow | The entire `writing-style-builder` skill | Never during drafting; only when building, correcting, or revoking a profile | Out of scope for runtime context entirely |
+
+Never load raw evidence at runtime. The runtime reads the compact profile
+only; raw evidence stays in the builder's separate, narrower-access store.
+
+## What an install adapter does
+
+A per-person install is a thin file naming the profile path, the person
+identifier, and which surfaces this install is authorized to run on, such as
+Claude Code, claude.ai, Cowork, or another runtime. It contains no voice
+content of its own; voice content lives entirely in the profile the builder
+produced. See [references/install-checklist.md](references/install-checklist.md).
+
+## Relationship to other skills
+
+Does not duplicate `prose-pass` (house voice, banned patterns, structural
+gates), `brand-renderer` (Aleysian brand and artifact release
+gates), or `quality-gate` (release checks). This skill decides whether and
+how to apply one person's voice; those skills govern everything else about
+the artifact and still run afterward per the precedence order above.

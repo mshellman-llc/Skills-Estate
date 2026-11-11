@@ -1,0 +1,65 @@
+schema_version: 1
+name: rom
+display_name: ROM
+summary: 'Builds and gates the Aleysian ROM estimate: a defensible cost and effort
+  range around a scoping-app quote, plus the basis of estimate the client validates
+  before deep scoping.'
+status: active
+tier: core
+version: 1.0.0
+owner: Aleysian
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Builds and gates the Aleysian ROM estimate: a defensible cost and effort range
+  around a scoping-app quote, plus the basis of estimate the client validates before
+  deep scoping. Buyer-facing or deal-desk-facing. Use when asked for a "ROM", "rough
+  order of magnitude", "early pricing range", "investment range", "ballpark for the
+  quote", or when a Q-number is paired with a range, sizing, or early-pricing request.
+  Also fires when deal desk wants the range and its basis before scope review, or
+  a playbook tier needs its ROM artifact. Do NOT use for scoping or quote creation
+  (that is scoping-agent), the SOW (sow), the firm proposal (interactive-proposal),
+  or a standalone ballpark-LOE request untied to a quote or playbook (say so and stop;
+  there is nothing defensible to render).'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: required
+  reads:
+  - opportunity.front_door
+  - opportunity.solution_scope
+  - opportunity.commercial
+  - evidence.claims
+  writes:
+  - opportunity.commercial
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate
+license: Proprietary to Aleysian LLC.

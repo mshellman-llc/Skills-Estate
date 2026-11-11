@@ -1,0 +1,69 @@
+schema_version: 1
+name: discovery-brief
+display_name: Discovery Brief
+summary: Owns the discovery record for a deal.
+status: active
+tier: core
+version: 0.2.1
+owner: Aleysian
+category: pursuit-intelligence
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Owns the discovery record for a deal. The product is the two-column ledger: Column
+  A, what the deal''s record already confirms, with provenance; Column B, open questions
+  ranked High/Medium/Low by scoping impact, each tied to the scope line it unblocks.
+  After a call it ingests the transcript, closes answered questions, logs decisions,
+  proposes scope revisions for the scoping owner to confirm, and feeds new findings
+  into the rolling Pursuit Brief. Use when someone asks for a "discovery brief", "discovery
+  prep", "what to ask on the call", "which questions move the price", or says a scoping
+  session is coming up and needs the question list, and after any call for "ingest
+  the transcript", "process the transcript", "close out the discovery questions",
+  "update the discovery record", or "update scope from the call". Do NOT use for pre-call
+  company and people research or for packaging the brief for a specific upcoming call
+  (both are call-prep; its Mode B reads this ledger), scope item creation
+  or pricing in the Pricing System (scoping-agent), or planning delivery-phase requirements
+  sessions (requirements-capture).'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: required
+  reads:
+  - client.front_door
+  - client.profile
+  - opportunity.front_door
+  - opportunity.discovery
+  - evidence.sources
+  writes:
+  - opportunity.discovery
+  - evidence.claims
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate
+license: Proprietary to Aleysian LLC.
