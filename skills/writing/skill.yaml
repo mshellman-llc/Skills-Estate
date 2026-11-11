@@ -1,0 +1,66 @@
+schema_version: 1
+name: writing
+display_name: Writing
+summary: Write or review every word a person will read, in any format, against the
+  owner's writing rules folder, with a command-line check that proves line coverage.
+status: draft
+tier: core
+version: 0.1.0
+owner: Estate
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- claude-code
+- codex
+- claude-ai
+- cowork
+- chatgpt
+triggers:
+- Any reply, document, page, deck, message, interface label, commit message or pull
+  request description is about to be written or returned.
+- A saved file needs a writing check with a receipt, or another tool calls check.py
+  before it saves text.
+- The owner corrects wording and the correction must be logged.
+exclusions:
+- Code, code comments and quotations kept word for word.
+- Writing in another person's voice.
+inputs:
+- name: text_or_file
+  required: true
+  description: The draft, or the path of the saved file to check.
+- name: rules_folder
+  required: true
+  description: The owner's writing rules folder, from --rules-dir, WRITING_HOME or
+    the path in ~/.agents/writing/home.
+- name: register
+  required: false
+  description: The channel, audience or author name for the piece.
+outputs:
+- name: reviewed_text
+  format: text
+  audience: internal-or-client-as-requested
+  durable: false
+  hub_target: null
+- name: check_receipt
+  format: json
+  audience: internal
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional:
+  - knowledge-hub
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: optional
+  reads:
+  - writing rules through get_context when the rules folder is not on disk
+  writes:
+  - writing corrections through save_update
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

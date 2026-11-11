@@ -364,6 +364,11 @@
       "source": "build-editorial-chart",
       "pack": "core",
       "modes": {}
+    },
+    "writing": {
+      "source": "writing",
+      "pack": "core",
+      "modes": {}
     }
   },
   "internal": [

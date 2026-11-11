@@ -1,0 +1,8 @@
+{
+ "version": 1,
+ "config": {"min_words": 40, "density_floor_words": 250, "flag_density": 4, "repeat_limit": 3, "repeat_density": 1.5, "hard_weight": 3, "em_dash": false},
+ "rules": [
+  {"id": "residue", "class": "chat", "scope": "general", "status": "active", "weight": 3, "repair": "Delete it.", "pattern": "\\bI hope this helps\\b"},
+  {"id": "channel-only", "class": "register", "scope": "status-update", "status": "active", "weight": 3, "repair": "Give the date.", "terms": ["soon"]}
+ ]
+}

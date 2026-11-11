@@ -88,6 +88,10 @@
     "0.4.18": {
       "content_sha256": "c12a44ebc7144db9943d4b9f0b0bbb2f834134f2a0a5cb8d485d2997e28148c8",
       "note": "Replace the neutral profile values kept from the retired Baseline palette with a plain fallback: greys, near-black accent and the system font stack. The editorial chart neutral palette and default typography follow it. The review-site accent rule skips a profile whose accent is its text color, and the journey-map opportunity swatch shows its cell ground with an accent outline. Tests, docs and showcase examples quote the new values."
+    },
+    "0.4.19": {
+      "content_sha256": "ae8a35b82de79aeafc4e06b9d702d718e2cbc7e39accf046ae6e1347d145b1a9",
+      "note": "Add the writing skill to estate-writing as a pending draft: one entry point for writing and review, with check.py returning pass, fail or incomplete and a coverage receipt"
     }
   },
   "source_conflicts": [
