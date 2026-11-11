@@ -22,7 +22,7 @@ Regenerate the GitHub review with `python3 tools/skill_guide.py --report`. Sourc
 
 Ask Codex to refresh the Skills Estate site from GitHub. The refresh must retrieve a passing build for current main, verify the workflow and group data, update the existing Site, and confirm the deployed GitHub revision.
 
-Site identity: `appgprj_6ae246ca64f88191af4dfb318b704b65`. Preserve its owner-private audience. Read the Site source README and `.openai/hosting.json` before updating it. Reuse this identity rather than creating another Site. The local checkout is `/Volumes/BeastMode/Codex/skills/work/sales-process-and-skills-map/site/`.
+Site identity: `appgprj_6ae246ca64f88191af4dfb318b704b65`. Preserve its owner-private audience. Read the Site source README and `.openai/hosting.json` before updating it. Reuse this identity rather than creating another Site. The local checkout is `/Volumes/BeastMode/40-skills/work/work/sales-process-and-skills-map/site/`.
 
 GitHub main at `mshellman-llc/Skills-Estate` remains the source of truth. The Site is a published snapshot refreshed on request. GitHub Actions rebuilds the downloadable map and group collections on every main update.
 
