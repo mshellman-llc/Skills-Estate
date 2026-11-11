@@ -16,7 +16,11 @@ import uuid
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv'}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from portable import assemble, runtime_closure
+from catalog import entries as catalog_entries, dependencies as catalog_dependencies, apply_entrypoint
+
+IGNORED = {'.DS_Store', '__pycache__', '.git', '.local', '.venv', 'node_modules'}
 
 
 def files(folder):
@@ -41,7 +45,8 @@ def sha(data):
 
 
 def tree_hash(folder):
-    return sha(json.dumps([(str(p.relative_to(folder)), sha(p.read_bytes())) for p in files(folder)], separators=(',', ':')).encode())
+    return sha(json.dumps([(str(p.relative_to(folder)), sha(p.read_bytes()), p.stat().st_mode & 0o111)
+                          for p in files(folder)], separators=(',', ':')).encode())
 
 
 def names(root=ROOT):
@@ -57,17 +62,24 @@ def write_json(path, value):
 
 def source_hash(root=ROOT):
     records = []
-    for directory in ('skills', 'policies'):
-        records += [(str(p.relative_to(root)), sha(p.read_bytes())) for p in files(root / directory)]
+    for directory in ('skills', 'policies', 'tools', 'agents', 'tests', 'examples', 'config'):
+        records += [(str(p.relative_to(root)), sha(p.read_bytes()), p.stat().st_mode & 0o111)
+                    for p in files(root / directory)]
     return sha(json.dumps(records, separators=(',', ':')).encode())
+
+
+def runtime_dependencies(name, root=ROOT):
+    return runtime_closure(root, name)
 
 
 def validate(root=ROOT):
     errors = []
     skill_names = names(root)
+    public = catalog_entries(root)
     if not skill_names:
         errors.append('No skills found')
     for name in skill_names:
+        runtime_dependencies(name, root)
         folder = root / 'skills' / name
         text = (folder / 'SKILL.md').read_text()
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name) or len(name) > 64:
@@ -92,7 +104,7 @@ def validate(root=ROOT):
                     if target.startswith(('https:', 'http:', '/', '#', 'mailto:', 'app:', 'codex:')):
                         continue
                     target = target.split('#')[0]
-                    if target.startswith('references/estate/'):
+                    if target and (p.parent / target).resolve().parent == (folder / 'references/estate').resolve():
                         if not (root / 'policies' / Path(target).name).is_file():
                             errors.append(f'{name}: missing policy {target}')
                     elif target and not (p.parent / target).exists():
@@ -102,7 +114,7 @@ def validate(root=ROOT):
             errors.append(f'Unexpected policy type: {p.name}')
     if errors:
         raise ValueError('\n'.join(errors))
-    return {'skills': len(skill_names), 'source_sha256': source_hash(root)}
+    return {'skills': len(public), 'source_modules': len(skill_names), 'source_sha256': source_hash(root)}
 
 
 @contextlib.contextmanager
@@ -133,19 +145,18 @@ def build(root=ROOT):
     package_dir.mkdir()
     entries = {}
     try:
-        for name in names(root):
+        for name, item in catalog_entries(root).items():
             target = package_dir / name
-            shutil.copytree(root / 'skills' / name, target, ignore=shutil.ignore_patterns(*IGNORED, '*.pyc'))
-            refs = target / 'references' / 'estate'
-            if refs.exists():
-                raise ValueError(f'{name}: references/estate is generated; remove it from authoring source')
-            refs.mkdir(parents=True)
-            for p in files(root / 'policies'):
-                shutil.copy2(p, refs / p.name)
-            entries[name] = {'sha256': tree_hash(target)}
+            source = item['source']
+            dependencies = catalog_dependencies(root, item, runtime_closure)
+            mapping = assemble(root, source, target, dependencies)
+            apply_entrypoint(target, name, item)
+            entries[name] = {'sha256': tree_hash(target), 'runtime_dependencies': dependencies,
+                             'source_files': len(mapping), 'source_module': source,
+                             'pack': item['pack'], 'modes': item.get('modes', {})}
         if source_hash(root) != result['source_sha256']:
             raise ValueError('Sources changed during the build; rerun from a stable source tree')
-        manifest = {**result, 'packages': entries, 'format': 1}
+        manifest = {**result, 'packages': entries, 'format': 2}
         write_json(stage / 'manifest.json', manifest)
         destination = root / 'build'
         previous = root / '.local' / ('previous-build-' + uuid.uuid4().hex)
@@ -268,7 +279,7 @@ def bundle(root=ROOT):
                 for p in files(package):
                     info = zipfile.ZipInfo(str(Path(name) / p.relative_to(package)), date_time=(2020, 1, 1, 0, 0, 0))
                     info.compress_type = zipfile.ZIP_DEFLATED
-                    info.external_attr = (0o100644 << 16)
+                    info.external_attr = ((0o100755 if p.stat().st_mode & 0o111 else 0o100644) << 16)
                     z.writestr(info, p.read_bytes())
             entries[name] = {'file': path.name, 'sha256': sha(path.read_bytes()), 'content_sha256': entry['sha256']}
         release = {'format': 1, 'source_sha256': manifest['source_sha256'], 'packages': entries}
@@ -299,6 +310,7 @@ def status(root=ROOT, home=None):
     except ValueError as e:
         return {'build': str(e), 'ok': False}
     surfaces = {}
+    inspection_errors = {}
     ok = True
     for surface, target in local_targets(home).items():
         rows = {}
@@ -307,7 +319,11 @@ def status(root=ROOT, home=None):
             if not dest.is_dir():
                 state = 'broken-link' if dest.is_symlink() else 'missing'
             else:
-                same = tree_hash(dest.resolve()) == entry['sha256']
+                try:
+                    same = tree_hash(dest.resolve()) == entry['sha256']
+                except (ValueError, OSError) as exc:
+                    inspection_errors[str(dest)] = str(exc)
+                    same = False
                 linked = dest.is_symlink() and dest.resolve() == (root / 'build' / 'skills' / name).resolve()
                 state = 'linked-current' if same and linked else ('copy-current' if same else 'drift')
             rows[name] = state
@@ -343,10 +359,14 @@ def status(root=ROOT, home=None):
     for name, entry in manifest['packages'].items():
         dest = home / '.codex' / 'skills' / name
         if os.path.lexists(dest):
-            same = dest.is_dir() and tree_hash(dest.resolve()) == entry['sha256']
+            try:
+                same = dest.is_dir() and tree_hash(dest.resolve()) == entry['sha256']
+            except (ValueError, OSError) as exc:
+                inspection_errors[str(dest)] = str(exc)
+                same = False
             legacy_rows[name] = 'current' if same else 'drift'
             ok &= same
-    return {'build': build_state, 'source_sha256': manifest['source_sha256'], 'local': surfaces, 'legacy_codex_aliases': legacy_rows, 'external_skill_locations': external, 'cloud': cloud, 'ok': ok}
+    return {'build': build_state, 'source_sha256': manifest['source_sha256'], 'local': surfaces, 'legacy_codex_aliases': legacy_rows, 'external_skill_locations': external, 'inspection_errors': inspection_errors, 'cloud': cloud, 'ok': ok}
 
 
 def record_publication(root, surface, skill, reference):

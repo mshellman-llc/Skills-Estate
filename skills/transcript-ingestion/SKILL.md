@@ -1,16 +1,60 @@
 ---
 name: transcript-ingestion
-description: "Preserve, normalize, and index a supplied transcript for a confirmed project, client, opportunity, or engagement."
+description: 'Preserve, normalize, identify, and index a consulting meeting transcript for a confirmed client opportunity or engagement. Use when a transcript, call recording export, meeting notes file, VTT, or plain-text conversation must enter the Knowledge Hub. Do not use for call preparation, general meeting summarization, or unsupported promotion of an AI summary into canonical truth.'
 ---
+
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
 
 # Transcript ingestion
 
-Read [shared workflow](references/estate/workflow.md). For a rendered or branded artifact, read [brand policy](references/estate/brand.md) before choosing visual values. These references are generated from the canonical policies when the estate builds.
+Turn one meeting record into a durable, searchable source without loading every
+transcript into later AI sessions.
 
-Identify the meeting, date, source, participants, destination context, and stable transcript ID. If the destination context is ambiguous, resolve it before writing; do not attach a meeting to a client based solely on a matching name.
+## Required identity
 
-Preserve the raw input and its hash. Normalize a separate copy for encoding, speaker labels, and timestamps without changing the words. Keep uncertain speakers uncertain. Do not convert an AI summary into a verbatim transcript.
+Confirm the client and the opportunity or engagement before filing. Use a stable
+context ID beginning with `opp-` or `eng-`. Stop when the meeting could belong to
+more than one record.
 
-Check for an existing source ID or hash before ingestion. Make repeated ingestion idempotent and preserve revisions when the source changes. Record the raw and normalized locations, provenance, and index entry.
+## Ingest
 
-Use the storage system's authorized write path and verify the indexed record can be retrieved. Pass findings to discovery-synthesis or discovery-brief when requested; ingestion alone does not approve claims or update scope.
+1. Preserve the raw source without changing its bytes.
+2. Create a normalized Markdown copy with transcript ID, client ID, context ID,
+   context type, meeting date, title, participants, source hash, raw-file
+   location, and ingestion time.
+3. Add or update one entry in `transcripts.index` with topics, decisions, actions,
+   and the normalized file location.
+4. Register the raw transcript in `evidence.sources`.
+5. Extract facts, decisions, commitments, actions, and open questions as proposed
+   claims. Keep the transcript locator and relevant passage with each proposal.
+6. Send proposed claims through `evidence-core` before promoting them into a
+   lifecycle record.
+
+An AI summary is navigation, not evidence. Preserve the raw transcript and cite
+it when a claim matters.
+
+## Available tools
+
+Use `scripts/normalize_transcript.py` on a local surface. It accepts Markdown,
+plain text, and VTT; preserves the source; creates Markdown; and refuses to
+overwrite an existing transcript. Run its selftest after changes.
+
+On Cowork, Claude.ai, or another surface without the script, apply the same
+record contract with available file tools. If files cannot be persisted, return
+the normalized Markdown and exact intended Hub targets. State `patch-returned`.
+
+## Boundaries
+
+- Never guess client or engagement identity from a participant name alone.
+- Never delete or replace the raw transcript.
+- Never copy a transcript into several client folders.
+- Never treat a generated summary as a meeting quote.
+- Never promote an unsupported interpretation into canonical client knowledge.
+- Search `transcripts.index` before opening transcript bodies in later work.
+
+Return the resolved identity, raw and normalized locations, source hash, index
+change, proposed claim count, evidence result, and persistence state. Format the
+durable run record with [`output-contract.md`](../_shared/output-contract.md).

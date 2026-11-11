@@ -3,6 +3,11 @@ name: github-repository-work
 description: Work with repositories owned by mshellman-llc using the shared authenticated GitHub CLI and Git. Use for repository access, commits, pushes, pull requests, releases, and repository deployment workflows.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # GitHub repository work
 
 Claude Code and Codex use the same user-level GitHub CLI login on this Mac. Use `gh` from PATH, or `~/.local/bin/gh` when the shell has not refreshed. Credentials belong in the system keychain; never print, copy, store in a repository, or request the token.

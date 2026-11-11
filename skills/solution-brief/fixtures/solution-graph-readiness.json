@@ -1,0 +1,53 @@
+{
+  "graphVersion": "0.2.0",
+  "artifactType": "solution_brief",
+  "outputType": "readiness_gap_memo",
+  "mode": "readiness",
+  "engagement": {
+    "engagementId": "FIX-SPARSE",
+    "clientName": "Sparse Client",
+    "asOf": "2026-07-23T12:00:00Z"
+  },
+  "sufficiency": {
+    "status": "Insufficient",
+    "terminal": true,
+    "domainCoverage": {
+      "critical_interfaces": "Insufficient"
+    },
+    "blockers": [
+      {
+        "description": "Interface contracts and failure paths are missing",
+        "owner": "Client technical owner",
+        "closureCondition": "Approve interface contracts and unhappy paths",
+        "affectedRefs": [],
+        "claimIds": [
+          "CLM-GAP.001"
+        ]
+      }
+    ],
+    "nextGate": "Close blockers and rerun sufficiency"
+  },
+  "nodes": {
+    "systems": [],
+    "interfaces": [],
+    "adrs": [],
+    "scopeItems": [],
+    "risks": [],
+    "assumptions": [],
+    "dependencies": [],
+    "roles": [],
+    "allocations": [],
+    "phases": [],
+    "milestones": [],
+    "financialLines": [],
+    "reconciliationControls": []
+  },
+  "edges": [],
+  "editorialViews": [],
+  "referencedClaimIds": [
+    "CLM-GAP.001"
+  ],
+  "metadata": {
+    "fixturePurpose": "Terminal sparse-evidence path"
+  }
+}

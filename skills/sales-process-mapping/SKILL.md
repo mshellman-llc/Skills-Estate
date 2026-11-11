@@ -3,6 +3,10 @@ name: sales-process-mapping
 description: Map sales processes from discovery files, workbooks, CRM or Jira exports and operating notes. Trace triggers, ownership, handoffs and systems of record, including territory assignment and opportunity creation when relevant.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
 # Sales process mapping
 
 Explain the business process first: what the customer is trying to accomplish, what starts the work, who moves it forward, and what counts as finished. Connect that explanation to the records and systems used along the way.

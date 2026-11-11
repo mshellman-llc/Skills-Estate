@@ -3,6 +3,11 @@ name: independent-product
 description: Translate an existing employer-era project into Megan's independent, company-neutral product, consulting offer, or portfolio example. Use for Linky, playbooks, assessments, AI 201, Meridian derivatives, and related migrations.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Independent product migration
 
 Megan has authorized reuse of the supplied historical materials for independent work. Proceed with organizing and building. The independent product home belongs under `/Volumes/BeastMode/Independent Products/` unless a project brief names another current home.

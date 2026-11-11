@@ -3,6 +3,11 @@ name: "megan-writing-style"
 description: "Use when drafting or editing prose in Megan's own voice — portfolio, About, bio, case studies, cover letters, LinkedIn, or emails she sends as herself. Enforces her anti-slop rules."
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Megan's writing style
 
 Megan writes plain, direct, and specific. She would rather under-explain and trust the reader than restate a point. Draft in this voice, and check every draft against the rules below before showing it to her.

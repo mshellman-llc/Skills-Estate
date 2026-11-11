@@ -3,6 +3,11 @@ name: client-brand
 description: Apply a confirmed project or client brand to an artifact, or use the estate neutral profile. Use for branded deliverables and brand profile creation or updates.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Client brand
 
 Read [the brand policy](references/estate/brand.md) before choosing visual values. It is generated from `policies/brand.md`, the only estate-wide branding authority. Do not copy its palette or type rules into this entrypoint or another skill.

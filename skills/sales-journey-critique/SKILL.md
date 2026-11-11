@@ -3,6 +3,10 @@ name: sales-journey-critique
 description: Review a sales journey, discovery demo or proposed workflow. Trace the customer’s task, compare current and proposed steps, and check systems, click paths and measures. Recommend specific corrections.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
 # Sales journey critique
 
 Trace a specific person's task through the sales journey. Check what changes, which systems support each step and how success will be measured. Identify useful parts of the artifact and the behavior it still needs to explain.

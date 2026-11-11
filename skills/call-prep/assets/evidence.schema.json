@@ -1,0 +1,402 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Call guide evidence ledger",
+  "description": "Every entry must be traceable. Sections absent from this file are absent from the guide.",
+  "type": "object",
+  "required": [
+    "meeting"
+  ],
+  "properties": {
+    "meeting": {
+      "type": "object",
+      "required": [
+        "title",
+        "when",
+        "owner"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "when": {
+          "type": "string",
+          "description": "Date, time, attendees on both sides"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Presenter. Drives the DO NOT SHARE header."
+        },
+        "date": {
+          "type": "string"
+        },
+        "flag": {
+          "type": "string",
+          "description": "One thing to hold in mind for the whole call"
+        }
+      }
+    },
+    "asks": {
+      "type": "array",
+      "description": "Verbatim asks from the counterpart. Required for the talk track to render.",
+      "items": {
+        "type": "object",
+        "required": [
+          "quote",
+          "context"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string",
+            "description": "Their words, not a paraphrase"
+          },
+          "context": {
+            "type": "string",
+            "description": "Transcript and date"
+          }
+        }
+      }
+    },
+    "ask_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "voice_inventory": {
+      "type": "array",
+      "description": "Presenter's own recorded phrasings. Without this, spoken lines fail the gate.",
+      "items": {
+        "type": "object",
+        "required": [
+          "phrase",
+          "source"
+        ],
+        "properties": {
+          "phrase": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "analogy",
+              "framing",
+              "reframe",
+              "register"
+            ]
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "talk_track": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "properties": {
+          "clock": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "say": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "voice_basis": {
+            "type": "string",
+            "description": "Which voice_inventory entry this line is built from"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "qa": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "q",
+          "answer",
+          "source"
+        ],
+        "properties": {
+          "group": {
+            "type": "string"
+          },
+          "q": {
+            "type": "string",
+            "description": "A question they actually raised, or one the record shows is coming"
+          },
+          "answer": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "landmines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "body"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "dont": {
+            "type": "string"
+          },
+          "do": {
+            "type": "string",
+            "description": "The working line. A landmine without one is half done."
+          }
+        }
+      }
+    },
+    "figures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "value",
+          "source"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Shared key for the same quantity across sources. Drives conflict detection."
+          },
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "meaning": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "source_date": {
+            "type": "string"
+          },
+          "flag": {
+            "type": "boolean",
+            "description": "Renders in red. Set on conflicts and corrections."
+          }
+        }
+      }
+    },
+    "figure_tables": {
+      "type": "array",
+      "description": "Derivation tables, e.g. a value model with its cases",
+      "items": {
+        "type": "object",
+        "required": [
+          "headers",
+          "rows"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "fig_cols": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "description": "Every retrieved statement, tagged for audience",
+      "items": {
+        "type": "object",
+        "required": [
+          "text",
+          "source",
+          "sensitivity"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "sensitivity": {
+            "enum": [
+              "public",
+              "internal",
+              "never"
+            ]
+          },
+          "placement": {
+            "type": "string",
+            "description": "'instruction_only' is the sole legal placement for a 'never' item"
+          }
+        }
+      }
+    },
+    "people": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "departed": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "systems": {
+      "type": "object",
+      "properties": {
+        "licensed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shadow": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "human": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "date",
+          "event"
+        ],
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "event": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string",
+            "description": "Who decided, and what it constrains now"
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "ref": {
+            "type": "string",
+            "description": "Use when there is an ID but no URL"
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "description": "Only what the presenter must decide. Not a task list.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
