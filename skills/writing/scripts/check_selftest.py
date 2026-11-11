@@ -25,6 +25,8 @@ LEDGER = {
          'repair': 'Say it plainly.', 'terms': ['pending phrase']},
         {'id': 'author-only', 'class': 'voice', 'scope': 'author', 'status': 'active', 'weight': 3,
          'repair': 'Make the claim directly.', 'terms': ['whether it is']},
+        {'id': 'three', 'class': 'construction', 'scope': 'general', 'status': 'active', 'weight': 3,
+         'judge': 'line-pass', 'repair': 'Use the true count.', 'terms': ['intake, scoping and pricing']},
         {'id': 'retired', 'class': 'user', 'scope': 'general', 'status': 'retired', 'weight': 3,
          'repair': 'None.', 'terms': ['ledger entry']},
     ],
@@ -256,6 +258,12 @@ class NeverSilent(Base):
                 os.environ.pop(key, None)
             os.environ.update({k: v for k, v in saved.items() if v is not None})
 
+    def test_unreadable_command_line_still_returns_json_and_exit_2(self):
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = check.main(['--file', 'note.md', '--json', '--no-such-option'])
+        self.assertEqual((code, json.loads(out.getvalue())['status']), (2, 'incomplete'))
+
     def test_receipt_verifies_until_the_file_changes(self):
         path = self.write('note.md', 'The export job writes one file per client.\n')
         _, result = self.check(path)
@@ -399,6 +407,31 @@ class Review(Base):
             counts=[{'id': '0002', 'quote': '14 accounts', 'stated': 14, 'listed': 12}]))
         self.assertEqual(code, 1)
         self.assertEqual(len(result['findings']), 3)
+
+    def test_scanner_flag_never_blocks_alone_and_needs_a_line_pass_answer(self):
+        path = self.write('flag.md', 'The team owns intake, scoping and pricing for 14 accounts.\n')
+        code, result = self.check(path)
+        self.assertEqual((code, result['findings'], result['review']), (0, [], 1))
+        work = self.root / 'flag-review'
+        self.check(path, '--prepare', str(work))
+        plan = json.loads((work / 'assignments.json').read_text())
+        line = plan['workers'][0]['lines'][0]
+        self.assertEqual(line['flags'], [{'rule': 'three', 'text': 'intake, scoping and pricing'}])
+        base = {'id': line['id'], 'sha': line['sha'], 'section': line['section'], 'verdict': 'ok',
+                'portable': False, 'promise': False, 'tension': False}
+        self.work, self.plan, self.path = work, plan, path
+        document_map = self.document_map()
+
+        def run(verdict):
+            return self.full(self.save('verdicts.json', {'rules_sha256': plan['rules_sha256'], 'verdicts': [verdict]}), document_map)
+        code, result = run(base)
+        self.assertEqual(code, 2)
+        self.assertIn('flags.three', self.receipt(result)['line_pass']['rejected'][0]['reason'])
+        self.assertEqual(run(dict(base, flags={'three': True}))[0], 2)
+        self.assertEqual(run(dict(base, flags={'three': False}))[0], 0)
+        code, result = run(dict(base, verdict='fix', flags={'three': True}, rule='rule: true count',
+                                quote='intake, scoping and pricing', replacement='intake and pricing'))
+        self.assertEqual((code, result['findings'][0]['rule']), (1, 'line-pass: rule: true count'))
 
     def test_spot_audit_miss_sends_the_review_back(self):
         verdicts, document_map = self.verdicts(), self.document_map()

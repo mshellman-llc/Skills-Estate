@@ -366,13 +366,20 @@ def run_part(chunk, rules, attempt=0):
 
 
 def judge(hits, words, ledger, rules):
-    """Apply the ledger's thresholds: which hits block and which are advisory."""
+    """Apply the ledger: which hits block on sight, which the line pass must judge, which are advisory.
+
+    A rule marked "judge": "line-pass" matches a shape a scanner cannot rule on, such as a list of
+    three. Its hits never block from the scan; each one needs an answer in the line's verdict.
+    """
     cfg = ledger['config']
     by_id = {rule['id']: rule for rule, _ in rules}
     totals = {}
     for h in hits:
         totals[h['rule']] = totals.get(h['rule'], 0) + 1
     kept = [h for h in hits if totals[h['rule']] >= by_id[h['rule']].get('min_count', 1)]
+    review = [dict(h, fix=by_id[h['rule']].get('repair', '')) for h in kept
+              if by_id[h['rule']].get('judge') == 'line-pass' and by_id[h['rule']].get('status') == 'active']
+    kept = [h for h in kept if by_id[h['rule']].get('judge') != 'line-pass']
     weight = {i: (r.get('weight', 1) if r.get('status') == 'active' else 0) for i, r in by_id.items()}
     per500 = 500 / max(words, cfg.get('density_floor_words', 250))
     long_enough = words >= cfg.get('min_words', 40)
@@ -389,7 +396,7 @@ def judge(hits, words, ledger, rules):
         hard = w >= cfg.get('hard_weight', 3)
         target = blocking if w and (hard or dense or h['rule'] in repeated) else advisory
         target.append(dict(h, fix=by_id[h['rule']].get('repair', '')))
-    return blocking, advisory
+    return blocking, advisory, review
 
 
 # ---------------------------------------------------------------------------
@@ -465,7 +472,7 @@ def load_json(path, what):
     return data
 
 
-def check_verdict(v, record):
+def check_verdict(v, record, flagged=()):
     """Why one verdict is rejected, or None when it stands."""
     if v.get('sha') != record['sha']:
         return 'the line changed after this verdict was written'
@@ -476,8 +483,13 @@ def check_verdict(v, record):
     flags = [v.get(k) for k in ('portable', 'promise', 'tension')]
     if any(not isinstance(f, bool) for f in flags):
         return 'portable, promise and tension must each be answered true or false'
+    answers = v.get('flags') if isinstance(v.get('flags'), dict) else {}
+    for rule in flagged:
+        if not isinstance(answers.get(rule), bool):
+            return f'the scanner flagged this line for {rule}; flags.{rule} must be true (a real fault) or false'
+    flags += [answers[rule] for rule in flagged]
     if v['verdict'] == 'ok':
-        return 'a yes to portable, promise or tension needs a fix' if any(flags) else None
+        return 'a true answer to a line question or a scanner flag needs a fix' if any(flags) else None
     if not str(v.get('rule') or '').strip():
         return 'a fix names its rule'
     quote = v.get('quote')
@@ -488,8 +500,9 @@ def check_verdict(v, record):
     return None
 
 
-def line_pass(records, data, rules_sha256):
+def line_pass(records, data, rules_sha256, flags=None):
     """Returns (findings, rejected, missing). Every in-scope line needs one valid verdict."""
+    flags = flags or {}
     scope = {r['id']: r for r in in_scope(records)}
     findings, rejected, seen = [], [], set()
     stale = data.get('rules_sha256') != rules_sha256
@@ -501,7 +514,8 @@ def line_pass(records, data, rules_sha256):
         if vid in seen:
             rejected.append({'id': vid, 'reason': 'more than one verdict for this line'})
             continue
-        reason = 'the rules changed after this verdict was written' if stale else check_verdict(v, scope[vid])
+        reason = ('the rules changed after this verdict was written' if stale
+                  else check_verdict(v, scope[vid], flags.get(vid, ())))
         if reason:
             rejected.append({'id': vid, 'reason': reason})
             continue
@@ -523,12 +537,12 @@ def audit_sample(records, verdicts):
     return sorted(chooser.sample(ok, max(1, -(-len(ok) // AUDIT_SHARE))))
 
 
-def spot_audit(records, verdicts, data, rules_sha256):
+def spot_audit(records, verdicts, data, rules_sha256, flags=None):
     """Returns (findings, rejected, missing). One miss sends every line back through the line pass."""
     scope = {r['id']: r for r in in_scope(records)}
     wanted = [i for i in audit_sample(records, verdicts) if i in scope]
     sub = [scope[i] for i in wanted]
-    findings, rejected, missing = line_pass(sub, data, rules_sha256)
+    findings, rejected, missing = line_pass(sub, data, rules_sha256, flags)
     for f in findings:
         f['rule'] = 'spot-audit miss, full line pass required: ' + f['rule'].split(': ', 1)[-1]
     return findings, rejected, missing
@@ -692,7 +706,7 @@ def workers(records):
     return groups
 
 
-def prepare(path, records, rules, out, verdicts=None):
+def prepare(path, records, rules, out, verdicts=None, review=()):
     out = Path(out)
     (out / 'text').mkdir(parents=True, exist_ok=True)
     for old in (out / 'text').glob('part-*.md'):
@@ -706,12 +720,18 @@ def prepare(path, records, rules, out, verdicts=None):
     lines += [shown(r) for r in outline(records)]
     (out / 'outline.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     scope = in_scope(records)
+    flagged = {}
+    for item in review:
+        flagged.setdefault(item['id'], []).append({'rule': item['rule'], 'text': item['text']})
+
+    def entry(r):
+        return {'id': r['id'], 'sha': r['sha'], 'section': r['section_sha'], 'loc': r['loc'],
+                'text': r['text'], 'flags': flagged.get(r['id'], [])}
     plan = {
         'file': str(path), 'source_sha256': sha(path.read_bytes()), 'text_sha256': text_sha(records),
         'rules_sha256': rules['rules_sha256'], 'lines_in_scope': len(scope), 'parts': names,
         'two_step_document_pass': len(scope) > LONG_DOCUMENT_LINES,
-        'workers': [{'worker': n, 'lines': [{'id': r['id'], 'sha': r['sha'], 'section': r['section_sha'],
-                                             'loc': r['loc'], 'text': r['text']} for r in group]}
+        'workers': [{'worker': n, 'lines': [entry(r) for r in group]}
                     for n, group in enumerate(workers(records), 1)],
         'sections': [{'id': head['id'], 'text': head['text']} for head in section_heads(records).values()],
         'headings': [r['id'] for r in scope if HEADING.match(r['text'])],
@@ -720,8 +740,7 @@ def prepare(path, records, rules, out, verdicts=None):
     }
     if verdicts:
         wanted = set(audit_sample(records, verdicts))
-        plan['audit'] = [{'id': r['id'], 'sha': r['sha'], 'section': r['section_sha'], 'loc': r['loc'],
-                          'text': r['text']} for r in scope if r['id'] in wanted]
+        plan['audit'] = [entry(r) for r in scope if r['id'] in wanted]
     (out / 'assignments.json').write_text(json.dumps(plan, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
     return out / 'assignments.json'
 
@@ -741,7 +760,7 @@ def run(args):
     record = {'tool': 'writing check', 'version': VERSION, 'started': now(), 'file': str(path),
               'register': registers, 'status': 'incomplete', 'reason': '',
               'coverage': {'lines_total': 0, 'lines_reviewed': 0}, 'steps': [], 'parts': [],
-              'not_reviewed': [], 'findings': [], 'advisories': []}
+              'not_reviewed': [], 'findings': [], 'advisories': [], 'review': []}
     steps, reasons = record['steps'], []
 
     def step(name, status, detail):
@@ -802,10 +821,17 @@ def run(args):
         step('scan', 'failed', detail)
     else:
         step('scan', 'ok', f'{len(scope)} of {len(scope)} in-scope lines scanned in {len(record["parts"])} parts')
-    blocking, advisory = judge(hits, words, ledger, rules)
+    blocking, advisory, review = judge(hits, words, ledger, rules)
     findings += blocking
     record['words'] = words
     record['advisories'] = [present(a, by_id) for a in advisory + repeats(records)]
+    record['review'] = [present(r, by_id) for r in review]
+    flags = {}
+    for item in review:
+        if item['rule'] not in flags.setdefault(item['id'], []):
+            flags[item['id']].append(item['rule'])
+    if review and steps[-1]['status'] == 'ok':
+        steps[-1]['detail'] += f'; {len(review)} flags on {len(flags)} lines wait for a line-pass verdict'
 
     if full:
         verdicts = None
@@ -814,7 +840,7 @@ def run(args):
         if args.verdicts:
             try:
                 verdicts = load_json(args.verdicts, 'verdict file')
-                found, rejected, absent = line_pass(records, verdicts, rules_info['rules_sha256'])
+                found, rejected, absent = line_pass(records, verdicts, rules_info['rules_sha256'], flags)
                 findings += found
                 if rejected or absent:
                     record['line_pass'] = {'rejected': rejected, 'no_verdict': absent}
@@ -840,7 +866,8 @@ def run(args):
             step('document pass', 'failed', 'no document map was given')
         if args.audit and verdicts is not None:
             try:
-                found, rejected, absent = spot_audit(records, verdicts, load_json(args.audit, 'audit file'), rules_info['rules_sha256'])
+                found, rejected, absent = spot_audit(records, verdicts, load_json(args.audit, 'audit file'),
+                                                        rules_info['rules_sha256'], flags)
                 if found:
                     findings += found
                     step('spot audit', 'failed', f'{len(found)} audited lines need a fix; every line goes back through the line pass')
@@ -858,7 +885,8 @@ def run(args):
 
     if args.prepare:
         try:
-            made = prepare(path, records, rules_info, args.prepare, load_json(args.verdicts, 'verdict file') if args.verdicts else None)
+            made = prepare(path, records, rules_info, args.prepare,
+                           load_json(args.verdicts, 'verdict file') if args.verdicts else None, review)
             step('prepare', 'ok', str(made))
         except (OSError, Incomplete) as error:
             step('prepare', 'failed', str(error))
@@ -903,6 +931,7 @@ def summary(record):
         out['not_reviewed'] = record['not_reviewed']
     out['steps'] = record['steps']
     out['advisories'] = len(record['advisories'])
+    out['review'] = len(record.get('review', []))
     return out
 
 
@@ -949,6 +978,9 @@ def main(argv=None):
     try:
         args = parser.parse_args(argv)
     except SystemExit as stop:
+        if stop.code and '--json' in (sys.argv[1:] if argv is None else argv):
+            print(json.dumps({'status': 'incomplete', 'coverage': {'lines_total': 0, 'lines_reviewed': 0},
+                              'findings': [], 'receipt': None, 'reason': 'the command line could not be read'}))
         return 2 if stop.code else 0
     if args.verify_receipt:
         return verify_receipt(args.verify_receipt)
