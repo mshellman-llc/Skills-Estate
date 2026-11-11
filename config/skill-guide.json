@@ -1922,8 +1922,8 @@
       "inputs": "The draft or the saved file, the writing rules folder, and the channel and audience for the piece.",
       "outputs": "The reviewed text, and for a saved file a JSON result with status, line coverage, findings and a receipt.",
       "example": "Check this proposal page before it goes to the client, then run the full review with the line pass and the document pass.",
-      "reviewedEntrypointSha256": "0dc1fa4994072196291de865ebc7215caaf64f606d7524156d55e35663f2c9ce",
-      "expect": "It reads the rules from the owner's folder each time, picks review, owner voice or brand voice, and sets the register from the channel and audience. For a file, check.py extracts the reader text, scans every in-scope line in parts of at most 300 lines and exits 0, 1 or 2. A full review adds a verdict for every line and a document map, and the script rejects a missing verdict, a misquoted line or an untraced number. Code and quotations are exempt.",
+      "reviewedEntrypointSha256": "0b569a496fb1dd9a4e76021bb3c8522b9191ce1127b4afd5033278f2fade74b8",
+      "expect": "It reads the rules from the owner's folder each time, picks review, owner voice or brand voice, and sets the register from the channel and audience. For a file, check.py extracts the reader text, scans every in-scope line in parts of at most 300 lines and exits 0, 1 or 2. A full review adds a verdict for every line, a claims answer checked against a source list, a document map and a spot audit, and the script rejects a missing verdict, a misquoted line or an untraced number. Code and quotations are exempt.",
       "connectors": {
         "required": [],
         "optional": [
@@ -1934,7 +1934,7 @@
       "overview": "It loads the owner's writing rules from their folder for each task and carries no copy of them. For a draft it picks the mode and register, then reviews each line. For a saved file, check.py extracts the text a reader sees, exempts code and quotations, scans every in-scope line and writes a receipt that counts the lines scanned against the lines extracted. A full review adds a verdict for every line and a document map that the script validates.",
       "value": "Give other tools one command that returns pass, fail or incomplete for a file, and stop a review from being reported as done when lines were skipped.",
       "preparation": {
-        "where": "Provide the draft or the file path, and a writing rules folder that holds patterns.json. Name the folder with --rules-dir, the WRITING_HOME variable or the path in ~/.agents/writing/home. A full review also needs rules.md in that folder and the project's confidentiality list.",
+        "where": "Provide the draft or the file path, and a writing rules folder that holds patterns.json. Name the folder with --rules-dir, the WRITING_HOME variable or the path in ~/.agents/writing/home. A full review also needs rules.md in that folder, a JSON list of the source documents and the project's confidentiality list from the Hub.",
         "missing": "With no pattern ledger the check exits 2. With no rules.md the scan still runs and a full review is reported incomplete. A format the script does not read exits 2."
       },
       "preparationSkills": []
