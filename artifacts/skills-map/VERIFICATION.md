@@ -12,9 +12,9 @@ Verified October 22, 2026 against the canonical baseline `e0d71e32db970e6b7fcc31
 
 ## Visual and content review
 
-Desktop, 390px mobile, detail-dialog, workflow, and print views were rendered and inspected. The map uses the estate's confirmed neutral palette and system fonts from `policies/brand.md`.
+Desktop, 390px mobile, detail-dialog, workflow, and print views were rendered and inspected. Following the branding correction, the map uses the artifact-specific profile in `brand.md`: the maintained Editorial design palette and embedded Plus Jakarta Sans fonts. The global estate policy is unchanged.
 
-The Editorial design checker uses a different default palette. Its palette findings are resolved by the explicit estate policy; the artifact's actual tokens were compared with that policy. Border and alignment findings were corrected. Neutral identity scanning passed.
+The Editorial design checker passed with zero findings. Neutral identity scanning passed. Browser assertions confirm the actual Plus Jakarta Sans family, all three embedded font weights, the navy hero, and the sand navigation surface. Desktop, mobile, detail, workflow, and both print pages were inspected after the correction. The skill snapshot JSON and its 78 personal entrypoints remain unchanged.
 
 The parity audit reported no lexical or structural errors. Its hidden-content warning refers to the inactive workflow view, which becomes visible through the tested view control. Its visual-review warning is addressed by the rendered inspections above.
 

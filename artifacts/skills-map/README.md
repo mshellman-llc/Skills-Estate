@@ -38,7 +38,7 @@ Repeat `--extra` for each additional skill. The builder refuses duplicate names,
 
 ## Continuity with the prior artifact
 
-The September 1 architecture map supplied the interaction model. This edition preserves search, skill families, detailed purpose and trigger descriptions, execution instructions, relationships, source references, and file inventories. The neutral estate policy replaces the historical company styling.
+The September 1 architecture map supplied the interaction model. This edition preserves search, skill families, detailed purpose and trigger descriptions, execution instructions, relationships, source references, and file inventories. The artifact-specific profile in `brand.md` preserves the navy, teal, sand, and Plus Jakarta Sans design system through the maintained Editorial design assets. The build embeds the fonts for offline use and retains their SIL Open Font License. Historical company logos and attribution are excluded.
 
 Subjective quality and cost ratings were deliberately omitted because no current benchmark supports them. Historical platform connector assertions and role tiers were not copied. Source status and the checks written in each skill replace those assumptions. Outputs, required inputs, failure paths, and constraints remain in the complete instructions rather than being forced into fields that some entrypoints do not define.
 
