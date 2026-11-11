@@ -45,14 +45,16 @@ try:
     expect(False, "six series raises")
 except ValueError:
     expect(True, "six series raises")
-expect(palette.palette("hero", "neutral", 3) == ["#37437D", "#B2B3B5", "#B2B3B5"], "hero is one accent plus one grey")
+expect(palette.palette("hero", "neutral", 3) == ["#111111", "#B3B3B3", "#B3B3B3"], "hero is one accent plus one grey")
 expect(len(palette.palette("diverging", n=6)) == 7, "diverging forces an odd count")
 
 # typography
 css = typography.font_css()
-expect("Inter" in css and "mono" not in css.lower(), "default profile is Inter, no monospace")
+expect("system-ui" in css and "Inter" not in css and "mono" not in css.lower(),
+       "default profile is the system sans stack, no monospace")
 expect("prefers-color-scheme: dark" in css and '[data-theme="dark"]' in css, "dark theme tokens present")
-expect("Playfair" not in typography.FONT_LINKS["default"], "serif only in newsroom profile")
+expect(typography.FONT_LINKS["default"] == "", "default profile loads no web font")
+expect("Inter" not in typography.FONT_LINKS["newsroom"], "newsroom loads only its serifs")
 
 # brand override
 brand = {"font": "Hanken Grotesk", "light": {"--hero": "#B16F25"}, "dark": {"--hero": "#FBC27B"}}

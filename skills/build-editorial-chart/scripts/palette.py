@@ -27,18 +27,18 @@ import sys
 # Neutral palette tokens. Ramps run dark to light (600 -> 50).
 SCHEMES = {
     "neutral": {
-        "name": "navy and pastel",
-        "hero": "#37437D",
-        "hero_dark": "#B5CAFA",  # hero on dark backgrounds
-        "ramp": ["#24265B", "#434D90", "#6577BD", "#8BA1DE", "#B5CAFA", "#E8F0FF", "#F5F8FF"],
+        "name": "grey",
+        "hero": "#111111",
+        "hero_dark": "#C8C8C8",  # hero on dark backgrounds
+        "ramp": ["#222222", "#4D4D4D", "#777777", "#A0A0A0", "#C8C8C8", "#E6E6E6", "#F5F5F5"],
     },
 }
 
 # Neutral greys.
 NEUTRALS = {
-    "n0": "#FFFFFF", "n25": "#FAFAFA", "n50": "#F5F5F5", "n100": "#EEEEF0",
-    "n200": "#E2E2E3", "n300": "#CBCBCC", "n400": "#B2B3B5", "n500": "#797B7E",
-    "n600": "#535559", "n700": "#2E3135", "n900": "#11141A",
+    "n0": "#FFFFFF", "n25": "#FAFAFA", "n50": "#F5F5F5", "n100": "#EEEEEE",
+    "n200": "#DDDDDD", "n300": "#CCCCCC", "n400": "#B3B3B3", "n500": "#767676",
+    "n600": "#555555", "n700": "#2E2E2E", "n900": "#111111",
 }
 
 CONTEXT_GREY = {"light": NEUTRALS["n400"], "dark": NEUTRALS["n600"]}
@@ -134,9 +134,9 @@ def css_variables(scheme="neutral"):
         **{f"--seq-{i}": c for i, c in enumerate(r)},
     }
     dark = {
-        "--bg": NEUTRALS["n900"], "--panel": "#171A21", "--ink": NEUTRALS["n50"],
+        "--bg": NEUTRALS["n900"], "--panel": "#1A1A1A", "--ink": NEUTRALS["n50"],
         "--ink2": NEUTRALS["n300"], "--ink3": NEUTRALS["n400"], "--rule": NEUTRALS["n700"],
-        "--grid": "#22262D", "--hero": s["hero_dark"], "--hero-soft": r[2],
+        "--grid": "#262626", "--hero": s["hero_dark"], "--hero-soft": r[2],
         "--context": CONTEXT_GREY["dark"], "--tip-bg": NEUTRALS["n50"], "--tip-ink": NEUTRALS["n900"],
         **{f"--seq-{i}": c for i, c in enumerate(reversed(r))},
     }
