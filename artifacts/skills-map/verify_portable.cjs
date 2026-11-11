@@ -25,7 +25,7 @@ const {launchOptions}=require('../../skills/brand-renderer/scripts/browser_launc
   assert.equal(await widget.locator('body').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(255, 255, 255)');
   await widget.locator('.skill-row').click();assert(await widget.locator('#detail').isVisible());
   assert.equal(await widget.locator('#detail .dialog-body').evaluate(e=>getComputedStyle(e).paddingTop),'20px');
-  await widget.locator('#tab-files').click();assert.equal(await widget.getByRole('button',{name:'Download SKILL.md',exact:true}).count(),0);
+  assert.equal(await widget.locator('[role=tab]').count(),0);assert(await widget.locator('#panel-files').isVisible());assert.equal(await widget.getByRole('button',{name:'Download SKILL.md',exact:true}).count(),0);
   await widget.keyboard.press('Escape');assert.equal(await widget.locator('#detail').isVisible(),false);
   await widget.setViewportSize({width:390,height:844});await widget.locator('.skill-row').click();
   assert(await widget.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
