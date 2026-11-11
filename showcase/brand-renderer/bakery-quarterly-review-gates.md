@@ -26,7 +26,7 @@ A short HTML page (`draft.html`) and a parity manifest, both written for this ru
  ]}
 ```
 
-The draft's style rules included `border:2px solid #E2E2E3` on the card, `color:#FF7A00` on the growth figure and the heading "Quarterly Wholesale Review". The page had no `main` element and no media queries.
+The draft's style rules included `border:2px solid #DDDDDD` on the card, `color:#FF7A00` on the growth figure and the heading "Quarterly Wholesale Review". The page had no `main` element and no media queries.
 
 ## Output
 
@@ -63,7 +63,7 @@ Exit 1. `brand_check.py draft.html`:
 Exit 1. The fixes changed the page, not the claims:
 
 - The content is wrapped in `main`, with a width query and a print query added.
-- The card border is now 1px. The growth figure uses the profile's accent token, `#37437D`, and is set in bold.
+- The card border is now 1px. The growth figure uses the profile's accent token, `#111111`, and is set in bold.
 - The heading is now "Quarterly wholesale review".
 - The Saturday delivery paragraph has the id `claim-route`, and the manifest's `route-cost` claim now names that selector, so its "not priced" qualifier is checked inside its own paragraph.
 

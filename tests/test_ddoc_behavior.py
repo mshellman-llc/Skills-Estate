@@ -164,13 +164,13 @@ class DeckBehaviorTests(unittest.TestCase):
     def test_confirmation_build_contains_required_copy_and_neutral_brand(self):
         result, pptx = self.invoke(self.base, "confirmation-built", build=True)
         self.assertEqual(0, result.returncode, result.stderr)
-        self.inspect_deck(pptx, self.base, "#37437D")
+        self.inspect_deck(pptx, self.base, "#111111")
 
     def test_decision_build_contains_both_options(self):
         manifest = self.decision()
         result, pptx = self.invoke(manifest, "decision-built", build=True)
         self.assertEqual(0, result.returncode, result.stderr)
-        self.inspect_deck(pptx, manifest, "#37437D")
+        self.inspect_deck(pptx, manifest, "#111111")
 
     def test_separate_scope_slides_keep_their_bullets(self):
         manifest = copy.deepcopy(self.base)
@@ -185,7 +185,7 @@ class DeckBehaviorTests(unittest.TestCase):
                                  "bullets": ["Every pilot request has a named approver."]}
         result, pptx = self.invoke(manifest, "separate-scope", build=True)
         self.assertEqual(0, result.returncode, result.stderr)
-        self.inspect_deck(pptx, manifest, "#37437D")
+        self.inspect_deck(pptx, manifest, "#111111")
         with zipfile.ZipFile(pptx) as archive:
             xml = "".join(archive.read(n).decode() for n in archive.namelist()
                           if re.fullmatch(r"ppt/slides/slide\d+\.xml", n))
@@ -200,6 +200,7 @@ class DeckBehaviorTests(unittest.TestCase):
         profile["name"] = "Synthetic copper"
         profile["source"] = "Synthetic fixture for renderer tests"
         profile["colors"]["accent"] = "#7B321A"
+        profile["colors"]["text"] = "#202020"
         profile["type"]["office"] = "Helvetica"
         file = self.run_dir / "copper-brand.md"
         file.write_text("```json\n" + json.dumps(profile, indent=2) + "\n```\n")
@@ -210,7 +211,7 @@ class DeckBehaviorTests(unittest.TestCase):
         with zipfile.ZipFile(pptx) as archive:
             slide_xml = "".join(archive.read(n).decode() for n in archive.namelist()
                                 if re.fullmatch(r"ppt/slides/slide\d+\.xml", n))
-        self.assertNotIn("37437D", slide_xml)
+        self.assertNotIn("111111", slide_xml)
 
     def profile_with_logo(self, name, logo):
         """Write a synthetic profile in its own directory; return (profile file, directory)."""

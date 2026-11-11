@@ -12,13 +12,13 @@
 -->
 <style>
 :root{
-  --bg:#FFFFFF;--text:#11141A;--muted:#535559;--border:#E2E2E3;--surface:#F5F5F5;--accent:#37437D;
+  --bg:#FFFFFF;--text:#111111;--muted:#555555;--border:#DDDDDD;--surface:#F5F5F5;--accent:#111111;
   --band:var(--text);--band-text:var(--bg);--pain:var(--surface);--opp:var(--bg);--bp:var(--bg);
   --radius:8px;--font:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
   /* Opportunity board (roadmap components): the same profile roles under their estate names. */
   --brand-background:var(--bg);--brand-text:var(--text);--brand-muted:var(--muted);--brand-border:var(--border);
   --brand-surface:var(--surface);--brand-accent:var(--accent);--brand-border-width:1px;--font-sans:var(--font);
-  --brand-chart-1:#24265B;--brand-chart-2:#434D90;--brand-chart-3:#6577BD;--brand-chart-4:#8BA1DE;--brand-chart-5:#B5CAFA;--brand-chart-6:#535559;
+  --brand-chart-1:#222222;--brand-chart-2:#4D4D4D;--brand-chart-3:#777777;--brand-chart-4:#A0A0A0;--brand-chart-5:#C8C8C8;--brand-chart-6:#666666;
   --brand-status-good:#18703F;--brand-status-warning:#96500A;--brand-status-critical:#C4302B;
 }
 *{box-sizing:border-box}
@@ -316,8 +316,10 @@ document.getElementById("lead").textContent = MAP.lead;
 document.getElementById("basis").textContent = MAP.basisNote;
 
 const legend = document.getElementById("legend");
-[["Phase", "var(--band)"], ["Pain point", "var(--pain)"], ["Opportunity", "var(--accent)"]].forEach(([t, c]) => {
-  const s = el("span"); const w = el("i", "sw"); w.style.background = c; s.append(w, t); legend.append(s);
+// The opportunity swatch matches its cells (opportunity ground, accent outline), so it stays
+// distinct from the phase band when a profile's accent is its text color.
+[["Phase", "var(--band)"], ["Pain point", "var(--pain)"], ["Opportunity", "var(--opp)", "var(--accent)"]].forEach(([t, c, b]) => {
+  const s = el("span"); const w = el("i", "sw"); w.style.background = c; if (b) w.style.borderColor = b; s.append(w, t); legend.append(s);
 });
 const curveLegend = "Emotional curve, low to high";
 legend.append(el("span", null, MAP.emotion == null ? "Emotion scores: not captured" : curveLegend + (MAP.emotionBasis === "hypothesis" ? " (hypothesis, dashed)" : "")));

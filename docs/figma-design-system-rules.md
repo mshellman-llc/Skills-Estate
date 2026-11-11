@@ -28,13 +28,13 @@ Never paste Figma hex values, font names or pixel values directly into a templat
 {
   "name": "Neutral",
   "status": "confirmed",
-  "source": "Estate neutral defaults, established 2026-10-19",
-  "colors": { "background": "#FFFFFF", "text": "#11141A", "muted": "#535559",
-              "border": "#E2E2E3", "surface": "#F5F5F5", "accent": "#37437D" },
+  "source": "Plain fallback with no design system, 2026-11-11",
+  "colors": { "background": "#FFFFFF", "text": "#111111", "muted": "#555555",
+              "border": "#DDDDDD", "surface": "#F5F5F5", "accent": "#111111" },
   "type": { "body": "system-ui, …", "headings": "system-ui, …", "office": "Arial",
             "body_min_pt": 11, "screen_min_px": 16, "slide_min_pt": 18 },
   "logo": null,
-  "layout": { "border_px": 1, "radius_px": 4, "heading_case": "sentence" }
+  "layout": { "border_px": 1, "radius_px": 6, "heading_case": "sentence" }
 }
 ```
 
@@ -44,8 +44,8 @@ Never paste Figma hex values, font names or pixel values directly into a templat
 
 ```css
 :root {
-  --brand-background: #FFFFFF;  --brand-text: #11141A;  --brand-muted: #535559;
-  --brand-border: #E2E2E3;      --brand-surface: #F5F5F5; --brand-accent: #37437D;
+  --brand-background: #FFFFFF;  --brand-text: #111111;  --brand-muted: #555555;
+  --brand-border: #DDDDDD;      --brand-surface: #F5F5F5; --brand-accent: #111111;
   --brand-font-body: system-ui, …;  --brand-font-headings: system-ui, …;
 }
 ```

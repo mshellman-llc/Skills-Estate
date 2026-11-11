@@ -78,7 +78,7 @@ def check(path, allow=()):
                 errors.append(f"Script block {i} fails node --check: {r.stderr.strip().splitlines()[-1]}")
 
     if re.search(r"font-family[^;{}]*(mono|Courier)", text, re.I):
-        errors.append("Monospace font family found. Use Inter with tabular figures.")
+        errors.append("Monospace font family found. Use the sans stack with tabular figures.")
     if re.search(r"d3\.pie\(|Plot\.arc|d3\.arc\(", text) and "pie" not in allow:
         errors.append("Pie or arc generator found. Use a sorted bar or stacked bar.")
     if "axisRight" in text and "axisRight" not in allow:

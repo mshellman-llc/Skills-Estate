@@ -413,7 +413,9 @@ await p.waitForTimeout(100);if(await p.evaluate(()=>window.__pwned))bad++;}conso
             self.assertEqual(results[rule]['status'], 'passed', results[rule])
         css = self.project.paths['dist'] / 'assets/site.css'
         css.write_text(css.read_text() + '\n#changes td:nth-child(2) a,#changes td.dim{font-size:12px!important}'
-                                          '\n.lead{color:var(--accent)}')
+                                          # The neutral accent is the text color, so give the
+                                          # accent rule a distinct accent to police.
+                                          '\n:root{--accent:#7B321A}.lead{color:var(--accent)}')
         results = {r['rule']: r for r in gate.browser(self.project.paths['dist'])}
         self.assertEqual(results['R-TYPE-1']['status'], 'failed')
         self.assertEqual(results['R-COLOR-1']['status'], 'failed')

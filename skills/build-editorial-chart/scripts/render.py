@@ -34,7 +34,7 @@ spec.json:
   "annotations": [{"date": "2020-03-15", "value": 65000, "label": "Lockdowns begin"}],
        # scatter annotations use x + y
   "scheme": "neutral",                                   # optional; the only scheme
-  "profile": "default" | "newsroom",                     # typography, default Inter only
+  "profile": "default" | "newsroom",                     # typography, default is the system sans stack
   "brand": {"font": "...", "light": {...}, "dark": {...}} # optional; see typography.py
 }
 """

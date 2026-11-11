@@ -84,6 +84,10 @@
     "0.4.17": {
       "content_sha256": "4506ebf9490c9fb9ecf9b2fe3d2ea00282b0bdde607380dd14b765a670f5d172",
       "note": "Preserve full artifact scope and require whole-deliverable depth/usefulness comparison against applicable supplied reference methods; reject polished narrow substitutes."
+    },
+    "0.4.18": {
+      "content_sha256": "c12a44ebc7144db9943d4b9f0b0bbb2f834134f2a0a5cb8d485d2997e28148c8",
+      "note": "Replace the neutral profile values kept from the retired Baseline palette with a plain fallback: greys, near-black accent and the system font stack. The editorial chart neutral palette and default typography follow it. The review-site accent rule skips a profile whose accent is its text color, and the journey-map opportunity swatch shows its cell ground with an accent outline. Tests, docs and showcase examples quote the new values."
     }
   },
   "source_conflicts": [
