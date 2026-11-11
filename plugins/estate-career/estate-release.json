@@ -17,7 +17,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "62a1e8c30a5bce918acf0caf63079f2d3360669600b4af4b364b90ec57c3e7ab",
+      "required_sha256": "724de109a0da37dbdf0bc924f9927cadc871bd6e616107ad082f81d8a895736a",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -432,7 +432,7 @@
       "subject": "review-site-runtime"
     },
     {
-      "required_sha256": "6322f6646d3668ed0721f39e6a1b3661c991d70688fd4a382e0419563f3bb46a",
+      "required_sha256": "8e21a06b5edc5e14bb749775a6971f7f4c367b64c7fd422a0180b40f5ce0d040",
       "status": "review required",
       "subject": "review-writing"
     },
@@ -517,7 +517,7 @@
       "subject": "write-statement-of-work"
     },
     {
-      "required_sha256": "e34c3a3d6a42acca13f563f706ca19d9a88e83216c633778f75a1f3c5f0cf62e",
+      "required_sha256": "028d4ee8006f9241a8375998d3d4af9af8084a725d8ad0ee13d67b2230be85e9",
       "status": "review required",
       "subject": "writing"
     },
@@ -527,6 +527,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "c9502d307e80700d9405faa0e3c3f61a910c6d1ae9a072ea36d148161a07ddcd",
+  "source_sha256": "18751e5c54f8c9b012e70048fd3b1c6986a46558269379f15b0b69099d975779",
   "status": "owner-published"
 }

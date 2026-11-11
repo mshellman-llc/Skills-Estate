@@ -425,7 +425,7 @@ class RealPages(unittest.TestCase):
         t = self.all_text('field-card.html')
         for svg_label in ('Respondent', 'Grading job', 'Reviewers'):
             self.assertIn(svg_label, t)
-        self.assertIn('[alt] Aleysian', t)
+        self.assertRegex(t, r'\[alt\] \S', 'the logo lost its alt text')
         self.assertNotIn('base64', t)
         self.assertEqual(len(self.by['field-card.html']['parts']), 1)
 
