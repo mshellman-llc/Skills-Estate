@@ -1,0 +1,127 @@
+#!/bin/bash
+# estate-ticket-status <ticket> - summarize existing work without changing it.
+
+set -u
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck source=/dev/null
+. "$HERE/../claude-hooks/_lib.sh"
+
+die() { printf 'estate-ticket-status: %s\n' "$*" >&2; exit 2; }
+
+TICKET="${1:-}"
+[ -n "$TICKET" ] || die "usage: estate-ticket-status <ticket>"
+[ "$#" -eq 1 ] || die "usage: estate-ticket-status <ticket>"
+git rev-parse --git-dir >/dev/null 2>&1 || die "run this from a Git repository"
+[ -n "$(mode)" ] || die "this repository is not initialized with sf-delivery-standards"
+
+ROOT=$(git rev-parse --show-toplevel)
+TRUNK=$(trunk)
+
+resolve_trunk_ref() {
+  local upstream
+  upstream=$(git rev-parse --symbolic-full-name "${TRUNK}@{upstream}" 2>/dev/null || true)
+  if [ -n "$upstream" ]; then printf '%s' "$upstream"; return 0; fi
+  if git rev-parse --verify --quiet "origin/$TRUNK" >/dev/null 2>&1; then
+    printf 'origin/%s' "$TRUNK"; return 0
+  fi
+  if git rev-parse --verify --quiet "$TRUNK" >/dev/null 2>&1; then
+    printf '%s' "$TRUNK"; return 0
+  fi
+  return 1
+}
+
+TREF=$(resolve_trunk_ref || true)
+[ -n "$TREF" ] || die "configured trunk '$TRUNK' does not resolve locally"
+SD=$(state_dir ".") || die "cannot resolve the clone-local state directory"
+
+match_lines() {
+  awk -v ticket="$TICKET" '
+    BEGIN { needle=tolower(ticket) }
+    {
+      line=tolower($0)
+      start=1
+      while ((offset=index(substr(line, start), needle)) > 0) {
+        pos=start + offset - 1
+        before=(pos == 1 ? "" : substr(line, pos - 1, 1))
+        after=substr(line, pos + length(needle), 1)
+        if (before !~ /[[:alnum:]]/ && after !~ /[[:alnum:]]/) {
+          print $0
+          next
+        }
+        start=pos + 1
+      }
+    }
+  ' 2>/dev/null || true
+}
+
+BRANCHES=$(git for-each-ref --format='%(refname:short)' refs/heads refs/remotes 2>/dev/null | match_lines)
+WORKTREES=$(git worktree list --porcelain 2>/dev/null | awk '
+  /^worktree / { path=substr($0, 10) }
+  /^branch / { branch=$2; sub("refs/heads/", "", branch); print branch " " path }
+' | match_lines)
+COMMITS=$(git log --all --format='%H %s' 2>/dev/null | match_lines)
+LANDED=$(git log "$TREF" --format='%H %s' 2>/dev/null | match_lines | head -1 | awk '{print $1}')
+if [ -n "$LANDED" ]; then
+  CANDIDATE_SHA="$LANDED"
+else
+  CANDIDATE_SHA=$(printf '%s\n' "$COMMITS" | head -1 | awk '{print $1}')
+fi
+
+VALIDATED="unknown (no matching receipt in this clone)"
+if [ -n "$CANDIDATE_SHA" ] && [ -f "$SD/validate-log" ]; then
+  if grep -q "^${CANDIDATE_SHA}[[:space:]]" "$SD/validate-log" 2>/dev/null; then
+    VALIDATED="yes (${CANDIDATE_SHA:0:12}, current candidate receipt)"
+  else
+    while IFS=' ' read -r SHA _REST; do
+      [ -n "$SHA" ] || continue
+      if grep -q "^${SHA}[[:space:]]" "$SD/validate-log" 2>/dev/null; then
+        VALIDATED="historical (${SHA:0:12}); current candidate has no receipt"
+        break
+      fi
+    done <<EOF
+$COMMITS
+EOF
+  fi
+fi
+
+DEPLOYED="unknown (no ancestry-proving receipt in this clone)"
+if [ -n "$LANDED" ] && [ -f "$SD/deploy-log" ]; then
+  while IFS=' ' read -r DEPLOY_SHA JOB _REST; do
+    git cat-file -e "${DEPLOY_SHA}^{commit}" 2>/dev/null || continue
+    if git merge-base --is-ancestor "$LANDED" "$DEPLOY_SHA" 2>/dev/null; then
+      DEPLOYED="yes (${DEPLOY_SHA:0:12}, job ${JOB:-unknown}, clone-local receipt)"
+      break
+    fi
+  done < "$SD/deploy-log"
+fi
+
+if [ -n "$LANDED" ] && printf '%s' "$DEPLOYED" | grep -q '^yes'; then
+  STATE="delivered (local ancestry evidence)"
+elif [ -n "$LANDED" ]; then
+  STATE="landed; deployment unknown in this clone"
+elif [ -n "$BRANCHES$WORKTREES$COMMITS" ]; then
+  STATE="work found; not landed on the cached trunk ref"
+else
+  STATE="not found in local Git evidence"
+fi
+
+print_group() {
+  local label="$1" value="$2"
+  printf '%-12s %s\n' "$label" "${value:-(none)}"
+}
+
+printf 'Ticket status (read-only)\n'
+print_group "ticket" "$TICKET"
+print_group "repo" "$ROOT"
+print_group "trunk" "$TREF"
+print_group "state" "$STATE"
+print_group "landed" "${LANDED:0:12}"
+print_group "validated" "$VALIDATED"
+print_group "deployed" "$DEPLOYED"
+print_group "branches" "$BRANCHES"
+print_group "worktrees" "$WORKTREES"
+print_group "commits" "$COMMITS"
+printf '\nScope: Git evidence is shared after fetch. Validation and deployment receipts under\n'
+printf '.git/estate are clone-local. Check the tracker, PR host, or Salesforce deployment\n'
+printf 'record before interpreting an unknown result as work that did not happen.\n'

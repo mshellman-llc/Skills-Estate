@@ -1,0 +1,63 @@
+schema_version: 1
+name: interactive-proposal
+display_name: Interactive Proposal
+summary: Build interactive proposal pages - a single-file, project-branded
+  HTML page a prospect can click through, with a version-switcher hero, per-version
+  scope, team, timeline, assumptions, boundaries, and a call to action.
+status: active
+tier: core
+version: 1.0.1
+owner: Estate maintainer
+category: pursuit-intelligence
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Build interactive proposal pages - a single-file, project-branded HTML
+  page a prospect can click through, with a version-switcher hero, per-version scope,
+  team, timeline, assumptions, boundaries, and a call to action. Two modes. Proposal
+  mode renders a priced scoping-app quote (Q-number) with every number tied to a quote
+  field and reconciled by tie-out. Explorer mode covers the common qualification case
+  where no quote exists yet: same page, same gates, scope and open decisions only,
+  zero currency on the surface. Use whenever asked for an interactive proposal, proposal
+  page, quote page, clickable proposal, "web version of the DDOC", scope explorer,
+  or an option explorer for a pursuit. Trigger on any Q-number or client name paired
+  with "interactive", "page", "site", "explorer", or "clickable".'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: interactive_page
+  format: html
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: optional
+  reads:
+  - opportunity.front_door
+  - opportunity.solution_scope
+  - opportunity.commercial
+  - evidence.claims
+  writes:
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate

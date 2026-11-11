@@ -1,0 +1,69 @@
+schema_version: 1
+name: call-prep
+display_name: Call Prep
+summary: The single call-planning capability for an Estate pursuit, with two modes.
+status: active
+tier: core
+version: 0.2.1
+owner: Estate
+category: pursuit-intelligence
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'The single call-planning capability for an Estate pursuit, with two modes. Mode
+  A builds and maintains the rolling Pursuit Brief: one canonical overview of the
+  opportunity covering situation, desired business outcomes, confirmed facts with
+  sources, labeled assumptions, unknowns, stakeholders and missing roles, risks, qualification
+  status, and the recommended call sequence with the purpose, desired outcome, and
+  prerequisites of each call. Mode B prepares one specific upcoming call: objective,
+  attendees and roles, run of show, agenda with time allocation, tailored questions
+  pulled from the discovery ledger when one exists, a reconciled figure ledger, a
+  talk track mined from the presenter''s own transcripts, and audience-partitioned
+  landmines. Use when someone has a call, meeting, pitch, or negotiation coming up
+  and needs to prep, wants the pursuit overview created or kept current, asks "which
+  calls should we schedule", "prep me for", "call guide", "talk track", "brief me
+  before", or wants research on a prospect, an account, a competitor, or how a company
+  makes money ahead of a sales conversation. Do NOT use for the post-call discovery
+  record or transcript ingestion (discovery-brief), scope item creation or
+  pricing (scoping-agent), or post-sale delivery work.'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: required
+  reads:
+  - client.front_door
+  - client.profile
+  - client.relationships
+  - client.business_strategy
+  - client.technology
+  writes:
+  - client.profile
+  - client.relationships
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate

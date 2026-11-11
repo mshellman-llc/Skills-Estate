@@ -8,6 +8,11 @@ metadata:
   adapted: "2026-10-06"
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Accessibility audit
 
 Assess the specified interface against the user's target. If none is supplied, use WCAG 2.2 AA. State the version and conformance level. Record the sampled pages or states and the environment, with the methods actually used. Read [Audit coverage](references/audit-coverage.md) before selecting checks.

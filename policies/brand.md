@@ -28,7 +28,7 @@ Read exact values from the selected profile. Do not infer colors from a company 
   "type": {
     "body": "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
     "headings": "system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif",
-    "office": "Application default",
+    "office": "Arial",
     "body_min_pt": 11,
     "screen_min_px": 16,
     "slide_min_pt": 18

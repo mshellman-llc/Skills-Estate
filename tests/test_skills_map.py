@@ -31,7 +31,11 @@ class SkillsMapTests(unittest.TestCase):
                 self.assertEqual(s['markdown'].encode(), raw)
                 self.assertEqual(s['sourceSha256'], hashlib.sha256(raw).hexdigest())
                 self.assertEqual(s['resources'], builder.inventory(folder))
-                self.assertEqual(s['status'], 'github')
+                self.assertIn(s['status'], {'github', 'local-revision', 'local-addition'})
+                if s['status'] == 'github':
+                    self.assertFalse(s['entrypointChanged'])
+                if s['githubUrl'] is None:
+                    self.assertEqual(s['status'], 'local-addition')
 
     def test_embedded_html_data_matches_json(self):
         text = (MAP/'index.html').read_text()

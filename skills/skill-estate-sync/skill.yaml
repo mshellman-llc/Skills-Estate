@@ -1,0 +1,44 @@
+schema_version: 1
+name: skill-estate-sync
+display_name: Skill Estate Sync
+summary: Build and reconcile complete portable packages for local Claude Code and Codex, with separate publication records.
+status: active
+tier: maintainer
+version: 1.3.0
+owner: Estate maintainer
+category: skill-governance
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- A canonical skill or shared policy changed and needs testing, packaging, or local installation.
+- Installed skill resources differ between hosts or an account upload needs a recorded receipt.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional: []
+depends_on: []
+calls: []
+knowledge_hub:
+  requirement: not-applicable
+  reads: []
+  writes: []
+evidence:
+  required: false
+  control: null
+quality:
+  required: false
+  control: null

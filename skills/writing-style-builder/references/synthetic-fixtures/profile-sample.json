@@ -1,0 +1,35 @@
+{
+  "person_id": "synthetic-persona-001",
+  "authorization": {
+    "granted": true,
+    "granted_at": "2026-01-01T00:00:00Z",
+    "scope": "synthetic fixture for selftest only"
+  },
+  "revoked": false,
+  "last_confirmed": "2026-01-01T00:00:00Z",
+  "history": [
+    {"at": "2026-01-01T00:00:00Z", "change": "initial synthetic fixture"}
+  ],
+  "routing": {
+    "authorship_trigger": "synthetic-persona-001 is author or speaker",
+    "modes": ["written", "spoken"],
+    "surfaces": ["chat", "email"],
+    "audiences": ["peer", "client"],
+    "relationships": ["established", "transactional"],
+    "jobs": ["inform", "request"]
+  },
+  "base_profile": {
+    "written": {
+      "core_tendencies": [
+        {"pattern": "opens with the ask, not the greeting", "confidence": "high", "provenance": "authored", "sources": 3}
+      ],
+      "insufficient_evidence_for": ["public"]
+    },
+    "spoken": {
+      "core_tendencies": [],
+      "insufficient_evidence_for": ["call", "talk-track"]
+    }
+  },
+  "channel_overlays": {},
+  "conflicts": []
+}

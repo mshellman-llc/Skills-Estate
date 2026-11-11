@@ -2,7 +2,7 @@
 
 Private source of truth for Megan's reusable skills across Claude Code and Codex. Author each skill once in `skills/`. Branding belongs in [policies/brand.md](policies/brand.md); the build includes the current policy in every portable package.
 
-The estate contains 76 skills: 50 neutral business and delivery workflows, 21 current personal and career skills, two project adapters, and three estate foundations. [CATALOG.md](CATALOG.md) lists their entrypoints. This repository contains instructions and selected supporting tools, not private career evidence, client records, licensed brand assets, or project databases.
+The restoration candidate contains 78 source modules and 52 proposed task entrypoints. [CATALOG.md](CATALOG.md) records both inventories. Capability review and host verification remain open; this branch is not an accepted release. Private project records and credentials stay outside the repository.
 
 ## Install on a Mac or Linux machine
 
@@ -74,7 +74,7 @@ Verify account and repository access with `gh auth status` and `gh repo view OWN
 
 ## Migration scope
 
-[MIGRATION.md](MIGRATION.md) records what was retained, rebuilt, and left in the historical source estate. Existing source folders and account-managed copies are preserved. Reusable workflows were rewritten without the former employer's identity, brand, rates, contractual language, payment details, or customer fixtures. This is not feature parity with the former employer's bespoke rendering and integration engines.
+[MIGRATION.md](MIGRATION.md) records what was retained, rebuilt, and left in the historical source estate. Existing source folders and account-managed copies are preserved. Reusable workflows were rewritten without the former employer's identity, brand, rates, contractual language, payment details, or customer fixtures. The restoration preserves implementation resources for capability review; parity has not yet been accepted.
 
 This private repository has no blanket distribution license. Preserve included third-party notices and review provenance before redistributing a skill outside the owner's accounts.
 

@@ -1,0 +1,107 @@
+{
+  "kind": "synthetic",
+  "system": "Synthetic quote export",
+  "revision": "scope-example-1",
+  "captured_at": "2026-10-21T15:00:00-04:00",
+  "quotes": [
+    {
+      "id": "Q-DEMO-001",
+      "active_snapshot_id": "Q-DEMO-001-primary",
+      "full_items": [
+        {
+          "id": "batch-reader",
+          "name": "Batch reader",
+          "category": "Matching",
+          "description": "Read the completed billing export and retain its source identifiers.",
+          "hours": 24,
+          "optional": false
+        },
+        {
+          "id": "match-rules",
+          "name": "Matching rules",
+          "category": "Matching",
+          "description": "Compare account, order, amount and currency using approved rules.",
+          "hours": 32,
+          "optional": false
+        },
+        {
+          "id": "receipt-recovery",
+          "name": "Receipt recovery",
+          "category": "Posting",
+          "description": "Check whether the ledger accepted the original posting before retrying.",
+          "hours": 40,
+          "optional": false
+        },
+        {
+          "id": "exception-record",
+          "name": "Exception record",
+          "category": "Operations",
+          "description": "Show the conflicting values, owner and correction history.",
+          "hours": 24,
+          "optional": true
+        },
+        {
+          "id": "alerts",
+          "name": "Operational alerts",
+          "category": "Operations",
+          "description": "Notify finance when a batch stalls or held items remain.",
+          "hours": 12,
+          "optional": false
+        },
+        {
+          "id": "runbook",
+          "name": "Operating runbook",
+          "category": "Operations",
+          "description": "Name who can stop posting and explain how to check requests already sent to the ledger.",
+          "hours": 16,
+          "optional": false
+        },
+        {
+          "id": "training",
+          "name": "Finance training",
+          "category": "Handoff",
+          "description": "Teach the finance team how to review held records and rerun them after correction.",
+          "hours": 8,
+          "optional": true
+        }
+      ],
+      "active_item_ids": [
+        "batch-reader",
+        "match-rules",
+        "receipt-recovery",
+        "runbook"
+      ],
+      "snapshots": [
+        {
+          "id": "Q-DEMO-001-primary",
+          "label": "Primary team",
+          "revenue": 34950.25,
+          "weeks": 5,
+          "hours": 210,
+          "currency": "USD"
+        },
+        {
+          "id": "Q-DEMO-001-distributed",
+          "label": "Distributed team",
+          "revenue": 31200,
+          "weeks": 6,
+          "hours": 230,
+          "currency": "USD"
+        },
+        {
+          "id": "Q-DEMO-001-newer-draft",
+          "label": "Later draft",
+          "revenue": 999999,
+          "weeks": 99,
+          "hours": 9999,
+          "currency": "USD"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "The service processes completed nightly batches. Real-time processing is outside this scope.",
+    "Pricing rules and invoice generation stay in the billing system.",
+    "Staffing hours cover the delivery plan. The item estimates describe the work in each row; prices come from the staffing plans."
+  ]
+}

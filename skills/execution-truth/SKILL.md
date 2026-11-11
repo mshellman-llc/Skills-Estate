@@ -3,6 +3,11 @@ name: execution-truth
 description: Establish and verify the actual completion state of work that changes repositories, files, cloud documents, deployments, client data, publications, installations, or automations. Use before material implementation and at handoff. Do not use for ordinary questions, explanations, or read-only analysis with no produced artifact or state change.
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Execution truth
 
 Prevent a local draft, commit, successful command, or API response from being

@@ -8,6 +8,11 @@ metadata:
   adapted: "2026-10-06"
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Usability testing
 
 Choose a research question that can change a product decision. Use the supplied product context and existing research before requesting information already available. A missing participant roster does not prevent a useful test plan.

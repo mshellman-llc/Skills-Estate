@@ -1,0 +1,64 @@
+schema_version: 1
+name: journey-mapping
+display_name: Journey Mapping
+summary: Build customer journey maps and service blueprints the Estate way, for
+  AI advisory and consulting work.
+status: active
+tier: situational
+version: 1.0.0
+owner: Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- 'Build customer journey maps and service blueprints the Estate way, for AI advisory
+  and consulting work. Maps end-to-end experience across touchpoints, emotions, friction,
+  and the systems underneath, with every claim sourced and confidence-labeled. Stack-agnostic:
+  works on any platform, with Salesforce-specific prompts available when the engagement
+  is a Salesforce one. Use for two jobs: a client-facing consulting deliverable (map
+  a client''s customer journey across their channels, systems, and AI touchpoints)
+  or an internal map of Estate''s own prospect-to-client lifecycle. Triggers on
+  customer journey, journey map, service blueprint, user journey, experience map,
+  touchpoint analysis, friction map, journey audit, end-to-end experience, customer
+  experience map, CX blueprint, sell-to-deliver map. Also triggers when teams hold
+  different mental models of an experience and need one shared, evidence-grounded
+  view.'
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: required
+  reads:
+  - engagement.front_door
+  - engagement.requirements_design
+  - evidence.claims
+  writes:
+  - engagement.requirements_design
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate

@@ -1,0 +1,64 @@
+schema_version: 1
+name: architecture-doc
+display_name: Architecture Doc
+summary: Build formal Estate-branded architecture and system-design artifacts for
+  a client, grounded in source material with every claim sourced and brand and prose
+  gates applied.
+status: active
+tier: situational
+version: 1.0.0
+owner: Estate
+category: solutioning-scope
+runtimes:
+- generic-agent-skills
+- chatgpt
+- codex
+- claude-ai
+- cowork
+triggers:
+- Build formal Estate-branded architecture and system-design artifacts for a client,
+  grounded in source material with every claim sourced and brand and prose gates applied.
+  Covers architecture intent plus engineering views such as components, interfaces,
+  data model, APIs, serving path, deployment, and trade-offs. Use for a client-facing
+  architecture document, formal system architecture, platform architecture, architecture
+  reference, sourced technical design document, or when confirmed decisions must become
+  a clean architecture set. Trigger when the user asks for a branded, sourced, polished,
+  or deliverable architecture artifact even if they do not say Estate. Do not use
+  for a fast, unbranded, inline working design or exploratory architecture discussion;
+  use system-design for that.
+exclusions: []
+inputs:
+- name: task_context
+  required: true
+  description: The request and available source context for this workflow.
+outputs:
+- name: markdown_run_record
+  format: markdown
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
+connectors:
+  required: []
+  optional:
+  - google-drive
+depends_on:
+- knowledge-hub
+calls:
+- evidence-core
+- quality-gate
+knowledge_hub:
+  requirement: required
+  reads:
+  - opportunity.front_door
+  - engagement.front_door
+  - evidence.claims
+  - engagement.requirements_design
+  writes:
+  - engagement.requirements_design
+  - deliverables.register
+evidence:
+  required: true
+  control: evidence-core
+quality:
+  required: true
+  control: quality-gate

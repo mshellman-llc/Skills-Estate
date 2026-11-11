@@ -8,6 +8,11 @@ metadata:
   adapted: "2026-10-06"
 ---
 
+<!-- ESTATE-WRITING:BEGIN -->
+Before writing, read the [writing standard](references/estate/writing.md). Apply it to every authored sentence. Review instructions and internal records too. Audience labels and file formats do not exempt prose from review.
+<!-- ESTATE-WRITING:END -->
+
+
 # Information architecture
 
 Make the product's content findable for the audience's actual tasks. Read the current content inventory and navigation before proposing a structure. Use the supplied product scope; do not reorganize private source folders or change their authority routes.
