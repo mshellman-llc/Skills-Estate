@@ -98,8 +98,8 @@
       "note": "Let a ledger rule send its hits to the line pass: check.py counts them under review and rejects a verdict that leaves a flag unanswered"
     },
     "0.4.21": {
-      "content_sha256": "efaf02a5398191803a3974f4a469ebb2ebb00bb23d09f946eff8f9680f39debd",
-      "note": "Writing check: reject unknown registers, add the claims check and source list, define the audit for a failed round and record its independence, exclude labels from numbers, trace number words, and count one fault once"
+      "content_sha256": "adfc648054f861b6e4e088eefc12b5d1ce43e2272ae00f027c9e39d67c8f0cf6",
+      "note": "Writing check: record new registers, add the claims check and source list, define the audit for a failed round and record its independence, exclude labels from numbers, trace number words, and count one fault once"
     }
   },
   "source_conflicts": [

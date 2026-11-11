@@ -42,7 +42,7 @@ Exit 0 is `pass`, 1 is `fail` and 2 is `incomplete`. The output has `status`, `c
 9. A ledger rule marked `"judge": "line-pass"` never blocks from the scan. Its hits are counted under `review`, listed in the receipt, and each one needs a `true` or `false` answer in that line's verdict. Lists of three use this mark, because a pattern cannot tell a true count from a padded one. For every other rule, blocking follows the ledger's own settings. A hit on an active rule at or above `hard_weight` blocks at any length. Lighter rules block when the text reaches `flag_density` or a rule repeats past `repeat_limit` and `repeat_density`, in a text of at least `min_words`. Other hits, and every candidate rule, are counted under `advisories` and listed in the receipt.
 10. `line` is the source line when the locator is a line number. For workbooks, Word files and decks it is the extracted line number. Each finding also carries `id` and `loc`.
 11. The output adds `steps`, `advisories`, `review`, `coverage.lines_exempt`, and on an incomplete run `reason` and `not_reviewed`. The four agreed keys are unchanged.
-12. `--register` takes one name or several separated by commas, and adds ledger rules whose `scope` or `registers` list names it. The valid names are the entries in `registers.md`, the ledger's scopes and `commit`. An unknown name returns `incomplete` with that list. The design says registers are not a fixed list; a channel with no entry is checked with no `--register`. The receipt gives the count of rules each name added.
+12. `--register` takes one name or several separated by commas, and adds ledger rules whose `scope` or `registers` list names it. Registers are not a fixed list, so a name the check has not seen is accepted. The script appends it to `registers.md` under "Names first seen by the check" with the date, the file and "No rules yet." The receipt says the name added no rules and lists the known names: the entries in `registers.md`, the ledger's scopes and `commit`. For a known name the receipt gives the count of rules it added.
 
 ### Coverage and failures
 
@@ -68,7 +68,7 @@ A full review of one executive page listed 15 places where the skill was unclear
 27. A number after a label word such as phase, step, table or section is a label, and the map owes it no source.
 28. A number written as a word, from two upward, needs a `numbers` entry or a `counts` entry on its line. "One" is left out because it is too common as a pronoun.
 29. The claims check is its own step. Each verdict carries `claims`, and a `supported` claim names a source from the `--sources` list. A full review with no source list returns `incomplete`.
-30. The map's `confidentiality` entry needs `retrieved: true`, or `none_applies` with a reason. A list rebuilt from other documents returns `incomplete`.
+30. The map's `confidentiality` entry needs `retrieved: true`, or `none_applies` with a reason. A list rebuilt from other documents returns `incomplete`. The list is read from the owner's current Hub on the local machine; the older Hub behind the claude.ai connector does not hold it.
 31. A section marked `"role": "title"` needs no `reader_acts`. It may hold a heading and two lines.
 32. `structural_repeat` declares a deliberate repeat between named sections once. Entries marked `structural` inside it do not block.
 33. A document finding joins the line fix on the same line and is counted once. This is automatic for five single-line rules, and by `merged_with` for repeats, terms and counts.

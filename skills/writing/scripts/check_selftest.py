@@ -105,7 +105,7 @@ class Contract(Base):
         code, result = self.check(self.write('b.md', 'In short, the job failed.\n\nIn short, it ran twice.\n'))
         self.assertEqual([f['rule'] for f in result['findings']], ['twice', 'twice'])
 
-    def test_register_adds_rules_scoped_to_it_and_an_unknown_name_is_rejected(self):
+    def test_register_adds_rules_scoped_to_it_and_a_new_name_is_recorded(self):
         path = self.write('bio.md', 'She leads delivery, whether it is a migration or a rebuild.\n')
         self.assertEqual(self.check(path)[0], 0)
         code, result = self.check(path, '--register', 'author')
@@ -115,8 +115,17 @@ class Contract(Base):
         self.assertEqual(code, 1)
         self.assertIn('register client-email-scope adds 0 rules', result['steps'][0]['detail'])
         code, result = self.check(path, '--register', 'slack to a client sponsor')
-        self.assertEqual(code, 2)
-        self.assertIn('Valid names: author, client-email-scope, commit', result['reason'])
+        self.assertEqual(code, 0)
+        detail = result['steps'][0]['detail']
+        self.assertIn('register slack to a client sponsor is new and added no rules (recorded in registers.md)', detail)
+        self.assertIn('known names: author, client-email-scope, commit', detail)
+        listing = (self.rules / 'registers.md').read_text()
+        self.assertIn('### slack to a client sponsor', listing)
+        self.assertIn('No rules yet', listing)
+        self.assertIn(str(path), listing)
+        code, result = self.check(path, '--register', 'slack to a client sponsor')
+        self.assertIn('register slack to a client sponsor adds 0 rules', result['steps'][0]['detail'])
+        self.assertEqual((self.rules / 'registers.md').read_text().count('### slack to a client sponsor'), 1)
 
 
 class Scope(Base):

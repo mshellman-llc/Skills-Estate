@@ -8,9 +8,11 @@ Write down who reads the piece and what they must decide or do. Check every sect
 
 ## Fetch the confidentiality list first
 
-Each client project keeps a confidentiality list in the Knowledge Hub under the fact key `confidential.exec-copy`. Ask the Hub for that key in the project before reading the text. When the Hub returns it, set `retrieved` to `true` and name the fact in `list`.
+Each client project keeps a confidentiality list in the owner's Knowledge Hub as a fact with the key `confidential.exec-copy` and the project's ID. Read it before reading the text.
 
-When the Hub does not return it, stop. Report the review as incomplete and say the list could not be fetched. A list rebuilt from a memo or a brief is a guess, and the script rejects a map whose `retrieved` is not `true`. A piece that belongs to no client project records `none_applies` with the reason in place of `list` and `retrieved`.
+Read it from the current Hub, which runs on the owner's machine. From that Hub's checkout, `node src/cli.ts front PROJECT` prints the project's current facts, and the list is the line that starts with the key. `get_context` for the project returns the same fact when the session is connected to that Hub. The older Hub behind the claude.ai connector does not hold these facts, so an empty answer from it settles nothing; query the current one. The owner's writing rules folder records where the current Hub lives.
+
+When the current Hub returns the fact, set `retrieved` to `true` and name the fact and the project in `list`. When it does not, stop. Report the review as incomplete and say the list could not be fetched. A list rebuilt from a memo or a brief is a guess, and the script rejects a map whose `retrieved` is not `true`. A piece that belongs to no client project records `none_applies` with the reason in place of `list` and `retrieved`.
 
 ## The map
 

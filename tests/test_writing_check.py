@@ -1,6 +1,7 @@
 """Hold check.py to the interface other tools call: flags, exit codes and JSON keys."""
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -45,10 +46,17 @@ class WritingCheckInterface(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertEqual([f['rule'] for f in result['findings']], ['residue', 'channel-only'])
 
-    def test_unknown_register_exits_2_and_lists_the_valid_names(self):
-        code, result = self.run_check('pass.md', '--register', 'weekly-update')
-        self.assertEqual((code, result['status']), (2, 'incomplete'))
-        self.assertIn('Valid names: commit, status-update', result['reason'])
+    def test_new_register_is_accepted_and_recorded_in_the_rules_folder(self):
+        rules = Path(self.temp.name) / 'rules'
+        shutil.copytree(FIXTURES / 'rules', rules)
+        done = subprocess.run([sys.executable, str(CHECK), '--file', str(FIXTURES / 'pass.md'), '--json',
+                               '--rules-dir', str(rules), '--receipt-dir', self.temp.name,
+                               '--register', 'weekly-update'], capture_output=True, text=True, timeout=60)
+        result = json.loads(done.stdout)
+        self.assertEqual((done.returncode, result['status']), (0, 'pass'))
+        self.assertIn('register weekly-update is new and added no rules', result['steps'][0]['detail'])
+        self.assertIn('known names: commit, status-update', result['steps'][0]['detail'])
+        self.assertIn('### weekly-update', (rules / 'registers.md').read_text())
 
     def test_unparsed_file_exits_2_and_is_never_a_pass(self):
         code, result = self.run_check('open-fence.md')

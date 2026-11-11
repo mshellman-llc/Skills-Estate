@@ -41,7 +41,7 @@ Writing in another person's voice is outside this skill.
 
 ## Set the register
 
-Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. `--register` takes only a name from `registers.md`, a scope in the ledger or `commit`. An unknown name stops the check, which prints the valid ones. When two entries fit, pass both with a comma, as in `client-facing,executive-page`. For a channel with no entry, run the check with no `--register`.
+Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. Pass the name to the check with `--register`. A name the check has not seen is accepted: the script adds it to `registers.md` with the date and the file, and the receipt says the name added no rules and lists the known names. When two entries fit, pass both with a comma, as in `client-facing,executive-page`.
 
 ## Run the check
 

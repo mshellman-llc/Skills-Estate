@@ -144,12 +144,32 @@ def valid_registers(home, ledger):
     return sorted(names)
 
 
-def check_registers(registers, home, ledger):
+def note_registers(registers, home, ledger, source):
+    """Registers are not a fixed list. A name the check has not seen is accepted and recorded in registers.md.
+
+    Returns the names that were new, each with a note on whether the record was written.
+    """
     known = valid_registers(home, ledger)
-    unknown = [r for r in registers if r not in known]
-    if unknown:
-        raise Incomplete('unknown register ' + ', '.join(repr(u) for u in unknown) + '. Valid names: ' + ', '.join(known)
-                         + '. When two fit, pass both with a comma. For a channel with no entry, run with no --register.')
+    new = {}
+    for name in registers:
+        if name in known or name in new:
+            continue
+        if not home or re.search(r'[\n#`]', name):
+            new[name] = 'not recorded'
+            continue
+        listing = Path(home) / 'registers.md'
+        entry = (f'\n### {name}\n\nFirst seen {dt.date.today().isoformat()} by the check, on `{source}`. '
+                 'No rules yet. Add what she teaches about this register here.\n')
+        try:
+            text = listing.read_text(encoding='utf-8') if listing.is_file() else '# Registers\n'
+            heading = '## Names first seen by the check'
+            if heading not in text:
+                text = text.rstrip('\n') + f'\n\n{heading}\n'
+            listing.write_text(text.rstrip('\n') + '\n' + entry, encoding='utf-8')
+            new[name] = 'recorded in registers.md'
+        except OSError as error:
+            new[name] = f'not recorded: {error}'
+    return new, known
 
 
 def compile_rule(rule):
@@ -911,14 +931,18 @@ def run(args):
     records, findings = [], []
     try:
         ledger, rules_info = load_rules(args.rules_dir)
-        check_registers(registers, rules_info['home'], ledger)
+        new_names, known = note_registers(registers, rules_info['home'], ledger, path)
         rules = active_rules(ledger, registers)
         added = {name: sum(1 for r, _ in rules if r.get('scope') == name or name in (r.get('registers') or []))
                  for name in registers}
-        record['rules'] = dict(rules_info, rules_applied=len(rules), register_rules=added)
+        record['rules'] = dict(rules_info, rules_applied=len(rules), register_rules=added, new_registers=new_names)
         detail = f'{len(rules)} rules from {rules_info["ledger"]} ({rules_info["ledger_source"]})'
         for name, count in added.items():
-            detail += f'; register {name} adds {count} rules' + ('' if count else ', its guidance is in registers.md')
+            if name in new_names:
+                detail += (f'; register {name} is new and added no rules ({new_names[name]}); known names: '
+                           + ', '.join(known))
+            else:
+                detail += f'; register {name} adds {count} rules' + ('' if count else ', its guidance is in registers.md')
         step('rules', 'ok', detail)
         records, source_lines = extract(path, 'commit' in registers)
         record.update(sha256=sha(path.read_bytes()), bytes=path.stat().st_size, text_sha256=text_sha(records))
