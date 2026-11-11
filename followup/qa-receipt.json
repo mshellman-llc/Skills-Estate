@@ -1,0 +1,17 @@
+{
+  "behavioral_results": "results.json",
+  "integrity": "Frozen fixtures, skill snapshots and generation hashes verified; reviewer quote checks passed. Canonical and installed skills remain source-matched to the first-run baseline.",
+  "visual_review": [
+    "1440px report opening",
+    "390px expanded comparison",
+    "four print pages"
+  ],
+  "browser_checks": "Embedded fonts loaded, disclosure opens, keyboard Enter activation works; no horizontal overflow at 1440/390 pixels.",
+  "parity": "Required text and structure pass; visual reminder satisfied by views listed.",
+  "design": "Palette/geometry check passed.",
+  "prose": "Scanner does not pass because the report preserves bad draft examples, repeated verbatim outputs and the font license. Findings read; protected evidence retained. Method distinction between replay and original conversation is necessary.",
+  "neutral": "Flags are Meridian references in the explicitly requested case and report; no borrowed branding.",
+  "limits": "No cross-browser testing; representative expanded views inspected. Print shows collapsed summary; complete raw evidence remains in HTML and JSON.",
+  "library_archive": "Screenshots and rendered PDFs omitted; retained locally only.",
+  "neutral_flag_count": 42
+}

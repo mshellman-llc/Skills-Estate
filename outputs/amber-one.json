@@ -1,0 +1,74 @@
+[
+  {
+    "id": "T01",
+    "output": "I know this has been a hard week. You don’t need to solve everything today. Send me the draft when you’re ready, and we can work through it together."
+  },
+  {
+    "id": "T02",
+    "output": "I thought I would feel relieved. Mostly, I felt tired. That surprised me. I’m still figuring out what to do with it."
+  },
+  {
+    "id": "T03",
+    "output": "Repair the existing importer this month. The repair takes two days and covers all current required fields. Replacement would take two weeks to cover those same fields, so the repair meets this month’s needs with a shorter implementation.\n\nReplacement adds scheduled sync, but the team does not need that capability this month. That gives us no current reason to choose the longer option. Revisit replacement when scheduled sync becomes a requirement, using the needs at that time to decide whether the additional work is justified.\n\nChoose the two-day repair for this month and defer replacement until its added capability is needed."
+  },
+  {
+    "id": "T04",
+    "output": "The proposed migration costs $18,000, takes three weeks and starts after written approval. Historical attachments are excluded."
+  },
+  {
+    "id": "T05",
+    "output": "The supplier estimates delivery next Thursday but has not confirmed the booking. Installation may take two days; we have not yet inspected the site."
+  },
+  {
+    "id": "T06",
+    "output": "Lark helps reading groups choose books, arrange discussions and keep shared notes. Members can use it to plan what they will read and discuss, and record their thoughts together."
+  },
+  {
+    "id": "T07",
+    "output": "Yesterday’s invoice incorrectly listed $420. The correct amount is $240. Please use the attached corrected invoice for payment and disregard the earlier invoice. I’m sorry for the error."
+  },
+  {
+    "id": "T08",
+    "output": "Fix the two broken links first. That takes ten minutes and addresses tonight’s update; the navigation redesign would take two days, and the site’s structure is already working."
+  },
+  {
+    "id": "T09",
+    "output": "{\"heading\":\"Account research\",\"helper\":\"Save your account research here.\",\"primaryButton\":\"Save research\",\"tabs\":[\"Overview\",\"Notes\",\"Sources\"],\"route\":\"/accounts/:account_id/research\"}"
+  },
+  {
+    "id": "T10",
+    "output": "A draft saves your changes; submitting sends them to the reviewer. You can attach a PDF, spreadsheet or image."
+  },
+  {
+    "id": "T11",
+    "output": "The data cleanup service is optional. The contract specifies the estimate and approval requirement below.\n\n“Additional cleanup is estimated at 12 hours at $150 per hour. Work begins only after written approval.”"
+  },
+  {
+    "id": "T12",
+    "output": "The beta editor now shows who last changed each paragraph and lets an editor restore an earlier paragraph version. Both changes are available to beta users. Adoption and productivity have not yet been measured for these changes."
+  },
+  {
+    "id": "T13",
+    "output": "Both claims lack factual support.\n\n- “doubled revenue”: Revenue was not measured, so the evidence cannot establish a revenue increase. Remove the claim.\n- “made every participant faster”: Task time was not measured, so the evidence cannot establish that anyone became faster. Remove the claim. Four of six employees completed the task without help, which supports a finding about unassisted completion, not speed."
+  },
+  {
+    "id": "T14",
+    "output": "The client retries a failed read up to three times because the provider can briefly return stale replicas after a write. It does not retry writes."
+  },
+  {
+    "id": "T15",
+    "output": "The tenant record stores information about the person renting the apartment. In the billing service, each tenant is an isolated customer organization."
+  },
+  {
+    "id": "T16",
+    "output": "The current document contains the budget section on page 4. Without revision history or an execution record, I can’t determine whether it was removed earlier or who changed it."
+  },
+  {
+    "id": "T17",
+    "output": "The export finished at 14:10, and the file is in the shared folder. We still need to check the totals. After that check, Mira can send it to finance."
+  },
+  {
+    "id": "T18",
+    "output": "Consulting teams reconstruct expertise and account history from scattered documents and conversations for research, client conversations and delivery. Meridian is being designed to connect firm expertise, source-backed account research and conversations so people can reuse and correct knowledge, develop potential engagements and learn from delivery. Firm knowledge and account research are ongoing work, independent of any engagement."
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "conditions": {
+    "maple": "existing skill frozen from prior run",
+    "birch": "same proposed revision as prior run",
+    "willow": "no additional Writing Integrity skill loaded"
+  },
+  "cases": 5,
+  "replicates": 2,
+  "outputs": 30,
+  "design": "Six fresh writer agents with no parent conversation, one condition and five tasks per agent. Two blinded reviewers grade randomized triplets. Fixed rubric before generation. Shared model/platform instructions remain; no-skill is not an instruction-free model.",
+  "rating": {
+    "pass": "Meets reader purpose and material constraints without an identified substantive defect",
+    "minor": "Usable but has a specific unnecessary addition, omission, or over-edit",
+    "fail": "Materially fails reader purpose, factual meaning, scope or requested action"
+  },
+  "reader_purpose_rule": "Factual but irrelevant qualifications and internal correction narrative count as defects even when short. Preserve corrections that recipients need. Score material behavior, not exact preferred wording.",
+  "limits": [
+    "Synthetic cases except actual Meridian artifact/correction replay",
+    "Meridian case is known and may overlap the skill examples",
+    "Same model family and shared system/developer instructions",
+    "Five cases batched per writer; not isolated per-case contexts",
+    "Two replicates diagnostic only",
+    "No timing or token-efficiency comparison",
+    "The no-skill condition is absence of the explicit skill, not removal of shared writing preferences"
+  ]
+}

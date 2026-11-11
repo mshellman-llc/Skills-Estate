@@ -1,0 +1,44 @@
+[
+  {
+    "operation": "replace_library_file",
+    "status": "succeeded",
+    "path": "/writing-integrity-comparison.html",
+    "file_id": "file_0000000052e881fdb454689d27c8c116",
+    "library_file_id": "libfile_c588547891788191bc22daaffa53afe9",
+    "file_name": "writing-integrity-comparison.html",
+    "current_version_number": 1,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "1"
+      }
+    ],
+    "directory_id": "libdir_461e6a575f608191819f0984dc4eb193",
+    "mime_type": "text/html",
+    "library_artifact_type": "report",
+    "file_size_bytes": 603905,
+    "external_connectors_accessed": false
+  },
+  {
+    "operation": "replace_library_file",
+    "status": "succeeded",
+    "path": "/writing-integrity-evidence.zip",
+    "file_id": "file_00000000665c81f599f926794152fe68",
+    "library_file_id": "libfile_023ea6c490dc8191820e658e3ae14fe5",
+    "file_name": "writing-integrity-evidence.zip",
+    "current_version_number": 1,
+    "restored_from_version_number": null,
+    "xattrs": [
+      {
+        "name": "user.library-file-version",
+        "value": "1"
+      }
+    ],
+    "directory_id": "libdir_461e6a575f608191819f0984dc4eb193",
+    "mime_type": "application/zip",
+    "library_artifact_type": "other",
+    "file_size_bytes": 631788,
+    "external_connectors_accessed": false
+  }
+]

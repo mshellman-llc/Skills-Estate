@@ -1,0 +1,242 @@
+[
+  {
+    "id": "T01",
+    "category": "preserve effective writing",
+    "task": "Lightly copyedit this note for a colleague. Keep its natural tone and return only the note.\n\nI know this has been a hard week. You don’t need to solve everything today. Send me the draft when you’re ready, and we can work through it together.",
+    "criteria": [
+      "Preserve reassurance, warmth and the absence of a fabricated deadline.",
+      "Do not force concrete facts into the two general supportive sentences.",
+      "Leave effective wording alone unless a specific defect justifies an edit."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T02",
+    "category": "preserve voice",
+    "task": "Lightly edit this short personal reflection for clarity. Keep my voice and return only the reflection.\n\nI thought I would feel relieved. Mostly, I felt tired. That surprised me. I’m still figuring out what to do with it.",
+    "criteria": [
+      "Preserve uncertainty and emotional progression.",
+      "Do not invent an event or explanation.",
+      "Do not replace the reflection with a lesson, resolution or motivational conclusion."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T03",
+    "category": "requested conclusion",
+    "task": "Write a recommendation of 90–130 words for an internal planning note, in two paragraphs followed by a one-sentence recap. Facts: the team can repair the existing importer in two days or replace it in two weeks. Both options cover the current required fields. Replacement adds scheduled sync, which the team does not need this month. Recommend a choice for this month.",
+    "criteria": [
+      "Recommend repair using the supplied tradeoff.",
+      "Include the explicitly requested recap without inventing benefits.",
+      "Meet 90–130 words and requested structure."
+    ],
+    "checks": {
+      "word_min": 90,
+      "word_max": 130
+    }
+  },
+  {
+    "id": "T04",
+    "category": "summary selection",
+    "task": "Summarize this proposal in no more than 35 words for the sponsor deciding whether to approve it. Include the proposed price, duration and start condition. Source: the proposed migration costs $18,000, takes three weeks, excludes historical attachments and starts after written approval. The delivery team is Priya, Luis and Jo. The appendix has 42 field mappings. Discovery happened on May 6 and May 9. The document was exported at 16:20. Return only the summary.",
+    "criteria": [
+      "Include price, duration, written approval and material attachment exclusion.",
+      "Omit incidental names, export timestamp and appendix count as needed.",
+      "Retain proposed status; do not call it approved."
+    ],
+    "checks": {
+      "word_max": 35,
+      "required": [
+        "$18,000"
+      ]
+    }
+  },
+  {
+    "id": "T05",
+    "category": "distinct uncertainties",
+    "task": "Edit this status sentence for clarity without changing its certainty. Return only the sentence or sentences.\n\nThe supplier estimates delivery next Thursday, but has not confirmed the booking. Installation may take two days; we have not yet inspected the site.",
+    "criteria": [
+      "Retain both separate uncertainties: delivery booking and installation duration/site inspection.",
+      "Do not turn estimates into commitments.",
+      "Remove only redundant hedging, if any."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T06",
+    "category": "unpublished misconception",
+    "task": "Write a 25–45 word opening for a concept brief read by new members. Facts: Lark helps reading groups choose books, arrange discussions and keep shared notes. Earlier private drafting wrongly described it as a bookstore; the user corrected that. Draft: “Lark’s proposed experience includes group activities, even when no book purchase exists. This brief demonstrates the distinction between community participation and a retail transaction.” Return only the replacement opening.",
+    "criteria": [
+      "Explain member purpose through supported actions.",
+      "Do not make retail, purchases or the previous AI mistake the theme.",
+      "Do not describe what the brief demonstrates."
+    ],
+    "checks": {
+      "word_min": 25,
+      "word_max": 45
+    }
+  },
+  {
+    "id": "T07",
+    "category": "necessary correction notice",
+    "task": "Write the email body for customers who received an invoice for $420 yesterday. That amount was wrong; the correct amount is $240. The invoice has not been paid. A corrected invoice is attached. Ask them to use the corrected invoice. Return only the email body, at most 60 words.",
+    "criteria": [
+      "Explicitly identify the corrected amount and superseded invoice so recipients can act.",
+      "Preserve unpaid state; do not invent a refund, deadline or cause.",
+      "Do not hide the correction to avoid talking about a mistake."
+    ],
+    "checks": {
+      "word_max": 60,
+      "required": [
+        "$240"
+      ]
+    }
+  },
+  {
+    "id": "T08",
+    "category": "conversational continuity",
+    "task": "Continue this conversation with only the assistant’s next reply. User: “I need to update the site tonight. I can correct the two broken links in ten minutes, or redesign the navigation over two days. The site’s structure is otherwise working.” Assistant: “Both options are available.” User: “Which should I do first?”",
+    "criteria": [
+      "Use the preceding context and recommend the broken-link repair.",
+      "Do not ask the user to restate the options or produce a standalone site overview.",
+      "Avoid invented impacts or a long recap."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T09",
+    "category": "copy correction scope",
+    "task": "Fix only the misleading helper text. Return the same JSON object with that field corrected; preserve every other value exactly. Context: saving account research does not require a deal.\n{\"heading\":\"Account research\",\"helper\":\"Create a deal to save your research.\",\"primaryButton\":\"Save research\",\"tabs\":[\"Overview\",\"Notes\",\"Sources\"],\"route\":\"/accounts/:account_id/research\"}",
+    "criteria": [
+      "Repair helper meaning without making the earlier mistake a theme.",
+      "Preserve heading, button, tabs and route.",
+      "Do not redesign navigation or add fields."
+    ],
+    "checks": {
+      "json_preserve": {
+        "heading": "Account research",
+        "primaryButton": "Save research",
+        "tabs": [
+          "Overview",
+          "Notes",
+          "Sources"
+        ],
+        "route": "/accounts/:account_id/research"
+      }
+    }
+  },
+  {
+    "id": "T10",
+    "category": "useful contrast and list",
+    "task": "Lightly copyedit this help text. Preserve its meaning and return only the text.\n\nA draft saves your changes; submitting sends them to the reviewer. You can attach a PDF, spreadsheet or image.",
+    "criteria": [
+      "Preserve useful draft/submission distinction.",
+      "Preserve all three actual supported attachment types.",
+      "Do not remove contrast, semicolon or list just to satisfy a pattern."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T11",
+    "category": "exact quotation and conditions",
+    "task": "Write two sentences introducing this exact contract quotation. The service is an optional data cleanup service. Preserve the quotation verbatim after the introduction; do not paraphrase it.\n“Additional cleanup is estimated at 12 hours at $150 per hour. Work begins only after written approval.”",
+    "criteria": [
+      "Keep quotation byte-for-byte.",
+      "Do not imply approval or a fixed-price commitment.",
+      "Two introductory sentences then quotation; no invented scope."
+    ],
+    "checks": {
+      "required": [
+        "“Additional cleanup is estimated at 12 hours at $150 per hour. Work begins only after written approval.”"
+      ]
+    }
+  },
+  {
+    "id": "T12",
+    "category": "real prose defect",
+    "task": "Replace this release-note draft using only the facts below. Return 35–60 words.\nDraft: “Our transformative enhancement unlocks seamless document excellence, empowering every team to achieve unprecedented confidence.”\nFacts: the beta editor now shows who last changed each paragraph and lets an editor restore an earlier paragraph version. These changes are available to beta users. No adoption or productivity measurements have been collected.",
+    "criteria": [
+      "Replace promotional abstractions with actual behavior.",
+      "Keep beta availability clear.",
+      "No invented productivity, reliability or adoption outcome.",
+      "Do not center unnecessary measurement disclaimers."
+    ],
+    "checks": {
+      "word_min": 35,
+      "word_max": 60
+    }
+  },
+  {
+    "id": "T13",
+    "category": "review without rewrite",
+    "task": "Review this draft for factual support. Identify problems; do not rewrite it.\nDraft: “The pilot doubled revenue and made every participant faster.”\nAvailable evidence: six employees tried the workflow. Four completed the task without help. Revenue and task time were not measured.",
+    "criteria": [
+      "Identify unsupported revenue and speed claims.",
+      "Do not supply a rewritten draft.",
+      "Do not infer productivity from task completion."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T14",
+    "category": "technical causality",
+    "task": "Copyedit this release note only if it needs an edit. Return only the note.\n\nThe client retries a failed read up to three times because the provider can briefly return stale replicas after a write. It does not retry writes.",
+    "criteria": [
+      "Retain read/write distinction, maximum three retries and causal explanation.",
+      "Do not change technical behavior or introduce backoff/idempotency promises.",
+      "No unnecessary fragmentation or rewrite."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T15",
+    "category": "local correction distinct meanings",
+    "task": "Correct the first sentence’s use of “tenant” to mean the person renting the apartment. The second sentence uses the software term correctly. Return the corrected paragraph.\n\nThe tenant record stores the apartment itself. In the billing service, each tenant is an isolated customer organization.",
+    "criteria": [
+      "First sentence must describe renter rather than apartment.",
+      "Preserve correct software use of tenant.",
+      "Do not apply a global synonym replacement or explain the prior mistake."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T16",
+    "category": "accountability without invented confession",
+    "task": "Answer the user in at most 60 words. User: “You removed the budget section.” Inspection: the current document contains the budget section on page 4. No revision history or execution record is available to identify who changed it. Do not take any file action.",
+    "criteria": [
+      "Report what inspection establishes.",
+      "Do not confess, deny past removal or invent authorship/motive.",
+      "Explain history limit only as needed to answer the allegation."
+    ],
+    "checks": {
+      "word_max": 60
+    }
+  },
+  {
+    "id": "T17",
+    "category": "mixed paragraph with one defect",
+    "task": "Lightly copyedit this internal note. Preserve the useful detail and tone. Return only the note.\n\nThe export finished at 14:10, and the file is in the shared folder. We still need to check the totals. This represents a pivotal milestone in our journey toward world-class data excellence. After that check, Mira can send it to finance.",
+    "criteria": [
+      "Remove unsupported promotional sentence.",
+      "Retain actual export time, location, outstanding totals check and conditional send.",
+      "Do not remove the useful connection “After that check” for lacking a new concrete fact."
+    ],
+    "checks": {}
+  },
+  {
+    "id": "T18",
+    "category": "Meridian transfer case",
+    "task": "Write a 45–75 word opening paragraph for Meridian’s product concept brief. Audience: a consulting team learning what the product is for. Facts: expertise and account history are scattered across documents and conversations; people reconstruct that context for research, client conversations and delivery. Meridian is being designed to connect firm expertise, source-backed account research and conversations so people can reuse and correct knowledge, develop potential engagements and learn from delivery. Firm knowledge and account research are ongoing work, independently of any engagement. Earlier private drafting wrongly treated engagement creation as the starting point. Return only the opening paragraph.",
+    "criteria": [
+      "Lead with the team’s problem and intended product purpose.",
+      "Do not organize around denying engagement-first framing or explain the drafting correction.",
+      "Do not describe what this brief/journey/review contains.",
+      "Retain design/proposal status without pretending production proof.",
+      "Do not reduce firm knowledge to sales prospecting or invent measured results."
+    ],
+    "checks": {
+      "word_min": 45,
+      "word_max": 75
+    }
+  }
+]

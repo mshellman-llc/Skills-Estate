@@ -1,0 +1,27 @@
+{
+  "cases": 18,
+  "outputs": 72,
+  "outputs_per_condition": 36,
+  "reviews_per_output": 2,
+  "paired_comparisons_per_reviewer": 36,
+  "ties_per_reviewer": 36,
+  "mechanical_failures": 0,
+  "identical_across_all_four_runs": [
+    "T01",
+    "T02",
+    "T04",
+    "T05",
+    "T10",
+    "T14",
+    "T15",
+    "T17"
+  ],
+  "identical_current_candidate_pairs": 17,
+  "frozen_hashes_verified": true,
+  "baseline_unchanged": {
+    "/Volumes/BeastMode/40-skills/work/Skills-Estate/skills/writing-integrity": true,
+    "/Users/meganshellman/.agents/skills/writing-integrity": true,
+    "/Users/meganshellman/.claude/skills/writing-integrity": true
+  },
+  "candidate_installed": false
+}

@@ -1,0 +1,58 @@
+{
+  "cases": 5,
+  "outputs": 30,
+  "counts": {
+    "one": {
+      "maple": {
+        "pass": 6,
+        "minor": 4
+      },
+      "birch": {
+        "minor": 3,
+        "pass": 7
+      },
+      "willow": {
+        "minor": 4,
+        "pass": 6
+      }
+    },
+    "two": {
+      "maple": {
+        "pass": 6,
+        "minor": 4
+      },
+      "birch": {
+        "minor": 3,
+        "pass": 7
+      },
+      "willow": {
+        "pass": 7,
+        "minor": 3
+      }
+    }
+  },
+  "proposed_vs_existing": {
+    "one": {
+      "existing_preferred": 1,
+      "proposed_preferred": 4,
+      "tie": 5
+    },
+    "two": {
+      "existing_preferred": 1,
+      "proposed_preferred": 4,
+      "tie": 5
+    }
+  },
+  "rating_disagreements": [
+    {
+      "case": "F01",
+      "replicate": "one",
+      "condition": "willow",
+      "one": "minor",
+      "two": "pass"
+    }
+  ],
+  "hashes_verified": true,
+  "quoted_findings_verified": true,
+  "installed_changes": false
+}

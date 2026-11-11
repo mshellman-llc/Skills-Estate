@@ -1,0 +1,44 @@
+{
+  "scope": "Behavioral comparison, no production skill edits",
+  "conditions": {
+    "cedar": "current installed/source-matched skill",
+    "amber": "candidate scoped editorial revision"
+  },
+  "cases": 18,
+  "replicates_per_condition": 2,
+  "expected_outputs": 72,
+  "writers": "Fresh agents without parent conversation; identical tasks; assigned skill and all four substantive references only",
+  "review": "Two fresh reviewers blinded to condition and replicate; per-case randomized A/B; anchored criteria fixed before writing",
+  "ratings": {
+    "pass": "Meets material task criteria; no substantive overcorrection, undercorrection or factual defect",
+    "minor": "Useful result with a limited avoidable defect",
+    "fail": "Material criterion violated"
+  },
+  "error_tags": [
+    "overcorrection",
+    "undercorrection",
+    "factual_or_qualification_loss",
+    "scope_violation",
+    "format_violation"
+  ],
+  "preference": [
+    "A",
+    "B",
+    "tie"
+  ],
+  "limitations": [
+    "Same model family and shared platform/developer instructions; not an isolated model-system-prompt experiment",
+    "Two repeats are diagnostic, not statistical reliability estimates",
+    "Synthetic cases plus one known Meridian failure; not representative user research",
+    "Root authored candidate and rubric; blinded reviewers reduce but do not remove evaluator bias",
+    "References preserved except specific conflicting passages; tests assess this particular revision"
+  ],
+  "baseline_source_hashes": {
+    "SKILL.md": "bc0a66d14aa93909bc75896b2c58a51a80326d09bfc6b502696845318fd842bb",
+    "references/expanded-writing-review.md": "d6183718eda4ae47111f3a1d9800e94041c929892aa773d4e64e6bbed12f330e",
+    "references/patterns.md": "58ca7c8c9fa5b0b0e79fde4509653b2dca233b6511d6f7a72607a0fbe241ed95",
+    "references/examples.md": "2efa81cb1c374b89f30a3d134dc060f179408cb367afcc1b44a21dd7bfd333de",
+    "references/context-rules.md": "a989f452d14ae6ad11055bf9f04361b10b2e5f0399bf395c935ad8221f20f097",
+    "agents/openai.yaml": "d1eaeeadc04549608282454a7190a8a599a91c94c9bea99c089249d89c26836e"
+  }
+}

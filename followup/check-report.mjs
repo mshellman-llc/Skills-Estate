@@ -1,0 +1,33 @@
+import fs from 'node:fs';
+const root='/tmp/writing-integrity-followup';
+const tabs=await(await fetch('http://127.0.0.1:9341/json/list')).json();
+const ws=new WebSocket(tabs.find(t=>t.type==='page').webSocketDebuggerUrl);
+await new Promise(r=>ws.addEventListener('open',r,{once:true}));
+let n=0;const pending=new Map();
+ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(m.error):p.resolve(m.result)}};
+const call=(method,params={})=>new Promise((resolve,reject)=>{const id=++n;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
+const ev=async expression=>(await call('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true})).result.value;
+await call('Page.enable');await call('Runtime.enable');
+await call('Page.navigate',{url:'file://'+root+'/writing-integrity-comparison.html'});
+await new Promise(r=>setTimeout(r,500));await ev('document.fonts.ready.then(()=>true)');
+const checks=[];
+for(const width of [1440,390]){
+ await call('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:false});
+ await ev('window.scrollTo(0,0)');
+ checks.push({width,overflow:await ev('document.documentElement.scrollWidth>innerWidth'),fonts:await ev('document.fonts.check(\'16px "Plus Jakarta Sans"\')')});
+ fs.writeFileSync(root+'/report-'+width+'.png',Buffer.from((await call('Page.captureScreenshot',{format:'png'})).data,'base64'));
+ await ev("document.querySelector('#F03').open=true;document.querySelector('#F03 .sample details').open=true;document.querySelector('#F03').scrollIntoView()");
+ checks.push({width,caseOpen:await ev("document.querySelector('#F03').open"),expandedOverflow:await ev('document.documentElement.scrollWidth>innerWidth')});
+ fs.writeFileSync(root+'/case-'+width+'.png',Buffer.from((await call('Page.captureScreenshot',{format:'png'})).data,'base64'));
+ await ev("document.querySelector('#F03').open=false");
+}
+await ev("(()=>{const s=document.querySelector('#F01 summary');s.focus();return true})()");
+await call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
+await call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+await new Promise(r=>setTimeout(r,150));checks.push({keyboardOpensCase:await ev("document.querySelector('#F01').open")});
+await ev("document.querySelectorAll('details').forEach(d=>d.open=false)");
+await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+const print=await call('Page.printToPDF',{printBackground:true,paperWidth:8.27,paperHeight:11.69,marginTop:.45,marginBottom:.45,marginLeft:.45,marginRight:.45});
+fs.writeFileSync(root+'/report-print.pdf',Buffer.from(print.data,'base64'));
+fs.writeFileSync(root+'/browser-checks.json',JSON.stringify(checks,null,2));console.log(JSON.stringify(checks));
+await call('Browser.close');ws.close();

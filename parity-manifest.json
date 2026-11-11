@@ -1,0 +1,28 @@
+{
+  "manifestVersion": "1.0",
+  "artifactId": "writing-integrity-comparison",
+  "decisionJob": "Compare existing and proposed writing skill",
+  "requiredPhrases": [
+    "The proposed revision did not outperform the existing skill.",
+    "Seventeen of the 36 matched pairs were word-for-word identical.",
+    "The pass ratings missed an editorial concern",
+    "the candidate has not been installed."
+  ],
+  "forbiddenPhrases": [],
+  "requiredEvidenceReferences": [
+    "protocol.json",
+    "results.json"
+  ],
+  "protectedClaims": [],
+  "requiredSelectors": [
+    "main",
+    "h1",
+    "#cases",
+    "#limits"
+  ],
+  "requiredViews": [
+    "desktop",
+    "narrow",
+    "print"
+  ]
+}

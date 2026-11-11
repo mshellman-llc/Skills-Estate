@@ -1,0 +1,37 @@
+{
+  "artifact": "/tmp/writing-integrity-followup/writing-integrity-comparison.html",
+  "manifestVersion": "1.0",
+  "auditScope": "lexical parsed-content and source-structure support only",
+  "errors": [],
+  "warnings": [
+    {
+      "code": "RENDERED_VISUAL_REVIEW_REQUIRED",
+      "detail": "Lexical/structural checks cannot prove visibility. Inspect: desktop, narrow, expanded comparisons, print"
+    }
+  ],
+  "passedChecks": [
+    {
+      "code": "REQUIRED_TEXT_LEXICALLY_PRESENT",
+      "detail": "The revision helped some edits but regressed on Meridian."
+    },
+    {
+      "code": "REQUIRED_TEXT_LEXICALLY_PRESENT",
+      "detail": "The reviewers agreed on 29 of 30 response ratings."
+    },
+    {
+      "code": "REQUIRED_TEXT_LEXICALLY_PRESENT",
+      "detail": "Keep the current skill; do not install this broad rewrite"
+    },
+    {
+      "code": "REQUIRED_TEXT_LEXICALLY_PRESENT",
+      "detail": "The generated Meridian rewrites are test outputs."
+    }
+  ],
+  "summary": {
+    "errorCount": 0,
+    "warningCount": 1,
+    "lexicalStructuralPass": true,
+    "releasePass": false,
+    "releaseNote": "Release requires semantic association review and rendered cross-format visual evidence. All warnings require disposition in the release note."
+  }
+}

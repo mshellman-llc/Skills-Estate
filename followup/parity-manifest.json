@@ -1,0 +1,29 @@
+{
+  "manifestVersion": "1.0",
+  "artifactId": "writing-integrity-followup",
+  "decisionJob": "Compare current, candidate and no-skill conditions",
+  "requiredPhrases": [
+    "The revision helped some edits but regressed on Meridian.",
+    "The reviewers agreed on 29 of 30 response ratings.",
+    "Keep the current skill; do not install this broad rewrite",
+    "The generated Meridian rewrites are test outputs."
+  ],
+  "forbiddenPhrases": [],
+  "requiredEvidenceReferences": [
+    "source-provenance.json",
+    "generation-hashes.json"
+  ],
+  "protectedClaims": [],
+  "requiredSelectors": [
+    "main",
+    "h1",
+    "#responses",
+    "#method"
+  ],
+  "requiredViews": [
+    "desktop",
+    "narrow",
+    "expanded comparisons",
+    "print"
+  ]
+}

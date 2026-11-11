@@ -1,0 +1,614 @@
+[
+  {
+    "pair_id": "P21",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair using current field needs and unused sync capability; includes the requested structure and recap."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair using current field needs and unused sync capability; includes the requested structure and recap."
+    },
+    "preference": "tie",
+    "preference_reason": "Both use the same supported tradeoff and meet the requested recommendation structure."
+  },
+  {
+    "pair_id": "P09",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the helper without implying a deal prerequisite and preserves the other JSON values exactly."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the helper without implying a deal prerequisite and preserves the other JSON values exactly."
+    },
+    "preference": "tie",
+    "preference_reason": "Both remove the misleading prerequisite and preserve the JSON; optional “here” is harmless."
+  },
+  {
+    "pair_id": "P26",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the ten-minute link repair with a concise, supported explanation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the ten-minute link repair with a concise, supported explanation."
+    },
+    "preference": "tie",
+    "preference_reason": "Both provide the same contextually justified priority without excess recap."
+  },
+  {
+    "pair_id": "P22",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Retains proposed status, price, duration, written approval and the attachment exclusion while omitting incidental detail."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Retains proposed status, price, duration, written approval and the attachment exclusion while omitting incidental detail."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical decision-relevant summaries."
+  },
+  {
+    "pair_id": "P16",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the section’s current location and accurately limits conclusions about prior changes or authorship."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the section’s current location and accurately limits conclusions about prior changes or authorship."
+    },
+    "preference": "tie",
+    "preference_reason": "Both distinguish current inspection from unavailable historical evidence."
+  },
+  {
+    "pair_id": "P35",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes promotional filler while retaining time, location, the outstanding check and its connection to sending the file."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes promotional filler while retaining time, location, the outstanding check and its connection to sending the file."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical removal of unsupported promotion while retaining useful details."
+  },
+  {
+    "pair_id": "P34",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the section’s current location and accurately limits conclusions about prior changes or authorship."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the section’s current location and accurately limits conclusions about prior changes or authorship."
+    },
+    "preference": "tie",
+    "preference_reason": "Both distinguish current inspection from unavailable historical evidence."
+  },
+  {
+    "pair_id": "P14",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the effective technical explanation intact, preserving three read retries and no write retries."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the effective technical explanation intact, preserving three read retries and no write retries."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of accurate technical behavior."
+  },
+  {
+    "pair_id": "P11",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the optional service and estimate/approval terms in two grammatical sentences, preserving the exact quotation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the optional service and estimate/approval terms in two grammatical sentences, preserving the exact quotation."
+    },
+    "preference": "tie",
+    "preference_reason": "Both provide an adequate introduction and preserve the quotation; a colon appropriately introduces it."
+  },
+  {
+    "pair_id": "P08",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the ten-minute link repair with a concise, supported explanation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the ten-minute link repair with a concise, supported explanation."
+    },
+    "preference": "tie",
+    "preference_reason": "Both provide the same contextually justified priority without excess recap."
+  },
+  {
+    "pair_id": "P19",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without unnecessary edits."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without unnecessary edits."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical effective edits."
+  },
+  {
+    "pair_id": "P20",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression and unresolved feeling without inventing context."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression and unresolved feeling without inventing context."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of voice and uncertainty."
+  },
+  {
+    "pair_id": "P18",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with scattered knowledge and intended product purpose, retains design status and ongoing knowledge work without centering the private correction."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with scattered knowledge and intended product purpose, retains design status and ongoing knowledge work without centering the private correction."
+    },
+    "preference": "tie",
+    "preference_reason": "Both explain the problem and intended purpose with supported context; differences in describing ongoing knowledge work are not material defects."
+  },
+  {
+    "pair_id": "P15",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter record while retaining the valid software meaning of tenant."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter record while retaining the valid software meaning of tenant."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical context-sensitive correction."
+  },
+  {
+    "pair_id": "P31",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims, distinguishes unassisted completion from speed and supplies no rewritten draft."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims, distinguishes unassisted completion from speed and supplies no rewritten draft."
+    },
+    "preference": "tie",
+    "preference_reason": "Both correctly identify the evidence gaps; differing editorial recommendations do not amount to rewriting."
+  },
+  {
+    "pair_id": "P01",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without unnecessary edits."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without unnecessary edits."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical effective edits."
+  },
+  {
+    "pair_id": "P24",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Explains supported reading-group activities for new members without foregrounding retail or the drafting correction."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Explains supported reading-group activities for new members without foregrounding retail or the drafting correction."
+    },
+    "preference": "tie",
+    "preference_reason": "Both explain the same supported member activities; wording differences have no material effect."
+  },
+  {
+    "pair_id": "P29",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the optional service and estimate/approval terms in two grammatical sentences, preserving the exact quotation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the optional service and estimate/approval terms in two grammatical sentences, preserving the exact quotation."
+    },
+    "preference": "tie",
+    "preference_reason": "Both provide an adequate introduction and preserve the quotation; a colon appropriately introduces it."
+  },
+  {
+    "pair_id": "P10",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the draft/submission distinction and all three attachment types without unnecessary edits."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the draft/submission distinction and all three attachment types without unnecessary edits."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of useful help text."
+  },
+  {
+    "pair_id": "P04",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Retains proposed status, price, duration, written approval and the attachment exclusion while omitting incidental detail."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Retains proposed status, price, duration, written approval and the attachment exclusion while omitting incidental detail."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical decision-relevant summaries."
+  },
+  {
+    "pair_id": "P12",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with actual paragraph-history and restoration behavior, retains beta availability and makes no outcome claims; the brief closing measurement context does not dominate."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with actual paragraph-history and restoration behavior, retains beta availability and makes no outcome claims; the brief closing measurement context does not dominate."
+    },
+    "preference": "tie",
+    "preference_reason": "Both foreground the supported features and append a short factual qualification; neither materially improves on the other."
+  },
+  {
+    "pair_id": "P03",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair using current field needs and unused sync capability; includes the requested structure and recap."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair using current field needs and unused sync capability; includes the requested structure and recap."
+    },
+    "preference": "tie",
+    "preference_reason": "Both use the same supported tradeoff and meet the requested recommendation structure."
+  },
+  {
+    "pair_id": "P33",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter record while retaining the valid software meaning of tenant."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter record while retaining the valid software meaning of tenant."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical context-sensitive correction."
+  },
+  {
+    "pair_id": "P07",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies yesterday’s incorrect $420 invoice, gives the $240 correction and directs customers to the attached invoice without inventing a payment outcome."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies yesterday’s incorrect $420 invoice, gives the $240 correction and directs customers to the attached invoice without inventing a payment outcome."
+    },
+    "preference": "tie",
+    "preference_reason": "Both make the correction actionable; the additional apology or unpaid-state wording does not create a substantive difference."
+  },
+  {
+    "pair_id": "P17",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes promotional filler while retaining time, location, the outstanding check and its connection to sending the file."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes promotional filler while retaining time, location, the outstanding check and its connection to sending the file."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical removal of unsupported promotion while retaining useful details."
+  },
+  {
+    "pair_id": "P13",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims, distinguishes unassisted completion from speed and supplies no rewritten draft."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims, distinguishes unassisted completion from speed and supplies no rewritten draft."
+    },
+    "preference": "tie",
+    "preference_reason": "Both correctly identify the evidence gaps; differing editorial recommendations do not amount to rewriting."
+  },
+  {
+    "pair_id": "P05",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves both delivery and installation uncertainties, including the unconfirmed booking and uninspected site."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves both delivery and installation uncertainties, including the unconfirmed booking and uninspected site."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of both uncertainties."
+  },
+  {
+    "pair_id": "P02",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression and unresolved feeling without inventing context."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression and unresolved feeling without inventing context."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of voice and uncertainty."
+  },
+  {
+    "pair_id": "P32",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the effective technical explanation intact, preserving three read retries and no write retries."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the effective technical explanation intact, preserving three read retries and no write retries."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of accurate technical behavior."
+  },
+  {
+    "pair_id": "P25",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies yesterday’s incorrect $420 invoice, gives the $240 correction and directs customers to the attached invoice without inventing a payment outcome."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies yesterday’s incorrect $420 invoice, gives the $240 correction and directs customers to the attached invoice without inventing a payment outcome."
+    },
+    "preference": "tie",
+    "preference_reason": "Both make the correction actionable; the additional apology or unpaid-state wording does not create a substantive difference."
+  },
+  {
+    "pair_id": "P23",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves both delivery and installation uncertainties, including the unconfirmed booking and uninspected site."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves both delivery and installation uncertainties, including the unconfirmed booking and uninspected site."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of both uncertainties."
+  },
+  {
+    "pair_id": "P30",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with actual paragraph-history and restoration behavior, retains beta availability and makes no outcome claims; the brief closing measurement context does not dominate."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with actual paragraph-history and restoration behavior, retains beta availability and makes no outcome claims; the brief closing measurement context does not dominate."
+    },
+    "preference": "tie",
+    "preference_reason": "Both foreground the supported features and append a short factual qualification; neither materially improves on the other."
+  },
+  {
+    "pair_id": "P36",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with scattered knowledge and intended product purpose, retains design status and ongoing knowledge work without centering the private correction."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with scattered knowledge and intended product purpose, retains design status and ongoing knowledge work without centering the private correction."
+    },
+    "preference": "tie",
+    "preference_reason": "Both explain the problem and intended purpose with supported context; differences in describing ongoing knowledge work are not material defects."
+  },
+  {
+    "pair_id": "P06",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Explains supported reading-group activities for new members without foregrounding retail or the drafting correction."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Explains supported reading-group activities for new members without foregrounding retail or the drafting correction."
+    },
+    "preference": "tie",
+    "preference_reason": "Both explain the same supported member activities; wording differences have no material effect."
+  },
+  {
+    "pair_id": "P27",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the helper without implying a deal prerequisite and preserves the other JSON values exactly."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the helper without implying a deal prerequisite and preserves the other JSON values exactly."
+    },
+    "preference": "tie",
+    "preference_reason": "Both remove the misleading prerequisite and preserve the JSON; optional “here” is harmless."
+  },
+  {
+    "pair_id": "P28",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the draft/submission distinction and all three attachment types without unnecessary edits."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the draft/submission distinction and all three attachment types without unnecessary edits."
+    },
+    "preference": "tie",
+    "preference_reason": "Identical preservation of useful help text."
+  }
+]

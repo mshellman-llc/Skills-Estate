@@ -1,0 +1,25 @@
+[
+  {
+    "width": 1440,
+    "overflow": false,
+    "fonts": true
+  },
+  {
+    "width": 1440,
+    "caseOpen": true,
+    "expandedOverflow": false
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "fonts": true
+  },
+  {
+    "width": 390,
+    "caseOpen": true,
+    "expandedOverflow": false
+  },
+  {
+    "keyboardOpensCase": true
+  }
+]

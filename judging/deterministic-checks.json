@@ -1,0 +1,506 @@
+[
+  {
+    "pair_id": "P01",
+    "label": "A",
+    "case_id": "T01",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P01",
+    "label": "B",
+    "case_id": "T01",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P02",
+    "label": "A",
+    "case_id": "T02",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P02",
+    "label": "B",
+    "case_id": "T02",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P03",
+    "label": "A",
+    "case_id": "T03",
+    "words": 101,
+    "failures": []
+  },
+  {
+    "pair_id": "P03",
+    "label": "B",
+    "case_id": "T03",
+    "words": 95,
+    "failures": []
+  },
+  {
+    "pair_id": "P04",
+    "label": "A",
+    "case_id": "T04",
+    "words": 17,
+    "failures": []
+  },
+  {
+    "pair_id": "P04",
+    "label": "B",
+    "case_id": "T04",
+    "words": 17,
+    "failures": []
+  },
+  {
+    "pair_id": "P05",
+    "label": "A",
+    "case_id": "T05",
+    "words": 24,
+    "failures": []
+  },
+  {
+    "pair_id": "P05",
+    "label": "B",
+    "case_id": "T05",
+    "words": 24,
+    "failures": []
+  },
+  {
+    "pair_id": "P06",
+    "label": "A",
+    "case_id": "T06",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P06",
+    "label": "B",
+    "case_id": "T06",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P07",
+    "label": "A",
+    "case_id": "T07",
+    "words": 28,
+    "failures": []
+  },
+  {
+    "pair_id": "P07",
+    "label": "B",
+    "case_id": "T07",
+    "words": 26,
+    "failures": []
+  },
+  {
+    "pair_id": "P08",
+    "label": "A",
+    "case_id": "T08",
+    "words": 28,
+    "failures": []
+  },
+  {
+    "pair_id": "P08",
+    "label": "B",
+    "case_id": "T08",
+    "words": 27,
+    "failures": []
+  },
+  {
+    "pair_id": "P09",
+    "label": "A",
+    "case_id": "T09",
+    "words": 7,
+    "failures": []
+  },
+  {
+    "pair_id": "P09",
+    "label": "B",
+    "case_id": "T09",
+    "words": 7,
+    "failures": []
+  },
+  {
+    "pair_id": "P10",
+    "label": "A",
+    "case_id": "T10",
+    "words": 19,
+    "failures": []
+  },
+  {
+    "pair_id": "P10",
+    "label": "B",
+    "case_id": "T10",
+    "words": 19,
+    "failures": []
+  },
+  {
+    "pair_id": "P11",
+    "label": "A",
+    "case_id": "T11",
+    "words": 32,
+    "failures": []
+  },
+  {
+    "pair_id": "P11",
+    "label": "B",
+    "case_id": "T11",
+    "words": 34,
+    "failures": []
+  },
+  {
+    "pair_id": "P12",
+    "label": "A",
+    "case_id": "T12",
+    "words": 37,
+    "failures": []
+  },
+  {
+    "pair_id": "P12",
+    "label": "B",
+    "case_id": "T12",
+    "words": 36,
+    "failures": []
+  },
+  {
+    "pair_id": "P13",
+    "label": "A",
+    "case_id": "T13",
+    "words": 53,
+    "failures": []
+  },
+  {
+    "pair_id": "P13",
+    "label": "B",
+    "case_id": "T13",
+    "words": 63,
+    "failures": []
+  },
+  {
+    "pair_id": "P14",
+    "label": "A",
+    "case_id": "T14",
+    "words": 26,
+    "failures": []
+  },
+  {
+    "pair_id": "P14",
+    "label": "B",
+    "case_id": "T14",
+    "words": 26,
+    "failures": []
+  },
+  {
+    "pair_id": "P15",
+    "label": "A",
+    "case_id": "T15",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P15",
+    "label": "B",
+    "case_id": "T15",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P16",
+    "label": "A",
+    "case_id": "T16",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P16",
+    "label": "B",
+    "case_id": "T16",
+    "words": 30,
+    "failures": []
+  },
+  {
+    "pair_id": "P17",
+    "label": "A",
+    "case_id": "T17",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P17",
+    "label": "B",
+    "case_id": "T17",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P18",
+    "label": "A",
+    "case_id": "T18",
+    "words": 57,
+    "failures": []
+  },
+  {
+    "pair_id": "P18",
+    "label": "B",
+    "case_id": "T18",
+    "words": 62,
+    "failures": []
+  },
+  {
+    "pair_id": "P19",
+    "label": "A",
+    "case_id": "T01",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P19",
+    "label": "B",
+    "case_id": "T01",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P20",
+    "label": "A",
+    "case_id": "T02",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P20",
+    "label": "B",
+    "case_id": "T02",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P21",
+    "label": "A",
+    "case_id": "T03",
+    "words": 104,
+    "failures": []
+  },
+  {
+    "pair_id": "P21",
+    "label": "B",
+    "case_id": "T03",
+    "words": 100,
+    "failures": []
+  },
+  {
+    "pair_id": "P22",
+    "label": "A",
+    "case_id": "T04",
+    "words": 17,
+    "failures": []
+  },
+  {
+    "pair_id": "P22",
+    "label": "B",
+    "case_id": "T04",
+    "words": 17,
+    "failures": []
+  },
+  {
+    "pair_id": "P23",
+    "label": "A",
+    "case_id": "T05",
+    "words": 24,
+    "failures": []
+  },
+  {
+    "pair_id": "P23",
+    "label": "B",
+    "case_id": "T05",
+    "words": 24,
+    "failures": []
+  },
+  {
+    "pair_id": "P24",
+    "label": "A",
+    "case_id": "T06",
+    "words": 28,
+    "failures": []
+  },
+  {
+    "pair_id": "P24",
+    "label": "B",
+    "case_id": "T06",
+    "words": 28,
+    "failures": []
+  },
+  {
+    "pair_id": "P25",
+    "label": "A",
+    "case_id": "T07",
+    "words": 21,
+    "failures": []
+  },
+  {
+    "pair_id": "P25",
+    "label": "B",
+    "case_id": "T07",
+    "words": 28,
+    "failures": []
+  },
+  {
+    "pair_id": "P26",
+    "label": "A",
+    "case_id": "T08",
+    "words": 37,
+    "failures": []
+  },
+  {
+    "pair_id": "P26",
+    "label": "B",
+    "case_id": "T08",
+    "words": 27,
+    "failures": []
+  },
+  {
+    "pair_id": "P27",
+    "label": "A",
+    "case_id": "T09",
+    "words": 7,
+    "failures": []
+  },
+  {
+    "pair_id": "P27",
+    "label": "B",
+    "case_id": "T09",
+    "words": 6,
+    "failures": []
+  },
+  {
+    "pair_id": "P28",
+    "label": "A",
+    "case_id": "T10",
+    "words": 19,
+    "failures": []
+  },
+  {
+    "pair_id": "P28",
+    "label": "B",
+    "case_id": "T10",
+    "words": 19,
+    "failures": []
+  },
+  {
+    "pair_id": "P29",
+    "label": "A",
+    "case_id": "T11",
+    "words": 33,
+    "failures": []
+  },
+  {
+    "pair_id": "P29",
+    "label": "B",
+    "case_id": "T11",
+    "words": 34,
+    "failures": []
+  },
+  {
+    "pair_id": "P30",
+    "label": "A",
+    "case_id": "T12",
+    "words": 36,
+    "failures": []
+  },
+  {
+    "pair_id": "P30",
+    "label": "B",
+    "case_id": "T12",
+    "words": 38,
+    "failures": []
+  },
+  {
+    "pair_id": "P31",
+    "label": "A",
+    "case_id": "T13",
+    "words": 64,
+    "failures": []
+  },
+  {
+    "pair_id": "P31",
+    "label": "B",
+    "case_id": "T13",
+    "words": 46,
+    "failures": []
+  },
+  {
+    "pair_id": "P32",
+    "label": "A",
+    "case_id": "T14",
+    "words": 26,
+    "failures": []
+  },
+  {
+    "pair_id": "P32",
+    "label": "B",
+    "case_id": "T14",
+    "words": 26,
+    "failures": []
+  },
+  {
+    "pair_id": "P33",
+    "label": "A",
+    "case_id": "T15",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P33",
+    "label": "B",
+    "case_id": "T15",
+    "words": 22,
+    "failures": []
+  },
+  {
+    "pair_id": "P34",
+    "label": "A",
+    "case_id": "T16",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P34",
+    "label": "B",
+    "case_id": "T16",
+    "words": 31,
+    "failures": []
+  },
+  {
+    "pair_id": "P35",
+    "label": "A",
+    "case_id": "T17",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P35",
+    "label": "B",
+    "case_id": "T17",
+    "words": 29,
+    "failures": []
+  },
+  {
+    "pair_id": "P36",
+    "label": "A",
+    "case_id": "T18",
+    "words": 67,
+    "failures": []
+  },
+  {
+    "pair_id": "P36",
+    "label": "B",
+    "case_id": "T18",
+    "words": 68,
+    "failures": []
+  }
+]

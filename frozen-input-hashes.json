@@ -1,0 +1,23 @@
+{
+  "conditions/amber/SKILL.md": "da4c4805392e560350b35260304453f6267dac59599b853ee90b98a4d96a8a59",
+  "conditions/amber/references/expanded-writing-review.md": "4f78e164ba8470a2866fd4a24466435986b8dcfacf207f84ea8358cdd66a8121",
+  "conditions/amber/references/examples.md": "2efa81cb1c374b89f30a3d134dc060f179408cb367afcc1b44a21dd7bfd333de",
+  "conditions/amber/references/patterns.md": "58ca7c8c9fa5b0b0e79fde4509653b2dca233b6511d6f7a72607a0fbe241ed95",
+  "conditions/amber/references/context-rules.md": "752ececb452be2a1c2fd6bc5f81eb95e7b5c2120afd175621e2bd533c2951f07",
+  "conditions/amber/agents/openai.yaml": "d1eaeeadc04549608282454a7190a8a599a91c94c9bea99c089249d89c26836e",
+  "conditions/cedar/SKILL.md": "bc0a66d14aa93909bc75896b2c58a51a80326d09bfc6b502696845318fd842bb",
+  "conditions/cedar/references/expanded-writing-review.md": "d6183718eda4ae47111f3a1d9800e94041c929892aa773d4e64e6bbed12f330e",
+  "conditions/cedar/references/examples.md": "2efa81cb1c374b89f30a3d134dc060f179408cb367afcc1b44a21dd7bfd333de",
+  "conditions/cedar/references/patterns.md": "58ca7c8c9fa5b0b0e79fde4509653b2dca233b6511d6f7a72607a0fbe241ed95",
+  "conditions/cedar/references/context-rules.md": "a989f452d14ae6ad11055bf9f04361b10b2e5f0399bf395c935ad8221f20f097",
+  "conditions/cedar/agents/openai.yaml": "d1eaeeadc04549608282454a7190a8a599a91c94c9bea99c089249d89c26836e",
+  "outputs/amber-one.json": "3efa9ea5cd4e4e9b17f10efac3d969526b994e1fbe4a61b7e2f5bc329ad15c94",
+  "outputs/cedar-one.json": "daa5485416adfe156de47b4227c1d4dc0bf5603fc861ee1616fde25461a0f327",
+  "outputs/cedar-two.json": "2891ff7f1c4843f8b32fff51cd9bbad28c33338ef91d889ee0fb388f4af709b1",
+  "outputs/amber-two.json": "da42f67d7b3bd9c4159a880d121e778d8907e7633131ad3017d8f524802a459a",
+  "cases.json": "46b07b90f07c187f398d57d359827785d8761014bd1a865d47e93270b6af31ef",
+  "rubric.json": "501551e9fd409096d5d8a80d6e161032f4ca1c745635991b093afd9004d968cd",
+  "protocol.json": "3868248f95129f7e8c22aef99ec5502d6b3207e0b83b46b4f06d98efe7cdbe01",
+  "candidate.diff": "0f3ef34e9b27fad3a66b7ba7a12199b733eb8c0e4dab07ccbba12a633fc6887b",
+  "judging/pairs.json": "6fe306bd814a43a29e4eedd74031050297bef749089da8e6f8d1c2a21201cdf5"
+}

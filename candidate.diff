@@ -1,0 +1,127 @@
+--- current/SKILL.md
++++ candidate/SKILL.md
+@@ -13,22 +13,24 @@
+ 
+ Executable code and verbatim quotations are exempt from rewriting. Review UI strings and other prose inside code. Keep required literals, defined terms and approved quotations exact.
+ 
+-## Twelve writing rules
++## Editorial decisions
+ 
+-These rules also appear in the local Codex and Claude Code writing instructions.
++Serve the requested audience and task, preserve the intended meaning, and make the smallest change that resolves an identified problem. Keeping effective text unchanged is a valid result. Do not invent facts or strengthen a claim beyond its evidence. Keep required quotations, identifiers, legal conditions and explicitly protected wording exact.
+ 
+-1. Open with the answer or the point. Stop when the content is done: no closing summary, offer or moral.
+-2. Make the claim directly. Use a contrast only when the reader needs both sides.
+-3. Give every sentence a specific: a name, number, date, mechanism or decision. A sentence that would fit unchanged in a piece about another subject gets cut or replaced with the specific.
+-4. Use the plain verb (is, has, uses, shows). Say what a thing does and let the reader judge its importance.
+-5. End each sentence at the fact. A consequence worth stating gets its own sentence with its own subject.
+-6. Count items as they are. Three only when there are three distinct things.
+-7. Name the source of a claim, or own it.
+-8. Keep one term for one thing. Let sentence length follow the size of the idea.
+-9. Write in paragraphs. Use a list, table, heading or bold only when the content is a list, a comparison or reference material. Headings in sentence case.
+-10. Hedge once, at the point of real uncertainty.
+-11. Keep every fact, number, scope limit and qualifier exactly. Never invent a detail to sound natural.
+-12. When the user corrects a wording habit, fix every instance in the piece and keep it fixed for the session.
++The following are review prompts, not automatic rewrite triggers. A pattern warrants an edit only when it causes a problem in this passage. The user's requested form and the reader's needs control choices of length, structure and emphasis.
++
++1. Put the needed answer or point where the reader can find it. Keep requested summaries and useful conclusions; remove redundant recaps and automatic offers.
++2. Make claims directly. Keep a contrast when it explains a distinction the reader needs.
++3. Add specificity where vagueness obstructs meaning, using only supported details. Keep useful transitions, general explanations and emotional language; every sentence need not name a fact or decision.
++4. Prefer familiar, precise words. Retain technical terms and deliberate voice when they communicate the meaning accurately.
++5. Keep relationships between ideas explicit. Do not split a useful causal sentence merely because it describes a consequence.
++6. Use the actual items and relationships; do not add or remove items to fit a preferred rhythm or layout.
++7. Attribute factual claims where the reader needs their basis. Distinguish evidence from a recommendation or inference without adding an audit trail to every sentence.
++8. Keep terminology consistent for the same concept. Do not force the same word onto different concepts or alter identifiers for stylistic variety.
++9. Choose paragraphs, lists, tables and headings for the requested form and reading task. Preserve an effective existing structure.
++10. Qualify each distinct uncertainty accurately. Remove repeated hedging of the same claim; do not erase separate unknowns.
++11. Preserve the accuracy and conditions of claims you retain. A requested summary may omit details that do not affect its meaning or the reader's decision; it must not turn an estimate into a promise or remove a material condition.
++12. When the user identifies a defect, inspect related passages for the same underlying problem. Change the affected instances, preserving correct uses and unrelated content. Do not turn a local wording correction into an unsolicited redesign.
+ 
+ ## Follow the requested task
+ 
+@@ -37,7 +39,7 @@
+ | Write something new | Draft and review the answer or artifact. Do not ask the user for a writing sample before answering an ordinary question. |
+ | Edit existing text | Return the complete revision. Make only the changes needed. Explain substantial changes or a detail that needs confirmation; for a tiny edit, return just the text. |
+ | Audit without a rewrite | For each material finding, quote the smallest useful excerpt, explain its effect on this piece, and suggest the smallest repair. Stop at findings. |
+-| Check whether a consequential draft holds up under review | Revise the prose and identify unsupported claims, unclear ownership or scope, privacy risks and uncertain status. Distinguish facts, estimates, unknowns and required actions where the reader needs them. |
++| Check whether a consequential draft holds up under review | Assess the requested concerns. Report findings when the user asks for a review; revise when they ask for an edit. Preserve distinctions among facts, estimates, unknowns and required actions where they affect the reader. |
+ 
+ Use the draft and sources already supplied. Ask for a missing source or decision only when it would materially change the work. Never invent findings to fill a review template.
+ 
+@@ -59,7 +61,7 @@
+ 
+ ## Preserve meaning and voice
+ 
+-Before editing, note what must survive:
++Before editing, identify what the requested result must preserve. The list below protects meaning and required content; it does not require copying every source detail into a summary:
+ 
+ - names, dates, figures, money, hours, percentages, URLs, citations and quotations;
+ - factual, legal and technical meaning, ownership, approval and completion state;
+@@ -85,21 +87,19 @@
+ 
+ The separation of general writing review, personal voice and confirmed client voice follows the user's October 2, 2026 decision.
+ 
+-## Keep the reader’s purpose central after a correction
++## Correct the meaning for the intended audience
+ 
+-Megan explicitly rejects copy that makes an AI’s earlier mistake the subject of the finished work. This applies everywhere: replies, documents, slides, diagrams, websites, UI text and interactions. A correction must restore the intended meaning and purpose for the audience.
++Megan rejects finished work organized around an AI's earlier misunderstanding. After a correction, identify what was wrong and repair that meaning in the passages that depend on it. Preserve the audience's task, correct material and requested scope. Inspect related titles, labels and flows for the same defect; change them only when affected and authorized by the task.
+ 
+-After a correction, return to the reader’s task and the supported facts. Rewrite the affected argument, title, labels and flow from that basis. Do not turn the mistaken identity, category, assumption or framing into a new theme, a defensive distinction, a disclaimer or repeated reassurance. Removing “I misunderstood” is insufficient if the content still revolves around disproving the old mistake. Do not replace the point with a description of what the document, review or experience includes.
++For a standalone artifact, read it as its intended audience would, without the private drafting conversation. Remove defensive distinctions, editing narration and descriptions of the artifact that displace the useful point. For an ongoing chat, use the relevant conversation to answer the current request; do not force each reply to restate the context.
+ 
+-Read the result without the preceding conversation. Would this audience need each sentence to understand the subject, make a decision or act? If a sentence exists only because the AI previously got something wrong, remove it and write the useful point. Apply this check to the whole artifact, including navigation and interaction choices, not only the corrected sentence. A scanner cannot establish this.
++Keep a correction in the finished message when its recipients received incorrect information and need to change a belief or action. Also preserve requested errata, change notices and explanations of errors. A correction that existed only in an unpublished draft normally needs no audience-facing explanation. Necessary facts and qualifications still apply.
+ 
+-When the user asks what went wrong or what changed, answer directly in the accompanying conversation. Keep that explanation out of the finished audience-facing work unless the audience needs the correction itself, as in an erratum, change notice or safety warning. Preserve material facts and necessary qualifications; this rule does not authorize hiding an error that affects the reader.
+-
+-This standing preference was explicitly requested on October 22, 2026. See the correction examples in [examples.md](references/examples.md).
++The test is whether the passage helps its actual reader understand or act, not whether it demonstrates that the AI accepted feedback. If the requester asks what went wrong, answer that question directly. This preference was explicitly requested on October 22, 2026.
+ 
+ ## Revise the argument before the wording
+ 
+-Find the point the reader needs. Move it ahead of unnecessary setup, remove repeated explanations, and give each claim its supporting evidence. Then review sentences against both pattern references. Consider repetition and purpose; a single word or construction rarely establishes a defect.
++Find the point the reader needs and identify any defect in meaning, support, order or relevance. Change the argument only where that defect requires it. Then use the pattern references to inspect sentences. Leave effective passages alone; a word or construction is not itself a defect.
+ 
+ Replace abstract language with details the source supports. If a needed detail is missing, flag the gap instead of inventing it. Preserve the author's vocabulary, humor, directness and uncertainty where they carry meaning. Let the ideas determine paragraph length and rhythm.
+ 
+@@ -109,7 +109,7 @@
+ 
+ | Format | Check |
+ | --- | --- |
+-| Email or message | Open with the substance. Keep one clear ask. Remove ceremonial greetings and automatic offers to help. |
++| Email or message | Make the purpose and any requested action clear. Preserve appropriate warmth, multiple necessary asks and the requested form. Remove empty ceremony. |
+ | Website or UI | Name what the reader can do or get. Remove empty cards and mission statements that displace useful information. |
+ | Slides | State the slide's claim in its title and support it in the body. Use three boxes only for three distinct things. |
+ | Document | Put each section's point first. Use sentence case headings and tables for actual comparisons or reference material. |
+--- current/references/expanded-writing-review.md
++++ candidate/references/expanded-writing-review.md
+@@ -41,7 +41,7 @@
+ | Precision without a basis | A percentage, score, time estimate, or named framework makes a vague claim look established. Verify its definition and source; preserve legitimate estimates with their basis. |
+ | Source references used as decoration | A paragraph names research, authorities, or documents without explaining what they support. Check the source and attach it to the precise claim. Remove unsupported borrowed authority. |
+ | Unnecessary disclaimers repeated throughout | The same source limitation appears after every finding. State it once where it affects interpretation. Keep any qualifier required to preserve a specific claim's meaning. |
+-| A correction displaces the reader’s purpose | The revised opening, labels or flow revolve around rebutting the AI’s earlier misunderstanding, even without mentioning the AI. Rebuild the passage around the audience’s actual task and supported facts. Remove explanations that only make sense to someone who saw the correction conversation. Keep a correction notice only when the reader needs the change itself. |
++| A correction displaces the reader’s purpose | The revised opening, labels or flow revolve around rebutting the AI’s earlier misunderstanding, even without mentioning the AI. Repair affected passages around the audience’s actual task and supported facts. In standalone copy, remove explanations that depend on the private drafting conversation. In chat, use relevant conversational context. Keep a correction notice when recipients received incorrect information and need to change a belief or action, or when the user requests it. |
+ | Assistant commentary inside the deliverable | Promises to help, praise for the user, editing narration, or offers to continue interrupt the requested copy. Deliver the finding or requested copy directly. |
+ 
+ ## Agreement and the author's voice
+--- current/references/context-rules.md
++++ candidate/references/context-rules.md
+@@ -4,7 +4,7 @@
+ 
+ ## Corrections across formats
+ 
+-An end reader is not a participant in the drafting conversation. After correcting an AI misunderstanding, keep the subject and reader’s task at the center of the finished work. Do not make a heading, introduction, diagram branch, UI label or interaction explain the former mistake. Test the result without chat history. Explanations of the correction belong in the response to the requester when needed; errata and change notices are exceptions when the audience needs the correction itself.
++Repair the mistaken meaning within the requested scope. Read a standalone artifact from its audience's perspective; use relevant context in an ongoing conversation. Keep a correction notice when recipients received incorrect information and need to change a belief or action, or when the user requests an explanation. Inspect related copy and interactions, but do not redesign unaffected material merely because one sentence was wrong.
+ 
+ ## Leadership and career
+ 
+@@ -14,7 +14,7 @@
+ 
+ ## Commercial and delivery
+ 
+-Keep every price, hour estimate, role, assumption, exclusion, date and qualification unless an authorized source changes it. Distinguish included work from added options. For each option, retain the supplied price, hours, proposed roles, scope, assumptions, exclusions, schedule effect and approval status.
++Preserve commercial meaning and material conditions. In a full option comparison, retain the supplied price, hours, proposed roles, scope, assumptions, exclusions, schedule effect and approval status. In a requested summary, include the facts needed for its decision and omit incidental detail; do not imply extra included work or unconditional approval.
+ 
+ Identify estimates, client reports, proposals, approvals and open questions accurately. “Proposed” cannot become “committed”; “built locally” cannot become “live.” Keep the full scope behind an executive summary, including conditions and unresolved evidence the reader needs.
+ 

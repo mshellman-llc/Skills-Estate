@@ -1,0 +1,23 @@
+{
+  "F01.json": "52c16d4c89d9feab8ea25dcfa86e9ac80db7506d49b1a07813699f1275a0cd8c",
+  "rubric.json": "8d0607b22414aa26a97822f449bb01105a477bf7e7a2b14569b7544c8c4db903",
+  "F04.json": "a5aac8d320492a285bbd4a04a57d3ef4b4987850985274b7d8a2a507d6091aa3",
+  "cases.json": "75c581ef08a8ba087a407b9e62e4357a0783f12b18024cd88627164d26541f30",
+  "protocol.json": "e1de9f3d6560fe11679016c0bb5fbb58dda1ba1481ddcca4277592eb40202fbc",
+  "source-provenance.json": "06062e356431fcec076ef62dd275d1ff27b4e0376e86176c29633fee01e79724",
+  "F05.json": "5340803b1c25973d40bb11c4990b2fdd3b194bfab96a66a1622bf9bf4f236d83",
+  "F02.json": "f682128e1c60fdb7630b93b158d7a2ba4b61086f3a8fb3ca2d0fc910fa269139",
+  "F03.json": "abf2ed13a3fa779380e861b6f3d4663cf6d9a4b2036c9e00c63fe7c0ca9e78c8",
+  "conditions/maple/SKILL.md": "bc0a66d14aa93909bc75896b2c58a51a80326d09bfc6b502696845318fd842bb",
+  "conditions/maple/references/expanded-writing-review.md": "d6183718eda4ae47111f3a1d9800e94041c929892aa773d4e64e6bbed12f330e",
+  "conditions/maple/references/examples.md": "2efa81cb1c374b89f30a3d134dc060f179408cb367afcc1b44a21dd7bfd333de",
+  "conditions/maple/references/patterns.md": "58ca7c8c9fa5b0b0e79fde4509653b2dca233b6511d6f7a72607a0fbe241ed95",
+  "conditions/maple/references/context-rules.md": "a989f452d14ae6ad11055bf9f04361b10b2e5f0399bf395c935ad8221f20f097",
+  "conditions/maple/agents/openai.yaml": "d1eaeeadc04549608282454a7190a8a599a91c94c9bea99c089249d89c26836e",
+  "conditions/birch/SKILL.md": "da4c4805392e560350b35260304453f6267dac59599b853ee90b98a4d96a8a59",
+  "conditions/birch/references/expanded-writing-review.md": "4f78e164ba8470a2866fd4a24466435986b8dcfacf207f84ea8358cdd66a8121",
+  "conditions/birch/references/examples.md": "2efa81cb1c374b89f30a3d134dc060f179408cb367afcc1b44a21dd7bfd333de",
+  "conditions/birch/references/patterns.md": "58ca7c8c9fa5b0b0e79fde4509653b2dca233b6511d6f7a72607a0fbe241ed95",
+  "conditions/birch/references/context-rules.md": "752ececb452be2a1c2fd6bc5f81eb95e7b5c2120afd175621e2bd533c2951f07",
+  "conditions/birch/agents/openai.yaml": "d1eaeeadc04549608282454a7190a8a599a91c94c9bea99c089249d89c26836e"
+}

@@ -1,0 +1,9 @@
+{
+  "meridian_draft": "Extracted verbatim from existing review-candidate opening and first two persona records; layout reduced to text. Proposed fields used; stale current-behavior claims excluded.",
+  "charter_path": "/Volumes/BeastMode/30-projects/meridian/context/product-framework/docs/01-project-charter.md",
+  "charter_sha256": "7ed964f6f0dd1c3ee00c09ec354f2f27f8646d438746735fa23ab98fe4083524",
+  "direction_path": "/Volumes/BeastMode/30-projects/meridian/context/product-framework/rebuild-spec/00-decisions-and-sources.md",
+  "direction_sha256": "adab8194981a0b4ece8ea81faae15f80018eb1fbac52927d8746da8b110e1b46",
+  "direction_excerpt": "| C18 | Use functional product language and support work before an engagement | Megan rejected “firm” as an assumed product term on October 22. Use Knowledge & agents and Settings in navigation, Administrator for the role, and workspace for the shared application context. Preserve consulting workflows as supported scenarios and Salesforce/RevOps as initial expertise. Research, knowledge conversations and account work do not require a deal or project. Earlier business-type wording is not a user-approved restriction. |",
+  "other_cases": "New synthetic editorial fixtures; not user research or actual client records."
+}

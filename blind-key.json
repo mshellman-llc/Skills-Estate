@@ -1,0 +1,218 @@
+{
+  "P01": {
+    "case_id": "T01",
+    "replicate": "one",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P02": {
+    "case_id": "T02",
+    "replicate": "one",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P03": {
+    "case_id": "T03",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P04": {
+    "case_id": "T04",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P05": {
+    "case_id": "T05",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P06": {
+    "case_id": "T06",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P07": {
+    "case_id": "T07",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P08": {
+    "case_id": "T08",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P09": {
+    "case_id": "T09",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P10": {
+    "case_id": "T10",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P11": {
+    "case_id": "T11",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P12": {
+    "case_id": "T12",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P13": {
+    "case_id": "T13",
+    "replicate": "one",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P14": {
+    "case_id": "T14",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P15": {
+    "case_id": "T15",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P16": {
+    "case_id": "T16",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P17": {
+    "case_id": "T17",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P18": {
+    "case_id": "T18",
+    "replicate": "one",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P19": {
+    "case_id": "T01",
+    "replicate": "two",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P20": {
+    "case_id": "T02",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P21": {
+    "case_id": "T03",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P22": {
+    "case_id": "T04",
+    "replicate": "two",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P23": {
+    "case_id": "T05",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P24": {
+    "case_id": "T06",
+    "replicate": "two",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P25": {
+    "case_id": "T07",
+    "replicate": "two",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P26": {
+    "case_id": "T08",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P27": {
+    "case_id": "T09",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P28": {
+    "case_id": "T10",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P29": {
+    "case_id": "T11",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P30": {
+    "case_id": "T12",
+    "replicate": "two",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P31": {
+    "case_id": "T13",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P32": {
+    "case_id": "T14",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P33": {
+    "case_id": "T15",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P34": {
+    "case_id": "T16",
+    "replicate": "two",
+    "A": "cedar",
+    "B": "amber"
+  },
+  "P35": {
+    "case_id": "T17",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  },
+  "P36": {
+    "case_id": "T18",
+    "replicate": "two",
+    "A": "amber",
+    "B": "cedar"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "behavioral_results": "results.json",
+  "integrity": "All frozen inputs match their recorded hashes. Canonical, Codex and Claude installed skill files match the baseline.",
+  "rendered_views_inspected": [
+    "1440px report opening",
+    "390px report opening",
+    "1440px expanded T12",
+    "390px expanded T12",
+    "all four summary-print pages"
+  ],
+  "interaction_checks": "Native disclosure opening and keyboard Enter activation passed; no horizontal overflow at 1440 or 390 pixels; embedded font loaded.",
+  "parity": "No missing required phrases or selectors. Render-review reminder satisfied by listed views.",
+  "design": "Brand checker passed with no flags.",
+  "prose": "Scanner failed on deliberately preserved test drafts, verbatim repeated outputs, and OFL license capitalization. These are evidence, not report prose, and were not rewritten. Full scanner success is not claimed.",
+  "identity": "Neutral scanner flagged Meridian eight times. Meridian is the explicitly requested product in a test case; those references are required evidence, not artifact branding. No other identity flags.",
+  "limitations": "Screenshots sample the disclosure layout; all 72 output texts were read and checked against the raw JSON. Print captures only the collapsed report, with raw case detail retained in HTML and JSON. No cross-browser testing.",
+  "production_changes": "None during evaluation. Candidate remains staged.",
+  "baseline_definition": "Existing means the installed skill including the October 22 reader-purpose correction, before the proposed scope revisions."
+}

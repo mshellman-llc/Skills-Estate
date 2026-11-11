@@ -1,0 +1,20 @@
+{
+  "gate": "brand",
+  "tokens": {
+    "path": "/Volumes/BeastMode/40-skills/work/work/editorial-design/editorial-design/brand/tokens.json",
+    "mode": "authoritative",
+    "guidelines": "Editorial design CSS"
+  },
+  "artifacts": [
+    {
+      "artifact": "/tmp/writing-integrity-evaluation/writing-integrity-comparison.html",
+      "failures": [],
+      "reviewFlags": []
+    }
+  ],
+  "summary": {
+    "failureCount": 0,
+    "reviewFlagCount": 0,
+    "brandPass": true
+  }
+}

@@ -1,0 +1,368 @@
+[
+  {
+    "triplet_id": "G01",
+    "A": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "These proposed journeys follow how people test ideas, apply what they learn to account and engagement decisions, and use later results to improve the guidance.",
+          "effect": "After a useful first sentence, the opening returns to describing what the journeys contain, repeating the framing the user asked to replace instead of stating the value of carrying knowledge into later decisions.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "The terminology and detailed journeys are sound, but the opening still partly presents a tour of the document."
+    },
+    "B": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Gives a useful knowledge-development and application purpose, qualifies the intended experience, uses functional workspace terms, and preserves the substantive research, account, handoff and recovery logic."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "States the intended product purpose directly, connects knowledge to engagement decisions and learning, and preserves the proposed journeys and flexible account context."
+    },
+    "ranking": [
+      [
+        "B",
+        "C"
+      ],
+      [
+        "A"
+      ]
+    ],
+    "ranking_reason": "B and C give the reader a direct product purpose and preserve the substance. A retains a document-tour sentence in the opening. Differences between B and C do not materially change usefulness."
+  },
+  {
+    "triplet_id": "G08",
+    "A": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "fidelity",
+          "quote": "Each name must be unique within your workspace.",
+          "effect": "This omits the per-person boundary of the uniqueness check and can make users think another workspace member can prevent them using a filter name.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "Useful release copy, with one avoidably broad statement about name uniqueness."
+    },
+    "B": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Explains availability, creation, reuse and personal scope clearly, with the fixed-date limitation and no internal release history."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Provides the required save and reuse instructions and preserves availability, personal scope and fixed calendar dates without internal caveats."
+    },
+    "ranking": [
+      [
+        "B",
+        "C"
+      ],
+      [
+        "A"
+      ]
+    ],
+    "ranking_reason": "B and C convey the same useful behavior without an ambiguous workspace-wide naming restriction. Their ordering and wording differences are immaterial."
+  },
+  {
+    "triplet_id": "G06",
+    "A": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "The opening explains the product and the two roles through useful outcomes; research independence, proposed status, and the detailed decisions and recoveries remain intact."
+    },
+    "B": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "The journeys below describe how people and agents develop that knowledge, apply it to engagements and review what they learn from its use.",
+          "effect": "The opening falls back to describing the document contents after introducing research and the absence of a deal requirement, leaving part of the rejected review-oriented framing in place.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "Preserves the intended product and detailed journeys, but the revised opening still includes avoidable document narration."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Connects research, shared guidance and account understanding to decisions and evidence, preserves the consultation use case without making it a required business structure, and retains the substantive journeys."
+    },
+    "ranking": [
+      [
+        "A",
+        "C"
+      ],
+      [
+        "B"
+      ]
+    ],
+    "ranking_reason": "A and C explain what the product enables directly. B adds a document-tour sentence to the opening. The other differences do not justify a further ordering."
+  },
+  {
+    "triplet_id": "G03",
+    "A": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "fidelity",
+          "quote": "Each saved filter needs a unique name within your workspace.",
+          "effect": "The source scopes uniqueness to that person within the workspace; this sentence can imply a shared workspace-wide namespace and unnecessary coordination with other users.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "The instructions and operational limitations are useful, but the name restriction needs its per-person qualification."
+    },
+    "B": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Explains the feature, how to save and select it, personal web-only scope and fixed dates in user-facing terms."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Preserves the release boundaries and gives usable creation and reuse instructions without QA or drafting history."
+    },
+    "ranking": [
+      [
+        "B",
+        "C"
+      ],
+      [
+        "A"
+      ]
+    ],
+    "ranking_reason": "B and C meet the audience and task equally well. A introduces ambiguity about other users sharing its naming restriction; its failure-recovery detail is otherwise relevant to use."
+  },
+  {
+    "triplet_id": "G10",
+    "A": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Makes a proportional light edit: removes the unsupported promotional sentence, clarifies the missing-ID uncertainty, and preserves the warmth, counts, checks, read/write distinction and conditional finance handoff."
+    },
+    "B": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Makes a proportional light edit: removes the unsupported promotional sentence, clarifies the missing-ID uncertainty, and preserves the warmth, counts, checks, read/write distinction and conditional finance handoff."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Makes a proportional light edit: removes the unsupported promotional sentence, clarifies the missing-ID uncertainty, and preserves the warmth, counts, checks, read/write distinction and conditional finance handoff."
+    },
+    "ranking": [
+      [
+        "A",
+        "B",
+        "C"
+      ]
+    ],
+    "ranking_reason": "All three retain the same operational facts and humane voice while removing the unsupported promotion. Small differences in sentence combining and missing-ID wording do not affect the handoff."
+  },
+  {
+    "triplet_id": "G04",
+    "A": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Clearly corrects yesterday’s invitation, gives Room 402, North Hall, 12 November and 10:00–12:00, points to the corrected invitation, and preserves registration and remote-access instructions without internal incident history."
+    },
+    "B": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Clearly corrects yesterday’s invitation, gives Room 402, North Hall, 12 November and 10:00–12:00, points to the corrected invitation, and preserves registration and remote-access instructions without internal incident history."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Clearly corrects yesterday’s invitation, gives Room 402, North Hall, 12 November and 10:00–12:00, points to the corrected invitation, and preserves registration and remote-access instructions without internal incident history."
+    },
+    "ranking": [
+      [
+        "A",
+        "B",
+        "C"
+      ]
+    ],
+    "ranking_reason": "All three give recipients the correction and the actions they need. Greetings, emphasis, and whether unchanged facilitator and agenda are repeated do not materially alter usefulness."
+  },
+  {
+    "triplet_id": "G07",
+    "A": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "Search-time savings have not been measured.",
+          "effect": "The recommendation makes no measured time-saving claim and is justified by finding records for the review cycle. This caveat adds an unrelated measurement disclaimer to a short sponsor decision brief.",
+          "severity": "minor"
+        },
+        {
+          "criterion_tag": "selection",
+          "quote": "this recommendation is not a purchase order.",
+          "effect": "Carries review-administration language into the sponsor-facing recommendation even though the text already asks for a decision and states that approval is outstanding. It adds defensive process commentary without helping the sponsor choose.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "The recommendation and material tradeoffs are preserved, but the search-measurement disclaimer and purchase-order aside add avoidable internal commentary."
+    },
+    "B": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "Search-time savings remain unmeasured because there is no baseline.",
+          "effect": "The recommendation makes no measured time-saving claim and is justified by finding records for the review cycle. This caveat adds an unrelated measurement disclaimer to a short sponsor decision brief.",
+          "severity": "minor"
+        },
+        {
+          "criterion_tag": "selection",
+          "quote": "this recommendation is not a purchase order.",
+          "effect": "Carries review-administration language into the sponsor-facing recommendation even though the text already asks for a decision and states that approval is outstanding. It adds defensive process commentary without helping the sponsor choose.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "The recommendation and material tradeoffs are preserved, but the search-measurement disclaimer and purchase-order aside add avoidable internal commentary."
+    },
+    "C": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "Search-time savings have not been measured.",
+          "effect": "The recommendation makes no measured time-saving claim and is justified by finding records for the review cycle. This caveat adds an unrelated measurement disclaimer to a short sponsor decision brief.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "Makes a clear, faithful recommendation with the important price, prerequisites and metadata limitations, but includes an unnecessary measurement caveat."
+    },
+    "ranking": [
+      [
+        "C"
+      ],
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "ranking_reason": "All three preserve the material decision facts and all include an unnecessary search-time disclaimer. C omits the additional purchase-order aside, making it slightly cleaner for the sponsor. A and B have equivalent defects; other phrasing differences are immaterial."
+  },
+  {
+    "triplet_id": "G02",
+    "A": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "Search-time savings have not been measured.",
+          "effect": "The recommendation makes no measured time-saving claim and is justified by finding records for the review cycle. This caveat adds an unrelated measurement disclaimer to a short sponsor decision brief.",
+          "severity": "minor"
+        },
+        {
+          "criterion_tag": "selection",
+          "quote": "this recommendation is not a purchase order.",
+          "effect": "Carries review-administration language into the sponsor-facing recommendation even though the text already asks for a decision and states that approval is outstanding. It adds defensive process commentary without helping the sponsor choose.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "The recommendation and material tradeoffs are preserved, but the search-measurement disclaimer and purchase-order aside add avoidable internal commentary."
+    },
+    "B": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "Search-time savings have not been measured against a baseline.",
+          "effect": "The recommendation makes no measured time-saving claim and is justified by finding records for the review cycle. This caveat adds an unrelated measurement disclaimer to a short sponsor decision brief.",
+          "severity": "minor"
+        },
+        {
+          "criterion_tag": "selection",
+          "quote": "this recommendation is not a purchase order.",
+          "effect": "Carries review-administration language into the sponsor-facing recommendation even though the text already asks for a decision and states that approval is outstanding. It adds defensive process commentary without helping the sponsor choose.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "The recommendation and material tradeoffs are preserved, but the search-measurement disclaimer and purchase-order aside add avoidable internal commentary."
+    },
+    "C": {
+      "rating": "minor",
+      "findings": [
+        {
+          "criterion_tag": "reader_purpose",
+          "quote": "Search-time savings remain unmeasured.",
+          "effect": "The recommendation makes no measured time-saving claim and is justified by finding records for the review cycle. This caveat adds an unrelated measurement disclaimer to a short sponsor decision brief.",
+          "severity": "minor"
+        }
+      ],
+      "reason": "Makes a clear, faithful recommendation with the important price, prerequisites and metadata limitations, but includes an unnecessary measurement caveat."
+    },
+    "ranking": [
+      [
+        "C"
+      ],
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "ranking_reason": "All three preserve the material decision facts and all include an unnecessary search-time disclaimer. C omits the additional purchase-order aside, making it slightly cleaner for the sponsor. A and B have equivalent defects; other phrasing differences are immaterial."
+  },
+  {
+    "triplet_id": "G05",
+    "A": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Makes a proportional light edit: removes the unsupported promotional sentence, clarifies the missing-ID uncertainty, and preserves the warmth, counts, checks, read/write distinction and conditional finance handoff."
+    },
+    "B": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Makes a proportional light edit: removes the unsupported promotional sentence, clarifies the missing-ID uncertainty, and preserves the warmth, counts, checks, read/write distinction and conditional finance handoff."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Makes a proportional light edit: removes the unsupported promotional sentence, clarifies the missing-ID uncertainty, and preserves the warmth, counts, checks, read/write distinction and conditional finance handoff."
+    },
+    "ranking": [
+      [
+        "A",
+        "B",
+        "C"
+      ]
+    ],
+    "ranking_reason": "All three retain the same operational facts and humane voice while removing the unsupported promotion. Small differences in sentence combining and missing-ID wording do not affect the handoff."
+  },
+  {
+    "triplet_id": "G09",
+    "A": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Clearly corrects yesterday’s invitation, gives Room 402, North Hall, 12 November and 10:00–12:00, points to the corrected invitation, and preserves registration and remote-access instructions without internal incident history."
+    },
+    "B": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Clearly corrects yesterday’s invitation, gives Room 402, North Hall, 12 November and 10:00–12:00, points to the corrected invitation, and preserves registration and remote-access instructions without internal incident history."
+    },
+    "C": {
+      "rating": "pass",
+      "findings": [],
+      "reason": "Clearly corrects yesterday’s invitation, gives Room 402, North Hall, 12 November and 10:00–12:00, points to the corrected invitation, and preserves registration and remote-access instructions without internal incident history."
+    },
+    "ranking": [
+      [
+        "A",
+        "B",
+        "C"
+      ]
+    ],
+    "ranking_reason": "All three give recipients the correction and the actions they need. Greetings, emphasis, and whether unchanged facilitator and agenda are repeated do not materially alter usefulness."
+  }
+]

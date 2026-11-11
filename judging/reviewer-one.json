@@ -1,0 +1,614 @@
+[
+  {
+    "pair_id": "P21",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair on the supplied tradeoff, with two paragraphs and the requested recap within the word limit."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair on the supplied tradeoff, with two paragraphs and the requested recap within the word limit."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P09",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects only the helper to permit saving research without imposing a deal requirement; other JSON values remain exact."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects only the helper to permit saving research without imposing a deal requirement; other JSON values remain exact."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P26",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the quick broken-link repair and gives the relevant timing and structural rationale."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the quick broken-link repair and gives the relevant timing and structural rationale."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P22",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Includes proposed status, price, duration, written approval and the attachment exclusion while omitting incidental details."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Includes proposed status, price, duration, written approval and the attachment exclusion while omitting incidental details."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P16",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the observed page location and the limits of historical evidence without claiming responsibility or denying past removal."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the observed page location and the limits of historical evidence without claiming responsibility or denying past removal."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P35",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes the promotional sentence while preserving the export details, pending check and conditional finance handoff."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes the promotional sentence while preserving the export details, pending check and conditional finance handoff."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P34",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the observed page location and the limits of historical evidence without claiming responsibility or denying past removal."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Reports the observed page location and the limits of historical evidence without claiming responsibility or denying past removal."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P14",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the adequate release note intact, preserving the retry limit, read/write distinction and causal explanation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the adequate release note intact, preserving the retry limit, read/write distinction and causal explanation."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P11",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Provides two introductory statements, preserves the exact quotation and retains optionality, estimate and approval condition."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Provides two introductory statements, preserves the exact quotation and retains optionality, estimate and approval condition."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P08",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the quick broken-link repair and gives the relevant timing and structural rationale."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Uses the conversation to recommend the quick broken-link repair and gives the relevant timing and structural rationale."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P19",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without inventing details."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without inventing details."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P20",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression, uncertainty and personal voice without inventing an explanation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression, uncertainty and personal voice without inventing an explanation."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P18",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the context-reconstruction problem and intended product purpose, retaining design status and ongoing knowledge work without framing the private correction as the topic."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the context-reconstruction problem and intended product purpose, retaining design status and ongoing knowledge work without framing the private correction as the topic."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P15",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter meaning in the first sentence and preserves the valid software meaning in the second."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter meaning in the first sentence and preserves the valid software meaning in the second."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P31",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims and distinguishes unassisted completion from speed without supplying a rewritten draft."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims and distinguishes unassisted completion from speed without supplying a rewritten draft."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P01",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without inventing details."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the effective reassurance, warmth and open timing without inventing details."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P24",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the supported group activities for new members without importing retail framing or drafting history."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the supported group activities for new members without importing retail framing or drafting history."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P29",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Provides two introductory statements, preserves the exact quotation and retains optionality, estimate and approval condition."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Provides two introductory statements, preserves the exact quotation and retains optionality, estimate and approval condition."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P10",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the useful draft/submission distinction and all three attachment types without unnecessary editing."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the useful draft/submission distinction and all three attachment types without unnecessary editing."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P04",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Includes proposed status, price, duration, written approval and the attachment exclusion while omitting incidental details."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Includes proposed status, price, duration, written approval and the attachment exclusion while omitting incidental details."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P12",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the two concrete capabilities and beta availability; the brief factual measurement caveat does not displace the feature explanation or invent outcomes."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the two concrete capabilities and beta availability; the brief factual measurement caveat does not displace the feature explanation or invent outcomes."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P03",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair on the supplied tradeoff, with two paragraphs and the requested recap within the word limit."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Recommends the two-day repair on the supplied tradeoff, with two paragraphs and the requested recap within the word limit."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P33",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter meaning in the first sentence and preserves the valid software meaning in the second."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects the renter meaning in the first sentence and preserves the valid software meaning in the second."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P07",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Clearly identifies the incorrect and corrected invoice amounts and directs use of the attachment without inventing payment events or conditions."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Clearly identifies the incorrect and corrected invoice amounts and directs use of the attachment without inventing payment events or conditions."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P17",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes the promotional sentence while preserving the export details, pending check and conditional finance handoff."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Removes the promotional sentence while preserving the export details, pending check and conditional finance handoff."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P13",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims and distinguishes unassisted completion from speed without supplying a rewritten draft."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Identifies both unsupported claims and distinguishes unassisted completion from speed without supplying a rewritten draft."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P05",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the delivery estimate, unconfirmed booking, tentative installation duration and inspection limitation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the delivery estimate, unconfirmed booking, tentative installation duration and inspection limitation."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P02",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression, uncertainty and personal voice without inventing an explanation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the emotional progression, uncertainty and personal voice without inventing an explanation."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P32",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the adequate release note intact, preserving the retry limit, read/write distinction and causal explanation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leaves the adequate release note intact, preserving the retry limit, read/write distinction and causal explanation."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P25",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Clearly identifies the incorrect and corrected invoice amounts and directs use of the attachment without inventing payment events or conditions."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Clearly identifies the incorrect and corrected invoice amounts and directs use of the attachment without inventing payment events or conditions."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P23",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the delivery estimate, unconfirmed booking, tentative installation duration and inspection limitation."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the delivery estimate, unconfirmed booking, tentative installation duration and inspection limitation."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  },
+  {
+    "pair_id": "P30",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the two concrete capabilities and beta availability; the brief factual measurement caveat does not displace the feature explanation or invent outcomes."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the two concrete capabilities and beta availability; the brief factual measurement caveat does not displace the feature explanation or invent outcomes."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P36",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the context-reconstruction problem and intended product purpose, retaining design status and ongoing knowledge work without framing the private correction as the topic."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Leads with the context-reconstruction problem and intended product purpose, retaining design status and ongoing knowledge work without framing the private correction as the topic."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P06",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the supported group activities for new members without importing retail framing or drafting history."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Introduces the supported group activities for new members without importing retail framing or drafting history."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P27",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects only the helper to permit saving research without imposing a deal requirement; other JSON values remain exact."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Corrects only the helper to permit saving research without imposing a deal requirement; other JSON values remain exact."
+    },
+    "preference": "tie",
+    "preference_reason": "Both satisfy the material task criteria; wording differences do not create a meaningful quality difference."
+  },
+  {
+    "pair_id": "P28",
+    "A": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the useful draft/submission distinction and all three attachment types without unnecessary editing."
+    },
+    "B": {
+      "rating": "pass",
+      "tags": [],
+      "evidence": "",
+      "reason": "Preserves the useful draft/submission distinction and all three attachment types without unnecessary editing."
+    },
+    "preference": "tie",
+    "preference_reason": "The outputs are identical and satisfy the task."
+  }
+]

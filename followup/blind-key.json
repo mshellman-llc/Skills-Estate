@@ -1,0 +1,72 @@
+{
+  "G01": {
+    "case_id": "F01",
+    "replicate": "one",
+    "A": "birch",
+    "B": "willow",
+    "C": "maple"
+  },
+  "G02": {
+    "case_id": "F02",
+    "replicate": "one",
+    "A": "willow",
+    "B": "maple",
+    "C": "birch"
+  },
+  "G03": {
+    "case_id": "F03",
+    "replicate": "one",
+    "A": "maple",
+    "B": "willow",
+    "C": "birch"
+  },
+  "G04": {
+    "case_id": "F04",
+    "replicate": "one",
+    "A": "willow",
+    "B": "birch",
+    "C": "maple"
+  },
+  "G05": {
+    "case_id": "F05",
+    "replicate": "one",
+    "A": "maple",
+    "B": "birch",
+    "C": "willow"
+  },
+  "G06": {
+    "case_id": "F01",
+    "replicate": "two",
+    "A": "birch",
+    "B": "willow",
+    "C": "maple"
+  },
+  "G07": {
+    "case_id": "F02",
+    "replicate": "two",
+    "A": "willow",
+    "B": "maple",
+    "C": "birch"
+  },
+  "G08": {
+    "case_id": "F03",
+    "replicate": "two",
+    "A": "maple",
+    "B": "birch",
+    "C": "willow"
+  },
+  "G09": {
+    "case_id": "F04",
+    "replicate": "two",
+    "A": "maple",
+    "B": "willow",
+    "C": "birch"
+  },
+  "G10": {
+    "case_id": "F05",
+    "replicate": "two",
+    "A": "willow",
+    "B": "birch",
+    "C": "maple"
+  }
+}

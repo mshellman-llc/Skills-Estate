@@ -1,0 +1,127 @@
+[
+  {
+    "id": "F01",
+    "category": "Meridian review correction",
+    "origin": "Actual artifact excerpt and actual user complaint, replayed with current product direction. Skill examples may already contain this known failure.",
+    "task": "Please revise this review text for Meridian.\n\nThe earlier headline was “Understand the firm and the account before deciding there is work.” I responded: “uh what the fuck does ‘Understand the firm and the account before deciding there is work.’ actually mean”. The assistant explained that research and knowledge-building are already work and that it meant a potential client engagement. I then said “still pretty trash”. The replacement opening below also did not work for me.\n\nCurrent project source:\n# Meridian project charter\n\nMeridian is a configurable product for developing and applying shared knowledge through human and agent collaboration. People can research a question, understand an account or develop reusable guidance before creating a deal or project. That understanding carries into discovery, assessment, scope, commercial decisions, delivery and learning.\n\nStatus: Product-definition draft consolidated October 19, 2026. C01–C14 in the [decision and source baseline](../rebuild-spec/00-decisions-and-sources.md) govern the rebuild direction. Meridian has not been rebuilt. This document defines the intended product; it does not commit a release, budget or measured benefit.\n\n## Problem and vision\n\nA consulting engagement's history is spread across CRM, proposals, statements of work, meetings, files, delivery systems and individual memory. Sales and delivery can use different versions of what the client needs, what was promised and which assumptions shaped the estimate. A new team member or AI session reconstructs that context before doing useful work.\n\nThe recorded workaround is manual assembly: read the source systems, ask the people who remember the deal, copy information into briefs and handoff documents, then repeat the exercise when scope or ownership changes. The [working product description](../reconstruction/working-product-description.md) and [September validation brief](09-gate-b-decision-brief.md#job-to-be-done) describe the problem and its hypothesized consequences. Time savings, risk reduction and willingness to pay still need customer evidence.\n\nThe vision is that people can develop useful knowledge with agents, apply it to their work and improve it through experience. Shared research, account understanding and delivery results remain available as the work and people involved change.\n\nIts product promise is to connect each material recommendation, commitment, artifact and outcome to its evidence, responsible people and accepted version. A delivery lead can see what was sold and what remains open. A practitioner can connect requirements and changes to that baseline. A knowledge steward can distinguish an observed result from a candidate lesson before it changes future guidance.\n\n\nLatest recorded direction:\n| C18 | Use functional product language and support work before an engagement | Megan rejected “firm” as an assumed product term on October 22. Use Knowledge & agents and Settings in navigation, Administrator for the role, and workspace for the shared application context. Preserve consulting workflows as supported scenarios and Salesforce/RevOps as initial expertise. Research, knowledge conversations and account work do not require a deal or project. Earlier business-type wording is not a user-approved restriction. |\n\nThe roles and journeys below are proposals, not interview findings. The active product is a local interactive walkthrough: agent responses are simulated and saved work lives in the browser. This task edits the review text only.\n\nReview text:\n# Meridian personas and user journeys\n\nThe proposed Meridian experience includes developing the firm’s methods and offerings, researching organizations and maintaining account knowledge. These activities continue whether or not a client engagement exists. The journeys also show how that knowledge informs a potential engagement and how delivery findings update it.\n\n## Knowledge steward\n\nDevelop the firm’s expertise\n\nWhen the firm needs to sharpen an offering or explain a recurring result, I want to combine its methods, research and counterexamples, so I can give the next team guidance that states when it applies.\n\nDesign proposal: Give firm knowledge its own research, conversation and document context. Continuous evidence collection should feed review of exceptions; project closeout must not be the only trigger.\n\nValidation: Ask a knowledge steward to reconstruct the last change to an offering: what prompted it, which counterexample mattered, who used it next, and what made it trustworthy. Test the proposed research-first ownership and learning triggers.\n\n### Frame the knowledge gap\n\nGoal: Name the question the firm needs answered.\n\nProposed: Open a firm question about a method, market or offering; select reusable sources and record the intended audience.\n\nDecision: Can existing guidance answer this, or is research needed?\n\nHandoff: Steward → Surveyor/Researcher: bounded question, audience, source scope; accept a research plan with explicit unknowns.\n\nRecovery: If no usable sources exist, retain the question and draft assumptions; do not create a dummy deal.\n\n### Test the idea\n\nGoal: Distinguish a useful explanation from a plausible story.\n\nProposed: Compare research with firm experience, preserve conflicting claims and ask only questions that would materially change the guidance.\n\nDecision: Which claim is supported, contradicted or still a working assumption?\n\nHandoff: Researcher → steward: candidate advice plus counterevidence; accept only the scope the evidence supports.\n\nRecovery: On inaccessible or stale sources, show the gap, retain successful findings and continue with qualified advice.\n\n### Make guidance usable\n\nGoal: Explain where the recommendation should and should not be used.\n\nProposed: Save a conditional firm guidance version with examples, exclusions and a next review trigger; routine private refresh follows policy.\n\nDecision: Reuse privately, narrow, pause, or keep investigating?\n\nHandoff: Steward → account/solution lead: version and applicability; receiver can explain the conditions without reopening the whole research task.\n\nRecovery: If evidence changes, mark affected guidance for reassessment and preserve prior uses; do not rewrite accepted work.\n\n### Learn from later use\n\nGoal: Improve the advice from actual results and corrections.\n\nProposed: Collect eligible actuals and conversations during work; compare with the original prediction; ask about unresolved causes and retain counterexamples.\n\nDecision: Change applicability, change advice, retire it, or leave the outcome unresolved?\n\nHandoff: Delivery lead → steward/Researcher: result with scope and alternative explanations; return revised advice to the next permitted use.\n\nRecovery: Keep unreviewed as unreviewed; failed interpretation becomes a review item, never an invented successful result.\n\n## Account lead\n\nResearch and maintain account knowledge\n\nWhen a firm or existing account becomes relevant, I want to understand its business, relationships and likely needs, so I can decide whether and how we could help without inventing an opportunity.\n\nDesign proposal: Let people research and maintain an account without creating a deal. They can start a pursuit when they identify a potential client engagement; account research continues independently.\n\nValidation: Ask an account lead for the last research task that did not lead to a deal. What remained useful, where was it kept, and what later reopened the question? Test how they distinguish a potential client engagement from a pursuit they have chosen to develop.\n\n### Start with a subject\n\nGoal: Know which firm or account the question concerns.\n\nProposed: Find or create an account identity and state the business question; research can start from firm knowledge without a deal.\n\nDecision: Existing account, separate subject, or ambiguous match?\n\nHandoff: Account lead → Surveyor: subject and purpose; result must resolve to the intended account or stay unlinked.\n\nRecovery: Hold ambiguous identities separately; ask for a distinguishing fact rather than silently merging names.\n\n### Build an understanding\n\nGoal: See what is known, assumed and missing.\n\nProposed: Combine public research, authorized relationship history and firm expertise into an account-level view; keep inference editable and sources on request.\n\nDecision: Which need is plausible enough to investigate, and which claim changes the next conversation?\n\nHandoff: Surveyor/Cartographer → account lead: attributed findings and uncertain links; receiver can correct the understanding.\n\nRecovery: A missing connection means incomplete coverage, not “no history”; retain conflicting claims for clarification.\n\n### Choose whether to act\n\nGoal: Select a proportionate next action.\n\nProposed: Compare possible help with the firm’s capabilities; choose further research, monitor, relationship contact, no fit, or create a pursuit.\n\nDecision: Is there enough reason to pursue specific work?\n\nHandoff: Account lead → solution lead only if pursuing: need, evidence, alternatives and open questions; keep the originating account question.\n\nRecovery: If the need is contradicted, retain the learning and choose no pursuit. Do not require a project to save it.\n\n### Keep the account useful\n\nGoal: Preserve understanding for the next relevant event.\n\nProposed: Save the decision, rationale and revisit condition at account level; carry relevant context into a new deal without moving the account’s history.\n\nDecision: What change should cause another look?\n\nHandoff: Account lead → next account owner: current understanding and next question; receiver can resume without reconstructing the relationship.\n\nRecovery: If a source changes, show what changed and affected assumptions; accepted commitments elsewhere remain preserved.",
+    "criteria": [
+      {
+        "tag": "reader_purpose",
+        "question": "Does the revised opening give the intended audience a useful product purpose, rather than describe the review contents or rehearse the earlier work/engagement confusion?",
+        "failure": "An opening primarily organized around what the experience/journeys include or repeated assurances about no engagement."
+      },
+      {
+        "tag": "fidelity",
+        "question": "Does it preserve research, shared expertise, account understanding, potential engagements and delivery learning without turning them into a sales-only funnel or a mandatory sequence?",
+        "failure": "Omitted material product purpose, added unsupported production claims or invented user research."
+      },
+      {
+        "tag": "scope",
+        "question": "Do substantive proposed persona decisions, handoffs and recoveries survive unless a supported correction requires changing them?",
+        "failure": "A copy correction replaces the journeys with a generic feature list or invents new system behavior."
+      },
+      {
+        "tag": "current_direction",
+        "question": "Does it respect the latest functional terminology and flexible workspace context?",
+        "failure": "Treats firm or a single consulting business model as a required product structure despite C18."
+      }
+    ]
+  },
+  {
+    "id": "F02",
+    "category": "Sponsor recommendation from a working proposal",
+    "origin": "Synthetic, new domain and longer mixed-purpose source.",
+    "task": "Our sponsor needs a short recommendation for tomorrow's planning meeting. Write it from these working notes.\n\nThe archive team has 18,000 scanned inspection reports. A search upgrade would let analysts find the reports by equipment number and inspection date. The notes below came from the planning document and the last technical review.\n\nOption A keeps the current archive and adds a searchable index. Proposed fixed fee: $24,000. Estimated delivery: four weeks after written approval and access to the archive export. Those two prerequisites have not been completed. The scope includes indexing the equipment number and date already present in document metadata. It excludes extracting missing fields from scans and correcting inaccurate metadata. The archive remains the source of record. The team could use the upgrade during the November review cycle if those prerequisites arrive in time; no completion date has been promised.\n\nOption B replaces the archive with a new document system. Proposed implementation fee: $78,000, excluding the new system's annual subscription, which has not been quoted. Estimated implementation: twelve weeks after the same prerequisites. This option adds retention workflows, reviewer assignments and version comparison. The analysts have not requested these capabilities for the November review cycle. Migration of historical annotations is not included in that estimate. Legal has not assessed retention requirements for the new system.\n\nIn a sample of 120 reports, 97 had both required metadata fields. We do not know whether that sample represents the entire archive. Analysts currently search folder names and ask colleagues where reports were saved. No baseline for search time has been measured. The sponsor's priority this quarter is finding existing records during the review cycle, rather than replacing the archive. They can consider a separate metadata cleanup after seeing the missing-field report. An index would not make a report with missing metadata searchable by that missing field.\n\nReview administration: the technical review lasted 55 minutes. Nina facilitated. Arjun took notes. The sample folder contains 120 reports in eight subfolders. The planning document is version 0.6. It was exported at 17:42 on Tuesday. The appendix lists 63 document naming conventions. The team intends to discuss the proposal at 09:30 tomorrow. Finance has requested a recommendation, not a purchase order. The sponsor has not approved either option.\n",
+    "criteria": [
+      {
+        "tag": "reader_purpose",
+        "question": "Does it make a concise decision recommendation around this quarter’s search need, rather than reproducing source administration or an indiscriminate checklist?",
+        "failure": "No clear recommendation or incidental meeting/file details swamp the decision."
+      },
+      {
+        "tag": "fidelity",
+        "question": "Does the retained recommendation preserve proposed price, estimate, prerequisites and the material missing-metadata limitation?",
+        "failure": "Turns estimate into deadline, implies approval, guarantees all records searchable or omits a material prerequisite."
+      },
+      {
+        "tag": "selection",
+        "question": "Does it select the material option tradeoff and omit irrelevant source details?",
+        "failure": "Copies every figure/name to comply with preservation rules or erases a material cost/scope distinction."
+      },
+      {
+        "tag": "reader_purpose",
+        "question": "Are caveats included only where needed to interpret the recommended action?",
+        "failure": "Unmeasured search time becomes a prominent disclaimer despite making no measured time-saving claim."
+      }
+    ]
+  },
+  {
+    "id": "F03",
+    "category": "Customer update from engineering notes",
+    "origin": "Synthetic new release, with behavior facts and internal context mixed together.",
+    "task": "Write the product update for the in-app What's new page from these engineering notes.\n\nRelease: saved filters for the shipment table. Available now to paid-workspace users on the web app. Users can set a combination of status, destination and planned dispatch date, then choose Save filter and give it a name. Saved filters appear in that person's filter menu. Selecting one reapplies its saved values. A user can rename or delete their own saved filters. Saved filters are personal; there is no team-wide sharing in this release. They do not change anyone else's table or alter shipment records.\n\nThe existing table can still be filtered without saving. Dates in a saved filter are fixed calendar dates, not a rolling interval. A saved filter for 1–7 November continues to use those dates next week. The mobile app does not yet support saved filters. The web release completed at 14:20 yesterday. Feature flag sf_web_v2 is enabled for eligible workspaces. Eleven automated checks passed. Two internal testers used the feature on staging. There is no adoption study, no measured productivity improvement and no measured retention impact. No user has been interviewed about this release. Support will review questions after launch.\n\nImplementation notes: saves are keyed by user ID and workspace ID. A uniqueness check prevents duplicate names within that person's workspace. Failed saves leave the active filter in place and show an error, so the person can retry. We have a separate engineering ticket for variable date ranges, but no release date. The initial ticket was called Shared Views even though the shipped feature is personal saved filters. The marketing draft “Your entire team now works in perfect sync” was rejected in review. There is no need for users to reload their browser to see the change.\n",
+    "criteria": [
+      {
+        "tag": "reader_purpose",
+        "question": "Does the update explain the new behavior and how to use it without importing internal measurements, test receipts, tickets or drafting history?",
+        "failure": "Copies no-adoption/no-interview disclaimers, feature-flag names, QA counts or the rejected marketing claim into the release copy."
+      },
+      {
+        "tag": "fidelity",
+        "question": "Does it preserve paid web availability, personal scope and fixed-date behavior where relevant to use?",
+        "failure": "Promises team sharing, mobile availability, rolling dates or measured outcomes."
+      },
+      {
+        "tag": "actionability",
+        "question": "Can a user understand what changed and how to save/use a filter?",
+        "failure": "Feature praise or a source-inventory list replaces useful instructions."
+      }
+    ]
+  },
+  {
+    "id": "F04",
+    "category": "Correcting information already sent",
+    "origin": "Synthetic customer notice; checks that audience-relevant corrections survive.",
+    "task": "Draft the email to the workshop registrants from these notes.\n\nThe workshop is on 12 November. The calendar invitation we emailed yesterday says Room 204 at North Hall. That room is wrong. The workshop is in Room 402 at North Hall, at the same 10:00–12:00 time. The corrected invitation is attached. The registration itself is valid and no one needs to register again. The entrance and building are unchanged. The meeting link in the invitation is unchanged for remote participants.\n\nOperations notes: the room booking spreadsheet had 402 throughout. The calendar template had 204. We do not know who copied that value into the invite. The team has corrected the template and asked the venue coordinator to check the sign outside 402. The coordinator has not replied. No apology or correction has been sent to registrants yet. Twenty-eight people registered, including six remote participants. The organizer had considered cancelling when the room error was first noticed; that is no longer being considered. The workshop facilitator and agenda are unchanged.\n",
+    "criteria": [
+      {
+        "tag": "necessary_correction",
+        "question": "Does it clearly supersede yesterday’s wrong room and tell the affected recipients which invitation/room to use?",
+        "failure": "Hides the correction, leaves conflicting rooms unexplained or changes time/date."
+      },
+      {
+        "tag": "fidelity",
+        "question": "Does it retain relevant unchanged details and avoid inventing causes, blame or confirmed signage?",
+        "failure": "Invented attribution or operational confirmation."
+      },
+      {
+        "tag": "reader_purpose",
+        "question": "Does the email omit internal template history, cancellation discussion and registration counts that recipients do not need?",
+        "failure": "An internal incident report displaces the short actionable correction."
+      }
+    ]
+  },
+  {
+    "id": "F05",
+    "category": "Light edit with voice and technical relationships",
+    "origin": "Synthetic internal handoff draft with one unsupported promotional passage.",
+    "task": "Give this internal handoff note a light edit.\n\nI know yesterday was a slog. Thank you for sticking with it. The import is finished, and the review file is in the shared folder. It has 8,460 rows. We have not checked the totals yet. Mira can send it to finance after that check.\n\nThe client retries a failed read up to three times because the provider sometimes returns a stale replica just after a write. It does not retry writes. Keep that distinction in the handoff: a timeout on a write still needs investigation before someone sends the request again. The new retry setting does not change the timeout value.\n\nFor tomorrow, I suggest we check the totals first, then spot-check the 37 records whose dates were converted from text. Those records are marked in the review file. The source dates remain in the adjacent column. I do not yet know whether the two records without an equipment ID are missing IDs in the source or were lost during the import; Jo is checking that now. Please leave those two records in the review file while we resolve it.\n\nThis pivotal milestone proves that our world-class process has eliminated the friction that held the organization back.\n\nIf you run out of time, leave me a note about where you stopped. We can pick it up together in the morning. No one needs to stay late to finish this tonight.\n",
+    "criteria": [
+      {
+        "tag": "voice",
+        "question": "Does it preserve the humane tone and useful general reassurance without adding invented deadlines or flattening the voice?",
+        "failure": "Deletes warmth solely for lacking specific facts or rewrites into a rigid audit/checklist."
+      },
+      {
+        "tag": "fidelity",
+        "question": "Does it preserve counts, distinct unresolved checks, read/write behavior and the finance-send condition?",
+        "failure": "Lost qualifiers, changed technical meaning or invented resolution."
+      },
+      {
+        "tag": "scope",
+        "question": "Is the edit proportional to a light edit, removing unsupported promotion while retaining effective causal relationships and useful structure?",
+        "failure": "Unnecessary wholesale rewrite, fragmented causal explanation, or unsupported promotional claim retained."
+      }
+    ]
+  }
+]
