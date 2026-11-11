@@ -18,6 +18,18 @@ Judge each line against every rule in `rules.md`. Then answer three questions ab
 
 A `true` answer requires the verdict `fix`. The script rejects `ok` beside a `true`.
 
+## Scanner flags
+
+Some ledger rules carry `"judge": "line-pass"`. They match a shape a pattern cannot rule on, such as a list of three, which is correct when the source has three things. The scan never blocks on these rules. Each hit appears in the line's `flags` in `assignments.json`, and the verdict for that line must answer it.
+
+```json
+{"id": "0007", "sha": "0be2c1d9a4f3", "section": "77aa01c3e2b9", "verdict": "ok",
+ "promise": false, "portable": false, "tension": false,
+ "flags": {"triad": false}}
+```
+
+Answer `false` when the flagged words are right as written: the three items are distinct and all come from the source. Answer `true` when the flag found a fault, and mark the line `fix`. A flagged line with no answer is rejected.
+
 ## Verdict record
 
 Copy `id`, `sha` and `section` from the assignment. They tie the verdict to the exact line and section the worker read.

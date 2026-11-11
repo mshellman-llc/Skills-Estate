@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.4.19",
+  "version": "0.4.20",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -648,7 +648,7 @@
       "writing": {
         "status": "pending",
         "reviewed_sha256": "",
-        "evidence": "Added 2026-11-11 as a draft. Self-test 28 of 28; check.py run on three of the owner's files. Awaiting owner review and three proof runs."
+        "evidence": "Added 2026-11-11 as a draft. Self-test 30 of 30; check.py run on three of the owner's files. Awaiting owner review and three proof runs."
       },
       "manage-decision-register": {
         "status": "pending",

@@ -11,7 +11,7 @@ One entry point for writing and reviewing every word a person will read. It repl
 | `scripts/extract_review_text.py` | Text extraction for rendered and generated files |
 | `references/line-pass.md` | Verdict record and its required questions |
 | `references/document-pass.md` | The fixed map |
-| `scripts/check_selftest.py` | 28 cases on synthetic files |
+| `scripts/check_selftest.py` | 30 cases on synthetic files |
 
 ## The check
 
@@ -26,7 +26,7 @@ Exit 0 is `pass`, 1 is `fail` and 2 is `incomplete`. The output has `status`, `c
 ### Where the rules come from
 
 1. The rules folder path is not written in this repository, because the estate's separation rule keeps workstation paths out of skills. `check.py` reads `--rules-dir`, then the `WRITING_HOME` variable, then the path in `~/.agents/writing/home`.
-2. When the rules folder has no `patterns.json`, `check.py` reads the scanner's ledger in `~/.agents/humanize`, or in `HUMANIZE_HOME` when that variable is set. The receipt records which ledger ran. A run given `--rules-dir` uses that folder only. This ends when `patterns.json` is written to the rules folder.
+2. When the rules folder has no `patterns.json`, `check.py` reads the scanner's ledger in `~/.agents/humanize`, or in `HUMANIZE_HOME` when that variable is set. The receipt records which ledger ran. A run given `--rules-dir` uses that folder only. That folder gained its own `patterns.json` on 2026-11-11, so the fallback now covers only a machine where the folder is not mounted.
 3. With no ledger in either place, the run returns `incomplete`. A rule whose pattern does not compile also returns `incomplete` and names the rule.
 
 ### What the check covers
@@ -39,9 +39,9 @@ Exit 0 is `pass`, 1 is `fail` and 2 is `incomplete`. The output has `status`, `c
 
 ### Findings
 
-9. Blocking follows the ledger's own settings. A hit on an active rule at or above `hard_weight` blocks at any length. Lighter rules block when the text reaches `flag_density` or a rule repeats past `repeat_limit` and `repeat_density`, in a text of at least `min_words`. Other hits, and every candidate rule, are counted under `advisories` and listed in the receipt.
+9. A ledger rule marked `"judge": "line-pass"` never blocks from the scan. Its hits are counted under `review`, listed in the receipt, and each one needs a `true` or `false` answer in that line's verdict. Lists of three use this mark, because a pattern cannot tell a true count from a padded one. For every other rule, blocking follows the ledger's own settings. A hit on an active rule at or above `hard_weight` blocks at any length. Lighter rules block when the text reaches `flag_density` or a rule repeats past `repeat_limit` and `repeat_density`, in a text of at least `min_words`. Other hits, and every candidate rule, are counted under `advisories` and listed in the receipt.
 10. `line` is the source line when the locator is a line number. For workbooks, Word files and decks it is the extracted line number. Each finding also carries `id` and `loc`.
-11. The output adds `steps`, `advisories`, `coverage.lines_exempt`, and on an incomplete run `reason` and `not_reviewed`. The four agreed keys are unchanged.
+11. The output adds `steps`, `advisories`, `review`, `coverage.lines_exempt`, and on an incomplete run `reason` and `not_reviewed`. The four agreed keys are unchanged.
 12. `--register` takes one name or several separated by commas. It adds ledger rules whose `scope` or `registers` list names it. A name with no rules is accepted, because registers are not a fixed list.
 
 ### Coverage and failures

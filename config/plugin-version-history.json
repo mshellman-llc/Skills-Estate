@@ -92,6 +92,10 @@
     "0.4.19": {
       "content_sha256": "ae8a35b82de79aeafc4e06b9d702d718e2cbc7e39accf046ae6e1347d145b1a9",
       "note": "Add the writing skill to estate-writing as a pending draft: one entry point for writing and review, with check.py returning pass, fail or incomplete and a coverage receipt"
+    },
+    "0.4.20": {
+      "content_sha256": "f1b078d5006ebba76f2663bcd545fcd7b0c632700cff2c36a5f703491fce68db",
+      "note": "Let a ledger rule send its hits to the line pass: check.py counts them under review and rejects a verdict that leaves a flag unanswered"
     }
   },
   "source_conflicts": [

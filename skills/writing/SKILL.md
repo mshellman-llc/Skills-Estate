@@ -57,6 +57,8 @@ python3 scripts/check.py --file PATH [--register NAME] --json
 
 The output carries `status`, `coverage` with `lines_total` and `lines_reviewed`, `findings`, `receipt` and `steps`. The script counts the lines each part scanned and compares them with the lines it extracted, so a gap returns `incomplete`. A file of any length is split into parts of at most 300 lines.
 
+`review` counts the scanner flags that wait for a line-pass answer, such as a list of three; they do not block a scan.
+
 Run with only `--file`, the check covers the scanner. `steps` then lists the line pass and document pass as `not_run`, and the reply calls the result a scan. Where the script cannot run, send the text to the Hub's scan tool. If neither is available, say the scan did not run.
 
 Fix each finding by rewriting the sentence, then run the check again. Replacing a flagged word with a synonym leaves the same sentence in place.
@@ -78,6 +80,6 @@ A part or worker that fails is retried twice with half its lines. Lines still un
 
 ## Report
 
-Read the receipt before reporting. State which steps ran and each step's status. A step listed as `failed` or `not_run` in a full review makes the review incomplete. Report line counts as coverage only.
+Read the receipt before reporting. State which steps ran and each step's status. A `failed` step makes the review incomplete. A clean round is final only after the spot audit has run. Report line counts as coverage only.
 
 In ordinary work, fix the wording and deliver it without describing the review.
