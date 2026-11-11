@@ -23,22 +23,22 @@ CASES = [
     # ---- palette -----------------------------------------------------------
     ("off_palette", "a.css", ".x{color:#123456}", 1, "OFF_PALETTE"),
     ("off_brand_navy", "b.css", ".x{color:#1f2a44}", 1, "OFF_PALETTE"),
-    ("neutral_text_allowed", "c.css", ".x{color:#11141A}", 0, None),
+    ("neutral_text_allowed", "c.css", ".x{color:#111111}", 0, None),
     # a warm hex that is not on the blocked list, so this proves the warm rule
     ("warm_accent", "d.css", ".x{background:#C2410C}", 1, "OFF_PALETTE"),
     ("blocked_warm_reports_blocked_first", "d2.css", ".x{background:#B23A48}", 1,
      "OFF_PALETTE"),
     ("warm_amber_box", "e.css", ".alert{background:#FBF6E7}", 1, "OFF_PALETTE"),
     ("canonical_palette_ok", "f.css",
-     ".x{color:#11141A;background:#F5F5F5;border:1px solid #E2E2E3}", 0, None),
+     ".x{color:#111111;background:#F5F5F5;border:1px solid #DDDDDD}", 0, None),
     ("sand_is_warm_but_allowed", "g.css",
-     ".x{background:#F5F5F5;border:1px solid #E2E2E3}", 0, None),
+     ".x{background:#F5F5F5;border:1px solid #DDDDDD}", 0, None),
     ("bare_hex_in_js", "h.js", 'const NAVY="123456";', 1, "OFF_PALETTE"),
-    ("bare_canonical_in_js", "i.js", 'const NAVY="11141A";', 0, None),
+    ("bare_canonical_in_js", "i.js", 'const NAVY="111111";', 0, None),
 
     # ---- borders and radii -------------------------------------------------
-    ("border_width", "j.css", ".x{border:2px solid #E2E2E3}", 1, "BORDER_WIDTH"),
-    ("profile_text_border", "k.css", ".x{border:1px solid #11141A}", 0, None),
+    ("border_width", "j.css", ".x{border:2px solid #DDDDDD}", 1, "BORDER_WIDTH"),
+    ("profile_text_border", "k.css", ".x{border:1px solid #111111}", 0, None),
     # colors_and_type.css caps radii at 8px for cards, buttons, tags, and inputs
     # alike, with 4px as --radius-sm. An earlier 8-to-12px card band was wrong.
     ("radius_small_ok", "l.css", ".card{border-radius:4px}", 0, None),
@@ -51,7 +51,7 @@ CASES = [
 
     # ---- layout ------------------------------------------------------------
     ("title_underline", "s.html",
-     "<style>h2{border-bottom:1px solid #E2E2E3}</style><h2>Scope of work</h2>",
+     "<style>h2{border-bottom:1px solid #DDDDDD}</style><h2>Scope of work</h2>",
      1, "TITLE_UNDERLINE"),
     ("centered_body", "t.html",
      "<style>p{text-align:center}</style><p>Body copy here.</p>", 1,
@@ -61,12 +61,12 @@ CASES = [
     # four brand tokens as literals on one HTML surface: legal. BRAND.md caps
     # nothing at a count; the palette rule is that every hex is a token.
     ("html_four_brand_ok", "z1.html",
-     "<style>.a{color:#11141A}.b{color:#37437D}.c{color:#FFFFFF}"
+     "<style>.a{color:#111111}.b{color:#111111}.c{color:#FFFFFF}"
      ".d{background:#F5F5F5}</style><p>x</p>", 0, None),
     # the same palette reached through var(): equally legal, and no advisory
     # flag is emitted about an uncountable budget, because there is no budget
     ("html_var_palette_ok", "z2.html",
-     "<style>:root{--navy:#11141A;--teal:#37437D;--tl:#FFFFFF;--sand:#F5F5F5}"
+     "<style>:root{--navy:#111111;--teal:#111111;--tl:#FFFFFF;--sand:#F5F5F5}"
      ".a{color:var(--navy)}.b{color:var(--teal)}</style><p>x</p>", 0, None),
     # Shadows are allowed but restrained: the CSS ships four shadow tokens
     # described as "max 4px offset per brand". Only oversized offsets fail.
@@ -75,7 +75,7 @@ CASES = [
     ("shadow_offset_too_big", "y1b.css",
      ".card{box-shadow:0 12px 18px rgba(8,15,40,.06)}", 1, "SHADOW_OFFSET"),
     ("shadow_none_ok", "y2.css", ".card{box-shadow:none}", 0, None),
-    ("inset_ring_ok", "y3.css", ".card{box-shadow:inset 0 0 0 1px #E2E2E3}", 0, None),
+    ("inset_ring_ok", "y3.css", ".card{box-shadow:inset 0 0 0 1px #DDDDDD}", 0, None),
 
     # ---- review tier (passes non-strict) -----------------------------------
     ("title_case_heading_review", "v.html", "<h1>Scope Of Work And Timeline</h1>",
@@ -148,17 +148,17 @@ MARK_AND_LOCKUP_SLIDE = GOOD_SLIDE.replace(
 # BRAND.md states no per-surface count, only palette fidelity. Neutrals too.
 FOUR_BRAND_SLIDE = GOOD_SLIDE.replace(
     '<a:t>Quoting speed is capped by response time.</a:t>',
-    '<a:srgbClr val="11141A"/><a:srgbClr val="37437D"/>'
+    '<a:srgbClr val="111111"/><a:srgbClr val="111111"/>'
     '<a:srgbClr val="FFFFFF"/><a:srgbClr val="F5F5F5"/>'
-    '<a:srgbClr val="F5F5F5"/><a:srgbClr val="11141A"/>'
+    '<a:srgbClr val="F5F5F5"/><a:srgbClr val="111111"/>'
     '<a:t>Four brand colors on one slide.</a:t>')
 # navy + teal + sand plus every neutral: on-palette throughout, must pass.
 THREE_BRAND_SLIDE = GOOD_SLIDE.replace(
     '<a:t>Quoting speed is capped by response time.</a:t>',
-    '<a:srgbClr val="11141A"/><a:srgbClr val="37437D"/>'
-    '<a:srgbClr val="F5F5F5"/><a:srgbClr val="E2E2E3"/>'
-    '<a:srgbClr val="F5F5F5"/><a:srgbClr val="11141A"/>'
-    '<a:srgbClr val="E2E2E3"/><a:srgbClr val="FFFFFF"/>'
+    '<a:srgbClr val="111111"/><a:srgbClr val="111111"/>'
+    '<a:srgbClr val="F5F5F5"/><a:srgbClr val="DDDDDD"/>'
+    '<a:srgbClr val="F5F5F5"/><a:srgbClr val="111111"/>'
+    '<a:srgbClr val="DDDDDD"/><a:srgbClr val="FFFFFF"/>'
     '<a:t>Three brand colors and every neutral.</a:t>')
 
 
@@ -192,14 +192,14 @@ def main() -> int:
         observed["off_brand_blocked_by_default"] = run([rp]).returncode
         expected["off_brand_blocked_by_default"] = 1
         rp2 = root / "legacy2.css"
-        rp2.write_text(".x{color:#11141A}", encoding="utf-8")
+        rp2.write_text(".x{color:#111111}", encoding="utf-8")
         observed["second_off_brand_color_blocked"] = run([rp2]).returncode
         expected["second_off_brand_color_blocked"] = 0
 
         # ---- lint-context exemptions ---------------------------------------
         # a hex named in a `replacedBy` record is not a brand decision
         rec = root / "record.md"
-        rec.write_text("#1f2a44 replacedBy #11141A.",
+        rec.write_text("#1f2a44 replacedBy #111111.",
                        encoding="utf-8")
         observed["replacement_record_not_flagged"] = run([rec]).returncode
         expected["replacement_record_not_flagged"] = 0

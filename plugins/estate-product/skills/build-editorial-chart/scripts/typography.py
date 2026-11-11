@@ -2,13 +2,13 @@
 """
 Editorial chart typography.
 
-Default profile: Inter for everything. Numbers use tabular figures so
+Default profile: the system sans stack for everything, with no web font. Numbers use tabular figures so
 digits stay aligned in tables, axes and transitions. No monospace.
 
 Optional `newsroom` profile, only when the newspaper look is requested: a display
 serif for headlines (Playfair Display, standing in for the Times' Cheltenham) and a
 text serif for long body copy (Source Serif 4, standing in for Imperial). Chart
-labels, axes and annotations stay in Inter in both profiles.
+labels, axes and annotations stay in the system sans stack in both profiles.
 
 Scale:
   headline       700, clamp(26px, 5vw, 44px), states the finding as a sentence
@@ -19,7 +19,7 @@ Scale:
   source line    400, 12px, --ink3
 
 Brand override: when the chart belongs to a product or client with its own
-design system, pass a `brand` dict instead of relying on Inter and the neutral colors:
+design system, pass a `brand` dict instead of relying on the system stack and the neutral colors:
     {"font": "Hanken Grotesk",                    # one Google Fonts sans family
      "light": {"--bg": "#F7F9FB", "--hero": ...},  # any chart token to replace
      "dark":  {"--bg": "#131316", ...}}
@@ -39,16 +39,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from palette import css_variables  # noqa: E402
 
 FONT_LINKS = {
-    "default": (
-        '<link rel="preconnect" href="https://fonts.googleapis.com">'
-        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-        '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" '
-        'rel="stylesheet">'
-    ),
+    "default": "",
     "newsroom": (
         '<link rel="preconnect" href="https://fonts.googleapis.com">'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-        '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&'
+        '<link href="https://fonts.googleapis.com/css2?'
         'family=Playfair+Display:ital,wght@0,700;0,900;1,700&'
         'family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">'
     ),
@@ -56,12 +51,12 @@ FONT_LINKS = {
 
 FONT_VARS = {
     "default": (
-        '  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;\n'
+        '  --font-sans: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;\n'
         "  --font-display: var(--font-sans);\n"
         "  --font-body: var(--font-sans);\n"
     ),
     "newsroom": (
-        '  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;\n'
+        '  --font-sans: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;\n'
         '  --font-display: "Playfair Display", Georgia, serif;\n'
         '  --font-body: "Source Serif 4", Georgia, serif;\n'
     ),

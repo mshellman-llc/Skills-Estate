@@ -94,7 +94,7 @@ CHECKS = [
      "Use a one-hue tonal ramp with monotonic lightness (palette.py sequential)."),
     ("monospace", lambda c: any(re.search(r"mono", f, re.I) for f in c.get("fonts", [])), "medium",
      "A monospace font is in use.",
-     "Use Inter with tabular figures."),
+     "Use the sans stack with tabular figures."),
     ("no_tabular_nums",
      lambda c: c.get("has_animated_values") and not c.get("uses_tabular_nums"), "low",
      "Changing numbers without tabular figures will jitter.",

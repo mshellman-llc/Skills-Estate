@@ -45,8 +45,10 @@ async function main() {
         const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
         const probe = document.createElement('span'); probe.style.color = accent; document.body.appendChild(probe);
         const accentRgb = getComputedStyle(probe).color; probe.remove();
+        // A profile whose accent is its text color has no separate accent to restrict.
+        const accentIsText = accentRgb === getComputedStyle(document.body).color;
         const allowed = 'a,nav,button,select,label,.tag,.num,.qm,.cls,svg,[aria-current],.seg,.tabs,.btn,.chip';
-        res.accentText = [...document.querySelectorAll('#main *')].filter(e => own(e) && visible(e) && getComputedStyle(e).color === accentRgb && !e.closest(allowed))
+        res.accentText = accentIsText ? [] : [...document.querySelectorAll('#main *')].filter(e => own(e) && visible(e) && getComputedStyle(e).color === accentRgb && !e.closest(allowed))
           .slice(0, 5).map(e => e.tagName.toLowerCase() + (e.className ? '.' + String(e.className).split(' ')[0] : '') + ': ' + e.textContent.trim().slice(0, 40));
         const tiles = [...document.querySelectorAll('.lane:not([hidden]) .tile')].map(t => getComputedStyle(t).backgroundColor);
         res.tiles = tiles;

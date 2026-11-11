@@ -18,7 +18,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "981d62b2aff72320faf8763cb2204162eb41643e519c3e09431ae521520fd402",
+      "required_sha256": "b3bd89cad1f93defe5a8e477ecc3d4d52fe59f085f65eb750a8725e01263974b",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -108,7 +108,7 @@
       "subject": "author-style-runtime"
     },
     {
-      "required_sha256": "92ccfcea1ba5d49423a317840a0c287f24ba994ad40bca262880dce5c5e567b7",
+      "required_sha256": "f86c7c9c898db65a6332a9cd9e5ff884c0aef71b5066feb2c9fd1caeced096fc",
       "status": "review required",
       "subject": "brand-renderer"
     },
@@ -123,7 +123,7 @@
       "subject": "build-deck"
     },
     {
-      "required_sha256": "38d542525ce3b95123ff330a5af98ca711e80667f54a9288c09e5991dc49b021",
+      "required_sha256": "5ba38a77e061998a9b48632eee0f6e868e979f2075e0aa107cb8a9725a218704",
       "status": "review required",
       "subject": "build-editorial-chart"
     },
@@ -323,7 +323,7 @@
       "subject": "manage-writing-profile"
     },
     {
-      "required_sha256": "5a9f937f5d8f228e6ed2350ff2e93e4d83ad7f47571291cb258a32e705e02ee9",
+      "required_sha256": "46ce29e0a3fd58ea372f90afabb69347c791d896f6d56b982690dca43228eb86",
       "status": "review required",
       "subject": "map-journey"
     },
@@ -428,7 +428,7 @@
       "subject": "review-sales-journey"
     },
     {
-      "required_sha256": "6c85fe0f21ce83acc03bd2c94aee03070be6b18532f6cc68ab582ac00e23ee75",
+      "required_sha256": "330410fb0a9b9958b103ed1d8fb166454ae775cbb4d4bea9dd635694d2a6e7ef",
       "status": "review required",
       "subject": "review-site-runtime"
     },
@@ -523,6 +523,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "01772f6118fa83b58fd37f83a7bf92c2a2fc231e1cd90b229d7af6f0a6613cd7",
+  "source_sha256": "fa4f30ad60f185589c5b32cfd3f7be5820882b5585621e97c3b6e4e2c6c016cb",
   "status": "owner-published"
 }
