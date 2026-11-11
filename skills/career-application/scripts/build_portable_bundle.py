@@ -201,7 +201,7 @@ def verify_expanded(path: Path) -> None:
 
 
 def main() -> None:
-    canonical = Path("/Volumes/BeastMode/Projects/Knowledge Hub/src")
+    canonical = Path("/Volumes/BeastMode/30-projects/knowledge-hub/work/src")
     for name in ("content-review.ts", "content-review-cli.ts"):
         source = canonical / name
         if not source.is_file():
