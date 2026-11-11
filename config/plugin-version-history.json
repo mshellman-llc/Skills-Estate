@@ -100,6 +100,10 @@
     "0.4.21": {
       "content_sha256": "adfc648054f861b6e4e088eefc12b5d1ce43e2272ae00f027c9e39d67c8f0cf6",
       "note": "Writing check: record new registers, add the claims check and source list, define the audit for a failed round and record its independence, exclude labels from numbers, trace number words, and count one fault once"
+    },
+    "0.4.22": {
+      "content_sha256": "2ce93a4836700c11ded7bdd41d14bf88ad17b701453dec52b37ef3125d09dd38",
+      "note": "Check the extract_review_text real-page test for any logo alt text instead of a hard-coded company name, in review-writing and the writing skill."
     }
   },
   "source_conflicts": [
