@@ -1,0 +1,22 @@
+---
+name: brain-work-item
+description: Start, continue, or close Megan's Brain-linked Codex work item. Use when a Brain task ID or daily ready item is the work source, or when finishing a linked task.
+---
+
+# Brain work item
+
+Brain at `/Volumes/BeastMode/MeganOS/Brain` is the task authority. Read the named note under `Today/Tasks/` and its project brief under `System/Projects/` before acting. Keep the task ID in the chat title. The task's source evidence and earlier status history stay intact.
+
+If starting from Brain, set the task to `in-progress`, then run `/usr/bin/python3 /Volumes/BeastMode/MeganOS/megan-os/bin/task_bridge.py` once. Check `System/Sync/Health.md`. During the pilot, chat creation is held until desktop project placement is verified; a queued task stays in the current working chat and must not spawn a duplicate. Once the rollout gate passes, confirm the task note gains exactly one `codex_thread_id` and continue in that chat. If already in the linked chat, continue there. The daily view at `Today/Ready Work.md` shows every ready item grouped by project.
+
+Do the concrete next action using the project's source folder and guidance. Distinguish a local build from publication, deployment, submission, adoption, or verified live behavior. Do not infer task completion from an idle or archived chat.
+
+At a real work boundary, record a receipt in Brain:
+
+```text
+python3 /Volumes/BeastMode/MeganOS/megan-os/bin/brain_tasks.py receipt TASK_ID --status complete --result "What changed" --verification "What was checked"
+```
+
+Use `--status blocked` or `--status in-progress` when that is the actual state. A completion receipt needs specific verification; an unavailable destination or missing proof stays explicit. After closing a task, run `/usr/bin/python3 /Volumes/BeastMode/MeganOS/megan-os/bin/task_bridge.py` once so the linked chat archives. If Brain is unavailable, keep the result in the chat and check sync health when the volume returns; do not claim that Brain was updated.
+
+Legacy Aleysian actions marked `closed-no-longer-owned` are historical. Create a new linked task for continuing independent work rather than reopening or converting the old action to `complete`.
