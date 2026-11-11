@@ -29,6 +29,10 @@ const {chromium}=require('playwright');
  for(const skill of data.skills){
   await page.locator(`.skill-row[data-skill="${skill.id}"]`).click();
   assert.equal(await page.locator('#detail-title').textContent(),skill.title);
+  assert.equal(await page.locator('#detail [role=tab],#detail [role=tablist],#detail [role=tabpanel]').count(),0);
+  for(const section of ['overview','instructions','examples','connections','files'])assert(await page.locator('#panel-'+section).isVisible(),skill.id+': hidden '+section);
+  assert(await page.locator('#panel-instructions .instructions').evaluate((el,html)=>{const expected=document.createElement('div');expected.innerHTML=html;return el.innerHTML===expected.innerHTML},skill.html),skill.id+': instruction content changed');
+  assert.equal(await page.locator('#panel-files tbody tr').count(),skill.resources.length);
   if(skill.guide){
    const overview=await page.locator('#panel-overview').innerText();
    for(const phrase of ['What it does','When to use it','What to give it','What you get','How to start'])assert(overview.includes(phrase));
@@ -44,12 +48,12 @@ const {chromium}=require('playwright');
    if(skill.id==='write-business-case')assert(await page.locator('#panel-overview .included-skills [data-skill="review-deliverable"]').count());
    assert(!overview.includes('ESTATE-WRITING'));
   }
-  await page.locator('#tab-instructions').click();
+
   assert((await page.locator('#panel-instructions .instructions').innerText()).length>100);
   assert(!(await page.locator('#panel-instructions').innerText()).includes('ESTATE-WRITING:'));
   assert(!(await page.locator('#panel-instructions').innerText()).includes('Before writing:'));
   if(skill.id==='review-writing')await page.screenshot({path:path.join(output,'writing-instructions.png')});
-  await page.locator('#tab-examples').click();
+
   const examples=skill.examples||[];
   assert.equal(await page.locator('#panel-examples .example').count(),examples.length);
   for(const [i,example] of examples.entries()){
@@ -57,15 +61,15 @@ const {chromium}=require('playwright');
    assert(text.includes(example.title));
    assert(text.includes(example.source==='fictional'?'Fictional scenario':'Real work, redacted'));
    assert.equal(text.includes('From an older version'),!example.current);
-   assert(text.includes('Output'));
+   assert(text.includes('Output'));assert(await card.locator('.example-body').evaluate((el,html)=>{const expected=document.createElement('div');expected.innerHTML=html;return el.innerHTML===expected.innerHTML},example.html),skill.id+': example content changed');
   }
   if(!examples.length)assert((await page.locator('#panel-examples').innerText()).includes('No recorded example'));
-  await page.locator('#tab-connections').click();
+
   const connections=await page.locator('#panel-connections').innerText();
   assert(!connections.includes('ESTATE-WRITING:'));
   assert(!connections.includes('Before writing:'));
   if(skill.id==='review-writing'){assert.equal(await page.locator('#panel-connections .connection-context table tbody tr').count(),1);assert(!connections.includes('| ---'));assert(!connections.includes('[Diagnostic toolkit]'));await page.screenshot({path:path.join(output,'writing-connections.png')});}
-  await page.locator('#tab-files').click();
+
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
   await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').isVisible(),false);
  }
@@ -85,15 +89,15 @@ const {chromium}=require('playwright');
  }
  await page.evaluate(()=>document.querySelector('#toast').hidden=true);
  await page.locator('#search').fill('no-such-skill-52948');assert.equal(await page.locator('.skill-row').count(),0);await page.locator('[data-reset]').click();assert.equal(await page.locator('.skill-row').count(),data.skills.length);
- // Keyboard activation, inline expansion and collapse, and arrow-key tab navigation.
+ // Keyboard activation, section shortcuts and collapse remain in document order.
  await page.locator('.skill-row').first().focus();await page.keyboard.press('Enter');assert(await page.locator('#detail').isVisible());
- await page.locator('#tab-overview').focus();await page.keyboard.press('ArrowRight');assert.equal(await page.locator('#tab-instructions').getAttribute('aria-selected'),'true');
+ await page.locator('[data-section="instructions"]').focus();await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>document.activeElement.id),'heading-instructions');
  assert.equal(await page.locator('#detail').evaluate(e=>e.tagName),'SECTION');assert.equal(await page.locator('.skill-row').first().getAttribute('aria-expanded'),'true');await page.locator('.skill-row').first().click();assert.equal(await page.locator('#detail').isVisible(),false);await page.locator('.skill-row').first().click();
  await page.keyboard.press('Escape');
  const chosen=byName('map-sales-process')||byName('prepare-sales-pursuit');
  function byName(name){return data.skills.find(s=>s.id===name)}
  await page.locator(`.skill-row[data-skill="${chosen.id}"]`).click();await page.screenshot({path:path.join(output,'detail.png')});
- await page.locator('#tab-connections').click();
+
  if(chosen.mentions.length){await page.locator('#panel-connections [data-skill]').first().click();assert.notEqual(await page.locator('#detail-title').textContent(),chosen.title)}
  await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),19);await page.screenshot({path:path.join(output,'workflows.png')});
  await page.locator('.route > summary').first().click();await page.locator('.route [data-skill]').first().click();assert(await page.locator('#detail').isVisible());await page.keyboard.press('Escape');await page.locator('#browse-view').click();
@@ -118,6 +122,6 @@ const {chromium}=require('playwright');
  assert(await page.locator('#detail').evaluate(e=>e.scrollWidth<=e.clientWidth));await page.keyboard.press('Escape');
  await page.setViewportSize({width:1440,height:1100});await page.locator('[data-family="0"]').click();await page.emulateMedia({media:'print'});await page.pdf({path:path.join(output,'print.pdf'),format:'Letter',printBackground:true});await page.screenshot({path:path.join(output,'print.png')});
  assert.equal(errors.length,0,errors.join('\n'));assert.equal(requests.length,0,'Offline artifact must not load network resources');
- const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset','verified complete package ZIP download','keyboard activation','inline accordion focus','arrow-key tabs','examples tab and labels','examples filter','connections','nineteen workflow examples','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
+ const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset',...(preview?['verified complete package ZIP download']:[]),'keyboard activation','inline accordion focus','section shortcut focus','examples section and labels','examples filter','connections','nineteen workflow examples','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
  fs.writeFileSync(path.join(output,'browser-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -43,7 +43,7 @@ Regenerate the GitHub review with `python3 tools/skill_guide.py --report`. Sourc
 
 ## Show examples
 
-Each skill's Examples tab shows recorded runs from [`showcase/`](../../showcase/README.md): the request, the inputs and the output the skill produced. Fictional and redacted real examples carry different labels. An example recorded against an older SKILL.md stays visible with a "From an older version" label. The "With examples" filter finds skills with recorded examples. Examples never enter a plugin or task package.
+Each skill's Examples section shows recorded runs from [`showcase/`](../../showcase/README.md): the request, the inputs and the output the skill produced. Fictional and redacted real examples carry different labels. An example recorded against an older SKILL.md stays visible with a "From an older version" label. The "With examples" filter finds skills with recorded examples. Examples never enter a plugin or task package.
 
 ## Refresh the site
 
@@ -88,7 +88,7 @@ python3 tools/browse.py --bundle
 
 Each mapped workflow retains its exact entrypoint Markdown and hash. Connections quote literal skill-name references from those instructions. Supporting files are inventoried; their contents remain in the skill packages. Families and suggested routes support navigation; the instructions determine which workflow applies.
 
-The map uses the Index design: a warm neutral page, charcoal text, rust links and bundled Inter fonts. Skill rows expand in place; the five detail tabs retain the overview, instructions, examples, connections and source files. Status and audience badges are removed. Secondary filters and sharing details remain available on demand. Nineteen suggested workflows cover product research, delivery, Salesforce development, sales, career, writing, creative work and knowledge maintenance. Each gives starting inputs, a request to copy, the reason for each step and the result to expect. These suggested paths are separate from recorded skill examples.
+The map uses the Index design: a warm neutral page, charcoal text, rust links and bundled Inter fonts. Skill rows expand in place; all five sections—overview, instructions, examples, connections and source files—remain visible in one continuous expansion. Section shortcuts scroll to their headings without hiding any content. Status and audience badges are removed. Secondary filters and sharing details remain available on demand. Nineteen suggested workflows cover product research, delivery, Salesforce development, sales, career, writing, creative work and knowledge maintenance. Each gives starting inputs, a request to copy, the reason for each step and the result to expect. These suggested paths are separate from recorded skill examples.
 
 The claude.ai artifact viewer cannot save files, so the copy published there is built without download buttons or download code:
 
