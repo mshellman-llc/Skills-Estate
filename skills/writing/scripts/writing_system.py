@@ -255,10 +255,17 @@ def gate_config():
     return cfg
 
 
-def roots(cfg):
-    """Directories to walk: the fixed prefix of each include pattern."""
+def roots(cfg, depth=4):
+    """Directories to walk. A pattern such as /drive/*/artifacts/* is found with glob at one to four levels,
+    so the walk never lists the whole drive."""
+    import glob
     out = set()
     for pat in cfg['include']:
+        m = re.match(r'^(.*?)/\*/([^*?\[]+)/\*$', pat)
+        if m:
+            for level in range(1, depth + 1):
+                out.update(Path(p) for p in glob.glob(m.group(1) + '/*' * level + '/' + m.group(2)))
+            continue
         prefix = re.split(r'[*?\[]', pat)[0]
         out.add(Path(prefix if prefix.endswith('/') else os.path.dirname(prefix)))
     return sorted(out)
