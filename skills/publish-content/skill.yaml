@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "publish-content",
+  "display_name": "Publish content",
+  "summary": "Take content from topic to publishable draft through a gated pipeline: scout viable topics, research, collect the owner's evidence, draft, remove AI writing patterns, fact-check and package blog posts, conversational pieces, guides, news, reviews, case studies and proposals, or rescue an AI-written draft. Reviewing one finished text against writing rules is the writing skill.",
+  "status": "draft",
+  "version": "0.1.0",
+  "owner": "Estate",
+  "category": "writing",
+  "tier": "situational",
+  "runtimes": [
+    "claude-code",
+    "codex",
+    "claude-ai"
+  ],
+  "triggers": [
+    "write and publish a blog post from my notes",
+    "turn this AI draft into something publishable",
+    "what should we publish next for this audience",
+    "produce a case study from this project record",
+    "write a review of the tool we tested",
+    "rebuild this generic AI article"
+  ],
+  "exclusions": [
+    "review this paragraph against my writing rules (writing)",
+    "apply the client brand to this page (manage-brand-profile)",
+    "build an interactive explorer site (build-interactive-explorer)",
+    "chart this dataset (build-editorial-chart)",
+    "synthesize these interview notes (synthesize-discovery)"
+  ],
+  "inputs": [
+    "goal or draft to rescue",
+    "owner profile path",
+    "owner writing rules folder",
+    "optional demand data, owner data files, screenshots and photos"
+  ],
+  "outputs": [
+    "ranked topic slate",
+    "brief with genre contract and exhibit plan",
+    "final draft with exhibits",
+    "claim table and meaning diff",
+    "reader panel scores",
+    "approval packet",
+    "run ledger and defect log entries"
+  ],
+  "connectors": {
+    "required": [],
+    "optional": []
+  },
+  "depends_on": [
+    "writing"
+  ],
+  "calls": [],
+  "knowledge_hub": {
+    "requirement": "optional",
+    "reads": [
+      "owner profile and writing rules folder when stored on the drive"
+    ],
+    "writes": [
+      "session note and approval packet through save_update when the Hub is connected"
+    ]
+  },
+  "evidence": {
+    "required": true,
+    "control": "fact checker step with a named human signature"
+  },
+  "quality": {
+    "required": true,
+    "control": "writing"
+  }
+}

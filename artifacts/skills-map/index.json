@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-11T21:09:08.866229+00:00",
-  "baseCommit": "35bdd052ebad71071c072d12e9b05b972923a04f",
+  "generatedAt": "2026-11-13T16:21:09.111532+00:00",
+  "baseCommit": "e6e91e8995542dcefe623268ca548140abbd3cc3",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -65,7 +65,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-author-style/SKILL.md",
       "sourceSha256": "60ef56102eed4f9de4cf6ea78a4ad0949e98ee1f6c38f5d33db43bc868ab10ed",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/apply-author-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/apply-author-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -196,7 +196,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-salesforce-patterns/SKILL.md",
       "sourceSha256": "97a238283a12443797e0970f0483169d2c283e27a7735ef344d3a87bc2d58d2b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/apply-salesforce-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/apply-salesforce-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "apply-salesforce-patterns",
@@ -433,7 +433,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-career-options/SKILL.md",
       "sourceSha256": "f28c082d3d2bc502c3125006fb9591bc28bf9d00476f2cc1c2258badd452e4c6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/assess-career-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/assess-career-options/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-career-options",
@@ -576,7 +576,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-offering-fit/SKILL.md",
       "sourceSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/assess-offering-fit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/assess-offering-fit/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-offering-fit",
@@ -732,7 +732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-solution-delivery/SKILL.md",
       "sourceSha256": "26d10151c80bcaef72cfd3ce91431eb79c4709db4f1968571dfb4f74dadf8a48",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/assess-solution-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/assess-solution-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-solution-delivery",
@@ -1112,7 +1112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/audit-accessibility/SKILL.md",
       "sourceSha256": "6f6b392bdc3eb2cf4277e1d13ea2210888228695c933a6c6835dddda47ee798e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/audit-accessibility/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/audit-accessibility/SKILL.md",
       "taskPackages": [
         {
           "name": "audit-accessibility",
@@ -1244,7 +1244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-estate-skill/SKILL.md",
       "sourceSha256": "24b0fa3b3246b650dd8b24613ddedd2b5086c56217caf4a21c6e0ae091434d2f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/author-estate-skill/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/author-estate-skill/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -1460,7 +1460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-style-runtime/SKILL.md",
       "sourceSha256": "7b23bdc5ee4e8e997a2840cd5d55f8122f158aed37d55cac6fb82c9edc10d4a5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/author-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/author-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1647,7 +1647,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "e4e2546441fc30599598c9f0299a0f001bba319528c8d50d5b22b640022a44c0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-offering-fit",
@@ -2047,7 +2047,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deal-decision-deck/SKILL.md",
       "sourceSha256": "2e2a7a1d4d5d918994f67d306ba00ee7032ab3c29df623cfc0c9020ebc98949a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-deal-decision-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-deal-decision-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2330,7 +2330,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deck/SKILL.md",
       "sourceSha256": "ca98e6e7049a5404b0862a94ebe2ace1ffd6b881e16f50f2cca461b78a38dd33",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2574,7 +2574,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-editorial-chart/SKILL.md",
       "sourceSha256": "cde02918eb0e09f72b62b58e9b75d66eed52f8a0421df36cfa3989ceb0b3f5d7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-editorial-chart/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-editorial-chart/SKILL.md",
       "taskPackages": [
         {
           "name": "build-editorial-chart",
@@ -2795,7 +2795,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "eff19bc59a2e2927d772b72b79b1d57f79b6d0e649cae9026dcdacc120e9b641",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -2977,7 +2977,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-proposal/SKILL.md",
       "sourceSha256": "5c25a2df805a75855486609536031fe9404e5c97d376d4f527488974ed5b1ae8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -3247,7 +3247,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-moscow-story-map/SKILL.md",
       "sourceSha256": "b6e46327dc11d0e86d97e9b9c99121f819f87f76c895c48dcdee6b8236722c82",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "build-moscow-story-map",
@@ -3407,7 +3407,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-review-site/SKILL.md",
       "sourceSha256": "1c9b9c3887b5d5e854e03ccd759bf3f6d7f3ea8543c321df46d63e22840db998",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "build-review-site",
@@ -3620,7 +3620,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-roadmap/SKILL.md",
       "sourceSha256": "db7e32ba564b4400f0a35919459bcc64f79bbd8d1d6d1f48037a70d8d1621c9c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/build-roadmap/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/build-roadmap/SKILL.md",
       "taskPackages": [
         {
           "name": "build-roadmap",
@@ -3945,7 +3945,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-knowledge/SKILL.md",
       "sourceSha256": "f5e0d760edfdd0e61886dc759ba0979159818a8c9e90c26e95e72f4ee36e8c98",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/capture-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/capture-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-knowledge",
@@ -4079,7 +4079,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-requirements/SKILL.md",
       "sourceSha256": "d9de7eb3bb479d5c5b490c5fea63d2bcc75fb9372e0006c1c26acf96a49e196f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/capture-requirements/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/capture-requirements/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-requirements",
@@ -4296,7 +4296,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-salesforce-screens/SKILL.md",
       "sourceSha256": "3ff9679f8f98bd5fab182ad0312f57c91dbbb5dc7d7997ccc51c7e2862181f2c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/capture-salesforce-screens/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/capture-salesforce-screens/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4447,7 +4447,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/check-knowledge-hub/SKILL.md",
       "sourceSha256": "fbee0a1214cdda3d5b87d615c35a42302cdfae03d75a7bbb275006f5917b2225",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/check-knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/check-knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "check-knowledge-hub",
@@ -4595,7 +4595,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/compare-scope-options/SKILL.md",
       "sourceSha256": "4fc316551667ae2877b164b0084a4d27090945b614b40c8a5da191ca58f0a453",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/compare-scope-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/compare-scope-options/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -4842,7 +4842,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/configure-salesforce-project/SKILL.md",
       "sourceSha256": "145ef59d022916f681f558bb20026039ece312c93b7d0d1a8801a5cdb47fc8ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/configure-salesforce-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/configure-salesforce-project/SKILL.md",
       "taskPackages": [
         {
           "name": "configure-salesforce-project",
@@ -5584,7 +5584,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deliver-salesforce-change/SKILL.md",
       "sourceSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/deliver-salesforce-change/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/deliver-salesforce-change/SKILL.md",
       "taskPackages": [
         {
           "name": "deliver-salesforce-change",
@@ -5958,7 +5958,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-orchestrator/SKILL.md",
       "sourceSha256": "efbc0207a4238bf598b33d8aac2d7bb6e078290d3311712031fa3703251c37ac",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/delivery-orchestrator/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/delivery-orchestrator/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-requirements",
@@ -6229,7 +6229,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-analytics-plan/SKILL.md",
       "sourceSha256": "78d27b364ce3a619d70ed5dc9008b93351254d3ae7ca3dd9952f85e7398f45be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/design-analytics-plan/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/design-analytics-plan/SKILL.md",
       "taskPackages": [
         {
           "name": "design-analytics-plan",
@@ -6361,7 +6361,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-information-architecture/SKILL.md",
       "sourceSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/design-information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/design-information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "design-information-architecture",
@@ -6493,7 +6493,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-process/SKILL.md",
       "sourceSha256": "ca114123880ba4752529612a903ba3895d6291f68c5085c4b65ae0ffd522cc7e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/design-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/design-process/SKILL.md",
       "taskPackages": [
         {
           "name": "design-process",
@@ -6676,7 +6676,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-software-system/SKILL.md",
       "sourceSha256": "102209f34e8154aca0791f2af418d64493d6d7d6fd3f4449eba24ca66ea9fff9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/design-software-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/design-software-system/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -6851,7 +6851,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-sticker/SKILL.md",
       "sourceSha256": "b6dab8536880885060e9221906488aa8c5cbbc26ce194e2b179169024193b345",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/design-sticker/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/design-sticker/SKILL.md",
       "taskPackages": [
         {
           "name": "design-sticker",
@@ -6986,7 +6986,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-independent-product/SKILL.md",
       "sourceSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/develop-independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/develop-independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-independent-product",
@@ -7102,7 +7102,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-product/SKILL.md",
       "sourceSha256": "7c3d1fe744e37614cf438f01c4cf1cb35113f20061d9799181046fb151fd20fe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/develop-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/develop-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-product",
@@ -7305,7 +7305,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/draft-application-materials/SKILL.md",
       "sourceSha256": "b3df2a2fb127157eb1b77f37cdf6ddd13ee6a6cfea687005e6a4fea087599eec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/draft-application-materials/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/draft-application-materials/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -7467,7 +7467,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/estimate-project/SKILL.md",
       "sourceSha256": "9655e454e4c758060aeb89b73428585fe7a88609d0a2db43e6df6b42d1162be2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/estimate-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/estimate-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -7719,7 +7719,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "6c1304908ca66e9ea5aef1cae2fed005b30c3f1e822805ffcd33188801c6ca2d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-solution-delivery",
@@ -7995,7 +7995,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/frame-jobs-to-be-done/SKILL.md",
       "sourceSha256": "a0618f241e934c687faa3bf0dc08b78f77f089a7afd0336e8dfff6b57a0d4fd0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/frame-jobs-to-be-done/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/frame-jobs-to-be-done/SKILL.md",
       "taskPackages": [
         {
           "name": "frame-jobs-to-be-done",
@@ -8252,7 +8252,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/guide-fortunes-weave/SKILL.md",
       "sourceSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/guide-fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/guide-fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "guide-fortunes-weave",
@@ -8366,7 +8366,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/import-tracker-export/SKILL.md",
       "sourceSha256": "303f8fd7642bf80652fad4907328277a1b920093202ecf3837c0013fe905ede3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/import-tracker-export/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/import-tracker-export/SKILL.md",
       "taskPackages": [
         {
           "name": "import-tracker-export",
@@ -8539,7 +8539,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ingest-transcript/SKILL.md",
       "sourceSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/ingest-transcript/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/ingest-transcript/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8705,7 +8705,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/lay-out-sticker-sheets/SKILL.md",
       "sourceSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/lay-out-sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/lay-out-sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "lay-out-sticker-sheets",
@@ -8824,7 +8824,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/load-project-context/SKILL.md",
       "sourceSha256": "3d3c80d4b46ca2fa033148c51ccac1b0c6532c45b3c134f64434db5b7f6460b0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/load-project-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/load-project-context/SKILL.md",
       "taskPackages": [
         {
           "name": "load-project-context",
@@ -8973,7 +8973,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-discovery-record/SKILL.md",
       "sourceSha256": "b5d151492eb92ad883e2dfd11fbe373c00f08d887434032743301c2e59bbaf58",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/maintain-discovery-record/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/maintain-discovery-record/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -9242,7 +9242,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-skills-estate/SKILL.md",
       "sourceSha256": "6eaf853e6c07cfbe99b589fed84af125fa8f3d4af3f72a19d5fe60c28c6e1d87",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/maintain-skills-estate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/maintain-skills-estate/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -9484,7 +9484,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-brand-profile/SKILL.md",
       "sourceSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-brand-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-brand-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-brand-profile",
@@ -9601,7 +9601,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-consulting-knowledge/SKILL.md",
       "sourceSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-consulting-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-consulting-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-consulting-knowledge",
@@ -9935,7 +9935,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-cutover-closeout/SKILL.md",
       "sourceSha256": "c8dcfb3824a9624d943409adb900dc3be318f7eff0e67dab26777b25a29706f9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-cutover-closeout",
@@ -10171,7 +10171,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-decision-register/SKILL.md",
       "sourceSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-decision-register",
@@ -10331,7 +10331,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-linked-task/SKILL.md",
       "sourceSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-linked-task/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-linked-task/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -10437,7 +10437,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-salesforce-devops/SKILL.md",
       "sourceSha256": "696aa80506a1d04ca45ae7a9fa0e17f03c75790c9be441c5f537584e6082cc3f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-salesforce-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-salesforce-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -10606,7 +10606,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-service-offering/SKILL.md",
       "sourceSha256": "cad2f61af6b45fb500642f6a8e5027d127eb87cdb4c97a415e7e72669339c158",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-service-offering/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-service-offering/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -10785,7 +10785,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-writing-profile/SKILL.md",
       "sourceSha256": "661cb380854e11b480c8ce08a449df7ae4365ff710f1ab8cff53e5cd11d33486",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/manage-writing-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/manage-writing-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-writing-profile",
@@ -10971,7 +10971,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-journey/SKILL.md",
       "sourceSha256": "2b43a88c556f3e333b3c12837568aeaa88f093347ca8fcd83e62d444ff688b32",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/map-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/map-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-journey",
@@ -11176,7 +11176,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-sales-process/SKILL.md",
       "sourceSha256": "bbd8ec4db8905ccd3db6de81f65fa4d9387282ae1ee7d661574b344233ff9ce3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/map-sales-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/map-sales-process/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -11313,7 +11313,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/operate-salesforce-pipeline/SKILL.md",
       "sourceSha256": "587104dba57206c015cde53ae40c19b7118448ad95c74e13ea31b37f2b0fdd13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/operate-salesforce-pipeline/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/operate-salesforce-pipeline/SKILL.md",
       "taskPackages": [
         {
           "name": "operate-salesforce-pipeline",
@@ -11559,7 +11559,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-offering-artifacts/SKILL.md",
       "sourceSha256": "9ba84a3b73f6164dd701c5bcfcef89001eb67b025f55be917c841e78bd59f48e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/plan-offering-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/plan-offering-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -11774,7 +11774,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-sprint/SKILL.md",
       "sourceSha256": "0f056e9401e1752a293b1c78197b632538497783539497b354ddb105cd5443c8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/plan-sprint/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/plan-sprint/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-sprint",
@@ -12012,7 +12012,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-team-onboarding/SKILL.md",
       "sourceSha256": "963b3dacfb4eab19ab14df999646300adda52e988d3b8e507604778737013144",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/plan-team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/plan-team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-team-onboarding",
@@ -12191,7 +12191,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-usability-study/SKILL.md",
       "sourceSha256": "252bcb7ec74179de8eccd9a6d19f4c50b15262cf1fd7d084f7d73b593a07b6ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/plan-usability-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/plan-usability-study/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-usability-study",
@@ -12323,7 +12323,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-delivery-handoff/SKILL.md",
       "sourceSha256": "5bf0003be716cd98dd6fb9d59c04658dd6012e97ce3f6f12a25c4639cdfd7980",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/prepare-delivery-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/prepare-delivery-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-delivery-handoff",
@@ -12596,7 +12596,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-job-application/SKILL.md",
       "sourceSha256": "9e83433f28b4848b2e1164c2cdcc2f263c3ca7423488a4b63100db8ea78d5ca4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/prepare-job-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/prepare-job-application/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -12788,7 +12788,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-sales-pursuit/SKILL.md",
       "sourceSha256": "4de3e4463401556aa97e0bc0d7ea6daeb65b15ea5736bc5a98831331babd35ca",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/prepare-sales-pursuit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/prepare-sales-pursuit/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-sales-pursuit",
@@ -13086,7 +13086,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-session-handoff/SKILL.md",
       "sourceSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/prepare-session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/prepare-session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-session-handoff",
@@ -13244,7 +13244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritize-work/SKILL.md",
       "sourceSha256": "02573c165d2a1d23a1d6f30adfeb3c7598f6849abec8bdcce8d34ed3f6958fc0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/prioritize-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/prioritize-work/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritize-work",
@@ -13526,7 +13526,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/promote-salesforce-changes/SKILL.md",
       "sourceSha256": "20ecc948c080ca2f890499ff1a554838259b2a9e3cbe7c14e0869e886c8780f0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/promote-salesforce-changes/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/promote-salesforce-changes/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -13747,6 +13747,261 @@
       ]
     },
     {
+      "id": "publish-content",
+      "title": "Publish content",
+      "family": 6,
+      "description": "Take content from topic to publishable draft through a gated pipeline: scout viable topics, research, collect the owner's evidence, draft, remove AI writing patterns, fact-check and package blog posts, conversational pieces, guides, news, reviews, case studies and proposals, or rescue an AI-written draft. Reviewing one finished text against writing rules is the writing skill.",
+      "status": "local-addition",
+      "entrypointChanged": false,
+      "sourcePath": "skills/publish-content/SKILL.md",
+      "sourceSha256": "f2f204d023fe84ed8c44904e90972e868b894a61439fee57b53b370593440b20",
+      "githubUrl": null,
+      "taskPackages": [
+        {
+          "name": "publish-content",
+          "mode": null
+        }
+      ],
+      "downloadPackages": [
+        "publish-content"
+      ],
+      "guide": {
+        "what": "Take a piece of content from topic to publishable draft through nine gated steps, or rebuild an AI-written draft into one that can be published.",
+        "when": "Someone wants blog posts, newsletters, guides, news, reviews, case studies or proposals that rest on the owner's own evidence, or has an AI draft to rescue or retire.",
+        "inputs": "A goal for the run or the draft to rescue, a filled owner profile, the owner's writing rules folder, and the owner's data, answers and permissions.",
+        "outputs": "The final draft with its exhibits, a claim table, a meaning diff, panel scores, an approval packet, a run ledger entry and the defect log.",
+        "example": "Write a portfolio case study about the pricing rebuild from my decision notes and the before and after numbers, and stop for my sign-off before anything is published.",
+        "reviewedEntrypointSha256": "f2f204d023fe84ed8c44904e90972e868b894a61439fee57b53b370593440b20",
+        "expect": "Separate agents scout topics, research, collect the owner's evidence, brief, draft, build exhibits, edit, fact-check and score the draft, and each step has a gate. It stops at every human gate with an approval packet. evidence_scan.py and the owner's writing check run at steps 6 and 9, and a claim with no source is cut, not softened. Nothing is published without the owner's sign-off.",
+        "connectors": {
+          "required": [],
+          "optional": [
+            "knowledge-hub"
+          ]
+        },
+        "requires": "Python 3 for evidence_scan.py, web research for the scout and researcher, and the owner's writing rules folder for the editor.",
+        "overview": "It runs a topic through nine steps, each owned by one agent with its own procedure. Every section of the brief needs a claim and an evidence ID, exhibits are built as code from cited data, and the editor removes AI writing patterns before a fact checker and a reader panel see the draft. Case studies also produce an evidence file that a named person signs.",
+        "value": "Publish pieces that carry the owner's own evidence and decisions, and refuse pieces that do not. The pipeline sets no volume target, and a topic with nothing only the owner holds is dropped at step 2.",
+        "preparation": {
+          "where": "Fill the owner profile template and pass its path. Name the writing rules folder in the profile, and supply the owner's data files, screenshots, permissions and answers when the asset collector asks.",
+          "missing": "Without an owner profile the run stops and asks for one. Without the writing rules folder the editor uses the general layers and says the owner's rules did not run. Without web research the scout and researcher use only owner-supplied material."
+        },
+        "preparationSkills": [
+          {
+            "skill": "manage-writing-profile",
+            "reason": "Use this to build the owner's voice profile when pieces go out under the owner's name and no profile exists yet."
+          }
+        ]
+      },
+      "guideStatus": "current",
+      "reuse": {
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and takes private context as an explicit input.",
+        "setup": "",
+        "cleanup": [],
+        "readiness": "reusable",
+        "references": [
+          {
+            "path": "skills/publish-content/fixtures/scaffold-receipt.json",
+            "line": 4,
+            "text": "\"destination\": \"/home/claude/estate-draft/skills/publish-content\",",
+            "kind": "example-or-test"
+          }
+        ],
+        "dependencyReferences": [],
+        "sharedReferences": [],
+        "textFilesScanned": 15,
+        "packageFingerprint": "75a983224a15851cde96f08cb187ffcc5d17c66c77f0bff78bcf04e91fd16992",
+        "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
+      },
+      "catalogRole": {
+        "kind": "task",
+        "tasks": [
+          "publish-content"
+        ],
+        "modes": []
+      },
+      "profile": {
+        "tools": [
+          "scripts/evidence_scan.py",
+          "scripts/evidence_scan_selftest.py"
+        ],
+        "connectors": {
+          "required": [],
+          "optional": [
+            "knowledge-hub"
+          ],
+          "source": "guide"
+        },
+        "outputs": [],
+        "modes": [],
+        "agents": [],
+        "plugins": [
+          "estate-writing"
+        ],
+        "bundles": [
+          "writing"
+        ],
+        "usedBy": [],
+        "calls": [],
+        "dependsOn": [],
+        "runtimes": [],
+        "setup": "Python 3 for evidence_scan.py, web research for the scout and researcher, and the owner's writing rules folder for the editor.",
+        "expect": "Separate agents scout topics, research, collect the owner's evidence, brief, draft, build exhibits, edit, fact-check and score the draft, and each step has a gate. It stops at every human gate with an approval packet. evidence_scan.py and the owner's writing check run at steps 6 and 9, and a claim with no source is cut, not softened. Nothing is published without the owner's sign-off.",
+        "declared": true
+      },
+      "markdown": "---\nname: publish-content\ndescription: \"Take content from topic to publishable draft through a gated pipeline: scout viable topics, research, collect the owner's evidence, draft, remove AI writing patterns, fact-check and package blog posts, conversational pieces, guides, news, reviews, case studies and proposals, or rescue an AI-written draft. Reviewing one finished text against writing rules is the writing skill.\"\n---\n\n# Publish content\n\n## When to use\n\nUse this skill when someone wants a piece of content taken from idea to publishable draft: choosing topics worth writing, researching, collecting the owner's evidence, drafting, editing out AI patterns, fact-checking and packaging. It handles blogs, conversational pieces (newsletters, social posts, FAQs, scripts), expository guides, news stories, product reviews, proposals and case studies. Use rescue mode when the input is an existing AI-written draft that needs to become publishable, rebuilt, or retired.\n\n## When not to use\n\n- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.\n\n## Inputs\n\n1. The goal for the run, or the draft to rescue.\n2. A filled owner profile ([owner-profile.md](references/owner-profile.md)), passed as a path. Without it, stop and ask for it.\n3. The owner's writing rules folder, named in the profile. When it is missing, run with the general layers in the editor procedure and say that the owner's rules did not run.\n4. Optional: seed topics, real demand data (Search Console exports, customer questions, keyword tool figures), existing drafts, the owner's data files, screenshots and photos.\n\n## Workflow\n\nRead [orchestrator.md](references/orchestrator.md) first; it holds the done criteria, the evidence rules, the run ledger and the standing rules. Each step below follows its procedure in [agents.md](references/agents.md).\n\n| Step | Agent | Output | Gate |\n| --- | --- | --- | --- |\n| 1 | Scout | Ranked topic slate with scores and kill reasons | Owner picks topics |\n| 2 | Researcher | Source register and question bank | Stop if no topic has an asset only the owner holds |\n| 3 | Asset collector | Owner's answers, hand-written thesis and opening, writing samples, data and permissions | Owner supplies the evidence |\n| 4 | Architect | Brief, genre contract and exhibit plan | Every section has a claim and an evidence ID |\n| 5 | Writer | Draft | None |\n| 5b | Visual producer | Exhibits built as code from cited data, with check results | Every exhibit passes its checks |\n| 6 | Editor | Findings, revised draft, meaning diff | No blocking findings; stance unchanged |\n| 7 | Fact checker | Claim table, quote diffs, link checks, recomputed exhibit values | A named person signs |\n| 8 | Reader panel | Scores against the genre contract, weakest passages | Every criterion at 3 of 4 or higher |\n| 9 | Publisher | Final package and approval packet | Owner signs off |\n\nTwo failed panels return the draft to the writer; a third returns it to the brief. Set no volume target, and publish nothing when no topic clears the scorer's threshold.\n\nRun the deterministic checks at steps 6 and 9:\n\n```sh\npython3 scripts/evidence_scan.py --file DRAFT.md            # published copy\npython3 scripts/evidence_scan.py --file DRAFT.md --data-piece  # numbers are the subject\npython3 scripts/evidence_scan.py --file NOTES.md --internal    # internal working document\n```\n\nThe scan flags paragraphs with more than two figures, sections denser than one figure per 40 words, text that claims its own sourcing, and production vocabulary in published copy. Then run the owner's writing check from their rules folder. Neither scan replaces the line-by-line editor pass.\n\nFor visual elements, follow [visual-elements.md](references/visual-elements.md). For rescue mode and engine upkeep, follow [rescue-and-maintenance.md](references/rescue-and-maintenance.md).\n\n### Claude Code and Codex\n\nRun each agent as its own subagent with only its procedure and inputs, so the editor and the panel never judge their own draft. Keep the run ledger as JSON beside the drafts. Use a judge from a different model family for the reader panel when one is available.\n\n### Claude.ai and other single-agent hosts\n\nRun the steps in order in one conversation, keeping each step's output under its own heading. State in the approval packet that the same model wrote and judged the draft.\n\n## Failure handling\n\n- A human gate with no answer: finish every step up to the gate, write the approval packet (the decision, the options, the evidence) and stop.\n- No web research capability: the scout and researcher work only from owner-supplied material and say so in the slate.\n- A claim with no source: the writer stops and reports it; the fact checker cuts it. Neither softens it to fit.\n- A quote with no transcript or written statement: cut it.\n- A refused release for a case study: disguise it with consent or retire it.\n\n## Outputs\n\nPer piece: the final draft, its exhibits, the claim table, the meaning diff, panel scores, the approval packet, and the run ledger entry. Across pieces: the defect log, whose top three recurring patterns feed the next writer run.\n\n## Reference files\n\n- [orchestrator.md](references/orchestrator.md): done criteria, evidence rules, pipeline, run ledger, standing rules, defect log.\n- [agents.md](references/agents.md): one procedure per agent, including the genre contracts and the case study standard.\n- [visual-elements.md](references/visual-elements.md): when a piece gets a chart, diagram, table or component, and what each must contain.\n- [owner-profile.md](references/owner-profile.md): the profile template.\n- [rescue-and-maintenance.md](references/rescue-and-maintenance.md): rescuing AI drafts and keeping the engine versioned.\n- [sources.md](references/sources.md): the research behind each rule.\n",
+      "html": "<h3>When to use</h3><p>Use this skill when someone wants a piece of content taken from idea to publishable draft: choosing topics worth writing, researching, collecting the owner&#x27;s evidence, drafting, editing out AI patterns, fact-checking and packaging. It handles blogs, conversational pieces (newsletters, social posts, FAQs, scripts), expository guides, news stories, product reviews, proposals and case studies. Use rescue mode when the input is an existing AI-written draft that needs to become publishable, rebuilt, or retired.</p><h3>When not to use</h3><ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul><h3>Inputs</h3><ol><li>The goal for the run, or the draft to rescue.</li><li>A filled owner profile (owner-profile.md <span class=\"ref\">(references/owner-profile.md)</span>), passed as a path. Without it, stop and ask for it.</li><li>The owner&#x27;s writing rules folder, named in the profile. When it is missing, run with the general layers in the editor procedure and say that the owner&#x27;s rules did not run.</li><li>Optional: seed topics, real demand data (Search Console exports, customer questions, keyword tool figures), existing drafts, the owner&#x27;s data files, screenshots and photos.</li></ol><h3>Workflow</h3><p>Read orchestrator.md <span class=\"ref\">(references/orchestrator.md)</span> first; it holds the done criteria, the evidence rules, the run ledger and the standing rules. Each step below follows its procedure in agents.md <span class=\"ref\">(references/agents.md)</span>.</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Step</th><th scope=\"col\">Agent</th><th scope=\"col\">Output</th><th scope=\"col\">Gate</th></tr></thead><tbody><tr><td>1</td><td>Scout</td><td>Ranked topic slate with scores and kill reasons</td><td>Owner picks topics</td></tr><tr><td>2</td><td>Researcher</td><td>Source register and question bank</td><td>Stop if no topic has an asset only the owner holds</td></tr><tr><td>3</td><td>Asset collector</td><td>Owner&#x27;s answers, hand-written thesis and opening, writing samples, data and permissions</td><td>Owner supplies the evidence</td></tr><tr><td>4</td><td>Architect</td><td>Brief, genre contract and exhibit plan</td><td>Every section has a claim and an evidence ID</td></tr><tr><td>5</td><td>Writer</td><td>Draft</td><td>None</td></tr><tr><td>5b</td><td>Visual producer</td><td>Exhibits built as code from cited data, with check results</td><td>Every exhibit passes its checks</td></tr><tr><td>6</td><td>Editor</td><td>Findings, revised draft, meaning diff</td><td>No blocking findings; stance unchanged</td></tr><tr><td>7</td><td>Fact checker</td><td>Claim table, quote diffs, link checks, recomputed exhibit values</td><td>A named person signs</td></tr><tr><td>8</td><td>Reader panel</td><td>Scores against the genre contract, weakest passages</td><td>Every criterion at 3 of 4 or higher</td></tr><tr><td>9</td><td>Publisher</td><td>Final package and approval packet</td><td>Owner signs off</td></tr></tbody></table></div><p>Two failed panels return the draft to the writer; a third returns it to the brief. Set no volume target, and publish nothing when no topic clears the scorer&#x27;s threshold.</p><p>Run the deterministic checks at steps 6 and 9:</p><pre><code>python3 scripts/evidence_scan.py --file DRAFT.md            # published copy\npython3 scripts/evidence_scan.py --file DRAFT.md --data-piece  # numbers are the subject\npython3 scripts/evidence_scan.py --file NOTES.md --internal    # internal working document</code></pre><p>The scan flags paragraphs with more than two figures, sections denser than one figure per 40 words, text that claims its own sourcing, and production vocabulary in published copy. Then run the owner&#x27;s writing check from their rules folder. Neither scan replaces the line-by-line editor pass.</p><p>For visual elements, follow visual-elements.md <span class=\"ref\">(references/visual-elements.md)</span>. For rescue mode and engine upkeep, follow rescue-and-maintenance.md <span class=\"ref\">(references/rescue-and-maintenance.md)</span>.</p><h4>Claude Code and Codex</h4><p>Run each agent as its own subagent with only its procedure and inputs, so the editor and the panel never judge their own draft. Keep the run ledger as JSON beside the drafts. Use a judge from a different model family for the reader panel when one is available.</p><h4>Claude.ai and other single-agent hosts</h4><p>Run the steps in order in one conversation, keeping each step&#x27;s output under its own heading. State in the approval packet that the same model wrote and judged the draft.</p><h3>Failure handling</h3><ul><li>A human gate with no answer: finish every step up to the gate, write the approval packet (the decision, the options, the evidence) and stop.</li><li>No web research capability: the scout and researcher work only from owner-supplied material and say so in the slate.</li><li>A claim with no source: the writer stops and reports it; the fact checker cuts it. Neither softens it to fit.</li><li>A quote with no transcript or written statement: cut it.</li><li>A refused release for a case study: disguise it with consent or retire it.</li></ul><h3>Outputs</h3><p>Per piece: the final draft, its exhibits, the claim table, the meaning diff, panel scores, the approval packet, and the run ledger entry. Across pieces: the defect log, whose top three recurring patterns feed the next writer run.</p><h3>Reference files</h3><ul><li>orchestrator.md <span class=\"ref\">(references/orchestrator.md)</span>: done criteria, evidence rules, pipeline, run ledger, standing rules, defect log.</li><li>agents.md <span class=\"ref\">(references/agents.md)</span>: one procedure per agent, including the genre contracts and the case study standard.</li><li>visual-elements.md <span class=\"ref\">(references/visual-elements.md)</span>: when a piece gets a chart, diagram, table or component, and what each must contain.</li><li>owner-profile.md <span class=\"ref\">(references/owner-profile.md)</span>: the profile template.</li><li>rescue-and-maintenance.md <span class=\"ref\">(references/rescue-and-maintenance.md)</span>: rescuing AI drafts and keeping the engine versioned.</li><li>sources.md <span class=\"ref\">(references/sources.md)</span>: the research behind each rule.</li></ul>",
+      "excerptHtml": "<p>Use this skill when someone wants a piece of content taken from idea to publishable draft: choosing topics worth writing, researching, collecting the owner&#x27;s evidence, drafting, editing out AI patterns, fact-checking and packaging. It handles blogs, conversational pieces (newsletters, social posts, FAQs, scripts), expository guides, news stories, product reviews, proposals and case studies. Use rescue mode when the input is an existing AI-written draft that needs to become publishable, rebuilt, or retired.</p><ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul><ol><li>The goal for the run, or the draft to rescue.</li><li>A filled owner profile (owner-profile.md <span class=\"ref\">(references/owner-profile.md)</span>), passed as a path. Without it, stop and ask for it.</li><li>The owner&#x27;s writing rules folder, named in the profile. When it is missing, run with the general layers in the editor procedure and say that the owner&#x27;s rules did not run.</li><li>Optional: seed topics, real demand data (Search Console exports, customer questions, keyword tool figures), existing drafts, the owner&#x27;s data files, screenshots and photos.</li></ol>",
+      "headings": [
+        "When to use",
+        "When not to use",
+        "Inputs",
+        "Workflow",
+        "Claude Code and Codex",
+        "Claude.ai and other single-agent hosts",
+        "Failure handling",
+        "Outputs",
+        "Reference files"
+      ],
+      "mentions": [
+        {
+          "name": "review-writing",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        },
+        {
+          "name": "build-interactive-explorer",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        },
+        {
+          "name": "manage-brand-profile",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        },
+        {
+          "name": "build-deck",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        },
+        {
+          "name": "write-statement-of-work",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        },
+        {
+          "name": "build-editorial-chart",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        },
+        {
+          "name": "writing",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        },
+        {
+          "name": "synthesize-discovery",
+          "context": "- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).\n- Applying a client or project brand to an artifact belongs to `manage-brand-profile`.\n- Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.\n- Synthesizing interviews into findings belongs to `synthesize-discovery`.\n- Writing a statement of work belongs to `write-statement-of-work`.",
+          "contextHtml": "<ul><li>Reviewing or correcting a single finished piece against the owner&#x27;s rules belongs to <code>writing</code> (or <code>review-writing</code> for prose review with learned corrections).</li><li>Applying a client or project brand to an artifact belongs to <code>manage-brand-profile</code>.</li><li>Interactive explorer sites belong to <code>build-interactive-explorer</code>; editorial charts on their own belong to <code>build-editorial-chart</code>; decks belong to <code>build-deck</code>.</li><li>Synthesizing interviews into findings belongs to <code>synthesize-discovery</code>.</li><li>Writing a statement of work belongs to <code>write-statement-of-work</code>.</li></ul>"
+        }
+      ],
+      "resources": [
+        {
+          "path": "SKILL.md",
+          "sha256": "f2f204d023fe84ed8c44904e90972e868b894a61439fee57b53b370593440b20",
+          "bytes": 6296,
+          "gitBlob": "ea9a8326e7c3d27b69f9c2b6e045007a92265ede"
+        },
+        {
+          "path": "fixtures/governance.yaml",
+          "sha256": "5d08b36ccb0718ad670e19ef92bbacf7fc56f8c3a6f0d0ffb3eaab829a1630ec",
+          "bytes": 3771,
+          "gitBlob": "1bcb51d2b357079ce8e3516f3df92f2480a0e286"
+        },
+        {
+          "path": "fixtures/rescue-expected.md",
+          "sha256": "e2d1d3d112b34d6347233ab7d964f785affdb36b66b35d653cecd3401975b18e",
+          "bytes": 983,
+          "gitBlob": "d7863758ed7581a303f8b6118f3a2a4185b60f4e"
+        },
+        {
+          "path": "fixtures/rescue-input.md",
+          "sha256": "1dba2c5236d7eae5b0ba53bea630babb5acd6a3e2c679f8afc2e7250e19cbc5d",
+          "bytes": 494,
+          "gitBlob": "fc266d49e81f1c42eacc8028023167b7dc03cc72"
+        },
+        {
+          "path": "fixtures/scaffold-receipt.json",
+          "sha256": "cabaa9901c9ab0f788e2029bc2ddb18bd9fe9968c6bec13277502a01f039eaba",
+          "bytes": 1352,
+          "gitBlob": "805ea6d565ee241774ef0cac71d667393e40cf0f"
+        },
+        {
+          "path": "fixtures/test-receipt.md",
+          "sha256": "1e62b6f9a3d573a499c68e9a16a084ec7a96e30f1f5ebf3a2cc490277b683717",
+          "bytes": 1257,
+          "gitBlob": "f4b80503815b72765440dd968d8c55b3c28a829e"
+        },
+        {
+          "path": "references/agents.md",
+          "sha256": "2eb9c13afaa08e1633cbfebec31964e961763fc28a97c2969e65e004320f7d8d",
+          "bytes": 30999,
+          "gitBlob": "b063c18223a130b9e815b15db645a0510f9b6767"
+        },
+        {
+          "path": "references/orchestrator.md",
+          "sha256": "8079535768f44c26887ce6e7ddcc3ff1608ea2f9457a5e03ee3e30292b306c56",
+          "bytes": 10623,
+          "gitBlob": "d57d73956c5384aac01e8e9361703e4491058550"
+        },
+        {
+          "path": "references/owner-profile.md",
+          "sha256": "bbc19a4e491b2cd1ea54b09b41c2e7f1dfc2061f0e2f33271842cf439cc80fc6",
+          "bytes": 1790,
+          "gitBlob": "a96d0cec63e86e6cf6d0c59ab53082e27659498c"
+        },
+        {
+          "path": "references/rescue-and-maintenance.md",
+          "sha256": "338e8b969ab07bdfb6842d78603de7093070d27f2451e87a3a31f957bf661db6",
+          "bytes": 2174,
+          "gitBlob": "42bb6494e6b90576e535afd3c3989c49e846a5b5"
+        },
+        {
+          "path": "references/sources.md",
+          "sha256": "050c30e617572cf439fead5c98eb4c3ae6e2a8a3b634a4ea8f6f6b1545b7d25a",
+          "bytes": 17387,
+          "gitBlob": "a60badebe47c912aaebf8093a575f57d3ad3e88d"
+        },
+        {
+          "path": "references/visual-elements.md",
+          "sha256": "551123cceacce53108d52d9ab630e3dc69cba6e6558fd2d22b730c5df51e254a",
+          "bytes": 8350,
+          "gitBlob": "3f419384a40ecea16a8ca8b2a2eed987ea73ecef"
+        },
+        {
+          "path": "scripts/evidence_scan.py",
+          "sha256": "19910955dc68dde1c63a9cf27794efbb627ca39da399c593d0e316f7bc0956d8",
+          "bytes": 5524,
+          "gitBlob": "72935e6c265e78c3e048a623562c9731e2a17c2f"
+        },
+        {
+          "path": "scripts/evidence_scan_selftest.py",
+          "sha256": "6cc048e77259e6fd7cfa55a6cb88b8b26366149c6740289d0fe53de602750d18",
+          "bytes": 1892,
+          "gitBlob": "414c843bc2e304db2b2ef8005fb10905e74d2e4f"
+        },
+        {
+          "path": "skill.yaml",
+          "sha256": "34b5bc86161f6b3edb220c97a9b3296af614d3486269f2726b7ccf6906087ab6",
+          "bytes": 2300,
+          "gitBlob": "0c5bf6f4c0ffb81caa7722166d999e154d3bbe33"
+        }
+      ],
+      "examples": []
+    },
+    {
       "id": "reconcile-knowledge",
       "title": "Reconcile knowledge",
       "family": 5,
@@ -13755,7 +14010,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/reconcile-knowledge/SKILL.md",
       "sourceSha256": "0c47d0ae6fc92550c1be657a5e1926f4b68c484e2b7eea276b9a1fd0999bd62a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/reconcile-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/reconcile-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "reconcile-knowledge",
@@ -13889,7 +14144,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/refine-backlog/SKILL.md",
       "sourceSha256": "1ec640ffd185ab7e28063c8a9a5e5b406ce40bf063a09b1c9cef6b255de0eecb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/refine-backlog/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/refine-backlog/SKILL.md",
       "taskPackages": [
         {
           "name": "refine-backlog",
@@ -14119,7 +14374,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/release-skill-package/SKILL.md",
       "sourceSha256": "18ced08f63182be20b58bb29afb4cc38c690163f52e31e79962eed6cecb4c381",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/release-skill-package/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/release-skill-package/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -14278,7 +14533,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/render-offering-brief/SKILL.md",
       "sourceSha256": "0bdc89e1f7b07505ee7144b38b91c51536c8f73aa26343653bb679fb1145c754",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/render-offering-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/render-offering-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -14519,7 +14774,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-contract-scope/SKILL.md",
       "sourceSha256": "574d3d4d6fea4de0fb2e5fb6cdd23bde2e69e5bbdd038eaa63d2fed624b63b21",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/review-contract-scope/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/review-contract-scope/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -14731,7 +14986,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deal-economics/SKILL.md",
       "sourceSha256": "ef5e2b97bf3b291dca0d03904558dbc43f4bdf8c73a725d25d55146de53ec5d1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/review-deal-economics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/review-deal-economics/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deal-economics",
@@ -14977,7 +15232,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deliverable/SKILL.md",
       "sourceSha256": "186d468aa9fad1070a7a6633e26bd597a46ae68065297a8f99014054408c2fa2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/review-deliverable/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/review-deliverable/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deliverable",
@@ -15202,7 +15457,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-sales-journey/SKILL.md",
       "sourceSha256": "893a37e12a8a86177e88bb0903c20d9812c411a534edb074e3207b7d3bda6a9d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/review-sales-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/review-sales-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -15352,7 +15607,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-runtime/SKILL.md",
       "sourceSha256": "bba06bf6d55a823144888d369961f2adca0233c050939b1c870e32ac3b54474b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/review-site-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/review-site-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "build-moscow-story-map",
@@ -15690,7 +15945,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-writing/SKILL.md",
       "sourceSha256": "ae1c35a0ac5ec6ab9e60723b83e8e4e5e9702f6f40b3d6e4309ab74d8aaf743d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/review-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/review-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "review-writing",
@@ -15746,6 +16001,7 @@
         "prepare-sales-pursuit",
         "prepare-session-handoff",
         "prioritize-work",
+        "publish-content",
         "reconcile-knowledge",
         "refine-backlog",
         "review-deal-economics",
@@ -15795,7 +16051,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 21,
-        "packageFingerprint": "ff21ebb57c4116d019329d9db2f9d5a863d44e376e0461db9a06491a2609316a",
+        "packageFingerprint": "62d13cfdbf5937847f02c5931eb65cba3e1eee5412ec782bd4465a05ae46eabe",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -15948,9 +16204,9 @@
         },
         {
           "path": "scripts/extract_review_text_selftest.py",
-          "sha256": "9da1321ebad234d103d173fedb09dfb7caa7324ef23f78abe9fbcd8373aa24de",
-          "bytes": 21213,
-          "gitBlob": "4f9875227b47daf723b8f943c8e7618042707c51"
+          "sha256": "0a7f1b63573916cf293016dc8d7d4e3f30c355f7c6b9cdb3cf57356a4537ffb5",
+          "bytes": 21243,
+          "gitBlob": "97a295b90d93fe9e76a8d9b8be65b21cf83363ff"
         },
         {
           "path": "scripts/learning.py",
@@ -16008,7 +16264,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-project/SKILL.md",
       "sourceSha256": "ff5b620e6f667358e4503d12e1e295fb0a44c405b91c3105bc55a882a29d34b6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/scope-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/scope-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -16215,7 +16471,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/simplify-code/SKILL.md",
       "sourceSha256": "156e04c98dbf3090b7e649c9a173bee3dfea52c8b524acbb220b76ac5f87e67a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/simplify-code/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/simplify-code/SKILL.md",
       "taskPackages": [
         {
           "name": "simplify-code",
@@ -16336,7 +16592,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/specify-implementation/SKILL.md",
       "sourceSha256": "3d9f7a3e6889a8fa8d7e49ee2996af8d02331d31007293dd40cc8c3174a6c6ba",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/specify-implementation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/specify-implementation/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -16504,7 +16760,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/start-delivery/SKILL.md",
       "sourceSha256": "28ea292d287efc339df4a895b44adb673ca2b8a0b1d2edae70721fb2e991d408",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/start-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/start-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "start-delivery",
@@ -16801,7 +17057,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/synthesize-discovery/SKILL.md",
       "sourceSha256": "39107cee8aedd73a846a61877adb4be684bdfd56b878be02ebae32792d9aed3d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/synthesize-discovery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/synthesize-discovery/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -16990,7 +17246,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tailor-resume/SKILL.md",
       "sourceSha256": "4f3dedf48a065ea98d6ef096cdfc37739321c95a00cdcf8273121e1f1debeffd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/tailor-resume/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/tailor-resume/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -17146,7 +17402,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/track-delivery/SKILL.md",
       "sourceSha256": "b9bdb2a34c011248bbc8280ea2238cd415924974c2da0a74ebf2f76be7a409df",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/track-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/track-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "track-delivery",
@@ -17421,7 +17677,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/validate-delivery/SKILL.md",
       "sourceSha256": "21aabfb9a5cfc4ef671156a5a7a18bab9c11a2fc6a207248bf19c9b4b429c1f8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/validate-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/validate-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "validate-delivery",
@@ -17667,7 +17923,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-salesforce-org/SKILL.md",
       "sourceSha256": "ef7f119c9035f2562cc46ff755936355cb6fc0dd34439cca9a5f8f5f5d55fad5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/verify-salesforce-org/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/verify-salesforce-org/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "deliver-salesforce-change"
@@ -17823,7 +18079,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-work-state/SKILL.md",
       "sourceSha256": "76de9e7c6c3916162139c2d14bcb1f7baf76da2bafea8fd864db2f10ce7bb5cc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/verify-work-state/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/verify-work-state/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -17985,7 +18241,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/work-in-github-repository/SKILL.md",
       "sourceSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/work-in-github-repository/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/work-in-github-repository/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18088,7 +18344,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-architecture-reference/SKILL.md",
       "sourceSha256": "24916ef267bbe31223eb17ac4065674e24bc46e2662dfa02467974392b696c5c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/write-architecture-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/write-architecture-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -18310,7 +18566,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-business-case/SKILL.md",
       "sourceSha256": "bec549aa6af7ce6f17ae4190b21ce8eea89f27b6cf03f7df33385f5367347bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/write-business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/write-business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "write-business-case",
@@ -18545,7 +18801,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-feature-spec/SKILL.md",
       "sourceSha256": "37bec88975ff9246aa2e76451a73e6612f9835c0316634e6edb44b1cb0a7cbce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/write-feature-spec/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/write-feature-spec/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -18696,7 +18952,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-portfolio-case-study/SKILL.md",
       "sourceSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/write-portfolio-case-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/write-portfolio-case-study/SKILL.md",
       "taskPackages": [
         {
           "name": "write-portfolio-case-study",
@@ -18830,7 +19086,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "39b45b3eab1db80cf07e6e7b705d17d2d81e50f9e929d34b80266d5630dbd128",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/write-statement-of-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/write-statement-of-work/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -19115,11 +19371,11 @@
       "title": "Writing",
       "family": 6,
       "description": "Write or review every word a person will read, in any format, against the owner's writing rules folder. Use before returning a reply, document, page, deck, message, interface label, commit message or pull request description. Reviews text, writes as the owner or as a brand, and logs wording corrections. Code and exact quotations are exempt.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/writing/SKILL.md",
       "sourceSha256": "0b569a496fb1dd9a4e76021bb3c8522b9191ce1127b4afd5033278f2fade74b8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/writing/SKILL.md",
       "taskPackages": [
         {
           "name": "writing",
@@ -19127,6 +19383,7 @@
         }
       ],
       "downloadPackages": [
+        "publish-content",
         "writing"
       ],
       "guide": {
@@ -19164,7 +19421,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 9,
-        "packageFingerprint": "8c0e56eda5f8551011726d4f77ba6efa5548c2ecae94222f77e54ac6f9725d35",
+        "packageFingerprint": "4570fbc4f5bfd4512ffa6142ea67dd09aec5fb5ae8a88d27edc607a65aba655e",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -19206,7 +19463,9 @@
           "estate-writing"
         ],
         "bundles": [],
-        "usedBy": [],
+        "usedBy": [
+          "publish-content"
+        ],
         "calls": [],
         "dependsOn": [],
         "runtimes": [
@@ -19279,9 +19538,9 @@
         },
         {
           "path": "scripts/extract_review_text_selftest.py",
-          "sha256": "9da1321ebad234d103d173fedb09dfb7caa7324ef23f78abe9fbcd8373aa24de",
-          "bytes": 21213,
-          "gitBlob": "4f9875227b47daf723b8f943c8e7618042707c51"
+          "sha256": "0a7f1b63573916cf293016dc8d7d4e3f30c355f7c6b9cdb3cf57356a4537ffb5",
+          "bytes": 21243,
+          "gitBlob": "97a295b90d93fe9e76a8d9b8be65b21cf83363ff"
         },
         {
           "path": "skill.yaml",
@@ -19301,7 +19560,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
       "sourceSha256": "1cd817de3b987c38739ab33f564c35763f69dcb0fae2c1b005d319dbfb78e2be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/35bdd052ebad71071c072d12e9b05b972923a04f/skills/writing-diagnostics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/e6e91e8995542dcefe623268ca548140abbd3cc3/skills/writing-diagnostics/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "apply-salesforce-patterns",
@@ -19352,6 +19611,7 @@
         "prepare-sales-pursuit",
         "prepare-session-handoff",
         "prioritize-work",
+        "publish-content",
         "reconcile-knowledge",
         "refine-backlog",
         "review-deal-economics",
@@ -19733,11 +19993,11 @@
     }
   ],
   "counts": {
-    "github": 91,
-    "local-revision": 1,
-    "local-addition": 0,
+    "github": 92,
+    "local-revision": 0,
+    "local-addition": 1,
     "canonical": 92,
-    "total": 92,
+    "total": 93,
     "withExamples": 90
   }
 }

@@ -1938,6 +1938,34 @@
         "missing": "With no pattern ledger the check exits 2. With no rules.md the scan still runs and a full review is reported incomplete. A format the script does not read exits 2."
       },
       "preparationSkills": []
+    },
+    "publish-content": {
+      "what": "Take a piece of content from topic to publishable draft through nine gated steps, or rebuild an AI-written draft into one that can be published.",
+      "when": "Someone wants blog posts, newsletters, guides, news, reviews, case studies or proposals that rest on the owner's own evidence, or has an AI draft to rescue or retire.",
+      "inputs": "A goal for the run or the draft to rescue, a filled owner profile, the owner's writing rules folder, and the owner's data, answers and permissions.",
+      "outputs": "The final draft with its exhibits, a claim table, a meaning diff, panel scores, an approval packet, a run ledger entry and the defect log.",
+      "example": "Write a portfolio case study about the pricing rebuild from my decision notes and the before and after numbers, and stop for my sign-off before anything is published.",
+      "reviewedEntrypointSha256": "f2f204d023fe84ed8c44904e90972e868b894a61439fee57b53b370593440b20",
+      "expect": "Separate agents scout topics, research, collect the owner's evidence, brief, draft, build exhibits, edit, fact-check and score the draft, and each step has a gate. It stops at every human gate with an approval packet. evidence_scan.py and the owner's writing check run at steps 6 and 9, and a claim with no source is cut, not softened. Nothing is published without the owner's sign-off.",
+      "connectors": {
+        "required": [],
+        "optional": [
+          "knowledge-hub"
+        ]
+      },
+      "requires": "Python 3 for evidence_scan.py, web research for the scout and researcher, and the owner's writing rules folder for the editor.",
+      "overview": "It runs a topic through nine steps, each owned by one agent with its own procedure. Every section of the brief needs a claim and an evidence ID, exhibits are built as code from cited data, and the editor removes AI writing patterns before a fact checker and a reader panel see the draft. Case studies also produce an evidence file that a named person signs.",
+      "value": "Publish pieces that carry the owner's own evidence and decisions, and refuse pieces that do not. The pipeline sets no volume target, and a topic with nothing only the owner holds is dropped at step 2.",
+      "preparation": {
+        "where": "Fill the owner profile template and pass its path. Name the writing rules folder in the profile, and supply the owner's data files, screenshots, permissions and answers when the asset collector asks.",
+        "missing": "Without an owner profile the run stops and asks for one. Without the writing rules folder the editor uses the general layers and says the owner's rules did not run. Without web research the scout and researcher use only owner-supplied material."
+      },
+      "preparationSkills": [
+        {
+          "skill": "manage-writing-profile",
+          "reason": "Use this to build the owner's voice profile when pieces go out under the owner's name and no profile exists yet."
+        }
+      ]
     }
   }
 }

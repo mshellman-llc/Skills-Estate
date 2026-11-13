@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/publish-content/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "evidence_scan.py commands the reader runs, quoted exactly.",
+      "text": "```sh\npython3 scripts/evidence_scan.py --file DRAFT.md            # published copy\npython3 scripts/evidence_scan.py --file DRAFT.md --data-piece  # numbers are the subject\npython3 scripts/evidence_scan.py --file NOTES.md --internal    # internal working document\n```"
+    }
+  ]
+}

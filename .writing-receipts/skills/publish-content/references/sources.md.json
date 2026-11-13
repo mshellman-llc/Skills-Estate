@@ -1,0 +1,236 @@
+{
+  "format": 1,
+  "artifact": "skills/publish-content/references/sources.md",
+  "protected": [
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://ppc.land/google-tells-sites-to-manually-factcheck-all-ai-content-before-publishing/"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://ppc.land/google-says-fake-author-profiles-signal-a-low-quality-page/"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://ppc.land/scaled-content-abuse/"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2402.14207"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2603.18161"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2509.19163"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2409.14509"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2406.07016"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2501.15654"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://www.reddit.com/r/PromptEngineering/comments/1oitlyn/prompt_expert_helps_you_create_other_prompts/"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/pdf/1304.1186"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2407.17468v1"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2608.11256"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/pdf/2510.15061v1"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2603.27006"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2504.07532v3"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2503.05244v4"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/pdf/2506.11763"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2506.05339v3"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2404.13076v1"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2406.19276v1"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/abs/2604.03173"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2509.14543v1"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/pdf/2101.08235"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/1907.02035v2"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://learn.microsoft.com/en-us/contribute/content/markdown-reference"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews?authuser=8"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://learn.microsoft.com/en-us/contribute/style-quick-start"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://developers.google.com/search/docs/appearance/google-images"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2407.00981v2"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2601.12983v2"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2406.09961v2"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2511.14967v1"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/html/2603.21178v1"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Source URL, kept exact so the link resolves.",
+      "text": "https://arxiv.org/pdf/2310.11513.pdf"
+    },
+    {
+      "kind": "quotation",
+      "reason": "Paper title quoted exactly as published.",
+      "text": "Delving into LLM-assisted writing through excess vocabulary"
+    }
+  ]
+}
