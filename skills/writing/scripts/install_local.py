@@ -7,7 +7,9 @@ Copies check.py, extract_review_text.py, hook.py, writing_system.py and
 check_selection.py to ~/.agents/writing/bin with a manifest of their sha256, so
 the hooks keep working whichever branch the repository has checked out. Writes
 gate.json there when none exists, and the gate command for Claude Code
-(~/.claude/commands/gate.md) and Codex (~/.codex/prompts/gate.md).
+(~/.claude/commands/gate.md) and Codex (~/.codex/prompts/gate.md). When the
+publish-content skill sits beside this one, its evidence_scan.py is copied too,
+for the gate's check on client and public pieces.
 
 --git-hooks  installs a hook folder whose every hook runs the repository's own hook
              first, then checks commit messages, and sets git's global
@@ -30,6 +32,7 @@ SKILL = HERE.parent
 HOME = Path.home()
 BIN = HOME / '.agents' / 'writing' / 'bin'
 FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py']
+EVIDENCE_SCAN = SKILL.parent / 'publish-content' / 'scripts' / 'evidence_scan.py'
 HOOK_NAMES = ['applypatch-msg', 'pre-applypatch', 'post-applypatch', 'pre-commit', 'pre-merge-commit',
               'prepare-commit-msg', 'commit-msg', 'post-commit', 'pre-rebase', 'post-checkout', 'post-merge',
               'pre-push', 'post-rewrite', 'pre-auto-gc']
@@ -75,6 +78,10 @@ def install_bin(dry):
         if not dry:
             shutil.copy2(src, BIN / name)
         manifest['files'][name] = sha(src)
+    if EVIDENCE_SCAN.is_file():
+        if not dry:
+            shutil.copy2(EVIDENCE_SCAN, BIN / EVIDENCE_SCAN.name)
+        manifest['files'][EVIDENCE_SCAN.name] = sha(EVIDENCE_SCAN)
     if not dry:
         (BIN / 'MANIFEST.json').write_text(json.dumps(manifest, indent=1) + '\n')
         gate = BIN.parent / 'gate.json'
