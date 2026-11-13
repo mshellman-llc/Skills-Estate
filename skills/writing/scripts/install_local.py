@@ -32,11 +32,11 @@ BIN = HOME / '.agents' / 'writing' / 'bin'
 FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py']
 HOOK_NAMES = ['applypatch-msg', 'pre-applypatch', 'post-applypatch', 'pre-commit', 'pre-merge-commit',
               'prepare-commit-msg', 'commit-msg', 'post-commit', 'pre-rebase', 'post-checkout', 'post-merge',
-              'pre-push', 'post-rewrite', 'reference-transaction', 'pre-auto-gc']
+              'pre-push', 'post-rewrite', 'pre-auto-gc']
 DISPATCH = r'''#!/bin/sh
 # Installed by the writing skill. Runs the repository's own hook of the same name, then checks commit messages.
 name=$(basename "$0")
-gitdir=$(git rev-parse --git-dir 2>/dev/null) || exit 0
+gitdir=$(git rev-parse --git-common-dir 2>/dev/null) || exit 0
 own="$gitdir/hooks/$name"
 if [ -x "$own" ]; then
   "$own" "$@" || exit $?
