@@ -1,0 +1,70 @@
+schema_version: 1
+skill: publish-content
+lifecycle:
+  status: draft
+job:
+  user: An owner or editor who publishes under their own name or a client's
+  situation: They need content that a named reader would choose to read, built from evidence only they hold, without generic AI patterns
+  outcome: A publishable draft with exhibits, a signed claim table and an approval packet, or a documented decision not to publish
+  complete_when: The owner signs the approval packet, or the scout reports that no topic clears the threshold
+position:
+  closest_skills: [writing, review-writing, manage-brand-profile, build-editorial-chart, build-interactive-explorer, synthesize-discovery]
+  disposition: separate
+  rationale: The writing skill reviews a finished text; this skill owns topic selection, research, evidence collection, drafting, visuals, fact-checking and packaging, and calls writing as its editing control
+contract:
+  inputs: [goal or draft, owner profile, writing rules folder, optional demand data and owner assets]
+  outputs: [topic slate, brief, draft with exhibits, claim table, meaning diff, panel scores, approval packet, ledger entries]
+selection:
+  positive:
+    - "Write a blog post about our CPQ migration lessons from my project notes"
+    - "Rescue this AI-written case study so I can put it on my portfolio"
+    - "What should I publish next for VP-level hiring readers?"
+  adjacent:
+    - "Check this paragraph against my writing rules (writing)"
+    - "Apply the client's brand to this page (manage-brand-profile)"
+    - "Chart this quarterly data (build-editorial-chart)"
+  negative:
+    - "Fix the typo in my README"
+    - "Summarize this article for me"
+relationships:
+  requires: [writing]
+  optional: [build-editorial-chart, manage-brand-profile, review-deliverable]
+  controls: [writing]
+  upstream: []
+  downstream: [manage-brand-profile]
+capabilities:
+  - name: web research
+    hosts: {claude-code: web search and fetch tools, codex: web search, claude-ai: web search}
+    absent: scout and researcher work from owner-supplied material only and say so in the slate
+  - name: file read and write
+    hosts: {claude-code: filesystem, codex: filesystem, claude-ai: workspace files}
+    absent: return drafts and ledgers inline; nothing is saved
+  - name: script execution
+    hosts: {claude-code: python3, codex: python3, claude-ai: sandbox python3}
+    absent: run the evidence checks by reading against the rules in orchestrator.md and say the scan did not run
+  - name: separate agents
+    hosts: {claude-code: subagents, codex: subagents, claude-ai: single conversation}
+    absent: run steps in order in one conversation and state in the approval packet that the same model wrote and judged
+risks:
+  persistent_writes: [drafts, run ledger, defect log, Hub session notes when connected]
+  authorization: [publishing or sending anything needs the owner's sign-off at step 9]
+  failure_behavior: stops at each human gate with an approval packet; never publishes or invents evidence to pass a gate
+  privacy: client names, quotes and screens need consent on file; confidential client material stays in the evidence file
+  rollback: drafts and ledgers are versioned files; nothing is published by the skill itself
+cost:
+  status: unknown
+  receipt: null
+efficiency:
+  status: unknown
+  receipt: null
+stewardship:
+  steward: estate-maintainer
+  maintainers:
+    - estate-maintainer
+  lifecycle_approver: configured workspace owner
+  review_date: 2027-02-13
+  stale_facts:
+    - Google Search guidance and rater sections (S1, S2, S4)
+    - detector false-positive figures (S12, S13, S41, S42)
+    - EU AI Act Article 50 code of practice (S61)
+  retirement_path: merge into a successor writing pipeline if one owns topic selection through packaging

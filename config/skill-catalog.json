@@ -369,6 +369,11 @@
       "source": "writing",
       "pack": "core",
       "modes": {}
+    },
+    "publish-content": {
+      "source": "publish-content",
+      "pack": "core",
+      "modes": {}
     }
   },
   "internal": [

@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 92 source modules and 64 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 93 source modules and 65 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -14,7 +14,7 @@ This candidate contains 92 source modules and 64 task entrypoints. Consolidation
 | [Salesforce development](browse/salesforce-development/README.md) | 8 | 5 |
 | [Product and experience](browse/product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
-| [Writing and presentation](browse/writing-and-presentation/README.md) | 10 | 6 |
+| [Writing and presentation](browse/writing-and-presentation/README.md) | 11 | 7 |
 | [Career and applications](browse/career-and-personal/README.md) | 5 | 3 |
 | [Personal and creative](browse/personal-and-creative/README.md) | 3 | 3 |
 | [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
@@ -72,6 +72,7 @@ This candidate contains 92 source modules and 64 task entrypoints. Consolidation
 | prepare-sales-pursuit | [prepare-sales-pursuit](skills/prepare-sales-pursuit/SKILL.md) |  |
 | prepare-session-handoff | [prepare-session-handoff](skills/prepare-session-handoff/SKILL.md) |  |
 | prioritize-work | [prioritize-work](skills/prioritize-work/SKILL.md) |  |
+| publish-content | [publish-content](skills/publish-content/SKILL.md) |  |
 | reconcile-knowledge | [reconcile-knowledge](skills/reconcile-knowledge/SKILL.md) |  |
 | refine-backlog | [refine-backlog](skills/refine-backlog/SKILL.md) |  |
 | review-deal-economics | [review-deal-economics](skills/review-deal-economics/SKILL.md) |  |
@@ -157,6 +158,7 @@ Each module needs a reviewed capability disposition before release.
 - [prepare-session-handoff](skills/prepare-session-handoff/SKILL.md)
 - [prioritize-work](skills/prioritize-work/SKILL.md)
 - [promote-salesforce-changes](skills/promote-salesforce-changes/SKILL.md)
+- [publish-content](skills/publish-content/SKILL.md)
 - [reconcile-knowledge](skills/reconcile-knowledge/SKILL.md)
 - [refine-backlog](skills/refine-backlog/SKILL.md)
 - [release-skill-package](skills/release-skill-package/SKILL.md)

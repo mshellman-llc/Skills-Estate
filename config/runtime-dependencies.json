@@ -213,5 +213,8 @@
   ],
   "review-site-runtime": [
     "brand-renderer"
+  ],
+  "publish-content": [
+    "writing"
   ]
 }

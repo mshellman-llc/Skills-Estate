@@ -14,7 +14,7 @@ Open a group to find its workflows and task packages. The interactive map uses t
 | [Salesforce development](salesforce-development/README.md) | 8 | 5 |
 | [Product and experience](product-and-experience/README.md) | 14 | 13 |
 | [Knowledge and context](knowledge-and-context/README.md) | 9 | 6 |
-| [Writing and presentation](writing-and-presentation/README.md) | 10 | 6 |
+| [Writing and presentation](writing-and-presentation/README.md) | 11 | 7 |
 | [Career and applications](career-and-personal/README.md) | 5 | 3 |
 | [Personal and creative](personal-and-creative/README.md) | 3 | 3 |
 | [Estate and engineering controls](estate-and-engineering-controls/README.md) | 7 | 3 |

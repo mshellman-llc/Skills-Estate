@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.4.22",
+  "version": "0.4.23",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -163,7 +163,8 @@
         "manage-brand-profile",
         "review-writing",
         "manage-writing-profile",
-        "writing"
+        "writing",
+        "publish-content"
       ],
       "internal": [
         "apply-author-style",
@@ -679,6 +680,11 @@
         "status": "pending",
         "reviewed_sha256": "",
         "evidence": "Added 2026-11-08 as a draft. Self-test 45 of 45 and browser checks at desktop width and 375px; awaiting owner review."
+      },
+      "publish-content": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": "Added 2026-11-13 as a draft from the publish-content package. Stays a draft until one real piece runs end to end and fixtures/governance.yaml routing passes."
       }
     },
     "routers": {

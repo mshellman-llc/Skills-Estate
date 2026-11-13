@@ -1,6 +1,6 @@
 # Skill reuse review
 
-92 general-use methods, 0 Context-specific workflows, and 0 awaiting source review.
+93 general-use methods, 0 Context-specific workflows, and 0 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -76,6 +76,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `prepare-session-handoff` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `prioritize-work` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `promote-salesforce-changes` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No local path or configured private term detected in workflow text. |
+| `publish-content` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `reconcile-knowledge` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `refine-backlog` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `release-skill-package` | General use | Requires the destination hosts and their current supported installation or upload method. | No local path or configured private term detected in workflow text. |
