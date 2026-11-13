@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Install the writing check, hook and gate command on this computer.
 
-    install_local.py [--git-hooks] [--services] [--dry]
+    install_local.py [--git-hooks] [--services] [--watch DIR] [--dry]
 
 Copies check.py, extract_review_text.py, hook.py, writing_system.py and
 check_selection.py to ~/.agents/writing/bin with a manifest of their sha256, so
@@ -15,6 +15,8 @@ for the gate's check on client and public pieces.
              first, then checks commit messages, and sets git's global
              core.hooksPath to it. Refuses when a global core.hooksPath is already set.
 --services   builds the "Check writing" Services menu action in ~/Library/Services.
+--watch DIR  installs a launchd agent that runs gate_watch.py whenever DIR changes,
+             and every 15 minutes, so each file that lands there gets the full review.
 
 Hook settings for Claude Code and Codex are not edited here.
 """
@@ -31,7 +33,8 @@ HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
 HOME = Path.home()
 BIN = HOME / '.agents' / 'writing' / 'bin'
-FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py']
+FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py', 'gate_watch.py']
+WATCH_LABEL = 'com.mshellman.writing-gate-watch'
 EVIDENCE_SCAN = SKILL.parent / 'publish-content' / 'scripts' / 'evidence_scan.py'
 HOOK_NAMES = ['applypatch-msg', 'pre-applypatch', 'post-applypatch', 'pre-commit', 'pre-merge-commit',
               'prepare-commit-msg', 'commit-msg', 'post-commit', 'pre-rebase', 'post-checkout', 'post-merge',
@@ -216,10 +219,53 @@ def install_services(dry):
     return str(target)
 
 
+# macOS grants network-volume access per program. launchd starts the watcher through node, which the
+# Knowledge Hub already runs under, so the Python child inherits the access node was given.
+NODE = shutil.which('node') or str(HOME / '.local' / 'bin' / 'node')
+LAUNCH_JS = ("const r=require('child_process').spawnSync('/usr/bin/python3',[process.argv[1],'--folder',"
+             "process.argv[2]],{stdio:'inherit'});process.exit(r.status??1)")
+
+
+def install_watch(folder, dry):
+    folder = Path(folder).expanduser()
+    plist = HOME / 'Library' / 'LaunchAgents' / f'{WATCH_LABEL}.plist'
+    logs = HOME / '.agents' / 'writing'
+    body = f'''<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key><string>{WATCH_LABEL}</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>{NODE}</string>
+		<string>-e</string>
+		<string>{LAUNCH_JS}</string>
+		<string>{BIN / 'gate_watch.py'}</string>
+		<string>{folder}</string>
+	</array>
+	<key>WatchPaths</key><array><string>{folder}</string></array>
+	<key>StartInterval</key><integer>900</integer>
+	<key>ThrottleInterval</key><integer>30</integer>
+	<key>StandardOutPath</key><string>{logs / 'gate-watch.out'}</string>
+	<key>StandardErrorPath</key><string>{logs / 'gate-watch.err'}</string>
+</dict>
+</plist>
+'''
+    if not dry:
+        folder.mkdir(parents=True, exist_ok=True)
+        plist.parent.mkdir(parents=True, exist_ok=True)
+        plist.write_text(body, encoding='utf-8')
+        domain = f'gui/{subprocess.run(["id", "-u"], capture_output=True, text=True).stdout.strip()}'
+        subprocess.run(['launchctl', 'bootout', domain, str(plist)], capture_output=True)
+        subprocess.run(['launchctl', 'bootstrap', domain, str(plist)], capture_output=True)
+    return {'plist': str(plist), 'folder': str(folder)}
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--git-hooks', action='store_true')
     ap.add_argument('--services', action='store_true')
+    ap.add_argument('--watch', metavar='DIR')
     ap.add_argument('--dry', action='store_true')
     args = ap.parse_args(argv)
     report = {'bin': install_bin(args.dry), 'commands': install_commands(args.dry)}
@@ -227,6 +273,8 @@ def main(argv=None):
         report['git_hooks'] = install_git_hooks(args.dry)
     if args.services:
         report['services'] = install_services(args.dry)
+    if args.watch:
+        report['watch'] = install_watch(args.watch, args.dry)
     print(json.dumps(report, indent=1))
     return 0
 

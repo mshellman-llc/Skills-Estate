@@ -21,7 +21,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "ff499c2b6674e78f5b10463e49f6a47c223770cbdfb06ff362f469f711ef8412",
+      "required_sha256": "b7e4e5de7ca29c26ec7b1e67baa31de41cbc31c27b2d41dbe682aab714b6a95a",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -391,7 +391,7 @@
       "subject": "promote-salesforce-changes"
     },
     {
-      "required_sha256": "a4f8d8d92c09247f8c4037d0719113b9193c7c8af366b4997326821c2aa118ec",
+      "required_sha256": "f1d08f133b3758b9b0fa9c0d0442aab3627814aa445cd97be03d612a78b656b8",
       "status": "review required",
       "subject": "publish-content"
     },
@@ -526,7 +526,7 @@
       "subject": "write-statement-of-work"
     },
     {
-      "required_sha256": "b19a474df535daf7acaebf43a17746318fc961b0d712507415f9ed1507062668",
+      "required_sha256": "edb8e69564be375d701240afbe72c412dee9894ba021be375c169b38e83e4d29",
       "status": "review required",
       "subject": "writing"
     },
@@ -536,6 +536,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "45e24090869951cbf6024ec3a72641e3a7373eadb3daaddba5ae155dabd1656a",
+  "source_sha256": "b0595adb1dc3824a49339b33432e37f2f399259c42f5d58fe7d41e45abce3413",
   "status": "owner-published"
 }
