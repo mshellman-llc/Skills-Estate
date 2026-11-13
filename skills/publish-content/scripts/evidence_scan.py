@@ -36,6 +36,17 @@ LEAK = re.compile(
 
 LIST_MARKER = re.compile(r"(?:^|(?<=\s))\d+[.)](?=\s)")
 LINK_TARGET = re.compile(r"\]\([^)]*\)")
+REVIEW_PREFIX = re.compile(r"^\[\d+\]\s+\S+:\s*")
+
+
+def per_line(text):
+    """Treat each line as its own paragraph, for text extracted one element per line by check.py --prepare."""
+    out = []
+    for line in text.splitlines():
+        line = REVIEW_PREFIX.sub("", line).strip()
+        if line:
+            out += [line, ""]
+    return "\n".join(out)
 
 
 def figures(text):
@@ -107,6 +118,7 @@ def main(argv=None):
     ap.add_argument("--file", required=True)
     ap.add_argument("--data-piece", action="store_true", help="numbers are the subject; skip density limits")
     ap.add_argument("--internal", action="store_true", help="internal document; skip the production-vocabulary check")
+    ap.add_argument("--per-line", action="store_true", help="each line is a paragraph, as in check.py --prepare parts")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args(argv)
     try:
@@ -114,6 +126,8 @@ def main(argv=None):
     except OSError as e:
         print(json.dumps({"status": "incomplete", "reason": str(e)}))
         return 2
+    if a.per_line:
+        text = per_line(text)
     f = scan(text, data_piece=a.data_piece, published=not a.internal)
     result = {"status": "fail" if f else "pass", "findings": f}
     if a.json:

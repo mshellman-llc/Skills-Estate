@@ -4,7 +4,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from evidence_scan import scan  # noqa: E402
+from evidence_scan import per_line, scan  # noqa: E402
 
 LEDGER = """# Results
 
@@ -28,6 +28,11 @@ STEPS = """# Inputs
 2. A filled owner profile.
 3. The rules folder, see [guide](https://example.com/2024/04/guide).
 """
+PARTS = """[0001] L2: # Results
+[0002] L3: Approval time fell from most of a week to the next day.
+[0003] L4: The pilot ran with one sales team in Atlanta.
+[0004] L5: Quotes now reach finance with discounts already checked.
+"""
 YEARS = """# Timeline
 
 The team started in 2024 and finished in 2026 after one pilot.
@@ -49,7 +54,9 @@ def run():
     assert scan(LEAK, published=False) == [], "internal documents may use production vocabulary"
     assert scan(YEARS) == [], "years are dates, not figures"
     assert scan(STEPS) == [], f"list markers and link targets are not figures: {scan(STEPS)}"
-    print("evidence_scan selftest: 8 checks passed")
+    assert scan(per_line(PARTS)) == [], f"one line per paragraph: {scan(per_line(PARTS))}"
+    assert per_line(PARTS).splitlines()[0] == "# Results", "review prefixes are removed"
+    print("evidence_scan selftest: 10 checks passed")
 
 
 if __name__ == "__main__":
