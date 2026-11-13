@@ -253,6 +253,27 @@ class NeverSilent(Base):
         (self.root / 'image.md').write_bytes(b'\xff\xfe\x00\x01binary')
         self.assertEqual(self.check(self.root / 'image.md')[0], 2)
 
+    def test_office_media_does_not_count_toward_the_size_limit(self):
+        import zipfile
+        deck = self.root / 'deck.pptx'
+        slide = ('<p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" '
+                 'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:p><a:r><a:t>'
+                 'The pilot cut quote time for the sales team.</a:t></a:r></a:p></p:sld>')
+        with zipfile.ZipFile(deck, 'w') as z:
+            z.writestr('ppt/slides/slide1.xml', slide)
+            z.writestr('ppt/media/image1.png', b'0' * 4000)
+        big = self.write('big.md', 'A plain line of text.\n' * 200)
+        original = check.MAX_BYTES
+        check.MAX_BYTES = 2000
+        try:
+            code, result = self.check(deck)
+            self.assertEqual(result['status'], 'pass', result.get('reason'))
+            self.assertEqual(result['coverage']['lines_reviewed'], 1)
+            code, result = self.check(big)
+            self.assertEqual((code, result['status']), (2, 'incomplete'))
+        finally:
+            check.MAX_BYTES = original
+
     def test_missing_or_broken_ledger_exits_2(self):
         path = self.write('note.md', 'The export job writes one file per client.\n')
         broken = dict(LEDGER, rules=LEDGER['rules'] + [{'id': 'bad', 'status': 'active', 'pattern': '(unclosed'}])

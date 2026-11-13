@@ -2,5 +2,5 @@
   "description": "Skills Estate solutioning workflows and routing.",
   "name": "estate-solutioning",
   "skills": "./skills/",
-  "version": "0.4.23"
+  "version": "0.4.25"
 }

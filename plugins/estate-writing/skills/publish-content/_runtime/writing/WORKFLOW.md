@@ -23,7 +23,7 @@ Load this skill before writing any text for a reader. It holds the method, the c
 | `brands/<brand>.md` | One brand's voice | Brand mode |
 | `corrections.md` | Dated log of wording corrections | Learn |
 
-On a surface with no file access, get the current rules from the Knowledge Hub with `get_context`. If `rules.md` cannot be read from either place, report the review as incomplete and name the missing file. Do not review from a remembered copy.
+On a surface with no file access, read the current rules through the Knowledge Hub. When the Hub cannot be reached, use the owner's bundled rules skill if the host lists one, and record its build stamp in the review record. Look the rules up without narrating the lookup. Mention it only when every source fails; then report the review as incomplete and name the missing file. Do not review from a remembered copy.
 
 When two rules disagree, the newer one applies. The owner's correction in the current conversation outranks every file.
 
@@ -38,7 +38,7 @@ Code and code comments are exempt. So are quotations kept word for word. A label
 1. Review is the default. Apply `rules.md` and `patterns.json` to the text.
 2. Write as the owner when the piece goes out under the owner's name. Add `voice-profile.md`.
 3. Write as a brand for a piece published under that brand. Add `brands/<brand>.md`. Use a brand voice only when its file exists; if the file is missing, ask which voice applies.
-4. Learn when the owner corrects wording. Apply the fix to every affected passage. Then save it through the Hub with `save_update`, kind `writing-correction`. The saved record states what changed, for which channel and audience, on which date and in which tool.
+4. Learn when the owner corrects wording. Apply the fix to every affected passage. Then log it. Where the rules folder is on disk, add a row to `corrections.md`. Elsewhere, save it through the Hub with `save_update`, kind `decision`, key `writing-correction:<date>:<short-name>`. The record states the words before and after, the channel and audience, the date and the tool.
 
 Writing in another person's voice is outside this skill.
 
@@ -72,7 +72,7 @@ A full review adds two passes to the scan. Each one writes a record that `check.
 
 1. List the documents the piece was written from in a JSON file of names, `SOURCES.json`. Run `check.py --file PATH --prepare REVIEW --sources SOURCES.json`. It writes the text in parts under `REVIEW/text/`, an outline and `REVIEW/assignments.json` with about 40 lines for each worker. Every `--prepare` run replaces those three outputs and writes its own receipt, marked `prepare`. It leaves the verdict, map and audit files alone.
 2. Fix every scanner finding first.
-3. Run the line pass in [line pass](references/line-pass.md). Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.
+3. Run the line pass in [line pass](references/line-pass.md). Give it to reviewers other than the writer, and send at least one worker group to a model from another family when the host has one. Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.
 4. Run the document pass in [document pass](references/document-pass.md). One worker reads the whole text and fills the fixed map.
 5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json`. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.
 6. Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again. A verdict stops counting when its line changed, when another line in its section changed, or when `rules.md` or `patterns.json` changed. The document pass runs on the full text in every round.
@@ -87,4 +87,8 @@ A part or worker that fails is retried twice with half its lines. Lines still un
 
 Read the receipt before reporting. State which steps ran and each step's status. A `failed` step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.
 
-In ordinary work, fix the wording and deliver it without describing the review.
+In ordinary work, fix the wording and deliver it without describing the review. An AI-detector score is never a pass or a fail.
+
+## Hooks
+
+On Claude Code and Codex, `scripts/hook.py` scans every reply and every prose file a tool writes, and holds a reply for one rewrite when a finding blocks. It also holds a session while a deliverable it changed has no passing full review. `scripts/install_local.py` installs the scripts and the `/gate` command. `scripts/writing_system.py` builds the copies of the owner's rules for other hosts and reports drift.
