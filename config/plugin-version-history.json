@@ -108,6 +108,10 @@
     "0.4.23": {
       "content_sha256": "307a60057f3ccb67b7f7b5927bdb39a8abb25cf21d81f474beb7153d4e989261",
       "note": "Add publish-content: gated pipeline from topic to publishable draft"
+    },
+    "0.4.24": {
+      "content_sha256": "8ec120b771d7699407ba0827f356409bc87c44de1797ec60dcca16c77a09bf26",
+      "note": "Hold replies and deliverables to the writing rules in Claude Code and Codex; add the evidence scan to /gate; read image-heavy Office files"
     }
   },
   "source_conflicts": [
