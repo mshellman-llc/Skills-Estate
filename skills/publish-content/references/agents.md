@@ -17,7 +17,7 @@ Procedure:
 | Criterion | Weight | 0 means | 4 means |
 | --- | --- | --- | --- |
 | Reader need | 25% | No evidence anyone asks | Repeated, specific questions from the named reader |
-| Information gain | 25% | Owner adds nothing beyond the baseline | Owner holds data, tests or cases nobody else published |
+| Information gain | 25% | Owner adds nothing beyond the baseline | Owner holds unpublished data, tests or cases |
 | Right to write | 15% | No owner experience in the subject | Owner did the work described |
 | Timeliness | 10% | Stale or evergreen with saturated coverage | A change in the last 90 days makes current answers wrong |
 | Effort to publish | 15% | Needs assets the owner cannot get | Assets exist and are in hand |
@@ -46,11 +46,11 @@ Procedure:
 
 Output: the register (JSON or table), the perspective question bank, the open-questions list, and a two-sentence statement of what the baseline coverage already says.
 
-## B3 Asset collector: get what only the owner has
+## B3 Asset collector: get the owner's own material
 
 Your job is to turn the open questions into the smallest set of questions the owner can answer in one sitting, and to log the answers as primary evidence.
 
-1. Ask for specifics nobody else holds: numbers from their own work, what they tried that failed, a decision they made and why, a photo or measurement from testing, a client quote they have permission to use.
+1. Ask the owner for specifics: their own numbers, what they tried that failed, a decision they made and why, a photo or measurement from testing, a client quote they have permission to use.
 2. Ask the owner to write the thesis and the opening paragraph by hand, in their own words. It anchors the voice, and the draft stops averaging out once a real voice leads it. The writer keeps this paragraph and may only fix typos in it. [S20]
 3. Ask one question at a time when the owner is present. In an unattended run, write all questions into the gate packet.
 4. Never invent an answer, an anecdote, a quote, a test result or a credential. If an answer does not come, the piece either drops the claim that needed it or waits.
@@ -73,7 +73,7 @@ The brief has eight fields:
 6. Outline: each section as a claim sentence plus the evidence IDs that support it. Mark the load-bearing claims, usually one or two per section; everything else in the section explains or connects them. Each section must pass four tests: it answers a question no other section answers, its claim has support, it holds a concrete example, and the piece would be worse without it. [S20]
 7. Length: set by the reader job, never by a word-count target. [S11 Google: focus on quality and originality, not length]
 8. What the piece leaves out, and why. For case studies, list the evidence-file items kept off the page.
-9. Exhibit plan: run the decision procedure in [visual-elements.md](visual-elements.md) for each section and record the result, including "none".
+9. Exhibit plan: run the decision procedure in [visual-elements.md](visual-elements.md) for each section and record the result, including "none". Number exhibits in the order they will appear in the piece.
 
 Genre contracts. The draft is checked against the contract for its genre.
 
@@ -154,7 +154,7 @@ Your job is to write the draft the brief describes, using only the register entr
 7. Keep the owner's opening paragraph from B3 as written.
 8. Before you start, read the three recurring patterns from the defect log and avoid them in this draft.
 9. Never introduce a number, name, date or quote that is absent from the register or asset log. Models fabricate most about private work and little-known subjects, which is where client work sits. First-person claims come only from owner assets. Use "I" for the owner's actions and "we" only for real team outcomes. [S40; S56; S39]
-10. Write the claim sentence each exhibit follows, refer to exhibits by number ("Exhibit 2", "Figure 1"), and never describe the encoding in prose ("the blue line shows"). [S77; S114]
+10. Write the claim sentence each exhibit follows and refer to each by its genre label and number: "Exhibit N" in case studies and proposals, "Figure N" in every other genre, numbered in the order readers meet them. Never describe the encoding in prose ("the blue line shows"). [S77; S114]
 
 ## B5b Visual producer: build exhibits from the register
 
@@ -191,6 +191,7 @@ Run the six layers in order. For each finding, record: layer, the exact words, w
 **Layer 2. Rhetorical patterns.**
 - Negative parallelism: "not X, but Y", "it's not just X, it's Y", "Y rather than X". Fix: state Y directly. Models use "It's not X, it's Y" at up to 6.3 times the human rate. [S44]
 - Rule of three used to sound thorough. Fix: list the real number of items.
+- Noun lists built on "the" in place of verbs: "the decisions I made, what failed and the numbers I can show", "the topic, the fact check and the final sign-off". Turning actions into nouns breaks the sentence's flow. Fix: write the action as a verb ("it asks what I decided"), or say it in a plainer sentence with fewer items.
 - Trailing significance clauses: ", highlighting…", ", ensuring…", ", fostering…". Fix: make the consequence its own sentence with evidence, or cut.
 - Hedge stacks: "may potentially help to". Fix: hedge once, where the uncertainty is.
 - Questions the writer then answers ("The result? …"). Fix: state the result.
@@ -271,7 +272,7 @@ Return the scores, the three weakest passages with line references, and one sent
 2. Byline is a real person who reviewed the piece, with their real credentials. Never invent an author, a headshot or a credential. [S2]
 3. Disclosure follows the AI-use policy in the owner profile. Portfolio and case study pages carry no per-page line and link, through the site footer, to the "How I use AI" statement. Where a per-piece line applies, it sits at the top or end, never hover-only, and names what AI did and what the named person checked. Record the named editor who takes editorial responsibility; human review with editorial responsibility exempts text from the EU AI Act Article 50 label. AI-generated images keep their IPTC or C2PA provenance metadata and any platform label. [S55; S61; S1]
 4. Strip the bracketed evidence IDs; convert sources to links or a source list.
-4a. Number exhibits ("Exhibit N" in case studies and proposals, "Figure N" elsewhere). Use real img elements or inline SVG with a title, descriptive filenames, and a representative preferred image. Keep IPTC and C2PA metadata through export and CMS processing, and leave platform AI labels in place when syndicating. Render all disclosure-component content in the page and add a print stylesheet that expands every panel. [S108; S118; S119; S121; S107]
+4a. Label and number exhibits as B5 rule 10 sets out. Use real img elements or inline SVG with a title, descriptive filenames, and a representative preferred image. Keep IPTC and C2PA metadata through export and CMS processing, and leave platform AI labels in place when syndicating. Render all disclosure-component content in the page and add a print stylesheet that expands every panel. [S108; S118; S119; S121; S107]
 5. Add structured data matching the genre (Article, NewsArticle, Review, HowTo, FAQPage) only where the page content supports it.
 5a. Run the rigor-talk and engine-vocabulary scan from Evidence rules 6 on the final text, title, description and alt text. Any hit returns the piece to B6.
 6. Write the gate packet for final sign-off: the draft, the claim table, the meaning diff, the panel scores, and anything still open. Carry reconfirm-by dates into the publish record.

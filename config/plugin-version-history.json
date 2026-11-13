@@ -108,6 +108,10 @@
     "0.4.23": {
       "content_sha256": "307a60057f3ccb67b7f7b5927bdb39a8abb25cf21d81f474beb7153d4e989261",
       "note": "Add publish-content: gated pipeline from topic to publishable draft"
+    },
+    "0.4.24": {
+      "content_sha256": "11533b91b4d385a769cceb39f810fcebafcd1ef334c1458af21fd9e468aefc59",
+      "note": "publish-content: skip step and figure labels in the figure scan; genre exhibit labels in reading order; editor catches noun lists built on 'the'; plain wording for the owner's own material"
     }
   },
   "source_conflicts": [
