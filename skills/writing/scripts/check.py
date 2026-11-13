@@ -47,6 +47,7 @@ import random
 import re
 import signal
 import sys
+import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -266,12 +267,23 @@ def plain_lines(raw, git_message):
     return out
 
 
+OFFICE_SUFFIXES = {'.docx', '.pptx', '.xlsx'}
+
+
+def text_bytes(path):
+    """Bytes the check must read. An Office file counts its unpacked parts other than embedded media."""
+    if path.suffix.lower() in OFFICE_SUFFIXES and zipfile.is_zipfile(path):
+        with zipfile.ZipFile(path) as z:
+            return sum(i.file_size for i in z.infolist() if '/media/' not in i.filename and '/embeddings/' not in i.filename)
+    return path.stat().st_size
+
+
 def extract(path, git_message=False):
     """Numbered records for every extracted line, each marked in scope or exempt with a reason."""
     if not path.is_file():
         raise Incomplete(f'{path} is not a file')
-    if path.stat().st_size > MAX_BYTES:
-        raise Incomplete(f'{path.name} is over {MAX_BYTES // (1024 * 1024)} MB')
+    if text_bytes(path) > MAX_BYTES:
+        raise Incomplete(f'{path.name} has over {MAX_BYTES // (1024 * 1024)} MB of text to read')
     suffix = path.suffix.lower()
     source_lines = None
     try:

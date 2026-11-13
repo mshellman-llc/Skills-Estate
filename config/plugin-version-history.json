@@ -108,6 +108,14 @@
     "0.4.23": {
       "content_sha256": "307a60057f3ccb67b7f7b5927bdb39a8abb25cf21d81f474beb7153d4e989261",
       "note": "Add publish-content: gated pipeline from topic to publishable draft"
+    },
+    "0.4.24": {
+      "content_sha256": "8ec120b771d7699407ba0827f356409bc87c44de1797ec60dcca16c77a09bf26",
+      "note": "Hold replies and deliverables to the writing rules in Claude Code and Codex; add the evidence scan to /gate; read image-heavy Office files"
+    },
+    "0.4.25": {
+      "content_sha256": "5515f1b3e04d801383656d6f74a2670a8d70c9e66d5aa33d6520fc970a5dd05b",
+      "note": "Build ChatGPT custom instructions from the rules folder within the 1,500 and 5,000 character limits"
     }
   },
   "source_conflicts": [
