@@ -1,5 +1,6 @@
 """Exercise installation isolation and recovery through actual filesystem changes."""
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -409,3 +410,43 @@ class TargetedReleaseTests(unittest.TestCase):
         estate.build(self.root); estate.install(self.root, self.home, skills=['demo'])
         estate.rollback(self.root, self.home, first['release_id'])
         self.assertEqual(json.loads((releases.state(self.home) / 'active.json').read_text())['links'], expected)
+
+    def _move_checkout(self):
+        moved = self.root.parent / (self.root.name + '-moved')
+        shutil.copytree(self.root, moved, symlinks=True)
+        shutil.rmtree(self.root)
+        self.addCleanup(shutil.rmtree, moved, True)
+        return moved
+
+    def test_relocate_moves_installation_to_a_new_checkout(self):
+        first = estate.install(self.root, self.home)
+        old = str(self.root.resolve())
+        before = {p.name: estate.tree_hash(p.resolve()) for p in (self.home / '.agents/skills').iterdir()}
+        self.assertIn('demo', before)
+        moved = self._move_checkout()
+        pointer = self.home / '.config/skills-estate/repository'
+        pointer.unlink(); pointer.symlink_to(moved)
+        with self.assertRaisesRegex(ValueError, 'pass that path with --from'):
+            estate.relocate(moved, self.home, '/elsewhere')
+        result = estate.relocate(moved, self.home, old)
+        self.assertEqual(result['previous_repository'], old)
+        report = releases.inspect(self.home, estate.tree_hash)
+        self.assertTrue(report['ok'])
+        active = json.loads((releases.state(self.home) / 'active.json').read_text())
+        self.assertEqual(active['repository'], str(moved.resolve()))
+        self.assertEqual(Path(os.readlink(pointer)), moved.resolve())
+        after = {p.name: estate.tree_hash(p.resolve()) for p in (self.home / '.agents/skills').iterdir()}
+        self.assertEqual(before, after)
+        _, record = releases.load(self.home, active['release_id'], estate.tree_hash)
+        self.assertEqual(record['provenance']['relocated_from'], {'release_id': first['release_id'], 'repository': old})
+        self.assertEqual(estate.relocate(moved, self.home, str(moved.resolve()))['links_changed'], 0)
+
+    def test_relocate_refuses_a_changed_link(self):
+        estate.install(self.root, self.home)
+        old = str(self.root.resolve())
+        moved = self._move_checkout()
+        link = self.home / '.agents/skills/demo'
+        link.unlink(); link.mkdir()
+        with self.assertRaisesRegex(ValueError, 'resolve drift'):
+            estate.relocate(moved, self.home, old)
+        self.assertEqual(json.loads((releases.state(self.home) / 'active.json').read_text())['repository'], old)

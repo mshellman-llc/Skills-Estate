@@ -1,0 +1,51 @@
+{
+ "format": 1,
+ "artifact": "skills/maintain-skills-estate/SKILL.md",
+ "protected": [
+  {
+   "kind": "syntax",
+   "reason": "Shell command the maintainer runs; each line names the same bridge script and checkout placeholder.",
+   "text": "python3 scripts/manage_estate.py --repo /path/to/Skills-Estate validate"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Shell command the maintainer runs; each line names the same bridge script and checkout placeholder.",
+   "text": "python3 scripts/manage_estate.py --repo /path/to/Skills-Estate build"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Shell command the maintainer runs; each line names the same bridge script and checkout placeholder.",
+   "text": "python3 scripts/manage_estate.py --repo /path/to/Skills-Estate bundle"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Shell command the maintainer runs; each line names the same bridge script and checkout placeholder.",
+   "text": "python3 scripts/manage_estate.py --repo /path/to/Skills-Estate status"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Shell command the maintainer runs; each line names the same bridge script and checkout placeholder.",
+   "text": "python3 scripts/manage_estate.py --repo /path/to/Skills-Estate install --expected-source REVIEWED_SOURCE_HASH"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Shell command the maintainer runs; each line names the same bridge script and checkout placeholder.",
+   "text": "python3 scripts/manage_estate.py --repo /path/to/Skills-Estate status"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Shell command the maintainer runs; each line names the same bridge script and checkout placeholder.",
+   "text": "python3 scripts/manage_estate.py --repo /path/to/Skills-Estate record-publication \\"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Command quoted inline so the maintainer can run it as written.",
+   "text": "`python3 scripts/manage_estate.py update`"
+  },
+  {
+   "kind": "syntax",
+   "reason": "Command quoted inline so the maintainer can run it as written.",
+   "text": "`install --skill review-writing --expected-source REVIEWED_SOURCE_HASH`"
+  }
+ ]
+}

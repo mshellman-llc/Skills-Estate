@@ -214,7 +214,7 @@ def require_no_pending(home):
 
 
 def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, preserve_existing=False, links=None,
-             account_provided=(), policy_root=None, remove_paths=()):
+             account_provided=(), policy_root=None, remove_paths=(), relocate_from=None):
     """Activate under the caller's home lock; retain a journal if recovery is uncertain."""
     root, home = Path(root).resolve(), Path(home).absolute()
     policy_root = Path(policy_root or root).resolve()
@@ -228,7 +228,7 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, 
         raise ValueError('Active installation record must be a regular file')
     previous = json.loads(active_file.read_text()) if active_before else None
     require_state(active_file, active_before)
-    if previous and previous['repository'] != str(root):
+    if previous and previous['repository'] != str(root) and previous['repository'] != relocate_from:
         raise ValueError('This home already has another managed repository')
     if preserve_existing and previous and not inspect(home, tree_hash)['ok']:
         raise ValueError('Current installation drift must be resolved before targeted promotion')
@@ -277,7 +277,10 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, 
         if dest.is_symlink() and dest.resolve() == Path(target).resolve():
             continue
         if os.path.lexists(dest) and not adopt:
-            if dest == pointer or not managed_link(dest, home, root, tree_hash, verified_releases):
+            moved = relocate_from is not None and (
+                (dest == pointer and dest.is_symlink() and os.readlink(dest) in (relocate_from, str(root)))
+                or (dest != pointer and managed_link(dest, home, relocate_from, tree_hash, verified_releases)))
+            if not moved and (dest == pointer or not managed_link(dest, home, root, tree_hash, verified_releases)):
                 raise ValueError(f'Existing skills preserved. Review before adopt: {dest}')
         operations.append((dest, target))
     for name, target in (previous or {}).get('links', {}).items():
@@ -408,6 +411,61 @@ def activate(root, home, release_id, tree_hash, adopt=False, destinations=None, 
             (backup / 'receipt.json').rename(backup / 'failed-receipt.json')
         pending.rename(backup / 'failed-plan.json')
         raise
+
+
+def relocate(home, root, previous_repository, tree_hash):
+    """Move an installation to a new checkout of the same estate, under the caller's home lock.
+
+    Release IDs include the repository path, so each referenced release is copied
+    into a new release for the new checkout, byte for byte, and activated with the
+    same links. The old releases stay in the store, and the activation receipt
+    can restore the previous links.
+    """
+    home, root = Path(home).absolute(), Path(root).resolve(strict=True)
+    require_no_pending(home)
+    active_file = state(home) / 'active.json'
+    if not active_file.exists():
+        raise ValueError('No managed installation to relocate; use install')
+    active = json.loads(active_file.read_text())
+    old = active['repository']
+    if previous_repository != old:
+        raise ValueError('The installation belongs to ' + old + '; pass that path with --from')
+    if old == str(root):
+        return {'release_id': active['release_id'], 'repository': old, 'links_changed': 0, 'backup': None}
+    pointer = home / '.config/skills-estate/repository'
+    for destination, target in active['links'].items():
+        dest = Path(destination)
+        if dest == pointer:
+            if os.path.lexists(dest) and (not dest.is_symlink() or os.readlink(dest) not in (old, str(root))):
+                raise ValueError('Repository pointer names a third location; review it before relocating')
+            continue
+        if not dest.is_symlink() or dest.resolve() != Path(target).resolve():
+            raise ValueError('Installed link changed; resolve drift before relocating: ' + destination)
+    mapping = {}
+    for destination, target in active['links'].items():
+        if Path(destination) == pointer:
+            continue
+        version = Path(target).relative_to(store(home)).parts[0]
+        if version in mapping:
+            continue
+        folder, record = load(home, version, tree_hash)
+        if record['repository'] != old:
+            raise ValueError('Linked release belongs to another repository: ' + version)
+        provenance = dict(record.get('provenance') or {})
+        provenance['relocated_from'] = {'release_id': version, 'repository': old}
+        packages = {name: folder / 'skills' / name for name in record['packages']}
+        mapping[version] = snapshot(root, home, packages, record['source_sha256'], record['kind'], tree_hash,
+                                    provenance=provenance)
+    links = {}
+    for destination, target in active['links'].items():
+        if Path(destination) == pointer:
+            links[destination] = str(root)
+            continue
+        version, _, name = Path(target).relative_to(store(home)).parts
+        links[destination] = str(store(home) / mapping[version] / 'skills' / name)
+    release_id = mapping.get(active['release_id']) or next(iter(mapping.values()))
+    result = activate(root, home, release_id, tree_hash, links=links, relocate_from=old)
+    return {**result, 'repository': str(root), 'previous_repository': old, 'releases': mapping}
 
 
 def inspect(home, tree_hash):
