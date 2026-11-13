@@ -132,6 +132,10 @@
     "0.4.29": {
       "content_sha256": "96d88086c065fd84e4aa815e51fb58faa218c943f68bb37c2ebf05a7a1abc6b2",
       "note": "publish-content: the owner writes the opening or approves a drafted one"
+    },
+    "0.4.30": {
+      "content_sha256": "63a6058b7d58cc660d5c31a74eaa2455ae0806cb91ab40a55f42a40f55b4b3ae",
+      "note": "Simplify the writing scripts: one map of built copies and their sources, one gate config, one settle wait"
     }
   },
   "source_conflicts": [
