@@ -128,6 +128,10 @@
     "0.4.28": {
       "content_sha256": "5b1f30c4e8992769e14d5cef9dc8f8423f5418a93bc30f072acccfdbe3925aec",
       "note": "Add estate relocate: move an installation to a new checkout after the old one moved"
+    },
+    "0.4.29": {
+      "content_sha256": "96d88086c065fd84e4aa815e51fb58faa218c943f68bb37c2ebf05a7a1abc6b2",
+      "note": "publish-content: the owner writes the opening or approves a drafted one"
     }
   },
   "source_conflicts": [
