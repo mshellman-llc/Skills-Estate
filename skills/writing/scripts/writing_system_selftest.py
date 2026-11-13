@@ -13,7 +13,8 @@ TOOL = HERE / 'writing_system.py'
 PREFS = '# Preferences\n\n## Writing\n\n1. Open with the answer.\n2. Name the source.\n\n## Other\n\nNot this.\n'
 RULES = '# Writing rules\n\n- R1. Open with the answer.\n- R16. Write no slogans.\n'
 CORRECTIONS = ('| Date | What she corrected | Channel | Rule | Pattern | Tool |\n| --- | --- | --- | --- | --- | --- |\n'
-               '| 2026-11-06 | "What good looks like:" as a coaching line | Call guide | R16 | none | ledger |\n')
+               '| 2026-11-06 | "What good looks like:" as a coaching line | Call guide | R16 | none | ledger |\n'
+               '| 2026-11-13 | R16 read as "every line needs a fact" | All | R16 | none | chat |\n')
 
 
 class SystemTest(unittest.TestCase):
@@ -51,6 +52,7 @@ class SystemTest(unittest.TestCase):
         self.assertIn('Open with the answer', core)
         self.assertNotIn('Not this', core)
         self.assertIn('What good looks like:', core)
+        self.assertNotIn('every line needs a fact', core)
         skill = (self.ctx / 'generated' / 'claude-ai-skill' / 'megan-writing-style' / 'SKILL.md').read_text()
         self.assertTrue(skill.startswith('---\nname: megan-writing-style'))
         self.assertIn('R16. Write no slogans', skill)

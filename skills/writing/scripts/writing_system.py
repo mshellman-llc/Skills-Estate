@@ -99,7 +99,8 @@ def pairs(rows, rules, limit=10):
     """Habit and fix: each logged correction that quotes the words, with the rule it broke."""
     out, seen = [], set()
     for row in reversed(rows):
-        quotes = re.findall(r'"([^"]{6,120})"', row['what'])
+        quotes = [m.group(1) for m in re.finditer(r'"([^"]{6,120})"', row['what'])
+                  if not re.search(r'\b(?:as|read as|means)\s*$', row['what'][:m.start()])]
         ids = re.findall(r'\b[A-Z]\d+\b', row['rule'])
         if not quotes or not ids or ids[0] not in rules or quotes[0] in seen:
             continue
@@ -132,8 +133,16 @@ def recurring(ledger, days=14, top=3):
                 if rule and rule not in skip and rule in repairs and h.get('d', '') >= since \
                         and h.get('src') in ('reply', 'file'):
                     counts[rule] = counts.get(rule, 0) + 1
-    ranked = sorted(counts.items(), key=lambda kv: -kv[1])[:top]
-    return [(rule, n, repairs[rule]) for rule, n in ranked]
+    out, seen = [], set()
+    for rule, n in sorted(counts.items(), key=lambda kv: -kv[1]):
+        habit = re.sub(r'\W+', ' ', repairs[rule].lower())[:30]
+        if habit in seen:
+            continue
+        seen.add(habit)
+        out.append((rule, n, repairs[rule]))
+        if len(out) == top:
+            break
+    return out
 
 
 def sources_sha(*paths):
@@ -166,7 +175,7 @@ def build(args):
         core.append('')
     if examples:
         core += ['## Corrections she made', '']
-        core += [f'- She cut "{quote}". {rid}: {text}' for quote, rid, text in examples]
+        core += [f'- "{quote}" broke {rid}: {text}' for quote, rid, text in examples]
         core.append('')
     core_text = '\n'.join(core)
     style = [stamp(digest, ['preferences.md', 'rules.md', 'corrections.md', 'patterns.json']), '',
