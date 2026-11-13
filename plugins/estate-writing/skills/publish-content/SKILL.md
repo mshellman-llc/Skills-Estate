@@ -31,7 +31,7 @@ Read [orchestrator.md](references/orchestrator.md) first; it holds the done crit
 | Step | Agent | Output | Gate |
 | --- | --- | --- | --- |
 | 1 | Scout | Ranked topic slate with scores and kill reasons | Owner picks topics |
-| 2 | Researcher | Source register and question bank | Stop if no topic has an asset only the owner holds |
+| 2 | Researcher | Source register and question bank | Stop if no topic has an owner asset |
 | 3 | Asset collector | Owner's answers, hand-written thesis and opening, writing samples, data and permissions | Owner supplies the evidence |
 | 4 | Architect | Brief, genre contract and exhibit plan | Every section has a claim and an evidence ID |
 | 5 | Writer | Draft | None |

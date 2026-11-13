@@ -33,6 +33,16 @@ PARTS = """[0001] L2: # Results
 [0003] L4: The pilot ran with one sales team in Atlanta.
 [0004] L5: Quotes now reach finance with discounts already checked.
 """
+LABELS = """# Run
+
+Steps in order: 1 scout topics, where you pick one; 2 research; 3 collect your evidence; 4 write the brief; 5 draft; 5b make figures; 6 edit.
+
+Step 3 asks for the opening, Figure 2 shows steps 1 to 9, and gates 7 and 9 need a signature.
+"""
+COUNTS = """# Scale
+
+We moved 3 regions, 12 teams and 40% of quotes in one quarter.
+"""
 YEARS = """# Timeline
 
 The team started in 2024 and finished in 2026 after one pilot.
@@ -56,7 +66,9 @@ def run():
     assert scan(STEPS) == [], f"list markers and link targets are not figures: {scan(STEPS)}"
     assert scan(per_line(PARTS)) == [], f"one line per paragraph: {scan(per_line(PARTS))}"
     assert per_line(PARTS).splitlines()[0] == "# Results", "review prefixes are removed"
-    print("evidence_scan selftest: 10 checks passed")
+    assert scan(LABELS) == [], f"step and figure labels are not figures: {scan(LABELS)}"
+    assert "figures-per-paragraph" in rules(scan(COUNTS)), "real counts must still be flagged"
+    print("evidence_scan selftest: 12 checks passed")
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ audiences:
     knows: ""
     needs: ""
 goals: ""                 # what publishing should do for the owner
-assets:                   # what only the owner has
+assets:                   # the owner's own material
   data: []
   projects_or_cases: []
   tests_or_reviews: []
