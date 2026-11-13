@@ -124,6 +124,10 @@
     "0.4.27": {
       "content_sha256": "3de8e325cf3b57cf1d11e9f4ea87361c40fecbab89d9fce234ce7c240b418a48",
       "note": "Review folder: run /gate headless on each file that lands in a watched folder; evidence scan leaves single-figure sections alone"
+    },
+    "0.4.28": {
+      "content_sha256": "5b1f30c4e8992769e14d5cef9dc8f8423f5418a93bc30f072acccfdbe3925aec",
+      "note": "Add estate relocate: move an installation to a new checkout after the old one moved"
     }
   },
   "source_conflicts": [

@@ -1474,7 +1474,7 @@
       "inputs": "The canonical estate checkout, the reviewed source hash for installation and the target host.",
       "outputs": "Validation and build results, packages, installation receipts and publication records for the requested operation.",
       "example": "Validate the current estate and build candidate packages without installing them.",
-      "reviewedEntrypointSha256": "6eaf853e6c07cfbe99b589fed84af125fa8f3d4af3f72a19d5fe60c28c6e1d87",
+      "reviewedEntrypointSha256": "45870d679b28e4c99fa54afc742d83b6f8f76f60108fde99b04f68550a717e07",
       "expect": "It works only on the confirmed estate checkout and runs the single operation you ask for, such as validate, build, bundle, status or install. Install needs the exact reviewed source hash, refuses to overwrite a divergent installation, and a successful build is reported as packaging only, not proof the skill works.",
       "overview": "It runs the requested maintenance operation on a confirmed estate checkout: author or repair a workflow, validate source, assemble complete packages, inspect drift, install a reviewed release or replace a package on another host. Installation uses the exact reviewed source hash and protects divergent files with conflict checks and rollback records. A successful build establishes packaging, not runtime acceptance.",
       "value": "Keep authored workflows, complete packages and reviewed installations distinguishable as the estate changes. It can validate or build without installation, or install a specified reviewed version with conflict checks and rollback records.",
