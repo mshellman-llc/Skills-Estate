@@ -33,6 +33,10 @@ PARTS = """[0001] L2: # Results
 [0003] L4: The pilot ran with one sales team in Atlanta.
 [0004] L5: Quotes now reach finance with discounts already checked.
 """
+SHORT = """# Update
+
+Discounts above 20% now route to finance before the quote is sent.
+"""
 YEARS = """# Timeline
 
 The team started in 2024 and finished in 2026 after one pilot.
@@ -56,7 +60,8 @@ def run():
     assert scan(STEPS) == [], f"list markers and link targets are not figures: {scan(STEPS)}"
     assert scan(per_line(PARTS)) == [], f"one line per paragraph: {scan(per_line(PARTS))}"
     assert per_line(PARTS).splitlines()[0] == "# Results", "review prefixes are removed"
-    print("evidence_scan selftest: 10 checks passed")
+    assert scan(SHORT) == [], f"one figure in a short section is not density: {scan(SHORT)}"
+    print("evidence_scan selftest: 11 checks passed")
 
 
 if __name__ == "__main__":

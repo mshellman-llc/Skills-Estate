@@ -88,4 +88,4 @@ In ordinary work, fix the wording and deliver it without describing the review. 
 
 ## Hooks
 
-On Claude Code and Codex, `scripts/hook.py` scans every reply and every prose file a tool writes, and holds a reply for one rewrite when a finding blocks. It also holds a session while a deliverable it changed has no passing full review. `scripts/install_local.py` installs the scripts and the `/gate` command. `scripts/writing_system.py` builds the copies of the owner's rules for other hosts and reports drift.
+On Claude Code and Codex, `scripts/hook.py` scans every reply and every prose file a tool writes, and holds a reply for one rewrite when a finding blocks. It also holds a session while a deliverable it changed has no passing full review. `scripts/install_local.py` installs the scripts and the `/gate` command. With `--watch DIR` it adds a launchd agent that runs `scripts/gate_watch.py`, so each file that lands in DIR gets `/gate` through Claude Code headless. `scripts/writing_system.py` builds the copies of the owner's rules for other hosts and reports drift.
