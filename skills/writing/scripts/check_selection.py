@@ -34,16 +34,18 @@ def main():
         result = {}
     status = result.get('status', 'error')
     findings = result.get('findings') or []
-    review = result.get('review') or []
+    review = result.get('review') or 0
+    review = review if isinstance(review, int) else len(review)
     lines = [f'Status: {status}']
     lines += [f'- "{h.get("text")}" ({h.get("rule")}): {h.get("fix", "")}' for h in findings]
-    lines += [f'- check by hand: "{h.get("text")}" ({h.get("rule")})' for h in review]
+    if review:
+        lines.append(f'{review} lines need a judgment the scanner cannot make, such as a list of three.')
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text('\n'.join(lines) + '\n', encoding='utf-8')
     if status == 'pass' and not review:
         notify('Check writing', 'No rule breaks found.')
     elif status == 'pass':
-        notify('Check writing', f'{len(review)} lines to check by hand. Details in {OUT}')
+        notify('Check writing', f'{review} lines to check by hand. Details in {OUT}')
     elif status == 'fail':
         first = findings[0] if findings else {}
         notify('Check writing', f'{len(findings)} rule breaks. First: "{first.get("text", "")}". Details in {OUT}')
