@@ -480,6 +480,13 @@ def test_local(root=ROOT, home=None):
             'installed': False}
 
 
+def relocate(root=ROOT, home=None, previous=None):
+    """Move the installation's repository identity to this checkout after the old one moved or was removed."""
+    home = Path(home or Path.home()).expanduser().resolve()
+    with releases.home_lock(home):
+        return releases.relocate(home, root, previous, tree_hash)
+
+
 def pin_installed(root=ROOT, home=None):
     """Preserve existing managed bytes; do not promote the candidate source."""
     home = Path(home or Path.home()).expanduser().resolve()
@@ -763,6 +770,8 @@ def main():
         install_parser.add_argument('--expected-source')
         install_parser.add_argument('--skill', action='append', help='Promote only this task package; repeat to select more')
     sub.add_parser('rollback').add_argument('release_id')
+    sub.add_parser('relocate').add_argument('--from', dest='previous', required=True,
+                                            help='Repository path recorded by the current installation')
     rp = sub.add_parser('restore')
     rp.add_argument('receipt', type=Path)
     pub = sub.add_parser('record-publication')
@@ -782,6 +791,7 @@ def main():
             elif args.command == 'update': result = update(root=args.repository, home=args.home)
             elif args.command == 'test-local': result = test_local(home=args.home)
             elif args.command == 'rollback': result = rollback(ROOT, args.home, args.release_id)
+            elif args.command == 'relocate': result = relocate(ROOT, args.home, args.previous)
             elif args.command == 'restore': result = restore(args.receipt)
             elif args.command == 'status': result = status(home=args.home)
             elif args.command == 'record-publication': result = record_publication(ROOT, args.surface, args.skill, args.reference)

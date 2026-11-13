@@ -22,7 +22,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "b7e4e5de7ca29c26ec7b1e67baa31de41cbc31c27b2d41dbe682aab714b6a95a",
+      "required_sha256": "2e58110dacfa8d38469a38ee498bde80951d6882b67e9fb9bc9b784c79fadb7e",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -282,7 +282,7 @@
       "subject": "maintain-discovery-record"
     },
     {
-      "required_sha256": "06b8af668c32618227c0569c310b2ee62b32cd44288872b20353ac6cd36f0a9e",
+      "required_sha256": "9c5cebebca0b903aaba03672732462cf653be94ca8746763c0b3f4563ad3751f",
       "status": "review required",
       "subject": "maintain-skills-estate"
     },
@@ -537,6 +537,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "b0595adb1dc3824a49339b33432e37f2f399259c42f5d58fe7d41e45abce3413",
+  "source_sha256": "d12322a31b1ba4b013241285730a26a2b2c7b301e8d3b811603765eeb0e08506",
   "status": "owner-published"
 }
