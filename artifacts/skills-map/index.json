@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-13T17:18:40.760610+00:00",
+  "generatedAt": "2026-11-13T17:31:50.523635+00:00",
   "baseCommit": "e6e91e8995542dcefe623268ca548140abbd3cc3",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -13828,21 +13828,21 @@
           },
           {
             "path": "skills/writing/scripts/writing_system.py",
-            "line": 209,
+            "line": 253,
             "text": "drive = os.environ.get('BEASTMODE_MAC_ROOT', '/Volumes/BeastMode')",
             "kind": "workflow-or-reference",
             "via": "writing"
           },
           {
             "path": "skills/writing/scripts/writing_system.py",
-            "line": 247,
+            "line": 294,
             "text": "cfg = {'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',",
             "kind": "workflow-or-reference",
             "via": "writing"
           },
           {
             "path": "skills/writing/scripts/writing_system.py",
-            "line": 248,
+            "line": 295,
             "text": "'/Volumes/BeastMode/Portfolio Site/site/*'],",
             "kind": "workflow-or-reference",
             "via": "writing"
@@ -19472,19 +19472,19 @@
           },
           {
             "path": "skills/writing/scripts/writing_system.py",
-            "line": 209,
+            "line": 253,
             "text": "drive = os.environ.get('BEASTMODE_MAC_ROOT', '/Volumes/BeastMode')",
             "kind": "workflow-or-reference"
           },
           {
             "path": "skills/writing/scripts/writing_system.py",
-            "line": 247,
+            "line": 294,
             "text": "cfg = {'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',",
             "kind": "workflow-or-reference"
           },
           {
             "path": "skills/writing/scripts/writing_system.py",
-            "line": 248,
+            "line": 295,
             "text": "'/Volumes/BeastMode/Portfolio Site/site/*'],",
             "kind": "workflow-or-reference"
           }
@@ -19492,7 +19492,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 16,
-        "packageFingerprint": "fa57080c4e7705bb99718a2f26188a0dd9f44891b787996b9901f2a7a162979d",
+        "packageFingerprint": "d8002143a971a5d9b130a9b52f8fb17db2174e7ba1399fa7e4fdffe1debbf73a",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -19652,15 +19652,15 @@
         },
         {
           "path": "scripts/writing_system.py",
-          "sha256": "45dac26d59841195616ea04c92ca9a75b184cb06445a12ae4dbc2d805d2a55ec",
-          "bytes": 16547,
-          "gitBlob": "bd68b32babab079823e4c97130186d20b7279774"
+          "sha256": "e6b5c8cb8ca1e75d589705e17a55a1b67f1621ce73ebeaa37181c9441ce49efc",
+          "bytes": 19712,
+          "gitBlob": "5646dc8aa844efa8bbc1338484f7c5fbf72e784f"
         },
         {
           "path": "scripts/writing_system_selftest.py",
-          "sha256": "634076c481f0bf6afb9fc1d77c9200dbe5369bc831c9978fec8ac6a14eff6cc2",
-          "bytes": 4264,
-          "gitBlob": "eeefab92fcb9314fafecce61607516fd51a30128"
+          "sha256": "c0476ee6dd1d04dfb8b8121636f5a6cb52060e2a7736dd184f8829d724f515bd",
+          "bytes": 5913,
+          "gitBlob": "addc65cccaa5cc6bc3caa33f08ff746c107711fe"
         },
         {
           "path": "skill.yaml",

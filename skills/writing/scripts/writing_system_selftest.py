@@ -58,6 +58,29 @@ class SystemTest(unittest.TestCase):
         self.assertIn('R16. Write no slogans', skill)
         self.assertIn('First person', skill)
 
+    def test_chatgpt_boxes_fill_in_order_within_the_limits(self):
+        many = '# Writing rules\n\n' + ''.join(f'- R{i}. Rule number {i} keeps one plain habit out of the copy.\n'
+                                                 for i in range(1, 121))
+        (self.rules / 'rules.md').write_text(many)
+        (self.rules / 'voice-profile.md').write_text('# Voice\n\n- V1. Lead with the decision.\n')
+        (self.ctx / 'chatgpt-about.md').write_text('---\nname: chatgpt-about\n---\n\nI am the owner.\n')
+        out = self.run_tool('build')
+        self.assertEqual(out.returncode, 0, out.stderr)
+        left = json.loads(out.stdout)['chatgpt_left_out']
+        text = (self.ctx / 'generated' / 'chatgpt' / 'custom-instructions.txt').read_text()
+        box1 = text.split('=== Box 1: More about you ===')[1].split('=== Box 2')[0].strip()
+        box2 = text.split('=== Box 2: Custom instructions ===')[1].strip()
+        self.assertEqual(box1, 'I am the owner.')
+        self.assertLessEqual(len(box2), 5000)
+        self.assertIn('R1. Rule number 1 keeps', box2)
+        kept = [i for i in range(1, 121) if f'R{i}. Rule number {i} keeps' in box2]
+        self.assertEqual(kept, list(range(1, len(kept) + 1)))
+        self.assertEqual(left, [f'R{i}' for i in range(len(kept) + 1, 121)] + ['V1'])
+        outdated = json.loads(self.run_tool('check', '--json', '--living', str(self.living)).stdout)['outdated_copies']
+        self.assertFalse([c for c in outdated if c['path'].endswith('custom-instructions.txt')])
+        (self.ctx / 'chatgpt-about.md').write_text('x' * 1600)
+        self.assertNotEqual(self.run_tool('build').returncode, 0)
+
     def test_check_passes_then_finds_drift(self):
         self.run_tool('build')
         ok = self.run_tool('check', '--living', str(self.living))

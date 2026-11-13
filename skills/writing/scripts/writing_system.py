@@ -11,6 +11,10 @@ build writes, from the rules folder and the Writing section of preferences.md:
                                                and before-and-after pairs from corrections.md
     <out>/claude-ai/style.txt                  the same core, shaped as a Claude custom style
     <out>/claude-ai-skill/<name>/SKILL.md      the full rules, for hosts that cannot reach the drive
+    <out>/chatgpt/custom-instructions.txt      ChatGPT's two boxes: chatgpt-about.md (beside the rules
+                                               folder) in the 1,500-character one, and rules.md then
+                                               voice-profile.md, word for word and in order, in the
+                                               5,000-character one until it is full
 
 Each output opens with a stamp naming the sha256 of its sources. A copy is never
 edited by hand; change the sources and build again.
@@ -43,6 +47,13 @@ AGENT = Path(os.environ.get('WRITING_AGENT_HOME') or Path.home() / '.agents' / '
 HITS = [AGENT / 'hits.jsonl', Path.home() / '.agents' / 'humanize' / 'hits.jsonl']
 STAMP = re.compile(r'sources sha256 ([0-9a-f]{12})')
 SKILL_NAME = 'megan-writing-style'
+CHATGPT_LIMIT = 5000        # "Custom instructions" box
+CHATGPT_ABOUT_LIMIT = 1500  # "More about you" box
+CHATGPT_RULES = ('My writing rules apply to everything you write for me or my readers, chat replies included. '
+                 'Code and exact quotations are exempt. My correction in the current chat outranks them. '
+                 'Apply them silently. The full set is in 05-ai-context/writing/rules.md and voice-profile.md; '
+                 'read both through BeastMode\'s read_file before writing anything I will keep or send, '
+                 'because this box holds only the rules that fit.')
 SKILL_DESCRIPTION = ("Megan's full writing rules and voice profile, bundled for hosts that cannot reach her drive or "
                      "the Knowledge Hub. Read before writing anything she or her readers will see.")
 DEFAULT_LIVING = [
@@ -154,6 +165,27 @@ def stamp(digest, sources):
             f'sources sha256 {digest}. Edit the sources and build again; never edit this copy by hand.')
 
 
+def fill(head, items, limit=CHATGPT_LIMIT):
+    """Add items to head, one per line, while the text stays within limit. Returns the text and what is left."""
+    text, rest = head, list(items)
+    while rest and len(text) + 1 + len(rest[0]) <= limit:
+        text += '\n' + rest.pop(0)
+    return text, rest
+
+
+def chatgpt_boxes(about, rules_md, voice_md):
+    """The about text alone in one box; the rules in order, then the voice, in the other until it is full.
+    Each line keeps its rule ID, because some rules cite others by ID. Returns both boxes and the IDs left out."""
+    pattern = r'^- ([A-Z]\d+)\. (.+)$'
+    items = [m.group(1) + '. ' + m.group(2).strip() for m in re.finditer(pattern, rules_md, re.M)]
+    voice = [m.group(1) + '. ' + m.group(2).strip() for m in re.finditer(pattern, voice_md, re.M)]
+    box1 = about.strip()
+    if len(box1) > CHATGPT_ABOUT_LIMIT:
+        sys.exit(f'chatgpt-about.md is {len(box1)} characters; ChatGPT allows {CHATGPT_ABOUT_LIMIT}')
+    box2, left = fill(CHATGPT_RULES, items + (['When writing as me:'] + voice if voice else []))
+    return box1, box2, [item.split('.')[0] for item in left if item != 'When writing as me:']
+
+
 def build(args):
     home = rules_home(args.rules_dir)
     prefs = Path(args.preferences or home.parent / 'preferences.md')
@@ -194,14 +226,26 @@ def build(args):
     if voice.is_file():
         skill += ['## Voice when she is the author', '',
                   re.sub(r'^---\n.*?\n---\n', '', voice.read_text(encoding='utf-8'), flags=re.S).strip(), '']
+    outputs = [(out / 'core' / 'core.md', core_text), (out / 'claude-ai' / 'style.txt', '\n'.join(style) + '\n'),
+               (out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md', '\n'.join(skill))]
+    about = home.parent / 'chatgpt-about.md'
+    left_out = None
+    if about.is_file():
+        about_text = re.sub(r'^---\n.*?\n---\n', '', about.read_text(encoding='utf-8'), flags=re.S)
+        voice_text = voice.read_text(encoding='utf-8') if voice.is_file() else ''
+        box1, box2, left_out = chatgpt_boxes(about_text, rules_md, voice_text)
+        chat_digest = sources_sha(about, home / 'rules.md', voice)
+        outputs.append((out / 'chatgpt' / 'custom-instructions.txt', '\n'.join([
+            stamp(chat_digest, ['chatgpt-about.md', 'rules.md', 'voice-profile.md']), '',
+            '=== Box 1: More about you ===', '', box1, '', '=== Box 2: Custom instructions ===', '', box2, ''])))
     written = []
-    for path, text in ((out / 'core' / 'core.md', core_text), (out / 'claude-ai' / 'style.txt', '\n'.join(style) + '\n'),
-                       (out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md', '\n'.join(skill))):
+    for path, text in outputs:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text if text.endswith('\n') else text + '\n', encoding='utf-8')
         written.append(str(path))
     print(json.dumps({'written': written, 'sources_sha256': digest, 'habits': [h[0] for h in habits],
-                      'pairs': len(examples), 'style_chars': len('\n'.join(style))}, indent=1))
+                      'pairs': len(examples), 'style_chars': len('\n'.join(style)),
+                      'chatgpt_left_out': left_out}, indent=1))
     return 0
 
 
@@ -230,6 +274,9 @@ def check(args, quiet=False):
         out / 'claude-ai' / 'style.txt': sources_sha(prefs, home / 'rules.md', home / 'corrections.md', home / 'patterns.json'),
         out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md': sources_sha(home / 'rules.md', home / 'voice-profile.md'),
     }
+    if (home.parent / 'chatgpt-about.md').is_file():
+        expected[out / 'chatgpt' / 'custom-instructions.txt'] = sources_sha(
+            home.parent / 'chatgpt-about.md', home / 'rules.md', home / 'voice-profile.md')
     outdated = []
     for path, digest in expected.items():
         m = STAMP.search(path.read_text(encoding='utf-8')) if path.is_file() else None
