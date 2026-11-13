@@ -122,7 +122,7 @@ def scan(text, data_piece=False, published=True, max_per_para=2, words_per_figur
             if published:
                 for m in LEAK.finditer(p):
                     findings.append({"rule": "production-vocabulary", "section": heading, "paragraph": i, "text": m.group(0)})
-        if not data_piece and sec_figs and sec_words / sec_figs < words_per_figure:
+        if not data_piece and sec_figs > 1 and sec_words / sec_figs < words_per_figure:
             findings.append({"rule": "section-density", "section": heading,
                              "detail": f"{sec_figs} figures in {sec_words} words"})
     return findings

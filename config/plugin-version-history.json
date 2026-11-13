@@ -120,6 +120,10 @@
     "0.4.26": {
       "content_sha256": "38a2dd66ad88933c763e5e3bdb6217a8ce86763cf72361b240c22d2095df1182",
       "note": "publish-content: skip step and figure labels in the figure scan; genre exhibit labels in reading order; editor catches noun lists built on 'the'; plain wording for the owner's own material"
+    },
+    "0.4.27": {
+      "content_sha256": "3de8e325cf3b57cf1d11e9f4ea87361c40fecbab89d9fce234ce7c240b418a48",
+      "note": "Review folder: run /gate headless on each file that lands in a watched folder; evidence scan leaves single-figure sections alone"
     }
   },
   "source_conflicts": [
