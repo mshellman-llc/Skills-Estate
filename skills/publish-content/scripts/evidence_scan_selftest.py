@@ -43,6 +43,10 @@ COUNTS = """# Scale
 
 We moved 3 regions, 12 teams and 40% of quotes in one quarter.
 """
+SHORT = """# Update
+
+Discounts above 20% now route to finance before the quote is sent.
+"""
 YEARS = """# Timeline
 
 The team started in 2024 and finished in 2026 after one pilot.
@@ -68,7 +72,8 @@ def run():
     assert per_line(PARTS).splitlines()[0] == "# Results", "review prefixes are removed"
     assert scan(LABELS) == [], f"step and figure labels are not figures: {scan(LABELS)}"
     assert "figures-per-paragraph" in rules(scan(COUNTS)), "real counts must still be flagged"
-    print("evidence_scan selftest: 12 checks passed")
+    assert scan(SHORT) == [], f"one figure in a short section is not density: {scan(SHORT)}"
+    print("evidence_scan selftest: 13 checks passed")
 
 
 if __name__ == "__main__":
