@@ -1945,7 +1945,7 @@
       "inputs": "A goal for the run or the draft to rescue, a filled owner profile, the owner's writing rules folder, and the owner's data, answers and permissions.",
       "outputs": "The final draft with its exhibits, a claim table, a meaning diff, panel scores, an approval packet, a run ledger entry and the defect log.",
       "example": "Write a portfolio case study about the pricing rebuild from my decision notes and the before and after numbers, and stop for my sign-off before anything is published.",
-      "reviewedEntrypointSha256": "f2f204d023fe84ed8c44904e90972e868b894a61439fee57b53b370593440b20",
+      "reviewedEntrypointSha256": "9faeedf641b025b61669bbac21c29be1283462d84b86bf06c7b8cb7d73b033da",
       "expect": "Separate agents scout topics, research, collect the owner's evidence, brief, draft, build exhibits, edit, fact-check and score the draft, and each step has a gate. It stops at every human gate with an approval packet. evidence_scan.py and the owner's writing check run at steps 6 and 9, and a claim with no source is cut, not softened. Nothing is published without the owner's sign-off.",
       "connectors": {
         "required": [],

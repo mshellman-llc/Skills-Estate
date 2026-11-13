@@ -37,6 +37,20 @@ LEAK = re.compile(
 LIST_MARKER = re.compile(r"(?:^|(?<=\s))\d+[.)](?=\s)")
 LINK_TARGET = re.compile(r"\]\([^)]*\)")
 REVIEW_PREFIX = re.compile(r"^\[\d+\]\s+\S+:\s*")
+# "Step 3", "steps 1 to 9", "Figure 2": labels, not figures.
+NAMED_LABEL = re.compile(
+    r"\b(?:steps?|figures?|fig\.|exhibits?|tables?|phases?|stages?|parts?|sections?|chapters?|rules?|gates?"
+    r"|layers?|items?|questions?|rounds?|versions?)\s+\d+[a-z]?(?:\s*(?:to|through|and|or|-|\u2013)\s*\d+[a-z]?)?\b",
+    re.I)
+# "1 scout topics; 2 research; 3 draft": an ordered run of labels at clause starts.
+CLAUSE_LABEL = re.compile(r"(?:^|(?<=[;:,]\s)|(?<=[;:,]))\s*(\d{1,2})[a-z]?\s+(?=[a-z])")
+
+
+def strip_sequence_labels(text):
+    labels = [int(m.group(1)) for m in CLAUSE_LABEL.finditer(text)]
+    if labels[:3] != [1, 2, 3]:
+        return text
+    return CLAUSE_LABEL.sub(" ", text)
 
 
 def per_line(text):
@@ -51,6 +65,7 @@ def per_line(text):
 
 def figures(text):
     text = LINK_TARGET.sub("]", LIST_MARKER.sub(" ", text))
+    text = strip_sequence_labels(NAMED_LABEL.sub(" ", text))
     out = []
     for m in FIGURE.finditer(text):
         token = m.group(0).strip()

@@ -116,6 +116,10 @@
     "0.4.25": {
       "content_sha256": "5515f1b3e04d801383656d6f74a2670a8d70c9e66d5aa33d6520fc970a5dd05b",
       "note": "Build ChatGPT custom instructions from the rules folder within the 1,500 and 5,000 character limits"
+    },
+    "0.4.26": {
+      "content_sha256": "38a2dd66ad88933c763e5e3bdb6217a8ce86763cf72361b240c22d2095df1182",
+      "note": "publish-content: skip step and figure labels in the figure scan; genre exhibit labels in reading order; editor catches noun lists built on 'the'; plain wording for the owner's own material"
     }
   },
   "source_conflicts": [
