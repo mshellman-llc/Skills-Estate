@@ -104,6 +104,10 @@
     "0.4.22": {
       "content_sha256": "2ce93a4836700c11ded7bdd41d14bf88ad17b701453dec52b37ef3125d09dd38",
       "note": "Check the extract_review_text real-page test for any logo alt text instead of a hard-coded company name, in review-writing and the writing skill."
+    },
+    "0.4.23": {
+      "content_sha256": "ace7265077b05eb7a64e9fca6f56be27ebfb013346dc8437274ca85959a53fcd",
+      "note": "Add publish-content: gated pipeline from topic to publishable draft"
     }
   },
   "source_conflicts": [

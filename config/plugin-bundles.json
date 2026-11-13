@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.4.22",
+  "version": "0.4.23",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -163,7 +163,8 @@
         "manage-brand-profile",
         "review-writing",
         "manage-writing-profile",
-        "writing"
+        "writing",
+        "publish-content"
       ],
       "internal": [
         "apply-author-style",
@@ -175,7 +176,7 @@
       "controls": []
     },
     "estate-personal": {
-      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune\u2019s Weave planning.",
+      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune’s Weave planning.",
       "entries": [
         "guide-fortunes-weave",
         "design-sticker",
@@ -679,6 +680,11 @@
         "status": "pending",
         "reviewed_sha256": "",
         "evidence": "Added 2026-11-08 as a draft. Self-test 45 of 45 and browser checks at desktop width and 375px; awaiting owner review."
+      },
+      "publish-content": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": "Added 2026-11-13 as a draft. evidence_scan self-test 10 of 10. Two runs in a Claude chat: a beginner guide and a portfolio case study, both through all four owner decisions. Awaiting a run in Claude Code or Codex and host selection tests."
       }
     },
     "routers": {

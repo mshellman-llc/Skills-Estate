@@ -1,0 +1,85 @@
+schema_version: 1
+name: publish-content
+display_name: Publish content
+summary: 'Take content from topic to publishable draft through a gated pipeline: scout viable
+  topics, research, collect the owner''s evidence, draft, remove AI writing patterns, fact-check
+  and package blog posts, conversational pieces, guides, news, reviews, case studies and proposals,
+  or rescue an AI-written draft. Reviewing one finished text against writing rules is the
+  writing skill.'
+status: draft
+tier: situational
+version: 0.1.0
+owner: Estate
+category: evidence-quality
+runtimes:
+- generic-agent-skills
+- claude-code
+- codex
+- claude-ai
+triggers:
+- write and publish a blog post from my notes
+- turn this AI draft into something publishable
+- what should we publish next for this audience
+- produce a case study from this project record
+- write a review of the tool we tested
+- rebuild this generic AI article
+exclusions:
+- review this paragraph against my writing rules (writing)
+- apply the client brand to this page (manage-brand-profile)
+- build an interactive explorer site (build-interactive-explorer)
+- chart this dataset (build-editorial-chart)
+- synthesize these interview notes (synthesize-discovery)
+inputs:
+- name: goal_or_draft
+  required: true
+  description: The goal for the piece, or an existing AI-written draft to rescue.
+- name: owner_profile
+  required: true
+  description: 'Path to the owner profile: audience, byline, owner assets, AI-use policy,
+    brand chart roles and writing rules folder.'
+- name: rules_folder
+  required: false
+  description: The owner's writing rules folder, used by the writing skill's check.
+- name: owner_assets
+  required: false
+  description: The owner's notes, data files, screenshots and demand data.
+outputs:
+- name: final_draft
+  format: markdown-or-html
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: null
+- name: claim_table
+  format: markdown
+  audience: internal
+  durable: true
+  hub_target: null
+- name: approval_packet
+  format: markdown
+  audience: internal
+  durable: true
+  hub_target: null
+- name: run_ledger
+  format: json
+  audience: internal
+  durable: true
+  hub_target: null
+connectors:
+  required: []
+  optional:
+  - knowledge-hub
+depends_on: []
+calls:
+- writing
+knowledge_hub:
+  requirement: optional
+  reads:
+  - owner profile and writing rules folder when stored on the drive
+  writes:
+  - session note and approval packet through save_update when the Hub is connected
+evidence:
+  required: true
+  control: fact checker step with a named human signature
+quality:
+  required: true
+  control: writing

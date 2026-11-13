@@ -369,6 +369,12 @@
       "source": "writing",
       "pack": "core",
       "modes": {}
+    },
+    "publish-content": {
+      "source": "publish-content",
+      "pack": "core",
+      "modes": {},
+      "description": "\"Take content from topic to publishable draft through a gated pipeline: scout viable topics, research, collect the owner's evidence, draft, remove AI writing patterns, fact-check and package blog posts, conversational pieces, guides, news, reviews, case studies and proposals, or rescue an AI-written draft. Reviewing one finished text against writing rules is the writing skill.\""
     }
   },
   "internal": [

@@ -1938,6 +1938,34 @@
         "missing": "With no pattern ledger the check exits 2. With no rules.md the scan still runs and a full review is reported incomplete. A format the script does not read exits 2."
       },
       "preparationSkills": []
+    },
+    "publish-content": {
+      "what": "Take a topic or an AI-written draft to a publishable piece through a pipeline that scouts topics, researches, collects the owner's material, drafts, edits out AI patterns, checks facts and packages the result.",
+      "when": "The owner wants a blog post, guide, review, news piece, case study or proposal drafted from their notes, wants to know what to publish next, or has an AI-written draft to edit, rebuild or retire. Reviewing one finished text against the rules belongs to writing.",
+      "inputs": "A goal or a draft to rescue, an owner profile, and optionally the writing rules folder, notes, data files and screenshots.",
+      "outputs": "The final draft with its exhibits, a claim table the owner signs, reader panel scores, an approval packet and a run ledger entry.",
+      "example": "Write a case study about the quoting rebuild from my project notes, use publish-content.",
+      "reviewedEntrypointSha256": "b9dd1c2cab1bc066258d2c19f9ffaf35b50cdc0981cbf405b844404c5870a01a",
+      "expect": "It ranks topics and waits for the owner to pick one, asks for the owner's material one question at a time, drafts to the brief, edits in seven passes, runs the writing check and evidence_scan.py, and stops for the owner at the fact check and the final approval. It never publishes.",
+      "connectors": {
+        "required": [],
+        "optional": [
+          "knowledge-hub"
+        ]
+      },
+      "requires": "Python 3 for evidence_scan.py, the writing skill, and an owner profile from references/owner-profile.md.",
+      "overview": "Ten roles hand the piece along: scout, researcher, asset collector, architect, writer, visual producer, editor, fact checker, reader panel and publisher. The owner decides at four points: the topic, their own material, the claim table and the final approval.",
+      "value": "Lets the owner publish AI-drafted work in their own voice, with a fact record kept beside each piece and no AI patterns or sourcing talk in the copy.",
+      "preparation": {
+        "where": "Fill in references/owner-profile.md once per publication: the audience, the byline, the owner's own material, the AI-use policy, the brand profile and the path to the writing rules folder. Bring the goal for the run, or the AI-written draft to rescue, and any notes, data files and screenshots.",
+        "missing": "Without an owner profile the skill stops and asks for one. Without the writing rules folder it runs the general editor layers and says the owner's rules did not run. Without web research the scout and researcher work only from the owner's material and say so in the topic list."
+      },
+      "preparationSkills": [
+        {
+          "skill": "writing",
+          "reason": "Runs the owner's writing check that the editor and publisher steps call on every draft."
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,26 @@
+{
+ "format": 1,
+ "artifact": "skills/publish-content/fixtures/rescue-input.md",
+ "protected": [
+  {
+   "kind": "example",
+   "reason": "Test input written in the AI patterns the rescue mode must detect; the fixture fails if these are cleaned.",
+   "text": "# Transforming Quote-to-Cash: A Journey of Innovation"
+  },
+  {
+   "kind": "example",
+   "reason": "Test input written in the AI patterns the rescue mode must detect; the fixture fails if these are cleaned.",
+   "text": "In today's fast-paced business landscape, the client faced pivotal challenges. Our data-driven approach, backed by hard data, delivered a seamless transformation. Every figure in this case study is fully sourced."
+  },
+  {
+   "kind": "example",
+   "reason": "Test input written in the AI patterns the rescue mode must detect; the fixture fails if these are cleaned.",
+   "text": "Approval time fell 75% from 4.2 days to 1.1 days across 1,400 quotes in 6 weeks, saving $310K and lifting win rates 12%."
+  },
+  {
+   "kind": "example",
+   "reason": "Test input written in the AI patterns the rescue mode must detect; the fixture fails if these are cleaned.",
+   "text": "It's not just a tool, it's a mindset, fostering collaboration, ensuring alignment, and driving growth."
+  }
+ ]
+}

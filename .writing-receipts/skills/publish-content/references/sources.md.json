@@ -1,0 +1,756 @@
+{
+ "format": 1,
+ "artifact": "skills/publish-content/references/sources.md",
+ "protected": [
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S1: [Google Search Central, guidance on using generative AI content](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content), revised 1 Oct 2026; change summary in [PPC Land](https://ppc.land/google-tells-sites-to-manually-factcheck-all-ai-content-before-publishing/)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S2: [Google, Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content); 2 Oct 2026 additions reported by [PPC Land](https://ppc.land/google-says-fake-author-profiles-signal-a-low-quality-page/) from Marie Haynes."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S3: [AI Flow Chat, Avoiding Google AI penalties](https://aiflowchat.com/blog/articles/avoiding-google-penalties), May 2025."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S4: [PPC Land, Scaled content abuse](https://ppc.land/scaled-content-abuse/), and [Search Engine Journal on rater guideline updates](https://www.searchenginejournal.com/google-updates-search-quality-rater-guidelines-what-to-know/538259/)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S5: [Search Engine Land, Information gain guide](https://searchengineland.com/guide/information-gain)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S6: [Shao et al., STORM: writing Wikipedia-like articles from scratch](https://arxiv.org/abs/2402.14207), Stanford, 2024."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S7: [Abdulhai et al., How LLMs Distort Our Written Language](https://arxiv.org/abs/2603.18161), Mar 2026; summary from [Originality.ai](https://originality.ai/blog/llms-distort-written-language-study-insights)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S8: [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), WikiProject AI Cleanup."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S9: [Shaib et al., Measuring AI \"slop\" in text](https://arxiv.org/abs/2509.19163), 2025."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S10: [Wharton Generative AI Labs, Playing Pretend: expert personas don't improve factual accuracy](https://gail.wharton.upenn.edu/research-and-insights/playing-pretend-expert-personas/), Dec 2025; [Knowledge at Wharton](https://knowledge.wharton.upenn.edu/article/why-you-shouldnt-ask-chatbots-to-act-like-an-expert/), Apr 2026."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S11: [Google, Write high quality reviews](https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S12: [Stanford HAI, AI detectors biased against non-native English writers](https://hai.stanford.edu/news/ai-detectors-biased-against-non-native-english-writers), May 2023."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S13: [CASRAI, Most accurate AI detector](https://www.casrai.org/guides/most-accurate-ai-detector), Aug 2026; [AI Weekly on Pangram](https://aiweekly.co/alerts/pangram-becomes-publishings-default-ai-detector-on-13m-raised)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S14: [Society of Professional Journalists, Code of Ethics](https://www.spj.org/ethicscode.asp)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S15: [Chakrabarty, Laban and Wu, Can AI writing be salvaged?](https://arxiv.org/abs/2409.14509), CHI 2025."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S16: [Kobak et al., Delving into LLM-assisted writing through excess vocabulary](https://arxiv.org/abs/2406.07016), Science Advances, Jul 2025."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S17: [Russell, Karpinska and Iyyer, People who frequently use ChatGPT are accurate detectors of AI text](https://arxiv.org/abs/2501.15654), ACL 2025."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S18: [Google Cloud, Prompt engineering guide](https://cloud.google.com/discover/what-is-prompt-engineering)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S19: [r/PromptEngineering, Prompt expert (helps you create other prompts)](https://www.reddit.com/r/PromptEngineering/comments/1oitlyn/prompt_expert_helps_you_create_other_prompts/), and its comment on prompt versioning (pasted by you)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S20: r/content_marketing, SEO beginner: how can I improve my content writing skills while using AI tools?, 2026 (pasted by you)."
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S21: [Pretzl, anonymous B2B case study](https://www.pretzl.com/blog/how-to-write-anonymous-b2b-case-study)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S22: [Ian Brodie, sales stories](https://www.ianbrodie.com/tag/sales-stories/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S23: [TrustRadius 2024](https://go.trustradius.com/rs/827-FOI-687/images/TrustRadius-2024-B2B-Buying-Disconnect-Report.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S24: [BetterEvaluation, contribution analysis](https://www.betterevaluation.org/methods-approaches/approaches/contribution-analysis)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S25: [FTC Endorsement Guides 2023, Kelley Drye](https://www.kelleydrye.com/viewpoints/blogs/ad-law-access/new-endorsement-guides-include-big-changes-but-few-surprises.md)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S26: [FTC fake reviews rule, 2024](https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S27: [ASA/CAP testimonials](https://www.asa.org.uk/advice-online/testimonials-and-endorsements.html)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S28: [Bain client results](https://www.bain.com/client-results/manufacturers_reorg_restores_high_profits/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S29: [Minto, via Management Consulted](https://managementconsulted.com/pyramid-principle-book-review)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S30: [Yin, 6th ed.](https://ebooks.umu.ac.ug/librarian/books-file/Case%20Study%20Research%20and%20Applications.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S31: [Flyvbjerg 2006](https://arxiv.org/pdf/1304.1186)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S32: [Rosenzweig 2007](https://cebma.org/assets/Uploads/Rosenzweig-2007.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S33: [Ivey submission guidelines](https://help.iveypublishing.ca/s/article/Submission-Guidelines-for-Cases-and-Teaching-Notes)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S34: [IIMB, Writing Business Cases](https://www.iimb.ac.in/sites/default/files/inline-files/Writing_Business_Cases.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S35: [Nieman Storyboard, Clark's \"do not add\"](https://niemanstoryboard.org/2012/05/17/what-were-following-truthiness-in-narrative)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S36: [Wiles et al. 2008](https://eprints.ncrm.ac.uk/id/eprint/651/1/The_Management_of_Confidentiality_and_Anonymity_in_Social_Research.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S37: [NN/g, UX portfolios](https://nngroup.com/articles/ux-design-portfolios/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S38: [NN/g, quantifying a case study](https://www.nngroup.com/articles/quantifying-case-study/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S39: [UX Tools, case study principles](https://uxtools.co/blog/5-principles-of-exceptional-case-studies-in-ux-portfolios)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S40: [WildHallucinations](https://arxiv.org/abs/2407.17468v1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S41: [Karr et al. 2026](https://arxiv.org/abs/2608.11256)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S42: [Jabarian & Imas, NBER](https://www.nber.org/papers/w34223)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S43: [Padmakumar & He, ICLR 2024](https://proceedings.iclr.cc/paper_files/paper/2024/hash/02dec8877fb7c6aa9a79f81661baca7c-Abstract-Conference.html)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S44: [Antislop, 2025](https://arxiv.org/pdf/2510.15061v1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S45: [Freeburg, markdown and em dashes, 2026](https://arxiv.org/abs/2603.27006)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S46: [Chakrabarty et al., AI-Slop to AI-Polish](https://arxiv.org/html/2504.07532v3)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S47: [WritingBench](https://arxiv.org/html/2503.05244v4)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S48: [DeepResearch Bench](https://arxiv.org/pdf/2506.11763)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S49: [Flattery, Fluff, and Fog](https://arxiv.org/abs/2506.05339v3)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S50: [Panickssery et al., self-preference](https://arxiv.org/html/2404.13076v1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S51: [VeriScore](https://arxiv.org/html/2406.19276v1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S52: [Rao et al., reference hallucination](https://arxiv.org/abs/2604.03173)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S53: [Wang et al., style imitation](https://arxiv.org/html/2509.14543v1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S54: [Toff & Simon](https://ora.ox.ac.uk/objects/uuid:65830edf-2b12-41f6-98e3-5855de38dfdd)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S55: [Trusting News 2025](https://trustingnews.org/new-research-how-ai-disclosures-in-news-help-and-also-hurt-trust-with-audiences/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S56: [Raj, Berg & Seamans, via PsyPost](https://www.psypost.org/people-consistently-devalue-creative-writing-generated-by-artificial-intelligence/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S57: [Schilke & Reimann, via University of Arizona](https://news.arizona.edu/employee-news/being-honest-about-using-ai-work-makes-people-trust-you-less-research-finds)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S58: [Ars Technica fabricated quotes](https://talkingbiznews.com/media-news/ars-technica-fires-reporter-for-ai-fabricated-quotes/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S59: [NYT editors' note](https://simonwillison.net/2026/May/10/new-york-times-editors-note/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S60: [Reuters Institute, AI governance 2026](https://reutersinstitute.politics.ox.ac.uk/news/guidelines-architecture-how-newsrooms-are-rethinking-ai-governance)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S61: [EU AI Act Article 50, Jones Day](https://www.jonesday.com/en/insights/2026/06/european-commission-publishes-final-code-of-practice-on-marking-and-labelling-aigenerated-content)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S62: [Case publishers' AI policies](https://case-spiration.beehiiv.com/p/case-spiration-e54-ai-policies-at-major-case-publishers)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S63: [Sun et al., model idiolects](https://proceedings.mlr.press/v267/sun25z.html)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S64: [Hinge 2022](https://hingemarketing.com/blog/story/new-research-how-buyer-expectations-have-changed-in-the-consulting-industry)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S65: [Schewior & Lindner 2024](https://link.springer.com/article/10.1007/s10648-024-09883-0)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S66: [Sundararajan & Adesope, via WSU](https://news.wsu.edu/2020/03/19/seductive-details-inhibit-learning/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S67: [Mayer, research-based principles](https://www.unh.edu/teaching-learning-resource-hub/sites/default/files/media/2023-06/itow-research-based-principles-for-designing-multimedia-instruction-mayer.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S68: [Schroeder & Cenkci 2018, via TUM](https://www.clearinghouse.edu.tum.de/wp-content/uploads/2019/06/CHU_KR-23_Schroeder-2018_Lernmaterial.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S69: [Barbieri et al. 2023](https://link.springer.com/content/pdf/10.1007/s10648-023-09745-1.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S70: [Kalyuga 2007](https://www.uky.edu/~gmswan3/EDC608/Kalyuga2007_Article_ExpertiseReversalEffectAndItsI.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S71: [NN/g, Photos as Web Content](https://www.nngroup.com/articles/photos-as-web-content/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S72: [NN/g, F-shaped pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S73: [Vessey & Galletta 1991](https://econpapers.repec.org/RePEc:inm:orisre:v:2:y:1991:i:1:p:63-84)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S74: [Larkin & Simon 1987, via Davies](http://www.jimdavies.org/summaries/larkin1987.html)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S75: [Kim, Setlur & Agrawala 2021](https://arxiv.org/pdf/2101.08235)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S76: [Bertini on Borkin and Kong](https://filwd.substack.com/p/titles-in-data-visualization-empirical)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S77: [Stokes et al., Striking a Balance](https://vis.csail.mit.edu/pubs/vis-text-balance)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S78: [Buteau on Zelazny](https://www.antoinebuteau.com/lessons-from-gene-zelazny/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S79: [FT Visual Vocabulary](https://github.com/Financial-Times/chart-doctor/blob/main/visual-vocabulary/README.md)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S80: [Urban Institute style guide](https://urbaninstitute.github.io/graphics-styleguide/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S81: [Knaflic, via Readingraphics](https://readingraphics.com/book-summary-storytelling-with-data/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S82: [Pandey et al. 2015](http://www.cs.rpi.edu/~cutler/classes/visualization/S24/papers/2015_Pandey_Deceptive_Visualization.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S83: [Correll et al. 2020](https://arxiv.org/html/1907.02035v2)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S84: [The Economist, chart mistakes](https://medium.com/the-economist/mistakes-weve-drawn-a-few-8cdd8a42d368)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S85: [C4 model notation](https://c4model.com/diagrams/notation)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S86: [Few, Rich Data, Poor Data](https://www.perceptualedge.com/articles/Whitepapers/Rich_Data_Poor_Data.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S87: [Shneiderman 1996](https://www.cs.umd.edu/~ben/papers/Shneiderman1996eyes.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S88: [Segel & Heer 2010](https://hci.ucsd.edu/220/NarrativeVisualization.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S89: [W3C SC 1.1.1](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S90: [W3C SC 1.4.11](https://w3.org/WAI/WCAG22/Understanding/non-text-contrast)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S91: [NN/g, Accordions on Desktop](https://www.nngroup.com/articles/accordions-on-desktop/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S92: [GOV.UK Accordion](https://design-system.service.gov.uk/components/accordion/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S93: [GOV.UK Tabs](https://design-system.service.gov.uk/components/tabs/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S94: [NN/g, Tabs Used Right](https://www.nngroup.com/articles/tabs-used-right/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S95: [GOV.UK Inset text](https://design-system.service.gov.uk/components/inset-text/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S96: [Microsoft Learn, alerts](https://learn.microsoft.com/en-us/contribute/content/markdown-reference)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S97: [NN/g, Carousels](https://www.nngroup.com/articles/designing-effective-carousels/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S98: [Hohman et al. 2020, Distill](https://distill.pub/2020/communicating-with-interactive-articles/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S99: [Zhi, Ottley & Metoyer 2019](https://diglib.eg.org/handle/10.1111/cgf13719)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S100: [NN/g, Calculator Expectations](https://www.nngroup.com/articles/calculator-expectations/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S101: [NN/g, 3 Types of Calculator](https://www.nngroup.com/articles/3-types-calculator/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S102: [Victor, Explorable Explanations](https://worrydream.com/ExplorableExplanations/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S103: [WAI-ARIA APG, Accordion](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S104: [WAI-ARIA APG, Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S105: [W3C SC 2.3.3](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S106: [W3C SC 2.2.2](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S107: [Google, mobile-first indexing](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S108: [Ivey, writing case studies](https://www.iveypublishing.ca/s/writing-case-studies)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S109: [WDI Publishing, Nov 2025](https://wdi-publishing.com/wp-content/uploads/2025/11/UpdatedNov2025_Best-Practices-and-Preferred-Style-for-Case-Study-Development.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S110: [Emerald, compact case](https://www.emeraldgrouppublishing.com/journal/tcj/components-a-compact-case)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S111: [Umbrex, chart principles](https://umbrex.com/resources/the-busy-consultants-guide-to-quantitative-charts/design-principles-for-mckinsey-quantitative-charts/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S112: [StrategyU, consulting presentations](https://strategyu.co/consulting-presentations/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S113: [Google, high-quality reviews](https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews?authuser=8)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S114: [Google style, images](https://developers.google.com/style/images?authuser=4)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S115: [Google style, notices](https://developers.google.com/style/notices?authuser=1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S116: [Microsoft Learn style quick start](https://learn.microsoft.com/en-us/contribute/style-quick-start)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S117: [Diátaxis](https://diataxis-translated.readthedocs.io/start-here/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S118: [Google, image SEO](https://developers.google.com/search/docs/appearance/google-images)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S119: [IPTC, Google AI transparency](https://iptc.org/news/google-ai-transparency-based-on-iptc-standards/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S120: [Google Merchant Center, AI images](https://support.google.com/merchants/answer/14743464?hl=en)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S121: [YouTube, AI disclosure](https://support.google.com/youtube/answer/14328491)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S122: [Meta, AI labeling](https://about.fb.com/news/2024/04/metas-approach-to-labeling-ai-generated-content-and-manipulated-media/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S123: [C2PA specification 2.2](https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S124: [EU AI Act Art. 50, Faegre Drinker](https://www.faegredrinker.com/en/insights/publications/2026/7/eu-ai-act-commission-confirms-transparency-code-of-practice-as-adequate-and-publishes-final-version-of-its-guidelines-on-transparency-obligations)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S125: [Reuters Institute 2025](https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S126: [Poynter 2025](https://poynter.org/ethics-trust/2025/want-news-readers-want-ai)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S127: [Nieman Lab 2023, newsroom AI rules](https://www.niemanlab.org/2023/07/writing-guidelines-for-the-role-of-ai-in-your-newsroom-here-are-some-er-guidelines-for-that/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S128: [NIM, Transparency Without Trust](https://www.nim.org/publikationen/detail/transparency-without-trust)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S129: [VisEval](https://arxiv.org/html/2407.00981v2)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S130: [ChartAttack](https://arxiv.org/html/2601.12983v2)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S131: [ChartMimic](https://arxiv.org/html/2406.09961v2)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S132: [LIDA](https://ar5iv.labs.arxiv.org/html/2303.02927)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S133: [MermaidSeqBench](https://arxiv.org/html/2511.14967v1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S134: [Architecture view generation](https://arxiv.org/html/2603.21178v1)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S135: [OpenAI DALL-E 3 paper](https://cdn.openai.com/papers/dall-e-3.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S136: [GenEval](https://arxiv.org/pdf/2310.11513.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S137: [IMG.LY text reliability](https://img.ly/ai-benchmarks/findings/text-reliability/)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S138: [Anthropic, frontend design skills](https://claude.com/blog/improving-frontend-design-through-skills)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S139: [prg.sh, purple gradient](https://prg.sh/ramblings/Why-Your-AI-Keeps-Building-the-Same-Purple-Gradient-Website)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S140: [US Copyright Office Part 2, Ballard Spahr](https://www.ballardspahr.com/insights/alerts-and-articles/2025/01/copyright-office-issues-report-on-copyrightability-of-ai-content)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S141: [NPPA code, via News Leaders](https://members.newsleaders.org/resources-ethics-nppa)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S142: [AP caption style, course site](https://revolutionsincommunication.com/journalism/?p=1923)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S143: [Data Journalism Handbook](https://datajournalism.com/read/handbook/one/delivering-data/visualization-as-the-workhorse-of-data-journalism)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S144: [Medium AI policy](https://help.medium.com/hc/en-us/articles/22576852947223-Artificial-Intelligence-AI-content-policy)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S145: [Latin, ADPList](https://adplist.substack.com/p/only-30-seconds-to-reject-your-portfolio)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S146: [Fountain Institute](https://www.thefountaininstitute.com/blog/senior-product-designers-hired)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S147: [Bateman et al. 2010](https://sites.stat.columbia.edu/gelman/communication/Bateman2010.pdf)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S148: [TIE Online, decorative graphics](https://www.tieonline.com/article/2084/can-decorative-graphics-improve-learning-from-text-)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S149: [Few, dashboard definition](https://www.perceptualedge.com/blog/?p=2793)"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Citation of a published source: its title, link and date as published.",
+   "text": "- S150: [Digital Content Next 2024](https://digitalcontentnext.org/blog/2024/04/30/generative-visual-ai-in-news-organizations-challenges-and-opportunities/)"
+  }
+ ]
+}

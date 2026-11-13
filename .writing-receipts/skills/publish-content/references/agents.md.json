@@ -1,0 +1,31 @@
+{
+ "format": 1,
+ "artifact": "skills/publish-content/references/agents.md",
+ "protected": [
+  {
+   "kind": "example",
+   "reason": "Stock vocabulary the editor layer teaches agents to remove.",
+   "text": "delve, pivotal, crucial, underscore, showcase, tapestry, landscape, realm, robust, seamless, leverage, navigate (figurative), foster"
+  },
+  {
+   "kind": "quotation",
+   "reason": "Word measured in the cited Kobak et al. study.",
+   "text": "\"delves\""
+  },
+  {
+   "kind": "example",
+   "reason": "Ornate verbs the editor layer teaches agents to replace with is or has.",
+   "text": "\"serves as\", \"stands as\", \"boasts\", \"features\""
+  },
+  {
+   "kind": "example",
+   "reason": "Promotional adjectives the editor layer teaches agents to remove.",
+   "text": "nestled, vibrant, breathtaking, rich (as in heritage), seamless, cutting-edge"
+  },
+  {
+   "kind": "example",
+   "reason": "Trailing clauses the editor layer teaches agents to cut.",
+   "text": "\", highlighting…\", \", ensuring…\", \", fostering…\""
+  }
+ ]
+}
