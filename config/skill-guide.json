@@ -1922,7 +1922,7 @@
       "inputs": "The draft or the saved file, the writing rules folder, and the channel and audience for the piece.",
       "outputs": "The reviewed text, and for a saved file a JSON result with status, line coverage, findings and a receipt.",
       "example": "Check this proposal page before it goes to the client, then run the full review with the line pass and the document pass.",
-      "reviewedEntrypointSha256": "0b569a496fb1dd9a4e76021bb3c8522b9191ce1127b4afd5033278f2fade74b8",
+      "reviewedEntrypointSha256": "e3ce0006078b5791806229a2bbf2dd31a746a854989b769391454021574edac3",
       "expect": "It reads the rules from the owner's folder each time, picks review, owner voice or brand voice, and sets the register from the channel and audience. For a file, check.py extracts the reader text, scans every in-scope line in parts of at most 300 lines and exits 0, 1 or 2. A full review adds a verdict for every line, a claims answer checked against a source list, a document map and a spot audit, and the script rejects a missing verdict, a misquoted line or an untraced number. Code and quotations are exempt.",
       "connectors": {
         "required": [],

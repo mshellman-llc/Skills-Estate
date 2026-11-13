@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-13T17:49:00.391585+00:00",
-  "baseCommit": "841065e874ede5f85ec24e1f5a0eaa8891f8735b",
+  "generatedAt": "2026-11-13T17:58:16.998045+00:00",
+  "baseCommit": "0f41052c190380e643c0d47af1f50786fc967d2b",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -65,7 +65,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-author-style/SKILL.md",
       "sourceSha256": "60ef56102eed4f9de4cf6ea78a4ad0949e98ee1f6c38f5d33db43bc868ab10ed",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/apply-author-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/apply-author-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -196,7 +196,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-salesforce-patterns/SKILL.md",
       "sourceSha256": "97a238283a12443797e0970f0483169d2c283e27a7735ef344d3a87bc2d58d2b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/apply-salesforce-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/apply-salesforce-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "apply-salesforce-patterns",
@@ -433,7 +433,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-career-options/SKILL.md",
       "sourceSha256": "f28c082d3d2bc502c3125006fb9591bc28bf9d00476f2cc1c2258badd452e4c6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/assess-career-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/assess-career-options/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-career-options",
@@ -576,7 +576,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-offering-fit/SKILL.md",
       "sourceSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/assess-offering-fit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/assess-offering-fit/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-offering-fit",
@@ -732,7 +732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-solution-delivery/SKILL.md",
       "sourceSha256": "26d10151c80bcaef72cfd3ce91431eb79c4709db4f1968571dfb4f74dadf8a48",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/assess-solution-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/assess-solution-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-solution-delivery",
@@ -1112,7 +1112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/audit-accessibility/SKILL.md",
       "sourceSha256": "6f6b392bdc3eb2cf4277e1d13ea2210888228695c933a6c6835dddda47ee798e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/audit-accessibility/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/audit-accessibility/SKILL.md",
       "taskPackages": [
         {
           "name": "audit-accessibility",
@@ -1244,7 +1244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-estate-skill/SKILL.md",
       "sourceSha256": "24b0fa3b3246b650dd8b24613ddedd2b5086c56217caf4a21c6e0ae091434d2f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/author-estate-skill/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/author-estate-skill/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -1460,7 +1460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-style-runtime/SKILL.md",
       "sourceSha256": "7b23bdc5ee4e8e997a2840cd5d55f8122f158aed37d55cac6fb82c9edc10d4a5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/author-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/author-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1647,7 +1647,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "e4e2546441fc30599598c9f0299a0f001bba319528c8d50d5b22b640022a44c0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-offering-fit",
@@ -2047,7 +2047,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deal-decision-deck/SKILL.md",
       "sourceSha256": "2e2a7a1d4d5d918994f67d306ba00ee7032ab3c29df623cfc0c9020ebc98949a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-deal-decision-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-deal-decision-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2330,7 +2330,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deck/SKILL.md",
       "sourceSha256": "ca98e6e7049a5404b0862a94ebe2ace1ffd6b881e16f50f2cca461b78a38dd33",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2574,7 +2574,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-editorial-chart/SKILL.md",
       "sourceSha256": "cde02918eb0e09f72b62b58e9b75d66eed52f8a0421df36cfa3989ceb0b3f5d7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-editorial-chart/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-editorial-chart/SKILL.md",
       "taskPackages": [
         {
           "name": "build-editorial-chart",
@@ -2795,7 +2795,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "eff19bc59a2e2927d772b72b79b1d57f79b6d0e649cae9026dcdacc120e9b641",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -2977,7 +2977,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-proposal/SKILL.md",
       "sourceSha256": "5c25a2df805a75855486609536031fe9404e5c97d376d4f527488974ed5b1ae8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -3247,7 +3247,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-moscow-story-map/SKILL.md",
       "sourceSha256": "b6e46327dc11d0e86d97e9b9c99121f819f87f76c895c48dcdee6b8236722c82",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "build-moscow-story-map",
@@ -3407,7 +3407,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-review-site/SKILL.md",
       "sourceSha256": "1c9b9c3887b5d5e854e03ccd759bf3f6d7f3ea8543c321df46d63e22840db998",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "build-review-site",
@@ -3620,7 +3620,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-roadmap/SKILL.md",
       "sourceSha256": "db7e32ba564b4400f0a35919459bcc64f79bbd8d1d6d1f48037a70d8d1621c9c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/build-roadmap/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/build-roadmap/SKILL.md",
       "taskPackages": [
         {
           "name": "build-roadmap",
@@ -3945,7 +3945,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-knowledge/SKILL.md",
       "sourceSha256": "f5e0d760edfdd0e61886dc759ba0979159818a8c9e90c26e95e72f4ee36e8c98",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/capture-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/capture-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-knowledge",
@@ -4079,7 +4079,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-requirements/SKILL.md",
       "sourceSha256": "d9de7eb3bb479d5c5b490c5fea63d2bcc75fb9372e0006c1c26acf96a49e196f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/capture-requirements/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/capture-requirements/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-requirements",
@@ -4296,7 +4296,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-salesforce-screens/SKILL.md",
       "sourceSha256": "3ff9679f8f98bd5fab182ad0312f57c91dbbb5dc7d7997ccc51c7e2862181f2c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/capture-salesforce-screens/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/capture-salesforce-screens/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4447,7 +4447,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/check-knowledge-hub/SKILL.md",
       "sourceSha256": "fbee0a1214cdda3d5b87d615c35a42302cdfae03d75a7bbb275006f5917b2225",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/check-knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/check-knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "check-knowledge-hub",
@@ -4595,7 +4595,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/compare-scope-options/SKILL.md",
       "sourceSha256": "4fc316551667ae2877b164b0084a4d27090945b614b40c8a5da191ca58f0a453",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/compare-scope-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/compare-scope-options/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -4842,7 +4842,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/configure-salesforce-project/SKILL.md",
       "sourceSha256": "145ef59d022916f681f558bb20026039ece312c93b7d0d1a8801a5cdb47fc8ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/configure-salesforce-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/configure-salesforce-project/SKILL.md",
       "taskPackages": [
         {
           "name": "configure-salesforce-project",
@@ -5584,7 +5584,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deliver-salesforce-change/SKILL.md",
       "sourceSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/deliver-salesforce-change/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/deliver-salesforce-change/SKILL.md",
       "taskPackages": [
         {
           "name": "deliver-salesforce-change",
@@ -5958,7 +5958,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-orchestrator/SKILL.md",
       "sourceSha256": "efbc0207a4238bf598b33d8aac2d7bb6e078290d3311712031fa3703251c37ac",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/delivery-orchestrator/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/delivery-orchestrator/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-requirements",
@@ -6229,7 +6229,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-analytics-plan/SKILL.md",
       "sourceSha256": "78d27b364ce3a619d70ed5dc9008b93351254d3ae7ca3dd9952f85e7398f45be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/design-analytics-plan/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/design-analytics-plan/SKILL.md",
       "taskPackages": [
         {
           "name": "design-analytics-plan",
@@ -6361,7 +6361,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-information-architecture/SKILL.md",
       "sourceSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/design-information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/design-information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "design-information-architecture",
@@ -6493,7 +6493,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-process/SKILL.md",
       "sourceSha256": "ca114123880ba4752529612a903ba3895d6291f68c5085c4b65ae0ffd522cc7e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/design-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/design-process/SKILL.md",
       "taskPackages": [
         {
           "name": "design-process",
@@ -6676,7 +6676,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-software-system/SKILL.md",
       "sourceSha256": "102209f34e8154aca0791f2af418d64493d6d7d6fd3f4449eba24ca66ea9fff9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/design-software-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/design-software-system/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -6851,7 +6851,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-sticker/SKILL.md",
       "sourceSha256": "b6dab8536880885060e9221906488aa8c5cbbc26ce194e2b179169024193b345",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/design-sticker/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/design-sticker/SKILL.md",
       "taskPackages": [
         {
           "name": "design-sticker",
@@ -6986,7 +6986,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-independent-product/SKILL.md",
       "sourceSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/develop-independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/develop-independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-independent-product",
@@ -7102,7 +7102,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-product/SKILL.md",
       "sourceSha256": "7c3d1fe744e37614cf438f01c4cf1cb35113f20061d9799181046fb151fd20fe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/develop-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/develop-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-product",
@@ -7305,7 +7305,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/draft-application-materials/SKILL.md",
       "sourceSha256": "b3df2a2fb127157eb1b77f37cdf6ddd13ee6a6cfea687005e6a4fea087599eec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/draft-application-materials/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/draft-application-materials/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -7467,7 +7467,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/estimate-project/SKILL.md",
       "sourceSha256": "9655e454e4c758060aeb89b73428585fe7a88609d0a2db43e6df6b42d1162be2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/estimate-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/estimate-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -7719,7 +7719,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "6c1304908ca66e9ea5aef1cae2fed005b30c3f1e822805ffcd33188801c6ca2d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-solution-delivery",
@@ -7995,7 +7995,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/frame-jobs-to-be-done/SKILL.md",
       "sourceSha256": "a0618f241e934c687faa3bf0dc08b78f77f089a7afd0336e8dfff6b57a0d4fd0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/frame-jobs-to-be-done/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/frame-jobs-to-be-done/SKILL.md",
       "taskPackages": [
         {
           "name": "frame-jobs-to-be-done",
@@ -8252,7 +8252,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/guide-fortunes-weave/SKILL.md",
       "sourceSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/guide-fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/guide-fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "guide-fortunes-weave",
@@ -8366,7 +8366,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/import-tracker-export/SKILL.md",
       "sourceSha256": "303f8fd7642bf80652fad4907328277a1b920093202ecf3837c0013fe905ede3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/import-tracker-export/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/import-tracker-export/SKILL.md",
       "taskPackages": [
         {
           "name": "import-tracker-export",
@@ -8539,7 +8539,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ingest-transcript/SKILL.md",
       "sourceSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/ingest-transcript/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/ingest-transcript/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8705,7 +8705,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/lay-out-sticker-sheets/SKILL.md",
       "sourceSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/lay-out-sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/lay-out-sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "lay-out-sticker-sheets",
@@ -8824,7 +8824,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/load-project-context/SKILL.md",
       "sourceSha256": "3d3c80d4b46ca2fa033148c51ccac1b0c6532c45b3c134f64434db5b7f6460b0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/load-project-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/load-project-context/SKILL.md",
       "taskPackages": [
         {
           "name": "load-project-context",
@@ -8973,7 +8973,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-discovery-record/SKILL.md",
       "sourceSha256": "b5d151492eb92ad883e2dfd11fbe373c00f08d887434032743301c2e59bbaf58",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/maintain-discovery-record/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/maintain-discovery-record/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -9242,7 +9242,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-skills-estate/SKILL.md",
       "sourceSha256": "6eaf853e6c07cfbe99b589fed84af125fa8f3d4af3f72a19d5fe60c28c6e1d87",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/maintain-skills-estate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/maintain-skills-estate/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -9484,7 +9484,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-brand-profile/SKILL.md",
       "sourceSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-brand-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-brand-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-brand-profile",
@@ -9601,7 +9601,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-consulting-knowledge/SKILL.md",
       "sourceSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-consulting-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-consulting-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-consulting-knowledge",
@@ -9935,7 +9935,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-cutover-closeout/SKILL.md",
       "sourceSha256": "c8dcfb3824a9624d943409adb900dc3be318f7eff0e67dab26777b25a29706f9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-cutover-closeout",
@@ -10171,7 +10171,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-decision-register/SKILL.md",
       "sourceSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-decision-register",
@@ -10331,7 +10331,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-linked-task/SKILL.md",
       "sourceSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-linked-task/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-linked-task/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -10437,7 +10437,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-salesforce-devops/SKILL.md",
       "sourceSha256": "696aa80506a1d04ca45ae7a9fa0e17f03c75790c9be441c5f537584e6082cc3f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-salesforce-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-salesforce-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -10606,7 +10606,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-service-offering/SKILL.md",
       "sourceSha256": "cad2f61af6b45fb500642f6a8e5027d127eb87cdb4c97a415e7e72669339c158",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-service-offering/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-service-offering/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -10785,7 +10785,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-writing-profile/SKILL.md",
       "sourceSha256": "661cb380854e11b480c8ce08a449df7ae4365ff710f1ab8cff53e5cd11d33486",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/manage-writing-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/manage-writing-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-writing-profile",
@@ -10971,7 +10971,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-journey/SKILL.md",
       "sourceSha256": "2b43a88c556f3e333b3c12837568aeaa88f093347ca8fcd83e62d444ff688b32",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/map-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/map-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-journey",
@@ -11176,7 +11176,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-sales-process/SKILL.md",
       "sourceSha256": "bbd8ec4db8905ccd3db6de81f65fa4d9387282ae1ee7d661574b344233ff9ce3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/map-sales-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/map-sales-process/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -11313,7 +11313,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/operate-salesforce-pipeline/SKILL.md",
       "sourceSha256": "587104dba57206c015cde53ae40c19b7118448ad95c74e13ea31b37f2b0fdd13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/operate-salesforce-pipeline/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/operate-salesforce-pipeline/SKILL.md",
       "taskPackages": [
         {
           "name": "operate-salesforce-pipeline",
@@ -11559,7 +11559,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-offering-artifacts/SKILL.md",
       "sourceSha256": "9ba84a3b73f6164dd701c5bcfcef89001eb67b025f55be917c841e78bd59f48e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/plan-offering-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/plan-offering-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -11774,7 +11774,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-sprint/SKILL.md",
       "sourceSha256": "0f056e9401e1752a293b1c78197b632538497783539497b354ddb105cd5443c8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/plan-sprint/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/plan-sprint/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-sprint",
@@ -12012,7 +12012,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-team-onboarding/SKILL.md",
       "sourceSha256": "963b3dacfb4eab19ab14df999646300adda52e988d3b8e507604778737013144",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/plan-team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/plan-team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-team-onboarding",
@@ -12191,7 +12191,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-usability-study/SKILL.md",
       "sourceSha256": "252bcb7ec74179de8eccd9a6d19f4c50b15262cf1fd7d084f7d73b593a07b6ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/plan-usability-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/plan-usability-study/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-usability-study",
@@ -12323,7 +12323,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-delivery-handoff/SKILL.md",
       "sourceSha256": "5bf0003be716cd98dd6fb9d59c04658dd6012e97ce3f6f12a25c4639cdfd7980",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/prepare-delivery-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/prepare-delivery-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-delivery-handoff",
@@ -12596,7 +12596,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-job-application/SKILL.md",
       "sourceSha256": "9e83433f28b4848b2e1164c2cdcc2f263c3ca7423488a4b63100db8ea78d5ca4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/prepare-job-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/prepare-job-application/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -12788,7 +12788,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-sales-pursuit/SKILL.md",
       "sourceSha256": "4de3e4463401556aa97e0bc0d7ea6daeb65b15ea5736bc5a98831331babd35ca",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/prepare-sales-pursuit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/prepare-sales-pursuit/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-sales-pursuit",
@@ -13086,7 +13086,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-session-handoff/SKILL.md",
       "sourceSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/prepare-session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/prepare-session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-session-handoff",
@@ -13244,7 +13244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritize-work/SKILL.md",
       "sourceSha256": "02573c165d2a1d23a1d6f30adfeb3c7598f6849abec8bdcce8d34ed3f6958fc0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/prioritize-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/prioritize-work/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritize-work",
@@ -13526,7 +13526,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/promote-salesforce-changes/SKILL.md",
       "sourceSha256": "20ecc948c080ca2f890499ff1a554838259b2a9e3cbe7c14e0869e886c8780f0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/promote-salesforce-changes/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/promote-salesforce-changes/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -13755,7 +13755,7 @@
       "entrypointChanged": true,
       "sourcePath": "skills/publish-content/SKILL.md",
       "sourceSha256": "9faeedf641b025b61669bbac21c29be1283462d84b86bf06c7b8cb7d73b033da",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/publish-content/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/publish-content/SKILL.md",
       "taskPackages": [
         {
           "name": "publish-content",
@@ -13799,8 +13799,10 @@
         "label": "General use",
         "reason": "The method accepts the user’s project sources and takes private context as an explicit input.",
         "setup": "",
-        "cleanup": [],
-        "readiness": "reusable",
+        "cleanup": [
+          "Review local paths and configured private terms before sharing this workflow."
+        ],
+        "readiness": "cleanup",
         "references": [
           {
             "path": "skills/publish-content/fixtures/scaffold-receipt.json",
@@ -13809,7 +13811,43 @@
             "kind": "example-or-test"
           }
         ],
-        "dependencyReferences": [],
+        "dependencyReferences": [
+          {
+            "path": "skills/writing/scripts/hook.py",
+            "line": 52,
+            "text": "'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',",
+            "kind": "workflow-or-reference",
+            "via": "writing"
+          },
+          {
+            "path": "skills/writing/scripts/hook.py",
+            "line": 53,
+            "text": "'/Volumes/BeastMode/Portfolio Site/site/*'],",
+            "kind": "workflow-or-reference",
+            "via": "writing"
+          },
+          {
+            "path": "skills/writing/scripts/writing_system.py",
+            "line": 253,
+            "text": "drive = os.environ.get('BEASTMODE_MAC_ROOT', '/Volumes/BeastMode')",
+            "kind": "workflow-or-reference",
+            "via": "writing"
+          },
+          {
+            "path": "skills/writing/scripts/writing_system.py",
+            "line": 294,
+            "text": "cfg = {'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',",
+            "kind": "workflow-or-reference",
+            "via": "writing"
+          },
+          {
+            "path": "skills/writing/scripts/writing_system.py",
+            "line": 295,
+            "text": "'/Volumes/BeastMode/Portfolio Site/site/*'],",
+            "kind": "workflow-or-reference",
+            "via": "writing"
+          }
+        ],
         "sharedReferences": [],
         "textFilesScanned": 15,
         "packageFingerprint": "9d7a2d748df1f5ddb1131dbf3fc50ddd99f4ec67f209a79fb353ce47b02066ce",
@@ -14010,7 +14048,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/reconcile-knowledge/SKILL.md",
       "sourceSha256": "0c47d0ae6fc92550c1be657a5e1926f4b68c484e2b7eea276b9a1fd0999bd62a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/reconcile-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/reconcile-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "reconcile-knowledge",
@@ -14144,7 +14182,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/refine-backlog/SKILL.md",
       "sourceSha256": "1ec640ffd185ab7e28063c8a9a5e5b406ce40bf063a09b1c9cef6b255de0eecb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/refine-backlog/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/refine-backlog/SKILL.md",
       "taskPackages": [
         {
           "name": "refine-backlog",
@@ -14374,7 +14412,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/release-skill-package/SKILL.md",
       "sourceSha256": "18ced08f63182be20b58bb29afb4cc38c690163f52e31e79962eed6cecb4c381",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/release-skill-package/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/release-skill-package/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -14533,7 +14571,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/render-offering-brief/SKILL.md",
       "sourceSha256": "0bdc89e1f7b07505ee7144b38b91c51536c8f73aa26343653bb679fb1145c754",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/render-offering-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/render-offering-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -14774,7 +14812,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-contract-scope/SKILL.md",
       "sourceSha256": "574d3d4d6fea4de0fb2e5fb6cdd23bde2e69e5bbdd038eaa63d2fed624b63b21",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/review-contract-scope/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/review-contract-scope/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -14986,7 +15024,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deal-economics/SKILL.md",
       "sourceSha256": "ef5e2b97bf3b291dca0d03904558dbc43f4bdf8c73a725d25d55146de53ec5d1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/review-deal-economics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/review-deal-economics/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deal-economics",
@@ -15232,7 +15270,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deliverable/SKILL.md",
       "sourceSha256": "186d468aa9fad1070a7a6633e26bd597a46ae68065297a8f99014054408c2fa2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/review-deliverable/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/review-deliverable/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deliverable",
@@ -15457,7 +15495,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-sales-journey/SKILL.md",
       "sourceSha256": "893a37e12a8a86177e88bb0903c20d9812c411a534edb074e3207b7d3bda6a9d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/review-sales-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/review-sales-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -15607,7 +15645,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-runtime/SKILL.md",
       "sourceSha256": "bba06bf6d55a823144888d369961f2adca0233c050939b1c870e32ac3b54474b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/review-site-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/review-site-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "build-moscow-story-map",
@@ -15945,7 +15983,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-writing/SKILL.md",
       "sourceSha256": "ae1c35a0ac5ec6ab9e60723b83e8e4e5e9702f6f40b3d6e4309ab74d8aaf743d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/review-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/review-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "review-writing",
@@ -16264,7 +16302,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-project/SKILL.md",
       "sourceSha256": "ff5b620e6f667358e4503d12e1e295fb0a44c405b91c3105bc55a882a29d34b6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/scope-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/scope-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -16471,7 +16509,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/simplify-code/SKILL.md",
       "sourceSha256": "156e04c98dbf3090b7e649c9a173bee3dfea52c8b524acbb220b76ac5f87e67a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/simplify-code/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/simplify-code/SKILL.md",
       "taskPackages": [
         {
           "name": "simplify-code",
@@ -16592,7 +16630,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/specify-implementation/SKILL.md",
       "sourceSha256": "3d9f7a3e6889a8fa8d7e49ee2996af8d02331d31007293dd40cc8c3174a6c6ba",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/specify-implementation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/specify-implementation/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -16760,7 +16798,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/start-delivery/SKILL.md",
       "sourceSha256": "28ea292d287efc339df4a895b44adb673ca2b8a0b1d2edae70721fb2e991d408",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/start-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/start-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "start-delivery",
@@ -17057,7 +17095,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/synthesize-discovery/SKILL.md",
       "sourceSha256": "39107cee8aedd73a846a61877adb4be684bdfd56b878be02ebae32792d9aed3d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/synthesize-discovery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/synthesize-discovery/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -17246,7 +17284,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tailor-resume/SKILL.md",
       "sourceSha256": "4f3dedf48a065ea98d6ef096cdfc37739321c95a00cdcf8273121e1f1debeffd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/tailor-resume/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/tailor-resume/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -17402,7 +17440,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/track-delivery/SKILL.md",
       "sourceSha256": "b9bdb2a34c011248bbc8280ea2238cd415924974c2da0a74ebf2f76be7a409df",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/track-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/track-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "track-delivery",
@@ -17677,7 +17715,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/validate-delivery/SKILL.md",
       "sourceSha256": "21aabfb9a5cfc4ef671156a5a7a18bab9c11a2fc6a207248bf19c9b4b429c1f8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/validate-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/validate-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "validate-delivery",
@@ -17923,7 +17961,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-salesforce-org/SKILL.md",
       "sourceSha256": "ef7f119c9035f2562cc46ff755936355cb6fc0dd34439cca9a5f8f5f5d55fad5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/verify-salesforce-org/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/verify-salesforce-org/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "deliver-salesforce-change"
@@ -18079,7 +18117,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-work-state/SKILL.md",
       "sourceSha256": "76de9e7c6c3916162139c2d14bcb1f7baf76da2bafea8fd864db2f10ce7bb5cc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/verify-work-state/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/verify-work-state/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18241,7 +18279,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/work-in-github-repository/SKILL.md",
       "sourceSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/work-in-github-repository/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/work-in-github-repository/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18344,7 +18382,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-architecture-reference/SKILL.md",
       "sourceSha256": "24916ef267bbe31223eb17ac4065674e24bc46e2662dfa02467974392b696c5c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/write-architecture-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/write-architecture-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -18566,7 +18604,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-business-case/SKILL.md",
       "sourceSha256": "bec549aa6af7ce6f17ae4190b21ce8eea89f27b6cf03f7df33385f5367347bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/write-business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/write-business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "write-business-case",
@@ -18801,7 +18839,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-feature-spec/SKILL.md",
       "sourceSha256": "37bec88975ff9246aa2e76451a73e6612f9835c0316634e6edb44b1cb0a7cbce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/write-feature-spec/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/write-feature-spec/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -18952,7 +18990,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-portfolio-case-study/SKILL.md",
       "sourceSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/write-portfolio-case-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/write-portfolio-case-study/SKILL.md",
       "taskPackages": [
         {
           "name": "write-portfolio-case-study",
@@ -19086,7 +19124,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "39b45b3eab1db80cf07e6e7b705d17d2d81e50f9e929d34b80266d5630dbd128",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/write-statement-of-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/write-statement-of-work/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -19374,8 +19412,8 @@
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/writing/SKILL.md",
-      "sourceSha256": "0b569a496fb1dd9a4e76021bb3c8522b9191ce1127b4afd5033278f2fade74b8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/writing/SKILL.md",
+      "sourceSha256": "e3ce0006078b5791806229a2bbf2dd31a746a854989b769391454021574edac3",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/writing/SKILL.md",
       "taskPackages": [
         {
           "name": "writing",
@@ -19392,7 +19430,7 @@
         "inputs": "The draft or the saved file, the writing rules folder, and the channel and audience for the piece.",
         "outputs": "The reviewed text, and for a saved file a JSON result with status, line coverage, findings and a receipt.",
         "example": "Check this proposal page before it goes to the client, then run the full review with the line pass and the document pass.",
-        "reviewedEntrypointSha256": "0b569a496fb1dd9a4e76021bb3c8522b9191ce1127b4afd5033278f2fade74b8",
+        "reviewedEntrypointSha256": "e3ce0006078b5791806229a2bbf2dd31a746a854989b769391454021574edac3",
         "expect": "It reads the rules from the owner's folder each time, picks review, owner voice or brand voice, and sets the register from the channel and audience. For a file, check.py extracts the reader text, scans every in-scope line in parts of at most 300 lines and exits 0, 1 or 2. A full review adds a verdict for every line, a claims answer checked against a source list, a document map and a spot audit, and the script rejects a missing verdict, a misquoted line or an untraced number. Code and quotations are exempt.",
         "connectors": {
           "required": [],
@@ -19415,13 +19453,46 @@
         "label": "General use",
         "reason": "The method accepts the user’s project sources and takes private context as an explicit input.",
         "setup": "",
-        "cleanup": [],
-        "readiness": "reusable",
-        "references": [],
+        "cleanup": [
+          "Review local paths and configured private terms before sharing this workflow."
+        ],
+        "readiness": "cleanup",
+        "references": [
+          {
+            "path": "skills/writing/scripts/hook.py",
+            "line": 52,
+            "text": "'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',",
+            "kind": "workflow-or-reference"
+          },
+          {
+            "path": "skills/writing/scripts/hook.py",
+            "line": 53,
+            "text": "'/Volumes/BeastMode/Portfolio Site/site/*'],",
+            "kind": "workflow-or-reference"
+          },
+          {
+            "path": "skills/writing/scripts/writing_system.py",
+            "line": 253,
+            "text": "drive = os.environ.get('BEASTMODE_MAC_ROOT', '/Volumes/BeastMode')",
+            "kind": "workflow-or-reference"
+          },
+          {
+            "path": "skills/writing/scripts/writing_system.py",
+            "line": 294,
+            "text": "cfg = {'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',",
+            "kind": "workflow-or-reference"
+          },
+          {
+            "path": "skills/writing/scripts/writing_system.py",
+            "line": 295,
+            "text": "'/Volumes/BeastMode/Portfolio Site/site/*'],",
+            "kind": "workflow-or-reference"
+          }
+        ],
         "dependencyReferences": [],
         "sharedReferences": [],
-        "textFilesScanned": 9,
-        "packageFingerprint": "4570fbc4f5bfd4512ffa6142ea67dd09aec5fb5ae8a88d27edc607a65aba655e",
+        "textFilesScanned": 16,
+        "packageFingerprint": "d8002143a971a5d9b130a9b52f8fb17db2174e7ba1399fa7e4fdffe1debbf73a",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -19434,9 +19505,15 @@
       "profile": {
         "tools": [
           "scripts/check.py",
+          "scripts/check_selection.py",
           "scripts/check_selftest.py",
           "scripts/extract_review_text.py",
-          "scripts/extract_review_text_selftest.py"
+          "scripts/extract_review_text_selftest.py",
+          "scripts/hook.py",
+          "scripts/hook_selftest.py",
+          "scripts/install_local.py",
+          "scripts/writing_system.py",
+          "scripts/writing_system_selftest.py"
         ],
         "connectors": {
           "required": [],
@@ -19480,9 +19557,9 @@
         "expect": "It reads the rules from the owner's folder each time, picks review, owner voice or brand voice, and sets the register from the channel and audience. For a file, check.py extracts the reader text, scans every in-scope line in parts of at most 300 lines and exits 0, 1 or 2. A full review adds a verdict for every line, a claims answer checked against a source list, a document map and a spot audit, and the script rejects a missing verdict, a misquoted line or an untraced number. Code and quotations are exempt.",
         "declared": true
       },
-      "markdown": "---\nname: writing\ndescription: \"Write or review every word a person will read, in any format, against the owner's writing rules folder. Use before returning a reply, document, page, deck, message, interface label, commit message or pull request description. Reviews text, writes as the owner or as a brand, and logs wording corrections. Code and exact quotations are exempt.\"\n---\n\n# Writing\n\nLoad this skill before writing any text for a reader. It holds the method, the check script and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.\n\n## Find the rules folder\n\n`scripts/check.py` takes the folder from `--rules-dir`, then from the `WRITING_HOME` variable, then from the path written in `~/.agents/writing/home`. Read the files a task needs from that folder at the start of the task.\n\n| File | Holds | Read for |\n| --- | --- | --- |\n| `rules.md` | The writing standard | Every mode |\n| `patterns.json` | Phrases and habits the scanner checks | `check.py` reads it |\n| `registers.md` | Guidance learned for a channel or audience | Every mode |\n| `voice-profile.md` | How the owner sounds as the author | Owner-voice mode |\n| `brands/<brand>.md` | One brand's voice | Brand mode |\n| `corrections.md` | Dated log of wording corrections | Learn |\n\nOn a surface with no file access, get the current rules from the Knowledge Hub with `get_context`. If `rules.md` cannot be read from either place, report the review as incomplete and name the missing file. Do not review from a remembered copy.\n\nWhen two rules disagree, the newer one applies. The owner's correction in the current conversation outranks every file.\n\n## Scope\n\nThe check and both passes cover text in every format: chat replies, documents, pages, decks and speaker notes, headings, bullets, table cells, captions, chart titles and labels, interface text, file names, status pages, emails, chat messages, texts, posts, bios, commit messages, pull request descriptions and résumé lines. An outline, a set of headline options and a draft pasted into chat are in scope before the owner sees them.\n\nCode and code comments are exempt. So are quotations kept word for word. A label or message string inside code is in scope. For a rendered or generated file, review the text extracted from the output.\n\n## Choose the mode\n\n1. Review is the default. Apply `rules.md` and `patterns.json` to the text.\n2. Write as the owner when the piece goes out under the owner's name. Add `voice-profile.md`.\n3. Write as a brand for a piece published under that brand. Add `brands/<brand>.md`. Use a brand voice only when its file exists; if the file is missing, ask which voice applies.\n4. Learn when the owner corrects wording. Apply the fix to every affected passage. Then save it through the Hub with `save_update`, kind `writing-correction`. The saved record states what changed, for which channel and audience, on which date and in which tool.\n\nWriting in another person's voice is outside this skill.\n\n## Set the register\n\nChannels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. Pass the name to the check with `--register`. A name the check has not seen is accepted: the script adds it to `registers.md` with the date and the file, and the receipt says the name added no rules and lists the known names. When two entries fit, pass both with a comma, as in `client-facing,executive-page`.\n\n## Run the check\n\n```sh\npython3 scripts/check.py --file PATH [--register NAME] --json\n```\n\n| Exit | Status | Meaning |\n| --- | --- | --- |\n| 0 | `pass` | Every in-scope line was scanned and no finding blocks |\n| 1 | `fail` | `findings` lists each blocking line with its rule, the exact words and the fix |\n| 2 | `incomplete` | The file could not be parsed, a rule could not run, or a part failed after two retries; `not_reviewed` names the lines |\n\nThe output carries `status`, `coverage` with `lines_total` and `lines_reviewed`, `findings`, `receipt` and `steps`. The script counts the lines each part scanned and compares them with the lines it extracted, so a gap returns `incomplete`. A file of any length is split into parts of at most 300 lines.\n\n`review` counts the scanner flags that wait for a line-pass answer, such as a list of three; they do not block a scan.\n\nRun with only `--file`, the check covers the scanner. `steps` then lists the line pass and document pass as `not_run`, and the reply calls the result a scan. Where the script cannot run, send the text to the Hub's scan tool. If neither is available, say the scan did not run.\n\nFix each finding by rewriting the sentence, then run the check again. Replacing a flagged word with a synonym leaves the same sentence in place.\n\n## Review a file in full\n\nA full review adds two passes to the scan. Each one writes a record that `check.py` validates.\n\n1. List the documents the piece was written from in a JSON file of names, `SOURCES.json`. Run `check.py --file PATH --prepare REVIEW --sources SOURCES.json`. It writes the text in parts under `REVIEW/text/`, an outline and `REVIEW/assignments.json` with about 40 lines for each worker. Every `--prepare` run replaces those three outputs and writes its own receipt, marked `prepare`. It leaves the verdict, map and audit files alone.\n2. Fix every scanner finding first.\n3. Run the line pass in [line pass](references/line-pass.md). Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.\n4. Run the document pass in [document pass](references/document-pass.md). One worker reads the whole text and fills the fixed map.\n5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json`. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.\n6. Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again. A verdict stops counting when its line changed, when another line in its section changed, or when `rules.md` or `patterns.json` changed. The document pass runs on the full text in every round.\n7. Run the [spot audit](references/line-pass.md#spot-audit). The sample is one in five of the lines marked `ok`. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered.\n8. Log a miss the owner finds through Learn as a review miss.\n\nWith no workers available, one agent runs every step under one `reviewer` name, following the [single-reviewer steps](references/line-pass.md#one-reviewer).\n\nA part or worker that fails is retried twice with half its lines. Lines still unreviewed after the retries make the result incomplete. List them in the reply and on the project's status page.\n\n## Report\n\nRead the receipt before reporting. State which steps ran and each step's status. A `failed` step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.\n\nIn ordinary work, fix the wording and deliver it without describing the review.\n",
-      "html": "<p>Load this skill before writing any text for a reader. It holds the method, the check script and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.</p><h3>Find the rules folder</h3><p><code>scripts/check.py</code> takes the folder from <code>--rules-dir</code>, then from the <code>WRITING_HOME</code> variable, then from the path written in <code>~/.agents/writing/home</code>. Read the files a task needs from that folder at the start of the task.</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">File</th><th scope=\"col\">Holds</th><th scope=\"col\">Read for</th></tr></thead><tbody><tr><td><code>rules.md</code></td><td>The writing standard</td><td>Every mode</td></tr><tr><td><code>patterns.json</code></td><td>Phrases and habits the scanner checks</td><td><code>check.py</code> reads it</td></tr><tr><td><code>registers.md</code></td><td>Guidance learned for a channel or audience</td><td>Every mode</td></tr><tr><td><code>voice-profile.md</code></td><td>How the owner sounds as the author</td><td>Owner-voice mode</td></tr><tr><td><code>brands/&lt;brand&gt;.md</code></td><td>One brand&#x27;s voice</td><td>Brand mode</td></tr><tr><td><code>corrections.md</code></td><td>Dated log of wording corrections</td><td>Learn</td></tr></tbody></table></div><p>On a surface with no file access, get the current rules from the Knowledge Hub with <code>get_context</code>. If <code>rules.md</code> cannot be read from either place, report the review as incomplete and name the missing file. Do not review from a remembered copy.</p><p>When two rules disagree, the newer one applies. The owner&#x27;s correction in the current conversation outranks every file.</p><h3>Scope</h3><p>The check and both passes cover text in every format: chat replies, documents, pages, decks and speaker notes, headings, bullets, table cells, captions, chart titles and labels, interface text, file names, status pages, emails, chat messages, texts, posts, bios, commit messages, pull request descriptions and résumé lines. An outline, a set of headline options and a draft pasted into chat are in scope before the owner sees them.</p><p>Code and code comments are exempt. So are quotations kept word for word. A label or message string inside code is in scope. For a rendered or generated file, review the text extracted from the output.</p><h3>Choose the mode</h3><ol><li>Review is the default. Apply <code>rules.md</code> and <code>patterns.json</code> to the text.</li><li>Write as the owner when the piece goes out under the owner&#x27;s name. Add <code>voice-profile.md</code>.</li><li>Write as a brand for a piece published under that brand. Add <code>brands/&lt;brand&gt;.md</code>. Use a brand voice only when its file exists; if the file is missing, ask which voice applies.</li><li>Learn when the owner corrects wording. Apply the fix to every affected passage. Then save it through the Hub with <code>save_update</code>, kind <code>writing-correction</code>. The saved record states what changed, for which channel and audience, on which date and in which tool.</li></ol><p>Writing in another person&#x27;s voice is outside this skill.</p><h3>Set the register</h3><p>Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read <code>registers.md</code> for an entry the owner has taught; a missing entry does not limit what you write. Pass the name to the check with <code>--register</code>. A name the check has not seen is accepted: the script adds it to <code>registers.md</code> with the date and the file, and the receipt says the name added no rules and lists the known names. When two entries fit, pass both with a comma, as in <code>client-facing,executive-page</code>.</p><h3>Run the check</h3><pre><code>python3 scripts/check.py --file PATH [--register NAME] --json</code></pre><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Exit</th><th scope=\"col\">Status</th><th scope=\"col\">Meaning</th></tr></thead><tbody><tr><td>0</td><td><code>pass</code></td><td>Every in-scope line was scanned and no finding blocks</td></tr><tr><td>1</td><td><code>fail</code></td><td><code>findings</code> lists each blocking line with its rule, the exact words and the fix</td></tr><tr><td>2</td><td><code>incomplete</code></td><td>The file could not be parsed, a rule could not run, or a part failed after two retries; <code>not_reviewed</code> names the lines</td></tr></tbody></table></div><p>The output carries <code>status</code>, <code>coverage</code> with <code>lines_total</code> and <code>lines_reviewed</code>, <code>findings</code>, <code>receipt</code> and <code>steps</code>. The script counts the lines each part scanned and compares them with the lines it extracted, so a gap returns <code>incomplete</code>. A file of any length is split into parts of at most 300 lines.</p><p><code>review</code> counts the scanner flags that wait for a line-pass answer, such as a list of three; they do not block a scan.</p><p>Run with only <code>--file</code>, the check covers the scanner. <code>steps</code> then lists the line pass and document pass as <code>not_run</code>, and the reply calls the result a scan. Where the script cannot run, send the text to the Hub&#x27;s scan tool. If neither is available, say the scan did not run.</p><p>Fix each finding by rewriting the sentence, then run the check again. Replacing a flagged word with a synonym leaves the same sentence in place.</p><h3>Review a file in full</h3><p>A full review adds two passes to the scan. Each one writes a record that <code>check.py</code> validates.</p><ol><li>List the documents the piece was written from in a JSON file of names, <code>SOURCES.json</code>. Run <code>check.py --file PATH --prepare REVIEW --sources SOURCES.json</code>. It writes the text in parts under <code>REVIEW/text/</code>, an outline and <code>REVIEW/assignments.json</code> with about 40 lines for each worker. Every <code>--prepare</code> run replaces those three outputs and writes its own receipt, marked <code>prepare</code>. It leaves the verdict, map and audit files alone.</li><li>Fix every scanner finding first.</li><li>Run the line pass in line pass <span class=\"ref\">(references/line-pass.md)</span>. Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.</li><li>Run the document pass in document pass <span class=\"ref\">(references/document-pass.md)</span>. One worker reads the whole text and fills the fixed map.</li><li>Validate both records with <code>check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json</code>. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.</li><li>Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again. A verdict stops counting when its line changed, when another line in its section changed, or when <code>rules.md</code> or <code>patterns.json</code> changed. The document pass runs on the full text in every round.</li><li>Run the spot audit <span class=\"ref\">(references/line-pass.md#spot-audit)</span>. The sample is one in five of the lines marked <code>ok</code>. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered.</li><li>Log a miss the owner finds through Learn as a review miss.</li></ol><p>With no workers available, one agent runs every step under one <code>reviewer</code> name, following the single-reviewer steps <span class=\"ref\">(references/line-pass.md#one-reviewer)</span>.</p><p>A part or worker that fails is retried twice with half its lines. Lines still unreviewed after the retries make the result incomplete. List them in the reply and on the project&#x27;s status page.</p><h3>Report</h3><p>Read the receipt before reporting. State which steps ran and each step&#x27;s status. A <code>failed</code> step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.</p><p>In ordinary work, fix the wording and deliver it without describing the review.</p>",
-      "excerptHtml": "<p>Load this skill before writing any text for a reader. It holds the method, the check script and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.</p><p><code>scripts/check.py</code> takes the folder from <code>--rules-dir</code>, then from the <code>WRITING_HOME</code> variable, then from the path written in <code>~/.agents/writing/home</code>. Read the files a task needs from that folder at the start of the task.</p><p>On a surface with no file access, get the current rules from the Knowledge Hub with <code>get_context</code>. If <code>rules.md</code> cannot be read from either place, report the review as incomplete and name the missing file. Do not review from a remembered copy.</p>",
+      "markdown": "---\nname: writing\ndescription: \"Write or review every word a person will read, in any format, against the owner's writing rules folder. Use before returning a reply, document, page, deck, message, interface label, commit message or pull request description. Reviews text, writes as the owner or as a brand, and logs wording corrections. Code and exact quotations are exempt.\"\n---\n\n# Writing\n\nLoad this skill before writing any text for a reader. It holds the method, the check script and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.\n\n## Find the rules folder\n\n`scripts/check.py` takes the folder from `--rules-dir`, then from the `WRITING_HOME` variable, then from the path written in `~/.agents/writing/home`. Read the files a task needs from that folder at the start of the task.\n\n| File | Holds | Read for |\n| --- | --- | --- |\n| `rules.md` | The writing standard | Every mode |\n| `patterns.json` | Phrases and habits the scanner checks | `check.py` reads it |\n| `registers.md` | Guidance learned for a channel or audience | Every mode |\n| `voice-profile.md` | How the owner sounds as the author | Owner-voice mode |\n| `brands/<brand>.md` | One brand's voice | Brand mode |\n| `corrections.md` | Dated log of wording corrections | Learn |\n\nOn a surface with no file access, read the current rules through the Knowledge Hub. When the Hub cannot be reached, use the owner's bundled rules skill if the host lists one, and record its build stamp in the review record. Look the rules up without narrating the lookup. Mention it only when every source fails; then report the review as incomplete and name the missing file. Do not review from a remembered copy.\n\nWhen two rules disagree, the newer one applies. The owner's correction in the current conversation outranks every file.\n\n## Scope\n\nThe check and both passes cover text in every format: chat replies, documents, pages, decks and speaker notes, headings, bullets, table cells, captions, chart titles and labels, interface text, file names, status pages, emails, chat messages, texts, posts, bios, commit messages, pull request descriptions and résumé lines. An outline, a set of headline options and a draft pasted into chat are in scope before the owner sees them.\n\nCode and code comments are exempt. So are quotations kept word for word. A label or message string inside code is in scope. For a rendered or generated file, review the text extracted from the output.\n\n## Choose the mode\n\n1. Review is the default. Apply `rules.md` and `patterns.json` to the text.\n2. Write as the owner when the piece goes out under the owner's name. Add `voice-profile.md`.\n3. Write as a brand for a piece published under that brand. Add `brands/<brand>.md`. Use a brand voice only when its file exists; if the file is missing, ask which voice applies.\n4. Learn when the owner corrects wording. Apply the fix to every affected passage. Then log it. Where the rules folder is on disk, add a row to `corrections.md`. Elsewhere, save it through the Hub with `save_update`, kind `decision`, key `writing-correction:<date>:<short-name>`. The record states the words before and after, the channel and audience, the date and the tool.\n\nWriting in another person's voice is outside this skill.\n\n## Set the register\n\nChannels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. Pass the name to the check with `--register`. A name the check has not seen is accepted: the script adds it to `registers.md` with the date and the file, and the receipt says the name added no rules and lists the known names. When two entries fit, pass both with a comma, as in `client-facing,executive-page`.\n\n## Run the check\n\n```sh\npython3 scripts/check.py --file PATH [--register NAME] --json\n```\n\n| Exit | Status | Meaning |\n| --- | --- | --- |\n| 0 | `pass` | Every in-scope line was scanned and no finding blocks |\n| 1 | `fail` | `findings` lists each blocking line with its rule, the exact words and the fix |\n| 2 | `incomplete` | The file could not be parsed, a rule could not run, or a part failed after two retries; `not_reviewed` names the lines |\n\nThe output carries `status`, `coverage` with `lines_total` and `lines_reviewed`, `findings`, `receipt` and `steps`. The script counts the lines each part scanned and compares them with the lines it extracted, so a gap returns `incomplete`. A file of any length is split into parts of at most 300 lines.\n\n`review` counts the scanner flags that wait for a line-pass answer, such as a list of three; they do not block a scan.\n\nRun with only `--file`, the check covers the scanner. `steps` then lists the line pass and document pass as `not_run`, and the reply calls the result a scan. Where the script cannot run, send the text to the Hub's scan tool. If neither is available, say the scan did not run.\n\nFix each finding by rewriting the sentence, then run the check again. Replacing a flagged word with a synonym leaves the same sentence in place.\n\n## Review a file in full\n\nA full review adds two passes to the scan. Each one writes a record that `check.py` validates.\n\n1. List the documents the piece was written from in a JSON file of names, `SOURCES.json`. Run `check.py --file PATH --prepare REVIEW --sources SOURCES.json`. It writes the text in parts under `REVIEW/text/`, an outline and `REVIEW/assignments.json` with about 40 lines for each worker. Every `--prepare` run replaces those three outputs and writes its own receipt, marked `prepare`. It leaves the verdict, map and audit files alone.\n2. Fix every scanner finding first.\n3. Run the line pass in [line pass](references/line-pass.md). Give it to reviewers other than the writer, and send at least one worker group to a model from another family when the host has one. Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.\n4. Run the document pass in [document pass](references/document-pass.md). One worker reads the whole text and fills the fixed map.\n5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json`. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.\n6. Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again. A verdict stops counting when its line changed, when another line in its section changed, or when `rules.md` or `patterns.json` changed. The document pass runs on the full text in every round.\n7. Run the [spot audit](references/line-pass.md#spot-audit). The sample is one in five of the lines marked `ok`. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered.\n8. Log a miss the owner finds through Learn as a review miss.\n\nWith no workers available, one agent runs every step under one `reviewer` name, following the [single-reviewer steps](references/line-pass.md#one-reviewer).\n\nA part or worker that fails is retried twice with half its lines. Lines still unreviewed after the retries make the result incomplete. List them in the reply and on the project's status page.\n\n## Report\n\nRead the receipt before reporting. State which steps ran and each step's status. A `failed` step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.\n\nIn ordinary work, fix the wording and deliver it without describing the review. An AI-detector score is never a pass or a fail.\n\n## Hooks\n\nOn Claude Code and Codex, `scripts/hook.py` scans every reply and every prose file a tool writes, and holds a reply for one rewrite when a finding blocks. It also holds a session while a deliverable it changed has no passing full review. `scripts/install_local.py` installs the scripts and the `/gate` command. `scripts/writing_system.py` builds the copies of the owner's rules for other hosts and reports drift.\n",
+      "html": "<p>Load this skill before writing any text for a reader. It holds the method, the check script and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.</p><h3>Find the rules folder</h3><p><code>scripts/check.py</code> takes the folder from <code>--rules-dir</code>, then from the <code>WRITING_HOME</code> variable, then from the path written in <code>~/.agents/writing/home</code>. Read the files a task needs from that folder at the start of the task.</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">File</th><th scope=\"col\">Holds</th><th scope=\"col\">Read for</th></tr></thead><tbody><tr><td><code>rules.md</code></td><td>The writing standard</td><td>Every mode</td></tr><tr><td><code>patterns.json</code></td><td>Phrases and habits the scanner checks</td><td><code>check.py</code> reads it</td></tr><tr><td><code>registers.md</code></td><td>Guidance learned for a channel or audience</td><td>Every mode</td></tr><tr><td><code>voice-profile.md</code></td><td>How the owner sounds as the author</td><td>Owner-voice mode</td></tr><tr><td><code>brands/&lt;brand&gt;.md</code></td><td>One brand&#x27;s voice</td><td>Brand mode</td></tr><tr><td><code>corrections.md</code></td><td>Dated log of wording corrections</td><td>Learn</td></tr></tbody></table></div><p>On a surface with no file access, read the current rules through the Knowledge Hub. When the Hub cannot be reached, use the owner&#x27;s bundled rules skill if the host lists one, and record its build stamp in the review record. Look the rules up without narrating the lookup. Mention it only when every source fails; then report the review as incomplete and name the missing file. Do not review from a remembered copy.</p><p>When two rules disagree, the newer one applies. The owner&#x27;s correction in the current conversation outranks every file.</p><h3>Scope</h3><p>The check and both passes cover text in every format: chat replies, documents, pages, decks and speaker notes, headings, bullets, table cells, captions, chart titles and labels, interface text, file names, status pages, emails, chat messages, texts, posts, bios, commit messages, pull request descriptions and résumé lines. An outline, a set of headline options and a draft pasted into chat are in scope before the owner sees them.</p><p>Code and code comments are exempt. So are quotations kept word for word. A label or message string inside code is in scope. For a rendered or generated file, review the text extracted from the output.</p><h3>Choose the mode</h3><ol><li>Review is the default. Apply <code>rules.md</code> and <code>patterns.json</code> to the text.</li><li>Write as the owner when the piece goes out under the owner&#x27;s name. Add <code>voice-profile.md</code>.</li><li>Write as a brand for a piece published under that brand. Add <code>brands/&lt;brand&gt;.md</code>. Use a brand voice only when its file exists; if the file is missing, ask which voice applies.</li><li>Learn when the owner corrects wording. Apply the fix to every affected passage. Then log it. Where the rules folder is on disk, add a row to <code>corrections.md</code>. Elsewhere, save it through the Hub with <code>save_update</code>, kind <code>decision</code>, key <code>writing-correction:&lt;date&gt;:&lt;short-name&gt;</code>. The record states the words before and after, the channel and audience, the date and the tool.</li></ol><p>Writing in another person&#x27;s voice is outside this skill.</p><h3>Set the register</h3><p>Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read <code>registers.md</code> for an entry the owner has taught; a missing entry does not limit what you write. Pass the name to the check with <code>--register</code>. A name the check has not seen is accepted: the script adds it to <code>registers.md</code> with the date and the file, and the receipt says the name added no rules and lists the known names. When two entries fit, pass both with a comma, as in <code>client-facing,executive-page</code>.</p><h3>Run the check</h3><pre><code>python3 scripts/check.py --file PATH [--register NAME] --json</code></pre><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Exit</th><th scope=\"col\">Status</th><th scope=\"col\">Meaning</th></tr></thead><tbody><tr><td>0</td><td><code>pass</code></td><td>Every in-scope line was scanned and no finding blocks</td></tr><tr><td>1</td><td><code>fail</code></td><td><code>findings</code> lists each blocking line with its rule, the exact words and the fix</td></tr><tr><td>2</td><td><code>incomplete</code></td><td>The file could not be parsed, a rule could not run, or a part failed after two retries; <code>not_reviewed</code> names the lines</td></tr></tbody></table></div><p>The output carries <code>status</code>, <code>coverage</code> with <code>lines_total</code> and <code>lines_reviewed</code>, <code>findings</code>, <code>receipt</code> and <code>steps</code>. The script counts the lines each part scanned and compares them with the lines it extracted, so a gap returns <code>incomplete</code>. A file of any length is split into parts of at most 300 lines.</p><p><code>review</code> counts the scanner flags that wait for a line-pass answer, such as a list of three; they do not block a scan.</p><p>Run with only <code>--file</code>, the check covers the scanner. <code>steps</code> then lists the line pass and document pass as <code>not_run</code>, and the reply calls the result a scan. Where the script cannot run, send the text to the Hub&#x27;s scan tool. If neither is available, say the scan did not run.</p><p>Fix each finding by rewriting the sentence, then run the check again. Replacing a flagged word with a synonym leaves the same sentence in place.</p><h3>Review a file in full</h3><p>A full review adds two passes to the scan. Each one writes a record that <code>check.py</code> validates.</p><ol><li>List the documents the piece was written from in a JSON file of names, <code>SOURCES.json</code>. Run <code>check.py --file PATH --prepare REVIEW --sources SOURCES.json</code>. It writes the text in parts under <code>REVIEW/text/</code>, an outline and <code>REVIEW/assignments.json</code> with about 40 lines for each worker. Every <code>--prepare</code> run replaces those three outputs and writes its own receipt, marked <code>prepare</code>. It leaves the verdict, map and audit files alone.</li><li>Fix every scanner finding first.</li><li>Run the line pass in line pass <span class=\"ref\">(references/line-pass.md)</span>. Give it to reviewers other than the writer, and send at least one worker group to a model from another family when the host has one. Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.</li><li>Run the document pass in document pass <span class=\"ref\">(references/document-pass.md)</span>. One worker reads the whole text and fills the fixed map.</li><li>Validate both records with <code>check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json</code>. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.</li><li>Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again. A verdict stops counting when its line changed, when another line in its section changed, or when <code>rules.md</code> or <code>patterns.json</code> changed. The document pass runs on the full text in every round.</li><li>Run the spot audit <span class=\"ref\">(references/line-pass.md#spot-audit)</span>. The sample is one in five of the lines marked <code>ok</code>. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered.</li><li>Log a miss the owner finds through Learn as a review miss.</li></ol><p>With no workers available, one agent runs every step under one <code>reviewer</code> name, following the single-reviewer steps <span class=\"ref\">(references/line-pass.md#one-reviewer)</span>.</p><p>A part or worker that fails is retried twice with half its lines. Lines still unreviewed after the retries make the result incomplete. List them in the reply and on the project&#x27;s status page.</p><h3>Report</h3><p>Read the receipt before reporting. State which steps ran and each step&#x27;s status. A <code>failed</code> step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.</p><p>In ordinary work, fix the wording and deliver it without describing the review. An AI-detector score is never a pass or a fail.</p><h3>Hooks</h3><p>On Claude Code and Codex, <code>scripts/hook.py</code> scans every reply and every prose file a tool writes, and holds a reply for one rewrite when a finding blocks. It also holds a session while a deliverable it changed has no passing full review. <code>scripts/install_local.py</code> installs the scripts and the <code>/gate</code> command. <code>scripts/writing_system.py</code> builds the copies of the owner&#x27;s rules for other hosts and reports drift.</p>",
+      "excerptHtml": "<p>Load this skill before writing any text for a reader. It holds the method, the check script and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.</p><p><code>scripts/check.py</code> takes the folder from <code>--rules-dir</code>, then from the <code>WRITING_HOME</code> variable, then from the path written in <code>~/.agents/writing/home</code>. Read the files a task needs from that folder at the start of the task.</p><p>On a surface with no file access, read the current rules through the Knowledge Hub. When the Hub cannot be reached, use the owner&#x27;s bundled rules skill if the host lists one, and record its build stamp in the review record. Look the rules up without narrating the lookup. Mention it only when every source fails; then report the review as incomplete and name the missing file. Do not review from a remembered copy.</p>",
       "headings": [
         "Find the rules folder",
         "Scope",
@@ -19490,7 +19567,8 @@
         "Set the register",
         "Run the check",
         "Review a file in full",
-        "Report"
+        "Report",
+        "Hooks"
       ],
       "mentions": [],
       "resources": [
@@ -19502,9 +19580,15 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "0b569a496fb1dd9a4e76021bb3c8522b9191ce1127b4afd5033278f2fade74b8",
-          "bytes": 7562,
-          "gitBlob": "8bb89a4b1bfd3fcc7b0957bcf9f6cbe88b1a478a"
+          "sha256": "e3ce0006078b5791806229a2bbf2dd31a746a854989b769391454021574edac3",
+          "bytes": 8451,
+          "gitBlob": "c0dfcf308ef8e83a3e94bd88c7c3ed2de210e141"
+        },
+        {
+          "path": "assets/gate-command.md",
+          "sha256": "805466458d5f4785d111ab8e4bbb9fef29581b86b63ea51caff84201989f1f88",
+          "bytes": 1685,
+          "gitBlob": "f31b309011a555174f1d5eed7a9c5be8b9a8b4a7"
         },
         {
           "path": "references/document-pass.md",
@@ -19520,15 +19604,21 @@
         },
         {
           "path": "scripts/check.py",
-          "sha256": "d869a4b8d500031c08d5d0ceb01914c29ca60a526cf31126fb0e87fd3b7f2bb6",
-          "bytes": 59410,
-          "gitBlob": "4068d98d0cb327dc08a55a94d8224626d4989580"
+          "sha256": "6f95c88dfbadf10442bc478a75036ed1d57bacbdfe42871f1e7faf61c3594776",
+          "bytes": 59890,
+          "gitBlob": "e73624d5a217ae7782edb03c20905999006281bc"
+        },
+        {
+          "path": "scripts/check_selection.py",
+          "sha256": "25135c53f2171562dc1d81b443d01a65e8e8e375ecabb968615b407e04e7ccd7",
+          "bytes": 2293,
+          "gitBlob": "a55f589565be1c50b6588e041d4ea05344e8cdf2"
         },
         {
           "path": "scripts/check_selftest.py",
-          "sha256": "eec71ee423e260f69d9bc22691a979a3f822dc0129965373aef877f9a27e3862",
-          "bytes": 35320,
-          "gitBlob": "3b903de1c5733e39d89358b96553d1bf308a0822"
+          "sha256": "84b08f8735ca5d317260a0f367ce5c3ca0f30468d891ed5b40200b044507acd4",
+          "bytes": 36411,
+          "gitBlob": "587f079ed40e26a822435084451a739555b6f62d"
         },
         {
           "path": "scripts/extract_review_text.py",
@@ -19541,6 +19631,36 @@
           "sha256": "0a7f1b63573916cf293016dc8d7d4e3f30c355f7c6b9cdb3cf57356a4537ffb5",
           "bytes": 21243,
           "gitBlob": "97a295b90d93fe9e76a8d9b8be65b21cf83363ff"
+        },
+        {
+          "path": "scripts/hook.py",
+          "sha256": "6f8192ad91c752186094807cbfefb043799289b22695293f83e2f9047ffe64ea",
+          "bytes": 13621,
+          "gitBlob": "1094d576a54cdbbf93b231c615f614fe4e72fb91"
+        },
+        {
+          "path": "scripts/hook_selftest.py",
+          "sha256": "34e1be685834404ef9190fed99d73a7d49d7d550dcd1efe896645f8ed065e5ba",
+          "bytes": 6267,
+          "gitBlob": "a1cf1950799116118eeaf644fc283193955c7610"
+        },
+        {
+          "path": "scripts/install_local.py",
+          "sha256": "c5eea4655018548a4873ea9214d60e33c39c5d0dc7374b6503d11518bb35238c",
+          "bytes": 9705,
+          "gitBlob": "e15b848752b6d8dfe5e06ec12668db11f923ee3c"
+        },
+        {
+          "path": "scripts/writing_system.py",
+          "sha256": "e6b5c8cb8ca1e75d589705e17a55a1b67f1621ce73ebeaa37181c9441ce49efc",
+          "bytes": 19712,
+          "gitBlob": "5646dc8aa844efa8bbc1338484f7c5fbf72e784f"
+        },
+        {
+          "path": "scripts/writing_system_selftest.py",
+          "sha256": "c0476ee6dd1d04dfb8b8121636f5a6cb52060e2a7736dd184f8829d724f515bd",
+          "bytes": 5913,
+          "gitBlob": "addc65cccaa5cc6bc3caa33f08ff746c107711fe"
         },
         {
           "path": "skill.yaml",
@@ -19560,7 +19680,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
       "sourceSha256": "1cd817de3b987c38739ab33f564c35763f69dcb0fae2c1b005d319dbfb78e2be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/841065e874ede5f85ec24e1f5a0eaa8891f8735b/skills/writing-diagnostics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0f41052c190380e643c0d47af1f50786fc967d2b/skills/writing-diagnostics/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "apply-salesforce-patterns",
