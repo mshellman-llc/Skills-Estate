@@ -132,6 +132,10 @@
     "0.4.29": {
       "content_sha256": "96d88086c065fd84e4aa815e51fb58faa218c943f68bb37c2ebf05a7a1abc6b2",
       "note": "publish-content: the owner writes the opening or approves a drafted one"
+    },
+    "0.4.30": {
+      "content_sha256": "4218021208c923faa49422bc0fd6a29f5fae1d9a5a95e041a0866ede5b136d84",
+      "note": "Skill guide wording follows the writing rules: no claims about hard evidence or about every claim being sourced."
     }
   },
   "source_conflicts": [
