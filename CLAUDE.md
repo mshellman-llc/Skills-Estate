@@ -8,6 +8,7 @@ Read `AGENTS.md` for the repository workflow. Use the same canonical skills and 
 - Record the plugin version (`tools/plugin_version.py --record`) on a branch rebased onto the latest `origin/main`. Main moves often, and a version recorded on an old base collides.
 - Account plugins reach the new version about 20 to 25 minutes after the publish commit on main. Compare the installed version with `config/plugin-bundles.json` before saying they match. Megan can start a manual sync from Customize, then Plugins.
 - In the cloud container, `tools/verify.py` fails 4 tests for missing dependencies: the image-size module and the PDF font render. CI checks those. Report them as environment failures.
+- In a Claude Code cloud session, `gh pr create` and `gh pr merge` fail because GraphQL is blocked. Use REST with the path first, as `gh api repos/mshellman-llc/Skills-Estate/pulls -X POST ...` and `gh api repos/mshellman-llc/Skills-Estate/pulls/<n>/merge -X PUT`, so the allow rules match.
 
 ## Who reads this repository
 
