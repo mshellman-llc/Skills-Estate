@@ -83,13 +83,19 @@ def notify(title, text):
     subprocess.run(['osascript', '-e', script], capture_output=True)
 
 
-def settled(path):
+def size(path):
     try:
-        first = path.stat().st_size
-        time.sleep(SETTLE_SECONDS)
-        return path.is_file() and path.stat().st_size == first and first > 0
+        return path.stat().st_size if path.is_file() else -1
     except OSError:
-        return False
+        return -1
+
+
+def settled(found):
+    """The (path, sha256) pairs whose files are not empty and kept their size over one shared wait."""
+    before = {path: size(path) for path, _ in found}
+    if found:
+        time.sleep(SETTLE_SECONDS)
+    return [(path, digest) for path, digest in found if before[path] > 0 and size(path) == before[path]]
 
 
 def candidates(folder, state):
@@ -137,7 +143,7 @@ def main(argv=None):
         except OSError:
             return 0
         state = read_json(STATE, {})
-        pending = [(p, d) for p, d in candidates(folder, state) if settled(p)]
+        pending = settled(list(candidates(folder, state)))
         if args.dry:
             print(json.dumps([str(p) for p, _ in pending], indent=1))
             return 0
