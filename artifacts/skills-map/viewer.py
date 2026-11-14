@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Open the map locally and refresh it from the private GitHub main build."""
+"""Open the map locally and refresh it from the GitHub main build."""
 import argparse
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
