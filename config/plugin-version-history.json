@@ -144,6 +144,10 @@
     "0.4.32": {
       "content_sha256": "f238b0ff8c47ae663cb65b330fb25e23ccdf3c86682f6bf070e3feda47310a69",
       "note": "Link verify-work-state and manage-linked-task from the five skills that use them, and bundle each module in those task packages (#100)"
+    },
+    "0.4.33": {
+      "content_sha256": "4ed14085c8d1122d5070d48d4c40cb1cbcdd276fe6854ae73dcd5adde2a31e7b",
+      "note": "Link verify-work-state and manage-linked-task from the five skills that use them, bundle each module in those task packages, and re-bind their guides (#100)"
     }
   },
   "source_conflicts": [
