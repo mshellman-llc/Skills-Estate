@@ -136,6 +136,10 @@
     "0.4.30": {
       "content_sha256": "4218021208c923faa49422bc0fd6a29f5fae1d9a5a95e041a0866ede5b136d84",
       "note": "Skill guide wording follows the writing rules: no claims about hard evidence or about every claim being sourced."
+    },
+    "0.4.31": {
+      "content_sha256": "ed8db020adbddabcc14cd2a9ead12a236d9d3d55dda8323cd5697b5bd767d8ca",
+      "note": "Simplify the writing scripts: one map of built copies and their sources, one gate config, one settle wait"
     }
   },
   "source_conflicts": [

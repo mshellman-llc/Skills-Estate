@@ -107,16 +107,17 @@ def scan_text(text, register, suffix='.md'):
 
 
 def scan_file(path, register, receipt_dir=None):
-    cmd = [sys.executable, str(CHECK), '--file', str(path), '--json']
+    if receipt_dir is None:  # a scan's receipt is thrown away unless the caller keeps it
+        with tempfile.TemporaryDirectory() as tmp:
+            return scan_file(path, register, tmp)
+    cmd = [sys.executable, str(CHECK), '--file', str(path), '--json', '--receipt-dir', str(receipt_dir)]
     if register:
         cmd += ['--register', register]
-    with tempfile.TemporaryDirectory() as tmp:
-        cmd += ['--receipt-dir', receipt_dir or tmp]
-        try:
-            out = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-            result = json.loads(out.stdout or '{}')
-        except (OSError, ValueError, subprocess.TimeoutExpired):
-            return 'error', []
+    try:
+        out = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        result = json.loads(out.stdout or '{}')
+    except (OSError, ValueError, subprocess.TimeoutExpired):
+        return 'error', []
     return result.get('status', 'error'), result.get('findings') or []
 
 
