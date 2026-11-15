@@ -31,7 +31,7 @@ Standard library only.
 """
 import argparse
 import datetime as dt
-import fnmatch
+import glob
 import hashlib
 import json
 import os
@@ -42,6 +42,9 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import hook  # noqa: E402  one gate config and one deliverable test for the hook and the nightly scan
+
 CHECK = HERE / 'check.py'
 AGENT = Path(os.environ.get('WRITING_AGENT_HOME') or Path.home() / '.agents' / 'writing').expanduser()
 HITS = [AGENT / 'hits.jsonl', Path.home() / '.agents' / 'humanize' / 'hits.jsonl']
@@ -79,6 +82,11 @@ def rules_home(arg):
     if pointer.is_file():
         return Path(pointer.read_text(encoding='utf-8').strip()).expanduser()
     sys.exit('no rules folder: pass --rules-dir, set WRITING_HOME or write the path to ~/.agents/writing/home')
+
+
+def body(text):
+    """Text without its YAML front matter."""
+    return re.sub(r'^---\n.*?\n---\n', '', text, flags=re.S)
 
 
 def section(text, title):
@@ -160,6 +168,17 @@ def sources_sha(*paths):
     return sha_bytes(b''.join(Path(p).read_bytes() for p in paths if Path(p).is_file()))[:12]
 
 
+def built_copies(home, out, prefs):
+    """Each built copy and the source files its stamp hashes, in stamp order."""
+    core = [prefs, home / 'rules.md', home / 'corrections.md', home / 'patterns.json']
+    copies = {out / 'core' / 'core.md': core, out / 'claude-ai' / 'style.txt': core,
+              out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md': [home / 'rules.md', home / 'voice-profile.md']}
+    about = home.parent / 'chatgpt-about.md'
+    if about.is_file():
+        copies[out / 'chatgpt' / 'custom-instructions.txt'] = [about, home / 'rules.md', home / 'voice-profile.md']
+    return copies
+
+
 def stamp(digest, sources):
     return (f'Built by writing_system.py on {dt.date.today().isoformat()} from {", ".join(sources)}; '
             f'sources sha256 {digest}. Edit the sources and build again; never edit this copy by hand.')
@@ -195,12 +214,18 @@ def build(args):
     writing = section(prefs.read_text(encoding='utf-8'), 'Writing')
     if not writing:
         sys.exit(f'no "## Writing" section in {prefs}')
+    copies = built_copies(home, out, prefs)
+
+    def stamp_for(path):  # the stamp always names the preferences source preferences.md
+        names = ['preferences.md' if p == prefs else p.name for p in copies[path]]
+        return stamp(sources_sha(*copies[path]), names)
+
+    core_path, style_path = out / 'core' / 'core.md', out / 'claude-ai' / 'style.txt'
+    skill_path, chat_path = out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md', out / 'chatgpt' / 'custom-instructions.txt'
     rules = rule_lines(rules_md)
-    digest = sources_sha(prefs, home / 'rules.md', home / 'corrections.md', home / 'patterns.json')
     habits = recurring(ledger)
     examples = pairs(corrections(home / 'corrections.md'), rules)
-    core = [f'<!-- {stamp(digest, ["preferences.md", "rules.md", "corrections.md", "patterns.json"])} -->', '',
-            '# Writing core', '', writing, '']
+    core = [f'<!-- {stamp_for(core_path)} -->', '', '# Writing core', '', writing, '']
     if habits:
         core += ['## Habits that recur', '']
         core += [f'- {rule}, {n} times in 14 days. {repair}' for rule, n, repair in habits]
@@ -209,42 +234,34 @@ def build(args):
         core += ['## Corrections she made', '']
         core += [f'- "{quote}" broke {rid}: {text}' for quote, rid, text in examples]
         core.append('')
-    core_text = '\n'.join(core)
-    style = [stamp(digest, ['preferences.md', 'rules.md', 'corrections.md', 'patterns.json']), '',
-             'Write every reply and document by these rules.', '', writing]
+    style = [stamp_for(style_path), '', 'Write every reply and document by these rules.', '', writing]
     if examples:
         style += ['', 'Corrections she has made, with the rule each one broke:']
         style += [f'- "{quote}" broke {rid}: {text}' for quote, rid, text in examples]
     voice = home / 'voice-profile.md'
-    skill_digest = sources_sha(home / 'rules.md', voice)
     skill = ['---', f'name: {SKILL_NAME}', f'description: "{SKILL_DESCRIPTION}"', '---', '',
-             f'<!-- {stamp(skill_digest, ["rules.md", "voice-profile.md"])} -->', '',
+             f'<!-- {stamp_for(skill_path)} -->', '',
              '# Megan\'s writing rules', '',
              'Use these rules when the Knowledge Hub and her drive cannot be reached. When either can, the rules '
              'folder on the drive is newer and wins. Apply them without mentioning which copy you used.', '',
-             '## Rules', '', re.sub(r'^---\n.*?\n---\n', '', rules_md, flags=re.S).strip(), '']
+             '## Rules', '', body(rules_md).strip(), '']
+    voice_text = voice.read_text(encoding='utf-8') if voice.is_file() else ''
     if voice.is_file():
-        skill += ['## Voice when she is the author', '',
-                  re.sub(r'^---\n.*?\n---\n', '', voice.read_text(encoding='utf-8'), flags=re.S).strip(), '']
-    outputs = [(out / 'core' / 'core.md', core_text), (out / 'claude-ai' / 'style.txt', '\n'.join(style) + '\n'),
-               (out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md', '\n'.join(skill))]
-    about = home.parent / 'chatgpt-about.md'
+        skill += ['## Voice when she is the author', '', body(voice_text).strip(), '']
+    outputs = [(core_path, '\n'.join(core)), (style_path, '\n'.join(style) + '\n'), (skill_path, '\n'.join(skill))]
     left_out = None
-    if about.is_file():
-        about_text = re.sub(r'^---\n.*?\n---\n', '', about.read_text(encoding='utf-8'), flags=re.S)
-        voice_text = voice.read_text(encoding='utf-8') if voice.is_file() else ''
+    if chat_path in copies:
+        about_text = body(copies[chat_path][0].read_text(encoding='utf-8'))
         box1, box2, left_out = chatgpt_boxes(about_text, rules_md, voice_text)
-        chat_digest = sources_sha(about, home / 'rules.md', voice)
-        outputs.append((out / 'chatgpt' / 'custom-instructions.txt', '\n'.join([
-            stamp(chat_digest, ['chatgpt-about.md', 'rules.md', 'voice-profile.md']), '',
-            '=== Box 1: More about you ===', '', box1, '', '=== Box 2: Custom instructions ===', '', box2, ''])))
+        outputs.append((chat_path, '\n'.join([stamp_for(chat_path), '', '=== Box 1: More about you ===', '', box1, '',
+                                              '=== Box 2: Custom instructions ===', '', box2, ''])))
     written = []
     for path, text in outputs:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text if text.endswith('\n') else text + '\n', encoding='utf-8')
         written.append(str(path))
-    print(json.dumps({'written': written, 'sources_sha256': digest, 'habits': [h[0] for h in habits],
-                      'pairs': len(examples), 'style_chars': len('\n'.join(style)),
+    print(json.dumps({'written': written, 'sources_sha256': sources_sha(*copies[core_path]),
+                      'habits': [h[0] for h in habits], 'pairs': len(examples), 'style_chars': len('\n'.join(style)),
                       'chatgpt_left_out': left_out}, indent=1))
     return 0
 
@@ -268,15 +285,8 @@ def check(args, quiet=False):
         for item in retired:
             if item['text'] in text:
                 stale.append({'path': str(path), 'text': item['text'], 'replaced_by': item.get('replaced_by', '')})
-    prefs = home.parent / 'preferences.md'
-    expected = {
-        out / 'core' / 'core.md': sources_sha(prefs, home / 'rules.md', home / 'corrections.md', home / 'patterns.json'),
-        out / 'claude-ai' / 'style.txt': sources_sha(prefs, home / 'rules.md', home / 'corrections.md', home / 'patterns.json'),
-        out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md': sources_sha(home / 'rules.md', home / 'voice-profile.md'),
-    }
-    if (home.parent / 'chatgpt-about.md').is_file():
-        expected[out / 'chatgpt' / 'custom-instructions.txt'] = sources_sha(
-            home.parent / 'chatgpt-about.md', home / 'rules.md', home / 'voice-profile.md')
+    expected = {path: sources_sha(*sources)
+                for path, sources in built_copies(home, out, home.parent / 'preferences.md').items()}
     outdated = []
     for path, digest in expected.items():
         m = STAMP.search(path.read_text(encoding='utf-8')) if path.is_file() else None
@@ -290,22 +300,9 @@ def check(args, quiet=False):
     return result
 
 
-def gate_config():
-    cfg = {'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',
-                       '/Volumes/BeastMode/Portfolio Site/site/*'],
-           'exclude': ['*/archive/*', '*/99-archive/*', '*/sessions/*', '*.text.md', '*/.writing-receipts/*'],
-           'extensions': ['.md', '.html', '.htm', '.docx', '.pptx', '.xlsx', '.txt']}
-    try:
-        cfg.update(json.loads((AGENT / 'gate.json').read_text(encoding='utf-8')))
-    except (OSError, ValueError):
-        pass
-    return cfg
-
-
 def roots(cfg, depth=4):
     """Directories to walk. A pattern such as /drive/*/artifacts/* is found with glob at one to four levels,
     so the walk never lists the whole drive."""
-    import glob
     out = set()
     for pat in cfg['include']:
         m = re.match(r'^(.*?)/\*/([^*?\[]+)/\*$', pat)
@@ -319,7 +316,7 @@ def roots(cfg, depth=4):
 
 
 def nightly(args):
-    cfg = gate_config()
+    cfg = hook.gate_config()
     since = time.time() - args.since * 3600
     scanned, failing = 0, []
     for root in roots(cfg):
@@ -330,9 +327,7 @@ def nightly(args):
             for name in files:
                 path = Path(parent) / name
                 text = str(path)
-                if path.suffix.lower() not in cfg['extensions'] or any(fnmatch.fnmatch(text, p) for p in cfg['exclude']):
-                    continue
-                if not any(fnmatch.fnmatch(text, p) for p in cfg['include']):
+                if not hook.is_deliverable(path, cfg):
                     continue
                 try:
                     if path.stat().st_mtime < since:
@@ -355,21 +350,21 @@ def nightly(args):
         home = rules_home(args.rules_dir)
         week = (dt.date.today() - dt.timedelta(days=7)).isoformat()
         per_tool, released = {}, []
-        for path in HITS[:1]:
-            if path.is_file():
-                with open(path, encoding='utf-8') as f:
-                    for line in f:
-                        try:
-                            h = json.loads(line)
-                        except ValueError:
-                            continue
-                        if h.get('d', '') < week:
-                            continue
-                        if h.get('src') in ('reply', 'file'):
-                            key = h.get('tool', 'unknown')
-                            per_tool[key] = per_tool.get(key, 0) + 1
-                        if h.get('rule') == 'gate-unreviewed':
-                            released.append(h.get('text'))
+        hits = HITS[0]  # weekly counts read the current log only
+        if hits.is_file():
+            with open(hits, encoding='utf-8') as f:
+                for line in f:
+                    try:
+                        h = json.loads(line)
+                    except ValueError:
+                        continue
+                    if h.get('d', '') < week:
+                        continue
+                    if h.get('src') in ('reply', 'file'):
+                        key = h.get('tool', 'unknown')
+                        per_tool[key] = per_tool.get(key, 0) + 1
+                    if h.get('rule') == 'gate-unreviewed':
+                        released.append(h.get('text'))
         ledger = json.loads((home / 'patterns.json').read_text(encoding='utf-8'))
         report['weekly'] = {
             'hits_per_tool': per_tool,
