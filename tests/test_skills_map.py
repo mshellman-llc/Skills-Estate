@@ -241,6 +241,16 @@ class ShowcaseTests(unittest.TestCase):
         self.write('showcase/build-deal-decision-deck/real.md',example_text(source='real-redacted',extra='approvedBy: Example Maintainer\n'))
         self.assertEqual(builder.load_showcase(self.root,{'build-deal-decision-deck':'0'*64})['build-deal-decision-deck'][0]['approvedBy'],'Example Maintainer')
 
+    def test_owned_examples_need_an_approver(self):
+        self.write('showcase/build-deal-decision-deck/owned.md',example_text(source='real-owned'))
+        with self.assertRaisesRegex(ValueError,'real-owned example needs approvedBy'):
+            builder.load_showcase(self.root,{'build-deal-decision-deck':'0'*64})
+        self.write('showcase/build-deal-decision-deck/owned.md',example_text(source='real-owned',extra='approvedBy: Example Owner\n'))
+        self.write('showcase/build-deal-decision-deck/invented.md',example_text())
+        items=builder.load_showcase(self.root,{'build-deal-decision-deck':'0'*64})['build-deal-decision-deck']
+        self.assertEqual([x['id'] for x in items],['owned','invented'])
+        self.assertEqual(items[0]['approvedBy'],'Example Owner')
+
     def test_malformed_examples_are_rejected(self):
         cases={'unknown skill':example_text(skill='nope'),'folder':example_text(skill='estimate-project'),
                'source':example_text(source='imagined'),'sha':example_text(sha='short'),

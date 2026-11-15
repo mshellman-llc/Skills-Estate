@@ -153,7 +153,8 @@ def verified_base(baseline, base, published_ref):
     return commit
 
 SHOWCASE_FIELDS = ('skill', 'title', 'source', 'model', 'date', 'skillSha256')
-SHOWCASE_SOURCES = {'fictional', 'real-redacted'}
+SHOWCASE_SOURCES = {'fictional', 'real-redacted', 'real-owned'}
+APPROVED_SOURCES = {'real-redacted', 'real-owned'}
 SHOWCASE_SECTIONS = ('## Request', '## Output')
 
 def showcase_example(path):
@@ -171,9 +172,9 @@ def showcase_example(path):
     if missing:
         raise ValueError(f'{path}: missing {", ".join(missing)}')
     if fields['source'] not in SHOWCASE_SOURCES:
-        raise ValueError(f'{path}: source must be fictional or real-redacted')
-    if fields['source'] == 'real-redacted' and not fields.get('approvedBy'):
-        raise ValueError(f'{path}: a real-redacted example needs approvedBy')
+        raise ValueError(f'{path}: source must be fictional, real-redacted or real-owned')
+    if fields['source'] in APPROVED_SOURCES and not fields.get('approvedBy'):
+        raise ValueError(f'{path}: a {fields["source"]} example needs approvedBy')
     if not re.fullmatch(r'[0-9a-f]{64}', fields['skillSha256']):
         raise ValueError(f'{path}: skillSha256 must be a SHA-256 hex digest')
     if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', fields['date']):
@@ -203,7 +204,7 @@ def load_showcase(root, current):
         item['current'] = item['skillSha256'] == current[item['skill']]
         examples.setdefault(item['skill'], []).append(item)
     for items in examples.values():
-        items.sort(key=lambda x: (x['source'] != 'real-redacted', x['date'], x['id']), reverse=False)
+        items.sort(key=lambda x: (x['source'] not in APPROVED_SOURCES, x['date'], x['id']), reverse=False)
     return examples
 
 DOWNLOADS=re.compile(r'<!--downloads-->.*?<!--/downloads-->|/\*downloads\*/.*?/\*/downloads\*/',re.S)

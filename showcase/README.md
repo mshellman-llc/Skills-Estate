@@ -29,7 +29,7 @@ What the skill was given, or a summary of it.
 The answer exactly as the skill produced it.
 ```
 
-`source` is `fictional` for an invented scenario or `real-redacted` for redacted real work. A `real-redacted` example also needs `approvedBy`, naming the owner who approved it for the repository. The map builder rejects an example with a missing field, an unknown skill or a missing Request or Output section.
+`source` is `fictional` for an invented scenario, `real-redacted` for redacted real work, or `real-owned` for work on the owner's own product that needs no redaction. A `real-redacted` or `real-owned` example also needs `approvedBy`, naming the owner who approved it for the repository. The map builder rejects an example with a missing field, an unknown skill or a missing Request or Output section.
 
 When a skill's SKILL.md changes, its older examples stay visible and the map labels them "From an older version". Record a new run to replace them.
 

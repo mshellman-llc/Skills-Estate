@@ -59,7 +59,7 @@ const {chromium}=require('playwright');
   for(const [i,example] of examples.entries()){
    const card=page.locator('#panel-examples .example').nth(i);const text=await card.innerText();
    assert(text.includes(example.title));
-   assert(text.includes(example.source==='fictional'?'Fictional scenario':'Real work, redacted'));
+   assert(text.includes(example.source==='fictional'?'Fictional scenario':example.source==='real-owned'?'Real work':'Real work, redacted'));
    assert.equal(text.includes('From an older version'),!example.current);
    assert(text.includes('Output'));assert(await card.locator('.example-body').evaluate((el,html)=>{const expected=document.createElement('div');expected.innerHTML=html;return el.innerHTML===expected.innerHTML},example.html),skill.id+': example content changed');
   }
