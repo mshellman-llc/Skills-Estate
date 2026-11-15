@@ -59,7 +59,7 @@ Knowledge Hub integration is optional. Use [the hub adapter](references/knowledg
 
 ## Use related workflows only when needed
 
-This skill owns stage selection, traceability, readiness, and durable product progress. If available and applicable, use `write-feature-spec` for detailed specifications, `plan-usability-study` for participant research, `design-analytics-plan` for measurement design, `design-information-architecture` for navigation, and `verify-work-state` for destination verification. A product map does not require those specialized workflows automatically.
+This skill owns stage selection, traceability, readiness, and durable product progress. If available and applicable, use `write-feature-spec` for detailed specifications, `plan-usability-study` for participant research, `design-analytics-plan` for measurement design, `design-information-architecture` for navigation, and [verify-work-state](../verify-work-state/SKILL.md) for destination verification. A product map does not require those specialized workflows automatically.
 
 Use the project's reconciliation workflow for authorized file cleanup and its task adapter for work-item state. Use `develop-independent-product` only for an authorized develop-independent-product migration, and `prepare-session-handoff` for a requested session handoff. Preserve their boundaries; pathway work does not authorize cleanup, migration, outreach, deployment, or task closure. If a companion skill is absent, perform the bounded task with the evidence rules here and name any review you could not complete.
 

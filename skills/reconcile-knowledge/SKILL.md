@@ -23,6 +23,6 @@ Use only tools and files actually available in this session. In Claude Code invo
 7. Verify every disposition on disk, retained content, repaired links/consumers, and rollback instructions. Preserve historical submissions and repository history. A missing drive or read error is incomplete coverage, not a duplicate or successful archive. Record completed, preserved, excluded, and unresolved items explicitly.
 8. Refresh affected hub routes through supported version-checked proposals or the existing authorized bridge workflow. Do not overwrite synchronized knowledge Markdown or open a second writer against the live SQLite store. Verify ingestion/retrieval separately from the filesystem move. A source-change flag is not proof that dependent prose was corrected.
 
-Use `verify-work-state`. Finish with changed now, verified, still unchanged, exact next action, and the disposition/rollback record. Use semantic scope such as “this assessment folder,” not total file counts, to explain coverage. Leave unrelated projects and libraries alone unless requested.
+Use [verify-work-state](../verify-work-state/SKILL.md). Finish with changed now, verified, still unchanged, exact next action, and the disposition/rollback record. Use semantic scope such as “this assessment folder,” not total file counts, to explain coverage. Leave unrelated projects and libraries alone unless requested.
 
 Example: `$reconcile-knowledge Compare this folder with the current career sources, preserve unique material, and archive verified duplicates.`
