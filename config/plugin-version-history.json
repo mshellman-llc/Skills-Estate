@@ -140,6 +140,10 @@
     "0.4.31": {
       "content_sha256": "ed8db020adbddabcc14cd2a9ead12a236d9d3d55dda8323cd5697b5bd767d8ca",
       "note": "Simplify the writing scripts: one map of built copies and their sources, one gate config, one settle wait"
+    },
+    "0.4.32": {
+      "content_sha256": "512786a45bf104a5baf7d983288130b13fc4b31c87c76b144a20a5110039c70b",
+      "note": "Writing review stops: owner questions first, line-level verdicts, style logged from round 3, rule recheck after an audit miss, depth by reader"
     }
   },
   "source_conflicts": [
