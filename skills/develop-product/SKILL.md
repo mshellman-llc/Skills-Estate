@@ -45,7 +45,7 @@ For the requested stage, record each applicable gate as `satisfied`, `blocked`, 
 Resolve the next action in this order:
 
 1. Reassess changed evidence that the requested result depends on.
-2. Complete the nearest missing prerequisite for the requested stage; do not restart unrelated stages.
+2. Complete the nearest missing prerequisite of the stage asked for; do not restart unrelated stages.
 3. If a material decision blocks that work, state the exact choice and affected output. Identify the authorized decider. Continue independent supported work within scope.
 4. Otherwise execute the smallest action that produces the requested output or its acceptance evidence. Name its target and required authorization. Record the expected receipt and stop condition.
 
