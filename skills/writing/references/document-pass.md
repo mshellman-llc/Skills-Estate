@@ -1,6 +1,6 @@
 # Document pass
 
-One worker reads the whole extracted text and fills a fixed map. The text holds words only, so a page of several hundred lines fits in one read. The pass runs on the full text in every round, because repeats, recaps and drifting terms cannot be judged from one part.
+One worker reads the whole extracted text and fills a fixed map. The text holds words only, so a page of several hundred lines fits in one read. The pass runs on the full text in every round, because repeats, recaps and drifting terms cannot be judged from one part. From round 3, `check.py --round 3` logs the map's repeats, recaps and term choices instead of blocking on them; counts, headings, leftover lines, numbers, provenance and confidentiality still block.
 
 ## Start with the reader
 

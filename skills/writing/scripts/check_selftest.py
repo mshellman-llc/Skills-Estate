@@ -475,11 +475,61 @@ class Review(Base):
         code, result = self.full(verdicts, document_map)
         self.assertEqual(code, 2)
         rejected = {r['id'] for r in self.receipt(result)['line_pass']['rejected']}
-        self.assertEqual(rejected, {'0001', '0002', '0003'})
+        self.assertEqual(rejected, {'0002'})   # only the edited line goes back; its neighbours keep their verdicts
         self.assertEqual(self.step(result, 'document pass'), 'failed')
         self.path.write_text(self.TEXT)
         self.ledger(dict(LEDGER, version=2))
         self.assertEqual(self.full(verdicts, document_map)[0], 2)
+
+    def test_prepare_carries_standing_verdicts_and_assigns_only_the_rest(self):
+        verdicts = self.verdicts()
+        self.path.write_text(self.TEXT.replace('14 accounts', '15 accounts'))
+        self.load_plan('--verdicts', verdicts)
+        self.assertEqual([line['id'] for line in self.lines], ['0002'])
+        carried = json.loads((self.work / 'carried.json').read_text())
+        self.assertEqual(sorted(v['id'] for v in carried['verdicts']), ['0001', '0003', '0004', '0005'])
+        worker = self.save('verdicts-w1.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': 'worker 2',
+                                                'verdicts': [self.verdict(line) for line in self.lines]})
+        code, result = self.check(self.path, '--verdicts', str(self.work / 'carried.json'), worker,
+                                  '--document-map', self.document_map(), '--sources', str(self.sources))
+        self.assertEqual(self.step(result, 'line pass'), 'ok')
+
+    def test_round_three_logs_style_findings_and_blocks_on_errors(self):
+        style = {'0003': {'verdict': 'fix', 'severity': 'style', 'rule': 'R13: two words for one thing',
+                          'quote': 'adding products', 'replacement': 'selling products'}}
+        verdicts, document_map = self.verdicts(style), self.document_map()
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual((code, [f['id'] for f in result['findings']]), (1, ['0003']))
+        code, result = self.full(verdicts, document_map, '--round', '3')
+        self.assertEqual((result['findings'], [f['id'] for f in result['logged']]), ([], ['0003']))
+        error = {'0003': dict(style['0003'], severity='error')}
+        code, result = self.full(self.verdicts(error), document_map, '--round', '3')
+        self.assertEqual([f['id'] for f in result['findings']], ['0003'])
+
+    def test_owner_decisions_block_and_are_counted_apart(self):
+        ask = {'0003': {'verdict': 'fix', 'owner_call': True, 'claims': 'unsupported', 'rule': 'K2: no source',
+                        'quote': 'adding products', 'replacement': ''}}
+        code, result = self.full(self.verdicts(ask), self.document_map(), '--round', '3')
+        self.assertEqual((code, result['owner_decisions']), (1, 1))
+        self.assertTrue(result['findings'][0]['rule'].startswith('owner decision: '))
+
+    def test_audit_miss_is_settled_by_a_rule_recheck(self):
+        verdicts, document_map = self.verdicts(), self.document_map()
+        _, sample = self.audit(verdicts)
+        miss = self.verdict(sample[0], verdict='fix', rule='R6: fits any page', quote=sample[0]['text'][:10],
+                            replacement='')
+        audit = self.save('audit.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': 'audit worker',
+                                         'verdicts': [miss]})
+        code, result = self.full(verdicts, document_map, '--audit', audit)
+        self.assertIn('--recheck', self.detail(result, 'spot audit'))
+        sweep = {'rules_sha256': self.plan['rules_sha256'], 'reviewer': 'recheck worker', 'rules': ['R6'],
+                 'verdicts': [{'id': line['id'], 'sha': line['sha'], 'verdict': 'ok'} for line in self.lines]}
+        code, result = self.full(verdicts, document_map, '--audit', audit, '--recheck', self.save('recheck.json', sweep))
+        self.assertEqual((code, self.step(result, 'spot audit')), (1, 'ok'))
+        self.assertEqual([f['id'] for f in result['findings']], [sample[0]['id']])
+        sweep['rules'] = ['R13']
+        code, result = self.full(verdicts, document_map, '--audit', audit, '--recheck', self.save('recheck.json', sweep))
+        self.assertEqual((code, self.step(result, 'spot audit')), (2, 'failed'))
 
     def test_claims_check_needs_a_source_list_and_an_answer_on_every_line(self):
         verdicts, document_map = self.verdicts(), self.document_map()
