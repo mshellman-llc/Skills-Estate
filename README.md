@@ -79,7 +79,7 @@ Verify account and repository access with `gh auth status` and `gh repo view OWN
 
 ## Source and notices
 
-Author skills and supporting resources here. Keep client data, account configuration and private working records outside the repository. Preserve bundled licenses and notices when copying a workflow. This private repository has no blanket distribution license.
+Author skills and supporting resources here. Keep client data, account configuration and private working records outside the repository. Preserve bundled licenses and notices when copying a workflow. This repository has no blanket distribution license.
 
 ## Interactive skills map
 

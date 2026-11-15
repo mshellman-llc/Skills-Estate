@@ -51,7 +51,7 @@ Output: the register (JSON or table), the perspective question bank, the open-qu
 Your job is to turn the open questions into the smallest set of questions the owner can answer in one sitting, and to log the answers as primary evidence.
 
 1. Ask the owner for specifics: their own numbers, what they tried that failed, a decision they made and why, a photo or measurement from testing, a client quote they have permission to use.
-2. Ask the owner to write the thesis and the opening paragraph by hand, in their own words. It anchors the voice, and the draft stops averaging out once a real voice leads it. The writer keeps this paragraph and may only fix typos in it. [S20]
+2. Get the thesis and the opening paragraph from the owner. The owner writes them, or picks and edits one of two or three drafts written from their own answers; a draft the owner has not approved never leads the piece. The approved paragraph anchors the voice, and the draft stops averaging out once a real voice leads it. The writer keeps it and may only fix typos in it. [S20]
 3. Ask one question at a time when the owner is present. In an unattended run, write all questions into the gate packet.
 4. Never invent an answer, an anecdote, a quote, a test result or a credential. If an answer does not come, the piece either drops the claim that needed it or waits.
 5. Log each answer as an asset with an ID, the owner's words, and what it supports.
@@ -151,7 +151,7 @@ Your job is to write the draft the brief describes, using only the register entr
 4. Write in the owner's voice from the voice profile named in the owner profile when the owner signs the piece, and write to the owner's rules.md from the start, since a fix after drafting costs a second pass.
 5. Mark each load-bearing claim with its source or asset ID in brackets. The publisher strips them later.
 6. Write sections one at a time against the outline; long single-pass generation drifts. [S6]
-7. Keep the owner's opening paragraph from B3 as written.
+7. Keep the opening paragraph the owner wrote or approved in B3 as written.
 8. Before you start, read the three recurring patterns from the defect log and avoid them in this draft.
 9. Never introduce a number, name, date or quote that is absent from the register or asset log. Models fabricate most about private work and little-known subjects, which is where client work sits. First-person claims come only from owner assets. Use "I" for the owner's actions and "we" only for real team outcomes. [S40; S56; S39]
 10. Write the claim sentence each exhibit follows and refer to each by its genre label and number: "Exhibit N" in case studies and proposals, "Figure N" in every other genre, numbered in the order readers meet them. Never describe the encoding in prose ("the blue line shows"). [S77; S114]
