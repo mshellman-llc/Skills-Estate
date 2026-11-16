@@ -117,11 +117,17 @@ class SystemTest(unittest.TestCase):
         (self.agent / 'hits.jsonl').write_text(json.dumps({'d': '2999-01-01', 'tool': 'codex', 'src': 'reply',
                                                            'rule': 'x'}) + '\n')
         (self.agent / 'gate.json').write_text(json.dumps({'include': [str(self.ctx) + '/nothing/*']}))
+        (self.agent / 'state').mkdir()
+        (self.agent / 'state' / 'keep-current.json').write_text(json.dumps(
+            {'current': False, 'checked_at': '2026-11-16T14:00:00-05:00', 'main_version': '0.4.36',
+             'errors': ['codex marketplace upgrade: offline'], 'actions': []}))
         out = self.run_tool('nightly', '--weekly', '--living', str(self.living))
         self.assertEqual(out.returncode, 0, out.stderr)
         report = json.loads(out.stdout)
         self.assertEqual(report['weekly']['hits_per_tool'], {'codex': 1})
         self.assertTrue(report['copies']['ok'])
+        self.assertFalse(report['tools_current']['current'])
+        self.assertEqual(report['tools_current']['errors'], ['codex marketplace upgrade: offline'])
 
 
 if __name__ == '__main__':

@@ -156,6 +156,10 @@
     "0.4.35": {
       "content_sha256": "f9be57bae2abdb51f79c55cc275a0e5974bd63b31ec9834cf4091a451ebfb3ab",
       "note": "writing: build mirrors rules.md and voice-profile.md into the ChatGPT writing project folder; check flags a stale mirror"
+    },
+    "0.4.36": {
+      "content_sha256": "6790bf8e0f96fe309b3ffdf6d4b6a9dded0615ed51258d695110c18565ba8ab6",
+      "note": "Nightly report shows whether plugins and hooks are on main; tools/keep_current.py keeps them there hourly"
     }
   },
   "source_conflicts": [
