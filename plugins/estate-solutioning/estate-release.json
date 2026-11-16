@@ -42,7 +42,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "0d0f80eb5b83cd8356f1ac8fbe3980917445e8abcabe83054a4d0f907266a061",
+      "required_sha256": "bfd013d76fff8212f01bf63619b5ccce72747560dbf85c72c74532063f286682",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -177,7 +177,7 @@
       "subject": "build-roadmap"
     },
     {
-      "required_sha256": "098c3a0816f635457ff4b3ac4cae153e34cdd8a7a2e4fb19a9743eb72728c7d7",
+      "required_sha256": "33fd01ac0827438b9b9ea2a5dce5a93e10fc9831a005d40f299243bc7e80e888",
       "status": "review required",
       "subject": "capture-knowledge"
     },
@@ -192,7 +192,7 @@
       "subject": "capture-salesforce-screens"
     },
     {
-      "required_sha256": "9d44b78635d6c459cc97564dd44fe4afe36c68059e703cdce5446dcf3145af72",
+      "required_sha256": "a0c1738ae1f5b72cf68a05a053d6bdbb82f01159fdb17c703ecc10bccb93e018",
       "status": "review required",
       "subject": "check-knowledge-hub"
     },
@@ -247,7 +247,7 @@
       "subject": "develop-independent-product"
     },
     {
-      "required_sha256": "c7fbbe573bf1b1b3ab00dcada63962f7b8a98c4328a383d017fbbee516b0e0bb",
+      "required_sha256": "07e974dafb0f60f263017fa6dddd23294e7d7a73c5840644037a78bc0b713c27",
       "status": "review required",
       "subject": "develop-product"
     },
@@ -292,7 +292,7 @@
       "subject": "lay-out-sticker-sheets"
     },
     {
-      "required_sha256": "605747f99adb9cc35ef66f8deb46360deadf0706c6f3c6fa3875f6650d18461e",
+      "required_sha256": "1792cf6235af1b1d4fd7370b0805bb2c31cb2cb29d2e50d9f8ca519237483fe6",
       "status": "review required",
       "subject": "load-project-context"
     },
@@ -417,7 +417,7 @@
       "subject": "publish-content"
     },
     {
-      "required_sha256": "eda9aeba56dc687dd755e42e2bbcfe272a1c66fd18996397004e3de5a1c46636",
+      "required_sha256": "28b447d3810f01e6341fbaad602b93bad6a912e913864ac494c23a31f2d0b0d4",
       "status": "review required",
       "subject": "reconcile-knowledge"
     },
@@ -557,6 +557,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "a20d7cb81bc251451df36d17f397452783bbf29f9fa4b701ab5f43ebcf73b39e",
+  "source_sha256": "48e94007a679b9447d5f6e3e7530583ef4fe6b88dca7a4323feca2a81dc0fea7",
   "status": "owner-published"
 }
