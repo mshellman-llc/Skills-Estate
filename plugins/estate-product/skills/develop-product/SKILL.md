@@ -57,6 +57,12 @@ Read [continuation and change impact](references/continuity.md) when resuming, c
 
 Knowledge Hub integration is optional. Use [the hub adapter](references/knowledge-hub.md) only when the product has an authorized destination and the request includes that action. Local progress must remain usable without a hub connection. No particular hub, account, folder, or sharing boundary is part of this skill.
 
+## Render stage deliverables as pages
+
+When a stage produces a reader deliverable in Markdown, such as the product brief at stage 4 or the release brief at stage 5, keep the Markdown as the record of sources. Render the same content as one self-contained HTML page, named like the Markdown file with `.html`, through [brand-renderer](_runtime/brand-renderer/WORKFLOW.md). Use the project's confirmed brand profile when the task supplies one and the neutral profile otherwise; `brand/html_profile.py` embeds its colors and fonts. The page shows the product definition (audiences, jobs, intended outcomes, scope, capabilities and open product choices) and the release decision (horizon, each item's priority and decision state, the decider, dependencies and acceptance IDs), with their record IDs and implementation evidence layers. It states nothing the Markdown does not. Link both files from the product home.
+
+Before presenting either file as final, run the [release gate](_shared/release-gate.md) on both. Apply `review-writing` to the Markdown and to the page's extracted text, with the `writing-diagnostics` checker on each. Run brand-renderer's parity, brand and visual gates on the page, then `review-deliverable` on both files.
+
 ## Use related workflows only when needed
 
 This skill owns stage selection, traceability, readiness, and durable product progress. If available and applicable, use `write-feature-spec` for detailed specifications, `plan-usability-study` for participant research, `design-analytics-plan` for measurement design, `design-information-architecture` for navigation, and [verify-work-state](_runtime/verify-work-state/WORKFLOW.md) for destination verification. A product map does not require those specialized workflows automatically.

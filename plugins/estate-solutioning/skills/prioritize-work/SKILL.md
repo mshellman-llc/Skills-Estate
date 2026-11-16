@@ -69,6 +69,8 @@ The proposal states:
 - the ties the scorer listed, each left for the decision meeting to break with an explicit tiebreaker (closer strategic fit, less effort or another stated rule);
 - the decision owner's name and the exact decision asked of them.
 
+Save the proposal as Markdown; it is the record of sources. Render the same content as one self-contained HTML page, named like the Markdown file with `.html`, through [brand-renderer](_runtime/brand-renderer/WORKFLOW.md). Use the project's confirmed brand profile when the task supplies one and the neutral profile otherwise; `brand/html_profile.py` embeds its colors and fonts. The page shows the ranked list with each item's inputs, formula, score and flags, then the method and its reason, the provenance audit with estimates marked, the ties and the decision asked of the owner. It states nothing the Markdown or the scorer's report does not.
+
 ## After the ranking
 
 The owner decides the order. This skill never edits the MoSCoW field that `capture-requirements` owns, and it never moves anything on the roadmap. Each change the owner approves is recorded by the skill that owns that record.
@@ -91,11 +93,12 @@ Deliver or link these for every run, following [the output contract](_shared/out
 
 - the candidate JSON file;
 - the scorer's report, in Markdown or JSON;
+- the Markdown proposal and its HTML page;
 - the open decision and who owns it.
 
 ## Release gate
 
-Apply [the release gate](_shared/release-gate.md) before delivery. Run `review-writing` over the proposal text, then run `review-deliverable` before anyone calls the proposal final. Until both have passed, it is not final.
+Apply [the release gate](_shared/release-gate.md) to both proposal files before delivery. Run `review-writing` over the proposal text in each, reviewing the page on its extracted text with the `writing-diagnostics` checker. Run brand-renderer's parity, brand and visual gates on the page, then run `review-deliverable` on both files before anyone calls the proposal final. Until these checks have passed, it is not final.
 
 ## Files in this skill
 

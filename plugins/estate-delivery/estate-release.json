@@ -39,7 +39,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "eeebf3ec7199b28a52fb09d5837859579fdb75d2f027854deb7ad11b69701e15",
+      "required_sha256": "8328061773e5f3caabc7b7ec0f198d1f46e98d8221b0ee1abc558e3330afffb4",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -244,7 +244,7 @@
       "subject": "develop-independent-product"
     },
     {
-      "required_sha256": "07e974dafb0f60f263017fa6dddd23294e7d7a73c5840644037a78bc0b713c27",
+      "required_sha256": "0bbb320c19ce043b3ea1c5f71cec3b8e2fea7d3b9bb524a8ba1e148b606d404c",
       "status": "review required",
       "subject": "develop-product"
     },
@@ -264,7 +264,7 @@
       "subject": "evidence-core"
     },
     {
-      "required_sha256": "11f22892c7e435955ff07eaeeb8b4048e54465ebe18b94fbbfc1902b3207a4de",
+      "required_sha256": "3b3a5f61f704c094a60e4e203be6b1a320906c9f9c73efa1e07049f21348da57",
       "status": "review required",
       "subject": "frame-jobs-to-be-done"
     },
@@ -399,7 +399,7 @@
       "subject": "prepare-session-handoff"
     },
     {
-      "required_sha256": "bce547174a80a61deb0b20ae6aa1505539d4dfe357c8b3057ed34e7bc6e717de",
+      "required_sha256": "eb0dbad34f637cae597bb8b74b6af14531932cebf8062f94e48f3bdc685def98",
       "status": "review required",
       "subject": "prioritize-work"
     },
@@ -484,7 +484,7 @@
       "subject": "start-delivery"
     },
     {
-      "required_sha256": "d9c623ebb9ceead20599d75b8b7996e8bfcd02d4486b97e260e1b58b7338e64f",
+      "required_sha256": "ee66d4e2f0e4879156f4e87e060102d4ca5f9dbadb82e25083a79597497a7ee0",
       "status": "review required",
       "subject": "synthesize-discovery"
     },
@@ -554,6 +554,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "769db796372d89479d2506dfa54011b6ae2e07faec9baf3902aae8a916d8f847",
+  "source_sha256": "cc040cc7079b62dfa289a04975758f6b1eed701bb668ba29a64cce9b0cf8e069",
   "status": "owner-published"
 }
