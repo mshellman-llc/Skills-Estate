@@ -45,7 +45,7 @@ For the requested stage, record each applicable gate as `satisfied`, `blocked`, 
 Resolve the next action in this order:
 
 1. Reassess changed evidence that the requested result depends on.
-2. Complete the nearest missing prerequisite for the requested stage; do not restart unrelated stages.
+2. Complete the nearest missing prerequisite of the stage asked for; do not restart unrelated stages.
 3. If a material decision blocks that work, state the exact choice and affected output. Identify the authorized decider. Continue independent supported work within scope.
 4. Otherwise execute the smallest action that produces the requested output or its acceptance evidence. Name its target and required authorization. Record the expected receipt and stop condition.
 
@@ -59,7 +59,7 @@ Knowledge Hub integration is optional. Use [the hub adapter](references/knowledg
 
 ## Use related workflows only when needed
 
-This skill owns stage selection, traceability, readiness, and durable product progress. If available and applicable, use `write-feature-spec` for detailed specifications, `plan-usability-study` for participant research, `design-analytics-plan` for measurement design, `design-information-architecture` for navigation, and `verify-work-state` for destination verification. A product map does not require those specialized workflows automatically.
+This skill owns stage selection, traceability, readiness, and durable product progress. If available and applicable, use `write-feature-spec` for detailed specifications, `plan-usability-study` for participant research, `design-analytics-plan` for measurement design, `design-information-architecture` for navigation, and [verify-work-state](../verify-work-state/SKILL.md) for destination verification. A product map does not require those specialized workflows automatically.
 
 Use the project's reconciliation workflow for authorized file cleanup and its task adapter for work-item state. Use `develop-independent-product` only for an authorized develop-independent-product migration, and `prepare-session-handoff` for a requested session handoff. Preserve their boundaries; pathway work does not authorize cleanup, migration, outreach, deployment, or task closure. If a companion skill is absent, perform the bounded task with the evidence rules here and name any review you could not complete.
 

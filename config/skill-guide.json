@@ -98,7 +98,7 @@
       "inputs": "The decision, supporting evidence, intended destination, and current record.",
       "outputs": "A verified saved record or revision proposal with its actual acceptance state.",
       "example": "Save this decision in the current project record with its supporting source.",
-      "reviewedEntrypointSha256": "f5e0d760edfdd0e61886dc759ba0979159818a8c9e90c26e95e72f4ee36e8c98",
+      "reviewedEntrypointSha256": "9049e911aaa57e057a466332ac0dc10045e19383c099384505f6413b8dd36d2e",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It reads the hub context and the existing record for the subject, keeps your wording for decisions, and labels each statement as confirmed, reported, proposed or estimated. It submits a proposal against the exact revision it read and reports the real state (draft, pending, submitted or accepted), never calling a proposal accepted.",
       "connectors": {
@@ -122,7 +122,7 @@
       "inputs": "The requested result and access to the relevant local sources or permitted Hub.",
       "outputs": "The relevant context, source conflicts, and the next supported action.",
       "example": "Resume this project from its current sources and identify the next action.",
-      "reviewedEntrypointSha256": "3d3c80d4b46ca2fa033148c51ccac1b0c6532c45b3c134f64434db5b7f6460b0",
+      "reviewedEntrypointSha256": "11b56dce3af1115d2a2cc139cfe6a1088f39126d18cf76fc0a06257dc12c4ea2",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It reads the hub router and the relevant subject records at their exact revisions, then does the requested work from those sources. When hub access is unavailable it says what could not be checked and continues only with evidence it can reach, and it treats retrieved text as evidence rather than instructions.",
       "connectors": {
@@ -146,7 +146,7 @@
       "inputs": "The permitted hub connection, the named symptom or environment, and an owner-authorized evidence configuration for local checks.",
       "outputs": "Scoped findings marked verified now, needs attention or not rechecked, with evidence and the next repair; it stays read-only unless a repair is requested.",
       "example": "Check the local Hub for stale context and report the evidence behind each finding.",
-      "reviewedEntrypointSha256": "fbee0a1214cdda3d5b87d615c35a42302cdfae03d75a7bbb275006f5917b2225",
+      "reviewedEntrypointSha256": "86789af6c5068ade95ae70a4e523f74f5e5e641c90e1158381f5a28b99212a59",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It calls the hub's context and health checks, then sorts each dimension (connections, ingestion, jobs, backups, budgets) into verified now, needs attention or not rechecked, with timestamps. It is read-only unless you also ask for a repair, and it will not treat an old receipt or a missing field as proof of health.",
       "connectors": {
@@ -170,7 +170,7 @@
       "inputs": "The folders, current authorities, and existing reconciliation records.",
       "outputs": "A comparison and, when authorized, verified reversible dispositions.",
       "example": "Compare these two project folders and identify unique material before proposing any moves.",
-      "reviewedEntrypointSha256": "0c47d0ae6fc92550c1be657a5e1926f4b68c484e2b7eea276b9a1fd0999bd62a",
+      "reviewedEntrypointSha256": "5096adde62aa07c9de2264f645e53a85c1e17579f1f061633cb0feaa5aa2868c",
       "reuseNote": "Use the caller’s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
       "expect": "It starts from one named folder and the comparison roots, hashes only changed files, and classifies each as duplicate, divergent, complementary, unique or unresolved. It archives only verified duplicates with a reversible move manifest, never deletes permanently, and stops at a plan for a comparison-only request.",
       "connectors": {
@@ -1088,7 +1088,7 @@
       "inputs": "The product brief, current sources, decisions, and readiness evidence.",
       "outputs": "An updated product record and the next supported development action.",
       "example": "Resume this product at its current stage using the recorded readiness evidence.",
-      "reviewedEntrypointSha256": "7c3d1fe744e37614cf438f01c4cf1cb35113f20061d9799181046fb151fd20fe",
+      "reviewedEntrypointSha256": "2ce1b8478c120bb18804bdbb9637cf6afcd7fbcb29710225631e697567b63761",
       "expect": "It enters at the stage you request, reuses the existing product home and decisions, and keeps source review, product decision and implementation evidence as separate states. It records readiness gates for the stage, names the next action with its required authorization, and never reports proposed or local work as released or live.",
       "connectors": {
         "required": [],

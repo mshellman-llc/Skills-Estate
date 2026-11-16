@@ -216,5 +216,21 @@
   ],
   "publish-content": [
     "writing"
+  ],
+  "reconcile-knowledge": [
+    "verify-work-state"
+  ],
+  "load-project-context": [
+    "manage-linked-task",
+    "verify-work-state"
+  ],
+  "capture-knowledge": [
+    "verify-work-state"
+  ],
+  "check-knowledge-hub": [
+    "verify-work-state"
+  ],
+  "develop-product": [
+    "verify-work-state"
   ]
 }
