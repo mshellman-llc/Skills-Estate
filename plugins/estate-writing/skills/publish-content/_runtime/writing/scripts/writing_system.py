@@ -374,6 +374,13 @@ def nightly(args):
                                     'findings': len(res.get('findings') or [])})
     report = {'deliverables_scanned': scanned, 'deliverables_failing': failing,
               'copies': check(args, quiet=True)}
+    current = AGENT / 'state' / 'keep-current.json'  # written hourly by tools/keep_current.py
+    if current.is_file():
+        try:
+            kept = json.loads(current.read_text(encoding='utf-8'))
+            report['tools_current'] = {k: kept.get(k) for k in ('current', 'checked_at', 'main_version', 'errors')}
+        except ValueError:
+            report['tools_current'] = {'current': False, 'errors': ['keep-current.json could not be read']}
     if args.weekly:
         home = rules_home(args.rules_dir)
         week = (dt.date.today() - dt.timedelta(days=7)).isoformat()
