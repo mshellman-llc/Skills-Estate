@@ -95,8 +95,23 @@ def codex_plugins(text):
     return out
 
 
+def published(source, plugin_id):
+    """Version of a plugin as published in the clone. The publish workflow writes it a few
+    minutes after a merge, so it can trail config/plugin-bundles.json for that long."""
+    name = plugin_id.split('@')[0]
+    for rel in ('.claude-plugin/plugin.json', 'plugin.json'):
+        try:
+            return json.loads((source / 'plugins' / name / rel).read_text(encoding='utf-8'))['version']
+        except (OSError, ValueError, KeyError):
+            continue
+    return None
+
+
 def lagging(found, version):
-    return [p for p in found if p[1] != version]
+    """Plugins whose installed version differs from the target. version is one string, or a
+    function from plugin id to the published version (None means not published; skipped)."""
+    target = version if callable(version) else (lambda _id: version)
+    return [p for p in found if target(p[0]) is not None and p[1] != target(p[0])]
 
 
 def tool(name):
@@ -119,9 +134,9 @@ def keep_claude(version, report, dry):
             code, out, err = sh([claude, 'plugin', 'update', pid, '-s', scope, '--json'], timeout=300)
             if code:
                 report['errors'].append(f'claude plugin update {pid}: {err or out}')
-            else:
-                report['actions'].append(f'Claude Code: updated {pid}')
         found = claude_plugins(sh([claude, 'plugin', 'list', '--json'])[1])
+        before = entry['before']
+        report['actions'] += [f'Claude Code: {p} {before.get(p)} to {v}' for p, v, _ in found if before.get(p) != v]
     entry['after'] = {p: v for p, v, _ in found}
     entry['behind'] = [p for p, _, _ in lagging(found, version)]
 
@@ -134,7 +149,10 @@ def keep_codex(version, report, dry):
     found = codex_plugins(sh([codex, 'plugin', 'list'])[1])
     entry = report['codex'] = {'before': dict(found)}
     if lagging(found, version) and not dry:
-        code, out, err = sh([codex, 'plugin', 'marketplace', 'upgrade', MARKETPLACE], timeout=300)
+        for _ in range(2):  # Codex's own clone gives up after 30 seconds; one retry covers a slow fetch
+            code, out, err = sh([codex, 'plugin', 'marketplace', 'upgrade', MARKETPLACE], timeout=300)
+            if not code:
+                break
         if code:
             report['errors'].append('codex marketplace upgrade: ' + (err or out))
         else:
@@ -172,10 +190,12 @@ def run_once(source, state, dry=False):
         write_state(state, report)
         print(json.dumps(report, indent=1))
         return 1
-    report.update(main_commit=commit, main_version=version)
+    report.update(main_commit=commit, main_version=version,
+                  published_version=published(source, 'estate-writing@' + MARKETPLACE))
+    target = lambda plugin_id: published(source, plugin_id)  # noqa: E731
     keep_hooks(source, commit, report, dry)
-    keep_claude(version, report, dry)
-    keep_codex(version, report, dry)
+    keep_claude(target, report, dry)
+    keep_codex(target, report, dry)
     report['current'] = (not report['errors'] and not report['hooks']['behind']
                          and not report['claude_code'].get('behind') and not report['codex'].get('behind'))
     write_state(state, report)

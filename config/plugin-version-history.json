@@ -160,6 +160,10 @@
     "0.4.36": {
       "content_sha256": "6790bf8e0f96fe309b3ffdf6d4b6a9dded0615ed51258d695110c18565ba8ab6",
       "note": "Nightly report shows whether plugins and hooks are on main; tools/keep_current.py keeps them there hourly"
+    },
+    "0.4.37": {
+      "content_sha256": "3efc9131c75e96e86e854cc1c7116c9dd06dac02916ef436272b2321b0cb94ab",
+      "note": "keep_current targets each plugin's published version and retries a slow Codex fetch"
     }
   },
   "source_conflicts": [

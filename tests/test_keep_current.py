@@ -38,6 +38,20 @@ class KeepCurrent(unittest.TestCase):
         self.assertEqual(found, [('estate-career@skills-estate', '0.4.30'), ('estate-writing@skills-estate', '0.4.35')])
         self.assertEqual(keep_current.lagging(found, '0.4.35'), [('estate-career@skills-estate', '0.4.30')])
 
+    def test_targets_the_published_plugin_version_not_the_bundle_version(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp)
+            meta = source / 'plugins' / 'estate-writing' / '.claude-plugin'
+            meta.mkdir(parents=True)
+            (meta / 'plugin.json').write_text(json.dumps({'name': 'estate-writing', 'version': '0.4.35'}))
+            target = lambda pid: keep_current.published(source, pid)  # noqa: E731
+            self.assertEqual(target('estate-writing@skills-estate'), '0.4.35')
+            self.assertIsNone(target('estate-gone@skills-estate'))
+            found = [('estate-writing@skills-estate', '0.4.35'), ('estate-gone@skills-estate', '0.1.0')]
+            self.assertEqual(keep_current.lagging(found, target), [])
+            self.assertEqual(keep_current.lagging([('estate-writing@skills-estate', '0.4.30')], target),
+                             [('estate-writing@skills-estate', '0.4.30')])
+
     def test_hooks_commit_reads_the_manifest(self):
         with tempfile.TemporaryDirectory() as tmp:
             hooks = Path(tmp)
