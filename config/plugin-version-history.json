@@ -168,6 +168,10 @@
     "0.4.38": {
       "content_sha256": "913f035ba0b5dcfb8d1324d913cc73382f072051937374ab3e72eea362a765d9",
       "note": "Render HTML pages from synthesize-discovery, frame-jobs-to-be-done, develop-product and prioritize-work through brand-renderer, with the writing release gate covering each page; route synthesize-discovery findings through evidence-core (#114)."
+    },
+    "0.4.39": {
+      "content_sha256": "751e8301781070ce62ddc06d80a6b8a97bb9d856bceb2154687d98bcf3f982b6",
+      "note": "Add the discovery_synthesis evidence contract to evidence-core and name it in synthesize-discovery (closes #117). Replace screenshot and raster verification steps with DOM layout and extracted-text checks that write no image files."
     }
   },
   "source_conflicts": [

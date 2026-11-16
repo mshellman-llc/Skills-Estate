@@ -100,7 +100,7 @@ python3 scripts/build_proposal.py explorer.json --output attempt-001/explorer.ht
 python3 scripts/qa_proposal.py attempt-001/proposal.html
 ```
 
-Add `--profile /path/to/brand.md` for an explicit confirmed profile. Existing outputs are refused. The build checks source IDs, excluded-item routes, option uniqueness, exact quote parity, and explorer counts. Browser QA exercises every version, disclosure, keyboard tab control, mobile width, and print output; it saves all screenshots and PDFs. Inspect those outputs and compare their meaning with the source before delivery.
+Add `--profile /path/to/brand.md` for an explicit confirmed profile. Existing outputs are refused. The build checks source IDs, excluded-item routes, option uniqueness, exact quote parity, and explorer counts. Browser QA exercises every version, disclosure, keyboard tab control, mobile width, and print output. It records each state's extracted text and layout checks from the DOM, saves the print PDFs, and writes no image files. Read those records and compare their meaning with the source before delivery.
 
 The working schema is illustrated in `fixtures/explorer.json`, `fixtures/proposal.json`, and `fixtures/quote.json`. Each source has an ID, title, reference and revision. Each scope item has a stable ID and source ID. Explorer counts equal the number of distinct included item IDs; other counting methods require an explicit adapter and test before use. Proposal exports use the same version fields as the page. Map another quoting system into that contract while preserving its revision and original export.
 

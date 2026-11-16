@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "artifact": "skills/render-offering-brief/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Render one catalog entry.",
+      "text": "python scripts/render_playbook.py --md CATALOG.md --entry 01 --out ./pdfs"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Render every catalog entry.",
+      "text": "python scripts/render_playbook.py --md CATALOG.md --all --out ./pdfs"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Render from a JSON spec.",
+      "text": "python scripts/render_playbook.py --json spec.json --out ./pdfs --prefix \"01-\""
+    }
+  ]
+}

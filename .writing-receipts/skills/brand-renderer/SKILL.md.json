@@ -1,0 +1,36 @@
+{
+  "format": 1,
+  "artifact": "skills/brand-renderer/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The deck extraction command in the workflow.",
+      "text": "python3 scripts/extract_pptx.py deck.pptx --html deck.extracted.html"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The deck extractor's usage line.",
+      "text": "scripts/extract_pptx.py deck.pptx [--html out.html] [--json out.json]"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The parity gate command in the workflow.",
+      "text": "python3 scripts/parity_audit.py manifest.json artifact.html --strict"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The parity audit's usage line.",
+      "text": "scripts/parity_audit.py manifest.json rendered.html [--json report.json] [--strict]"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The visual gate command in the workflow.",
+      "text": "node scripts/layout_check.cjs artifact.html --manifest manifest.json"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The layout check's usage line.",
+      "text": "scripts/layout_check.cjs artifact.html [--manifest m.json] [--widths 1280,390] [--json out.json]"
+    }
+  ]
+}

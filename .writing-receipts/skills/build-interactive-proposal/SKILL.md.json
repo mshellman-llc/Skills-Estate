@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "artifact": "skills/build-interactive-proposal/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The proposal-mode build command.",
+      "text": "python3 scripts/build_proposal.py proposal.json --quote quote-export.json --output attempt-001/proposal.html"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The explorer-mode build command.",
+      "text": "python3 scripts/build_proposal.py explorer.json --output attempt-001/explorer.html"
+    }
+  ]
+}

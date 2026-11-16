@@ -1,12 +1,11 @@
 import fs from 'node:fs';
-import path from 'node:path';
 const policyURL = [new URL('../_runtime/brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url),
   new URL('../../brand-renderer/scripts/browser_launch_policy.cjs', import.meta.url)].find(url => fs.existsSync(url));
 if (!policyURL) throw new Error('Browser policy is missing. Rebuild with the declared brand runtime.');
 const {default: browserPolicy} = await import(policyURL.href);
 const pw = await import(process.env.PW_MODULE);
 const [url, output] = process.argv.slice(2);
-const report = { checks: {}, failures: [], widgets: {}, screenshots: [] };
+const report = { checks: {}, failures: [], widgets: {}, views: [] };
 let browser;
 function check(name, passed) {
   report.checks[name] = Boolean(passed);
@@ -27,13 +26,24 @@ try {
   check('noUnfilledSlots', !await page.locator('html').evaluate(
     el => /__(?:PALETTE|FONTS|MARK|LOGO)__|\{\{[A-Z_]+\}\}/.test(el.outerHTML)));
   check('substantiveSections', await page.locator('section').count() > 0);
-  async function screenshot(name, locator) {
-    const file = path.join(output, name + '.png');
-    if (locator) await locator.screenshot({path:file, animations:"disabled"});
-    else await page.screenshot({path:file, fullPage:false, animations:"disabled"});
-    report.screenshots.push(name + '.png');
+  // Record each checked state as DOM measurements and extracted text. No image files are written.
+  async function view(name, locator) {
+    const target = locator ?? page.locator('body');
+    const state = await target.evaluate(el => {
+      const box = el.getBoundingClientRect();
+      const clipped = [...el.querySelectorAll('*')].filter(node => node.getClientRects().length &&
+        ['hidden', 'clip'].includes(getComputedStyle(node).overflowX) && node.scrollWidth > node.clientWidth + 1)
+        .map(node => node.className || node.tagName);
+      return {width: Math.round(box.width), right: Math.round(box.right), clipped,
+        text: el.innerText.trim()};
+    });
+    state.name = name;
+    state.viewport = page.viewportSize().width;
+    if (state.right > state.viewport + 1) report.failures.push(name + ' extends past the viewport');
+    if (state.clipped.length) report.failures.push(name + ' clips text in ' + state.clipped.slice(0, 3).join(', '));
+    report.views.push(state);
   }
-  await screenshot('01-masthead');
+  await view('01-masthead');
   report.widgets.pricing = await page.locator('.pr').count();
   if (report.widgets.pricing) {
     const initial = await page.locator('#prRate').textContent();
@@ -50,7 +60,7 @@ try {
     const totals = (await page.locator('#prCost').textContent()).split('–')
       .map(x => Number(x.replace(/[^0-9.]/g,'')));
     check('rateTimesDays', totals.length === 2 && totals[0] === rate*2 && totals[1] === rate*4);
-    await screenshot('02-pricing', page.locator('.pr'));
+    await view('02-pricing', page.locator('.pr'));
     await page.locator('#prHigh').fill('1');
     check('reversedRangeRejected', await page.locator('#prHigh').getAttribute('aria-invalid') === 'true');
     await page.locator('#prLow').fill('-1');
@@ -67,7 +77,7 @@ try {
       await button.click();
       check('flowStep'+i, (await page.locator('.ifl-detail h4').textContent()).includes(title));
     }
-    await screenshot('03-flow', page.locator('.ifl-detail'));
+    await view('03-flow', page.locator('.ifl-detail'));
   }
   report.widgets.ledger = await page.locator('.ldf-p').count();
   if (report.widgets.ledger) {
@@ -80,7 +90,7 @@ try {
       check('ledgerFilter_'+filter, result);
     }
     await page.locator('.ldf-p[data-f="all"]').click();
-    await screenshot('04-ledger', page.locator('.ldf'));
+    await view('04-ledger', page.locator('.ldf'));
   }
   report.widgets.catalog = await page.locator('.ct-tb').count();
   if (report.widgets.catalog) {
@@ -90,14 +100,14 @@ try {
       check('catalogView_'+view, await page.locator('.ct-view').evaluateAll((views, chosen) =>
         views.every(v => (getComputedStyle(v).display !== 'none') === (v.dataset.view === chosen)), view));
     }
-    await screenshot('05-catalog', page.locator('.ctw'));
+    await view('05-catalog', page.locator('.ctw'));
   }
   await page.evaluate(() => scrollTo(0,0));
   await page.setViewportSize({width:390,height:844});
   check('mobileNoPageOverflow', await page.evaluate(() =>
     document.documentElement.scrollWidth <= innerWidth + 1));
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-  await screenshot('06-mobile');
+  await view('06-mobile');
 } catch (error) {
   report.failures.push(error.stack || error.message);
 } finally {

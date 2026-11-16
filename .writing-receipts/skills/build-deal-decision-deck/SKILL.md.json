@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "artifact": "skills/build-deal-decision-deck/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Extracts copy from an existing deck.",
+      "text": "`python3 scripts/extract_slide_text.py <deck.pptx>`"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The layout check on the built deck.",
+      "text": "`python3 scripts/extract_slide_text.py OUT.pptx --layout`"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Path of the slide text extractor.",
+      "text": "`scripts/extract_slide_text.py`"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The manifest gate command in Phase 1.",
+      "text": "node scripts/build_ddoc.js manifest.json --check\n"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The gate command in Phase 4.",
+      "text": "node scripts/build_ddoc.js manifest.json --check          # gate: preflight only, no render"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The build command in Phase 4.",
+      "text": "node scripts/build_ddoc.js manifest.json -o OUT.pptx      # build once the gate passes"
+    },
+    {
+      "kind": "identifier",
+      "reason": "The gate's command name and flag.",
+      "text": "`build_ddoc.js --check`"
+    }
+  ]
+}

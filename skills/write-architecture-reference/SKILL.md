@@ -46,7 +46,7 @@ For retries and redelivery, distinguish sequential recovery from concurrent dupl
 4. Read [the build card](../_shared/build-card.md) to resolve the runtime and apply the selected brand profile during the build. Use its available assets and configured runtime. If HTML is requested, embed the required styles and assets and reject unresolved template placeholders.
 5. Review all prose, including interface labels and captions. Use the bundled `writing-diagnostics` diagnostic tools where applicable, and read the result for meaning. A scanner result does not select the author's voice.
 6. For styled artifacts, run the configured `brand-renderer` checks. Use `review-deliverable` to assess the completed content and applicable review records.
-7. Render and inspect every page or view. Check diagrams, tables, source locators, accessible contrast and technical content against the source. Exercise interactions when present.
+7. Render every page or view and inspect it through its DOM and extracted text, not screenshots. Check diagrams, tables, source locators, accessible contrast and technical content against the source. Exercise interactions when present.
 8. Cascade changed figures and accepted decisions through the document set. Deliver the requested editable source and exported format with their actual validation state.
 
 ## Output and acceptance

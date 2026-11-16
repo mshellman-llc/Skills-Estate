@@ -105,6 +105,8 @@ for output in ("JTBD", "pain point", "verbatim", "TL;DR", "next step"):
         fail.append(f"the {output!r} output is no longer produced")
 print("  all five outputs still named")
 has("attributes insights to speakers", r"speaker")
+has("names the discovery_synthesis evidence contract", r"`discovery_synthesis` contract")
+has("does not gate a synthesis on the call-prep brief", r"`discovery_brief` contract", want=False)
 
 if fail:
     print("\nSELFTEST FAILED")

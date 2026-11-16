@@ -34,9 +34,9 @@ Different options and staffing variants may have different hours or weeks. Never
 
 Run `scripts/check_scope.mjs` with the local HTML URL, a new output directory, and the presentation JSON path. The test environment needs Node.js and Playwright with a Chromium browser. `PW_MODULE` can point to the installed Playwright module; `PW_CHROMIUM` can select a Chromium executable.
 
-The checker captures desktop and narrow views, checks overflow outside the scrollable matrix, verifies that the matrix can be scrolled, blocks remote requests and exports a landscape A4 PDF. PDF tables may continue across pages with repeated headers. Do not shrink the full scope into a single unreadable page.
+The checker records the page's extracted text at desktop and narrow widths, writes no image files, checks overflow outside the scrollable matrix, verifies that the matrix can be scrolled, blocks remote requests and exports a landscape A4 PDF. PDF tables may continue across pages with repeated headers. Do not shrink the full scope into a single unreadable page.
 
-Inspect all printed pages and compare the displayed figures with the reconciliation receipt. Confirm that every item appears and that status labels survive printing. The browser test cannot judge whether the summary accurately describes an option.
+Read the extracted text of every printed page and compare the displayed figures with the reconciliation receipt. Confirm that every item appears and that status labels survive printing. The browser test cannot judge whether the summary accurately describes an option.
 
 ## Delivery record
 

@@ -43,8 +43,7 @@ try {
    return bad;
   });
   if(defects.length)report.failures.push({slide:i+1,overflow:defects});
-  const filename=`slide-${String(i+1).padStart(2,'0')}.png`;
-  await s.screenshot({path:path.join(out,filename)});report.views.push(filename);
+  report.views.push({slide:i+1,width:1360,text:await s.evaluate(el=>el.innerText.trim())});
  }
  await page.emulateMedia({media:'print'});
  if(await page.locator('table').count() && await page.locator('table').first().evaluate(el=>getComputedStyle(el).display)!=='table')report.failures.push('Print tables lost their column layout');
@@ -53,7 +52,9 @@ try {
  await page.setViewportSize({width:390,height:844});
  if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))report.failures.push('Narrow page overflows');
  for(let i=0;i<report.slides;i++){
-  const filename=`narrow-${String(i+1).padStart(2,'0')}.png`;await slides.nth(i).screenshot({path:path.join(out,filename)});report.views.push(filename);
+  const narrow=await slides.nth(i).evaluate(el=>({right:el.getBoundingClientRect().right,text:el.innerText.trim()}));
+  if(narrow.right>391)report.failures.push({slide:i+1,narrow:'Slide extends past the 390px width'});
+  report.views.push({slide:i+1,width:390,text:narrow.text});
  }
  if(report.remoteRequests.length)report.failures.push('Output requires remote resources');
 } finally {await browser.close();fs.writeFileSync(path.join(out,'browser.json'),JSON.stringify(report,null,2));}

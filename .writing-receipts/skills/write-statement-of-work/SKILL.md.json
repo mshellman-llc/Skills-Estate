@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "artifact": "skills/write-statement-of-work/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The worked example generator command.",
+      "text": "node scripts/generate_sow.js fixtures/quote.example.json waterfall \\"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The render command.",
+      "text": "node scripts/generate_sow.js model.json <variant> --contract contract.json --output output/sow.docx"
+    }
+  ]
+}

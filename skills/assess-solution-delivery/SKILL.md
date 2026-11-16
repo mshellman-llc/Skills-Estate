@@ -7,7 +7,7 @@ description: 'Decide whether a proposed client solution can be delivered, then w
 # Assess solution delivery
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
-> [`readout-brief.md`](../writing-diagnostics/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [`readout-brief.md`](../writing-diagnostics/references/registers/readout-brief.md). Read both before drafting.**
 
 Judge whether the proposed solution is technically deliverable and make the
 delivery logic inspectable. Do not begin with a section template. Begin with the
@@ -110,7 +110,7 @@ Never turn approval-level inference into implementation-grade precision.
 
 ## Field guide mode
 
-An internal artifact, never client-facing. It arms the pursuit team to hold a room:
+Field guide mode produces an internal artifact, never a client-facing one. It arms the pursuit team to hold a room:
 what the solution is, how it works, and how to answer the person across the table
 who believes they can build it themselves. It reads from the same graph as the
 brief, so it inherits the evidence gate, the terminal branch, and claim governance.
@@ -150,10 +150,10 @@ building. Never generate a full set silently. Record every decision in
 `sectionDispositions` as `included`, `thinned`, or `omitted`, each with a reason
 and `confirmedInChat`.
 
-Every candidate section needs a record, so a section cannot go missing quietly.
+Every candidate section needs a record. A section without one has gone missing.
 Nine are core: orientation, system boundary, end-to-end flow, data model, scope
 trace, risk concentration, technical judgment, conditions and next action, and
-sources. Five are conditional and earn their place from the client's shape:
+sources. Five are conditional and earn their place from what the client needs:
 pricing architecture, critical interfaces, architecture decisions, stakeholder
 Q&A, and timeline gates. Staffing and financial reconciliation are not candidates,
 because a field guide never staffs and never prices. A view with no record fails, a
@@ -170,8 +170,8 @@ Gaps go to the seller in chat, never into the artifact body. No `[TBD]` markers.
 
 The build ledger is a projection of scope items. Every row carries
 `buildDisposition` of `native`, `config`, `custom`, or `dep`, so the ledger
-cannot drift from scope. A field guide does not price, so its scope items owe no
-financial trace, and a guide carrying reconciliation controls is the wrong artifact.
+cannot drift from scope. Field guides carry no pricing. Their scope items owe no
+financial trace. A guide carrying reconciliation controls is the wrong artifact.
 Pricing authority stays with the scoping system.
 
 Each `qaEntry` carries the question in the stakeholder's voice, an answer leading
@@ -193,8 +193,7 @@ Then exercise it in a real browser:
 python3 scripts/qa_field_guide.py <built.html> qa/
 ```
 
-The widgets are interactive, so a static render proves nothing about whether they
-work. This clicks each one and screenshots the result. The browser check uses Node.js and Playwright. Set `ESTATE_NODE`, `ESTATE_NODE_MODULES`, and optionally `PW_CHROMIUM` to existing installations, or use Node and Playwright from the environment. Missing browser support and broken interactions fail the check. Each attempt saves its report and screenshots in a new directory. A successful interaction check still requires inspecting the screenshots and comparing the content with its sources.
+A static render cannot show whether the interactive widgets work. This clicks each one and records the resulting state from the DOM: its extracted text, its width against the viewport, and any clipped text, at desktop and phone widths. It writes no image files. The browser check uses Node.js and Playwright. Set `ESTATE_NODE`, `ESTATE_NODE_MODULES`, and optionally `PW_CHROMIUM` to existing installations, or use Node and Playwright from the environment. Missing browser support and broken interactions fail the check. Each attempt saves its report in a new directory. A successful interaction check still requires reading the recorded text of each state and comparing it with its sources.
 
 ## Adequacy gate
 
@@ -206,7 +205,7 @@ A full brief fails before visual review if it lacks any applicable core family:
 - scope traceability
 - staffing and allocations
 - phases and milestones
-- financial lines and reconciliation
+- financial lines with their reconciliation
 - typed relationships
 - canonical views
 - distinct semantic grammars
@@ -239,14 +238,12 @@ section dropped with no recorded reason, and a ledger row with no disposition.
 ## Release rule
 
 A passing graph is necessary but not sufficient. The artifact still needs the
-brand renderer's parity, visual, and prose gates plus a human or model reading
-pass. Preserve every caveat, conflict, condition, number, name, and evidence
+brand renderer's release gates plus a human or model reading pass. Preserve every caveat, conflict, condition, number, name, and evidence
 reference through the final format.
 
 ## Release gate (required)
 
-Before you deliver, run the gate. This is a required step, not a suggestion, and
-not something a reviewer does later. Full spec in
+Before you deliver, run the gate. It is required. Full spec in
 [`release-gate.md`](../_shared/release-gate.md).
 
 1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For

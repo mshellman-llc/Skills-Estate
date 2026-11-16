@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 import ast
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -56,12 +57,23 @@ console.log('Synthetic checks passed; no browser imported or launched.');
                      'skills/compare-scope-options/scripts/check_scope.mjs',
                      'skills/build-interactive-proposal/scripts/qa_proposal.mjs',
                      'skills/assess-solution-delivery/scripts/qa_field_guide.mjs',
-                     'skills/prepare-sales-pursuit/scripts/build_brief.py']:
+                     'skills/prepare-sales-pursuit/scripts/build_brief.py',
+                     'skills/brand-renderer/scripts/layout_check.cjs']:
             with self.subTest(path=name):
                 text = (ROOT / name).read_text()
                 self.assertIn('launchOptions()', text)
                 self.assertNotIn("||'chrome'", text)
                 self.assertNotIn('executablePath:process.env.PW_CHROMIUM', text)
+
+    def test_harnesses_take_no_screenshots(self):
+        # Verification reads the DOM and extracted text; no harness writes an image.
+        sources = [path for folder in ('skills', 'tests', 'artifacts/skills-map')
+                   for pattern in ('*.py', '*.mjs', '*.cjs', '*.js')
+                   for path in (ROOT / folder).rglob(pattern) if '__pycache__' not in path.parts]
+        for path in sources:
+            text = path.read_text(errors='ignore')
+            with self.subTest(path=path.relative_to(ROOT).as_posix()):
+                self.assertIsNone(re.search(r'\.screenshot\s*\(', text))
 
     def test_source_and_portable_launchers_refuse_before_fake_browser(self):
         node = os.environ.get('ESTATE_NODE') or shutil.which('node')

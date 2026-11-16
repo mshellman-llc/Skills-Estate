@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/build-deck/references/html-production.md",
+  "protected": [
+    {
+      "kind": "identifier",
+      "reason": "The renderer's geometry field names for nodes and zones.",
+      "text": "`x`, `y`, `w`, `h`"
+    }
+  ]
+}

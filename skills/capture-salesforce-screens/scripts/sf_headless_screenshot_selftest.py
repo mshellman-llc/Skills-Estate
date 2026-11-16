@@ -106,10 +106,15 @@ if yaml_path.exists():
 # --- sfqa CLI commands documented ---------------------------------------------
 print()
 has("documents sfqa doctor", r"sfqa.*doctor", in_prose=False)
-has("documents sfqa shot", r"sfqa.*shot", in_prose=False)
-has("documents sfqa batch", r"sfqa.*batch", in_prose=False)
 has("documents sfqa flow", r"sfqa.*flow", in_prose=False)
-has("documents sfqa watch", r"sfqa.*watch", in_prose=False)
+has("forbids the image commands", r"Do not use `sfqa shot`, `sfqa batch` or `sfqa watch`")
+has("records visible text", r"visible text")
+
+# --- no image output ----------------------------------------------------------
+fenced = "\n".join(re.findall(r"```.*?```", text, flags=re.S))
+expect("no image command in examples", bool(re.search(r"sfqa\.mjs\"? (shot|batch|watch)\b", fenced)), False)
+expect("no shot step in examples", bool(re.search(r'"shot"\s*:', fenced)), False)
+expect("no raster file in examples", bool(re.search(r"\.(png|jpe?g|webp)\b", fenced, re.I)), False)
 
 # --- credential safety --------------------------------------------------------
 print()
