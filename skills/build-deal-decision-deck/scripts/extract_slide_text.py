@@ -7,6 +7,7 @@ Usage:
   python extract_slide_text.py DECK.pptx --json           # structured JSON output
   python extract_slide_text.py DECK.pptx --manifest       # slide manifest format (for review/approval workflow)
   python extract_slide_text.py DECK.pptx --figures        # figures only (for tie-out check)
+  python extract_slide_text.py DECK.pptx --layout         # bounds, text fit, placeholders; no images
 
 The plain text output is the format expected by writing-diagnostics.
 The manifest format matches the DDOC quality skill's Phase 1 slide manifest.
@@ -225,6 +226,58 @@ def diagnostic_summary(slides):
 
 
 # ---------------------------------------------------------------------------
+# Layout check: geometry and text fit from the PPTX itself, no rendering
+# ---------------------------------------------------------------------------
+
+PLACEHOLDER = re.compile(r"\{\{[^}]*\}\}|\bTODO\b|\bTBD\b|lorem ipsum|click to (?:add|edit)", re.I)
+DEFAULT_PT = 18
+
+
+def _font_pt(shape):
+    sizes = [run.font.size.pt for para in shape.text_frame.paragraphs for run in para.runs
+             if run.font.size is not None]
+    return max(sizes) if sizes else DEFAULT_PT
+
+
+def _estimated_height(shape, width_emu):
+    """Estimate the text height in EMU. Average glyph width is about half the point size."""
+    size = _font_pt(shape)
+    usable = max(width_emu - 182880, 1)  # default 0.1in insets on each side
+    chars_per_line = max(int(usable / (size * 12700 * 0.5)), 1)
+    lines = 0
+    for para in shape.text_frame.paragraphs:
+        text = "".join(run.text for run in para.runs) or para.text
+        lines += max(1, -(-len(text) // chars_per_line))
+    return lines * size * 12700 * 1.2 + 91440  # 1.2 line height plus top and bottom insets
+
+
+def layout_findings(pptx_path):
+    """Return findings for shapes off the slide, text that likely overflows its frame,
+    and placeholder text. Reads the file; writes nothing."""
+    prs = Presentation(pptx_path)
+    width, height = prs.slide_width, prs.slide_height
+    findings = []
+    for idx, slide in enumerate(prs.slides, start=1):
+        for shape in slide.shapes:
+            if shape.left is None or shape.width is None:
+                continue
+            name = shape.name
+            if shape.left < 0 or shape.top < 0 or shape.left + shape.width > width + 1 or shape.top + shape.height > height + 1:
+                findings.append({"slide": idx, "shape": name, "issue": "extends past the slide edge"})
+            if not shape.has_text_frame or not shape.text_frame.text.strip():
+                continue
+            text = shape.text_frame.text
+            if PLACEHOLDER.search(text):
+                findings.append({"slide": idx, "shape": name, "issue": "placeholder text", "text": text[:80]})
+            auto = shape.text_frame.auto_size
+            if auto is None or int(auto) == 0:  # no autofit: the frame must hold the text
+                if _estimated_height(shape, shape.width) > shape.height * 1.05:
+                    findings.append({"slide": idx, "shape": name, "issue": "text likely overflows its frame",
+                                     "text": text[:80]})
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -237,6 +290,8 @@ def main():
     parser.add_argument("--manifest", action="store_true", help="Slide manifest format (Phase 1)")
     parser.add_argument("--figures", action="store_true", help="Figures only (tie-out)")
     parser.add_argument("--diagnostic", action="store_true", help="Diagnostic summary counts")
+    parser.add_argument("--layout", action="store_true",
+                        help="Check shape bounds, text fit and placeholder text; writes no image files")
     args = parser.parse_args()
 
     path = Path(args.pptx)
@@ -244,6 +299,11 @@ def main():
         sys.exit(f"File not found: {path}")
     if path.suffix.lower() != ".pptx":
         sys.exit(f"Expected a .pptx file, got: {path.suffix}")
+
+    if args.layout:
+        findings = layout_findings(path)
+        print(json.dumps({"findings": findings}, indent=2))
+        sys.exit(1 if findings else 0)
 
     slides = extract(path)
 

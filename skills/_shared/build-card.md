@@ -71,8 +71,9 @@ python3 <brand-renderer>/scripts/brand_check.py FILE
 
 Use `writing-diagnostics/scripts/prose_receipt.py` when the producing workflow requires
 a narrative receipt. Review meaning and evidence as well as mechanical results.
-Open or render the artifact, inspect every page or slide, and exercise its
-interactions. Fix missing content, clipping, illegible contrast, wrong figures,
+Open or render the artifact, inspect every page or slide through its DOM and
+extracted text, and exercise its interactions. Never take screenshots or save
+raster captures to check it. Fix missing content, clipping, illegible contrast, wrong figures,
 and broken controls before delivery.
 
 A hook is available only when its installation and invocation were verified.

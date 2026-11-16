@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "artifact": "skills/configure-salesforce-project/references/agents/estate-ac-qa.md",
+  "protected": [
+    {
+      "kind": "identifier",
+      "reason": "The per-ticket evidence directory path.",
+      "text": "`.git/estate/qa/<ref>/`"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Path of an example evidence record in the report template.",
+      "text": "`.git/estate/qa/<ref>/fallback-post.txt`"
+    }
+  ]
+}

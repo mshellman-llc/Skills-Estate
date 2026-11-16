@@ -58,11 +58,14 @@ absent report is a `blocked` verdict, never a `pass`.
    missing receipt while
    withholding release. Sound prose may pass unchanged only with a justified
    no-change assessment in the receipt.
-2. For a styled artifact, cite `brand-renderer` evidence: the preflight report
-   and the `brand_check.py` result, by path. Then render or open the actual file
-   and inspect every page, slide or screen for clipping, contrast, missing
-   content, wrong figures and broken controls. A color scan cannot establish
-   legibility or layout. If the rendered output is missing or cannot be
+2. For styled output, cite `brand-renderer` evidence: the preflight report
+   and the `brand_check.py` result, by path. Then render the actual file and
+   check every page, slide or screen through its DOM and extracted text for
+   clipping, contrast, missing content, wrong figures and broken controls:
+   brand-renderer's `layout_check.cjs` for HTML at desktop and phone widths, and
+   the producer's text and layout checks for decks and PDFs. Never take
+   screenshots or save raster captures as review evidence. A color scan cannot
+   establish legibility or layout. If the rendered output is missing or cannot be
    produced, the brand check is `blocked`. Brand controls identity, so an
    off-palette hex or a redrawn mark is a fail. A font substitution passes only
    when it is the selected profile's documented fallback and the record
@@ -110,6 +113,6 @@ gets the same source check as a document about one.
 
 ## Output contract
 
-Use assertion kinds `financial_figure`, `contract_scope`, `approval_status` or `go_no_go` for those claims. Other prose can use `narrative` or an explicit `other`; unknown kinds are rejected. Do not relabel a high-risk claim to avoid its source check. For HTML, PowerPoint, Word, Excel or PDF paths, explicitly set `artifact.brand_render` to a boolean. Set it to `true` for styled output and record the rendering checks; `false` declares that styled-output review does not apply. The validator checks the declaration, not the file's visual design or the truth of a claim. Inspect the artifact to confirm both classifications.
+Use assertion kinds `financial_figure`, `contract_scope`, `approval_status` or `go_no_go` for those claims. Other prose can use `narrative` or an explicit `other`; unknown kinds are rejected. Do not relabel a high-risk claim to avoid its source check. For HTML, PowerPoint, Word, Excel or PDF paths, explicitly set `artifact.brand_render` to a boolean. Set it to `true` for styled output and record the rendering checks; `false` declares that styled-output review does not apply. The validator checks the declaration only; the file's visual design and the truth of each claim need their own review. Inspect the artifact to confirm both classifications.
 
 Return a durable Markdown quality record. Include artifact identity, selected controls, performed checks, assertion evidence, release verdict, blockers, remediation, plus Knowledge Hub update status (`not_applicable` when the workflow has no hub write). The command validates record structure and the final narrative receipt. Citation and hub-status fields remain reported evidence; the command does not verify those destinations or prove that a person read the artifact. Exit 0 means the record is valid, including an honest blocked record. Require `released: true` before treating the result as release permission. Library callers pass the record directory as `base_dir` when using relative paths. Regenerate receipts after moving artifacts to another machine or folder. Reading the artifact and checking its sources remain required.

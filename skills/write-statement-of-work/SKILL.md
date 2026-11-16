@@ -7,7 +7,7 @@ description: 'Generate Statements of Work (.docx) from a confirmed quote JSON an
 # Write statement of work
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
-> [`sow-proposal.md`](../writing-diagnostics/references/registers/sow-proposal.md). Inputs, not a final pass.**
+> [`sow-proposal.md`](../writing-diagnostics/references/registers/sow-proposal.md). Read both before drafting.**
 
 Draft or generate the requested editable statement of work from the current quote,
 confirmed scope baseline, contracting entities, approved template and applicable
@@ -32,10 +32,10 @@ must not create a payment term, acceptance rule, scope cap or requirement for an
 existing CRM record. In particular, an independently sourced fixed fee may differ from hours times
 rate; this generator's per-role revenue equality cannot represent that model.
 Preserve the agreed fee and use the document-tool route for it. If other supplied
-terms cannot be represented faithfully, use the document-tool route; do not force the agreement into the generator or fill missing
+terms cannot be represented faithfully, draft them with the document tool as well; do not force the agreement into the generator or fill missing
 values from examples. For either route reconcile totals and milestones, inspect
-cross-references and placeholders, compare required clauses with the supplied template,
-then run the embedded contract review. Inspect every rendered page before finalizing.
+cross-references and placeholders, confirm the template's required clauses are present,
+then run the embedded contract review. Read every rendered page's text before finalizing.
 Creating a document does not approve, send or execute it.
 
 The following variant and CLI sections describe the optional generator. The selected
@@ -47,8 +47,8 @@ Four, passed as the second CLI argument to `scripts/generate_sow.js`. One genera
 
 - **Letter of engagement** (`loe`), a short fixed-fee advisory engagement under the selected agreement. Carries scope, fee, timing, assumptions, selected agreement terms, acceptance, and signatures. It does not silently inherit the full SOW clause set.
 - **Waterfall** (`waterfall`), fixed-scope build. Phase-gated, Exhibit A basis of estimate, UAT gates production. The default.
-- **Agile** (`agile`), adaptive build. Sprint stages, backlog, same Exhibit A discipline.
-- **Assess** (`assess`), advisory engagement. Assessments and strategy plays. It differs structurally from the build variants and is not a tuning of them:
+- **Agile** (`agile`) is an adaptive build with sprint stages, a backlog and the same Exhibit A discipline.
+- **Assess** (`assess`) is an advisory engagement for assessments and strategy plays. It differs structurally from the build variants and is not a tuning of them:
   - Delivery methodology is Discover, Assess, Recommend stages, not build phases. The stages describe analysis flow and carry no phase gates.
   - Deliverables are the actual scope items from the quote, not the fixed build artifact set.
   - Acceptance is **readout-gated**: the deliverables are accepted on completion of the executive readout. No defect severity, no UAT, no production gate.
@@ -122,7 +122,7 @@ Given a Q-number rather than a record Id, resolve it first with a SOQL query on 
 4. **Render.** `node scripts/generate_sow.js model.json <variant> --contract contract.json --output output/sow.docx`. Add `--profile brand.md` for a selected brand. Writes the DOCX, a build record, and a resolution log. Existing outputs are preserved; use a new attempt path.
 5. **Work the resolution log.** Every bracketed field is resolved before the document leaves the building. A missing source value is flagged, never filled.
 6. **Verify the actual contract and quote.** `python3 scripts/verify_contract.py OUT.docx --contract contract.json --quote model.json --variant <variant> --output verification.json`. This compares selected clause text, identities, scope descriptions, quote values, and build hashes. It must pass. The older `verify_clauses.py` checks the reference clause table only and cannot approve a different contract profile.
-7. **Read [the contract review workflow](../review-contract-scope/SKILL.md)**, embedded as the contract scope and obligation review mode, for the authoring pass: structural de-slop, the Basis of Estimate framework, and cross-reference discipline.
+7. **Read [the contract review workflow](../review-contract-scope/SKILL.md)**, embedded as its contract review mode, for the authoring pass: structural de-slop, the Basis of Estimate framework, and cross-reference discipline.
 8. **Gate.** Parity, visual, prose. Written disposition each.
 
 ## Contract and brand inputs
@@ -153,9 +153,10 @@ the quote and contract profile supply the information. Missing information is ne
 filled from remembered company conventions. `--draft` permits a marked working
 copy; the build record retains every unresolved field and the verifier fails it.
 
-Run the source-contract check, render the DOCX, inspect every page, and check the
-contents links, tables, signatures, and scoped assumptions. Retain each attempt,
-including failures and screenshots. A generated report does not replace the DOCX.
+Run the source-contract check, render the DOCX to PDF, read every page's
+extracted text, and check the contents links, tables, signatures, and scoped
+assumptions. Retain each attempt, including failures. Take no page screenshots
+or images. A generated report does not replace the DOCX.
 
 ## Per option
 
@@ -201,8 +202,8 @@ policy. It does not require a company drive or a neighboring skill checkout.
 
 ## Release gate (required)
 
-Before you deliver, run the gate. This is a required step, not a suggestion, and
-not something a reviewer does later. Full spec in
+Before you deliver, run the gate. The step is required, and a later review does
+not replace it. Full spec in
 [`release-gate.md`](../_shared/release-gate.md).
 
 1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For

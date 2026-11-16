@@ -10,10 +10,10 @@ metadata:
 # Configure salesforce project
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
-> [`general.md`](../writing-diagnostics/references/registers/general.md). Inputs, not a final pass.**
+> [`general.md`](../writing-diagnostics/references/registers/general.md). Read both before drafting.**
 
 This skill puts Estate's delivery discipline onto a project and proves it is still
-there later. It is **not** the thing you read while implementing a feature — that
+there later. It is **not** the thing you read while implementing a feature; that
 contract lives in the project's `CLAUDE.md` (Claude) or `AGENTS.md` (Codex), where it is in context every session
 without anything having to trigger.
 
@@ -25,7 +25,7 @@ loop owns WI worktrees, scoped org capture, quality, validation, and review hand
 > deploy discipline, re-architected for four realities the solo skill never faced:
 > the repo may belong to the client or not exist remotely at all; tickets may live in
 > Jira; the person using it is probably not the person who wrote it; and the skill is
-> not the delivery mechanism for the rules — `CLAUDE.md` is.
+> not the delivery mechanism for the rules; `CLAUDE.md` is.
 >
 > **Not this skill:** multi-environment promotion, pipelines, org-to-org sync. Those are
 > owned by `operate-salesforce-pipeline` or Salesforce DevOps Center. On an engine repo
@@ -45,7 +45,7 @@ loop owns WI worktrees, scoped org capture, quality, validation, and review hand
 | `/configure-salesforce-project init --update` | Re-render everything after a skill upgrade, preserving the answers already recorded. |
 | `/configure-salesforce-project audit` | Verify every installed piece is still armed. Read-only. `--fix` self-heals the mechanical items. [references/audit-guide.md](references/audit-guide.md) |
 | `estate-ticket-status <TICKET>` | Read-only intake for an existing ticket. Reports matching Git work, the trunk landing commit, and clone-local validation/deploy evidence without treating absent local receipts as proof that work did not happen. [references/workflow-steps.md](references/workflow-steps.md) |
-| `/configure-salesforce-project probe` | Find out what this project's tracker actually permits — types available, what automation can create, which required fields block it — and record it. Runs during init. [references/ticket-adapters.md](references/ticket-adapters.md) |
+| `/configure-salesforce-project probe` | Find out what this project's tracker actually permits (types available, what automation can create, which required fields block it) and record it. Runs during init. [references/ticket-adapters.md](references/ticket-adapters.md) |
 | `/configure-salesforce-project preflight` | Report which prerequisites are missing or unauthenticated, and walk the user through them one command at a time. Runs as phase 0 of init. [references/prerequisites.md](references/prerequisites.md) |
 | `/configure-salesforce-project seed` | Org → empty repo, the one time the org is upstream. [references/seeding-guide.md](references/seeding-guide.md) |
 | `/configure-salesforce-project uninstall` | The inverse of init: retract the Claude and Codex settings entries, remove `~/.estate`, clear the `estate.*` config and `core.hooksPath`, strip the exclude entries and managed instruction blocks, delete `.git/estate`. Removes only what init wrote; user-authored prose survives. `--machine-only` / `--repo` scope it. `scripts/uninstall.sh` |
@@ -57,7 +57,7 @@ command not found* → preflight. *uninstall / remove / rip out / tear down / de
 uninstall. Nothing else should reach this skill.
 
 Seeding is also a phase **of** init. Running it standalone is for a repo that has the
-stack but was never seeded — same guide, and it explains what the guards change about
+stack but was never seeded. It uses the same guide, which explains what the guards change about
 the order.
 
 ---
@@ -66,7 +66,7 @@ the order.
 
 **Run `scripts/preflight.sh` before init.** It reports what is missing versus installed-but-
 unauthenticated, with one command per gap. Some users will want help working through those
-and others will not need any — read the output, offer the next command, take the lead from
+and others will not need any. Read the output, offer the next command, take the lead from
 them. Details: [references/prerequisites.md](references/prerequisites.md).
 
 **Every auth step here is a browser or device flow. No token is ever typed, pasted, or
@@ -76,7 +76,7 @@ where it lands in a transcript. If a user offers you a token, decline and point 
 interactive command.
 
 **Jira has no CLI in this stack.** All Jira work is done by the agent through the Atlassian
-Rovo MCP — a connector explicitly authorized for the project in the current client, not on the command
+Rovo MCP, a connector explicitly authorized for the project in the current client, not on the command
 line. A hook is a bash subprocess and cannot reach the session's MCP, so no hook does any Jira
 network work; the agent does. See [references/ticket-adapters.md](references/ticket-adapters.md).
 
@@ -98,7 +98,7 @@ The reason this skill is an installer rather than a workflow enforcer:
 
 Skill auto-triggering is probabilistic; a hook and a host instruction file are not. So the
 hot path belongs to `CLAUDE.md`/`AGENTS.md` and the walls belong to hooks. Putting the *whole*
-skill in either file would be the anti-pattern — a 500-line instruction file degrades
+skill in either file would be the anti-pattern; a 500-line instruction file degrades
 adherence to everything in it, including the parts you were trying to make reliable.
 Three guardrails keep the block from becoming that:
 
@@ -128,7 +128,7 @@ repo that has no `estate.mode`.**
 | Repo owner | Estate, or the client is fine with our tooling in-tree | The client. Nothing of ours gets committed. |
 | Hooks | `~/.estate/`, armed via `core.hooksPath` | same |
 | Host contract (`CLAUDE.md`, `AGENTS.md`, or both) | **committed** | untracked, in `.git/info/exclude`, symlinked into each worktree |
-| Their husky / hooks | blocked (gate 1b) | **chained** — ours runs, then theirs |
+| Their husky / hooks | blocked (gate 1b) | **chained**; ours runs, then theirs |
 | Prettier | their config, `--write` | `--check` only when they have no config |
 | State/logs | `.git/estate/` | same |
 
@@ -153,15 +153,15 @@ clone, readable from any hook in one call, and diffable by `audit`.
 | `mode` | `native` \| `stealth` | artifact policy; **and the master gate** |
 | `delivery` | `direct` \| `engine` \| `devops-center` | chooses the delivery invariant, managed contract, and hook behavior |
 | `trunk` | branch name | direct/engine: org-synced branch; DevOps Center: topology-derived first landing branch |
-| `host` | `github` \| `gitlab` \| `bitbucket` \| `azure` \| `none` | which merge surface the gate intercepts — [references/host-adapters.md](references/host-adapters.md) |
+| `host` | `github` \| `gitlab` \| `bitbucket` \| `azure` \| `none` | which merge surface the gate intercepts; [references/host-adapters.md](references/host-adapters.md) |
 | `review` | `pr` \| `local` | hosted PR vs. the local review gate. `host=none` forces `local` |
 | `ticket.system` | `github` \| `jira` \| `pattern` \| `none` | [references/ticket-adapters.md](references/ticket-adapters.md) |
-| `ticket.project` | e.g. `SFO` | Jira project key — also narrows the ref pattern to *this* project's keys |
+| `ticket.project` | e.g. `SFO` | Jira project key; also narrows the ref pattern to *this* project's keys |
 | `ticket.remote` | `ours` \| `client` | `client` turns **all** write automation off by default |
 | `ticket.pattern` | regex | what `commit-msg` requires; defaults per system |
 | `format` | `client` \| `check` \| `off` | prettier policy |
 | `pmd` | `block` \| `advise` | PMD gate severity |
-| `squash` | `require` \| `prefer` \| `merge` | hard in native; advisory in stealth when their repo policy differs. `merge` **inverts** it — merge commits required, `--squash`/`--rebase` refused — for a repo whose promotion model cherry-picks merge commits (`-m 1`) and reverts them (`-m 1`) |
+| `squash` | `require` \| `prefer` \| `merge` | hard in native; advisory in stealth when their repo policy differs. `merge` **inverts** it (merge commits required, `--squash`/`--rebase` refused) for a repo whose promotion model cherry-picks merge commits (`-m 1`) and reverts them (`-m 1`) |
 | `protected` | space-separated branches | branches this clone may never merge **into**. Empty by default. Checked before the validate hatch, because "skip the dry run" is not "merge anywhere" |
 | `sync` | `fetch` \| `off` | `fetch` (default) refreshes `origin/<trunk>` at session start and before every deploy, so a shared org + shared branch surfaces "you are behind" instead of a stale deploy. `off` = local-only, no session-start network. Never pulls/merges into the tree |
 | `chainhooks` | path | the project's own hook dir, exec'd after ours |
@@ -222,7 +222,7 @@ coordinator, its Salesforce authentication, test policy, branch protection, and 
   bin/estate-ticket-status       # read-only existing-ticket intake
   templates/                       # host instruction block, hook fragments, PMD ruleset, .forceignore
 
-~/.claude/agents/estate-ac-qa.md # the acceptance-criteria QA agent (a capability, not a wall)
+~/.claude/agents/estate-ac-qa.md # the acceptance-criteria QA agent (a capability rather than a gate)
 ~/.claude/settings.json            # hook entries, jq-merged (no machine-wide deny rules)
 ~/.codex/hooks.json                # parallel Codex hook entries, jq-merged
 <repo>/.git/estate/              # deploy-log, validate-log, hatch-log, approve-log,
@@ -235,7 +235,7 @@ Three of these placements are load-bearing and worth understanding before changi
 **State inside `.git/`.** The predecessor kept logs at `<root>/.claude/.deploy-log`
 and gitignored them. In a client repo that means either committing our bookkeeping to
 their tree or editing their `.gitignore`. `$(git rev-parse --git-common-dir)/estate/`
-is untracked *by construction* — not in any working tree — while still being per-clone
+is untracked *by construction* (not in any working tree) while still being per-clone
 (correct: these logs describe this clone's history against the org) and common across
 worktrees (correct: a worktree's dry run must be visible to the merge gate).
 
@@ -255,7 +255,7 @@ stealth mode adds nothing to anything they will ever see.
 | Direct/engine: `trunk === org`; DevOps Center: service owns stage branches | prevents orphaned deploys and local pipeline bypass | delivery-specific contract + hooks |
 | Shared DevOps Center: integration branch equals the latest successful development-org deployment SHA | prevents parallel agents from branching or validating against a Git baseline that is not true in Salesforce | `estate-devops-shared-status`, `guard-devops-shared.sh`, audit |
 | Ticket first, in the project's own ref format | without it there is no path from an org change back to the reason for it | `commit-msg` |
-| **Never a closing keyword or smart commit** | `fixes #42` closes the ticket at *merge* time, and this loop never closes a ticket on merge (tickets stay open — closure is prod/engine scope). In a client's repo it closes *their* #42 | `guard-closing-keywords.sh` + `commit-msg` |
+| **Never a closing keyword or smart commit** | `fixes #42` closes the ticket at *merge* time, and this loop never closes a ticket on merge (tickets stay open; closure is prod/engine scope). In a client's repo it closes *their* #42 | `guard-closing-keywords.sh` + `commit-msg` |
 | `force-app/` is worktree-only | editing it on trunk breaks the invariant before any deploy | `guard-force-app.sh`, `guard-force-app-bash.sh`, `pre-commit` gate 1 |
 | Never nest worktrees | removing the outer one deletes the inner one's cwd; every later Bash call fails, including `cd /` | `guard-worktree-nesting.sh` |
 | Validate before direct merge or DevOps review handoff | prevents unvalidated source from reaching its landing mechanism | `record-validate.sh`, `guard-pr-merge.sh`, `guard-devops-handoff.sh` |
@@ -265,22 +265,22 @@ stealth mode adds nothing to anything they will ever see.
 | Deploy only changed files; `RunSpecifiedTests` | whole-tree deploys hide what the ticket actually shipped | `guard-sf-deploy.sh` |
 | `start --dry-run`, never `deploy validate` | `validate` is the prod quick-deploy path and rejects `NoTestRun` | `guard-sf-deploy.sh` |
 | Never `--target-org` on local project commands; require the configured control org on `sf devops` | separates the development org from the DevOps Center API org | `guard-sf-flags.sh` |
-| Never retrieve into the **main** tree | silently reverts anything deployed but not pulled back, with no diff anyone read; a linked worktree is allowed — its PR diff catches it | `guard-sf-flags.sh` (gated to managed repos; no machine-wide deny rule) |
+| Never retrieve into the **main** tree | silently reverts anything deployed but not pulled back, with no diff anyone read; a linked worktree is allowed; its PR diff catches it | `guard-sf-flags.sh` (gated to managed repos; no machine-wide deny rule) |
 | Ticket closure is out of the local loop | a sandbox deploy is not "done"; tickets stay open until production (the delivery system's domain). Close only if the user asks | the contract (no gate; deliberately removed) |
 | Never write to a client's tracker unasked | automation editing their project management is not a feature | the contract + `auto-label-deploy.sh` note (`ticket.remote=client`) |
 | Never fight the project's own hooks | re-arming ours while dropping theirs is the same sin, aimed at a client | `chainhooks` + `verify-git-hooks.sh` |
 | Stage-sync commits gate the net WI delta relative to `MERGE_HEAD` | imported stage files are already promoted content, not new WI scope | merge-aware `pre-commit`; compatible chained lint-staged hooks receive the same diff base |
-| `/simplify` before commit | AI quality gate for reuse, architecture, efficiency | **nothing — this one is on you** |
-| Acceptance criteria met, judged against the UI | the code is not its own oracle — verifying behaviour from the source rationalises whatever the source does | judgment, aided by `estate-ac-qa` |
+| `/simplify` before commit | AI quality gate for reuse, architecture, efficiency | **nothing; this one is on you** |
+| Acceptance criteria met, judged against the UI | the code is not its own oracle; verifying behaviour from the source rationalises whatever the source does | judgment, aided by `estate-ac-qa` |
 | User green light | nothing can check this for you | judgment |
 
 These are deliberately unenforced. `/simplify` is a judgment call with no mechanical
-signal — faking it with a marker file would be trivially gamed and would give false
+signal; faking it with a marker file would be trivially gamed and would give false
 confidence. "Acceptance criteria met" is the same shape: a gate on the *existence* of a
 QA artifact would be satisfied by a rubber-stamp comment, so the QA pass is a **capability**
-(`estate-ac-qa` — drives the org, screenshots each criterion, comments evidence to the
-ticket), not a wall. It judges the AC from the running UI, never from the implementation.
-Acceptance criteria are the user's, not the tooling's.
+(`estate-ac-qa`, which drives the org, asserts each criterion against the page text and
+comments evidence to the ticket) rather than a wall. It judges the AC from the running UI, never from the implementation.
+Acceptance criteria belong to the user.
 
 Full hook-by-hook detail, the exit-code contract, and the design rules:
 [references/hooks/README.md](references/hooks/README.md).
@@ -308,7 +308,7 @@ agent*. A `--no-verify` typed in a terminal or clicked in an IDE is invisible to
 
 For a DevOps Center stage-sync merge, `--no-verify` is a last resort only when a chained
 repository hook cannot safely consume the merge-aware diff base. Record the reason and retain
-independent evidence for the net WI delta: file list against `MERGE_HEAD`, focused gates, the full
+independent evidence for the work-item delta: file list against `MERGE_HEAD`, focused gates, the full
 repository suite, and an exact-commit Salesforce dry run. See
 [references/devops-center.md](references/devops-center.md).
 
@@ -330,9 +330,9 @@ Added and modified metadata are retrieved narrowly. An `IsNameObsolete` deletion
 removed deliberately from source because a deleted component cannot be retrieved. The full path
 lives in [references/drift-reconcile.md](references/drift-reconcile.md).
 
-- **`tracking`** — the org is source-tracked (Dev/Dev Pro/scratch). Declares that the
+- **`tracking`**: the org is source-tracked (Dev/Dev Pro/scratch). Declares that the
   reconcile playbook applies here.
-- **`off`** — default.
+- **`off`**: default.
 
 `audittrail` is **retired**. Building directly in a non-source-tracked org (partial/full copy,
 production) is out of scope for this local loop. Pipeline-environment drift remains an
@@ -343,21 +343,21 @@ in source and ready for that delivery system.
 
 ## Related skills
 
-- **`/simplify`** — the AI quality gate (step 3 of the contract).
-- **`estate-ac-qa`** — the acceptance-criteria QA capability shipped with this stack
+- **`/simplify`**: the AI quality gate (step 3 of the contract).
+- **`estate-ac-qa`**: the acceptance-criteria QA capability shipped with this stack
   (step 7). Verifies AC against the running UI, blind to the implementation; delegates
   browser mechanics to `capture-salesforce-screens` and posts its report as a ticket
   comment (GitHub via `gh`, Jira via the Rovo MCP with inline-image evidence),
   respecting `ticket.remote`. Claude installs it to `~/.claude/agents/`; Codex uses
   the shipped `references/agents/estate-ac-qa.md` as the delegated QA prompt.
-- **`capture-requirements`** — how work is intaked: user story + Gherkin AC with a
+- **`capture-requirements`**: how work is intaked: user story + Gherkin AC with a
   named persona. Those AC are what `estate-ac-qa` and step 7 measure against.
-- **`capture-salesforce-screens`** — the headless browser driver `estate-ac-qa` calls
-  to screenshot and assert against the org. The single source of truth for
+- **`capture-salesforce-screens`**: the headless browser driver `estate-ac-qa` calls
+  to run assertions in the org and record page text, never screenshots. The single source of truth for
   Salesforce UI waits and selectors. Wraps the `sfqa` CLI.
-- **`github-issue-manager`** — creating and managing GitHub issues, when
+- **`github-issue-manager`**: creating and managing GitHub issues, when
   `ticket.system=github`.
-- **`operate-salesforce-pipeline`** — everything from the PR into an environment branch upward:
+- **`operate-salesforce-pipeline`**: everything from the PR into an environment branch upward:
   promotion, releases, rollback, freeze recovery. Do not bolt multi-environment
   concerns onto this skill; the invariant here stays one branch and one org, and on
   an engine-managed repo that branch is the dev sandbox. Run its `scripts/init.sh`

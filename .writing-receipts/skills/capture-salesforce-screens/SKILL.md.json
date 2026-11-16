@@ -1,0 +1,36 @@
+{
+  "format": 1,
+  "artifact": "skills/capture-salesforce-screens/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Shell guard that requires the selected tool installation.",
+      "text": ": \"${SFQA_HOME:?Set SFQA_HOME to the selected tool installation}\""
+    },
+    {
+      "kind": "syntax",
+      "reason": "The tool help command.",
+      "text": "node \"$SFQA_HOME/sfqa.mjs\" help"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The dependency check command.",
+      "text": "node \"$SFQA_HOME/sfqa.mjs\" doctor            # checks SF CLI + Chromium"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The clickpath command.",
+      "text": "node \"$SFQA_HOME/sfqa.mjs\" flow --flow acceptance.json"
+    },
+    {
+      "kind": "identifier",
+      "reason": "The placeholder org alias the examples require the caller to replace.",
+      "text": "CONFIRMED_ORG_ALIAS"
+    },
+    {
+      "kind": "identifier",
+      "reason": "The SF CLI command whose output carries a credential.",
+      "text": "`sf org open --url-only`"
+    }
+  ]
+}

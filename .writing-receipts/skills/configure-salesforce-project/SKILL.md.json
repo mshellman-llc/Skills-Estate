@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "artifact": "skills/configure-salesforce-project/SKILL.md",
+  "protected": [
+    {
+      "kind": "identifier",
+      "reason": "Link to the devops-center.md reference, whose path is its label.",
+      "text": "[references/devops-center.md](references/devops-center.md)"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Link to the ticket-adapters.md reference, whose path is its label.",
+      "text": "[references/ticket-adapters.md](references/ticket-adapters.md)"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Link to the init-guide.md reference, whose path is its label.",
+      "text": "[references/init-guide.md](references/init-guide.md)"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Link to the prerequisites.md reference, whose path is its label.",
+      "text": "[references/prerequisites.md](references/prerequisites.md)"
+    }
+  ]
+}

@@ -20,7 +20,6 @@ const {chromium}=require('playwright');
  assert.equal(await page.locator('.skill-row').count(),data.skills.length);
  assert.equal(await page.locator('.skill-row .skill-tag').count(),0);
  assert((await page.locator('.skill-row').first().boundingBox()).y<600);
- await page.screenshot({path:path.join(output,'desktop.png')});
  await page.locator('#more-options > summary').click();assert.equal(await page.locator('#more-options').evaluate(e=>e.open),true);
  fs.writeFileSync(path.join(output,'rendered.html'),await page.content());
  assert.equal(await page.locator('body').evaluate(e=>getComputedStyle(e).fontSize),'15px');
@@ -52,7 +51,6 @@ const {chromium}=require('playwright');
   assert((await page.locator('#panel-instructions .instructions').innerText()).length>100);
   assert(!(await page.locator('#panel-instructions').innerText()).includes('ESTATE-WRITING:'));
   assert(!(await page.locator('#panel-instructions').innerText()).includes('Before writing:'));
-  if(skill.id==='review-writing')await page.screenshot({path:path.join(output,'writing-instructions.png')});
 
   const examples=skill.examples||[];
   assert.equal(await page.locator('#panel-examples .example').count(),examples.length);
@@ -68,7 +66,7 @@ const {chromium}=require('playwright');
   const connections=await page.locator('#panel-connections').innerText();
   assert(!connections.includes('ESTATE-WRITING:'));
   assert(!connections.includes('Before writing:'));
-  if(skill.id==='review-writing'){assert.equal(await page.locator('#panel-connections .connection-context table tbody tr').count(),1);assert(!connections.includes('| ---'));assert(!connections.includes('[Diagnostic toolkit]'));await page.screenshot({path:path.join(output,'writing-connections.png')});}
+  if(skill.id==='review-writing'){assert.equal(await page.locator('#panel-connections .connection-context table tbody tr').count(),1);assert(!connections.includes('| ---'));assert(!connections.includes('[Diagnostic toolkit]'));}
 
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
   await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').isVisible(),false);
@@ -96,10 +94,10 @@ const {chromium}=require('playwright');
  await page.keyboard.press('Escape');
  const chosen=byName('map-sales-process')||byName('prepare-sales-pursuit');
  function byName(name){return data.skills.find(s=>s.id===name)}
- await page.locator(`.skill-row[data-skill="${chosen.id}"]`).click();await page.screenshot({path:path.join(output,'detail.png')});
+ await page.locator(`.skill-row[data-skill="${chosen.id}"]`).click();
 
  if(chosen.mentions.length){await page.locator('#panel-connections [data-skill]').first().click();assert.notEqual(await page.locator('#detail-title').textContent(),chosen.title)}
- await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),19);await page.screenshot({path:path.join(output,'workflows.png')});
+ await page.keyboard.press('Escape');await page.locator('#routes-view').click();assert.equal(await page.locator('.route').count(),19);
  await page.locator('.route > summary').first().click();await page.locator('.route [data-skill]').first().click();assert(await page.locator('#detail').isVisible());await page.keyboard.press('Escape');await page.locator('#browse-view').click();
  // Full instruction search and status counts.
  await page.locator('#full-search').check();await page.locator('#search').fill('ESTATE-WRITING');assert.equal(await page.locator('.skill-row').count(),0);await page.locator('#search').fill('expected-source');assert((await page.locator('.skill-row').count())>0);await page.locator('#reset').click();
@@ -116,11 +114,11 @@ const {chromium}=require('playwright');
  for(const role of ['task','mode','support']){await page.locator('#role-filter').selectOption(role);assert.equal(await page.locator('.skill-row').count(),data.skills.filter(s=>s.catalogRole.kind===role).length)}
  await page.locator('#reset').click();
  // No external requests, mobile overflow, detail layout, and print media.
- await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(output,'mobile.png'),fullPage:false});
+ await page.setViewportSize({width:390,height:844});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));
- await page.locator(`.skill-row[data-skill="${chosen.id}"]`).click();await page.screenshot({path:path.join(output,'mobile-detail.png')});
+ await page.locator(`.skill-row[data-skill="${chosen.id}"]`).click();
  assert(await page.locator('#detail').evaluate(e=>e.scrollWidth<=e.clientWidth));await page.keyboard.press('Escape');
- await page.setViewportSize({width:1440,height:1100});await page.locator('[data-family="0"]').click();await page.emulateMedia({media:'print'});await page.pdf({path:path.join(output,'print.pdf'),format:'Letter',printBackground:true});await page.screenshot({path:path.join(output,'print.png')});
+ await page.setViewportSize({width:1440,height:1100});await page.locator('[data-family="0"]').click();await page.emulateMedia({media:'print'});await page.pdf({path:path.join(output,'print.pdf'),format:'Letter',printBackground:true});
  assert.equal(errors.length,0,errors.join('\n'));assert.equal(requests.length,0,'Offline artifact must not load network resources');
  const report={artifact:input,skills:data.skills.length,counts:data.counts,detailViewsChecked:data.skills.length,checks:['all exact Markdown sources','combined filters','empty/reset',...(preview?['verified complete package ZIP download']:[]),'keyboard activation','inline accordion focus','section shortcut focus','examples section and labels','examples filter','connections','nineteen workflow examples','full instruction search','source filters','390px overflow','print rendering','zero external requests','zero page errors'],errors,requests};
  fs.writeFileSync(path.join(output,'browser-report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));await browser.close();

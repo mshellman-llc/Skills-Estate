@@ -41,23 +41,11 @@ try{
    }
    return bad;
   });if(problems.length)report.failures.push({view:name,overflow:problems});
-  const height=await page.evaluate(()=>document.documentElement.scrollHeight);
-  for(let top=0,index=1;top<height;top+=900,index++){
-   await page.evaluate(y=>window.scrollTo(0,y),top);
-   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-   await page.waitForTimeout(150);
-   const file=name+'-'+index+'.png';await page.screenshot({path:path.join(out,file),fullPage:false});report.views.push(file);
-  }
+  // Record the rendered text at each width for parity review. No image files are written.
+  report.views.push({view:name,width,text:await page.evaluate(()=>document.body.innerText.trim())});
   if(name==='narrow'){
    report.narrowScroll=await page.locator('.table-scroll').evaluate(el=>{el.scrollLeft=el.scrollWidth;return {required:el.scrollWidth>el.clientWidth,position:el.scrollLeft};});
    if(report.narrowScroll.required&&report.narrowScroll.position===0)report.failures.push('Matrix cannot scroll');
-   const top=await page.locator('.scope').evaluate(el=>el.offsetTop);
-   for(let y=top,index=1;y<height;y+=900,index++){
-    await page.evaluate(y=>window.scrollTo(0,y),y);
-    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-    await page.waitForTimeout(150);
-    const file='narrow-scrolled-'+index+'.png';await page.screenshot({path:path.join(out,file),fullPage:false});report.views.push(file);
-   }
   }
  }
  const printPage=await browser.newPage({viewport:{width:1360,height:1000}});

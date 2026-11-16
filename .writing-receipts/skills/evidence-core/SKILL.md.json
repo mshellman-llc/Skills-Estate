@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "artifact": "skills/evidence-core/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The gate command for a solution brief.",
+      "text": "python3 scripts/evidence_core.py path/to/ledger.json solution_brief --output gate-report.json"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The append-only event log check command.",
+      "text": "python3 scripts/ledger_events.py check evidence/evidence-ledger.jsonl"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The event log projection command.",
+      "text": "python3 scripts/ledger_events.py project evidence/evidence-ledger.jsonl \\"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The gate command for a discovery synthesis.",
+      "text": "python3 scripts/evidence_core.py ledger.json discovery_synthesis --output gate-report.json"
+    }
+  ]
+}

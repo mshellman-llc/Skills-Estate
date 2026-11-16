@@ -50,8 +50,8 @@ try {
   report.typography={headingFonts:layout.headingFonts,expectedHeadingStack:layout.headingStack};
   report.failures.push(...layout.problems);
   if(!report.checks.pageContainers)report.failures.push('Unexpected page container count');
-  const pages=page.locator('.page');
-  for(let i=0;i<await pages.count();i++) await pages.nth(i).screenshot({path:destination.replace(/\.pdf$/,`.page-${i+1}.png`),animations:'disabled'});
+  // Record each page's rendered text for parity review. No image files are written.
+  report.pageText=await page.locator('.page').evaluateAll(pages=>pages.map(element=>element.innerText.trim()));
   await page.pdf({path:destination,printBackground:true,preferCSSPageSize:true,displayHeaderFooter:false});
 } catch(error) {
   report.failures.push(error.message);

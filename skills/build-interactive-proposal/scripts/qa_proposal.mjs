@@ -47,7 +47,7 @@ try {
     }else{
       for(const person of v.team)check(v.key+' team '+person.role,body.includes(person.role)&&body.includes(person.allocation));
     }
-    await page.screenshot({path:path.join(output,'version-'+v.key+'.png'),fullPage:true,animations:'disabled'});
+    (report.views??=[]).push({version:v.key,width:page.viewportSize().width,text:body});
     await page.emulateMedia({media:'print'});
     check(v.key+' print hides option controls',!await page.locator('#tabs').isVisible());
     check(v.key+' print hides excluded cards',await page.locator('.item.out').evaluateAll(nodes=>nodes.every(n=>getComputedStyle(n).display==='none')));
@@ -72,7 +72,8 @@ try {
   for(const v of data.versions){
     await page.getByRole('tab',{name:v.name,exact:true}).click();
     check(v.key+' mobile width',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-    await page.screenshot({path:path.join(output,'mobile-'+v.key+'.png'),fullPage:true,animations:'disabled'});
+    check(v.key+' mobile text not clipped',await page.evaluate(()=>[...document.querySelectorAll('h1,h2,h3,p,li,td,th,summary,[role=tab]')].every(el=>!el.getClientRects().length||el.scrollWidth<=el.clientWidth+1||getComputedStyle(el).overflowX!=='hidden')));
+    (report.views??=[]).push({version:v.key,width:390,text:await page.locator('body').innerText()});
   }
   check('no missing images',await page.evaluate(()=>[...document.images].every(i=>i.complete&&i.naturalWidth>0)));
 } catch(error){report.failures.push(error.message);}

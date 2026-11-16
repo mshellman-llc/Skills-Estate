@@ -1,0 +1,36 @@
+{
+  "format": 1,
+  "artifact": "skills/build-interactive-proposal/references/release-gates.md",
+  "protected": [
+    {
+      "kind": "identifier",
+      "reason": "Path to the bundled prose checker.",
+      "text": "`../writing-diagnostics/scripts/prose_check.py`"
+    },
+    {
+      "kind": "identifier",
+      "reason": "Path and flag of the bundled figure tie-out scanner.",
+      "text": "`../writing-diagnostics/scripts/rewrite_scan.py --tie-out`"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The proposal-mode figure tie-out command.",
+      "text": "python3 ../writing-diagnostics/scripts/rewrite_scan.py --tie-out quote_export.json page.html"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The prose gate command.",
+      "text": "python3 ../writing-diagnostics/scripts/prose_check.py page.html --config ../writing-diagnostics/house.json"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The rewrite scan command.",
+      "text": "python3 ../writing-diagnostics/scripts/rewrite_scan.py page.html --quiet"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Playwright wait call in the layout example.",
+      "text": "pg.wait_for_timeout(400)"
+    }
+  ]
+}
