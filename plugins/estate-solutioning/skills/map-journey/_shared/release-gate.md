@@ -18,8 +18,11 @@ job. Packaging checks and a completion report do not establish that behavior.
    Machine schemas and raw quoted evidence need structural and accuracy checks.
 4. **Brand and presentation:** resolve the selected canonical brand profile and
    run `brand-renderer` for styled artifacts. Its colors, typography, assets, and
-   layout rules come from that profile. Render and inspect the actual output;
-   a literal-color scan cannot establish legibility, layout, or completeness.
+   layout rules come from that profile. Render the actual output and check it
+   through its DOM and extracted text with brand-renderer's layout check, at
+   desktop and phone widths; a literal-color scan cannot establish legibility,
+   layout, or completeness. Never take screenshots or save PNG or other raster
+   captures to verify an artifact.
 5. **Quality:** use `review-deliverable` to check the assembled evidence and applicable
    receipts. Resolve failures in the artifact or implementation before release.
    A passing receipt cannot override a visibly broken or incomplete result.

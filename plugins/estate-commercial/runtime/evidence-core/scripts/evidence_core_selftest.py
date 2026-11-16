@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import json
 import sys
 from pathlib import Path
@@ -23,6 +24,46 @@ for filename, artifact_type, status, output in cases:
     passed = result.status == status and result.outputArtifactType == output
     failed = failed or not passed
     print(f"{filename}: observed={result.status}/{result.outputArtifactType} expected={status}/{output} pass={passed}")
+
+# Discovery synthesis: one interview passes when every claim gives its source
+# location and the single-source limit is stated as a gap.
+synthesis = json.loads((ROOT / "fixtures" / "discovery-synthesis-ledger.json").read_text(encoding="utf-8"))
+
+
+def synthesis_case(label: str, ledger: dict, status: str) -> None:
+    global failed
+    result = core.evaluate(ledger, "discovery_synthesis")
+    passed = result.status == status and not result.findings
+    failed = failed or not passed
+    print(f"discovery-synthesis {label}: observed={result.status} expected={status} pass={passed}")
+
+
+synthesis_case("single interview, limit stated", synthesis, "Sufficient")
+
+unstated = copy.deepcopy(synthesis)
+unstated["claims"] = [c for c in unstated["claims"] if c.get("gapKind") != "single_source"]
+synthesis_case("single interview, limit unstated", unstated, "Insufficient")
+
+unlocated = copy.deepcopy(synthesis)
+unlocated["claims"][0].pop("sourceLocations")
+synthesis_case("finding without source location", unlocated, "Insufficient")
+
+open_gap = copy.deepcopy(synthesis)
+open_gap["claims"][4]["closureCondition"] = None
+synthesis_case("open question without closure", open_gap, "Insufficient")
+
+corroborated = copy.deepcopy(synthesis)
+corroborated["claims"][5].update({
+    "statement": "Neither interview covered what the bakery would pay for an ordering tool.",
+    "status": "Unknown", "sourceIds": [], "sourceLocations": [], "gapKind": None,
+    "closureCondition": "Ask about budget in the next owner interview."})
+corroborated["sources"].append({**corroborated["sources"][0], "sourceId": "SRC-002",
+                                "title": "Discovery interview with a delivery driver",
+                                "locator": "fixture://discovery-synthesis/driver-interview",
+                                "interviewees": ["delivery driver"]})
+corroborated["claims"][1]["sourceIds"].append("SRC-002")
+corroborated["claims"][1]["sourceLocations"].append({"sourceId": "SRC-002", "location": "00:02:10"})
+synthesis_case("two interviewees, no limit needed", corroborated, "Sufficient")
 
 opportunity = json.loads((ROOT / "fixtures" / "rich-solution-ledger.json").read_text(encoding="utf-8"))
 opportunity.pop("engagement")

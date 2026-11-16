@@ -12,6 +12,6 @@
 #
 # The browser download is a second, separate step and is roughly 150 MB. Without
 # it, build_field_guide.py still renders and still fails hard on an unresolved
-# palette token; only the screenshot and interaction pass is unavailable, and
+# palette token; only the browser interaction and layout pass is unavailable, and
 # qa_field_guide.py says so plainly rather than dying on an import.
 playwright>=1.40

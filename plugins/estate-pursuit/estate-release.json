@@ -30,7 +30,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "8328061773e5f3caabc7b7ec0f198d1f46e98d8221b0ee1abc558e3330afffb4",
+      "required_sha256": "1c42f1c562eaac75b82327176274e1731b70858014394742a3ef7132bff69e97",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -100,7 +100,7 @@
       "subject": "assess-offering-fit"
     },
     {
-      "required_sha256": "34b73a6f6a6067a43ba28be4f9d530abc1ef4860867b08cb134fd3c93975e973",
+      "required_sha256": "70b305e441151789b1c6ac1dab599cde52fdf9f39007caa6e1097a3bc7edc6e7",
       "status": "review required",
       "subject": "assess-solution-delivery"
     },
@@ -120,17 +120,17 @@
       "subject": "author-style-runtime"
     },
     {
-      "required_sha256": "f86c7c9c898db65a6332a9cd9e5ff884c0aef71b5066feb2c9fd1caeced096fc",
+      "required_sha256": "5f2c5e5461a520661dc83e88aaea46b8e96df8568be7ed7e615310ebe0ff5036",
       "status": "review required",
       "subject": "brand-renderer"
     },
     {
-      "required_sha256": "7e7e98f2bec4b834485629e9dd32f785f95a2a8ec19c09c850622878a24a2bc6",
+      "required_sha256": "12b2f81fa4a8e9bf48c202417500c5e788f5a45704cf2ce1802790badc9af2be",
       "status": "review required",
       "subject": "build-deal-decision-deck"
     },
     {
-      "required_sha256": "a3250943142802fda2303cbd263fa0e66e9f211fe0420ecf1a794334fc89edb7",
+      "required_sha256": "345985b2faba2e4f4dd8a9ea1c577697afd7d4de0e4f7f03573e630bb3861a61",
       "status": "review required",
       "subject": "build-deck"
     },
@@ -140,12 +140,12 @@
       "subject": "build-editorial-chart"
     },
     {
-      "required_sha256": "d91fce79604efe29d8ca8ab0f178ad10d9462b11732deb61a8149194ee649bd6",
+      "required_sha256": "bb593fa5f5c943a1f5df3fc4a21b4950fb968a62c4758f832d8819d6e12dcd1f",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
     {
-      "required_sha256": "670ffb56b2818d0aa7d07890207c422671414240891d59b8984638a707347cb2",
+      "required_sha256": "1443b210b0b27aaac2eff0f0e3a5c21111b30130f0c34f24192d124bf0a3f1da",
       "status": "review required",
       "subject": "build-interactive-proposal"
     },
@@ -175,7 +175,7 @@
       "subject": "capture-requirements"
     },
     {
-      "required_sha256": "52bf1f790973c0ba4709b54598bbe63587eb32e6c394c04d5aa459a1a1ae902b",
+      "required_sha256": "1689292b0bd481bb726bb23ac4f9a8a180eb26ec2ed72d71785441af02a2dd4e",
       "status": "review required",
       "subject": "capture-salesforce-screens"
     },
@@ -185,12 +185,12 @@
       "subject": "check-knowledge-hub"
     },
     {
-      "required_sha256": "56c5d5ddc568971d92c5a47bbeca2066e72c137ad8ad25b293e79de1243e080f",
+      "required_sha256": "a046e8dd209226cf7c289c626dbe3ef41b7837c0a9e9938136d586a32df2a69e",
       "status": "review required",
       "subject": "compare-scope-options"
     },
     {
-      "required_sha256": "9051c7a61822dbf4c8e34e51b29f0a27b01d2fcf990d67b01f85e22d312eba7a",
+      "required_sha256": "222ca955b75ea39dffc20a40b55b9f33da9d9a33dedbe5711135e7ebbe448f54",
       "status": "review required",
       "subject": "configure-salesforce-project"
     },
@@ -250,7 +250,7 @@
       "subject": "estimate-project"
     },
     {
-      "required_sha256": "04bfeb1eb8f9a567973dc4fbcbd1b1b3f9b0c6169d99d8334dee6b210639805c",
+      "required_sha256": "2ad935ebfa562985ef74600004e8ee847b0b21293fa6b86639997df6abc86f12",
       "status": "review required",
       "subject": "evidence-core"
     },
@@ -380,7 +380,7 @@
       "subject": "prepare-job-application"
     },
     {
-      "required_sha256": "f3187df89177c487ab018ab447e11a7ed87754e704a0c42125b6ed7aad12ee16",
+      "required_sha256": "6d717149b1a4b9c3bef4a93ca391243f2fa488c43aab86b90f65e6f7d9ee7a1a",
       "status": "review required",
       "subject": "prepare-sales-pursuit"
     },
@@ -420,7 +420,7 @@
       "subject": "release-skill-package"
     },
     {
-      "required_sha256": "1073a5e967686bb66c6278014ede22eb5b83ad28d3ac11c171694dadfa2eb215",
+      "required_sha256": "6b3fb62a14f4bb10decf8e771456d11e896a08fe8b24794403dc04cd61523e71",
       "status": "review required",
       "subject": "render-offering-brief"
     },
@@ -435,7 +435,7 @@
       "subject": "review-deal-economics"
     },
     {
-      "required_sha256": "8570592775956ff21b2411a310344460671fe912cf515110441310515d7910a0",
+      "required_sha256": "740aade674008cfdda7113eca1aa24a1f026d7581662c4e22007b0c53a8b84e7",
       "status": "review required",
       "subject": "review-deliverable"
     },
@@ -465,7 +465,7 @@
       "subject": "simplify-code"
     },
     {
-      "required_sha256": "308a8050ae675f8476570071996e317314a8987ede6128e7f4234db26d0985d8",
+      "required_sha256": "4768c7c52d83be679d0beb055061d32641bd0172bbcdeb43fb96f0244e73cb78",
       "status": "review required",
       "subject": "specify-implementation"
     },
@@ -475,7 +475,7 @@
       "subject": "start-delivery"
     },
     {
-      "required_sha256": "ee66d4e2f0e4879156f4e87e060102d4ca5f9dbadb82e25083a79597497a7ee0",
+      "required_sha256": "e5e5b3449fd6d9b3edb4a75ebea5473a95d632b76d3aba3ea1cef76c6d6e0d3a",
       "status": "review required",
       "subject": "synthesize-discovery"
     },
@@ -510,7 +510,7 @@
       "subject": "work-in-github-repository"
     },
     {
-      "required_sha256": "e6b80cb73bdedf55c90f2fbc67a3717a24ba100fedada3f1319215895596ed0e",
+      "required_sha256": "2e82ff3b0942f7bfe4025412ad3964f1f366c3c865e13a74405e996bd9ca3e76",
       "status": "review required",
       "subject": "write-architecture-reference"
     },
@@ -530,7 +530,7 @@
       "subject": "write-portfolio-case-study"
     },
     {
-      "required_sha256": "7f82904fac9716645280a7b635929e65ffe320fefc27751bbf8b7fd98b1221ce",
+      "required_sha256": "98f4b36cb9282086f93f60df3f2e71d092d2fce043617e9f6b627e4bc69022f1",
       "status": "review required",
       "subject": "write-statement-of-work"
     },
@@ -545,6 +545,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "cc040cc7079b62dfa289a04975758f6b1eed701bb668ba29a64cce9b0cf8e069",
+  "source_sha256": "a1abd7b18e917585d349b003b95d6b13735d29c2d88df989f8a7a55c0798bd22",
   "status": "owner-published"
 }

@@ -10,7 +10,7 @@ Run this module's relative commands from the directory containing this WORKFLOW.
 # Brand renderer
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [`readout-brief.md`](_runtime/writing-diagnostics/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [`readout-brief.md`](_runtime/writing-diagnostics/references/registers/readout-brief.md). Read both before drafting.**
 
 Render the requested output using the selected brand profile while preserving its
 meaning in the final format. Use the canonical [brand policy](references/estate/brand.md)
@@ -113,18 +113,24 @@ pass authorizes release.
    This is lexical and structural support only: it cannot see computed CSS,
    clipping, off-canvas text, print visibility, or whether a qualifier sits with
    its claim unless you scope it with a selector.
-2. **Visual gate** (human or model, mandatory, no script). Inspect the rendered
-   views slide by slide and page by page. Confirm nothing is clipped, hidden,
-   off-canvas, or visually detached from its qualifier. A `requiredViews` list
-   raises this reminder; the flag is not a substitute.
+2. **Visual gate** (`scripts/layout_check.cjs`, then reading, mandatory).
+   Read layout from the rendered DOM at desktop and phone widths: sideways
+   scroll, text past the viewport, clipped text, text contrast from computed
+   colors, and whether every required phrase and qualifier is visible text.
+   Then read the extracted text view by view and page by page and confirm
+   nothing is hidden or detached from its qualifier. Never take screenshots or
+   save PNG or other raster captures to verify an artifact; the gate writes no
+   image files. For a deck or PDF, use its extracted text and the layout
+   checks its renderer provides. A `requiredViews` list raises this reminder;
+   the flag is not a substitute.
 3. **Prose gate** (the bundled `writing-diagnostics` runtime plus a reading pass). Run the
    checker at the absolute `prose_check` path returned by runtime preflight. Its
    config sits at the prose runtime root as `house.json`.
    The reading pass catches the cadence a matcher cannot. See "Voice" below.
 4. **Brand gate** (`scripts/brand_check.py`). Palette, borders, radii, type,
    assets, and the accessibility floor. Reads colors from the selected profile through `brand/tokens.py`,
-   never from prose. The deterministic half of the visual gate; it does not
-   replace looking at the thing. It gates identity, not layout: footer placement
+   never from prose. With the layout check, the deterministic half of the
+   visual gate; neither replaces reading the rendered text. It gates identity, not layout: footer placement
    and slide composition come back as review flags. See "Token-backed brand
    checks" below.
 
@@ -147,7 +153,9 @@ Repair supported scanner findings, then read the complete result using Writing I
    `house.json` beside that runtime's `scripts/` directory.
    Fix every finding and rerun until the checker reports clean.
 6. Brand gate: `python3 scripts/brand_check.py artifact.html`. Fix every failure.
-7. Do the visual gate and the voice reading pass by eye.
+7. Visual gate: `node scripts/layout_check.cjs artifact.html --manifest manifest.json`.
+   Fix every failure, read its extracted text, then do the voice reading
+   pass.
 8. Write the release note dispositions. Then ship.
 9. Hand the gated artifact back to its owner. Delivery and publishing sit
    outside this skill.
@@ -157,8 +165,9 @@ Run the parity gate again after any prose fix. A voice edit can silently break a
 
 ## Scripts
 
-Every script runs on `python3` with the standard library. Only
-`extract_pptx.py` needs `python-pptx` (`pip install -r scripts/requirements.txt`).
+Every Python script runs on `python3` with the standard library. Only
+`extract_pptx.py` needs `python-pptx` (`pip install -r scripts/requirements.txt`),
+and only `layout_check.cjs` needs Node and Playwright.
 No script in this skill touches the network. The parity gate parses HTML
 and resolves selectors through `html_dom.py`, a local module, so it still runs on
 a mount where nothing can be installed.
@@ -180,6 +189,10 @@ a mount where nothing can be installed.
 - `scripts/extract_pptx.py deck.pptx [--html out.html] [--json out.json]`
   Table-aware PPTX to HTML transcript for the gates only. Never substitutes for
   the visual gate.
+- `scripts/layout_check.cjs artifact.html [--manifest m.json] [--widths 1280,390] [--json out.json]`
+  The visual gate's DOM reader. Needs Node and Playwright with Chromium and uses
+  `browser_launch_policy.cjs`. It exits 0 on a pass, 1 on a failure and 2 when no
+  browser is available (report the visual gate pending). Writes only the JSON report.
 Each script has a selftest next to it (`*_selftest.py`). Run them after any edit;
 each prints observed versus expected and exits nonzero on a mismatch:
 
@@ -188,6 +201,7 @@ python3 scripts/parity_audit_selftest.py
 python3 scripts/brand_check_selftest.py
 python3 scripts/palette_selftest.py
 python3 scripts/extract_pptx_selftest.py
+python3 scripts/layout_check_selftest.py
 ```
 
 The bundle carries a local runtime for both dependencies. They stay authored and
@@ -208,7 +222,7 @@ artifact structure.
 
 ## Brand canon
 
-The [brand policy](references/estate/brand.md) is the neutral authority and defines
+The brand policy linked above is the neutral authority and defines
 how to select a project profile. Read the selected profile before rendering.
 Keep visual values there rather than copying them into a skill's instructions.
 
@@ -240,14 +254,15 @@ not preserve a former company's preferences.
 
 The checker inspects literal color values and document XML. It cannot prove
 computed CSS, font availability in a viewer, or complete visual accessibility.
-Inspect the rendered output and confirm contrast and legibility before release.
+Run `scripts/layout_check.cjs` for computed contrast and legibility before
+release; it reads the DOM and writes no image files.
 An authoritative profile establishes where values came from; it does not prove
 that the renderer applied them correctly.
 
 ## Voice and money
 
-Writing-integrity governs prose review. The internal `writing-diagnostics` module carries
-the diagnostic engine; this rendering library supplies no competing voice.
+Writing-integrity governs prose review, with its diagnostic engine in the
+`writing-diagnostics` module; this rendering library supplies no competing voice.
 Construction patterns expose the tell. The catalog covers em dashes, buzzword
 vocabulary, the `not just X, but Y` flip, trailing "-ing" benefit clauses,
 throat-clearing openers, rule-of-three triads for rhythm, plus monotone sentence

@@ -115,14 +115,14 @@ and release boundaries; a file count creates no additional approval gate.
 
 ## Persistence completion check
 
-Before delivering a specification that saves records, explicitly state how a later authorized read reloads the durable record and how record ownership and context access are checked. Cover a fresh visit as well as recovery immediately after a timeout. If the existing read path or lifecycle is unknown, name it as an uninspected dependency and specify the observable readback requirement; do not invent a new endpoint or deletion policy as established behavior. Include an acceptance case for that later read, stable identity and denied access. This requirement describes data behavior and does not require a UI mockup.
+Before delivering a specification that saves records, explicitly state how a later authorized read reloads the durable record and how record ownership and context access are checked. Cover a fresh visit as well as recovery immediately after a timeout. If the existing read path or lifecycle is unknown, name it as an uninspected dependency and specify the observable readback requirement; do not invent a new endpoint or deletion policy as established behavior. Include an acceptance case for that later read, stable identity and denied access. This requirement describes data behavior; it needs no UI mockup.
 
 ## Make acceptance executable
 
 For each criterion, name the initiating action and observable result. Specify
 the exact verification method. State the expected behavior for the main path and material
-failures. A screenshot can prove a rendered state; persistence needs a record
-readback or an equivalent test. A schema check cannot prove a complete user task.
+failures. A DOM or visible-text assertion can prove a rendered state; never
+specify a screenshot. Persistence needs a record readback or an equivalent test. A schema check cannot prove a complete user task.
 
 Select test and build commands from the current repository's documentation and
 package scripts. Do not prescribe npm, TypeScript, Vitest or Next.js when the

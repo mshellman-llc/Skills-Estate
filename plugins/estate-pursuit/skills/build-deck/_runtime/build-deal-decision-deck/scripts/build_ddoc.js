@@ -318,7 +318,7 @@ function main() {
     console.log(`  slides ${m.slides.length + 1}`);
     console.log(`  warn   ${warns.length}`);
     console.log(`  built  ${out}`);
-    console.log("  Next: validate.py, then rasterize and run the visual gate. Do not ship on a clean build alone.");
+    console.log("  Next: validate.py, then extract_slide_text.py --layout and the visual gate. Do not ship on a clean build alone.");
   }).catch((e) => die(e.message));
 }
 

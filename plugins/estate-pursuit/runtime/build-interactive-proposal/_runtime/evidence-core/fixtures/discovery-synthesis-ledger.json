@@ -1,0 +1,158 @@
+{
+  "ledgerVersion": "0.1.0",
+  "asOf": "2026-11-10T15:00:00Z",
+  "context": {
+    "clientId": "client-harbor-bakery",
+    "clientName": "Harbor Lane Bakery (synthetic)",
+    "scopeType": "opportunity",
+    "contextId": "opp-2026-harbor-ordering",
+    "opportunityId": "opp-2026-harbor-ordering",
+    "engagementId": null,
+    "contractId": null
+  },
+  "sources": [
+    {
+      "sourceId": "SRC-001",
+      "sourceType": "meeting_transcript",
+      "title": "Discovery interview with the operations manager",
+      "authority": 70,
+      "observedAt": "2026-11-10T15:00:00Z",
+      "effectiveAt": "2026-11-10T15:00:00Z",
+      "supersedes": [],
+      "locator": "fixture://discovery-synthesis/ops-manager-interview",
+      "notes": "One interview with one client speaker.",
+      "interviewees": [
+        "operations manager"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "CLM-001",
+      "statement": "Wholesale orders arrive by phone, email and text, and the operations manager re-keys each one into a spreadsheet before the 4 a.m. bake plan.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-10T15:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "findings"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null,
+      "sourceLocations": [
+        {
+          "sourceId": "SRC-001",
+          "location": "00:03:12-00:04:40"
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-002",
+      "statement": "Missed or duplicated wholesale orders cause a short or wasted bake about twice a week; rated high because the speaker called it the problem that wakes her up.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-10T15:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "pain points"
+      ],
+      "confidenceRationale": "Repeated and blocking in the speaker's own words.",
+      "closureCondition": null,
+      "owner": null,
+      "sourceLocations": [
+        {
+          "sourceId": "SRC-001",
+          "location": "00:07:55-00:09:02"
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-003",
+      "statement": "When a cafe changes its standing order late in the day, I want the change to reach the bake plan without re-keying, so I can bake the right amount by 4 a.m.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-10T15:00:00Z",
+      "loadBearing": false,
+      "domains": [
+        "job statements"
+      ],
+      "confidenceRationale": "The speaker states the situation and the outcome in her own words.",
+      "closureCondition": null,
+      "owner": null,
+      "sourceLocations": [
+        {
+          "sourceId": "SRC-001",
+          "location": "00:11:20-00:12:05"
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-004",
+      "statement": "Verbatim, operations manager: \"I'm the database. If I'm sick, nobody knows what to bake.\"",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-10T15:00:00Z",
+      "loadBearing": false,
+      "domains": [
+        "verbatims"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null,
+      "sourceLocations": [
+        {
+          "sourceId": "SRC-001",
+          "location": "00:09:31"
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-005",
+      "statement": "Whether the three largest cafe accounts would enter orders themselves is unconfirmed.",
+      "status": "Unknown",
+      "sourceIds": [],
+      "asOf": "2026-11-10T15:00:00Z",
+      "loadBearing": false,
+      "domains": [
+        "open questions"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": "Ask the three largest accounts in the next round of interviews.",
+      "owner": "research lead"
+    },
+    {
+      "claimId": "CLM-006",
+      "statement": "Every finding rests on one interview with one speaker; no second account, role or session corroborates it.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-10T15:00:00Z",
+      "loadBearing": false,
+      "domains": [
+        "gaps"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": "Interview a second role, such as a delivery driver, and one cafe account.",
+      "owner": null,
+      "sourceLocations": [
+        {
+          "sourceId": "SRC-001",
+          "location": "whole transcript"
+        }
+      ],
+      "gapKind": "single_source"
+    }
+  ],
+  "conflicts": [],
+  "coverage": []
+}

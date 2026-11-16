@@ -9,7 +9,7 @@ Run this module's relative commands from the directory containing this WORKFLOW.
 # Render offering brief
 
 > **Before writing: [`build-card.md`](../../_shared/build-card.md) plus
-> [`readout-brief.md`](../writing-diagnostics/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [`readout-brief.md`](../writing-diagnostics/references/registers/readout-brief.md). Read both before drafting.**
 
 Turns one playbook into two branded PDFs, using the same visual system every time:
 
@@ -51,7 +51,7 @@ python scripts/render_playbook.py --md CATALOG.md --entry 01 --out ./pdfs
 python scripts/render_playbook.py --md CATALOG.md --all --out ./pdfs
 ```
 
-**Rich, from a JSON spec.** Supply a spec to light up the extra components: qualifier/disqualifier boxes, talking-tracks table, a delivery bar, numbered steps, Positioning/Two-gears callouts, an external kicker, subtitle, and a labelled two-column band with a centered note. Use this for a flagship offering you want to look like the hand-built exemplar.
+**Rich, from a JSON spec.** A spec adds the extra components: qualifier/disqualifier boxes, talking-tracks table, a delivery bar, numbered steps, callouts for Positioning/Two-gears, an external kicker, subtitle, and a labelled two-column band with a centered note. Use it for a flagship offering that should match the hand-built exemplar.
 
 ```bash
 python scripts/render_playbook.py --json spec.json --out ./pdfs --prefix "01-"
@@ -77,7 +77,7 @@ The JSON schema and the full field-to-slot mapping are in `references/field-mapp
 2. Run the dependency preflight and select the brand profile.
 3. Use `--md` for standard entries or `--json` for the richer components. Read [field-mapping.md](references/field-mapping.md) before authoring JSON.
 4. Render into a new, empty attempt directory. Strict parsing rejects unknown labels and required-content gaps. Source HTML permits only inline emphasis; scripts, images, arbitrary attributes, and resource loads are rejected.
-5. Inspect the saved HTML, PDF, page images, and checks. The browser checks page bounds and footer overlap; `pypdf` checks the actual PDF page count. Render the PDF pages to images and inspect every page before delivery.
+5. Inspect the saved HTML, PDF, and checks. The browser checks page bounds, clipping and footer overlap from the DOM and records each page's text; `pypdf` checks the actual PDF page count. Read every page's extracted text before delivery. Never render pages to images or save screenshots.
 6. Compare the PDF text with the source: scope, exclusions, audience, delivery steps, quantities, and contact details. Parser tests alone do not establish an acceptable deliverable.
 7. Deliver the two requested PDFs, or the requested single variant. Retain the source, all attempts, checks, and manifest. A failed render can leave a PDF for diagnosis; its presence is not a passing result.
 

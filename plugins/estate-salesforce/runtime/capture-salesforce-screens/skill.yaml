@@ -1,8 +1,9 @@
 schema_version: 1
 name: capture-salesforce-screens
-display_name: SF Headless Screenshot
-summary: Drive the sfqa CLI to capture headless screenshots and run clickpath assertions
-  against a Salesforce org, authenticated off the SF CLI with no credential exposure.
+display_name: SF Headless Page Check
+summary: Drive the sfqa CLI to run headless clickpath assertions and record visible
+  page text in a Salesforce org, with no screenshots, authenticated off the SF CLI
+  with no credential exposure.
 status: active
 tier: situational
 version: 1.0.0
@@ -15,13 +16,14 @@ runtimes:
 - claude-ai
 - cowork
 triggers:
-- Drive the sfqa CLI to capture headless screenshots and run clickpath assertions
-  against a Salesforce org. No interactive login, no credential exposure. Trigger
-  when you need to capture what a Salesforce page looks like without a human watching,
-  after deploying UI-affecting metadata and needing verification evidence, when
-  estate-ac-qa needs its browser driver, or when a ticket needs screenshot proof
-  of a rendered page. Do not trigger for interactive browser exploration (use
-  sf-browser-automation) or for non-Salesforce pages.
+- Drive the sfqa CLI to run headless clickpath assertions against a Salesforce org
+  and record each page's visible text, with no screenshots or image files. No
+  interactive login, no credential exposure. Trigger when you need to verify what
+  a Salesforce page shows without a human watching, after deploying UI-affecting
+  metadata and needing verification evidence, when estate-ac-qa needs its browser
+  driver, or when a ticket needs proof that a value rendered. Do not trigger for
+  interactive browser exploration (use sf-browser-automation) or for non-Salesforce
+  pages.
 exclusions: []
 inputs:
 - name: task_context

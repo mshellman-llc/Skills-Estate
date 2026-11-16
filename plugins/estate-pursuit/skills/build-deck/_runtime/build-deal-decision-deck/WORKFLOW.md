@@ -10,24 +10,24 @@ Run this module's relative commands from the directory containing this WORKFLOW.
 # Build deal decision deck
 
 > **Before writing: [`build-card.md`](../../_shared/build-card.md) plus
-> [`deck.md`](../writing-diagnostics/references/registers/deck.md). Inputs, not a final pass.**
+> [`deck.md`](../writing-diagnostics/references/registers/deck.md). Read both before drafting.**
 
 The DDOC is the Deal Decision deck: a client-facing PPTX that runs immediately before the proposal. Its job is getting the client on record accepting a boundary before the provider contracts to it.
 
-"Deal Desk document" and "discussion document" are retired names for this same artifact. If either surfaces, build the Deal Decision deck described here.
+"Deal Desk document" and "discussion document" are retired names for this same artifact. If either surfaces, build the DDOC described here.
 
 ## The discipline
 
 Copy approved first, then built. Rendering after approval is cheap; re-rendering after rejection is not. Rejected decks fail on copy, not on layout.
 
-The gate that enforces this is `build_ddoc.js --check`. It runs the full preflight without rendering, so the copy can be gated in any environment, including ones where the renderer cannot be installed. Run it at the end of Phase 1 and again at Phase 4.
+The gate that enforces this is `build_ddoc.js --check`. It runs the full preflight without rendering, so the copy is gated even in an environment without the renderer. Run it at the end of Phase 1 and again at Phase 4.
 
 ## Phase 0: pin the mode and the source
 
 **Mode is a scope fact, not an authoring preference.** It follows from the option count.
 
-- **Decision mode.** The client is choosing between options. One deck covering all of them, never one deck per option. Contrast is the mechanism: a client shown one option evaluates it against doing nothing, which is always cheaper. Two or three options. Never four.
-- **Confirmation mode.** One option. Same skeleton, comparison replaced by boundary confirmation. A single-option playbook still gets a DDOC, because the artifact's job is the boundary, not the comparison.
+- **Decision mode.** The client is choosing between options. One deck covering all of them, never one deck per option. Contrast is the mechanism: a client shown one option evaluates it against doing nothing, which is always cheaper. Use two or three options and never four.
+- **Confirmation mode.** One option. Same skeleton, comparison replaced by boundary confirmation. A single-option playbook still gets a DDOC: the artifact's job is the boundary, which needs no comparison.
 
 Then pin:
 
@@ -39,9 +39,9 @@ Do not proceed until the mode, audience, source, and any existing draft are pinn
 
 ## Phase 1: build the manifest
 
-The manifest is JSON, not a deck. Schema and both skeletons are in `ddoc-patterns.md`. Populate from the quote and the source documents.
+The manifest is JSON; the deck comes later. Schema and both skeletons are in `ddoc-patterns.md`. Populate from the quote and the source documents.
 
-Flag anything inferred with `[FLAG: reason]`. Never fill a gap with a plausible-sounding projection. The builder refuses to render an unresolved flag, which is deliberate.
+Flag anything inferred with `[FLAG: reason]`. Never fill a gap with a plausible-sounding projection. The builder will not render an unresolved flag, by design.
 
 Gate the manifest before showing it to anyone:
 
@@ -61,18 +61,18 @@ python3 ../writing-diagnostics/scripts/prose_check.py extracted.txt --config ../
 
 Exit code 0 is a pass, 1 is a fail. Report the counts the scanner prints, never an adjective. "Clean" is not a finding; "0 fail, 2 warn" is.
 
-Then run a figure tie-out against the quote. A figure mismatch and a section symbol are blockers and must clear before Phase 4.
+Then run a figure tie-out against the quote. A figure mismatch and a section symbol are blockers; clear them before Phase 4.
 
 ## Phase 3: slide-by-slide review
 
-One slide at a time. Never batch. For each: present the copy as it will appear, surface the Phase 2 flags for that slide, propose a rewrite with what changed and why, and wait. Approved moves on; edit requested is applied and re-presented; deferred is flagged and must clear before Phase 4.
+Review one slide at a time and never batch. For each: present the copy as it will appear, surface the Phase 2 flags for that slide, propose a rewrite with what changed and why, and wait. Approved moves on; edit requested is applied and re-presented; deferred is flagged and must clear before Phase 4.
 
-Worked before-and-after pairs for every failure mode below are in `examples.md`. Read it before proposing a rewrite; it shows the accepted fix rather than describing it.
+`examples.md` pairs a before and an after for every failure mode below. Read it before proposing a rewrite; it shows the accepted fix rather than describing it.
 
 Rules applied during review, beyond the scanner:
 
 - Every body line is a complete declarative sentence. Fragments are a hard fail.
-- Headers carry the slide's point, not a label. "Three versions, one decision" rather than "Overview".
+- Headers carry the slide's point. "Three versions, one decision" rather than "Overview".
 - Colon constructions on body lines are almost always wrong. A label earns one; a sentence rarely does.
 - Symmetry is broken by wording, not truncation. Three cards opening "Everything in Tier 1 plus" are rewritten specifically for what each does.
 - Assumptions are framed as the conditions under which the price holds, not as fine print. That framing is what makes the Change Order conversation survivable.
@@ -87,9 +87,9 @@ node scripts/build_ddoc.js manifest.json --check          # gate: preflight only
 node scripts/build_ddoc.js manifest.json -o OUT.pptx      # build once the gate passes
 ```
 
-Then rasterize and inspect every slide for overflow, leftover placeholder text, and figure drift. Report what was checked, not that it looks good. All three release gates need a written disposition before delivery.
+Then run `python3 scripts/extract_slide_text.py OUT.pptx --layout` for shapes past the slide edge, text that likely overflows its frame, and leftover placeholder text, and `--figures` for figure drift against the quote. Read the extracted text of every slide. Never rasterize slides or save slide images. Report what was checked, not that it looks good. All three release gates need a written disposition before delivery.
 
-The builder refuses to render on a preflight failure. It checks skeleton presence and order, option count, exactly one recommended option, identical section sets across option blocks, word-count parity across options, evidence classes on the heard slide, figure-to-quote-field mapping against `quote_snapshot`, a declared profile logo that exists and is readable, em dashes, the section symbol, unresolved flags, and line budgets. Fix the manifest, not the deck.
+The builder refuses to render on a preflight failure. It checks skeleton presence and order, option count, exactly one recommended option, identical section sets across option blocks, word-count parity across options, evidence classes on the heard slide, figure-to-quote-field mapping against `quote_snapshot`, a declared profile logo that exists and is readable, em dashes, the section symbol, unresolved flags, and line budgets. Fix the manifest and let the builder regenerate the deck.
 
 ## The heard slide carries evidence classes
 
@@ -118,7 +118,7 @@ any rendering.
 - Does not author scope language. Scope comes from the quote or the user; this audits and cleans it.
 - Writing review belongs to review-writing; the bundled internal diagnostic tools support that review.
 - Does not build the SOW. That is `write-statement-of-work`.
-- Authors and builds the DDOC: copy approval, then the PPTX build. Copy approval and the slide-copy editorial rules both live in this skill; the per-slide-type editorial rules are in `references/slide-copy-patterns.md`.
+- Owns the DDOC from copy approval through the PPTX build. Copy approval and the slide-copy editorial rules both live in this skill; the per-slide-type editorial rules are in `references/slide-copy-patterns.md`.
 
 ## Running unattended
 
@@ -145,12 +145,11 @@ The **renderer** needs `pptxgenjs` (`npm install pptxgenjs`). Where the npm regi
 
 The diagnostic commands (`prose_check.py`, `house.json`) remain in the bundled internal `writing-diagnostics` runtime. Use Writing Integrity for review; do not install a separate Prose Pass skill.
 
-PPTX validation and rasterization for the visual gate are environment-specific. Use the host's presentation skill and its documented render-and-verify workflow (for example, the Claude `pptx` skill or the Codex `presentations` skill). If neither is available, substitute an equivalent validation and rasterization step and state which one was used in the release note. Do not claim the visual gate passed without naming the mechanism that rendered the slides.
+PPTX validation for the visual gate reads the file itself. Use `extract_slide_text.py --layout` and the host's presentation skill for structural validation (for example, the Claude `pptx` skill or the Codex `presentations` skill), and skip any thumbnail or rasterize step those skills offer. The layout check estimates text fit from font size and frame geometry; record a likely overflow as a finding to fix or dispose. Do not claim the visual gate passed without naming the checks that ran.
 
 ## Release gate (required)
 
-Before you deliver, run the gate. This is a required step, not a suggestion, and
-not something a reviewer does later. Full spec in
+Before you deliver, run the gate. It is required. Full spec in
 [`release-gate.md`](../../_shared/release-gate.md).
 
 1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For

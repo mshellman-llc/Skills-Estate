@@ -12,7 +12,7 @@ Source facts constrain what you can claim; they do not all belong in the finishe
 
 Restore the audience’s actual purpose across copy, titles, diagrams, UI and interactions. Do not organize the result around denying the old mistake, explaining the revision or describing what the artifact includes. Read it without chat history: remove anything the audience needs only because the AI got it wrong. Explain corrections separately when asked; retain notices the reader needs to act.
 
-Before delivery, compare the finished content against the source and request, compute any totals, inspect the rendered result when layout matters, and verify the destination when a write was requested. State the actual layer reached: prepared locally, installed, committed, pushed, published, or verified in the destination.
+Before delivery, compare the finished content against the source and request, compute any totals, inspect the rendered result through its DOM and page text when layout matters, and verify the destination when a write was requested. State the actual layer reached: prepared locally, installed, committed, pushed, published, or verified in the destination.
 
 ## Choose visuals and interactions for the reader's task
 
@@ -30,7 +30,7 @@ Use hierarchy, alignment and space to distinguish the main explanation from supp
 
 Resolve visual instructions before building. The user's current request and selected project or workspace profile take precedence over a skill's older visual defaults. A component kit supplies tokens and reusable primitives, not a required page composition. When the user rejects the UI/UX or asks for a redesign, reconsider structure and interaction rather than applying a polish-only rule to preserve the rejected layout. Name a genuine instruction conflict and the chosen resolution; do not attribute a failure to an unloaded skill.
 
-Evaluate content accuracy, functional behavior and UI/UX separately. For a UI/UX repair, inspect the rendered overview and meaningful changed states at desktop and narrow widths, including keyboard navigation. Compare how the reader finds, understands and uses the content with the supplied examples. Record the agent's assessment separately from the user's acceptance. Working controls, token compliance and clean tests do not make an artifact an approved design reference.
+Evaluate content accuracy, functional behavior and UI/UX separately. For a UI/UX repair, inspect the rendered overview and meaningful changed states at desktop and narrow widths through the DOM and extracted text, including keyboard navigation. Never take screenshots or save PNG or other raster captures to verify work; an image is kept only when it is the requested deliverable. Compare how the reader finds, understands and uses the content with the supplied examples. Record the agent's assessment separately from the user's acceptance. Working controls, token compliance and clean tests do not make an artifact an approved design reference.
 
 ## Verify before agreeing or assigning responsibility
 

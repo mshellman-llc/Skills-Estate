@@ -1,6 +1,6 @@
 {
   "registryVersion": "0.1.0",
-  "compatibilityRule": "Preserve nine artifact names. One-Pager and Overview share the offering_communications adapter but remain distinct output contracts and depth modes.",
+  "compatibilityRule": "Preserve the ten artifact names. One-Pager and Overview share the offering_communications adapter but remain distinct output contracts and depth modes.",
   "artifacts": [
     {
       "artifactType": "one_pager",
@@ -39,6 +39,22 @@
       "insufficientOutput": "Discovery readiness gap memo",
       "hardFails": ["generic questionnaire", "re-asking confirmed facts", "unknown presented as fact", "questions not ranked by decision impact", "template substitution"],
       "referenceComponents": ["Synthetic finance discovery brief pattern"]
+    },
+    {
+      "artifactType": "discovery_synthesis",
+      "adapter": "discovery_synthesis",
+      "decisionJob": "Report what discovery sessions established, with every finding traced to its place in the source, so the team can act on sourced pain points and jobs without overstating how widely they hold.",
+      "primaryAudience": ["product or research lead", "sales lead", "solution architect", "delivery lead"],
+      "requiredDomains": ["findings", "pain points", "job statements", "verbatims", "open questions", "gaps"],
+      "gapDomains": ["open questions", "gaps"],
+      "sourceLocationRequired": true,
+      "singleSourceLimit": {"minIndependentSources": 2, "gapDomain": "gaps", "gapKind": "single_source"},
+      "passRule": "Passes when every required domain has a claim, every claim in those domains gives a source location for each source it cites, each open question or gap states what would close it, and a synthesis that rests on one source or one interviewee states that limit as a gaps claim with gapKind single_source. One source or one interviewee alone is not a failure.",
+      "terminalIfInsufficient": true,
+      "fullOutput": "Discovery synthesis",
+      "insufficientOutput": "Discovery synthesis readiness gap memo",
+      "hardFails": ["finding without a source location", "invented or composite verbatim", "paraphrase presented as a quotation", "one person's view presented as a shared pattern", "single-source limit not stated", "job statement without a sourced outcome"],
+      "referenceComponents": ["Synthetic single-interview discovery synthesis fixture"]
     },
     {
       "artifactType": "rom",

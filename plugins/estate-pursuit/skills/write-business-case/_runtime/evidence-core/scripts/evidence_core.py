@@ -145,6 +145,9 @@ class EvidenceCore:
                     findings.append(Finding("error", "LOAD_BEARING_OWNER", "Load-bearing Unknown or Contested claims need an owner", f"claims.{cid}.owner"))
             if not claim.get("domains"):
                 findings.append(Finding("error", "CLAIM_DOMAIN", "Every claim must map to at least one domain", f"claims.{cid}.domains"))
+            for entry in claim.get("sourceLocations", []):
+                if entry.get("sourceId") not in source_ids:
+                    findings.append(Finding("error", "CLAIM_LOCATION_SOURCE", f"Source location names {entry.get('sourceId')}, which the claim does not cite", f"claims.{cid}.sourceLocations"))
 
         conflict_ids: set[str] = set()
         for conflict in conflicts:
@@ -175,11 +178,41 @@ class EvidenceCore:
         domain: str,
         claims: list[dict[str, Any]],
         conflicts: list[dict[str, Any]],
+        contract: dict[str, Any] | None = None,
     ) -> tuple[str, list[dict[str, Any]]]:
+        contract = contract or {}
         active = [c for c in claims if domain in c.get("domains", []) and c.get("status") != "Superseded"]
         blockers: list[dict[str, Any]] = []
         if not active:
             return "Insufficient", [{"domain": domain, "reason": "No evidence-backed claim covers this required domain", "owner": None, "closureCondition": "Provide and validate authoritative evidence for this domain"}]
+
+        if contract.get("sourceLocationRequired"):
+            for claim in active:
+                located = {entry.get("sourceId") for entry in claim.get("sourceLocations", []) if entry.get("location")}
+                unlocated = [sid for sid in claim.get("sourceIds", []) if sid not in located]
+                if unlocated:
+                    blockers.append({
+                        "domain": domain,
+                        "claimId": claim["claimId"],
+                        "reason": f"{claim['claimId']} cites {', '.join(unlocated)} without a source location",
+                        "owner": claim.get("owner"),
+                        "closureCondition": "Record the timestamp, line, or section in the source that supports the claim",
+                    })
+
+        if domain in contract.get("gapDomains", []):
+            # A gap domain is satisfied by named gaps: each open item states what would close it.
+            for claim in active:
+                if claim.get("status") in {"Unknown", "Contested"} and not claim.get("closureCondition"):
+                    blockers.append({
+                        "domain": domain,
+                        "claimId": claim["claimId"],
+                        "reason": f"{claim['claimId']} names a gap without a closure condition",
+                        "owner": claim.get("owner"),
+                        "closureCondition": "State the follow-up that would answer the open item",
+                    })
+            if blockers:
+                return "Insufficient", blockers
+            return ("Conditional" if any(c.get("status") == "Inferred" for c in active) else "Sufficient"), []
 
         active_ids = {c["claimId"] for c in active}
         for claim in active:
@@ -221,9 +254,16 @@ class EvidenceCore:
         blockers: list[dict[str, Any]] = []
 
         for domain in contract["requiredDomains"]:
-            status, domain_blockers = self._domain_status(domain, claims, conflicts)
+            status, domain_blockers = self._domain_status(domain, claims, conflicts, contract)
             domain_coverage[domain] = status
             blockers.extend(domain_blockers)
+
+        limit_rule = contract.get("singleSourceLimit")
+        if limit_rule:
+            limit_blocker = self._single_source_blocker(ledger, contract, limit_rule)
+            if limit_blocker:
+                domain_coverage[limit_rule["gapDomain"]] = "Insufficient"
+                blockers.append(limit_blocker)
 
         merged_blockers: dict[tuple[str, str], dict[str, Any]] = {}
         for blocker in blockers:
@@ -280,6 +320,40 @@ class EvidenceCore:
             nextGate=next_gate,
             findings=findings,
         )
+
+    def _single_source_blocker(
+        self,
+        ledger: dict[str, Any],
+        contract: dict[str, Any],
+        rule: dict[str, Any],
+    ) -> dict[str, Any] | None:
+        """Require a stated limit when the evidence rests on one source or one interviewee."""
+        domains = set(contract["requiredDomains"])
+        source_index = self._index(ledger.get("sources", []), "sourceId") if ledger.get("sources") else {}
+        cited: set[str] = set()
+        for claim in ledger.get("claims", []):
+            if claim.get("status") == "Superseded" or not domains.intersection(claim.get("domains", [])):
+                continue
+            cited.update(sid for sid in claim.get("sourceIds", [])
+                         if sid in source_index and source_index[sid].get("sourceType") not in NON_EVIDENCE_TYPES)
+        interviewees = {person for sid in cited for person in source_index[sid].get("interviewees", [])}
+        single = len(cited) < rule.get("minIndependentSources", 2) or len(interviewees) == 1
+        if not single:
+            return None
+        stated = any(
+            claim.get("gapKind") == rule["gapKind"]
+            and rule["gapDomain"] in claim.get("domains", [])
+            and claim.get("status") != "Superseded"
+            for claim in ledger.get("claims", [])
+        )
+        if stated:
+            return None
+        return {
+            "domain": rule["gapDomain"],
+            "reason": "The evidence rests on a single source or interviewee and the ledger does not state that limit as a gap",
+            "owner": None,
+            "closureCondition": f"Add a {rule['gapDomain']} claim with gapKind {rule['gapKind']} that states the limit and what further sessions would test it",
+        }
 
     @staticmethod
     def validate_content_model(model: dict[str, Any]) -> list[Finding]:

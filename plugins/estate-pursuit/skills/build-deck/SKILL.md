@@ -121,8 +121,8 @@ copy of `polish-learnings.md` so the next deck's first build avoids it.
    - **Text:** headlines short; no awkward orphan line; key text bold enough; terms unified; reviewed with `review-writing`.
    - **Layout:** no clipping or label collisions. Preserve evidence when adjusting density. Empty space does not require an extra card; use the space the explanation needs.
    - **Icons/images:** visual center aligned to its background shape; assets not blurry, cropped, or too small.
-   - **Thumbnail test:** inspect the argument's progression and visual hierarchy. Read detailed diagrams at delivery size; thumbnails cannot validate their labels.
-   - **Export:** PDF/PNG export does not break layout.
+   - **Sequence test:** read the slide titles in order from the checker's recorded text; they should state the argument's progression. Check hierarchy from heading levels and computed sizes, and read every diagram label from the DOM. Take no screenshots or thumbnails.
+   - **Export:** PDF export does not break layout. Export PNG only when the user asks for images as the deliverable.
 3. Write `06_polish_todo.md`: critical fixes, nice-to-haves, and exact locations
    (slide #, CSS selector) to edit.
 4. Append any fix that recurs to the project learning record. Include the slide and repair.

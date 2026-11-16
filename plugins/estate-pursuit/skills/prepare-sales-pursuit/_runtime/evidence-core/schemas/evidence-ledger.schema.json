@@ -81,7 +81,8 @@
         "effectiveAt": {"type": ["string", "null"], "format": "date-time"},
         "supersedes": {"type": "array", "items": {"type": "string"}},
         "locator": {"type": "string"},
-        "notes": {"type": ["string", "null"]}
+        "notes": {"type": ["string", "null"]},
+        "interviewees": {"type": "array", "items": {"type": "string", "minLength": 1}}
       }
     },
     "claim": {
@@ -98,7 +99,20 @@
         "domains": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
         "confidenceRationale": {"type": ["string", "null"]},
         "closureCondition": {"type": ["string", "null"]},
-        "owner": {"type": ["string", "null"]}
+        "owner": {"type": ["string", "null"]},
+        "sourceLocations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sourceId", "location"],
+            "properties": {
+              "sourceId": {"type": "string"},
+              "location": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "gapKind": {"type": ["string", "null"]}
       }
     },
     "conflict": {

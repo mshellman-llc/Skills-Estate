@@ -147,6 +147,24 @@ with tempfile.TemporaryDirectory() as tmp:
         print(f"  {label:24} got={got!r:20} want={want!r}")
         if got != want:
             fail.append(f"{label}: got {got!r}, want {want!r}")
+    layout = subprocess.run([sys.executable, str(EXTRACTOR), str(deck), "--layout"],
+                            capture_output=True, text=True)
+    lchecks = [("layout exit code", layout.returncode, 0),
+               ("layout finds nothing", '"findings": []' in layout.stdout, True),
+               ("layout writes no image", sorted(p.suffix for p in Path(tmp).iterdir()), [".pptx"])]
+    bad = Path(tmp) / "overflow.pptx"
+    PARTS["ppt/slides/slide1.xml"] = SLIDE.replace('cx="8229600" cy="1143000"', 'cx="8229600" cy="7000000"').replace(
+        KNOWN_TEXT, "{{TITLE}}")
+    build_pptx(bad)
+    PARTS["ppt/slides/slide1.xml"] = SLIDE
+    flagged = subprocess.run([sys.executable, str(EXTRACTOR), str(bad), "--layout"], capture_output=True, text=True)
+    lchecks += [("layout flags a defect", flagged.returncode, 1),
+                ("layout flags the slide edge", "extends past the slide edge" in flagged.stdout, True),
+                ("layout flags placeholder text", "placeholder text" in flagged.stdout, True)]
+    for label, got, want in lchecks:
+        print(f"  {label:24} got={got!r:20} want={want!r}")
+        if got != want:
+            fail.append(f"{label}: got {got!r}, want {want!r}")
     if fail:
         print("\n--- stdout ---\n" + out)
         print("--- stderr ---\n" + proc.stderr)

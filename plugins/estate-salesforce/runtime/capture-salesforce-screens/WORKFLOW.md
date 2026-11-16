@@ -1,6 +1,6 @@
 ---
 name: capture-salesforce-screens
-description: 'Drive the sfqa CLI to capture headless screenshots and run clickpath assertions against a Salesforce org. No interactive login, no credential exposure. Trigger when you need to capture what a Salesforce page looks like without a human watching: after deploying UI-affecting metadata and needing verification evidence, when estate-ac-qa needs its browser driver, or when a ticket needs screenshot proof of a rendered page. Do not trigger for interactive browser exploration (use sf-browser-automation) or for non-Salesforce pages.'
+description: 'Drive the sfqa CLI to run headless clickpath assertions against a Salesforce org and record each page''s visible text. It writes text evidence only, signs in through the SF CLI and keeps credentials out of the transcript. Trigger when you need to verify what a Salesforce page shows without a human watching: after deploying UI-affecting metadata and needing verification evidence, when estate-ac-qa needs its browser driver, or when a ticket needs proof that a value rendered. Do not trigger for interactive browser exploration (use sf-browser-automation) or for non-Salesforce pages.'
 ---
 
 Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
@@ -9,10 +9,13 @@ Run this module's relative commands from the directory containing this WORKFLOW.
 
 # Capture salesforce screens
 
-Captures real Lightning pages from a real headless Chromium, authenticated off
-the SF CLI. No interactive login, no credential in the transcript.
+Checks real Lightning pages in a real headless Chromium, authenticated off the
+SF CLI without an interactive login. The evidence is
+text: the page's visible text and per-step assertions. Never take screenshots
+or keep PNG or other raster captures; they cost tokens and credits and prove
+less than an assertion on the rendered text.
 
-**Tool:** set `SFQA_HOME` to the explicitly selected installation for this task.
+**Tool:** point `SFQA_HOME` at the explicitly selected installation for this task.
 Verify that its `sfqa.mjs` exists and inspect its current help before use. This
 skill does not bundle that executable or establish that a cached installation is
 approved. If no supported tool is available, report the browser check pending.
@@ -29,15 +32,26 @@ A write in a clickpath needs the user's authorization for that target.
 
 ## When to use this
 
-Use this skill when you need a headless, unattended screenshot or clickpath
-assertion against a Salesforce org. Typical callers:
+Use this skill when you need a headless, unattended clickpath assertion or a
+read of a page's rendered text in a Salesforce org. Typical callers:
 
 - **`estate-ac-qa`** loads this as its Step 0 browser driver
-- Any agent that needs visual evidence of a deployed change
-- Manual requests for "show me the page" or "screenshot the record"
+- Any agent that needs evidence that a deployed change renders
+- Manual requests to "check the page" or "confirm the record shows the value"
 
 For interactive exploration in a visible Chrome the user is watching, use
 `sf-browser-automation` instead. This skill is headless-only.
+
+## No image output
+
+Use only `flow` with text output, and only steps that assert or record text.
+Do not use `sfqa shot`, `sfqa batch` or `sfqa watch`, the `shot` step key, or
+the `--full-page`, `--selector` crop, `--mask` and `--scale` flags: each
+exists to write an image. Before the first run, confirm from `sfqa help` that a
+`flow` run without `shot` steps writes no image files, failure captures
+included. If the selected version always writes images, do not run it; report
+the browser check pending and use a recorded data read instead. After every
+run, list `outDir` and confirm it holds no image files.
 
 ## First run
 
@@ -46,43 +60,6 @@ node "$SFQA_HOME/sfqa.mjs" doctor            # checks SF CLI + Chromium
 ```
 
 If Chromium is missing, report the dependency. Install a supported browser only when authorized. Do not launch installed macOS Chrome through Node or Playwright; use a permitted connected browser or supported isolated Chromium environment. Never retry the blocked launch path.
-
-## Single screenshot
-
-```bash
-node "$SFQA_HOME/sfqa.mjs" shot \
-  --org CONFIRMED_ORG_ALIAS \
-  --url /lightning/r/Account/ACCOUNT_RECORD_ID/view \
-  --wait record \
-  --out qa/GH-42/account.png --text
-```
-
-Writes `account.png`, `account.meta.json` (URL, title, readiness) and, with
-`--text`, `account.txt` containing the page's visible text, which is what you
-should grep to confirm a value rendered.
-
-Prints a JSON receipt. **Check `ready`**: `false` means a readiness stage timed
-out and the image may show a partly-loaded page.
-
-## Many screenshots (one browser, one session)
-
-```bash
-node "$SFQA_HOME/sfqa.mjs" batch --list shots.json
-```
-
-```json
-{
-  "org": "CONFIRMED_ORG_ALIAS",
-  "outDir": "qa/GH-42",
-  "viewport": "1600x1000",
-  "text": true,
-  "shots": [
-    { "name": "quote",    "url": "/lightning/r/Quote/0Q0.../view", "wait": "record", "fullPage": true },
-    { "name": "accounts", "url": "/lightning/o/Account/list",      "wait": "list" },
-    { "name": "fields",   "url": "/lightning/setup/ObjectManager/Account/FieldsAndRelationships/view" }
-  ]
-}
-```
 
 ## Clickpath + acceptance criteria (the QA workhorse)
 
@@ -98,44 +75,42 @@ node "$SFQA_HOME/sfqa.mjs" flow --flow acceptance.json
   "text": true,
   "steps": [
     { "goto": "/lightning/r/Account/001.../view", "wait": "record" },
-    { "expectText": ["Account Health Summary", "Annual Revenue"], "shot": "details" },
-    { "click": "a[role=\"tab\"]:has-text(\"Related\")", "shot": "related" },
+    { "expectText": ["Account Health Summary", "Annual Revenue"] },
+    { "click": "a[role=\"tab\"]:has-text(\"Related\")" },
     { "expectText": "Contacts" },
-    { "click": "button:has-text(\"Edit\")", "wait": "edit", "shot": "edit-modal" },
+    { "click": "button:has-text(\"Edit\")", "wait": "edit" },
     { "fill": { "selector": "input[name=\"Name\"]", "value": "Acme Corp" } },
     { "click": "button[name=\"SaveEdit\"]", "wait": "record" },
-    { "expectText": "Acme Corp", "shot": "saved", "critical": true }
+    { "expectText": "Acme Corp", "critical": true }
   ]
 }
 ```
 
-Writes numbered PNGs plus `report.json` and `report.md` (inline screenshots,
-per-step pass/fail) into `outDir`. Exit code 2 if any step failed, so it works as
-a gate. `report.md` pastes straight into a GitHub issue or PR comment.
+Writes `report.json`, `report.md` (per-step pass/fail) and, with `text`, each
+page's visible text into `outDir`. Exit code 2 if any step failed, so it works
+as a gate. `report.md` pastes straight into a GitHub issue or PR comment. Grep
+the text files to confirm a value rendered. For a phone-width check, run the
+same flow with `--viewport 390x844` and compare its text with the desktop run.
+Check `ready` in each receipt: `false` means a readiness stage timed out and
+the text may come from a partly-loaded page.
 
 **Step keys:** `goto`, `wait`, `waitFor`, `settle`, `quiet`, `dismiss`, `click`,
-`clickAt`, `hover`, `type`, `fill`, `press`, `scroll`, `scrollTo`, `expectText`,
-`expectNoText`, `shot`, `critical`, `name`.
+`hover`, `type`, `fill`, `press`, `scroll`, `scrollTo`, `expectText`,
+`expectNoText`, `critical`, `name`. Do not use `shot`. Do not use `clickAt`
+either: it targets coordinates read from a picture. Click by selector.
 
-## When to trust the detector, and when to use your own eyes
+## When to trust the detector
 
-`shot`/`batch`/`flow` use readiness heuristics. Verify them against representative pages in the selected org before relying on a bulk capture; prior measurements from another org do not establish current readiness.
-
-Use `watch` when a heuristic shouldn't have the final say, for example an LWC doing
-an external callout that legitimately takes 20s, a page that looks wrong, or
-anything unfamiliar:
-
-```bash
-node "$SFQA_HOME/sfqa.mjs" watch --org CONFIRMED_ORG_ALIAS \
-  --url /lightning/r/Account/001.../view --every 2000 --for 20000 --out-dir qa/watch
-```
-
-It captures a frame every N ms and **decides nothing**. Read the frames, judge
-visually, and re-run with a larger `--for` if `stillMoving` is true.
+`flow` uses readiness heuristics. Verify them against representative pages in
+the selected org before relying on them; prior measurements from another org do
+not establish current readiness. When a heuristic should not have the final say,
+for example an LWC doing an external callout that legitimately takes 20s, add a
+`waitFor` on the text the page must show and an `expectText` after it, rather
+than watching frames.
 
 ## Slowness is a finding, report it
 
-Every capture reports `renderMs` (when the page actually stopped changing, the QA
+Every page load reports `renderMs` (when the page actually stopped changing, the QA
 signal) and `totalMs` (includes ~3.9s of our own confirmation window). `slow: true`
 appears when `renderMs` exceeds `--slow-threshold` (default 5000).
 
@@ -172,29 +147,20 @@ Practical consequences:
 - After deploying an LWC, add `--hard-refresh` to defeat a stale compiled bundle.
 - Raise `--settle` only for genuinely animated content, e.g. dashboards.
 
-## Clicking: selector vs coordinates
+## Clicking
 
-Both dispatch **real mouse/keyboard events via CDP**, never a JS `.click()`.
-
-- `click: "<selector>"` -- Playwright hit-tests and enforces actionability. If a
-  human could not click it (covered by an overlay, hidden, disabled), the step
-  **fails** rather than silently passing. That is the QA-correct behaviour and the
-  main reason not to use JS clicks.
-- `clickAt: [x, y]` -- raw coordinates, zero DOM knowledge. Use this when you have
-  just looked at a screenshot and want to click what you see. Coordinates are in
-  CSS pixels of the viewport (`--viewport`), not the retina pixels of the PNG:
-  with the default `--scale 2`, divide the pixel position in the image by 2.
+`click: "<selector>"` dispatches **real mouse/keyboard events via CDP**, never a
+JS `.click()`. Playwright hit-tests and enforces actionability. If a human could
+not click it (covered by an overlay, hidden, disabled), the step **fails** rather
+than silently passing. That is the QA-correct behaviour and the main reason not
+to use JS clicks.
 
 ## Useful flags
 
 | Flag | Why |
 | --- | --- |
-| `--full-page` | Whole scrollable page, not just the viewport |
-| `--selector <css>` | Crop to one component (e.g. a single LWC) |
-| `--mask <css,css>` | Cover elements, redact PII before sharing |
 | `--dismiss` | Close toasts / walkthrough tooltips / splash modals first |
-| `--viewport 390x844` | Mobile-width rendering |
-| `--headed` | Watch it run, for debugging |
+| `--viewport 390x844` | Mobile-width rendering, read through its text |
 | `--hard-refresh` | Reload bypassing HTTP cache, stale LWC after a deploy |
 | `--slow-threshold <ms>` | Flag slow pages as a finding (calibrate per org) |
 | `--text` | Write visible page text (grep this to verify values) |
@@ -227,11 +193,11 @@ remain separate authorized account actions. Do not silently choose a cached org.
 
 ## Gotchas
 
-- Deploy succeeding is not verification, and neither is a green `ready`. Look at
-  the PNG, and grep the `.txt`.
-- On failure the tool writes `<out>.FAILED.png`. Check it first when diagnosing.
-- Screenshots are retina (`--scale 2`), so a 1600x1000 viewport yields a 3200x2000
-  PNG. Use `--scale 1` for smaller files.
+- Deploy succeeding is not verification, and neither is a green `ready`. Grep
+  the text files and read the failed step in `report.md`.
+- If a run leaves an image file, such as a failure capture, the selected tool
+  version is not compatible with this skill. Report it and stop using that
+  version; do not keep, attach or push the file.
 - Inspect the actual browser path and supported launch policy before running. The tool configuration does not override the prohibition on direct installed macOS Chrome launches. Record any headless rendering limits.
 - Each invocation uses a fresh browser profile, so the HTTP cache is always cold
   between runs. Stale LWC bundles only matter *within* one batch/flow run.

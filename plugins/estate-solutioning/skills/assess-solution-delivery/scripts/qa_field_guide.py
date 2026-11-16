@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check field-guide interactions and save screenshots plus a failing/passing report.
+"""Check field-guide interactions and save a failing/passing report of DOM checks and page text.
 
 Usage: python3 qa_field_guide.py built.html [output-directory]
 Requires Node.js, Playwright, and Chromium. ESTATE_NODE, ESTATE_NODE_MODULES,

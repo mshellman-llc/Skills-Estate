@@ -8,8 +8,9 @@ Input modes:
                                    talking tracks, steps, callouts)
 
 Missing declared assets, unrecognized source labels, empty required slots, and
-page overflow fail the run. Every generated HTML, PDF, screenshot and check result
-is retained. A neutral profile needs no logo or custom font.
+page overflow fail the run. Every generated HTML, PDF and check result is
+retained; the check result records each page's rendered text. No image files
+are written. A neutral profile needs no logo or custom font.
 
 Requires: jinja2, pypdf, Node.js, Playwright and Chromium
 """

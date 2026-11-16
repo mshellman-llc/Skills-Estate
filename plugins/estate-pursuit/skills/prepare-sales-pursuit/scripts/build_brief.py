@@ -178,7 +178,21 @@ try {
   await p.locator('#q').fill('');
   s.searchResetWorks = await p.locator('[data-search-scope]:not(.hidden)').count() > 0;
 } catch (e) { errs.push('INTERACTION: ' + e.message); }
-await p.screenshot({ path: output + '/page.png', fullPage: true });
+// Read layout from the DOM at desktop and phone widths. No image files are written.
+s.layout = {};
+for (const width of [1400, 390]) {
+  await p.setViewportSize({ width, height: 1000 });
+  await p.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  s.layout[width] = await p.evaluate(() => ({
+    sidewaysScroll: Math.max(0, document.documentElement.scrollWidth - innerWidth),
+    clippedText: [...document.querySelectorAll('h1,h2,h3,p,li,td,th')]
+      .filter(e => e.getClientRects().length && e.scrollWidth > e.clientWidth + 1)
+      .map(e => e.textContent.trim().slice(0, 60)).slice(0, 10),
+    text: document.body.innerText.trim(),
+  }));
+  if (s.layout[width].sidewaysScroll > 1) errs.push(`LAYOUT: page scrolls sideways by ${s.layout[width].sidewaysScroll}px at ${width}px`);
+  if (s.layout[width].clippedText.length) errs.push(`LAYOUT: clipped text at ${width}px: ` + s.layout[width].clippedText.join(' | '));
+}
 s.errors = errs;
 console.log(JSON.stringify(s, null, 1));
 await b.close();

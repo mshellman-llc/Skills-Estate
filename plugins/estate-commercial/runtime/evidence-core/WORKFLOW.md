@@ -18,7 +18,7 @@ is never the first deliverable. The evidence ledger is.
 ## Non-negotiable behavior
 
 - An absent fact becomes a named gap. Never fill it with plausible language.
-- Preserve source conflicts. Never silently choose the convenient version.
+- Preserve source conflicts and never silently choose the convenient version.
 - A recent message does not override an executed commitment without explicit
   authority.
 - Worked examples and generated artifacts have zero evidentiary authority.
@@ -53,7 +53,7 @@ Each claim records:
 - load-bearing flag
 - artifact domains
 - confidence rationale
-- owner and closure condition when unresolved
+- for an unresolved claim, its owner and the condition that closes it
 
 ## Authority model
 
@@ -139,7 +139,7 @@ Events: `context` first, then `source`, `claim`, `supersede`, `conflict`, and
 timeline). A claim carries the inline authoring tag from the workspace
 standard: `STATED` and `OBSERVED` project to Confirmed when a supporting source
 has authority 70 or higher and to Inferred otherwise, `INFERRED` to Inferred,
-`ASSUMED` to Unknown with an owner and closure condition when load-bearing. A
+`ASSUMED` to Unknown, which needs an owner and a closing condition when load-bearing. A
 decision is a `register` row in `decisions`, never a claim; the check refuses a
 `DECIDED` claim because tagging a decision as evidence launders judgment. A
 superseded claim gets a `supersede` line, never an edit; a restated claim is a new
@@ -157,6 +157,25 @@ Run `check` at every orchestrator gate commit, alongside `manage-consulting-know
 committed copy and resolves the ids cited in prose. The projection then goes
 through `evidence_core.py` at finalization as before. `fixtures/pursuit-ledger.jsonl`
 is a worked example with every event kind.
+
+## Discovery synthesis contract
+
+`discovery_synthesis` covers findings, pain points, job statements, verbatims,
+open questions and gaps. Each claim in those domains records a
+`sourceLocations` entry, the timestamp, line or section, for every source it
+cites. Open questions and gaps are satisfied by named gaps: each states the
+follow-up that would close it in `closureCondition`.
+
+A synthesis that rests on one source, or on sources that record one
+interviewee (`interviewees` on the source), can pass. It must state that limit
+as a `gaps` claim with `gapKind: single_source`. The gate passes when every
+domain has a located claim, every gap names its closure, and the single-source
+limit is stated where it applies. The discovery call-prep brief is a
+different contract, `discovery_brief`; do not use it for a synthesis.
+
+```bash
+python3 scripts/evidence_core.py ledger.json discovery_synthesis --output gate-report.json
+```
 
 ## Conditional coverage
 
@@ -179,7 +198,8 @@ python3 scripts/ledger_events_selftest.py
 ```
 
 The fixtures are synthetic and cover rich evidence, sparse evidence, an open
-load-bearing conflict, and superseded pricing. Bundled names, dates, quotations, approvals and commercial scenarios are test data, not client records or actual approvals. Supply authorized task evidence for real work.
+load-bearing conflict, superseded pricing, and a single-interview discovery
+synthesis. Bundled names, dates, quotations, approvals and commercial scenarios are test data, not client records or actual approvals. Supply authorized task evidence for real work.
 
 ## Handoff to artifact skills
 

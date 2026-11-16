@@ -73,6 +73,7 @@ CNF_ID = re.compile(r"^CNF-\d{3,}$")
 CLIENT_ID = re.compile(r"^client-[a-z0-9][a-z0-9-]*$")
 CLAIM_FIELDS = ("claimId", "statement", "status", "sourceIds", "asOf", "loadBearing", "domains",
                 "confidenceRationale", "closureCondition", "owner")
+OPTIONAL_CLAIM_FIELDS = ("sourceLocations", "gapKind")
 SOURCE_FIELDS = ("sourceId", "sourceType", "title", "authority", "observedAt", "effectiveAt",
                  "supersedes", "locator", "notes")
 CONFLICT_FIELDS = ("conflictId", "claimIds", "materiality", "status", "description",
@@ -255,9 +256,12 @@ def project(events: List[Tuple[int, Dict]], as_of: Optional[str] = None) -> Dict
         elif kind == "source":
             row = {k: event.get(k) for k in SOURCE_FIELDS if k in event or k in ("effectiveAt", "supersedes", "notes")}
             row["supersedes"] = list(event.get("supersedes", []))
+            if "interviewees" in event:
+                row["interviewees"] = list(event["interviewees"])
             sources[event["sourceId"]] = row
         elif kind == "claim":
             row = {k: event.get(k) for k in CLAIM_FIELDS}
+            row.update({k: event[k] for k in OPTIONAL_CLAIM_FIELDS if k in event})
             row["status"] = projected_status(event.get("tag"), event.get("sourceIds"), sources)
             claims[event["claimId"]] = row
         elif kind == "supersede":

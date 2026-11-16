@@ -71,41 +71,54 @@ from the page is a warning: confirm the omission was a choice.
 
 ## Gate 2: visual
 
-Run `scripts/qa_proposal.py` and inspect its saved views in every version state. Lexical checks cannot prove
-that something is visible, unclipped, and attached to its qualifier.
+Run `scripts/qa_proposal.py` and read its recorded views in every version state. Each view is the
+page's extracted text plus DOM measurements; the gate writes no image files. Lexical checks cannot
+prove that something is visible, unclipped, and attached to its qualifier, so the gate reads layout
+from the rendered DOM.
 
 ```python
 from playwright.sync_api import sync_playwright
+LAYOUT = """() => {
+  const bad = [];
+  if (document.documentElement.scrollWidth > innerWidth + 1) bad.push('page scrolls sideways');
+  for (const el of document.querySelectorAll('h1,h2,h3,p,li,td,th,summary,.tab,#metric')) {
+    if (!el.getClientRects().length) continue;
+    const r = el.getBoundingClientRect();
+    if (r.right > innerWidth + 1 || el.scrollWidth > el.clientWidth + 1) bad.push(el.textContent.trim().slice(0, 60));
+  }
+  return {bad, text: document.body.innerText};
+}"""
 with sync_playwright() as pw:
     b = pw.chromium.launch()
     pg = b.new_page(viewport={"width": 1280, "height": 1000})
     pg.goto("file:///abs/path/page.html"); pg.wait_for_timeout(1200)
-    pg.screenshot(path="qa-hero-default.png", clip={"x":0,"y":0,"width":1280,"height":1000})
+    views = {"default": pg.evaluate(LAYOUT)}
     for k in ["B", "C"]:                      # every version tab, not just the first
         pg.click(f'.tab[data-k="{k}"]'); pg.wait_for_timeout(900)
-        pg.screenshot(path=f"qa-hero-{k}.png", clip={"x":0,"y":0,"width":1280,"height":1000})
+        views[k] = pg.evaluate(LAYOUT)
     pg.click('.tab[data-k="A"]'); pg.wait_for_timeout(700)     # leanest version
-    pg.screenshot(path="qa-scope-excluded.png", full_page=True)
+    views["scope-excluded"] = pg.evaluate(LAYOUT)
     pg.evaluate("document.querySelectorAll('details').forEach(d=>d.open=true)")
-    pg.wait_for_timeout(400); pg.screenshot(path="qa-sources-open.png", full_page=True)
+    pg.wait_for_timeout(400); views["sources-open"] = pg.evaluate(LAYOUT)
     pg.pdf(path="print-test.pdf", format="Letter", print_background=True)
     pg.set_viewport_size({"width": 390, "height": 900}); pg.wait_for_timeout(400)
-    pg.screenshot(path="qa-mobile.png", clip={"x":0,"y":0,"width":390,"height":900})
+    views["mobile"] = pg.evaluate(LAYOUT)
     b.close()
 ```
 
-Then open the images and check, in this order:
+Then read each recorded view, in this order:
 
-1. The default version state and every other version state. A switcher that looks right on tab one
-   and breaks on tab three is the signature failure of this page type.
-2. Excluded scope in the leanest version. It must read as deliberately absent, not as a rendering
-   fault: dashed border, "not in this version" label, still legible.
-3. The metric. It must sit on the exact target value, not on a tween frame.
-4. Disclosures open. Long routes and audit rows are where overflow hides.
-5. The print PDF. Page count, no orphaned headings, dark surfaces still dark.
-6. Mobile at 390px. The version tabs and the metric break first.
+1. The default version state and every other version state. A switcher that reads right on tab one
+   and breaks on tab three is the signature failure of this page type. Compare each state's text
+   with that version's source figures.
+2. Excluded scope in the leanest version. Its card must carry the "not in this version" label and
+   the computed style that marks it absent (the dashed border token), with its text still present.
+3. The metric. Its text must equal the exact target value; a tween frame fails.
+4. Disclosures open. Long routes and audit rows are where overflow hides; the `bad` list names them.
+5. The print PDF. Read its extracted text: page count, no orphaned headings, every included item.
+6. Mobile at 390px. The version tabs and the metric break first; the `bad` list must be empty.
 
-Record which views you inspected. `requiredViews` raises the reminder; your disposition closes it.
+Record which views you read. `requiredViews` raises the reminder; your disposition closes it.
 
 ## Gate 3: prose
 
