@@ -553,7 +553,6 @@ def load_json(path, what):
 
 def load_verdicts(paths):
     """One verdict file, or several merged: the carried verdicts plus each worker's file."""
-    paths = [paths] if isinstance(paths, (str, Path)) else list(paths)
     files = [load_json(p, 'verdict file') for p in paths]
     if len(files) == 1:
         return files[0]
@@ -607,6 +606,7 @@ def line_pass(records, data, rules_sha256, flags=None, round_n=1, logged=None):
     of blocking; a fix with no severity counts as an error.
     """
     flags = flags or {}
+    logged = [] if logged is None else logged
     scope = {r['id']: r for r in in_scope(records)}
     findings, rejected, seen = [], [], set()
     stale = data.get('rules_sha256') != rules_sha256
@@ -630,7 +630,7 @@ def line_pass(records, data, rules_sha256, flags=None, round_n=1, logged=None):
             if v.get('owner_call') is True:
                 item['rule'] = 'owner decision: ' + str(v['rule']).strip()
                 item['owner_call'] = True
-            elif round_n >= STYLE_ROUND and v.get('severity') == 'style' and logged is not None:
+            elif round_n >= STYLE_ROUND and v.get('severity') == 'style':
                 logged.append(item)
                 continue
             findings.append(item)
@@ -692,7 +692,8 @@ def spot_audit(records, verdicts, data, rules_sha256, flags=None):
     missed = set()
     for f in findings:
         rule = f['rule'].split(': ', 1)[-1]
-        missed |= set(RULE_ID.findall(rule.split(':', 1)[0])) or {rule.split(':', 1)[0].strip()}
+        label = rule.split(':', 1)[0]
+        missed |= set(RULE_ID.findall(label)) or {label.strip()}
         f['rule'] = 'spot-audit miss: ' + rule
     first, second = str(verdicts.get('reviewer') or '').strip(), str(data.get('reviewer') or '').strip()
     marked_ok = sum(1 for v in verdicts.get('verdicts') or [] if isinstance(v, dict) and v.get('verdict') == 'ok')
@@ -985,12 +986,9 @@ def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
     carried = []
     if verdicts and verdicts.get('rules_sha256') == rules['rules_sha256']:
         by_line = {r['id']: r for r in scope}
-        rule_flags = {}
-        for item in review:
-            rule_flags.setdefault(item['id'], []).append(item['rule'])
         for v in verdicts.get('verdicts') or []:
             vid = v.get('id') if isinstance(v, dict) else None
-            if vid in by_line and not check_verdict(v, by_line[vid], rule_flags.get(vid, ())):
+            if vid in by_line and not check_verdict(v, by_line[vid], [f['rule'] for f in flagged.get(vid, ())]):
                 carried.append(v)
     standing = {v['id'] for v in carried}
     plan = {
@@ -1161,8 +1159,9 @@ def run(args):
                 found, problems, declared = document_pass(records, load_json(args.document_map, 'document map'),
                                                           rules_info['rules_sha256'])
                 if args.round >= STYLE_ROUND:
-                    logged += [f for f in found if f['rule'].split(': ', 1)[-1] in STYLE_DOC_RULES]
-                    found = [f for f in found if f['rule'].split(': ', 1)[-1] not in STYLE_DOC_RULES]
+                    style = [f for f in found if f['rule'].split(': ', 1)[-1] in STYLE_DOC_RULES]
+                    logged += style
+                    found = [f for f in found if f not in style]
                 findings += found
                 record['document_pass'] = {'problems': problems, 'declared_repeats': declared}
                 if problems:

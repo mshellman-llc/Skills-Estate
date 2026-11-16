@@ -17,7 +17,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "3deda945d3176af1b6a8da56f20b41f373c33561d2209c083b237a3465969753",
+      "required_sha256": "0d0f80eb5b83cd8356f1ac8fbe3980917445e8abcabe83054a4d0f907266a061",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -522,7 +522,7 @@
       "subject": "write-statement-of-work"
     },
     {
-      "required_sha256": "48c2c02bf841496e579eb2c4135e5696461429ad4b05c6c41368960d072aec90",
+      "required_sha256": "f4fda9f632d4d3795ae093b14670d5e15524b1b50d045f577936d2db279017ff",
       "status": "review required",
       "subject": "writing"
     },
@@ -532,6 +532,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "681eca2eb0fb4f2d7ed17ccad5d0c1aff20c4014155322011beb6a7e30e9fb92",
+  "source_sha256": "a20d7cb81bc251451df36d17f397452783bbf29f9fa4b701ab5f43ebcf73b39e",
   "status": "owner-published"
 }
