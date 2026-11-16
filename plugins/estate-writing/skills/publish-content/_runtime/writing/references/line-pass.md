@@ -66,7 +66,15 @@ Copy `id`, `sha` and `section` from the assignment. They tie the verdict to the 
 
 A `fix` names the rule, quotes the exact words from the line and gives the replacement. An empty replacement means the words are cut. Take every fact in a replacement from the listed sources.
 
-Several workers can write to separate files. Merge their `verdicts` lists into one file before running the check.
+Two more fields go on a `fix`:
+
+| Field | Value | Meaning |
+| --- | --- | --- |
+| `severity` | `error` | The line states something wrong or unsupported, contradicts another line, or leaves the reader with no next step. The default |
+| `severity` | `style` | Wording, rhythm, a repeat or a term choice. Blocks in rounds 1 and 2, logged from round 3 |
+| `owner_call` | `true` | Only the owner can settle it: an unsourced fact, a policy, a price, a slogan. Blocks until the owner answers, and goes to the owner instead of back to reviewers |
+
+Several workers can write to separate files. Pass them all to `--verdicts`, with `carried.json` from `--prepare`; the script merges them.
 
 ## Lines the scanner passes
 
@@ -89,7 +97,18 @@ The audit file has the same format as the verdict file and holds one verdict for
                "promise": false, "portable": false, "tension": false, "claims": "none"}]}
 ```
 
-Pass it with `--audit FILE`. A clean round passes only after the audit. In a round that already fails, the audit is optional; when it runs, the receipt states how many of the `ok` lines it covered and that the round still fails. One audited line marked `fix` sends every line back through the line pass.
+Pass it with `--audit FILE`. A clean round passes only after the audit. In a round that already fails, the audit is optional; when it runs, the receipt states how many of the `ok` lines it covered and that the round still fails.
+
+An audited line marked `fix` is fixed on that line. Its rule is then swept across every line the line pass marked `ok`: one worker reads those lines for that rule alone and writes a recheck file, passed with `--recheck FILE`. The file names the swept rules and lists a verdict for each line marked `ok`.
+
+```json
+{"rules_sha256": "same as the audit file", "reviewer": "recheck worker", "rules": ["R6"],
+ "verdicts": [{"id": "0012", "sha": "7d2a90c1e4b8", "verdict": "ok"},
+              {"id": "0019", "sha": "4c1e0d2b9f3a", "verdict": "fix", "rule": "R6: any shop could say it",
+               "quote": "made with love", "replacement": "cut on a Cricut"}]}
+```
+
+The audit step passes when the recheck sweeps every missed rule and covers every line marked `ok`. Its fixes join the round's findings.
 
 ## One reviewer
 
@@ -97,4 +116,6 @@ One agent can run the whole review when no workers are available. It takes the w
 
 ## Later rounds
 
-A changed line has a new `sha`, and every line in its section has a new `section` value. The script rejects the old verdicts for those lines, and `--prepare` lists them again. A change to `rules.md` or `patterns.json` changes `rules_sha256` and sends every line back. The owner can ask for a full pass at any time; delete the verdict file to start one.
+A changed line has a new `sha`. The script rejects only that line's old verdict; its neighbours keep theirs. `--prepare` with `--verdicts` writes the standing verdicts to `carried.json` and assigns only the lines that need one. A change to `rules.md` or `patterns.json` changes `rules_sha256` and sends every line back. The owner can ask for a full pass at any time; delete the verdict file to start one.
+
+Pass `--round N` on each validation. From round 3, `severity: style` fixes and the map's repeats, recaps and term choices are logged instead of blocking. Reviewers in later rounds judge each line fresh, but a style preference that reverses an earlier round's fix is `severity: style`.

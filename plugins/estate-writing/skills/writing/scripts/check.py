@@ -28,9 +28,14 @@ Other options:
     --receipt-dir DIR     where receipts are written
     --prepare DIR         write the text parts, outline and worker assignments
                           for the line pass and document pass
-    --verdicts FILE       line-pass verdicts to validate
+    --verdicts FILE...    line-pass verdicts to validate; several files merge
+                          (the carried verdicts plus each worker's file)
     --document-map FILE   document-pass map to validate
     --audit FILE          spot-audit verdicts to validate
+    --recheck FILE        after an audit miss: one rule swept across every line
+                          marked ok, in place of a full line pass
+    --round N             review round; from round 3 on, style findings are
+                          logged and only errors and owner decisions block
     --sources FILE        the source list for the claims check (JSON list of names)
     --full                require the line pass and the document pass
     --verify-receipt FILE recheck a saved receipt against the current file
@@ -54,11 +59,14 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import extract_review_text as ext  # noqa: E402
 
-VERSION = 1
+VERSION = 2
 PART_LINES = 300            # largest part any reader or scan receives
 WORKER_LINES = 40           # lines per line-pass worker
 LONG_DOCUMENT_LINES = 2000  # above this the document pass works in two steps
 AUDIT_SHARE = 5             # the spot audit re-reviews one line in five
+STYLE_ROUND = 3             # from this round on, style findings are logged instead of blocking
+STYLE_DOC_RULES = ('fact stated more than once', 'recap of another section', 'more than one term for one thing')
+RULE_ID = re.compile(r'\b[A-Z]{1,2}\d{1,3}\b')
 CHUNK_SECONDS = 30
 MAX_BYTES = 50 * 1024 * 1024
 PLAIN_SUFFIXES = {'.md', '.markdown', '.mdx', '.txt', '.text', '.rst', ''}
@@ -543,14 +551,34 @@ def load_json(path, what):
     return data
 
 
+def load_verdicts(paths):
+    """One verdict file, or several merged: the carried verdicts plus each worker's file."""
+    paths = [paths] if isinstance(paths, (str, Path)) else list(paths)
+    files = [load_json(p, 'verdict file') for p in paths]
+    if len(files) == 1:
+        return files[0]
+    stamps = {f.get('rules_sha256') for f in files}
+    if len(stamps) != 1:
+        raise Incomplete('the verdict files were written against different rules')
+    reviewers = []
+    for f in files:
+        name = str(f.get('reviewer') or '').strip()
+        if name and name not in reviewers:
+            reviewers.append(name)
+    return {'rules_sha256': stamps.pop(), 'reviewer': ' + '.join(reviewers),
+            'verdicts': [v for f in files for v in f.get('verdicts') or []]}
+
+
 def check_verdict(v, record, flagged=()):
     """Why one verdict is rejected, or None when it stands."""
     if v.get('sha') != record['sha']:
         return 'the line changed after this verdict was written'
-    if v.get('section') != record['section_sha']:
-        return 'another line in its section changed after this verdict was written'
     if v.get('verdict') not in ('ok', 'fix'):
         return 'verdict must be ok or fix'
+    if v.get('severity', 'error') not in ('error', 'style'):
+        return 'severity must be error or style'
+    if not isinstance(v.get('owner_call', False), bool):
+        return 'owner_call must be true or false'
     flags = [v.get(k) for k in ('portable', 'promise', 'tension')]
     if any(not isinstance(f, bool) for f in flags):
         return 'portable, promise and tension must each be answered true or false'
@@ -571,8 +599,13 @@ def check_verdict(v, record, flagged=()):
     return None
 
 
-def line_pass(records, data, rules_sha256, flags=None):
-    """Returns (findings, rejected, missing). Every in-scope line needs one valid verdict."""
+def line_pass(records, data, rules_sha256, flags=None, round_n=1, logged=None):
+    """Returns (findings, rejected, missing). Every in-scope line needs one valid verdict.
+
+    A fix marked owner_call blocks as an owner decision: only the owner can settle it, so it waits for an answer
+    instead of going back to reviewers. From STYLE_ROUND on, a fix marked severity style goes to `logged` instead
+    of blocking; a fix with no severity counts as an error.
+    """
     flags = flags or {}
     scope = {r['id']: r for r in in_scope(records)}
     findings, rejected, seen = [], [], set()
@@ -592,8 +625,15 @@ def line_pass(records, data, rules_sha256, flags=None):
             continue
         seen.add(vid)
         if v['verdict'] == 'fix':
-            findings.append({'id': vid, 'rule': 'line-pass: ' + str(v['rule']).strip(),
-                             'text': v['quote'], 'fix': v['replacement'] or 'Cut these words.'})
+            item = {'id': vid, 'rule': 'line-pass: ' + str(v['rule']).strip(),
+                    'text': v['quote'], 'fix': v['replacement'] or 'Cut these words.'}
+            if v.get('owner_call') is True:
+                item['rule'] = 'owner decision: ' + str(v['rule']).strip()
+                item['owner_call'] = True
+            elif round_n >= STYLE_ROUND and v.get('severity') == 'style' and logged is not None:
+                logged.append(item)
+                continue
+            findings.append(item)
     bad = {r['id'] for r in rejected}
     missing = [i for i in scope if i not in seen and i not in bad]
     return findings, rejected, missing
@@ -643,18 +683,64 @@ def audit_sample(records, verdicts):
 
 
 def spot_audit(records, verdicts, data, rules_sha256, flags=None):
-    """Returns (findings, rejected, missing). One miss sends every line back through the line pass."""
+    """Returns (findings, rejected, missing, info). A miss is fixed on its line, and its rule is swept across
+    every line marked ok (see recheck), in place of a full line pass."""
     scope = {r['id']: r for r in in_scope(records)}
     wanted = [i for i in audit_sample(records, verdicts) if i in scope]
     sub = [scope[i] for i in wanted]
     findings, rejected, missing = line_pass(sub, data, rules_sha256, flags)
+    missed = set()
     for f in findings:
-        f['rule'] = 'spot-audit miss, full line pass required: ' + f['rule'].split(': ', 1)[-1]
+        rule = f['rule'].split(': ', 1)[-1]
+        missed |= set(RULE_ID.findall(rule.split(':', 1)[0])) or {rule.split(':', 1)[0].strip()}
+        f['rule'] = 'spot-audit miss: ' + rule
     first, second = str(verdicts.get('reviewer') or '').strip(), str(data.get('reviewer') or '').strip()
     marked_ok = sum(1 for v in verdicts.get('verdicts') or [] if isinstance(v, dict) and v.get('verdict') == 'ok')
     info = {'sampled': len(wanted), 'lines_marked_ok': marked_ok, 'line_pass_reviewer': first or None,
-            'audit_reviewer': second or None, 'independent': bool(first and second and first != second)}
+            'audit_reviewer': second or None, 'independent': bool(first and second and first != second),
+            'missed_rules': sorted(missed)}
     return findings, rejected, missing, info
+
+
+def recheck(records, verdicts, data, rules_sha256, missed):
+    """Validate a one-rule sweep after an audit miss. Returns (findings, problems).
+
+    The file names the rules it swept in `rules` and holds one verdict for every line the line pass marked ok:
+    id, sha, verdict ok or fix, and for a fix the rule, an exact quote and a replacement.
+    """
+    scope = {r['id']: r for r in in_scope(records)}
+    problems, findings = [], []
+    swept = {str(r).strip() for r in (data.get('rules') or []) if str(r).strip()}
+    if not missed <= swept:
+        problems.append('the recheck does not sweep ' + ', '.join(sorted(missed - swept)))
+    if data.get('rules_sha256') != rules_sha256:
+        problems.append('the rules changed after this recheck was written')
+    ok = {v['id'] for v in verdicts.get('verdicts') or [] if isinstance(v, dict) and v.get('verdict') == 'ok'
+          and v.get('id') in scope}
+    seen = set()
+    for v in data.get('verdicts') or []:
+        vid = v.get('id') if isinstance(v, dict) else None
+        if vid not in scope or vid in seen:
+            problems.append(f'recheck verdict {vid!r} is not one in-scope line')
+            continue
+        seen.add(vid)
+        record = scope[vid]
+        if v.get('sha') != record['sha']:
+            problems.append(f'line {vid} changed after the recheck was written')
+        elif v.get('verdict') == 'fix':
+            quote = v.get('quote')
+            if not isinstance(quote, str) or not quote.strip() or quote not in record['text']:
+                problems.append(f'recheck quote on line {vid} is not word for word in the line')
+            elif not isinstance(v.get('replacement'), str) or v['replacement'] == quote:
+                problems.append(f'recheck fix on line {vid} gives no different replacement')
+            else:
+                findings.append({'id': vid, 'rule': 'rule recheck: ' + str(v.get('rule') or ', '.join(sorted(swept))),
+                                 'text': quote, 'fix': v['replacement'] or 'Cut these words.'})
+        elif v.get('verdict') != 'ok':
+            problems.append(f'recheck verdict on line {vid} must be ok or fix')
+    if ok - seen:
+        problems.append(f'{len(ok - seen)} lines marked ok have no recheck verdict')
+    return findings, problems
 
 
 def document_pass(records, data, rules_sha256):
@@ -896,12 +982,24 @@ def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
     def entry(r):
         return {'id': r['id'], 'sha': r['sha'], 'section': r['section_sha'], 'loc': r['loc'],
                 'text': r['text'], 'flags': flagged.get(r['id'], [])}
+    carried = []
+    if verdicts and verdicts.get('rules_sha256') == rules['rules_sha256']:
+        by_line = {r['id']: r for r in scope}
+        rule_flags = {}
+        for item in review:
+            rule_flags.setdefault(item['id'], []).append(item['rule'])
+        for v in verdicts.get('verdicts') or []:
+            vid = v.get('id') if isinstance(v, dict) else None
+            if vid in by_line and not check_verdict(v, by_line[vid], rule_flags.get(vid, ())):
+                carried.append(v)
+    standing = {v['id'] for v in carried}
     plan = {
         'file': str(path), 'source_sha256': sha(path.read_bytes()), 'text_sha256': text_sha(records),
         'rules_sha256': rules['rules_sha256'], 'lines_in_scope': len(scope), 'parts': names,
         'two_step_document_pass': len(scope) > LONG_DOCUMENT_LINES,
-        'workers': [{'worker': n, 'lines': [entry(r) for r in group]}
+        'workers': [{'worker': n, 'lines': [entry(r) for r in group if r['id'] not in standing]}
                     for n, group in enumerate(workers(records), 1)],
+        'carried': sorted(standing),
         'sections': [{'id': head['id'], 'text': head['text']} for head in section_heads(records).values()],
         'headings': [r['id'] for r in scope if HEADING.match(r['text'])],
         'numbers': [{'id': r['id'], 'quote': f} for r in scope for f in figures(r['masked'])]
@@ -909,6 +1007,13 @@ def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
         'sources': sources or [],
         'repeats': repeats(records),
     }
+    plan['workers'] = [w for w in plan['workers'] if w['lines']]
+    if (out / 'carried.json').exists():
+        (out / 'carried.json').unlink()
+    if carried:
+        (out / 'carried.json').write_text(json.dumps(
+            {'rules_sha256': rules['rules_sha256'], 'reviewer': str(verdicts.get('reviewer') or '').strip(),
+             'verdicts': carried}, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
     if verdicts:
         wanted = set(audit_sample(records, verdicts))
         plan['audit'] = [entry(r) for r in scope if r['id'] in wanted]
@@ -1014,14 +1119,17 @@ def run(args):
     if review and steps[-1]['status'] == 'ok':
         steps[-1]['detail'] += f'; {len(review)} flags on {len(flags)} lines wait for a line-pass verdict'
 
+    record['round'] = args.round
+    logged = []
     if full:
         verdicts = None
         if not rules_info['rules_md_sha256']:
             step('rules.md', 'failed', 'the rules folder has no rules.md for the line pass to apply')
         if args.verdicts:
             try:
-                verdicts = load_json(args.verdicts, 'verdict file')
-                found, rejected, absent = line_pass(records, verdicts, rules_info['rules_sha256'], flags)
+                verdicts = load_verdicts(args.verdicts)
+                found, rejected, absent = line_pass(records, verdicts, rules_info['rules_sha256'], flags,
+                                                    args.round, logged)
                 findings += found
                 if rejected or absent:
                     record['line_pass'] = {'rejected': rejected, 'no_verdict': absent}
@@ -1052,6 +1160,9 @@ def run(args):
             try:
                 found, problems, declared = document_pass(records, load_json(args.document_map, 'document map'),
                                                           rules_info['rules_sha256'])
+                if args.round >= STYLE_ROUND:
+                    logged += [f for f in found if f['rule'].split(': ', 1)[-1] in STYLE_DOC_RULES]
+                    found = [f for f in found if f['rule'].split(': ', 1)[-1] not in STYLE_DOC_RULES]
                 findings += found
                 record['document_pass'] = {'problems': problems, 'declared_repeats': declared}
                 if problems:
@@ -1072,10 +1183,24 @@ def run(args):
                 scope_note = f'{info["sampled"]} of the {info["lines_marked_ok"]} lines marked ok were re-reviewed'
                 independence = '' if info['independent'] else (
                     '; not independent, because the audit file does not name a reviewer other than the line-pass reviewer')
-                if found:
+                if found and args.recheck:
                     findings += found
-                    step('spot audit', 'failed', f'{scope_note}; {len(found)} need a fix, so every line goes back '
-                         f'through the line pass{independence}')
+                    swept, problems = recheck(records, verdicts, load_json(args.recheck, 'recheck file'),
+                                              rules_info['rules_sha256'], set(info['missed_rules']))
+                    findings += swept
+                    record['recheck'] = {'rules': info['missed_rules'], 'problems': problems, 'fixes': len(swept)}
+                    if problems:
+                        step('spot audit', 'failed', f'{scope_note}; {len(found)} missed; the recheck is not valid: '
+                             f'{problems[0]}')
+                    else:
+                        step('spot audit', 'ok', f'{scope_note}; {len(found)} missed, so '
+                             f'{", ".join(info["missed_rules"])} was rechecked on every line marked ok and found '
+                             f'{len(swept)} more{independence}')
+                elif found:
+                    findings += found
+                    step('spot audit', 'failed', f'{scope_note}; {len(found)} need a fix. Fix them, then sweep '
+                         f'{", ".join(info["missed_rules"])} across every line marked ok and pass it with '
+                         f'--recheck{independence}')
                 elif rejected or absent:
                     step('spot audit', 'failed', f'{len(absent)} sampled lines have no verdict and {len(rejected)} were rejected')
                 else:
@@ -1095,13 +1220,15 @@ def run(args):
     if args.prepare:
         try:
             made = prepare(path, records, rules_info, args.prepare,
-                           load_json(args.verdicts, 'verdict file') if args.verdicts else None, review,
+                           load_verdicts(args.verdicts) if args.verdicts else None, review,
                            source_names(args.sources) if args.sources else None)
             record['purpose'] = 'prepare'
             step('prepare', 'ok', f'{made} and the text parts were rewritten; verdict, map and audit files were not touched')
         except (OSError, Incomplete) as error:
             step('prepare', 'failed', str(error))
     record['findings'] = [present(f, by_id) for f in sorted(findings, key=lambda f: f['id'])]
+    record['logged'] = [present(f, by_id) for f in sorted(logged, key=lambda f: f['id'])]
+    record['owner_decisions'] = [f for f in record['findings'] if f['rule'].startswith('owner decision: ')]
     return finish(record, args, reasons, records)
 
 
@@ -1144,6 +1271,10 @@ def summary(record):
         out['reason'] = record['reason']
         out['not_reviewed'] = record['not_reviewed']
     out['steps'] = record['steps']
+    if record.get('owner_decisions'):
+        out['owner_decisions'] = len(record['owner_decisions'])
+    if record.get('logged'):
+        out['logged'] = record['logged']
     out['advisories'] = len(record['advisories'])
     out['review'] = len(record.get('review', []))
     return out
@@ -1184,9 +1315,11 @@ def main(argv=None):
     parser.add_argument('--rules-dir')
     parser.add_argument('--receipt-dir')
     parser.add_argument('--prepare', metavar='DIR')
-    parser.add_argument('--verdicts', metavar='FILE')
+    parser.add_argument('--verdicts', metavar='FILE', nargs='+')
     parser.add_argument('--document-map', metavar='FILE')
     parser.add_argument('--audit', metavar='FILE')
+    parser.add_argument('--recheck', metavar='FILE')
+    parser.add_argument('--round', type=int, default=1)
     parser.add_argument('--sources', metavar='FILE')
     parser.add_argument('--full', action='store_true')
     parser.add_argument('--verify-receipt', metavar='FILE')
@@ -1219,6 +1352,8 @@ def main(argv=None):
         print(f'  {s["step"]}: {s["status"]} - {s.get("detail", "")}')
     for f in record['findings']:
         print(f'  line {f["line"]} [{f["id"]}] {f["rule"]}: "{f["text"]}"\n      {f["fix"]}')
+    for f in record.get('logged') or []:
+        print(f'  logged, not blocking: line {f["line"]} [{f["id"]}] {f["rule"]}: "{f["text"]}"')
     if record.get('reason'):
         print('Not complete: ' + record['reason'])
     print(f'Receipt: {record["receipt"]}')

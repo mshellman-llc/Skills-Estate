@@ -70,14 +70,25 @@ Fix each finding by rewriting the sentence, then run the check again. Replacing 
 
 A full review adds two passes to the scan. Each one writes a record that `check.py` validates.
 
+### Choose the depth by reader
+
+Run the full review on text read by people other than the owner: customers, clients, the public, a hiring team. Text only the owner reads, such as an admin page, an internal note or a status page for the owner, gets the scan alone unless the owner asks for the full review. Split a mixed piece by reader and give each part its own depth.
+
+### Ask the owner first
+
+Before the line pass, list what only the owner can settle: a fact no source supports, a policy, a price, a slogan or tagline, a brand claim. Ask those questions first, one at a time, in the form the owner prefers. Record each answer as a source, then start the line pass. A question that comes up later is a verdict with `owner_call: true`; it waits for the owner and does not go back to reviewers.
+
+### Steps
+
 1. List the documents the piece was written from in a JSON file of names, `SOURCES.json`. Run `check.py --file PATH --prepare REVIEW --sources SOURCES.json`. It writes the text in parts under `REVIEW/text/`, an outline and `REVIEW/assignments.json` with about 40 lines for each worker. Every `--prepare` run replaces those three outputs and writes its own receipt, marked `prepare`. It leaves the verdict, map and audit files alone.
 2. Fix every scanner finding first.
 3. Run the line pass in [line pass](references/line-pass.md). Give it to reviewers other than the writer, and send at least one worker group to a model from another family when the host has one. Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.
 4. Run the document pass in [document pass](references/document-pass.md). One worker reads the whole text and fills the fixed map.
 5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json`. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.
-6. Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again. A verdict stops counting when its line changed, when another line in its section changed, or when `rules.md` or `patterns.json` changed. The document pass runs on the full text in every round.
-7. Run the [spot audit](references/line-pass.md#spot-audit). The sample is one in five of the lines marked `ok`. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered.
-8. Log a miss the owner finds through Learn as a review miss.
+6. Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again with `--round N`. Run `--prepare` with the last round's `--verdicts`: it writes `carried.json` with the verdicts that still stand and assigns only the lines that need one. Pass `--verdicts REVIEW/carried.json REVIEW/verdicts-w*.json` to validate the merged set. A verdict stops counting when its own line changed, or when `rules.md` or `patterns.json` changed; an edit to a neighbouring line leaves it standing. The document pass runs on the full text in every round.
+7. Stop after round 2. From `--round 3` on, a fix marked `severity: style` is logged in the receipt and no longer blocks. Only errors block: a wrong or unsupported fact, a contradiction with another line, an instruction with no next step. Repeats, recaps and term choices in the map are logged the same way. Report the logged items once, as a list the owner can act on; do not loop on them.
+8. Run the [spot audit](references/line-pass.md#spot-audit). The sample is one in five of the lines marked `ok`. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered. A miss is fixed on its own line, and its rule is swept across every line marked `ok` with `--recheck`, in place of a full line pass.
+9. Log a miss the owner finds through Learn as a review miss.
 
 With no workers available, one agent runs every step under one `reviewer` name, following the [single-reviewer steps](references/line-pass.md#one-reviewer).
 
@@ -85,7 +96,7 @@ A part or worker that fails is retried twice with half its lines. Lines still un
 
 ## Report
 
-Read the receipt before reporting. State which steps ran and each step's status. A `failed` step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.
+Read the receipt before reporting. State which steps ran and each step's status. List the owner decisions that wait (`owner_decisions`) and the logged style items (`logged`) apart from the blocking findings. A `failed` step makes the review incomplete. When the receipt records the audit as not independent, say so. Report line counts as coverage only.
 
 In ordinary work, fix the wording and deliver it without describing the review. An AI-detector score is never a pass or a fail.
 
