@@ -93,6 +93,25 @@ class SystemTest(unittest.TestCase):
         self.assertEqual(len(result['retired_wording']), 1)
         self.assertTrue(result['outdated_copies'])
 
+    def test_build_mirrors_rules_word_for_word_and_check_finds_drift(self):
+        mirror = Path(self.tmp.name) / 'Claude outputs' / 'chatgpt-writing-project'
+        mirror.mkdir(parents=True)
+        out = self.run_tool('build')
+        self.assertEqual(out.returncode, 0, out.stderr)
+        self.assertEqual(len(json.loads(out.stdout)['mirrored']), 2)
+        self.assertEqual((mirror / 'rules.md').read_text(), RULES)
+        self.assertEqual((mirror / 'voice-profile.md').read_text(), '# Voice\n\nFirst person.\n')
+        self.assertEqual(self.run_tool('check', '--living', str(self.living)).returncode, 0)
+        (mirror / 'voice-profile.md').write_text('# Voice\n\nAn old copy.\n')
+        bad = json.loads(self.run_tool('check', '--json', '--living', str(self.living)).stdout)
+        self.assertEqual([c['path'] for c in bad['outdated_copies']], [str(mirror / 'voice-profile.md')])
+
+    def test_build_skips_a_mirror_folder_that_does_not_exist(self):
+        out = self.run_tool('build')
+        self.assertEqual(out.returncode, 0, out.stderr)
+        self.assertEqual(json.loads(out.stdout)['mirrored'], [])
+        self.assertFalse((Path(self.tmp.name) / 'Claude outputs').exists())
+
     def test_nightly_reports_weekly_counts(self):
         self.run_tool('build')
         (self.agent / 'hits.jsonl').write_text(json.dumps({'d': '2999-01-01', 'tool': 'codex', 'src': 'reply',
