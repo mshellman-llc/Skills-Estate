@@ -177,7 +177,8 @@ class PublicationTests(unittest.TestCase):
         self.assertGreaterEqual(len({r['audience'] for r in routes}), 8)
         self.assertEqual(len({r['id'] for r in routes}), len(routes))
         for route in routes:
-            for key in ('inputs', 'prompt', 'outcome', 'note'):self.assertGreater(len(route[key]), 60, (route['id'], key))
+            for key in ('inputs', 'prompt', 'outcome'):self.assertGreater(len(route[key]), 60, (route['id'], key))
+            if route['note']:self.assertGreater(len(route['note']), 40, (route['id'], 'note'))  # Keep in mind is optional; a note that repeats another field is cut
             self.assertTrue(route['steps'])
             for step in route['steps']:
                 self.assertIn(step['skill'], ids)
