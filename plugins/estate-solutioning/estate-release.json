@@ -42,7 +42,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "10f2e56e1e7f76563e777edbe024710c642bfbd4e378600284907fe300465675",
+      "required_sha256": "eeebf3ec7199b28a52fb09d5837859579fdb75d2f027854deb7ad11b69701e15",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -557,6 +557,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "a7a22b7fa48261a89a06f0777e8a74a8c6349b83f38fcb22ca8b15163ca106bd",
+  "source_sha256": "769db796372d89479d2506dfa54011b6ae2e07faec9baf3902aae8a916d8f847",
   "status": "owner-published"
 }
