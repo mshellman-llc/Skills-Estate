@@ -164,6 +164,10 @@
     "0.4.37": {
       "content_sha256": "3efc9131c75e96e86e854cc1c7116c9dd06dac02916ef436272b2321b0cb94ab",
       "note": "keep_current targets each plugin's published version and retries a slow Codex fetch"
+    },
+    "0.4.38": {
+      "content_sha256": "913f035ba0b5dcfb8d1324d913cc73382f072051937374ab3e72eea362a765d9",
+      "note": "Render HTML pages from synthesize-discovery, frame-jobs-to-be-done, develop-product and prioritize-work through brand-renderer, with the writing release gate covering each page; route synthesize-discovery findings through evidence-core (#114)."
     }
   },
   "source_conflicts": [

@@ -91,6 +91,7 @@
     "brand-renderer"
   ],
   "prioritize-work": [
+    "brand-renderer",
     "evidence-core"
   ],
   "design-process": [
@@ -231,6 +232,7 @@
     "verify-work-state"
   ],
   "develop-product": [
+    "brand-renderer",
     "verify-work-state"
   ]
 }

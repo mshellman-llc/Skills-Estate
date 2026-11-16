@@ -1,6 +1,6 @@
 # Rendering JTBD work with roadmap components
 
-A JTBD readout is usually Markdown. When the user asks for a page, an artifact or a section inside another estate page, build it from the roadmap components in `build-roadmap` instead of writing HTML. The components give every readout the same layout, the selected brand profile's colors and fonts, and one evidence list that every claim points to.
+Every JTBD readout is saved as Markdown and as an HTML page with the same name. Build the page, or a section of a larger estate page, from the roadmap components in `build-roadmap` instead of writing HTML by hand. The components give every readout the same layout, the selected brand profile's colors and fonts, and one evidence list that every claim points to.
 
 ## Build a page
 
@@ -10,7 +10,7 @@ Write a plan in the kit's JSON schema (`build-roadmap/references/schema.md`) and
 python3 ../build-roadmap/scripts/rk_embed.py page jtbd-plan.json --output attempt-001/jtbd-readout.html
 ```
 
-In an installed package the script is at `_runtime/build-roadmap/scripts/rk_embed.py`. Add `--profile /path/to/brand.md` for a confirmed project profile; without one the estate neutral profile applies. The page embeds its data, styles and script, loads nothing from the network, and passes `brand-renderer`'s palette check only when every color comes from the profile. Inspect the rendered page before delivery; a successful build proves only that the plan validated.
+In an installed package, call the same script under `_runtime/` instead of `../`. Add `--profile /path/to/brand.md` for a confirmed project profile; without one the estate neutral profile applies. The page embeds its data, styles and script, loads nothing from the network, and passes `brand-renderer`'s palette check only when every color comes from the profile. Inspect the rendered page before delivery; a successful build proves only that the plan validated.
 
 Pick one format for the page with `meta.mode`: `relaxed` (the default), `compact` for a dense working readout, or `editorial` for a strategy readout. Viewers cannot switch it.
 
@@ -29,7 +29,7 @@ Keep group colors for categories that the reader filters on, such as segment or 
 
 ## Show evidence as numbers
 
-Follow the skill's evidence rule in the rendered page too. Each job, moment, criterion or candidate carries `cite` with one or more numbers. The kit renders them as small superscript links to the evidence block. Write the basis once per evidence item: "Reported · Interviews 3, 5 and 9, recent switchers" or "Hypothesis · reasoned from the support ticket themes, no interviews yet". When every job on the page is a candidate, say so once in the evidence block's `intro` and once in `meta.subtitle`. Do not add "hypothesis" tags to cards or rows.
+Follow the skill's evidence rule in the rendered page too. Each job, moment, criterion or candidate carries `cite` with one or more numbers. The kit renders them as small superscript links to the evidence block. Write the basis once per evidence item: "Reported · Interviews 3, 5 and 9, recent switchers" or "Hypothesis · reasoned from the support ticket themes, no interviews yet". When the page holds only candidate jobs, say so once in the evidence block's `intro` and once in `meta.subtitle`. Do not add "hypothesis" tags to cards or rows.
 
 The builder fails when a cite number has no evidence entry, when a standalone page uses cite numbers without an evidence block, and when a plan has more than one evidence list.
 
