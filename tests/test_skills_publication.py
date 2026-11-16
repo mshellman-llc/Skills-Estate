@@ -187,7 +187,10 @@ class PublicationTests(unittest.TestCase):
     def test_owner_and_embedded_component_in_browser(self):
         output = self.root / 'index.html';output.write_text((MAP / 'index.html').read_text())
         output.with_suffix('.json').write_text((MAP / 'index.json').read_text())
-        choices = self.root / 'visibility.json';choices.write_text(json.dumps(publication.load()))
+        settings = publication.load()
+        for group in settings['targets']['portfolio'].values():
+            for item in group.values(): item.update(visible=False, download=False)
+        choices = self.root / 'visibility.json';choices.write_text(json.dumps(settings))
         server = viewer.MapServer(output, settings=choices)
         server.owner.state = self.root / 'state';server.owner.history = server.owner.state / 'history';server.owner.exports = server.owner.state / 'exports'
         thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()

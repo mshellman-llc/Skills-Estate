@@ -738,14 +738,14 @@
     "portfolio": {
       "skills": {
         "apply-author-style": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "apply-salesforce-patterns": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -756,158 +756,158 @@
           "order": 1000
         },
         "assess-offering-fit": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "assess-solution-delivery": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "audit-accessibility": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "author-estate-skill": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "author-style-runtime": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "brand-renderer": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-deal-decision-deck": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-deck": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-editorial-chart": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-interactive-explorer": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-interactive-proposal": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-moscow-story-map": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-review-site": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "build-roadmap": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "capture-knowledge": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "capture-requirements": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "capture-salesforce-screens": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "check-knowledge-hub": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "compare-scope-options": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "configure-salesforce-project": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "deliver-salesforce-change": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "delivery-orchestrator": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "design-analytics-plan": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "design-information-architecture": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "design-process": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "design-software-system": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -918,14 +918,14 @@
           "order": 1000
         },
         "develop-independent-product": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "develop-product": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -936,20 +936,20 @@
           "order": 1000
         },
         "estimate-project": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "evidence-core": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "frame-jobs-to-be-done": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -960,14 +960,14 @@
           "order": 1000
         },
         "import-tracker-export": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "ingest-transcript": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -978,116 +978,116 @@
           "order": 1000
         },
         "load-project-context": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "maintain-discovery-record": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "maintain-skills-estate": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-brand-profile": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-consulting-knowledge": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-cutover-closeout": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-decision-register": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-linked-task": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-salesforce-devops": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-service-offering": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "manage-writing-profile": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "map-journey": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "map-sales-process": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "operate-salesforce-pipeline": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "plan-offering-artifacts": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "plan-sprint": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "plan-team-onboarding": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "plan-usability-study": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "prepare-delivery-handoff": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -1098,116 +1098,122 @@
           "order": 1000
         },
         "prepare-sales-pursuit": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "prepare-session-handoff": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "prioritize-work": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "promote-salesforce-changes": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
+          "featured": false,
+          "order": 1000
+        },
+        "publish-content": {
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "reconcile-knowledge": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "refine-backlog": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "release-skill-package": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "render-offering-brief": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "review-contract-scope": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "review-deal-economics": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "review-deliverable": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "review-sales-journey": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "review-site-runtime": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "review-writing": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "scope-project": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "simplify-code": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "specify-implementation": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "start-delivery": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "synthesize-discovery": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -1218,50 +1224,50 @@
           "order": 1000
         },
         "track-delivery": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "validate-delivery": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "verify-salesforce-org": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "verify-work-state": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "work-in-github-repository": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "write-architecture-reference": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "write-business-case": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "write-feature-spec": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -1272,82 +1278,88 @@
           "order": 1000
         },
         "write-statement-of-work": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
+          "featured": false,
+          "order": 1000
+        },
+        "writing": {
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "writing-diagnostics": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         }
       },
       "workflows": {
         "interview-to-decision": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "idea-to-spec": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "navigation-repair": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "process-handoffs": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "sprint-plan": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "signed-project": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "salesforce-code": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "salesforce-hooks": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "salesforce-release": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "sales-discovery": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "scope-agreement": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -1358,20 +1370,20 @@
           "order": 1000
         },
         "portfolio-story": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "writing-review": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "decision-deck": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -1388,64 +1400,64 @@
           "order": 1000
         },
         "resume-project": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "reusable-skill": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         }
       },
       "plugins": {
         "estate-pursuit": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "estate-solutioning": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "estate-commercial": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "estate-delivery": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "estate-quality": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "estate-governance": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "estate-product": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
         "estate-writing": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
@@ -1456,8 +1468,8 @@
           "order": 1000
         },
         "estate-salesforce": {
-          "visible": false,
-          "download": false,
+          "visible": true,
+          "download": true,
           "featured": false,
           "order": 1000
         },
