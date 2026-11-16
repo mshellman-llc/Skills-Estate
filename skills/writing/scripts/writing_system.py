@@ -19,9 +19,14 @@ build writes, from the rules folder and the Writing section of preferences.md:
 Each output opens with a stamp naming the sha256 of its sources. A copy is never
 edited by hand; change the sources and build again.
 
+build also copies rules.md and voice-profile.md word for word into each mirror
+folder that already exists, such as the ChatGPT writing project folder at
+<drive>/Claude outputs/chatgpt-writing-project. --mirror names other folders.
+build never creates a mirror folder.
+
 check lists every living file that still carries wording retired in
 retired-wording.json (in the rules folder), and every built copy whose stamp no
-longer matches its sources. Exit 1 when it finds either.
+longer matches its sources, mirror copies included. Exit 1 when it finds either.
 
 nightly scans deliverables changed in the last --since hours with check.py, and
 with --weekly adds hit counts per tool, gate releases, corrections logged and the
@@ -69,8 +74,19 @@ DEFAULT_LIVING = [
 ]
 
 
+MIRROR_FILES = ('rules.md', 'voice-profile.md')
+DEFAULT_MIRRORS = ['Claude outputs/chatgpt-writing-project']  # relative to the drive, two levels above the rules folder
+
+
 def sha_bytes(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def mirror_dirs(home, args):
+    """Folders that keep a word-for-word copy of the rules and the voice profile. Only folders that exist count."""
+    named = getattr(args, 'mirror', None)
+    dirs = [Path(p).expanduser() for p in named] if named else [home.parent.parent / p for p in DEFAULT_MIRRORS]
+    return [d for d in dirs if d.is_dir()]
 
 
 def rules_home(arg):
@@ -260,7 +276,13 @@ def build(args):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text if text.endswith('\n') else text + '\n', encoding='utf-8')
         written.append(str(path))
-    print(json.dumps({'written': written, 'sources_sha256': sources_sha(*copies[core_path]),
+    mirrored = []
+    for folder in mirror_dirs(home, args):
+        for name in MIRROR_FILES:
+            if (home / name).is_file():
+                (folder / name).write_bytes((home / name).read_bytes())
+                mirrored.append(str(folder / name))
+    print(json.dumps({'written': written, 'mirrored': mirrored, 'sources_sha256': sources_sha(*copies[core_path]),
                       'habits': [h[0] for h in habits], 'pairs': len(examples), 'style_chars': len('\n'.join(style)),
                       'chatgpt_left_out': left_out}, indent=1))
     return 0
@@ -292,6 +314,12 @@ def check(args, quiet=False):
         m = STAMP.search(path.read_text(encoding='utf-8')) if path.is_file() else None
         if not m or m.group(1) != digest:
             outdated.append({'path': str(path), 'built_from': m.group(1) if m else None, 'sources_now': digest})
+    for folder in mirror_dirs(home, args):
+        for name in MIRROR_FILES:
+            src, copy = home / name, folder / name
+            if src.is_file() and (not copy.is_file() or copy.read_bytes() != src.read_bytes()):
+                outdated.append({'path': str(copy), 'built_from': sources_sha(copy) if copy.is_file() else None,
+                                 'sources_now': sources_sha(src)})
     result = {'retired_wording': stale, 'outdated_copies': outdated, 'ok': not stale and not outdated}
     if not quiet:
         print(json.dumps(result, indent=1) if args.json else
@@ -384,6 +412,7 @@ def main(argv=None):
         p.add_argument('--rules-dir')
         p.add_argument('--out')
         p.add_argument('--json', action='store_true')
+        p.add_argument('--mirror', nargs='*', help='folders that keep a word-for-word copy of the rules')
         if name == 'build':
             p.add_argument('--preferences')
         if name == 'check':
