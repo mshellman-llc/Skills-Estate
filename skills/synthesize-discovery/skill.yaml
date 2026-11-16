@@ -37,6 +37,11 @@ outputs:
   audience: internal-or-client-as-requested
   durable: true
   hub_target: deliverables.register
+- name: html_page
+  format: html
+  audience: internal-or-client-as-requested
+  durable: true
+  hub_target: deliverables.register
 connectors:
   required: []
   optional:
