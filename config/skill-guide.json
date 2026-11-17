@@ -1966,6 +1966,27 @@
           "reason": "Use this to build the owner's voice profile when pieces go out under the owner's name and no profile exists yet."
         }
       ]
+    },
+    "manage-color-system": {
+      "what": "Assess, question, decide, propose and apply a UI color system: audit tokens and component CSS, then build themed role tokens that pass contrast on every ground.",
+      "when": "Colors, tokens, themes or a brand palette are created, changed or judged, or a page that sets its own colors is about to publish.",
+      "inputs": "A token file (CSS custom properties or a Design System tokens.json), the stylesheets that set color, and any pinned brand values or standing color decisions.",
+      "outputs": "An audit of findings with measured contrast, a recipe, generated tokens.css and tokens.json with measured notes, a normalized single-ink icon set, and a review page that shows each finding and the result rendered.",
+      "example": "Audit Bearing's tokens and bundle.css, then propose Material 3 roles that keep Day, Night and the navy exactly.",
+      "reviewedEntrypointSha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
+      "expect": "It runs the audit on the token file and every stylesheet that sets color, checks findings against the rendered page, asks only what the numbers cannot settle, writes or edits a recipe, generates tokens with standard and high-contrast levels, and audits the output to zero failing pairs before applying it.",
+      "connectors": {
+        "required": [],
+        "optional": []
+      },
+      "requires": "Node 18 or later for the bundled scripts, with nothing to install, and a browser for the visual check.",
+      "overview": "It measures every text, edge and chart color pair in WCAG and APCA, checks the ratios written in token notes, finds palette steps that change per theme, missing Material 3 roles, hard-coded colors in components and a compiled stylesheet that lags its source. It then solves each role's tone from tonal palettes so the pair passes on every ground it sits on, in standard and high contrast.",
+      "value": "Replaces hand-picked hex values and hand-typed contrast notes with roles that are measured and regenerated from one recipe, so a brand change or a new theme does not reopen every component.",
+      "preparation": {
+        "where": "Provide the token file and the stylesheets that set color, from the repository or the design system. Pinned brand values come from the brand profile or the owner.",
+        "missing": "Without a token file it can start from a seed color and build a palette, but brand anchors and standing decisions still need the owner. It checks color only; keyboard, semantics and focus order belong to an accessibility audit."
+      },
+      "preparationSkills": []
     }
   }
 }

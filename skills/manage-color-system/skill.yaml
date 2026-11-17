@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "manage-color-system",
+  "display_name": "Manage color system",
+  "summary": "Assess, question, decide, propose and apply UI color systems in Material 3 role language. Audits token files (CSS or Design System tokens.json) and component CSS for contrast in WCAG and APCA, role coverage, palette drift, wrong ratio notes, off-system hex values and a stale compiled stylesheet; builds themed role tokens with standard and high-contrast levels from tonal palettes; reviews color changes before they ship. Use when colors, tokens, themes or a brand palette are created, changed or judged, or before publishing a page that sets its own colors. Not for a full WCAG audit of an interface (audit-accessibility), applying a confirmed brand to a deliverable (manage-brand-profile) or building a chart (build-editorial-chart).",
+  "status": "draft",
+  "version": "0.1.0",
+  "owner": "Estate",
+  "category": "evidence-quality",
+  "tier": "situational",
+  "runtimes": [
+    "claude-code",
+    "codex"
+  ],
+  "triggers": [
+    "Assess, question, decide, propose and apply UI color systems in Material 3 role language. Audits token files (CSS or Design System tokens.json) and component CSS for contrast in WCAG and APCA, role coverage, palette drift, wrong ratio notes, off-system hex values and a stale compiled stylesheet; builds themed role tokens with standard and high-contrast levels from tonal palettes; reviews color changes before they ship. Use when colors, tokens, themes or a brand palette are created, changed or judged, or before publishing a page that sets its own colors. Not for a full WCAG audit of an interface (audit-accessibility), applying a confirmed brand to a deliverable (manage-brand-profile) or building a chart (build-editorial-chart)."
+  ],
+  "exclusions": [],
+  "inputs": [
+    {
+      "name": "color_source",
+      "required": true,
+      "description": "A token file (CSS custom properties or a Design System tokens.json), a brand palette or seed colors, and any stylesheets that set color."
+    },
+    {
+      "name": "brand_decisions",
+      "required": false,
+      "description": "Pinned brand values and the owner's standing color decisions, from the brand profile or design system."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "color_review",
+      "format": "html",
+      "audience": "internal-or-client-as-requested",
+      "durable": true,
+      "hub_target": null
+    },
+    {
+      "name": "tokens",
+      "format": "css-and-json",
+      "audience": "internal",
+      "durable": true,
+      "hub_target": null
+    }
+  ],
+  "connectors": {
+    "required": [],
+    "optional": []
+  },
+  "depends_on": [],
+  "calls": [],
+  "knowledge_hub": {
+    "requirement": "not-applicable",
+    "reads": [],
+    "writes": []
+  },
+  "evidence": {
+    "required": false,
+    "control": null
+  },
+  "quality": {
+    "required": false,
+    "control": null
+  }
+}

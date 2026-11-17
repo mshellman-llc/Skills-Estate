@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.4.41",
+  "version": "0.4.42",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -142,6 +142,7 @@
         "design-analytics-plan",
         "build-interactive-explorer",
         "build-editorial-chart",
+        "manage-color-system",
         "design-information-architecture",
         "develop-product",
         "plan-usability-study",
@@ -176,7 +177,7 @@
       "controls": []
     },
     "estate-personal": {
-      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune\u2019s Weave planning.",
+      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune’s Weave planning.",
       "entries": [
         "guide-fortunes-weave",
         "design-sticker",
@@ -685,6 +686,11 @@
         "status": "pending",
         "reviewed_sha256": "",
         "evidence": "Added 2026-11-13 as a draft from the publish-content package. Stays a draft until one real piece runs end to end and fixtures/governance.yaml routing passes."
+      },
+      "manage-color-system": {
+        "status": "pending",
+        "reviewed_sha256": "",
+        "evidence": "Added 2026-11-17 as a draft. Self-test 15 of 15 (scripts/selftest.mjs): finds nine known defects in Bearing's pre-v2 tokens and passes all 178 role pairs of the v2 recipe. Used on Bearing the same day; awaiting owner review."
       }
     },
     "routers": {

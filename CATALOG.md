@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 93 source modules and 65 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 94 source modules and 66 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -12,7 +12,7 @@ This candidate contains 93 source modules and 65 task entrypoints. Consolidation
 | [Scope and proposals](browse/scope-and-proposals/README.md) | 14 | 9 |
 | [Delivery and project work](browse/delivery-and-salesforce/README.md) | 15 | 13 |
 | [Salesforce development](browse/salesforce-development/README.md) | 8 | 5 |
-| [Product and experience](browse/product-and-experience/README.md) | 14 | 13 |
+| [Product and experience](browse/product-and-experience/README.md) | 15 | 14 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
 | [Writing and presentation](browse/writing-and-presentation/README.md) | 11 | 7 |
 | [Career and applications](browse/career-and-personal/README.md) | 5 | 3 |
@@ -55,6 +55,7 @@ This candidate contains 93 source modules and 65 task entrypoints. Consolidation
 | load-project-context | [load-project-context](skills/load-project-context/SKILL.md) |  |
 | maintain-skills-estate | [maintain-skills-estate](skills/maintain-skills-estate/SKILL.md) | author-estate-skill, release-skill-package |
 | manage-brand-profile | [manage-brand-profile](skills/manage-brand-profile/SKILL.md) |  |
+| manage-color-system | [manage-color-system](skills/manage-color-system/SKILL.md) |  |
 | manage-consulting-knowledge | [manage-consulting-knowledge](skills/manage-consulting-knowledge/SKILL.md) |  |
 | manage-cutover-closeout | [manage-cutover-closeout](skills/manage-cutover-closeout/SKILL.md) |  |
 | manage-decision-register | [manage-decision-register](skills/manage-decision-register/SKILL.md) |  |
@@ -138,6 +139,7 @@ Each module needs a reviewed capability disposition before release.
 - [maintain-discovery-record](skills/maintain-discovery-record/SKILL.md)
 - [maintain-skills-estate](skills/maintain-skills-estate/SKILL.md)
 - [manage-brand-profile](skills/manage-brand-profile/SKILL.md)
+- [manage-color-system](skills/manage-color-system/SKILL.md)
 - [manage-consulting-knowledge](skills/manage-consulting-knowledge/SKILL.md)
 - [manage-cutover-closeout](skills/manage-cutover-closeout/SKILL.md)
 - [manage-decision-register](skills/manage-decision-register/SKILL.md)

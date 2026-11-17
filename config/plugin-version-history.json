@@ -180,6 +180,10 @@
     "0.4.41": {
       "content_sha256": "eef14f2f4f6cb5657e9a5e41c7f0fba4cca1b05e233d6ac0d6f637cefa9d7567",
       "note": "Owner writing and brand rules win over template formatting; checker retention for repeats and all-caps; styles-only and workbook brand checks; single-agent explorer review fallback."
+    },
+    "0.4.42": {
+      "content_sha256": "6fdc3fb82e1bf0e228b637fb926ac3893f504eb163f793e6d9204271b661d079",
+      "note": "Add manage-color-system to estate-product as a pending draft: color system audit, Material 3 role proposal and contrast levels, single-ink icon preparation, with a Node engine that needs nothing installed"
     }
   },
   "source_conflicts": [

@@ -1,0 +1,703 @@
+{
+  "name": "Bearing color v2 (proposal), Material 3 role names with Bearing aliases",
+  "palettes": {
+    "neutral": {
+      "hue": 266,
+      "chroma": 5
+    },
+    "navy": {
+      "seed": "#283549"
+    },
+    "error": {
+      "seed": "#C4302B",
+      "harmonizeTo": "#283549",
+      "chroma": 64
+    }
+  },
+  "levels": [
+    {
+      "name": "standard"
+    },
+    {
+      "name": "high",
+      "boost": {
+        "text": 7,
+        "ui": 4.5
+      }
+    }
+  ],
+  "roles": [
+    {
+      "token": "surface",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Page ground.",
+      "day": {
+        "pin": "#eeeff3"
+      },
+      "night": {
+        "pin": "#161824"
+      }
+    },
+    {
+      "token": "surface-dim",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Wells and inset areas; dimmest in both themes.",
+      "day": {
+        "prefer": 88
+      },
+      "night": {
+        "prefer": 6
+      }
+    },
+    {
+      "token": "surface-bright",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Brightest ground in both themes.",
+      "day": {
+        "prefer": 98
+      },
+      "night": {
+        "prefer": 22
+      }
+    },
+    {
+      "token": "surface-container-lowest",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Lowest-emphasis container.",
+      "day": {
+        "prefer": 100
+      },
+      "night": {
+        "prefer": 5
+      }
+    },
+    {
+      "token": "surface-container-low",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Low-emphasis container.",
+      "day": {
+        "prefer": 97.5
+      },
+      "night": {
+        "prefer": 11
+      }
+    },
+    {
+      "token": "surface-container",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Default container: cards on Night, nav areas.",
+      "day": {
+        "prefer": 91.5
+      },
+      "night": {
+        "pin": "#1e222f"
+      }
+    },
+    {
+      "token": "surface-container-high",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "High-emphasis container.",
+      "day": {
+        "prefer": 89
+      },
+      "night": {
+        "prefer": 17
+      }
+    },
+    {
+      "token": "surface-container-highest",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Highest-emphasis container.",
+      "day": {
+        "prefer": 86
+      },
+      "night": {
+        "prefer": 22
+      }
+    },
+    {
+      "token": "inverse-surface",
+      "palette": "neutral",
+      "kind": "ground",
+      "use": "Snackbar and toast ground; the Night bar on a Day page.",
+      "day": {
+        "pin": "#161824"
+      },
+      "night": {
+        "pin": "#eeeff3"
+      }
+    },
+    {
+      "token": "on-surface",
+      "palette": "neutral",
+      "kind": "text",
+      "use": "Headings and numerals.",
+      "day": {
+        "prefer": 2,
+        "against": [
+          "surface",
+          "surface-container-lowest",
+          "surface-container-high",
+          "surface-container-highest",
+          "surface-dim"
+        ],
+        "target": {
+          "wcag": 7
+        }
+      },
+      "night": {
+        "prefer": 100,
+        "against": [
+          "surface",
+          "surface-container",
+          "surface-container-highest",
+          "surface-bright"
+        ],
+        "target": {
+          "wcag": 7
+        }
+      }
+    },
+    {
+      "token": "on-surface-body",
+      "palette": "neutral",
+      "kind": "text",
+      "use": "Paragraphs (Bearing addition).",
+      "day": {
+        "prefer": 10,
+        "against": [
+          "surface",
+          "surface-container-lowest",
+          "surface-container-high",
+          "surface-container-highest",
+          "surface-dim"
+        ],
+        "target": {
+          "wcag": 7,
+          "apca": 75
+        }
+      },
+      "night": {
+        "prefer": 90,
+        "against": [
+          "surface",
+          "surface-container",
+          "surface-container-highest",
+          "surface-bright"
+        ],
+        "target": {
+          "wcag": 7,
+          "apca": 75
+        }
+      }
+    },
+    {
+      "token": "on-surface-variant",
+      "palette": "neutral",
+      "kind": "text",
+      "use": "Labels, captions, units, inactive icons.",
+      "day": {
+        "prefer": 38,
+        "direction": -1,
+        "against": [
+          "surface",
+          "surface-container-lowest",
+          "surface-container-high",
+          "surface-container-highest",
+          "surface-dim"
+        ],
+        "target": {
+          "wcag": 4.5,
+          "apca": 62
+        }
+      },
+      "night": {
+        "prefer": 72,
+        "direction": 1,
+        "against": [
+          "surface",
+          "surface-container",
+          "surface-container-highest",
+          "surface-bright"
+        ],
+        "target": {
+          "wcag": 4.5,
+          "apca": 60
+        }
+      }
+    },
+    {
+      "token": "inverse-on-surface",
+      "palette": "neutral",
+      "kind": "text",
+      "use": "Text on inverse-surface.",
+      "day": {
+        "prefer": 98,
+        "against": [
+          "inverse-surface"
+        ],
+        "target": {
+          "wcag": 12
+        }
+      },
+      "night": {
+        "prefer": 4,
+        "against": [
+          "inverse-surface"
+        ],
+        "target": {
+          "wcag": 12
+        }
+      }
+    },
+    {
+      "token": "outline-variant",
+      "palette": "neutral",
+      "kind": "none",
+      "use": "Dividers and hairline grids. Never a control edge.",
+      "day": {
+        "prefer": 84
+      },
+      "night": {
+        "prefer": 20
+      }
+    },
+    {
+      "token": "outline",
+      "palette": "neutral",
+      "kind": "ui",
+      "use": "Text field, outlined button, segmented frame and checkbox edges.",
+      "day": {
+        "prefer": 58,
+        "direction": -1,
+        "against": [
+          "surface",
+          "surface-container-lowest",
+          "surface-container-highest",
+          "surface-dim"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      },
+      "night": {
+        "prefer": 45,
+        "direction": 1,
+        "against": [
+          "surface",
+          "surface-container",
+          "surface-container-highest",
+          "surface-bright"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      }
+    },
+    {
+      "token": "focus",
+      "palette": "navy",
+      "kind": "ui",
+      "use": "2px focus ring with a 2px ground gap (Bearing addition).",
+      "day": {
+        "prefer": 22,
+        "against": [
+          "surface",
+          "surface-container-lowest",
+          "surface-container-highest",
+          "surface-dim"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      },
+      "night": {
+        "prefer": 80,
+        "against": [
+          "surface",
+          "surface-container",
+          "surface-container-highest",
+          "surface-bright"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      }
+    },
+    {
+      "token": "primary",
+      "palette": "neutral",
+      "kind": "ui",
+      "use": "Filled button, selected segment, switch track on. One per view.",
+      "day": {
+        "prefer": 4,
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      },
+      "night": {
+        "prefer": 95,
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      }
+    },
+    {
+      "token": "on-primary",
+      "palette": "neutral",
+      "kind": "text",
+      "use": "Text and icons on primary.",
+      "day": {
+        "prefer": 95,
+        "against": [
+          "primary"
+        ],
+        "target": {
+          "wcag": 7,
+          "apca": 90
+        }
+      },
+      "night": {
+        "prefer": 6,
+        "against": [
+          "primary"
+        ],
+        "target": {
+          "wcag": 7,
+          "apca": 90
+        }
+      }
+    },
+    {
+      "token": "secondary-container",
+      "palette": "neutral",
+      "kind": "fill",
+      "use": "Tonal button, selected chip, active nav item.",
+      "day": {
+        "prefer": 86
+      },
+      "night": {
+        "prefer": 30,
+        "palette": "navy"
+      }
+    },
+    {
+      "token": "on-secondary-container",
+      "palette": "neutral",
+      "kind": "text",
+      "use": "Text on secondary-container.",
+      "day": {
+        "prefer": 6,
+        "against": [
+          "secondary-container"
+        ],
+        "target": {
+          "wcag": 7
+        }
+      },
+      "night": {
+        "prefer": 100,
+        "against": [
+          "secondary-container"
+        ],
+        "target": {
+          "wcag": 7
+        }
+      }
+    },
+    {
+      "token": "primary-fixed",
+      "palette": "navy",
+      "kind": "fill",
+      "use": "Brand navy, the same in both themes. Never where contrast is needed against the ground.",
+      "day": {
+        "prefer": 22
+      },
+      "night": {
+        "prefer": 22
+      }
+    },
+    {
+      "token": "on-primary-fixed",
+      "palette": "neutral",
+      "kind": "text",
+      "use": "Text on primary-fixed.",
+      "day": {
+        "prefer": 98,
+        "against": [
+          "primary-fixed"
+        ],
+        "target": {
+          "wcag": 7
+        }
+      },
+      "night": {
+        "prefer": 98,
+        "against": [
+          "primary-fixed"
+        ],
+        "target": {
+          "wcag": 7
+        }
+      }
+    },
+    {
+      "token": "data-1",
+      "palette": "navy",
+      "kind": "ui",
+      "use": "Chart series 1, the subject.",
+      "day": {
+        "prefer": 22,
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      },
+      "night": {
+        "prefer": 95,
+        "palette": "neutral",
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      }
+    },
+    {
+      "token": "data-2",
+      "palette": "navy",
+      "kind": "ui",
+      "use": "Chart series 2.",
+      "day": {
+        "prefer": 40,
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      },
+      "night": {
+        "prefer": 72,
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      }
+    },
+    {
+      "token": "data-3",
+      "palette": "navy",
+      "kind": "ui",
+      "use": "Chart series 3.",
+      "day": {
+        "prefer": 56,
+        "direction": -1,
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      },
+      "night": {
+        "prefer": 50,
+        "direction": 1,
+        "against": [
+          "surface"
+        ],
+        "target": {
+          "wcag": 3
+        }
+      }
+    },
+    {
+      "token": "error",
+      "palette": "error",
+      "kind": "text",
+      "use": "Error text, the error mark and its rule. No tinted panels.",
+      "day": {
+        "prefer": 40,
+        "against": [
+          "surface",
+          "surface-container-lowest",
+          "surface-container-highest",
+          "surface-dim"
+        ],
+        "target": {
+          "wcag": 4.5,
+          "apca": 60
+        }
+      },
+      "night": {
+        "prefer": 78,
+        "against": [
+          "surface",
+          "surface-container",
+          "surface-container-highest",
+          "surface-bright"
+        ],
+        "target": {
+          "wcag": 4.5,
+          "apca": 60
+        }
+      }
+    },
+    {
+      "token": "on-error",
+      "palette": "error",
+      "kind": "text",
+      "use": "Text on a destructive filled button.",
+      "day": {
+        "prefer": 100,
+        "against": [
+          "error"
+        ],
+        "target": {
+          "wcag": 4.5
+        }
+      },
+      "night": {
+        "prefer": 15,
+        "against": [
+          "error"
+        ],
+        "target": {
+          "wcag": 4.5
+        }
+      }
+    },
+    {
+      "token": "state-hover",
+      "kind": "none",
+      "use": "Hover layer, in the content color:",
+      "day": {
+        "of": "on-surface",
+        "alpha": 0.08
+      },
+      "night": {
+        "of": "on-surface",
+        "alpha": 0.08
+      }
+    },
+    {
+      "token": "state-focus",
+      "kind": "none",
+      "use": "Focus layer:",
+      "day": {
+        "of": "on-surface",
+        "alpha": 0.1
+      },
+      "night": {
+        "of": "on-surface",
+        "alpha": 0.1
+      }
+    },
+    {
+      "token": "state-pressed",
+      "kind": "none",
+      "use": "Pressed layer:",
+      "day": {
+        "of": "on-surface",
+        "alpha": 0.1
+      },
+      "night": {
+        "of": "on-surface",
+        "alpha": 0.1
+      }
+    },
+    {
+      "token": "state-dragged",
+      "kind": "none",
+      "use": "Dragged layer:",
+      "day": {
+        "of": "on-surface",
+        "alpha": 0.16
+      },
+      "night": {
+        "of": "on-surface",
+        "alpha": 0.16
+      }
+    },
+    {
+      "token": "disabled-content",
+      "kind": "none",
+      "use": "Disabled text and icons:",
+      "day": {
+        "of": "on-surface",
+        "alpha": 0.38
+      },
+      "night": {
+        "of": "on-surface",
+        "alpha": 0.38
+      }
+    },
+    {
+      "token": "disabled-container",
+      "kind": "none",
+      "use": "Disabled fills:",
+      "day": {
+        "of": "on-surface",
+        "alpha": 0.12
+      },
+      "night": {
+        "of": "on-surface",
+        "alpha": 0.12
+      }
+    },
+    {
+      "token": "scrim",
+      "palette": "neutral",
+      "kind": "none",
+      "use": "Dims the page under a dialog:",
+      "day": {
+        "tone": 2,
+        "alpha": 0.45
+      },
+      "night": {
+        "tone": 0,
+        "alpha": 0.6
+      }
+    }
+  ],
+  "aliases": {
+    "both": {
+      "ink": "on-surface",
+      "ink-body": "on-surface-body",
+      "ink-muted": "on-surface-variant",
+      "line": "outline-variant",
+      "line-strong": "outline",
+      "action": "primary",
+      "on-action": "on-primary",
+      "action-quiet": "secondary-container",
+      "on-action-quiet": "on-secondary-container",
+      "navy-700": "primary-fixed",
+      "focus-ring": "focus"
+    },
+    "day": {
+      "surface-raised": "surface-container-lowest"
+    },
+    "night": {
+      "surface-raised": "surface-container"
+    }
+  }
+}
