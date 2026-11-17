@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-17T17:13:55.257968+00:00",
-  "baseCommit": "2285c31297081e86bf79308cf44cdf2ed858a239",
+  "generatedAt": "2026-11-17T22:22:21.090912+00:00",
+  "baseCommit": "7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -65,7 +65,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-author-style/SKILL.md",
       "sourceSha256": "60ef56102eed4f9de4cf6ea78a4ad0949e98ee1f6c38f5d33db43bc868ab10ed",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/apply-author-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/apply-author-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -196,7 +196,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-salesforce-patterns/SKILL.md",
       "sourceSha256": "97a238283a12443797e0970f0483169d2c283e27a7735ef344d3a87bc2d58d2b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/apply-salesforce-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/apply-salesforce-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "apply-salesforce-patterns",
@@ -433,7 +433,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-career-options/SKILL.md",
       "sourceSha256": "f28c082d3d2bc502c3125006fb9591bc28bf9d00476f2cc1c2258badd452e4c6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/assess-career-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/assess-career-options/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-career-options",
@@ -576,7 +576,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-offering-fit/SKILL.md",
       "sourceSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/assess-offering-fit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/assess-offering-fit/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-offering-fit",
@@ -732,7 +732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-solution-delivery/SKILL.md",
       "sourceSha256": "9092c5c9e75ce77960537bd7e4e98bee87db469f7c1fa19643431ae83e4f1362",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/assess-solution-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/assess-solution-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-solution-delivery",
@@ -1112,7 +1112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/audit-accessibility/SKILL.md",
       "sourceSha256": "6f6b392bdc3eb2cf4277e1d13ea2210888228695c933a6c6835dddda47ee798e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/audit-accessibility/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/audit-accessibility/SKILL.md",
       "taskPackages": [
         {
           "name": "audit-accessibility",
@@ -1244,7 +1244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-estate-skill/SKILL.md",
       "sourceSha256": "24b0fa3b3246b650dd8b24613ddedd2b5086c56217caf4a21c6e0ae091434d2f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/author-estate-skill/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/author-estate-skill/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -1460,7 +1460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-style-runtime/SKILL.md",
       "sourceSha256": "7b23bdc5ee4e8e997a2840cd5d55f8122f158aed37d55cac6fb82c9edc10d4a5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/author-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/author-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1647,7 +1647,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "24863f4e5cd04a2dffb85f9d5b71573f7a8ecc96cf05278a2d32b2d8b57893cf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-offering-fit",
@@ -1716,7 +1716,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 30,
-        "packageFingerprint": "b97ca861964dc473c63298277aaa74ca23e963d8673092b347d75ee4d49a720e",
+        "packageFingerprint": "8eb6ed3809044f0466fef54ab81fee70ad2654dfebe3477a06928f7debfdf5ee",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -1884,9 +1884,9 @@
         },
         {
           "path": "brand/browser_check.py",
-          "sha256": "2cbc0fa4b151a5c5ad015e4e740ddbffb493d0852228db9db53d88deb615695c",
-          "bytes": 2478,
-          "gitBlob": "7ed3a92d05dee46cffad6c3672764f2dcc09f7ba"
+          "sha256": "3deb8e208a775c13c8ec463676bb8d4e216f2c3ad06b6bb71971292b5031675f",
+          "bytes": 2627,
+          "gitBlob": "9e9a0071729b365f5ac22bbfcc5266cc9d4fbe6b"
         },
         {
           "path": "brand/html_profile.py",
@@ -2064,7 +2064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deal-decision-deck/SKILL.md",
       "sourceSha256": "1eb393455f61eef771bf1dbd5d36d6977237b2bce3afa1cfda2eca2821718eed",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-deal-decision-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-deal-decision-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2347,7 +2347,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deck/SKILL.md",
       "sourceSha256": "d8944d863ca497db2010baa26d7013602c3d54015cdfd2dd9d232406511ba640",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2591,7 +2591,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-editorial-chart/SKILL.md",
       "sourceSha256": "cde02918eb0e09f72b62b58e9b75d66eed52f8a0421df36cfa3989ceb0b3f5d7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-editorial-chart/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-editorial-chart/SKILL.md",
       "taskPackages": [
         {
           "name": "build-editorial-chart",
@@ -2808,11 +2808,11 @@
       "title": "Interactive Explorer",
       "family": 4,
       "description": "Build a polished interactive website that makes source material easy to explore through project-specific structure and expandable detail. Use for solution explorers, project or research hubs, discovery-to-design narratives, process guides, personas and JTBD, user journeys, and capability maps. Choose navigation, visual design and interactions to fit the audience, content and current request rather than reusing a fixed layout. Do not use it for a release review site built from tracker exports, which is build-review-site.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "9c33cb189c196adadca54985edec17531ae2b79dcca52dd06a8a68202f34c34c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -2990,11 +2990,11 @@
       "title": "Build interactive proposal",
       "family": 1,
       "description": "Builds a single-file interactive proposal page that a prospect can click through. The page lets a prospect switch among scoped versions. Each version carries its team, timeline, assumptions, boundaries, and call to action. Proposal mode renders a priced scoping-app quote (Q-number) with every number tied to a quote field and reconciled by tie-out. Explorer mode covers pre-quote qualification with the same page and gates, scope and open decisions only, and zero currency on the surface. Use when asked for an interactive proposal, proposal page, quote page, clickable proposal, web version of the DDOC, scope explorer, or option explorer for a pursuit. Trigger on a Q-number or client name paired with interactive, page, site, explorer, or clickable. Do NOT use for the PPTX Deal Decision deck itself (that is ddoc) or a generic slide proposal deck (build-deck).",
-      "status": "github",
+      "status": "local-revision",
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-proposal/SKILL.md",
       "sourceSha256": "a276c1c0148196ba4506b9ccf1906d331bfe1ca2da761fe12ab281a8d7c0f3fd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -3033,7 +3033,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 16,
-        "packageFingerprint": "fc85cc7527d9e52f18296bdbe2fe64a9dc936349a96a06cf434071e130eb1f62",
+        "packageFingerprint": "3176e8c43bf5a7b487e7a2be2e09508c061f0bd35030e7aa26cef7f7cff21789",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -3156,9 +3156,9 @@
         },
         {
           "path": "fixtures/explorer.json",
-          "sha256": "f003cac63285f2e57f1775006de016c287bdb7aaabaffd9f80eafc05e1a02b7b",
-          "bytes": 4459,
-          "gitBlob": "e13acf613ef8fe4a906e1681138d27dbb303e6ca"
+          "sha256": "a852610c37d8270dc6855398ddb99ebe8bd01921329956152e9ee9837d58e9aa",
+          "bytes": 4643,
+          "gitBlob": "436a87e9b58044d29e7726629e5e321c24ca3d37"
         },
         {
           "path": "fixtures/proposal.json",
@@ -3180,15 +3180,15 @@
         },
         {
           "path": "references/quote-contract.md",
-          "sha256": "ba0e131cd1ca0542becd2b3b7fd32c67f6f4abb26724575e6290d609930dece0",
-          "bytes": 5580,
-          "gitBlob": "6071f51205b98672cef695b2a7c01b7ee9a1f0c6"
+          "sha256": "de96862abfd22d00093cdd91ef5c0f7e50efac95df9cb390549b6fd32fddb83e",
+          "bytes": 6048,
+          "gitBlob": "31e15edd16ef4b9386e182b1c0d87aaa31e35e24"
         },
         {
           "path": "references/release-gates.md",
-          "sha256": "7bf56db5876d5299bf519d8df5ad0b0ea2143538192b6a87e280784083603c67",
-          "bytes": 7809,
-          "gitBlob": "799ab890c62917477dc825297f60762e902718b5"
+          "sha256": "068031a60a597941d432b10105903d1c06777ed34c1bb14dbff4dabba512c0be",
+          "bytes": 8202,
+          "gitBlob": "47f9d5a7adbe7dceaceee594b20571f86bd85b1a"
         },
         {
           "path": "references/synthetic-scope-explorer.manifest.json",
@@ -3204,9 +3204,9 @@
         },
         {
           "path": "scripts/build_proposal.py",
-          "sha256": "e4bd0ae4c61786d24d1f9c9c24a7724dc5cf73d20fe72ab3f9c884258997c2e9",
-          "bytes": 9908,
-          "gitBlob": "c1e7694da94318160ac5504b7cd114edb0bb5866"
+          "sha256": "6f5a9a0ce6bece61b3df5824760b5ea34991dfd0427f967a422a2067ace1f828",
+          "bytes": 10645,
+          "gitBlob": "0b38e87485b017a732d9b025f8d172583ae47e8d"
         },
         {
           "path": "scripts/interactive_proposal_selftest.py",
@@ -3216,9 +3216,9 @@
         },
         {
           "path": "scripts/qa_proposal.mjs",
-          "sha256": "19f8c8e801f1c70590fb7dd27c0fd4463a10b71579f21dc8c807c5f07946dc4d",
-          "bytes": 6130,
-          "gitBlob": "e4b951747dc1d4aecb939fab0e0b461e52876964"
+          "sha256": "bebca80788a459c2549f080ebf043a69e20070e2093b7b58d9db79a9380766ed",
+          "bytes": 6459,
+          "gitBlob": "281997fe05f100c66a5dfd985c9072b6e7717334"
         },
         {
           "path": "scripts/qa_proposal.py",
@@ -3234,9 +3234,9 @@
         },
         {
           "path": "templates/proposal.html",
-          "sha256": "04f7eaad66744bf44f785de1aded85205335756eaf9966ad9aba116d3e9e669c",
-          "bytes": 11824,
-          "gitBlob": "6315aa3bcff5b1781c52ad0b0b4c7601cb35839c"
+          "sha256": "388d8b8320b67e49d4208947f55ffdb176cc50e4c9e6ec5c60136f7150afe0b7",
+          "bytes": 12457,
+          "gitBlob": "bfb98b571f84dd7f6a12275a055c83b8f6255548"
         }
       ],
       "examples": [
@@ -3264,7 +3264,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-moscow-story-map/SKILL.md",
       "sourceSha256": "b6e46327dc11d0e86d97e9b9c99121f819f87f76c895c48dcdee6b8236722c82",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "build-moscow-story-map",
@@ -3424,7 +3424,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-review-site/SKILL.md",
       "sourceSha256": "1c9b9c3887b5d5e854e03ccd759bf3f6d7f3ea8543c321df46d63e22840db998",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "build-review-site",
@@ -3637,7 +3637,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-roadmap/SKILL.md",
       "sourceSha256": "db7e32ba564b4400f0a35919459bcc64f79bbd8d1d6d1f48037a70d8d1621c9c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/build-roadmap/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/build-roadmap/SKILL.md",
       "taskPackages": [
         {
           "name": "build-roadmap",
@@ -3962,7 +3962,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-knowledge/SKILL.md",
       "sourceSha256": "9049e911aaa57e057a466332ac0dc10045e19383c099384505f6413b8dd36d2e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/capture-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/capture-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-knowledge",
@@ -4094,11 +4094,11 @@
       "title": "Capture requirements",
       "family": 2,
       "description": "Capture and structure business requirements in the Estate approved format: epics, capabilities, business needs, user stories, and Gherkin acceptance criteria, delivered as a branded two-tab Excel workbook. Use to define, write, organize, or refine requirements, to extract them from an uploaded deck, PRD, brief, spec, or transcript, or to turn a Salesforce SOW into a backlog (BA mode: analyze this SOW, SOW to backlog, Salesforce BA). Triggers on capture requirements, write user stories, define epics, requirements gathering, BRD, acceptance criteria, requirements CSV. Always read the host spreadsheet skill before generating the workbook. Grading sprint readiness is refine-backlog.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/capture-requirements/SKILL.md",
       "sourceSha256": "af49008fd477cc5987fd425040ec52e76c65817fa7becb926b7cb778f56239a6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/capture-requirements/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/capture-requirements/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-requirements",
@@ -4315,7 +4315,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-salesforce-screens/SKILL.md",
       "sourceSha256": "a78f3f8a3aa09d11647d217ec599435f71050d74329203beeb6ee89240db9319",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/capture-salesforce-screens/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/capture-salesforce-screens/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4465,7 +4465,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/check-knowledge-hub/SKILL.md",
       "sourceSha256": "86789af6c5068ade95ae70a4e523f74f5e5e641c90e1158381f5a28b99212a59",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/check-knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/check-knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "check-knowledge-hub",
@@ -4611,11 +4611,11 @@
       "title": "Compare scope options",
       "family": 1,
       "description": "Build a static scope summary or side-by-side option comparison from current quotes or a dated quote export. Reconciles every scope item, per-option hour value, status and staffing-snapshot price before producing a complete HTML reference. Use for scope matrices, tier comparisons and client leave-behinds. Route selectable proposal experiences to build-interactive-proposal, deal decision decks to ddoc, contracts to sow and quote changes to scope-project.",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/compare-scope-options/SKILL.md",
-      "sourceSha256": "4fc316551667ae2877b164b0084a4d27090945b614b40c8a5da191ca58f0a453",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/compare-scope-options/SKILL.md",
+      "sourceSha256": "3d37c9dc0dfb58725d6309b62e57f4365c51373bff43e38e40b5c3f687322bd2",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/compare-scope-options/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -4628,10 +4628,10 @@
       "guide": {
         "what": "Compare scope options in a static document.",
         "when": "A printable scope summary or option matrix is needed.",
-        "inputs": "One versioned quote or export with scope, hours, staffing, price, and timeline.",
+        "inputs": "One versioned quote or export with scope, hours, staffing, price, and timeline, or an hours-only estimate that names its missing price, staffing and timeline inputs.",
         "outputs": "A reconciled scope summary or side-by-side option comparison.",
         "example": "Create a printable comparison of these options from one confirmed quote revision.",
-        "reviewedEntrypointSha256": "4fc316551667ae2877b164b0084a4d27090945b614b40c8a5da191ca58f0a453",
+        "reviewedEntrypointSha256": "3d37c9dc0dfb58725d6309b62e57f4365c51373bff43e38e40b5c3f687322bd2",
         "expect": "It asks for the client, quote IDs and order, then needs either a quote connector or a dated quote export. It reconciles every scope item, hour value, status and staffing-snapshot price with a validator before building a self-contained HTML page, and it stops the build if no real scope records are supplied.",
         "requires": "A current quote connection or a dated quote export, and Python 3 for the validator and builder.",
         "overview": "It asks for the client, quote IDs and order, then needs either a quote connector or a dated quote export. It reconciles every scope item, hour value, status and staffing-snapshot price with a validator before building a self-contained HTML page, and it stops the build if no real scope records are supplied.",
@@ -4653,8 +4653,8 @@
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [],
-        "textFilesScanned": 15,
-        "packageFingerprint": "86ebc0bcc4a76d7324105fb2b0e95200b546c8671fd24ed52f805d5bd80d084d",
+        "textFilesScanned": 17,
+        "packageFingerprint": "3ed00016a8e2af247d97da0877e71a635ec854cec5bd00c65687695e68bf689a",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -4717,8 +4717,8 @@
         "expect": "It asks for the client, quote IDs and order, then needs either a quote connector or a dated quote export. It reconciles every scope item, hour value, status and staffing-snapshot price with a validator before building a self-contained HTML page, and it stops the build if no real scope records are supplied.",
         "declared": true
       },
-      "markdown": "---\nname: compare-scope-options\ndescription: Build a static scope summary or side-by-side option comparison from current quotes or a dated quote export. Reconciles every scope item, per-option hour value, status and staffing-snapshot price before producing a complete HTML reference. Use for scope matrices, tier comparisons and client leave-behinds. Route selectable proposal experiences to build-interactive-proposal, deal decision decks to ddoc, contracts to sow and quote changes to scope-project.\n---\n\n# Compare scope options\n\nProduce the reference itself: one self-contained HTML file with the scope matrix visible, plus a printable version when requested. A reader should be able to identify the difference between options and see what each price covers.\n\nBefore drafting, read [the build card](../_shared/build-card.md). Keep the commercial writing checks in [the proposal register](../writing-diagnostics/references/registers/sow-proposal.md): preserve exact scope and avoid strengthening a delivery claim. Brand identity comes from the [canonical profile](references/estate/brand.md), resolved through `brand-renderer`. The skill contains no company palette or required logo.\n\n## Resolve the input and mode\n\nName the client, quote IDs and requested order. One quote produces a single-option summary; several quotes produce a comparison. State the mode when beginning a real request. Do not assume that a more expensive option contains every cheaper option's items. Establish any ascending-scope relationship from the actual matrix.\n\nUse the available quote connector for a current client reference. If it is unavailable, accept a user-supplied export with its source system, revision and capture time. The resulting reference describes that dated export. A local file does not establish current live state. Ask for a fresh export when the requested decision depends on changes since capture; never fabricate a connector or reuse remembered figures.\n\nIf neither a connector nor an export supplies the required scope, stop the dependent build and identify the missing records. A synthetic fixture is suitable for testing the skill, not for filling a client quote.\n\n## Capture the full scope\n\nRead [validation.md](validation.md) before assembling data. Save every quote's full item list and its active-item list. With an available scoping connector, this corresponds to `scoping_get_scope_hierarchy` with `activeOnly: false`, `includeHours: true`, `includeFinancials: false`, followed by the active-only read. Use the connector's actual schema; these operation names are an adapter example, not a promise that a tool is installed.\n\nRetain stable item IDs and the quote's own hours. The four states remain distinct:\n\n| State | Meaning |\n|---|---|\n| Included | Present and selected, without an optional flag. |\n| Optional | Explicitly marked optional, even if also returned in the active read. |\n| Available | Present but deselected. Adding it may require a price or schedule change. |\n| Not included | Absent from that quote's full scope. |\n\nSingle-option mode still shows optional and available items when the quote contains them. Do not hide deselected work to force a two-state layout. An absent item in another option is not zero-hour work. The matrix shows each option's hours separately when they differ.\n\n## Resolve price and staffing\n\nList timeline snapshots first and identify the active snapshot ID. Read that snapshot by ID; do not select the newest merely because it was created last. Each displayed staffing variant needs its own actual snapshot, including revenue, currency, duration and staffing hours. Never derive another variant by multiplying a rate.\n\nThe headline price comes from the staffing snapshot. Per-item dollars are omitted because back-allocation may drift between snapshots. Item hours are scope estimates; staffing hours can also cover delivery activities. Do not force the two totals to match or infer that an optional item is already priced.\n\nDisplay exact prices by default. If the user requests rounded prices, show the rounded amount as approximate and preserve the exact quote alongside it. Rounding never changes the working source. Show all requested staffing variants on the static page so printing retains every price and duration. For a prospect-facing selector, choose the interactive proposal or explorer mode and read [its complete workflow](../build-interactive-proposal/SKILL.md). The portable Scope Options package embeds it; static comparison rules do not substitute for its interaction and print checks.\n\n## Reconcile before rendering\n\nUse the source and presentation JSON contract in [validation.md](validation.md). The source holds captured facts; the presentation holds the intended matrix and option copy. The supplied validator compares them independently.\n\n```bash\npython3 scripts/scope_reference_validate.py SOURCE.json PRESENTATION.json\npython3 scripts/build_scope.py SOURCE.json PRESENTATION.json OUTPUT.html\n```\n\nBoth commands refuse mismatched item sets or states. They also reject changed names, conflicting IDs, missing description evidence and unsupported snapshot figures. The builder reruns reconciliation before writing. Keep the resulting `.reconciliation.json` with the artifact and inputs. Do not edit the final HTML to bypass a discrepancy.\n\nReport the actual reconcile result and counts. Included and optional counts remain separate from available items. Never label a present-item count as an included-item count.\n\n## Author and build\n\nRead [build-guide.md](build-guide.md). Give each item a concise description grounded in its stored description, effort basis or supplied source. The portable input requires a reference to that evidence. A reference alone does not prove that an authored sentence is faithful; compare its meaning before delivery. For verbatim SOW descriptions, use the exported description field.\n\nPreserve source names in the reconciliation record. If a name contains internal language that cannot appear in client copy, obtain an approved display-name mapping or correct the source. Never silently remove a material scope condition while sanitizing the wording.\n\nKeep assumptions and exclusions that affect the client's choice visible. An unresolved internal issue belongs in the working record, but a condition that changes scope or price cannot be hidden from the reader. Do not recommend an option without supplied decision criteria.\n\n## Inspect and deliver\n\nRun brand preflight and the applicable writing checks through the packaged runtime. Read the complete output against the quote records. Inspect the matrix at desktop and narrow widths, and check every exported PDF page for missing rows or split labels. A clean numeric reconcile does not validate the option summaries.\n\nFollow [the release gate](../_shared/release-gate.md). Keep failed attempts and the actual output alongside the source hashes and review record. Deliver the HTML and requested PDF with the quoted source date. Record any authorized knowledge-hub update separately; creating a local reference does not update the quote or publish it.\n",
-      "html": "<p>Produce the reference itself: one self-contained HTML file with the scope matrix visible, plus a printable version when requested. A reader should be able to identify the difference between options and see what each price covers.</p><p>Keep the commercial writing checks in the proposal register <span class=\"ref\">(../writing-diagnostics/references/registers/sow-proposal.md)</span>: preserve exact scope and avoid strengthening a delivery claim. Brand identity comes from the canonical profile <span class=\"ref\">(references/estate/brand.md)</span>, resolved through <code>brand-renderer</code>. The skill contains no company palette or required logo.</p><h3>Resolve the input and mode</h3><p>Name the client, quote IDs and requested order. One quote produces a single-option summary; several quotes produce a comparison. State the mode when beginning a real request. Do not assume that a more expensive option contains every cheaper option&#x27;s items. Establish any ascending-scope relationship from the actual matrix.</p><p>Use the available quote connector for a current client reference. If it is unavailable, accept a user-supplied export with its source system, revision and capture time. The resulting reference describes that dated export. A local file does not establish current live state. Ask for a fresh export when the requested decision depends on changes since capture; never fabricate a connector or reuse remembered figures.</p><p>If neither a connector nor an export supplies the required scope, stop the dependent build and identify the missing records. A synthetic fixture is suitable for testing the skill, not for filling a client quote.</p><h3>Capture the full scope</h3><p>Read validation.md <span class=\"ref\">(validation.md)</span> before assembling data. Save every quote&#x27;s full item list and its active-item list. With an available scoping connector, this corresponds to <code>scoping_get_scope_hierarchy</code> with <code>activeOnly: false</code>, <code>includeHours: true</code>, <code>includeFinancials: false</code>, followed by the active-only read. Use the connector&#x27;s actual schema; these operation names are an adapter example, not a promise that a tool is installed.</p><p>Retain stable item IDs and the quote&#x27;s own hours. The four states remain distinct:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">State</th><th scope=\"col\">Meaning</th></tr></thead><tbody><tr><td>Included</td><td>Present and selected, without an optional flag.</td></tr><tr><td>Optional</td><td>Explicitly marked optional, even if also returned in the active read.</td></tr><tr><td>Available</td><td>Present but deselected. Adding it may require a price or schedule change.</td></tr><tr><td>Not included</td><td>Absent from that quote&#x27;s full scope.</td></tr></tbody></table></div><p>Single-option mode still shows optional and available items when the quote contains them. Do not hide deselected work to force a two-state layout. An absent item in another option is not zero-hour work. The matrix shows each option&#x27;s hours separately when they differ.</p><h3>Resolve price and staffing</h3><p>List timeline snapshots first and identify the active snapshot ID. Read that snapshot by ID; do not select the newest merely because it was created last. Each displayed staffing variant needs its own actual snapshot, including revenue, currency, duration and staffing hours. Never derive another variant by multiplying a rate.</p><p>The headline price comes from the staffing snapshot. Per-item dollars are omitted because back-allocation may drift between snapshots. Item hours are scope estimates; staffing hours can also cover delivery activities. Do not force the two totals to match or infer that an optional item is already priced.</p><p>Display exact prices by default. If the user requests rounded prices, show the rounded amount as approximate and preserve the exact quote alongside it. Rounding never changes the working source. Show all requested staffing variants on the static page so printing retains every price and duration. For a prospect-facing selector, choose the interactive proposal or explorer mode and read its complete workflow <span class=\"ref\">(../build-interactive-proposal/SKILL.md)</span>. The portable Scope Options package embeds it; static comparison rules do not substitute for its interaction and print checks.</p><h3>Reconcile before rendering</h3><p>Use the source and presentation JSON contract in validation.md <span class=\"ref\">(validation.md)</span>. The source holds captured facts; the presentation holds the intended matrix and option copy. The supplied validator compares them independently.</p><pre><code>python3 scripts/scope_reference_validate.py SOURCE.json PRESENTATION.json\npython3 scripts/build_scope.py SOURCE.json PRESENTATION.json OUTPUT.html</code></pre><p>Both commands refuse mismatched item sets or states. They also reject changed names, conflicting IDs, missing description evidence and unsupported snapshot figures. The builder reruns reconciliation before writing. Keep the resulting <code>.reconciliation.json</code> with the artifact and inputs. Do not edit the final HTML to bypass a discrepancy.</p><p>Report the actual reconcile result and counts. Included and optional counts remain separate from available items. Never label a present-item count as an included-item count.</p><h3>Author and build</h3><p>Read build-guide.md <span class=\"ref\">(build-guide.md)</span>. Give each item a concise description grounded in its stored description, effort basis or supplied source. The portable input requires a reference to that evidence. A reference alone does not prove that an authored sentence is faithful; compare its meaning before delivery. For verbatim SOW descriptions, use the exported description field.</p><p>Preserve source names in the reconciliation record. If a name contains internal language that cannot appear in client copy, obtain an approved display-name mapping or correct the source. Never silently remove a material scope condition while sanitizing the wording.</p><p>Keep assumptions and exclusions that affect the client&#x27;s choice visible. An unresolved internal issue belongs in the working record, but a condition that changes scope or price cannot be hidden from the reader. Do not recommend an option without supplied decision criteria.</p><h3>Inspect and deliver</h3><p>Run brand preflight and the applicable writing checks through the packaged runtime. Read the complete output against the quote records. Inspect the matrix at desktop and narrow widths, and check every exported PDF page for missing rows or split labels. A clean numeric reconcile does not validate the option summaries.</p><p>Follow the release gate <span class=\"ref\">(../_shared/release-gate.md)</span>. Keep failed attempts and the actual output alongside the source hashes and review record. Deliver the HTML and requested PDF with the quoted source date. Record any authorized knowledge-hub update separately; creating a local reference does not update the quote or publish it.</p>",
+      "markdown": "---\nname: compare-scope-options\ndescription: Build a static scope summary or side-by-side option comparison from current quotes or a dated quote export. Reconciles every scope item, per-option hour value, status and staffing-snapshot price before producing a complete HTML reference. Use for scope matrices, tier comparisons and client leave-behinds. Route selectable proposal experiences to build-interactive-proposal, deal decision decks to ddoc, contracts to sow and quote changes to scope-project.\n---\n\n# Compare scope options\n\nProduce the reference itself: one self-contained HTML file with the scope matrix visible, plus a printable version when requested. A reader should be able to identify the difference between options and see what each price covers.\n\nBefore drafting, read [the build card](../_shared/build-card.md). Keep the commercial writing checks in [the proposal register](../writing-diagnostics/references/registers/sow-proposal.md): preserve exact scope and avoid strengthening a delivery claim. Brand identity comes from the [canonical profile](references/estate/brand.md), resolved through `brand-renderer`. The skill contains no company palette or required logo.\n\n## Resolve the input and mode\n\nName the client, quote IDs and requested order. One quote produces a single-option summary; several quotes produce a comparison. State the mode when beginning a real request. Do not assume that a more expensive option contains every cheaper option's items. Establish any ascending-scope relationship from the actual matrix.\n\nUse the available quote connector for a current client reference. If it is unavailable, accept a user-supplied export with its source system, revision and capture time. The resulting reference describes that dated export. A local file does not establish current live state. Ask for a fresh export when the requested decision depends on changes since capture; never fabricate a connector or reuse remembered figures.\n\nIf neither a connector nor an export supplies the required scope, stop the dependent build and identify the missing records. A synthetic fixture is suitable for testing the skill, not for filling a client quote.\n\n## Capture the full scope\n\nRead [validation.md](validation.md) before assembling data. Save every quote's full item list and its active-item list. With an available scoping connector, this corresponds to `scoping_get_scope_hierarchy` with `activeOnly: false`, `includeHours: true`, `includeFinancials: false`, followed by the active-only read. Use the connector's actual schema; these operation names are an adapter example, not a promise that a tool is installed.\n\nRetain stable item IDs and the quote's own hours. The four states remain distinct:\n\n| State | Meaning |\n|---|---|\n| Included | Present and selected, without an optional flag. |\n| Optional | Explicitly marked optional, even if also returned in the active read. |\n| Available | Present but deselected. Adding it may require a price or schedule change. |\n| Not included | Absent from that quote's full scope. |\n\nSingle-option mode still shows optional and available items when the quote contains them. Do not hide deselected work to force a two-state layout. An absent item in another option is not zero-hour work. The matrix shows each option's hours separately when they differ.\n\n## Resolve price and staffing\n\nList timeline snapshots first and identify the active snapshot ID. Read that snapshot by ID; do not select the newest merely because it was created last. Each displayed staffing variant needs its own actual snapshot, including revenue, currency, duration and staffing hours. Never derive another variant by multiplying a rate.\n\nThe headline price comes from the staffing snapshot. Per-item dollars are omitted because back-allocation may drift between snapshots. Item hours are scope estimates; staffing hours can also cover delivery activities. Do not force the two totals to match or infer that an optional item is already priced.\n\nA rough estimate may have hours but no rate card, staffing plan or timeline. Build it as an unpriced comparison: the source sets `\"pricing\": \"unpriced\"`, carries no snapshots and names the missing price, staffing and timeline inputs. Items can carry low, expected and high hours, and an item with no estimate yet is marked unestimated with the discovery it needs. The page names what is missing and derives none of it. Never fill a price or duration from a remembered rate, and never show an unestimated item as zero.\n\nDisplay exact prices by default. If the user requests rounded prices, show the rounded amount as approximate and preserve the exact quote alongside it. Rounding never changes the working source. Show all requested staffing variants on the static page so printing retains every price and duration. For a prospect-facing selector, choose the interactive proposal or explorer mode and read [its complete workflow](../build-interactive-proposal/SKILL.md). The portable Scope Options package embeds it; static comparison rules do not substitute for its interaction and print checks.\n\n## Reconcile before rendering\n\nUse the source and presentation JSON contract in [validation.md](validation.md). The source holds captured facts; the presentation holds the intended matrix and option copy. The supplied validator compares them independently.\n\n```bash\npython3 scripts/scope_reference_validate.py SOURCE.json PRESENTATION.json\npython3 scripts/build_scope.py SOURCE.json PRESENTATION.json OUTPUT.html\n```\n\nBoth commands refuse mismatched item sets or states. They also reject changed names, conflicting IDs, missing description evidence and unsupported snapshot figures. The builder reruns reconciliation before writing. Keep the resulting `.reconciliation.json` with the artifact and inputs. Do not edit the final HTML to bypass a discrepancy.\n\nReport the actual reconcile result and counts. Included and optional counts remain separate from available items. Never label a present-item count as an included-item count.\n\n## Author and build\n\nRead [build-guide.md](build-guide.md). Give each item a concise description grounded in its stored description, effort basis or supplied source. The portable input requires a reference to that evidence. A reference alone does not prove that an authored sentence is faithful; compare its meaning before delivery. For verbatim SOW descriptions, use the exported description field.\n\nPreserve source names in the reconciliation record. If a name contains internal language that cannot appear in client copy, obtain an approved display-name mapping or correct the source. Never silently remove a material scope condition while sanitizing the wording.\n\nKeep assumptions and exclusions that affect the client's choice visible. An unresolved internal issue belongs in the working record, but a condition that changes scope or price cannot be hidden from the reader. Do not recommend an option without supplied decision criteria.\n\n## Inspect and deliver\n\nRun brand preflight and the applicable writing checks through the packaged runtime. Check the built page with `writing_check.py --rendered`, which reads what the reader sees and counts an item's identical cells across options once. Read the complete output against the quote records. Inspect the matrix at desktop and narrow widths, and check every exported PDF page for missing rows or split labels. A clean numeric reconcile does not validate the option summaries.\n\nFollow [the release gate](../_shared/release-gate.md). Keep failed attempts and the actual output alongside the source hashes and review record. Deliver the HTML and requested PDF with the quoted source date. Record any authorized knowledge-hub update separately; creating a local reference does not update the quote or publish it.\n",
+      "html": "<p>Produce the reference itself: one self-contained HTML file with the scope matrix visible, plus a printable version when requested. A reader should be able to identify the difference between options and see what each price covers.</p><p>Keep the commercial writing checks in the proposal register <span class=\"ref\">(../writing-diagnostics/references/registers/sow-proposal.md)</span>: preserve exact scope and avoid strengthening a delivery claim. Brand identity comes from the canonical profile <span class=\"ref\">(references/estate/brand.md)</span>, resolved through <code>brand-renderer</code>. The skill contains no company palette or required logo.</p><h3>Resolve the input and mode</h3><p>Name the client, quote IDs and requested order. One quote produces a single-option summary; several quotes produce a comparison. State the mode when beginning a real request. Do not assume that a more expensive option contains every cheaper option&#x27;s items. Establish any ascending-scope relationship from the actual matrix.</p><p>Use the available quote connector for a current client reference. If it is unavailable, accept a user-supplied export with its source system, revision and capture time. The resulting reference describes that dated export. A local file does not establish current live state. Ask for a fresh export when the requested decision depends on changes since capture; never fabricate a connector or reuse remembered figures.</p><p>If neither a connector nor an export supplies the required scope, stop the dependent build and identify the missing records. A synthetic fixture is suitable for testing the skill, not for filling a client quote.</p><h3>Capture the full scope</h3><p>Read validation.md <span class=\"ref\">(validation.md)</span> before assembling data. Save every quote&#x27;s full item list and its active-item list. With an available scoping connector, this corresponds to <code>scoping_get_scope_hierarchy</code> with <code>activeOnly: false</code>, <code>includeHours: true</code>, <code>includeFinancials: false</code>, followed by the active-only read. Use the connector&#x27;s actual schema; these operation names are an adapter example, not a promise that a tool is installed.</p><p>Retain stable item IDs and the quote&#x27;s own hours. The four states remain distinct:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">State</th><th scope=\"col\">Meaning</th></tr></thead><tbody><tr><td>Included</td><td>Present and selected, without an optional flag.</td></tr><tr><td>Optional</td><td>Explicitly marked optional, even if also returned in the active read.</td></tr><tr><td>Available</td><td>Present but deselected. Adding it may require a price or schedule change.</td></tr><tr><td>Not included</td><td>Absent from that quote&#x27;s full scope.</td></tr></tbody></table></div><p>Single-option mode still shows optional and available items when the quote contains them. Do not hide deselected work to force a two-state layout. An absent item in another option is not zero-hour work. The matrix shows each option&#x27;s hours separately when they differ.</p><h3>Resolve price and staffing</h3><p>List timeline snapshots first and identify the active snapshot ID. Read that snapshot by ID; do not select the newest merely because it was created last. Each displayed staffing variant needs its own actual snapshot, including revenue, currency, duration and staffing hours. Never derive another variant by multiplying a rate.</p><p>The headline price comes from the staffing snapshot. Per-item dollars are omitted because back-allocation may drift between snapshots. Item hours are scope estimates; staffing hours can also cover delivery activities. Do not force the two totals to match or infer that an optional item is already priced.</p><p>A rough estimate may have hours but no rate card, staffing plan or timeline. Build it as an unpriced comparison: the source sets <code>&quot;pricing&quot;: &quot;unpriced&quot;</code>, carries no snapshots and names the missing price, staffing and timeline inputs. Items can carry low, expected and high hours, and an item with no estimate yet is marked unestimated with the discovery it needs. The page names what is missing and derives none of it. Never fill a price or duration from a remembered rate, and never show an unestimated item as zero.</p><p>Display exact prices by default. If the user requests rounded prices, show the rounded amount as approximate and preserve the exact quote alongside it. Rounding never changes the working source. Show all requested staffing variants on the static page so printing retains every price and duration. For a prospect-facing selector, choose the interactive proposal or explorer mode and read its complete workflow <span class=\"ref\">(../build-interactive-proposal/SKILL.md)</span>. The portable Scope Options package embeds it; static comparison rules do not substitute for its interaction and print checks.</p><h3>Reconcile before rendering</h3><p>Use the source and presentation JSON contract in validation.md <span class=\"ref\">(validation.md)</span>. The source holds captured facts; the presentation holds the intended matrix and option copy. The supplied validator compares them independently.</p><pre><code>python3 scripts/scope_reference_validate.py SOURCE.json PRESENTATION.json\npython3 scripts/build_scope.py SOURCE.json PRESENTATION.json OUTPUT.html</code></pre><p>Both commands refuse mismatched item sets or states. They also reject changed names, conflicting IDs, missing description evidence and unsupported snapshot figures. The builder reruns reconciliation before writing. Keep the resulting <code>.reconciliation.json</code> with the artifact and inputs. Do not edit the final HTML to bypass a discrepancy.</p><p>Report the actual reconcile result and counts. Included and optional counts remain separate from available items. Never label a present-item count as an included-item count.</p><h3>Author and build</h3><p>Read build-guide.md <span class=\"ref\">(build-guide.md)</span>. Give each item a concise description grounded in its stored description, effort basis or supplied source. The portable input requires a reference to that evidence. A reference alone does not prove that an authored sentence is faithful; compare its meaning before delivery. For verbatim SOW descriptions, use the exported description field.</p><p>Preserve source names in the reconciliation record. If a name contains internal language that cannot appear in client copy, obtain an approved display-name mapping or correct the source. Never silently remove a material scope condition while sanitizing the wording.</p><p>Keep assumptions and exclusions that affect the client&#x27;s choice visible. An unresolved internal issue belongs in the working record, but a condition that changes scope or price cannot be hidden from the reader. Do not recommend an option without supplied decision criteria.</p><h3>Inspect and deliver</h3><p>Run brand preflight and the applicable writing checks through the packaged runtime. Check the built page with <code>writing_check.py --rendered</code>, which reads what the reader sees and counts an item&#x27;s identical cells across options once. Read the complete output against the quote records. Inspect the matrix at desktop and narrow widths, and check every exported PDF page for missing rows or split labels. A clean numeric reconcile does not validate the option summaries.</p><p>Follow the release gate <span class=\"ref\">(../_shared/release-gate.md)</span>. Keep failed attempts and the actual output alongside the source hashes and review record. Deliver the HTML and requested PDF with the quoted source date. Record any authorized knowledge-hub update separately; creating a local reference does not update the quote or publish it.</p>",
       "excerptHtml": "<p>Produce the reference itself: one self-contained HTML file with the scope matrix visible, plus a printable version when requested. A reader should be able to identify the difference between options and see what each price covers.</p><p>Keep the commercial writing checks in the proposal register <span class=\"ref\">(../writing-diagnostics/references/registers/sow-proposal.md)</span>: preserve exact scope and avoid strengthening a delivery claim. Brand identity comes from the canonical profile <span class=\"ref\">(references/estate/brand.md)</span>, resolved through <code>brand-renderer</code>. The skill contains no company palette or required logo.</p><p>Name the client, quote IDs and requested order. One quote produces a single-option summary; several quotes produce a comparison. State the mode when beginning a real request. Do not assume that a more expensive option contains every cheaper option&#x27;s items. Establish any ascending-scope relationship from the actual matrix.</p>",
       "headings": [
         "Resolve the input and mode",
@@ -4748,27 +4748,27 @@
       "resources": [
         {
           "path": "README.md",
-          "sha256": "0632af714075437920c9ce9eca130c637a777b428fa4f87fbae6f1a6bdce9dec",
-          "bytes": 542,
-          "gitBlob": "a0bf370c90a4a0d12b928bf7446bda206c77713d"
+          "sha256": "f3c34ad0b45e978ff140cacf5103de5c174a9331dc3e7c5234f946d98547e7e5",
+          "bytes": 660,
+          "gitBlob": "4b5697b6c3759c046bdb313685fdbf43025ddc63"
         },
         {
           "path": "SKILL.md",
-          "sha256": "4fc316551667ae2877b164b0084a4d27090945b614b40c8a5da191ca58f0a453",
-          "bytes": 7114,
-          "gitBlob": "4b0d1ac31d246153602df5c87b1a3d808a51a8e9"
+          "sha256": "3d37c9dc0dfb58725d6309b62e57f4365c51373bff43e38e40b5c3f687322bd2",
+          "bytes": 7781,
+          "gitBlob": "14cd0d843dfe1c28c423d634ede0124ca7962ea6"
         },
         {
           "path": "assets/scope.css",
-          "sha256": "5c4021273a368478ad3352b30d91ce974a68426c6a790b64b209bcb2cd51a98d",
-          "bytes": 3898,
-          "gitBlob": "726c07fa9e9d0a1d0e5c59dcbd06cca927e887cf"
+          "sha256": "c967f21928dfb0c8b3a336de94603f97628e328c06e68b2615953f10fe58bb92",
+          "bytes": 4383,
+          "gitBlob": "d1d425f8b55829b857b84e0c2385cc16494d4429"
         },
         {
           "path": "build-guide.md",
-          "sha256": "84c1b36bba5789ec7097470f85b136f30e2af326547ac8a2b32b4c39dfa4b4df",
-          "bytes": 4006,
-          "gitBlob": "aef6e9d67abbec40ed1f3311a9b3540e52a73223"
+          "sha256": "daee7063dd8780beaf2b5f0a6d6066f7faaaa8e4870a81ad41b860b6e32d245c",
+          "bytes": 5261,
+          "gitBlob": "a0b3c17c37f2d8accbd65ee7b184ce4b722b1c15"
         },
         {
           "path": "evals.json",
@@ -4789,6 +4789,18 @@
           "gitBlob": "8e39fdc2eb2537ddfea7684a981dd863b75e8186"
         },
         {
+          "path": "examples/hours-only-plan.json",
+          "sha256": "b71881431515f740592090334167be2b48afc37cb16891be8e295c13b13ecbe5",
+          "bytes": 3230,
+          "gitBlob": "fb8cf559209bb911bc4fb1c11f9b3626c3318f32"
+        },
+        {
+          "path": "examples/hours-only-source.json",
+          "sha256": "df8fd5f7896299e08f27f3a0a54cb3359415aed957b0e82c7ad4ee94bad9609e",
+          "bytes": 3573,
+          "gitBlob": "b8490dffd3bb8cf3ad1ee3bad898bab5c6563569"
+        },
+        {
           "path": "examples/single-plan.json",
           "sha256": "acaadc964e79f8d297eb358fd5e440550dc5d62fd219ce1b0781a6e0907cca29",
           "bytes": 3828,
@@ -4802,27 +4814,27 @@
         },
         {
           "path": "scripts/build_scope.py",
-          "sha256": "caf9614d5dc492d6a67d7e28854258e57b6dcaa206e755c9ab2ef13c8054ce19",
-          "bytes": 6948,
-          "gitBlob": "55e1117ee526664b300ec24e5f8d5f664b2e06eb"
+          "sha256": "6968f178cc40a3698b6e152069f91b474c007afb12502c7c9104fae3e2806c81",
+          "bytes": 8926,
+          "gitBlob": "b8cd9adea76715ec8b28d59b187100c4e00bd569"
         },
         {
           "path": "scripts/check_scope.mjs",
-          "sha256": "61f0d5cc3c64b4f94db50193933c50218b75f2a3bb5e29776abca5a11c8bf55d",
-          "bytes": 4999,
-          "gitBlob": "5b69d6546ce6e33d0d322500c430b550f716f50d"
+          "sha256": "c51565d7d4cb36ea0fd7aac876668b22de38e3c56a18aad58c94d93f499700b2",
+          "bytes": 6170,
+          "gitBlob": "8efafe0be61f7bd6738811300d2409c8e289f708"
         },
         {
           "path": "scripts/scope_reference_selftest.py",
-          "sha256": "54ff2f9d579b19b435d0fd604318c4ac02b11ac797e99c74b8625f9da915f090",
-          "bytes": 749,
-          "gitBlob": "a24dab2719966eefa7f4709e1ceb5ab415bfb147"
+          "sha256": "22b7f8da517d4a993a06e59b071ab339177a2b3557b16bbc904130093252d1c4",
+          "bytes": 1272,
+          "gitBlob": "3e38124b470b5fd24b7f552421290a19cb495622"
         },
         {
           "path": "scripts/scope_reference_validate.py",
-          "sha256": "a809d341ed8d3913d3e535fc480cb50d24501fc3e9586fb5497944658f92e229",
-          "bytes": 8787,
-          "gitBlob": "cede23f0fc6b4dd1304e09513d463d34f248dac5"
+          "sha256": "73ae2ec1bcea7eacd408c8219734a5ad5929ce71fe989e61f59948c64a3f34e6",
+          "bytes": 11580,
+          "gitBlob": "e6c6f1cade60a4787152935c3a233610561765b5"
         },
         {
           "path": "skill.yaml",
@@ -4832,9 +4844,9 @@
         },
         {
           "path": "validation.md",
-          "sha256": "ed380ac58c3f1324e2b838d8243a876258c41c63dc47681030655b5316e0adcf",
-          "bytes": 4192,
-          "gitBlob": "c99a8addea2abc1630e8b776ae1ad0562c03b3e2"
+          "sha256": "26ac8586d806d7d70045285b594620871afde653b3bb88ca4101649cf6995a5d",
+          "bytes": 5562,
+          "gitBlob": "210fcb5736f6f02c468ff200b4dfc891177abb48"
         }
       ],
       "examples": [
@@ -4862,7 +4874,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/configure-salesforce-project/SKILL.md",
       "sourceSha256": "89e669c0397cc783ca45c1bf4473b4735f131fc05bbc572c0aa1dc58562c4ad4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/configure-salesforce-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/configure-salesforce-project/SKILL.md",
       "taskPackages": [
         {
           "name": "configure-salesforce-project",
@@ -5604,7 +5616,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deliver-salesforce-change/SKILL.md",
       "sourceSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/deliver-salesforce-change/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/deliver-salesforce-change/SKILL.md",
       "taskPackages": [
         {
           "name": "deliver-salesforce-change",
@@ -5978,7 +5990,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-orchestrator/SKILL.md",
       "sourceSha256": "efbc0207a4238bf598b33d8aac2d7bb6e078290d3311712031fa3703251c37ac",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/delivery-orchestrator/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/delivery-orchestrator/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-requirements",
@@ -6249,7 +6261,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-analytics-plan/SKILL.md",
       "sourceSha256": "78d27b364ce3a619d70ed5dc9008b93351254d3ae7ca3dd9952f85e7398f45be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/design-analytics-plan/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/design-analytics-plan/SKILL.md",
       "taskPackages": [
         {
           "name": "design-analytics-plan",
@@ -6381,7 +6393,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-information-architecture/SKILL.md",
       "sourceSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/design-information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/design-information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "design-information-architecture",
@@ -6513,7 +6525,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-process/SKILL.md",
       "sourceSha256": "ca114123880ba4752529612a903ba3895d6291f68c5085c4b65ae0ffd522cc7e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/design-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/design-process/SKILL.md",
       "taskPackages": [
         {
           "name": "design-process",
@@ -6696,7 +6708,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-software-system/SKILL.md",
       "sourceSha256": "102209f34e8154aca0791f2af418d64493d6d7d6fd3f4449eba24ca66ea9fff9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/design-software-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/design-software-system/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -6871,7 +6883,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-sticker/SKILL.md",
       "sourceSha256": "b6dab8536880885060e9221906488aa8c5cbbc26ce194e2b179169024193b345",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/design-sticker/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/design-sticker/SKILL.md",
       "taskPackages": [
         {
           "name": "design-sticker",
@@ -7006,7 +7018,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-independent-product/SKILL.md",
       "sourceSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/develop-independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/develop-independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-independent-product",
@@ -7122,7 +7134,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-product/SKILL.md",
       "sourceSha256": "2e9d22b97bb930d7baee53f33846a2e371da6dc816bdd42c313561e72eed5bfd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/develop-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/develop-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-product",
@@ -7349,7 +7361,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/draft-application-materials/SKILL.md",
       "sourceSha256": "b3df2a2fb127157eb1b77f37cdf6ddd13ee6a6cfea687005e6a4fea087599eec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/draft-application-materials/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/draft-application-materials/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -7511,7 +7523,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/estimate-project/SKILL.md",
       "sourceSha256": "9655e454e4c758060aeb89b73428585fe7a88609d0a2db43e6df6b42d1162be2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/estimate-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/estimate-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -7763,7 +7775,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "39a62d2a014cba75451d65c8bb39a751b933c16cb0f2b2654cbaeeb8e1ae9fb7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-solution-delivery",
@@ -8046,7 +8058,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/frame-jobs-to-be-done/SKILL.md",
       "sourceSha256": "554d8c253f519d356b95232a312bef3940cb1dab519f7e01b39304fff087b7fd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/frame-jobs-to-be-done/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/frame-jobs-to-be-done/SKILL.md",
       "taskPackages": [
         {
           "name": "frame-jobs-to-be-done",
@@ -8328,7 +8340,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/guide-fortunes-weave/SKILL.md",
       "sourceSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/guide-fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/guide-fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "guide-fortunes-weave",
@@ -8442,7 +8454,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/import-tracker-export/SKILL.md",
       "sourceSha256": "303f8fd7642bf80652fad4907328277a1b920093202ecf3837c0013fe905ede3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/import-tracker-export/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/import-tracker-export/SKILL.md",
       "taskPackages": [
         {
           "name": "import-tracker-export",
@@ -8615,7 +8627,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ingest-transcript/SKILL.md",
       "sourceSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/ingest-transcript/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/ingest-transcript/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8781,7 +8793,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/lay-out-sticker-sheets/SKILL.md",
       "sourceSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/lay-out-sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/lay-out-sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "lay-out-sticker-sheets",
@@ -8900,7 +8912,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/load-project-context/SKILL.md",
       "sourceSha256": "11b56dce3af1115d2a2cc139cfe6a1088f39126d18cf76fc0a06257dc12c4ea2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/load-project-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/load-project-context/SKILL.md",
       "taskPackages": [
         {
           "name": "load-project-context",
@@ -9052,7 +9064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-discovery-record/SKILL.md",
       "sourceSha256": "b5d151492eb92ad883e2dfd11fbe373c00f08d887434032743301c2e59bbaf58",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/maintain-discovery-record/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/maintain-discovery-record/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -9321,7 +9333,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-skills-estate/SKILL.md",
       "sourceSha256": "45870d679b28e4c99fa54afc742d83b6f8f76f60108fde99b04f68550a717e07",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/maintain-skills-estate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/maintain-skills-estate/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -9563,7 +9575,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-brand-profile/SKILL.md",
       "sourceSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-brand-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-brand-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-brand-profile",
@@ -9672,6 +9684,214 @@
       ]
     },
     {
+      "id": "manage-color-system",
+      "title": "Manage color system",
+      "family": 4,
+      "description": "Assess, question, decide, propose and apply UI color systems in Material 3 role language. Audits token files (CSS or Design System tokens.json) and component CSS for contrast in WCAG and APCA, role coverage, palette drift, wrong ratio notes, off-system hex values and a stale compiled stylesheet; builds themed role tokens with standard and high-contrast levels from tonal palettes; reviews color changes before they ship. Use when colors, tokens, themes or a brand palette are created, changed or judged, or before publishing a page that sets its own colors. Not for a full WCAG audit of an interface (audit-accessibility), applying a confirmed brand to a deliverable (manage-brand-profile) or building a chart (build-editorial-chart).",
+      "status": "github",
+      "entrypointChanged": false,
+      "sourcePath": "skills/manage-color-system/SKILL.md",
+      "sourceSha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-color-system/SKILL.md",
+      "taskPackages": [
+        {
+          "name": "manage-color-system",
+          "mode": null
+        }
+      ],
+      "downloadPackages": [
+        "manage-color-system"
+      ],
+      "guide": {
+        "what": "Assess, question, decide, propose and apply a UI color system: audit tokens and component CSS, then build themed role tokens that pass contrast on every ground.",
+        "when": "Colors, tokens, themes or a brand palette are created, changed or judged, or a page that sets its own colors is about to publish.",
+        "inputs": "A token file (CSS custom properties or a Design System tokens.json), the stylesheets that set color, and any pinned brand values or standing color decisions.",
+        "outputs": "An audit of findings with measured contrast, a recipe, generated tokens.css and tokens.json with measured notes, a normalized single-ink icon set, and a review page that shows each finding and the result rendered.",
+        "example": "Audit Bearing's tokens and bundle.css, then propose Material 3 roles that keep Day, Night and the navy exactly.",
+        "reviewedEntrypointSha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
+        "expect": "It runs the audit on the token file and every stylesheet that sets color, checks findings against the rendered page, asks only what the numbers cannot settle, writes or edits a recipe, generates tokens with standard and high-contrast levels, and audits the output to zero failing pairs before applying it.",
+        "connectors": {
+          "required": [],
+          "optional": []
+        },
+        "requires": "Node 18 or later for the bundled scripts, with nothing to install, and a browser for the visual check.",
+        "overview": "It measures every text, edge and chart color pair in WCAG and APCA, checks the ratios written in token notes, finds palette steps that change per theme, missing Material 3 roles, hard-coded colors in components and a compiled stylesheet that lags its source. It then solves each role's tone from tonal palettes so the pair passes on every ground it sits on, in standard and high contrast.",
+        "value": "Replaces hand-picked hex values and hand-typed contrast notes with roles that are measured and regenerated from one recipe, so a brand change or a new theme does not reopen every component.",
+        "preparation": {
+          "where": "Provide the token file and the stylesheets that set color, from the repository or the design system. Pinned brand values come from the brand profile or the owner.",
+          "missing": "Without a token file it can start from a seed color and build a palette, but brand anchors and standing decisions still need the owner. It checks color only; keyboard, semantics and focus order belong to an accessibility audit."
+        },
+        "preparationSkills": []
+      },
+      "guideStatus": "current",
+      "reuse": {
+        "audience": "general",
+        "label": "General use",
+        "reason": "The method accepts the user’s project sources and takes private context as an explicit input.",
+        "setup": "",
+        "cleanup": [],
+        "readiness": "reusable",
+        "references": [],
+        "dependencyReferences": [],
+        "sharedReferences": [],
+        "textFilesScanned": 14,
+        "packageFingerprint": "b56f0b0738130f9711bb567566ca4fb5d35e97d4e683ba4753b401ac9b166899",
+        "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
+      },
+      "catalogRole": {
+        "kind": "task",
+        "tasks": [
+          "manage-color-system"
+        ],
+        "modes": []
+      },
+      "profile": {
+        "tools": [
+          "scripts/color-steward.mjs",
+          "scripts/lib/apca.mjs",
+          "scripts/propose.mjs",
+          "scripts/selftest.mjs",
+          "scripts/vendor/deps.mjs"
+        ],
+        "connectors": {
+          "required": [],
+          "optional": [],
+          "source": "guide"
+        },
+        "outputs": [],
+        "modes": [],
+        "agents": [],
+        "plugins": [
+          "estate-product"
+        ],
+        "bundles": [],
+        "usedBy": [],
+        "calls": [],
+        "dependsOn": [],
+        "runtimes": [],
+        "setup": "Node 18 or later for the bundled scripts, with nothing to install, and a browser for the visual check.",
+        "expect": "It runs the audit on the token file and every stylesheet that sets color, checks findings against the rendered page, asks only what the numbers cannot settle, writes or edits a recipe, generates tokens with standard and high-contrast levels, and audits the output to zero failing pairs before applying it.",
+        "declared": true
+      },
+      "markdown": "---\nname: manage-color-system\ndescription: \"Assess, question, decide, propose and apply UI color systems in Material 3 role language. Audits token files (CSS or Design System tokens.json) and component CSS for contrast in WCAG and APCA, role coverage, palette drift, wrong ratio notes, off-system hex values and a stale compiled stylesheet; builds themed role tokens with standard and high-contrast levels from tonal palettes; reviews color changes before they ship. Use when colors, tokens, themes or a brand palette are created, changed or judged, or before publishing a page that sets its own colors. Not for a full WCAG audit of an interface (audit-accessibility), applying a confirmed brand to a deliverable (manage-brand-profile) or building a chart (build-editorial-chart).\"\n---\n\n# Manage color system\n\nA color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.\n\nThis skill works in that model. The engine in `scripts/` measures and generates; this file says when to use it and how to decide.\n\n## When not to use\n\n- A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to `audit-accessibility`. This skill covers color only.\n- Applying a confirmed client or project brand to a document or page belongs to `manage-brand-profile`. This skill designs and repairs the color system that a profile carries.\n- Building a chart belongs to `build-editorial-chart`. This skill checks the chart palette.\n\n## Engine\n\nNode 18 or later, nothing to install. Material Color Utilities and culori are bundled in `scripts/vendor/deps.mjs` with their license notices (`THIRD-PARTY.md`); `scripts/lib/apca.mjs` implements APCA 0.0.98G-4g.\n\n```sh\ncd <skill>/scripts\nnode selftest.mjs\nnode color-steward.mjs audit tokens.css --components bundle.css --json audit.json\nnode color-steward.mjs pair \"#86898f\" \"#eeeff3\"\nnode color-steward.mjs palette \"#283549\"\nnode color-steward.mjs scheme \"#283549\" --variant neutral --error \"#C4302B\"\nnode color-steward.mjs cvd \"#283549\" \"#525f75\" \"#7a879e\"\nnode propose.mjs ../recipes/<system>.json --out tokens.css --json tokens.json\nnode color-steward.mjs audit built-tokens.css --source tokens.json   # flags a compiled stylesheet that lags its source\nnode icons.mjs normalize <icon-pack-svg-dir> <out-dir> --map ../references/icon-roles.json\nnode icons.mjs check <out-dir>\n```\n\nTone means HCT tone (CIELAB L*), 0 black to 100 white. Contrast uses WCAG 2.2 ratios as the pass line and APCA Lc as the second reading, because WCAG 2 overrates light text on dark grounds.\n\n## Modes\n\nPick the mode from the request. Several can run in one task.\n\n1. Assess. Run `audit` on the token file and every stylesheet that sets color. When a stylesheet is compiled from a source file, pass both, since pages load the compiled one. Read each finding, check it against the rendered page, and drop false alarms with a reason. Report findings as pictures: the failing pair rendered, its measured ratio, and the fix rendered beside it.\n2. Question. Ask the owner only what the numbers cannot settle: brand anchors to pin, whether a hue may enter the system, how far muted text may drop on dark grounds, which surfaces carry the brand color. One question at a time, shown as options she can pick from.\n3. Decide. Apply the decision rules below. A rule that settles the question needs no question.\n4. Propose. Write or edit a recipe (`recipes/*.json`): palettes from a seed or hue and chroma, pinned brand values, one entry per role with the grounds it sits on and its target. Run `propose.mjs`, then `audit` the output. A proposal ships only with zero failing pairs, and every ratio in its notes is computed.\n5. Apply. Map components to roles with `references/component-roles.json`. Replace every hex in component CSS with a role. Keep old token names as aliases until every consumer moves.\n6. React. When someone changes colors, review the diff: new literals, a role used against a ground it was never solved for, a hover that lowers contrast, a hue named token that holds a grey. Audit the changed files.\n7. Watch. Before publishing any page, deck or chart that sets colors, audit its CSS. Raise what fails in chat once; fix what the rules settle without asking.\n\n## Decision rules\n\n- Roles come in pairs. Text on a fill uses that fill's on- role: on-primary on primary, on-secondary-container on secondary-container. Never pair across.\n- Solve every role against every ground it can sit on, and list those grounds in the recipe. A role checked only against the page ground fails on cards and wells.\n- Text: 4.5:1 minimum, 7:1 in the high-contrast level. Labels under 16px also need APCA Lc 60 or more. Control edges, focus rings and chart marks: 3:1.\n- Outline is for control edges and must reach 3:1. Outline-variant is decorative: dividers, hairline grids, chip edges whose text already meets 4.5:1.\n- Containers are fills. Text never uses a container role.\n- Surface container tiers name emphasis, not lightness. In a dark theme a higher tier is lighter; in a light theme it is darker. Use surface-dim and surface-bright when an area must stay dimmest or brightest in both themes.\n- Fixed roles (primary-fixed) keep one value in both themes. Use them for brand fills, never where contrast with the ground is needed.\n- A palette step is one value in every theme. Themes change which step a role picks.\n- State is an overlay in the content color at fixed opacity: hover 8%, focus 10%, pressed 10%, dragged 16%; disabled content 38%, disabled container 12%. Components do not invent rgba hovers.\n- Error and other semantic colors are harmonized toward the brand hue so they sit in the palette. Brand colors are never harmonized.\n- Every theme ships standard and high contrast. High contrast lifts text to 7:1 and edges to 4.5:1 from the same recipe.\n- Chart series differ in lightness first. Adjacent series stay at least 0.08 apart in OKLab under normal vision and simulated protanopia, deuteranopia and tritanopia; series below 3:1 on their ground get direct labels.\n- Notes in token files never hold hand-typed ratios. Generate them. A ratio in a note names its ground (`6.3:1 on surface in Day`) so the audit can check it; a note it cannot attribute is skipped, not passed.\n- A compiled stylesheet ships with its source. After changing the source, rebuild the compiled file before a component reads a new role, or the component reads nothing.\n- A hard-coded color in a component stylesheet is a finding unless it is a pinned brand asset with a comment.\n\n## Icons\n\nAn icon is a color-system graphic, so it follows the same roles.\n\n- Every ink is `currentColor`. The icon takes the role of the text it sits with: `on-surface-variant` at rest, `on-surface` when active, `on-primary` on a filled button, `on-secondary-container` on a tonal one, `on-error` on a destructive one.\n- A status icon takes its signal hue and sits beside its word: Approved, In review, Blocked. The error mark takes `error`.\n- In a duotone icon the solid layer carries the meaning and reaches 3:1 on its ground. The 30% layer is decoration. An icon drawn only in the faint layer gets that layer made solid.\n- Size 16, 18 or 24px on the 24px grid; a pressable icon gets a 40px target.\n- `normalize` strips editor metadata, sets `currentColor`, keeps the duotone opacity and names each icon by its job. `check` fails a fixed color, a missing viewBox or an icon with no solid layer.\n- Icon art from a licensed pack stays in the brand's design system or the project, never in this repository. `references/icon-roles.json` names the Stockholm source and the color role for every job.\n\n## Owner decisions on file\n\nRead the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan's own work, Bearing is the one design system:\n\n- Day ground #EEEFF3 and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. Bearing runs the color v2 roles from `recipes/bearing-v2.json`, with the earlier names kept as aliases and a high-contrast version of each theme.\n- Emphasis comes from size, weight and the Night to Day contrast. Four signal hues (coral, blue, green, orange) carry status, step order and categories only: as a symbol, a dot, a short rule or one soft-tinted card. Never text, a heading, a link or a large fill.\n- Every status pairs its hue with a shape and a word, so color never carries it alone.\n- Alerts and errors sit on the page's own neutral surface with a thin rule or a small mark. `error` (crimson) appears only in the mark, the rule and the message text; Blocked status stays signal coral. No tinted alert panels, and no component left in its default AI-builder look.\n- Set type in Instrument Sans only; never Times.\n- Bearing's icons are the Stockholm Premium set, duotone, normalized as above, in Bearing's Icons asset group. Doodle illustration sets are not UI icons.\n\n## Output\n\nSubstantial results go into an interactive, mobile-first page in the active brand: findings as rendered pairs, palettes as tone strips, proposals as a before and after the reader can toggle by theme and contrast level, and owner decisions as options to pick. The chat gets the outcome, the counts that matter and the one decision waiting.\n\nDeliver the recipe, the generated tokens.css and the audit JSON with any proposal. State the completion state exactly: proposed, generated, audited, applied to the system, published.\n\n## References\n\n- `scripts/selftest.mjs`: runs the audit and the proposal on the Bearing fixtures and checks the results.\n\n- `references/component-roles.json`: Material 3 components mapped to Bearing components and roles.\n- `references/icon-roles.json`: one row per icon job.\n- `references/material3-color.md`: the Material 3 color model this skill follows.\n- `recipes/bearing-v2.json`: the Bearing recipe; copy it to start a client system.\n- `fixtures/`: Bearing's tokens and component color rules as they stood before v2, used by the self-test.\n",
+      "html": "<p>A color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.</p><p>This skill works in that model. The engine in <code>scripts/</code> measures and generates; this file says when to use it and how to decide.</p><h3>When not to use</h3><ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul><h3>Engine</h3><p>Node 18 or later, nothing to install. Material Color Utilities and culori are bundled in <code>scripts/vendor/deps.mjs</code> with their license notices (<code>THIRD-PARTY.md</code>); <code>scripts/lib/apca.mjs</code> implements APCA 0.0.98G-4g.</p><pre><code>cd &lt;skill&gt;/scripts\nnode selftest.mjs\nnode color-steward.mjs audit tokens.css --components bundle.css --json audit.json\nnode color-steward.mjs pair &quot;#86898f&quot; &quot;#eeeff3&quot;\nnode color-steward.mjs palette &quot;#283549&quot;\nnode color-steward.mjs scheme &quot;#283549&quot; --variant neutral --error &quot;#C4302B&quot;\nnode color-steward.mjs cvd &quot;#283549&quot; &quot;#525f75&quot; &quot;#7a879e&quot;\nnode propose.mjs ../recipes/&lt;system&gt;.json --out tokens.css --json tokens.json\nnode color-steward.mjs audit built-tokens.css --source tokens.json   # flags a compiled stylesheet that lags its source\nnode icons.mjs normalize &lt;icon-pack-svg-dir&gt; &lt;out-dir&gt; --map ../references/icon-roles.json\nnode icons.mjs check &lt;out-dir&gt;</code></pre><p>Tone means HCT tone (CIELAB L*), 0 black to 100 white. Contrast uses WCAG 2.2 ratios as the pass line and APCA Lc as the second reading, because WCAG 2 overrates light text on dark grounds.</p><h3>Modes</h3><p>Pick the mode from the request. Several can run in one task.</p><ol><li>Assess. Run <code>audit</code> on the token file and every stylesheet that sets color. When a stylesheet is compiled from a source file, pass both, since pages load the compiled one. Read each finding, check it against the rendered page, and drop false alarms with a reason. Report findings as pictures: the failing pair rendered, its measured ratio, and the fix rendered beside it.</li><li>Question. Ask the owner only what the numbers cannot settle: brand anchors to pin, whether a hue may enter the system, how far muted text may drop on dark grounds, which surfaces carry the brand color. One question at a time, shown as options she can pick from.</li><li>Decide. Apply the decision rules below. A rule that settles the question needs no question.</li><li>Propose. Write or edit a recipe (<code>recipes/*.json</code>): palettes from a seed or hue and chroma, pinned brand values, one entry per role with the grounds it sits on and its target. Run <code>propose.mjs</code>, then <code>audit</code> the output. A proposal ships only with zero failing pairs, and every ratio in its notes is computed.</li><li>Apply. Map components to roles with <code>references/component-roles.json</code>. Replace every hex in component CSS with a role. Keep old token names as aliases until every consumer moves.</li><li>React. When someone changes colors, review the diff: new literals, a role used against a ground it was never solved for, a hover that lowers contrast, a hue named token that holds a grey. Audit the changed files.</li><li>Watch. Before publishing any page, deck or chart that sets colors, audit its CSS. Raise what fails in chat once; fix what the rules settle without asking.</li></ol><h3>Decision rules</h3><ul><li>Roles come in pairs. Text on a fill uses that fill&#x27;s on- role: on-primary on primary, on-secondary-container on secondary-container. Never pair across.</li><li>Solve every role against every ground it can sit on, and list those grounds in the recipe. A role checked only against the page ground fails on cards and wells.</li><li>Text: 4.5:1 minimum, 7:1 in the high-contrast level. Labels under 16px also need APCA Lc 60 or more. Control edges, focus rings and chart marks: 3:1.</li><li>Outline is for control edges and must reach 3:1. Outline-variant is decorative: dividers, hairline grids, chip edges whose text already meets 4.5:1.</li><li>Containers are fills. Text never uses a container role.</li><li>Surface container tiers name emphasis, not lightness. In a dark theme a higher tier is lighter; in a light theme it is darker. Use surface-dim and surface-bright when an area must stay dimmest or brightest in both themes.</li><li>Fixed roles (primary-fixed) keep one value in both themes. Use them for brand fills, never where contrast with the ground is needed.</li><li>A palette step is one value in every theme. Themes change which step a role picks.</li><li>State is an overlay in the content color at fixed opacity: hover 8%, focus 10%, pressed 10%, dragged 16%; disabled content 38%, disabled container 12%. Components do not invent rgba hovers.</li><li>Error and other semantic colors are harmonized toward the brand hue so they sit in the palette. Brand colors are never harmonized.</li><li>Every theme ships standard and high contrast. High contrast lifts text to 7:1 and edges to 4.5:1 from the same recipe.</li><li>Chart series differ in lightness first. Adjacent series stay at least 0.08 apart in OKLab under normal vision and simulated protanopia, deuteranopia and tritanopia; series below 3:1 on their ground get direct labels.</li><li>Notes in token files never hold hand-typed ratios. Generate them. A ratio in a note names its ground (<code>6.3:1 on surface in Day</code>) so the audit can check it; a note it cannot attribute is skipped, not passed.</li><li>A compiled stylesheet ships with its source. After changing the source, rebuild the compiled file before a component reads a new role, or the component reads nothing.</li><li>A hard-coded color in a component stylesheet is a finding unless it is a pinned brand asset with a comment.</li></ul><h3>Icons</h3><p>An icon is a color-system graphic, so it follows the same roles.</p><ul><li>Every ink is <code>currentColor</code>. The icon takes the role of the text it sits with: <code>on-surface-variant</code> at rest, <code>on-surface</code> when active, <code>on-primary</code> on a filled button, <code>on-secondary-container</code> on a tonal one, <code>on-error</code> on a destructive one.</li><li>A status icon takes its signal hue and sits beside its word: Approved, In review, Blocked. The error mark takes <code>error</code>.</li><li>In a duotone icon the solid layer carries the meaning and reaches 3:1 on its ground. The 30% layer is decoration. An icon drawn only in the faint layer gets that layer made solid.</li><li>Size 16, 18 or 24px on the 24px grid; a pressable icon gets a 40px target.</li><li><code>normalize</code> strips editor metadata, sets <code>currentColor</code>, keeps the duotone opacity and names each icon by its job. <code>check</code> fails a fixed color, a missing viewBox or an icon with no solid layer.</li><li>Icon art from a licensed pack stays in the brand&#x27;s design system or the project, never in this repository. <code>references/icon-roles.json</code> names the Stockholm source and the color role for every job.</li></ul><h3>Owner decisions on file</h3><p>Read the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan&#x27;s own work, Bearing is the one design system:</p><ul><li>Day ground #EEEFF3 and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. Bearing runs the color v2 roles from <code>recipes/bearing-v2.json</code>, with the earlier names kept as aliases and a high-contrast version of each theme.</li><li>Emphasis comes from size, weight and the Night to Day contrast. Four signal hues (coral, blue, green, orange) carry status, step order and categories only: as a symbol, a dot, a short rule or one soft-tinted card. Never text, a heading, a link or a large fill.</li><li>Every status pairs its hue with a shape and a word, so color never carries it alone.</li><li>Alerts and errors sit on the page&#x27;s own neutral surface with a thin rule or a small mark. <code>error</code> (crimson) appears only in the mark, the rule and the message text; Blocked status stays signal coral. No tinted alert panels, and no component left in its default AI-builder look.</li><li>Set type in Instrument Sans only; never Times.</li><li>Bearing&#x27;s icons are the Stockholm Premium set, duotone, normalized as above, in Bearing&#x27;s Icons asset group. Doodle illustration sets are not UI icons.</li></ul><h3>Output</h3><p>Substantial results go into an interactive, mobile-first page in the active brand: findings as rendered pairs, palettes as tone strips, proposals as a before and after the reader can toggle by theme and contrast level, and owner decisions as options to pick. The chat gets the outcome, the counts that matter and the one decision waiting.</p><p>Deliver the recipe, the generated tokens.css and the audit JSON with any proposal. State the completion state exactly: proposed, generated, audited, applied to the system, published.</p><h3>References</h3><ul><li><code>scripts/selftest.mjs</code>: runs the audit and the proposal on the Bearing fixtures and checks the results.</li></ul><ul><li><code>references/component-roles.json</code>: Material 3 components mapped to Bearing components and roles.</li><li><code>references/icon-roles.json</code>: one row per icon job.</li><li><code>references/material3-color.md</code>: the Material 3 color model this skill follows.</li><li><code>recipes/bearing-v2.json</code>: the Bearing recipe; copy it to start a client system.</li><li><code>fixtures/</code>: Bearing&#x27;s tokens and component color rules as they stood before v2, used by the self-test.</li></ul>",
+      "excerptHtml": "<p>A color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.</p><p>This skill works in that model. The engine in <code>scripts/</code> measures and generates; this file says when to use it and how to decide.</p><ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul>",
+      "headings": [
+        "When not to use",
+        "Engine",
+        "Modes",
+        "Decision rules",
+        "Icons",
+        "Owner decisions on file",
+        "Output",
+        "References"
+      ],
+      "mentions": [
+        {
+          "name": "manage-brand-profile",
+          "context": "- A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to `audit-accessibility`. This skill covers color only.\n- Applying a confirmed client or project brand to a document or page belongs to `manage-brand-profile`. This skill designs and repairs the color system that a profile carries.\n- Building a chart belongs to `build-editorial-chart`. This skill checks the chart palette.",
+          "contextHtml": "<ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul>"
+        },
+        {
+          "name": "audit-accessibility",
+          "context": "- A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to `audit-accessibility`. This skill covers color only.\n- Applying a confirmed client or project brand to a document or page belongs to `manage-brand-profile`. This skill designs and repairs the color system that a profile carries.\n- Building a chart belongs to `build-editorial-chart`. This skill checks the chart palette.",
+          "contextHtml": "<ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul>"
+        },
+        {
+          "name": "build-editorial-chart",
+          "context": "- A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to `audit-accessibility`. This skill covers color only.\n- Applying a confirmed client or project brand to a document or page belongs to `manage-brand-profile`. This skill designs and repairs the color system that a profile carries.\n- Building a chart belongs to `build-editorial-chart`. This skill checks the chart palette.",
+          "contextHtml": "<ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul>"
+        }
+      ],
+      "resources": [
+        {
+          "path": "SKILL.md",
+          "sha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
+          "bytes": 10306,
+          "gitBlob": "cdf82af3b1f6ac5f055512cb97317f9100224ffc"
+        },
+        {
+          "path": "THIRD-PARTY.md",
+          "sha256": "147e4c6f3ecae28c677ebf5d7163c4e3a2e107d4f621b9e7f65b818fa64ecf50",
+          "bytes": 535,
+          "gitBlob": "e33df635a1b55af7759860cb497f79980886ea17"
+        },
+        {
+          "path": "fixtures/bearing-bundle-colors.css",
+          "sha256": "9c3f47b1c8174b3d5f57ecb35747e5e0c956c709755242aee0c810659fbe75ae",
+          "bytes": 2009,
+          "gitBlob": "2074eb8570d0f709f45d2c0ffba2bbbeffa950e2"
+        },
+        {
+          "path": "fixtures/bearing-tokens-source.json",
+          "sha256": "9d43feb31e1f83bb3e9601cb26959d7eff4c7afb771cda20cb405cbaf1262b19",
+          "bytes": 3647,
+          "gitBlob": "d0848aad99b96197bce3f47c635119a092a7be4b"
+        },
+        {
+          "path": "fixtures/bearing-tokens.css",
+          "sha256": "d12cb147ae834bd65daf5c8316379737b684fbf71501d6a90033c384e18b049e",
+          "bytes": 2988,
+          "gitBlob": "651de5e3b934c51d87cfc25aa6f759a2117c7642"
+        },
+        {
+          "path": "recipes/bearing-v2.json",
+          "sha256": "fe0b8670135ea3f6f8a5b11766486ed6f7d7983eb74261845b98aa5063b755f1",
+          "bytes": 14159,
+          "gitBlob": "cf07746d7d1ab2cdf89021440812d2f27316343e"
+        },
+        {
+          "path": "references/component-roles.json",
+          "sha256": "be2c750f8f5149debdecd8b4f18d86e564fd7e3d35e0956858a59f561309155a",
+          "bytes": 7646,
+          "gitBlob": "2480a8310d53397f268960e62aa8d02f44a35e85"
+        },
+        {
+          "path": "references/material3-color.md",
+          "sha256": "6384b08f45e9059f6f58de1db3cf62ef72954f2dee18f92848615d6dead9960f",
+          "bytes": 3501,
+          "gitBlob": "a83bb793c4ef90e5d19f5c36463373565ead903a"
+        },
+        {
+          "path": "scripts/color-steward.mjs",
+          "sha256": "fa1c23773a759ec600b8a9a5c9c6ab2ce5933c8ba82aac66b62dd0cdbf76c233",
+          "bytes": 26048,
+          "gitBlob": "52c14ba8b2c575e10ec2f161dc895e3b3aed9d5e"
+        },
+        {
+          "path": "scripts/lib/apca.mjs",
+          "sha256": "5ff5b3c1a9fb99728cc10062ffdaceeae8f5b995f2b482cdcad3becc37b9214e",
+          "bytes": 783,
+          "gitBlob": "a1f06e91e0a6ddecb8b73d71afcb45d20a685dfe"
+        },
+        {
+          "path": "scripts/propose.mjs",
+          "sha256": "3f612dadfd19f320e823fab8169b2dd260e8f52d8e86f1a34634686e2bf72c18",
+          "bytes": 5758,
+          "gitBlob": "947f55521d4601485a6a31a7c88ca774c60a2b17"
+        },
+        {
+          "path": "scripts/selftest.mjs",
+          "sha256": "9249962d570edd2c74c517379b7a35c1678f63a4d9b4cf599e9059f56849e4b6",
+          "bytes": 2158,
+          "gitBlob": "4e10b67e2f8419347c09577349aa767f8db46faf"
+        },
+        {
+          "path": "scripts/vendor/deps.mjs",
+          "sha256": "614cbdc57e4c83a01cc89c5a7a2b4ecdab862ebfccb82bb6ebd9bcf498884c36",
+          "bytes": 317871,
+          "gitBlob": "c895f32c31673a88d526fa74587989368982e4c3"
+        },
+        {
+          "path": "skill.yaml",
+          "sha256": "8036cd0f0b315623b89a5a760416d75d3766e8f300511dbdaf09ffc1487784e7",
+          "bytes": 2909,
+          "gitBlob": "37c37ae58a46fb465cee0b0bc8b50355c763e566"
+        }
+      ],
+      "examples": []
+    },
+    {
       "id": "manage-consulting-knowledge",
       "title": "Manage consulting knowledge",
       "family": 5,
@@ -9680,7 +9900,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-consulting-knowledge/SKILL.md",
       "sourceSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-consulting-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-consulting-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-consulting-knowledge",
@@ -10014,7 +10234,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-cutover-closeout/SKILL.md",
       "sourceSha256": "c8dcfb3824a9624d943409adb900dc3be318f7eff0e67dab26777b25a29706f9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-cutover-closeout",
@@ -10250,7 +10470,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-decision-register/SKILL.md",
       "sourceSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-decision-register",
@@ -10410,7 +10630,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-linked-task/SKILL.md",
       "sourceSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-linked-task/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-linked-task/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "load-project-context"
@@ -10520,7 +10740,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-salesforce-devops/SKILL.md",
       "sourceSha256": "696aa80506a1d04ca45ae7a9fa0e17f03c75790c9be441c5f537584e6082cc3f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-salesforce-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-salesforce-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -10689,7 +10909,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-service-offering/SKILL.md",
       "sourceSha256": "cad2f61af6b45fb500642f6a8e5027d127eb87cdb4c97a415e7e72669339c158",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-service-offering/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-service-offering/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -10868,7 +11088,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-writing-profile/SKILL.md",
       "sourceSha256": "661cb380854e11b480c8ce08a449df7ae4365ff710f1ab8cff53e5cd11d33486",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/manage-writing-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/manage-writing-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-writing-profile",
@@ -11054,7 +11274,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-journey/SKILL.md",
       "sourceSha256": "2b43a88c556f3e333b3c12837568aeaa88f093347ca8fcd83e62d444ff688b32",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/map-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/map-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-journey",
@@ -11259,7 +11479,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-sales-process/SKILL.md",
       "sourceSha256": "bbd8ec4db8905ccd3db6de81f65fa4d9387282ae1ee7d661574b344233ff9ce3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/map-sales-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/map-sales-process/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -11396,7 +11616,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/operate-salesforce-pipeline/SKILL.md",
       "sourceSha256": "587104dba57206c015cde53ae40c19b7118448ad95c74e13ea31b37f2b0fdd13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/operate-salesforce-pipeline/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/operate-salesforce-pipeline/SKILL.md",
       "taskPackages": [
         {
           "name": "operate-salesforce-pipeline",
@@ -11642,7 +11862,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-offering-artifacts/SKILL.md",
       "sourceSha256": "9ba84a3b73f6164dd701c5bcfcef89001eb67b025f55be917c841e78bd59f48e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/plan-offering-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/plan-offering-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -11857,7 +12077,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-sprint/SKILL.md",
       "sourceSha256": "0f056e9401e1752a293b1c78197b632538497783539497b354ddb105cd5443c8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/plan-sprint/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/plan-sprint/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-sprint",
@@ -12095,7 +12315,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-team-onboarding/SKILL.md",
       "sourceSha256": "963b3dacfb4eab19ab14df999646300adda52e988d3b8e507604778737013144",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/plan-team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/plan-team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-team-onboarding",
@@ -12274,7 +12494,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-usability-study/SKILL.md",
       "sourceSha256": "252bcb7ec74179de8eccd9a6d19f4c50b15262cf1fd7d084f7d73b593a07b6ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/plan-usability-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/plan-usability-study/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-usability-study",
@@ -12406,7 +12626,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-delivery-handoff/SKILL.md",
       "sourceSha256": "5bf0003be716cd98dd6fb9d59c04658dd6012e97ce3f6f12a25c4639cdfd7980",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/prepare-delivery-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/prepare-delivery-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-delivery-handoff",
@@ -12679,7 +12899,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-job-application/SKILL.md",
       "sourceSha256": "9e83433f28b4848b2e1164c2cdcc2f263c3ca7423488a4b63100db8ea78d5ca4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/prepare-job-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/prepare-job-application/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -12871,7 +13091,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-sales-pursuit/SKILL.md",
       "sourceSha256": "4de3e4463401556aa97e0bc0d7ea6daeb65b15ea5736bc5a98831331babd35ca",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/prepare-sales-pursuit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/prepare-sales-pursuit/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-sales-pursuit",
@@ -13169,7 +13389,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-session-handoff/SKILL.md",
       "sourceSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/prepare-session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/prepare-session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-session-handoff",
@@ -13327,7 +13547,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritize-work/SKILL.md",
       "sourceSha256": "fc8ede1e30dc7865c434f23903ea203972fc99b2b5b8b14cfe0aa96d9e69b5b4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/prioritize-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/prioritize-work/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritize-work",
@@ -13620,7 +13840,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/promote-salesforce-changes/SKILL.md",
       "sourceSha256": "20ecc948c080ca2f890499ff1a554838259b2a9e3cbe7c14e0869e886c8780f0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/promote-salesforce-changes/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/promote-salesforce-changes/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -13849,7 +14069,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/publish-content/SKILL.md",
       "sourceSha256": "c9c913f1e38699d8ca232019e53074c4b3881ee7c35d48b28dedf98c77d65c15",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/publish-content/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/publish-content/SKILL.md",
       "taskPackages": [
         {
           "name": "publish-content",
@@ -14156,7 +14376,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/reconcile-knowledge/SKILL.md",
       "sourceSha256": "5096adde62aa07c9de2264f645e53a85c1e17579f1f061633cb0feaa5aa2868c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/reconcile-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/reconcile-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "reconcile-knowledge",
@@ -14292,7 +14512,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/refine-backlog/SKILL.md",
       "sourceSha256": "8f39be8696ce7e262db37b09726a8a7711b1ccd10bc895cfecd5c886d2297013",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/refine-backlog/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/refine-backlog/SKILL.md",
       "taskPackages": [
         {
           "name": "refine-backlog",
@@ -14522,7 +14742,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/release-skill-package/SKILL.md",
       "sourceSha256": "18ced08f63182be20b58bb29afb4cc38c690163f52e31e79962eed6cecb4c381",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/release-skill-package/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/release-skill-package/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -14681,7 +14901,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/render-offering-brief/SKILL.md",
       "sourceSha256": "c0cb7e4ff088755bcddb1cea043052b9079b6b9ea1bfbf93d53c52ed96eb0c2d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/render-offering-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/render-offering-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -14922,7 +15142,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-contract-scope/SKILL.md",
       "sourceSha256": "574d3d4d6fea4de0fb2e5fb6cdd23bde2e69e5bbdd038eaa63d2fed624b63b21",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/review-contract-scope/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/review-contract-scope/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -15134,7 +15354,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deal-economics/SKILL.md",
       "sourceSha256": "ef5e2b97bf3b291dca0d03904558dbc43f4bdf8c73a725d25d55146de53ec5d1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/review-deal-economics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/review-deal-economics/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deal-economics",
@@ -15380,7 +15600,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deliverable/SKILL.md",
       "sourceSha256": "b795bb3023124473792b55947a4beb941b92d017ca9edcce7235b7a39817780f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/review-deliverable/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/review-deliverable/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deliverable",
@@ -15606,7 +15826,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-sales-journey/SKILL.md",
       "sourceSha256": "893a37e12a8a86177e88bb0903c20d9812c411a534edb074e3207b7d3bda6a9d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/review-sales-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/review-sales-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -15756,7 +15976,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-runtime/SKILL.md",
       "sourceSha256": "bba06bf6d55a823144888d369961f2adca0233c050939b1c870e32ac3b54474b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/review-site-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/review-site-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "build-moscow-story-map",
@@ -16094,7 +16314,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-writing/SKILL.md",
       "sourceSha256": "ae1c35a0ac5ec6ab9e60723b83e8e4e5e9702f6f40b3d6e4309ab74d8aaf743d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/review-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/review-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "review-writing",
@@ -16133,6 +16353,7 @@
         "load-project-context",
         "maintain-skills-estate",
         "manage-brand-profile",
+        "manage-color-system",
         "manage-consulting-knowledge",
         "manage-cutover-closeout",
         "manage-decision-register",
@@ -16413,7 +16634,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-project/SKILL.md",
       "sourceSha256": "ff5b620e6f667358e4503d12e1e295fb0a44c405b91c3105bc55a882a29d34b6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/scope-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/scope-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -16620,7 +16841,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/simplify-code/SKILL.md",
       "sourceSha256": "156e04c98dbf3090b7e649c9a173bee3dfea52c8b524acbb220b76ac5f87e67a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/simplify-code/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/simplify-code/SKILL.md",
       "taskPackages": [
         {
           "name": "simplify-code",
@@ -16741,7 +16962,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/specify-implementation/SKILL.md",
       "sourceSha256": "13949c4b2674594085edde691b1bbf48c62bef1cefe2e1e957e7e7a3556caee4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/specify-implementation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/specify-implementation/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -16909,7 +17130,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/start-delivery/SKILL.md",
       "sourceSha256": "28ea292d287efc339df4a895b44adb673ca2b8a0b1d2edae70721fb2e991d408",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/start-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/start-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "start-delivery",
@@ -17206,7 +17427,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/synthesize-discovery/SKILL.md",
       "sourceSha256": "0aa36a731eb03992537e0be2718e68557d6f6ef597f7b3784296d4b5ed31fa15",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/synthesize-discovery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/synthesize-discovery/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -17414,7 +17635,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tailor-resume/SKILL.md",
       "sourceSha256": "4f3dedf48a065ea98d6ef096cdfc37739321c95a00cdcf8273121e1f1debeffd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/tailor-resume/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/tailor-resume/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -17570,7 +17791,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/track-delivery/SKILL.md",
       "sourceSha256": "847b852076132c0de37da2b0ffa6e6ee1bb34a230a56c535241227934310ae99",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/track-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/track-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "track-delivery",
@@ -17845,7 +18066,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/validate-delivery/SKILL.md",
       "sourceSha256": "21aabfb9a5cfc4ef671156a5a7a18bab9c11a2fc6a207248bf19c9b4b429c1f8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/validate-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/validate-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "validate-delivery",
@@ -18091,7 +18312,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-salesforce-org/SKILL.md",
       "sourceSha256": "ef7f119c9035f2562cc46ff755936355cb6fc0dd34439cca9a5f8f5f5d55fad5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/verify-salesforce-org/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/verify-salesforce-org/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "deliver-salesforce-change"
@@ -18247,7 +18468,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-work-state/SKILL.md",
       "sourceSha256": "76de9e7c6c3916162139c2d14bcb1f7baf76da2bafea8fd864db2f10ce7bb5cc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/verify-work-state/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/verify-work-state/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-knowledge",
@@ -18421,7 +18642,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/work-in-github-repository/SKILL.md",
       "sourceSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/work-in-github-repository/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/work-in-github-repository/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18520,11 +18741,11 @@
       "title": "Write architecture reference",
       "family": 1,
       "description": "Write a sourced architecture or technical design reference covering intent, components, interfaces, data, security, operations and trade-offs. Use for a formal reference document; use design-software-system for an exploratory working design.",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/write-architecture-reference/SKILL.md",
       "sourceSha256": "8af7bc206e1dca4ed369ba7a620f2e17244be7cc2305aaeef7bb1d733d46a118",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/write-architecture-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/write-architecture-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -18746,7 +18967,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-business-case/SKILL.md",
       "sourceSha256": "bec549aa6af7ce6f17ae4190b21ce8eea89f27b6cf03f7df33385f5367347bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/write-business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/write-business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "write-business-case",
@@ -18981,7 +19202,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-feature-spec/SKILL.md",
       "sourceSha256": "37bec88975ff9246aa2e76451a73e6612f9835c0316634e6edb44b1cb0a7cbce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/write-feature-spec/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/write-feature-spec/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -19132,7 +19353,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-portfolio-case-study/SKILL.md",
       "sourceSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/write-portfolio-case-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/write-portfolio-case-study/SKILL.md",
       "taskPackages": [
         {
           "name": "write-portfolio-case-study",
@@ -19266,7 +19487,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "d71c780c1c2384fdf8e801d271d8d4c924962798fcf9ba7109111023fefcfad2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/write-statement-of-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/write-statement-of-work/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -19555,7 +19776,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing/SKILL.md",
       "sourceSha256": "1975a8e9eab31733e968679eb76bfc332968dea166dbdae84923cf4b7e773a0a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/writing/SKILL.md",
       "taskPackages": [
         {
           "name": "writing",
@@ -19850,8 +20071,8 @@
       "status": "local-revision",
       "entrypointChanged": true,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
-      "sourceSha256": "1fbf25b3cd86029c33a1d284d3a20b79637127164ce38c2f32f60af2c08ef730",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/2285c31297081e86bf79308cf44cdf2ed858a239/skills/writing-diagnostics/SKILL.md",
+      "sourceSha256": "02275c39aa484b1fefb422c915221d21621cb514198f10c32810f85306972cd5",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/7b21e0b6c52139cb5b015a3fe7ee0274f3c6c3a8/skills/writing-diagnostics/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "apply-salesforce-patterns",
@@ -19885,6 +20106,7 @@
         "load-project-context",
         "maintain-skills-estate",
         "manage-brand-profile",
+        "manage-color-system",
         "manage-consulting-knowledge",
         "manage-cutover-closeout",
         "manage-decision-register",
@@ -19926,7 +20148,7 @@
         "inputs": "The saved text, the source version for figure comparison and the house configuration.",
         "outputs": "Pattern findings, figure comparisons and validated review receipts; it does not rewrite text.",
         "example": "Check this saved draft for recurring writing patterns and confirm no figure changed from the source.",
-        "reviewedEntrypointSha256": "1fbf25b3cd86029c33a1d284d3a20b79637127164ce38c2f32f60af2c08ef730",
+        "reviewedEntrypointSha256": "02275c39aa484b1fefb422c915221d21621cb514198f10c32810f85306972cd5",
         "expect": "It is an internal checker used by the writing review, not an editor, and it reports detectable patterns in a saved file by exit code without rewriting anything. It can reconcile figures between a source and a rewrite and emit a review receipt, but a clean scan does not show the prose was read.",
         "requires": "Needs Python 3 and a saved file to check.",
         "overview": "It scans saved text for detectable writing patterns, compares figures between source and revised versions, and validates review receipts. The scripts return findings and exit codes; they do not rewrite the draft or select an author voice. A human or writing-review workflow still has to read the prose and judge whether a finding applies.",
@@ -19954,7 +20176,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 33,
-        "packageFingerprint": "6079a69523687881a0856b67dcf88cff2a4f74371e40de2610356baa1134790f",
+        "packageFingerprint": "9a109b48153e7981c3b289fb9117f662ec84c95771d5f42aa50f4c10e97bd601",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -20010,8 +20232,8 @@
         "expect": "It is an internal checker used by the writing review, not an editor, and it reports detectable patterns in a saved file by exit code without rewriting anything. It can reconcile figures between a source and a rewrite and emit a review receipt, but a clean scan does not show the prose was read.",
         "declared": true
       },
-      "markdown": "---\nname: writing-diagnostics\ndescription: Internal diagnostic and figure-preservation tools used by review-writing. This module supplies scanners and review records; it does not select an author voice or act as a second editor.\n---\n\n# Writing diagnostics\n\nThis internal runtime holds the checkers and record tools that `review-writing` calls. Load it through that workflow.\n\nRead [review-writing](../review-writing/SKILL.md) before using these tools.\nThat workflow owns writing review. A confirmed personal profile supplies the\nauthor's voice. A visual brand profile controls appearance; it cannot select an\nauthor voice or change a fact. These tools report detectable patterns; they do not rewrite\ntext or establish editorial quality.\n\nUse the tools on every kind of authored prose, including instructions and\ninternal records. Keep exact source evidence and executable syntax unchanged.\nReview the new wording around those spans. A file extension or audience label\ndoes not exclude authored language from review.\n\n## Review a saved file\n\n```bash\npython3 scripts/writing_check.py --config house.json [--json] FILE\n```\n\nAdd `--json` for a machine-readable report. The checker reads prose from\nsupported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means\nthe check could not finish. Read its output and the complete document. Repair\nthe argument or sentence that caused a finding, then rerun the check.\n\n`C24-formulaic-the-framing` reports recurring label and announcement shapes as\nreview candidates. It does not establish that a name or quotation is wrong.\nKeep a justified match unchanged and record the reason when a review record is\nrequired. A retained candidate still produces exit 1; do not claim a clean scan\nor change a valid passage solely to obtain exit 0.\nFor a receipt, use `--retain-framing-reason \"REASON\" --retention-source \"SOURCE\"`\nwith `prose_receipt.py emit` after reading every candidate. The assessment is\nbound to the artifact hash and applies only to C24; it cannot waive other rules.\nC25–C27 add narrow review candidates for table readouts, action basis and repeated\nreassurance. Read [contextual signals](references/context-signals.md) for their\nobservable conditions, format limits and rule-specific retention procedure.\nThese candidates cannot establish redundancy, unearned urgency or lack of evidence.\nThe validator checks the record. The reviewer remains responsible for the judgment.\n\n`C12-verbatim-recycling` and `all-caps-block` take the same retention record.\nUse it when a repeat is one term kept for one thing, such as a heading restated\nin a sentence, or when a capitalised line is a required name. Pass\n`--retain-candidate \"C12-verbatim-recycling=REASON\"` or\n`--retain-candidate \"all-caps-block=REASON\"` with `--retention-source`.\nIdentifier-only lines, such as a table cell that lists `SKU-01, SKU-02, SKU-03`,\nare not all-caps prose in HTML or Markdown and need no record. C28 still counts\nthose IDs where a reader meets them.\n\nC10 and C15 judge the author's own claims. They skip a span in double\nquotation marks, such as an interview question the source asked. Every other\nrule still reads quoted text, so quoting new wording cannot hide it. C10 counts\na reference to the reader's questions or requests, such as\n\"your three questions\". A factual reference such as \"your two interviews\" passes.\n\n`C28-record-id-density` counts record IDs and sentence locators that stand in\nfor names in reader prose. Code, JSON, data files, tooltips and link targets are\nskipped, along with any section under a heading such as Source index, Sources,\nAppendix or Traceability; an HTML element marked `data-source-index` is skipped too.\nThe first mention of each ID beside a name is free. A repeat, an ID that opens a\nsentence, heading or table row, and every ID in a sentence carrying three or\nmore IDs all count. The budget is one per 200 reader words, and never fewer\nthan two. Over twice the budget is a FAIL. Fix a finding by naming the thing\nin plain words, as `policies/writing.md` requires.\n\nDo not change the filename, label prose internal or put authored wording in a\nquote to obtain a pass. A literal source span remains verbatim only when its\nsource and exact extent are identified in the internal review record. Keep\nreviewing the surrounding authored text. Do not reclassify an invented claim\nor an awkward sentence as captured evidence.\n\n`prose_check.py` is a compatibility command for the same supported input path.\nThe older lexical engine also reports vocabulary and construction diagnostics.\nRead [surface policy](references/surface-policy.md) for source-span handling.\n\n## Review recurring patterns\n\nRead [construction rules](references/construction-rules.md) and\n[patterns](references/patterns.md) when investigating a recurring construction.\nUse the applicable register for format-specific advice:\n\n| Format | Reference |\n| --- | --- |\n| Slides | [Deck](references/registers/deck.md) |\n| Contract or proposal | [SOW and proposal](references/registers/sow-proposal.md) |\n| Report or brief | [Readout](references/registers/readout-brief.md) |\n| Short message | [Email and Slack](references/registers/email-slack.md) |\n| Other authored text | [General](references/registers/general.md) |\n\nRegisters supply examples and format checks under review-writing. Preserve\nrequired terms and confirmed voice when a legacy example uses another style.\nRead headings with their body text. Remove repeated explanations and subtitles\nthat repeat a title. A vocabulary substitution cannot repair an empty claim.\n\n```bash\npython3 scripts/scan.py audit docs \"*.md\"\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE\n```\n\nThe audit command includes supported structured files and returns an error for\nunsupported input. The score command reports lexical density for comparison;\nits success does not establish compliance. It strips some executable spans for\nthat measurement. Use the complete authored-language check for release review.\n\nVocabulary sources remain in `scripts/rewrite_scan.py`. The generated wordlists\ncome from `scripts/sync_wordlists.py`; preserve their synchronization check.\nWeighted lists retain their existing weights. Changes to detection require\nrepresentative positive examples and valid prose examples, not a lower budget\nchosen to pass a particular draft.\n\n## Preserve figures and meaning\n\nBefore a substantive rewrite, retain the source version. Reconcile figures:\n\n```bash\npython3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE\n```\n\nAn added figure needs its source. A missing source figure requires checking\nwhether the omission was authorized. The writing pass cannot approve a price,\nscope change or commercial commitment. Use the confirmed quote or versioned\nestimate and preserve its assumptions. Keep client-stated figures attributed.\n\nCompare the finished text with its source for changed ownership and conditions.\nRetain factual uncertainty and meaningful author choices. Never add a number,\nquotation or anecdote to make vague writing sound specific.\n\n## Record a required review\n\nWhen the producing workflow requires a narrative review record, use:\n\n```bash\npython3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected \"commercial figures from the supplied quote\" \\\n    --change \"replaced the generic claim with the supported action\"\npython3 scripts/prose_receipt.py validate receipt.json\n```\n\nThe record binds the file hash to the checker result and declared edits. The\nvalidator rechecks measurable assertions and figure changes. A no-change result\nneeds an actual reading assessment; arbitrary edits are unnecessary. A record\ndoes not independently establish that an editor understood the document.\n\nBrief replies receive writing review without a receipt. Captured transcripts\nremain evidence and are never rewritten for style. Newly authored descriptions\nin records still receive the same writing review as any other prose.\n\n## Select configuration\n\nThe canonical baseline is `house.json`. An explicit configuration can add\nchecks; it cannot disable the maintained rules. The scripts and word data ship\ntogether and need no neighboring installed skill. See\n[configuration](references/house-overlay.md) and the [tellscan rule map](references/tellscan-rule-map.md) when maintaining the diagnostic\nengine. Every supported artifact still needs a complete reading against its\nfacts and intended reader after the commands pass.\n",
-      "html": "<p>This internal runtime holds the checkers and record tools that <code>review-writing</code> calls. Load it through that workflow.</p><p>Read review-writing <span class=\"ref\">(../review-writing/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile controls appearance; it cannot select an author voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p><h3>Review a saved file</h3><pre><code>python3 scripts/writing_check.py --config house.json [--json] FILE</code></pre><p>Add <code>--json</code> for a machine-readable report. The checker reads prose from supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means the check could not finish. Read its output and the complete document. Repair the argument or sentence that caused a finding, then rerun the check.</p><p><code>C24-formulaic-the-framing</code> reports recurring label and announcement shapes as review candidates. It does not establish that a name or quotation is wrong. Keep a justified match unchanged and record the reason when a review record is required. A retained candidate still produces exit 1; do not claim a clean scan or change a valid passage solely to obtain exit 0. For a receipt, use <code>--retain-framing-reason &quot;REASON&quot; --retention-source &quot;SOURCE&quot;</code> with <code>prose_receipt.py emit</code> after reading every candidate. The assessment is bound to the artifact hash and applies only to C24; it cannot waive other rules. C25–C27 add narrow review candidates for table readouts, action basis and repeated reassurance. Read contextual signals <span class=\"ref\">(references/context-signals.md)</span> for their observable conditions, format limits and rule-specific retention procedure. These candidates cannot establish redundancy, unearned urgency or lack of evidence. The validator checks the record. The reviewer remains responsible for the judgment.</p><p><code>C12-verbatim-recycling</code> and <code>all-caps-block</code> take the same retention record. Use it when a repeat is one term kept for one thing, such as a heading restated in a sentence, or when a capitalised line is a required name. Pass <code>--retain-candidate &quot;C12-verbatim-recycling=REASON&quot;</code> or <code>--retain-candidate &quot;all-caps-block=REASON&quot;</code> with <code>--retention-source</code>. Identifier-only lines, such as a table cell that lists <code>SKU-01, SKU-02, SKU-03</code>, are not all-caps prose in HTML or Markdown and need no record. C28 still counts those IDs where a reader meets them.</p><p>C10 and C15 judge the author&#x27;s own claims. They skip a span in double quotation marks, such as an interview question the source asked. Every other rule still reads quoted text, so quoting new wording cannot hide it. C10 counts a reference to the reader&#x27;s questions or requests, such as &quot;your three questions&quot;. A factual reference such as &quot;your two interviews&quot; passes.</p><p><code>C28-record-id-density</code> counts record IDs and sentence locators that stand in for names in reader prose. Code, JSON, data files, tooltips and link targets are skipped, along with any section under a heading such as Source index, Sources, Appendix or Traceability; an HTML element marked <code>data-source-index</code> is skipped too. The first mention of each ID beside a name is free. A repeat, an ID that opens a sentence, heading or table row, and every ID in a sentence carrying three or more IDs all count. The budget is one per 200 reader words, and never fewer than two. Over twice the budget is a FAIL. Fix a finding by naming the thing in plain words, as <code>policies/writing.md</code> requires.</p><p>Do not change the filename, label prose internal or put authored wording in a quote to obtain a pass. A literal source span remains verbatim only when its source and exact extent are identified in the internal review record. Keep reviewing the surrounding authored text. Do not reclassify an invented claim or an awkward sentence as captured evidence.</p><p><code>prose_check.py</code> is a compatibility command for the same supported input path. The older lexical engine also reports vocabulary and construction diagnostics. Read surface policy <span class=\"ref\">(references/surface-policy.md)</span> for source-span handling.</p><h3>Review recurring patterns</h3><p>Read construction rules <span class=\"ref\">(references/construction-rules.md)</span> and patterns <span class=\"ref\">(references/patterns.md)</span> when investigating a recurring construction. Use the applicable register for format-specific advice:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Format</th><th scope=\"col\">Reference</th></tr></thead><tbody><tr><td>Slides</td><td>Deck <span class=\"ref\">(references/registers/deck.md)</span></td></tr><tr><td>Contract or proposal</td><td>SOW and proposal <span class=\"ref\">(references/registers/sow-proposal.md)</span></td></tr><tr><td>Report or brief</td><td>Readout <span class=\"ref\">(references/registers/readout-brief.md)</span></td></tr><tr><td>Short message</td><td>Email and Slack <span class=\"ref\">(references/registers/email-slack.md)</span></td></tr><tr><td>Other authored text</td><td>General <span class=\"ref\">(references/registers/general.md)</span></td></tr></tbody></table></div><p>Registers supply examples and format checks under review-writing. Preserve required terms and confirmed voice when a legacy example uses another style. Read headings with their body text. Remove repeated explanations and subtitles that repeat a title. A vocabulary substitution cannot repair an empty claim.</p><pre><code>python3 scripts/scan.py audit docs &quot;*.md&quot;\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE</code></pre><p>The audit command includes supported structured files and returns an error for unsupported input. The score command reports lexical density for comparison; its success does not establish compliance. It strips some executable spans for that measurement. Use the complete authored-language check for release review.</p><p>Vocabulary sources remain in <code>scripts/rewrite_scan.py</code>. The generated wordlists come from <code>scripts/sync_wordlists.py</code>; preserve their synchronization check. Weighted lists retain their existing weights. Changes to detection require representative positive examples and valid prose examples, not a lower budget chosen to pass a particular draft.</p><h3>Preserve figures and meaning</h3><p>Before a substantive rewrite, retain the source version. Reconcile figures:</p><pre><code>python3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE</code></pre><p>An added figure needs its source. A missing source figure requires checking whether the omission was authorized. The writing pass cannot approve a price, scope change or commercial commitment. Use the confirmed quote or versioned estimate and preserve its assumptions. Keep client-stated figures attributed.</p><p>Compare the finished text with its source for changed ownership and conditions. Retain factual uncertainty and meaningful author choices. Never add a number, quotation or anecdote to make vague writing sound specific.</p><h3>Record a required review</h3><p>When the producing workflow requires a narrative review record, use:</p><pre><code>python3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected &quot;commercial figures from the supplied quote&quot; \\\n    --change &quot;replaced the generic claim with the supported action&quot;\npython3 scripts/prose_receipt.py validate receipt.json</code></pre><p>The record binds the file hash to the checker result and declared edits. The validator rechecks measurable assertions and figure changes. A no-change result needs an actual reading assessment; arbitrary edits are unnecessary. A record does not independently establish that an editor understood the document.</p><p>Brief replies receive writing review without a receipt. Captured transcripts remain evidence and are never rewritten for style. Newly authored descriptions in records still receive the same writing review as any other prose.</p><h3>Select configuration</h3><p>The canonical baseline is <code>house.json</code>. An explicit configuration can add checks; it cannot disable the maintained rules. The scripts and word data ship together and need no neighboring installed skill. See configuration <span class=\"ref\">(references/house-overlay.md)</span> and the tellscan rule map <span class=\"ref\">(references/tellscan-rule-map.md)</span> when maintaining the diagnostic engine. Every supported artifact still needs a complete reading against its facts and intended reader after the commands pass.</p>",
+      "markdown": "---\nname: writing-diagnostics\ndescription: Internal diagnostic and figure-preservation tools used by review-writing. This module supplies scanners and review records; it does not select an author voice or act as a second editor.\n---\n\n# Writing diagnostics\n\nThis internal runtime holds the checkers and record tools that `review-writing` calls. Load it through that workflow.\n\nRead [review-writing](../review-writing/SKILL.md) before using these tools.\nThat workflow owns writing review. A confirmed personal profile supplies the\nauthor's voice. A visual brand profile controls appearance; it cannot select an\nauthor voice or change a fact. These tools report detectable patterns; they do not rewrite\ntext or establish editorial quality.\n\nUse the tools on every kind of authored prose, including instructions and\ninternal records. Keep exact source evidence and executable syntax unchanged.\nReview the new wording around those spans. A file extension or audience label\ndoes not exclude authored language from review.\n\n## Review a saved file\n\n```bash\npython3 scripts/writing_check.py --config house.json [--json] FILE\n```\n\nAdd `--json` for a machine-readable report. For a built HTML page, add\n`--rendered` to read it as its reader sees it: page text and embedded JSON data,\nwithout script code, styles or comments. Check those in their source files\nwithout the flag. In this mode an identical value repeated across one table row,\nor the same field value repeated in embedded data, counts once for C12; every\nother rule still reads it. Touching words split by a non-formatting element in a\ntable cell are separated in both modes, so a status and its hours never merge. The checker reads prose from\nsupported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means\nthe check could not finish. Read its output and the complete document. Repair\nthe argument or sentence that caused a finding, then rerun the check.\n\n`C24-formulaic-the-framing` reports recurring label and announcement shapes as\nreview candidates. It does not establish that a name or quotation is wrong.\nKeep a justified match unchanged and record the reason when a review record is\nrequired. A retained candidate still produces exit 1; do not claim a clean scan\nor change a valid passage solely to obtain exit 0.\nFor a receipt, use `--retain-framing-reason \"REASON\" --retention-source \"SOURCE\"`\nwith `prose_receipt.py emit` after reading every candidate. The assessment is\nbound to the artifact hash and applies only to C24; it cannot waive other rules.\nC25–C27 add narrow review candidates for table readouts, action basis and repeated\nreassurance. Read [contextual signals](references/context-signals.md) for their\nobservable conditions, format limits and rule-specific retention procedure.\nThese candidates cannot establish redundancy, unearned urgency or lack of evidence.\nThe validator checks the record. The reviewer remains responsible for the judgment.\n\n`C12-verbatim-recycling` and `all-caps-block` take the same retention record.\nUse it when a repeat is one term kept for one thing, such as a heading restated\nin a sentence, or when a capitalised line is a required name. Pass\n`--retain-candidate \"C12-verbatim-recycling=REASON\"` or\n`--retain-candidate \"all-caps-block=REASON\"` with `--retention-source`.\nIdentifier-only lines, such as a table cell that lists `SKU-01, SKU-02, SKU-03`,\nare not all-caps prose in HTML or Markdown and need no record. C28 still counts\nthose IDs where a reader meets them.\n\nC10 and C15 judge the author's own claims. They skip a span in double\nquotation marks, such as an interview question the source asked. Every other\nrule still reads quoted text, so quoting new wording cannot hide it. C10 counts\na reference to the reader's questions or requests, such as\n\"your three questions\". A factual reference such as \"your two interviews\" passes.\n\n`C28-record-id-density` counts record IDs and sentence locators that stand in\nfor names in reader prose. Code, JSON, data files, tooltips and link targets are\nskipped, along with any section under a heading such as Source index, Sources,\nAppendix or Traceability; an HTML element marked `data-source-index` is skipped too.\nThe first mention of each ID beside a name is free. A repeat, an ID that opens a\nsentence, heading or table row, and every ID in a sentence carrying three or\nmore IDs all count. The budget is one per 200 reader words, and never fewer\nthan two. Over twice the budget is a FAIL. Fix a finding by naming the thing\nin plain words, as `policies/writing.md` requires.\n\nDo not change the filename, label prose internal or put authored wording in a\nquote to obtain a pass. A literal source span remains verbatim only when its\nsource and exact extent are identified in the internal review record. Keep\nreviewing the surrounding authored text. Do not reclassify an invented claim\nor an awkward sentence as captured evidence.\n\n`prose_check.py` is a compatibility command for the same supported input path.\nThe older lexical engine also reports vocabulary and construction diagnostics.\nRead [surface policy](references/surface-policy.md) for source-span handling.\n\n## Review recurring patterns\n\nRead [construction rules](references/construction-rules.md) and\n[patterns](references/patterns.md) when investigating a recurring construction.\nUse the applicable register for format-specific advice:\n\n| Format | Reference |\n| --- | --- |\n| Slides | [Deck](references/registers/deck.md) |\n| Contract or proposal | [SOW and proposal](references/registers/sow-proposal.md) |\n| Report or brief | [Readout](references/registers/readout-brief.md) |\n| Short message | [Email and Slack](references/registers/email-slack.md) |\n| Other authored text | [General](references/registers/general.md) |\n\nRegisters supply examples and format checks under review-writing. Preserve\nrequired terms and confirmed voice when a legacy example uses another style.\nRead headings with their body text. Remove repeated explanations and subtitles\nthat repeat a title. A vocabulary substitution cannot repair an empty claim.\n\n```bash\npython3 scripts/scan.py audit docs \"*.md\"\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE\n```\n\nThe audit command includes supported structured files and returns an error for\nunsupported input. The score command reports lexical density for comparison;\nits success does not establish compliance. It strips some executable spans for\nthat measurement. Use the complete authored-language check for release review.\n\nVocabulary sources remain in `scripts/rewrite_scan.py`. The generated wordlists\ncome from `scripts/sync_wordlists.py`; preserve their synchronization check.\nWeighted lists retain their existing weights. Changes to detection require\nrepresentative positive examples and valid prose examples, not a lower budget\nchosen to pass a particular draft.\n\n## Preserve figures and meaning\n\nBefore a substantive rewrite, retain the source version. Reconcile figures:\n\n```bash\npython3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE\n```\n\nAn added figure needs its source. A missing source figure requires checking\nwhether the omission was authorized. The writing pass cannot approve a price,\nscope change or commercial commitment. Use the confirmed quote or versioned\nestimate and preserve its assumptions. Keep client-stated figures attributed.\n\nCompare the finished text with its source for changed ownership and conditions.\nRetain factual uncertainty and meaningful author choices. Never add a number,\nquotation or anecdote to make vague writing sound specific.\n\n## Record a required review\n\nWhen the producing workflow requires a narrative review record, use:\n\n```bash\npython3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected \"commercial figures from the supplied quote\" \\\n    --change \"replaced the generic claim with the supported action\"\npython3 scripts/prose_receipt.py validate receipt.json\n```\n\nThe record binds the file hash to the checker result and declared edits. The\nvalidator rechecks measurable assertions and figure changes. A no-change result\nneeds an actual reading assessment; arbitrary edits are unnecessary. A record\ndoes not independently establish that an editor understood the document.\n\nBrief replies receive writing review without a receipt. Captured transcripts\nremain evidence and are never rewritten for style. Newly authored descriptions\nin records still receive the same writing review as any other prose.\n\n## Select configuration\n\nThe canonical baseline is `house.json`. An explicit configuration can add\nchecks; it cannot disable the maintained rules. The scripts and word data ship\ntogether and need no neighboring installed skill. See\n[configuration](references/house-overlay.md) and the [tellscan rule map](references/tellscan-rule-map.md) when maintaining the diagnostic\nengine. Every supported artifact still needs a complete reading against its\nfacts and intended reader after the commands pass.\n",
+      "html": "<p>This internal runtime holds the checkers and record tools that <code>review-writing</code> calls. Load it through that workflow.</p><p>Read review-writing <span class=\"ref\">(../review-writing/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile controls appearance; it cannot select an author voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p><h3>Review a saved file</h3><pre><code>python3 scripts/writing_check.py --config house.json [--json] FILE</code></pre><p>Add <code>--json</code> for a machine-readable report. For a built HTML page, add <code>--rendered</code> to read it as its reader sees it: page text and embedded JSON data, without script code, styles or comments. Check those in their source files without the flag. In this mode an identical value repeated across one table row, or the same field value repeated in embedded data, counts once for C12; every other rule still reads it. Touching words split by a non-formatting element in a table cell are separated in both modes, so a status and its hours never merge. The checker reads prose from supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means the check could not finish. Read its output and the complete document. Repair the argument or sentence that caused a finding, then rerun the check.</p><p><code>C24-formulaic-the-framing</code> reports recurring label and announcement shapes as review candidates. It does not establish that a name or quotation is wrong. Keep a justified match unchanged and record the reason when a review record is required. A retained candidate still produces exit 1; do not claim a clean scan or change a valid passage solely to obtain exit 0. For a receipt, use <code>--retain-framing-reason &quot;REASON&quot; --retention-source &quot;SOURCE&quot;</code> with <code>prose_receipt.py emit</code> after reading every candidate. The assessment is bound to the artifact hash and applies only to C24; it cannot waive other rules. C25–C27 add narrow review candidates for table readouts, action basis and repeated reassurance. Read contextual signals <span class=\"ref\">(references/context-signals.md)</span> for their observable conditions, format limits and rule-specific retention procedure. These candidates cannot establish redundancy, unearned urgency or lack of evidence. The validator checks the record. The reviewer remains responsible for the judgment.</p><p><code>C12-verbatim-recycling</code> and <code>all-caps-block</code> take the same retention record. Use it when a repeat is one term kept for one thing, such as a heading restated in a sentence, or when a capitalised line is a required name. Pass <code>--retain-candidate &quot;C12-verbatim-recycling=REASON&quot;</code> or <code>--retain-candidate &quot;all-caps-block=REASON&quot;</code> with <code>--retention-source</code>. Identifier-only lines, such as a table cell that lists <code>SKU-01, SKU-02, SKU-03</code>, are not all-caps prose in HTML or Markdown and need no record. C28 still counts those IDs where a reader meets them.</p><p>C10 and C15 judge the author&#x27;s own claims. They skip a span in double quotation marks, such as an interview question the source asked. Every other rule still reads quoted text, so quoting new wording cannot hide it. C10 counts a reference to the reader&#x27;s questions or requests, such as &quot;your three questions&quot;. A factual reference such as &quot;your two interviews&quot; passes.</p><p><code>C28-record-id-density</code> counts record IDs and sentence locators that stand in for names in reader prose. Code, JSON, data files, tooltips and link targets are skipped, along with any section under a heading such as Source index, Sources, Appendix or Traceability; an HTML element marked <code>data-source-index</code> is skipped too. The first mention of each ID beside a name is free. A repeat, an ID that opens a sentence, heading or table row, and every ID in a sentence carrying three or more IDs all count. The budget is one per 200 reader words, and never fewer than two. Over twice the budget is a FAIL. Fix a finding by naming the thing in plain words, as <code>policies/writing.md</code> requires.</p><p>Do not change the filename, label prose internal or put authored wording in a quote to obtain a pass. A literal source span remains verbatim only when its source and exact extent are identified in the internal review record. Keep reviewing the surrounding authored text. Do not reclassify an invented claim or an awkward sentence as captured evidence.</p><p><code>prose_check.py</code> is a compatibility command for the same supported input path. The older lexical engine also reports vocabulary and construction diagnostics. Read surface policy <span class=\"ref\">(references/surface-policy.md)</span> for source-span handling.</p><h3>Review recurring patterns</h3><p>Read construction rules <span class=\"ref\">(references/construction-rules.md)</span> and patterns <span class=\"ref\">(references/patterns.md)</span> when investigating a recurring construction. Use the applicable register for format-specific advice:</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Format</th><th scope=\"col\">Reference</th></tr></thead><tbody><tr><td>Slides</td><td>Deck <span class=\"ref\">(references/registers/deck.md)</span></td></tr><tr><td>Contract or proposal</td><td>SOW and proposal <span class=\"ref\">(references/registers/sow-proposal.md)</span></td></tr><tr><td>Report or brief</td><td>Readout <span class=\"ref\">(references/registers/readout-brief.md)</span></td></tr><tr><td>Short message</td><td>Email and Slack <span class=\"ref\">(references/registers/email-slack.md)</span></td></tr><tr><td>Other authored text</td><td>General <span class=\"ref\">(references/registers/general.md)</span></td></tr></tbody></table></div><p>Registers supply examples and format checks under review-writing. Preserve required terms and confirmed voice when a legacy example uses another style. Read headings with their body text. Remove repeated explanations and subtitles that repeat a title. A vocabulary substitution cannot repair an empty claim.</p><pre><code>python3 scripts/scan.py audit docs &quot;*.md&quot;\npython3 scripts/scan.py score draft.md --json\npython3 scripts/scan.py --input FILE</code></pre><p>The audit command includes supported structured files and returns an error for unsupported input. The score command reports lexical density for comparison; its success does not establish compliance. It strips some executable spans for that measurement. Use the complete authored-language check for release review.</p><p>Vocabulary sources remain in <code>scripts/rewrite_scan.py</code>. The generated wordlists come from <code>scripts/sync_wordlists.py</code>; preserve their synchronization check. Weighted lists retain their existing weights. Changes to detection require representative positive examples and valid prose examples, not a lower budget chosen to pass a particular draft.</p><h3>Preserve figures and meaning</h3><p>Before a substantive rewrite, retain the source version. Reconcile figures:</p><pre><code>python3 scripts/rewrite_scan.py --tie-out SOURCE REWRITE</code></pre><p>An added figure needs its source. A missing source figure requires checking whether the omission was authorized. The writing pass cannot approve a price, scope change or commercial commitment. Use the confirmed quote or versioned estimate and preserve its assumptions. Keep client-stated figures attributed.</p><p>Compare the finished text with its source for changed ownership and conditions. Retain factual uncertainty and meaningful author choices. Never add a number, quotation or anecdote to make vague writing sound specific.</p><h3>Record a required review</h3><p>When the producing workflow requires a narrative review record, use:</p><pre><code>python3 scripts/prose_receipt.py emit FILE --out receipt.json \\\n    --before-file SOURCE \\\n    --protected &quot;commercial figures from the supplied quote&quot; \\\n    --change &quot;replaced the generic claim with the supported action&quot;\npython3 scripts/prose_receipt.py validate receipt.json</code></pre><p>The record binds the file hash to the checker result and declared edits. The validator rechecks measurable assertions and figure changes. A no-change result needs an actual reading assessment; arbitrary edits are unnecessary. A record does not independently establish that an editor understood the document.</p><p>Brief replies receive writing review without a receipt. Captured transcripts remain evidence and are never rewritten for style. Newly authored descriptions in records still receive the same writing review as any other prose.</p><h3>Select configuration</h3><p>The canonical baseline is <code>house.json</code>. An explicit configuration can add checks; it cannot disable the maintained rules. The scripts and word data ship together and need no neighboring installed skill. See configuration <span class=\"ref\">(references/house-overlay.md)</span> and the tellscan rule map <span class=\"ref\">(references/tellscan-rule-map.md)</span> when maintaining the diagnostic engine. Every supported artifact still needs a complete reading against its facts and intended reader after the commands pass.</p>",
       "excerptHtml": "<p>This internal runtime holds the checkers and record tools that <code>review-writing</code> calls. Load it through that workflow.</p><p>Read review-writing <span class=\"ref\">(../review-writing/SKILL.md)</span> before using these tools. That workflow owns writing review. A confirmed personal profile supplies the author&#x27;s voice. A visual brand profile controls appearance; it cannot select an author voice or change a fact. These tools report detectable patterns; they do not rewrite text or establish editorial quality.</p><p>Use the tools on every kind of authored prose, including instructions and internal records. Keep exact source evidence and executable syntax unchanged. Review the new wording around those spans. A file extension or audience label does not exclude authored language from review.</p>",
       "headings": [
         "Review a saved file",
@@ -20036,9 +20258,9 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "1fbf25b3cd86029c33a1d284d3a20b79637127164ce38c2f32f60af2c08ef730",
-          "bytes": 8540,
-          "gitBlob": "11460f46f32bfbf94514a180ecc0cc419bd1ac64"
+          "sha256": "02275c39aa484b1fefb422c915221d21621cb514198f10c32810f85306972cd5",
+          "bytes": 9042,
+          "gitBlob": "6a25dc9f0eae604da089908f91c6ec5a7295035c"
         },
         {
           "path": "house.json",
@@ -20192,9 +20414,9 @@
         },
         {
           "path": "scripts/writing_check.py",
-          "sha256": "59428bb71494de7ac6546c83856fe8cd9f9eb2fcd5ca154b3966ba5e4791314f",
-          "bytes": 16736,
-          "gitBlob": "e1e160c8b864dbbe7f29522df85fac69d315d531"
+          "sha256": "b814af44b0d533b44267b8e9f0e1b766dc414999a0ab80b694254fa4eff77434",
+          "bytes": 21010,
+          "gitBlob": "18a802521fafe61535215b869a0dbf144591df75"
         },
         {
           "path": "skill.yaml",
@@ -20291,11 +20513,11 @@
     }
   ],
   "counts": {
-    "github": 88,
-    "local-revision": 5,
+    "github": 90,
+    "local-revision": 4,
     "local-addition": 0,
-    "canonical": 93,
-    "total": 93,
+    "canonical": 94,
+    "total": 94,
     "withExamples": 90
   }
 }

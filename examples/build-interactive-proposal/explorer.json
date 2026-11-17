@@ -6,7 +6,7 @@
     "prepared_by": "Example Delivery Team",
     "date": "2026-10-20",
     "validity": "Synthetic example for skill testing. Scope decisions remain open.",
-    "confidentiality": "Synthetic example. No client information.",
+    "confidentiality": "Synthetic example with no client information.",
     "mode": "explorer"
   },
   "sources": [
@@ -55,7 +55,7 @@
     {
       "key": "B",
       "name": "Queue and escalation",
-      "tagline": "Add escalation for requests that remain unassigned.",
+      "tagline": "Add a path for work nobody picks up.",
       "source": "requirements",
       "metric": 2,
       "metric_label": "requirements included",
@@ -91,7 +91,7 @@
     {
       "key": "C",
       "name": "Queue, escalation and reporting",
-      "tagline": "Also report assignment and response times.",
+      "tagline": "Also measure how quickly the team responds.",
       "source": "requirements",
       "metric": 3,
       "metric_label": "requirements included",
@@ -127,6 +127,11 @@
     }
   ],
   "counting_method": "Count each distinct included requirement ID once. The source contains R1, R2 and R3.",
+  "missing_inputs": [
+    "No rate card is supplied, so no version carries a price.",
+    "No team plan is supplied for any version.",
+    "No start date or delivery sequence is supplied."
+  ],
   "phase_zero": {
     "name": "Scope confirmation",
     "description": "Confirm the selected workflow and its estimate before preparing a quote.",

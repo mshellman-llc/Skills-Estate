@@ -44,7 +44,7 @@ def validate(data,quote=None):
         for key in ('name','tagline','source'):
             require_text(version.get(key),'version.'+key)
         if version['source'] not in source_ids:raise ValueError('Unknown version source')
-        included=[]
+        included=[];item_sources={}
         if not isinstance(version.get('scope_sections'),list) or not version['scope_sections']:
             raise ValueError('Version needs scope_sections')
         for section in version['scope_sections']:
@@ -59,10 +59,12 @@ def validate(data,quote=None):
                 if item['source'] not in source_ids:raise ValueError('Unknown scope source')
                 if item['id'] in included:raise ValueError('Duplicate scope ID within version')
                 included.append(item['id'])
+                # A shared item keeps one wording, but each version cites its own source.
+                item_sources[item['id']]=item['source']
                 normalized={**item,'section':section['title']}
-                if item['id'] in all_items and all_items[item['id']]!=normalized:
+                if item['id'] in all_items and {k:v for k,v in all_items[item['id']].items() if k!='source'}!={k:v for k,v in normalized.items() if k!='source'}:
                     raise ValueError('Shared scope ID has conflicting wording: '+item['id'])
-                all_items[item['id']]=normalized
+                all_items.setdefault(item['id'],normalized)
         if not isinstance(version.get('assumptions'),list) or not version['assumptions']:
             raise ValueError('Version needs sourced assumptions')
         for text in version['assumptions']:require_text(text,'assumption')
@@ -77,6 +79,7 @@ def validate(data,quote=None):
                 raise ValueError('Explorer metric must equal the count of distinct included scope IDs')
             require_text(version.get('metric_label'),'metric_label')
         version['_included_ids']=included
+        version['_item_sources']=item_sources
     for version in versions:
         routes={x['item']:x['route'] for x in version['not_included']}
         for item in all_items.values():
@@ -84,6 +87,7 @@ def validate(data,quote=None):
                 raise ValueError('Excluded scope needs a route: '+item['name'])
     if mode=='proposal':
         if not quote:raise ValueError('Proposal mode needs --quote with the source quote export')
+        if 'missing_inputs' in data:raise ValueError('Proposal mode is priced; missing_inputs belongs to explorer mode')
         for key in ('quote_number','currency'):require_text(meta.get(key),'meta.'+key)
         if not re.fullmatch('[A-Z]{3}',meta['currency']):
             raise ValueError('Currency must be an uppercase three-letter code')
@@ -114,6 +118,10 @@ def validate(data,quote=None):
                 for key in ('phase','weeks'):require_text(phase.get(key),'timeline.'+key)
     else:
         if 'currency' in meta:raise ValueError('Explorer has no currency field')
+        if 'missing_inputs' in data:
+            if not isinstance(data['missing_inputs'],list) or not data['missing_inputs']:
+                raise ValueError('missing_inputs must name each missing price, staffing or timeline input')
+            for text in data['missing_inputs']:require_text(text,'missing input')
         require_text(data.get('counting_method'),'counting_method')
         phase=data.get('phase_zero',{})
         for key in ('name','description'):require_text(phase.get(key),'phase_zero.'+key)

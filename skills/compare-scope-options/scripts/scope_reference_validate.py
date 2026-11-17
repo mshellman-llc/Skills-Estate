@@ -23,8 +23,26 @@ def amount(value, name):
     require(d.is_finite() and d>=0,name+' must be finite and nonnegative')
     return d
 
-def indexed(items, name, key='id'):
-    require(isinstance(items,list) and bool(items),name+' must be a nonempty list')
+def estimate(item, name, unestimated_allowed):
+    """Return a canonical estimate: a Decimal, a low/expected/high range, or None when unestimated."""
+    status=item.get('status','estimated')
+    require(status in {'estimated','unestimated'},name+' status must be estimated or unestimated')
+    hours=item.get('hours')
+    if status=='unestimated':
+        require(unestimated_allowed,name+' is unestimated; only an unpriced comparison can carry unestimated work')
+        require(hours is None,name+' is unestimated and cannot carry hours')
+        text(item.get('discovery'),name+' discovery')
+        return None
+    if isinstance(hours,dict):
+        require(set(hours)=={'low','expected','high'},name+' range needs exactly low, expected and high')
+        low,expected,high=(amount(hours[k],name+' '+k+' hours') for k in ('low','expected','high'))
+        require(low<=expected<=high,name+' range must run low <= expected <= high')
+        return {'low':low,'expected':expected,'high':high}
+    require(hours is not None,name+' hours must be numeric; mark unestimated work with status "unestimated"')
+    return amount(hours,name+' hours')
+
+def indexed(items, name, key='id', allow_empty=False):
+    require(isinstance(items,list) and (allow_empty or bool(items)),name+' must be a nonempty list')
     result={}
     for item in items:
         require(isinstance(item,dict),name+' entries must be objects')
@@ -45,30 +63,47 @@ def load(path):
 def state(item, active):
     return 'optional' if item['optional'] else ('in' if item['id'] in active else 'available')
 
+PRICE_INPUTS=('price','staffing','timeline')
+
 def reconcile(source, plan):
     require(isinstance(source,dict) and isinstance(plan,dict),'Source and presentation must be objects')
     require(source.get('kind') in {'export','live-capture','synthetic'},'Declare the source kind')
     text(source.get('system'),'source system');text(source.get('revision'),'source revision')
     captured=datetime.fromisoformat(text(source.get('captured_at'),'capture time').replace('Z','+00:00'))
     require(captured.tzinfo is not None,'Capture time needs a timezone')
+    pricing=source.get('pricing','quoted')
+    require(pricing in {'quoted','unpriced'},'Pricing must be quoted or unpriced')
+    unpriced=pricing=='unpriced'
+    missing=source.get('missing_inputs')
+    if unpriced:
+        # An unpriced comparison names what is missing; it never derives price, staffing or timeline.
+        require(isinstance(missing,dict) and set(missing)==set(PRICE_INPUTS),'An unpriced comparison must name its missing price, staffing and timeline inputs')
+        for key in PRICE_INPUTS:text(missing[key],'missing '+key+' input')
+    else:require(missing is None,'Missing inputs belong only to an unpriced comparison')
     quotes=indexed(source.get('quotes'),'quote');options=indexed(plan.get('options'),'option','quote_id')
     require(set(quotes)==set(options),'Source quotes and selected options must match exactly; supply a bounded export')
     text(plan.get('title'),'title');text(plan.get('client'),'client');text(plan.get('intro'),'intro')
     require(type(plan.get('rounding',1)) is int and plan.get('rounding',1) in (1,1000),'Rounding must be 1 or 1000')
-    truth={};counts={};timelines={}
+    truth={};counts={};timelines={};unestimated={}
     for qid,q in quotes.items():
         full=indexed(q.get('full_items'),'scope item')
         active=q.get('active_item_ids')
         require(isinstance(active,list) and all(isinstance(x,str) for x in active),'Active IDs must be strings')
         require(len(active)==len(set(active)) and set(active)<=set(full),'Active IDs must be unique and present in the full scope')
-        counts[qid]={s:0 for s in STATES}
+        counts[qid]={s:0 for s in STATES};unestimated[qid]=0
         for key,item in full.items():
             text(item.get('name'),'item name');text(item.get('category'),'item category')
-            amount(item.get('hours'),'item hours');require(isinstance(item.get('optional'),bool),'Optional flag must be explicit')
+            hours=estimate(item,'Item '+key,unpriced);require(isinstance(item.get('optional'),bool),'Optional flag must be explicit')
             if key in truth:
                 require(truth[key]['name']==item['name'] and truth[key]['category']==item['category'],'Conflicting identity for '+key+'; reconcile the source mapping')
             else:truth[key]={'name':item['name'],'category':item['category'],'cells':{}}
-            s=state(item,active);truth[key]['cells'][qid]={'hours':item['hours'],'state':s};counts[qid][s]+=1
+            s=state(item,active);truth[key]['cells'][qid]={'hours':hours,'state':s,'unestimated':hours is None};counts[qid][s]+=1
+            unestimated[qid]+=hours is None
+        if unpriced:
+            require(q.get('snapshots',[])==[] and q.get('active_snapshot_id') is None,'An unpriced comparison carries no snapshots: '+qid)
+            require(options[qid].get('snapshots',[])==[],'An unpriced comparison cannot display a snapshot: '+qid)
+            text(options[qid].get('name'),'option name');text(options[qid].get('summary'),'option summary')
+            timelines[qid]={};continue
         snaps=indexed(q.get('snapshots'),'snapshot')
         active_snapshot=text(q.get('active_snapshot_id'),'active snapshot')
         require(active_snapshot in snaps,'Active snapshot is missing: '+qid)
@@ -100,12 +135,16 @@ def reconcile(source, plan):
         cells=item.get('cells');require(isinstance(cells,dict) and set(cells)==set(options),'Every item needs one cell per option')
         for qid,cell in cells.items():
             require(isinstance(cell,dict),'Cells must be objects')
-            expected=actual['cells'].get(qid,{'hours':None,'state':'out'})
+            expected=actual['cells'].get(qid,{'hours':None,'state':'out','unestimated':False})
             require(cell.get('state') in STATES and cell['state']==expected['state'],'State mismatch: '+key+'/'+qid)
-            if expected['hours'] is None:require(cell.get('hours') is None,'Absent items cannot carry hours: '+key+'/'+qid)
-            else:require(amount(cell.get('hours'),'display hours')==amount(expected['hours'],'source hours'),'Hours mismatch: '+key+'/'+qid)
+            if expected['unestimated']:
+                require(cell.get('status')=='unestimated' and cell.get('hours') is None,'Unestimated work must stay unestimated, never zero: '+key+'/'+qid)
+            elif expected['hours'] is None:require(cell.get('hours') is None and 'status' not in cell,'Absent items cannot carry hours: '+key+'/'+qid)
+            else:
+                require(cell.get('status','estimated')=='estimated','Estimate status mismatch: '+key+'/'+qid)
+                require(estimate(cell,'Display cell '+key+'/'+qid,False)==expected['hours'],'Hours mismatch: '+key+'/'+qid)
     for qid in options:counts[qid]['out']=sum(qid not in row['cells'] for row in truth.values())
-    return {'ok':True,'mode':'single-option' if len(options)==1 else 'comparison','counts':counts,'items':len(truth),'quotes':len(quotes),'source_kind':source['kind'],'source_revision':source['revision'],'captured_at':source['captured_at']}
+    return {'ok':True,'mode':'single-option' if len(options)==1 else 'comparison','pricing':pricing,'counts':counts,'unestimated':unestimated,'items':len(truth),'quotes':len(quotes),'source_kind':source['kind'],'source_revision':source['revision'],'captured_at':source['captured_at']}
 
 # Retain the original promised import API for older callers. Never collapse two names.
 def normalize(name,prefix_aliases=None):

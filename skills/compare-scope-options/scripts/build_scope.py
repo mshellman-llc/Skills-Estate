@@ -15,6 +15,21 @@ def esc(value):return html.escape(str(value),quote=True)
 def num(value):return format(amount(value,'number').normalize(),'f')
 def money(value,currency):return esc(currency)+' '+format(amount(value,'revenue'),',.2f')
 
+def hours_html(cell,source_item):
+    """Show a point estimate, a range or the discovery an unestimated item needs. Never print zero for unknown work."""
+    if cell.get('status')=='unestimated':
+        return '<span class="hours unestimated">Not estimated</span><small class="discovery">Needs '+esc(source_item['discovery'])+'</small>'
+    hours=cell['hours']
+    if isinstance(hours,dict):
+        return '<span class="hours">'+num(hours['expected'])+' h expected</span><small class="range">Range '+num(hours['low'])+' to '+num(hours['high'])+' h</small>'
+    return '<span class="hours">'+num(hours)+' h</span>'
+
+def data_hours(cell):
+    hours=cell['hours']
+    if hours is None:return ''
+    if isinstance(hours,dict):return esc(json.dumps({k:str(v) for k,v in hours.items()},separators=(',',':')))
+    return esc(hours)
+
 def runtime():
     for p in [ROOT/'_runtime/brand-renderer',ROOT.parent/'brand-renderer']:
         if (p/'brand/html_profile.py').is_file():sys.path.insert(0,str(p/'brand'));return
@@ -25,10 +40,12 @@ def render(source,plan,profile=None):
     from html_profile import resources
     res=resources(profile)
     options=plan['options'];quotes={q['id']:q for q in source['quotes']}
+    unpriced=report['pricing']=='unpriced'
+    source_items={(q['id'],i['id']):i for q in source['quotes'] for i in q['full_items']}
     summaries=[]
     for option in options:
         qid=option['quote_id'];counts=report['counts'][qid];snaprows=[]
-        for snapshot in option['snapshots']:
+        for snapshot in option.get('snapshots',[]):
             exact=money(snapshot['revenue'],snapshot['currency'])
             if plan.get('rounding',1)==1000:
                 rounded=(amount(snapshot['revenue'],'revenue')/1000).quantize(Decimal('1'),rounding=ROUND_HALF_UP)*1000
@@ -36,7 +53,7 @@ def render(source,plan,profile=None):
             else:price=exact
             active=snapshot['id']==quotes[qid]['active_snapshot_id']
             snaprows.append('<tr data-snapshot="'+esc(snapshot['id'])+'"><th scope="row">'+esc(snapshot['label'])+('<small>Active plan</small>' if active else '')+'</th><td class="price" data-revenue="'+esc(snapshot['revenue'])+'">'+price+'</td><td>'+num(snapshot['weeks'])+' weeks<small>'+num(snapshot['hours'])+' staffing hours</small></td></tr>')
-        summaries.append('<article class="option" data-quote="'+esc(qid)+'"><h2>'+esc(option['name'])+'</h2><p class="quote-id">'+esc(qid)+'</p><p>'+esc(option['summary'])+'</p><p class="counts">'+str(counts['in'])+' included · '+str(counts['optional'])+' optional · '+str(counts['available'])+' available</p><table class="plans"><caption>Staffing plans</caption><thead><tr><th>Plan</th><th>Quote price</th><th>Duration</th></tr></thead><tbody>'+''.join(snaprows)+'</tbody></table></article>')
+        summaries.append('<article class="option" data-quote="'+esc(qid)+'"><h2>'+esc(option['name'])+'</h2><p class="quote-id">'+esc(qid)+'</p><p>'+esc(option['summary'])+'</p><p class="counts">'+str(counts['in'])+' included · '+str(counts['optional'])+' optional · '+str(counts['available'])+' available'+(' · '+str(report['unestimated'][qid])+' not estimated' if report['unestimated'][qid] else '')+'</p>'+('' if unpriced else '<table class="plans"><caption>Staffing plans</caption><thead><tr><th>Plan</th><th>Quote price</th><th>Duration</th></tr></thead><tbody>'+''.join(snaprows)+'</tbody></table>')+'</article>')
     categories={}
     for item in plan['matrix']:categories.setdefault(item['category'],[]).append(item)
     matrix=[]
@@ -46,8 +63,9 @@ def render(source,plan,profile=None):
             row='<tr data-item="'+esc(item['id'])+'"><th scope="row"><span>'+esc(item['name'])+'</span><p>'+esc(item['description'])+'</p></th>'
             for option in options:
                 qid=option['quote_id'];cell=item['cells'][qid];state=cell['state']
-                row+='<td data-quote="'+esc(qid)+'" data-state="'+state+'" data-hours="'+('' if cell['hours'] is None else esc(cell['hours']))+'"><span class="state '+state+'">'+LABELS[state]+'</span>'
-                if cell['hours'] is not None:row+='<span class="hours">'+num(cell['hours'])+' h</span>'
+                unestimated=cell.get('status')=='unestimated'
+                row+='<td data-quote="'+esc(qid)+'" data-state="'+state+'" data-hours="'+data_hours(cell)+'"'+(' data-estimate="unestimated"' if unestimated else '')+'><span class="state '+state+'">'+LABELS[state]+'</span>'
+                if cell['hours'] is not None or unestimated:row+=hours_html(cell,source_items.get((qid,item['id'])))
                 row+='</td>'
             matrix.append(row+'</tr>')
     notes=source.get('notes',[])
@@ -55,10 +73,16 @@ def render(source,plan,profile=None):
     notehtml=('<section class="notes"><h2>Scope conditions</h2>'+''.join('<p>'+esc(n)+'</p>' for n in notes)+'</section>') if notes else ''
     logo='<img class="logo" alt="Selected project logo" src="'+res['logo']+'">' if res['logo'] else ''
     kind='Synthetic example · ' if source['kind']=='synthetic' else ''
+    missing=''
+    if unpriced:
+        names={'price':'Price','staffing':'Staffing','timeline':'Timeline'}
+        missing='<section class="missing-inputs"><h2>Inputs still needed</h2><p>This comparison is not priced. It derives no price, staffing plan or timeline from the hours.</p><dl>'+''.join('<dt>'+names[k]+'</dt><dd>'+esc(source['missing_inputs'][k])+'</dd>' for k in ('price','staffing','timeline'))+'</dl></section>'
+    hours_note='Hours are estimated for each item and option. '+('Price, staffing and timeline wait for the inputs listed above.' if unpriced else 'The staffing plans above set the quote prices.')
+    legend_extra='<dt>Not estimated</dt><dd>Present in the option, with no hours yet. The note names the discovery it needs.</dd>' if any(report['unestimated'].values()) else ''
     summary='<section class="options '+('single' if len(options)==1 else 'comparison')+'">'+''.join(summaries)+'</section>'
-    table='<section class="scope '+('single-scope' if len(options)==1 else 'comparison-scope')+'"><h2>Scope by item</h2><p>Hours are estimated for each item and option. The staffing plans above set the quote prices.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Scope comparison table"><table class="matrix"><thead><tr><th scope="col">Scope item</th>'+''.join('<th scope="col">'+esc(o['name'])+'</th>' for o in options)+'</tr></thead><tbody>'+''.join(matrix)+'</tbody></table></div><p class="scroll-hint">Scroll the table horizontally on a narrow screen.</p><dl class="legend"><dt>Included</dt><dd>Selected in this quote.</dd><dt>Optional</dt><dd>Optional work; confirm whether to include it.</dd><dt>Available</dt><dd>Not selected. Adding it may change the price or schedule.</dd><dt>Not included</dt><dd>Not part of this option.</dd></dl></section>'
+    table='<section class="scope '+('single-scope' if len(options)==1 else 'comparison-scope')+'"><h2>Scope by item</h2><p>'+hours_note+'</p><div class="table-scroll" tabindex="0" role="region" aria-label="Scope comparison table"><table class="matrix"><thead><tr><th scope="col">Scope item</th>'+''.join('<th scope="col">'+esc(o['name'])+'</th>' for o in options)+'</tr></thead><tbody>'+''.join(matrix)+'</tbody></table></div><p class="scroll-hint">Scroll the table horizontally on a narrow screen.</p><dl class="legend"><dt>Included</dt><dd>Selected in this quote.</dd><dt>Optional</dt><dd>Optional work; confirm whether to include it.</dd><dt>Available</dt><dd>Not selected. Adding it may change the price or schedule.</dd><dt>Not included</dt><dd>Not part of this option.</dd>'+legend_extra+'</dl></section>'
     css=(ROOT/'assets/scope.css').read_text()
-    doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scope reference</title><style>'+res['palette']+res['fonts']+css+'</style></head><body><main><header>'+logo+'<p class="eyebrow">'+kind+esc(plan['client'])+'</p><h1>'+esc(plan['title'])+'</h1><p class="intro">'+esc(plan['intro'])+'</p><p class="asof">Quotes as of '+esc(source['captured_at'][:10])+'</p></header>'+summary+table+notehtml+'<footer>'+esc(plan['client'])+' · Scope reference</footer></main></body></html>'
+    doc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scope reference</title><style>'+res['palette']+res['fonts']+css+'</style></head><body><main><header>'+logo+'<p class="eyebrow">'+kind+esc(plan['client'])+'</p><h1>'+esc(plan['title'])+'</h1><p class="intro">'+esc(plan['intro'])+'</p><p class="asof">'+('Estimates' if unpriced else 'Quotes')+' as of '+esc(source['captured_at'][:10])+'</p></header>'+summary+missing+table+notehtml+'<footer>'+esc(plan['client'])+' · Scope reference</footer></main></body></html>'
     return doc,report,res
 
 def main():

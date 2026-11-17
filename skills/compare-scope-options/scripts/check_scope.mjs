@@ -14,7 +14,7 @@ try{
  const page=await browser.newPage({viewport:{width:1360,height:1000},deviceScaleFactor:1});
  await page.route('**/*',route=>{if(/^https?:/.test(route.request().url())){report.remoteRequests.push(route.request().url());return route.abort();}return route.continue();});
  page.on('pageerror',e=>report.failures.push(e.message));await page.goto(url);await page.evaluate(()=>document.fonts.ready);
- report.matrix=await page.locator('.matrix tr[data-item]').evaluateAll(rows=>rows.map(row=>({id:row.dataset.item,name:row.querySelector('th>span').textContent,description:row.querySelector('th p').textContent,cells:[...row.querySelectorAll('td')].map(td=>({quote:td.dataset.quote,state:td.querySelector('.state').textContent,hours:td.querySelector('.hours')?.textContent??null}))})));
+ report.matrix=await page.locator('.matrix tr[data-item]').evaluateAll(rows=>rows.map(row=>({id:row.dataset.item,name:row.querySelector('th>span').textContent,description:row.querySelector('th p').textContent,cells:[...row.querySelectorAll('td')].map(td=>({quote:td.dataset.quote,state:td.querySelector('.state').textContent,hours:td.querySelector('.hours')?.textContent??null,range:td.querySelector('.range')?.textContent??null,text:td.innerText}))})));
  const stateNames={in:'Included',available:'Available',optional:'Optional',out:'Not included'};
  if(report.matrix.length!==plan.matrix.length)report.failures.push('Rendered item count differs');
  for(const item of plan.matrix){
@@ -22,14 +22,25 @@ try{
   if(!actual||actual.name!==item.name||actual.description!==item.description){report.failures.push('Missing or changed item '+item.id);continue;}
   for(const [qid,cell] of Object.entries(item.cells)){
    const found=actual.cells.find(v=>v.quote===qid);
-   if(!found||found.state!==stateNames[cell.state]||found.hours!==(cell.hours===null?null:Number(cell.hours)+' h'))report.failures.push('Rendered cell mismatch '+item.id+'/'+qid);
+   const unestimated=cell.status==='unestimated',range=cell.hours!==null&&typeof cell.hours==='object';
+   const hours=unestimated?'Not estimated':cell.hours===null?null:range?Number(cell.hours.expected)+' h expected':Number(cell.hours)+' h';
+   if(!found||found.state!==stateNames[cell.state]||found.hours!==hours)report.failures.push('Rendered cell mismatch '+item.id+'/'+qid);
+   else if(range&&found.range!=='Range '+Number(cell.hours.low)+' to '+Number(cell.hours.high)+' h')report.failures.push('Rendered range mismatch '+item.id+'/'+qid);
+   else if(unestimated&&/\d/.test(found.text))report.failures.push('Unestimated cell shows a figure '+item.id+'/'+qid);
   }
  }
  report.snapshots=await page.locator('tr[data-snapshot]').evaluateAll(rows=>rows.map(row=>({id:row.dataset.snapshot,text:row.innerText})));
  const money=(v,c)=>c+' '+Number(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
- for(const option of plan.options)for(const s of option.snapshots){
+ for(const option of plan.options)for(const s of option.snapshots??[]){
   const row=report.snapshots.find(v=>v.id===s.id);
   if(!row||![s.label,money(s.revenue,s.currency),s.weeks+' weeks',s.hours+' staffing hours'].every(v=>row.text.includes(v)))report.failures.push('Rendered staffing mismatch '+s.id);
+ }
+ if(plan.options.every(o=>!(o.snapshots??[]).length)){
+  // An unpriced comparison names its missing inputs and derives no price, staffing plan or timeline.
+  const text=await page.evaluate(()=>document.body.innerText);
+  if(await page.locator('.plans').count())report.failures.push('Unpriced page shows a staffing plan');
+  if(!await page.locator('.missing-inputs dt').count())report.failures.push('Unpriced page does not name its missing inputs');
+  if(/\b[A-Z]{3} [\d,]+\.\d{2}\b|\b\d+ weeks\b|staffing hours/.test(text))report.failures.push('Unpriced page derives a price, duration or staffing figure');
  }
  for(const [name,width] of [['desktop',1360],['narrow',390]]){
   await page.setViewportSize({width,height:1000});

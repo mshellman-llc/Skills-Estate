@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "artifact": "skills/build-interactive-proposal/references/quote-contract.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Example audit entry in the quote export JSON.",
+      "text": "{ \"displayed\": \"184500\", \"source\": \"Q-000043 version A total\" }"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Example audit entry in the quote export JSON.",
+      "text": "{ \"displayed\": \"12 weeks\", \"source\": \"Q-000043 version A timeline\" }"
+    }
+  ]
+}

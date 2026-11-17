@@ -24,7 +24,13 @@ does not exclude authored language from review.
 python3 scripts/writing_check.py --config house.json [--json] FILE
 ```
 
-Add `--json` for a machine-readable report. The checker reads prose from
+Add `--json` for a machine-readable report. For a built HTML page, add
+`--rendered` to read it as its reader sees it: page text and embedded JSON data,
+without script code, styles or comments. Check those in their source files
+without the flag. In this mode an identical value repeated across one table row,
+or the same field value repeated in embedded data, counts once for C12; every
+other rule still reads it. Touching words split by a non-formatting element in a
+table cell are separated in both modes, so a status and its hours never merge. The checker reads prose from
 supported document formats and structured text fields. Exit 0 means it found no patterns, 1 means it found a pattern and 2 means
 the check could not finish. Read its output and the complete document. Repair
 the argument or sentence that caused a finding, then rerun the check.

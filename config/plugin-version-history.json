@@ -184,6 +184,10 @@
     "0.4.42": {
       "content_sha256": "6fdc3fb82e1bf0e228b637fb926ac3893f504eb163f793e6d9204271b661d079",
       "note": "Add manage-color-system to estate-product as a pending draft: color system audit, Material 3 role proposal and contrast levels, single-ink icon preparation, with a Node engine that needs nothing installed"
+    },
+    "0.4.43": {
+      "content_sha256": "f18468c6913c7ff4b703c93366f171cbf44d493730ba11db24c048b31d9331b0",
+      "note": "Compare scope options: hours-only comparisons with ranges and unestimated items, QA wrapper runs in place, rendered prose gate for comparison pages, extractable PDF figures, explorer missing inputs and per-version sources"
     }
   },
   "source_conflicts": [

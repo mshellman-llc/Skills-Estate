@@ -23,7 +23,8 @@ __RK_CSS__
   .tabs,.item.out{display:none!important}
   header,main,footer{padding:0;max-width:none}
   header{padding-bottom:12px}footer{padding-top:10px;margin-top:16px}
-  body{font-size:11pt}h1{font-size:26pt}h2{font-size:16pt;margin-bottom:10px}h3{font-size:12pt}
+  /* Tabular figures and contextual alternates can map to glyphs with no Unicode value, so printed figures, dates and IDs would not extract as text. */
+  body{font-size:11pt;font-feature-settings:"calt" 0}.metric,::marker{font-variant-numeric:normal}h1{font-size:26pt}h2{font-size:16pt;margin-bottom:10px}h3{font-size:12pt}
   section,details{margin:14px 0}p{margin:6px 0}li{margin:4px 0}
   summary{padding:0;break-after:avoid}.disclosure{padding:4px 0}
   details .disclosure{display:block!important}details{break-inside:auto}
@@ -45,6 +46,7 @@ __RK_CSS__
 <main>
 <div class="tabs" role="tablist" aria-label="Scope version" id="tabs"></div>
 <section class="panel" role="tabpanel" id="version-panel" tabindex="0"><h2 id="version-name"></h2><p id="tagline"></p><p class="metric" id="metric"></p><p id="metric-label"></p><p id="duration"></p><p id="version-source" class="source"></p></section>
+<section id="missing-section" hidden><h2>Inputs still needed</h2><ul id="missing-inputs"></ul></section>
 <section><h2>Scope by version</h2><div id="scope" class="grid"></div></section>
 <section id="staffing"><h2>Team and timeline</h2><div class="grid"><div><h3>Team</h3><ul id="team"></ul></div><div><h3>Timeline</h3><ul id="timeline"></ul></div></div><div class="rk rk-embed rk-timeline" id="timeline-chart" hidden></div></section>
 <section id="architecture-section" hidden><h2>Systems and interfaces</h2><p id="architecture"></p></section>
@@ -70,7 +72,10 @@ put('identity',data.meta.client);put('title',data.meta.opportunity);
 document.title=data.meta.client+' · '+data.meta.opportunity;
 put('prepared',data.meta.prepared_by+' · '+data.meta.date);
 put('validity',data.meta.validity);put('confidentiality',data.meta.confidentiality);
-put('mode-note',priced?'Proposal: select a quoted scope version.':'Scope options for review. Price, staffing and duration need confirmation.');
+const missing=!priced&&data.missing_inputs?.length;
+// A page that lists its missing inputs does not repeat a generic line about them.
+put('mode-note',priced?'Proposal: select a quoted scope version.':missing?'Scope options for review.':'Scope options for review. Price, staffing and duration need confirmation.');
+if(missing){byId('missing-section').hidden=false;list('missing-inputs',data.missing_inputs);}
 byId('staffing').hidden=!priced;
 if(!priced){byId('phase-zero').hidden=false;put('phase-name',data.phase_zero.name);put('phase-description',data.phase_zero.description);list('phase-outputs',data.phase_zero.outputs);put('counting',data.counting_method);}
 if(data.architecture){byId('architecture-section').hidden=false;put('architecture',data.architecture);}
@@ -104,7 +109,7 @@ function select(index){
     const card=document.createElement('article');card.className='item'+(included?'':' out');card.dataset.scopeId=scope.id;
     card.append(item('p',included?'In this version':'Not in this version','pill'),item('p',scope.section,'muted'),item('h3',scope.name),item('p',scope.description));
     if(!included)card.append(item('p','To add this work: '+v.not_included.find(b=>b.item===scope.name).route));
-    card.append(item('p','Source: '+sourceLabel(scope.source),'source'));return card;
+    card.append(item('p','Source: '+sourceLabel(included?v._item_sources[scope.id]:scope.source),'source'));return card;
   }));
   if(priced){list('team',v.team.map(t=>t.role+' · '+t.allocation));list('timeline',v.timeline.map(t=>t.phase+' · weeks '+t.weeks));drawTimeline(v);}
   list('assumption-list',v.assumptions);list('boundary-list',v.not_included.length?v.not_included.map(b=>b.item+' · '+b.route):['No additional exclusions are recorded for this version.']);

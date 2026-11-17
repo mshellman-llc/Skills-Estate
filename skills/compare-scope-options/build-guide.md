@@ -12,6 +12,8 @@ The bundled builder uses Python's standard library and the packaged brand runtim
 python3 scripts/build_scope.py examples/comparison-source.json examples/comparison-plan.json scope.html
 ```
 
+Pass `examples/hours-only-source.json` and `examples/hours-only-plan.json` instead to build the unpriced example, which has a range estimate and one unestimated item.
+
 Use a new output path. The command saves a reconciliation receipt beside the HTML.
 
 ## Composition
@@ -20,9 +22,13 @@ The header names the decision and client. A source date identifies the quote rev
 
 Each option summary explains the scope difference supported by its actual items. The pricing table shows every requested staffing plan, marking the active plan and retaining its own duration and hours. A single quote receives one summary panel. Included, optional and available counts remain separate.
 
-The grouped scope matrix uses one column per quote. Each cell displays a written status and its own item hours; color is supplementary. An absent item has no hours. The item description stays visible because another option may include that work. A legend defines the states without suggesting that a deselected addition is free.
+The grouped scope matrix uses one column per quote. Each cell displays a written status and its own item hours; color is supplementary. An absent item has no hours. A range shows its expected hours with the low and high figures beneath. An unestimated item reads "Not estimated" with the discovery it needs, and never shows a zero. The item description stays visible because another option may include that work. A legend defines the states without suggesting that a deselected addition is free.
 
 The scope conditions follow the matrix. Include material exclusions and dependencies from the captured source. Do not invent a benefit, recommendation or licensing fact to fill empty space. Additional diagrams belong only when they explain a source-supported boundary that the matrix cannot show.
+
+## Unpriced comparisons
+
+An unpriced page has no staffing tables. It names the missing price, staffing and timeline inputs in an "Inputs still needed" section, from the source's `missing_inputs`. The header dates the estimates rather than quotes. Do not add a price, team or duration from a rate you know; the page only shows what the source supplies.
 
 ## Staffing and price rules
 
@@ -34,10 +40,10 @@ Different options and staffing variants may have different hours or weeks. Never
 
 Run `scripts/check_scope.mjs` with the local HTML URL, a new output directory, and the presentation JSON path. The test environment needs Node.js and Playwright with a Chromium browser. `PW_MODULE` can point to the installed Playwright module; `PW_CHROMIUM` can select a Chromium executable.
 
-The checker records the page's extracted text at desktop and narrow widths, writes no image files, checks overflow outside the scrollable matrix, verifies that the matrix can be scrolled, blocks remote requests and exports a landscape A4 PDF. PDF tables may continue across pages with repeated headers. Do not shrink the full scope into a single unreadable page.
+The checker records the page's extracted text at desktop and narrow widths, writes no image files, checks ranges and unestimated cells, confirms that an unpriced page shows no price, duration or staffing figure, checks overflow outside the scrollable matrix, verifies that the matrix can be scrolled, blocks remote requests and exports a landscape A4 PDF. PDF tables may continue across pages with repeated headers. Do not shrink the full scope into a single unreadable page.
 
-Read the extracted text of every printed page and compare the displayed figures with the reconciliation receipt. Confirm that every item appears and that status labels survive printing. The browser test cannot judge whether the summary accurately describes an option.
+Read the extracted text of every printed page and compare the displayed figures with the reconciliation receipt. The print style turns off tabular figures and contextual alternates so hours, dates and IDs extract as plain text. Check that with a PDF text extractor such as pypdf: the text should contain the hour figures and no private-use characters. Confirm that every item appears and that status labels survive printing. The browser test cannot judge whether the summary accurately describes an option.
 
 ## Delivery record
 
-Save the source capture and presentation JSON with the HTML, receipt, PDF and review evidence. Run the writing and canonical-brand checks on the final output. Retain failed renderings in separate attempt folders. Link the finished files using the current host's supported file links; no particular cloud output directory is required.
+Save the source capture and presentation JSON with the HTML, receipt, PDF and review evidence. Run the writing and canonical-brand checks on the final output. Check the page's prose with `writing-diagnostics/scripts/writing_check.py --rendered`, which reads the page as its reader sees it: table cells stay separate, and an item's identical cells across options count once. Retain failed renderings in separate attempt folders. Link the finished files using the current host's supported file links; no particular cloud output directory is required.
