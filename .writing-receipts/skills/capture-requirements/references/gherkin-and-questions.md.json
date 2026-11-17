@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/capture-requirements/references/gherkin-and-questions.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The worked Gherkin example; its scenarios share steps by design.",
+      "text": "Scenario: Contract price applied for active contract\n  Given the account \"Metro General Hospital\" has an active contract\n    for \"CardioTrack X200 Monitoring Kit\"\n  And the contract specifies Tier 2 pricing (501\u20131,500 units)\n  When a sales specialist creates a new quote\n  Then the system must automatically apply the Tier 2 contracted price\n  And the quote line item must display the Contract ID, Tier Applied,\n    and Effective Date\n\nScenario: Fallback to list price when no contract exists\n  Given the account \"Sunrise Clinic\" has no active contract\n    for \"CardioTrack X200 Monitoring Kit\"\n  When a sales specialist creates a new quote\n  Then the system must apply the standard list price\n  And no contract reference fields should be populated"
+    }
+  ]
+}

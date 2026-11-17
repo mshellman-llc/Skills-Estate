@@ -32,6 +32,8 @@ Carry a source line at the end of each section, or on each claim where sections 
 
 An unsourced fact is a defect. A design proposal is sourced to itself and carries its trade-off.
 
+When the owner's writing rules keep source lists out of finished copy, leave the source lines out of the sections and keep the same locators in a separate record of sources: an appendix titled Sources, or a companion Markdown file, with one entry per section or claim. Every claim that would have carried a source line has its entry there. Record the substitution in the quality record, as the shared workflow requires.
+
 ---
 
 ## Architecture doc skeleton (the what and why)
@@ -53,7 +55,7 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 - Audience or access levels. [Table: level, who may act or view.] `Source: ...`
 
 ### Architecture at a glance
-- Systems map. [A diagram. See the systems-map pattern below.]
+- Systems map. [A diagram drawn with the systems-map pattern below.]
 - Two kinds of change. [A code change versus a data or content change, and why that split matters.]
 - Point to the system design for the data model, the API, and the credential. `Source: ...`
 
@@ -61,8 +63,8 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 - The controls as the shape of the system, at posture altitude. [List, one control per line.] `Source: ...`
 
 ### Cost and ownership
-- Run-cost envelope. [Table: piece, first environment, fuller environment. Cite the rate sources.]
-- People time. [Hours per period.]
+- Run-cost envelope. [Table pricing each piece for the first and a fuller environment, citing the rate sources.]
+- People time. [Hours needed per period.]
 - Ownership. [Named owner and backup, no lock-in, runbook.] `Source: ...`
 
 ### Stand-up or build
@@ -98,16 +100,16 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 
 ### Requirements
 - Functional. [Table: requirement, what it means for the build, source.]
-- Non-functional. [Table: dimension, target, source. Scale, latency, availability, cost, security.]
+- Non-functional. [Table: dimension, target, source, covering scale, latency, availability, cost and security.]
 - Constraints. [Table: constraint, effect on the design, source.]
 
 ### High-level design
-- Components and how they speak. [Systems-map diagram.]
+- Components and how they speak. [Systems-map diagram showing each connection.]
 - Data flows. [The main flows, for example publish and serve.]
 - Storage split. [What lives in the database versus object storage.] `Source: ...`
 
 ### Identity and authorization
-- Principal and authorization key. [Identity, tenant or isolation key where relevant.]
+- Principal and authorization key. [Identity, plus the tenant or isolation key when one is used.]
 - Access matrix. [Who may perform each action, where authorization is enforced, and what denial returns.] `Source: ...`
 
 ### Data model
@@ -115,8 +117,8 @@ An unsourced fact is a defect. A design proposal is sourced to itself and carrie
 - The enforcement model. [For example row-level security, and what its failure mode is.] `Source: ...`
 
 ### API
-- The surface. [Table: endpoint, purpose, notes.]
-- The main contract. [One request and response example.]
+- The surface. [Table listing endpoint, purpose and notes.]
+- The main contract. [One request and response example, quoted in full.]
 - Idempotency and retry. [How a repeated call resolves.] `Source: ...`
 
 ### Credential and serving
@@ -160,7 +162,7 @@ Use the selected profile’s borders and palette, and provide labels that remain
 
 ## Schema-block pattern
 
-Present an illustrative schema in a readable monospace block using the selected profile. Check contrast for code and comments. Keep it illustrative, not exhaustive.
+Present an illustrative schema in a readable monospace block using the selected profile, or as a table where the owner's style bans monospace. Check contrast for code and comments. Keep it illustrative, not exhaustive.
 
 ```
 -- every table carries [the isolation key]. the enforcement keys on it.
@@ -168,7 +170,13 @@ table_a   (id pk, [isolation key] fk, ...)   -- one-line note
 table_b   (id pk, [isolation key] fk, ...)   -- immutable, or append-only, note the invariant
 ```
 
-State the enforcement model in prose after the block: what the database refuses, and what the failure mode of a bad deploy is.
+The table form carries the same content, with one row per table:
+
+| Table | Keys | Isolation key | Invariant |
+|---|---|---|---|
+| table_a | id (primary) | [isolation key], foreign key | [immutable, append-only or a one-line note] |
+
+State the enforcement model in prose after the block or table: what the database refuses, and what the failure mode of a bad deploy is.
 
 ---
 
@@ -195,7 +203,8 @@ Supplemental styles for code blocks and labels use the selected profile. Inspect
 
 ## Pre-ship checklist
 
-- [ ] Every substantive claim has a source line.
+- [ ] Every substantive claim has a source line or an entry in the separate record of sources.
+- [ ] The data model appears as a schema block or as a table with the same keys and invariants. Any substitution is in the quality record.
 - [ ] Missing evidence and decisions are reported to the user; the reference retains conditions its readers need.
 - [ ] Superseded framing removed, not annotated. The authoritative source's precedence is honored.
 - [ ] Design proposals are framed as proposals, each with its trade-off. Genuine forks defaulted in the doc and flagged in chat.

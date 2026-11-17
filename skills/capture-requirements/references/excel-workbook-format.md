@@ -1,7 +1,7 @@
 # Excel Workbook Format and Styling
 
 The deliverable is a single `.xlsx` workbook with **two tabs**. This reference
-covers the columns for each tab, the default visual theme, the Epics-tab
+covers the columns for each tab, the styling roles, the Epics-tab
 formula, and recalculation.
 
 ## Tab 1: "Epics" (Summary Tab)
@@ -12,7 +12,7 @@ formula, and recalculation.
 | 2 | `Prefix` | The short prefix used in requirement numbering (e.g., `CPE`). |
 | 3 | `Capability` | The broad business capability this epic supports. |
 | 4 | `Business Need` | The strategic problem/opportunity driving this epic. |
-| 5 | `Requirement Count` | **FORMULA**: `=COUNTIF(Requirements!C:C, A2)`. Counts how many requirements reference this epic. Must be a live Excel formula, never a hardcoded number. |
+| 5 | `Requirement Count` | **FORMULA**: `=COUNTIF(Requirements!C:C, A2)`. Counts the requirements that reference this epic. Must be a live Excel formula, never a hardcoded number. |
 
 ## Tab 2: "Requirements" (Detail Tab)
 
@@ -26,38 +26,43 @@ formula, and recalculation.
 | 6 | `I Want To` | Desire/action portion of the user story. | (none) |
 | 7 | `So That` | Business justification at the individual requirement level. | (none) |
 | 8 | `Acceptance Criteria` | Gherkin-formatted criteria. Multiple scenarios separated by blank lines. Use actual newlines within the cell (openpyxl: `\n` in the string). | (none) |
-| 9 | `Priority` | MoSCoW priority. See Canonical Values in SKILL.md. | `Must Have` |
-| 10 | `Status` | Lifecycle status. See Canonical Values in SKILL.md. | `Draft` |
+| 9 | `Priority` | MoSCoW priority, from the canonical values in SKILL.md. | `Must Have` |
+| 10 | `Status` | Lifecycle status; SKILL.md lists the allowed values. | `Draft` |
 | 11 | `Assumptions & Notes` | Additional context, assumptions, dependencies. | (none) |
 
 **Note:** Business Need lives exclusively on the Epics tab. It is the
 strategic "why" for the entire epic and does not need to be repeated
 on individual requirement rows.
 
-## Excel Styling: Default Blue/White Theme
+## Excel styling: roles from the selected profile
 
-Apply this theme unless an Estate brand guidelines skill provides
-official brand colors.
+Take every colour and the font from the brand profile the build card selects.
+With no confirmed profile, use the estate neutral profile. Do not copy hex
+values into the generator; read them from the profile through the token
+runtime. A client profile replaces the neutral values with its own roles.
 
-### Color Palette
+### Colour roles
 
-| Element | Color (Hex) | RGB |
+| Element | Profile role | Neutral value |
 |---|---|---|
-| Header row background | `#1F4E79` | (31, 78, 121), dark navy blue |
-| Header row font | `#FFFFFF` | (255, 255, 255), white |
-| Alternating row A | `#FFFFFF` | white |
-| Alternating row B | `#D6E4F0` | (214, 228, 240), light blue |
-| Epic tab header background | `#1F4E79` | same navy blue |
-| Tab color: Epics tab | `#1F4E79` | navy blue |
-| Tab color: Requirements tab | `#5B9BD5` | (91, 155, 213), medium blue |
+| Header row background | `accent` | `#111111` |
+| Header row font | `background` | `#FFFFFF` |
+| Alternating row A | `background` | `#FFFFFF` |
+| Alternating row B | `surface` | `#F5F5F5` |
+| Cell borders | `border` | `#DDDDDD` |
+| Epic tab header background | `accent` | `#111111` |
+| Tab color: Epics tab | `accent` | `#111111` |
+| Tab color: Requirements tab | `muted` | `#555555` |
 
 ### Formatting Rules
 
-- **Font**: Arial, 10pt for data rows, 11pt bold for headers.
-- **Header row**: Bold white text on navy background. Freeze the header row
-  (freeze panes at row 2).
+- **Font**: the profile's `type.office` font (Arial when neutral),
+  at the profile's `body_min_pt` (11pt when neutral) for data rows
+  and bold for headers.
+- **Header row**: header font colour on the header background. Freeze the
+  header row (freeze panes at row 2).
 - **Alternating row colors**: Apply to data rows for readability.
-- **Column widths**: Auto-fit where possible. Key guidance:
+- **Column widths**: Auto-fit where possible, starting from these widths:
   - `Requirement Number`: 18
   - `Name`: 30
   - `Epic` / `Capability`: 30
@@ -75,7 +80,7 @@ official brand colors.
   alignment to "top".
 - **Data validation** (optional but recommended):
   - `Priority` column: dropdown list to Must Have, Should Have, Could Have, Won't Have
-  - `Status` column: dropdown list to Draft, Reviewed, Approved
+  - `Status` column: a list offering Draft, Reviewed, Approved
 - **Auto-filter**: Enable on the header row of both tabs.
 
 ### Epics Tab Formula

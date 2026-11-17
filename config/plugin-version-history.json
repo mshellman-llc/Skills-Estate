@@ -176,6 +176,10 @@
     "0.4.40": {
       "content_sha256": "8e491fe5aabba8ad0c21c3b3294de6657aac18ff58648c0e92647fe6ce20fe7d",
       "note": "Keep record IDs out of reader prose: writing policy section, checker rule C28 with tests, and plain-name output in ten skills."
+    },
+    "0.4.41": {
+      "content_sha256": "eef14f2f4f6cb5657e9a5e41c7f0fba4cca1b05e233d6ac0d6f637cefa9d7567",
+      "note": "Owner writing and brand rules win over template formatting; checker retention for repeats and all-caps; styles-only and workbook brand checks; single-agent explorer review fallback."
     }
   },
   "source_conflicts": [
