@@ -39,7 +39,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "1c42f1c562eaac75b82327176274e1731b70858014394742a3ef7132bff69e97",
+      "required_sha256": "2cd3a024283d43744f4c56f1c60360a9b86f08c43506426ad585f65b4a4328b9",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -149,7 +149,7 @@
       "subject": "build-editorial-chart"
     },
     {
-      "required_sha256": "bb593fa5f5c943a1f5df3fc4a21b4950fb968a62c4758f832d8819d6e12dcd1f",
+      "required_sha256": "cffd49f78ea4608a660840102a0cb28aa9de00fd3b0a18654fcb24412c67b4c4",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
@@ -244,7 +244,7 @@
       "subject": "develop-independent-product"
     },
     {
-      "required_sha256": "0bbb320c19ce043b3ea1c5f71cec3b8e2fea7d3b9bb524a8ba1e148b606d404c",
+      "required_sha256": "ae0a052590cd552e82b45ed07e06557e365021862f2585559919465fd3b5481c",
       "status": "review required",
       "subject": "develop-product"
     },
@@ -259,12 +259,12 @@
       "subject": "estimate-project"
     },
     {
-      "required_sha256": "2ad935ebfa562985ef74600004e8ee847b0b21293fa6b86639997df6abc86f12",
+      "required_sha256": "674fd9300d329fe75a726a758cd27e955b9bd60585ee7bb6ee400db4c42af76e",
       "status": "review required",
       "subject": "evidence-core"
     },
     {
-      "required_sha256": "3b3a5f61f704c094a60e4e203be6b1a320906c9f9c73efa1e07049f21348da57",
+      "required_sha256": "8b4c5906320849dcedc322620c2c2372105c1ab32f1275ef11e16a3ccd806bdb",
       "status": "review required",
       "subject": "frame-jobs-to-be-done"
     },
@@ -349,7 +349,7 @@
       "subject": "map-journey"
     },
     {
-      "required_sha256": "58251dd66aafc68a4ec1e9babbdb8ae1fe3149809c3290f76b2aca0248c84d8c",
+      "required_sha256": "05b07db809a188802b6fe7005b880ed8caab36a297f80f6aaa6692da5243cf8e",
       "status": "review required",
       "subject": "map-sales-process"
     },
@@ -399,7 +399,7 @@
       "subject": "prepare-session-handoff"
     },
     {
-      "required_sha256": "eb0dbad34f637cae597bb8b74b6af14531932cebf8062f94e48f3bdc685def98",
+      "required_sha256": "e869f00111941778e5845e6440133a83d7c6d5ab30aaf2133bd1c132d6b1b510",
       "status": "review required",
       "subject": "prioritize-work"
     },
@@ -419,7 +419,7 @@
       "subject": "reconcile-knowledge"
     },
     {
-      "required_sha256": "e80495b6721f2938206520731d0d03febc59c7828b560ee89b4edf53d6f4b821",
+      "required_sha256": "1f9e6d96f36331229f232d3bd5ffe9084e10bc76919ec4e3fc4368389d75ad60",
       "status": "review required",
       "subject": "refine-backlog"
     },
@@ -484,7 +484,7 @@
       "subject": "start-delivery"
     },
     {
-      "required_sha256": "e5e5b3449fd6d9b3edb4a75ebea5473a95d632b76d3aba3ea1cef76c6d6e0d3a",
+      "required_sha256": "184c6956d32cce8720e2ad71d63325f443b2911ac60728f3fa9f8524fb9bc42e",
       "status": "review required",
       "subject": "synthesize-discovery"
     },
@@ -494,12 +494,12 @@
       "subject": "tailor-resume"
     },
     {
-      "required_sha256": "a8a83d3116cb9cfe4e363adb65d4a325dd5459998485d75db2e347eeed18710d",
+      "required_sha256": "522c13480348a947509428897fdb358b8e2f065ed22253c91e112552895c372d",
       "status": "review required",
       "subject": "track-delivery"
     },
     {
-      "required_sha256": "e3b37524d14b5636dcb109431e9f895de2aed75c2302208c8eefa6c57f2857f6",
+      "required_sha256": "5ec6b9eb2de9b8307bcbbffb70efd2ceddcef4c33137e7d81c234da4c318829b",
       "status": "review required",
       "subject": "validate-delivery"
     },
@@ -549,11 +549,11 @@
       "subject": "writing"
     },
     {
-      "required_sha256": "9bef6f5d81c4d4b4862562f48ba909630c2ce0db00f069fba2b4d3f01dbb95e2",
+      "required_sha256": "a9239b0431ba34723171f281f3e2d83c4c1c24f6ac6a2a09d3ca09f45f61bd21",
       "status": "review required",
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "a1abd7b18e917585d349b003b95d6b13735d29c2d88df989f8a7a55c0798bd22",
+  "source_sha256": "46bf281838ce109ec75a68839a2f098b436f740a36d3f5059c7691fc03cb5561",
   "status": "owner-published"
 }

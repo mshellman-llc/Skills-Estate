@@ -20,6 +20,7 @@ import xml.etree.ElementTree as ET
 from prose_check import check, load_config
 from authored_code import javascript_parts, comment_words, interpolated_words
 from context_signals import html_blocks, office_blocks
+from record_ids import html_reader_prose, markdown_reader_prose
 
 
 class Block:
@@ -114,6 +115,8 @@ class AuthoredText(str):
         result.repetition_text = '\n'.join(repetition)
         result.furniture_text = '\n'.join(furniture)
         result.repetition_lines = repetition_lines
+        # Structured data, code and spreadsheets are system-facing: C28 skips them.
+        result.reader_prose = ''
         return result
 
 
@@ -246,6 +249,8 @@ def authored_text(path):
         grouped = office_blocks(review_trees) if suffix != '.xlsx' else []
         if grouped: result.review_blocks = grouped
         result.context_structure = 'paragraphs-and-simple-tables' if grouped else 'flattened-text-only'
+        if suffix != '.xlsx':
+            result.reader_prose = markdown_reader_prose('\n'.join(framing_parts))
         return result
     raw = path.read_text(encoding='utf-8')
     if '\x00' in raw:
@@ -298,6 +303,7 @@ def authored_text(path):
         result.framing_text = str(result) + '\n' + ''.join(framing.parts)
         result.review_blocks = html_blocks(raw)
         result.context_structure = 'visible-paragraphs-and-simple-tables'
+        result.reader_prose = html_reader_prose(raw)
         return result
     # Markdown quoting, fences and audience labels do not exempt authored words.
     # Other UTF-8 source formats remain visible rather than silently disappearing.
@@ -328,7 +334,7 @@ def strict_config(path):
         elif key == 'allowed_repeated_phrases':
             if value != baseline[key]:
                 raise ValueError('Cannot add repetition exemptions through --config')
-        elif key in {'em_dash_budget', 'balanced_clause_per_words', 'triad_per_words'}:
+        elif key in {'em_dash_budget', 'balanced_clause_per_words', 'triad_per_words', 'record_id_per_words'}:
             if type(value) is not int or value != baseline[key]:
                 raise ValueError('Cannot change writing budgets through --config: ' + key)
     return result

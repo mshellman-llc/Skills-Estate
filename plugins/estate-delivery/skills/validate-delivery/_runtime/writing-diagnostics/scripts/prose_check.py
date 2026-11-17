@@ -31,6 +31,7 @@ from collections import Counter
 from pathlib import Path
 from framing import framing_candidates
 from context_signals import context_candidates
+from record_ids import RULE as RECORD_ID_RULE, record_id_finding
 
 # --------------------------------------------------------------------------
 # Text extraction
@@ -375,6 +376,7 @@ DEFAULT_CONFIG = {
     "hedge_openers": [],          # phrases that clear the throat before the point (FAIL)
     "banned_chars": [],           # characters that must not appear, e.g. the section sign (FAIL)
     "flag_justification_tails": True,  # ", which enables..." benefit tails (WARN)
+    "record_id_per_words": 200,   # C28: one record ID used as a name per 200 reader words
 }
 
 
@@ -754,6 +756,20 @@ def check(text: str, cfg=None):
                 f"{len(tails)} clause-justification tails. Cut the tail or state the fact plainly.",
                 tails,
             ))
+
+    # --- C28 record IDs in reader prose ----------------------------------
+    # Code, JSON, data files and source-index sections are system-facing and
+    # stay out; see record_ids.py for what counts as a reader's mention.
+    ids = record_id_finding(text, cfg.get("record_id_per_words", 200))
+    if ids:
+        count, budget, _reader_words, samples = ids
+        findings.append(Finding(
+            RECORD_ID_RULE, "FAIL" if count > budget * 2 else "WARN",
+            f"{count} record IDs stand in for names in reader prose, budget {budget:.1f} "
+            f"(1 per {cfg.get('record_id_per_words', 200)} reader words, at least 2). Name the thing "
+            f"in plain words; keep the ID once beside its name, or move it to a source index.",
+            samples,
+        ))
 
     # --- All-caps blocks -------------------------------------------------
     caps = ALL_CAPS_BLOCK.findall(text)

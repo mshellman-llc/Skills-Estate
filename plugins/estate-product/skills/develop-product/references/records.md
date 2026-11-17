@@ -4,7 +4,7 @@ Use stable records in the product's current format. [The template bank](../asset
 
 ## Shared fields and links
 
-Every record needs a unique ID within its product and a record type. Bind it to the product ID; give it a title and revision. Capture an owner or decider only when known. Record time when the event occurs; do not estimate decision dates from file modification time. `null` means unknown; an empty array means no entries have been captured. Neither proves that the real product has none.
+Every record needs a unique ID within its product and a record type. The ID is the record's system key: records, ledgers and links use it, and a page or brief a person reads names the record in plain words instead, keeping IDs for its source index. Bind it to the product ID; give it a title and revision. Capture an owner or decider only when known. Record time when the event occurs; do not estimate decision dates from file modification time. `null` means unknown; an empty array means no entries have been captured. Neither proves that the real product has none.
 
 Evidence entries contain a claim, its basis, source/decision/verification IDs, and an exact locator. A locator can be a physical path, archive member chain, page, slide, cell range, code symbol/lines, or rendered interaction state. Bind it to a hash or exact revision. A decision entry cites the accepted direction and its scope; it does not need a fictional source file.
 

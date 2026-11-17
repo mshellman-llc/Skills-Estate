@@ -14,7 +14,7 @@ Open with the customer outcome and the process being mapped. Explain the custome
 
 | Step | Trigger or decision | Action and performer | Accountable role | Record and system | Output and receiving role | Exception | Evidence and state |
 |---|---|---|---|---|---|---|---|
-| Stable ID | Event plus condition | Verb plus supported role | Named role or unresolved | Grain, fact changed, and authoritative system | Handoff and acceptance condition | Supported rule or question | Locator; current, requirement, or proposal |
+| Plain step name, stable ID beside it | Event plus condition | Verb plus supported role | Named role or unresolved | Grain, fact changed, and authoritative system | Handoff and acceptance condition | Supported rule or question | Locator; current, requirement, or proposal |
 
 Keep long decision rules in a short note keyed to the step. Split wide tables by process rather than shrinking text until it is unreadable.
 
@@ -38,24 +38,28 @@ Keep proposed improvements in a separately labeled view. A current-state map can
 
 ## Synthetic worked example
 
-These fictional inputs illustrate interpretation; they are not client rules.
+These fictional inputs illustrate interpretation; they are not client rules. The map's prose names each source in plain words; only the source index below uses the short keys.
+
+### Source index
 
 - S1, operating note section 2: An account manager records a request to add a product at an existing customer site. Sales Operations checks for an existing open pursuit for that site and product. If none exists, the account manager creates a pursuit in the CRM.
 - S2, territory design issue T-12, status To Do: Product category selects one of the site's assigned territories. The territory's commercial role determines the proposed pursuit owner. Multiple territory matches require review. The reviewer and staffing-change behavior are unspecified.
 - S3, systems register row 4: The ERP owns product codes. The CRM stores synchronized product codes and owns pursuit stage. The reporting tool reads pursuit data nightly.
 
+### Reading the example
+
 The process is a product expansion at an existing site. It begins with a customer request and reaches pursuit creation after a duplicate check. The evidence does not describe a lead-conversion step, later sale completion, or onboarding.
 
 ```mermaid
 flowchart LR
-    A["Customer requests an additional product"] --> B["P1: Sales Operations checks site and product"]
+    A["Customer requests an additional product"] --> B["Sales Operations checks site and product"]
     B --> C{"Open pursuit exists?"}
-    C -->|No| D["P2: Account manager creates CRM pursuit"]
+    C -->|No| D["Account manager creates CRM pursuit"]
     C -->|Yes| E["Existing-pursuit handling: unresolved"]
-    D -. "Proposed in T-12" .-> F["P3: Select territory and owner"]
+    D -. "Proposed in T-12" .-> F["Select territory and owner"]
     F -. "Multiple matches" .-> G["Review required; reviewer unresolved"]
 ```
 
-P1 and P2 are documented operating steps from S1. P3 is proposed assignment behavior from S2; the To Do issue does not establish a running rule. The account manager creates the pursuit, but S1 does not establish who owns it afterward. ERP product authority, CRM pursuit authority, and the nightly reporting copy remain separate under S3.
+The duplicate check and pursuit creation are documented steps in the operating note. Territory and owner selection is proposed behavior from the territory design issue. An open To Do issue does not establish a running rule. The operating note shows the account manager opening the pursuit but not who owns it afterward. ERP product authority, CRM pursuit authority, and the nightly reporting copy remain separate under the systems register.
 
 The representative case is a request with no existing open pursuit. The exception case has multiple territory matches. The map leaves both the exception reviewer and reassignment behavior unresolved. If later evidence adds onboarding or renewals, extend the map at the documented handoff rather than assuming those processes already apply.

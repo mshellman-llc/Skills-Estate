@@ -13,7 +13,7 @@ Choose the content model for the project. Do not require a particular JSON schem
 ## Preserve evidence and relationships
 
 - Give claims human-readable source titles and useful locators. Provide a consolidated source index when it helps readers audit the material, with contextual links from the relevant details.
-- Use internal IDs only as linking keys, not as primary UI copy. Ensure every internal reference resolves to a present item.
+- Use internal IDs only as linking keys and in the source index. Overview text, register rows, cards and panels name each item in plain words first. Ensure every internal reference resolves to a present item.
 - Use real, safe HTTP(S) URLs; omit unavailable links. A review date must record an actual review, not an assumed current state.
 - Record source date and authority. Distinguish findings, proposals, hypotheses, approved decisions, verified behavior and unresolved questions. Mark fictional examples explicitly if the task calls for them.
 - Keep newer scope decisions visible with their dates when they qualify rather than replace earlier evidence.

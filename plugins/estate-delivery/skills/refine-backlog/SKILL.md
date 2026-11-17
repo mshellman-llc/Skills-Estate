@@ -21,7 +21,7 @@ Use only the caller-confirmed engagement or product team, its requirements workb
 | Requirements | The Requirements tab from `capture-requirements`, exported to CSV, or the same fields as JSON | Run capture-requirements first. Items written elsewhere need a Requirement Number, a user story and Gherkin acceptance criteria before grading. |
 | Team estimates | The delivery team, in the refinement session | Items stay unestimated and cannot be READY. Never fill an estimate. |
 | Dependencies | The RAID log maintained by `track-delivery` | Record each dependency as a proposed D-### entry for track-delivery. |
-| Team definition of ready | The team's working agreement | Start from [the checklist](assets/definition-of-ready-and-done.md) and mark it proposed until the team adopts it. |
+| Definition of ready (team) | The team's working agreement | Start from [the checklist](assets/definition-of-ready-and-done.md) and mark it proposed until the team adopts it. |
 | Sprint length | The engagement plan or team | Use 5 days as the Small limit and state it. |
 
 Refinement adds three columns to the Requirements tab export: `Estimate Days`, `Depends On` (RAID D-### IDs, separated by commas, semicolons or spaces; a dependency on another requirement is recorded as a D-### entry that names it) and `Refinement Sessions`. They are working columns for the delivery team; capture-requirements leaves them empty.
@@ -64,10 +64,10 @@ A READY verdict reports form, not substance. A well-formed item can still be the
 | What happens | Why it matters | What to do |
 |---|---|---|
 | Acceptance criteria list build steps | QA cannot observe them and the build is fixed early | Rewrite each as an outcome a user or tester can see |
-| An item below the bar enters the sprint because capacity is free | Unrefined work blows up mid-sprint | Hold the definition of ready; plan-sprint fails the commit |
+| An item below the bar enters the sprint because capacity is free | Unrefined work blows up mid-sprint | Hold the readiness bar; plan-sprint fails the commit |
 | The same item is discussed for three sessions | Discussion is standing in for discovery | Route it with the open question and an owner |
 | Every box is ticked but the assumptions are untested | The check grades form | Test the assumptions in discovery before committing large items |
-| The definition of ready grows into a specification checklist | Nothing is ever ready | Keep it to the items in the asset; move the rest to the definition of done |
+| Readiness criteria grow into a specification checklist | Nothing is ever ready | Keep it to the items in the asset; move the rest to the definition of done |
 | Estimates have no shared reference | Points drift between people | Re-estimate a few reference items each quarter |
 | A spike is renewed indefinitely | Nothing is learned | Every spike has a written question and a two-to-three-day limit |
 | Items split by team or layer | No slice ships alone | Split by user outcome |
@@ -76,6 +76,8 @@ A READY verdict reports form, not substance. A well-formed item can still be the
 ## Durable output
 
 Each run leaves `refinement/readiness-YYYY-MM-DD.json`, the Markdown report beside it, and any proposed RAID entries, per `_shared/output-contract.md`. Workbook changes go to a new requirements version through capture-requirements. Deliver or link the files.
+
+The Markdown report is for people: each row and each item section leads with the item's name, and the workbook ID sits beside it for tracing back to the Requirements tab. The JSON report keeps the IDs that plan-sprint reads.
 
 ## Boundaries
 

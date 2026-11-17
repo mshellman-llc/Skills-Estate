@@ -28,7 +28,7 @@ Some nearby requests belong to other skills:
 
 ## Inputs
 
-- The candidates, each with a traceable `id`: a Requirement Number such as `ABC-012`, an epic prefix, a job ID or a roadmap card ID.
+- The candidates, each with a traceable `id` (a Requirement Number such as `ABC-012`, an epic prefix, a job ID or a roadmap card ID) and a plain `title` that the proposal shows to readers.
 - The values the chosen method needs for every candidate, each with its source.
 - The name of the person who will decide the order.
 - Python 3 for the scorer. The `evidence-core` runtime supplies the evidence rule this skill follows: a score input either cites where it came from or is labeled a hypothesis.
@@ -64,12 +64,12 @@ Handle each flag before presenting. Either remove its cause and rerun (obtain th
 The proposal states:
 
 - the method and the reason it was chosen;
-- the ranked table with each item's formula and flags;
+- the ranked table, each row led by the item's plain name, with its formula and flags and the item's `id` in the last column;
 - the provenance audit, giving the origin of every input and marking each estimate;
 - the ties the scorer listed, each left for the decision meeting to break with an explicit tiebreaker (closer strategic fit, less effort or another stated rule);
 - the decision owner's name and the exact decision asked of them.
 
-Save the proposal as Markdown; it is the record of sources. Render the same content as one self-contained HTML page, named like the Markdown file with `.html`, through [brand-renderer](_runtime/brand-renderer/WORKFLOW.md). Use the project's confirmed brand profile when the task supplies one and the neutral profile otherwise; `brand/html_profile.py` embeds its colors and fonts. The page shows the ranked list with each item's inputs, formula, score and flags, then the method and its reason, the provenance audit with estimates marked, the ties and the decision asked of the owner. It states nothing the Markdown or the scorer's report does not.
+Save the proposal as Markdown; it is the record of sources. Render the same content as one self-contained HTML page, named like the Markdown file with `.html`, through [brand-renderer](_runtime/brand-renderer/WORKFLOW.md). Use the project's confirmed brand profile when the task supplies one and the neutral profile otherwise; `brand/html_profile.py` embeds its colors and fonts. The page shows the ranked list with each item's inputs, formula, score and flags, then the method and its reason, the provenance audit with estimates marked, the ties and the decision asked of the owner. Each item appears under its plain name; its `id` sits in a last column or a source index, and no sentence or row is labeled by the `id` alone. It states nothing the Markdown or the scorer's report does not.
 
 ## After the ranking
 

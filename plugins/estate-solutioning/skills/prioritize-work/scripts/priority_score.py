@@ -366,7 +366,8 @@ def rank(items, framework, criteria, weight_note):
         row['rank'] = number
     groups = {}
     for row in ranking:
-        groups.setdefault(row['score'], []).append(as_text(row['id']))
+        name = as_text(row['id'])
+        groups.setdefault(row['score'], []).append(f"{row['title']} ({name})" if row['title'] else name)
     tied = [f'{fmt(score)} ({", ".join(ids)})' for score, ids in groups.items() if len(ids) > 1]
     if tied:
         notes.append('Tied scores: ' + '; '.join(tied) + '. The formula leaves ties unresolved; settle each '
@@ -382,10 +383,11 @@ def render_markdown(report):
     lines = [f'# Priority proposal: {DISPLAY_NAMES[report["framework"]]}', '',
              'Proposal only: the decision owner sets the final order; MoSCoW values stay with capture-requirements.', '']
     if report['ranking']:
-        lines += ['| Rank | ID | Title | Score | Formula | Flags |', '| --- | --- | --- | --- | --- | --- |']
+        # Each row leads with the item's plain name; the traceable id closes the row.
+        lines += ['| Rank | Item | Score | Formula | Flags | ID |', '| --- | --- | --- | --- | --- | --- |']
         for row in report['ranking']:
-            values = [row['rank'], as_text(row['id']), row['title'], fmt(row['score']),
-                      '`' + row['formula'] + '`', '; '.join(row['flags']) or 'none']
+            values = [row['rank'], row['title'] or row['job'] or as_text(row['id']), fmt(row['score']),
+                      '`' + row['formula'] + '`', '; '.join(row['flags']) or 'none', as_text(row['id'])]
             lines.append('| ' + ' | '.join(cell(value) for value in values) + ' |')
         lines.append('')
     else:

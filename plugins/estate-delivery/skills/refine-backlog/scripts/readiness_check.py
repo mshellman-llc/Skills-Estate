@@ -205,16 +205,17 @@ def markdown(report):
         f"Ready means a score of at least {s['threshold']} of 6 with an estimate and a complete Gherkin scenario. "
         f"Small means {s['max_days']:g} days or less.",
         "",
-        "| ID | Name | Priority | Score | Verdict | Failed criteria |",
-        "|---|---|---|---:|---|---|",
+        "| Name | Priority | Score | Verdict | Failed criteria | ID |",
+        "|---|---|---:|---|---|---|",
     ]
     for r in report["items"]:
         failed = ", ".join(k for k, v in r["criteria"].items() if not v["pass"]) or "none"
-        lines.append(f"| {r['id']} | {r['name']} | {r['priority']} | {r['score']}/6 | {r['verdict']} | {failed} |")
+        # A reader scans by name; the workbook ID stays at the row's end for lookup.
+        lines.append(f"| {r['name'] or r['id']} | {r['priority']} | {r['score']}/6 | {r['verdict']} | {failed} | {r['id']} |")
     for r in report["items"]:
         if r["verdict"] == "READY" and not r["notes"]:
             continue
-        lines += ["", f"## {r['id']} {r['name']}", ""]
+        lines += ["", f"## {r['name']} ({r['id']})" if r["name"] else f"## {r['id']}", ""]
         lines += [f"- {k}: {v['reason']}" for k, v in r["criteria"].items() if not v["pass"]]
         lines += [f"- {n}" for n in r["notes"]]
     return "\n".join(lines) + "\n"

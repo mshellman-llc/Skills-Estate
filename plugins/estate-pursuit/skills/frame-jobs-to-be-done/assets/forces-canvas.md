@@ -4,12 +4,12 @@ Fill one canvas per job. Put an evidence number beside every entry that came fro
 
 Job: When {{SITUATION}}, I want to {{MOTIVATION}}, so I can {{OUTCOME}}.
 Segment: {{SEGMENT_BY_SITUATION}}
-Evidence: {{INTERVIEW_IDS}}
+Evidence: {{INTERVIEWS_BY_NAME_WITH_EVIDENCE_NUMBERS}}
 
 | Toward switching | Against switching |
 |---|---|
 | **Push of the situation.** What is bad about the current way? {{PUSH_ENTRIES}} | **Anxiety about the new way.** What worries the person about switching? {{ANXIETY_ENTRIES}} |
-| **Pull of the new way.** What is attractive about the alternative? {{PULL_ENTRIES}} | **Habit of the present.** What keeps the person on the current way? {{HABIT_ENTRIES}} |
+| **Pull of the new way.** Which parts of the alternative attract the person? {{PULL_ENTRIES}} | **Habit of the present.** What keeps the person on the current way? {{HABIT_ENTRIES}} |
 
 A switch happens when push and pull together outweigh anxiety and habit.
 
@@ -30,6 +30,6 @@ Each move is a proposal for the owning team, not a finding.
 
 | Outcome statement | Importance | Satisfaction | Rated by | Evidence |
 |---|---:|---:|---|---|
-| Minimize the {{TIME_EFFORT_LIKELIHOOD_OR_COST}} of {{VERB_OBJECT_CONTEXT}} | {{0_TO_10}} | {{0_TO_10}} | customers or internal | {{IDS}} |
+| Minimize the {{TIME_EFFORT_LIKELIHOOD_OR_COST}} of {{VERB_OBJECT_CONTEXT}} | {{0_TO_10}} | {{0_TO_10}} | customers or internal | {{EVIDENCE_NUMBERS}} |
 
 Score with `prioritization --framework odi`.
