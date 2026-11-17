@@ -1,0 +1,30 @@
+/* Color-bearing rules excerpted from the Bearing brand guide artifact project/components/bundle.css, version 1794943922-762d (2026-11-17). */
+#root, .mer-app {
+  --canvas: #161824; --surface: #1E222F; --surface-2: #252B3A; --ink: #FFFFFF; --ink-2: #D8DAE5; --ink-3: #A5A8B5;
+  --line: #2E3546; --line-strong: #687996; --accent: #EEEFF3; --accent-hover: #FFFFFF; --on-accent: #05060A;
+  --amber: #EEEFF3; --amber-soft: #283549; --amber-line: #37485C; --amber-ink: #D8DAE5;
+  --danger: #F59A95; --danger-soft: #321B1A; --scrim: rgba(5,6,10,.6);
+}
+[data-theme="light"] #root, [data-theme="light"] .mer-app {
+  --canvas: #EEEFF3; --surface: #FFFFFF; --surface-2: #F4F5F8; --ink: #05060A; --ink-2: #37485C; --ink-3: #4D5869;
+  --line: #D8DAE5; --line-strong: #687996; --accent: #05060A; --accent-hover: #283549; --on-accent: #EEEFF3;
+  --amber: #283549; --amber-soft: #E1E4EE; --amber-line: #C5CAD8; --amber-ink: #283549;
+  --danger: #C4302B; --danger-soft: #FCEAE9; --scrim: rgba(5,6,10,.45);
+}
+.br-btn-primary { background: var(--action); color: var(--on-action); }
+.br-pillbtn:hover { color: var(--ink-muted); }
+.br-dock { background: #05060A; border: 1px solid #283549; }
+.br-dock button { background: #1E222F; color: #D8DAE5; }
+.br-dock button[aria-current="true"] { background: #EEEFF3; color: #05060A; }
+.br-dock .br-sep { background: #37485C; }
+#root .mer-detail > h3 { background: #283549; color: #FFFFFF; }
+#root .mer-detail > .mer-detail-sub { color: #C5CAD8; }
+.br-proc-hold p { color: #FFFFFF; }
+.mer-agent:hover { background: rgba(104, 121, 150, .08); }
+.mer-agent-face.is-a { background: #283549; color: #FFFFFF; }
+.mer-agent-face.is-b { background: #37485C; color: #FFFFFF; }
+.mer-agent-face.is-c { background: #4D5869; color: #FFFFFF; }
+.mer-agent-face.is-d { background: #D8DAE5; color: #05060A; }
+.ix button:disabled { opacity: .45; }
+.ix-th span { color: color-mix(in srgb, var(--ix-ink) 24%, transparent); }
+:is(#root, .mer-app) .mer-spine li.is-done a { background: rgba(40, 53, 73, .10); }

@@ -19,6 +19,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | `design-software-system` | [design-software-system](../../skills/design-software-system/SKILL.md) | [formal architecture reference](../../skills/write-architecture-reference/SKILL.md) |
 | `develop-independent-product` | [develop-independent-product](../../skills/develop-independent-product/SKILL.md) |  |
 | `develop-product` | [develop-product](../../skills/develop-product/SKILL.md) |  |
+| `manage-color-system` | [manage-color-system](../../skills/manage-color-system/SKILL.md) |  |
 | `map-journey` | [map-journey](../../skills/map-journey/SKILL.md) |  |
 | `plan-usability-study` | [plan-usability-study](../../skills/plan-usability-study/SKILL.md) |  |
 | `prioritize-work` | [prioritize-work](../../skills/prioritize-work/SKILL.md) |  |
@@ -35,6 +36,7 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [design-software-system](../../skills/design-software-system/SKILL.md)
 - [develop-independent-product](../../skills/develop-independent-product/SKILL.md)
 - [develop-product](../../skills/develop-product/SKILL.md)
+- [manage-color-system](../../skills/manage-color-system/SKILL.md)
 - [map-journey](../../skills/map-journey/SKILL.md)
 - [plan-usability-study](../../skills/plan-usability-study/SKILL.md)
 - [prioritize-work](../../skills/prioritize-work/SKILL.md)

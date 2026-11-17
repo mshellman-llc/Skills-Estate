@@ -374,6 +374,11 @@
       "source": "publish-content",
       "pack": "core",
       "modes": {}
+    },
+    "manage-color-system": {
+      "source": "manage-color-system",
+      "pack": "core",
+      "modes": {}
     }
   },
   "internal": [

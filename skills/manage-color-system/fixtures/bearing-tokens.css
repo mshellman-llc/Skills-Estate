@@ -1,0 +1,49 @@
+/* Bearing color tokens, copied from the Bearing brand guide artifact project/tokens.css, version 1794943922-762d (2026-11-17). Color blocks only. */
+:root, [data-theme="dark"] {
+  --ink-950: #86898f; /* Palette. Deepest ground: photo vignettes, footer, text on light surfaces. */
+  --navy-700: #283549; /* Palette. Brand navy: first chart series, revolving-facility bar. */
+  --slate-600: #37485c; /* Palette. Quiet button fill on dark sections. */
+  --slate-500: #768294; /* Palette. Body and label text on Day surfaces (6.3:1 on surface). */
+  --steel-400: #687996; /* Palette. Second chart series on Day, third on Night. Not for small text on either surface (4.0:1 Night, 3.8:1 Day). */
+  --mist-300: #a5a8b5; /* Palette. Muted text on Night (7.5:1); second chart series on Night, third on Day. */
+  --mist-100: #d8dae5; /* Palette. Body text on Night (12.7:1); hairlines on Day. */
+  --surface: #161824; /* Section ground. Sections alternate Night and Day down the page. */
+  --surface-raised: #1e222f; /* Stat panels laid over photography; inactive segment of a toggle. */
+  --ink: #ffffff; /* Headings, stat numerals and body text on surface (17.6:1 in both themes). */
+  --ink-body: var(--mist-100); /* Paragraph text on surface. */
+  --ink-muted: var(--mist-300); /* Descriptions, captions, labels and units (7.5:1 Night, 6.3:1 Day). */
+  --line: #262c3c; /* Hairline grid: column rules, cell borders and row dividers. Decorative structure, never a control border. */
+  --line-strong: var(--steel-400); /* Control borders: outlined buttons and the segmented toggle frame (3:1 or more in both themes). */
+  --action: #eeeff3; /* Primary button and active segment fill. One per view. */
+  --on-action: var(--ink-950); /* Text on action (17.6:1). */
+  --action-quiet: var(--slate-600); /* Secondary button fill. */
+  --on-action-quiet: #ffffff; /* Text on action-quiet (9.4:1 Night, 14.5:1 Day). */
+  --data-1: #eeeff3; /* Chart series 1, the subject or the new structure. Also the cover's main block. */
+  --data-2: var(--mist-300); /* Chart series 2, the comparison. Label it directly. */
+  --data-3: var(--steel-400); /* Chart series 3. Below 3:1 against surface on Day: separate segments with a 1px surface gap and label values on the bar. */
+  --focus-ring: var(--mist-300); /* Keyboard focus: 2px ring with a 2px surface gap (7.5:1 Night, 10.8:1 Day). */
+}
+[data-theme="light"] {
+  --ink-950: #05060a;
+  --navy-700: #283549;
+  --slate-600: #37485c;
+  --slate-500: #4d5869;
+  --steel-400: #687996;
+  --mist-300: #a5a8b5;
+  --mist-100: #d8dae5;
+  --surface: #eeeff3;
+  --surface-raised: #ffffff;
+  --ink: #05060a;
+  --ink-body: var(--ink-950);
+  --ink-muted: var(--slate-500);
+  --line: #d8dae5;
+  --line-strong: var(--slate-500);
+  --action: var(--ink-950);
+  --on-action: #eeeff3;
+  --action-quiet: var(--mist-100);
+  --on-action-quiet: var(--ink-950);
+  --data-1: var(--navy-700);
+  --data-2: var(--steel-400);
+  --data-3: var(--mist-300);
+  --focus-ring: var(--navy-700);
+}

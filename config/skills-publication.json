@@ -548,6 +548,12 @@
           "download": true,
           "featured": false,
           "order": 1000
+        },
+        "manage-color-system": {
+          "visible": true,
+          "download": true,
+          "featured": false,
+          "order": 1000
         }
       },
       "workflows": {
@@ -1290,6 +1296,12 @@
           "order": 1000
         },
         "writing-diagnostics": {
+          "visible": true,
+          "download": true,
+          "featured": false,
+          "order": 1000
+        },
+        "manage-color-system": {
           "visible": true,
           "download": true,
           "featured": false,
