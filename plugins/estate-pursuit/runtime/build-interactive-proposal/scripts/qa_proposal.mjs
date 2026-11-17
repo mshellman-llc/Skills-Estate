@@ -32,7 +32,8 @@ try {
     for(const scope of data._scope_items){
       const card=page.locator('[data-scope-id="'+scope.id+'"]');
       check(v.key+' scope '+scope.id,(await card.innerText()).includes(scope.description));
-      check(v.key+' source '+scope.id,(await card.innerText()).includes(data.sources.find(s=>s.id===scope.source).reference));
+      const cited=v._included_ids.includes(scope.id)?v._item_sources[scope.id]:scope.source;
+      check(v.key+' source '+scope.id,(await card.innerText()).includes(data.sources.find(s=>s.id===cited).reference));
     }
     for(const id of ['assumptions','boundaries','sources']){
       if(!await page.locator('#'+id).evaluate(e=>e.open))await page.locator('#'+id+' > summary').click();
@@ -44,6 +45,10 @@ try {
     if(data.meta.mode==='explorer'){
       check(v.key+' no currency',!/[€£$¥₹]|\b(?:USD|EUR|GBP|JPY|CAD|AUD|INR)\b/i.test(body));
       check(v.key+' no staffing',!await page.locator('#staffing').isVisible());
+      if(data.missing_inputs?.length){
+        for(const input of data.missing_inputs)check(v.key+' missing input '+input,body.includes(input));
+        check(v.key+' no generic confirmation line',!body.includes('need confirmation'));
+      }
     }else{
       for(const person of v.team)check(v.key+' team '+person.role,body.includes(person.role)&&body.includes(person.allocation));
     }

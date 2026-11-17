@@ -17,6 +17,8 @@ def run_check(document, script, output=None):
     try:
         report['inputSha256'] = hashlib.sha256(document.read_bytes()).hexdigest()
         shutil.copy2(document, attempt / 'input.html')
+        # Keep a copy of the exact script for the record, but run the original in
+        # place: it resolves the browser launch policy relative to its own folder.
         shutil.copy2(script, attempt / 'verify.mjs')
         node = os.environ.get('ESTATE_NODE') or shutil.which('node')
         if not node:
@@ -29,7 +31,7 @@ def run_check(document, script, output=None):
         if entry is None:
             raise ValueError('Playwright is missing; set ESTATE_NODE_MODULES to its node_modules directory')
         result = subprocess.run(
-            [node, str(attempt / 'verify.mjs'), document.as_uri(), str(attempt)],
+            [node, str(script), document.as_uri(), str(attempt)],
             env={**os.environ, 'PW_MODULE': entry.resolve().as_uri()},
             capture_output=True, text=True, timeout=180)
         (attempt / 'console.log').write_text(result.stdout + result.stderr)

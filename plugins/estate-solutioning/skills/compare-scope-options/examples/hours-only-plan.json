@@ -1,0 +1,128 @@
+{
+  "title": "Booking scope options",
+  "client": "Example Clinic",
+  "intro": "Compare two booking scopes by item and estimated hours before any price is set.",
+  "options": [
+    {
+      "quote_id": "Q-HOURS-001",
+      "name": "Booking core",
+      "summary": "Online booking and calendar sync, with the rota view available to add."
+    },
+    {
+      "quote_id": "Q-HOURS-002",
+      "name": "Booking and reminders",
+      "summary": "Adds the rota view and appointment reminders. The reminder work is not yet estimated."
+    }
+  ],
+  "matrix": [
+    {
+      "id": "online-booking",
+      "name": "Online booking",
+      "category": "Booking",
+      "description": "Let a patient choose an open slot and confirm it without a phone call.",
+      "description_basis": {
+        "quote_id": "Q-HOURS-002",
+        "field": "description"
+      },
+      "cells": {
+        "Q-HOURS-001": {
+          "state": "in",
+          "hours": 40
+        },
+        "Q-HOURS-002": {
+          "state": "in",
+          "hours": 40
+        }
+      }
+    },
+    {
+      "id": "calendar-sync",
+      "name": "Calendar sync",
+      "category": "Booking",
+      "description": "Keep each clinician calendar in step with booked and cancelled slots.",
+      "description_basis": {
+        "quote_id": "Q-HOURS-002",
+        "field": "description"
+      },
+      "cells": {
+        "Q-HOURS-001": {
+          "state": "in",
+          "hours": {
+            "low": 24,
+            "expected": 32,
+            "high": 48
+          }
+        },
+        "Q-HOURS-002": {
+          "state": "in",
+          "hours": {
+            "low": 24,
+            "expected": 32,
+            "high": 48
+          }
+        }
+      }
+    },
+    {
+      "id": "staff-rota",
+      "name": "Staff rota view",
+      "category": "Operations",
+      "description": "Show reception which clinician covers each room and session.",
+      "description_basis": {
+        "quote_id": "Q-HOURS-002",
+        "field": "description"
+      },
+      "cells": {
+        "Q-HOURS-001": {
+          "state": "available",
+          "hours": 16
+        },
+        "Q-HOURS-002": {
+          "state": "in",
+          "hours": 16
+        }
+      }
+    },
+    {
+      "id": "patient-survey",
+      "name": "Visit survey",
+      "category": "Operations",
+      "description": "Ask the patient two questions after a visit and store the answers.",
+      "description_basis": {
+        "quote_id": "Q-HOURS-002",
+        "field": "description"
+      },
+      "cells": {
+        "Q-HOURS-001": {
+          "state": "optional",
+          "hours": 12
+        },
+        "Q-HOURS-002": {
+          "state": "optional",
+          "hours": 12
+        }
+      }
+    },
+    {
+      "id": "reminders",
+      "name": "Appointment reminders",
+      "category": "Messaging",
+      "description": "Send a reminder before each booked visit and record any reply.",
+      "description_basis": {
+        "quote_id": "Q-HOURS-002",
+        "field": "description"
+      },
+      "cells": {
+        "Q-HOURS-001": {
+          "state": "out",
+          "hours": null
+        },
+        "Q-HOURS-002": {
+          "state": "in",
+          "hours": null,
+          "status": "unestimated"
+        }
+      }
+    }
+  ]
+}

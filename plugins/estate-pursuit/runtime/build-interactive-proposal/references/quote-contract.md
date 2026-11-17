@@ -68,7 +68,7 @@ excluded items rather than hide them:
 ## Rules
 
 - **versions.** Proposal mode takes them from the quote's actual versions or options. Explorer
-  mode takes them from the client's own open scope decisions. Neither mode invents a
+  mode builds them from the client's own open scope decisions. Neither mode invents a
   good/better/best split, and neither uses internal low, expected, and high estimate bands.
 - **total** is the quote value verbatim: no rounding for effect, no "from $X", no financing math.
 - **metric** is a count from a source document, not a derived or weighted score.
@@ -107,8 +107,8 @@ missing from the page is a warning: confirm the omission was a choice.
 
 ## Packaged builder schema
 
-The examples above describe the source mapping. The executable schema is demonstrated by `../fixtures/proposal.json` and `../fixtures/explorer.json`. It requires source records (`id`, `title`, `reference`, `revision`), stable scope item IDs, each item's source ID, and each version's source ID. Scope sections list the included items for that version. Excluded items remain visible with a route.
+The examples above describe the source mapping. The executable schema is demonstrated by `../fixtures/proposal.json` and `../fixtures/explorer.json`. It requires source records (`id`, `title`, `reference`, `revision`), stable scope item IDs, each item's source ID, and each version's source ID. Scope sections list the included items for that version. Excluded items remain visible with a route. A shared item keeps one name and description across versions, but each version cites its own source for it: the page shows the source given in the selected version, so a later option never borrows an earlier option's citation.
 
-`--quote` supplies a separate source export with `quote_number`, `currency`, and `versions`. Names, taglines, totals, durations, teams, timelines, scope, assumptions, and boundaries must match the source export exactly. Explorer input has no currency, price, staffing, or duration fields; its metric must match the distinct included scope IDs.
+`--quote` supplies a separate source export with `quote_number`, `currency`, and `versions`. Names, taglines, totals, durations, teams, timelines, scope, assumptions, and boundaries must match the source export exactly. Explorer input has no currency, price, staffing, or duration fields; its metric must match the distinct included scope IDs. Explorer input may list `missing_inputs`, one sentence for each missing price, staffing or timeline input. The page then shows them under "Inputs still needed" and drops its generic line that price, staffing and duration need confirmation.
 
 The rendered source disclosure identifies source revisions and the current option's figure fields. Additional numbers in authored descriptions still need source review; automatic field parity is not a semantic review of all prose.

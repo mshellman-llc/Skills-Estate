@@ -123,9 +123,14 @@ Record which views you read. `requiredViews` raises the reminder; your dispositi
 ## Gate 3: prose
 
 ```bash
-python3 ../writing-diagnostics/scripts/prose_check.py page.html --config ../writing-diagnostics/house.json
+python3 ../writing-diagnostics/scripts/writing_check.py --rendered page.html --config ../writing-diagnostics/house.json
 python3 ../writing-diagnostics/scripts/rewrite_scan.py page.html --quiet
 ```
+
+`--rendered` reads the built page as the client sees it: the page text and its embedded data, with
+script code, styles and comments left to the checks on their source files. A shared scope item that
+appears in each version's data, or an identical cell across a comparison row, counts once for
+repetition. Run the checker without the flag on the template and any authored script.
 
 Strong tells block. Review flags each need a written disposition. The flags this page type raises
 most, and how to think about them:

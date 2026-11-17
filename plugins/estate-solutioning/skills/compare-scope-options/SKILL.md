@@ -47,6 +47,8 @@ List timeline snapshots first and identify the active snapshot ID. Read that sna
 
 The headline price comes from the staffing snapshot. Per-item dollars are omitted because back-allocation may drift between snapshots. Item hours are scope estimates; staffing hours can also cover delivery activities. Do not force the two totals to match or infer that an optional item is already priced.
 
+A rough estimate may have hours but no rate card, staffing plan or timeline. Build it as an unpriced comparison: the source sets `"pricing": "unpriced"`, carries no snapshots and names the missing price, staffing and timeline inputs. Items can carry low, expected and high hours, and an item with no estimate yet is marked unestimated with the discovery it needs. The page names what is missing and derives none of it. Never fill a price or duration from a remembered rate, and never show an unestimated item as zero.
+
 Display exact prices by default. If the user requests rounded prices, show the rounded amount as approximate and preserve the exact quote alongside it. Rounding never changes the working source. Show all requested staffing variants on the static page so printing retains every price and duration. For a prospect-facing selector, choose the interactive proposal or explorer mode and read [its complete workflow](_runtime/build-interactive-proposal/WORKFLOW.md). The portable Scope Options package embeds it; static comparison rules do not substitute for its interaction and print checks.
 
 ## Reconcile before rendering
@@ -72,7 +74,7 @@ Keep assumptions and exclusions that affect the client's choice visible. An unre
 
 ## Inspect and deliver
 
-Run brand preflight and the applicable writing checks through the packaged runtime. Read the complete output against the quote records. Inspect the matrix at desktop and narrow widths, and check every exported PDF page for missing rows or split labels. A clean numeric reconcile does not validate the option summaries.
+Run brand preflight and the applicable writing checks through the packaged runtime. Check the built page with `writing_check.py --rendered`, which reads what the reader sees and counts an item's identical cells across options once. Read the complete output against the quote records. Inspect the matrix at desktop and narrow widths, and check every exported PDF page for missing rows or split labels. A clean numeric reconcile does not validate the option summaries.
 
 Follow [the release gate](_shared/release-gate.md). Keep failed attempts and the actual output alongside the source hashes and review record. Deliver the HTML and requested PDF with the quoted source date. Record any authorized knowledge-hub update separately; creating a local reference does not update the quote or publish it.
 

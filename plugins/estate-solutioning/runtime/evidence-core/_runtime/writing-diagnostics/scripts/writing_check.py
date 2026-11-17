@@ -24,8 +24,11 @@ from record_ids import html_reader_prose, markdown_reader_prose
 
 
 class Block:
-    def __init__(self, text, citation=False):
-        self.text, self.citation = text, citation
+    def __init__(self, text, citation=False, by_design=False):
+        # A by-design block repeats one value on purpose, such as the same item in
+        # each option of a comparison. Repetition counts it once; every other
+        # rule still reads it.
+        self.text, self.citation, self.by_design = text, citation, by_design
 
 
 class FramingText(str):
@@ -97,10 +100,11 @@ class AuthoredText(str):
                     flush()
                     text = item.text
                     blocks.append(text)
-                    if not item.citation or text not in citations:
+                    once = item.citation or getattr(item, 'by_design', False)
+                    if not once or text not in citations:
                         repetition.append(text)
                         repetition_lines.extend((line, False) for line in text.splitlines())
-                    if item.citation:
+                    if once:
                         citations.add(text)
                 else:
                     text = item
@@ -128,8 +132,37 @@ def css_words(data):
                      for match in re.finditer(r"/\*.*?\*/|\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'", data, re.S))
 
 
+# Inline formatting can fall inside a word. At any other element boundary inside
+# a table cell, touching words are separate labels and never one glued token.
+INLINE_FORMATTING = {'a', 'abbr', 'b', 'bdi', 'bdo', 'cite', 'code', 'data', 'dfn', 'em', 'i',
+                     'kbd', 'mark', 'q', 's', 'samp', 'strong', 'sub', 'sup', 'time', 'u', 'var', 'wbr'}
+
+
+def rendered_data(value):
+    """Each distinct string of embedded page data, once per field name.
+
+    A data-driven page shows the same field for each option, so a shared item's
+    name and description recur in the data by design. The reader meets that
+    value once per option, so repetition counts it once."""
+    seen = set()
+
+    def walk(item, field):
+        if isinstance(item, str):
+            if (field, item) not in seen:
+                seen.add((field, item))
+                yield Block(item)
+        elif isinstance(item, list):
+            for child in item:
+                yield from walk(child, field)
+        elif isinstance(item, dict):
+            for key, child in item.items():
+                yield from walk(child, key)
+
+    return list(walk(value, None))
+
+
 class HTMLWords(HTMLParser):
-    def __init__(self, depth=0):
+    def __init__(self, depth=0, rendered=False):
         if depth > 16:
             raise ValueError('Nested HTML strings exceed extraction limit')
         super().__init__(convert_charrefs=True)
@@ -139,8 +172,51 @@ class HTMLWords(HTMLParser):
         self.depth = depth
         self.cell = None
         self.table_cells = []
+        self.rendered = rendered
+        self.row = []
+        self.rows = []
+        self.cell_boundary = False
+
+    def end_row(self):
+        if self.row:
+            self.rows.append(self.row)
+        self.row = []
+
+    def mark_repeated_cells(self):
+        # A comparison row shows one item across options. Identical cells in one
+        # row are that item's value repeated by design.
+        self.end_row()
+        for row in self.rows:
+            counts = {}
+            for cell in row:
+                key = ' '.join(cell.text.split())
+                counts[key] = counts.get(key, 0) + 1
+            for cell in row:
+                if counts[' '.join(cell.text.split())] > 1:
+                    cell.by_design = True
+
+    def close(self):
+        super().close()
+        if self.rendered:
+            self.mark_repeated_cells()
+
+    def cell_text(self, data):
+        # Words that touch across an element boundary are separate labels, such
+        # as a status and its hours, so they start a new line.
+        if self.cell_boundary and self.cell.text[-1:].isalnum() and data[:1].isalnum():
+            self.cell.text += '\n'
+        self.cell_boundary = False
+        self.cell.text += data
 
     def handle_data(self, data):
+        if self.script_type is not None and self.rendered:
+            # A rendered page shows its data, not its code. Executable scripts and
+            # templates were checked in their source files.
+            if self.script_type in ('application/json', 'application/ld+json'):
+                self.parts.extend(rendered_data(json.loads(data)))
+            return
+        if self.in_style and self.rendered:
+            return
         if self.script_type is not None:
             if self.script_type in ('application/json', 'application/ld+json'):
                 self.parts.append(json.loads(data))
@@ -166,15 +242,18 @@ class HTMLWords(HTMLParser):
             if self.in_style:
                 self.parts.append(Block(css_words(data)))
             elif self.cell is not None:
-                self.cell.text += data
+                self.cell_text(data)
             else:
                 self.parts.append(data)
 
     def handle_endtag(self, tag):
         if self.cell is not None and tag in ('br', 'p', 'div', 'li', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'dt', 'dd', 'blockquote', 'pre'):
             self.cell.text += '\n'
+        elif self.cell is not None and tag not in INLINE_FORMATTING:
+            self.cell_boundary = True
         if tag == 'tr':
             self.cell = None
+            self.end_row()
         if tag == 'table':
             self.cell = self.table_cells.pop() if self.table_cells else None
             if self.cell is not None:
@@ -187,11 +266,14 @@ class HTMLWords(HTMLParser):
             self.script_type = None
 
     def handle_comment(self, data):
-        self.parts.append(Block(data))
+        if not self.rendered:
+            self.parts.append(Block(data))
 
     def handle_starttag(self, tag, attrs):
         if self.cell is not None and tag in ('br', 'p', 'div', 'li', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'dt', 'dd', 'blockquote', 'pre'):
             self.cell.text += '\n'
+        elif self.cell is not None and tag not in INLINE_FORMATTING:
+            self.cell_boundary = True
         if tag == 'table':
             if self.cell is not None:
                 self.cell.text += '\n'
@@ -199,14 +281,19 @@ class HTMLWords(HTMLParser):
             self.cell = None
         if tag == 'tr':
             self.cell = None
+            self.end_row()
         if tag in ('td', 'th'):
             self.cell = Block('')
+            self.cell_boundary = False
             self.parts.append(self.cell)
+            self.row.append(self.cell)
         if tag == "style":
             self.in_style = True
         if tag == 'script':
             self.script_type = (dict(attrs).get('type') or '').lower()
         for name, value in attrs:
+            if self.rendered and (name == 'style' or name.startswith('on')):
+                continue
             if value and name == 'style':
                 self.parts.append(Block(css_words(value)))
             if value and name in {'alt', 'title', 'aria-label', 'placeholder', 'content', 'value'}:
@@ -226,8 +313,10 @@ def string_values(value):
             yield from string_values(item)
 
 
-def authored_text(path):
+def authored_text(path, rendered=False):
     suffix = path.suffix.lower()
+    if rendered and suffix not in {'.html', '.htm'}:
+        raise ValueError('--rendered reads a built HTML page; check other formats without it')
     if suffix in {'.docx', '.pptx', '.xlsx'}:
         parts, framing_parts, review_trees = [], [], []
         with zipfile.ZipFile(path) as archive:
@@ -295,14 +384,15 @@ def authored_text(path):
             previous_alone = alone
         return AuthoredText(parts)
     if suffix in {'.html', '.htm'}:
-        parser = HTMLWords()
+        parser = HTMLWords(rendered=rendered)
         parser.feed(raw)
+        parser.close()
         result = AuthoredText(parser.parts)
         framing = HTMLFramingWords()
         framing.feed(raw)
         result.framing_text = str(result) + '\n' + ''.join(framing.parts)
         result.review_blocks = html_blocks(raw)
-        result.context_structure = 'visible-paragraphs-and-simple-tables'
+        result.context_structure = 'rendered-page-text' if rendered else 'visible-paragraphs-and-simple-tables'
         result.reader_prose = html_reader_prose(raw)
         return result
     # Markdown quoting, fences and audience labels do not exempt authored words.
@@ -345,16 +435,20 @@ def main(argv=None):
     parser.add_argument('files', nargs='+', type=Path)
     parser.add_argument('--config', type=Path, default=Path(__file__).resolve().parent.parent / 'house.json')
     parser.add_argument('--json', action='store_true')
+    parser.add_argument('--rendered', action='store_true',
+                        help='Read a built HTML page as its reader sees it: page text and embedded data, '
+                             'without script code, styles or comments. Check those in their source files.')
     args = parser.parse_args(argv)
     report = {}
     worst = 0
     try:
         config = strict_config(args.config)
         for path in args.files:
-            extracted = authored_text(path)
+            extracted = authored_text(path, rendered=args.rendered)
             findings, words = check(extracted, config)
             report[str(path)] = {'wordcount': words, 'findings': [item.as_dict() for item in findings],
-                                 'scope': 'authored language; no audience-category exemption',
+                                 'scope': ('rendered page text and data; scripts, styles and comments are checked in their sources'
+                                           if args.rendered else 'authored language; no audience-category exemption'),
                                  'context_signals': {'mode': 'read-only review candidates; not semantic verdicts',
                                      'structure': getattr(extracted, 'context_structure', 'text-and-markdown-tables')}}
             if findings:

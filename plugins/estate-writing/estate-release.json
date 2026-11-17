@@ -22,7 +22,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "a9c55562e19868e2eebb41a10cceceae702db74680aa541b78dcd1603684c239",
+      "required_sha256": "c050b83502d9c0d54ec250b2ff4fbe7abbf0078ef4c5387803cdc7684c877781",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -112,7 +112,7 @@
       "subject": "author-style-runtime"
     },
     {
-      "required_sha256": "abcec877a0f05721bb7aa5c9748a589302a7a4c57d38549703ead65e8d13ae01",
+      "required_sha256": "9288e374bfa7661451641b26aefdcb922e990133d890013ba0a1a3854b3ebb21",
       "status": "review required",
       "subject": "brand-renderer"
     },
@@ -137,7 +137,7 @@
       "subject": "build-interactive-explorer"
     },
     {
-      "required_sha256": "1443b210b0b27aaac2eff0f0e3a5c21111b30130f0c34f24192d124bf0a3f1da",
+      "required_sha256": "b4c36bac080d574a7a81f29ae8696511183240c32dcfe536251e4d3f122b4e45",
       "status": "review required",
       "subject": "build-interactive-proposal"
     },
@@ -177,7 +177,7 @@
       "subject": "check-knowledge-hub"
     },
     {
-      "required_sha256": "a046e8dd209226cf7c289c626dbe3ef41b7837c0a9e9938136d586a32df2a69e",
+      "required_sha256": "b3d68d44833acea2b1137d1651533babdcabb064360113cacbb0b295ed771ee1",
       "status": "review required",
       "subject": "compare-scope-options"
     },
@@ -537,11 +537,11 @@
       "subject": "writing"
     },
     {
-      "required_sha256": "8df2568477ee7f7e9f4e653627b5ebf136f2de75e7e5ca055d95f45711677e5a",
+      "required_sha256": "83207b777fe6b74293a7cda402d921269639a67266931f7f74c619f4d04bdf09",
       "status": "review required",
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "54b2a73f300100787b80762efd3a71f5aa3c8b174945f78cbb948246563da4fa",
+  "source_sha256": "8970671115c09fe47eb837cc02414bc7c8f52c6980dd55cc787e46650ef0b4b2",
   "status": "owner-published"
 }
