@@ -217,6 +217,37 @@ const ratio = (value - 1) / 4;'''
         self.assertIn('C6-fragment-stacking',[f['rule'] for f in json.loads(result.stdout)[str(self.base/'inline-cell.html')]['findings']])
 
 
+    def test_rendered_page_reads_text_and_data_but_not_code(self):
+        def scan(filename, body, expected, *flags):
+            path = self.base / filename
+            path.write_text(body)
+            result = subprocess.run([sys.executable, str(self.checker), *flags, '--json', str(path)],
+                                    capture_output=True, text=True)
+            self.assertEqual(result.returncode, expected, filename + ' ' + result.stdout + result.stderr)
+            return result
+        comment = '<script>/* Roadmap Kit v2 renderer. No dependencies. */ const a = 1;</script><style>/* '+BAD+' */ p{margin:0}</style><!-- '+BAD+' --><p>'+GOOD+'</p>'
+        scan('code.html', comment, 1)
+        scan('code.html', comment, 0, '--rendered')
+        scan('visible.html', '<script>const a = 1;</script><p>'+BAD+'</p>', 1, '--rendered')
+        scan('data.html', '<script type="application/json">'+json.dumps({'note': BAD})+'</script>', 1, '--rendered')
+        cell = '<td><span>Included</span><span>32 h expected</span><small>Range 24 to 48 h</small></td>'
+        row = '<table><tr><th>Calendar sync</th>'+cell+cell+'</tr></table>'
+        scan('row.html', row, 1)
+        scan('row.html', row, 0, '--rendered')
+        repeated = '<table><tr><td>'+GOOD+'</td></tr><tr><td>'+GOOD+'</td></tr></table>'
+        scan('rows.html', repeated, 1, '--rendered')
+        shared = {'versions': [{'items': [{'description': 'Route requests into one queue with a named owner.'}]},
+                               {'items': [{'description': 'Route requests into one queue with a named owner.'}]}]}
+        data = '<script type="application/json">'+json.dumps(shared)+'</script>'
+        scan('shared.html', data, 1)
+        scan('shared.html', data, 0, '--rendered')
+        scan('notes.md', GOOD, 2, '--rendered')
+        probe = ('import sys; sys.path.insert(0, sys.argv[1]); from pathlib import Path; '
+                 'from writing_check import authored_text; print(repr(str(authored_text(Path(sys.argv[2])))))')
+        glued = subprocess.run([sys.executable, '-c', probe, str(self.checker.parent), str(self.base/'row.html')],
+                               capture_output=True, text=True)
+        self.assertIn('Included\\n32 h expected\\nRange 24 to 48 h', glued.stdout, glued.stderr)
+
     def test_fragment_paragraphs_survive_markup_and_python_extraction(self):
         cases=[
             ('breaks.html','<table><tr><td>Priority not set.<br>History split across tools.</td></tr></table>'),

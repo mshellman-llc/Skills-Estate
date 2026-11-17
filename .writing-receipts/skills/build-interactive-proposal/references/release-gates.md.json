@@ -20,7 +20,7 @@
     {
       "kind": "syntax",
       "reason": "The prose gate command.",
-      "text": "python3 ../writing-diagnostics/scripts/prose_check.py page.html --config ../writing-diagnostics/house.json"
+      "text": "python3 ../writing-diagnostics/scripts/writing_check.py --rendered page.html --config ../writing-diagnostics/house.json"
     },
     {
       "kind": "syntax",

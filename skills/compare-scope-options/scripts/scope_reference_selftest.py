@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exercise both bundled inputs and a corrupted cell without external access."""
+"""Exercise the bundled inputs and corrupted cells without external access."""
 import copy
 from pathlib import Path
 from scope_reference_validate import load,reconcile
@@ -13,4 +13,11 @@ for mode in ('comparison','single'):
  except ValueError:pass
  else:raise AssertionError('Changed hours accepted')
  print(mode+': valid input accepted; altered hours refused')
+source=load(root/'examples/hours-only-source.json');plan=load(root/'examples/hours-only-plan.json')
+result=reconcile(source,plan);assert result['pricing']=='unpriced' and result['unestimated']['Q-HOURS-002']==1
+broken=copy.deepcopy(plan);cell=broken['matrix'][-1]['cells']['Q-HOURS-002'];cell.pop('status');cell['hours']=0
+try:reconcile(source,broken)
+except ValueError:pass
+else:raise AssertionError('Zero hours accepted for unestimated work')
+print('hours-only: unpriced input accepted; zero for unestimated work refused')
 print('SELFTEST PASSED')

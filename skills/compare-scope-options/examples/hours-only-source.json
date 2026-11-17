@@ -1,0 +1,119 @@
+{
+  "kind": "synthetic",
+  "system": "Synthetic estimate export",
+  "revision": "hours-example-1",
+  "captured_at": "2026-11-10T10:00:00-05:00",
+  "pricing": "unpriced",
+  "missing_inputs": {
+    "price": "No rate card is supplied, so no option carries a price.",
+    "staffing": "No team plan is supplied for either option.",
+    "timeline": "No start date or delivery sequence is supplied."
+  },
+  "quotes": [
+    {
+      "id": "Q-HOURS-001",
+      "full_items": [
+        {
+          "id": "online-booking",
+          "name": "Online booking",
+          "category": "Booking",
+          "description": "Let a patient choose an open slot and confirm it without a phone call.",
+          "hours": 40,
+          "optional": false
+        },
+        {
+          "id": "calendar-sync",
+          "name": "Calendar sync",
+          "category": "Booking",
+          "description": "Keep each clinician calendar in step with booked and cancelled slots.",
+          "hours": {
+            "low": 24,
+            "expected": 32,
+            "high": 48
+          },
+          "optional": false
+        },
+        {
+          "id": "staff-rota",
+          "name": "Staff rota view",
+          "category": "Operations",
+          "description": "Show reception which clinician covers each room and session.",
+          "hours": 16,
+          "optional": false
+        },
+        {
+          "id": "patient-survey",
+          "name": "Visit survey",
+          "category": "Operations",
+          "description": "Ask the patient two questions after a visit and store the answers.",
+          "hours": 12,
+          "optional": true
+        }
+      ],
+      "active_item_ids": [
+        "online-booking",
+        "calendar-sync"
+      ]
+    },
+    {
+      "id": "Q-HOURS-002",
+      "full_items": [
+        {
+          "id": "online-booking",
+          "name": "Online booking",
+          "category": "Booking",
+          "description": "Let a patient choose an open slot and confirm it without a phone call.",
+          "hours": 40,
+          "optional": false
+        },
+        {
+          "id": "calendar-sync",
+          "name": "Calendar sync",
+          "category": "Booking",
+          "description": "Keep each clinician calendar in step with booked and cancelled slots.",
+          "hours": {
+            "low": 24,
+            "expected": 32,
+            "high": 48
+          },
+          "optional": false
+        },
+        {
+          "id": "staff-rota",
+          "name": "Staff rota view",
+          "category": "Operations",
+          "description": "Show reception which clinician covers each room and session.",
+          "hours": 16,
+          "optional": false
+        },
+        {
+          "id": "patient-survey",
+          "name": "Visit survey",
+          "category": "Operations",
+          "description": "Ask the patient two questions after a visit and store the answers.",
+          "hours": 12,
+          "optional": true
+        },
+        {
+          "id": "reminders",
+          "name": "Appointment reminders",
+          "category": "Messaging",
+          "description": "Send a reminder before each booked visit and record any reply.",
+          "status": "unestimated",
+          "hours": null,
+          "discovery": "a review of the message provider and the consent records",
+          "optional": false
+        }
+      ],
+      "active_item_ids": [
+        "online-booking",
+        "calendar-sync",
+        "staff-rota",
+        "reminders"
+      ]
+    }
+  ],
+  "notes": [
+    "The reminder estimate waits for the message provider review."
+  ]
+}

@@ -4,7 +4,7 @@
 
 ## Source record
 
-The top-level object has `kind` (`export`, `live-capture` or `synthetic`), `system`, `revision`, a timezone-bearing `captured_at`, and `quotes`. These fields record the capture; they do not authenticate a live system. Retain the original connector response or export beside the normalized source.
+The top-level object has `kind` (`export`, `live-capture` or `synthetic`), `system`, `revision`, a timezone-bearing `captured_at`, and `quotes`. `pricing` is `quoted` by default; an hours-only estimate uses `unpriced`, described below. These fields record the capture; they do not authenticate a live system. Retain the original connector response or export beside the normalized source.
 
 Each quote contains:
 
@@ -13,30 +13,34 @@ Each quote contains:
 | `id` | The quote's stable identifier. |
 | `full_items` | Every scope item, including deselected and optional work. |
 | `active_item_ids` | IDs from the active-only read. Every ID must occur in the full list. |
-| `active_snapshot_id` | The ID reported as active by the timeline list. |
-| `snapshots` | The snapshots needed for the reference, retaining their own IDs. |
+| `active_snapshot_id` | The ID reported as active by the timeline list. Omitted when unpriced. |
+| `snapshots` | The snapshots needed for the reference, retaining their own IDs. Empty or omitted when unpriced. |
 
-Each item has `id`, `name`, `category`, nonnegative `hours`, an explicit Boolean `optional`, and a `description` or `effort_basis`. The same item ID across quotes must name the same item and category. Quote-specific IDs need an explicit, reviewed mapping to common IDs before normalization. Preserve that mapping with the original responses. A name similarity is insufficient to establish identity.
+Each item has `id`, `name`, `category`, `hours`, an explicit Boolean `optional`, and a `description` or `effort_basis`. `hours` is a nonnegative number, or a range object with exactly `low`, `expected` and `high`, where low ≤ expected ≤ high. An unpriced comparison may also mark an item `"status": "unestimated"`, with null hours and a `discovery` field naming the work needed to estimate it. Null hours without that status are rejected, and an unestimated item never becomes zero. The same item ID across quotes must name the same item and category. Quote-specific IDs need an explicit, reviewed mapping to common IDs before normalization. Preserve that mapping with the original responses. A name similarity is insufficient to establish identity.
 
 Each snapshot has `id`, `label`, `currency`, `revenue`, `weeks` and `hours`. The currency is a three-letter code. All numeric values must be finite and nonnegative. Preserve decimal currency values. A newer inactive snapshot may remain in the capture; it is not automatically displayed.
 
-Optional `notes` contain source-supported scope conditions. The builder displays all of them. Keep internal retrieval comments outside this field.
+### Unpriced comparison
+
+Set `"pricing": "unpriced"` when the estimate has hours but no rate card, team plan or timeline. Every quote then has no snapshots and no active snapshot. `missing_inputs` is required and has exactly `price`, `staffing` and `timeline`, each a sentence saying what is missing. The page shows them under "Inputs still needed" and derives no price, staffing plan or duration from the hours. A quoted source cannot carry `missing_inputs` or unestimated items, so reconciliation for priced quotes is unchanged.
+
+Optional `notes` contain source-supported scope conditions, and the builder displays every one of them. Keep internal retrieval comments outside this field.
 
 ## Presentation record
 
 The presentation has `title`, `client`, `intro`, `options` and `matrix`. `rounding` defaults to `1`, meaning exact currency display; `1000` adds an approximate headline rounded half-up to the nearest thousand and retains the exact amount.
 
-An option has `quote_id`, `name`, `summary` and a `snapshots` list. Copy the fields of each requested source snapshot exactly. Include the active snapshot. Additional variants must exist in the capture and retain their actual labels, revenue, duration and staffing hours.
+An option has `quote_id`, `name`, `summary` and a `snapshots` list. In an unpriced comparison the list is empty or omitted. Copy the fields of each requested source snapshot exactly. Include the active snapshot. Additional variants must exist in the capture and retain their actual labels, revenue, duration and staffing hours.
 
-Each matrix entry has `id`, exact `name`, exact `category`, `description`, `description_basis` and `cells`. The basis identifies `quote_id` and `field` (`description` or `effort_basis`) from a captured occurrence of that item. Preserve a supplied source document as an evidence field in the normalized capture when it is the description authority.
+Each matrix entry has `id`, exact `name`, exact `category`, `description`, `description_basis` and `cells`. The basis identifies `quote_id` and `field`, naming which of those two evidence fields a captured occurrence of that item supplies. Preserve a supplied source document as an evidence field in the normalized capture when it is the description authority.
 
-Cells are keyed by quote ID. Each has `state` and `hours`. States are `in`, `optional`, `available` and `out`. An absent item has `hours: null`; it must not inherit another option's estimate. Every presentation item has a cell for every option. The matrix contains the union of the supplied quotes' scope, with no omissions or extra rows.
+Cells are keyed by quote ID. Each has `state` and `hours`. States are `in`, `optional`, `available` and `out`. A cell copies the source estimate exactly: the same number or the same range. An absent item has `hours: null`; it must not inherit another option's estimate. An unestimated cell keeps null hours and adds `"status": "unestimated"`. Any number there, including zero, prevents output. Every presentation item has a cell for every option. The matrix contains the union of the supplied quotes' scope, with no omissions or extra rows.
 
 ## Failure behavior
 
 Reconciliation stops on duplicate IDs or JSON keys. It rejects unknown active items, an absent active snapshot, an unsupported variant, inconsistent identity and missing evidence text. Any mismatched scope cell or snapshot value prevents output. Existing HTML and receipt files are never overwritten; use a new attempt directory.
 
-The successful receipt records counts for each state and the source revision. It also binds the input files, profile and HTML with SHA-256 hashes. It establishes agreement with those exact files. Review original-source normalization and description meaning separately before making a current-client claim.
+The successful receipt records counts for each state, the unestimated items for each quote, the pricing mode and the source revision. It also binds the input files, profile and HTML with SHA-256 hashes. It establishes agreement with those exact files. Review original-source normalization and description meaning separately before making a current-client claim.
 
 ## Compatibility API
 
