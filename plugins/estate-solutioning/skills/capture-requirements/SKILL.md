@@ -12,7 +12,7 @@ description: 'Capture and structure business requirements in the Estate approved
 ## Purpose
 
 This skill guides the agent through an interactive, structured conversation to
-capture business requirements in the Estate approved delivery matrix format.
+capture business requirements as the Estate's approved delivery matrix.
 The final output is a **branded Excel workbook (.xlsx)** with two tabs, ready
 for client presentation and downstream use by AI agents or development teams.
 
@@ -22,7 +22,8 @@ Detailed tables live in `references/` to keep this file lean. Read the relevant
 one when you reach that part of the work:
 
 - `references/excel-workbook-format.md`: the per-column tables for both tabs,
-  the default blue/white styling theme, the Epics-tab formula, and recalculation.
+  the styling roles, which come from the selected profile, the Epics-tab formula, and
+  recalculation.
 - `references/gherkin-and-questions.md`: Gherkin acceptance-criteria structure
   with a worked example, plus clarifying-question guidance.
 - `references/jira-export-and-traceability.md`: the Source column and the
@@ -34,15 +35,16 @@ one when you reach that part of the work:
 
 ## Before Generating the Workbook
 
-**Always read the host spreadsheet skill before writing any openpyxl code.**
+**Read the spreadsheet skill your host provides before writing any openpyxl code.**
 Look for `xlsx`, `spreadsheets`, or the equivalent in the available skills list.
 Follow its guidelines for formula construction, recalculation, error
 checking, and code style. Use its `scripts/recalc.py` to recalculate
 formulas after generating the workbook.
 
-If an **Estate brand guidelines skill** exists (check available skills),
-read it and use the official brand colors instead of the default blue/white
-theme in the reference file.
+Take the workbook's colours and font from the brand profile the build card
+selects: an explicitly named profile, then the project's brand file, then the
+estate neutral profile. With no confirmed profile the workbook uses the neutral
+profile. The reference file maps each workbook element to a profile role.
 
 ## Delivery Matrix: Key Definitions
 
@@ -111,7 +113,7 @@ If no signal is present, default to **Must Have**.
 ## BA Mode: Salesforce Engagements
 
 BA mode turns on when the source material is a Salesforce Statement of Work
-or scope document, or when the backlog feeds a Salesforce build. It changes
+or another scope document, or when the backlog feeds a Salesforce build. It changes
 nothing about the hierarchy, the workbook, or the phases below. It adds
 discipline on top: do not start without the SOW, sweep the SOW for every
 Salesforce area it commits to, trace every requirement to a named SOW section,
@@ -119,8 +121,8 @@ prefer standard platform capability before recommending custom development,
 and widen Gherkin coverage to permission and negative scenarios. The full
 rules are in `references/ba-mode-salesforce.md`; read that file before Phase 1
 whenever this mode applies. In BA mode also read
-`references/jira-export-and-traceability.md`, since the Source column and the
-gap list are mandatory there rather than situational.
+`references/jira-export-and-traceability.md`, since that mode always needs a
+Source value on every requirement and a list of gaps.
 
 ## Interactive Workflow
 
@@ -135,53 +137,43 @@ a workbook. Follow the phases below.
 2. **Identify candidate Epics, Capabilities, and Business Needs.**
 3. **Present the proposed hierarchy to the user.**
 
-   **MUST** use the exact indentation format shown below. Each level MUST
-   be on its own line with proper indentation. Do NOT collapse the hierarchy
-   into a single paragraph or run items together on one line.
-
-   **CRITICAL FORMATTING RULE:** Use ONLY standard markdown list characters
-   (`-` or `*`) for ALL hierarchy levels. Do NOT use Unicode bullet
-   characters (`•`, `◦`, `▪`, etc.). The chat renderer does not recognize
-   these as list markers and will collapse the hierarchy into a single
-   paragraph. This is the #1 formatting failure mode for this skill.
-
-   **Required format (follow this structure exactly):**
+   Put each level on its own line and show the nesting by indentation
+   alone. A collapsed paragraph hides the structure the user is checking.
+   Use standard Markdown list markers (`-`) for every level. A Unicode
+   bullet such as `•` is not a list marker to the chat renderer, which
+   then runs the hierarchy together into one paragraph.
 
    ```markdown
-   **Proposed Hierarchy:**
+   Proposed hierarchy
 
-   - **Business Need:** Enable compliant, error-free pricing for
-     FDA-regulated medical devices...
+   - Business need: Enable compliant, error-free pricing for
+     regulated medical devices...
 
-     - **Capability:** Automated contract pricing that selects the
+     - Capability: Automated contract pricing that selects the
        correct product price tier...
 
-       - **Epic:** Contract-Driven Pricing Engine [Prefix: **CPE**]
-         - Auto-Apply Contracted Price
-         - Tiered Pricing Logic
-         - Fallback to List Price
-         - Audit Trail for Pricing Decisions
-         - Contract Identification on Quote Creation
+       - Epic: Contract-driven pricing engine [prefix CPE]
+         - Auto-apply contracted price
+         - Tiered pricing logic
+         - Fallback to list price
+         - Audit trail for pricing decisions
+         - Contract identification on quote creation
    ```
 
    Formatting rules:
-   - Use standard markdown `-` for ALL hierarchy levels (Business Need,
-     Capability, Epic, and requirement names). NEVER use `•` or other
-     Unicode bullet characters.
-   - Use **2-space indentation** per nesting level so the markdown parser
-     recognizes sub-lists.
-   - Insert a **blank line** before each Business Need, Capability, and
-     Epic item to ensure line-break separation in the rendered output.
-   - Do NOT wrap the hierarchy in a blockquote (`>`). Output it as a
-     top-level markdown list.
-   - **Every item on its own line.** Never concatenated into a paragraph.
-   - Bold the labels: **Business Need:**, **Capability:**, **Epic:**.
+   - Indent two spaces per level so the Markdown parser nests the lists.
+   - Leave a blank line before each business need, capability and epic.
+   - Write the level labels (Business need, Capability, Epic) as plain
+     text. The indentation carries the hierarchy, so the labels need no bold.
+   - Keep the hierarchy out of a blockquote.
    - Show the proposed prefix in brackets after the epic name.
    - Show requirement short names only, not full user stories or details.
-   - If there are multiple business needs, capabilities, or epics, repeat
-     the full indented structure for each.
+   - Repeat the indented structure for each further business need,
+     capability or epic.
 
-4. **Use `ask_user_input_v0`** to confirm or adjust:
+4. Ask the user to confirm or adjust the hierarchy. When the host offers a
+   structured question tool, such as `ask_user_input_v0` on claude.ai, use it
+   for these bounded choices; otherwise ask in plain text with numbered options:
    - Are these the right epics?
    - Are any missing or should any be merged/split?
    - Is the capability grouping correct?
@@ -197,16 +189,14 @@ Once hierarchy is confirmed:
    fully populated: Gherkin acceptance criteria, inferred priorities,
    default statuses, formulas, and styling.
 2. **Save and present** the workbook to the user for review.
-3. **MUST include a direct download link** to the file in your response
-   text (not just via `present_files`). After presenting the file, add a
-   line like:
-
-   > 📎 **[Download requirements_v1.xlsx]**. If you don't see the file,
-   > open the **Artifacts panel** (top-right corner).
-
-   This is important because users may not notice the artifacts panel,
-   especially if it's minimized.
-4. **Use `ask_user_input_v0`** to ask about:
+3. Tell the user where the file is, in the form the host supports. On a
+   host with an Artifacts panel, such as claude.ai, give a direct download
+   link in the reply as well as the presented file, and say the file is also
+   in the Artifacts panel. In Claude Code, Codex or another host with a file
+   system, give the saved path. Write the line in plain text, for example
+   "Download requirements_v1.xlsx", with no emoji.
+4. Ask about the following, with the host's structured question tool when it
+   has one and in plain text otherwise:
    - Personas: Are the "As A" roles correct?
    - Acceptance criteria: Are the Gherkin scenarios complete?
    - Missing requirements: Anything to add?
@@ -234,11 +224,8 @@ Once hierarchy is confirmed:
 ### Phase 4: Final Delivery
 
 1. Produce the final `.xlsx` workbook.
-2. **Present the file and include a direct download link in your response.**
-   Always remind the user:
-
-   > 📎 **[Download requirements_final.xlsx]**. Open the **Artifacts
-   > panel** (top-right corner) if you don't see the file.
+2. Present the file and say where it is, as in Phase 2: a download link
+   plus a mention of the Artifacts panel where the host has one, otherwise the saved path.
 
 3. Provide a brief summary:
    - Total number of requirements
@@ -250,40 +237,42 @@ Once hierarchy is confirmed:
 ## Acceptance Criteria and Clarifying Questions
 
 Acceptance criteria are written in Gherkin. For the scenario structure, a
-worked example, and guidance on when and how to ask clarifying questions with
-`ask_user_input_v0`, see `references/gherkin-and-questions.md`.
+worked example, and guidance on when and how to ask clarifying questions, see
+`references/gherkin-and-questions.md`.
 
 ## Important Reminders
 
-- **Always include a download link and artifacts panel reminder** when
-  presenting files. Users often miss the artifacts panel. Every time you
-  present a file, add: "📎 **[Download filename.xlsx]**. Open the
-  **Artifacts panel** (top-right) if you don't see the file."
+- **Say where each presented file is** in the host's own terms: a download
+  link and the Artifacts panel on claude.ai, the saved path in Claude Code or
+  Codex. Write it without emoji.
 - **Always start with the interactive hierarchy review.** Never skip to
   workbook generation without confirming structure with the user first.
-- **Use `ask_user_input_v0`** to present options as clickable choices whenever
-  the question has bounded answers.
+- **Offer bounded choices as options**: through a structured question tool
+  if one exists, or else as a numbered list in plain text.
 - **Gherkin is non-negotiable** for acceptance criteria formatting.
 - **Prefix-based numbering**: auto-generate but always confirm with the user.
 - **Infer priority from source material** using the signal words above.
-  Default to Must Have when uncertain.
+  Use Must Have when the signal is unclear.
 - **Business Need** lives only on the Epics tab. Do not include it on
   the Requirements tab.
-- **Always read the xlsx skill** before generating the workbook.
+- **Read the xlsx skill first.** The workbook code follows its rules.
 - **Always recalculate** the workbook after generation using recalc.py.
-- **Check for brand guidelines skill.** If it exists, use official Estate
-  colors instead of the default blue/white theme.
+- **Use the selected brand profile for colours and font.** Without a confirmed
+  profile, use the neutral profile.
 - When the user provides vague input, infer reasonable defaults but flag
   your assumptions and ask for confirmation.
 
 ## Release gate (required)
 
-Before you deliver, run the gate. This is a required step, not a suggestion. Full
+Before you deliver, run the gate. This step is required. Full
 spec in [`release-gate.md`](_shared/release-gate.md).
 
 1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
-2. Run review-deliverable before you call it final.
+2. Run `brand_check.py` on the saved workbook. It reads the fills, font
+   colours, borders and fonts of the cell formats in use and checks them
+   against the selected profile.
+3. Run review-deliverable before you call it final.
 
 Do not present the artifact as finished until both checks have passed.
 

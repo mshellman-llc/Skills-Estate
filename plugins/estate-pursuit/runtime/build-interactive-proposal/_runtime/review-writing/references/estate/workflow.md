@@ -32,6 +32,10 @@ Resolve visual instructions before building. The user's current request and sele
 
 Evaluate content accuracy, functional behavior and UI/UX separately. For a UI/UX repair, inspect the rendered overview and meaningful changed states at desktop and narrow widths through the DOM and extracted text, including keyboard navigation. Never take screenshots or save PNG or other raster captures to verify work; an image is kept only when it is the requested deliverable. Compare how the reader finds, understands and uses the content with the supplied examples. Record the agent's assessment separately from the user's acceptance. Working controls, token compliance and clean tests do not make an artifact an approved design reference.
 
+## Follow the owner's rules over template formatting
+
+When an owner's writing or brand rules conflict with the formatting a skill's template prescribes, the owner's rules win. Substitute an equivalent form that carries the same content: a table for a monospace block, a separate record of sources for per-section source lines, plain indentation for bold labels, and the neutral or confirmed brand profile for a template's default theme. Record each substitution and the rule that required it in the run's quality record. The skill's content requirements still hold, so everything the template asks the reader to receive must still be present.
+
 ## Verify before agreeing or assigning responsibility
 
 When a factual claim is challenged, check the available records before agreeing,

@@ -12,6 +12,14 @@ by the Python and Node loaders. No brand CSS repository or company account is
 required. Use `scripts/sync_tokens.py --output tokens.json` only for consumers
 that need a snapshot, and `--check tokens.json` to detect drift.
 
+In HTML and SVG the palette check reads styles only: `<style>` and `<script>`
+blocks, style attributes, SVG paint attributes and the theme-color meta tag. A
+hex value shown as page text, such as a table documenting a client's draft
+palette, is content and passes. In a workbook it reads the fills, font colours
+and borders of the cell formats in use, conditional formats, and chart and
+drawing colours. A workbook font outside the profile's type stacks is a review
+flag.
+
 The checker applies the selected border width and radius and checks for title
 underlines and long centered body copy. It reports sentence-case and label
 tracking issues for review. It does not ban warm colors that the selected profile

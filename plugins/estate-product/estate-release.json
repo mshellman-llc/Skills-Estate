@@ -31,7 +31,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "2cd3a024283d43744f4c56f1c60360a9b86f08c43506426ad585f65b4a4328b9",
+      "required_sha256": "a272c330e73551aec3959a3564e4cdc6eff4d4b02ab0541e60888e06158540f0",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -121,7 +121,7 @@
       "subject": "author-style-runtime"
     },
     {
-      "required_sha256": "5f2c5e5461a520661dc83e88aaea46b8e96df8568be7ed7e615310ebe0ff5036",
+      "required_sha256": "abcec877a0f05721bb7aa5c9748a589302a7a4c57d38549703ead65e8d13ae01",
       "status": "review required",
       "subject": "brand-renderer"
     },
@@ -141,7 +141,7 @@
       "subject": "build-editorial-chart"
     },
     {
-      "required_sha256": "cffd49f78ea4608a660840102a0cb28aa9de00fd3b0a18654fcb24412c67b4c4",
+      "required_sha256": "df5b3970a4dff558b21d3c2fa950b8cd86dbcf07e5f8d410ff3afcbc622131c3",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
@@ -171,7 +171,7 @@
       "subject": "capture-knowledge"
     },
     {
-      "required_sha256": "02314587bc4f964b1f7a7e7d875a1caceab630f7c006abd9c4cb9510c85008f3",
+      "required_sha256": "686ff54226f343f80eaeddfd9f0f9d1cc4bd750f88db634aa8369af3f0444e9f",
       "status": "review required",
       "subject": "capture-requirements"
     },
@@ -511,7 +511,7 @@
       "subject": "work-in-github-repository"
     },
     {
-      "required_sha256": "2e82ff3b0942f7bfe4025412ad3964f1f366c3c865e13a74405e996bd9ca3e76",
+      "required_sha256": "d58f4704c5ee2d26ddc6da55a39fce310b1effa9a5db39aaab0b3ac07d6b3770",
       "status": "review required",
       "subject": "write-architecture-reference"
     },
@@ -541,11 +541,11 @@
       "subject": "writing"
     },
     {
-      "required_sha256": "a9239b0431ba34723171f281f3e2d83c4c1c24f6ac6a2a09d3ca09f45f61bd21",
+      "required_sha256": "8df2568477ee7f7e9f4e653627b5ebf136f2de75e7e5ca055d95f45711677e5a",
       "status": "review required",
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "46bf281838ce109ec75a68839a2f098b436f740a36d3f5059c7691fc03cb5561",
+  "source_sha256": "917bb34394846ca1be12916f170aa1dc52b864a2c910fa4441e316bc4c8e49bf",
   "status": "owner-published"
 }

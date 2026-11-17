@@ -1,6 +1,6 @@
 # Contextual review candidates
 
-C25–C27 report observable structures for a reading pass. They never rewrite the
+The three contextual candidates in the table below report observable structures for a reading pass. They never rewrite the
 artifact, prove that a passage lacks value or evidence, or establish that a
 requirement is invented. A clean result can miss all three behaviors. Keep exact
 quotations, meaningful names, supported claims and useful repetition unchanged.
@@ -22,7 +22,7 @@ HTML and Word/PowerPoint XML. Office parts have separate review boundaries;
 content on different slides is not treated as adjacent. Nested tables are not
 interpreted as simple tables. An HTML table's explicit `aria-describedby` or
 `aria-details` relationship identifies its text alternative, including a nested
-paragraph, and excludes that alternative from C25 only. This is an accessibility
+paragraph, and excludes that alternative from the table-narration candidate only. This is an accessibility
 hint, not permission to relabel prose to avoid review. HTML script/style content
 continues through the legacy checks; it is outside these visible-structure
 signals. Other supported inputs use extracted text; flattened PDF, spreadsheet
@@ -42,9 +42,10 @@ A candidate still makes the scanner return exit 1. Read all occurrences before
 recording an assessment. With `prose_receipt.py emit`, repeat
 `--retain-candidate RULE=REASON` once for each retained candidate rule and provide
 `--retention-source SOURCE`. The reason must cover every occurrence of that rule
-in this artifact; quote locations when their purposes differ. C24's existing
-`--retain-framing-reason` remains supported. Only C24–C27 are eligible; this cannot
-waive another diagnostic. Changed artifact bytes or checker/configuration
+in this artifact; quote locations when their purposes differ. The existing
+`--retain-framing-reason` remains supported for the framing candidate. The
+repeated-phrase rule, all-caps blocks, the framing candidate and the three
+contextual candidates are eligible; this cannot waive another diagnostic. Changed artifact bytes or checker/configuration
 fingerprints require a renewed assessment. A valid record proves those binding
 checks, not the truth of the reviewer's judgment.
 

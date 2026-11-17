@@ -59,7 +59,7 @@ CHECKER = HERE / "writing_check.py"
 CONFIG = HERE.parent / "house.json"
 
 RECEIPT_VERSION = "1"
-REVIEWABLE = frozenset({"C24-formulaic-the-framing", "C25-table-narration-candidate", "C26-action-basis-candidate", "C27-reaffirmation-candidate"})
+REVIEWABLE = frozenset({"C12-verbatim-recycling", "all-caps-block", "C24-formulaic-the-framing", "C25-table-narration-candidate", "C26-action-basis-candidate", "C27-reaffirmation-candidate"})
 
 REQUIRED_FIELDS = (
     "receipt_version",
@@ -338,7 +338,7 @@ def main(argv=None) -> int:
     p_emit.add_argument('--retention-source',
                         help='Source reference supporting explicit contextual retention assessments')
     p_emit.add_argument('--retain-candidate', action='append',
-                        help='RULE=REASON to retain a C24/C25/C26/C27 review candidate; requires --retention-source, waives no other rule')
+                        help='RULE=REASON to retain a C12, all-caps-block or C24 to C27 finding after reading it; requires --retention-source, waives no other rule')
     p_emit.set_defaults(func=emit)
 
     p_val = sub.add_parser("validate", help="re-derive and judge an existing receipt")

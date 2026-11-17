@@ -236,7 +236,10 @@ DEFERENCE = [
     re.compile(r"\byou\s+asked\b", re.I),
     re.compile(r"\bas\s+(?:you\s+)?requested\b", re.I),
     re.compile(r"\bin\s+your\s+order\b", re.I),
-    re.compile(r"\byour\s+(?:four|three|two|five|\d+)\s+\w+", re.I),
+    # Only a count of the reader's questions labels whose question is answered.
+    # "Your two interviews" is a factual reference and stays out.
+    re.compile(r"\byour\s+(?:four|three|two|five|\d+)\s+(?:questions?|asks?|requests?|"
+               r"points?|queries|query|concerns?|priorities|items?)\b", re.I),
     re.compile(r"\bthe\s+\w+\s+you\s+(?:asked|wanted|named)\b", re.I),
     re.compile(r"\bper\s+your\s+request\b", re.I),
 ]
@@ -328,6 +331,15 @@ APPROX_NOTATIONS = {
     "plus-suffix": re.compile(r"\d\+"),
     "circa-word": re.compile(r"\b(?:approx\.?|approximately|about|roughly)\s+\d", re.I),
 }
+
+# A record or requirement ID (KPI-01, SKU-02, ADR-2026-04) is an identifier,
+# not shouted prose. It is replaced by a neutral mark before the all-caps check.
+ID_SHAPED = re.compile(r"(?<![\w-])(?=[A-Z0-9_./-]*\d)[A-Z][A-Z0-9]*(?:[-_./][A-Z0-9]+)+(?![\w-])")
+
+# A span in double quotation marks is someone else's words: a quoted interview
+# question is not the author's claim. Only the claim rules (C10 deference and
+# C15 unsourced quantifiers) skip it; every other rule still reads quoted text.
+QUOTED_SPAN = re.compile(r'"[^"\n]{1,400}"|“[^”\n]{1,400}”')
 
 ALL_CAPS_BLOCK = re.compile(
     r"^[^a-z\n]*\b[A-Z]{2,}\b(?:[^a-z\n]*\b[A-Z]{2,}\b){2,}[^a-z\n]*$", re.M
@@ -573,7 +585,8 @@ def check(text: str, cfg=None):
 
     # --- C10 deference ---------------------------------------------------
     # A sentence counts once however many patterns it trips.
-    defer = [s for s in sents if any(p.search(s) for p in DEFERENCE)]
+    claim_sents = [QUOTED_SPAN.sub(' ', s) for s in sents]
+    defer = [s for s, claim in zip(sents, claim_sents) if any(p.search(claim) for p in DEFERENCE)]
     if defer:
         findings.append(Finding(
             "C10-deference", "FAIL",
@@ -631,7 +644,7 @@ def check(text: str, cfg=None):
         ))
 
     # --- C15 unsourced quantifiers ---------------------------------------
-    quant = [s for s in sents if UNSOURCED_QUANTIFIER.search(s)]
+    quant = [s for s, claim in zip(sents, claim_sents) if UNSOURCED_QUANTIFIER.search(claim)]
     if quant:
         findings.append(Finding(
             "C15-unsourced-quantifier", "WARN",
@@ -772,7 +785,9 @@ def check(text: str, cfg=None):
         ))
 
     # --- All-caps blocks -------------------------------------------------
-    caps = ALL_CAPS_BLOCK.findall(text)
+    # Identifier-only lines, such as a table cell listing requirement IDs, are
+    # not prose. The same rule applies to HTML cells and Markdown lines.
+    caps = ALL_CAPS_BLOCK.findall(ID_SHAPED.sub('#', text))
     caps = [c.strip() for c in caps if len(words(c)) >= 3]
     if caps:
         findings.append(Finding(

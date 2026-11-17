@@ -54,7 +54,7 @@ For retries and redelivery, distinguish sequential recovery from concurrent dupl
 
 ## Output and acceptance
 
-Use the requested format. A self-contained HTML reference is a useful default when none is specified. Include a title and metadata identifying the owner, date and decision state. Put source locators with their claims or sections. Use a systems diagram to show boundaries and interfaces and tables to compare real choices.
+Use the requested format. A self-contained HTML reference is a useful default when none is specified. Include a title and metadata identifying the owner, date and decision state. Put source locators with their claims or sections. When the owner's writing rules keep source lists out of finished copy, keep the locators in a separate record of sources and record that substitution; the template accepts either form, and a table in place of the monospace schema block. Use a systems diagram to show boundaries and interfaces and tables to compare real choices.
 
 A source line may read `Source: architecture decisions, section 2.` A proposal may read `Design proposal, consistent with [named requirement].` Do not style a proposal as an established requirement.
 

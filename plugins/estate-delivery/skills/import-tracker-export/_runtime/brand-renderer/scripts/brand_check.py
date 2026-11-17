@@ -10,12 +10,15 @@ Usage:
   python3 brand_check.py artifact.html [artifact.pptx ...] [--json out.json]
                                        [--strict]
 
-Inputs: .html .htm .css .pptx .docx .js .py .md  (source files are linted too,
+Inputs: .html .htm .css .pptx .docx .xlsx .js .py .md  (source files are linted too,
 because a renderer that hardcodes a hex will emit it on every future artifact -
 catching it in the source is the only fix that holds.)
 
 FAILURES (exit 1). Each traces to BRAND.md via tokens.json `rules`:
-  OFF_PALETTE        a hex with no token in the selected brand profile
+  OFF_PALETTE        a hex with no token in the selected brand profile. In
+                     HTML and SVG only styles count: <style> and <script>
+                     blocks, style attributes, SVG paint and theme-color.
+                     A hex shown as page text is content.
   BLOCKED_PALETTE    a known off-brand hex with a canonical replacement
   WARM_ACCENT        warm or orange accent; Sand is the only warm surface
   BLACK_BORDER       a black or near-black border
@@ -31,6 +34,7 @@ REVIEW (reported, blocks only under --strict):
   EYEBROW_CONTRAST   the known brand-versus-accessibility tradeoff
   MISSING_FOOTER     a slide with no footer
   FOOTER_LAYOUT      footer logo not left, or page number not right
+  OFFICE_FONT        a workbook font outside the profile's type stacks
 
 Brand controls identity: palette, type, assets, hierarchy, accessibility, and
 craft. Composition is content-driven, so where a footer sits, and whether a full
@@ -148,6 +152,115 @@ def split_pages(html: str) -> list[str]:
         return [html]
     bounds = starts + [len(html)]
     return [html[bounds[i]:bounds[i + 1]] for i in range(len(starts))]
+
+
+# In a page, a colour is a brand decision only where it styles something: a
+# <style> block, a script, a style attribute, an SVG paint attribute or the
+# theme-colour meta tag. A hex value shown as page text, such as a palette table
+# documenting another profile, is content and is not linted for OFF_PALETTE.
+STYLE_BLOCK = re.compile(r"<(style|script)\b[^>]*>.*?</\1\s*>", re.S | re.I)
+TAG = re.compile(r"<[A-Za-z][^>]*>", re.S)
+PAINT_ATTR = re.compile(
+    r"\b(?:style|fill|stroke|stop-color|flood-color|lighting-color|color|bgcolor)"
+    r"\s*=\s*(?:\"[^\"]*\"|'[^']*'|[^\s>]+)", re.I)
+THEME_META = re.compile(r"<meta\b[^>]*\bname=[\"']?theme-color[^>]*>", re.I)
+
+
+def html_style_text(html: str) -> str:
+    """The styling parts of an HTML or SVG document, at their original line and
+    column. Every other character becomes a space, so line numbers still match."""
+    keep = [" " if ch != "\n" else "\n" for ch in html]
+
+    def copy(start: int, end: int) -> None:
+        keep[start:end] = html[start:end]
+
+    blocks = [m.span() for m in STYLE_BLOCK.finditer(html)]
+    for start, end in blocks:
+        copy(start, end)
+    for tag in TAG.finditer(html):
+        if any(start <= tag.start() < end for start, end in blocks):
+            continue
+        if THEME_META.fullmatch(tag.group(0)):
+            copy(*tag.span())
+            continue
+        for attr in PAINT_ATTR.finditer(tag.group(0)):
+            copy(tag.start() + attr.start(), tag.start() + attr.end())
+    return "".join(keep)
+
+
+XLSX_NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+XLSX_CELL_STYLE = re.compile(r"<(?:\w+:)?c\b([^>]*)>")
+
+
+def xlsx_parts(path: Path) -> tuple[list[tuple[str, str]], list[tuple[str, str]], set[str]]:
+    """The styles a workbook applies: the fills, font colours and borders of
+    the cell formats its cells use, every conditional format, chart and
+    drawing colours, and the font families in use. The legacy indexed palette
+    and the Office theme list colours no cell need use, so neither is read."""
+    import xml.etree.ElementTree as ET
+    with zipfile.ZipFile(path) as z:
+        names = set(z.namelist())
+        styles = ET.fromstring(z.read("xl/styles.xml")) if "xl/styles.xml" in names else None
+        used = set()
+        for n in sorted(names):
+            if re.match(r"xl/worksheets/[^/]+\.xml$", n):
+                for m in XLSX_CELL_STYLE.finditer(z.read(n).decode("utf-8", "ignore")):
+                    sm = re.search(r"\bs=\"(\d+)\"", m.group(1))
+                    used.add(int(sm.group(1)) if sm else 0)
+        drawings = [(n, z.read(n).decode("utf-8", "ignore")) for n in sorted(names)
+                    if re.match(r"xl/(?:charts|drawings)/[^/]+\.xml$", n)]
+    colours: list[tuple[str, str]] = []
+    fonts: set[str] = set()
+    if styles is None:
+        return colours, drawings, fonts
+
+    def group(tag: str) -> list:
+        node = styles.find(XLSX_NS + tag)
+        return list(node) if node is not None else []
+
+    font_list, fill_list, border_list = group("fonts"), group("fills"), group("borders")
+    xfs = group("cellXfs")
+
+    def rgb_of(node, where: str) -> None:
+        for item in node.iter():
+            value = item.get("rgb")
+            if value and re.fullmatch(r"[0-9a-fA-F]{6}|[0-9a-fA-F]{8}", value):
+                colours.append((where, "#" + value[-6:]))
+
+    for index in sorted(used):
+        if index >= len(xfs):
+            continue
+        xf = xfs[index]
+        for attr, items, kind in (("fontId", font_list, "font"), ("fillId", fill_list, "fill"),
+                                  ("borderId", border_list, "border")):
+            ref = int(xf.get(attr, "0"))
+            if ref < len(items):
+                rgb_of(items[ref], f"cell format {index} {kind}")
+                if kind == "font":
+                    name = items[ref].find(XLSX_NS + "name")
+                    if name is not None and name.get("val"):
+                        fonts.add(name.get("val"))
+    for index, dxf in enumerate(group("dxfs")):
+        rgb_of(dxf, f"conditional format {index}")
+    return colours, drawings, fonts
+
+
+def check_xlsx(path: Path, label: str, f: Findings) -> None:
+    """Workbook fills, font colours, borders and chart colours against the
+    profile; font families against the profile's type stacks for review."""
+    colours, drawings, fonts = xlsx_parts(path)
+    for where, hex_value in colours:
+        check_hexes(hex_value, f"{label} {where}", f)
+    for name, xml in drawings:
+        check_hexes(xml, f"{label} {name}", f, xml=True)
+    stacks = " ".join(str(T.type.get(k, "")) for k in ("office", "body", "headings"))
+    allowed = {item.strip().lower() for item in stacks.split(",") if item.strip()}
+    for font in sorted(fonts):
+        if allowed and font.lower() not in allowed:
+            f.add("review", "OFFICE_FONT", f"{label} styles",
+                  f"font '{font}' is not in the profile's type stacks "
+                  f"(office font {T.type.get('office', 'unset')}). Confirm it "
+                  "is an intended substitution and report it.")
 
 
 def docx_text(path: Path) -> str:
@@ -408,6 +521,10 @@ def check_path(path: Path) -> Findings:
         check_hexes(docx_text(path), label, f, xml=True)
         return f
 
+    if ext == ".xlsx":
+        check_xlsx(path, label, f)
+        return f
+
     if ext in TEXT_EXT:
         text = path.read_text(encoding="utf-8", errors="replace")
         if ext in (".html", ".htm"):
@@ -421,10 +538,12 @@ def check_path(path: Path) -> Findings:
                     m.group(0) for m in
                     re.finditer(r"<style[^>]*>.*?</style>", text, re.S | re.I))
                 for i, page in enumerate(pages, 1):
-                    check_hexes(head + "\n" + page, f"{label} page {i}", f,
-                                per_surface=True)
+                    check_hexes(head + "\n" + html_style_text(page),
+                                f"{label} page {i}", f, per_surface=True)
             else:
-                check_hexes(text, label, f, per_surface=True)
+                check_hexes(html_style_text(text), label, f, per_surface=True)
+        elif ext == ".svg":
+            check_hexes(html_style_text(text), label, f)
         else:
             check_hexes(text, label, f)
         check_css_geometry(text, label, f)
