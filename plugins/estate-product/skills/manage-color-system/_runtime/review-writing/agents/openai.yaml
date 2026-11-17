@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review writing"
+  short_description: "Review prose and retain verified writing lessons."
+  default_prompt: "Use $review-writing to review this draft and load my compact writing profile."
