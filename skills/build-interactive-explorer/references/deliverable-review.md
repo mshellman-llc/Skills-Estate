@@ -32,6 +32,14 @@ Assign task completion in the running deliverable to its own reviewer, with the 
 
 Coordinate reviewers that share a browser so one does not change the other's state. Their roles may assess in parallel when surfaces are independent.
 
+## When the host cannot start a separate reviewer
+
+Some hosts have no tool for starting another agent. There the builder runs a recorded single-agent review in place of the two separate reviewers and marks the independent-review gate pending. It does not count its own pass as independent.
+
+Run the review by DOM, extracted text and keyboard. Cover both reviewer scopes above: the layout check at both widths, each state a reader can open, and the realistic working question with its flows, exception states, links and focus order. Open each revealed state and compare its text with the controlling sources: the values, owners, rules and consequences it states. A mechanical DOM check confirms that a state opens; it cannot show that the revealed content is true. Take no screenshots.
+
+Write the review record before delivery. It names the host limit, the states and sizes checked, each finding and its repair, and the revealed states compared with which sources. Queue the independent review as an open item for a host that can start reviewers, with the brief, supplied examples and sources the reviewers will need. Report the gate as pending, never as passed, until that review runs. The user can still accept the deliverable in the meantime; keep that acceptance separate from the pending gate.
+
 ## Resolve and finish
 
 Verify each finding against the source and running behavior. Repair the owning implementation and retest affected paths. Repeat a review only when a change, failure or unresolved concern warrants it. Keep content, behavior, visual assessment and the user's acceptance separate. Begin with a whole-deliverable depth/usefulness verdict: sufficient, partial or insufficient, supported by exact locations and missing content. Then report three distinct outcomes: explanatory quality against the named reference, functional defects and their repairs, and the user's acceptance. "No blockers" is a defect disposition, not a quality verdict. A user rejection makes the deliverable unsuccessful even when routing, reviewer invocation and browser checks pass. State tested sizes and states, unresolved findings and material limits. Do not add unrelated estate-wide review gates to this deliverable check.

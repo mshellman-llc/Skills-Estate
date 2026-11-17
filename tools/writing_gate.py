@@ -14,9 +14,9 @@ can also pass with a receipt at .writing-receipts/<path>.json. The receipt
 lists protected text, quoted exactly, with a kind and a reason. Each kind is
 one of these: an exact source quotation, executable syntax, a required
 identifier or a teaching example in a file about writing patterns. The gate
-masks that text and runs the check again. After masking, only C24 to C27
-candidates may remain, and only when the receipt retains them with a reason
-and a source. No other finding can be waived.
+masks that text and runs the check again. After masking, only C12 repeated
+phrases, all-caps blocks and C24 to C27 candidates may remain, and only when
+the receipt retains them with a reason and a source. No other finding can be waived.
 
 A file that had findings before the change may keep them when the change
 leaves its prose alone, as with a renamed identifier or a corrected path. Such
@@ -39,7 +39,8 @@ SCOPES = ('skills/', 'agents/', 'policies/', 'docs/')
 UPSTREAM_TEXT = re.compile(r'^(LICENSE|NOTICE|COPYING)', re.I)
 RECEIPTS = '.writing-receipts'
 KINDS = {'quotation', 'syntax', 'identifier', 'example'}
-CANDIDATES = {'C24-formulaic-the-framing', 'C25-table-narration-candidate',
+CANDIDATES = {'C12-verbatim-recycling', 'all-caps-block',
+              'C24-formulaic-the-framing', 'C25-table-narration-candidate',
               'C26-action-basis-candidate', 'C27-reaffirmation-candidate'}
 
 sys.path.insert(0, str(SCRIPTS))
@@ -140,7 +141,7 @@ def check_receipt(root, path, text, remaining):
     for item in candidates:
         if (not isinstance(item, dict) or item.get('rule') not in CANDIDATES
                 or not str(item.get('reason', '')).strip() or not str(item.get('source', '')).strip()):
-            problems.append('a retained candidate needs a C24 to C27 rule, a reason and a source')
+            problems.append('a retained candidate needs a C12, all-caps-block or C24 to C27 rule, a reason and a source')
         else:
             retained[item['rule']] = item
     for rule in sorted(set(retained) - {item['rule'] for item in after}):

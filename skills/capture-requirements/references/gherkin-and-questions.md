@@ -48,7 +48,9 @@ Scenario: Fallback to list price when no contract exists
 
 ## Clarifying Question Guidelines
 
-Throughout the conversation, use `ask_user_input_v0` to ask focused questions.
+Throughout the conversation, ask focused questions. Use the host's structured
+question tool when it has one, such as `ask_user_input_v0` on claude.ai, and
+plain text with numbered options otherwise.
 Good times to ask:
 
 - **Ambiguous scope**: "Should this epic also cover [related area]?"

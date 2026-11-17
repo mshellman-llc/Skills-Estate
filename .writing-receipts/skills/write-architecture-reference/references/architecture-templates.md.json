@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/write-architecture-reference/references/architecture-templates.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The illustrative schema block; each table line repeats the key columns.",
+      "text": "-- every table carries [the isolation key]. the enforcement keys on it.\ntable_a   (id pk, [isolation key] fk, ...)   -- one-line note\ntable_b   (id pk, [isolation key] fk, ...)   -- immutable, or append-only, note the invariant"
+    }
+  ]
+}

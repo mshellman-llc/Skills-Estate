@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/capture-requirements/references/excel-workbook-format.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The live COUNTIF formula the Epics tab must carry, given in the column table and as a code block.",
+      "text": "=COUNTIF(Requirements!C:C, A2)"
+    }
+  ]
+}

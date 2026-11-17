@@ -43,6 +43,21 @@ observable conditions, format limits and rule-specific retention procedure.
 These candidates cannot establish redundancy, unearned urgency or lack of evidence.
 The validator checks the record. The reviewer remains responsible for the judgment.
 
+`C12-verbatim-recycling` and `all-caps-block` take the same retention record.
+Use it when a repeat is one term kept for one thing, such as a heading restated
+in a sentence, or when a capitalised line is a required name. Pass
+`--retain-candidate "C12-verbatim-recycling=REASON"` or
+`--retain-candidate "all-caps-block=REASON"` with `--retention-source`.
+Identifier-only lines, such as a table cell that lists `SKU-01, SKU-02, SKU-03`,
+are not all-caps prose in HTML or Markdown and need no record. C28 still counts
+those IDs where a reader meets them.
+
+C10 and C15 judge the author's own claims. They skip a span in double
+quotation marks, such as an interview question the source asked. Every other
+rule still reads quoted text, so quoting new wording cannot hide it. C10 counts
+a reference to the reader's questions or requests, such as
+"your three questions". A factual reference such as "your two interviews" passes.
+
 `C28-record-id-density` counts record IDs and sentence locators that stand in
 for names in reader prose. Code, JSON, data files, tooltips and link targets are
 skipped, along with any section under a heading such as Source index, Sources,
