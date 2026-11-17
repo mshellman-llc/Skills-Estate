@@ -22,7 +22,7 @@ Exact source quotations and captured evidence remain unchanged. Executable synta
 
 Record IDs such as `PER-01` or `DEC-02`, sentence locators such as `I1.s24` and other system keys belong in system-facing material. That means data files, ledgers, JSON records, logs, test scripts, the Markdown record of sources, and a source index or appendix.
 
-Anything a person reads names the thing in plain words instead: a page, brief, proposal, report, reply, status update, slide or interface text. Write "the email-sender decision", "Restricted email delivery" or "Megan's first interview".
+Anything a person reads names the thing in plain words instead: a page, brief, proposal, report, reply, status update, slide or interface text. Write "the email-sender decision", "Restricted email delivery" or "the customer's first interview".
 
 Where a reader needs to find the record, give its ID once beside the name, or put the ID in a source index, a tooltip or a link target. Never make an ID the subject of a sentence or a table's only label.
 

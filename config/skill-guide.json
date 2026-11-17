@@ -678,7 +678,7 @@
       "inputs": "The project sources, revisions, authority rules, and proposed claims.",
       "outputs": "A source register, atomic claims, conflicts, and an evidence sufficiency decision.",
       "example": "Build a claim ledger for this report using these versioned sources.",
-      "reviewedEntrypointSha256": "ae493b1fbd5955f7c5c4377004d880c1471751f2753dd63c72990450ba9b31b2",
+      "reviewedEntrypointSha256": "39a62d2a014cba75451d65c8bb39a751b933c16cb0f2b2654cbaeeb8e1ae9fb7",
       "expect": "It builds a ledger of sources and atomic claims first, with an authority score, status and owner for anything unresolved, and the document comes after. If a load-bearing area has too little evidence it writes a short readiness-gap memo and stops instead of drafting the full artifact.",
       "requires": "Needs source files or exports for the engagement, a Knowledge Hub location for the evidence records, and Python 3 to run the ledger validator.",
       "overview": "It builds a ledger of sources and atomic claims first, with an authority score, status and owner for anything unresolved, and the document comes after. If a load-bearing area has too little evidence it writes a short readiness-gap memo and stops instead of drafting the full artifact.",
