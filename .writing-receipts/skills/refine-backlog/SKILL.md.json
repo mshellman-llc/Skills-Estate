@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "artifact": "skills/refine-backlog/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "The gate command that writes the JSON readiness report.",
+      "text": "python3 scripts/readiness_check.py requirements.csv --raid-log RAID.md --format json --output readiness.json"
+    },
+    {
+      "kind": "syntax",
+      "reason": "The selftest script path named in the gate section.",
+      "text": "`scripts/readiness_check_selftest.py` runs the check"
+    }
+  ]
+}

@@ -172,6 +172,10 @@
     "0.4.39": {
       "content_sha256": "751e8301781070ce62ddc06d80a6b8a97bb9d856bceb2154687d98bcf3f982b6",
       "note": "Add the discovery_synthesis evidence contract to evidence-core and name it in synthesize-discovery (closes #117). Replace screenshot and raster verification steps with DOM layout and extracted-text checks that write no image files."
+    },
+    "0.4.40": {
+      "content_sha256": "8e491fe5aabba8ad0c21c3b3294de6657aac18ff58648c0e92647fe6ce20fe7d",
+      "note": "Keep record IDs out of reader prose: writing policy section, checker rule C28 with tests, and plain-name output in ten skills."
     }
   },
   "source_conflicts": [

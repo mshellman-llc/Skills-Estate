@@ -18,7 +18,7 @@ The `Period:` line is mandatory and machine-checked (`Period: YYYY-MM-DD to YYYY
 
 ## 1. Flags (red items first, never buried)
 
-Anything red, newly slipped, or newly drifted, at the top, before the good news. Each flag: one sentence, its stable ID or candidate title, and what decision or action it needs from whom. If there are no flags, write "No flags this period" so absence reads as a check performed.
+Anything red, newly slipped, or newly drifted, at the top, before the good news. Each flag is one sentence: the item named in plain words with its stable ID beside the name (or the candidate title), and what decision or action it needs from whom. If there are no flags, write "No flags this period" so absence reads as a check performed.
 
 A flag cleared this period is reported as cleared, with its source, and the body lines it touched are updated to match. A banner over a stale document body is not resolution.
 
@@ -36,15 +36,15 @@ Progress against the plan: current phase, next gate and its date, on/off track p
 ## 4. RAID movement (counts, not adjectives)
 
 ```markdown
-Risks: 4 open (1 new: R-009), 1 closed (R-003). Issues: 2 open, 0 new.
-Dependencies: 3 open, 1 delivered (D-002). Assumptions: 1 invalidated (A-004).
+Risks: 4 open (1 new: data-migration volume, R-009), 1 closed (sandbox access, R-003). Issues: 2 open, 0 new.
+Dependencies: 3 open, 1 delivered (client SSO metadata, D-002). Assumptions: 1 invalidated (single-currency pricing, A-004).
 ```
 
-Then one line each for the movers: what changed, why, source. Every ID referenced must exist in the log (gate-checked). Items open in the previous status either appear here as moved or are still open in the counts; nothing vanishes without a line.
+Then one line each for the movers, led by the item's plain name: what changed, why, source. Every ID referenced must exist in the log (gate-checked). Items open in the previous status either appear here as moved or are still open in the counts; nothing vanishes without a line.
 
 ## 5. Decisions
 
-New decisions this period by ID, with who made them and the one-line rationale. Then "Decisions needing attention": open questions ripe for a decision, with the gate they block. This section is why the same conversation does not happen twice.
+New decisions this period, each given its plain name and then its ID, with who made it and the one-line rationale. Then "Decisions needing attention": open questions ripe for a decision, with the gate they block. This section is why the same conversation does not happen twice.
 
 ## 6. Scope drift (required, gate-checked)
 
@@ -74,5 +74,6 @@ Only what moved: artifacts delivered or versioned, gates met or signed, with dat
 - Every line about scope, hours, or dates carries a source: a transcript ref, SOW clause, timesheet export, log ID, or a named gap. A confident sentence with no provenance is a live grenade in a client-facing document.
 - Counts, not adjectives. "On track" is only writable next to the evidence that shows it.
 - Direct client quotes are attributed by speaker and date.
+- Lead with names. The client tracks RAID entries and decisions by ID, so each keeps its ID beside a plain name; no sentence opens with an ID.
 - No em dashes, sentence-case headings, no meta-signposting, no significance inflation. Run the prose gate.
 - The report reads top-down in two minutes: flags, outcomes, then detail. A reader who stops after section 2 has the truth, just less of it.

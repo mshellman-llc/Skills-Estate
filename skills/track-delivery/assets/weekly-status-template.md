@@ -26,7 +26,7 @@ Current phase: {{PHASE}}. Next gate: {{NEXT_GATE}} ({{NEXT_GATE_DATE}}).
 
 ## Decisions
 
-{{NEW_DECISIONS_BY_ID}}
+{{NEW_DECISIONS_BY_NAME_WITH_IDS}}
 
 Decisions needing attention:
 

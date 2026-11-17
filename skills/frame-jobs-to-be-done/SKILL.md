@@ -26,7 +26,7 @@ Keep proposals separate from what a customer said. Preserve contradictory situat
 
 ## Showing evidence
 
-Record the basis for every job, moment and criterion: the interview, ticket set or record it came from, or the reasoning behind a hypothesis. Show it as a short reference, such as a superscript number, that points to one evidence list at the end. Do not print "hypothesis", "reported" or a source name beside every statement; repeated labels bury the framing. When a whole set is hypothetical, say so once at the top of the list and once in the readout. The rendered page described under Output carries the same numbers.
+Record the basis for every job, moment and criterion: the interview, ticket set or record it came from, or the reasoning behind a hypothesis. Show it as a short reference, such as a superscript number, that points to one evidence list at the end. Do not print "hypothesis", "reported" or a source name beside every statement; repeated labels bury the framing. When a whole set is hypothetical, say so once at the top of the list and once in the readout. The rendered page described under Output carries the same numbers. Name jobs, personas and interviews in plain words, such as "the late-invoice job" or "the second switch interview". Job, persona and claim IDs belong in the evidence list or the source records, never as a statement's label in the readout.
 
 ## Feature lists, persona theater, and job framing
 
