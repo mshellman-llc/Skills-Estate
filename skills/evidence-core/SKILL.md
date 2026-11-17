@@ -73,6 +73,13 @@ ledger. It does not replace the ledger entry. Preserve an existing governed ID
 when importing another research workspace; map its fields before minting a new
 identifier.
 
+Claim IDs, source IDs and sentence locators such as `I1.s24` are ledger keys.
+A finished page, brief, proposal or reply states each claim in plain words and
+names its source by title, such as "Megan's first interview". Its claim and
+source IDs move to the deliverable's source index or a link target, and the
+adjacent source marker becomes the title or a numbered note that resolves
+there. Drafts may carry inline markers while they are assembled.
+
 ## Source register
 
 The logical Hub record `evidence.sources` records where facts came from. Every

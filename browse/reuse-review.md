@@ -1,6 +1,6 @@
 # Skill reuse review
 
-93 general-use methods, 0 Context-specific workflows, and 0 awaiting source review.
+84 general-use methods, 0 Context-specific workflows, and 9 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -24,7 +24,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `build-deal-decision-deck` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-deck` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-editorial-chart` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `build-interactive-explorer` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `build-interactive-explorer` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-interactive-proposal` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-moscow-story-map` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `build-review-site` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
@@ -43,11 +43,11 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `design-software-system` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `design-sticker` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `develop-independent-product` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `develop-product` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `develop-product` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `draft-application-materials` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `estimate-project` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `evidence-core` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `frame-jobs-to-be-done` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `evidence-core` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `frame-jobs-to-be-done` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `guide-fortunes-weave` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `import-tracker-export` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `ingest-transcript` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
@@ -74,11 +74,11 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `prepare-job-application` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `prepare-sales-pursuit` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `prepare-session-handoff` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `prioritize-work` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `prioritize-work` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `promote-salesforce-changes` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No local path or configured private term detected in workflow text. |
 | `publish-content` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `reconcile-knowledge` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `refine-backlog` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `refine-backlog` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `release-skill-package` | General use | Requires the destination hosts and their current supported installation or upload method. | No local path or configured private term detected in workflow text. |
 | `render-offering-brief` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `review-contract-scope` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
@@ -91,9 +91,9 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `simplify-code` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `specify-implementation` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `start-delivery` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `synthesize-discovery` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `synthesize-discovery` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `tailor-resume` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `track-delivery` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `track-delivery` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `validate-delivery` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `verify-salesforce-org` | General use | Requires the project’s Salesforce configuration and the documented CLI or connector. Live actions require the intended org and authorization. | No local path or configured private term detected in workflow text. |
 | `verify-work-state` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
@@ -104,6 +104,6 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `write-portfolio-case-study` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `write-statement-of-work` | General use | Requires a confirmed quote model, the project’s approved contract profile, and the document runtime. | No local path or configured private term detected in workflow text. |
 | `writing` | General use | Supply the task inputs and its supported runtime. | [skills/writing/scripts/gate_watch.py:116](../skills/writing/scripts/gate_watch.py#L116); [skills/writing/scripts/gate_watch.py:53](../skills/writing/scripts/gate_watch.py#L53); [skills/writing/scripts/gate_watch.py:55](../skills/writing/scripts/gate_watch.py#L55); [skills/writing/scripts/hook.py:52](../skills/writing/scripts/hook.py#L52); [skills/writing/scripts/hook.py:53](../skills/writing/scripts/hook.py#L53); [skills/writing/scripts/writing_system.py:292](../skills/writing/scripts/writing_system.py#L292) |
-| `writing-diagnostics` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `writing-diagnostics` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 
 Refresh this review with `python3 tools/skill_guide.py --report`. The map recomputes reference findings on each build. Reader-guide copy is bound to its reviewed entrypoint hash; a changed entrypoint shows current instructions until the guide is reviewed again.

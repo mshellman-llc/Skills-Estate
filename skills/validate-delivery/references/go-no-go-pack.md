@@ -32,12 +32,12 @@ known unknown with an owner and never a silent omission.
    pass rate and execution progress per the tracker spec, cut by MoSCoW priority. Include
    the gate result line ("trace_check.py: GATE PASSED, 0 findings"). A pack whose counts do
    not recompute is not a pack; run the gate with --gonogo before shipping.
-4. **Named gaps.** Every requirement without coverage: ID, reason, owner, resolve-by, and
-   what the gap means for go-live. Gaps block go/no-go in the sense that they must be in
+4. **Named gaps.** Every requirement without coverage: its plain name with the requirement
+   ID beside it, reason, owner, resolve-by, and what the gap means for go-live. Gaps block go/no-go in the sense that they must be in
    front of the deciders; they do not mean the answer is no. That call is human.
-5. **Open defects by severity.** Full table of open and deferred defects: ID, title,
-   severity, triage decision, owner, affected requirement IDs. Sev 1 and 2 individually
-   narrated (impact, workaround, plan); sev 3 and 4 may be summarized with counts plus the
+5. **Open defects by severity.** Full table of open and deferred defects, each row led by
+   its title: title, defect ID, severity, triage decision, owner, affected requirements.
+   Sev 1 and 2 individually narrated by title (impact, workaround, plan); sev 3 and 4 may be summarized with counts plus the
    list. Deferred defects appear here with their deferral target; deferral does not remove
    a defect from the pack.
 6. **Acceptance criteria status.** Each criterion from the SOW / Test Plan, cited by
@@ -53,6 +53,10 @@ known unknown with an owner and never a silent omission.
    Then the signature block: decision, date, names, roles, both sides. The block ships
    empty. The skill never fills it, never marks the gate met in the engagement record, and
    never schedules cutover.
+
+The client traces requirements and defects by ID, so the pack keeps those IDs, always
+beside a plain name. Sentences lead with the name; no row is labeled by an ID alone. The
+test scripts and the trace matrix carry the full ID lists.
 
 ## Cutover readiness checklist
 
@@ -78,7 +82,7 @@ job. This skill establishes readiness and hands the checklist over.
 
 - Counts before adjectives. "3 open sev 2 defects" precedes any characterization of them.
 - No significance inflation and no minimizing: "only 3 defects" and "3 critical blockers"
-  are both editorials; "3 open sev 2 defects, workarounds documented for 2" is evidence.
+  are both editorials; "sev 2: 3 open, workarounds documented for 2" is evidence.
 - The recommendation lives in section 9 and nowhere else. Sections 1 through 8 contain no
   recommending language.
 - Present the same facts you would present if the recommendation were the opposite.

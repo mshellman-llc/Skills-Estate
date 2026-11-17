@@ -43,6 +43,16 @@ observable conditions, format limits and rule-specific retention procedure.
 These candidates cannot establish redundancy, unearned urgency or lack of evidence.
 The validator checks the record. The reviewer remains responsible for the judgment.
 
+`C28-record-id-density` counts record IDs and sentence locators that stand in
+for names in reader prose. Code, JSON, data files, tooltips and link targets are
+skipped, along with any section under a heading such as Source index, Sources,
+Appendix or Traceability; an HTML element marked `data-source-index` is skipped too.
+The first mention of each ID beside a name is free. A repeat, an ID that opens a
+sentence, heading or table row, and every ID in a sentence carrying three or
+more IDs all count. The budget is one per 200 reader words, and never fewer
+than two. Over twice the budget is a FAIL. Fix a finding by naming the thing
+in plain words, as `policies/writing.md` requires.
+
 Do not change the filename, label prose internal or put authored wording in a
 quote to obtain a pass. A literal source span remains verbatim only when its
 source and exact extent are identified in the internal review record. Keep

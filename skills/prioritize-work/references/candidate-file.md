@@ -95,7 +95,7 @@ Scores are rounded to two decimal places and sorted from highest to lowest. Equa
 
 ## Report formats
 
-The Markdown report, which is the default, opens with a title naming the method and one sentence saying the ranking is a proposal whose final order the decision owner sets, while MoSCoW stays with `capture-requirements`. A table follows with rank, ID, title, score, formula and flags, showing "none" when an item has no flags. Notes come next, then the rejected items. When nothing could be scored, the report says so and leaves the table out.
+The Markdown report, which is the default, opens with a title naming the method and one sentence saying the ranking is a proposal whose final order the decision owner sets, while MoSCoW stays with `capture-requirements`. A table follows; its columns are rank, item, score, the written formula, flags and ID. Each row leads with a plain name in the item column: the title, or for an untitled item its job or problem, and the id only when the item has none of these. The ID column closes the row for tracing. Flags show "none" when an item has none. A tie note names each tied item by title with its id in brackets. Notes come next, then the rejected items. When nothing could be scored, the report says so and leaves the table out.
 
 With `--format json` the report is an object with exactly four keys: `framework`, `ranking`, `errors` and `notes`. Each ranking row has exactly `id`, `title` (empty when absent), `job` (the job, otherwise the problem, otherwise empty), `score`, `formula`, `flags` and `rank`.
 

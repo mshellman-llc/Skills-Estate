@@ -18,6 +18,16 @@ Retain the facts and required meaning. Keep actual uncertainty. Do not shorten a
 
 Exact source quotations and captured evidence remain unchanged. Executable syntax and externally required identifiers retain their meaning. This protects those exact spans, not a whole document or category. New explanations, comments, labels, and summaries around them still follow this standard. Putting newly written prose in a quote, a code block, or a JSON string does not make it source evidence.
 
+## Name records in plain words
+
+Record IDs such as `PER-01` or `DEC-02`, sentence locators such as `I1.s24` and other system keys belong in system-facing material. That means data files, ledgers, JSON records, logs, test scripts, the Markdown record of sources, and a source index or appendix.
+
+Anything a person reads names the thing in plain words instead: a page, brief, proposal, report, reply, status update, slide or interface text. Write "the email-sender decision", "Restricted email delivery" or "Megan's first interview".
+
+Where a reader needs to find the record, give its ID once beside the name, or put the ID in a source index, a tooltip or a link target. Never make an ID the subject of a sentence or a table's only label.
+
+A requirement or ticket ID that the client's own process requires stays in the deliverable, beside a plain name. A test script traced to requirement IDs is one case; a RAID entry cited in a status report the client tracks by ID is another. The checker flags reader prose crowded with IDs.
+
 ## Check every output
 
 Review every authored sentence before returning it. For saved text, run the bundled `writing_check.py` checker, then read the finished result. Inside a Skills Estate checkout that checker is the authority; another scanner's verdict on an estate file does not override it. The checker reports detectable patterns; a passing command does not replace reading.

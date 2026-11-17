@@ -33,7 +33,7 @@ Read [the content guidance](references/content-model.md). Choose an information 
 - For planned work over time, use `build-roadmap` and its validated snapshot plan. Embed its components through the supported roadmap workflow, keeping its brand settings consistent with the project. Keep sequence separate from scope priorities.
 - Offer additional angles such as people and jobs, journeys, capabilities, priorities and open decisions only when supported by useful content.
 - Adapt labels and depth to the domain. Keep the initial view readable and place supporting detail near the claim it explains. A clean overview does not authorize reducing the underlying scope or depth.
-- Keep raw reference IDs in a consolidated source index when useful. Show human-readable titles elsewhere and link details to the relevant evidence.
+- Keep raw reference IDs in a consolidated source index. The overview, registers, cards and detail panels lead with human-readable names; an ID may appear once beside a name in a detail panel, or as a tooltip or link target, never as a row's or card's only label. Link details to the relevant evidence.
 - Let the evidence determine counts. Do not invent roles, research, quotations, metrics, emotions, approvals or current system behavior to fill the layout.
 
 ## Design the experience
