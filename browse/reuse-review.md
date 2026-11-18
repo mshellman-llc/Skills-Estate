@@ -1,6 +1,6 @@
 # Skill reuse review
 
-93 general-use methods, 0 Context-specific workflows, and 1 awaiting source review.
+94 general-use methods, 0 Context-specific workflows, and 0 awaiting source review.
 
 Audience describes the intended user. It does not certify execution in every environment. This review combines workflow classification with an automated scan of UTF-8 source files, supporting resources, declared runtime dependencies, and shared policies. Binary assets and private sources outside this repository were not inspected.
 
@@ -56,7 +56,7 @@ Functional workflows accept explicit task context. Private originals remain outs
 | `maintain-discovery-record` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `maintain-skills-estate` | General use | Requires an existing Skills Estate checkout, its configured repository pointer, and supported local install paths. | No local path or configured private term detected in workflow text. |
 | `manage-brand-profile` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
-| `manage-color-system` | Needs review | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
+| `manage-color-system` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `manage-consulting-knowledge` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `manage-cutover-closeout` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
 | `manage-decision-register` | General use | Supply the task inputs and its supported runtime. | No local path or configured private term detected in workflow text. |
