@@ -96,6 +96,30 @@ with tempfile.TemporaryDirectory() as directory:
         check("projection validates against evidence-ledger.schema.json: {}".format([e.message for e in errors][:2]),
               not errors)
 
+# --- conditional-coverage fields carry through the projection ---------------
+with tempfile.TemporaryDirectory() as directory:
+    ruled = pathlib.Path(directory) / "ruled.jsonl"
+    rule = "Hold the proposal until the deal owner confirms the scope."
+    ruled_lines = []
+    for line in lines:
+        event = json.loads(line)
+        if event.get("event") == "conflict":
+            event.update(affectedDomains=["scope"], stopRule=rule)
+        if event.get("claimId") == "CLM-017":
+            event["stopRule"] = "Hold the estimate until the count is confirmed."
+        ruled_lines.append(json.dumps(event))
+    ruled.write_text("\n".join(ruled_lines) + "\n")
+    output = pathlib.Path(directory) / "ruled.json"
+    code, _ = run("project", str(ruled), "--output", str(output), "--as-of", "2026-09-05T12:00:00Z")
+    document = json.loads(output.read_text())
+    claims = {c["claimId"]: c for c in document["claims"]}
+    check("a claim's stop rule and a conflict's affected domains and stop rule project through",
+          code == 0 and claims["CLM-017"]["stopRule"].startswith("Hold the estimate")
+          and document["conflicts"][0]["affectedDomains"] == ["scope"]
+          and document["conflicts"][0]["stopRule"] == rule)
+    check("an open conflict's stop rule reaches the claims it contests",
+          claims["CLM-016"]["stopRule"] == rule)
+
 # --- check rules ------------------------------------------------------------
 context = lines[0]
 source = lines[2]

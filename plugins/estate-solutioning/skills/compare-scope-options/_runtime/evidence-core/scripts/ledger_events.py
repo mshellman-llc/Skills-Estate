@@ -23,7 +23,9 @@ Event types and the inline tag mapping:
              ASSUMED -> Unknown. DECIDED is not a claim; see register.
   supersede  claimId, by: the old claim projects as Superseded
   conflict   CNF-###: claimIds, materiality, status, description; open
-             conflicts project their claims as Contested
+             conflicts project their claims as Contested. Optional
+             affectedDomains and stopRule carry through, as stopRule does on
+             a claim, for conditional coverage in evidence_core.py
   register   register (scope, estimate, decisions, risks, assumptions,
              stakeholders, timeline), itemId, claimIds, free fields
 """
@@ -73,7 +75,8 @@ CNF_ID = re.compile(r"^CNF-\d{3,}$")
 CLIENT_ID = re.compile(r"^client-[a-z0-9][a-z0-9-]*$")
 CLAIM_FIELDS = ("claimId", "statement", "status", "sourceIds", "asOf", "loadBearing", "domains",
                 "confidenceRationale", "closureCondition", "owner")
-OPTIONAL_CLAIM_FIELDS = ("sourceLocations", "gapKind")
+OPTIONAL_CLAIM_FIELDS = ("sourceLocations", "gapKind", "stopRule")
+OPTIONAL_CONFLICT_FIELDS = ("affectedDomains", "stopRule")
 SOURCE_FIELDS = ("sourceId", "sourceType", "title", "authority", "observedAt", "effectiveAt",
                  "supersedes", "locator", "notes")
 CONFLICT_FIELDS = ("conflictId", "claimIds", "materiality", "status", "description",
@@ -267,7 +270,9 @@ def project(events: List[Tuple[int, Dict]], as_of: Optional[str] = None) -> Dict
         elif kind == "supersede":
             superseded[event["claimId"]] = event
         elif kind == "conflict":
-            conflicts[event["conflictId"]] = {k: event.get(k) for k in CONFLICT_FIELDS}
+            row = {k: event.get(k) for k in CONFLICT_FIELDS}
+            row.update({k: event[k] for k in OPTIONAL_CONFLICT_FIELDS if k in event})
+            conflicts[event["conflictId"]] = row
         elif kind == "register":
             item = {k: v for k, v in event.items() if k not in ("event", "register")}
             registers.setdefault(event["register"], {})[event["itemId"]] = item
@@ -288,6 +293,8 @@ def project(events: List[Tuple[int, Dict]], as_of: Optional[str] = None) -> Dict
                 claim["status"] = "Contested"
                 claim["owner"] = claim.get("owner") or conflict.get("owner")
                 claim["closureCondition"] = claim.get("closureCondition") or conflict.get("closureCondition")
+                if not claim.get("stopRule") and conflict.get("stopRule"):
+                    claim["stopRule"] = conflict["stopRule"]
 
     document = {
         "ledgerVersion": "2.0",

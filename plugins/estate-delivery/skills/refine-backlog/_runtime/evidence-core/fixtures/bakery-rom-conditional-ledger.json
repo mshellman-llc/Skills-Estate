@@ -1,0 +1,169 @@
+{
+  "ledgerVersion": "0.1.0",
+  "asOf": "2026-11-18T12:00:00Z",
+  "context": {
+    "clientId": "client-bakery-tills",
+    "clientName": "Example Bakery Chain (synthetic)",
+    "scopeType": "opportunity",
+    "contextId": "opp-bakery-tills-2026",
+    "opportunityId": "opp-bakery-tills-2026",
+    "engagementId": null,
+    "contractId": null
+  },
+  "sources": [
+    {
+      "sourceId": "SRC-001",
+      "sourceType": "client_document",
+      "title": "Till rollout brief from the bakery's operations team",
+      "authority": 75,
+      "observedAt": "2026-11-18T12:00:00Z",
+      "effectiveAt": null,
+      "supersedes": [],
+      "locator": "fixture://bakery/rollout-brief",
+      "notes": null
+    },
+    {
+      "sourceId": "SRC-002",
+      "sourceType": "internal_model",
+      "title": "Install effort model for till rollouts",
+      "authority": 55,
+      "observedAt": "2026-11-18T12:00:00Z",
+      "effectiveAt": null,
+      "supersedes": [],
+      "locator": "fixture://bakery/effort-model",
+      "notes": null
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "CLM-001",
+      "statement": "The rollout replaces the tills in all twelve stores.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "scope basis"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-002",
+      "statement": "Install takes between two and four hours per till, from the effort model.",
+      "status": "Inferred",
+      "sourceIds": [
+        "SRC-002"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "workstream effort"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-003",
+      "statement": "One install technician and one project lead staff the rollout.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "role assumptions"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-004",
+      "statement": "The estimate reports effort only; no rate card applies.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "rates or cost basis"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-005",
+      "statement": "The range is rough until the till count is known.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "confidence"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-006",
+      "statement": "A till count above the high bound reopens the install range.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "range reopeners"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-007",
+      "statement": "The estimate is shared as a rough range, not a quote.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "commercial posture"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-008",
+      "statement": "The number of store tills is unknown; the high bound of the install item assumes four per store.",
+      "status": "Unknown",
+      "sourceIds": [],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "workstream effort",
+        "range reopeners"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": "count tills at each store",
+      "owner": "ops lead",
+      "stopRule": "Do not quote a fixed install fee or book technicians until the tills are counted."
+    }
+  ],
+  "conflicts": [],
+  "coverage": []
+}

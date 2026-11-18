@@ -44,6 +44,7 @@ class GateResult:
     conclusionForce: str
     domainCoverage: dict[str, str]
     blockers: list[dict[str, Any]] = field(default_factory=list)
+    openItems: list[dict[str, Any]] = field(default_factory=list)
     ownershipGaps: list[str] = field(default_factory=list)
     directionToRetain: list[str] = field(default_factory=list)
     nextGate: str = ""
@@ -173,18 +174,59 @@ class EvidenceCore:
 
         return findings
 
+    @staticmethod
+    def _missing_conditions(item: dict[str, Any], affected_domains: Any) -> list[str]:
+        """Name the conditional-coverage conditions an open load-bearing item lacks.
+
+        An open item may leave its domain Conditional only when it has an owner,
+        a closure condition, the domains it affects, and a stop rule that holds
+        dependent work until it closes.
+        """
+        def stated(value: Any) -> bool:
+            return isinstance(value, str) and bool(value.strip())
+
+        missing = []
+        if not stated(item.get("owner")):
+            missing.append("owner")
+        if not stated(item.get("closureCondition")):
+            missing.append("closureCondition")
+        if not (isinstance(affected_domains, list) and any(stated(name) for name in affected_domains)):
+            missing.append("affectedDomains")
+        if not stated(item.get("stopRule")):
+            missing.append("stopRule")
+        return missing
+
+    @classmethod
+    def _open_item(cls, domain: str, key: str, item: dict[str, Any], reason: Any,
+                   affected_domains: Any) -> tuple[dict[str, Any], list[str]]:
+        entry = {
+            "domain": domain,
+            key: item[key],
+            "reason": reason,
+            "owner": item.get("owner"),
+            "closureCondition": item.get("closureCondition"),
+            "affectedDomains": list(affected_domains) if isinstance(affected_domains, list) else [],
+            "stopRule": item.get("stopRule"),
+        }
+        missing = cls._missing_conditions(item, affected_domains)
+        if missing:
+            entry["missingConditions"] = missing
+        return entry, missing
+
     def _domain_status(
         self,
         domain: str,
         claims: list[dict[str, Any]],
         conflicts: list[dict[str, Any]],
         contract: dict[str, Any] | None = None,
-    ) -> tuple[str, list[dict[str, Any]]]:
+    ) -> tuple[str, list[dict[str, Any]], list[dict[str, Any]]]:
+        """Return the domain's coverage, its blockers, and its conditional open items."""
         contract = contract or {}
         active = [c for c in claims if domain in c.get("domains", []) and c.get("status") != "Superseded"]
         blockers: list[dict[str, Any]] = []
+        open_items: list[dict[str, Any]] = []
         if not active:
-            return "Insufficient", [{"domain": domain, "reason": "No evidence-backed claim covers this required domain", "owner": None, "closureCondition": "Provide and validate authoritative evidence for this domain"}]
+            return "Insufficient", [{"domain": domain, "reason": "No evidence-backed claim covers this required domain", "owner": None, "closureCondition": "Provide and validate authoritative evidence for this domain"}], []
 
         if contract.get("sourceLocationRequired"):
             for claim in active:
@@ -211,37 +253,33 @@ class EvidenceCore:
                         "closureCondition": "State the follow-up that would answer the open item",
                     })
             if blockers:
-                return "Insufficient", blockers
-            return ("Conditional" if any(c.get("status") == "Inferred" for c in active) else "Sufficient"), []
+                return "Insufficient", blockers, []
+            return ("Conditional" if any(c.get("status") == "Inferred" for c in active) else "Sufficient"), [], []
 
+        # A load-bearing Unknown or Contested claim, or a load-bearing open
+        # conflict, leaves the domain Conditional when it meets every
+        # conditional-coverage condition, and blocks it otherwise. A claim's
+        # affected domains are its `domains`; a conflict states `affectedDomains`.
         active_ids = {c["claimId"] for c in active}
         for claim in active:
             if claim.get("loadBearing") and claim.get("status") in {"Unknown", "Contested"}:
-                blockers.append({
-                    "domain": domain,
-                    "claimId": claim["claimId"],
-                    "reason": claim["statement"],
-                    "owner": claim.get("owner"),
-                    "closureCondition": claim.get("closureCondition"),
-                })
+                entry, missing = self._open_item(domain, "claimId", claim, claim["statement"], claim.get("domains"))
+                (blockers if missing else open_items).append(entry)
 
         for conflict in conflicts:
             if conflict.get("status") == "open" and conflict.get("materiality") == "load_bearing" and active_ids.intersection(conflict.get("claimIds", [])):
-                blockers.append({
-                    "domain": domain,
-                    "conflictId": conflict["conflictId"],
-                    "reason": conflict.get("description"),
-                    "owner": conflict.get("owner"),
-                    "closureCondition": conflict.get("closureCondition"),
-                })
+                entry, missing = self._open_item(domain, "conflictId", conflict, conflict.get("description"), conflict.get("affectedDomains"))
+                (blockers if missing else open_items).append(entry)
 
         if blockers:
-            return "Insufficient", blockers
+            return "Insufficient", blockers, open_items
+        if open_items:
+            return "Conditional", [], open_items
         if any(c.get("status") == "Inferred" for c in active):
-            return "Conditional", []
+            return "Conditional", [], []
         if any(c.get("status") == "Confirmed" for c in active):
-            return "Sufficient", []
-        return "Insufficient", [{"domain": domain, "reason": "Domain has no usable Confirmed or Inferred claim", "owner": None, "closureCondition": "Resolve claim status"}]
+            return "Sufficient", [], []
+        return "Insufficient", [{"domain": domain, "reason": "Domain has no usable Confirmed or Inferred claim", "owner": None, "closureCondition": "Resolve claim status"}], []
 
     def evaluate(self, ledger: dict[str, Any], artifact_type: str) -> GateResult:
         if artifact_type not in self.contracts:
@@ -252,11 +290,13 @@ class EvidenceCore:
         conflicts = ledger.get("conflicts", [])
         domain_coverage: dict[str, str] = {}
         blockers: list[dict[str, Any]] = []
+        open_items: list[dict[str, Any]] = []
 
         for domain in contract["requiredDomains"]:
-            status, domain_blockers = self._domain_status(domain, claims, conflicts, contract)
+            status, domain_blockers, domain_open_items = self._domain_status(domain, claims, conflicts, contract)
             domain_coverage[domain] = status
             blockers.extend(domain_blockers)
+            open_items.extend(domain_open_items)
 
         limit_rule = contract.get("singleSourceLimit")
         if limit_rule:
@@ -265,23 +305,8 @@ class EvidenceCore:
                 domain_coverage[limit_rule["gapDomain"]] = "Insufficient"
                 blockers.append(limit_blocker)
 
-        merged_blockers: dict[tuple[str, str], dict[str, Any]] = {}
-        for blocker in blockers:
-            if blocker.get("conflictId"):
-                key = ("conflict", blocker["conflictId"])
-            elif blocker.get("claimId"):
-                key = ("claim", blocker["claimId"])
-            else:
-                key = ("reason", blocker.get("reason", "Evidence blocker"))
-            if key not in merged_blockers:
-                merged_blockers[key] = {**blocker, "domains": [blocker.get("domain")] if blocker.get("domain") else []}
-            elif blocker.get("domain") and blocker.get("domain") not in merged_blockers[key]["domains"]:
-                merged_blockers[key]["domains"].append(blocker["domain"])
-        blockers = []
-        for blocker in merged_blockers.values():
-            blocker["domains"] = sorted(blocker.get("domains", []))
-            blocker["domain"] = ", ".join(blocker["domains"])
-            blockers.append(blocker)
+        blockers = self._merge_by_item(blockers)
+        open_items = self._merge_by_item(open_items)
 
         if any(item.level == "error" for item in findings):
             status = "Insufficient"
@@ -305,7 +330,13 @@ class EvidenceCore:
             supporting = [source_index[sid] for sid in claim.get("sourceIds", []) if sid in source_index and sid not in superseded_source_ids]
             if any(src.get("sourceType") not in NON_EVIDENCE_TYPES and src.get("authority", 0) >= 70 for src in supporting):
                 retained.append(claim["statement"])
-        next_gate = "Close all load-bearing blockers and rerun the content-sufficiency gate" if terminal else "Approve the artifact content model before rendering"
+        if terminal:
+            next_gate = "Close all load-bearing blockers and rerun the content-sufficiency gate"
+        elif open_items:
+            next_gate = ("Approve the artifact content model before rendering, list every open item in the artifact, "
+                         "and hold the work each stop rule names until its closure condition is met")
+        else:
+            next_gate = "Approve the artifact content model before rendering"
 
         return GateResult(
             requestedArtifactType=artifact_type,
@@ -315,11 +346,34 @@ class EvidenceCore:
             conclusionForce=force,
             domainCoverage=domain_coverage,
             blockers=blockers,
+            openItems=open_items,
             ownershipGaps=ownership_gaps,
             directionToRetain=retained,
             nextGate=next_gate,
             findings=findings,
         )
+
+    @staticmethod
+    def _merge_by_item(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """Report each claim or conflict once, with every required domain it touches."""
+        merged: dict[tuple[str, str], dict[str, Any]] = {}
+        for entry in entries:
+            if entry.get("conflictId"):
+                key = ("conflict", entry["conflictId"])
+            elif entry.get("claimId"):
+                key = ("claim", entry["claimId"])
+            else:
+                key = ("reason", entry.get("reason", "Evidence blocker"))
+            if key not in merged:
+                merged[key] = {**entry, "domains": [entry.get("domain")] if entry.get("domain") else []}
+            elif entry.get("domain") and entry.get("domain") not in merged[key]["domains"]:
+                merged[key]["domains"].append(entry["domain"])
+        result = []
+        for entry in merged.values():
+            entry["domains"] = sorted(entry.get("domains", []))
+            entry["domain"] = ", ".join(entry["domains"])
+            result.append(entry)
+        return result
 
     def _single_source_blocker(
         self,

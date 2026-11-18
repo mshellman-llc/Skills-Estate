@@ -1,0 +1,173 @@
+{
+  "ledgerVersion": "0.1.0",
+  "asOf": "2026-11-18T12:00:00Z",
+  "context": {
+    "clientId": "client-bakery-ordering",
+    "clientName": "Example Bakery Chain (synthetic)",
+    "scopeType": "opportunity",
+    "contextId": "opp-bakery-ordering-2026",
+    "opportunityId": "opp-bakery-ordering-2026",
+    "engagementId": null,
+    "contractId": null
+  },
+  "sources": [
+    {
+      "sourceId": "SRC-001",
+      "sourceType": "client_document",
+      "title": "Ordering pilot results from the bakery's finance team",
+      "authority": 75,
+      "observedAt": "2026-11-18T12:00:00Z",
+      "effectiveAt": null,
+      "supersedes": [],
+      "locator": "fixture://bakery/pilot-results",
+      "notes": null
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "CLM-001",
+      "statement": "Fund the online ordering rollout to the remaining stores.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "recommendation"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-002",
+      "statement": "Phone orders miss a tenth of morning calls in the pilot stores.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "current gap"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-003",
+      "statement": "The holiday season is the next peak for advance orders.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "timing"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-004",
+      "statement": "Pilot stores sold more advance orders after ordering went online.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "benefits"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-005",
+      "statement": "Store staff time on order pickup rose during the pilot.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "case against"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-006",
+      "statement": "Each season without online ordering keeps the missed calls.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "cost of waiting"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-007",
+      "statement": "The pilot cost is known for two stores.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "investment"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-008",
+      "statement": "Funding is released in two stages after the first stores report.",
+      "status": "Confirmed",
+      "sourceIds": [
+        "SRC-001"
+      ],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "approval conditions"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": null,
+      "owner": null
+    },
+    {
+      "claimId": "CLM-009",
+      "statement": "The integration cost for the remaining stores' tills is not yet priced.",
+      "status": "Unknown",
+      "sourceIds": [],
+      "asOf": "2026-11-18T12:00:00Z",
+      "loadBearing": true,
+      "domains": [
+        "investment"
+      ],
+      "confidenceRationale": null,
+      "closureCondition": "obtain the till vendor's integration quote",
+      "owner": "finance lead",
+      "stopRule": "Do not release the second funding stage until the integration quote is in."
+    }
+  ],
+  "conflicts": [],
+  "coverage": []
+}

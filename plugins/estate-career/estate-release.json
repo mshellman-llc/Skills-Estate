@@ -17,7 +17,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "0a93f4ce73dfdefe91de7b232a164a4eba7eebbaa4d6d2edacc7ac07c60333fb",
+      "required_sha256": "2ff61168abb190032d4c5038bb6aedde400e21115f2a9cc83ccad81584c1f679",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -87,7 +87,7 @@
       "subject": "assess-offering-fit"
     },
     {
-      "required_sha256": "70b305e441151789b1c6ac1dab599cde52fdf9f39007caa6e1097a3bc7edc6e7",
+      "required_sha256": "6567b210e8162ae9cd6187f86818f1eb20a6f488ce720ab9a08c57f9ef7b8ccb",
       "status": "review required",
       "subject": "assess-solution-delivery"
     },
@@ -237,7 +237,7 @@
       "subject": "estimate-project"
     },
     {
-      "required_sha256": "674fd9300d329fe75a726a758cd27e955b9bd60585ee7bb6ee400db4c42af76e",
+      "required_sha256": "639ecb9258536efb2f906565c23b2c6dbebebbd08bd885bbd2a045d48e7ab311",
       "status": "review required",
       "subject": "evidence-core"
     },
@@ -447,7 +447,7 @@
       "subject": "review-writing"
     },
     {
-      "required_sha256": "15557fd8b7093f2207c164ed4ecc27a9ef6bffabaf86d40655a6fc635e452f0e",
+      "required_sha256": "e4e35e422fee38398118af35334a8ad5dfa192cf6c35f23258091a0397138e5e",
       "status": "review required",
       "subject": "scope-project"
     },
@@ -537,6 +537,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "fd6a657607a15875cf022b132a84d2d0e52cbdb1425b1961a1730d6fa8350675",
+  "source_sha256": "43cd7e5e2efd563c4b389317f5a330e18fca6cd9bc9ed60d6022a61ce5d53b17",
   "status": "owner-published"
 }
