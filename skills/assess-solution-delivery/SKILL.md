@@ -55,6 +55,9 @@ Solution Brief. Produce a compact Technical Readiness Memo containing:
 
 Then stop.
 
+A Conditional gate is not terminal. Write the full Solution Brief, and carry
+every open item from the gate report into the technical approval conditions.
+
 ## Full-artifact workflow
 
 1. Choose `approval`, `build_reference`, or `field_guide` mode.
@@ -124,8 +127,9 @@ than silent.
 Gate routing:
 
 - Insufficient: Technical Readiness Memo, then stop. No guide on thin evidence.
-- Conditional: build the guide. Every gate blocker becomes an entry in the
-  `conditions_next_action` view with its owner and closure condition, and the
+- Conditional: build the guide. Every open item in the gate report becomes a
+  `sufficiency.blockers` entry and an entry in the
+  `conditions_next_action` view with its owner, closure condition and stop rule, and the
   masthead states that the guide rests on Conditional evidence. The validator
   rejects a Conditional field guide whose blockers never reach that register.
 - Sufficient: build the guide.

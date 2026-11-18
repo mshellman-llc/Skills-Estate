@@ -196,6 +196,10 @@
     "0.4.45": {
       "content_sha256": "93ee84db472cc51b36d3962a4db67393015b4707981eeee80c1b0d7cbb95874c",
       "note": "LiveLaughCode replaces Bearing in manage-color-system: white Day ground, surface-well, gradient-derived signals, renamed recipe and fixtures; skills map moves to the white Day ground."
+    },
+    "0.4.46": {
+      "content_sha256": "d02d7747bd42feced996d4aafd22a1d2cd8544cd1cf1722568c8c7bb0a77beeb",
+      "note": "evidence-core: a load-bearing open item with an owner, closure condition, affected domains and stop rule leaves its domain Conditional, not Insufficient; scope-project marks currency and rates optional for effort-only estimates (#140)"
     }
   },
   "source_conflicts": [

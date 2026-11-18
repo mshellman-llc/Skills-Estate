@@ -81,8 +81,8 @@ Its rates and effort are test data, with no authority for a real project.
 | Input | Required content |
 | --- | --- |
 | `source` | Reference and revision of the scope model |
-| `currency` | Currency supplied for this estimate |
-| `rates` | Role and rate, with the source of that rate |
+| `currency`, when rates are used | Currency supplied for this estimate; optional for an effort-only estimate |
+| `rates`, when used | Role and rate, with the source of that rate; omit both when no rate card exists, and fees stay null |
 | `items` | Unique ID and name; description and source; estimated items also need a basis and role allocations |
 | `items[].status`, when used | `estimated` (the default) or `unestimated`; other values are refused |
 | `items[].discovery_needed` | Required for an unestimated item; explain what must be learned before estimating it |
