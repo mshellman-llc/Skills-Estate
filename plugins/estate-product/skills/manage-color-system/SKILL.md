@@ -82,6 +82,7 @@ Read the current brand profile first (estate-writing:manage-brand-profile for cl
 
 - Day ground #EEEFF3 and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. Bearing runs the color v2 roles from `recipes/bearing-v2.json`, with the earlier names kept as aliases and a high-contrast version of each theme.
 - Emphasis comes from size, weight and the Night to Day contrast. Four signal hues (coral, blue, green, orange) carry status, step order and categories only: as a symbol, a dot, a short rule or one soft-tinted card. Never text, a heading, a link or a large fill.
+- One brand accent, the LiveLaughCode gradient (`brand-violet`, `brand-indigo`, `brand-blue`, `brand-teal`), marks the logo and one soft gradient field per page behind a hero or cover. On Night it runs violet, blue, teal, since indigo is 2.0:1 there. Text on the field is `on-surface` or `on-surface-body`. It never fills a control, card, section or chart, and never carries status or step order.
 - Every status pairs its hue with a shape and a word, so color never carries it alone.
 - Alerts and errors sit on the page's own neutral surface with a thin rule or a small mark. `error` (crimson) appears only in the mark, the rule and the message text; Blocked status stays signal coral. No tinted alert panels, and no component left in its default AI-builder look.
 - Set type in Instrument Sans only; never Times.
