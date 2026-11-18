@@ -1973,7 +1973,7 @@
       "inputs": "A token file (CSS custom properties or a Design System tokens.json), the stylesheets that set color, and any pinned brand values or standing color decisions.",
       "outputs": "An audit of findings with measured contrast, a recipe, generated tokens.css and tokens.json with measured notes, a normalized single-ink icon set, and a review page that shows each finding and the result rendered.",
       "example": "Audit Bearing's tokens and bundle.css, then propose Material 3 roles that keep Day, Night and the navy exactly.",
-      "reviewedEntrypointSha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
+      "reviewedEntrypointSha256": "57cc75a95ee54f806e36603d64bd34901db906ff80d7db5d1b154216b86f5834",
       "expect": "It runs the audit on the token file and every stylesheet that sets color, checks findings against the rendered page, asks only what the numbers cannot settle, writes or edits a recipe, generates tokens with standard and high-contrast levels, and audits the output to zero failing pairs before applying it.",
       "connectors": {
         "required": [],
