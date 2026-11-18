@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-18T00:27:03.336476+00:00",
-  "baseCommit": "383439b86d287f2e002a4ff65d197e9f6576e430",
+  "generatedAt": "2026-11-18T16:04:24.395805+00:00",
+  "baseCommit": "5deed186ff4c235939af498ab8a49842ef92c462",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -65,7 +65,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-author-style/SKILL.md",
       "sourceSha256": "60ef56102eed4f9de4cf6ea78a4ad0949e98ee1f6c38f5d33db43bc868ab10ed",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/apply-author-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/apply-author-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -196,7 +196,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-salesforce-patterns/SKILL.md",
       "sourceSha256": "97a238283a12443797e0970f0483169d2c283e27a7735ef344d3a87bc2d58d2b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/apply-salesforce-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/apply-salesforce-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "apply-salesforce-patterns",
@@ -433,7 +433,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-career-options/SKILL.md",
       "sourceSha256": "f28c082d3d2bc502c3125006fb9591bc28bf9d00476f2cc1c2258badd452e4c6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/assess-career-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/assess-career-options/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-career-options",
@@ -576,7 +576,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-offering-fit/SKILL.md",
       "sourceSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/assess-offering-fit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/assess-offering-fit/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-offering-fit",
@@ -732,7 +732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-solution-delivery/SKILL.md",
       "sourceSha256": "9092c5c9e75ce77960537bd7e4e98bee87db469f7c1fa19643431ae83e4f1362",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/assess-solution-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/assess-solution-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-solution-delivery",
@@ -1112,7 +1112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/audit-accessibility/SKILL.md",
       "sourceSha256": "6f6b392bdc3eb2cf4277e1d13ea2210888228695c933a6c6835dddda47ee798e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/audit-accessibility/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/audit-accessibility/SKILL.md",
       "taskPackages": [
         {
           "name": "audit-accessibility",
@@ -1244,7 +1244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-estate-skill/SKILL.md",
       "sourceSha256": "24b0fa3b3246b650dd8b24613ddedd2b5086c56217caf4a21c6e0ae091434d2f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/author-estate-skill/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/author-estate-skill/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -1460,7 +1460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-style-runtime/SKILL.md",
       "sourceSha256": "7b23bdc5ee4e8e997a2840cd5d55f8122f158aed37d55cac6fb82c9edc10d4a5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/author-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/author-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1647,7 +1647,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "24863f4e5cd04a2dffb85f9d5b71573f7a8ecc96cf05278a2d32b2d8b57893cf",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-offering-fit",
@@ -2064,7 +2064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deal-decision-deck/SKILL.md",
       "sourceSha256": "1eb393455f61eef771bf1dbd5d36d6977237b2bce3afa1cfda2eca2821718eed",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-deal-decision-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-deal-decision-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2347,7 +2347,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deck/SKILL.md",
       "sourceSha256": "d8944d863ca497db2010baa26d7013602c3d54015cdfd2dd9d232406511ba640",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2591,7 +2591,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-editorial-chart/SKILL.md",
       "sourceSha256": "cde02918eb0e09f72b62b58e9b75d66eed52f8a0421df36cfa3989ceb0b3f5d7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-editorial-chart/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-editorial-chart/SKILL.md",
       "taskPackages": [
         {
           "name": "build-editorial-chart",
@@ -2812,7 +2812,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "9c33cb189c196adadca54985edec17531ae2b79dcca52dd06a8a68202f34c34c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -2994,7 +2994,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-proposal/SKILL.md",
       "sourceSha256": "a276c1c0148196ba4506b9ccf1906d331bfe1ca2da761fe12ab281a8d7c0f3fd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -3264,7 +3264,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-moscow-story-map/SKILL.md",
       "sourceSha256": "b6e46327dc11d0e86d97e9b9c99121f819f87f76c895c48dcdee6b8236722c82",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "build-moscow-story-map",
@@ -3424,7 +3424,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-review-site/SKILL.md",
       "sourceSha256": "1c9b9c3887b5d5e854e03ccd759bf3f6d7f3ea8543c321df46d63e22840db998",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "build-review-site",
@@ -3637,7 +3637,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-roadmap/SKILL.md",
       "sourceSha256": "db7e32ba564b4400f0a35919459bcc64f79bbd8d1d6d1f48037a70d8d1621c9c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/build-roadmap/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/build-roadmap/SKILL.md",
       "taskPackages": [
         {
           "name": "build-roadmap",
@@ -3962,7 +3962,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-knowledge/SKILL.md",
       "sourceSha256": "9049e911aaa57e057a466332ac0dc10045e19383c099384505f6413b8dd36d2e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/capture-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/capture-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-knowledge",
@@ -4098,7 +4098,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-requirements/SKILL.md",
       "sourceSha256": "af49008fd477cc5987fd425040ec52e76c65817fa7becb926b7cb778f56239a6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/capture-requirements/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/capture-requirements/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-requirements",
@@ -4315,7 +4315,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-salesforce-screens/SKILL.md",
       "sourceSha256": "a78f3f8a3aa09d11647d217ec599435f71050d74329203beeb6ee89240db9319",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/capture-salesforce-screens/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/capture-salesforce-screens/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4465,7 +4465,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/check-knowledge-hub/SKILL.md",
       "sourceSha256": "86789af6c5068ade95ae70a4e523f74f5e5e641c90e1158381f5a28b99212a59",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/check-knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/check-knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "check-knowledge-hub",
@@ -4615,7 +4615,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/compare-scope-options/SKILL.md",
       "sourceSha256": "3d37c9dc0dfb58725d6309b62e57f4365c51373bff43e38e40b5c3f687322bd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/compare-scope-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/compare-scope-options/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -4874,7 +4874,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/configure-salesforce-project/SKILL.md",
       "sourceSha256": "89e669c0397cc783ca45c1bf4473b4735f131fc05bbc572c0aa1dc58562c4ad4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/configure-salesforce-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/configure-salesforce-project/SKILL.md",
       "taskPackages": [
         {
           "name": "configure-salesforce-project",
@@ -5616,7 +5616,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deliver-salesforce-change/SKILL.md",
       "sourceSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/deliver-salesforce-change/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/deliver-salesforce-change/SKILL.md",
       "taskPackages": [
         {
           "name": "deliver-salesforce-change",
@@ -5990,7 +5990,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-orchestrator/SKILL.md",
       "sourceSha256": "efbc0207a4238bf598b33d8aac2d7bb6e078290d3311712031fa3703251c37ac",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/delivery-orchestrator/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/delivery-orchestrator/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-requirements",
@@ -6261,7 +6261,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-analytics-plan/SKILL.md",
       "sourceSha256": "78d27b364ce3a619d70ed5dc9008b93351254d3ae7ca3dd9952f85e7398f45be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/design-analytics-plan/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/design-analytics-plan/SKILL.md",
       "taskPackages": [
         {
           "name": "design-analytics-plan",
@@ -6393,7 +6393,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-information-architecture/SKILL.md",
       "sourceSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/design-information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/design-information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "design-information-architecture",
@@ -6525,7 +6525,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-process/SKILL.md",
       "sourceSha256": "ca114123880ba4752529612a903ba3895d6291f68c5085c4b65ae0ffd522cc7e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/design-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/design-process/SKILL.md",
       "taskPackages": [
         {
           "name": "design-process",
@@ -6708,7 +6708,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-software-system/SKILL.md",
       "sourceSha256": "102209f34e8154aca0791f2af418d64493d6d7d6fd3f4449eba24ca66ea9fff9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/design-software-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/design-software-system/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -6883,7 +6883,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-sticker/SKILL.md",
       "sourceSha256": "b6dab8536880885060e9221906488aa8c5cbbc26ce194e2b179169024193b345",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/design-sticker/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/design-sticker/SKILL.md",
       "taskPackages": [
         {
           "name": "design-sticker",
@@ -7018,7 +7018,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-independent-product/SKILL.md",
       "sourceSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/develop-independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/develop-independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-independent-product",
@@ -7134,7 +7134,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-product/SKILL.md",
       "sourceSha256": "2e9d22b97bb930d7baee53f33846a2e371da6dc816bdd42c313561e72eed5bfd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/develop-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/develop-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-product",
@@ -7361,7 +7361,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/draft-application-materials/SKILL.md",
       "sourceSha256": "b3df2a2fb127157eb1b77f37cdf6ddd13ee6a6cfea687005e6a4fea087599eec",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/draft-application-materials/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/draft-application-materials/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -7523,7 +7523,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/estimate-project/SKILL.md",
       "sourceSha256": "9655e454e4c758060aeb89b73428585fe7a88609d0a2db43e6df6b42d1162be2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/estimate-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/estimate-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -7775,7 +7775,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "39a62d2a014cba75451d65c8bb39a751b933c16cb0f2b2654cbaeeb8e1ae9fb7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-solution-delivery",
@@ -8058,7 +8058,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/frame-jobs-to-be-done/SKILL.md",
       "sourceSha256": "554d8c253f519d356b95232a312bef3940cb1dab519f7e01b39304fff087b7fd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/frame-jobs-to-be-done/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/frame-jobs-to-be-done/SKILL.md",
       "taskPackages": [
         {
           "name": "frame-jobs-to-be-done",
@@ -8340,7 +8340,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/guide-fortunes-weave/SKILL.md",
       "sourceSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/guide-fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/guide-fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "guide-fortunes-weave",
@@ -8454,7 +8454,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/import-tracker-export/SKILL.md",
       "sourceSha256": "303f8fd7642bf80652fad4907328277a1b920093202ecf3837c0013fe905ede3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/import-tracker-export/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/import-tracker-export/SKILL.md",
       "taskPackages": [
         {
           "name": "import-tracker-export",
@@ -8627,7 +8627,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ingest-transcript/SKILL.md",
       "sourceSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/ingest-transcript/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/ingest-transcript/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8793,7 +8793,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/lay-out-sticker-sheets/SKILL.md",
       "sourceSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/lay-out-sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/lay-out-sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "lay-out-sticker-sheets",
@@ -8912,7 +8912,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/load-project-context/SKILL.md",
       "sourceSha256": "11b56dce3af1115d2a2cc139cfe6a1088f39126d18cf76fc0a06257dc12c4ea2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/load-project-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/load-project-context/SKILL.md",
       "taskPackages": [
         {
           "name": "load-project-context",
@@ -9064,7 +9064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-discovery-record/SKILL.md",
       "sourceSha256": "b5d151492eb92ad883e2dfd11fbe373c00f08d887434032743301c2e59bbaf58",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/maintain-discovery-record/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/maintain-discovery-record/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -9333,7 +9333,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-skills-estate/SKILL.md",
       "sourceSha256": "45870d679b28e4c99fa54afc742d83b6f8f76f60108fde99b04f68550a717e07",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/maintain-skills-estate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/maintain-skills-estate/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -9575,7 +9575,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-brand-profile/SKILL.md",
       "sourceSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-brand-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-brand-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-brand-profile",
@@ -9688,11 +9688,11 @@
       "title": "Manage color system",
       "family": 4,
       "description": "Assess, question, decide, propose and apply UI color systems in Material 3 role language. Audits token files (CSS or Design System tokens.json) and component CSS for contrast in WCAG and APCA, role coverage, palette drift, wrong ratio notes, off-system hex values and a stale compiled stylesheet; builds themed role tokens with standard and high-contrast levels from tonal palettes; reviews color changes before they ship. Use when colors, tokens, themes or a brand palette are created, changed or judged, or before publishing a page that sets its own colors. Not for a full WCAG audit of an interface (audit-accessibility), applying a confirmed brand to a deliverable (manage-brand-profile) or building a chart (build-editorial-chart).",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/manage-color-system/SKILL.md",
-      "sourceSha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-color-system/SKILL.md",
+      "sourceSha256": "6ca791f214dca500df65669f232151d0064312cb0e99bbbe60a85ae0e3a1f695",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-color-system/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-color-system",
@@ -9707,8 +9707,8 @@
         "when": "Colors, tokens, themes or a brand palette are created, changed or judged, or a page that sets its own colors is about to publish.",
         "inputs": "A token file (CSS custom properties or a Design System tokens.json), the stylesheets that set color, and any pinned brand values or standing color decisions.",
         "outputs": "An audit of findings with measured contrast, a recipe, generated tokens.css and tokens.json with measured notes, a normalized single-ink icon set, and a review page that shows each finding and the result rendered.",
-        "example": "Audit Bearing's tokens and bundle.css, then propose Material 3 roles that keep Day, Night and the navy exactly.",
-        "reviewedEntrypointSha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
+        "example": "Audit the LiveLaughCode tokens and bundle.css, then propose Material 3 roles that keep the white Day ground, Night and the navy exactly.",
+        "reviewedEntrypointSha256": "6ca791f214dca500df65669f232151d0064312cb0e99bbbe60a85ae0e3a1f695",
         "expect": "It runs the audit on the token file and every stylesheet that sets color, checks findings against the rendered page, asks only what the numbers cannot settle, writes or edits a recipe, generates tokens with standard and high-contrast levels, and audits the output to zero failing pairs before applying it.",
         "connectors": {
           "required": [],
@@ -9735,7 +9735,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 14,
-        "packageFingerprint": "b56f0b0738130f9711bb567566ca4fb5d35e97d4e683ba4753b401ac9b166899",
+        "packageFingerprint": "c15adac9835bd66fc30b23f2e57bca271ef123fa2e276da4e693584cd504db8c",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -9773,8 +9773,8 @@
         "expect": "It runs the audit on the token file and every stylesheet that sets color, checks findings against the rendered page, asks only what the numbers cannot settle, writes or edits a recipe, generates tokens with standard and high-contrast levels, and audits the output to zero failing pairs before applying it.",
         "declared": true
       },
-      "markdown": "---\nname: manage-color-system\ndescription: \"Assess, question, decide, propose and apply UI color systems in Material 3 role language. Audits token files (CSS or Design System tokens.json) and component CSS for contrast in WCAG and APCA, role coverage, palette drift, wrong ratio notes, off-system hex values and a stale compiled stylesheet; builds themed role tokens with standard and high-contrast levels from tonal palettes; reviews color changes before they ship. Use when colors, tokens, themes or a brand palette are created, changed or judged, or before publishing a page that sets its own colors. Not for a full WCAG audit of an interface (audit-accessibility), applying a confirmed brand to a deliverable (manage-brand-profile) or building a chart (build-editorial-chart).\"\n---\n\n# Manage color system\n\nA color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.\n\nThis skill works in that model. The engine in `scripts/` measures and generates; this file says when to use it and how to decide.\n\n## When not to use\n\n- A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to `audit-accessibility`. This skill covers color only.\n- Applying a confirmed client or project brand to a document or page belongs to `manage-brand-profile`. This skill designs and repairs the color system that a profile carries.\n- Building a chart belongs to `build-editorial-chart`. This skill checks the chart palette.\n\n## Engine\n\nNode 18 or later, nothing to install. Material Color Utilities and culori are bundled in `scripts/vendor/deps.mjs` with their license notices (`THIRD-PARTY.md`); `scripts/lib/apca.mjs` implements APCA 0.0.98G-4g.\n\n```sh\ncd <skill>/scripts\nnode selftest.mjs\nnode color-steward.mjs audit tokens.css --components bundle.css --json audit.json\nnode color-steward.mjs pair \"#86898f\" \"#eeeff3\"\nnode color-steward.mjs palette \"#283549\"\nnode color-steward.mjs scheme \"#283549\" --variant neutral --error \"#C4302B\"\nnode color-steward.mjs cvd \"#283549\" \"#525f75\" \"#7a879e\"\nnode propose.mjs ../recipes/<system>.json --out tokens.css --json tokens.json\nnode color-steward.mjs audit built-tokens.css --source tokens.json   # flags a compiled stylesheet that lags its source\nnode icons.mjs normalize <icon-pack-svg-dir> <out-dir> --map ../references/icon-roles.json\nnode icons.mjs check <out-dir>\n```\n\nTone means HCT tone (CIELAB L*), 0 black to 100 white. Contrast uses WCAG 2.2 ratios as the pass line and APCA Lc as the second reading, because WCAG 2 overrates light text on dark grounds.\n\n## Modes\n\nPick the mode from the request. Several can run in one task.\n\n1. Assess. Run `audit` on the token file and every stylesheet that sets color. When a stylesheet is compiled from a source file, pass both, since pages load the compiled one. Read each finding, check it against the rendered page, and drop false alarms with a reason. Report findings as pictures: the failing pair rendered, its measured ratio, and the fix rendered beside it.\n2. Question. Ask the owner only what the numbers cannot settle: brand anchors to pin, whether a hue may enter the system, how far muted text may drop on dark grounds, which surfaces carry the brand color. One question at a time, shown as options she can pick from.\n3. Decide. Apply the decision rules below. A rule that settles the question needs no question.\n4. Propose. Write or edit a recipe (`recipes/*.json`): palettes from a seed or hue and chroma, pinned brand values, one entry per role with the grounds it sits on and its target. Run `propose.mjs`, then `audit` the output. A proposal ships only with zero failing pairs, and every ratio in its notes is computed.\n5. Apply. Map components to roles with `references/component-roles.json`. Replace every hex in component CSS with a role. Keep old token names as aliases until every consumer moves.\n6. React. When someone changes colors, review the diff: new literals, a role used against a ground it was never solved for, a hover that lowers contrast, a hue named token that holds a grey. Audit the changed files.\n7. Watch. Before publishing any page, deck or chart that sets colors, audit its CSS. Raise what fails in chat once; fix what the rules settle without asking.\n\n## Decision rules\n\n- Roles come in pairs. Text on a fill uses that fill's on- role: on-primary on primary, on-secondary-container on secondary-container. Never pair across.\n- Solve every role against every ground it can sit on, and list those grounds in the recipe. A role checked only against the page ground fails on cards and wells.\n- Text: 4.5:1 minimum, 7:1 in the high-contrast level. Labels under 16px also need APCA Lc 60 or more. Control edges, focus rings and chart marks: 3:1.\n- Outline is for control edges and must reach 3:1. Outline-variant is decorative: dividers, hairline grids, chip edges whose text already meets 4.5:1.\n- Containers are fills. Text never uses a container role.\n- Surface container tiers name emphasis, not lightness. In a dark theme a higher tier is lighter; in a light theme it is darker. Use surface-dim and surface-bright when an area must stay dimmest or brightest in both themes.\n- Fixed roles (primary-fixed) keep one value in both themes. Use them for brand fills, never where contrast with the ground is needed.\n- A palette step is one value in every theme. Themes change which step a role picks.\n- State is an overlay in the content color at fixed opacity: hover 8%, focus 10%, pressed 10%, dragged 16%; disabled content 38%, disabled container 12%. Components do not invent rgba hovers.\n- Error and other semantic colors are harmonized toward the brand hue so they sit in the palette. Brand colors are never harmonized.\n- Every theme ships standard and high contrast. High contrast lifts text to 7:1 and edges to 4.5:1 from the same recipe.\n- Chart series differ in lightness first. Adjacent series stay at least 0.08 apart in OKLab under normal vision and simulated protanopia, deuteranopia and tritanopia; series below 3:1 on their ground get direct labels.\n- Notes in token files never hold hand-typed ratios. Generate them. A ratio in a note names its ground (`6.3:1 on surface in Day`) so the audit can check it; a note it cannot attribute is skipped, not passed.\n- A compiled stylesheet ships with its source. After changing the source, rebuild the compiled file before a component reads a new role, or the component reads nothing.\n- A hard-coded color in a component stylesheet is a finding unless it is a pinned brand asset with a comment.\n\n## Icons\n\nAn icon is a color-system graphic, so it follows the same roles.\n\n- Every ink is `currentColor`. The icon takes the role of the text it sits with: `on-surface-variant` at rest, `on-surface` when active, `on-primary` on a filled button, `on-secondary-container` on a tonal one, `on-error` on a destructive one.\n- A status icon takes its signal hue and sits beside its word: Approved, In review, Blocked. The error mark takes `error`.\n- In a duotone icon the solid layer carries the meaning and reaches 3:1 on its ground. The 30% layer is decoration. An icon drawn only in the faint layer gets that layer made solid.\n- Size 16, 18 or 24px on the 24px grid; a pressable icon gets a 40px target.\n- `normalize` strips editor metadata, sets `currentColor`, keeps the duotone opacity and names each icon by its job. `check` fails a fixed color, a missing viewBox or an icon with no solid layer.\n- Icon art from a licensed pack stays in the brand's design system or the project, never in this repository. `references/icon-roles.json` names the Stockholm source and the color role for every job.\n\n## Owner decisions on file\n\nRead the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan's own work, Bearing is the one design system:\n\n- Day ground #EEEFF3 and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. Bearing runs the color v2 roles from `recipes/bearing-v2.json`, with the earlier names kept as aliases and a high-contrast version of each theme.\n- Emphasis comes from size, weight and the Night to Day contrast. Four signal hues (coral, blue, green, orange) carry status, step order and categories only: as a symbol, a dot, a short rule or one soft-tinted card. Never text, a heading, a link or a large fill.\n- Every status pairs its hue with a shape and a word, so color never carries it alone.\n- Alerts and errors sit on the page's own neutral surface with a thin rule or a small mark. `error` (crimson) appears only in the mark, the rule and the message text; Blocked status stays signal coral. No tinted alert panels, and no component left in its default AI-builder look.\n- Set type in Instrument Sans only; never Times.\n- Bearing's icons are the Stockholm Premium set, duotone, normalized as above, in Bearing's Icons asset group. Doodle illustration sets are not UI icons.\n\n## Output\n\nSubstantial results go into an interactive, mobile-first page in the active brand: findings as rendered pairs, palettes as tone strips, proposals as a before and after the reader can toggle by theme and contrast level, and owner decisions as options to pick. The chat gets the outcome, the counts that matter and the one decision waiting.\n\nDeliver the recipe, the generated tokens.css and the audit JSON with any proposal. State the completion state exactly: proposed, generated, audited, applied to the system, published.\n\n## References\n\n- `scripts/selftest.mjs`: runs the audit and the proposal on the Bearing fixtures and checks the results.\n\n- `references/component-roles.json`: Material 3 components mapped to Bearing components and roles.\n- `references/icon-roles.json`: one row per icon job.\n- `references/material3-color.md`: the Material 3 color model this skill follows.\n- `recipes/bearing-v2.json`: the Bearing recipe; copy it to start a client system.\n- `fixtures/`: Bearing's tokens and component color rules as they stood before v2, used by the self-test.\n",
-      "html": "<p>A color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.</p><p>This skill works in that model. The engine in <code>scripts/</code> measures and generates; this file says when to use it and how to decide.</p><h3>When not to use</h3><ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul><h3>Engine</h3><p>Node 18 or later, nothing to install. Material Color Utilities and culori are bundled in <code>scripts/vendor/deps.mjs</code> with their license notices (<code>THIRD-PARTY.md</code>); <code>scripts/lib/apca.mjs</code> implements APCA 0.0.98G-4g.</p><pre><code>cd &lt;skill&gt;/scripts\nnode selftest.mjs\nnode color-steward.mjs audit tokens.css --components bundle.css --json audit.json\nnode color-steward.mjs pair &quot;#86898f&quot; &quot;#eeeff3&quot;\nnode color-steward.mjs palette &quot;#283549&quot;\nnode color-steward.mjs scheme &quot;#283549&quot; --variant neutral --error &quot;#C4302B&quot;\nnode color-steward.mjs cvd &quot;#283549&quot; &quot;#525f75&quot; &quot;#7a879e&quot;\nnode propose.mjs ../recipes/&lt;system&gt;.json --out tokens.css --json tokens.json\nnode color-steward.mjs audit built-tokens.css --source tokens.json   # flags a compiled stylesheet that lags its source\nnode icons.mjs normalize &lt;icon-pack-svg-dir&gt; &lt;out-dir&gt; --map ../references/icon-roles.json\nnode icons.mjs check &lt;out-dir&gt;</code></pre><p>Tone means HCT tone (CIELAB L*), 0 black to 100 white. Contrast uses WCAG 2.2 ratios as the pass line and APCA Lc as the second reading, because WCAG 2 overrates light text on dark grounds.</p><h3>Modes</h3><p>Pick the mode from the request. Several can run in one task.</p><ol><li>Assess. Run <code>audit</code> on the token file and every stylesheet that sets color. When a stylesheet is compiled from a source file, pass both, since pages load the compiled one. Read each finding, check it against the rendered page, and drop false alarms with a reason. Report findings as pictures: the failing pair rendered, its measured ratio, and the fix rendered beside it.</li><li>Question. Ask the owner only what the numbers cannot settle: brand anchors to pin, whether a hue may enter the system, how far muted text may drop on dark grounds, which surfaces carry the brand color. One question at a time, shown as options she can pick from.</li><li>Decide. Apply the decision rules below. A rule that settles the question needs no question.</li><li>Propose. Write or edit a recipe (<code>recipes/*.json</code>): palettes from a seed or hue and chroma, pinned brand values, one entry per role with the grounds it sits on and its target. Run <code>propose.mjs</code>, then <code>audit</code> the output. A proposal ships only with zero failing pairs, and every ratio in its notes is computed.</li><li>Apply. Map components to roles with <code>references/component-roles.json</code>. Replace every hex in component CSS with a role. Keep old token names as aliases until every consumer moves.</li><li>React. When someone changes colors, review the diff: new literals, a role used against a ground it was never solved for, a hover that lowers contrast, a hue named token that holds a grey. Audit the changed files.</li><li>Watch. Before publishing any page, deck or chart that sets colors, audit its CSS. Raise what fails in chat once; fix what the rules settle without asking.</li></ol><h3>Decision rules</h3><ul><li>Roles come in pairs. Text on a fill uses that fill&#x27;s on- role: on-primary on primary, on-secondary-container on secondary-container. Never pair across.</li><li>Solve every role against every ground it can sit on, and list those grounds in the recipe. A role checked only against the page ground fails on cards and wells.</li><li>Text: 4.5:1 minimum, 7:1 in the high-contrast level. Labels under 16px also need APCA Lc 60 or more. Control edges, focus rings and chart marks: 3:1.</li><li>Outline is for control edges and must reach 3:1. Outline-variant is decorative: dividers, hairline grids, chip edges whose text already meets 4.5:1.</li><li>Containers are fills. Text never uses a container role.</li><li>Surface container tiers name emphasis, not lightness. In a dark theme a higher tier is lighter; in a light theme it is darker. Use surface-dim and surface-bright when an area must stay dimmest or brightest in both themes.</li><li>Fixed roles (primary-fixed) keep one value in both themes. Use them for brand fills, never where contrast with the ground is needed.</li><li>A palette step is one value in every theme. Themes change which step a role picks.</li><li>State is an overlay in the content color at fixed opacity: hover 8%, focus 10%, pressed 10%, dragged 16%; disabled content 38%, disabled container 12%. Components do not invent rgba hovers.</li><li>Error and other semantic colors are harmonized toward the brand hue so they sit in the palette. Brand colors are never harmonized.</li><li>Every theme ships standard and high contrast. High contrast lifts text to 7:1 and edges to 4.5:1 from the same recipe.</li><li>Chart series differ in lightness first. Adjacent series stay at least 0.08 apart in OKLab under normal vision and simulated protanopia, deuteranopia and tritanopia; series below 3:1 on their ground get direct labels.</li><li>Notes in token files never hold hand-typed ratios. Generate them. A ratio in a note names its ground (<code>6.3:1 on surface in Day</code>) so the audit can check it; a note it cannot attribute is skipped, not passed.</li><li>A compiled stylesheet ships with its source. After changing the source, rebuild the compiled file before a component reads a new role, or the component reads nothing.</li><li>A hard-coded color in a component stylesheet is a finding unless it is a pinned brand asset with a comment.</li></ul><h3>Icons</h3><p>An icon is a color-system graphic, so it follows the same roles.</p><ul><li>Every ink is <code>currentColor</code>. The icon takes the role of the text it sits with: <code>on-surface-variant</code> at rest, <code>on-surface</code> when active, <code>on-primary</code> on a filled button, <code>on-secondary-container</code> on a tonal one, <code>on-error</code> on a destructive one.</li><li>A status icon takes its signal hue and sits beside its word: Approved, In review, Blocked. The error mark takes <code>error</code>.</li><li>In a duotone icon the solid layer carries the meaning and reaches 3:1 on its ground. The 30% layer is decoration. An icon drawn only in the faint layer gets that layer made solid.</li><li>Size 16, 18 or 24px on the 24px grid; a pressable icon gets a 40px target.</li><li><code>normalize</code> strips editor metadata, sets <code>currentColor</code>, keeps the duotone opacity and names each icon by its job. <code>check</code> fails a fixed color, a missing viewBox or an icon with no solid layer.</li><li>Icon art from a licensed pack stays in the brand&#x27;s design system or the project, never in this repository. <code>references/icon-roles.json</code> names the Stockholm source and the color role for every job.</li></ul><h3>Owner decisions on file</h3><p>Read the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan&#x27;s own work, Bearing is the one design system:</p><ul><li>Day ground #EEEFF3 and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. Bearing runs the color v2 roles from <code>recipes/bearing-v2.json</code>, with the earlier names kept as aliases and a high-contrast version of each theme.</li><li>Emphasis comes from size, weight and the Night to Day contrast. Four signal hues (coral, blue, green, orange) carry status, step order and categories only: as a symbol, a dot, a short rule or one soft-tinted card. Never text, a heading, a link or a large fill.</li><li>Every status pairs its hue with a shape and a word, so color never carries it alone.</li><li>Alerts and errors sit on the page&#x27;s own neutral surface with a thin rule or a small mark. <code>error</code> (crimson) appears only in the mark, the rule and the message text; Blocked status stays signal coral. No tinted alert panels, and no component left in its default AI-builder look.</li><li>Set type in Instrument Sans only; never Times.</li><li>Bearing&#x27;s icons are the Stockholm Premium set, duotone, normalized as above, in Bearing&#x27;s Icons asset group. Doodle illustration sets are not UI icons.</li></ul><h3>Output</h3><p>Substantial results go into an interactive, mobile-first page in the active brand: findings as rendered pairs, palettes as tone strips, proposals as a before and after the reader can toggle by theme and contrast level, and owner decisions as options to pick. The chat gets the outcome, the counts that matter and the one decision waiting.</p><p>Deliver the recipe, the generated tokens.css and the audit JSON with any proposal. State the completion state exactly: proposed, generated, audited, applied to the system, published.</p><h3>References</h3><ul><li><code>scripts/selftest.mjs</code>: runs the audit and the proposal on the Bearing fixtures and checks the results.</li></ul><ul><li><code>references/component-roles.json</code>: Material 3 components mapped to Bearing components and roles.</li><li><code>references/icon-roles.json</code>: one row per icon job.</li><li><code>references/material3-color.md</code>: the Material 3 color model this skill follows.</li><li><code>recipes/bearing-v2.json</code>: the Bearing recipe; copy it to start a client system.</li><li><code>fixtures/</code>: Bearing&#x27;s tokens and component color rules as they stood before v2, used by the self-test.</li></ul>",
+      "markdown": "---\nname: manage-color-system\ndescription: \"Assess, question, decide, propose and apply UI color systems in Material 3 role language. Audits token files (CSS or Design System tokens.json) and component CSS for contrast in WCAG and APCA, role coverage, palette drift, wrong ratio notes, off-system hex values and a stale compiled stylesheet; builds themed role tokens with standard and high-contrast levels from tonal palettes; reviews color changes before they ship. Use when colors, tokens, themes or a brand palette are created, changed or judged, or before publishing a page that sets its own colors. Not for a full WCAG audit of an interface (audit-accessibility), applying a confirmed brand to a deliverable (manage-brand-profile) or building a chart (build-editorial-chart).\"\n---\n\n# Manage color system\n\nA color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.\n\nThis skill works in that model. The engine in `scripts/` measures and generates; this file says when to use it and how to decide.\n\n## When not to use\n\n- A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to `audit-accessibility`. This skill covers color only.\n- Applying a confirmed client or project brand to a document or page belongs to `manage-brand-profile`. This skill designs and repairs the color system that a profile carries.\n- Building a chart belongs to `build-editorial-chart`. This skill checks the chart palette.\n\n## Engine\n\nNode 18 or later, nothing to install. Material Color Utilities and culori are bundled in `scripts/vendor/deps.mjs` with their license notices (`THIRD-PARTY.md`); `scripts/lib/apca.mjs` implements APCA 0.0.98G-4g.\n\n```sh\ncd <skill>/scripts\nnode selftest.mjs\nnode color-steward.mjs audit tokens.css --components bundle.css --json audit.json\nnode color-steward.mjs pair \"#86898f\" \"#ffffff\"\nnode color-steward.mjs palette \"#283549\"\nnode color-steward.mjs scheme \"#283549\" --variant neutral --error \"#C4302B\"\nnode color-steward.mjs cvd \"#283549\" \"#525f75\" \"#7a879e\"\nnode propose.mjs ../recipes/<system>.json --out tokens.css --json tokens.json\nnode color-steward.mjs audit built-tokens.css --source tokens.json   # flags a compiled stylesheet that lags its source\nnode icons.mjs normalize <icon-pack-svg-dir> <out-dir> --map ../references/icon-roles.json\nnode icons.mjs check <out-dir>\n```\n\nTone means HCT tone (CIELAB L*), 0 black to 100 white. Contrast uses WCAG 2.2 ratios as the pass line and APCA Lc as the second reading, because WCAG 2 overrates light text on dark grounds.\n\n## Modes\n\nPick the mode from the request. Several can run in one task.\n\n1. Assess. Run `audit` on the token file and every stylesheet that sets color. When a stylesheet is compiled from a source file, pass both, since pages load the compiled one. Read each finding, check it against the rendered page, and drop false alarms with a reason. Report findings as pictures: the failing pair rendered, its measured ratio, and the fix rendered beside it.\n2. Question. Ask the owner only what the numbers cannot settle: brand anchors to pin, whether a hue may enter the system, how far muted text may drop on dark grounds, which surfaces carry the brand color. One question at a time, shown as options she can pick from.\n3. Decide. Apply the decision rules below. A rule that settles the question needs no question.\n4. Propose. Write or edit a recipe (`recipes/*.json`): palettes from a seed or hue and chroma, pinned brand values, one entry per role with the grounds it sits on and its target. Run `propose.mjs`, then `audit` the output. A proposal ships only with zero failing pairs, and every ratio in its notes is computed.\n5. Apply. Map components to roles with `references/component-roles.json`. Replace every hex in component CSS with a role. Keep old token names as aliases until every consumer moves.\n6. React. When someone changes colors, review the diff: new literals, a role used against a ground it was never solved for, a hover that lowers contrast, a hue named token that holds a grey. Audit the changed files.\n7. Watch. Before publishing any page, deck or chart that sets colors, audit its CSS. Raise what fails in chat once; fix what the rules settle without asking.\n\n## Decision rules\n\n- Roles come in pairs. Text on a fill uses that fill's on- role: on-primary on primary, on-secondary-container on secondary-container. Never pair across.\n- Solve every role against every ground it can sit on, and list those grounds in the recipe. A role checked only against the page ground fails on cards and wells.\n- Text: 4.5:1 minimum, 7:1 in the high-contrast level. Labels under 16px also need APCA Lc 60 or more. Control edges, focus rings and chart marks: 3:1.\n- Outline is for control edges and must reach 3:1. Outline-variant is decorative: dividers, hairline grids, chip edges whose text already meets 4.5:1.\n- Containers are fills. Text never uses a container role.\n- Surface container tiers name emphasis, not lightness. In a dark theme a higher tier is lighter; in a light theme it is darker. Use surface-dim and surface-bright when an area must stay dimmest or brightest in both themes.\n- Fixed roles (primary-fixed) keep one value in both themes. Use them for brand fills, never where contrast with the ground is needed.\n- A palette step is one value in every theme. Themes change which step a role picks.\n- State is an overlay in the content color at fixed opacity: hover 8%, focus 10%, pressed 10%, dragged 16%; disabled content 38%, disabled container 12%. Components do not invent rgba hovers.\n- Error and other semantic colors are harmonized toward the brand hue so they sit in the palette. Brand colors are never harmonized.\n- Every theme ships standard and high contrast. High contrast lifts text to 7:1 and edges to 4.5:1 from the same recipe.\n- Chart series differ in lightness first. Adjacent series stay at least 0.08 apart in OKLab under normal vision and simulated protanopia, deuteranopia and tritanopia; series below 3:1 on their ground get direct labels.\n- Notes in token files never hold hand-typed ratios. Generate them. A ratio in a note names its ground (`6.3:1 on surface in Day`) so the audit can check it; a note it cannot attribute is skipped, not passed.\n- A compiled stylesheet ships with its source. After changing the source, rebuild the compiled file before a component reads a new role, or the component reads nothing.\n- A hard-coded color in a component stylesheet is a finding unless it is a pinned brand asset with a comment.\n\n## Icons\n\nAn icon is a color-system graphic, so it follows the same roles.\n\n- Every ink is `currentColor`. The icon takes the role of the text it sits with: `on-surface-variant` at rest, `on-surface` when active, `on-primary` on a filled button, `on-secondary-container` on a tonal one, `on-error` on a destructive one.\n- A status icon takes its signal hue and sits beside its word: Approved, In review, Blocked. The error mark takes `error`.\n- In a duotone icon the solid layer carries the meaning and reaches 3:1 on its ground. The 30% layer is decoration. An icon drawn only in the faint layer gets that layer made solid.\n- Size 16, 18 or 24px on the 24px grid; a pressable icon gets a 40px target.\n- `normalize` strips editor metadata, sets `currentColor`, keeps the duotone opacity and names each icon by its job. `check` fails a fixed color, a missing viewBox or an icon with no solid layer.\n- Icon art from a licensed pack stays in the brand's design system or the project, never in this repository. `references/icon-roles.json` names the Stockholm source and the color role for every job.\n\n## Owner decisions on file\n\nRead the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan's own work, LiveLaughCode is the one design system:\n\n- Day ground #FFFFFF and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. LiveLaughCode runs the roles in `recipes/livelaughcode.json`, with the earlier names kept as aliases and a high-contrast version of each theme.\n- Cards are white on the white Day page, so a soft shadow separates them. `surface-well` (#E7E6EC on Day, the page ground on Night) fills wells, chips and the selected item inside a card.\n- Four signal hues come from the gradient stops: violet, indigo, blue and teal. Blocked is violet, In review is blue and Approved is teal; indigo carries no status. Signals mark status, categories and step order as a symbol, a dot, a short rule or one soft-tinted card, never text, a heading, a link or a large fill.\n- The LiveLaughCode gradient (`brand-violet`, `brand-indigo`, `brand-blue`, `brand-teal`) marks the logo's Code_ pill, one soft field per page behind a hero or cover, and lines and ordered parts in components: step 1 takes stop 1, step 2 takes stop 2. On Night it runs violet, blue, teal, since indigo is 2.0:1 there. Text on the field is `on-surface` or `on-surface-body`. It never fills a control or a section.\n- Every status pairs its hue with a shape and a word, so color never carries it alone.\n- Alerts and errors sit on the page's own neutral surface with a thin rule or a small mark. `error` (crimson) appears only in the mark, the rule and the message text. No tinted alert panels, and no component left in its default AI-builder look.\n- Set type in Instrument Sans. Instrument Serif italic is reserved for the wordmark. Never Times.\n- The icons are the Stockholm Premium set, duotone, normalized as above, in the LiveLaughCode guide's Icons asset group. Doodle illustration sets are not UI icons.\n\n## Output\n\nSubstantial results go into an interactive, mobile-first page in the active brand: findings as rendered pairs, palettes as tone strips, proposals as a before and after the reader can toggle by theme and contrast level, and owner decisions as options to pick. The chat gets the outcome, the counts that matter and the one decision waiting.\n\nDeliver the recipe, the generated tokens.css and the audit JSON with any proposal. State the completion state exactly: proposed, generated, audited, applied to the system, published.\n\n## References\n\n- `scripts/selftest.mjs`: runs the audit on the pre-v2 fixtures and the proposal on the current recipe, and checks the results.\n\n- `references/component-roles.json`: Material 3 components mapped to LiveLaughCode components and roles.\n- `references/icon-roles.json`: one row per icon job.\n- `references/material3-color.md`: the Material 3 color model this skill follows.\n- `recipes/livelaughcode.json`: the LiveLaughCode recipe; copy it to start a client system.\n- `fixtures/`: the LiveLaughCode tokens and component color rules as they stood before v2, used by the self-test.\n",
+      "html": "<p>A color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.</p><p>This skill works in that model. The engine in <code>scripts/</code> measures and generates; this file says when to use it and how to decide.</p><h3>When not to use</h3><ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul><h3>Engine</h3><p>Node 18 or later, nothing to install. Material Color Utilities and culori are bundled in <code>scripts/vendor/deps.mjs</code> with their license notices (<code>THIRD-PARTY.md</code>); <code>scripts/lib/apca.mjs</code> implements APCA 0.0.98G-4g.</p><pre><code>cd &lt;skill&gt;/scripts\nnode selftest.mjs\nnode color-steward.mjs audit tokens.css --components bundle.css --json audit.json\nnode color-steward.mjs pair &quot;#86898f&quot; &quot;#ffffff&quot;\nnode color-steward.mjs palette &quot;#283549&quot;\nnode color-steward.mjs scheme &quot;#283549&quot; --variant neutral --error &quot;#C4302B&quot;\nnode color-steward.mjs cvd &quot;#283549&quot; &quot;#525f75&quot; &quot;#7a879e&quot;\nnode propose.mjs ../recipes/&lt;system&gt;.json --out tokens.css --json tokens.json\nnode color-steward.mjs audit built-tokens.css --source tokens.json   # flags a compiled stylesheet that lags its source\nnode icons.mjs normalize &lt;icon-pack-svg-dir&gt; &lt;out-dir&gt; --map ../references/icon-roles.json\nnode icons.mjs check &lt;out-dir&gt;</code></pre><p>Tone means HCT tone (CIELAB L*), 0 black to 100 white. Contrast uses WCAG 2.2 ratios as the pass line and APCA Lc as the second reading, because WCAG 2 overrates light text on dark grounds.</p><h3>Modes</h3><p>Pick the mode from the request. Several can run in one task.</p><ol><li>Assess. Run <code>audit</code> on the token file and every stylesheet that sets color. When a stylesheet is compiled from a source file, pass both, since pages load the compiled one. Read each finding, check it against the rendered page, and drop false alarms with a reason. Report findings as pictures: the failing pair rendered, its measured ratio, and the fix rendered beside it.</li><li>Question. Ask the owner only what the numbers cannot settle: brand anchors to pin, whether a hue may enter the system, how far muted text may drop on dark grounds, which surfaces carry the brand color. One question at a time, shown as options she can pick from.</li><li>Decide. Apply the decision rules below. A rule that settles the question needs no question.</li><li>Propose. Write or edit a recipe (<code>recipes/*.json</code>): palettes from a seed or hue and chroma, pinned brand values, one entry per role with the grounds it sits on and its target. Run <code>propose.mjs</code>, then <code>audit</code> the output. A proposal ships only with zero failing pairs, and every ratio in its notes is computed.</li><li>Apply. Map components to roles with <code>references/component-roles.json</code>. Replace every hex in component CSS with a role. Keep old token names as aliases until every consumer moves.</li><li>React. When someone changes colors, review the diff: new literals, a role used against a ground it was never solved for, a hover that lowers contrast, a hue named token that holds a grey. Audit the changed files.</li><li>Watch. Before publishing any page, deck or chart that sets colors, audit its CSS. Raise what fails in chat once; fix what the rules settle without asking.</li></ol><h3>Decision rules</h3><ul><li>Roles come in pairs. Text on a fill uses that fill&#x27;s on- role: on-primary on primary, on-secondary-container on secondary-container. Never pair across.</li><li>Solve every role against every ground it can sit on, and list those grounds in the recipe. A role checked only against the page ground fails on cards and wells.</li><li>Text: 4.5:1 minimum, 7:1 in the high-contrast level. Labels under 16px also need APCA Lc 60 or more. Control edges, focus rings and chart marks: 3:1.</li><li>Outline is for control edges and must reach 3:1. Outline-variant is decorative: dividers, hairline grids, chip edges whose text already meets 4.5:1.</li><li>Containers are fills. Text never uses a container role.</li><li>Surface container tiers name emphasis, not lightness. In a dark theme a higher tier is lighter; in a light theme it is darker. Use surface-dim and surface-bright when an area must stay dimmest or brightest in both themes.</li><li>Fixed roles (primary-fixed) keep one value in both themes. Use them for brand fills, never where contrast with the ground is needed.</li><li>A palette step is one value in every theme. Themes change which step a role picks.</li><li>State is an overlay in the content color at fixed opacity: hover 8%, focus 10%, pressed 10%, dragged 16%; disabled content 38%, disabled container 12%. Components do not invent rgba hovers.</li><li>Error and other semantic colors are harmonized toward the brand hue so they sit in the palette. Brand colors are never harmonized.</li><li>Every theme ships standard and high contrast. High contrast lifts text to 7:1 and edges to 4.5:1 from the same recipe.</li><li>Chart series differ in lightness first. Adjacent series stay at least 0.08 apart in OKLab under normal vision and simulated protanopia, deuteranopia and tritanopia; series below 3:1 on their ground get direct labels.</li><li>Notes in token files never hold hand-typed ratios. Generate them. A ratio in a note names its ground (<code>6.3:1 on surface in Day</code>) so the audit can check it; a note it cannot attribute is skipped, not passed.</li><li>A compiled stylesheet ships with its source. After changing the source, rebuild the compiled file before a component reads a new role, or the component reads nothing.</li><li>A hard-coded color in a component stylesheet is a finding unless it is a pinned brand asset with a comment.</li></ul><h3>Icons</h3><p>An icon is a color-system graphic, so it follows the same roles.</p><ul><li>Every ink is <code>currentColor</code>. The icon takes the role of the text it sits with: <code>on-surface-variant</code> at rest, <code>on-surface</code> when active, <code>on-primary</code> on a filled button, <code>on-secondary-container</code> on a tonal one, <code>on-error</code> on a destructive one.</li><li>A status icon takes its signal hue and sits beside its word: Approved, In review, Blocked. The error mark takes <code>error</code>.</li><li>In a duotone icon the solid layer carries the meaning and reaches 3:1 on its ground. The 30% layer is decoration. An icon drawn only in the faint layer gets that layer made solid.</li><li>Size 16, 18 or 24px on the 24px grid; a pressable icon gets a 40px target.</li><li><code>normalize</code> strips editor metadata, sets <code>currentColor</code>, keeps the duotone opacity and names each icon by its job. <code>check</code> fails a fixed color, a missing viewBox or an icon with no solid layer.</li><li>Icon art from a licensed pack stays in the brand&#x27;s design system or the project, never in this repository. <code>references/icon-roles.json</code> names the Stockholm source and the color role for every job.</li></ul><h3>Owner decisions on file</h3><p>Read the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan&#x27;s own work, LiveLaughCode is the one design system:</p><ul><li>Day ground #FFFFFF and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. LiveLaughCode runs the roles in <code>recipes/livelaughcode.json</code>, with the earlier names kept as aliases and a high-contrast version of each theme.</li><li>Cards are white on the white Day page, so a soft shadow separates them. <code>surface-well</code> (#E7E6EC on Day, the page ground on Night) fills wells, chips and the selected item inside a card.</li><li>Four signal hues come from the gradient stops: violet, indigo, blue and teal. Blocked is violet, In review is blue and Approved is teal; indigo carries no status. Signals mark status, categories and step order as a symbol, a dot, a short rule or one soft-tinted card, never text, a heading, a link or a large fill.</li><li>The LiveLaughCode gradient (<code>brand-violet</code>, <code>brand-indigo</code>, <code>brand-blue</code>, <code>brand-teal</code>) marks the logo&#x27;s Code_ pill, one soft field per page behind a hero or cover, and lines and ordered parts in components: step 1 takes stop 1, step 2 takes stop 2. On Night it runs violet, blue, teal, since indigo is 2.0:1 there. Text on the field is <code>on-surface</code> or <code>on-surface-body</code>. It never fills a control or a section.</li><li>Every status pairs its hue with a shape and a word, so color never carries it alone.</li><li>Alerts and errors sit on the page&#x27;s own neutral surface with a thin rule or a small mark. <code>error</code> (crimson) appears only in the mark, the rule and the message text. No tinted alert panels, and no component left in its default AI-builder look.</li><li>Set type in Instrument Sans. Instrument Serif italic is reserved for the wordmark. Never Times.</li><li>The icons are the Stockholm Premium set, duotone, normalized as above, in the LiveLaughCode guide&#x27;s Icons asset group. Doodle illustration sets are not UI icons.</li></ul><h3>Output</h3><p>Substantial results go into an interactive, mobile-first page in the active brand: findings as rendered pairs, palettes as tone strips, proposals as a before and after the reader can toggle by theme and contrast level, and owner decisions as options to pick. The chat gets the outcome, the counts that matter and the one decision waiting.</p><p>Deliver the recipe, the generated tokens.css and the audit JSON with any proposal. State the completion state exactly: proposed, generated, audited, applied to the system, published.</p><h3>References</h3><ul><li><code>scripts/selftest.mjs</code>: runs the audit on the pre-v2 fixtures and the proposal on the current recipe, and checks the results.</li></ul><ul><li><code>references/component-roles.json</code>: Material 3 components mapped to LiveLaughCode components and roles.</li><li><code>references/icon-roles.json</code>: one row per icon job.</li><li><code>references/material3-color.md</code>: the Material 3 color model this skill follows.</li><li><code>recipes/livelaughcode.json</code>: the LiveLaughCode recipe; copy it to start a client system.</li><li><code>fixtures/</code>: the LiveLaughCode tokens and component color rules as they stood before v2, used by the self-test.</li></ul>",
       "excerptHtml": "<p>A color system has three layers. Palettes hold fixed colors at numbered tones. Roles name what a color does (surface, on-surface, outline, primary) and pick a tone per theme and contrast level. Components read roles and never a palette step. Most color problems are a break between two layers: a component that reads a hex, a role that changes its palette, a palette step whose number lies about its lightness.</p><p>This skill works in that model. The engine in <code>scripts/</code> measures and generates; this file says when to use it and how to decide.</p><ul><li>A full accessibility review of an interface (keyboard, semantics, focus order, WCAG beyond color) belongs to <code>audit-accessibility</code>. This skill covers color only.</li><li>Applying a confirmed client or project brand to a document or page belongs to <code>manage-brand-profile</code>. This skill designs and repairs the color system that a profile carries.</li><li>Building a chart belongs to <code>build-editorial-chart</code>. This skill checks the chart palette.</li></ul>",
       "headings": [
         "When not to use",
@@ -9806,9 +9806,9 @@
       "resources": [
         {
           "path": "SKILL.md",
-          "sha256": "9edbc3dd0219c278abfabb8e9dd0bbfbac599065e9fccb63b1b25d21ab070819",
-          "bytes": 10306,
-          "gitBlob": "cdf82af3b1f6ac5f055512cb97317f9100224ffc"
+          "sha256": "6ca791f214dca500df65669f232151d0064312cb0e99bbbe60a85ae0e3a1f695",
+          "bytes": 11034,
+          "gitBlob": "69c541fb75ab46b75fd2cd6dc537aeb5af25b925"
         },
         {
           "path": "THIRD-PARTY.md",
@@ -9817,40 +9817,40 @@
           "gitBlob": "e33df635a1b55af7759860cb497f79980886ea17"
         },
         {
-          "path": "fixtures/bearing-bundle-colors.css",
-          "sha256": "9c3f47b1c8174b3d5f57ecb35747e5e0c956c709755242aee0c810659fbe75ae",
-          "bytes": 2009,
-          "gitBlob": "2074eb8570d0f709f45d2c0ffba2bbbeffa950e2"
+          "path": "fixtures/pre-v2-bundle-colors.css",
+          "sha256": "6d7d563e2cac3b7f35308533dd254e56d526ca23e943981e2ba19068dd6b15d4",
+          "bytes": 2028,
+          "gitBlob": "e3f9056aa45f31f3314043b383aa3d8648a88643"
         },
         {
-          "path": "fixtures/bearing-tokens-source.json",
+          "path": "fixtures/pre-v2-tokens-source.json",
           "sha256": "9d43feb31e1f83bb3e9601cb26959d7eff4c7afb771cda20cb405cbaf1262b19",
           "bytes": 3647,
           "gitBlob": "d0848aad99b96197bce3f47c635119a092a7be4b"
         },
         {
-          "path": "fixtures/bearing-tokens.css",
-          "sha256": "d12cb147ae834bd65daf5c8316379737b684fbf71501d6a90033c384e18b049e",
-          "bytes": 2988,
-          "gitBlob": "651de5e3b934c51d87cfc25aa6f759a2117c7642"
+          "path": "fixtures/pre-v2-tokens.css",
+          "sha256": "ad25a3c76f9d51f0a064756e3cf2c0ae04a28310169d0d7505b0051e9dffce25",
+          "bytes": 3007,
+          "gitBlob": "874026a2c92bb97f2ba31670628d5b3f06d34a0f"
         },
         {
-          "path": "recipes/bearing-v2.json",
-          "sha256": "fe0b8670135ea3f6f8a5b11766486ed6f7d7983eb74261845b98aa5063b755f1",
-          "bytes": 14159,
-          "gitBlob": "cf07746d7d1ab2cdf89021440812d2f27316343e"
+          "path": "recipes/livelaughcode.json",
+          "sha256": "dff2854e5a5a912dfe41a6abb9fabec84d0423ef0f62513020ea5545f7e9b7d4",
+          "bytes": 15617,
+          "gitBlob": "13f648c6338ed4574ce588ad5e65e98059fb351b"
         },
         {
           "path": "references/component-roles.json",
-          "sha256": "be2c750f8f5149debdecd8b4f18d86e564fd7e3d35e0956858a59f561309155a",
-          "bytes": 7646,
-          "gitBlob": "2480a8310d53397f268960e62aa8d02f44a35e85"
+          "sha256": "3181e005f833a9e98567576bc2b7358027d8527758a5b7238d926299327bde8c",
+          "bytes": 7510,
+          "gitBlob": "27958661831f123ab8efc6c68f1369f22227343e"
         },
         {
           "path": "references/material3-color.md",
-          "sha256": "6384b08f45e9059f6f58de1db3cf62ef72954f2dee18f92848615d6dead9960f",
-          "bytes": 3501,
-          "gitBlob": "a83bb793c4ef90e5d19f5c36463373565ead903a"
+          "sha256": "f7b4abb20917a44aa6db9e6cb698c9bfda384bf6f865cff0ac2cb750f15792e1",
+          "bytes": 3507,
+          "gitBlob": "7ef9adb986a2998d2bc92601d5b5530613cf9849"
         },
         {
           "path": "scripts/color-steward.mjs",
@@ -9866,15 +9866,15 @@
         },
         {
           "path": "scripts/propose.mjs",
-          "sha256": "3f612dadfd19f320e823fab8169b2dd260e8f52d8e86f1a34634686e2bf72c18",
-          "bytes": 5758,
-          "gitBlob": "947f55521d4601485a6a31a7c88ca774c60a2b17"
+          "sha256": "fcc594054719c544d1ed0129198aec5dadd8a3c05557c5652162148a18ebdc55",
+          "bytes": 5748,
+          "gitBlob": "04220bc0087ef01fa11016cd4c3a60336577af0c"
         },
         {
           "path": "scripts/selftest.mjs",
-          "sha256": "9249962d570edd2c74c517379b7a35c1678f63a4d9b4cf599e9059f56849e4b6",
-          "bytes": 2158,
-          "gitBlob": "4e10b67e2f8419347c09577349aa767f8db46faf"
+          "sha256": "b2e5e628673299660bfba94c72eba91b3585b91b1c55b2712f2c93c57e417150",
+          "bytes": 2175,
+          "gitBlob": "e5f0df600162fe3152d02eef820a1679a82efb8e"
         },
         {
           "path": "scripts/vendor/deps.mjs",
@@ -9900,7 +9900,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-consulting-knowledge/SKILL.md",
       "sourceSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-consulting-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-consulting-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-consulting-knowledge",
@@ -10234,7 +10234,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-cutover-closeout/SKILL.md",
       "sourceSha256": "c8dcfb3824a9624d943409adb900dc3be318f7eff0e67dab26777b25a29706f9",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-cutover-closeout",
@@ -10470,7 +10470,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-decision-register/SKILL.md",
       "sourceSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-decision-register",
@@ -10630,7 +10630,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-linked-task/SKILL.md",
       "sourceSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-linked-task/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-linked-task/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "load-project-context"
@@ -10740,7 +10740,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-salesforce-devops/SKILL.md",
       "sourceSha256": "696aa80506a1d04ca45ae7a9fa0e17f03c75790c9be441c5f537584e6082cc3f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-salesforce-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-salesforce-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -10909,7 +10909,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-service-offering/SKILL.md",
       "sourceSha256": "cad2f61af6b45fb500642f6a8e5027d127eb87cdb4c97a415e7e72669339c158",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-service-offering/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-service-offering/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -11088,7 +11088,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-writing-profile/SKILL.md",
       "sourceSha256": "661cb380854e11b480c8ce08a449df7ae4365ff710f1ab8cff53e5cd11d33486",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/manage-writing-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/manage-writing-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-writing-profile",
@@ -11274,7 +11274,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-journey/SKILL.md",
       "sourceSha256": "2b43a88c556f3e333b3c12837568aeaa88f093347ca8fcd83e62d444ff688b32",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/map-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/map-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-journey",
@@ -11479,7 +11479,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-sales-process/SKILL.md",
       "sourceSha256": "bbd8ec4db8905ccd3db6de81f65fa4d9387282ae1ee7d661574b344233ff9ce3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/map-sales-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/map-sales-process/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -11616,7 +11616,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/operate-salesforce-pipeline/SKILL.md",
       "sourceSha256": "587104dba57206c015cde53ae40c19b7118448ad95c74e13ea31b37f2b0fdd13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/operate-salesforce-pipeline/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/operate-salesforce-pipeline/SKILL.md",
       "taskPackages": [
         {
           "name": "operate-salesforce-pipeline",
@@ -11862,7 +11862,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-offering-artifacts/SKILL.md",
       "sourceSha256": "9ba84a3b73f6164dd701c5bcfcef89001eb67b025f55be917c841e78bd59f48e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/plan-offering-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/plan-offering-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -12077,7 +12077,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-sprint/SKILL.md",
       "sourceSha256": "0f056e9401e1752a293b1c78197b632538497783539497b354ddb105cd5443c8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/plan-sprint/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/plan-sprint/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-sprint",
@@ -12315,7 +12315,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-team-onboarding/SKILL.md",
       "sourceSha256": "963b3dacfb4eab19ab14df999646300adda52e988d3b8e507604778737013144",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/plan-team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/plan-team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-team-onboarding",
@@ -12494,7 +12494,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-usability-study/SKILL.md",
       "sourceSha256": "252bcb7ec74179de8eccd9a6d19f4c50b15262cf1fd7d084f7d73b593a07b6ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/plan-usability-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/plan-usability-study/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-usability-study",
@@ -12626,7 +12626,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-delivery-handoff/SKILL.md",
       "sourceSha256": "5bf0003be716cd98dd6fb9d59c04658dd6012e97ce3f6f12a25c4639cdfd7980",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/prepare-delivery-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/prepare-delivery-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-delivery-handoff",
@@ -12899,7 +12899,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-job-application/SKILL.md",
       "sourceSha256": "9e83433f28b4848b2e1164c2cdcc2f263c3ca7423488a4b63100db8ea78d5ca4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/prepare-job-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/prepare-job-application/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -13091,7 +13091,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-sales-pursuit/SKILL.md",
       "sourceSha256": "4de3e4463401556aa97e0bc0d7ea6daeb65b15ea5736bc5a98831331babd35ca",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/prepare-sales-pursuit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/prepare-sales-pursuit/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-sales-pursuit",
@@ -13389,7 +13389,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-session-handoff/SKILL.md",
       "sourceSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/prepare-session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/prepare-session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-session-handoff",
@@ -13547,7 +13547,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritize-work/SKILL.md",
       "sourceSha256": "fc8ede1e30dc7865c434f23903ea203972fc99b2b5b8b14cfe0aa96d9e69b5b4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/prioritize-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/prioritize-work/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritize-work",
@@ -13840,7 +13840,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/promote-salesforce-changes/SKILL.md",
       "sourceSha256": "20ecc948c080ca2f890499ff1a554838259b2a9e3cbe7c14e0869e886c8780f0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/promote-salesforce-changes/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/promote-salesforce-changes/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -14069,7 +14069,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/publish-content/SKILL.md",
       "sourceSha256": "c9c913f1e38699d8ca232019e53074c4b3881ee7c35d48b28dedf98c77d65c15",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/publish-content/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/publish-content/SKILL.md",
       "taskPackages": [
         {
           "name": "publish-content",
@@ -14376,7 +14376,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/reconcile-knowledge/SKILL.md",
       "sourceSha256": "5096adde62aa07c9de2264f645e53a85c1e17579f1f061633cb0feaa5aa2868c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/reconcile-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/reconcile-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "reconcile-knowledge",
@@ -14512,7 +14512,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/refine-backlog/SKILL.md",
       "sourceSha256": "8f39be8696ce7e262db37b09726a8a7711b1ccd10bc895cfecd5c886d2297013",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/refine-backlog/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/refine-backlog/SKILL.md",
       "taskPackages": [
         {
           "name": "refine-backlog",
@@ -14742,7 +14742,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/release-skill-package/SKILL.md",
       "sourceSha256": "18ced08f63182be20b58bb29afb4cc38c690163f52e31e79962eed6cecb4c381",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/release-skill-package/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/release-skill-package/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -14901,7 +14901,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/render-offering-brief/SKILL.md",
       "sourceSha256": "c0cb7e4ff088755bcddb1cea043052b9079b6b9ea1bfbf93d53c52ed96eb0c2d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/render-offering-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/render-offering-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -15142,7 +15142,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-contract-scope/SKILL.md",
       "sourceSha256": "574d3d4d6fea4de0fb2e5fb6cdd23bde2e69e5bbdd038eaa63d2fed624b63b21",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/review-contract-scope/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/review-contract-scope/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -15354,7 +15354,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deal-economics/SKILL.md",
       "sourceSha256": "ef5e2b97bf3b291dca0d03904558dbc43f4bdf8c73a725d25d55146de53ec5d1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/review-deal-economics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/review-deal-economics/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deal-economics",
@@ -15600,7 +15600,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deliverable/SKILL.md",
       "sourceSha256": "b795bb3023124473792b55947a4beb941b92d017ca9edcce7235b7a39817780f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/review-deliverable/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/review-deliverable/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deliverable",
@@ -15826,7 +15826,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-sales-journey/SKILL.md",
       "sourceSha256": "893a37e12a8a86177e88bb0903c20d9812c411a534edb074e3207b7d3bda6a9d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/review-sales-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/review-sales-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -15976,7 +15976,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-runtime/SKILL.md",
       "sourceSha256": "bba06bf6d55a823144888d369961f2adca0233c050939b1c870e32ac3b54474b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/review-site-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/review-site-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "build-moscow-story-map",
@@ -16314,7 +16314,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-writing/SKILL.md",
       "sourceSha256": "ae1c35a0ac5ec6ab9e60723b83e8e4e5e9702f6f40b3d6e4309ab74d8aaf743d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/review-writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/review-writing/SKILL.md",
       "taskPackages": [
         {
           "name": "review-writing",
@@ -16634,7 +16634,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-project/SKILL.md",
       "sourceSha256": "ff5b620e6f667358e4503d12e1e295fb0a44c405b91c3105bc55a882a29d34b6",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/scope-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/scope-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -16841,7 +16841,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/simplify-code/SKILL.md",
       "sourceSha256": "156e04c98dbf3090b7e649c9a173bee3dfea52c8b524acbb220b76ac5f87e67a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/simplify-code/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/simplify-code/SKILL.md",
       "taskPackages": [
         {
           "name": "simplify-code",
@@ -16962,7 +16962,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/specify-implementation/SKILL.md",
       "sourceSha256": "13949c4b2674594085edde691b1bbf48c62bef1cefe2e1e957e7e7a3556caee4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/specify-implementation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/specify-implementation/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -17130,7 +17130,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/start-delivery/SKILL.md",
       "sourceSha256": "28ea292d287efc339df4a895b44adb673ca2b8a0b1d2edae70721fb2e991d408",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/start-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/start-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "start-delivery",
@@ -17427,7 +17427,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/synthesize-discovery/SKILL.md",
       "sourceSha256": "0aa36a731eb03992537e0be2718e68557d6f6ef597f7b3784296d4b5ed31fa15",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/synthesize-discovery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/synthesize-discovery/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -17635,7 +17635,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tailor-resume/SKILL.md",
       "sourceSha256": "4f3dedf48a065ea98d6ef096cdfc37739321c95a00cdcf8273121e1f1debeffd",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/tailor-resume/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/tailor-resume/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -17791,7 +17791,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/track-delivery/SKILL.md",
       "sourceSha256": "847b852076132c0de37da2b0ffa6e6ee1bb34a230a56c535241227934310ae99",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/track-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/track-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "track-delivery",
@@ -18066,7 +18066,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/validate-delivery/SKILL.md",
       "sourceSha256": "21aabfb9a5cfc4ef671156a5a7a18bab9c11a2fc6a207248bf19c9b4b429c1f8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/validate-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/validate-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "validate-delivery",
@@ -18312,7 +18312,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-salesforce-org/SKILL.md",
       "sourceSha256": "ef7f119c9035f2562cc46ff755936355cb6fc0dd34439cca9a5f8f5f5d55fad5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/verify-salesforce-org/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/verify-salesforce-org/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "deliver-salesforce-change"
@@ -18468,7 +18468,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-work-state/SKILL.md",
       "sourceSha256": "76de9e7c6c3916162139c2d14bcb1f7baf76da2bafea8fd864db2f10ce7bb5cc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/verify-work-state/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/verify-work-state/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-knowledge",
@@ -18642,7 +18642,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/work-in-github-repository/SKILL.md",
       "sourceSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/work-in-github-repository/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/work-in-github-repository/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18745,7 +18745,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-architecture-reference/SKILL.md",
       "sourceSha256": "8af7bc206e1dca4ed369ba7a620f2e17244be7cc2305aaeef7bb1d733d46a118",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/write-architecture-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/write-architecture-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -18967,7 +18967,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-business-case/SKILL.md",
       "sourceSha256": "bec549aa6af7ce6f17ae4190b21ce8eea89f27b6cf03f7df33385f5367347bbe",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/write-business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/write-business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "write-business-case",
@@ -19202,7 +19202,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-feature-spec/SKILL.md",
       "sourceSha256": "37bec88975ff9246aa2e76451a73e6612f9835c0316634e6edb44b1cb0a7cbce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/write-feature-spec/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/write-feature-spec/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -19353,7 +19353,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-portfolio-case-study/SKILL.md",
       "sourceSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/write-portfolio-case-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/write-portfolio-case-study/SKILL.md",
       "taskPackages": [
         {
           "name": "write-portfolio-case-study",
@@ -19487,7 +19487,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "d71c780c1c2384fdf8e801d271d8d4c924962798fcf9ba7109111023fefcfad2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/write-statement-of-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/write-statement-of-work/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -19776,7 +19776,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing/SKILL.md",
       "sourceSha256": "1975a8e9eab31733e968679eb76bfc332968dea166dbdae84923cf4b7e773a0a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/writing/SKILL.md",
       "taskPackages": [
         {
           "name": "writing",
@@ -20072,7 +20072,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
       "sourceSha256": "02275c39aa484b1fefb422c915221d21621cb514198f10c32810f85306972cd5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/383439b86d287f2e002a4ff65d197e9f6576e430/skills/writing-diagnostics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/5deed186ff4c235939af498ab8a49842ef92c462/skills/writing-diagnostics/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "apply-salesforce-patterns",
@@ -20513,8 +20513,8 @@
     }
   ],
   "counts": {
-    "github": 94,
-    "local-revision": 0,
+    "github": 93,
+    "local-revision": 1,
     "local-addition": 0,
     "canonical": 94,
     "total": 94,

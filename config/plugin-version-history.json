@@ -192,6 +192,10 @@
     "0.4.44": {
       "content_sha256": "2f544dc914dd2b0e0cb07211147611747fa397945b236b38ac659f9f332f95c9",
       "note": "manage-color-system: brand accent rule for the LiveLaughCode gradient"
+    },
+    "0.4.45": {
+      "content_sha256": "93ee84db472cc51b36d3962a4db67393015b4707981eeee80c1b0d7cbb95874c",
+      "note": "LiveLaughCode replaces Bearing in manage-color-system: white Day ground, surface-well, gradient-derived signals, renamed recipe and fixtures; skills map moves to the white Day ground."
     }
   },
   "source_conflicts": [

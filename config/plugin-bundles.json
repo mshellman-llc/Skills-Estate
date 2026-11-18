@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.4.44",
+  "version": "0.4.45",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -690,7 +690,7 @@
       "manage-color-system": {
         "status": "pending",
         "reviewed_sha256": "",
-        "evidence": "Added 2026-11-17 as a draft. Self-test 15 of 15 (scripts/selftest.mjs): finds nine known defects in Bearing's pre-v2 tokens and passes all 178 role pairs of the v2 recipe. Used on Bearing the same day; awaiting owner review."
+        "evidence": "Added 2026-11-17 as a draft. Self-test 15 of 15 (scripts/selftest.mjs): finds nine known defects in the LiveLaughCode pre-v2 tokens and passes all 178 role pairs of the current recipe. Used on LiveLaughCode the same day; awaiting owner review."
       }
     },
     "routers": {

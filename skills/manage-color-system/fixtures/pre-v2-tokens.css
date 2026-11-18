@@ -1,4 +1,4 @@
-/* Bearing color tokens, copied from the Bearing brand guide artifact project/tokens.css, version 1794943922-762d (2026-11-17). Color blocks only. */
+/* LiveLaughCode color tokens, copied from the brand guide artifact project/tokens.css, version 1794943922-762d (2026-11-17), before the v2 roles. Color blocks only. */
 :root, [data-theme="dark"] {
   --ink-950: #86898f; /* Palette. Deepest ground: photo vignettes, footer, text on light surfaces. */
   --navy-700: #283549; /* Palette. Brand navy: first chart series, revolving-facility bar. */
