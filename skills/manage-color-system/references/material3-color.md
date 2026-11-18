@@ -40,4 +40,4 @@ A static baseline scheme can come from brand input colors. Color fidelity moves 
 
 ## Components
 
-Material 3 groups components as buttons (button groups, buttons, extended FABs, FAB menu, FABs, icon buttons, segmented buttons, split buttons), date and time pickers, loading and progress indicators, navigation (bar, drawer, rail), sheets (bottom, side) and the rest: app bars, badges, cards, carousel, checkbox, chips, dialogs, divider, lists, menus, radio button, search, sliders, snackbar, switch, tabs, text fields, toolbars and tooltips. `component-roles.json` maps each to roles and to the Bearing component that plays its part.
+Material 3 groups components as buttons (button groups, buttons, extended FABs, FAB menu, FABs, icon buttons, segmented buttons, split buttons), date and time pickers, loading and progress indicators, navigation (bar, drawer, rail), sheets (bottom, side) and the rest: app bars, badges, cards, carousel, checkbox, chips, dialogs, divider, lists, menus, radio button, search, sliders, snackbar, switch, tabs, text fields, toolbars and tooltips. `component-roles.json` maps each to roles and to the LiveLaughCode component that plays its part.

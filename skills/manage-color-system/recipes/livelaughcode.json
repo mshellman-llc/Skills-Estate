@@ -1,5 +1,5 @@
 {
-  "name": "Bearing color v2 (proposal), Material 3 role names with Bearing aliases",
+  "name": "LiveLaughCode color roles, Material 3 role names with the earlier names as aliases",
   "palettes": {
     "neutral": {
       "hue": 266,
@@ -31,9 +31,9 @@
       "token": "surface",
       "palette": "neutral",
       "kind": "ground",
-      "use": "Page ground.",
+      "use": "Page ground: white on Day, #161824 on Night.",
       "day": {
-        "pin": "#eeeff3"
+        "pin": "#ffffff"
       },
       "night": {
         "pin": "#161824"
@@ -81,7 +81,7 @@
       "kind": "ground",
       "use": "Low-emphasis container.",
       "day": {
-        "prefer": 97.5
+        "pin": "#f8f7fd"
       },
       "night": {
         "prefer": 11
@@ -91,9 +91,9 @@
       "token": "surface-container",
       "palette": "neutral",
       "kind": "ground",
-      "use": "Default container: cards on Night, nav areas.",
+      "use": "Default container: cards on Night, nav areas, and the well inside a white Day card.",
       "day": {
-        "prefer": 91.5
+        "pin": "#e7e6ec"
       },
       "night": {
         "pin": "#1e222f"
@@ -132,7 +132,7 @@
         "pin": "#161824"
       },
       "night": {
-        "pin": "#eeeff3"
+        "pin": "#ffffff"
       }
     },
     {
@@ -170,7 +170,7 @@
       "token": "on-surface-body",
       "palette": "neutral",
       "kind": "text",
-      "use": "Paragraphs (Bearing addition).",
+      "use": "Paragraphs (LiveLaughCode addition).",
       "day": {
         "prefer": 10,
         "against": [
@@ -306,7 +306,7 @@
       "token": "focus",
       "palette": "navy",
       "kind": "ui",
-      "use": "2px focus ring with a 2px ground gap (Bearing addition).",
+      "use": "2px focus ring with a 2px ground gap (LiveLaughCode addition).",
       "day": {
         "prefer": 22,
         "against": [
@@ -677,6 +677,54 @@
         "tone": 0,
         "alpha": 0.6
       }
+    },
+    {
+      "token": "signal-violet",
+      "palette": "neutral",
+      "kind": "signal",
+      "use": "Signal hue 1 from gradient stop 1: Blocked, the first category and step 1. Symbols, dots and short rules only.",
+      "day": {
+        "pin": "#6d52be"
+      },
+      "night": {
+        "pin": "#a893e4"
+      }
+    },
+    {
+      "token": "signal-indigo",
+      "palette": "neutral",
+      "kind": "signal",
+      "use": "Signal hue 2 from gradient stop 2: the second category and step 2. Symbols, dots and short rules only.",
+      "day": {
+        "pin": "#3b3f9c"
+      },
+      "night": {
+        "pin": "#9498ec"
+      }
+    },
+    {
+      "token": "signal-blue",
+      "palette": "neutral",
+      "kind": "signal",
+      "use": "Signal hue 3 from gradient stop 3: In review, the third category and step 3. Symbols, dots and short rules only.",
+      "day": {
+        "pin": "#2962c3"
+      },
+      "night": {
+        "pin": "#76a0e9"
+      }
+    },
+    {
+      "token": "signal-teal",
+      "palette": "neutral",
+      "kind": "signal",
+      "use": "Signal hue 4 from gradient stop 4: Approved, the fourth category and step 4. Symbols, dots and short rules only.",
+      "day": {
+        "pin": "#157171"
+      },
+      "night": {
+        "pin": "#5cadad"
+      }
     }
   ],
   "aliases": {
@@ -694,10 +742,12 @@
       "focus-ring": "focus"
     },
     "day": {
-      "surface-raised": "surface-container-lowest"
+      "surface-raised": "surface-container-lowest",
+      "surface-well": "surface-container"
     },
     "night": {
-      "surface-raised": "surface-container"
+      "surface-raised": "surface-container",
+      "surface-well": "surface"
     }
   }
 }
