@@ -188,6 +188,10 @@
     "0.4.43": {
       "content_sha256": "f18468c6913c7ff4b703c93366f171cbf44d493730ba11db24c048b31d9331b0",
       "note": "Compare scope options: hours-only comparisons with ranges and unestimated items, QA wrapper runs in place, rendered prose gate for comparison pages, extractable PDF figures, explorer missing inputs and per-version sources"
+    },
+    "0.4.44": {
+      "content_sha256": "4e824dceb1fb08a8afca7a7f1aece744c1b55e95547f507b094e87bcc50db0ce",
+      "note": "manage-color-system: brand accent rule for the LiveLaughCode gradient"
     }
   },
   "source_conflicts": [
