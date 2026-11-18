@@ -21,9 +21,11 @@ is never the first deliverable. The evidence ledger is.
 - Worked examples and generated artifacts have zero evidentiary authority.
 - Every load-bearing claim carries governed claim IDs and source IDs.
 - Unknown or contested load-bearing claims require an owner and closure
-  condition.
+  condition. With a stop rule as well, they leave the domain Conditional, not
+  Insufficient; see Conditional coverage.
 - If a required load-bearing domain is Insufficient, output a compact
   readiness-gap memo and stop. Do not continue into the requested full artifact.
+  A Conditional result is not a stop: write the full artifact and list every open item.
 
 ## Inputs
 
@@ -50,7 +52,8 @@ Each claim records:
 - load-bearing flag
 - artifact domains
 - confidence rationale
-- for an unresolved claim, its owner and the condition that closes it
+- for an unresolved claim, its owner, the condition that closes it, and its
+  stop rule: the dependent work that waits until it closes
 
 ## Authority model
 
@@ -123,8 +126,10 @@ python3 scripts/evidence_core.py path/to/ledger.json solution_brief --output gat
 7. If the result is Insufficient, produce the named readiness-gap memo with:
    direction worth retaining, blockers, closure conditions, ownership gaps,
    evidence references, and the next gate. Stop.
-8. If Sufficient or permitted Conditional, pass the validated ledger and gate
-   report to the artifact-specific skill.
+8. If Sufficient or Conditional, pass the validated ledger and gate report to
+   the artifact-specific skill. A Conditional report lists its open items in
+   `openItems`; the full artifact shows each one with its owner, closure
+   condition and stop rule.
 
 The CLI exits nonzero for a terminal result so automation cannot accidentally
 continue into full generation.
@@ -183,14 +188,21 @@ python3 scripts/evidence_core.py ledger.json discovery_synthesis --output gate-r
 
 ## Conditional coverage
 
-Conditional is valid only when the unresolved item has:
+A load-bearing Unknown or Contested claim, or a load-bearing open conflict, is
+an open item. It leaves its domains Conditional only when it has all four of:
 
-- a named owner
-- a closure condition
-- affected entities or artifact domains
-- a clear rule preventing dependent work from proceeding early
+- a named owner: `owner`
+- a closure condition: `closureCondition`
+- affected entities or artifact domains: a claim's `domains`, or a conflict's
+  `affectedDomains`
+- a clear rule preventing dependent work from proceeding early: `stopRule`,
+  such as "do not quote a fixed install fee until the tills are counted"
 
-Otherwise mark the domain Insufficient.
+The gate reports such an item under `openItems` and continues to the full
+artifact. An item missing any of the four is a blocker, the gate report names
+the missing fields in `missingConditions`, and the domain is Insufficient. A
+rough estimate or a business case may carry an open item this way; do not mark
+a real open item as not load-bearing to get past the gate.
 
 ## Validation and maintenance
 
