@@ -21,7 +21,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "f9dca5b60e65a84f8325f6d83c443edee180209978bd1a8ac015b0b049e51b24",
+      "required_sha256": "0a93f4ce73dfdefe91de7b232a164a4eba7eebbaa4d6d2edacc7ac07c60333fb",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -291,7 +291,7 @@
       "subject": "manage-brand-profile"
     },
     {
-      "required_sha256": "68031b14dd97b7508eb69b87c50f3170f7b822b715db90796ebeff9b17ca6f76",
+      "required_sha256": "2b47498a340f2c68d1a0b19a881b1e7690a59872d602879cf5632c6e77eaeb4e",
       "status": "review required",
       "subject": "manage-color-system"
     },
@@ -541,6 +541,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "6a56d6ff6d3fb643b4ee32d71c30b381cad51b3f555b183688d4d0a836e1facb",
+  "source_sha256": "fd6a657607a15875cf022b132a84d2d0e52cbdb1425b1961a1730d6fa8350675",
   "status": "owner-published"
 }

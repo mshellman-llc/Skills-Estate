@@ -23,7 +23,7 @@ Node 18 or later, nothing to install. Material Color Utilities and culori are bu
 cd <skill>/scripts
 node selftest.mjs
 node color-steward.mjs audit tokens.css --components bundle.css --json audit.json
-node color-steward.mjs pair "#86898f" "#eeeff3"
+node color-steward.mjs pair "#86898f" "#ffffff"
 node color-steward.mjs palette "#283549"
 node color-steward.mjs scheme "#283549" --variant neutral --error "#C4302B"
 node color-steward.mjs cvd "#283549" "#525f75" "#7a879e"
@@ -78,15 +78,16 @@ An icon is a color-system graphic, so it follows the same roles.
 
 ## Owner decisions on file
 
-Read the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan's own work, Bearing is the one design system:
+Read the current brand profile first (estate-writing:manage-brand-profile for client work). For Megan's own work, LiveLaughCode is the one design system:
 
-- Day ground #EEEFF3 and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. Bearing runs the color v2 roles from `recipes/bearing-v2.json`, with the earlier names kept as aliases and a high-contrast version of each theme.
-- Emphasis comes from size, weight and the Night to Day contrast. Four signal hues (coral, blue, green, orange) carry status, step order and categories only: as a symbol, a dot, a short rule or one soft-tinted card. Never text, a heading, a link or a large fill.
-- One brand accent, the LiveLaughCode gradient (`brand-violet`, `brand-indigo`, `brand-blue`, `brand-teal`), marks the logo and one soft gradient field per page behind a hero or cover. On Night it runs violet, blue, teal, since indigo is 2.0:1 there. Text on the field is `on-surface` or `on-surface-body`. It never fills a control, card, section or chart, and never carries status or step order.
+- Day ground #FFFFFF and Night ground #161824 are pinned. Brand navy #283549 is pinned as primary-fixed. LiveLaughCode runs the roles in `recipes/livelaughcode.json`, with the earlier names kept as aliases and a high-contrast version of each theme.
+- Cards are white on the white Day page, so a soft shadow separates them. `surface-well` (#E7E6EC on Day, the page ground on Night) fills wells, chips and the selected item inside a card.
+- Four signal hues come from the gradient stops: violet, indigo, blue and teal. Blocked is violet, In review is blue and Approved is teal; indigo carries no status. Signals mark status, categories and step order as a symbol, a dot, a short rule or one soft-tinted card, never text, a heading, a link or a large fill.
+- The LiveLaughCode gradient (`brand-violet`, `brand-indigo`, `brand-blue`, `brand-teal`) marks the logo's Code_ pill, one soft field per page behind a hero or cover, and lines and ordered parts in components: step 1 takes stop 1, step 2 takes stop 2. On Night it runs violet, blue, teal, since indigo is 2.0:1 there. Text on the field is `on-surface` or `on-surface-body`. It never fills a control or a section.
 - Every status pairs its hue with a shape and a word, so color never carries it alone.
-- Alerts and errors sit on the page's own neutral surface with a thin rule or a small mark. `error` (crimson) appears only in the mark, the rule and the message text; Blocked status stays signal coral. No tinted alert panels, and no component left in its default AI-builder look.
-- Set type in Instrument Sans only; never Times.
-- Bearing's icons are the Stockholm Premium set, duotone, normalized as above, in Bearing's Icons asset group. Doodle illustration sets are not UI icons.
+- Alerts and errors sit on the page's own neutral surface with a thin rule or a small mark. `error` (crimson) appears only in the mark, the rule and the message text. No tinted alert panels, and no component left in its default AI-builder look.
+- Set type in Instrument Sans. Instrument Serif italic is reserved for the wordmark. Never Times.
+- The icons are the Stockholm Premium set, duotone, normalized as above, in the LiveLaughCode guide's Icons asset group. Doodle illustration sets are not UI icons.
 
 ## Output
 
@@ -96,13 +97,13 @@ Deliver the recipe, the generated tokens.css and the audit JSON with any proposa
 
 ## References
 
-- `scripts/selftest.mjs`: runs the audit and the proposal on the Bearing fixtures and checks the results.
+- `scripts/selftest.mjs`: runs the audit on the pre-v2 fixtures and the proposal on the current recipe, and checks the results.
 
-- `references/component-roles.json`: Material 3 components mapped to Bearing components and roles.
+- `references/component-roles.json`: Material 3 components mapped to LiveLaughCode components and roles.
 - `references/icon-roles.json`: one row per icon job.
 - `references/material3-color.md`: the Material 3 color model this skill follows.
-- `recipes/bearing-v2.json`: the Bearing recipe; copy it to start a client system.
-- `fixtures/`: Bearing's tokens and component color rules as they stood before v2, used by the self-test.
+- `recipes/livelaughcode.json`: the LiveLaughCode recipe; copy it to start a client system.
+- `fixtures/`: the LiveLaughCode tokens and component color rules as they stood before v2, used by the self-test.
 
 ## Shared standards
 
