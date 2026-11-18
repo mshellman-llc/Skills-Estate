@@ -19,5 +19,17 @@
       "Bash(git push origin --delete:*)",
       "Bash(git push origin main:*)"
     ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/require_hub_note.py"
+          }
+        ]
+      }
+    ]
   }
 }
