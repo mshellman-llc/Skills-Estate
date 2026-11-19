@@ -2,6 +2,7 @@
 """Self-test for check.py. Every file and ledger is synthetic and lives in a temporary folder."""
 import contextlib
 import io
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -705,6 +706,58 @@ class Review(Base):
         audit, _ = self.audit(verdicts, reviewer='writer-session')
         code, result = self.full(verdicts, document_map, '--audit', audit)
         self.assertEqual((code, self.step(result, 'spot audit')), (2, 'failed'))
+
+    def write_log(self, *items):
+        self.agent_home.mkdir(exist_ok=True)
+        (self.agent_home / 'writers.jsonl').write_text(''.join(json.dumps(x) + '\n' for x in items))
+
+    def test_a_reviewer_who_later_rewrote_the_piece_is_rejected(self):
+        verdicts, document_map = self.verdicts(reviewer='worker 1'), self.document_map()
+        piece, current = str(self.path.resolve()), hashlib.sha256(self.path.read_bytes()).hexdigest()
+        # The reviewer's session rewrote the piece after the writer, then wrote the verdict file.
+        self.write_log({'session': 'writer-session', 'path': piece, 'sha256': '0' * 64},
+                       {'session': 'reviewer-session', 'path': piece, 'sha256': current},
+                       {'session': 'reviewer-session', 'path': str(Path(verdicts).resolve())})
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual((code, self.step(result, 'line pass')), (2, 'failed'))
+        self.assertIn('reviewer-session', self.detail(result, 'line pass'))
+        self.assertEqual(self.receipt(result)['writers'], ['reviewer-session', 'writer-session'])
+        # The same rewrite, with the reviewer named only by the session field of the verdict file.
+        named = json.loads(Path(verdicts).read_text())
+        named['session'] = 'reviewer-session'
+        named_path = self.save('verdicts-named.json', named)
+        self.write_log({'session': 'writer-session', 'path': piece, 'sha256': '0' * 64},
+                       {'session': 'reviewer-session', 'path': piece, 'sha256': current})
+        code, result = self.full(named_path, document_map)
+        self.assertEqual((code, self.step(result, 'line pass')), (2, 'failed'))
+        self.assertIn('reviewer-session', self.detail(result, 'line pass'))
+        # A rewrite in the middle counts too: the reviewer edited, then the writer brought it to its current text.
+        self.write_log({'session': 'writer-session', 'path': piece, 'sha256': '0' * 64},
+                       {'session': 'reviewer-session', 'path': piece, 'sha256': '1' * 64},
+                       {'session': 'writer-session', 'path': piece, 'sha256': current})
+        self.assertEqual(self.step(self.full(named_path, document_map)[1], 'line pass'), 'failed')
+        # An audit file from the session that rewrote the piece is rejected the same way.
+        self.write_log({'session': 'writer-session', 'path': piece, 'sha256': '0' * 64},
+                       {'session': 'auditor-session', 'path': piece, 'sha256': current})
+        audit, _ = self.audit(verdicts, reviewer='auditor-session')
+        code, result = self.full(verdicts, document_map, '--audit', audit)
+        self.assertEqual((code, self.step(result, 'spot audit')), (2, 'failed'))
+
+    def test_writers_count_up_to_the_content_under_review(self):
+        verdicts, document_map = self.verdicts(reviewer='later-session'), self.document_map()
+        piece, current = str(self.path.resolve()), hashlib.sha256(self.path.read_bytes()).hexdigest()
+        # A write logged after the last one that produced the reviewed text did not write that text.
+        self.write_log({'session': 'writer-session', 'path': piece, 'sha256': current},
+                       {'session': 'later-session', 'path': piece, 'sha256': '2' * 64})
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual(self.step(result, 'line pass'), 'ok')
+        self.assertEqual(self.receipt(result)['writers'], ['writer-session'])
+        # When no logged write matches the current text, every logged write counts.
+        self.write_log({'session': 'writer-session', 'path': piece},
+                       {'session': 'later-session', 'path': piece, 'sha256': '2' * 64})
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual(self.step(result, 'line pass'), 'failed')
+        self.assertIn('later-session', self.detail(result, 'line pass'))
 
     def test_map_that_marks_over_a_tenth_of_lines_structural_is_rejected(self):
         self.numbers_page()

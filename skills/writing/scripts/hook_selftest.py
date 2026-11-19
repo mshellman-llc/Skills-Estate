@@ -77,6 +77,7 @@ class HookTest(unittest.TestCase):
                        'tool_input': {'file_path': str(path)}})
         logged = [json.loads(x) for x in (self.home / 'writers.jsonl').read_text().splitlines()]
         self.assertEqual([(x['session'], x['path']) for x in logged], [('s3', str(path.resolve()))])
+        self.assertEqual(logged[0]['sha256'], hashlib.sha256(b'{}').hexdigest())
 
     def test_gate_holds_an_unreviewed_deliverable_then_releases(self):
         path = self.work / 'page.html'

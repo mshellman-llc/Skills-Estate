@@ -245,15 +245,21 @@ def on_stop(event, args, state):
 
 
 def log_writers(event, args, paths):
-    """One line per file a session wrote with a file tool. A file written from a shell command is not seen."""
+    """One line per file a session wrote with a file tool, with the file's sha256 after the write.
+
+    A file written from a shell command is not seen."""
     session = str(event.get('session_id') or '').strip()
     if not session or not paths:
         return
     WRITERS.parent.mkdir(parents=True, exist_ok=True)
     with open(WRITERS, 'a', encoding='utf-8') as f:
         for path in paths:
-            f.write(json.dumps({'d': today(), 'tool': args.tool, 'session': session,
-                                'path': str(Path(path).resolve())}) + '\n')
+            item = {'d': today(), 'tool': args.tool, 'session': session, 'path': str(Path(path).resolve())}
+            try:
+                item['sha256'] = file_sha(path)   # check.py counts writers up to the content under review
+            except OSError:
+                pass
+            f.write(json.dumps(item) + '\n')
 
 
 def on_post_tool(event, args, state):

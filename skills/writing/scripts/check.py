@@ -581,8 +581,8 @@ def writers_log():
     return base / 'writers.jsonl'
 
 
-def sessions_that_wrote(path):
-    """Sessions recorded as writing this path, oldest first."""
+def writes_to(path):
+    """The hook's log lines for this path, oldest first."""
     target, found = str(Path(path).expanduser().resolve()), []
     try:
         with open(writers_log(), encoding='utf-8') as f:
@@ -591,18 +591,46 @@ def sessions_that_wrote(path):
                     item = json.loads(line)
                 except ValueError:
                     continue
-                session = str(item.get('session') or '').strip()
-                if item.get('path') == target and session and session not in found:
-                    found.append(session)
+                if isinstance(item, dict) and item.get('path') == target and str(item.get('session') or '').strip():
+                    found.append(item)
     except OSError:
         return []
     return found
 
 
+def unique_sessions(items):
+    found = []
+    for item in items:
+        session = str(item.get('session') or '').strip()
+        if session not in found:
+            found.append(session)
+    return found
+
+
+def sessions_that_wrote(path):
+    """Sessions recorded as writing this path, oldest first."""
+    return unique_sessions(writes_to(path))
+
+
+def sessions_that_wrote_content(path):
+    """Every session that wrote or changed the file up to the content under review, oldest first.
+
+    The hook records the file's sha256 after each write. The writes counted run up to the last one that left the
+    file at its current sha256. When no logged write matches it (the last change came from outside a file tool,
+    or the log predates the hash), every logged write counts."""
+    items = writes_to(path)
+    try:
+        current = sha(Path(path).expanduser().read_bytes())
+    except OSError:
+        return unique_sessions(items)
+    matches = [i for i, item in enumerate(items) if item.get('sha256') == current]
+    return unique_sessions(items[:matches[-1] + 1] if matches else items)
+
+
 def piece_writers(path, names):
-    """The writer of the piece: the first session that wrote the file, and every name given with --writer."""
-    first = sessions_that_wrote(path)[:1]
-    return {str(n).strip() for n in [*first, *(names or [])] if str(n).strip()}
+    """The writers of the piece: every session that wrote or changed it up to the content under review, and
+    every name given with --writer."""
+    return {str(n).strip() for n in [*sessions_that_wrote_content(path), *(names or [])] if str(n).strip()}
 
 
 def writer_problem(data, paths, writers):
