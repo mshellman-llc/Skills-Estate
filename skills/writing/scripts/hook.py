@@ -32,7 +32,8 @@ the file it names, or the content it carries. With "scan", the call is denied
 when check.py finds a blocking line in those bytes. A call whose content the
 hook cannot read is denied, and the reason names what it could not read: a
 missing or unreadable file, a call with no file or text content, or bytes the
-scan could not read.
+scan could not read. Any other error in the publish check denies the call too,
+with the error as the reason, and the hook prints one decision.
 
 Standard library only.
 """
@@ -322,13 +323,14 @@ def published_bytes(data):
         value = data.get(key)
         if isinstance(value, str) and value.strip():
             path = Path(value).expanduser()
-            if not path.is_file():
-                unread.append(f'the file {path} named in {key}, which does not exist or is not a file')
-                continue
             try:
+                if not path.is_file():   # is_file raises for a name too long or a folder it cannot enter
+                    unread.append(f'the file {path} named in {key}, which does not exist or is not a file')
+                    continue
                 return path.read_bytes(), str(path)
-            except OSError as exc:
-                unread.append(f'the file {path} named in {key} ({exc.strerror or exc})')
+            except (OSError, ValueError) as exc:
+                # A file that exists but cannot be read is what the call sends, so no text content stands in.
+                return None, f'the file {path} named in {key} ({type(exc).__name__}: {getattr(exc, "strerror", None) or exc})'
     for key in PUBLISH_TEXT_KEYS:
         value = data.get(key)
         if isinstance(value, str) and value.strip():
@@ -344,38 +346,62 @@ def deny(reason):
                                  'permissionDecisionReason': reason}})
 
 
+def note_hits(tool, src, target, findings):
+    """log_hits for the publish path: a log that cannot be written never stops the denial."""
+    try:
+        log_hits(tool, src, target, findings)
+    except OSError:
+        pass
+
+
+def is_publish_tool(event):
+    """True when the event is a PreToolUse call to a publish tool, by the gate's patterns or the defaults."""
+    name = event.get('tool_name') or ''
+    try:
+        patterns = gate_config().get('publish_tools') or []
+    except Exception:   # a gate.json that is not an object: fall back to the defaults, never to no check
+        patterns = DEFAULT_GATE['publish_tools']
+    return any(fnmatch.fnmatchcase(name, str(pat)) for pat in patterns)
+
+
 def on_pre_tool(event, args, state):
+    """The denial reason for a publish call, or None when it may go out. main() denies on any exception."""
+    if not is_publish_tool(event):
+        return None
     cfg = gate_config()
     name = event.get('tool_name') or ''
-    if not any(fnmatch.fnmatchcase(name, pat) for pat in cfg.get('publish_tools') or []):
-        return
-    data, where = published_bytes(event.get('tool_input') or {})
+    tool_input = event.get('tool_input')
+    data, where = published_bytes(tool_input if isinstance(tool_input, dict) else {})
     if data is None:
-        log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
-        deny(f'Not published: the writing check could not read what {name} sends. It could not read {where}. '
-             'Save the content to a file, review it, and pass that file path or the content itself in the call.')
-        return
+        note_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+        return (f'Not published: the writing check could not read what {name} sends. It could not read {where}. '
+                'Save the content to a file, review it, and pass that file path or the content itself in the call.')
     sha = hashlib.sha256(data).hexdigest()
     if cfg.get('publish_requires', 'full') == 'scan':
-        suffix = Path(where).suffix if Path(where).suffix else '.html'
-        with tempfile.TemporaryDirectory() as tmp:
-            piece = Path(tmp) / f'publish{suffix}'
-            piece.write_bytes(data)
-            status, findings = scan_file(piece, args.register, receipt_dir=tmp)
+        try:
+            suffix = Path(where).suffix if Path(where).suffix else '.html'
+            with tempfile.TemporaryDirectory() as tmp:
+                piece = Path(tmp) / f'publish{suffix}'
+                piece.write_bytes(data)
+                status, findings = scan_file(piece, args.register, receipt_dir=tmp)
+        except (OSError, ValueError) as exc:
+            note_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+            return (f'Not published: the writing check could not set up the scan of {where} '
+                    f'({type(exc).__name__}: {exc}). Save the content to a file with a short name, then publish again.')
         if status == 'fail' and findings:
-            log_hits(args.tool, 'publish', name, findings)
-            deny(f'{where} breaks the writing rules. Rewrite these lines, then publish again:\n' + describe(findings))
-        elif status not in ('pass', 'scan-pass'):
-            log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
-            deny(f'Not published: the writing check could not read {where} (status {status}). Save the content '
-                 'in a format check.py reads, then publish again.')
-        return
+            note_hits(args.tool, 'publish', name, findings)
+            return f'{where} breaks the writing rules. Rewrite these lines, then publish again:\n' + describe(findings)
+        if status not in ('pass', 'scan-pass'):
+            note_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+            return (f'Not published: the writing check could not read {where} (status {status}). Save the content '
+                    'in a format check.py reads, then publish again.')
+        return None
     if reviewed(sha):
-        return
-    log_hits(args.tool, 'publish', name, [{'rule': 'publish-without-review', 'text': where}])
-    deny(f'Not published: no passing full review covers {where} (sha256 {sha[:12]}). Save these exact bytes to a '
-         'file, run the full review (check.py --file FILE --full with the line pass, document pass and spot audit '
-         'by a reviewer other than the writer) until it returns pass, then publish the same bytes.')
+        return None
+    note_hits(args.tool, 'publish', name, [{'rule': 'publish-without-review', 'text': where}])
+    return (f'Not published: no passing full review covers {where} (sha256 {sha[:12]}). Save these exact bytes to a '
+            'file, run the full review (check.py --file FILE --full with the line pass, document pass and spot audit '
+            'by a reviewer other than the writer) until it returns pass, then publish the same bytes.')
 
 
 def on_prompt(event, args, state):
@@ -418,6 +444,25 @@ def on_session_start(event, args, state):
         emit({'hookSpecificOutput': {'hookEventName': 'SessionStart', 'additionalContext': text}})
 
 
+def pre_tool(event, args, state):
+    """Run the publish check and emit at most one decision. A publish call is denied on any error, because the
+    host lets a call through when the hook prints nothing or exits with an error other than 2."""
+    try:
+        reason = on_pre_tool(event, args, state)
+    except Exception as error:
+        if not is_publish_tool(event):
+            return 0
+        name = event.get('tool_name') or 'the publish tool'
+        note_hits(args.tool, 'publish-unresolved', name,
+                  [{'rule': 'publish-unresolved', 'text': f'{type(error).__name__}: {error}'}])
+        reason = (f'Not published: the writing check failed while reading what {name} sends '
+                  f'({type(error).__name__}: {error}), so no review can cover it. Save the content to a readable '
+                  'file with a short name, review it, and publish that file.')
+    if reason:
+        deny(reason)
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--tool', default='claude-code')
@@ -430,7 +475,9 @@ def main(argv=None):
     name = event.get('hook_event_name') or ''
     path = state_path(event.get('session_id'))
     state = read_json(path, {})
-    handler = {'Stop': on_stop, 'PreToolUse': on_pre_tool, 'PostToolUse': on_post_tool,
+    if name == 'PreToolUse':
+        return pre_tool(event, args, state)
+    handler = {'Stop': on_stop, 'PostToolUse': on_post_tool,
                'UserPromptSubmit': on_prompt, 'SessionStart': on_session_start}.get(name)
     if handler:
         try:

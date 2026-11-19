@@ -208,6 +208,10 @@
     "0.4.48": {
       "content_sha256": "8c4b8a77b68b8e95eee5515be4586c5e804580f2774daa557d0d386faa5d607e",
       "note": "Build Hub decision 271 in the writing skill: Hub corrections copy, publish check, register aliases and one instruction builder. The publish check denies a call whose content it cannot read and names what it could not read, and sync_corrections.py --seed saves its IDs without --apply."
+    },
+    "0.4.49": {
+      "content_sha256": "806782abcf5482714a3da7e4a1907562d61d4de0de462f45020b989bf0adb5d6",
+      "note": "Fix the two faults the independent review found in the writing skill: --prepare keeps the reviewer, its session and the sessions that wrote the verdict files in carried.json and never carries a verdict set from the writer; any error in the publish check denies the call. An unreadable writer log or a worker file with no reviewer makes the review incomplete."
     }
   },
   "source_conflicts": [

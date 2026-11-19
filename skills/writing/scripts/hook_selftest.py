@@ -133,6 +133,50 @@ class HookTest(unittest.TestCase):
         self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
         self.assertIn(f'could not read {binary}', reason(out))
 
+    def test_publish_errors_while_reading_the_content_deny_the_call(self):
+        reason = lambda out: out['hookSpecificOutput']['permissionDecisionReason']
+        # A file name longer than the file system allows: is_file raises instead of returning False.
+        long_name = self.work / ('x' * 300 + '.html')
+        out = self.publish({'file_path': str(long_name), 'content': CLEAN})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('File name too long', reason(out))
+        self.assertIn(str(long_name), reason(out))
+        # A folder the hook cannot enter: is_file raises PermissionError.
+        locked = self.work / 'locked'
+        locked.mkdir()
+        (locked / 'page.html').write_text('<p>' + CLEAN + '</p>')
+        locked.chmod(0)
+        try:
+            if not os.access(locked, os.X_OK):   # root can enter any folder
+                out = self.publish({'file_path': str(locked / 'page.html'), 'content': CLEAN})
+                self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+                self.assertIn('PermissionError', reason(out))
+        finally:
+            locked.chmod(0o755)
+        # A scan whose working file cannot be created: the source suffix makes its name too long.
+        (self.home / 'gate.json').write_text(json.dumps({'include': [], 'exclude': [], 'publish_requires': 'scan'}))
+        odd = self.work / ('p.' + 'h' * 250)
+        odd.write_text('<p>' + CLEAN + '</p>')
+        out = self.publish({'file_path': str(odd)}, tool='mcp__site__publish_page')
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('could not set up the scan', reason(out))
+
+    def test_publish_is_denied_when_the_hook_itself_fails(self):
+        reason = lambda out: out['hookSpecificOutput']['permissionDecisionReason']
+        # gate.json that is JSON but not an object: the check fails, and the default publish tools still match.
+        (self.home / 'gate.json').write_text('[1]')
+        out = self.publish({'content': CLEAN})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('the writing check failed', reason(out))
+        # The hits log and the session state cannot be written: the denial still goes out, once, with exit 0.
+        (self.home / 'gate.json').write_text(json.dumps({'include': [], 'exclude': []}))
+        (self.home / 'hits.jsonl').unlink(missing_ok=True)
+        (self.home / 'hits.jsonl').mkdir()
+        (self.home / 'state').write_text('not a folder')
+        out = self.publish({'url': 'https://example.com'})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIsNone(self.publish({'content': CLEAN}, tool='Write'))
+
     def test_publish_scan_mode_and_other_tools(self):
         self.assertIsNone(self.publish({'content': BAD}, tool='Write'))
         (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'exclude': [],
