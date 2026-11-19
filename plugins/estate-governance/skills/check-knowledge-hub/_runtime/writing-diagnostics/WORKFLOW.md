@@ -1,6 +1,6 @@
 ---
 name: writing-diagnostics
-description: Internal diagnostic and figure-preservation tools used by review-writing. This module supplies scanners and review records; it does not select an author voice or act as a second editor.
+description: Internal diagnostic and figure-preservation tools used by `writing`. This module supplies scanners and review records; it does not select an author voice or act as a second editor.
 ---
 
 Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.
@@ -8,9 +8,9 @@ Run this module's relative commands from the directory containing this WORKFLOW.
 
 # Writing diagnostics
 
-This internal runtime holds the checkers and record tools that `review-writing` calls. Load it through that workflow.
+This internal runtime holds the checkers and record tools that `writing` calls. Load it through that workflow.
 
-Read [review-writing](../review-writing/WORKFLOW.md) before using these tools.
+Read [`writing`](../writing/WORKFLOW.md) before using these tools.
 That workflow owns writing review. A confirmed personal profile supplies the
 author's voice. A visual brand profile controls appearance; it cannot select an
 author voice or change a fact. These tools report detectable patterns; they do not rewrite
@@ -101,7 +101,7 @@ Use the applicable register for format-specific advice:
 | Short message | [Email and Slack](references/registers/email-slack.md) |
 | Other authored text | [General](references/registers/general.md) |
 
-Registers supply examples and format checks under review-writing. Preserve
+Registers supply examples and format checks under `writing`. Preserve
 required terms and confirmed voice when a legacy example uses another style.
 Read headings with their body text. Remove repeated explanations and subtitles
 that repeat a title. A vocabulary substitution cannot repair an empty claim.

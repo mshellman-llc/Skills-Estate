@@ -51,7 +51,7 @@ scoping_manage_scope_items:
 - `name` is the upsert key: same name + same quote = update, not duplicate
 - **Always include `skillName`**; omitting it clears the capability
 - `description` and `assumptions` are auto-converted to rich-text HTML. Write a 1-3
-  sentence header, then markdown bullets: specific and consistent with review-writing (see
+  sentence header, then markdown bullets: specific and consistent with `writing` (see
   "Writing scope descriptions and assumptions" in SKILL.md)
 - `tags` must already exist in the quote's tag catalog (create tags first)
 - Deactivate: `{ "name": "...", "isActive": false, "skillName": "..." }`
@@ -180,7 +180,7 @@ distinguished by instance; check how a saved snapshot represents them and follow
 - [ ] Schedules use `weeks` ranges, hours > 0 (zero-hour entries are stripped)
 - [ ] Resource continuity: no week gaps between a resource's first and last week
 - [ ] Hours respect each role's configured minimum and interval
-- [ ] Each `productCode` exists as a quote resource on this quote
+- [ ] Each `productCode` is already a resource column on this quote
 - [ ] After save: read back and surface any `validations` with ERROR severity
 
 ## Reading snapshots
@@ -202,7 +202,7 @@ shape, which is fine; the derivations above still apply.)
 
 ## Multi-band
 
-One `timelines[]` entry per band. Bands position on the calendar via `calendarStartWeek`
+Each band has one `timelines[]` entry, placed on the calendar by `calendarStartWeek`
 + `weekCount`; `phases` and week numbers are band-relative. Resources belong to exactly
 one band.
 
@@ -377,9 +377,9 @@ The response example uses fictional rates and quantities. Its placeholder IDs ar
 
 Notes: `tags` is a comma-separated string. `txpot` = per-item client-facing dollar
 value (BU weight × timeline revenue). `quoteResources` requires `include: ["resources"]`;
-`productConfig` requires `include: ["products"]`. On quotes with many items the response
-can be large; fetch only the `include` data you need. Always read external IDs from the
-response; never construct them.
+`productConfig` requires `include: ["products"]`. Fetch only the `include` data you
+need, since a large quote returns a large response. Take external IDs from this response,
+as the scope item section requires.
 
 ## scoping_manage_timeline (get)
 
@@ -414,6 +414,6 @@ Presets carry `resources` (`productCode`, `titleLevel`, `isIndirect`), `leverage
 `calculationScope`). Pass the preset `id` as `teamPresetId` to `scoping_create_quote`
 to auto-provision resources, pairs, and rules.
 
-Leverage math (the API stores exact hours; you compute): junior phase hours = senior
+Pair and indirect hours (the API stores exact hours; you compute them): junior phase hours = senior
 phase hours × phase ratio; indirect phase hours = direct phase total × percent / 100.
 Ratios are guidelines; deviations are fine.

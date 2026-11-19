@@ -6,7 +6,7 @@ Read [scope, depth and usefulness review](depth-usefulness-review.md) for substa
 
 ## Writing integrity
 
-Use the current `review-writing` skill, which owns writing-integrity review. Review the rendered or generated file through its `scripts/extract_review_text.py` procedure. Read all extracted text, including dynamic labels, revealed details and rehearsal answers. If extraction misses reader-visible strings, add them to the review coverage explicitly. Check claims, ownership, unresolved choices and instructions against the controlling sources. Preserve the depth of the explanation: remove filler and repetition without replacing designs, mechanisms, evidence, examples or exceptions with shorter generic prose.
+Use the current `writing` skill, which owns writing-integrity review. Review the rendered or generated file through its `scripts/extract_review_text.py` procedure. Read all extracted text, including dynamic labels, revealed details and rehearsal answers. If extraction misses reader-visible strings, add them to the review coverage explicitly. Check claims, ownership, unresolved choices and instructions against the controlling sources. Preserve the depth of the explanation: remove filler and repetition without replacing designs, mechanisms, evidence, examples or exceptions with shorter generic prose.
 
 Fix findings in the generator or other owning source, rebuild, extract again, review changed text and retain the coverage receipt. Report files and lines read and changed. A scanner supplements the review; record justified retained warnings without calling the scan clean.
 

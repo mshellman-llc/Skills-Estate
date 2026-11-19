@@ -20,11 +20,11 @@ cannot supply.
 ## Where this sits
 
 The producing workflow owns the artifact. This module reviews the result and
-the evidence supporting it. Writing review follows review-writing, while
+the evidence supporting it. Writing review follows `writing`, while
 the rendering library checks the selected visual profile:
 
 ```
-producing workflow -> review-writing -> authored prose review
+producing workflow -> `writing` -> authored prose review
 producing workflow -> brand-renderer -> rendering checks
 producing workflow -> review-deliverable -> deliverable review
 ```
@@ -42,7 +42,7 @@ absent report is a `blocked` verdict, never a `pass`.
 
 ## Route the checks
 
-1. Review every piece of authored prose under `review-writing`, including
+1. Review every piece of authored prose under `writing`, including
    instructions, labels and internal records. Read the complete result and
    repair actual defects; sound prose does not need arbitrary edits. The quality
    record names this check `writing-diagnostics`, the control `quality_gate.py` looks for.

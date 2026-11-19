@@ -46,7 +46,7 @@ OPEN = {"open", "pending", "blocked"}
 CROSS_CUTTING = ("track-delivery (weekly status, RAID and decision "
                  "stewardship, scope drift to change-order candidates) runs from "
                  "01 Mobilize onward")
-GOVERNORS = "evidence-core, brand-renderer, review-writing"
+GOVERNORS = "evidence-core, brand-renderer, writing"
 TRUTH = ("executed SOW/quote > artifact files > DELIVERY-STATE.md > memory > chat")
 
 

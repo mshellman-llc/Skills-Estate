@@ -44,6 +44,79 @@ class SystemTest(unittest.TestCase):
         return subprocess.run([sys.executable, str(TOOL), *args], capture_output=True, text=True, env=self.env,
                               timeout=120)
 
+    def instruction_setup(self):
+        built = self.ctx / 'generated'
+        shared = '# Working with Megan\n\n## Act\n\nAct on the current request.\n'
+        for rel, extra in (('claude-code/CLAUDE.md', ''), ('codex/AGENTS.md', '\nStart every Codex chat in its project folder.\n')):
+            path = built / rel
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text('<!-- MEGAN-AI-CONTEXT:BEGIN -->\n' + shared + extra + '<!-- MEGAN-AI-CONTEXT:END -->\n')
+        home = Path(self.tmp.name) / 'home'
+        (home / '.claude').mkdir(parents=True)
+        (home / '.codex').mkdir(parents=True)
+        (home / '.claude' / 'CLAUDE.md').write_text('<!-- MEGAN-OS:BEGIN -->\nOld rules.\n<!-- MEGAN-OS:END -->\n\n# Local notes\n\nKeep me.\n')
+        return home
+
+    def test_instructions_init_builds_both_hosts_from_one_source(self):
+        home = self.instruction_setup()
+        out = self.run_tool('instructions', '--init', '--home', str(home), '--json')
+        self.assertEqual(out.returncode, 1, out.stderr)   # home files differ until installed
+        source = (self.ctx / 'instructions.md').read_text()
+        self.assertEqual(source.count('Act on the current request.'), 1)
+        self.assertIn('<!-- only: codex -->', source)
+        claude = (self.ctx / 'generated' / 'claude-code' / 'CLAUDE.md').read_text()
+        codex = (self.ctx / 'generated' / 'codex' / 'AGENTS.md').read_text()
+        self.assertIn('sources sha256', claude)
+        self.assertNotIn('Codex chat', claude)
+        self.assertIn('Start every Codex chat in its project folder.', codex)
+        self.assertNotIn('only:', codex)
+        self.assertEqual((home / '.claude' / 'CLAUDE.md').read_text().count('Old rules.'), 1)   # not installed
+
+    def test_instructions_install_replaces_the_block_and_keeps_other_text(self):
+        home = self.instruction_setup()
+        self.run_tool('instructions', '--init', '--home', str(home))
+        out = self.run_tool('instructions', '--install', '--home', str(home), '--json')
+        self.assertEqual(out.returncode, 0, out.stderr)
+        claude = (home / '.claude' / 'CLAUDE.md').read_text()
+        self.assertNotIn('Old rules.', claude)
+        self.assertNotIn('MEGAN-OS', claude)
+        self.assertTrue(claude.startswith('<!-- MEGAN-AI-CONTEXT:BEGIN -->'))
+        self.assertIn('# Local notes\n\nKeep me.', claude)
+        codex = (home / '.codex' / 'AGENTS.md').read_text()
+        self.assertIn('Start every Codex chat', codex)
+        backups = sorted((self.agent / 'backups').glob('*.md'))
+        self.assertTrue(any('Old rules.' in b.read_text() for b in backups))
+        receipt = json.loads(sorted((self.agent / 'backups').glob('claude-code-*.json'))[0].read_text())
+        self.assertEqual(receipt['target'], str(home / '.claude' / 'CLAUDE.md'))
+        again = self.run_tool('instructions', '--install', '--home', str(home), '--json')
+        self.assertFalse(any(row.get('receipt') for row in json.loads(again.stdout)['hosts'].values()))
+        self.assertEqual(claude, (home / '.claude' / 'CLAUDE.md').read_text())
+
+    def test_instructions_install_with_home_keeps_backups_under_that_home(self):
+        home = self.instruction_setup()
+        self.run_tool('instructions', '--init', '--home', str(home))
+        env = {k: v for k, v in self.env.items() if k != 'WRITING_AGENT_HOME'}
+        out = subprocess.run([sys.executable, str(TOOL), 'instructions', '--install', '--home', str(home), '--json'],
+                             capture_output=True, text=True, env=env, timeout=120)
+        self.assertEqual(out.returncode, 0, out.stderr)
+        receipt = json.loads(out.stdout)['hosts']['claude-code']['receipt']
+        self.assertTrue(receipt.startswith(str(home / '.agents' / 'writing' / 'backups')), receipt)
+
+    def test_instructions_check_finds_a_stale_build(self):
+        home = self.instruction_setup()
+        self.run_tool('instructions', '--init', '--home', str(home))
+        source = self.ctx / 'instructions.md'
+        source.write_text(source.read_text() + '\n## Finish\n\nState completion exactly.\n')
+        result = json.loads(self.run_tool('check', '--json').stdout)
+        self.assertIn(str(self.ctx / 'generated' / 'codex' / 'AGENTS.md'),
+                      [o['path'] for o in result['outdated_copies']])
+
+    def test_instructions_reject_an_unknown_host_block(self):
+        (self.ctx / 'instructions.md').write_text('Shared.\n<!-- only: chatgpt -->x<!-- /only -->\n')
+        out = self.run_tool('instructions', '--home', str(Path(self.tmp.name) / 'home'))
+        self.assertNotEqual(out.returncode, 0)
+        self.assertIn('unknown hosts: chatgpt', out.stderr)
+
     def test_build_writes_stamped_copies(self):
         out = self.run_tool('build')
         self.assertEqual(out.returncode, 0, out.stderr)

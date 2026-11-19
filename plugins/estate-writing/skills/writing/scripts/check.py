@@ -3,13 +3,13 @@
 
     check.py --file PATH [--register NAME] --json
 
-Exit 0: pass. Exit 1: findings that block. Exit 2: the check could not
-complete. A file that cannot be parsed, a rule that cannot run and a part that
+Exit 0: pass, or scan-pass when only the scanner ran. Exit 1: findings that
+block. Exit 2: the check could not complete. A file that cannot be parsed, a rule that cannot run and a part that
 fails after its retries all return 2 and name the lines not reviewed.
 
 JSON on stdout:
 
-    {"status": "pass|fail|incomplete",
+    {"status": "pass|scan-pass|fail|incomplete",
      "coverage": {"lines_total": N, "lines_reviewed": N},
      "findings": [{"line": N, "rule": "id", "text": "...", "fix": "..."}],
      "receipt": "path"}
@@ -38,6 +38,8 @@ Other options:
                           logged and only errors and owner decisions block
     --sources FILE        the source list for the claims check (JSON list of names)
     --full                require the line pass and the document pass
+    --writer NAME...      the session or name that wrote the piece; a verdict set
+                          from that reviewer is rejected
     --verify-receipt FILE recheck a saved receipt against the current file
 
 Standard library only.
@@ -59,7 +61,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import extract_review_text as ext  # noqa: E402
 
-VERSION = 2
+VERSION = 3
 PART_LINES = 300            # largest part any reader or scan receives
 WORKER_LINES = 40           # lines per line-pass worker
 LONG_DOCUMENT_LINES = 2000  # above this the document pass works in two steps
@@ -77,6 +79,8 @@ HEADING = re.compile(r'^(?:> )?#{1,6} ')
 SINGLE_LINE_FAULTS = ('heading does not match its content', 'recap of another section',
                       'line exists only because of an earlier mistake', 'provenance in finished copy',
                       'reader would not act on this section')
+STRUCTURAL_SHARE = 10      # more than one line in ten marked as a structural repeat rejects the map
+EDGE_WORDS = 3             # each verdict quotes the first and last three words of its line
 TITLE_SECTION_LINES = 3     # a title section is a heading and at most two lines under it
 MAP_KEYS = ('reader', 'sections', 'headings', 'repeated_facts', 'counts', 'recaps', 'terms',
             'leftover_lines', 'numbers', 'confidentiality', 'provenance')
@@ -151,6 +155,51 @@ def valid_registers(home, ledger):
     if listing and listing.is_file():
         names.update(m.strip() for m in re.findall(r'^### +(.+?)\s*$', listing.read_text(encoding='utf-8'), re.M))
     return sorted(names)
+
+
+ALIAS_PASS = re.compile(r'\bPass `([^`]+)`( with it)?')
+ALIAS_SAME = re.compile(r'\bSame register as `([^`]+)`\.\s*Pass that name\b')
+
+
+def register_aliases(home):
+    """Entries in registers.md that send the check to another name.
+
+    An entry whose text says "Pass `NAME`" (one name or several with commas), or "Same register as `NAME`. Pass
+    that name", is an alias: --register with its heading runs as NAME. "Pass `NAME` with it" keeps the heading
+    and adds NAME."""
+    listing = Path(home) / 'registers.md' if home else None
+    if not listing or not listing.is_file():
+        return {}
+    aliases = {}
+    for block in re.split(r'^### +', listing.read_text(encoding='utf-8'), flags=re.M)[1:]:
+        heading, _, body = block.partition('\n')
+        body = body.split('\n## ', 1)[0]
+        target = ALIAS_SAME.search(body) or ALIAS_PASS.search(body)
+        if target:
+            names = [n.strip() for n in target.group(1).split(',') if n.strip()]
+            if target.re is ALIAS_PASS and target.group(2):
+                names = [heading.strip()] + [n for n in names if n != heading.strip()]
+            if names and names != [heading.strip()]:
+                aliases[heading.strip()] = names
+    return aliases
+
+
+def resolve_registers(registers, home):
+    """Replace each alias with the names it stands for. Returns (names, {alias: names})."""
+    aliases = register_aliases(home)
+
+    def expand(name, seen):
+        if name in seen or name not in aliases:
+            return [name]
+        return [n for target in aliases[name] for n in (
+            [name] if target == name else expand(target, seen | {name}))]
+    out, used = [], {}
+    for name in registers:
+        names = list(dict.fromkeys(expand(name, frozenset())))
+        if names != [name]:
+            used[name] = names
+        out += [n for n in names if n not in out]
+    return out, used
 
 
 def note_registers(registers, home, ledger, source):
@@ -559,19 +608,118 @@ def load_verdicts(paths):
     stamps = {f.get('rules_sha256') for f in files}
     if len(stamps) != 1:
         raise Incomplete('the verdict files were written against different rules')
-    reviewers = []
+    reviewers, sessions = [], []
     for f in files:
         name = str(f.get('reviewer') or '').strip()
         if name and name not in reviewers:
             reviewers.append(name)
-    return {'rules_sha256': stamps.pop(), 'reviewer': ' + '.join(reviewers),
+        session = str(f.get('session') or '').strip()
+        if session and session not in sessions:
+            sessions.append(session)
+    return {'rules_sha256': stamps.pop(), 'reviewer': ' + '.join(reviewers), 'session': ' + '.join(sessions),
             'verdicts': [v for f in files for v in f.get('verdicts') or []]}
+
+
+def writers_log():
+    """hook.py appends one line for each file a Claude Code or Codex session writes with a file tool."""
+    base = Path(os.environ.get('WRITING_AGENT_HOME') or Path.home() / '.agents' / 'writing').expanduser()
+    return base / 'writers.jsonl'
+
+
+def writes_to(path):
+    """The hook's log lines for this path, oldest first."""
+    target, found = str(Path(path).expanduser().resolve()), []
+    try:
+        with open(writers_log(), encoding='utf-8') as f:
+            for line in f:
+                try:
+                    item = json.loads(line)
+                except ValueError:
+                    continue
+                if isinstance(item, dict) and item.get('path') == target and str(item.get('session') or '').strip():
+                    found.append(item)
+    except OSError:
+        return []
+    return found
+
+
+def unique_sessions(items):
+    found = []
+    for item in items:
+        session = str(item.get('session') or '').strip()
+        if session not in found:
+            found.append(session)
+    return found
+
+
+def sessions_that_wrote(path):
+    """Sessions recorded as writing this path, oldest first."""
+    return unique_sessions(writes_to(path))
+
+
+def sessions_that_wrote_content(path):
+    """Every session that wrote or changed the file up to the content under review, oldest first.
+
+    The hook records the file's sha256 after each write. The writes counted run up to the last one that left the
+    file at its current sha256. When no logged write matches it (the last change came from outside a file tool,
+    or the log predates the hash), every logged write counts."""
+    items = writes_to(path)
+    try:
+        current = sha(Path(path).expanduser().read_bytes())
+    except OSError:
+        return unique_sessions(items)
+    matches = [i for i, item in enumerate(items) if item.get('sha256') == current]
+    return unique_sessions(items[:matches[-1] + 1] if matches else items)
+
+
+def piece_writers(path, names):
+    """The writers of the piece: every session that wrote or changed it up to the content under review, and
+    every name given with --writer."""
+    return {str(n).strip() for n in [*sessions_that_wrote_content(path), *(names or [])] if str(n).strip()}
+
+
+def writer_problem(data, paths, writers):
+    """Why a verdict set cannot count as an independent review, or None.
+
+    The reviewer is the names in `reviewer`, the `session` the file states and every session the hook saw
+    writing the verdict files. Any of them matching the piece's writer rejects the set."""
+    names = {n.strip() for n in str(data.get('reviewer') or '').split(' + ') if n.strip()}
+    if not names:
+        return 'the verdict file does not name its reviewer'
+    ids = names | {n.strip() for n in str(data.get('session') or '').split(' + ') if n.strip()}
+    for p in paths or []:
+        ids |= set(sessions_that_wrote(p))
+    same = sorted(ids & writers)
+    if same:
+        return ('the reviewer is the session that wrote the piece (' + ', '.join(same)
+                + '); a reviewer other than the writer writes the verdicts')
+    return None
+
+
+def edge_words(text):
+    """The first and last three words of a line, as a reviewer copies them from the text it read."""
+    words = text.split()
+    return ' '.join(words[:EDGE_WORDS]), ' '.join(words[-EDGE_WORDS:])
+
+
+def check_edges(v, record):
+    """Why the verdict's first and last words do not match its own line, or None."""
+    first, last = edge_words(record['text'])
+    given = [' '.join(str(v.get(k) or '').split()) for k in ('first_words', 'last_words')]
+    if not all(given):
+        return 'a verdict copies first_words and last_words, the first and last three words of its line'
+    if given != [first, last]:
+        return 'first_words and last_words do not match the line this verdict names'
+    return None
 
 
 def check_verdict(v, record, flagged=()):
     """Why one verdict is rejected, or None when it stands."""
     if v.get('sha') != record['sha']:
         return 'the line changed after this verdict was written'
+    edges = check_edges(v, record)
+    if edges:
+        return edges
     if v.get('verdict') not in ('ok', 'fix'):
         return 'verdict must be ok or fix'
     if v.get('severity', 'error') not in ('error', 'style'):
@@ -728,6 +876,8 @@ def recheck(records, verdicts, data, rules_sha256, missed):
         record = scope[vid]
         if v.get('sha') != record['sha']:
             problems.append(f'line {vid} changed after the recheck was written')
+        elif check_edges(v, record):
+            problems.append(f'recheck verdict on line {vid}: {check_edges(v, record)}')
         elif v.get('verdict') == 'fix':
             quote = v.get('quote')
             if not isinstance(quote, str) or not quote.strip() or quote not in record['text']:
@@ -853,6 +1003,10 @@ def document_pass(records, data, rules_sha256):
             add(found[1], 'fact stated more than once', item['quote'],
                 'State the fact once; lines ' + ', '.join(r['id'] for r in found) + ' repeat it.',
                 merged_with=item.get('merged_with'), ids=[r['id'] for r in found])
+    marked = {i for item in declared for i in item['ids']}
+    if len(marked) * STRUCTURAL_SHARE > len(scope):
+        problems.append(f'{len(marked)} of {len(scope)} lines are marked as structural repeats; more than one in '
+                        f'{STRUCTURAL_SHARE} is a map that switches the repeat check off, so mark each repeat on its own')
     for item in data['counts']:
         record = line(item)
         if record is None or not quoted(item, record):
@@ -1046,12 +1200,17 @@ def run(args):
     records, findings = [], []
     try:
         ledger, rules_info = load_rules(args.rules_dir)
+        registers, aliased = resolve_registers(registers, rules_info['home'])
+        record['register'] = registers
         new_names, known = note_registers(registers, rules_info['home'], ledger, path)
         rules = active_rules(ledger, registers)
         added = {name: sum(1 for r, _ in rules if r.get('scope') == name or name in (r.get('registers') or []))
                  for name in registers}
-        record['rules'] = dict(rules_info, rules_applied=len(rules), register_rules=added, new_registers=new_names)
+        record['rules'] = dict(rules_info, rules_applied=len(rules), register_rules=added, new_registers=new_names,
+                               register_aliases=aliased)
         detail = f'{len(rules)} rules from {rules_info["ledger"]} ({rules_info["ledger_source"]})'
+        for alias, names in aliased.items():
+            detail += f'; register {alias} is an alias, so the check ran {",".join(names)}'
         for name, count in added.items():
             if name in new_names:
                 detail += (f'; register {name} is new and added no rules ({new_names[name]}); known names: '
@@ -1126,6 +1285,11 @@ def run(args):
         if args.verdicts:
             try:
                 verdicts = load_verdicts(args.verdicts)
+                writers = piece_writers(path, args.writer)
+                record['writers'] = sorted(writers)
+                same = writer_problem(verdicts, args.verdicts, writers)
+                if same:
+                    raise Incomplete(same)
                 found, rejected, absent = line_pass(records, verdicts, rules_info['rules_sha256'], flags,
                                                     args.round, logged)
                 findings += found
@@ -1176,7 +1340,11 @@ def run(args):
         findings = merge_faults(findings)
         if args.audit and verdicts is not None:
             try:
-                found, rejected, absent, info = spot_audit(records, verdicts, load_json(args.audit, 'audit file'),
+                audit = load_json(args.audit, 'audit file')
+                same = writer_problem(audit, [args.audit], piece_writers(path, args.writer))
+                if same:
+                    raise Incomplete('audit file: ' + same)
+                found, rejected, absent, info = spot_audit(records, verdicts, audit,
                                                            rules_info['rules_sha256'], flags)
                 record['spot_audit'] = info
                 scope_note = f'{info["sampled"]} of the {info["lines_marked_ok"]} lines marked ok were re-reviewed'
@@ -1184,8 +1352,12 @@ def run(args):
                     '; not independent, because the audit file does not name a reviewer other than the line-pass reviewer')
                 if found and args.recheck:
                     findings += found
-                    swept, problems = recheck(records, verdicts, load_json(args.recheck, 'recheck file'),
+                    sweep = load_json(args.recheck, 'recheck file')
+                    swept, problems = recheck(records, verdicts, sweep,
                                               rules_info['rules_sha256'], set(info['missed_rules']))
+                    same = writer_problem(sweep, [args.recheck], piece_writers(path, args.writer))
+                    if same:
+                        problems.insert(0, 'recheck file: ' + same)
                     findings += swept
                     record['recheck'] = {'rules': info['missed_rules'], 'problems': problems, 'fixes': len(swept)}
                     if problems:
@@ -1214,7 +1386,7 @@ def run(args):
                  'for the sample, then pass --audit')
     else:
         for name in ('line pass', 'claims check', 'document pass', 'spot audit'):
-            step(name, 'not_run', 'not part of this run; a pass here covers the scan only')
+            step(name, 'not_run', 'not part of this run; the status is scan-pass, which covers the scanner only')
 
     if args.prepare:
         try:
@@ -1244,7 +1416,8 @@ def finish(record, args, reasons, records):
     if reasons:
         record['status'], record['reason'] = 'incomplete', '; '.join(reasons)
     else:
-        record['status'] = 'fail' if record['findings'] else 'pass'
+        full = any(s['step'] == 'line pass' and s['status'] == 'ok' for s in record['steps'])
+        record['status'] = 'fail' if record['findings'] else ('pass' if full else 'scan-pass')
     folder = receipt_dir(args.receipt_dir)
     name = re.sub(r'[^A-Za-z0-9._-]+', '-', Path(record['file']).name)[:60]
     stamp = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
@@ -1294,8 +1467,11 @@ def verify_receipt(path):
         counted = sum(p['lines_reviewed'] for p in record.get('parts', []))
         if record['status'] != 'incomplete' and not (cov['lines_total'] == cov['lines_reviewed'] == counted):
             problems.append('the line counts do not support the status')
-        if record['status'] == 'pass' and record['findings']:
+        if record['status'] in ('pass', 'scan-pass') and record['findings']:
             problems.append('a pass receipt lists findings')
+        line_ok = any(s['step'] == 'line pass' and s['status'] == 'ok' for s in record['steps'])
+        if record['status'] == 'pass' and not line_ok:
+            problems.append('a pass receipt has no line pass; a scan alone is scan-pass')
         if record['status'] != 'incomplete' and any(s['status'] == 'failed' for s in record['steps']):
             problems.append('a step failed but the status is not incomplete')
     except (Incomplete, KeyError, TypeError) as error:
@@ -1321,6 +1497,8 @@ def main(argv=None):
     parser.add_argument('--round', type=int, default=1)
     parser.add_argument('--sources', metavar='FILE')
     parser.add_argument('--full', action='store_true')
+    parser.add_argument('--writer', metavar='NAME', nargs='+',
+                        help='session ID or name of whoever wrote the piece; their verdicts are rejected')
     parser.add_argument('--verify-receipt', metavar='FILE')
     try:
         args = parser.parse_args(argv)
@@ -1340,7 +1518,7 @@ def main(argv=None):
         record = {'status': 'incomplete', 'coverage': {'lines_total': 0, 'lines_reviewed': 0}, 'findings': [],
                   'receipt': None, 'reason': f'{type(error).__name__}: {error}', 'not_reviewed': [], 'steps': [],
                   'advisories': []}
-    code = {'pass': 0, 'fail': 1}.get(record['status'], 2)
+    code = {'pass': 0, 'scan-pass': 0, 'fail': 1}.get(record['status'], 2)
     if args.json:
         print(json.dumps(summary(record), indent=1, ensure_ascii=False))
         return code

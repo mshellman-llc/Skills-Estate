@@ -1,6 +1,6 @@
 # Skill names
 
-Name each public skill for the task a user wants it to perform. Use a short action followed by its subject: `build-deck`, `plan-sprint`, `review-writing`. Add a platform or domain when it distinguishes the task, as in `configure-salesforce-project`.
+Name each public skill for the task a user wants it to perform. Use a short action followed by its subject: `build-deck`, `plan-sprint`, `review-deliverable`. Add a platform or domain when it distinguishes the task, as in `configure-salesforce-project`.
 
 Use lowercase ASCII letters, digits and single hyphens, with a maximum of 64 characters. Start and end with a letter or digit. Match the source folder, frontmatter name, catalog entry, package folder and invocation identifier for the same public skill. Keep the identifier stable after release.
 

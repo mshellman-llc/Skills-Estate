@@ -267,7 +267,7 @@ worked example, and guidance on when and how to ask clarifying questions, see
 Before you deliver, run the gate. This step is required. Full
 spec in [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run `brand_check.py` on the saved workbook. It reads the fills, font
    colours, borders and fonts of the cell formats in use and checks them

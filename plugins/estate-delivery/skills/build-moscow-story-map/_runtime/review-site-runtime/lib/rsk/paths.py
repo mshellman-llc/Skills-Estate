@@ -15,7 +15,7 @@ def sibling(name):
 
 
 def writing_checker():
-    for name in ('writing-diagnostics', 'review-writing'):
+    for name in ('writing-diagnostics', 'writing'):
         base = sibling(name)
         if base:
             for candidate in (base / 'scripts/writing_check.py',

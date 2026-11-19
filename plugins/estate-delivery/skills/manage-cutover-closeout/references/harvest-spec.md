@@ -1,6 +1,6 @@
 # Lessons-learned and reusable-asset harvest spec
 
-Closeout is where the firm's biggest knowledge loss happens: lessons and account history get buried in a project folder and never reach the next team. The harvest is the step that closes the loop, and it is first-class work, not a wrap-up chore. A strong harvest makes the next handoff faster and the next estimate better; skipping it is the single biggest source of repeated effort on the next project.
+Closeout is where the firm's biggest knowledge loss happens: lessons and account history get buried in a project folder and never reach the next team. The harvest closes the loop and counts as first-class delivery work. A strong harvest makes the next handoff faster and the next estimate better; skipping it is the single biggest source of repeated effort on the next project.
 
 Ask for or reuse an explicitly confirmed private engagement destination and its authorized audience. Prepare the harvest there only when writing is authorized; otherwise return a draft and exact proposed destination. An attached Project, cached knowledge store, or unrelated account is not an implicit destination. Keep client-specific and relationship information in that private record. A separate reusable asset needs rights, confidentiality review, and approval before crossing into a shared library.
 
@@ -42,4 +42,4 @@ If the supplied project risk profile carried evidence-backed capability-gap tags
 
 ## Format and landing
 
-One markdown document plus the actuals table already in the closeout report. Every claim sourced (log entry, timesheet export, quote field, transcript). Apply review-writing to it; the harvest gets read by people who were not there, so it must survive without the delivery team in the room. Save only to the confirmed authorized private destination, link it from the authorized engagement record, and report the actual persistence state. If permission or destination is missing, return the draft and the precise pending action.
+One markdown document plus the actuals table already in the closeout report. Every claim sourced (log entry, timesheet export, quote field, transcript). Apply `writing` to it; the harvest gets read by people who were not there, so it must survive without the delivery team in the room. Save only to the confirmed authorized private destination, link it from the authorized engagement record, and report the actual persistence state. If permission or destination is missing, return the draft and the precise pending action.

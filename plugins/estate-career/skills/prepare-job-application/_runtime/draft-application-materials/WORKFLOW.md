@@ -15,7 +15,7 @@ Runs beside `prepare-job-application` once a role has a work record with a compl
 
 Before drafting, load `00_Master/Career_Application_Operating_Context.md`, the role's `Role_Work_Record.md` (including its Estimate basis section), the tailored resume copy, the live posting, `00_Master/Professional_Profile.md`. Claim authority starts with the candidate’s corrections and confirmed facts, then original evidence and the claim ledger, then detailed program records. The professional profile is a summary for navigation; Portfolio case studies are public copies, not a source of figures. LinkedIn work starts from `00_Master/LinkedIn_Profile_Draft.md` and `00_Master/LinkedIn_Profile_Positioning_Brief.md`. Behavioral answers draw on `05_Reference/Story_Bank/Success_Stories.md` and the anchor stories in `04_Interview/Interview_Preparation.md`. References use `02_Templates/References_Template_One_Page.docx`.
 
-the candidate is the author. Before drafting, state audience, purpose, reader action and consequence level; hiring material gets deep review. Write under `apply-author-style` with an explicitly supplied confirmed profile and `review-writing`; run the bundled writing diagnostics on each finished file where installed, fix structure rather than swapping words, and say plainly when no scan ran.
+the candidate is the author. Before drafting, state audience, purpose, reader action and consequence level; hiring material gets deep review. Write under `apply-author-style` with an explicitly supplied confirmed profile and `writing`; run the bundled writing diagnostics on each finished file where installed, fix structure rather than swapping words, and say plainly when no scan ran.
 
 ## Bounded drafts from supplied facts
 

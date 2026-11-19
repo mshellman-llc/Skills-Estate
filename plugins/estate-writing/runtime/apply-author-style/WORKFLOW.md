@@ -14,7 +14,7 @@ Use this method when the requested author has a confirmed profile supplied throu
 
 Resolve the intended author, audience, purpose and format from the request. Locate only the profile explicitly supplied or authorized for this context. A person's name, shared account, installed connector or familiar path does not authorize reading their personal material. Do not search unrelated stores for a matching owner.
 
-Read the profile's ownership, authorization, version and revocation state. Apply its voice only to that author and the permitted surfaces and contexts. Use [author-style-runtime](_runtime/author-style-runtime/WORKFLOW.md) for routing and precedence. If no applicable profile is available, use [review-writing](_runtime/review-writing/WORKFLOW.md) and plain drafting; do not invent an author's preferences.
+Read the profile's ownership, authorization, version and revocation state. Apply its voice only to that author and the permitted surfaces and contexts. Use [author-style-runtime](_runtime/author-style-runtime/WORKFLOW.md) for routing and precedence. If no applicable profile is available, use [`writing`](_runtime/writing/WORKFLOW.md) and plain drafting; do not invent an author's preferences.
 
 ## Apply the confirmed profile
 

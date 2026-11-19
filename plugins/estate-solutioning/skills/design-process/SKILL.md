@@ -7,9 +7,9 @@ description: 'Work with a business or operational process in two modes: document
 # Design process
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [`readout-brief.md`](_runtime/writing-diagnostics/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [`readout-brief.md`](_runtime/writing-diagnostics/references/registers/readout-brief.md). Read both before drafting; the final review still runs at the gate.**
 
-Two modes over one subject. Document a process as a repeatable SOP, or analyze an
+This skill works on one process in two modes. Document a process as a repeatable SOP, or analyze an
 existing process and recommend improvements. Pick the mode from the request: a
 formalize, standardize, or write-it-down ask is Document; a make-it-faster,
 cheaper, or more-reliable ask is Optimize. When both are wanted, document the
@@ -159,10 +159,10 @@ work and, if the user wants, open tasks for `open:` items and improvement action
 
 ## Release gate (required)
 
-Before you deliver, run the gate. This is a required step, not a suggestion. Full
+Before you deliver, run the gate. This step is required. Full
 spec in [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run review-deliverable before you call it final.
 

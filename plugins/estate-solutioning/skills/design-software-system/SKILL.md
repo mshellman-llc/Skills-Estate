@@ -16,9 +16,9 @@ Use the primary workflow below unless the request matches a mode in this table. 
 # Design software system
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [`readout-brief.md`](_runtime/writing-diagnostics/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [`readout-brief.md`](_runtime/writing-diagnostics/references/registers/readout-brief.md). Read both before drafting; the final review still runs at the gate.**
 
-Design systems and evaluate architectural choices. Lead with a recommended design, then show the reasoning and the trade-offs behind it.
+Use this skill to design systems and evaluate architectural choices. Lead with a recommended design, then show the reasoning and the trade-offs behind it.
 
 ## Ground rules
 
@@ -56,7 +56,7 @@ Walk these in order. Skip a section only when it plainly does not apply, and say
 - Identity and authorization: principals, relevant tenant or isolation key, allowed actions, enforcement location, and denial behavior. Tenant isolation does not establish permission to act on a record. Require every applicable identity, tenant, ownership or explicit grant check; deny when a required check fails or the governing policy is unavailable. Do not claim a tenant filter compensates for a missing permission check.
 - Storage choices per component.
 
-### 3. Deep dive
+### 3. Component detail
 - Data model: entities, keys, relationships, access patterns.
 - API endpoints: shape, method, idempotency (REST, GraphQL, or gRPC as fits).
 - Caching: what, where, invalidation, staleness tolerance.
@@ -82,10 +82,10 @@ Write the design to a file when a working filesystem is available and the user w
 
 ## Release gate (required)
 
-Before you deliver, run the gate. This is a required step, not a suggestion. Full
+Before you deliver, run the gate. This step is required. Full
 spec in [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run review-deliverable before you call it final.
 

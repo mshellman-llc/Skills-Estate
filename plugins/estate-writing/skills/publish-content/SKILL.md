@@ -11,7 +11,7 @@ Use this skill when someone wants a piece of content taken from idea to publisha
 
 ## When not to use
 
-- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing` (or `review-writing` for prose review with learned corrections).
+- Reviewing or correcting a single finished piece against the owner's rules belongs to `writing`.
 - Applying a client or project brand to an artifact belongs to `manage-brand-profile`.
 - Interactive explorer sites belong to `build-interactive-explorer`; editorial charts on their own belong to `build-editorial-chart`; decks belong to `build-deck`.
 - Synthesizing interviews into findings belongs to `synthesize-discovery`.

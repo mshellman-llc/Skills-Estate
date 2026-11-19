@@ -14,7 +14,7 @@ Turn the current source material and confirmed decisions into an architecture re
 
 Identify the system, intended reader, requested format and source authority. Read the relevant brief, decisions record, requirements and operating notes completely. Resolve source precedence from their authority and accepted decisions; a newer timestamp alone does not settle a conflict.
 
-Select the rendering runtime and project brand profile before building. Logos, typography, colors and layout rules come from that profile. A neutral document needs no logo or brand footer. Apply the intended author's confirmed voice when supplied and use `review-writing` for prose review.
+Select the rendering runtime and project brand profile before building. Logos, typography, colors and layout rules come from that profile. A neutral document needs no logo or brand footer. Apply the intended author's confirmed voice when supplied and use `writing` for prose review.
 
 If a missing source prevents a supported design, identify that gap and the decision it blocks. Continue the supported portion when useful. Never supply a plausible number or undocumented behavior as fact.
 

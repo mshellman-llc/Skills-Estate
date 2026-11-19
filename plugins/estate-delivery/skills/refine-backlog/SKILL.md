@@ -99,7 +99,7 @@ The Markdown report is for people: each row and each item section leads with the
 
 Before you deliver, run the gate. Full spec in [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the report prose.
+1. Apply `writing` to the report prose.
 2. Run review-deliverable before you call it final.
 
 Do not present the refinement as final until both checks have passed.
