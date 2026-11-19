@@ -8,6 +8,8 @@ Events:
     SessionStart       adds the habits that reached the owner most often in the last 14 days
     UserPromptSubmit   carries findings a reply was allowed through with, and asks for a logged
                        correction when the owner corrects wording
+    PreToolUse         holds a publish call (an artifact or a page going out) until the exact
+                       bytes it publishes have a passing full review
     PostToolUse        scans each prose file a tool wrote, records deliverables for the gate and
                        logs which session wrote each file to writers.jsonl
     Stop               scans the reply and holds it for one rewrite when a finding blocks; holds
@@ -22,6 +24,15 @@ patterns for deliverable paths, "max_blocks_per_file" caps how often one file ca
 hold a session. A deliverable passes when a receipt in the receipts folder has
 the file's current sha256, status pass (a scan alone is scan-pass), and the line
 pass, document pass and spot audit all ok.
+
+The publish check reads "publish_tools" (fnmatch patterns for tool names) and
+"publish_requires" from gate.json. With "full", the default, a publish call is
+denied unless a receipt shows a passing full review of the exact bytes it sends:
+the file it names, or the content it carries. With "scan", the call is denied
+when check.py finds a blocking line in those bytes. A call whose content the
+hook cannot read is denied, and the reason names what it could not read: a
+missing or unreadable file, a call with no file or text content, or bytes the
+scan could not read.
 
 Standard library only.
 """
@@ -56,7 +67,11 @@ DEFAULT_GATE = {
     'exclude': ['*/archive/*', '*/99-archive/*', '*/sessions/*', '*.text.md', '*/.writing-receipts/*'],
     'extensions': ['.md', '.html', '.htm', '.docx', '.pptx', '.xlsx', '.txt'],
     'max_blocks_per_file': 2,
+    'publish_tools': ['Artifact', 'mcp__*publish*', 'mcp__*Publish*'],
+    'publish_requires': 'full',
 }
+PUBLISH_PATH_KEYS = ('file_path', 'path', 'file', 'source_path')
+PUBLISH_TEXT_KEYS = ('content', 'html', 'markdown', 'body', 'text', 'source')
 FULL_STEPS = ('line pass', 'document pass', 'spot audit')
 CORRECTION = re.compile(
     r"\b(slop|sounds?\s+(like\s+)?(an?\s+)?(ai|chatgpt|robot)|ai[- ](sounding|written|tell)|too\s+ai|"
@@ -287,6 +302,69 @@ def on_post_tool(event, args, state):
         emit({'decision': 'block', 'reason': '\n\n'.join(notes)})
 
 
+def published_bytes(data):
+    """The bytes a publish call sends and where they came from, or (None, what could not be read)."""
+    unread = []
+    for key in PUBLISH_PATH_KEYS:
+        value = data.get(key)
+        if isinstance(value, str) and value.strip():
+            path = Path(value).expanduser()
+            if not path.is_file():
+                unread.append(f'the file {path} named in {key}, which does not exist or is not a file')
+                continue
+            try:
+                return path.read_bytes(), str(path)
+            except OSError as exc:
+                unread.append(f'the file {path} named in {key} ({exc.strerror or exc})')
+    for key in PUBLISH_TEXT_KEYS:
+        value = data.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.encode('utf-8'), f'the {key} of the call'
+    if not unread:
+        unread.append('the call names no file (' + ', '.join(PUBLISH_PATH_KEYS) + ') and carries no text content ('
+                      + ', '.join(PUBLISH_TEXT_KEYS) + ')')
+    return None, '; '.join(unread)
+
+
+def deny(reason):
+    emit({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'permissionDecision': 'deny',
+                                 'permissionDecisionReason': reason}})
+
+
+def on_pre_tool(event, args, state):
+    cfg = gate_config()
+    name = event.get('tool_name') or ''
+    if not any(fnmatch.fnmatchcase(name, pat) for pat in cfg.get('publish_tools') or []):
+        return
+    data, where = published_bytes(event.get('tool_input') or {})
+    if data is None:
+        log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+        deny(f'Not published: the writing check could not read what {name} sends. It could not read {where}. '
+             'Save the content to a file, review it, and pass that file path or the content itself in the call.')
+        return
+    sha = hashlib.sha256(data).hexdigest()
+    if cfg.get('publish_requires', 'full') == 'scan':
+        suffix = Path(where).suffix if Path(where).suffix else '.html'
+        with tempfile.TemporaryDirectory() as tmp:
+            piece = Path(tmp) / f'publish{suffix}'
+            piece.write_bytes(data)
+            status, findings = scan_file(piece, args.register, receipt_dir=tmp)
+        if status == 'fail' and findings:
+            log_hits(args.tool, 'publish', name, findings)
+            deny(f'{where} breaks the writing rules. Rewrite these lines, then publish again:\n' + describe(findings))
+        elif status not in ('pass', 'scan-pass'):
+            log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+            deny(f'Not published: the writing check could not read {where} (status {status}). Save the content '
+                 'in a format check.py reads, then publish again.')
+        return
+    if reviewed(sha):
+        return
+    log_hits(args.tool, 'publish', name, [{'rule': 'publish-without-review', 'text': where}])
+    deny(f'Not published: no passing full review covers {where} (sha256 {sha[:12]}). Save these exact bytes to a '
+         'file, run the full review (check.py --file FILE --full with the line pass, document pass and spot audit '
+         'by a reviewer other than the writer) until it returns pass, then publish the same bytes.')
+
+
 def on_prompt(event, args, state):
     notes = []
     carry = state.pop('carry', None)
@@ -339,8 +417,8 @@ def main(argv=None):
     name = event.get('hook_event_name') or ''
     path = state_path(event.get('session_id'))
     state = read_json(path, {})
-    handler = {'Stop': on_stop, 'PostToolUse': on_post_tool, 'UserPromptSubmit': on_prompt,
-               'SessionStart': on_session_start}.get(name)
+    handler = {'Stop': on_stop, 'PreToolUse': on_pre_tool, 'PostToolUse': on_post_tool,
+               'UserPromptSubmit': on_prompt, 'SessionStart': on_session_start}.get(name)
     if handler:
         try:
             handler(event, args, state)

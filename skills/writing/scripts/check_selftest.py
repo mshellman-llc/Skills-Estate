@@ -135,6 +135,26 @@ class Contract(Base):
 
 
 class Scope(Base):
+    def test_register_aliases_in_registers_md_run_the_names_they_point_to(self):
+        (self.rules / 'registers.md').write_text(
+            '# Registers\n\n### author\n\nHer own voice.\n\n### hiring\n\nHiring readers.\n\n'
+            '### service-page\n\nA service page. Pass `author,hiring` with it.\n\n'
+            '## Names first seen by the check\n\n### portfolio\n\nHiring-facing copy. Pass `author`.\n\n'
+            '### internal\n\nSame register as `hiring`. Pass that name.\n\n'
+            '### loop-a\n\nPass `loop-b`.\n\n### loop-b\n\nPass `loop-a`.\n')
+        page = self.write('page.md', 'We decide whether it is worth the cost before the call.\n')
+        code, result = self.check(page, '--register', 'portfolio')
+        self.assertEqual(code, 1)
+        self.assertEqual([f['rule'] for f in result['findings']], ['author-only'])
+        saved = self.receipt(result)
+        self.assertEqual(saved['register'], ['author'])
+        self.assertEqual(saved['rules']['register_aliases'], {'portfolio': ['author']})
+        self.assertIn('register portfolio is an alias', saved['steps'][0]['detail'])
+        self.assertEqual(check.resolve_registers(['service-page'], self.rules)[0], ['service-page', 'author', 'hiring'])
+        self.assertEqual(check.resolve_registers(['internal', 'hiring'], self.rules)[0], ['hiring'])
+        self.assertEqual(check.resolve_registers(['loop-a'], self.rules)[0], ['loop-a'])
+        self.assertNotIn('portfolio\n\nFirst seen', (self.rules / 'registers.md').read_text())
+
     def test_code_quotations_and_front_matter_are_exempt(self):
         text = ('---\ntitle: I hope this helps\n---\n# Setup\n\nRun `echo I hope this helps` first.\n\n'
                 '```sh\necho "I hope this helps"\n```\n\n> I hope this helps\n\n'

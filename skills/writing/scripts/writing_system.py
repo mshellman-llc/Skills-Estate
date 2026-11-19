@@ -4,6 +4,7 @@
     writing_system.py build   [--rules-dir DIR] [--preferences FILE] [--out DIR]
     writing_system.py check   [--rules-dir DIR] [--out DIR] [--living FILE ...] [--json]
     writing_system.py nightly [--rules-dir DIR] [--since HOURS] [--weekly] [--json]
+    writing_system.py instructions [--rules-dir DIR] [--source FILE] [--init] [--install] [--home DIR] [--json]
 
 build writes, from the rules folder and the Writing section of preferences.md:
 
@@ -27,6 +28,23 @@ build never creates a mirror folder.
 check lists every living file that still carries wording retired in
 retired-wording.json (in the rules folder), and every built copy whose stamp no
 longer matches its sources, mirror copies included. Exit 1 when it finds either.
+
+instructions builds the instruction files for Claude Code and Codex from one
+source, instructions.md beside the rules folder, and with --install writes them
+into ~/.claude/CLAUDE.md and ~/.codex/AGENTS.md:
+
+    <out>/claude-code/CLAUDE.md                the source for Claude Code
+    <out>/codex/AGENTS.md                      the source for Codex
+
+Text between <!-- only: claude-code --> and <!-- /only --> goes to Claude Code
+alone, and <!-- only: codex --> to Codex alone. Each built file is one block
+between <!-- MEGAN-AI-CONTEXT:BEGIN --> and <!-- MEGAN-AI-CONTEXT:END -->, with
+its stamp. --install replaces that block in the home file, or the older
+<!-- MEGAN-OS:BEGIN --> block when the new one is absent, keeps every line
+outside it, backs up the previous file to ~/.agents/writing/backups and writes a
+receipt beside the backup. --init writes instructions.md from the two built
+files when it does not exist yet. Without --install, instructions builds and
+reports whether each home file matches.
 
 nightly scans deliverables changed in the last --since hours with check.py, and
 with --weekly adds hit counts per tool, gate releases, corrections logged and the
@@ -195,6 +213,159 @@ def built_copies(home, out, prefs):
     return copies
 
 
+INSTRUCTION_HOSTS = {'claude-code': ('claude-code/CLAUDE.md', '.claude/CLAUDE.md'),
+                     'codex': ('codex/AGENTS.md', '.codex/AGENTS.md')}
+BLOCK = 'MEGAN-AI-CONTEXT'
+LEGACY_BLOCKS = ('MEGAN-OS',)
+ONLY = re.compile(r'<!-- only: ([a-z-]+) -->(.*?)<!-- /only -->', re.S)
+INSTRUCTION_STAMP = re.compile(r'^<!-- Built by writing_system\.py.*?-->\n', re.M)
+
+
+def instruction_source(home, arg=None):
+    return Path(arg).expanduser() if arg else home.parent / 'instructions.md'
+
+
+def render_instructions(text, host):
+    """The source text as one host reads it: its own only-blocks kept, the other host's removed."""
+    if host not in INSTRUCTION_HOSTS:
+        raise ValueError(f'unknown host {host}')
+    unknown = {m.group(1) for m in ONLY.finditer(text)} - set(INSTRUCTION_HOSTS)
+    if unknown:
+        raise ValueError('only-blocks name unknown hosts: ' + ', '.join(sorted(unknown)))
+    return ONLY.sub(lambda m: m.group(2) if m.group(1) == host else '', text).strip('\n') + '\n'
+
+
+def instruction_block(body, digest, source):
+    return (f'<!-- {BLOCK}:BEGIN -->\n<!-- {stamp(digest, [source.name])} -->\n'
+            + body.rstrip('\n') + f'\n<!-- {BLOCK}:END -->\n')
+
+
+def block_span(text, name):
+    begin, end = f'<!-- {name}:BEGIN -->', f'<!-- {name}:END -->'
+    if text.count(begin) != 1 or text.count(end) != 1:
+        return None
+    start, stop = text.index(begin), text.index(end) + len(end)
+    if stop < start:
+        return None
+    if text[stop:stop + 1] == '\n':
+        stop += 1
+    return start, stop
+
+
+def merged_home_file(existing, block):
+    """The home file with its instruction block replaced, or the block put first when it has none."""
+    for name in (BLOCK, *LEGACY_BLOCKS):
+        span = block_span(existing, name)
+        if span:
+            text = existing[:span[0]] + block + existing[span[1]:]
+            for legacy in LEGACY_BLOCKS:   # one block only: drop an older one left beside the new block
+                other = block_span(text, legacy) if legacy != name else None
+                if other:
+                    text = text[:other[0]] + text[other[1]:]
+            return text
+    return block + ('\n' + existing if existing.strip() else '')
+
+
+def init_source(built):
+    """One source from the two built files: shared lines once, differing lines in only-blocks."""
+    import difflib
+    a, b = built['claude-code'].splitlines(), built['codex'].splitlines()
+    out = []
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(a=a, b=b, autojunk=False).get_opcodes():
+        if op == 'equal':
+            out += a[i1:i2]
+            continue
+        left, right = '\n'.join(a[i1:i2]), '\n'.join(b[j1:j2])
+        piece = ''
+        if i2 > i1:
+            piece += '<!-- only: claude-code -->' + left + ('\n' if j2 == j1 else '') + '<!-- /only -->'
+        if j2 > j1:
+            piece += '<!-- only: codex -->' + right + ('\n' if i2 == i1 else '') + '<!-- /only -->'
+        out.append(piece)
+    text = '\n'.join(out) + '\n'
+    for host, original in built.items():
+        if render_instructions(text, host).strip('\n') != original.strip('\n'):
+            raise ValueError(f'the source made by --init does not reproduce the {host} file')
+    return text
+
+
+def strip_block(text):
+    """The body of a built or installed instruction block, without markers and stamp."""
+    for name in (BLOCK, *LEGACY_BLOCKS):
+        span = block_span(text, name)
+        if span:
+            inner = text[span[0]:span[1]]
+            inner = inner.split('-->', 1)[1].rsplit(f'<!-- {name}:END -->', 1)[0]
+            return INSTRUCTION_STAMP.sub('', inner.lstrip('\n'), count=1).strip('\n') + '\n'
+    return None
+
+
+def instructions(args):
+    home = rules_home(args.rules_dir)
+    out = Path(args.out or home.parent / 'generated')
+    target_home = Path(args.home).expanduser() if args.home else Path.home()
+    source = instruction_source(home, args.source)
+    report = {'source': str(source), 'hosts': {}, 'installed': bool(args.install)}
+    if not source.is_file():
+        if not args.init:
+            sys.exit(f'{source} does not exist; run instructions --init to write it from the built files')
+        built = {}
+        for host, (built_rel, _) in INSTRUCTION_HOSTS.items():
+            path = out / built_rel
+            body_text = strip_block(path.read_text(encoding='utf-8')) if path.is_file() else None
+            if body_text is None:
+                sys.exit(f'--init needs {path} with one instruction block')
+            built[host] = body_text
+        source.write_text(init_source(built), encoding='utf-8')
+        report['initialised'] = True
+    text = source.read_text(encoding='utf-8')
+    digest = sources_sha(source)
+    # Backups go under the home being written, so a run with --home never writes into the current user's folder.
+    agent = AGENT if os.environ.get('WRITING_AGENT_HOME') else target_home / '.agents' / 'writing'
+    backups = agent / 'backups'
+    stamp_time = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+    for host, (built_rel, home_rel) in INSTRUCTION_HOSTS.items():
+        block = instruction_block(render_instructions(text, host), digest, source)
+        built_path = out / built_rel
+        built_path.parent.mkdir(parents=True, exist_ok=True)
+        built_path.write_text(block, encoding='utf-8')
+        target = target_home / home_rel
+        existing = target.read_text(encoding='utf-8') if target.is_file() else ''
+        body = render_instructions(text, host)
+        current = block_span(existing, BLOCK)
+        found = STAMP.search(existing[current[0]:current[1]]) if current else None
+        if found and found.group(1) == digest and strip_block(existing) == body:
+            wanted = existing   # same source and body; only the build date would change
+        else:
+            wanted = merged_home_file(existing, block)
+        row = {'built': str(built_path), 'home_file': str(target), 'matches': existing == wanted}
+        if args.install and existing != wanted:
+            backups.mkdir(parents=True, exist_ok=True)
+            backup = backups / f'{host}-{stamp_time}.md'
+            if target.is_file():
+                backup.write_bytes(target.read_bytes())
+            target.parent.mkdir(parents=True, exist_ok=True)
+            tmp = target.with_name(target.name + '.writing-tmp')
+            tmp.write_text(wanted, encoding='utf-8')
+            if target.is_file():
+                os.chmod(tmp, target.stat().st_mode & 0o777)
+            tmp.replace(target)
+            receipt = {'host': host, 'target': str(target), 'backup': str(backup) if target.is_file() else None,
+                       'before_sha256': sha_bytes(existing.encode('utf-8')), 'after_sha256': sha_bytes(wanted.encode('utf-8')),
+                       'source_sha256': digest, 'at': stamp_time}
+            backup.with_suffix('.json').write_text(json.dumps(receipt, indent=1) + '\n', encoding='utf-8')
+            row.update(matches=True, backup=receipt['backup'], receipt=str(backup.with_suffix('.json')))
+        report['hosts'][host] = row
+    report['ok'] = all(r['matches'] for r in report['hosts'].values())
+    if args.json:
+        print(json.dumps(report, indent=1))
+    else:
+        for host, row in report['hosts'].items():
+            state = 'installed' if row.get('receipt') else ('matches' if row['matches'] else 'differs; run with --install')
+            print(f'{host}: built {row["built"]}; {row["home_file"]} {state}')
+    return 0 if report['ok'] else 1
+
+
 def stamp(digest, sources):
     return (f'Built by writing_system.py on {dt.date.today().isoformat()} from {", ".join(sources)}; '
             f'sources sha256 {digest}. Edit the sources and build again; never edit this copy by hand.')
@@ -309,6 +480,10 @@ def check(args, quiet=False):
                 stale.append({'path': str(path), 'text': item['text'], 'replaced_by': item.get('replaced_by', '')})
     expected = {path: sources_sha(*sources)
                 for path, sources in built_copies(home, out, home.parent / 'preferences.md').items()}
+    source = instruction_source(home)
+    if source.is_file():
+        for host, (built_rel, home_rel) in INSTRUCTION_HOSTS.items():
+            expected[out / built_rel] = sources_sha(source)
     outdated = []
     for path, digest in expected.items():
         m = STAMP.search(path.read_text(encoding='utf-8')) if path.is_file() else None
@@ -414,7 +589,7 @@ def nightly(args):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = ap.add_subparsers(dest='cmd', required=True)
-    for name in ('build', 'check', 'nightly'):
+    for name in ('build', 'check', 'nightly', 'instructions'):
         p = sub.add_parser(name)
         p.add_argument('--rules-dir')
         p.add_argument('--out')
@@ -424,6 +599,11 @@ def main(argv=None):
             p.add_argument('--preferences')
         if name == 'check':
             p.add_argument('--living', nargs='*')
+        if name == 'instructions':
+            p.add_argument('--source', help='the instruction source; default instructions.md beside the rules folder')
+            p.add_argument('--init', action='store_true', help='write the source from the built files when it is missing')
+            p.add_argument('--install', action='store_true', help='write the home files, with a backup and receipt')
+            p.add_argument('--home', help='home folder for the installed files; default the current user')
         if name == 'nightly':
             p.add_argument('--since', type=float, default=24)
             p.add_argument('--weekly', action='store_true')
@@ -433,6 +613,8 @@ def main(argv=None):
         return build(args)
     if args.cmd == 'check':
         return 0 if check(args)['ok'] else 1
+    if args.cmd == 'instructions':
+        return instructions(args)
     return nightly(args)
 
 
