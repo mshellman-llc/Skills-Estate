@@ -8,7 +8,8 @@ Events:
     SessionStart       adds the habits that reached the owner most often in the last 14 days
     UserPromptSubmit   carries findings a reply was allowed through with, and asks for a logged
                        correction when the owner corrects wording
-    PostToolUse        scans each prose file a tool wrote and records deliverables for the gate
+    PostToolUse        scans each prose file a tool wrote, records deliverables for the gate and
+                       logs which session wrote each file to writers.jsonl
     Stop               scans the reply and holds it for one rewrite when a finding blocks; holds
                        the session while a deliverable it changed has no passing full review
 
@@ -19,8 +20,8 @@ hits.jsonl beside the state, with the tool that produced them.
 The gate reads gate.json beside the state: "include" and "exclude" are fnmatch
 patterns for deliverable paths, "max_blocks_per_file" caps how often one file can
 hold a session. A deliverable passes when a receipt in the receipts folder has
-the file's current sha256, status pass, and the line pass, document pass and spot
-audit all ok.
+the file's current sha256, status pass (a scan alone is scan-pass), and the line
+pass, document pass and spot audit all ok.
 
 Standard library only.
 """
@@ -41,6 +42,7 @@ CHECK = HERE / 'check.py'
 BASE = Path(os.environ.get('WRITING_AGENT_HOME') or Path.home() / '.agents' / 'writing').expanduser()
 STATE = BASE / 'state'
 HITS = BASE / 'hits.jsonl'
+WRITERS = BASE / 'writers.jsonl'   # check.py reads it to reject verdicts from the session that wrote the piece
 GATE_CONFIG = BASE / 'gate.json'
 RECEIPTS = Path(os.environ.get('WRITING_RECEIPTS') or BASE / 'receipts').expanduser()
 PROSE = {'.md', '.markdown', '.mdx', '.txt', '.rst', '.html', '.htm'}
@@ -242,11 +244,25 @@ def on_stop(event, args, state):
         emit({'systemMessage': 'Not fully reviewed: ' + ', '.join(state['released_unreviewed'])})
 
 
+def log_writers(event, args, paths):
+    """One line per file a session wrote with a file tool. A file written from a shell command is not seen."""
+    session = str(event.get('session_id') or '').strip()
+    if not session or not paths:
+        return
+    WRITERS.parent.mkdir(parents=True, exist_ok=True)
+    with open(WRITERS, 'a', encoding='utf-8') as f:
+        for path in paths:
+            f.write(json.dumps({'d': today(), 'tool': args.tool, 'session': session,
+                                'path': str(Path(path).resolve())}) + '\n')
+
+
 def on_post_tool(event, args, state):
     cfg = gate_config()
     notes = []
     nags = state.setdefault('nags', {})
-    for path in changed_files(event, args.tool):
+    paths = changed_files(event, args.tool)
+    log_writers(event, args, paths)
+    for path in paths:
         if is_deliverable(path, cfg) and str(path) not in state.setdefault('deliverables', []):
             state['deliverables'].append(str(path))
         if not is_prose(path) or not path.is_file():

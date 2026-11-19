@@ -76,7 +76,7 @@ Then build and check again. Tell the user what changed in the tracker, which sto
 
 Browser checks need Playwright's bundled Chromium. The estate launch policy applies, and an unavailable browser reports `pending`, not a pass. After the gates pass, open each page at desktop and phone width and read it; a passing check does not replace reading the page.
 
-Apply `review-writing` to all authored text and keep tracker text and recorded client answers as they are.
+Apply `writing` to all authored text and keep tracker text and recorded client answers as they are.
 
 ## Publish
 

@@ -2,9 +2,9 @@
   "format": 1,
   "entries": {
     "writing-diagnostics": {
-      "successor": "review-writing",
+      "successor": "writing",
       "retained_runtime": "writing-diagnostics",
-      "reason": "Standalone writing selection is retired. Writing Integrity retains the diagnostic scripts, format registers, figure checks and receipt compatibility as an internal runtime."
+      "reason": "Standalone writing selection is retired. The writing skill retains the diagnostic scripts, format registers, figure checks and receipt compatibility as an internal runtime."
     },
     "author-estate-skill": {
       "successor": "maintain-skills-estate",

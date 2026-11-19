@@ -42,7 +42,7 @@ is not authorization to read, write, or publish.
   a go/no-go pack built on an unsourced requirement set is a hard fail.
 - **brand-renderer** owns brand for any client-facing render of these artifacts.
   Never inline hex values here.
-- **review-writing** owns writing review; a confirmed profile supplies voice. Run its checker on every prose deliverable, including the pack.
+- **writing** owns writing review; a confirmed profile supplies voice. Run its checker on every prose deliverable, including the pack.
 - **The SOW owns acceptance.** UAT gates, acceptance criteria, and deemed-acceptance
   language live in the SOW and the co-signed Test Plan. Cite them by section, quote
   criteria verbatim where the pack must state them, never restate contractual clauses in
@@ -191,8 +191,7 @@ changes: a script or ask that traces to no requirement is drift, flagged and
 routed to track-delivery, never absorbed into the test assets.
 
 - Does not author requirements or acceptance criteria; that is capture-requirements.
-- Does not execute cutover, go-live, or hypercare; that is manage-cutover-closeout, which
-  inherits the readiness checklist and open defect list from the pack.
+- Does not execute cutover, go-live, or hypercare; that is manage-cutover-closeout.
 - Does not run status cadence or own the RAID log; that is track-delivery. This
   skill feeds it defects and test progress.
 - Does not build or fix the system; defects go to owners, not to this skill.
@@ -215,7 +214,7 @@ routed to track-delivery, never absorbed into the test assets.
 - `assets/test-script-template.md` · single-script template with the Gherkin-derived layout.
 - `assets/uat-tracker-template.csv` · tracker header plus example rows; this file is also
   the `--scripts` input to the gate.
-- `assets/defect-log-template.csv` · defect log header plus example rows, including a
+- `assets/defect-log-template.csv` · defect log columns with sample rows, including a
   correctly evidenced closure.
 - `assets/coverage-gaps-template.csv` · named gap list format the gate reads via `--gaps`.
 - `assets/gonogo-counts-example.json` · the count keys the gate recomputes via `--gonogo`.

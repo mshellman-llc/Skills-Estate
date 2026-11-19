@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "artifact": "skills/prepare-delivery-handoff/SKILL.md",
+  "protected": [],
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The repeats name the executed SOW as the authority, the handoff at signature, the Pursuit Lead role, the connector table search anchors and the rendered prose the review covers. They are terms each step must state exactly; consolidating them would remove the source a step depends on. Present before this change, which only renamed the writing skill citation and rewrote three antitheses.",
+      "source": "skills/prepare-delivery-handoff/SKILL.md: opening, authority order, steps 1 to 5, scope limits"
+    }
+  ]
+}

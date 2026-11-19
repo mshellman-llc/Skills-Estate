@@ -7,7 +7,7 @@ description: 'Run stage 06 Deploy and Closeout after an approved go or no-go: bu
 # Manage cutover closeout
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
-> [Writing Integrity review](../review-writing/references/detailed-review.md).**
+> [writing review](../writing/SKILL.md).**
 
 This skill brings an approved release into production and closes the engagement
 on the record. Humans approve acceptance, rollback, and closeout. The skill
@@ -34,7 +34,7 @@ and dates. The signed readiness pack owns the release decision. Timesheets own
 actual effort. Record a missing load-bearing fact as a gap with an owner, due
 date, and blocked gate.
 
-Run `evidence-core` before drafting. Use `review-writing` for every prose artifact
+Run `evidence-core` before drafting. Use `writing` for every prose artifact
 and `brand-renderer` for a client-facing render. This skill records commercial
 impact but never creates rates, hours, fees, or a change price.
 

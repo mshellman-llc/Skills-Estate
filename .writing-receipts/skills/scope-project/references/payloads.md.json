@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "artifact": "skills/scope-project/references/payloads.md",
+  "protected": [],
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "Every remaining repeat is inside a payload example: the scoping_manage_tags and scoping_manage_timeline call shapes, the sample external ID q-000003_lead_assignment_rules used by the delete and resources examples, and the one-week startWeek/endWeek phase. Each example must show the full call an agent sends, so the repeats are executable syntax, not prose.",
+      "source": "skills/scope-project/references/payloads.md code blocks under Scope Items, Tags, Timeline and Multi-band"
+    }
+  ]
+}

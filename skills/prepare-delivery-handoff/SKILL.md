@@ -7,7 +7,7 @@ description: 'Owns the Estate sales-to-delivery handoff at signature: the handof
 # Prepare delivery handoff
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
-> [Writing Integrity review](../review-writing/references/detailed-review.md). Inputs, not a final pass.**
+> [writing review](../writing/SKILL.md). Both shape the draft from its first line.**
 
 A signed deal crosses from the people who sold it to the people who deliver it, and
 most of what the seller knows is about to walk out of the room. This skill captures
@@ -114,8 +114,8 @@ Specs for 11 and 12, including the readiness checklist items:
    brief (delivery acceptance). Stamp the manifest with client, engagement,
    source snapshot, and as-of date.
 2. **Run evidence-core.** Harvest in the authority order above. Read transcripts
-   verbatim, never summaries. An un-searched source is an Unknown, not a confirmed
-   absence. Carry the delivery-lens and maturity-gap flags forward from the pursuit
+   verbatim, never summaries. Record a source nobody searched as an Unknown, because an
+   unsearched source cannot show that something is absent. Carry the delivery-lens and maturity-gap flags forward from the pursuit
    so delivery inherits them instead of rediscovering them.
 3. **Build the manifest.** JSON, schema in `references/package-spec.md`. Fill the
    12 sections from the ledger: roughly 80 percent of a clean deal assembles
@@ -133,7 +133,7 @@ Specs for 11 and 12, including the readiness checklist items:
    HTML or portable Markdown brief. Confidence maps to presentation: Confirmed
    reads as fact, Inferred as inference with its basis, Unknown as a named open
    question, conflicts as flagged divergences with both values shown. Run
-   review-writing on the rendered prose. Never hand-patch the render; fix the manifest
+   `writing` on the rendered prose. Never hand-patch the render; fix the manifest
    and re-render.
 6. **Transfer and land.** Moment 1: support the warm transfer (the SSL walks the
    package to the Program Lead and Solution Lead in a recorded session), then
@@ -183,7 +183,7 @@ with owners, sections 11 and 12, or the gate.
 ## Running unattended
 
 The warm transfer and the acceptance need humans. On a headless run: build the
-manifest, run the gate and review with review-writing, and stop with the findings and the open
+manifest, run the gate and review with `writing`, and stop with the findings and the open
 gaps. Say plainly that the transfer session and acceptance are outstanding. Never
 record an acceptance nobody gave.
 
@@ -206,7 +206,7 @@ turns the accepted brief into the charter and governance pack.
   number; the Pursuit Lead and delivery leads own the decisions. It assembles and
   transfers.
 - Does not initiate change orders. If delivery intent already differs from the
-  SOW, that is a flagged conflict for the Pursuit Lead, not a rewrite.
+  SOW, flag the conflict to the Pursuit Lead and leave the SOW text as signed.
 
 ## Files
 
@@ -231,7 +231,7 @@ Before you deliver, run the gate. This is a required step, not a suggestion, and
 not something a reviewer does later. Full spec in
 [`release-gate.md`](../_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

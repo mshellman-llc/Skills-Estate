@@ -26,12 +26,12 @@ Use these five checks:
 | Check | Evidence to look for | Correction when the evidence is missing |
 | --- | --- | --- |
 | Customer flow and experience | Who acts, what they need, what they do and see, what they receive, who takes over, and what signals completion. Include waits, effort, confusion, and recovery when supported by evidence. | Replace abstract stage descriptions with a role-specific task sequence. Separate observed experience from an experience hypothesis. |
-| Current versus future state | The same task in today's process and the proposed process, with changes in steps, ownership, screens, manual work, and outcomes. | Pair the two states at the point of change. Keep an unknown current step visible as a discovery gap; keep proposed behavior labeled as proposed. |
+| Current versus future state | The same task in the current process and the proposed process, with changes in steps, ownership, screens, manual work, and outcomes. | Pair the two states at the point of change. Keep an unknown current step visible as a discovery gap; keep proposed behavior labeled as proposed. |
 | Systems | The application, channel, or offline work used at each step; records read or written; handoffs, integrations, and the system that owns the data. | Add a system map or swimlane that connects actors, systems, and data movement. Name unresolved ownership or integration behavior instead of inventing it. |
 | Click paths | Starting screen or entry point, control or action, input, validation, next state, and completion evidence. Include a relevant failure or alternate path. | Supply an annotated sequence or demonstrable path. Distinguish a suggested screen design from an observed interface. Include email, phone, and manual work where the journey leaves the UI. |
 | Measures | A measure tied to the task or customer outcome, its definition, data source, measurement window, owner, baseline, and target where available. | Define the measurement and collection plan. Separate existing results, proposed targets, and missing baselines. Do not invent numbers or infer improvement from a shorter diagram. |
 
-Choose measures that explain the reviewed problem: completion, elapsed time, rework, handoff delay, conversion, errors, or reported experience. Define the numerator and denominator for a rate, and the start and end events for a duration. A click count can describe effort; it does not establish customer value by itself.
+Choose measures that explain the reviewed problem: completion, elapsed time, rework, handoff delay, conversion, errors, or reported experience. Define the numerator and denominator for a rate, and the start and end events for a duration. A click count can describe effort but cannot show customer value by itself.
 
 ## Judge the artifact's explanatory quality
 
@@ -61,9 +61,9 @@ Before delivery, check that every material finding has a source location and an 
 
 ## Required writing review
 
-Apply `review-writing` to every critique and accompanying reply. Load its complete pattern references on first use in the session. Use the maintained review-writing installation available in the current host. When writing as a named person, apply their confirmed writing profile if supplied.
+Apply `writing` to every critique and accompanying reply. It reads the owner's rules folder at the start of the task; use the installation available in the current host. When writing as a named person, apply their confirmed writing profile if supplied.
 
-Read [expanded-writing-review.md](references/expanded-writing-review.md) on each use. It also supplies the pattern checks if review-writing is unavailable. Review the entire output, including captions, examples and closing lines. Repair the sentence or argument; changing a few words is insufficient. Use paragraphs for connected reasoning and lists or tables for comparison or sequence. Keep real three-item sets.
+Read [expanded-writing-review.md](references/expanded-writing-review.md) on each use. It also supplies the pattern checks if `writing` is unavailable. Review the entire output, including captions, examples and closing lines. Repair the sentence or argument; changing a few words is insufficient. Use paragraphs for connected reasoning and lists or tables for comparison or sequence. Keep real three-item sets.
 
 Use the bundled writing diagnostic tools to scan finished prose files when available. Select a personal profile only when configured for the intended author. For a chat reply, save a temporary Markdown file when local execution is available. Inspect every flag, repair actual defects and rerun after editing. Read the finished text even when the scan passes. Review manually when the skill or scanner is unavailable, and report a tool limit only when it affects a verification the user requested.
 

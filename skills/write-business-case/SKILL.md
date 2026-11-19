@@ -210,7 +210,7 @@ Never ship a funding document to a client on an unattended run.
 - Does not research the prospect. That is `prepare-sales-pursuit`; this consumes
   its outputs as sources.
 - Evidence rules belong to `evidence-core`, brand tokens to
-  `brand-renderer`, and writing review to `review-writing` using the confirmed author profile.
+  `brand-renderer`, and writing review to `writing` using the confirmed author profile.
 
 ## Files
 

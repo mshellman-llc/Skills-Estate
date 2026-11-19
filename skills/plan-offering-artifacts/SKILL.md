@@ -77,7 +77,7 @@ Do not build ahead of the plan. An artifact built before its dependency exists g
 | 09 Pre-Engagement Stage Gate | copy the template, adapt rows |
 | 10 SOW | `write-statement-of-work` |
 
-Gates on everything: `brand-renderer` for parity, a human or model for visual, `review-writing` for prose. Writing review is `review-writing`, applied during the build and not as a pass afterwards.
+Gates on everything: `brand-renderer` for parity, a human or model for visual, `writing` for prose. Writing review is `writing`, applied during the build and not as a pass afterwards.
 
 ## Artifact 05 has a machine-readable twin
 

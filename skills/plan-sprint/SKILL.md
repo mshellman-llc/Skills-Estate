@@ -76,7 +76,7 @@ Each run leaves `sprint-NN-plan.md` (the filled template) and the gate report in
 
 Before you deliver, run the gate. Full spec in [`release-gate.md`](../_shared/release-gate.md).
 
-1. Apply review-writing to the plan prose.
+1. Apply `writing` to the plan prose.
 2. Run review-deliverable before you call it final.
 
 Do not present the plan as final until both checks have passed.

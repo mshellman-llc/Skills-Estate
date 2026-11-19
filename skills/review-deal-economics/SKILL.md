@@ -8,8 +8,8 @@ description: 'Builds and gates the Estate Deal Desk readout packet, the sole int
 
 The Deal Desk readout answers one question for people who were not in the
 scoping room: should Estate ship this offer, and on what terms. It is the
-last internal gate before the client sees numbers, so its job is to make the
-commercial reality legible, not attractive.
+last internal gate before the client sees numbers. Its job is to make the
+commercial reality legible even when that reality is unattractive.
 
 The cardinal rule: **surface everything, smooth nothing.** A reviewer who
 approves a clean-looking packet with hidden problems is not protected; one
@@ -17,11 +17,11 @@ who approves a packet with explicit flags made a considered decision. Every
 unconfirmed staffing role, every load-bearing assumption, every risk to
 margin appears as a labeled flag with a named resolution path. Presenting a
 clean deal that is not clean is the exact failure this artifact exists to
-catch, and it is why the artifact registry lists "risk smoothed over" and
+catch. For that reason the artifact registry lists "risk smoothed over" and
 "real margin hidden behind point estimate" as hard fails.
 
-Margin is the headline. A reviewer should reach the margin number, and its
-position against the floor, in the first ten seconds. If the margin is
+Margin is the headline. A reviewer should reach the margin number and its
+position against the floor in the first ten seconds. If the margin is
 tight or provisional, that is the lead, not a footnote.
 
 ## Governance, delegated
@@ -39,7 +39,7 @@ tight or provisional, that is the lead, not a footnote.
   disagreement becomes a flag.
 - **brand-renderer** owns the rendering and the visual, parity, and
   brand release gates. Never inline hex values or rebuild the token set.
-- **review-writing** owns writing review; a confirmed profile supplies voice. Run its checker on the packet's prose. No em
+- **writing** owns writing review; a confirmed profile supplies voice. Run its checker on the packet's prose. No em
   dashes, sentence-case headings, no AI vocabulary in the tagline or
   anywhere else.
 
@@ -55,9 +55,9 @@ scope, hours, and assumptions, and record the answer verbatim. The
 figures block field `delivery_cosign.status` takes exactly one of
 `confirmed`, `conditional`, `pending`, or `declined`; the gate rejects
 blank, `assumed`, `inferred`, and `tbd`. "Delivery cosign missing" is a
-registry hard fail, and it means missing from the record, not missing
-approval: `pending` with a named signer and a date is an honest, passing
-answer. `confirmed` without a name and date fails.
+registry hard fail. It refers to a cosign absent from the record. Approval
+itself can still be outstanding: `pending` with a named signer and a date is
+an honest, passing answer. `confirmed` without a name and date fails.
 
 Everything else in the packet can be harvested. This one field cannot.
 
@@ -135,7 +135,7 @@ skill) and rerun; this skill never edits a figure to make the tie-out pass.
 **8. Render and gate the rendering.** Hand to brand-renderer for
 the HTML (or docx backup for email and print). Margin is the visually
 dominant figure, rendered against the floor; all economics in monospace.
-Verify by rendering, then apply review-writing to the prose. Report counts per
+Verify by rendering, then apply `writing` to the prose. Report counts per
 gate, not adjectives, and write a one-line disposition per gate.
 
 **9. Land and close the loop.** Deliver the file, commit it to the deal's

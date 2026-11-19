@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "artifact": "skills/plan-team-onboarding/SKILL.md",
+  "protected": [],
+  "candidates": [
+    {
+      "rule": "C24-formulaic-the-framing",
+      "reason": "The flagged frames are input and section labels (\"The framework\", \"The team\", \"The recent past\") that name the parts of the onboarding method. They are ordinary labels, unchanged by this change, which only renamed the writing skill link.",
+      "source": "skills/plan-team-onboarding/SKILL.md: Required inputs, The framework, layer sections"
+    }
+  ]
+}

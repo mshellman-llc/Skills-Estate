@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/design-software-system/SKILL.md",
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "\"formal architecture reference mode\" is the name of the mode this skill routes to; the description and the routing paragraph each need it to send a formal request there.",
+      "source": "config/skill-catalog.json modes for design-software-system; skills/design-software-system/SKILL.md lines 3 and 26"
+    }
+  ]
+}

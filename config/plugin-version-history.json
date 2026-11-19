@@ -200,6 +200,10 @@
     "0.4.46": {
       "content_sha256": "d02d7747bd42feced996d4aafd22a1d2cd8544cd1cf1722568c8c7bb0a77beeb",
       "note": "evidence-core: a load-bearing open item with an owner, closure condition, affected domains and stop rule leaves its domain Conditional, not Insufficient; scope-project marks currency and rates optional for effort-only estimates (#140)"
+    },
+    "0.4.47": {
+      "content_sha256": "cc85ce1fa970eb6f354210946ee902b05f8e5f58af3f84582c33c21add905d22",
+      "note": "Fold review-writing into writing: one writing skill for every caller, trigger names in its description, and check.py rejects a scan reported as a pass, verdicts that do not quote their own line, verdicts from the writer and maps that mark over a tenth of lines structural."
     }
   },
   "source_conflicts": [

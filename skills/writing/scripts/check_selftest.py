@@ -46,6 +46,11 @@ class Base(unittest.TestCase):
         self.ledger(LEDGER)
         (self.rules / 'rules.md').write_text('Synthetic rules file.\n')
         self.receipts = self.root / 'receipts'
+        self.agent_home = self.root / 'agent-home'
+        previous = os.environ.get('WRITING_AGENT_HOME')
+        os.environ['WRITING_AGENT_HOME'] = str(self.agent_home)
+        self.addCleanup(lambda: os.environ.pop('WRITING_AGENT_HOME') if previous is None
+                        else os.environ.__setitem__('WRITING_AGENT_HOME', previous))
 
     def ledger(self, data):
         (self.rules / 'patterns.json').write_text(json.dumps(data))
@@ -69,17 +74,17 @@ class Base(unittest.TestCase):
 
 
 class Contract(Base):
-    def test_pass_has_the_agreed_shape_and_a_receipt(self):
+    def test_scan_alone_reports_scan_pass_never_pass(self):
         code, result = self.check(self.write('note.md', '# Release note\n\nThe export job now writes one file per client.\n'))
         self.assertEqual(code, 0)
-        self.assertEqual(result['status'], 'pass')
+        self.assertEqual(result['status'], 'scan-pass')
         self.assertEqual(result['coverage']['lines_total'], 2)
         self.assertEqual(result['coverage']['lines_reviewed'], 2)
         self.assertEqual(result['findings'], [])
         for key in ('status', 'coverage', 'findings', 'receipt'):
             self.assertIn(key, result)
         saved = self.receipt(result)
-        self.assertEqual(saved['status'], 'pass')
+        self.assertEqual(saved['status'], 'scan-pass')
         self.assertEqual([s['status'] for s in saved['steps']][:3], ['ok', 'ok', 'ok'])
         self.assertEqual({s['step']: s['status'] for s in saved['steps']}['line pass'], 'not_run')
 
@@ -267,7 +272,7 @@ class NeverSilent(Base):
         check.MAX_BYTES = 2000
         try:
             code, result = self.check(deck)
-            self.assertEqual(result['status'], 'pass', result.get('reason'))
+            self.assertEqual(result['status'], 'scan-pass', result.get('reason'))
             self.assertEqual(result['coverage']['lines_reviewed'], 1)
             code, result = self.check(big)
             self.assertEqual((code, result['status']), (2, 'incomplete'))
@@ -328,7 +333,9 @@ class Review(Base):
         self.lines = [line for worker in self.plan['workers'] for line in worker['lines']]
 
     def verdict(self, line, **change):
+        first, last = check.edge_words(line['text'])
         v = {'id': line['id'], 'sha': line['sha'], 'section': line['section'], 'verdict': 'ok',
+             'first_words': first, 'last_words': last,
              'portable': False, 'promise': False, 'tension': False,
              'claims': 'supported', 'source': self.SOURCES[0]}
         if line.get('flags'):
@@ -439,7 +446,7 @@ class Review(Base):
         audit, sample = self.audit(verdicts)
         self.assertEqual(len(sample), 1)
         code, result = self.full(verdicts, document_map, '--audit', audit)
-        self.assertEqual((code, self.step(result, 'spot audit')), (0, 'ok'))
+        self.assertEqual((code, result['status'], self.step(result, 'spot audit')), (0, 'pass', 'ok'))
         self.assertIn('1 of the 5 lines marked ok', self.detail(result, 'spot audit'))
         self.assertTrue(self.receipt(result)['spot_audit']['independent'])
 
@@ -523,7 +530,9 @@ class Review(Base):
         code, result = self.full(verdicts, document_map, '--audit', audit)
         self.assertIn('--recheck', self.detail(result, 'spot audit'))
         sweep = {'rules_sha256': self.plan['rules_sha256'], 'reviewer': 'recheck worker', 'rules': ['R6'],
-                 'verdicts': [{'id': line['id'], 'sha': line['sha'], 'verdict': 'ok'} for line in self.lines]}
+                 'verdicts': [{'id': line['id'], 'sha': line['sha'], 'verdict': 'ok',
+                               'first_words': check.edge_words(line['text'])[0],
+                               'last_words': check.edge_words(line['text'])[1]} for line in self.lines]}
         code, result = self.full(verdicts, document_map, '--audit', audit, '--recheck', self.save('recheck.json', sweep))
         self.assertEqual((code, self.step(result, 'spot audit')), (1, 'ok'))
         self.assertEqual([f['id'] for f in result['findings']], [sample[0]['id']])
@@ -621,6 +630,9 @@ class Review(Base):
         code, result = self.full(self.verdicts(), self.document_map(numbers=numbers, sections=sections(), repeated_facts=repeat))
         self.assertEqual((code, result['findings'][0]['rule']), (1, 'document-pass: fact stated more than once'))
         declared = {'reason': 'Each scope item returns as a roadmap item', 'sections': ['0003', '0006']}
+        # This page has 7 lines, so its one declared repeat covers two of them; the share limit has its own test.
+        self.addCleanup(setattr, check, 'STRUCTURAL_SHARE', check.STRUCTURAL_SHARE)
+        check.STRUCTURAL_SHARE = 3
         code, result = self.full(self.verdicts(), self.document_map(
             numbers=numbers, sections=sections(), structural_repeat=declared, repeated_facts=[dict(repeat[0], structural=True)]))
         self.assertEqual((self.step(result, 'document pass'), result['findings']), ('ok', []))
@@ -647,7 +659,8 @@ class Review(Base):
             verdict = self.verdict(line, **change)
             if change.get('flags') is None:
                 verdict.pop('flags', None)
-            return self.full(self.save('verdicts.json', {'rules_sha256': self.plan['rules_sha256'], 'verdicts': [verdict]}), document_map)
+            return self.full(self.save('verdicts.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': 'worker',
+                                                         'verdicts': [verdict]}), document_map)
         code, result = run(flags=None)
         self.assertIn('flags.three', self.receipt(result)['line_pass']['rejected'][0]['reason'])
         self.assertEqual(self.step(run(flags={'three': True})[1], 'line pass'), 'failed')
@@ -656,6 +669,63 @@ class Review(Base):
                            quote='14 accounts', replacement='the accounts in the renewal register')
         self.assertEqual((code, self.step(result, 'line pass'), result['findings'][0]['rule']),
                          (1, 'ok', 'line-pass: K3: no source for the account count'))
+
+    def test_each_verdict_quotes_the_first_and_last_words_of_its_own_line(self):
+        swapped = {'0003': {'first_words': 'Revenue risk shows'}}
+        code, result = self.full(self.verdicts(swapped), self.document_map())
+        self.assertEqual(code, 2)
+        self.assertIn('do not match', self.receipt(result)['line_pass']['rejected'][0]['reason'])
+        missing = {'0003': {'last_words': ''}}
+        code, result = self.full(self.verdicts(missing), self.document_map())
+        self.assertIn('first_words and last_words', self.receipt(result)['line_pass']['rejected'][0]['reason'])
+        spaced = {'0003': {'first_words': '  The   company is '}}
+        self.assertEqual(self.step(self.full(self.verdicts(spaced), self.document_map())[1], 'line pass'), 'ok')
+
+    def test_verdicts_from_the_writer_are_rejected(self):
+        verdicts, document_map = self.verdicts(reviewer='session-a'), self.document_map()
+        code, result = self.full(verdicts, document_map, '--writer', 'session-a')
+        self.assertEqual((code, self.step(result, 'line pass')), (2, 'failed'))
+        self.assertIn('session that wrote the piece', self.detail(result, 'line pass'))
+        unnamed = json.loads(Path(verdicts).read_text())
+        unnamed['reviewer'] = ''
+        code, result = self.full(self.save('verdicts.json', unnamed), document_map)
+        self.assertIn('does not name its reviewer', self.detail(result, 'line pass'))
+        # The hook's log names the session that wrote the piece and the one that wrote the verdict file.
+        verdicts = self.verdicts(reviewer='worker 1')
+        self.agent_home.mkdir(exist_ok=True)
+        log = [{'session': 'writer-session', 'path': str(self.path.resolve())},
+               {'session': 'reviewer-session', 'path': str(self.path.resolve())},
+               {'session': 'writer-session', 'path': str(Path(verdicts).resolve())}]
+        (self.agent_home / 'writers.jsonl').write_text(''.join(json.dumps(x) + '\n' for x in log))
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual(self.step(result, 'line pass'), 'failed')
+        self.assertIn('writer-session', self.detail(result, 'line pass'))
+        (self.agent_home / 'writers.jsonl').write_text(json.dumps(log[0]) + '\n' + json.dumps(log[1]) + '\n')
+        self.assertEqual(self.step(self.full(verdicts, document_map)[1], 'line pass'), 'ok')
+        audit, _ = self.audit(verdicts, reviewer='writer-session')
+        code, result = self.full(verdicts, document_map, '--audit', audit)
+        self.assertEqual((code, self.step(result, 'spot audit')), (2, 'failed'))
+
+    def test_map_that_marks_over_a_tenth_of_lines_structural_is_rejected(self):
+        self.numbers_page()
+        numbers = [dict(n, source=self.SOURCES[0]) for n in self.plan['numbers']]
+        sections = [{'id': s['id'], 'point': 'States the rollout scope', 'reader_acts': True} for s in self.plan['sections']]
+        declared = {'reason': 'Each scope item returns as a roadmap item', 'sections': ['0003', '0006']}
+        repeat = [{'ids': ['0004', '0007'], 'quote': 'Phase 1 covers 14 accounts', 'structural': True}]
+        code, result = self.full(self.verdicts(), self.document_map(
+            numbers=numbers, sections=sections, structural_repeat=declared, repeated_facts=repeat))
+        self.assertEqual(self.step(result, 'document pass'), 'failed')
+        self.assertIn('structural repeats', self.receipt(result)['document_pass']['problems'][0])
+
+    def test_receipt_claiming_pass_without_a_line_pass_does_not_verify(self):
+        _, result = self.check(self.path)
+        saved = self.receipt(result)
+        saved['status'] = 'pass'
+        Path(result['receipt']).write_text(json.dumps(saved))
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            self.assertEqual(check.main(['--verify-receipt', result['receipt']]), 1)
+        self.assertIn('scan-pass', out.getvalue())
 
 
 if __name__ == '__main__':

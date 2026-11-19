@@ -289,8 +289,8 @@
         "why": "Bracket missing facts in the working copy instead of filling them, then check the publish gates, including sanitization and ownership, before the publish copy is called ready."
       },
       {
-        "skill": "review-writing",
-        "why": "Review the publish copy for clarity using your writing profile, keeping every figure and quotation exact."
+        "skill": "writing",
+        "why": "Review the publish copy against your writing rules, keeping every figure and quotation exact."
       }
     ],
     "note": "Use Develop independent product first only if you want to create a company-neutral product or offer from historical work."
@@ -300,12 +300,12 @@
     "audience": "Writing and presentation",
     "title": "Improve a draft without losing its meaning",
     "desc": "For anyone revising a document, reply, instructions or interface text who must keep its facts and voice.",
-    "inputs": "The draft, intended reader, purpose, required facts and your private writing profile, if you have authorized one.",
+    "inputs": "The draft, intended reader, purpose, required facts and your writing rules folder, if you keep one.",
     "prompt": "Review this draft for clarity and repetition. Preserve its meaning, qualifications and voice, flag any claim the required facts do not support, and return the complete revision.",
     "outcome": "The complete revised draft, with quotations and figures kept exact and unsupported claims identified.",
     "steps": [
       {
-        "skill": "review-writing",
+        "skill": "writing",
         "why": "Read the whole draft for meaning and structure and repair vague or repetitive passages."
       }
     ],

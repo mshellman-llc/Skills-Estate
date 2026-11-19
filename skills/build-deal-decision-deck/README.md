@@ -7,7 +7,7 @@
 
 **Use it when.** Asked to build, review, de-slop, gate, or rebuild a DDOC, deal decision deck, options deck, scope deck, or the deck presented before the proposal.
 
-**Not for.** Do NOT use for SOW review (review-contract-scope), prose editing (review-writing), PPTX mechanics (pptx), or a generic multi-slide proposal deck (build-deck).
+**Not for.** Do NOT use for SOW review (review-contract-scope), prose editing (`writing`), PPTX mechanics (pptx), or a generic multi-slide proposal deck (build-deck).
 
 **Related.** Depends on [`manage-consulting-knowledge`](../manage-consulting-knowledge/README.md); Calls [`evidence-core`](../evidence-core/README.md), [`review-deliverable`](../review-deliverable/README.md).
 

@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/plan-sprint/SKILL.md",
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "\"engagement or product team\" and \"team definition of done\" are the skill's defined inputs, named in the description and again in the inputs table; \"this skill does not\" opens separate boundaries for the tracker and the RAID log.",
+      "source": "skills/plan-sprint/SKILL.md, lines 3, 15, 25 and 35"
+    }
+  ]
+}

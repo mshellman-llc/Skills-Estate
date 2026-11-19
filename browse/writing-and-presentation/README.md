@@ -15,7 +15,6 @@ Each task links to its primary workflow. Packages are also listed here when one 
 | `manage-brand-profile` | [manage-brand-profile](../../skills/manage-brand-profile/SKILL.md) |  |
 | `manage-writing-profile` | [manage-writing-profile](../../skills/manage-writing-profile/SKILL.md) |  |
 | `publish-content` | [publish-content](../../skills/publish-content/SKILL.md) |  |
-| `review-writing` | [review-writing](../../skills/review-writing/SKILL.md) |  |
 | `writing` | [writing](../../skills/writing/SKILL.md) |  |
 
 ## Source workflows
@@ -28,7 +27,6 @@ Each task links to its primary workflow. Packages are also listed here when one 
 - [manage-brand-profile](../../skills/manage-brand-profile/SKILL.md)
 - [manage-writing-profile](../../skills/manage-writing-profile/SKILL.md)
 - [publish-content](../../skills/publish-content/SKILL.md)
-- [review-writing](../../skills/review-writing/SKILL.md)
 - [writing](../../skills/writing/SKILL.md)
 - [writing-diagnostics](../../skills/writing-diagnostics/SKILL.md)
 

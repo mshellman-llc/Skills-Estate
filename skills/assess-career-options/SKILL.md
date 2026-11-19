@@ -62,4 +62,4 @@ Show base apart from everything else, with a year-one and a four-year view. Lay 
 
 ## Reporting
 
-Everything the candidate reads or sends goes through `apply-author-style` with an explicitly supplied confirmed profile and `review-writing`, and the bundled writing diagnostics where installed; otherwise check by reading and say no scan ran. Update the role work record and tracker. End with changed, verified, unchanged and the exact next action.
+Everything the candidate reads or sends goes through `apply-author-style` with an explicitly supplied confirmed profile and `writing`, and the bundled writing diagnostics where installed; otherwise check by reading and say no scan ran. Update the role work record and tracker. End with changed, verified, unchanged and the exact next action.

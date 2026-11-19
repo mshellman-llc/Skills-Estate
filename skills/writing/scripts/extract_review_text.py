@@ -822,7 +822,7 @@ def cmd_init_log(args):
     path = Path(args.dir) / 'review-log.json'
     if path.exists() and not args.force:
         sys.exit(f'{path} exists; pass --force to replace it.')
-    log = {'reviewer': '', 'rules': 'writing-integrity (review-writing)',
+    log = {'reviewer': '', 'rules': 'writing',
            'parts': {p['file']: '' for f in m['files'] for p in f['parts']},
            'findings': [],
            'example_finding': {'file': 'outputs-page.md', 'id': '0042', 'loc': 'L87',

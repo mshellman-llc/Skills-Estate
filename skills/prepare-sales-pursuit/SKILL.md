@@ -12,7 +12,7 @@ Use only the current task's supplied or explicitly authorized account, project s
 
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
-> [`readout-brief.md`](../writing-diagnostics/references/registers/readout-brief.md). Inputs, not a final pass.**
+> [`readout-brief.md`](../writing-diagnostics/references/registers/readout-brief.md). Both shape the draft from its first line.**
 
 One skill turns the firm's pursuit knowledge into an actionable plan. Mode A
 maintains the canonical opportunity overview. Mode B prepares one upcoming call.
@@ -164,7 +164,7 @@ Close with the top three facts, then the landmines. Then flag your biggest judgm
 - `scripts/check_pursuit_brief.py` for each Pursuit Brief and Call Brief, plus
   `--before/--after` when revising an existing Pursuit Brief.
 - `scripts/reconcile.py` on the evidence ledger whenever a Mode B brief carries figures.
-- **review-writing** owns writing review: run its bundled diagnostics on the prose. No em dashes, no buzzwords, no AI-construction patterns. Report the counts it prints.
+- **writing** owns writing review: run its bundled diagnostics on the prose. No em dashes, no buzzwords, no AI-construction patterns. Report the counts it prints.
 - **brand-renderer** and `_shared/build-card.md` own any branded surface. Use `--profile` for an explicitly supplied profile; the renderer otherwise stays neutral and never discovers an employer brand from personal folders.
 
 ## Boundaries
@@ -198,7 +198,7 @@ Cut in this order and say what you cut: drill-mode content, the full knowledge b
 Before delivery, run the required gate. Complete it during production. Full spec in
 [`release-gate.md`](../_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

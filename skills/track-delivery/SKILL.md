@@ -7,7 +7,7 @@ description: 'Continuous delivery documentation for Estate engagements: the week
 # Track delivery
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus
-> [Writing Integrity review](../review-writing/references/detailed-review.md). Both shape the draft from its first line.**
+> [writing review](../writing/SKILL.md). Both shape the draft from its first line.**
 
 Keep the engagement record honest, week after week. Three jobs, always together: issue the status report from the record, keep the governance logs current so nothing is re-litigated, and compare observed work with the signed scope so drift is flagged with evidence before it eats margin. Undocumented decisions cause the same conversation twice; unflagged drift becomes a change order handled reactively or, worse, absorbed silently.
 
@@ -38,7 +38,7 @@ is not authorization to read, write, or publish.
 ## Governance this skill delegates
 
 - **evidence-core** owns provenance. Every log entry and every status claim carries a named source with a date. An absent fact is a named gap with an owner and a resolve-by date, never a blank or a plausible fill.
-- **review-writing** owns writing review; a confirmed profile supplies voice. Run its checker on the finished status report. No em dashes, sentence-case headings, counts not adjectives.
+- **writing** owns writing review; a confirmed profile supplies voice. Run its checker on the finished status report. No em dashes, sentence-case headings, counts not adjectives.
 - **brand-renderer** owns brand if the status ships as anything beyond markdown. The markdown report itself needs no brand pass.
 - **The money rule.** Burn, remaining hours, and fee figures come from a timesheet export, the quote (Q-number), or an explicit user-supplied source. If no source is available this period, the report names the figure as a gap ("burn unavailable: no timesheet export provided, owner: Program Lead"). Never estimate burn silently. Never compute remaining from memory of last week's number.
 
@@ -100,7 +100,7 @@ python3 scripts/status_check.py STATUS.md --raid-log RAID.md --decision-log DECI
 
 The gate is blocking. It verifies: the period is stated in the header; every stable ID referenced in the report exists in the corresponding log file; the scope-drift section is present and is either "None observed" or candidates each carrying at least one evidence citation; the hours-and-burn section names a source or a named gap; and no unfilled placeholders remain. Exit 0 passes; nonzero blocks issue. Report the counts it prints and write a one-line disposition.
 
-Review the report with `review-writing` and run its bundled internal `writing-diagnostics` diagnostics. If the diagnostics are unavailable, state the manual checks actually performed.
+Review the report with `writing` and run its bundled internal `writing-diagnostics` diagnostics. If the diagnostics are unavailable, state the manual checks actually performed.
 
 ## Worked example, end to end
 
@@ -164,7 +164,7 @@ Before you deliver, run the gate. Run it yourself; a later review does not
 replace it. Full spec in
 [`release-gate.md`](../_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

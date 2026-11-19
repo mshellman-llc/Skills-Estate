@@ -113,7 +113,7 @@ NO_PROSE_SKILLS = {
     "maintain-skills-estate":      "output is a drift table and a set of bundles",
     "scope-project":          "output is scope rows and quote fields in Salesforce",
     "operate-salesforce-pipeline":       "output is pipeline state and deploy results",
-    "writing-diagnostics":             "retains internal diagnostics under review-writing",
+    "writing-diagnostics":             "retains internal diagnostics under writing",
     "apply-salesforce-patterns": "output is Apex and LWC source plus arch-check results",
     "capture-salesforce-screens": "output is captured page evidence from a CLI",
 }

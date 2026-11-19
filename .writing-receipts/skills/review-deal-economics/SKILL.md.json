@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "artifact": "skills/review-deal-economics/SKILL.md",
+  "protected": [],
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The repeats are script paths (scripts/quote_tieout_check.py, scripts/deal_desk_gate.py and their selftests with \"run it after any ... change\"), the scoping MCP tool route, the figures block step name and the Deal Desk and decision-deck artifact names. Each recurs where a separate step or file entry needs the exact name; this change only renamed the writing skill citation and rewrote four balanced sentences.",
+      "source": "skills/review-deal-economics/SKILL.md: description, Governance, steps 1, 6 and the headless run, Files list"
+    }
+  ]
+}

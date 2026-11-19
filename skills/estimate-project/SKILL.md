@@ -7,7 +7,7 @@ description: Rough-estimate method within scope-project. Build a sourced effort 
 # Estimate project
 
 > **Before writing: [`build-card.md`](../_shared/build-card.md) plus the writing-diagnostics register
-> for briefs. Inputs, not a final pass.**
+> for briefs. Read both before drafting; the final review still runs at the gate.**
 
 The ROM answers one question: what will this roughly cost and take, and what is that estimate
 standing on? It is a range and a basis, never a quote. It gives the buyer a decision-grade
@@ -139,7 +139,7 @@ tokens, and the parity, visual, and brand release gates. Do not inline hex value
 the artifact build notes. Brand applies during the build, not after.
 
 Run the **writing-diagnostics** checker on every prose surface of the artifact and on this skill's own
-output. Apply review-writing and the confirmed author profile. Preserve material
+output. Apply `writing` and the confirmed author profile. Preserve material
 uncertainty in the claim. Review the rendered result after the diagnostic checks.
 
 Fallback: if a governor is not installed on the current surface, state the check it would
@@ -189,11 +189,11 @@ rates and unestimated scope without inventing quote-schema fields.
 
 ## Release gate (required)
 
-Before you deliver, run the gate. This is a required step, not a suggestion, and
-not something a reviewer does later. Full spec in
+Before you deliver, run the gate. This step is required, and it runs
+before a reviewer sees the work. Full spec in
 [`release-gate.md`](../_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

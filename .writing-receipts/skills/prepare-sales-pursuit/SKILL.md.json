@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "artifact": "skills/prepare-sales-pursuit/SKILL.md",
+  "protected": [],
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The repeats are the checker command `python3 scripts/check_pursuit_brief.py --before old.md --after new.md`, quoted where the update rule and the verification step each require it, and the output-contract record line. They are executable syntax and a contract reference. Present before this change, which only renamed the writing skill citation and rewrote one antithesis.",
+      "source": "skills/prepare-sales-pursuit/SKILL.md: update rules, verification steps, record line"
+    }
+  ]
+}
