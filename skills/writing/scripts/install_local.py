@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Install the writing check, hook and gate command on this computer.
 
-    install_local.py [--git-hooks] [--services] [--watch DIR] [--dry]
+    install_local.py [--git-hooks] [--services] [--watch DIR] [--sync-corrections] [--dry]
 
 Copies check.py, extract_review_text.py, hook.py, writing_system.py,
-check_selection.py, gate_watch.py and rendered_read_guard.py to ~/.agents/writing/bin with a manifest of their sha256, so
+check_selection.py, gate_watch.py, rendered_read_guard.py and sync_corrections.py to ~/.agents/writing/bin with a manifest of their sha256, so
 the hooks keep working whichever branch the repository has checked out. Writes
 gate.json there when none exists, and the gate command for Claude Code
 (~/.claude/commands/gate.md) and Codex (~/.codex/prompts/gate.md). When the
@@ -17,8 +17,15 @@ for the gate's check on client and public pieces.
 --services   builds the "Check writing" Services menu action in ~/Library/Services.
 --watch DIR  installs a launchd agent that runs gate_watch.py whenever DIR changes,
              and every 15 minutes, so each file that lands there gets the full review.
+--sync-corrections
+             installs a launchd agent that runs sync_corrections.py --apply when it
+             loads and every day at 06:00, so writing corrections saved in the Hub
+             reach corrections.md. Run sync_corrections.py --seed for corrections
+             copied by hand before the first run.
 
-Hook settings for Claude Code and Codex are not edited here.
+Hook settings for Claude Code and Codex are not edited here. The publish check
+needs a PreToolUse entry in ~/.claude/settings.json with the matcher
+"Artifact|mcp__.*[Pp]ublish.*" that runs hook.py --tool claude-code.
 """
 import argparse
 import hashlib
@@ -34,8 +41,9 @@ SKILL = HERE.parent
 HOME = Path.home()
 BIN = HOME / '.agents' / 'writing' / 'bin'
 FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py', 'gate_watch.py',
-         'rendered_read_guard.py']
+         'rendered_read_guard.py', 'sync_corrections.py']
 WATCH_LABEL = 'com.mshellman.writing-gate-watch'
+SYNC_LABEL = 'com.mshellman.writing-corrections-sync'
 EVIDENCE_SCAN = SKILL.parent / 'publish-content' / 'scripts' / 'evidence_scan.py'
 HOOK_NAMES = ['applypatch-msg', 'pre-applypatch', 'post-applypatch', 'pre-commit', 'pre-merge-commit',
               'prepare-commit-msg', 'commit-msg', 'post-commit', 'pre-rebase', 'post-checkout', 'post-merge',
@@ -262,11 +270,48 @@ def install_watch(folder, dry):
     return {'plist': str(plist), 'folder': str(folder)}
 
 
+SYNC_JS = ("const r=require('child_process').spawnSync('/usr/bin/python3',process.argv.slice(1),"
+           "{stdio:'inherit'});process.exit(r.status??1)")
+
+
+def install_sync(dry):
+    plist = HOME / 'Library' / 'LaunchAgents' / f'{SYNC_LABEL}.plist'
+    logs = HOME / '.agents' / 'writing'
+    body = f'''<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key><string>{SYNC_LABEL}</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>{NODE}</string>
+		<string>-e</string>
+		<string>{SYNC_JS}</string>
+		<string>{BIN / 'sync_corrections.py'}</string>
+		<string>--apply</string>
+	</array>
+	<key>RunAtLoad</key><true/>
+	<key>StartCalendarInterval</key><dict><key>Hour</key><integer>6</integer><key>Minute</key><integer>0</integer></dict>
+	<key>StandardOutPath</key><string>{logs / 'corrections-sync.out'}</string>
+	<key>StandardErrorPath</key><string>{logs / 'corrections-sync.err'}</string>
+</dict>
+</plist>
+'''
+    if not dry:
+        plist.parent.mkdir(parents=True, exist_ok=True)
+        plist.write_text(body, encoding='utf-8')
+        domain = f'gui/{subprocess.run(["id", "-u"], capture_output=True, text=True).stdout.strip()}'
+        subprocess.run(['launchctl', 'bootout', domain, str(plist)], capture_output=True)
+        subprocess.run(['launchctl', 'bootstrap', domain, str(plist)], capture_output=True)
+    return {'plist': str(plist), 'body': body} if dry else {'plist': str(plist)}
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--git-hooks', action='store_true')
     ap.add_argument('--services', action='store_true')
     ap.add_argument('--watch', metavar='DIR')
+    ap.add_argument('--sync-corrections', action='store_true')
     ap.add_argument('--dry', action='store_true')
     args = ap.parse_args(argv)
     report = {'bin': install_bin(args.dry), 'commands': install_commands(args.dry)}
@@ -276,6 +321,8 @@ def main(argv=None):
         report['services'] = install_services(args.dry)
     if args.watch:
         report['watch'] = install_watch(args.watch, args.dry)
+    if args.sync_corrections:
+        report['sync_corrections'] = install_sync(args.dry)
     print(json.dumps(report, indent=1))
     return 0
 
