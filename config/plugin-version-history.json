@@ -204,6 +204,10 @@
     "0.4.47": {
       "content_sha256": "ef38b9ec128cf9a31129e49a36bb1ff97631cf32a0269a019f2baf4f6f447933",
       "note": "Fold review-writing into writing: one writing skill for every caller, trigger names in its description, and check.py rejects a scan reported as a pass, verdicts that do not quote their own line, verdicts from any session that wrote or changed the piece up to the reviewed content, and maps that mark over a tenth of lines structural."
+    },
+    "0.4.48": {
+      "content_sha256": "8c4b8a77b68b8e95eee5515be4586c5e804580f2774daa557d0d386faa5d607e",
+      "note": "Build Hub decision 271 in the writing skill: Hub corrections copy, publish check, register aliases and one instruction builder. The publish check denies a call whose content it cannot read and names what it could not read, and sync_corrections.py --seed saves its IDs without --apply."
     }
   },
   "source_conflicts": [

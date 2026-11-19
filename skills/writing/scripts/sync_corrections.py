@@ -14,10 +14,10 @@ when the record states them, the rule IDs it names, "candidate" for the
 pattern, and "Hub decision N" with the tool. Each row ends with the marker
 `hub:N`, and a decision whose ID appears as `hub:N` or as "Hub decision N"
 anywhere in corrections.md is never copied again. Corrections copied by hand
-before this script ran can be marked with --seed ID; the IDs go to
-.hub-corrections.json beside corrections.md.
+before this script ran can be marked with --seed ID; the IDs are saved to
+.hub-corrections.json beside corrections.md on that run, with or without --apply.
 
-Without --apply the script only lists what it would add. The Hub database is
+Without --apply the script only lists the rows it would add to corrections.md. The Hub database is
 opened read-only and never changed. Standard library only.
 """
 import argparse
@@ -127,10 +127,9 @@ def main(argv=None):
     if not target.is_file():
         raise SystemExit(f'{target} does not exist')
     state = json.loads(state_file.read_text(encoding='utf-8')).get('copied', []) if state_file.is_file() else []
-    if args.seed:
+    if args.seed:   # saved at once: a seed only marks IDs and never writes corrections.md
         state = sorted(set(state) | set(args.seed))
-        if args.apply:
-            state_file.write_text(json.dumps({'copied': state}, indent=1) + '\n', encoding='utf-8')
+        state_file.write_text(json.dumps({'copied': state}, indent=1) + '\n', encoding='utf-8')
     if not Path(args.hub_db).expanduser().is_file():
         raise SystemExit(f'Hub database not found: {args.hub_db}')
     text = target.read_text(encoding='utf-8')
