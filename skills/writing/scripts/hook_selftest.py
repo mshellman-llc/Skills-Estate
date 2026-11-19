@@ -103,9 +103,38 @@ class HookTest(unittest.TestCase):
         page.write_text('<p>' + CLEAN + ' One more line.</p>')
         self.assertIsNotNone(self.publish({'file_path': str(page)}))
 
+    def test_publish_with_unresolved_content_is_denied_and_says_what_it_could_not_read(self):
+        reason = lambda out: out['hookSpecificOutput']['permissionDecisionReason']
+        out = self.publish({'url': 'https://example.com'})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('names no file (file_path, path, file, source_path)', reason(out))
+        self.assertIn('no text content (content, html, markdown, body, text, source)', reason(out))
+        missing = self.work / 'gone.html'
+        out = self.publish({'file_path': str(missing)}, tool='mcp__site__publish_page')
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn(f'the file {missing} named in file_path, which does not exist', reason(out))
+        unreadable = self.work / 'locked.html'
+        unreadable.write_text('<p>' + CLEAN + '</p>')
+        unreadable.chmod(0)
+        try:
+            if not os.access(unreadable, os.R_OK):  # root can read any file
+                out = self.publish({'path': str(unreadable)})
+                self.assertIn(f'the file {unreadable} named in path', reason(out))
+        finally:
+            unreadable.chmod(0o644)
+        logged = [json.loads(x) for x in (self.home / 'hits.jsonl').read_text().splitlines()]
+        self.assertIn('publish-unresolved', {x['rule'] for x in logged})
+        # In scan mode, bytes the check cannot read are denied the same way.
+        (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'exclude': [],
+                                                         'publish_requires': 'scan'}))
+        binary = self.work / 'page.bin'
+        binary.write_bytes(b'\x00\x01\x02')
+        out = self.publish({'file_path': str(binary)}, tool='mcp__site__publish_page')
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn(f'could not read {binary}', reason(out))
+
     def test_publish_scan_mode_and_other_tools(self):
         self.assertIsNone(self.publish({'content': BAD}, tool='Write'))
-        self.assertIsNone(self.publish({'url': 'https://example.com'}))
         (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'exclude': [],
                                                          'publish_requires': 'scan'}))
         out = self.publish({'content': BAD}, tool='mcp__site__publish_page')

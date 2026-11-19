@@ -30,7 +30,9 @@ The publish check reads "publish_tools" (fnmatch patterns for tool names) and
 denied unless a receipt shows a passing full review of the exact bytes it sends:
 the file it names, or the content it carries. With "scan", the call is denied
 when check.py finds a blocking line in those bytes. A call whose content the
-hook cannot find goes through and is logged.
+hook cannot read is denied, and the reason names what it could not read: a
+missing or unreadable file, a call with no file or text content, or bytes the
+scan could not read.
 
 Standard library only.
 """
@@ -301,18 +303,27 @@ def on_post_tool(event, args, state):
 
 
 def published_bytes(data):
-    """The bytes a publish call sends and where they came from, or (None, '') when the hook cannot tell."""
+    """The bytes a publish call sends and where they came from, or (None, what could not be read)."""
+    unread = []
     for key in PUBLISH_PATH_KEYS:
         value = data.get(key)
         if isinstance(value, str) and value.strip():
             path = Path(value).expanduser()
-            if path.is_file():
+            if not path.is_file():
+                unread.append(f'the file {path} named in {key}, which does not exist or is not a file')
+                continue
+            try:
                 return path.read_bytes(), str(path)
+            except OSError as exc:
+                unread.append(f'the file {path} named in {key} ({exc.strerror or exc})')
     for key in PUBLISH_TEXT_KEYS:
         value = data.get(key)
         if isinstance(value, str) and value.strip():
             return value.encode('utf-8'), f'the {key} of the call'
-    return None, ''
+    if not unread:
+        unread.append('the call names no file (' + ', '.join(PUBLISH_PATH_KEYS) + ') and carries no text content ('
+                      + ', '.join(PUBLISH_TEXT_KEYS) + ')')
+    return None, '; '.join(unread)
 
 
 def deny(reason):
@@ -327,7 +338,9 @@ def on_pre_tool(event, args, state):
         return
     data, where = published_bytes(event.get('tool_input') or {})
     if data is None:
-        log_hits(args.tool, 'publish-unchecked', name, [{'rule': 'publish-unchecked', 'text': name}])
+        log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+        deny(f'Not published: the writing check could not read what {name} sends. It could not read {where}. '
+             'Save the content to a file, review it, and pass that file path or the content itself in the call.')
         return
     sha = hashlib.sha256(data).hexdigest()
     if cfg.get('publish_requires', 'full') == 'scan':
@@ -339,6 +352,10 @@ def on_pre_tool(event, args, state):
         if status == 'fail' and findings:
             log_hits(args.tool, 'publish', name, findings)
             deny(f'{where} breaks the writing rules. Rewrite these lines, then publish again:\n' + describe(findings))
+        elif status not in ('pass', 'scan-pass'):
+            log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+            deny(f'Not published: the writing check could not read {where} (status {status}). Save the content '
+                 'in a format check.py reads, then publish again.')
         return
     if reviewed(sha):
         return

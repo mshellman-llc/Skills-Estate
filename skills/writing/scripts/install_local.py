@@ -20,8 +20,9 @@ for the gate's check on client and public pieces.
 --sync-corrections
              installs a launchd agent that runs sync_corrections.py --apply when it
              loads and every day at 06:00, so writing corrections saved in the Hub
-             reach corrections.md. Run sync_corrections.py --seed for corrections
-             copied by hand before the first run.
+             reach corrections.md. Run sync_corrections.py --seed ID ... once for
+             corrections copied by hand before the first run; it saves the IDs
+             without --apply.
 
 Hook settings for Claude Code and Codex are not edited here. The publish check
 needs a PreToolUse entry in ~/.claude/settings.json with the matcher

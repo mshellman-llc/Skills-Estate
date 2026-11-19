@@ -3,12 +3,19 @@
 import contextlib
 import io
 import json
+import os
+import re
+import shlex
 import sqlite3
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 import sync_corrections as sync
+
+SKILL = Path(__file__).resolve().parent.parent
 
 LOG = """---
 updated: 2026-11-01
@@ -96,6 +103,26 @@ class SyncCorrections(unittest.TestCase):
         self.assertEqual(json.loads((self.rules / '.hub-corrections.json').read_text())['copied'], [5, 8])
         _, report = self.run_sync()
         self.assertEqual(report['would_add'], [])
+
+    def test_seed_without_apply_saves_the_ids_and_leaves_corrections_md(self):
+        before = (self.rules / 'corrections.md').read_bytes()
+        self.run_sync('--seed', '5')
+        self.assertEqual(json.loads((self.rules / '.hub-corrections.json').read_text())['copied'], [5])
+        self.assertEqual((self.rules / 'corrections.md').read_bytes(), before)
+
+    def test_the_documented_seed_command_leaves_the_seed_saved(self):
+        readme = (SKILL / 'README.md').read_text(encoding='utf-8')
+        found = re.search(r'`(python3 scripts/sync_corrections\.py --seed [0-9 ]+)`', readme)
+        self.assertIsNotNone(found, 'the README documents the seed command')
+        command = shlex.split(found.group(1))
+        ids = [int(x) for x in command[command.index('--seed') + 1:]]
+        home = Path(self.temp.name) / 'home'
+        home.mkdir()
+        env = dict(os.environ, HOME=str(home), WRITING_HOME=str(self.rules), HUB_DB_FILE=str(self.db))
+        command[0] = sys.executable
+        result = subprocess.run(command, cwd=SKILL, env=env, capture_output=True, text=True, timeout=60)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads((self.rules / '.hub-corrections.json').read_text())['copied'], ids)
 
     def test_the_hub_database_is_opened_read_only(self):
         self.run_sync('--apply')
