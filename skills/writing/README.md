@@ -13,7 +13,7 @@ One entry point for writing and reviewing every word a person will read. It repl
 | `references/file-review.md` | The extracted-text procedure for pages, workbooks, documents and decks |
 | `references/line-pass.md` | Verdict record and its required questions |
 | `references/document-pass.md` | The fixed map |
-| `scripts/check_selftest.py` | 46 cases on synthetic files |
+| `scripts/check_selftest.py` | 48 cases on synthetic files |
 
 ## The check
 

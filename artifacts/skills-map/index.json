@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-19T22:21:53.255259+00:00",
+  "generatedAt": "2026-11-19T22:25:59.080839+00:00",
   "baseCommit": "f41a748d9770e3ad8bbebb0cd9e130a2c33adf70",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -19605,7 +19605,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 21,
-        "packageFingerprint": "3596f2d373c5c7c98637924b56da9d5e5f51f4b667b0bee5664f83c399dc6b02",
+        "packageFingerprint": "ecb18e786b47d88567a2a11dac3c20d59df79c6a6aa6faa3d813cfb370dc8d7d",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -19695,9 +19695,9 @@
       "resources": [
         {
           "path": "README.md",
-          "sha256": "13322703e9972116de013e2e39ac6c741e73d60f1d98ede296750ba60973be19",
+          "sha256": "a5dc8375d673e6f557a3d3eccb41c42dd8ce0fbc441432bca2f9d80841223dd3",
           "bytes": 12389,
-          "gitBlob": "76488f635e86ecf063056d81ca072bff9d5adcaf"
+          "gitBlob": "486321c83ed1ceae10b3f747cda738d4b5a01998"
         },
         {
           "path": "SKILL.md",
