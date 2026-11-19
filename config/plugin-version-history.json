@@ -204,6 +204,10 @@
     "0.4.47": {
       "content_sha256": "cc85ce1fa970eb6f354210946ee902b05f8e5f58af3f84582c33c21add905d22",
       "note": "Fold review-writing into writing: one writing skill for every caller, trigger names in its description, and check.py rejects a scan reported as a pass, verdicts that do not quote their own line, verdicts from the writer and maps that mark over a tenth of lines structural."
+    },
+    "0.4.48": {
+      "content_sha256": "9b428c0efd42a54029ef183b10d78b98a791a9d278af16c0170db31f5db85a4b",
+      "note": "Writing: copy Hub corrections, check before publish, register aliases, build the instruction files from one source"
     }
   },
   "source_conflicts": [

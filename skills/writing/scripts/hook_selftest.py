@@ -78,6 +78,39 @@ class HookTest(unittest.TestCase):
         logged = [json.loads(x) for x in (self.home / 'writers.jsonl').read_text().splitlines()]
         self.assertEqual([(x['session'], x['path']) for x in logged], [('s3', str(path.resolve()))])
 
+    def publish(self, tool_input, tool='Artifact'):
+        return self.run_hook({'hook_event_name': 'PreToolUse', 'session_id': 's4', 'tool_name': tool,
+                              'tool_input': tool_input})
+
+    def test_publish_is_denied_until_the_exact_bytes_have_a_full_review(self):
+        page = self.work / 'page.html'
+        page.write_text('<p>' + CLEAN + '</p>')
+        out = self.publish({'file_path': str(page)})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('no passing full review', out['hookSpecificOutput']['permissionDecisionReason'])
+        self.assertEqual(self.publish({'content': page.read_text()})['hookSpecificOutput']['permissionDecision'], 'deny')
+        receipts = self.home / 'receipts'
+        receipts.mkdir()
+        steps = [{'step': s, 'status': 'ok'} for s in ('scan', 'line pass', 'document pass', 'spot audit')]
+        scan_only = [dict(s, status='not_run') if s['step'] != 'scan' else s for s in steps]
+        sha = hashlib.sha256(page.read_bytes()).hexdigest()
+        (receipts / 'scan.json').write_text(json.dumps({'sha256': sha, 'status': 'scan-pass', 'steps': scan_only}))
+        self.assertIsNotNone(self.publish({'file_path': str(page)}))
+        (receipts / 'full.json').write_text(json.dumps({'sha256': sha, 'status': 'pass', 'steps': steps}))
+        self.assertIsNone(self.publish({'file_path': str(page)}))
+        self.assertIsNone(self.publish({'content': page.read_text()}))
+        page.write_text('<p>' + CLEAN + ' One more line.</p>')
+        self.assertIsNotNone(self.publish({'file_path': str(page)}))
+
+    def test_publish_scan_mode_and_other_tools(self):
+        self.assertIsNone(self.publish({'content': BAD}, tool='Write'))
+        self.assertIsNone(self.publish({'url': 'https://example.com'}))
+        (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'exclude': [],
+                                                         'publish_requires': 'scan'}))
+        out = self.publish({'content': BAD}, tool='mcp__site__publish_page')
+        self.assertIn('delve', out['hookSpecificOutput']['permissionDecisionReason'])
+        self.assertIsNone(self.publish({'content': CLEAN}, tool='mcp__site__publish_page'))
+
     def test_gate_holds_an_unreviewed_deliverable_then_releases(self):
         path = self.work / 'page.html'
         path.write_text('<p>' + CLEAN + '</p>')

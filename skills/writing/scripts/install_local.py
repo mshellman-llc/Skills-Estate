@@ -34,7 +34,7 @@ SKILL = HERE.parent
 HOME = Path.home()
 BIN = HOME / '.agents' / 'writing' / 'bin'
 FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py', 'gate_watch.py',
-         'rendered_read_guard.py']
+         'rendered_read_guard.py', 'sync_corrections.py']
 WATCH_LABEL = 'com.mshellman.writing-gate-watch'
 EVIDENCE_SCAN = SKILL.parent / 'publish-content' / 'scripts' / 'evidence_scan.py'
 HOOK_NAMES = ['applypatch-msg', 'pre-applypatch', 'post-applypatch', 'pre-commit', 'pre-merge-commit',

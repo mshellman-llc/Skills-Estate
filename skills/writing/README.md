@@ -13,7 +13,10 @@ One entry point for writing and reviewing every word a person will read. It repl
 | `references/file-review.md` | The extracted-text procedure for pages, workbooks, documents and decks |
 | `references/line-pass.md` | Verdict record and its required questions |
 | `references/document-pass.md` | The fixed map |
-| `scripts/check_selftest.py` | 46 cases on synthetic files |
+| `scripts/check_selftest.py` | 47 cases on synthetic files |
+| `scripts/hook.py` | Host hooks: reply scan, writer log, deliverable hold and the publish check |
+| `scripts/sync_corrections.py` | Copies Hub writing corrections into `corrections.md` |
+| `scripts/writing_system.py` | Builds the rules copies and the Claude Code and Codex instruction files |
 
 ## The check
 
@@ -95,3 +98,10 @@ The owner confirmed on 2026-11-19 that the estate keeps one writing skill.
 41. A verdict set is rejected when its reviewer is the writer. The writer is the first session `hook.py` logged writing the piece, in `writers.jsonl`, plus every name passed with `--writer`. The reviewer is the `reviewer` names, the optional `session` field and every session the hook logged writing the verdict file. A set with no `reviewer` is rejected. The hook sees only files written with a file tool; for a piece a script or shell command generated, pass `--writer`. A later session that only applies review fixes does not become the writer. The same rule covers the audit and recheck files.
 42. A map that marks more than one in-scope line in ten as a structural repeat is rejected. The brief put this limit on the verdict set. Structural repeats are declared in the document map, which is where the check reads them.
 43. On a surface where `check.py` cannot run, the skill reads the text against the rules files and says the scan did not run. The earlier text named a Hub scan tool that does not exist (Hub decision 271).
+
+### Hub decision 271, 2026-11-19
+
+44. `scripts/sync_corrections.py` copies each Hub decision whose key starts `writing-correction` into the Log table of `corrections.md`, one row per decision, ending with `hub:N`. It reads the Hub database read-only and lists what it would add until it runs with `--apply`. A decision named as `hub:N` or "Hub decision N" anywhere in the log is never copied again. `--seed` marks decisions copied by hand before the script existed, so 55 and 56, copied as one row, are not added twice. The pattern cell says `candidate`; a person still decides whether a correction becomes a rule.
+45. `hook.py` checks content before a publish tool sends it. The PreToolUse hook matches the `Artifact` tool and any MCP tool whose name contains `publish`. In full mode it denies the call unless the exact bytes have a passing full review; in scan mode it scans them and denies on a blocking finding. When the hook cannot find the content in the call, it logs `publish-unchecked` and lets the call through, because a hook that blocks every unknown tool would stop work it cannot read.
+46. An entry in `registers.md` can name another register. "Pass `x`" runs `x` in its place; "Pass `x` with it" runs both; "Same register as `x`. Pass that name" runs `x`. The check resolves the names before it runs, follows a chain once, and the receipt says which name was an alias.
+47. `writing_system.py instructions` builds `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` from one source, `instructions.md` beside the rules folder. Lines for one host sit between `<!-- only: claude-code -->` or `<!-- only: codex -->` and `<!-- /only -->`. The built block replaces the `MEGAN-AI-CONTEXT` block, or the older `MEGAN-OS` block, and keeps every other line in the home file. `--install` backs up the previous file and writes a receipt; without it, the command reports whether each home file matches. `--init` writes the source from the two built files the first time. The instruction text is condensed by hand, so the script copies it rather than deriving it from `preferences.md`.

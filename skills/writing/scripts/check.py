@@ -157,6 +157,51 @@ def valid_registers(home, ledger):
     return sorted(names)
 
 
+ALIAS_PASS = re.compile(r'\bPass `([^`]+)`( with it)?')
+ALIAS_SAME = re.compile(r'\bSame register as `([^`]+)`\.\s*Pass that name\b')
+
+
+def register_aliases(home):
+    """Entries in registers.md that send the check to another name.
+
+    An entry whose text says "Pass `NAME`" (one name or several with commas), or "Same register as `NAME`. Pass
+    that name", is an alias: --register with its heading runs as NAME. "Pass `NAME` with it" keeps the heading
+    and adds NAME."""
+    listing = Path(home) / 'registers.md' if home else None
+    if not listing or not listing.is_file():
+        return {}
+    aliases = {}
+    for block in re.split(r'^### +', listing.read_text(encoding='utf-8'), flags=re.M)[1:]:
+        heading, _, body = block.partition('\n')
+        body = body.split('\n## ', 1)[0]
+        target = ALIAS_SAME.search(body) or ALIAS_PASS.search(body)
+        if target:
+            names = [n.strip() for n in target.group(1).split(',') if n.strip()]
+            if target.re is ALIAS_PASS and target.group(2):
+                names = [heading.strip()] + [n for n in names if n != heading.strip()]
+            if names and names != [heading.strip()]:
+                aliases[heading.strip()] = names
+    return aliases
+
+
+def resolve_registers(registers, home):
+    """Replace each alias with the names it stands for. Returns (names, {alias: names})."""
+    aliases = register_aliases(home)
+
+    def expand(name, seen):
+        if name in seen or name not in aliases:
+            return [name]
+        return [n for target in aliases[name] for n in (
+            [name] if target == name else expand(target, seen | {name}))]
+    out, used = [], {}
+    for name in registers:
+        names = list(dict.fromkeys(expand(name, frozenset())))
+        if names != [name]:
+            used[name] = names
+        out += [n for n in names if n not in out]
+    return out, used
+
+
 def note_registers(registers, home, ledger, source):
     """Registers are not a fixed list. A name the check has not seen is accepted and recorded in registers.md.
 
@@ -1127,12 +1172,17 @@ def run(args):
     records, findings = [], []
     try:
         ledger, rules_info = load_rules(args.rules_dir)
+        registers, aliased = resolve_registers(registers, rules_info['home'])
+        record['register'] = registers
         new_names, known = note_registers(registers, rules_info['home'], ledger, path)
         rules = active_rules(ledger, registers)
         added = {name: sum(1 for r, _ in rules if r.get('scope') == name or name in (r.get('registers') or []))
                  for name in registers}
-        record['rules'] = dict(rules_info, rules_applied=len(rules), register_rules=added, new_registers=new_names)
+        record['rules'] = dict(rules_info, rules_applied=len(rules), register_rules=added, new_registers=new_names,
+                               register_aliases=aliased)
         detail = f'{len(rules)} rules from {rules_info["ledger"]} ({rules_info["ledger_source"]})'
+        for alias, names in aliased.items():
+            detail += f'; register {alias} is an alias, so the check ran {",".join(names)}'
         for name, count in added.items():
             if name in new_names:
                 detail += (f'; register {name} is new and added no rules ({new_names[name]}); known names: '
