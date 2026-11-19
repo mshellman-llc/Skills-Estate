@@ -265,16 +265,26 @@ def log_writers(event, args, paths):
     A file written from a shell command is not seen."""
     session = str(event.get('session_id') or '').strip()
     if not session or not paths:
-        return
-    WRITERS.parent.mkdir(parents=True, exist_ok=True)
-    with open(WRITERS, 'a', encoding='utf-8') as f:
-        for path in paths:
-            item = {'d': today(), 'tool': args.tool, 'session': session, 'path': str(Path(path).resolve())}
-            try:
-                item['sha256'] = file_sha(path)   # check.py counts writers up to the content under review
-            except OSError:
-                pass
-            f.write(json.dumps(item) + '\n')
+        return None
+    lines = []
+    for path in paths:
+        item = {'d': today(), 'tool': args.tool, 'session': session, 'path': str(Path(path).resolve())}
+        try:
+            item['sha256'] = file_sha(path)   # check.py counts writers up to the content under review
+        except OSError:
+            pass
+        lines.append(json.dumps(item) + '\n')
+    try:
+        WRITERS.parent.mkdir(parents=True, exist_ok=True)
+        with open(WRITERS, 'a', encoding='utf-8') as f:
+            f.write(''.join(lines))
+    except OSError as error:
+        # A lost line hides this session as a writer, so a later review of the file could count as independent.
+        return (f'The writer log {WRITERS} could not record that this session wrote '
+                + ', '.join(Path(p).name for p in paths) + f' ({type(error).__name__}: {error}). Do not review '
+                'these files from this session, and pass this session ID to check.py with --writer when another '
+                'session reviews them.')
+    return None
 
 
 def on_post_tool(event, args, state):
@@ -282,7 +292,10 @@ def on_post_tool(event, args, state):
     notes = []
     nags = state.setdefault('nags', {})
     paths = changed_files(event, args.tool)
-    log_writers(event, args, paths)
+    unlogged = log_writers(event, args, paths)
+    if unlogged:
+        notes.append(unlogged)
+        log_hits(args.tool, 'writer-log-error', 'writers.jsonl', [{'rule': 'writer-log-error', 'text': unlogged}])
     for path in paths:
         if is_deliverable(path, cfg) and str(path) not in state.setdefault('deliverables', []):
             state['deliverables'].append(str(path))

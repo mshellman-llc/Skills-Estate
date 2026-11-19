@@ -141,6 +141,16 @@ class HookTest(unittest.TestCase):
         self.assertIn('delve', out['hookSpecificOutput']['permissionDecisionReason'])
         self.assertIsNone(self.publish({'content': CLEAN}, tool='mcp__site__publish_page'))
 
+    def test_a_write_the_log_cannot_record_is_reported(self):
+        (self.home / 'writers.jsonl').mkdir(parents=True)   # the log path cannot be opened for append
+        path = self.work / 'verdicts.json'
+        path.write_text('{}')
+        out = self.run_hook({'hook_event_name': 'PostToolUse', 'session_id': 's4', 'tool_name': 'Write',
+                             'tool_input': {'file_path': str(path)}})
+        self.assertEqual(out['decision'], 'block')
+        self.assertIn('could not record that this session wrote verdicts.json', out['reason'])
+        self.assertIn('--writer', out['reason'])
+
     def test_gate_holds_an_unreviewed_deliverable_then_releases(self):
         path = self.work / 'page.html'
         path.write_text('<p>' + CLEAN + '</p>')

@@ -763,6 +763,69 @@ class Review(Base):
         code, result = self.full(verdicts, document_map, '--audit', audit)
         self.assertEqual((code, self.step(result, 'spot audit')), (2, 'failed'))
 
+    def test_prepare_never_carries_a_verdict_from_the_writer(self):
+        named = json.loads(Path(self.verdicts(reviewer='worker 1')).read_text())
+        named['session'] = 'writer-session'
+        verdicts, document_map = self.save('verdicts.json', named), self.document_map()
+        self.write_log({'session': 'writer-session', 'path': str(self.path.resolve())})
+        self.assertEqual(self.step(self.full(verdicts, document_map)[1], 'line pass'), 'failed')
+        self.path.write_text(self.TEXT.replace('14 accounts', '15 accounts'))
+        self.write_log({'session': 'writer-session', 'path': str(self.path.resolve())})
+        code, result = self.check(self.path, '--prepare', str(self.work), '--verdicts', verdicts,
+                                  '--sources', str(self.sources))
+        self.assertEqual((code, self.step(result, 'prepare')), (2, 'failed'))
+        self.assertIn('writer-session', self.detail(result, 'prepare'))
+        self.assertFalse((self.work / 'carried.json').exists())
+        plan = json.loads((self.work / 'assignments.json').read_text())
+        self.assertEqual(sum(len(w['lines']) for w in plan['workers']), 5)   # every line goes to a new reviewer
+        self.assertNotIn('audit', plan)
+        # Validation with what prepare left still returns incomplete.
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual((code, result['status'], self.step(result, 'line pass')), (2, 'incomplete', 'failed'))
+
+    def test_carried_verdicts_keep_the_reviewer_session_and_writer_history(self):
+        named = json.loads(Path(self.verdicts(reviewer='worker 1')).read_text())
+        named['session'] = 'reviewer-session'
+        verdicts, document_map = self.save('verdicts.json', named), self.document_map()
+        piece, verdict_file = str(self.path.resolve()), str(Path(verdicts).resolve())
+        self.path.write_text(self.TEXT.replace('14 accounts', '15 accounts'))
+        self.write_log({'session': 'writer-session', 'path': piece},
+                       {'session': 'verdict-session', 'path': verdict_file})
+        self.load_plan('--verdicts', verdicts)
+        carried_path = self.work / 'carried.json'
+        carried = json.loads(carried_path.read_text())
+        self.assertEqual((carried['reviewer'], carried['session'], carried['verdict_writers']),
+                         ('worker 1', 'reviewer-session', ['verdict-session']))
+        worker = self.save('verdicts-w1.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': 'worker 2',
+                                                'verdicts': [self.verdict(line) for line in self.lines]})
+        code, result = self.check(self.path, '--verdicts', str(carried_path), worker,
+                                  '--document-map', document_map, '--sources', str(self.sources))
+        self.assertEqual(self.step(result, 'line pass'), 'ok')
+        # The log later shows the reviewer's session and the verdict file's writer changing the piece. The
+        # carried file still names both, so the merged set is rejected though the original files are gone.
+        Path(verdicts).unlink()
+        for session in ('reviewer-session', 'verdict-session'):
+            self.write_log({'session': 'writer-session', 'path': piece}, {'session': session, 'path': piece})
+            code, result = self.check(self.path, '--verdicts', str(carried_path), worker,
+                                      '--document-map', document_map, '--sources', str(self.sources))
+            self.assertEqual((code, result['status'], self.step(result, 'line pass')), (2, 'incomplete', 'failed'))
+            self.assertIn(session, self.detail(result, 'line pass'))
+
+    def test_unreadable_writer_log_and_an_unnamed_worker_file_make_the_review_incomplete(self):
+        verdicts, document_map = self.verdicts(reviewer='worker 1'), self.document_map()
+        self.agent_home.mkdir(exist_ok=True)
+        (self.agent_home / 'writers.jsonl').mkdir()   # a log that exists but cannot be read
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual((code, self.step(result, 'line pass')), (2, 'failed'))
+        self.assertIn('writer log', self.detail(result, 'line pass'))
+        (self.agent_home / 'writers.jsonl').rmdir()
+        unnamed = self.save('verdicts-w2.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': '',
+                                                 'verdicts': []})
+        code, result = self.check(self.path, '--verdicts', verdicts, unnamed, '--document-map', document_map,
+                                  '--sources', str(self.sources))
+        self.assertEqual(self.step(result, 'line pass'), 'failed')
+        self.assertIn('does not name its reviewer', self.detail(result, 'line pass'))
+
     def test_writers_count_up_to_the_content_under_review(self):
         verdicts, document_map = self.verdicts(reviewer='later-session'), self.document_map()
         piece, current = str(self.path.resolve()), hashlib.sha256(self.path.read_bytes()).hexdigest()

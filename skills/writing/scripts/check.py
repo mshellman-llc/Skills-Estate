@@ -608,16 +608,42 @@ def load_verdicts(paths):
     stamps = {f.get('rules_sha256') for f in files}
     if len(stamps) != 1:
         raise Incomplete('the verdict files were written against different rules')
-    reviewers, sessions = [], []
-    for f in files:
+    reviewers, sessions, wrote = [], [], []
+    for p, f in zip(paths, files):
         name = str(f.get('reviewer') or '').strip()
-        if name and name not in reviewers:
+        if not name:
+            raise Incomplete(f'verdict file {p} does not name its reviewer')
+        if name not in reviewers:
             reviewers.append(name)
-        session = str(f.get('session') or '').strip()
-        if session and session not in sessions:
-            sessions.append(session)
+        for session in split_names(f.get('session')):
+            if session not in sessions:
+                sessions.append(session)
+        for session in names_list(f.get('verdict_writers')):
+            if session not in wrote:
+                wrote.append(session)
     return {'rules_sha256': stamps.pop(), 'reviewer': ' + '.join(reviewers), 'session': ' + '.join(sessions),
-            'verdicts': [v for f in files for v in f.get('verdicts') or []]}
+            'verdict_writers': wrote, 'verdicts': [v for f in files for v in f.get('verdicts') or []]}
+
+
+def split_names(value):
+    """The names in a ' + ' joined field, as load_verdicts writes them for merged files."""
+    return [n.strip() for n in str(value or '').split(' + ') if n.strip()]
+
+
+def names_list(value):
+    """A list of session names; a carried file records the sessions that wrote its source verdict files."""
+    return [str(n).strip() for n in value if str(n).strip()] if isinstance(value, list) else []
+
+
+def verdict_writers(data, paths):
+    """Every session known to have written these verdicts: the sessions a carried file recorded, and every
+    session the hook saw writing the verdict files themselves."""
+    found = names_list(data.get('verdict_writers'))
+    for p in paths or []:
+        for session in sessions_that_wrote(p):
+            if session not in found:
+                found.append(session)
+    return found
 
 
 def writers_log():
@@ -638,8 +664,12 @@ def writes_to(path):
                     continue
                 if isinstance(item, dict) and item.get('path') == target and str(item.get('session') or '').strip():
                     found.append(item)
-    except OSError:
-        return []
+    except FileNotFoundError:
+        return []   # no file tool has written anything yet
+    except (OSError, UnicodeDecodeError) as error:
+        # Without the log the check cannot tell who wrote the piece or the verdicts, so the review cannot count.
+        raise Incomplete(f'the writer log {writers_log()} cannot be read ({type(error).__name__}: {error}), so '
+                         'the reviewer cannot be checked against the writer')
     return found
 
 
@@ -681,14 +711,13 @@ def piece_writers(path, names):
 def writer_problem(data, paths, writers):
     """Why a verdict set cannot count as an independent review, or None.
 
-    The reviewer is the names in `reviewer`, the `session` the file states and every session the hook saw
-    writing the verdict files. Any of them matching the piece's writer rejects the set."""
-    names = {n.strip() for n in str(data.get('reviewer') or '').split(' + ') if n.strip()}
+    The reviewer is the names in `reviewer`, the `session` the file states, the sessions a carried file
+    recorded in `verdict_writers` and every session the hook saw writing the verdict files. Any of them
+    matching the piece's writer rejects the set."""
+    names = set(split_names(data.get('reviewer')))
     if not names:
         return 'the verdict file does not name its reviewer'
-    ids = names | {n.strip() for n in str(data.get('session') or '').split(' + ') if n.strip()}
-    for p in paths or []:
-        ids |= set(sessions_that_wrote(p))
+    ids = names | set(split_names(data.get('session'))) | set(verdict_writers(data, paths))
     same = sorted(ids & writers)
     if same:
         return ('the reviewer is the session that wrote the piece (' + ', '.join(same)
@@ -1116,7 +1145,7 @@ def workers(records):
     return groups
 
 
-def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
+def prepare(path, records, rules, out, verdicts=None, review=(), sources=None, verdict_paths=(), writers=()):
     out = Path(out)
     (out / 'text').mkdir(parents=True, exist_ok=True)
     for old in (out / 'text').glob('part-*.md'):
@@ -1137,8 +1166,11 @@ def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
     def entry(r):
         return {'id': r['id'], 'sha': r['sha'], 'section': r['section_sha'], 'loc': r['loc'],
                 'text': r['text'], 'flags': flagged.get(r['id'], [])}
-    carried = []
-    if verdicts and verdicts.get('rules_sha256') == rules['rules_sha256']:
+    carried, refused = [], None
+    if verdicts:
+        # A verdict set from the writer is never carried: carrying would drop the evidence that rejects it.
+        refused = writer_problem(verdicts, verdict_paths, set(writers))
+    if verdicts and not refused and verdicts.get('rules_sha256') == rules['rules_sha256']:
         by_line = {r['id']: r for r in scope}
         for v in verdicts.get('verdicts') or []:
             vid = v.get('id') if isinstance(v, dict) else None
@@ -1163,10 +1195,16 @@ def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
     if (out / 'carried.json').exists():
         (out / 'carried.json').unlink()
     if carried:
+        # The carried file keeps the reviewer's provenance: its names, the session it stated and every session
+        # that wrote the source verdict files, so the independence check still sees them after carrying.
         (out / 'carried.json').write_text(json.dumps(
             {'rules_sha256': rules['rules_sha256'], 'reviewer': str(verdicts.get('reviewer') or '').strip(),
+             'session': ' + '.join(split_names(verdicts.get('session'))),
+             'verdict_writers': verdict_writers(verdicts, verdict_paths),
              'verdicts': carried}, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
-    if verdicts:
+    if refused:
+        plan['carry_refused'] = refused
+    if verdicts and not refused:
         wanted = set(audit_sample(records, verdicts))
         plan['audit'] = [entry(r) for r in scope if r['id'] in wanted]
     (out / 'assignments.json').write_text(json.dumps(plan, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
@@ -1392,9 +1430,15 @@ def run(args):
         try:
             made = prepare(path, records, rules_info, args.prepare,
                            load_verdicts(args.verdicts) if args.verdicts else None, review,
-                           source_names(args.sources) if args.sources else None)
+                           source_names(args.sources) if args.sources else None,
+                           args.verdicts or (), piece_writers(path, args.writer) if args.verdicts else ())
             record['purpose'] = 'prepare'
-            step('prepare', 'ok', f'{made} and the text parts were rewritten; verdict, map and audit files were not touched')
+            refused = json.loads(made.read_text(encoding='utf-8')).get('carry_refused')
+            if refused:
+                step('prepare', 'failed', f'{made} sends every line to a new reviewer; no verdict was carried '
+                     f'and no audit sample was drawn, because {refused}')
+            else:
+                step('prepare', 'ok', f'{made} and the text parts were rewritten; verdict, map and audit files were not touched')
         except (OSError, Incomplete) as error:
             step('prepare', 'failed', str(error))
     record['findings'] = [present(f, by_id) for f in sorted(findings, key=lambda f: f['id'])]
