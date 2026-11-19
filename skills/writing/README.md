@@ -13,7 +13,7 @@ One entry point for writing and reviewing every word a person will read. It repl
 | `references/file-review.md` | The extracted-text procedure for pages, workbooks, documents and decks |
 | `references/line-pass.md` | Verdict record and its required questions |
 | `references/document-pass.md` | The fixed map |
-| `scripts/check_selftest.py` | 48 cases on synthetic files |
+| `scripts/check_selftest.py` | 51 cases on synthetic files |
 
 ## The check
 
@@ -95,3 +95,4 @@ The owner confirmed on 2026-11-19 that the estate keeps one writing skill.
 41. A verdict set is rejected when its reviewer is the writer. The writers are every session `hook.py` logged writing or changing the piece in `writers.jsonl`, up to the last write that left the file at the content under review, plus every name passed with `--writer`. The hook records the file's sha256 after each write; when no logged write matches the current content, every logged write counts. The reviewer is the `reviewer` names, the optional `session` field and every session the hook logged writing the verdict file. A set with no `reviewer` is rejected. The hook sees only files written with a file tool; for a piece a script or shell command generated, pass `--writer`. A session that applies review fixes is a writer of the text it changed, so it cannot review that text. The same rule covers the audit and recheck files.
 42. A map that marks more than one in-scope line in ten as a structural repeat is rejected. The brief put this limit on the verdict set. Structural repeats are declared in the document map, which is where the check reads them.
 43. On a surface where `check.py` cannot run, the skill reads the text against the rules files and says the scan did not run. The earlier text named a Hub scan tool that does not exist (Hub decision 271).
+44. `--prepare` checks the reviewer against the writer before it carries anything. A verdict set from the writer is not carried, no audit sample is drawn from it, every line goes to a new reviewer and the prepare step fails with the reason. `carried.json` keeps the `reviewer`, the `session` and, in `verdict_writers`, every session that wrote the source verdict files, so the check still sees them after the source files are gone. A worker file with no `reviewer` makes the merged set incomplete. A writer log that exists but cannot be read makes the review incomplete; when the hook cannot append to the log, it tells the writing session.
