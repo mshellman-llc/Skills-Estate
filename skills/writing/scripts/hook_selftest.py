@@ -70,6 +70,15 @@ class HookTest(unittest.TestCase):
                              'tool_input': {'file_path': str(path)}})
         self.assertEqual(out['decision'], 'block')
 
+    def test_each_written_file_is_logged_with_its_session(self):
+        path = self.work / 'verdicts.json'
+        path.write_text('{}')
+        self.run_hook({'hook_event_name': 'PostToolUse', 'session_id': 's3', 'tool_name': 'Write',
+                       'tool_input': {'file_path': str(path)}})
+        logged = [json.loads(x) for x in (self.home / 'writers.jsonl').read_text().splitlines()]
+        self.assertEqual([(x['session'], x['path']) for x in logged], [('s3', str(path.resolve()))])
+        self.assertEqual(logged[0]['sha256'], hashlib.sha256(b'{}').hexdigest())
+
     def test_gate_holds_an_unreviewed_deliverable_then_releases(self):
         path = self.work / 'page.html'
         path.write_text('<p>' + CLEAN + '</p>')

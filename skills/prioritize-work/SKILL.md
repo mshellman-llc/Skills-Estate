@@ -98,7 +98,7 @@ Deliver or link these for every run, following [the output contract](../_shared/
 
 ## Release gate
 
-Apply [the release gate](../_shared/release-gate.md) to both proposal files before delivery. Run `review-writing` over the proposal text in each, reviewing the page on its extracted text with the `writing-diagnostics` checker. Run brand-renderer's parity, brand and visual gates on the page, then run `review-deliverable` on both files before anyone calls the proposal final. Until these checks have passed, it is not final.
+Apply [the release gate](../_shared/release-gate.md) to both proposal files before delivery. Run `writing` over the proposal text in each, reviewing the page on its extracted text with the `writing-diagnostics` checker. Run brand-renderer's parity, brand and visual gates on the page, then run `review-deliverable` on both files before anyone calls the proposal final. Until these checks have passed, it is not final.
 
 ## Files in this skill
 

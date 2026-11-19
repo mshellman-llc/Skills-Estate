@@ -1,0 +1,17 @@
+{
+  "format": 1,
+  "artifact": "skills/tailor-resume/SKILL.md",
+  "protected": [
+    {
+      "kind": "example",
+      "reason": "Teaching example of the bound notation in the estimate-shapes list; the skill teaches how to write approximate figures.",
+      "text": "\"20+ enterprise pursuits\""
+    },
+    {
+      "kind": "example",
+      "reason": "Teaching example of a ledger qualifier written as one word inside the number.",
+      "text": "\"a reported ~40%\""
+    }
+  ],
+  "candidates": []
+}

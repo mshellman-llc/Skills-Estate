@@ -1,6 +1,6 @@
 # Skills catalog
 
-This candidate contains 94 source modules and 66 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
+This candidate contains 93 source modules and 65 task entrypoints. Consolidation and capability acceptance remain under review. The source modules below retain the restoration checkpoint; inventory presence does not establish parity.
 
 
 <!-- SKILL-GROUPS:BEGIN -->
@@ -14,7 +14,7 @@ This candidate contains 94 source modules and 66 task entrypoints. Consolidation
 | [Salesforce development](browse/salesforce-development/README.md) | 8 | 5 |
 | [Product and experience](browse/product-and-experience/README.md) | 15 | 14 |
 | [Knowledge and context](browse/knowledge-and-context/README.md) | 9 | 6 |
-| [Writing and presentation](browse/writing-and-presentation/README.md) | 11 | 7 |
+| [Writing and presentation](browse/writing-and-presentation/README.md) | 10 | 6 |
 | [Career and applications](browse/career-and-personal/README.md) | 5 | 3 |
 | [Personal and creative](browse/personal-and-creative/README.md) | 3 | 3 |
 | [Estate and engineering controls](browse/estate-and-engineering-controls/README.md) | 7 | 3 |
@@ -78,7 +78,6 @@ This candidate contains 94 source modules and 66 task entrypoints. Consolidation
 | refine-backlog | [refine-backlog](skills/refine-backlog/SKILL.md) |  |
 | review-deal-economics | [review-deal-economics](skills/review-deal-economics/SKILL.md) |  |
 | review-deliverable | [review-deliverable](skills/review-deliverable/SKILL.md) |  |
-| review-writing | [review-writing](skills/review-writing/SKILL.md) |  |
 | scope-project | [scope-project](skills/scope-project/SKILL.md) | estimate-project |
 | simplify-code | [simplify-code](skills/simplify-code/SKILL.md) |  |
 | start-delivery | [start-delivery](skills/start-delivery/SKILL.md) |  |
@@ -170,7 +169,6 @@ Each module needs a reviewed capability disposition before release.
 - [review-deliverable](skills/review-deliverable/SKILL.md)
 - [review-sales-journey](skills/review-sales-journey/SKILL.md)
 - [review-site-runtime](skills/review-site-runtime/SKILL.md)
-- [review-writing](skills/review-writing/SKILL.md)
 - [scope-project](skills/scope-project/SKILL.md)
 - [simplify-code](skills/simplify-code/SKILL.md)
 - [specify-implementation](skills/specify-implementation/SKILL.md)

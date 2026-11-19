@@ -52,13 +52,13 @@ class RetiredRoutingTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Retired workflow'):
                 catalog.entries(self.root)
         (self.root / 'config/skill-catalog.json').write_bytes(original)
-        self.write_catalog(lambda r: r['entries']['review-writing'].update({'modes': {'old editor': 'writing-diagnostics'}}))
+        self.write_catalog(lambda r: r['entries']['writing'].update({'modes': {'old editor': 'writing-diagnostics'}}))
         with self.assertRaisesRegex(ValueError, 'Retired workflow'):
             catalog.entries(self.root)
 
     def test_router_and_additional_routes_cannot_revive_retired_editor(self):
         router = self.root / 'agents/writing-router.md'
-        router.write_text(router.read_text().replace('- `review-writing`', '- `writing-diagnostics`'))
+        router.write_text(router.read_text().replace('- `writing`', '- `writing-diagnostics`'))
         with self.assertRaisesRegex(ValueError, 'Router selects retired'):
             catalog.entries(self.root)
         router.write_bytes((ROOT / 'agents/writing-router.md').read_bytes())
@@ -70,7 +70,7 @@ class RetiredRoutingTests(unittest.TestCase):
             plugins.config(self.root)
 
     def test_successor_runtime_and_catalog_are_required(self):
-        self.write_catalog(lambda r: r['entries'].pop('review-writing'))
+        self.write_catalog(lambda r: r['entries'].pop('writing'))
         with self.assertRaisesRegex(ValueError, 'preserve its successor'):
             catalog.entries(self.root)
         (self.root / 'config/skill-catalog.json').unlink()
@@ -97,8 +97,8 @@ class RetiredRoutingTests(unittest.TestCase):
 
     def test_successor_contains_unchanged_diagnostic_capabilities_without_old_entrypoint(self):
         self.assertNotIn('writing-diagnostics', catalog.entries(ROOT))
-        package = self.root / 'isolated/review-writing'
-        assemble(ROOT, 'review-writing', package, runtime_closure(ROOT, 'review-writing'))
+        package = self.root / 'isolated/writing'
+        assemble(ROOT, 'writing', package, runtime_closure(ROOT, 'writing'))
         self.assertEqual([p.relative_to(package).as_posix() for p in package.rglob('SKILL.md')], ['SKILL.md'])
         runtime = package / '_runtime/writing-diagnostics'
         self.assertTrue((runtime / 'WORKFLOW.md').is_file())

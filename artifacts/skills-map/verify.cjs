@@ -66,7 +66,7 @@ const {chromium}=require('playwright');
   const connections=await page.locator('#panel-connections').innerText();
   assert(!connections.includes('ESTATE-WRITING:'));
   assert(!connections.includes('Before writing:'));
-  if(skill.id==='review-writing'){assert.equal(await page.locator('#panel-connections .connection-context table tbody tr').count(),1);assert(!connections.includes('| ---'));assert(!connections.includes('[Diagnostic toolkit]'));}
+  if(skill.id==='writing'){assert(!connections.includes('| ---'));}
 
   assert.equal(await page.locator('.raw-source').textContent(),skill.markdown);
   await page.keyboard.press('Escape');assert.equal(await page.locator('#detail').isVisible(),false);

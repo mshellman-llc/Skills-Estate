@@ -441,12 +441,6 @@
           "featured": false,
           "order": 1000
         },
-        "review-writing": {
-          "visible": true,
-          "download": true,
-          "featured": false,
-          "order": 1000
-        },
         "scope-project": {
           "visible": true,
           "download": true,
@@ -1182,12 +1176,6 @@
           "order": 1000
         },
         "review-site-runtime": {
-          "visible": true,
-          "download": true,
-          "featured": false,
-          "order": 1000
-        },
-        "review-writing": {
           "visible": true,
           "download": true,
           "featured": false,

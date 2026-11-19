@@ -44,11 +44,11 @@ class UniversalWritingTests(unittest.TestCase):
         for entry in entries:
             name = entry.parent.name
             deps = runtime_closure(ROOT, name)
-            for required in ('review-writing', 'writing-diagnostics'):
+            for required in ('writing', 'writing-diagnostics'):
                 self.assertIn(required, [name, *deps], name)
             self.assertNotIn('<!-- ESTATE-WRITING:BEGIN -->', entry.read_text(), name)
         self.assertTrue((self.package / 'references/estate/writing.md').is_file())
-        self.assertTrue((self.package / '_runtime/review-writing/WORKFLOW.md').is_file())
+        self.assertTrue((self.package / '_runtime/writing/WORKFLOW.md').is_file())
         self.assertEqual(len(list(self.package.rglob('SKILL.md'))), 1)
         standards = 'Apply the [shared workflow](references/estate/workflow.md)'
         self.assertEqual((self.package/'SKILL.md').read_text().count(standards), 1)

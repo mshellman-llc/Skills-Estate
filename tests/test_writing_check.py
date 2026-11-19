@@ -24,10 +24,10 @@ class WritingCheckInterface(unittest.TestCase):
                               capture_output=True, text=True, timeout=60)
         return done.returncode, json.loads(done.stdout)
 
-    def test_pass_exits_0_with_full_coverage(self):
+    def test_scan_pass_exits_0_with_full_coverage(self):
         code, result = self.run_check('pass.md')
         self.assertEqual(code, 0)
-        self.assertEqual(result['status'], 'pass')
+        self.assertEqual(result['status'], 'scan-pass')
         self.assertEqual(result['coverage']['lines_total'], result['coverage']['lines_reviewed'])
         self.assertEqual(result['coverage']['lines_total'], 2)
         self.assertEqual(result['findings'], [])
@@ -53,7 +53,7 @@ class WritingCheckInterface(unittest.TestCase):
                                '--rules-dir', str(rules), '--receipt-dir', self.temp.name,
                                '--register', 'weekly-update'], capture_output=True, text=True, timeout=60)
         result = json.loads(done.stdout)
-        self.assertEqual((done.returncode, result['status']), (0, 'pass'))
+        self.assertEqual((done.returncode, result['status']), (0, 'scan-pass'))
         self.assertIn('register weekly-update is new and added no rules', result['steps'][0]['detail'])
         self.assertIn('known names: commit, status-update', result['steps'][0]['detail'])
         self.assertIn('### weekly-update', (rules / 'registers.md').read_text())

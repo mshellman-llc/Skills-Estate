@@ -51,7 +51,7 @@ check("mid_handoff_not_remaining", "S2D  Handoff" not in r.stdout)
 check("mid_build_no_skill", "the configured project implementation workflow" in r.stdout)
 check("mid_cross_cutting", "track-delivery" in r.stdout)
 check("mid_governors",
-      "evidence-core, brand-renderer, review-writing" in r.stdout)
+      "evidence-core, brand-renderer, writing" in r.stdout)
 check("mid_zero_findings", "Findings: 0" in r.stdout)
 check("mid_engagement_name", "Acme Corp CPQ Implementation" in r.stdout)
 

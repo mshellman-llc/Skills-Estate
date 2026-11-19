@@ -116,7 +116,7 @@ availability. Preserve phase names and staffing increments from the project.
 
 Inspect the generated estimate against the input. Recompute a representative
 item and reconcile the totals. Check the range drivers and the meaning of each
-assumption. Apply review-writing to the generated prose, including text
+assumption. Apply `writing` to the generated prose, including text
 carried from a draft input. Calculation success does not establish scope quality.
 
 ## Use a configured CRM adapter

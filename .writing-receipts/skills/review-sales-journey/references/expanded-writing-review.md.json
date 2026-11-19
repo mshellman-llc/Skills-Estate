@@ -1,0 +1,12 @@
+{
+  "format": 1,
+  "artifact": "skills/review-sales-journey/references/expanded-writing-review.md",
+  "protected": [],
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The repeats are the \"et al.\" citation link text for the arXiv and ACL Anthology studies each section cites. Citations keep their standard form.",
+      "source": "skills/review-sales-journey/references/expanded-writing-review.md: citation lines under each review section"
+    }
+  ]
+}

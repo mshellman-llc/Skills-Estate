@@ -71,7 +71,7 @@ For each repeated mechanic, decide its one authoritative home (see `references/s
 If you are editing the generator (a `gen_*.js` docx-js script), edit the source and regenerate. If you are editing a delivered `.docx` with no generator, use tracked changes per the `docx` skill so the user sees every change.
 
 ### Step 4: Apply the word-level prose pass
-Use `review-writing` to review meaning, voice and sentence construction during drafting. Its internal diagnostic tools check detectable wording patterns. Keep the SOW-specific structural review here; preserve the figure comparisons and required review receipt.
+Use `writing` to review meaning, voice and sentence construction during drafting. Its internal diagnostic tools check detectable wording patterns. Keep the SOW-specific structural review here; preserve the figure comparisons and required review receipt.
 
 ### Step 5: Verify before asserting
 Re-run the scan. Confirm that authorized repetition repairs hold and every dollar/hour figure still traces to the commercial source. Review each remaining flag. Preserve exact quoted or mandated wording even when it contains flagged punctuation; record its source and required review disposition instead of editing an obligation to obtain a scanner pass. Report the actual counts and the remaining human review findings. A passing scan is a bounded diagnostic result; it does not prove semantic correctness or contract approval.

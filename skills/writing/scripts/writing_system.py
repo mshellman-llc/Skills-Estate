@@ -369,7 +369,7 @@ def nightly(args):
                                                     capture_output=True, text=True, timeout=300).stdout or '{}')
                 except (OSError, ValueError, subprocess.TimeoutExpired):
                     res = {'status': 'error'}
-                if res.get('status') != 'pass':
+                if res.get('status') not in ('pass', 'scan-pass'):
                     failing.append({'path': text, 'status': res.get('status', 'error'),
                                     'findings': len(res.get('findings') or [])})
     report = {'deliverables_scanned': scanned, 'deliverables_failing': failing,

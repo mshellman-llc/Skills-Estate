@@ -16,7 +16,7 @@ in several text boxes does not explain the claim.
 This skill owns the narrative and information design. `brand-renderer` applies
 the selected canonical [brand profile](references/estate/brand.md). Brand identity
 does not determine the diagram or force a fixed slide composition. Writing review
-comes from `review-writing`.
+comes from `writing`.
 
 ## When to use
 
@@ -83,7 +83,7 @@ plan is complete when every claim has an explanation and evidence.
 
 ### Stage 4: Copy
 
-The copy record has the actual headline and body text for each slide. Name the action or behavior the slide explains. Remove a subtitle that repeats the headline. Keep headlines short, break body text at meaning units, and use consistent terms. **Review this with `review-writing`** before it goes
+The copy record has the actual headline and body text for each slide. Name the action or behavior the slide explains. Remove a subtitle that repeats the headline. Keep headlines short, break body text at meaning units, and use consistent terms. **Review this with `writing`** before it goes
 into the build. Diagram labels may name an actor, state, field or transition concisely. Review their meaning and consistency; do not expand them into prose merely to satisfy sentence length. This does not exempt labels from writing review.
 
 ### Stage 5: Design + build
@@ -109,7 +109,7 @@ copy of `polish-learnings.md` so the next deck's first build avoids it.
 2. Walk the checklist:
    - **Argument:** every slide supports the one message; no orphan slides; chapter/section labels match the structure.
    - **Explanation:** answer each storyboard question from the finished slide. Identify the actual element that supplies the answer. Check that arrows and branches have defined meanings. A populated field does not prove that a reader can understand the relationship.
-   - **Text:** headlines short; no awkward orphan line; key text bold enough; terms unified; reviewed with `review-writing`.
+   - **Text:** headlines short; no awkward orphan line; key text bold enough; terms unified; reviewed with `writing`.
    - **Layout:** no clipping or label collisions. Preserve evidence when adjusting density. Empty space does not require an extra card; use the space the explanation needs.
    - **Icons/images:** visual center aligned to its background shape; assets not blurry, cropped, or too small.
    - **Sequence test:** read the slide titles in order from the checker's recorded text; they should state the argument's progression. Check hierarchy from heading levels and computed sizes, and read every diagram label from the DOM. Take no screenshots or thumbnails.
@@ -123,7 +123,7 @@ copy of `polish-learnings.md` so the next deck's first build avoids it.
 ## Rules
 
 - One artifact per stage, saved before advancing. No skipping straight to the build.
-- Process lives here; brand lives in `brand-renderer`; writing review follows `review-writing`.
+- Process lives here; brand lives in `brand-renderer`; writing review follows `writing`.
 - If a brief is thin, record assumptions and identify missing evidence. Continue the supported work; keep proposed behavior distinct from observed results.
 
 ## Release gate (required)
@@ -131,7 +131,7 @@ copy of `polish-learnings.md` so the next deck's first build avoids it.
 Run the release checks before delivery. The complete requirements are in
 [`release-gate.md`](../_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

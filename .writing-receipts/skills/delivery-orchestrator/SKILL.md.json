@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/delivery-orchestrator/SKILL.md",
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "\"This suite does not\" opens two separate boundary statements, one about routing and one about the gate evidence; each states a different limit, so neither is a duplicate.",
+      "source": "skills/delivery-orchestrator/SKILL.md, lines 81 and 107"
+    }
+  ]
+}

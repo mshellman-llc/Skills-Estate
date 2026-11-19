@@ -3,8 +3,8 @@
 
     install_local.py [--git-hooks] [--services] [--watch DIR] [--dry]
 
-Copies check.py, extract_review_text.py, hook.py, writing_system.py and
-check_selection.py to ~/.agents/writing/bin with a manifest of their sha256, so
+Copies check.py, extract_review_text.py, hook.py, writing_system.py,
+check_selection.py, gate_watch.py and rendered_read_guard.py to ~/.agents/writing/bin with a manifest of their sha256, so
 the hooks keep working whichever branch the repository has checked out. Writes
 gate.json there when none exists, and the gate command for Claude Code
 (~/.claude/commands/gate.md) and Codex (~/.codex/prompts/gate.md). When the
@@ -33,7 +33,8 @@ HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
 HOME = Path.home()
 BIN = HOME / '.agents' / 'writing' / 'bin'
-FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py', 'gate_watch.py']
+FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py', 'gate_watch.py',
+         'rendered_read_guard.py']
 WATCH_LABEL = 'com.mshellman.writing-gate-watch'
 EVIDENCE_SCAN = SKILL.parent / 'publish-content' / 'scripts' / 'evidence_scan.py'
 HOOK_NAMES = ['applypatch-msg', 'pre-applypatch', 'post-applypatch', 'pre-commit', 'pre-merge-commit',

@@ -133,7 +133,7 @@ Use **brand-renderer** with the caller's explicitly selected project profile. Wi
 - Use the resolved profile's CSS variables; do not insert a remembered company palette.
 - Embed only declared, accessible assets. Missing required assets block branded output.
 - Keep text left-aligned where readability requires it and preserve generous whitespace.
-- Review writing with review-writing. Apply author-specific preferences only from a confirmed supplied profile.
+- Review writing with `writing`. Apply author-specific preferences only from a confirmed supplied profile.
 - Preserve accessible controls, readable contrast and a consistent icon style.
 
 ---

@@ -76,7 +76,7 @@ def assessment(root, name, guide, resources):
     substantive = [h for h in own + inherited if h['kind'] != 'example-or-test']
     reason = ('The entrypoint changed after its intended audience was reviewed. Reassess the current source before sharing.' if not review_current else guide.get('reuseNote') or ('The workflow uses a specific person’s sources, account, decisions, or project system.' if audience == 'personal' else 'The method accepts the user’s project sources and takes private context as an explicit input.'))
     cleanup = [LOCAL_CLEANUP[name]] if name in LOCAL_CLEANUP else []
-    if audience == 'general' and substantive and name not in LOCAL_CLEANUP and name != 'review-writing':
+    if audience == 'general' and substantive and name not in LOCAL_CLEANUP and name != 'writing':
         cleanup.append('Review local paths and configured private terms before sharing this workflow.')
     if shared:
         cleanup.append('The bundled shared policy contains local paths or configured private terms. Review their portability before sharing.')

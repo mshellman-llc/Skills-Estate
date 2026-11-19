@@ -1,0 +1,23 @@
+{
+  "format": 1,
+  "artifact": "skills/validate-delivery/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Command the reader runs, quoted exactly.",
+      "text": "```bash\npython3 scripts/trace_check.py --requirements reqs.csv --scripts tracker.csv --gaps gaps.csv\n```"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Command the reader runs, quoted exactly.",
+      "text": "```bash\npython3 scripts/trace_check.py --requirements reqs.csv --scripts tracker.csv \\\n  --gaps gaps.csv --gonogo pack-counts.json\n```"
+    }
+  ],
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The remaining repeats are the names of the four deliverables this skill produces (defect log and triage, the cutover readiness checklist, the go/no-go pack), stated in the description and again as phase headings. One name per deliverable is the term rule; renaming one copy would give the same artifact two names.",
+      "source": "skills/validate-delivery/SKILL.md description and the Phase 2 and Phase 4 headings"
+    }
+  ]
+}

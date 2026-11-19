@@ -1,0 +1,18 @@
+{
+  "format": 1,
+  "artifact": "skills/design-process/SKILL.md",
+  "protected": [
+    {
+      "kind": "quotation",
+      "reason": "A request a user types, listed among the trigger phrases that select the skill.",
+      "text": "too many steps or approvals"
+    }
+  ],
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "\"existing process and recommend improvements\" names Optimize mode in the overview and again where that mode starts; \"steps that add no value\" is the waste type in the waste list and the matching action in the actions list.",
+      "source": "skills/design-process/SKILL.md, lines 13, 101, 121 and 127"
+    }
+  ]
+}

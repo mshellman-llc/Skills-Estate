@@ -2,7 +2,7 @@
 """Selftest for build-deck. Stdlib only, no network.
 
 This skill is an orchestrator: it owns the process and defers brand to
-brand-renderer and writing review to review-writing. That deferral is the reason it
+brand-renderer and writing review to writing. That deferral is the reason it
 does not collide with anything, so it is asserted by name, along with the
 one-message gate that stops a deck being designed before its argument is settled.
 
@@ -89,7 +89,7 @@ if refdir.exists():
 
 print()
 has("defers brand to the renderer", r"brand-renderer")
-has("defers writing review to review-writing", r"review-writing")
+has("defers writing review to the writing skill", r"`writing`")
 expect("no hardcoded engagement folder", bool(re.search(r"~/Work", text)), False)
 has("resolves the folder instead of assuming", r"[Rr]esolve it, do not assume|do not assume one")
 

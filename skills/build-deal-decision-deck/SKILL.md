@@ -1,6 +1,6 @@
 ---
 name: build-deal-decision-deck
-description: 'Authors, gates, and builds the DDOC, the client-facing Deal Decision deck presented immediately before the proposal: interactive copy approval first, then the PPTX build. Two modes: decision mode when the client chooses between options, confirmation mode when there is one option. build_ddoc.js --check gates a manifest without rendering, so copy can be gated where the renderer cannot be installed. Use when asked to build, review, de-slop, gate, or rebuild a DDOC, deal decision deck, options deck, scope deck, or the deck presented before the proposal. Trigger on DDOC, options deck, version slide, discussion document, the deck that goes with the SOW, or a Q-number paired with a deck request. Do NOT use for SOW review (review-contract-scope), prose editing (review-writing), PPTX mechanics (pptx), or a generic multi-slide proposal deck (build-deck).'
+description: 'Authors, gates, and builds the DDOC, the client-facing Deal Decision deck presented immediately before the proposal: interactive copy approval first, then the PPTX build. Two modes: decision mode when the client chooses between options, confirmation mode when there is one option. build_ddoc.js --check gates a manifest without rendering, so copy can be gated where the renderer cannot be installed. Use when asked to build, review, de-slop, gate, or rebuild a DDOC, deal decision deck, options deck, scope deck, or the deck presented before the proposal. Trigger on DDOC, options deck, version slide, discussion document, the deck that goes with the SOW, or a Q-number paired with a deck request. Do NOT use for SOW review (review-contract-scope), prose editing (`writing`), PPTX mechanics (pptx), or a generic multi-slide proposal deck (build-deck).'
 ---
 
 
@@ -50,7 +50,7 @@ This catches structural problems (missing slides, option count, evidence classes
 
 ## Phase 2: diagnostic scan
 
-Run the prose gate over the manifest's authored text. `review-writing` owns this review. Its bundled internal `writing-diagnostics` runtime provides `prose_check.py`; resolve that runtime and run its script:
+Run the prose gate over the manifest's authored text. `writing` owns this review. Its bundled internal `writing-diagnostics` runtime provides `prose_check.py`; resolve that runtime and run its script:
 
 ```bash
 python3 ../writing-diagnostics/scripts/prose_check.py extracted.txt --config ../writing-diagnostics/house.json
@@ -113,7 +113,7 @@ any rendering.
 
 - Does not price. The quote owns the number; this renders it.
 - Does not author scope language. Scope comes from the quote or the user; this audits and cleans it.
-- Writing review belongs to review-writing; the bundled internal diagnostic tools support that review.
+- Writing review belongs to `writing`; the bundled internal diagnostic tools support that review.
 - Does not build the SOW. That is `write-statement-of-work`.
 - Owns the DDOC from copy approval through the PPTX build. Copy approval and the slide-copy editorial rules both live in this skill; the per-slide-type editorial rules are in `references/slide-copy-patterns.md`.
 
@@ -149,7 +149,7 @@ PPTX validation for the visual gate reads the file itself. Use `extract_slide_te
 Before you deliver, run the gate. It is required. Full spec in
 [`release-gate.md`](../_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

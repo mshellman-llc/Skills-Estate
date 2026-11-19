@@ -1,0 +1,16 @@
+{
+  "format": 1,
+  "artifact": "skills/estimate-project/SKILL.md",
+  "candidates": [
+    {
+      "rule": "C24-formulaic-the-framing",
+      "reason": "\"The sections\", \"The bar\" and \"The range reopeners\" are a section heading, a table column header and a defined term in the section table, each naming a distinct thing.",
+      "source": "skills/estimate-project/SKILL.md, lines 71 to 83"
+    },
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "\"hours times rate\" is the T&M tie-out formula the method, the gate and the warning each apply; \"when the source timeline\" and \"Does not build the\" are a repeated condition and the boundary-list form, each naming a different item.",
+      "source": "skills/estimate-project/SKILL.md, lines 64, 82, 89 to 120 and 152 to 153"
+    }
+  ]
+}

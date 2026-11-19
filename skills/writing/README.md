@@ -9,9 +9,11 @@ One entry point for writing and reviewing every word a person will read. It repl
 | `SKILL.md` | Modes, register, the check and the full review |
 | `scripts/check.py` | The check other tools call |
 | `scripts/extract_review_text.py` | Text extraction for rendered and generated files |
+| `scripts/rendered_read_guard.py` | PreToolUse hook that sends whole-file reads of large rendered files to the extractor |
+| `references/file-review.md` | The extracted-text procedure for pages, workbooks, documents and decks |
 | `references/line-pass.md` | Verdict record and its required questions |
 | `references/document-pass.md` | The fixed map |
-| `scripts/check_selftest.py` | 37 cases on synthetic files |
+| `scripts/check_selftest.py` | 48 cases on synthetic files |
 
 ## The check
 
@@ -19,7 +21,7 @@ One entry point for writing and reviewing every word a person will read. It repl
 python3 scripts/check.py --file PATH [--register NAME] --json
 ```
 
-Exit 0 is `pass`, 1 is `fail` and 2 is `incomplete`. The output has `status`, `coverage.lines_total`, `coverage.lines_reviewed`, `findings` and `receipt`. Each finding has `line`, `rule`, `text` and `fix`.
+Exit 0 is `pass` after a full review or `scan-pass` after a scan alone, 1 is `fail` and 2 is `incomplete`. The output has `status`, `coverage.lines_total`, `coverage.lines_reviewed`, `findings` and `receipt`. Each finding has `line`, `rule`, `text` and `fix`.
 
 ## Decisions
 
@@ -81,15 +83,15 @@ A full review of one executive page listed 15 places where the skill was unclear
 22. Learn saves corrections through the Hub. The profile store in `review-writing/scripts/learning.py` is not carried over.
 23. `extract_review_text.py` is copied from `review-writing` with one change: it marks code with backticks and blockquotes with a leading `>` so the check can exempt them.
 
-## Retirement
+### One writing skill, 2026-11-19
 
-This change adds the skill and removes nothing. Retirement follows the three proof runs and has these steps:
+The owner confirmed on 2026-11-19 that the estate keeps one writing skill.
 
-- Remove the 21 files of `skills/review-writing/`, with its entries in the catalog, groups, guide, bundles, publication record and writing router.
-- Remove the 32 files of `skills/writing-diagnostics/`. Its `writing_check.py` is called by `tools/writing_gate.py`, `tools/verify.py`, `config/required-runtimes.json` and eight test modules, and `brand-renderer` and `review-deliverable` load the skill as a runtime. Each caller needs a new target first.
-- Remove the 8 files of `skills/manage-writing-profile/` once `author-style-runtime` and `apply-author-style` stop loading that skill.
-- Remove `docs/writing-integrity-shared-rules.md` and the `writing-integrity` mentions in 8 source files.
-- Replace `policies/writing.md`, a second copy of the rules, with a pointer to that folder.
-- Update the references elsewhere in the source: 89 files name `review-writing`, 78 name `writing-diagnostics` and 15 name `manage-writing-profile`.
-- Rebuild `plugins/` and `dist/` so the generated copies go, and delete the `.writing-receipts/` entries for the removed files.
-- Outside this repository, delete the `writing-integrity` copies in the Claude Code and Codex skill trash and synced folders, the owner's voice account skill, and the old skill names in the generated instruction files.
+36. `review-writing` is folded into this skill and removed. `extract_review_text.py` was already here; `rendered_read_guard.py`, its selftest and the extracted-text procedure (`references/file-review.md`) moved here. Its rule text (`references/patterns.md`, `expanded-writing-review.md`, `context-rules.md`, `detailed-review.md`, `examples.md`), its profile store (`learning.py`, `build_kit.py`, `review_selftest.py`, the setup kit) and their selftests are removed. Rule text now lives only in the owner's folder. Corrections go to `corrections.md` or the Hub.
+37. Every skill that cited `review-writing` now cites `writing`. The writing router lists `writing` as its one prose review. `config/required-runtimes.json` bundles `writing` in every package in place of `review-writing`, and `writing-diagnostics` stays retired with `writing` as its successor.
+38. The description carries the names the owner uses for this work, "writing integrity", "prose pass", "de-AI" and "humanize", so each one selects the skill.
+39. A scan alone returns `scan-pass`. Only a full review returns `pass`, which keeps a reply from reporting a scan as a passed review. `--verify-receipt` rejects a `pass` receipt with no line pass. Exit 0 covers both statuses so existing callers keep working.
+40. Each verdict carries `first_words` and `last_words`, the first and last three words of its own line, compared with the extracted text after spacing is normalised. The line hash already ties a verdict to its line; the words show that the reviewer read it. The recheck file carries them too.
+41. A verdict set is rejected when its reviewer is the writer. The writers are every session `hook.py` logged writing or changing the piece in `writers.jsonl`, up to the last write that left the file at the content under review, plus every name passed with `--writer`. The hook records the file's sha256 after each write; when no logged write matches the current content, every logged write counts. The reviewer is the `reviewer` names, the optional `session` field and every session the hook logged writing the verdict file. A set with no `reviewer` is rejected. The hook sees only files written with a file tool; for a piece a script or shell command generated, pass `--writer`. A session that applies review fixes is a writer of the text it changed, so it cannot review that text. The same rule covers the audit and recheck files.
+42. A map that marks more than one in-scope line in ten as a structural repeat is rejected. The brief put this limit on the verdict set. Structural repeats are declared in the document map, which is where the check reads them.
+43. On a surface where `check.py` cannot run, the skill reads the text against the rules files and says the scan did not run. The earlier text named a Hub scan tool that does not exist (Hub decision 271).

@@ -329,12 +329,6 @@
       "pack": "core",
       "modes": {}
     },
-    "review-writing": {
-      "source": "review-writing",
-      "pack": "core",
-      "modes": {},
-      "description": "Review prose, preserve meaning and voice, and learn from writing corrections through a compact private profile. Use for replies, documents, instructions and UI text."
-    },
     "manage-writing-profile": {
       "source": "manage-writing-profile",
       "pack": "writing-profiles",

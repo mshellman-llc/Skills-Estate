@@ -8,7 +8,7 @@ job:
   outcome: A publishable draft with exhibits, a signed claim table and an approval packet, or a documented decision not to publish
   complete_when: The owner signs the approval packet, or the scout reports that no topic clears the threshold
 position:
-  closest_skills: [writing, review-writing, manage-brand-profile, build-editorial-chart, build-interactive-explorer, synthesize-discovery]
+  closest_skills: [writing, manage-brand-profile, build-editorial-chart, build-interactive-explorer, synthesize-discovery]
   disposition: separate
   rationale: The writing skill reviews a finished text; this skill owns topic selection, research, evidence collection, drafting, visuals, fact-checking and packaging, and calls writing as its editing control
 contract:

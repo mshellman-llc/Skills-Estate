@@ -59,7 +59,7 @@ prepare for the skeptic, list what is unresolved, cite everything.
 
 ## Voice
 
-Apply `review-writing` to the prose before shipping; it is a hard gate. In practice:
+Apply `writing` to the prose before shipping; it is a hard gate. In practice:
 
 - Do not photocopy another guide's headings or rhetorical moves. Borrowed cadence
   is itself the machine tell. Write the headings for *this* pursuit.

@@ -65,7 +65,7 @@ Include source locators for rules and a short decision list for consequential ga
 
 Walk one representative case from trigger through completion and one material exception using the supplied evidence. Confirm that the diagram and tables agree about owners, sequence, record grain, and system authority. Check that every supported rule has a locator and every unresolved rule stays unresolved in both views. Ensure that a generated explanation has not become its own factual source.
 
-Apply `review-writing` to the complete map and accompanying replies. Read its full pattern references, preserve the source facts and qualifications, and review manually if its scanner is unavailable. When writing as a named person, apply their confirmed writing profile if supplied.
+Apply `writing` to the complete map and accompanying replies. Read the rules folder it names, preserve the source facts and qualifications, and review manually if its scanner is unavailable. When writing as a named person, apply their confirmed writing profile if supplied.
 
 Read the finished map for business meaning: a reader should be able to say what happens, why it starts, who acts next, and where the result is recorded. A diagram render or schema check cannot establish those facts.
 

@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.4.46",
+  "version": "0.4.47",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -162,7 +162,6 @@
       "description": "Skills Estate writing, voice and brand workflows.",
       "entries": [
         "manage-brand-profile",
-        "review-writing",
         "manage-writing-profile",
         "writing",
         "publish-content"
@@ -633,11 +632,6 @@
         "evidence": ""
       },
       "plan-usability-study": {
-        "status": "pending",
-        "reviewed_sha256": "",
-        "evidence": ""
-      },
-      "review-writing": {
         "status": "pending",
         "reviewed_sha256": "",
         "evidence": ""

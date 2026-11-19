@@ -14,12 +14,11 @@ description: Route writing, voice and brand work. Prose review and writing corre
 
 ## Writing distinctions
 
-Reviewing or correcting prose, and learning from writing corrections, is `review-writing`. A pass or fail check on a saved file with a coverage receipt, a line-by-line review with a verdict for every line, and writing from the owner's rules folder are `writing`. Building or revising a person's private style profile from samples they authorized is `manage-writing-profile`. Applying a confirmed brand to an artifact, or creating a brand profile, is `manage-brand-profile`.
+Every prose task is `writing`: reviewing or correcting text, a writing-integrity, prose, de-AI or humanize pass, a check on a saved file with a coverage receipt, a line-by-line review with a verdict for every line, reviewing a rendered page or workbook on its extracted text, and logging a wording correction. Building or revising a person's private style profile from samples they authorized is `manage-writing-profile`. Applying a confirmed brand to an artifact, or creating a brand profile, is `manage-brand-profile`.
 
 ## Available skills
 
-- `review-writing`
+- `writing`
 - `manage-writing-profile`
 - `manage-brand-profile`
-- `writing`
 
