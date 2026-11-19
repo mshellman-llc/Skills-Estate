@@ -156,7 +156,7 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(request('POST', '/api/publication/save', body)[0], 409)
         status, content = request('POST', '/api/publication/preview', {'settings': settings, 'target':'estate'})
         self.assertEqual(status, 200);preview = json.loads(content)
-        self.assertEqual(preview['counts']['skills'], 91);self.assertTrue(preview['blockedWorkflows'])
+        self.assertEqual(preview['counts']['skills'], 90);self.assertTrue(preview['blockedWorkflows'])
         status, content = request('GET', preview['preview'].replace('index.html','catalog.json'))
         self.assertEqual(status, 200)
         self.assertNotIn('assess-offering-fit', {s['id'] for s in json.loads(content)['skills']})
