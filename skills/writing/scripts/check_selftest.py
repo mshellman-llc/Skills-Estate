@@ -320,6 +320,54 @@ class NeverSilent(Base):
                 os.environ.pop(key, None)
             os.environ.update({k: v for k, v in saved.items() if v is not None})
 
+    def test_malformed_ledger_settings_fall_back_to_their_defaults_and_are_listed(self):
+        path = self.write('reply.md', 'The report is attached.\n\nI hope this helps.\n')
+        for key, value in (('hard_weight', '3'), ('hard_weight', None), ('min_words', [40]), ('flag_density', 0),
+                           ('density_floor_words', 0), ('repeat_limit', True), ('repeat_density', 'x'),
+                           ('em_dash', 'yes')):
+            with self.subTest(**{key: value}):
+                self.ledger(dict(LEDGER, config=dict(LEDGER['config'], **{key: value})))
+                code, result = self.check(path)
+                self.assertEqual((code, result['status']), (1, 'fail'))
+                self.assertEqual([f['rule'] for f in result['findings']], ['residue'])
+                self.assertEqual(len(result['config_ignored']), 1)
+                self.assertIn(f'ledger setting "{key}"', result['config_ignored'][0])
+                self.assertIn(f'ledger setting "{key}"', self.receipt(result)['steps'][0]['detail'])
+        for config in ('strict', 7, ['hard_weight'], None):
+            with self.subTest(config=config):
+                self.ledger(dict(LEDGER, config=config))
+                code, result = self.check(path)
+                self.assertEqual(code, 1)
+                self.assertIn('not an object', result['config_ignored'][0])
+        self.ledger(LEDGER)
+        self.assertNotIn('config_ignored', self.check(path)[1])
+        no_config = {k: v for k, v in LEDGER.items() if k != 'config'}
+        self.ledger(no_config)
+        self.assertNotIn('config_ignored', self.check(path)[1])
+
+    def test_malformed_rule_numbers_fall_back_and_unplaceable_rules_stop_the_run(self):
+        path = self.write('reply.md', 'The report is attached.\n\nI hope this helps.\n')
+        for key, value in (('weight', '3'), ('weight', None), ('min_count', 0), ('min_count', 1.5)):
+            with self.subTest(**{key: value}):
+                rules = [dict(LEDGER['rules'][0], **{key: value})] + LEDGER['rules'][1:]
+                self.ledger(dict(LEDGER, rules=rules))
+                code, result = self.check(path)
+                self.assertNotEqual(result['status'], 'incomplete')
+                self.assertIn(f'rule residue setting "{key}"', result['config_ignored'][0])
+        for rules, words in (('all', 'not a list'), ({'id': 'x'}, 'not a list'), (['residue'], 'not an object'),
+                             ([dict(LEDGER['rules'][0], id=None)], 'has no id'),
+                             ([dict(LEDGER['rules'][0], scope=['general'])], 'scope'),
+                             ([dict(LEDGER['rules'][0], registers='megan')], 'registers')):
+            with self.subTest(rules=rules):
+                self.ledger(dict(LEDGER, rules=rules))
+                code, result = self.check(path)
+                self.assertEqual((code, result['status']), (2, 'incomplete'))
+                self.assertIn(words, result['reason'])
+        self.ledger(['not', 'a', 'ledger'])
+        code, result = self.check(path)
+        self.assertEqual(code, 2)
+        self.assertIn('not an object', result['reason'])
+
     def test_unreadable_command_line_still_returns_json_and_exit_2(self):
         out, err = io.StringIO(), io.StringIO()
         with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):

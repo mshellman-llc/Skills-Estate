@@ -14,6 +14,11 @@ JSON on stdout:
      "findings": [{"line": N, "rule": "id", "text": "...", "fix": "..."}],
      "receipt": "path"}
 
+A ledger threshold in "config", or a rule's weight or min_count, with the wrong type
+or range is ignored: the built-in default is used and "config_ignored" lists
+each one. A rule list, rule entry, id, scope or registers the check cannot read
+stops the run as incomplete.
+
 In scope: every word a person will read. Exempt: code, quotations kept word for
 word, front matter and lines with no words. The file is extracted to numbered
 lines, split into parts of at most 300 lines and scanned with the pattern
@@ -134,14 +139,94 @@ def load_rules(arg):
             try:
                 raw = path.read_bytes()
                 ledger = json.loads(raw.decode('utf-8'))
-                ledger['rules'], ledger.setdefault('config', {})
+                if not isinstance(ledger, dict):
+                    raise TypeError(f'it holds {type(ledger).__name__}, not an object')
+                ledger['rules']
             except (OSError, ValueError, KeyError, TypeError) as error:
                 raise Incomplete(f'pattern ledger {path} cannot be read: {error}')
+            ignored = check_rule_entries(ledger['rules'], path)
+            ledger['config'], config_ignored = ledger_config(ledger.get('config', {}), 'config' in ledger, path)
+            info['config_ignored'] = config_ignored + ignored
             info.update(ledger=str(path), ledger_source=source, ledger_sha256=sha(raw))
             info['rules_sha256'] = sha(info['ledger_sha256'] + (info['rules_md_sha256'] or ''))
             return ledger, info
     raise Incomplete('no pattern ledger found; pass --rules-dir, set WRITING_HOME or write the rules '
                      'folder path to ~/.agents/writing/home')
+
+
+def _number(value, least, whole=False):
+    if isinstance(value, bool) or not isinstance(value, int if whole else (int, float)):
+        return False
+    return value == value and value not in (float('inf'), float('-inf')) and value >= least
+
+
+# Settings in the ledger's "config" object the check reads: (built-in default, test, what a valid value is).
+# Each matches the default judge() and active_rules() fall back to when the setting is absent.
+LEDGER_SETTINGS = {
+    'em_dash': (False, lambda v: isinstance(v, bool), 'true or false'),
+    'min_words': (40, lambda v: _number(v, 0), 'a number of 0 or more'),
+    'density_floor_words': (250, lambda v: _number(v, 1), 'a number of 1 or more'),
+    'flag_density': (4, lambda v: _number(v, 0) and v > 0, 'a number above 0'),
+    'repeat_limit': (3, lambda v: _number(v, 1), 'a number of 1 or more'),
+    'repeat_density': (1.5, lambda v: _number(v, 0) and v > 0, 'a number above 0'),
+    'hard_weight': (3, lambda v: _number(v, 0) and v > 0, 'a number above 0'),
+}
+RULE_NUMBERS = {   # per-rule numbers: (built-in default, test, what a valid value is)
+    'weight': (1, lambda v: _number(v, 0), 'a number of 0 or more'),
+    'min_count': (1, lambda v: _number(v, 1, whole=True), 'a whole number of 1 or more'),
+}
+
+
+def shown_value(value):
+    text = json.dumps(value, ensure_ascii=False)
+    return text if len(text) <= 60 else text[:57] + '...'
+
+
+def ledger_config(config, present, path):
+    """The ledger's config with every malformed setting the check reads replaced by its built-in default.
+
+    Returns (config, notes), one note per setting ignored. A config that is not an object is replaced whole."""
+    notes = []
+    if not isinstance(config, dict):
+        notes.append(f'the "config" in pattern ledger {path} is {shown_value(config)}, not an object, so every '
+                     'threshold uses its built-in default')
+        config = {}
+    elif not present:
+        return {}, notes
+    config = dict(config)
+    for key, (default, valid, want) in LEDGER_SETTINGS.items():
+        if key in config and not valid(config[key]):
+            notes.append(f'ledger setting "{key}" in {path} was ignored: it is {shown_value(config[key])} and must '
+                         f'be {want}, so the built-in default {shown_value(default)} is used')
+            config[key] = default
+    return config, notes
+
+
+def check_rule_entries(rules, path):
+    """Stop the run on a rule list the check cannot place; replace a malformed rule number with its default.
+
+    A rule's scope and registers decide where it applies, and a rule with no usable id cannot be reported, so
+    there is no default that keeps it honest: those stop the run. Returns one note per number ignored."""
+    if not isinstance(rules, list):
+        raise Incomplete(f'pattern ledger {path} cannot be read: "rules" is {shown_value(rules)}, not a list')
+    notes = []
+    for n, rule in enumerate(rules, 1):
+        if not isinstance(rule, dict):
+            raise Incomplete(f'pattern ledger {path} cannot be read: rule {n} is {shown_value(rule)}, not an object')
+        name = rule.get('id')
+        if not isinstance(name, str) or not name.strip():
+            raise Incomplete(f'pattern ledger {path} cannot be read: rule {n} has no id (it is {shown_value(name)})')
+        if 'scope' in rule and not isinstance(rule['scope'], str):
+            raise Incomplete(f'rule {name} cannot run: its scope is {shown_value(rule["scope"])}, not a name')
+        registers = rule.get('registers')
+        if registers is not None and not (isinstance(registers, list) and all(isinstance(r, str) for r in registers)):
+            raise Incomplete(f'rule {name} cannot run: its registers are {shown_value(registers)}, not a list of names')
+        for key, (default, valid, want) in RULE_NUMBERS.items():
+            if key in rule and not valid(rule[key]):
+                notes.append(f'rule {name} setting "{key}" in {path} was ignored: it is {shown_value(rule[key])} '
+                             f'and must be {want}, so the built-in default {default} is used')
+                rule[key] = default
+    return notes
 
 
 def valid_registers(home, ledger):
@@ -1255,6 +1340,8 @@ def run(args):
                            + ', '.join(known))
             else:
                 detail += f'; register {name} adds {count} rules' + ('' if count else ', its guidance is in registers.md')
+        for note in rules_info['config_ignored']:
+            detail += '; ' + note
         step('rules', 'ok', detail)
         records, source_lines = extract(path, 'commit' in registers)
         record.update(sha256=sha(path.read_bytes()), bytes=path.stat().st_size, text_sha256=text_sha(records))
@@ -1493,6 +1580,9 @@ def summary(record):
         out['logged'] = record['logged']
     out['advisories'] = len(record['advisories'])
     out['review'] = len(record.get('review', []))
+    ignored = (record.get('rules') or {}).get('config_ignored')
+    if ignored:
+        out['config_ignored'] = ignored
     return out
 
 
@@ -1575,6 +1665,8 @@ def main(argv=None):
         print(f'  line {f["line"]} [{f["id"]}] {f["rule"]}: "{f["text"]}"\n      {f["fix"]}')
     for f in record.get('logged') or []:
         print(f'  logged, not blocking: line {f["line"]} [{f["id"]}] {f["rule"]}: "{f["text"]}"')
+    for note in (record.get('rules') or {}).get('config_ignored') or []:
+        print('  setting ignored: ' + note)
     if record.get('reason'):
         print('Not complete: ' + record['reason'])
     print(f'Receipt: {record["receipt"]}')
