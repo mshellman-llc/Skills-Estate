@@ -53,7 +53,7 @@ Claude Code and Codex install from the plugin marketplace and the updater. Hyper
 
 - Name, description and procedure come from the source. The when-to-use text comes from the guide's `when` field and names the closest skill to avoid, and the tags record the group, the plugin and `skills-estate`.
 - Hyperagent stores a skill's files as one flat list. A file keeps its name unless it clashes with another, in which case its full path becomes the name, with `__` in place of each slash. A bundled restore script rebuilds the original folders and checks every file's hash before any script runs.
-- Shared runtimes become internal Hyperagent skills, each built when the first task needs it: `estate-policies` and `review-writing` first, then `brand-renderer`, `evidence-core` and `review-deliverable`. Task skills load them by name instead of carrying copies.
+- Shared runtimes become internal Hyperagent skills, each built when the first task needs it: `estate-policies` and `writing` first, then `brand-renderer`, `evidence-core` and `review-deliverable`. Task skills load them by name instead of carrying copies.
 - Guide connectors map to Hyperagent integrations. Credentials enter only through a skill's credential fields.
 - The ingest tracker records each skill's status (not started, drafted, approved, verified or parked) and its source revision. A monthly check compares `main` with every recorded revision and lists the skills to rebuild.
 

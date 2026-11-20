@@ -1,6 +1,6 @@
 # Paragraphs, claims and response habits
 
-Read this with review-writing on every use of review-sales-journey. Check how the argument develops, what each sentence adds and whether the voice suits the reader.
+Read this with `writing` on every use of review-sales-journey. Check how the argument develops, what each sentence adds and whether the voice suits the reader.
 
 Research review date: October 21, 2026. The cited studies report results from the models and tasks they examined. The repairs and examples are editorial advice written for this skill. They are not quotations from the studies or tests of authorship.
 
@@ -62,11 +62,11 @@ For each suspected pattern, identify what it does to this passage before editing
 
 Compare the revision with the source. Keep every supported finding, condition, figure, source and acceptance check. If a sentence contains both filler and a necessary qualification, rewrite around the qualification. Do not add anecdotes, errors or arbitrary changes in sentence length.
 
-Read the argument even when the scanner finds nothing. The text must support its claims and give the reader a usable action when the task calls for one. Check that editing has not erased approval conditions, created robotic fragments or replaced justified warmth with bluntness. Stop when the passage communicates its meaning in the required voice.
+Read the argument even when the scanner finds nothing. The text must support its claims and leave the reader with an action they can take when the task calls for one. Check that editing has not erased approval conditions, created robotic fragments or replaced justified warmth with bluntness. Stop when the passage communicates its meaning in the required voice.
 
 ## Sentence patterns to retain
 
-Use the complete review-writing pattern reference when available. The table below keeps its twenty checks available when that skill cannot be read.
+Use `writing` and the owner's rules folder when available. The table below keeps twenty pattern checks available when that skill cannot be read.
 
 | Existing coverage | Patterns |
 | --- | --- |

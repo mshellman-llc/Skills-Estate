@@ -5,7 +5,7 @@ description: 'Design a structured first-three-month ramp for employees, contract
 
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [Writing Integrity review](_runtime/review-writing/references/detailed-review.md). Inputs, not a final pass.**
+> [writing review](_runtime/writing/WORKFLOW.md). Inputs, not a final pass.**
 
 A repeatable framework for building an onboarding plan that ramps new team members predictably without burning out the people training them.
 
@@ -171,7 +171,7 @@ Deliver as chat output by default. Write files only if the user asks and a writa
 Before you deliver, run the required gate. Full
 spec in [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run review-deliverable before you call it final.
 

@@ -1,6 +1,6 @@
 ---
 name: quality-router
-description: Route the shared controls every other skill depends on. Knowledge Hub, evidence with the source register, quality with prose receipts, brand rendering, preflight, handoff and code simplification. Prose review itself is review-writing in estate-writing. Select the smallest appropriate skill without recreating its method.
+description: Route the shared controls every other skill depends on. Knowledge Hub, evidence with the source register, quality with prose receipts, brand rendering, preflight, handoff and code simplification. Prose review itself is writing in estate-writing. Select the smallest appropriate skill without recreating its method.
 ---
 
 # Quality Router

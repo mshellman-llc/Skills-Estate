@@ -1,3 +1,0 @@
-# Soft phrasing filler tells, weighted by strength. Format: <word> <weight>
-# Stemmed. The group fires when the weighted hits reach the threshold (3.0).
-cleanly 1.5

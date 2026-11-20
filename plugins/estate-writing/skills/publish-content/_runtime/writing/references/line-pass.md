@@ -44,7 +44,7 @@ The flag answer and the fix are separate. A line can answer its flag `false` and
 
 ## Verdict record
 
-Copy `id`, `sha` and `section` from the assignment. They tie the verdict to the exact line and section the worker read. Put the reviewer's name at the top of the file.
+Copy `id`, `sha` and `section` from the assignment. They tie the verdict to the exact line and section the worker read. Copy the line's first three words into `first_words` and its last three into `last_words`, from the text you read; a line of three words or fewer gives the whole line in both. The script rejects a verdict whose words are not its own line's. Put the reviewer's name at the top of the file, and the reviewer's session ID in `session` when the host shows one. A verdict set whose reviewer or session is the piece's writer is rejected.
 
 ```json
 {
@@ -52,10 +52,12 @@ Copy `id`, `sha` and `section` from the assignment. They tie the verdict to the 
   "reviewer": "line-pass worker 2",
   "verdicts": [
     {"id": "0002", "sha": "5f0c1d2a9b7e", "section": "c41d88aa02f3", "verdict": "ok",
+     "first_words": "Each ticket closes", "last_words": "the March queue",
      "portable": false, "promise": false, "tension": false,
      "claims": "supported", "source": "Support queue export, March",
      "flags": {"triad": false}},
     {"id": "0003", "sha": "91ab4470c2de", "section": "c41d88aa02f3", "verdict": "fix",
+     "first_words": "The support team", "last_words": "with better tooling",
      "tension": false, "promise": false, "portable": true, "claims": "none",
      "rule": "R6: fits any team",
      "quote": "moves faster with better tooling",
@@ -94,6 +96,7 @@ The audit file has the same format as the verdict file and holds one verdict for
 ```json
 {"rules_sha256": "the value in assignments.json", "reviewer": "audit worker",
  "verdicts": [{"id": "0007", "sha": "0be2c1d9a4f3", "section": "77aa01c3e2b9", "verdict": "ok",
+               "first_words": "Renewals start in", "last_words": "before the call",
                "promise": false, "portable": false, "tension": false, "claims": "none"}]}
 ```
 
@@ -103,8 +106,10 @@ An audited line marked `fix` is fixed on that line. Its rule is then swept acros
 
 ```json
 {"rules_sha256": "same as the audit file", "reviewer": "recheck worker", "rules": ["R6"],
- "verdicts": [{"id": "0012", "sha": "7d2a90c1e4b8", "verdict": "ok"},
+ "verdicts": [{"id": "0012", "sha": "7d2a90c1e4b8", "verdict": "ok",
+               "first_words": "Orders ship from", "last_words": "the Atlanta shop"},
               {"id": "0019", "sha": "4c1e0d2b9f3a", "verdict": "fix", "rule": "R6: any shop could say it",
+               "first_words": "Every sticker is", "last_words": "made with love",
                "quote": "made with love", "replacement": "cut on a Cricut"}]}
 ```
 
@@ -112,7 +117,7 @@ The audit step passes when the recheck sweeps every missed rule and covers every
 
 ## One reviewer
 
-One agent can run the whole review when no workers are available. It takes the worker groups in order and reads `outline.md` before each group. It writes the map after the last group, then audits its own sample. It puts the same name in `reviewer` in both files. The receipt then records the audit as not independent, and the reply says so.
+One agent can run the whole review when no workers are available, as long as it did not write the piece. The writing session cannot review its own piece: `check.py` rejects its verdicts. Start a separate session, such as Claude Code headless or Codex, and pass the writer's session ID or name with `--writer` when the hook did not see the piece written. The reviewing agent takes the worker groups in order and reads `outline.md` before each group. It writes the map after the last group, then audits its own sample. It puts the same name in `reviewer` in both files. The receipt then records the audit as not independent, and the reply says so.
 
 ## Later rounds
 

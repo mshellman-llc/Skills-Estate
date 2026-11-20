@@ -250,7 +250,7 @@ reference through the final format.
 Before you deliver, run the gate. It is required. Full spec in
 [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

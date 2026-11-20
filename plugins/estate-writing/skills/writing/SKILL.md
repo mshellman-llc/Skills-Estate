@@ -1,11 +1,11 @@
 ---
 name: writing
-description: "Write or review every word a person will read, in any format, against the owner's writing rules folder. Use before returning a reply, document, page, deck, message, interface label, commit message or pull request description. Reviews text, writes as the owner or as a brand, and logs wording corrections. Code and exact quotations are exempt."
+description: "Write or review every word a person will read, in any format, against the owner's writing rules folder. Use before returning a reply, document, page, deck, message, interface label, commit message or pull request description, and when asked for writing integrity, a prose pass, a de-AI pass or to humanize text. Reviews text, reviews rendered pages, workbooks and decks on their extracted text, writes as the owner or as a brand, and logs wording corrections. Code and exact quotations are exempt."
 ---
 
 # Writing
 
-Load this skill before writing any text for a reader. It holds the method, the check script and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.
+Load this skill before writing any text for a reader. It is the estate's one writing skill: other skills send their prose here. It also answers to "writing integrity", "prose pass", "de-AI" and "humanize". It holds the method, the check script, the extracted-text procedure and the review record formats. The rules live in a folder the owner keeps outside this skill, and no rule text is copied here.
 
 ## Find the rules folder
 
@@ -35,13 +35,13 @@ Code and code comments are exempt. So are quotations kept word for word. A label
 1. Review is the default. Apply `rules.md` and `patterns.json` to the text.
 2. Write as the owner when the piece goes out under the owner's name. Add `voice-profile.md`.
 3. Write as a brand for a piece published under that brand. Add `brands/<brand>.md`. Use a brand voice only when its file exists; if the file is missing, ask which voice applies.
-4. Learn when the owner corrects wording. Apply the fix to every affected passage. Then log it. Where the rules folder is on disk, add a row to `corrections.md`. Elsewhere, save it through the Hub with `save_update`, kind `decision`, key `writing-correction:<date>:<short-name>`. The record states the words before and after, the channel and audience, the date and the tool.
+4. Learn when the owner corrects wording. Apply the fix to every affected passage. Then log it. Where the rules folder is on disk, add a row to `corrections.md`. Elsewhere, save it through the Hub with `save_update`, kind `decision`, key `writing-correction:<date>:<short-name>`. The record states the words before and after, the channel and audience, the date and the tool. `scripts/sync_corrections.py --apply` copies those Hub records into `corrections.md`, and `install_local.py --sync-corrections` runs it every day.
 
 Writing in another person's voice is outside this skill.
 
 ## Set the register
 
-Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. Pass the name to the check with `--register`. A name the check has not seen is accepted: the script adds it to `registers.md` with the date and the file, and the receipt says the name added no rules and lists the known names. When two entries fit, pass both with a comma, as in `client-facing,executive-page`.
+Channels and audiences are not a fixed list. For each piece, write down the channel, who reads it, what they already know and what they must do. Those four answers set its length and structure. They also set how formal it is. Then read `registers.md` for an entry the owner has taught; a missing entry does not limit what you write. Pass the name to the check with `--register`. A name the check has not seen is accepted: the script adds it to `registers.md` with the date and the file, and the receipt says the name added no rules and lists the known names. When two entries fit, pass both with a comma, as in `client-facing,executive-page`. An entry that says "Pass `x`" is an alias: the check runs `x` in its place, or both names when the entry says "with it".
 
 ## Run the check
 
@@ -51,7 +51,8 @@ python3 scripts/check.py --file PATH [--register NAME] --json
 
 | Exit | Status | Meaning |
 | --- | --- | --- |
-| 0 | `pass` | Every in-scope line was scanned and no finding blocks |
+| 0 | `pass` | A full review: the scan, line pass, claims check, document pass and spot audit all ran and nothing blocks |
+| 0 | `scan-pass` | Only the scanner ran, every in-scope line was scanned and no finding blocks |
 | 1 | `fail` | `findings` lists each blocking line with its rule, the exact words and the fix |
 | 2 | `incomplete` | The file could not be parsed, a rule could not run, or a part failed after two retries; `not_reviewed` names the lines |
 
@@ -59,7 +60,7 @@ The output carries `status`, `coverage` with `lines_total` and `lines_reviewed`,
 
 `review` counts the scanner flags that wait for a line-pass answer, such as a list of three; they do not block a scan.
 
-Run with only `--file`, the check covers the scanner. `steps` then lists the line pass and document pass as `not_run`, and the reply calls the result a scan. Where the script cannot run, send the text to the Hub's scan tool. If neither is available, say the scan did not run.
+Run with only `--file`, the check covers the scanner. Its status is `scan-pass`, and `steps` lists the line pass and document pass as `not_run`. Report it as a scan, never as a pass; only a full review returns `pass`. Where the script cannot run, read the text against `rules.md` and `patterns.json` and say the scan did not run.
 
 Fix each finding by rewriting the sentence, then run the check again. Replacing a flagged word with a synonym leaves the same sentence in place.
 
@@ -79,15 +80,15 @@ Before the line pass, list what only the owner can settle: a fact no source supp
 
 1. List the documents the piece was written from in a JSON file of names, `SOURCES.json`. Run `check.py --file PATH --prepare REVIEW --sources SOURCES.json`. It writes the text in parts under `REVIEW/text/`, an outline and `REVIEW/assignments.json` with about 40 lines for each worker. Every `--prepare` run replaces those three outputs and writes its own receipt, marked `prepare`. It leaves the verdict, map and audit files alone.
 2. Fix every scanner finding first.
-3. Run the line pass in [line pass](references/line-pass.md). Give it to reviewers other than the writer, and send at least one worker group to a model from another family when the host has one. Each worker gets its lines, the full outline and the sources. It writes one verdict for every line and records whether a listed source supports each fact on it.
+3. Run the line pass in [line pass](references/line-pass.md). Give it to reviewers other than the writer, and send at least one worker group to a model from another family when the host has one. Each worker gets its lines, the full outline and the sources. It writes one verdict for every line, copies the line's first and last three words into it, and records whether a listed source supports each fact on it.
 4. Run the document pass in [document pass](references/document-pass.md). One worker reads the whole text and fills the fixed map.
-5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json`. The script rejects a line with no verdict, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace.
+5. Validate both records with `check.py --file PATH --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --sources SOURCES.json --json`. The script rejects a line with no verdict, a verdict whose first and last words are not its own line's, a quote that is not word for word in its line, a cited line ID that does not exist and a number the map does not trace. It rejects the whole verdict set when its reviewer wrote any of the reviewed text. Writers are the names passed with `--writer` and every session logged changing the piece up to its current version; the reviewer includes any session logged writing the verdict file. It rejects the map when more than one line in ten is marked as a structural repeat.
 6. Fix each finding at its source by locator, rebuild a generated file and run steps 1 to 5 again with `--round N`. Run `--prepare` with the last round's `--verdicts`: it writes `carried.json` with the verdicts that still stand and assigns only the lines that need one. Pass `--verdicts REVIEW/carried.json REVIEW/verdicts-w*.json` to validate the merged set. A verdict stops counting when its own line changed, or when `rules.md` or `patterns.json` changed; an edit to a neighbouring line leaves it standing. The document pass runs on the full text in every round.
 7. Stop after round 2. From `--round 3` on, a fix marked `severity: style` is logged in the receipt and no longer blocks. Only errors block: a wrong or unsupported fact, a contradiction with another line, an instruction with no next step. Repeats, recaps and term choices in the map are logged the same way. Report the logged items once, as a list the owner can act on; do not loop on them.
 8. Run the [spot audit](references/line-pass.md#spot-audit). The sample is one in five of the lines marked `ok`. A clean round passes only after it. A review that cannot edit the file never reaches a clean round, so it may audit the failed round, and the receipt then states what the audit covered. A miss is fixed on its own line, and its rule is swept across every line marked `ok` with `--recheck`, in place of a full line pass.
 9. Log a miss the owner finds through Learn as a review miss.
 
-With no workers available, one agent runs every step under one `reviewer` name, following the [single-reviewer steps](references/line-pass.md#one-reviewer).
+With no workers available, one agent that did not write the piece runs every step under one `reviewer` name, following the [single-reviewer steps](references/line-pass.md#one-reviewer). The session that wrote the piece cannot be that agent; start a separate session, such as Claude Code headless or Codex.
 
 A part or worker that fails is retried twice with half its lines. Lines still unreviewed after the retries make the result incomplete. List them in the reply and on the project's status page.
 
@@ -97,9 +98,23 @@ Read the receipt before reporting. State which steps ran and each step's status.
 
 In ordinary work, fix the wording and deliver it without describing the review. An AI-detector score is never a pass or a fail.
 
+## Review rendered and generated files
+
+When the piece is an HTML or SVG page, a page built by a script, a workbook, a Word document or a deck, review its extracted text instead of its markup. Follow [file review](references/file-review.md) every time, using `scripts/extract_review_text.py`:
+
+1. Run its `extract` command on the files with `--out REVIEW/before --root PROJECT`, then `init-log REVIEW/before`.
+2. Read every part to its end and record its read token. Review every line against the rules, including lines no scanner flags, and log each finding with its line ID and action.
+3. Repair each finding where it originates: the HTML line, the generator or its data, or the workbook string the locator names. Rebuild generated files. Then check the rest of the piece for the same failure.
+4. Extract again into `REVIEW/after`, run `diff` on the two folders and read every changed line.
+5. Run `receipt` on the two folders. Claim full coverage only when it prints `COMPLETE`, and report its files, lines read and lines changed.
+
+A read token shows that a part was opened to its end. It does not prove attention to every line. `check.py` runs on the same files, so a full review of a page uses this extraction for its line IDs.
+
+`scripts/rendered_read_guard.py` is a PreToolUse hook that turns a whole-file read of a large page, workbook, document or deck toward the extractor. `install_local.py` copies it to `~/.agents/writing/bin/`, where the host's hook settings point.
+
 ## Hooks
 
-On Claude Code and Codex, `scripts/hook.py` scans every reply and every prose file a tool writes, and holds a reply for one rewrite when a finding blocks. It also holds a session while a deliverable it changed has no passing full review. `scripts/install_local.py` installs the scripts and the `/gate` command. With `--watch DIR` it adds a launchd agent that runs `scripts/gate_watch.py`, so each file that lands in DIR gets `/gate` through Claude Code headless. `scripts/writing_system.py` builds the copies of the owner's rules for other hosts and reports drift.
+On Claude Code and Codex, `scripts/hook.py` scans every reply and every prose file a tool writes, and holds a reply for one rewrite when a finding blocks. It also holds a session while a deliverable it changed has no passing full review. It also logs which session wrote each file, so `check.py` can reject verdicts written by the writer. `scripts/install_local.py` installs the scripts, the read guard and the `/gate` command. With `--watch DIR` it adds a launchd agent that runs `scripts/gate_watch.py`, so each file that lands in DIR gets `/gate` through Claude Code headless. Before the `Artifact` tool or an MCP publish tool sends content, `hook.py` checks those exact bytes and denies the call when they fail. That check runs once `~/.claude/settings.json` has a PreToolUse entry with the matcher `Artifact|mcp__.*[Pp]ublish.*` that runs `hook.py --tool claude-code`. `scripts/writing_system.py` builds the copies of the owner's rules for other hosts and reports drift. Its `instructions` command builds `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` from one source and, with `--install`, writes them into the home folder.
 
 ## Shared standards
 

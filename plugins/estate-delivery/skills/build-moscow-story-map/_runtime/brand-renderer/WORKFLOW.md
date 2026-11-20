@@ -72,12 +72,12 @@ escalation rule is in
 The producing workflow uses these controls as needed for the artifact.
 
 ```
-producing workflow -> review-writing -> authored prose review
+producing workflow -> `writing` -> authored prose review
 producing workflow -> brand-renderer -> visual profile and rendering checks
 producing workflow -> review-deliverable -> assembled deliverable review
 ```
 
-`review-writing` owns writing review. The internal `writing-diagnostics` module supplies
+`writing` owns writing review. The internal `writing-diagnostics` module supplies
 diagnostic tools; the confirmed author profile supplies voice.
 `review-deliverable` owns the release decision. It fails closed on an unsupported
 figure, scope, approval, or go or no-go.

@@ -42,9 +42,9 @@ def main():
         lines.append(f'{review} lines need a judgment the scanner cannot make, such as a list of three.')
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text('\n'.join(lines) + '\n', encoding='utf-8')
-    if status == 'pass' and not review:
-        notify('Check writing', 'No rule breaks found.')
-    elif status == 'pass':
+    if status == 'scan-pass' and not review:
+        notify('Check writing', 'The scan found no rule breaks. No line pass ran.')
+    elif status == 'scan-pass':
         notify('Check writing', f'{review} lines to check by hand. Details in {OUT}')
     elif status == 'fail':
         first = findings[0] if findings else {}

@@ -86,7 +86,7 @@ produced. See [references/install-checklist.md](references/install-checklist.md)
 
 ## Relationship to other skills
 
-This adapter selects the intended author's confirmed profile. `review-writing` reviews meaning and prose; `writing-diagnostics` supplies executable diagnostics and review records. `brand-renderer` applies the selected project profile or neutral defaults, and `review-deliverable` reviews deliverable readiness. These tools do not supply a person's voice. Apply the precedence above when their requirements overlap.
+This adapter selects the intended author's confirmed profile. `writing` reviews meaning and prose; `writing-diagnostics` supplies executable diagnostics and review records. `brand-renderer` applies the selected project profile or neutral defaults, and `review-deliverable` reviews deliverable readiness. These tools do not supply a person's voice. Apply the precedence above when their requirements overlap.
 
 For a styled artifact, read [the build card](_shared/build-card.md).
 

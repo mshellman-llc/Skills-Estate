@@ -18,13 +18,13 @@
     "operate-salesforce-pipeline",
     "promote-salesforce-changes",
     "review-deliverable",
-    "review-writing",
     "verify-salesforce-org",
+    "writing",
     "writing-diagnostics"
   ],
   "review_gaps": [
     {
-      "required_sha256": "2ff61168abb190032d4c5038bb6aedde400e21115f2a9cc83ccad81584c1f679",
+      "required_sha256": "92fa3a7c76f79976483d7cc33c45827af3f6007468a4772995ff94bd6ffb4cdb",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -54,7 +54,7 @@
       "subject": "pursuit-router"
     },
     {
-      "required_sha256": "dd759d07b0d555e8a641382ffed4d3a0e6cf799eafb054bf23a14b55a14d3171",
+      "required_sha256": "19dccce4577dd3c602a5c6e5793cb3c09e655eb62d4207858700d1d8f01fa7fe",
       "status": "review required",
       "subject": "quality-router"
     },
@@ -69,12 +69,12 @@
       "subject": "solutioning-router"
     },
     {
-      "required_sha256": "0477c0310fc45bb2d0f90fa982fb4b44da3f8ea7022745e1abf95cbefc60ee00",
+      "required_sha256": "de5da1afab12542eeffac1300d44ffce32c9686b37282e1c3a5e34e5d00350da",
       "status": "review required",
       "subject": "writing-router"
     },
     {
-      "required_sha256": "dc33f4ecd02e0528cba6ebcf4e578fdbde10607e5c93c7c01ea22b83b393bdaf",
+      "required_sha256": "6d6586b86c031e97e00ae9cb66ed3b9a98b2441e10cf97e36be12bcd9feaeb01",
       "status": "review required",
       "subject": "apply-author-style"
     },
@@ -84,7 +84,7 @@
       "subject": "apply-salesforce-patterns"
     },
     {
-      "required_sha256": "0894047bba3b8e0785e82d3fea09bcdb0e55bd329b8409eb80e9741f76e6cfb6",
+      "required_sha256": "f7d83dd95ef3987d6c4535b9179b82a6c00b2ccfd561116ed9b11d0762507cd7",
       "status": "review required",
       "subject": "assess-career-options"
     },
@@ -94,7 +94,7 @@
       "subject": "assess-offering-fit"
     },
     {
-      "required_sha256": "6567b210e8162ae9cd6187f86818f1eb20a6f488ce720ab9a08c57f9ef7b8ccb",
+      "required_sha256": "c4d4ca06bc4282d4aefb2ed04a8f12dcaa6bf9c3ad8bba0b75ba67dd07c16c1a",
       "status": "review required",
       "subject": "assess-solution-delivery"
     },
@@ -109,22 +109,22 @@
       "subject": "author-estate-skill"
     },
     {
-      "required_sha256": "999417a95fbe083796a1e9f562e01047ed873aa50c88b0361868f9d6416245dd",
+      "required_sha256": "001f48de2d2a8b75d8fdbcfd063c2b62fa7e34a51ad32460dc7ac2276b1f55d7",
       "status": "review required",
       "subject": "author-style-runtime"
     },
     {
-      "required_sha256": "9288e374bfa7661451641b26aefdcb922e990133d890013ba0a1a3854b3ebb21",
+      "required_sha256": "8a3159b813aeba6e18283155e7f48825b95de4c9ed3e0ae501a411efb45d09fa",
       "status": "review required",
       "subject": "brand-renderer"
     },
     {
-      "required_sha256": "12b2f81fa4a8e9bf48c202417500c5e788f5a45704cf2ce1802790badc9af2be",
+      "required_sha256": "50d3dd33d1f89aa6a6b0b8bc27b774a6b938c817e882a1c31a3b2c36900814ae",
       "status": "review required",
       "subject": "build-deal-decision-deck"
     },
     {
-      "required_sha256": "345985b2faba2e4f4dd8a9ea1c577697afd7d4de0e4f7f03573e630bb3861a61",
+      "required_sha256": "6dee41e64695c0e3fa036ad1ee1f1e04dfe14c6ca7ca5811cb65659ab0c0caf5",
       "status": "review required",
       "subject": "build-deck"
     },
@@ -134,12 +134,12 @@
       "subject": "build-editorial-chart"
     },
     {
-      "required_sha256": "df5b3970a4dff558b21d3c2fa950b8cd86dbcf07e5f8d410ff3afcbc622131c3",
+      "required_sha256": "e3f20b14c6d0923e3537b50f3b50b6dd39ace98fd001ef515fc6b6af5fa439fc",
       "status": "review required",
       "subject": "build-interactive-explorer"
     },
     {
-      "required_sha256": "b4c36bac080d574a7a81f29ae8696511183240c32dcfe536251e4d3f122b4e45",
+      "required_sha256": "d2dc81c8c1d3c04f8c407ba0253c19d8c07ac20e217d5eb42437641376b1c963",
       "status": "review required",
       "subject": "build-interactive-proposal"
     },
@@ -149,7 +149,7 @@
       "subject": "build-moscow-story-map"
     },
     {
-      "required_sha256": "e0febcc12bcb23c3edc228f80315a4e4b10d164089d393390c27ae1b5dbf651d",
+      "required_sha256": "0ed9b792fe07b7a77c8e394de9e355782b0f522ddda18a4f8df7551584928907",
       "status": "review required",
       "subject": "build-review-site"
     },
@@ -164,7 +164,7 @@
       "subject": "capture-knowledge"
     },
     {
-      "required_sha256": "686ff54226f343f80eaeddfd9f0f9d1cc4bd750f88db634aa8369af3f0444e9f",
+      "required_sha256": "15669a8165fe5a8d301b59ca991a825e45fc71380576f1738d3334d8bf6420a2",
       "status": "review required",
       "subject": "capture-requirements"
     },
@@ -194,7 +194,7 @@
       "subject": "deliver-salesforce-change"
     },
     {
-      "required_sha256": "56d7e1d9b056170266d043e19ec8e08a76746ba5378cba81ee803d2256058775",
+      "required_sha256": "d9e541a43cc55ff2ec4fbbfdb58f242eee889260f738eabe1d77c34df1c7b89a",
       "status": "review required",
       "subject": "delivery-orchestrator"
     },
@@ -209,12 +209,12 @@
       "subject": "design-information-architecture"
     },
     {
-      "required_sha256": "eaa2a79a60fbe182390d394ffca186a06a18a4d437dc048cd023305bd97a86ce",
+      "required_sha256": "48cd19fbc6ae00883533b554b48aae00789a750d37fec800e3d5c094877c86f9",
       "status": "review required",
       "subject": "design-process"
     },
     {
-      "required_sha256": "6e57d949f401ef0d14c81463223b19849109983f3fbc4d6d3be025a88b9c713a",
+      "required_sha256": "0b99ac8a26bd2e417334a1b71157c5b9e5436b0d0f489f44ea0f49ac76521e1f",
       "status": "review required",
       "subject": "design-software-system"
     },
@@ -229,17 +229,17 @@
       "subject": "develop-independent-product"
     },
     {
-      "required_sha256": "ae0a052590cd552e82b45ed07e06557e365021862f2585559919465fd3b5481c",
+      "required_sha256": "cfeccc57744726ffaa583d94712278bebd01999bbefe3bc63fce662f9e21fc83",
       "status": "review required",
       "subject": "develop-product"
     },
     {
-      "required_sha256": "364c17b1090c87e95af8e32ea9c10a91f6c4a160ec77461916902d180c1781dd",
+      "required_sha256": "86141c1907636daf51d660faf092186c6e312c002413fa6531f0f5f46464e92d",
       "status": "review required",
       "subject": "draft-application-materials"
     },
     {
-      "required_sha256": "eaf058f2164807986c3fbd584668ba662a4cbd99aa357884832769c2be355d90",
+      "required_sha256": "cc00dce3d429eee3eaf38bcde18ea555fbf3cb553449a11f94ddb45ae51b3745",
       "status": "review required",
       "subject": "estimate-project"
     },
@@ -249,7 +249,7 @@
       "subject": "evidence-core"
     },
     {
-      "required_sha256": "8b4c5906320849dcedc322620c2c2372105c1ab32f1275ef11e16a3ccd806bdb",
+      "required_sha256": "c5170ce36235a8d0637aae7701ae216fa6f09c57f633a6fb98c5bfc956bdb045",
       "status": "review required",
       "subject": "frame-jobs-to-be-done"
     },
@@ -274,17 +274,17 @@
       "subject": "lay-out-sticker-sheets"
     },
     {
-      "required_sha256": "1792cf6235af1b1d4fd7370b0805bb2c31cb2cb29d2e50d9f8ca519237483fe6",
+      "required_sha256": "d0d6e192f7f16d35408aec116eec834fe76d3263ddd3b7373951c3edb0184b27",
       "status": "review required",
       "subject": "load-project-context"
     },
     {
-      "required_sha256": "581f26c72f8cb083d8b24b34d47646482dfa2884b462cc70dbd48840acd43fc8",
+      "required_sha256": "9cefcbfe3903f5cea89576dc380d3e494a9c90ce9ad84d50a409ee36d26c3307",
       "status": "review required",
       "subject": "maintain-discovery-record"
     },
     {
-      "required_sha256": "9c5cebebca0b903aaba03672732462cf653be94ca8746763c0b3f4563ad3751f",
+      "required_sha256": "94e59abc203be6b902372a780013c9c8991bab3ff773a9ae1c6c323dc2197a6b",
       "status": "review required",
       "subject": "maintain-skills-estate"
     },
@@ -304,7 +304,7 @@
       "subject": "manage-consulting-knowledge"
     },
     {
-      "required_sha256": "d4a18d47dce304c505fb91079417788192c4de7a13ed744ec9647731796fe1dd",
+      "required_sha256": "9fb523397d64cc11db2c92a0a76c72b82eef81b3685fc435e79ec0865ad0c8ef",
       "status": "review required",
       "subject": "manage-cutover-closeout"
     },
@@ -334,12 +334,12 @@
       "subject": "manage-writing-profile"
     },
     {
-      "required_sha256": "46ce29e0a3fd58ea372f90afabb69347c791d896f6d56b982690dca43228eb86",
+      "required_sha256": "7f412b8eb7b6e50372f8c885f42fd1e05c38a29fdebf0a0e356384103af3e597",
       "status": "review required",
       "subject": "map-journey"
     },
     {
-      "required_sha256": "05b07db809a188802b6fe7005b880ed8caab36a297f80f6aaa6692da5243cf8e",
+      "required_sha256": "2d57bb635257fa00fbc4deba70f1a594f1b950e77efefad14d9eb3ec23888142",
       "status": "review required",
       "subject": "map-sales-process"
     },
@@ -349,17 +349,17 @@
       "subject": "operate-salesforce-pipeline"
     },
     {
-      "required_sha256": "71f8fbb93975c76051311c3c417014e55f1b0ac24356b7b7a39e036bd44bf691",
+      "required_sha256": "5f2e870efea2e7fdbe1659d2972296088672167530d6638e707c4cbaaf631f27",
       "status": "review required",
       "subject": "plan-offering-artifacts"
     },
     {
-      "required_sha256": "70b59ca0c2fd3da583bce03f5b136b698d248a850cc8bbc326b925fb873a815b",
+      "required_sha256": "9fbe1dc26f7ff5fc9cb51bc06bf9ad90ba2514758452453ae4f6f824f6882f9e",
       "status": "review required",
       "subject": "plan-sprint"
     },
     {
-      "required_sha256": "5c435b023a52a904e25b8f7a161b7381c1e014ba91b736dc540a746c77650368",
+      "required_sha256": "da8b49bba44a12f33d185042973ad180920cedef364fc887b23c7aa59469b3bf",
       "status": "review required",
       "subject": "plan-team-onboarding"
     },
@@ -369,17 +369,17 @@
       "subject": "plan-usability-study"
     },
     {
-      "required_sha256": "8baf35f9e35e8c619f9f23fd3970395002bc3c41fb57f1b9d7461d483621c577",
+      "required_sha256": "c3fad2a37ebabbd98827e8716a221960cee5ae4bce22556af8f9ba82202be197",
       "status": "review required",
       "subject": "prepare-delivery-handoff"
     },
     {
-      "required_sha256": "25936caef0e16a7a7c2803912d591e26602190f83009736da07052c421f45c45",
+      "required_sha256": "da138b2989886038e4f14b02b62eb70bd7554cc4d35e7cf1ce36798d10c19ef4",
       "status": "review required",
       "subject": "prepare-job-application"
     },
     {
-      "required_sha256": "6d717149b1a4b9c3bef4a93ca391243f2fa488c43aab86b90f65e6f7d9ee7a1a",
+      "required_sha256": "4f4a47ee5f83fcbc7a4747c96dff69ecbec5e5cdae0f481cd8f41ab833ee4cfc",
       "status": "review required",
       "subject": "prepare-sales-pursuit"
     },
@@ -389,7 +389,7 @@
       "subject": "prepare-session-handoff"
     },
     {
-      "required_sha256": "e869f00111941778e5845e6440133a83d7c6d5ab30aaf2133bd1c132d6b1b510",
+      "required_sha256": "659265edf05f96dc73d15bb2610cf3e1f40f78a1a32c5a74c5772e342c693c77",
       "status": "review required",
       "subject": "prioritize-work"
     },
@@ -399,7 +399,7 @@
       "subject": "promote-salesforce-changes"
     },
     {
-      "required_sha256": "52c63ea74c0cb3b886fe97ba2450b6f18d6e3fe9b4ec0cf5cdec2a1e0e887ea8",
+      "required_sha256": "152d25344004907de62d5c05c983c85dde12b7ea895b89dee448299290232c1c",
       "status": "review required",
       "subject": "publish-content"
     },
@@ -409,12 +409,12 @@
       "subject": "reconcile-knowledge"
     },
     {
-      "required_sha256": "1f9e6d96f36331229f232d3bd5ffe9084e10bc76919ec4e3fc4368389d75ad60",
+      "required_sha256": "7ccb6e1d807b6418a879c495e28515a974496c5f3820639a60f109f249377784",
       "status": "review required",
       "subject": "refine-backlog"
     },
     {
-      "required_sha256": "c39c7e1717c4ca4318f787887995990f6fc76d8066aefde9c4e5786695b0a504",
+      "required_sha256": "a5773f865f236ffa436ce400817fbf08b2fd39a9bd4878e11e94b14a318ef7ae",
       "status": "review required",
       "subject": "release-skill-package"
     },
@@ -424,37 +424,32 @@
       "subject": "render-offering-brief"
     },
     {
-      "required_sha256": "b1f2b2694c91db0d41555af16f0e0e9d9bd2c55e3e9e2d86ec7beced62a85ded",
+      "required_sha256": "e64c54fc5819682c8d901396e1255419cae348428643d3f17a4e612f94477e0c",
       "status": "review required",
       "subject": "review-contract-scope"
     },
     {
-      "required_sha256": "152713738de04f22def7b0046255f7fb1bfe4a5c79def61a18fcdb4b08487189",
+      "required_sha256": "152f5a3c66237f654dd4d2b50c8b342e7326e79f158c81be4878cc36ca82f2b2",
       "status": "review required",
       "subject": "review-deal-economics"
     },
     {
-      "required_sha256": "740aade674008cfdda7113eca1aa24a1f026d7581662c4e22007b0c53a8b84e7",
+      "required_sha256": "8c25b1c436a584e4739100172d40a9b7d9614e31e0212314a7975690aa75b3e9",
       "status": "review required",
       "subject": "review-deliverable"
     },
     {
-      "required_sha256": "7cf3be58344eac57708bc9d61b0f0e05ce5f87c48286a34f9baba85f80c2f081",
+      "required_sha256": "7fed46cbfad4f6795b9d179639cfd498caf510802bbacd89c16ca88e82b4ad92",
       "status": "review required",
       "subject": "review-sales-journey"
     },
     {
-      "required_sha256": "330410fb0a9b9958b103ed1d8fb166454ae775cbb4d4bea9dd635694d2a6e7ef",
+      "required_sha256": "01ea91be8ca94b1440e7a8fb0ecd36604c05b7a35cf634ec7994dd94ba8b0e28",
       "status": "review required",
       "subject": "review-site-runtime"
     },
     {
-      "required_sha256": "8e21a06b5edc5e14bb749775a6971f7f4c367b64c7fd422a0180b40f5ce0d040",
-      "status": "review required",
-      "subject": "review-writing"
-    },
-    {
-      "required_sha256": "e4e35e422fee38398118af35334a8ad5dfa192cf6c35f23258091a0397138e5e",
+      "required_sha256": "5f073eff6bc8851ef18c61829c79e330103b34275df8b3eaaa63429142a07217",
       "status": "review required",
       "subject": "scope-project"
     },
@@ -469,27 +464,27 @@
       "subject": "specify-implementation"
     },
     {
-      "required_sha256": "396c7de7ae9047effd82c8c5676e4ec7ec850a32d526782d354355a92b0d2973",
+      "required_sha256": "5c601bef3bdf8580ef91de1ff56ea7ab46274c819737ef644a04b8db85998ae8",
       "status": "review required",
       "subject": "start-delivery"
     },
     {
-      "required_sha256": "184c6956d32cce8720e2ad71d63325f443b2911ac60728f3fa9f8524fb9bc42e",
+      "required_sha256": "8c898759947cd012c6995a1a405906460ea0ac3ee093acbe609f3f598efebc94",
       "status": "review required",
       "subject": "synthesize-discovery"
     },
     {
-      "required_sha256": "1d7b4ceabf6804edee3ef7c375fe2cfcb94aaae7021ea0752a3cd2fb659d89ef",
+      "required_sha256": "398de26d762f6400b31489e89d9e90b1395e86b584a9d44ffe4fd60abe409396",
       "status": "review required",
       "subject": "tailor-resume"
     },
     {
-      "required_sha256": "522c13480348a947509428897fdb358b8e2f065ed22253c91e112552895c372d",
+      "required_sha256": "aac5e4bf10f5ab445540878d5c8111fc1cd0ea7e07af8e5432dd7aee1b971cb8",
       "status": "review required",
       "subject": "track-delivery"
     },
     {
-      "required_sha256": "5ec6b9eb2de9b8307bcbbffb70efd2ceddcef4c33137e7d81c234da4c318829b",
+      "required_sha256": "cacf76935c1d1c745bc03cac456e6149ed570fcd4881b04fbe57bcae72c20726",
       "status": "review required",
       "subject": "validate-delivery"
     },
@@ -509,12 +504,12 @@
       "subject": "work-in-github-repository"
     },
     {
-      "required_sha256": "d58f4704c5ee2d26ddc6da55a39fce310b1effa9a5db39aaab0b3ac07d6b3770",
+      "required_sha256": "d6723c968441c86b700ff089d82836441be8e37542d4c4749e679509b2e3b456",
       "status": "review required",
       "subject": "write-architecture-reference"
     },
     {
-      "required_sha256": "c657965d255ad6c421965c6b5d6f352ad9d8b68a453fef21ac5c0fbeff4c5c40",
+      "required_sha256": "cbe7c661133fa699650f08c33a4c30ecfe46ef3bded5482181e6f5948c8a5944",
       "status": "review required",
       "subject": "write-business-case"
     },
@@ -529,21 +524,21 @@
       "subject": "write-portfolio-case-study"
     },
     {
-      "required_sha256": "98f4b36cb9282086f93f60df3f2e71d092d2fce043617e9f6b627e4bc69022f1",
+      "required_sha256": "ed66ed2699b5e05403fefbc68866aacc07e36789a5a8fe6a05a52e482e748b93",
       "status": "review required",
       "subject": "write-statement-of-work"
     },
     {
-      "required_sha256": "830e64752b7ff7158a17a41793eecdc0ca24b77f7d2f1329d584ab3a5cf9cc41",
+      "required_sha256": "d7fd0a71fb34a8c9d5bf8be317f8837e8e5b0635aed8d3cda8d3c1546d4baece",
       "status": "review required",
       "subject": "writing"
     },
     {
-      "required_sha256": "83207b777fe6b74293a7cda402d921269639a67266931f7f74c619f4d04bdf09",
+      "required_sha256": "81f91eeab3d23334ebcdfe719757e15a8fed825be40036bec65c49ae225e3d00",
       "status": "review required",
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "43cd7e5e2efd563c4b389317f5a330e18fca6cd9bc9ed60d6022a61ce5d53b17",
+  "source_sha256": "a9160177a03fd560e2ed168da27f3fb763b8e9e7716385992e85093d61147fc0",
   "status": "owner-published"
 }

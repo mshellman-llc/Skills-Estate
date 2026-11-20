@@ -34,8 +34,8 @@ Find the real objects before writing anything:
 
 1. **The accepted handoff brief.** Its sections (team, stakeholder map with deal-versus-delivery
    mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill's
-   raw material. If no accepted brief exists, stop: the handoff is not done, and that is
-   prepare-delivery-handoff's job, not a gap to paper over.
+   raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is
+   prepare-delivery-handoff's job. This skill does not cover the gap.
 2. **The signed SOW**, with its id and as-of date. The SOW is fixed input. Scope, phases, figures,
    and commercial structure come from it; this skill renders them and authors none of them. Any
    figure ultimately traces to the quote the SOW was built from, per the money rule.
@@ -46,7 +46,7 @@ Find the real objects before writing anything:
    scope_baseline, stakeholders, team, open_questions, gates); write only this stage's sections
    (raid, decisions, artifacts, gates, confirmed team) and log every change.
 
-Stamp everything generated with SOW id and as-of date. Record IDs do not survive sandbox
+Stamp everything generated with the SOW id and its as-of date. Record IDs do not survive sandbox
 refreshes; the stamp is what makes an artifact auditable later.
 
 ## Phase 1: draft the Project Charter
@@ -60,8 +60,8 @@ matter most:
   an owner and a resolve-by date before client kickoff. Neither write it into the baseline nor
   silently drop it. If it implies paid work, humans take it to a Change Order conversation.
 - **Every section is always present.** A section the sources cannot fill carries a known unknown
-  with an owner, a resolve-by date, and the gate it blocks. A blank is an open question, not an
-  invitation to invent.
+  with an owner, a resolve-by date, and the gate it blocks. Treat a blank as an open question
+  and invent nothing to fill it.
 
 Gate the draft before any human reads it:
 
@@ -71,8 +71,8 @@ python3 scripts/charter_check.py CHARTER.md
 
 It verifies required sections, the scope source stamp (SOW id plus as-of date), a fully assigned
 RACI with exactly one Accountable per activity and every team role covered, no leftover
-placeholder tokens, and no em dashes. Exit 0 passes. Report the printed counts, not an adjective.
-Then run the review-writing checker over the charter prose. Fix the source and re-render; never
+placeholder tokens, and no em dashes. Exit 0 passes. Report the counts it prints and leave out adjectives.
+Then run the `writing` checker over the charter prose. Fix the source and re-render; never
 hand-patch output the next regeneration would lose.
 
 The Program Lead secures the signature. Mark the charter DRAFT until they do. When the
@@ -85,7 +85,7 @@ delivery-orchestrator's `references/delivery-state-spec.md`.
 Read `references/governance-pack-spec.md`. Three artifacts from `assets/`: the RAID log, the
 decision log, and the weekly status template. This skill creates and seeds them;
 track-delivery stewards them from kickoff onward, which is why the ID conventions are a
-contract, not a style: R/A/I/D-### for RAID items, DEC-### for decisions, zero-padded, permanent,
+fixed contract between the two skills: R/A/I/D-### for RAID items, DEC-### for decisions, zero-padded, permanent,
 append-only. Downstream stewardship diffs these tables by ID; a renumbered log breaks every later
 report.
 
@@ -103,7 +103,7 @@ decision. The decision log records only decisions humans actually made, with the
 Read `references/kickoff-deck-contracts.md` for what every slide must carry, per deck and per
 variant. This skill owns the content contract only. Mechanics are delegated: build-deck runs
 the stage-gated build, pptx owns the file format, brand-renderer owns brand tokens and
-the visual, parity, and brand gates, review-writing reviews the copy. Do not inline hex values or
+the visual, parity, and brand gates, `writing` reviews the copy. Do not inline hex values or
 restate any of their rules.
 
 Two decks, in order. The **internal kickoff** runs first, always: it is where the Program Lead
@@ -112,8 +112,8 @@ note-keeping location, before the client sees anything. The **client kickoff** e
 agreement on cadence and the path to charter signature. Both decks are populated from this
 engagement's record; a deck reusable on another client unchanged is a failed deck.
 
-Build the confirmed variant only. If the SOW is ambiguous about the model, that is a flagged
-delta and a human decision, not a hybrid deck.
+Build the confirmed variant only. If the SOW is ambiguous about the model, flag it as a
+delta for a human to decide, and build no hybrid deck.
 
 ## Phase 4: Sprint 0 plan, seeded backlog, research pack
 
@@ -151,7 +151,7 @@ files; never just say they were written.
   insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence
   is a hard fail.
 - **brand-renderer** owns brand for every rendered artifact, applied during the build.
-- **review-writing** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.
+- **writing** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.
 - **The quote and SOW own every number.** This skill renders figures and authors none.
 
 Where a governor is not installed on the current surface, state the check it would have run, do
@@ -166,8 +166,8 @@ or signature nobody gave.
 
 ## When time is short
 
-Cut in this order, and say what was cut: (1) the client research pack, (2) the internal deck's
-client-context depth, keep the risk and gap slide, (3) backlog stories, keep the epics. Never
+Cut in this order, and say what was cut: (1) the research pack, (2) the internal deck's
+client-context depth, keep the slide on risks and gaps, (3) backlog stories, keep the epics. Never
 cut: the charter gate, RAID seeding from handoff open questions, flagged deltas, source citations,
 or the internal-before-client kickoff order.
 
@@ -185,7 +185,7 @@ renegotiated, and every delta is a flag for humans.
   which takes over the exact files this skill seeds.
 - Does not capture requirements or author acceptance criteria; that is
   capture-requirements, in Analyze.
-- Does not scope, price, or amend scope. The SOW is fixed input; deltas are flags for humans.
+- Does not scope, price, or amend scope. It treats the SOW as fixed input; deltas are flags for humans.
 - Does not sign, approve, or gate. It drafts what humans sign and tracks what humans did.
 - Does not provision sandboxes or grant access; it tracks them.
 - Does not build deck files itself; build-deck, pptx, and brand-renderer do.

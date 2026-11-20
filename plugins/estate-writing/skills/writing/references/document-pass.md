@@ -69,7 +69,7 @@ A number written as a word, from two upward, is listed with `"kind": "word"`. Gi
 
 ## Repeats that are the structure
 
-Some pieces state a thing twice on purpose, such as each capability and then the roadmap item that delivers it. Declare that once in `structural_repeat`, with a reason of five or more words and the first line ID of each section involved. A `repeated_facts` entry marked `"structural": true` then does not block, provided its lines sit in two or more of the declared sections. The receipt lists the declared repeats. Any other repeat still blocks.
+Some pieces state a thing twice on purpose, such as each capability and then the roadmap item that delivers it. Declare that once in `structural_repeat`, with a reason of five or more words and the first line ID of each section involved. A `repeated_facts` entry marked `"structural": true` then does not block, provided its lines sit in two or more of the declared sections. The receipt lists the declared repeats. Any other repeat still blocks. A map that marks more than one line in ten as a structural repeat is rejected, because declaring every repeat structural switches the repeat check off.
 
 `assignments.json` also carries `repeats`: identical sentences and figures the script found in more than one section. Check each one and record the real repeats under `repeated_facts`.
 

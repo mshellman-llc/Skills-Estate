@@ -54,7 +54,7 @@ calls:
 - manage-decision-register
 - map-journey
 - map-sales-process
-- review-writing
+- writing
 risk_controls:
 - 'Never changes tracker tickets; exports are prepared for the client to import.'
 - 'Client data, names and brand values stay in the engagement folder, never in the skill.'

@@ -109,7 +109,7 @@ The gate checks source tokens, valid ranks, named scope lines, rank order,
 unknown placement, and object structure. An empty JSON open-question list passes only when discovery_complete is explicitly true; punctuation alone does not fail this evidence gate. Exit 0 passes. A nonzero result
 blocks release.
 
-Apply `review-writing` to the brief and `brand-renderer` on any branded surface. Apply
+Apply `writing` to the brief and `brand-renderer` on any branded surface. Apply
 `review-deliverable` before final delivery. The shared sequence is in
 [`release-gate.md`](../../_shared/release-gate.md).
 

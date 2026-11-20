@@ -125,4 +125,4 @@ new verification, a changed condition or a needed reminder. Keep valid uses of
 “holds,” “unchanged” and similar wording. These judgments require the surrounding
 content and sources. [C25–C27](context-signals.md) surface narrow review candidates;
 they do not automate these judgments. Apply the full
-[Writing Integrity guidance](../../review-writing/references/patterns.md#repetition-and-urgency).
+[writing skill](../../writing/WORKFLOW.md) with the owner's rules folder.

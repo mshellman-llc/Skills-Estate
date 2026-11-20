@@ -70,7 +70,7 @@ Same page, same brand, same gates. The differences:
 
 **Timeline.** In Proposal mode the builder draws each version's quoted phases with the timeline from `build-roadmap`, on a Week 1, Week 2 axis, and redraws it when the version changes. The phase list stays as the fallback when a phase's `weeks` value is not `N` or `N-M`. The components are inlined, take their colors from the selected profile, and add no network request.
 
-**Voice.** Apply the confirmed author profile and `review-writing` while writing, not as a pass afterwards. The test for
+**Voice.** Apply the confirmed author profile and `writing` while writing, not as a pass afterwards. The test for
 every sentence is whether it carries a specific: a number, a named system, a named owner, or a
 consequence. Scrubbing buzzwords without adding specifics fails the standard that matters even
 when it passes the checker that runs.
@@ -133,7 +133,7 @@ and the dispositions you made.
 Run the gate before delivery. A reviewer receives the completed result and its evidence. Full spec in
 [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the prose. Use the bundled diagnostic tools to check saved writing. For
+1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For
    a final artifact it emits a receipt the quality gate requires.
 2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,
    footer.

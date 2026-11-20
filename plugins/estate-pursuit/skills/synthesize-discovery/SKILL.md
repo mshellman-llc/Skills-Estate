@@ -89,8 +89,8 @@ A local save does not upload a file to NotebookLM or a Claude Project. Upload on
 Run the gate before you deliver. The full
 spec is in [`release-gate.md`](_shared/release-gate.md).
 
-1. Apply review-writing to the prose in both files. Review the page on its extracted text with
-   review-writing's file review procedure, and run the bundled writing-diagnostics tools on the
+1. Apply `writing` to the prose in both files. Review the page on its extracted text with
+   `writing`'s file review procedure, and run the bundled writing-diagnostics tools on the
    Markdown and on that extracted text. For a final artifact they emit the receipt the quality
    gate requires.
 2. Run brand-renderer's parity, brand and visual gates on the page. List the Markdown's findings,

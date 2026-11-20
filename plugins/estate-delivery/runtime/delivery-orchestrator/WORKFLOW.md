@@ -10,9 +10,9 @@ Run this module's relative commands from the directory containing this WORKFLOW.
 # Delivery orchestrator
 
 > **Before writing: [`build-card.md`](_shared/build-card.md) plus
-> [Writing Integrity review](_runtime/review-writing/references/detailed-review.md). Inputs, not a final pass.**
+> [writing review](_runtime/writing/WORKFLOW.md). Read both before drafting; the final review still runs at the gate.**
 
-The coordinator for delivery engagements after signature. It identifies the current stage, what gate
+This skill coordinates delivery engagements after signature. It identifies the current stage, what gate
 comes next, and which skill does the work. Content decisions stay with the skill
 that owns each artifact. This file stays thin on purpose: the moment it starts
 describing how to build a charter or a test script, it is competing with the
@@ -54,7 +54,7 @@ validation uses validate-delivery. Delivery-status maintains the reporting
 cadence and flags potential scope changes.
 
 Use the project's authorized implementation workflow for Build. Keep its actual
-build evidence distinct from acceptance. Apply review-writing to all authored
+build evidence distinct from acceptance. Apply `writing` to all authored
 prose; use the shared brand runtime for styled artifacts. The executed agreement
 and accepted changes govern commitments. This router does not approve a price.
 
@@ -125,7 +125,7 @@ this suite starts at the signed engagement. See `references/stage-map.md`.
 - Does not build any delivery artifact; the stage skills own their artifacts.
 - Does not price or author numbers. Executed commercial artifacts hold committed values. Route proposed changes to the confirmed commercial owner and `scope-project`; `review-contract-scope` reviews their evidence and language but does not calculate pricing.
 - Does not gate content quality; parity and visual are `brand-renderer`,
-  writing review is `review-writing`, evidence is `evidence-core`.
+  writing review is `writing`, evidence is `evidence-core`.
 - Does not touch pre-signature work. Send each request to its named sales artifact owner.
 - Does not decide, approve, or sign; humans hold every gate.
 

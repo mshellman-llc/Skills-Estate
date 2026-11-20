@@ -103,7 +103,7 @@ Save the readout as Markdown; its evidence list is the record of sources. Render
 
 ## Release gate
 
-Apply [the release gate](_shared/release-gate.md) to the Markdown and the page before delivery. Run `review-writing` on both, reviewing the page on its extracted text with its file review procedure and the `writing-diagnostics` checker. Run brand-renderer's parity, brand and visual gates on the page, then `review-deliverable` on both files. Until these checks pass for both, the readout is not final.
+Apply [the release gate](_shared/release-gate.md) to the Markdown and the page before delivery. Run `writing` on both, reviewing the page on its extracted text with its file review procedure and the `writing-diagnostics` checker. Run brand-renderer's parity, brand and visual gates on the page, then `review-deliverable` on both files. Until these checks pass for both, the readout is not final.
 
 `scripts/jtbd_framing_selftest.py` checks that every reference is cited and substantive and that the ritual section and the audit remain.
 
