@@ -32,7 +32,20 @@ the file it names, or the content it carries. With "scan", the call is denied
 when check.py finds a blocking line in those bytes. A call whose content the
 hook cannot read is denied, and the reason names what it could not read: a
 missing or unreadable file, a call with no file or text content, or bytes the
-scan could not read.
+scan could not read. Any other error in the publish check denies the call too,
+with the error as the reason, and the hook prints one decision. On an error, a
+call counts as a publish call when the built-in publish_tools list or the
+configured one names it; the built-in list is checked first and cannot fail.
+
+Each gate.json setting is checked when it loads. A value of the wrong type or
+shape (publish_tools as a string, a number, a list holding non-strings, null or
+an empty list; publish_requires other than "full" or "scan"; include, exclude
+or extensions not a list of strings; max_blocks_per_file not a whole number of
+1 or more) is ignored and its built-in default used. A gate.json that is not a
+JSON object, or cannot be read, leaves every setting at its default. The
+session is told which settings were ignored: at session start, on the first
+write or stop after the problem appears, and in every publish decision. A
+ledger setting check.py ignored ("config_ignored") is told the same way.
 
 Standard library only.
 """
@@ -70,6 +83,25 @@ DEFAULT_GATE = {
     'publish_tools': ['Artifact', 'mcp__*publish*', 'mcp__*Publish*'],
     'publish_requires': 'full',
 }
+DEFAULT_PUBLISH_TOOLS = tuple(DEFAULT_GATE['publish_tools'])   # the error path reads this copy, never gate.json
+
+
+def _strings(value, empty_ok=True):
+    return (isinstance(value, list) and (empty_ok or bool(value))
+            and all(isinstance(item, str) and item for item in value))
+
+
+# gate.json settings: (test, what a valid value is). A value that fails its test is replaced by the default.
+GATE_SETTINGS = {
+    'include': (_strings, 'a list of fnmatch patterns (strings)'),
+    'exclude': (_strings, 'a list of fnmatch patterns (strings)'),
+    'extensions': (_strings, 'a list of file suffixes (strings)'),
+    'max_blocks_per_file': (lambda v: isinstance(v, int) and not isinstance(v, bool) and v >= 1,
+                            'a whole number of 1 or more'),
+    'publish_tools': (lambda v: _strings(v, empty_ok=False), 'a non-empty list of fnmatch patterns (strings)'),
+    'publish_requires': (lambda v: isinstance(v, str) and v in ('full', 'scan'), '"full" or "scan"'),
+}
+SCAN_NOTES = []   # settings check.py reported as ignored during this run of the hook
 PUBLISH_PATH_KEYS = ('file_path', 'path', 'file', 'source_path')
 PUBLISH_TEXT_KEYS = ('content', 'html', 'markdown', 'body', 'text', 'source')
 FULL_STEPS = ('line pass', 'document pass', 'spot audit')
@@ -135,6 +167,11 @@ def scan_file(path, register, receipt_dir=None):
         result = json.loads(out.stdout or '{}')
     except (OSError, ValueError, subprocess.TimeoutExpired):
         return 'error', []
+    if not isinstance(result, dict):
+        return 'error', []
+    for note in result.get('config_ignored') or []:
+        if isinstance(note, str) and note not in SCAN_NOTES:
+            SCAN_NOTES.append(note)
     return result.get('status', 'error'), result.get('findings') or []
 
 
@@ -175,10 +212,56 @@ def is_prose(path):
             and not any(part in SKIP_PARTS for part in path.parts))
 
 
+def shown(value):
+    text = json.dumps(value, ensure_ascii=False)
+    return text if len(text) <= 60 else text[:57] + '...'
+
+
+def load_gate():
+    """(settings, notes): gate.json over the defaults, with every malformed setting replaced by its default.
+
+    A missing gate.json is the defaults with no note. Never raises."""
+    cfg = {key: list(value) if isinstance(value, list) else value for key, value in DEFAULT_GATE.items()}
+    try:
+        data = json.loads(GATE_CONFIG.read_text(encoding='utf-8'))
+    except FileNotFoundError:
+        return cfg, []
+    except (OSError, ValueError) as error:
+        return cfg, [f'{GATE_CONFIG} could not be read ({type(error).__name__}: {error}), so every gate setting '
+                     'uses its built-in default']
+    if not isinstance(data, dict):
+        return cfg, [f'{GATE_CONFIG} holds {shown(data)}, not a JSON object, so every gate setting uses its '
+                     'built-in default']
+    notes = []
+    for key, value in data.items():
+        if key not in GATE_SETTINGS:
+            continue
+        valid, want = GATE_SETTINGS[key]
+        if valid(value):
+            cfg[key] = value
+        else:
+            notes.append(f'gate.json setting "{key}" was ignored: it is {shown(value)} and must be {want}, so the '
+                         f'built-in default {shown(DEFAULT_GATE[key])} is used')
+    return cfg, notes
+
+
 def gate_config():
-    cfg = dict(DEFAULT_GATE)
-    cfg.update(read_json(GATE_CONFIG, {}))
-    return cfg
+    return load_gate()[0]
+
+
+def untold(state):
+    """Notes on ignored settings this session has not been told yet; marks them told."""
+    notes = load_gate()[1] + SCAN_NOTES
+    told = state.get('told_settings')
+    told = told if isinstance(told, list) else []
+    fresh = [n for n in dict.fromkeys(notes) if n not in told]
+    if fresh:
+        state['told_settings'] = told + fresh
+    return fresh
+
+
+def settings_text(notes):
+    return 'Writing hook settings ignored:\n' + '\n'.join(f'- {n}' for n in notes)
 
 
 def is_deliverable(path, cfg):
@@ -199,14 +282,18 @@ def file_sha(path):
 
 
 def reviewed(sha):
-    """True when a receipt shows a passing full review of these exact bytes."""
+    """True when a receipt shows a passing full review of these exact bytes. A receipt of the wrong shape is
+    skipped, never counted and never an error."""
     if not RECEIPTS.is_dir():
         return False
     for receipt in sorted(RECEIPTS.glob('*.json'), key=lambda p: p.stat().st_mtime, reverse=True)[:3000]:
         r = read_json(receipt, {})
-        if r.get('sha256') != sha or r.get('status') != 'pass':
+        if not isinstance(r, dict) or r.get('sha256') != sha or r.get('status') != 'pass':
             continue
-        steps = {s.get('step'): s.get('status') for s in r.get('steps') or []}
+        listed = r.get('steps')
+        if not isinstance(listed, list):
+            continue
+        steps = {str(s.get('step')): s.get('status') for s in listed if isinstance(s, dict)}
         if all(steps.get(s) == 'ok' for s in FULL_STEPS):
             return True
     return False
@@ -252,11 +339,16 @@ def on_stop(event, args, state):
                          'pass, spot audit, then check.py --full). Give the line pass and the audit to separate '
                          'reviewers, from a different model family when one is available. Fix findings at the source '
                          'and run it again until the receipt passes.')
+    notes = untold(state)
     if reasons:
-        emit({'decision': 'block', 'reason': '\n\n'.join(reasons)})
-    elif state.get('released_unreviewed') and not state.get('told_unreviewed'):
+        emit({'decision': 'block', 'reason': '\n\n'.join(reasons + ([settings_text(notes)] if notes else []))})
+        return
+    messages = [settings_text(notes)] if notes else []
+    if state.get('released_unreviewed') and not state.get('told_unreviewed'):
         state['told_unreviewed'] = True
-        emit({'systemMessage': 'Not fully reviewed: ' + ', '.join(state['released_unreviewed'])})
+        messages.append('Not fully reviewed: ' + ', '.join(state['released_unreviewed']))
+    if messages:
+        emit({'systemMessage': '\n\n'.join(messages)})
 
 
 def log_writers(event, args, paths):
@@ -265,16 +357,26 @@ def log_writers(event, args, paths):
     A file written from a shell command is not seen."""
     session = str(event.get('session_id') or '').strip()
     if not session or not paths:
-        return
-    WRITERS.parent.mkdir(parents=True, exist_ok=True)
-    with open(WRITERS, 'a', encoding='utf-8') as f:
-        for path in paths:
-            item = {'d': today(), 'tool': args.tool, 'session': session, 'path': str(Path(path).resolve())}
-            try:
-                item['sha256'] = file_sha(path)   # check.py counts writers up to the content under review
-            except OSError:
-                pass
-            f.write(json.dumps(item) + '\n')
+        return None
+    lines = []
+    for path in paths:
+        item = {'d': today(), 'tool': args.tool, 'session': session, 'path': str(Path(path).resolve())}
+        try:
+            item['sha256'] = file_sha(path)   # check.py counts writers up to the content under review
+        except OSError:
+            pass
+        lines.append(json.dumps(item) + '\n')
+    try:
+        WRITERS.parent.mkdir(parents=True, exist_ok=True)
+        with open(WRITERS, 'a', encoding='utf-8') as f:
+            f.write(''.join(lines))
+    except OSError as error:
+        # A lost line hides this session as a writer, so a later review of the file could count as independent.
+        return (f'The writer log {WRITERS} could not record that this session wrote '
+                + ', '.join(Path(p).name for p in paths) + f' ({type(error).__name__}: {error}). Do not review '
+                'these files from this session, and pass this session ID to check.py with --writer when another '
+                'session reviews them.')
+    return None
 
 
 def on_post_tool(event, args, state):
@@ -282,7 +384,10 @@ def on_post_tool(event, args, state):
     notes = []
     nags = state.setdefault('nags', {})
     paths = changed_files(event, args.tool)
-    log_writers(event, args, paths)
+    unlogged = log_writers(event, args, paths)
+    if unlogged:
+        notes.append(unlogged)
+        log_hits(args.tool, 'writer-log-error', 'writers.jsonl', [{'rule': 'writer-log-error', 'text': unlogged}])
     for path in paths:
         if is_deliverable(path, cfg) and str(path) not in state.setdefault('deliverables', []):
             state['deliverables'].append(str(path))
@@ -298,8 +403,12 @@ def on_post_tool(event, args, state):
                              + describe(findings))
             elif count == FILE_NAG_LIMIT + 1:
                 log_hits(args.tool, 'file-limit', path.name, [{'rule': 'nag-limit', 'text': str(path)}])
+    told = untold(state)
     if notes:
-        emit({'decision': 'block', 'reason': '\n\n'.join(notes)})
+        emit({'decision': 'block', 'reason': '\n\n'.join(notes + ([settings_text(told)] if told else []))})
+    elif told:
+        emit({'hookSpecificOutput': {'hookEventName': 'PostToolUse', 'additionalContext': settings_text(told)},
+              'systemMessage': settings_text(told)})
 
 
 def published_bytes(data):
@@ -309,13 +418,14 @@ def published_bytes(data):
         value = data.get(key)
         if isinstance(value, str) and value.strip():
             path = Path(value).expanduser()
-            if not path.is_file():
-                unread.append(f'the file {path} named in {key}, which does not exist or is not a file')
-                continue
             try:
+                if not path.is_file():   # is_file raises for a name too long or a folder it cannot enter
+                    unread.append(f'the file {path} named in {key}, which does not exist or is not a file')
+                    continue
                 return path.read_bytes(), str(path)
-            except OSError as exc:
-                unread.append(f'the file {path} named in {key} ({exc.strerror or exc})')
+            except (OSError, ValueError) as exc:
+                # A file that exists but cannot be read is what the call sends, so no text content stands in.
+                return None, f'the file {path} named in {key} ({type(exc).__name__}: {getattr(exc, "strerror", None) or exc})'
     for key in PUBLISH_TEXT_KEYS:
         value = data.get(key)
         if isinstance(value, str) and value.strip():
@@ -331,38 +441,77 @@ def deny(reason):
                                  'permissionDecisionReason': reason}})
 
 
+def note_hits(tool, src, target, findings):
+    """log_hits for the publish path: a log that cannot be written never stops the denial."""
+    try:
+        log_hits(tool, src, target, findings)
+    except OSError:
+        pass
+
+
+def tool_name(event):
+    name = event.get('tool_name') if isinstance(event, dict) else None
+    return name if isinstance(name, str) else ''
+
+
+def is_publish_tool(event, cfg):
+    """True when the gate's validated publish_tools patterns name the tool."""
+    return any(fnmatch.fnmatchcase(tool_name(event), pat) for pat in cfg['publish_tools'])
+
+
+def may_publish(event):
+    """The error path's detector. True when the built-in list or the configured list names the tool, and True
+    when even that cannot be decided. Never raises."""
+    try:
+        name = tool_name(event)
+        if any(fnmatch.fnmatchcase(name, pat) for pat in DEFAULT_PUBLISH_TOOLS):
+            return True
+    except Exception:
+        return True
+    try:
+        return is_publish_tool(event, gate_config())
+    except Exception:
+        return False   # the built-in list already said no
+
+
 def on_pre_tool(event, args, state):
+    """The denial reason for a publish call, or None when it may go out. main() denies on any exception."""
     cfg = gate_config()
+    if not is_publish_tool(event, cfg):
+        return None
     name = event.get('tool_name') or ''
-    if not any(fnmatch.fnmatchcase(name, pat) for pat in cfg.get('publish_tools') or []):
-        return
-    data, where = published_bytes(event.get('tool_input') or {})
+    tool_input = event.get('tool_input')
+    data, where = published_bytes(tool_input if isinstance(tool_input, dict) else {})
     if data is None:
-        log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
-        deny(f'Not published: the writing check could not read what {name} sends. It could not read {where}. '
-             'Save the content to a file, review it, and pass that file path or the content itself in the call.')
-        return
+        note_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+        return (f'Not published: the writing check could not read what {name} sends. It could not read {where}. '
+                'Save the content to a file, review it, and pass that file path or the content itself in the call.')
     sha = hashlib.sha256(data).hexdigest()
-    if cfg.get('publish_requires', 'full') == 'scan':
-        suffix = Path(where).suffix if Path(where).suffix else '.html'
-        with tempfile.TemporaryDirectory() as tmp:
-            piece = Path(tmp) / f'publish{suffix}'
-            piece.write_bytes(data)
-            status, findings = scan_file(piece, args.register, receipt_dir=tmp)
+    if cfg['publish_requires'] == 'scan':
+        try:
+            suffix = Path(where).suffix if Path(where).suffix else '.html'
+            with tempfile.TemporaryDirectory() as tmp:
+                piece = Path(tmp) / f'publish{suffix}'
+                piece.write_bytes(data)
+                status, findings = scan_file(piece, args.register, receipt_dir=tmp)
+        except (OSError, ValueError) as exc:
+            note_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+            return (f'Not published: the writing check could not set up the scan of {where} '
+                    f'({type(exc).__name__}: {exc}). Save the content to a file with a short name, then publish again.')
         if status == 'fail' and findings:
-            log_hits(args.tool, 'publish', name, findings)
-            deny(f'{where} breaks the writing rules. Rewrite these lines, then publish again:\n' + describe(findings))
-        elif status not in ('pass', 'scan-pass'):
-            log_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
-            deny(f'Not published: the writing check could not read {where} (status {status}). Save the content '
-                 'in a format check.py reads, then publish again.')
-        return
+            note_hits(args.tool, 'publish', name, findings)
+            return f'{where} breaks the writing rules. Rewrite these lines, then publish again:\n' + describe(findings)
+        if status not in ('pass', 'scan-pass'):
+            note_hits(args.tool, 'publish-unresolved', name, [{'rule': 'publish-unresolved', 'text': where}])
+            return (f'Not published: the writing check could not read {where} (status {status}). Save the content '
+                    'in a format check.py reads, then publish again.')
+        return None
     if reviewed(sha):
-        return
-    log_hits(args.tool, 'publish', name, [{'rule': 'publish-without-review', 'text': where}])
-    deny(f'Not published: no passing full review covers {where} (sha256 {sha[:12]}). Save these exact bytes to a '
-         'file, run the full review (check.py --file FILE --full with the line pass, document pass and spot audit '
-         'by a reviewer other than the writer) until it returns pass, then publish the same bytes.')
+        return None
+    note_hits(args.tool, 'publish', name, [{'rule': 'publish-without-review', 'text': where}])
+    return (f'Not published: no passing full review covers {where} (sha256 {sha[:12]}). Save these exact bytes to a '
+            'file, run the full review (check.py --file FILE --full with the line pass, document pass and spot audit '
+            'by a reviewer other than the writer) until it returns pass, then publish the same bytes.')
 
 
 def on_prompt(event, args, state):
@@ -399,10 +548,45 @@ def recurring(days=14, top=3):
 
 def on_session_start(event, args, state):
     top = recurring()
+    parts = []
     if top:
-        text = ('Writing habits that reached the owner most often in the last 14 days. Keep them out: '
-                + '; '.join(f'{rule} ({n} times)' for rule, n in top) + '.')
-        emit({'hookSpecificOutput': {'hookEventName': 'SessionStart', 'additionalContext': text}})
+        parts.append('Writing habits that reached the owner most often in the last 14 days. Keep them out: '
+                     + '; '.join(f'{rule} ({n} times)' for rule, n in top) + '.')
+    notes = untold(state)
+    if notes:
+        parts.append(settings_text(notes))
+    if parts:
+        out = {'hookSpecificOutput': {'hookEventName': 'SessionStart', 'additionalContext': '\n\n'.join(parts)}}
+        if notes:
+            out['systemMessage'] = settings_text(notes)
+        emit(out)
+
+
+def pre_tool(event, args, state):
+    """Run the publish check and emit at most one decision. A publish call is denied on any error, because the
+    host lets a call through when the hook prints nothing or exits with an error other than 2."""
+    try:
+        reason = on_pre_tool(event, args, state)
+    except Exception as error:
+        if not may_publish(event):
+            return 0
+        name = tool_name(event) or 'the publish tool'
+        note_hits(args.tool, 'publish-unresolved', name,
+                  [{'rule': 'publish-unresolved', 'text': f'{type(error).__name__}: {error}'}])
+        reason = (f'Not published: the writing check failed while reading what {name} sends '
+                  f'({type(error).__name__}: {error}), so no review can cover it. Save the content to a readable '
+                  'file with a short name, review it, and publish that file.')
+    notes = []
+    try:
+        if reason or is_publish_tool(event, gate_config()):
+            notes = load_gate()[1] + SCAN_NOTES
+    except Exception:
+        notes = []
+    if reason:
+        deny(reason + ('\n\n' + settings_text(notes) if notes else ''))
+    elif notes:
+        emit({'systemMessage': settings_text(notes)})
+    return 0
 
 
 def main(argv=None):
@@ -414,10 +598,16 @@ def main(argv=None):
         event = json.load(sys.stdin)
     except ValueError:
         return 0
+    if not isinstance(event, dict):
+        return 0
     name = event.get('hook_event_name') or ''
-    path = state_path(event.get('session_id'))
+    path = state_path(str(event.get('session_id') or ''))
     state = read_json(path, {})
-    handler = {'Stop': on_stop, 'PreToolUse': on_pre_tool, 'PostToolUse': on_post_tool,
+    if not isinstance(state, dict):
+        state = {}
+    if name == 'PreToolUse':
+        return pre_tool(event, args, state)
+    handler = {'Stop': on_stop, 'PostToolUse': on_post_tool,
                'UserPromptSubmit': on_prompt, 'SessionStart': on_session_start}.get(name)
     if handler:
         try:

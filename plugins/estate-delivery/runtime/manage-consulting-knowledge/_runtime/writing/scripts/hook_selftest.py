@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Self-test for hook.py. Runs the hook as Claude Code and Codex would, against a temporary rules folder."""
+import contextlib
 import hashlib
+import io
 import json
 import os
 import subprocess
@@ -8,9 +10,12 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 HERE = Path(__file__).resolve().parent
 HOOK = HERE / 'hook.py'
+sys.path.insert(0, str(HERE))
+import hook  # noqa: E402   in-process tests patch its paths to the temporary folder
 CLEAN = ('The renewal report lists every account due in March with its owner and amount. '
          'Finance reads it on Monday and approves the forecast for each account before the call. '
          'Sales updates the close dates in the tracker the same day, and the team checks the totals twice.')
@@ -133,6 +138,51 @@ class HookTest(unittest.TestCase):
         self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
         self.assertIn(f'could not read {binary}', reason(out))
 
+    def test_publish_errors_while_reading_the_content_deny_the_call(self):
+        reason = lambda out: out['hookSpecificOutput']['permissionDecisionReason']
+        # A file name longer than the file system allows: is_file raises instead of returning False.
+        long_name = self.work / ('x' * 300 + '.html')
+        out = self.publish({'file_path': str(long_name), 'content': CLEAN})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('File name too long', reason(out))
+        self.assertIn(str(long_name), reason(out))
+        # A folder the hook cannot enter: is_file raises PermissionError.
+        locked = self.work / 'locked'
+        locked.mkdir()
+        (locked / 'page.html').write_text('<p>' + CLEAN + '</p>')
+        locked.chmod(0)
+        try:
+            if not os.access(locked, os.X_OK):   # root can enter any folder
+                out = self.publish({'file_path': str(locked / 'page.html'), 'content': CLEAN})
+                self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+                self.assertIn('PermissionError', reason(out))
+        finally:
+            locked.chmod(0o755)
+        # A scan whose working file cannot be created: the source suffix makes its name too long.
+        (self.home / 'gate.json').write_text(json.dumps({'include': [], 'exclude': [], 'publish_requires': 'scan'}))
+        odd = self.work / ('p.' + 'h' * 250)
+        odd.write_text('<p>' + CLEAN + '</p>')
+        out = self.publish({'file_path': str(odd)}, tool='mcp__site__publish_page')
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('could not set up the scan', reason(out))
+
+    def test_publish_is_denied_when_the_hook_itself_fails(self):
+        reason = lambda out: out['hookSpecificOutput']['permissionDecisionReason']
+        # gate.json that is JSON but not an object: every setting falls back to its default and the call is held.
+        (self.home / 'gate.json').write_text('[1]')
+        out = self.publish({'content': CLEAN})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('no passing full review', reason(out))
+        self.assertIn('holds [1], not a JSON object', reason(out))
+        # The hits log and the session state cannot be written: the denial still goes out, once, with exit 0.
+        (self.home / 'gate.json').write_text(json.dumps({'include': [], 'exclude': []}))
+        (self.home / 'hits.jsonl').unlink(missing_ok=True)
+        (self.home / 'hits.jsonl').mkdir()
+        (self.home / 'state').write_text('not a folder')
+        out = self.publish({'url': 'https://example.com'})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIsNone(self.publish({'content': CLEAN}, tool='Write'))
+
     def test_publish_scan_mode_and_other_tools(self):
         self.assertIsNone(self.publish({'content': BAD}, tool='Write'))
         (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'exclude': [],
@@ -140,6 +190,168 @@ class HookTest(unittest.TestCase):
         out = self.publish({'content': BAD}, tool='mcp__site__publish_page')
         self.assertIn('delve', out['hookSpecificOutput']['permissionDecisionReason'])
         self.assertIsNone(self.publish({'content': CLEAN}, tool='mcp__site__publish_page'))
+
+    # -- gate.json settings of the wrong type or shape ------------------------------------------------------
+
+    def gate(self, **settings):
+        base = {'include': [str(self.work) + '/*'], 'exclude': []}
+        base.update(settings)
+        (self.home / 'gate.json').write_text(json.dumps(base))
+
+    def assert_denied_with_note(self, out, key, kind='no passing full review'):
+        decision = out['hookSpecificOutput']
+        self.assertEqual(decision['permissionDecision'], 'deny')
+        self.assertIn(kind, decision['permissionDecisionReason'])
+        self.assertIn(f'gate.json setting "{key}" was ignored', decision['permissionDecisionReason'])
+
+    def test_malformed_publish_tools_fall_back_to_the_default_list(self):
+        for value in ('Artifact', 7, ['Artifact', 3], None, [], ['Artifact', '']):
+            with self.subTest(publish_tools=value):
+                self.gate(publish_tools=value)
+                self.assert_denied_with_note(self.publish({'content': CLEAN}), 'publish_tools')
+                self.assert_denied_with_note(self.publish({'content': CLEAN}, tool='mcp__site__publish_page'),
+                                             'publish_tools')
+                self.assertIsNone(self.publish({'content': CLEAN}, tool='Write'))
+        # Content the hook cannot read is still denied for its own reason, with the note.
+        self.gate(publish_tools=7)
+        self.assert_denied_with_note(self.publish({'url': 'https://example.com'}), 'publish_tools',
+                                     kind='could not read what Artifact sends')
+
+    def test_a_valid_publish_tools_list_is_used_as_written(self):
+        self.gate(publish_tools=['mcp__site__ship'])
+        self.assertIsNone(self.publish({'content': CLEAN}))   # Artifact is not on this list
+        out = self.publish({'content': CLEAN}, tool='mcp__site__ship')
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertNotIn('ignored', out['hookSpecificOutput']['permissionDecisionReason'])
+
+    def test_malformed_publish_requires_falls_back_to_full(self):
+        for value in ('Scan', 5, ['scan'], None):
+            with self.subTest(publish_requires=value):
+                self.gate(publish_requires=value)
+                out = self.publish({'content': CLEAN}, tool='mcp__site__publish_page')
+                self.assert_denied_with_note(out, 'publish_requires')
+
+    def test_unreadable_gate_json_is_reported(self):
+        (self.home / 'gate.json').write_text('{"publish_tools": ')
+        out = self.publish({'content': CLEAN})
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIn('could not be read (JSONDecodeError', out['hookSpecificOutput']['permissionDecisionReason'])
+
+    def test_malformed_gate_numbers_and_lists_keep_the_gate_working(self):
+        # max_blocks_per_file as a string once raised inside the Stop handler and released every deliverable.
+        for value in ('2', True, 0, None, 1.5):
+            with self.subTest(max_blocks_per_file=value):
+                session = f'blocks-{value}'
+                self.gate(max_blocks_per_file=value)
+                path = self.work / 'page.html'
+                path.write_text('<p>' + CLEAN + '</p>')
+                wrote = self.run_hook({'hook_event_name': 'PostToolUse', 'session_id': session, 'tool_name': 'Write',
+                                       'tool_input': {'file_path': str(path)}})
+                self.assertIn('gate.json setting "max_blocks_per_file" was ignored',
+                              wrote['hookSpecificOutput']['additionalContext'])
+                first = self.stop(CLEAN, session=session)
+                self.assertEqual(first['decision'], 'block')
+                self.assertNotIn('ignored', first['reason'])   # told once per session
+                self.assertEqual(self.stop(CLEAN, session=session)['decision'], 'block')
+                self.assertIn('Not fully reviewed', self.stop(CLEAN, session=session)['systemMessage'])
+        # extensions holding a non-string: the default suffixes apply, so the page is still a deliverable.
+        self.gate(extensions=['.html', 5])
+        path = self.work / 'brief.html'
+        path.write_text('<p>' + CLEAN + '</p>')
+        out = self.run_hook({'hook_event_name': 'PostToolUse', 'session_id': 'ext', 'tool_name': 'Write',
+                             'tool_input': {'file_path': str(path)}})
+        self.assertIn('gate.json setting "extensions" was ignored', out['hookSpecificOutput']['additionalContext'])
+        self.assertEqual(self.stop(CLEAN, session='ext')['decision'], 'block')
+        # exclude as a number once raised before the file scan ran; include as a string matched single characters.
+        self.gate(exclude=7, include=str(self.work) + '/*')
+        note = self.work / 'note.md'
+        note.write_text(BAD)
+        out = self.run_hook({'hook_event_name': 'PostToolUse', 'session_id': 'excl', 'tool_name': 'Write',
+                             'tool_input': {'file_path': str(note)}})
+        self.assertEqual(out['decision'], 'block')
+        self.assertIn('delve', out['reason'])
+        self.assertIn('gate.json setting "exclude" was ignored', out['reason'])
+        self.assertIn('gate.json setting "include" was ignored', out['reason'])
+
+    def test_session_start_tells_the_session_which_settings_were_ignored(self):
+        self.gate(publish_tools='Artifact')
+        out = self.run_hook({'hook_event_name': 'SessionStart', 'session_id': 'start'})
+        self.assertIn('"publish_tools" was ignored', out['hookSpecificOutput']['additionalContext'])
+        self.assertIn('"publish_tools" was ignored', out['systemMessage'])
+        self.assertIsNone(self.stop(CLEAN, session='start'))   # already told
+
+    def test_a_malformed_ledger_setting_is_told_and_the_scan_still_blocks(self):
+        ledger = json.loads((self.rules / 'patterns.json').read_text())
+        ledger['config']['hard_weight'] = '3'
+        (self.rules / 'patterns.json').write_text(json.dumps(ledger))
+        out = self.stop(BAD, session='ledger')
+        self.assertEqual(out['decision'], 'block')
+        self.assertIn('delve', out['reason'])
+        self.assertIn('ledger setting "hard_weight"', out['reason'])
+
+    def test_receipts_of_the_wrong_shape_are_skipped(self):
+        page = self.work / 'page.html'
+        page.write_text('<p>' + CLEAN + '</p>')
+        sha = hashlib.sha256(page.read_bytes()).hexdigest()
+        receipts = self.home / 'receipts'
+        receipts.mkdir()
+        (receipts / 'list.json').write_text('[1, 2]')
+        (receipts / 'steps.json').write_text(json.dumps({'sha256': sha, 'status': 'pass', 'steps': 'all ok'}))
+        (receipts / 'items.json').write_text(json.dumps({'sha256': sha, 'status': 'pass', 'steps': ['ok', 3]}))
+        out = self.publish({'file_path': str(page)})
+        self.assertIn('no passing full review', out['hookSpecificOutput']['permissionDecisionReason'])
+        self.run_hook({'hook_event_name': 'PostToolUse', 'session_id': 'rcpt', 'tool_name': 'Write',
+                       'tool_input': {'file_path': str(page)}})
+        self.assertEqual(self.stop(CLEAN, session='rcpt')['decision'], 'block')
+
+    # -- the error path, in process -----------------------------------------------------------------------
+
+    def in_process(self, event, **patches):
+        paths = {'GATE_CONFIG': self.home / 'gate.json', 'HITS': self.home / 'hits.jsonl',
+                 'RECEIPTS': self.home / 'receipts'}
+        out = io.StringIO()
+        with contextlib.ExitStack() as stack:
+            for name, value in {**paths, **patches}.items():
+                stack.enter_context(mock.patch.object(hook, name, value))
+            stack.enter_context(contextlib.redirect_stdout(out))
+            code = hook.pre_tool(event, mock.Mock(tool='claude-code', register='megan'), {})
+        self.assertEqual(code, 0)
+        return json.loads(out.getvalue()) if out.getvalue().strip() else None
+
+    def test_any_error_on_a_default_publish_call_denies(self):
+        def broken(*_):
+            raise TypeError('boom')
+        event = {'hook_event_name': 'PreToolUse', 'tool_name': 'Artifact', 'tool_input': {'content': CLEAN}}
+        for value in (7, 'Artifact', ['Artifact', None], None):
+            with self.subTest(publish_tools=value):
+                self.gate(publish_tools=value)
+                out = self.in_process(event, on_pre_tool=broken)
+                self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+                self.assertIn('TypeError: boom', out['hookSpecificOutput']['permissionDecisionReason'])
+        # Even when loading the settings fails, the built-in list decides, and a non-publish call is let through.
+        out = self.in_process(event, on_pre_tool=broken, gate_config=broken, load_gate=broken)
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        self.assertIsNone(self.in_process(dict(event, tool_name='Write'), on_pre_tool=broken, gate_config=broken,
+                                          load_gate=broken))
+        # A configured publish tool outside the built-in list is denied on error too.
+        self.gate(publish_tools=['mcp__site__ship'])
+        out = self.in_process(dict(event, tool_name='mcp__site__ship'), on_pre_tool=broken)
+        self.assertEqual(out['hookSpecificOutput']['permissionDecision'], 'deny')
+        # A tool name that is not a string never raises.
+        self.assertIsNone(self.in_process(dict(event, tool_name=['Artifact']), on_pre_tool=broken))
+        self.assertTrue(hook.may_publish({'tool_name': 'Artifact'}))
+        self.assertFalse(hook.may_publish({'tool_name': 7}))
+        self.assertFalse(hook.may_publish(None))
+
+    def test_a_write_the_log_cannot_record_is_reported(self):
+        (self.home / 'writers.jsonl').mkdir(parents=True)   # the log path cannot be opened for append
+        path = self.work / 'verdicts.json'
+        path.write_text('{}')
+        out = self.run_hook({'hook_event_name': 'PostToolUse', 'session_id': 's4', 'tool_name': 'Write',
+                             'tool_input': {'file_path': str(path)}})
+        self.assertEqual(out['decision'], 'block')
+        self.assertIn('could not record that this session wrote verdicts.json', out['reason'])
+        self.assertIn('--writer', out['reason'])
 
     def test_gate_holds_an_unreviewed_deliverable_then_releases(self):
         path = self.work / 'page.html'

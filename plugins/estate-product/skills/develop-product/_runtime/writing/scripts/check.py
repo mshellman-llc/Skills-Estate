@@ -14,6 +14,11 @@ JSON on stdout:
      "findings": [{"line": N, "rule": "id", "text": "...", "fix": "..."}],
      "receipt": "path"}
 
+A ledger threshold in "config", or a rule's weight or min_count, with the wrong type
+or range is ignored: the built-in default is used and "config_ignored" lists
+each one. A rule list, rule entry, id, scope or registers the check cannot read
+stops the run as incomplete.
+
 In scope: every word a person will read. Exempt: code, quotations kept word for
 word, front matter and lines with no words. The file is extracted to numbered
 lines, split into parts of at most 300 lines and scanned with the pattern
@@ -134,14 +139,94 @@ def load_rules(arg):
             try:
                 raw = path.read_bytes()
                 ledger = json.loads(raw.decode('utf-8'))
-                ledger['rules'], ledger.setdefault('config', {})
+                if not isinstance(ledger, dict):
+                    raise TypeError(f'it holds {type(ledger).__name__}, not an object')
+                ledger['rules']
             except (OSError, ValueError, KeyError, TypeError) as error:
                 raise Incomplete(f'pattern ledger {path} cannot be read: {error}')
+            ignored = check_rule_entries(ledger['rules'], path)
+            ledger['config'], config_ignored = ledger_config(ledger.get('config', {}), 'config' in ledger, path)
+            info['config_ignored'] = config_ignored + ignored
             info.update(ledger=str(path), ledger_source=source, ledger_sha256=sha(raw))
             info['rules_sha256'] = sha(info['ledger_sha256'] + (info['rules_md_sha256'] or ''))
             return ledger, info
     raise Incomplete('no pattern ledger found; pass --rules-dir, set WRITING_HOME or write the rules '
                      'folder path to ~/.agents/writing/home')
+
+
+def _number(value, least, whole=False):
+    if isinstance(value, bool) or not isinstance(value, int if whole else (int, float)):
+        return False
+    return value == value and value not in (float('inf'), float('-inf')) and value >= least
+
+
+# Settings in the ledger's "config" object the check reads: (built-in default, test, what a valid value is).
+# Each matches the default judge() and active_rules() fall back to when the setting is absent.
+LEDGER_SETTINGS = {
+    'em_dash': (False, lambda v: isinstance(v, bool), 'true or false'),
+    'min_words': (40, lambda v: _number(v, 0), 'a number of 0 or more'),
+    'density_floor_words': (250, lambda v: _number(v, 1), 'a number of 1 or more'),
+    'flag_density': (4, lambda v: _number(v, 0) and v > 0, 'a number above 0'),
+    'repeat_limit': (3, lambda v: _number(v, 1), 'a number of 1 or more'),
+    'repeat_density': (1.5, lambda v: _number(v, 0) and v > 0, 'a number above 0'),
+    'hard_weight': (3, lambda v: _number(v, 0) and v > 0, 'a number above 0'),
+}
+RULE_NUMBERS = {   # per-rule numbers: (built-in default, test, what a valid value is)
+    'weight': (1, lambda v: _number(v, 0), 'a number of 0 or more'),
+    'min_count': (1, lambda v: _number(v, 1, whole=True), 'a whole number of 1 or more'),
+}
+
+
+def shown_value(value):
+    text = json.dumps(value, ensure_ascii=False)
+    return text if len(text) <= 60 else text[:57] + '...'
+
+
+def ledger_config(config, present, path):
+    """The ledger's config with every malformed setting the check reads replaced by its built-in default.
+
+    Returns (config, notes), one note per setting ignored. A config that is not an object is replaced whole."""
+    notes = []
+    if not isinstance(config, dict):
+        notes.append(f'the "config" in pattern ledger {path} is {shown_value(config)}, not an object, so every '
+                     'threshold uses its built-in default')
+        config = {}
+    elif not present:
+        return {}, notes
+    config = dict(config)
+    for key, (default, valid, want) in LEDGER_SETTINGS.items():
+        if key in config and not valid(config[key]):
+            notes.append(f'ledger setting "{key}" in {path} was ignored: it is {shown_value(config[key])} and must '
+                         f'be {want}, so the built-in default {shown_value(default)} is used')
+            config[key] = default
+    return config, notes
+
+
+def check_rule_entries(rules, path):
+    """Stop the run on a rule list the check cannot place; replace a malformed rule number with its default.
+
+    A rule's scope and registers decide where it applies, and a rule with no usable id cannot be reported, so
+    there is no default that keeps it honest: those stop the run. Returns one note per number ignored."""
+    if not isinstance(rules, list):
+        raise Incomplete(f'pattern ledger {path} cannot be read: "rules" is {shown_value(rules)}, not a list')
+    notes = []
+    for n, rule in enumerate(rules, 1):
+        if not isinstance(rule, dict):
+            raise Incomplete(f'pattern ledger {path} cannot be read: rule {n} is {shown_value(rule)}, not an object')
+        name = rule.get('id')
+        if not isinstance(name, str) or not name.strip():
+            raise Incomplete(f'pattern ledger {path} cannot be read: rule {n} has no id (it is {shown_value(name)})')
+        if 'scope' in rule and not isinstance(rule['scope'], str):
+            raise Incomplete(f'rule {name} cannot run: its scope is {shown_value(rule["scope"])}, not a name')
+        registers = rule.get('registers')
+        if registers is not None and not (isinstance(registers, list) and all(isinstance(r, str) for r in registers)):
+            raise Incomplete(f'rule {name} cannot run: its registers are {shown_value(registers)}, not a list of names')
+        for key, (default, valid, want) in RULE_NUMBERS.items():
+            if key in rule and not valid(rule[key]):
+                notes.append(f'rule {name} setting "{key}" in {path} was ignored: it is {shown_value(rule[key])} '
+                             f'and must be {want}, so the built-in default {default} is used')
+                rule[key] = default
+    return notes
 
 
 def valid_registers(home, ledger):
@@ -608,16 +693,42 @@ def load_verdicts(paths):
     stamps = {f.get('rules_sha256') for f in files}
     if len(stamps) != 1:
         raise Incomplete('the verdict files were written against different rules')
-    reviewers, sessions = [], []
-    for f in files:
+    reviewers, sessions, wrote = [], [], []
+    for p, f in zip(paths, files):
         name = str(f.get('reviewer') or '').strip()
-        if name and name not in reviewers:
+        if not name:
+            raise Incomplete(f'verdict file {p} does not name its reviewer')
+        if name not in reviewers:
             reviewers.append(name)
-        session = str(f.get('session') or '').strip()
-        if session and session not in sessions:
-            sessions.append(session)
+        for session in split_names(f.get('session')):
+            if session not in sessions:
+                sessions.append(session)
+        for session in names_list(f.get('verdict_writers')):
+            if session not in wrote:
+                wrote.append(session)
     return {'rules_sha256': stamps.pop(), 'reviewer': ' + '.join(reviewers), 'session': ' + '.join(sessions),
-            'verdicts': [v for f in files for v in f.get('verdicts') or []]}
+            'verdict_writers': wrote, 'verdicts': [v for f in files for v in f.get('verdicts') or []]}
+
+
+def split_names(value):
+    """The names in a ' + ' joined field, as load_verdicts writes them for merged files."""
+    return [n.strip() for n in str(value or '').split(' + ') if n.strip()]
+
+
+def names_list(value):
+    """A list of session names; a carried file records the sessions that wrote its source verdict files."""
+    return [str(n).strip() for n in value if str(n).strip()] if isinstance(value, list) else []
+
+
+def verdict_writers(data, paths):
+    """Every session known to have written these verdicts: the sessions a carried file recorded, and every
+    session the hook saw writing the verdict files themselves."""
+    found = names_list(data.get('verdict_writers'))
+    for p in paths or []:
+        for session in sessions_that_wrote(p):
+            if session not in found:
+                found.append(session)
+    return found
 
 
 def writers_log():
@@ -638,8 +749,12 @@ def writes_to(path):
                     continue
                 if isinstance(item, dict) and item.get('path') == target and str(item.get('session') or '').strip():
                     found.append(item)
-    except OSError:
-        return []
+    except FileNotFoundError:
+        return []   # no file tool has written anything yet
+    except (OSError, UnicodeDecodeError) as error:
+        # Without the log the check cannot tell who wrote the piece or the verdicts, so the review cannot count.
+        raise Incomplete(f'the writer log {writers_log()} cannot be read ({type(error).__name__}: {error}), so '
+                         'the reviewer cannot be checked against the writer')
     return found
 
 
@@ -681,14 +796,13 @@ def piece_writers(path, names):
 def writer_problem(data, paths, writers):
     """Why a verdict set cannot count as an independent review, or None.
 
-    The reviewer is the names in `reviewer`, the `session` the file states and every session the hook saw
-    writing the verdict files. Any of them matching the piece's writer rejects the set."""
-    names = {n.strip() for n in str(data.get('reviewer') or '').split(' + ') if n.strip()}
+    The reviewer is the names in `reviewer`, the `session` the file states, the sessions a carried file
+    recorded in `verdict_writers` and every session the hook saw writing the verdict files. Any of them
+    matching the piece's writer rejects the set."""
+    names = set(split_names(data.get('reviewer')))
     if not names:
         return 'the verdict file does not name its reviewer'
-    ids = names | {n.strip() for n in str(data.get('session') or '').split(' + ') if n.strip()}
-    for p in paths or []:
-        ids |= set(sessions_that_wrote(p))
+    ids = names | set(split_names(data.get('session'))) | set(verdict_writers(data, paths))
     same = sorted(ids & writers)
     if same:
         return ('the reviewer is the session that wrote the piece (' + ', '.join(same)
@@ -1116,7 +1230,7 @@ def workers(records):
     return groups
 
 
-def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
+def prepare(path, records, rules, out, verdicts=None, review=(), sources=None, verdict_paths=(), writers=()):
     out = Path(out)
     (out / 'text').mkdir(parents=True, exist_ok=True)
     for old in (out / 'text').glob('part-*.md'):
@@ -1137,8 +1251,11 @@ def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
     def entry(r):
         return {'id': r['id'], 'sha': r['sha'], 'section': r['section_sha'], 'loc': r['loc'],
                 'text': r['text'], 'flags': flagged.get(r['id'], [])}
-    carried = []
-    if verdicts and verdicts.get('rules_sha256') == rules['rules_sha256']:
+    carried, refused = [], None
+    if verdicts:
+        # A verdict set from the writer is never carried: carrying would drop the evidence that rejects it.
+        refused = writer_problem(verdicts, verdict_paths, set(writers))
+    if verdicts and not refused and verdicts.get('rules_sha256') == rules['rules_sha256']:
         by_line = {r['id']: r for r in scope}
         for v in verdicts.get('verdicts') or []:
             vid = v.get('id') if isinstance(v, dict) else None
@@ -1163,10 +1280,16 @@ def prepare(path, records, rules, out, verdicts=None, review=(), sources=None):
     if (out / 'carried.json').exists():
         (out / 'carried.json').unlink()
     if carried:
+        # The carried file keeps the reviewer's provenance: its names, the session it stated and every session
+        # that wrote the source verdict files, so the independence check still sees them after carrying.
         (out / 'carried.json').write_text(json.dumps(
             {'rules_sha256': rules['rules_sha256'], 'reviewer': str(verdicts.get('reviewer') or '').strip(),
+             'session': ' + '.join(split_names(verdicts.get('session'))),
+             'verdict_writers': verdict_writers(verdicts, verdict_paths),
              'verdicts': carried}, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
-    if verdicts:
+    if refused:
+        plan['carry_refused'] = refused
+    if verdicts and not refused:
         wanted = set(audit_sample(records, verdicts))
         plan['audit'] = [entry(r) for r in scope if r['id'] in wanted]
     (out / 'assignments.json').write_text(json.dumps(plan, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
@@ -1217,6 +1340,8 @@ def run(args):
                            + ', '.join(known))
             else:
                 detail += f'; register {name} adds {count} rules' + ('' if count else ', its guidance is in registers.md')
+        for note in rules_info['config_ignored']:
+            detail += '; ' + note
         step('rules', 'ok', detail)
         records, source_lines = extract(path, 'commit' in registers)
         record.update(sha256=sha(path.read_bytes()), bytes=path.stat().st_size, text_sha256=text_sha(records))
@@ -1392,9 +1517,15 @@ def run(args):
         try:
             made = prepare(path, records, rules_info, args.prepare,
                            load_verdicts(args.verdicts) if args.verdicts else None, review,
-                           source_names(args.sources) if args.sources else None)
+                           source_names(args.sources) if args.sources else None,
+                           args.verdicts or (), piece_writers(path, args.writer) if args.verdicts else ())
             record['purpose'] = 'prepare'
-            step('prepare', 'ok', f'{made} and the text parts were rewritten; verdict, map and audit files were not touched')
+            refused = json.loads(made.read_text(encoding='utf-8')).get('carry_refused')
+            if refused:
+                step('prepare', 'failed', f'{made} sends every line to a new reviewer; no verdict was carried '
+                     f'and no audit sample was drawn, because {refused}')
+            else:
+                step('prepare', 'ok', f'{made} and the text parts were rewritten; verdict, map and audit files were not touched')
         except (OSError, Incomplete) as error:
             step('prepare', 'failed', str(error))
     record['findings'] = [present(f, by_id) for f in sorted(findings, key=lambda f: f['id'])]
@@ -1449,6 +1580,9 @@ def summary(record):
         out['logged'] = record['logged']
     out['advisories'] = len(record['advisories'])
     out['review'] = len(record.get('review', []))
+    ignored = (record.get('rules') or {}).get('config_ignored')
+    if ignored:
+        out['config_ignored'] = ignored
     return out
 
 
@@ -1531,6 +1665,8 @@ def main(argv=None):
         print(f'  line {f["line"]} [{f["id"]}] {f["rule"]}: "{f["text"]}"\n      {f["fix"]}')
     for f in record.get('logged') or []:
         print(f'  logged, not blocking: line {f["line"]} [{f["id"]}] {f["rule"]}: "{f["text"]}"')
+    for note in (record.get('rules') or {}).get('config_ignored') or []:
+        print('  setting ignored: ' + note)
     if record.get('reason'):
         print('Not complete: ' + record['reason'])
     print(f'Receipt: {record["receipt"]}')

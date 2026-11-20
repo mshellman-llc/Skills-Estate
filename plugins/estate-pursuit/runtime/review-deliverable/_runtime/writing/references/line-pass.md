@@ -121,6 +121,6 @@ One agent can run the whole review when no workers are available, as long as it 
 
 ## Later rounds
 
-A changed line has a new `sha`. The script rejects only that line's old verdict; its neighbours keep theirs. `--prepare` with `--verdicts` writes the standing verdicts to `carried.json` and assigns only the lines that need one. A change to `rules.md` or `patterns.json` changes `rules_sha256` and sends every line back. The owner can ask for a full pass at any time; delete the verdict file to start one.
+A changed line has a new `sha`. The script rejects only that line's old verdict; its neighbours keep theirs. `--prepare` with `--verdicts` writes the standing verdicts to `carried.json` and assigns only the lines that need one. `carried.json` keeps the reviewer, the session and the sessions that wrote the source verdict files. A set whose reviewer wrote the piece is never carried. A change to `rules.md` or `patterns.json` changes `rules_sha256` and sends every line back. The owner can ask for a full pass at any time; delete the verdict file to start one.
 
 Pass `--round N` on each validation. From round 3, `severity: style` fixes and the map's repeats, recaps and term choices are logged instead of blocking. Reviewers in later rounds judge each line fresh, but a style preference that reverses an earlier round's fix is `severity: style`.

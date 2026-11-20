@@ -320,6 +320,54 @@ class NeverSilent(Base):
                 os.environ.pop(key, None)
             os.environ.update({k: v for k, v in saved.items() if v is not None})
 
+    def test_malformed_ledger_settings_fall_back_to_their_defaults_and_are_listed(self):
+        path = self.write('reply.md', 'The report is attached.\n\nI hope this helps.\n')
+        for key, value in (('hard_weight', '3'), ('hard_weight', None), ('min_words', [40]), ('flag_density', 0),
+                           ('density_floor_words', 0), ('repeat_limit', True), ('repeat_density', 'x'),
+                           ('em_dash', 'yes')):
+            with self.subTest(**{key: value}):
+                self.ledger(dict(LEDGER, config=dict(LEDGER['config'], **{key: value})))
+                code, result = self.check(path)
+                self.assertEqual((code, result['status']), (1, 'fail'))
+                self.assertEqual([f['rule'] for f in result['findings']], ['residue'])
+                self.assertEqual(len(result['config_ignored']), 1)
+                self.assertIn(f'ledger setting "{key}"', result['config_ignored'][0])
+                self.assertIn(f'ledger setting "{key}"', self.receipt(result)['steps'][0]['detail'])
+        for config in ('strict', 7, ['hard_weight'], None):
+            with self.subTest(config=config):
+                self.ledger(dict(LEDGER, config=config))
+                code, result = self.check(path)
+                self.assertEqual(code, 1)
+                self.assertIn('not an object', result['config_ignored'][0])
+        self.ledger(LEDGER)
+        self.assertNotIn('config_ignored', self.check(path)[1])
+        no_config = {k: v for k, v in LEDGER.items() if k != 'config'}
+        self.ledger(no_config)
+        self.assertNotIn('config_ignored', self.check(path)[1])
+
+    def test_malformed_rule_numbers_fall_back_and_unplaceable_rules_stop_the_run(self):
+        path = self.write('reply.md', 'The report is attached.\n\nI hope this helps.\n')
+        for key, value in (('weight', '3'), ('weight', None), ('min_count', 0), ('min_count', 1.5)):
+            with self.subTest(**{key: value}):
+                rules = [dict(LEDGER['rules'][0], **{key: value})] + LEDGER['rules'][1:]
+                self.ledger(dict(LEDGER, rules=rules))
+                code, result = self.check(path)
+                self.assertNotEqual(result['status'], 'incomplete')
+                self.assertIn(f'rule residue setting "{key}"', result['config_ignored'][0])
+        for rules, words in (('all', 'not a list'), ({'id': 'x'}, 'not a list'), (['residue'], 'not an object'),
+                             ([dict(LEDGER['rules'][0], id=None)], 'has no id'),
+                             ([dict(LEDGER['rules'][0], scope=['general'])], 'scope'),
+                             ([dict(LEDGER['rules'][0], registers='megan')], 'registers')):
+            with self.subTest(rules=rules):
+                self.ledger(dict(LEDGER, rules=rules))
+                code, result = self.check(path)
+                self.assertEqual((code, result['status']), (2, 'incomplete'))
+                self.assertIn(words, result['reason'])
+        self.ledger(['not', 'a', 'ledger'])
+        code, result = self.check(path)
+        self.assertEqual(code, 2)
+        self.assertIn('not an object', result['reason'])
+
     def test_unreadable_command_line_still_returns_json_and_exit_2(self):
         out, err = io.StringIO(), io.StringIO()
         with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
@@ -762,6 +810,69 @@ class Review(Base):
         audit, _ = self.audit(verdicts, reviewer='auditor-session')
         code, result = self.full(verdicts, document_map, '--audit', audit)
         self.assertEqual((code, self.step(result, 'spot audit')), (2, 'failed'))
+
+    def test_prepare_never_carries_a_verdict_from_the_writer(self):
+        named = json.loads(Path(self.verdicts(reviewer='worker 1')).read_text())
+        named['session'] = 'writer-session'
+        verdicts, document_map = self.save('verdicts.json', named), self.document_map()
+        self.write_log({'session': 'writer-session', 'path': str(self.path.resolve())})
+        self.assertEqual(self.step(self.full(verdicts, document_map)[1], 'line pass'), 'failed')
+        self.path.write_text(self.TEXT.replace('14 accounts', '15 accounts'))
+        self.write_log({'session': 'writer-session', 'path': str(self.path.resolve())})
+        code, result = self.check(self.path, '--prepare', str(self.work), '--verdicts', verdicts,
+                                  '--sources', str(self.sources))
+        self.assertEqual((code, self.step(result, 'prepare')), (2, 'failed'))
+        self.assertIn('writer-session', self.detail(result, 'prepare'))
+        self.assertFalse((self.work / 'carried.json').exists())
+        plan = json.loads((self.work / 'assignments.json').read_text())
+        self.assertEqual(sum(len(w['lines']) for w in plan['workers']), 5)   # every line goes to a new reviewer
+        self.assertNotIn('audit', plan)
+        # Validation with what prepare left still returns incomplete.
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual((code, result['status'], self.step(result, 'line pass')), (2, 'incomplete', 'failed'))
+
+    def test_carried_verdicts_keep_the_reviewer_session_and_writer_history(self):
+        named = json.loads(Path(self.verdicts(reviewer='worker 1')).read_text())
+        named['session'] = 'reviewer-session'
+        verdicts, document_map = self.save('verdicts.json', named), self.document_map()
+        piece, verdict_file = str(self.path.resolve()), str(Path(verdicts).resolve())
+        self.path.write_text(self.TEXT.replace('14 accounts', '15 accounts'))
+        self.write_log({'session': 'writer-session', 'path': piece},
+                       {'session': 'verdict-session', 'path': verdict_file})
+        self.load_plan('--verdicts', verdicts)
+        carried_path = self.work / 'carried.json'
+        carried = json.loads(carried_path.read_text())
+        self.assertEqual((carried['reviewer'], carried['session'], carried['verdict_writers']),
+                         ('worker 1', 'reviewer-session', ['verdict-session']))
+        worker = self.save('verdicts-w1.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': 'worker 2',
+                                                'verdicts': [self.verdict(line) for line in self.lines]})
+        code, result = self.check(self.path, '--verdicts', str(carried_path), worker,
+                                  '--document-map', document_map, '--sources', str(self.sources))
+        self.assertEqual(self.step(result, 'line pass'), 'ok')
+        # The log later shows the reviewer's session and the verdict file's writer changing the piece. The
+        # carried file still names both, so the merged set is rejected though the original files are gone.
+        Path(verdicts).unlink()
+        for session in ('reviewer-session', 'verdict-session'):
+            self.write_log({'session': 'writer-session', 'path': piece}, {'session': session, 'path': piece})
+            code, result = self.check(self.path, '--verdicts', str(carried_path), worker,
+                                      '--document-map', document_map, '--sources', str(self.sources))
+            self.assertEqual((code, result['status'], self.step(result, 'line pass')), (2, 'incomplete', 'failed'))
+            self.assertIn(session, self.detail(result, 'line pass'))
+
+    def test_unreadable_writer_log_and_an_unnamed_worker_file_make_the_review_incomplete(self):
+        verdicts, document_map = self.verdicts(reviewer='worker 1'), self.document_map()
+        self.agent_home.mkdir(exist_ok=True)
+        (self.agent_home / 'writers.jsonl').mkdir()   # a log that exists but cannot be read
+        code, result = self.full(verdicts, document_map)
+        self.assertEqual((code, self.step(result, 'line pass')), (2, 'failed'))
+        self.assertIn('writer log', self.detail(result, 'line pass'))
+        (self.agent_home / 'writers.jsonl').rmdir()
+        unnamed = self.save('verdicts-w2.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': '',
+                                                 'verdicts': []})
+        code, result = self.check(self.path, '--verdicts', verdicts, unnamed, '--document-map', document_map,
+                                  '--sources', str(self.sources))
+        self.assertEqual(self.step(result, 'line pass'), 'failed')
+        self.assertIn('does not name its reviewer', self.detail(result, 'line pass'))
 
     def test_writers_count_up_to_the_content_under_review(self):
         verdicts, document_map = self.verdicts(reviewer='later-session'), self.document_map()
