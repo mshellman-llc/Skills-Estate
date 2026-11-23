@@ -228,6 +228,10 @@
     "0.4.53": {
       "content_sha256": "8e0c731f0b1139d7c7b8385c6dd2d89feb0e694763a0c0efc326b19dead82559",
       "note": "Block failed reply rewrites until clean, scan short replies, and preserve blocking decisions through logging, deliverable and state errors."
+    },
+    "0.4.54": {
+      "content_sha256": "7f961f95bac2ba1c0e4725cdefac6dbf8233a614f26a58e9b3fb7b1a457009ed",
+      "note": "Block failed reply rewrites and short bold-label replies; preserve the block through unrelated I/O errors and refresh the reviewed writing guide."
     }
   },
   "source_conflicts": [
