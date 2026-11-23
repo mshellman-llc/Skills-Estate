@@ -387,6 +387,12 @@
           "featured": false,
           "order": 1000
         },
+        "publish-content": {
+          "visible": true,
+          "download": true,
+          "featured": false,
+          "order": 1000
+        },
         "reconcile-knowledge": {
           "visible": true,
           "download": true,
@@ -532,6 +538,12 @@
           "order": 1000
         },
         "write-statement-of-work": {
+          "visible": true,
+          "download": true,
+          "featured": false,
+          "order": 1000
+        },
+        "writing": {
           "visible": true,
           "download": true,
           "featured": false,
