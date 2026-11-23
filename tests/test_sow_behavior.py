@@ -302,10 +302,11 @@ class SowBehaviorTests(unittest.TestCase):
         text=self.document_text(out)
         self.assertIn('Synthetic fixture preamble. Example Delivery LLC Northwind Outfitters Holdings LLC',text)
         self.assertIn('Prepared for Northwind Outfitters',text)
-        self.assertGreaterEqual(text.count('Northwind Outfitters Holdings LLC'),3)   # parties, notices, signature block
+        self.assertGreaterEqual(text.count('Northwind Outfitters Holdings LLC'),4)   # parties, notices, accounts payable, signature block
         self.assertEqual(0,self.verify(out,source).returncode)
         log=next((out.parent/'_source').glob('*Resolution Log.md')).read_text()
         self.assertIn('| Parties | clientLegalName | Northwind Outfitters Holdings LLC | projectContext.clientLegalName |  |',log)
+        self.assertIn('| Section 9.4 | clientLegalName | Northwind Outfitters Holdings LLC | projectContext.clientLegalName |  |',log)
 
     def test_unknown_legal_entity_is_flagged_not_copied_from_the_trading_name(self):
         model=copy.deepcopy(self.model)

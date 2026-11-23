@@ -375,7 +375,7 @@ function build(){const c=[];
   c.push(clzP(PRICING_MODEL==="tm"?AC.TM_UPFRONT:AC.FIXED_INVOICES,{UPFRONT:upfront}));
   c.push(clzP(AC.EXPENSES_CARVEOUT));
   c.push(P([T(AC.REMITTANCE_BILLTO_LABEL,{size:22,color:INK})],{keepNext:true}));
-  c.push(P([eng(ctx.accountName,"Section 9.4","client A/P recipient","projectContext.accountName"),new TextRun({break:1}),reason(ctx.accountsPayable,"Section 9.4","client A/P address & email","confirm accounts-payable address and email","not in quote")]));
+  c.push(P([legalNameRun("Section 9.4"),new TextRun({break:1}),reason(ctx.accountsPayable,"Section 9.4","client A/P address & email","confirm accounts-payable address and email","not in quote")]));
   c.push(P([T(AC.REMITTANCE_PAY_LABEL,{size:22,color:INK})],{keepNext:true}));
   // Stacked layout: label on its own line, each detail line on its own line (matches the live SOWs).
   const stacked=(label,lines)=>P([T(label,{size:22,bold:true,color:INK}),...lines.flatMap(l=>[new TextRun({break:1}),T(l,{size:22,color:INK})])]);
