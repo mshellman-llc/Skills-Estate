@@ -18,6 +18,7 @@ import json
 import subprocess
 import sys
 import tempfile
+import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -44,6 +45,15 @@ SOUND_REWRITTEN = (
 WARNING_ONLY = (
     "The parser serves as the entry point. The router stands as the final gate.\n"
 )
+
+
+def write_docx(path: Path, paragraphs: list) -> None:
+    """A minimal synthetic Word file: a zip holding word/document.xml."""
+    body = "".join("<w:p><w:r><w:t>{}</w:t></w:r></w:p>".format(text) for text in paragraphs)
+    xml = ('<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/'
+           'wordprocessingml/2006/main"><w:body>{}</w:body></w:document>'.format(body))
+    with zipfile.ZipFile(path, "w") as archive:
+        archive.writestr("word/document.xml", xml)
 
 
 def run(args: list) -> subprocess.CompletedProcess:
@@ -178,11 +188,55 @@ def main() -> int:
         expect("missing_fields_rejected",
                p.returncode == 1 and "missing-field" in p.stdout, p.stdout)
 
+        # 12. A Word before-copy and after-copy: the figure tie-out reads the
+        #     extracted text, not the zip bytes (UnicodeDecodeError before the fix).
+        word_before = root / "before.docx"
+        word_after = root / "after.docx"
+        write_docx(word_before, ["Batch completion dropped from two days to 17 hours.",
+                                 "The test operator now reviews seven exceptions a week."])
+        write_docx(word_after, ["Batch completion dropped from two days to 17 hours.",
+                                "The test operator now reviews seven exceptions a week. "
+                                "The validation script checks ordinary rows automatically."])
+        receipt = root / "r-docx.json"
+        p = emit(word_after, receipt, ["--before-file", str(word_before),
+                                       "--change", "structure: added the automation sentence"])
+        expect("docx_before_copy_emits", p.returncode == 0 and "Traceback" not in p.stderr,
+               p.stdout + p.stderr)
+        data = json.loads(receipt.read_text(encoding="utf-8"))
+        expect("docx_figure_check_ran", data["figure_check"]["ran"] is True
+               and data["figure_check"]["invented_numbers"] == [], str(data["figure_check"]))
+        p = run(["validate", str(receipt)])
+        expect("docx_receipt_validates", p.returncode == 0, p.stdout)
+
+        # 13. A figure added in the Word copy is caught from extracted text.
+        word_invented = root / "invented.docx"
+        write_docx(word_invented, ["Batch completion dropped from two days to 17 hours.",
+                                   "The test operator now reviews seven exceptions a week.",
+                                   "Savings reached $73,000."])
+        receipt = root / "r-docx-invented.json"
+        p = emit(word_invented, receipt, ["--before-file", str(word_before), "--change", "added a claim"])
+        expect("docx_figure_invention_rejected",
+               p.returncode == 1 and "figure-invention" in p.stdout, p.stdout)
+
+        # 14. An unchanged Word file with no justification is still a lazy pass.
+        receipt = root / "r-docx-same.json"
+        p = emit(word_before, receipt, ["--before-file", str(word_before)])
+        expect("docx_lazy_pass_rejected", p.returncode == 1 and "lazy-pass" in p.stdout, p.stdout)
+
+        # 15. A PDF before-copy fails with a readable message, not a traceback.
+        pdf_before = root / "before.pdf"
+        pdf_before.write_bytes(b"%PDF-1.4\n\xff\xfe\x00binary\n")
+        receipt = root / "r-pdf.json"
+        p = emit(word_after, receipt, ["--before-file", str(pdf_before), "--change", "x"])
+        expect("pdf_before_copy_readable_error",
+               p.returncode == 2 and "Traceback" not in p.stderr and "read" in p.stdout,
+               p.stdout + p.stderr)
+
     if failures:
         print("prose_receipt_selftest: {} failure(s): {}".format(
             len(failures), ", ".join(failures)))
         return 1
-    print("prose_receipt_selftest: PASS (11 cases)")
+    print("prose_receipt_selftest: PASS (15 cases)")
     return 0
 
 

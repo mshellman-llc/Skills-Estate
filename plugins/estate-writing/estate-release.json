@@ -20,7 +20,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "c4719d25acffd9d70ec0b46f8d963d0987a003e94aa51fd01cb96d5b96abdef6",
+      "required_sha256": "889c3879cf517968e715b7c286b49aff5b3b89a98163c68a4d75c0bf15ba27d7",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -110,7 +110,7 @@
       "subject": "author-style-runtime"
     },
     {
-      "required_sha256": "8a3159b813aeba6e18283155e7f48825b95de4c9ed3e0ae501a411efb45d09fa",
+      "required_sha256": "9f682313a7ed8531f17c0d819e2dd375f38862b320e8219581c2498a404dc7d5",
       "status": "review required",
       "subject": "brand-renderer"
     },
@@ -120,7 +120,7 @@
       "subject": "build-deal-decision-deck"
     },
     {
-      "required_sha256": "6dee41e64695c0e3fa036ad1ee1f1e04dfe14c6ca7ca5811cb65659ab0c0caf5",
+      "required_sha256": "3ee37790c437a40b14b078add9a083adb215eb948c4fe1171a5ed5144de21ffb",
       "status": "review required",
       "subject": "build-deck"
     },
@@ -430,7 +430,7 @@
       "subject": "review-deal-economics"
     },
     {
-      "required_sha256": "8c25b1c436a584e4739100172d40a9b7d9614e31e0212314a7975690aa75b3e9",
+      "required_sha256": "ec00e714f37d2ce5513a5f23153afb8fd008b8b25e11da0c712661b5616e5ea3",
       "status": "review required",
       "subject": "review-deliverable"
     },
@@ -520,7 +520,7 @@
       "subject": "write-portfolio-case-study"
     },
     {
-      "required_sha256": "ed66ed2699b5e05403fefbc68866aacc07e36789a5a8fe6a05a52e482e748b93",
+      "required_sha256": "6207d2e4610ddfd306dade4db790cbae8edcf71ccde3c8b2e4b7afe773e631e0",
       "status": "review required",
       "subject": "write-statement-of-work"
     },
@@ -530,11 +530,11 @@
       "subject": "writing"
     },
     {
-      "required_sha256": "81f91eeab3d23334ebcdfe719757e15a8fed825be40036bec65c49ae225e3d00",
+      "required_sha256": "c2e0a3427e77b6a61add45a38e26249a3e9ad131cae99ab73476253bedba7ba6",
       "status": "review required",
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "7dae6e4242f6d82bcf826d172aaa4bbdb5936976d4aeb55156711b98005617f9",
+  "source_sha256": "514c07aa35a5ac0a754e8c2cead62baf6a7c6dd881752935d61a2715185fbc56",
   "status": "owner-published"
 }

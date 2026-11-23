@@ -6,14 +6,22 @@ Builds a synthetic 2-slide deck with a text box and a table, then asserts:
   2. extract_pptx.extract() KEEPS it (the fix).
   3. The emitted HTML contains both the paragraph text and the table cells.
 
+It also covers the deck-extract landmark (issue 167): the HTML wraps the slides
+in one <main>, so parity_audit.py accepts a deck extract that needs only a phrase
+and an h1 instead of raising MAIN_LANDMARK_MISSING.
+
 All content is synthetic. Exit 0 on pass, 1 on failure.
 """
 from __future__ import annotations
 
+import json
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 from pptx import Presentation
+from pptx.enum.shapes import MSO_SHAPE
 from pptx.util import Inches
 
 import extract_pptx
@@ -51,6 +59,48 @@ def naive_text(path: Path) -> str:
     return " ".join(chunks)
 
 
+def landmark_failures() -> list[str]:
+    """Issue 167: one rounded box reading "Example step", extracted, then audited."""
+    failures: list[str] = []
+    audit = Path(__file__).with_name("parity_audit.py")
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        deck = root / "example.pptx"
+        prs = Presentation()
+        slide = prs.slides.add_slide(prs.slide_layouts[6])
+        box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1), Inches(1), Inches(4), Inches(1))
+        box.text_frame.text = "Example step"
+        prs.save(str(deck))
+
+        html = extract_pptx.to_html(extract_pptx.extract(deck), "Example deck")
+        if html.count("<main>") != 1 or html.count("</main>") != 1:
+            failures.append("extract HTML does not carry exactly one <main>")
+        elif "<h1>" not in html:
+            failures.append("h1 missing from extract HTML")
+        if "<main>" in html and not (html.index("<main>") < html.index('class="slide"') < html.index("</main>")):
+            failures.append("slides sit outside <main>")
+
+        manifest = root / "manifest.json"
+        manifest.write_text(json.dumps({
+            "manifestVersion": "1.0",
+            "requiredPhrases": ["Example step"],
+            "requiredSelectors": ["h1"],
+        }), encoding="utf-8")
+        page = root / "example.extracted.html"
+        cli = subprocess.run(
+            [sys.executable, str(Path(__file__).with_name("extract_pptx.py")), str(deck), "--html", str(page)],
+            capture_output=True, text=True, check=False)
+        if cli.returncode != 0:
+            failures.append(f"extract_pptx CLI exited {cli.returncode}: {cli.stderr.strip()}")
+        else:
+            result = subprocess.run([sys.executable, str(audit), str(manifest), str(page)],
+                                    capture_output=True, text=True, check=False)
+            if result.returncode != 0 or "MAIN_LANDMARK_MISSING" in result.stdout:
+                failures.append(f"parity_audit rejected the deck extract (exit {result.returncode}): "
+                                f"{result.stdout.strip()[:200]}")
+    return failures
+
+
 def main() -> int:
     fixture = Path("_selftest_deck.pptx")
     build_fixture(fixture)
@@ -69,12 +119,14 @@ def main() -> int:
             failures.append(f"extractor dropped {marker!r}")
 
     fixture.unlink(missing_ok=True)
+    failures.extend(landmark_failures())
 
     if failures:
         for f in failures:
             print(f"FAIL: {f}")
         return 1
-    print("PASS: table cells and paragraphs survive extraction; naive walk drops tables as expected")
+    print("PASS: table cells and paragraphs survive extraction; naive walk drops tables as expected; "
+          "deck extract has a main landmark the parity audit accepts")
     return 0
 
 

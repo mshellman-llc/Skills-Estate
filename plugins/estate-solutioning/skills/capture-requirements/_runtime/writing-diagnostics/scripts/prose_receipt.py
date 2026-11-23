@@ -16,6 +16,12 @@ Two commands:
 
     python3 prose_receipt.py validate receipt.json
 
+ARTIFACT and the before copy may be Markdown, text, HTML, Word (.docx) or
+PowerPoint (.pptx). Word and PowerPoint text is extracted with the checker's own
+extraction, for the before copy as well as the after copy, so a Word deliverable
+gets a receipt with a before-state. A PDF cannot be checked; extract or rebuild
+the source file instead.
+
 `emit` measures what it can measure: hashes, the checker's findings by category
 on the artifact as it stands, and, when a pre-rewrite copy is given, the
 before-state findings and a figure tie-out. `validate` re-derives every
@@ -113,6 +119,30 @@ def run_checker(path: Path) -> dict:
     return by_rule
 
 
+OFFICE_SUFFIXES = frozenset({".docx", ".pptx"})
+
+
+def figure_text(path: Path) -> str:
+    """Text the figure tie-out compares, for either copy.
+
+    A Word or PowerPoint file is a zip, so reading it as UTF-8 crashes. Use the
+    checker's own extraction for those, so the tie-out sees the same text the
+    checker reads. Other files stay plain UTF-8 text. A PDF or other binary the
+    checker cannot read raises a readable error instead of a traceback.
+    """
+    if path.suffix.lower() in OFFICE_SUFFIXES:
+        from prose_check import extract_text
+        try:
+            return extract_text(path)
+        except Exception as exc:
+            raise RuntimeError("cannot extract text from {}: {}".format(path, exc)) from exc
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as exc:
+        raise RuntimeError(
+            "cannot read {} as text; the checker reads .md, .txt, .html, .docx and .pptx".format(path)) from exc
+
+
 def numbers_in(text: str) -> set:
     return {m.group(1).replace(",", "") for m in NUMBER.finditer(text)}
 
@@ -135,9 +165,7 @@ def emit(args: argparse.Namespace) -> int:
             return 2
         before_hash = sha256_file(before)
         issues_before = run_checker(before)
-        invented = sorted(
-            numbers_in(artifact.read_text(encoding="utf-8"))
-            - numbers_in(before.read_text(encoding="utf-8")))
+        invented = sorted(numbers_in(figure_text(artifact)) - numbers_in(figure_text(before)))
 
     figures_added = []
     for entry in args.added_figure or []:

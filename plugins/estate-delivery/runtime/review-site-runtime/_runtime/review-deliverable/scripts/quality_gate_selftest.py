@@ -218,6 +218,54 @@ check("declared brand render with a blocked check is a valid refusal",
       validate(record).ok, True)
 check("and the refusal does not release", validate(record).released, False)
 
+# Decks (issue 169). estate-pursuit does not ship review-contract-scope, so a
+# deck's scope claims are backed by build-deck's own check-deck-scope-claims.
+DECK = {
+    "artifact": {"id": "DECK-1", "path": str(ARTIFACT), "type": "deck", "audience": "client",
+                 "client_prose": False, "contract_scope": True, "brand_render": False,
+                 "narrative_final": False},
+    "controls_selected": ["check-deck-scope-claims"],
+    "checks": [{"control": "check-deck-scope-claims", "verdict": "pass",
+                "citation": "scope-claims.json: 1 claim checked, 0 not supported"}],
+    "assertions": [{"id": "A1", "kind": "contract_scope", "text": "Delivery of wedding cakes is out of scope.",
+                    "supported_by": "check-deck-scope-claims"}],
+    "release": {"released": True},
+    "hub_update": {"status": "not_applicable"},
+}
+verdict = validate(DECK)
+check("Example bakery pitch deck releases on its own scope check", verdict.released, True)
+check("and is valid with no blockers", (verdict.ok, verdict.blockers), (True, []))
+record = copy.deepcopy(DECK)
+record["checks"][0]["verdict"] = "fail"
+record["release"]["released"] = False
+check("a failed deck scope check blocks release", validate(record).released, False)
+record = copy.deepcopy(DECK)
+record["checks"][0]["citation"] = ""
+check("an uncited deck scope check fails closed", "fail-closed" in codes(record), True)
+record = copy.deepcopy(DECK)
+record["checks"][0]["verdict"] = "blocked"
+record["release"]["released"] = False
+check("a blocked deck scope check fails closed", "fail-closed" in codes(record), True)
+# A passing check from an unrelated control cannot back a scope claim.
+record = copy.deepcopy(DECK)
+record["controls_selected"].append("deal-desk-tieout")
+record["checks"].append({"control": "deal-desk-tieout", "verdict": "pass", "citation": "quote Q-1"})
+record["assertions"][0]["supported_by"] = "deal-desk-tieout"
+check("an unrelated passing check cannot back a scope claim", "fail-closed" in codes(record), True)
+check("and the record does not release", validate(record).released, False)
+# The statement-of-work control stays accepted.
+record = copy.deepcopy(DECK)
+record["controls_selected"] = ["review-contract-scope"]
+record["checks"] = [{"control": "review-contract-scope", "verdict": "pass", "citation": "scope table"}]
+record["assertions"][0]["supported_by"] = "review-contract-scope"
+check("review-contract-scope still backs a scope claim", validate(record).released, True)
+# A declared contract_scope artifact needs one of the two scope controls to have run.
+record = copy.deepcopy(DECK)
+record["controls_selected"] = ["writing-diagnostics"]
+record["checks"] = [{"control": "writing-diagnostics", "verdict": "pass", "citation": "scan"}]
+record["assertions"] = []
+check("declared contract scope requires a scope control", "unrouted-control" in codes(record), True)
+
 # Structural refusals.
 check("non-object record is rejected", "shape" in codes([]), True)
 record = copy.deepcopy(GOOD)

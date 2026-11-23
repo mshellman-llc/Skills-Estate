@@ -48,6 +48,15 @@ REQUIRED_FIELDS = (
     "hub_update",
 )
 
+# The controls that may back a contract-scope assertion. review-contract-scope
+# is the statement-of-work control and ships in estate-solutioning. A deck is not
+# a statement of work, and estate-pursuit does not ship that control, so build-deck
+# carries its own: check_scope_claims.py compares the deck's scope statements with
+# a named statement of work or scope baseline. Only these two can back a scope
+# claim; a passing check from an unrelated control does not.
+DECK_SCOPE_CONTROL = "check-deck-scope-claims"
+SCOPE_CONTROLS = {"review-contract-scope", DECK_SCOPE_CONTROL}
+
 # The controls the skill body routes to, keyed by the content that triggers them.
 ROUTED_CONTROLS = {
     "client_prose": "writing-diagnostics",
@@ -213,9 +222,11 @@ def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
            if isinstance(c, dict) and isinstance(c.get("control"), str)
            and c.get("verdict") in ("pass", "fail", "blocked")}
     for flag, control in sorted(ROUTED_CONTROLS.items()):
-        if artifact.get(flag) and control not in ran:
+        accepted = SCOPE_CONTROLS if flag == "contract_scope" else {control}
+        if artifact.get(flag) and not (accepted & ran):
             error("unrouted-control",
-                  "artifact declares {} but no check ran {}".format(flag, control))
+                  "artifact declares {} but no check ran {}".format(
+                      flag, " or ".join(sorted(accepted))))
 
     # A narrative artifact marked final needs a writing-diagnostics RECEIPT, not a
     # mention. A receipt binds current bytes and reruns diagnostics; the
@@ -277,6 +288,14 @@ def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
         if kind not in FAIL_CLOSED:
             continue
         support = assertion.get("supported_by")
+        if kind == "contract_scope" and support not in SCOPE_CONTROLS:
+            error("fail-closed",
+                  "assertion {!r} of kind contract_scope is supported by {!r}; only {} "
+                  "can back a scope claim".format(
+                      assertion.get("id") or assertion.get("text") or "?", support,
+                      " or ".join(sorted(SCOPE_CONTROLS))))
+            blockers.append("fail-closed: contract_scope")
+            continue
         backing = [c for c in checks if isinstance(c, dict)
                    and c.get("control") == support
                    and c.get("verdict") == "pass" and _cited(c)]

@@ -45,7 +45,8 @@ properties, and notes for conflicting identity before using it.
 Run the checker against generated files, then inspect rendered slides or pages.
 The PPTX extractor preserves table text for parity checks; it is not a visual
 preview. Re-run parity after content edits so figures and protected qualifiers
-remain present in the exported result.
+remain present in the exported result. The extract wraps the slides in one
+`<main>`, so `parity_audit.py` accepts it without hand-wrapping.
 
 ## Contrast and limits
 
@@ -55,6 +56,14 @@ meet a required use, choose an accessible combination within that profile or
 request an explicit profile correction. Do not recreate a historical exception
 as permission for unreadable text.
 
-The checker sees literal colors and document XML. It does not fully evaluate CSS
-variables, inherited styles, image colors, or font substitution by viewers. Its
+For decks the checker resolves one inherited style: a shape's shadow. A shape
+that carries no effect list of its own takes the theme effect its style's
+`a:effectRef` index points at (index 0 means none, an empty `a:effectLst` means
+none), so a default python-pptx rounded box renders a theme shadow though its
+slide XML names none. When the selected profile forbids shadows, the checker
+fails such a shape with `SHADOW`; set the shape's effect list empty
+(`shape.shadow.inherit = False`) or its `effectRef` index to 0.
+
+The checker does not otherwise evaluate CSS variables, inherited styles, image
+colors, or font substitution by viewers. Its
 passing result supports the visual review; it cannot replace it.

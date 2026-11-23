@@ -14,6 +14,9 @@ Inputs: .html .htm .css .pptx .docx .xlsx .js .py .md  (source files are linted 
 because a renderer that hardcodes a hex will emit it on every future artifact -
 catching it in the source is the only fix that holds.)
 
+Decks: a shape's shadow can come from the theme, not the slide XML. The check
+resolves each shape's effect the way PowerPoint does (SHADOW below).
+
 FAILURES (exit 1). Each traces to BRAND.md via tokens.json `rules`:
   OFF_PALETTE        a hex with no token in the selected brand profile. In
                      HTML and SVG only styles count: <style> and <script>
@@ -27,6 +30,11 @@ FAILURES (exit 1). Each traces to BRAND.md via tokens.json `rules`:
   MARK_AND_LOCKUP    the logo symbol and the full lockup on one surface
   TITLE_UNDERLINE    a decorative underline beneath a title
   CENTERED_BODY      a centered long paragraph
+  SHADOW             a PPTX shape with a visible shadow when the profile
+                     forbids shadows, or one offset past the profile's cap.
+                     The shadow is resolved from the shape's own a:effectLst
+                     (an empty list means none), else its style a:effectRef
+                     index into the theme's effect styles; index 0 means none.
 
 REVIEW (reported, blocks only under --strict):
   TITLE_CASE_HEADING heading that looks title-cased rather than sentence case
@@ -53,6 +61,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import posixpath
 import sys
 import zipfile
 from pathlib import Path
@@ -120,6 +129,73 @@ def hexes_in(line: str, xml: bool = False) -> list[str]:
 
 
 # --- extraction -------------------------------------------------------------
+EMU_PER_PX = 9525
+
+
+def _rels(z: zipfile.ZipFile, part: str) -> dict[str, str]:
+    """Relationship type suffix -> resolved target part for one package part."""
+    rels_name = posixpath.join(posixpath.dirname(part), "_rels", posixpath.basename(part) + ".rels")
+    if rels_name not in z.namelist():
+        return {}
+    out: dict[str, str] = {}
+    for m in re.finditer(r"<Relationship\b[^>]*>", z.read(rels_name).decode("utf-8", "ignore")):
+        tag = m.group(0)
+        kind = re.search(r'Type="[^"]*/([A-Za-z]+)"', tag)
+        target = re.search(r'Target="([^"]+)"', tag)
+        if kind and target:
+            out.setdefault(kind.group(1),
+                           posixpath.normpath(posixpath.join(posixpath.dirname(part), target.group(1))))
+    return out
+
+
+def shadows_in(effect_xml: str) -> list[dict[str, Any]]:
+    """Visible shadows inside one effect list: type, offset in EMU, alpha."""
+    found = []
+    for m in re.finditer(r"<a:(outerShdw|innerShdw|prstShdw)\b([^>]*?)(?:/>|>(.*?)</a:\1>)",
+                         effect_xml, re.S):
+        attrs, body = m.group(2), m.group(3) or ""
+        alpha = re.search(r'<a:alpha\s+val="(\d+)"', body)
+        if alpha and int(alpha.group(1)) == 0:
+            continue                      # fully transparent: not visible
+        dist = re.search(r'\bdist="(\d+)"', attrs)
+        found.append({"kind": m.group(1), "dist": int(dist.group(1)) if dist else 0})
+    return found
+
+
+def theme_effect_styles(z: zipfile.ZipFile, slide_part: str) -> list[list[dict[str, Any]]]:
+    """The theme's effect styles for a slide, in index order (effectRef idx 1 is
+    the first). Resolved slide -> layout -> master -> theme; [] when the package
+    has no such chain (a bare slide fixture)."""
+    layout = _rels(z, slide_part).get("slideLayout")
+    master = _rels(z, layout).get("slideMaster") if layout else None
+    theme = _rels(z, master).get("theme") if master else None
+    if not theme or theme not in z.namelist():
+        return []
+    xml = z.read(theme).decode("utf-8", "ignore")
+    lst = re.search(r"<a:effectStyleLst>(.*?)</a:effectStyleLst>", xml, re.S)
+    if not lst:
+        return []
+    return [shadows_in(m.group(1)) for m in
+            re.finditer(r"<a:effectStyle>(.*?)</a:effectStyle>", lst.group(1), re.S)]
+
+
+def shape_shadows(shape_xml: str, theme: list[list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """The shadows a shape renders. Its own effect list wins, including an empty
+    one; otherwise its style's effectRef points into the theme's effect styles."""
+    sp_pr = re.search(r"<p:spPr\b[^>]*?(?:/>|>.*?</p:spPr>)", shape_xml, re.S)
+    if sp_pr:
+        own = re.search(r"<a:effectLst\s*/>|<a:effectLst\b[^>]*>.*?</a:effectLst>"
+                        r"|<a:effectDag\b.*?</a:effectDag>", sp_pr.group(0), re.S)
+        if own:
+            return shadows_in(own.group(0))
+    ref = re.search(r'<a:effectRef\s+idx="(\d+)"', shape_xml)
+    if ref:
+        idx = int(ref.group(1))
+        if 1 <= idx <= len(theme):
+            return theme[idx - 1]
+    return []
+
+
 def pptx_slides(path: Path) -> list[dict[str, Any]]:
     """One record per slide: its XML, its text, and its shape geometry."""
     slides = []
@@ -133,7 +209,8 @@ def pptx_slides(path: Path) -> list[dict[str, Any]]:
             text = " ".join(re.findall(r"<a:t>([^<]*)</a:t>", xml))
             pics = re.findall(r"<p:pic>.*?</p:pic>", xml, re.S)
             slides.append({"n": i, "xml": xml, "text": text, "pics": pics,
-                           "name": f"slide{i}"})
+                           "name": f"slide{i}",
+                           "theme_effects": theme_effect_styles(z, n)})
     return slides
 
 
@@ -440,10 +517,38 @@ def check_headings(headings: list[tuple[str, str]], f: Findings) -> None:
                   f"\"{h[:70]}\" looks title-cased; headings are sentence case.")
 
 
+def check_slide_shadows(slide: dict[str, Any], sl: str, f: Findings) -> None:
+    """A shape's shadow can come from its theme style, so a clean slide XML does
+    not mean a flat slide. Resolve each shape's effect and fail a visible shadow
+    when the profile forbids shadows, or one offset past the profile's cap."""
+    rule = T.rules.get("shadow", {})
+    allowed = rule.get("allowed", True)
+    max_px = rule.get("maxOffsetPx", 4)
+    for m in re.finditer(r"<p:(sp|cxnSp|pic)\b[^>]*>.*?</p:\1>", slide["xml"], re.S):
+        shape = m.group(0)
+        shadows = shape_shadows(shape, slide.get("theme_effects", []))
+        if not shadows:
+            continue
+        name = re.search(r'<p:cNvPr\b[^>]*\bname="([^"]*)"', shape)
+        shape_name = name.group(1) if name else m.group(1)
+        if not allowed:
+            f.add("fail", "SHADOW", f"{sl}:{shape_name}",
+                  "the shape renders a shadow (its own effect list or the theme "
+                  "effect its style points at) and the selected profile forbids "
+                  "shadows. Set the shape's effect list empty or its style "
+                  "effectRef idx to 0.")
+        elif any(s["dist"] > max_px * EMU_PER_PX for s in shadows):
+            f.add("fail", "SHADOW", f"{sl}:{shape_name}",
+                  f"the shape's shadow offsets past {max_px}px; the brand's "
+                  "shadows are restrained.")
+
+
 def check_slide(slide: dict[str, Any], label: str, f: Findings) -> None:
     """Per-slide rules: palette budget, footer, mark-versus-lockup."""
     sl = f"{label}#{slide['n']}"
     check_hexes(slide["xml"], sl, f, per_surface=True, xml=True)
+
+    check_slide_shadows(slide, sl, f)
 
     xml, text = slide["xml"], slide["text"]
     has_pagenum = bool(re.search(r"<a:fld[^>]*type=\"slidenum\"", xml)) or \

@@ -23,6 +23,9 @@ Exit codes:
   0  extraction succeeded
   2  invalid input, missing dependency, or parse/runtime failure
 
+The slides sit inside one <main> landmark, after the <h1>, so the parity audit's
+required main landmark is met without hand-wrapping the extract.
+
 The HTML this emits is a text transcript of the deck for auditing. It is NOT a
 rendered deck and never substitutes for visual inspection of the real slides.
 """
@@ -109,6 +112,7 @@ def to_html(slides: list[dict[str, Any]], title: str) -> str:
         '<html lang="en"><head><meta charset="utf-8">',
         f"<title>{html.escape(title)}</title></head><body>",
         f"<h1>{html.escape(title)}</h1>",
+        "<main>",
     ]
     for slide in slides:
         out.append(f'<section class="slide" data-slide="{slide["slide"]}">')
@@ -128,6 +132,7 @@ def to_html(slides: list[dict[str, Any]], title: str) -> str:
         if slide["notes"]:
             out.append(f'<aside class="notes">{html.escape(slide["notes"])}</aside>')
         out.append("</section>")
+    out.append("</main>")
     out.append("</body></html>")
     return "\n".join(out)
 

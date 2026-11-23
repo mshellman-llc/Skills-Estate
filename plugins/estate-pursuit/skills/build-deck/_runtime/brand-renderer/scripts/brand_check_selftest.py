@@ -123,6 +123,64 @@ def make_pptx(path: Path, slides: list[str]) -> None:
             z.writestr(f"ppt/slides/slide{i}.xml", xml)
 
 
+# ---- theme-inherited shadows (issue 167 family: a clean slide XML is not a flat slide)
+SHADOW_THEME = (
+    '<a:theme><a:themeElements><a:fmtScheme><a:effectStyleLst>'
+    '<a:effectStyle><a:effectLst/></a:effectStyle>'
+    '<a:effectStyle><a:effectLst><a:outerShdw blurRad="40000" dist="23000" dir="5400000">'
+    '<a:srgbClr val="111111"><a:alpha val="35000"/></a:srgbClr></a:outerShdw></a:effectLst></a:effectStyle>'
+    '</a:effectStyleLst></a:fmtScheme></a:themeElements></a:theme>'
+)
+REL_HEAD = '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+
+
+def rel(kind: str, target: str) -> str:
+    return (f'{REL_HEAD}<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/'
+            f'officeDocument/2006/relationships/{kind}" Target="{target}"/></Relationships>')
+
+
+def shape_slide(sp_pr: str, effect_ref: int | None) -> str:
+    """One "Example step" shape: its own spPr and a style effectRef index."""
+    style = ("" if effect_ref is None else
+             f'<p:style><a:effectRef idx="{effect_ref}"><a:srgbClr val="111111"/></a:effectRef></p:style>')
+    return ('<p:sld><p:cSld><p:spTree><p:sp><p:nvSpPr><p:cNvPr id="2" name="Example step box"/></p:nvSpPr>'
+            f'{sp_pr}{style}<p:txBody><a:p><a:t>Example step</a:t></a:p></p:txBody></p:sp>'
+            '</p:spTree></p:cSld></p:sld>')
+
+
+def make_themed_pptx(path: Path, slide: str, with_theme: bool = True) -> None:
+    """Slide -> layout -> master -> theme, the chain PowerPoint resolves a style through."""
+    with zipfile.ZipFile(path, "w") as z:
+        z.writestr("[Content_Types].xml", "<Types/>")
+        z.writestr("ppt/slides/slide1.xml", slide)
+        if with_theme:
+            z.writestr("ppt/slides/_rels/slide1.xml.rels", rel("slideLayout", "../slideLayouts/slideLayout1.xml"))
+            z.writestr("ppt/slideLayouts/_rels/slideLayout1.xml.rels", rel("slideMaster", "../slideMasters/slideMaster1.xml"))
+            z.writestr("ppt/slideMasters/_rels/slideMaster1.xml.rels", rel("theme", "../theme/theme1.xml"))
+            z.writestr("ppt/theme/theme1.xml", SHADOW_THEME)
+
+
+SPPR_PLAIN = '<p:spPr><a:xfrm><a:off x="400000" y="400000"/></a:xfrm></p:spPr>'
+SPPR_EMPTY_EFFECTS = '<p:spPr><a:effectLst/></p:spPr>'
+SPPR_OWN_SHADOW = ('<p:spPr><a:effectLst><a:outerShdw blurRad="40000" dist="23000">'
+                   '<a:srgbClr val="111111"/></a:outerShdw></a:effectLst></p:spPr>')
+SPPR_CLEAR_SHADOW = ('<p:spPr><a:effectLst><a:outerShdw blurRad="40000" dist="23000">'
+                     '<a:srgbClr val="111111"><a:alpha val="0"/></a:srgbClr></a:outerShdw>'
+                     '</a:effectLst></p:spPr>')
+# (name, slide xml, theme in package, expected exit)
+SHADOW_CASES = [
+    ("theme_shadow_through_style", shape_slide(SPPR_PLAIN, 2), True, 1),
+    ("style_ref_zero_ok", shape_slide(SPPR_PLAIN, 0), True, 0),
+    ("style_ref_flat_theme_entry_ok", shape_slide(SPPR_PLAIN, 1), True, 0),
+    ("empty_effect_list_overrides_style_ok", shape_slide(SPPR_EMPTY_EFFECTS, 2), True, 0),
+    ("self_closing_sppr_does_not_borrow_next_shape",
+     shape_slide('<p:spPr/>', 0) + shape_slide(SPPR_OWN_SHADOW, 0).replace("<p:sld>", ""), True, 1),
+    ("own_effect_list_shadow", shape_slide(SPPR_OWN_SHADOW, 0), True, 1),
+    ("own_transparent_shadow_ok", shape_slide(SPPR_CLEAR_SHADOW, 2), True, 0),
+    ("no_theme_in_package_ok", shape_slide(SPPR_PLAIN, 2), False, 0),
+]
+
+
 GOOD_SLIDE = (
     '<p:sld><p:cSld><p:spTree>'
     '<p:pic><p:nvPicPr><p:cNvPr id="2" name="footer-logo-lockup"/></p:nvPicPr>'
@@ -254,6 +312,45 @@ def main() -> int:
         make_pptx(three, [THREE_BRAND_SLIDE])
         observed["deck_three_brand_ok"] = run([three]).returncode
         expected["deck_three_brand_ok"] = 0
+
+        # ---- theme-inherited shadows ---------------------------------------
+        # A shape whose style points at the theme's outer shadow renders one,
+        # though its slide XML names none. The neutral profile forbids shadows.
+        for name, slide_xml, with_theme, want in SHADOW_CASES:
+            deck = root / f"{name}.pptx"
+            make_themed_pptx(deck, slide_xml, with_theme)
+            observed[name] = run([deck]).returncode
+            expected[name] = want
+            if want:
+                fails, _ = codes(deck)
+                if "SHADOW" not in fails:
+                    wrong_reason.append((name, "SHADOW", fails))
+
+        # The same reproduction through python-pptx's default deck, when it is
+        # installed: a rounded box reading "Example step" whose style effectRef is 2.
+        try:
+            from pptx import Presentation
+            from pptx.enum.shapes import MSO_SHAPE
+            from pptx.util import Inches
+        except ImportError:
+            print("python-pptx not installed: default-deck shadow cases skipped")
+        else:
+            for name, flatten, want in (("pptx_default_deck_shadow", False, 1),
+                                        ("pptx_shadow_removed_ok", True, 0)):
+                deck = root / f"{name}.pptx"
+                prs = Presentation()
+                box = prs.slides.add_slide(prs.slide_layouts[6]).shapes.add_shape(
+                    MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1), Inches(1), Inches(3), Inches(1))
+                box.text_frame.text = "Example step"
+                if flatten:
+                    box.shadow.inherit = False
+                prs.save(str(deck))
+                observed[name] = run([deck]).returncode
+                expected[name] = want
+                if want:
+                    fails, _ = codes(deck)
+                    if "SHADOW" not in fails:
+                        wrong_reason.append((name, "SHADOW", fails))
 
         # ---- release guard -------------------------------------------------
         # --require-authoritative must refuse while tokens.json is a
