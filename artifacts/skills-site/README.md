@@ -41,4 +41,6 @@ MeganOS checks that branch once a minute and reads its manifest at an immutable 
 
 The generated branch is for machine publication. Change layout, styles, scripts, fonts and catalog sources on main. No manual HTML copy, separate MeganOS layout deployment or running Mac is needed for those changes.
 
+The open-page update must replace the embedded document, including when its address already has a skill or workflow hash. Keep that selected detail after the new document loads. A catalog refresh or a parent-page refresh alone does not satisfy this contract.
+
 The `skills-estate-site` workflow artifact remains the standalone estate export. The `meganos-skills-site` artifact contains the complete pair used for publication.
