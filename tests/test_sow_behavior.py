@@ -16,6 +16,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from portable import assemble
 from estate import runtime_dependencies
+from test_capabilities import configured
 NODE=os.environ.get('ESTATE_NODE') or shutil.which('node')
 
 class SowBehaviorTests(unittest.TestCase):
@@ -347,7 +348,7 @@ class SowBehaviorTests(unittest.TestCase):
         self.assertIn('Configure the queue and execute the agreed test cases.',verdict.stdout)
         self.assertIn('"kind": "cell"',verdict.stdout)
 
-    @unittest.skipUnless(shutil.which('soffice') and shutil.which('pdftotext'),'LibreOffice and pdftotext are required')
+    @configured('LibreOffice and pdftotext on PATH', lambda: bool(shutil.which('soffice') and shutil.which('pdftotext')))
     def test_render_parity_against_a_real_render_and_a_dropped_row(self):
         import re
         result,out,_=self.build();self.assertEqual(0,result.returncode,result.stderr)
