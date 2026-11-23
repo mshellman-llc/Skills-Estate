@@ -12,7 +12,7 @@ Events:
                        bytes it publishes have a passing full review
     PostToolUse        scans each prose file a tool wrote, records deliverables for the gate and
                        logs which session wrote each file to writers.jsonl
-    Stop               scans the reply and holds it for one rewrite when a finding blocks; holds
+    Stop               scans every nonempty reply and holds each failed rewrite until it passes; holds
                        the session while a deliverable it changed has no passing full review
 
 The scan is check.py on the rules folder (--rules-dir, then WRITING_HOME, then
@@ -306,16 +306,18 @@ def emit(obj):
 def on_stop(event, args, state):
     reasons, tool = [], args.tool
     message = event.get('last_assistant_message') or ''
-    active = bool(event.get('stop_hook_active'))
-    if len(WORD.findall(message)) >= MIN_WORDS:
+    if WORD.search(message):
         status, findings = scan_text(message, args.register)
-        log_hits(tool, 'reply', 'chat', findings)
+        note_hits(tool, 'reply', 'chat', findings)
         if status == 'fail' and findings:
-            if active:
-                state['carry'] = findings[:5]
-            else:
-                reasons.append('Your reply breaks the owner\'s writing rules. Rewrite these sentences, then give '
-                               'the whole reply again without mentioning this check:\n' + describe(findings))
+            reason = ('Your reply breaks the owner\'s writing rules. Rewrite these sentences, then give '
+                      'the whole reply again without mentioning this check:\n' + describe(findings))
+            try:
+                notes = untold(state)
+            except Exception:
+                notes = SCAN_NOTES
+            emit({'decision': 'block', 'reason': reason + ('\n\n' + settings_text(notes) if notes else '')})
+            return True
     cfg = gate_config()
     pending, blocked = [], state.setdefault('gate_blocks', {})
     for p in state.get('deliverables', []):
@@ -611,7 +613,9 @@ def main(argv=None):
                'UserPromptSubmit': on_prompt, 'SessionStart': on_session_start}.get(name)
     if handler:
         try:
-            handler(event, args, state)
+            blocked = handler(event, args, state)
+            if name == 'Stop' and blocked:
+                return 0
         except Exception as error:  # a hook never breaks a session
             log_hits(args.tool, 'hook-error', name, [{'rule': 'hook-error', 'text': f'{type(error).__name__}: {error}'}])
         write_json(path, state)

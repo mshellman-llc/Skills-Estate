@@ -34,7 +34,10 @@ class HookTest(unittest.TestCase):
         (self.rules / 'patterns.json').write_text(json.dumps({
             'config': {'min_words': 40, 'hard_weight': 3, 'flag_density': 4},
             'rules': [{'id': 'delve', 'class': 'vocabulary', 'scope': 'general', 'status': 'active', 'weight': 3,
-                       'pattern': r'\bdelve\b', 'repair': 'Say what you examine.'}]}))
+                       'pattern': r'\bdelve\b', 'repair': 'Say what you examine.'},
+                      {'id': 'list-bold-label', 'class': 'formatting', 'scope': 'general', 'status': 'active',
+                       'weight': 3, 'rule': 'F8', 'pattern': r'(?m)^\s*(?:[-*+]|\d+[.)])\s+\*\*[^*\n]+\*\*',
+                       'repair': 'Write the list item as a sentence without a bold label.'}]}))
         (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'exclude': []}))
         self.env = dict(os.environ, WRITING_HOME=str(self.rules), WRITING_AGENT_HOME=str(self.home),
                         WRITING_RECEIPTS=str(self.home / 'receipts'))
@@ -55,13 +58,66 @@ class HookTest(unittest.TestCase):
     def test_clean_reply_passes(self):
         self.assertIsNone(self.stop(CLEAN))
 
-    def test_blocking_reply_is_held_once(self):
-        out = self.stop(BAD)
-        self.assertEqual(out['decision'], 'block')
-        self.assertIn('delve', out['reason'])
-        self.assertIsNone(self.stop(BAD, active=True))
-        carried = self.run_hook({'hook_event_name': 'UserPromptSubmit', 'session_id': 's1', 'prompt': 'next'})
-        self.assertIn('delve', carried['hookSpecificOutput']['additionalContext'])
+    def test_failed_rewrites_stay_blocked_until_the_reply_is_clean(self):
+        for active in (False, True, True):
+            out = self.stop(BAD, active=active)
+            self.assertEqual(out['decision'], 'block')
+            self.assertIn('delve', out['reason'])
+        self.assertIsNone(self.stop(CLEAN, active=True))
+
+    def test_bold_labels_block_short_replies_and_rewrites_on_both_hosts(self):
+        for host in ('claude-code', 'codex'):
+            for attempt, text in enumerate(('- **Owner:** Maya checks the forecast.',
+                                          '1. **Next step:** Maya checks the forecast.',
+                                          '- **Status:** Maya checked the forecast.')):
+                with self.subTest(host=host, attempt=attempt):
+                    out = self.run_hook({'hook_event_name': 'Stop', 'session_id': 'bold-' + host,
+                                         'last_assistant_message': text, 'stop_hook_active': attempt > 0}, host)
+                    self.assertEqual(out['decision'], 'block')
+                    self.assertIn('list-bold-label', out['reason'])
+            clean = self.run_hook({'hook_event_name': 'Stop', 'session_id': 'bold-' + host,
+                                   'last_assistant_message': '- Maya checked the forecast.',
+                                   'stop_hook_active': True}, host)
+            self.assertIsNone(clean)
+
+    def test_reply_stays_blocked_when_its_hits_log_cannot_be_written(self):
+        args = mock.Mock(tool='codex', register='megan')
+        with mock.patch.object(hook, 'scan_text', return_value=('fail', [{'rule': 'list-bold-label',
+                                                                        'text': '**Owner:**'}])), \
+                mock.patch.object(hook, 'log_hits', side_effect=OSError('read-only log')), \
+                mock.patch.object(hook, 'gate_config', return_value=hook.DEFAULT_GATE), \
+                mock.patch.object(hook, 'untold', return_value=[]), \
+                contextlib.redirect_stdout(io.StringIO()) as output:
+            hook.on_stop({'last_assistant_message': BAD, 'stop_hook_active': True}, args, {})
+        self.assertEqual(json.loads(output.getvalue())['decision'], 'block')
+
+    def test_failed_reply_blocks_before_an_unreadable_deliverable_is_checked(self):
+        path = self.work / 'unreadable.html'
+        path.write_text(CLEAN)
+        args = mock.Mock(tool='codex', register='megan')
+        with mock.patch.object(hook, 'scan_text', return_value=('fail', [{'rule': 'list-bold-label',
+                                                                        'text': '**Owner:**'}])), \
+                mock.patch.object(hook, 'log_hits'), \
+                mock.patch.object(hook, 'file_sha', side_effect=PermissionError('unreadable')) as hash_file, \
+                contextlib.redirect_stdout(io.StringIO()) as output:
+            hook.on_stop({'last_assistant_message': BAD, 'stop_hook_active': True}, args,
+                         {'deliverables': [str(path)]})
+        self.assertEqual(json.loads(output.getvalue())['decision'], 'block')
+        hash_file.assert_not_called()
+
+    def test_failed_reply_block_cannot_be_lost_to_a_state_write_error(self):
+        event = {'hook_event_name': 'Stop', 'session_id': 'retry-read-only-state',
+                 'last_assistant_message': '- **Owner:** Maya checks the forecast.', 'stop_hook_active': True}
+        with mock.patch.object(sys, 'stdin', io.StringIO(json.dumps(event))), \
+                mock.patch.object(hook, 'scan_text', return_value=('fail', [{'rule': 'list-bold-label',
+                                                                        'text': '**Owner:**'}])), \
+                mock.patch.object(hook, 'log_hits'), \
+                mock.patch.object(hook, 'write_json', side_effect=PermissionError('read-only state')) as save, \
+                mock.patch.object(hook, 'untold', side_effect=OSError('unreadable settings')), \
+                contextlib.redirect_stdout(io.StringIO()) as output:
+            self.assertEqual(hook.main(['--tool', 'codex']), 0)
+        self.assertEqual(json.loads(output.getvalue())['decision'], 'block')
+        save.assert_not_called()
 
     def test_hits_record_the_tool(self):
         self.stop(BAD)
