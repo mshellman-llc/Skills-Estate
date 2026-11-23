@@ -19,7 +19,7 @@
   var WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
   function word(n) { return WORDS[n] || String(n); }
   function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
-  function cmd(s) { return s.plugin ? '/' + s.plugin + ':' + s.id : ''; }
+  function cmd(s) { return !D.publicMap && s.plugin ? '/' + s.plugin + ':' + s.id : ''; }
   function kindText(s) {
     if (s.kind === 'mode' && s.modeOf && s.modeOf[0]) return 'Mode of ' + SK[s.modeOf[0]].title;
     return KIND_NAME[s.kind];
@@ -81,7 +81,7 @@
       : parent && parent.plugin ? row('Command', h(R.Fragment, null, h(CodeBlock, { text: cmd(parent) }), h('span', null, 'Runs through ' + parent.title + (s.modeName ? '. Ask for the ' + s.modeName + '.' : '.'))))
       : row('Command', 'It has no command. It installs with the task packages listed under Ships inside.');
     var sections = [
-      section('Run it', [runRow, s.example ? row('Example request', h(CodeBlock, { text: s.example, prompt: true })) : null]),
+      !D.publicMap && section('Run it', [runRow, s.example ? row('Example request', h(CodeBlock, { text: s.example, prompt: true })) : null]),
       section('What it does', [row('How it works', s.overview), row('Use it when', s.when), row('Give it', s.inputs), row('You get', s.outputs)]),
       section('Before you start', [row('Prepare', s.where), row('If something is missing', s.missing), row('Requires', s.requires),
         row('Setup', s.setup), s.needs ? row('Needs', Names(s.needs, go)) : null, s.optional ? row('Works with', Names(s.optional, go)) : null,
@@ -98,8 +98,8 @@
     ].filter(Boolean);
     return h(L.DetailPanel, { kicker: FAM[s.family].title, title: s.title, subtitle: s.what, sections: sections },
       h('div', { className: 'se-actions' },
-        h('div', { className: 'se-row' }, h(L.Button, { variant: 'ghost', size: 'sm', href: s.src, icon: 'file-text' }, 'SKILL.md on GitHub'),
-          h(L.Button, { variant: 'ghost', size: 'sm', icon: 'send', onClick: function () { copy((D.pageUrl || location.href.split('#')[0]) + '#skill-' + s.id); p.toast('Link to ' + s.title + ' copied'); } }, 'Copy link'))));
+        h('div', { className: 'se-row' }, s.downloadUrl ? h(L.Button, { variant: 'ghost', size: 'sm', href: s.downloadUrl, icon: 'file-text' }, 'Download SKILL.md') : !D.publicMap && h(L.Button, { variant: 'ghost', size: 'sm', href: s.src, icon: 'file-text' }, 'SKILL.md on GitHub'),
+          h(L.Button, { variant: 'ghost', size: 'sm', icon: 'send', onClick: function () { copy((D.pageUrl && D.pageUrl.charAt(0) === '/' ? location.origin + D.pageUrl : D.pageUrl || location.href.split('#')[0]) + '#skill-' + s.id); p.toast('Link to ' + s.title + ' copied'); } }, 'Copy link'))));
   }
 
   function StepSeq(p) {
@@ -126,12 +126,12 @@
       section('Ask Claude', [row('Request to paste', h(CodeBlock, { text: w.prompt, prompt: true }))]),
       section('Skills', [row('Run them in this order', h(StepSeq, { key: w.id, id: w.id, go: p.go }))]),
       section('Bring', [row('Start with', w.inputs), row('You get', w.outcome), row('Note', w.note),
-        plugins.length ? row('Install', h(Links, { ids: plugins, kind: 'plugin', go: p.go })) : null])].filter(Boolean) });
+        !D.publicMap && plugins.length ? row('Install', h(Links, { ids: plugins, kind: 'plugin', go: p.go })) : null])].filter(Boolean) });
   }
 
   function PluginDetail(p) {
     var pl = PL[p.id];
-    return h(L.DetailPanel, { kicker: 'Plugin', title: pl.id, subtitle: pl.desc, sections: [section('Install', [row('In Claude Code', h(CodeBlock, { text: '/plugin install ' + pl.id + '@skills-estate' }))]),
+    return h(L.DetailPanel, { kicker: 'Plugin', title: pl.id, subtitle: pl.desc, sections: [!D.publicMap && section('Install', [row('In Claude Code', h(CodeBlock, { text: '/plugin install ' + pl.id + '@skills-estate' }))]),
       section('Contents', [row(plural(pl.skills.length, 'skill', 'skills'), h(Links, { ids: pl.skills, kind: 'skill', go: p.go }))])].filter(Boolean) },
       h('div', { className: 'se-actions' },
         h('div', { className: 'se-row' }, h(L.Button, { variant: 'secondary', size: 'sm', onClick: function () { p.showPlugin(pl.id); } }, 'Show these skills in the list'))));
@@ -159,7 +159,8 @@
     var rootRef = useRef(null);
 
     function say(t) { s_toast[1](t); clearTimeout(say.t); say.t = setTimeout(function () { s_toast[1](null); }, 1800); }
-    function setHash(x) { if (x) { if (location.hash !== '#' + x) location.hash = x; } else if (location.hash) history.replaceState(null, '', location.pathname + location.search); }
+    function notifyHost() { if (parent !== window && D.pageUrl) parent.postMessage({ type: 'skills-site-hash', hash: location.hash }, location.origin); }
+    function setHash(x) { if (x) { if (location.hash !== '#' + x) location.hash = x; } else if (location.hash) history.replaceState(null, '', location.pathname + location.search); notifyHost(); }
 
     function go(kind, id) {
       if (kind === 'skill') { s_view[1]('skills'); s_sel[1](id); s_sheet[1](true); var s = SK[id]; if (family !== 'all' && s.family !== family) s_fam[1]('all'); setHash('skill-' + id); }
@@ -178,7 +179,7 @@
 
     useEffect(function () {
       function on() { var r = parse(); s_view[1](r.view); if (r.sel) s_sel[1](r.sel); if (r.wsel) s_wsel[1](r.wsel); if (r.psel) s_psel[1](r.psel); if (r.family) s_fam[1](r.family); s_sheet[1](!!(r.sel || r.wsel || r.psel)); }
-      addEventListener('hashchange', on);
+      addEventListener('hashchange', on); addEventListener('hashchange', notifyHost);
       if (init.sel || init.wsel || init.psel) setTimeout(function () { var d = document.querySelector('.se-inline'); if (d && d.previousElementSibling) d.previousElementSibling.scrollIntoView({ block: 'start' }); }, 150);
       function key(e) {
         if (e.key === '/' && !/input|textarea|select/i.test((document.activeElement || {}).tagName)) { var i = document.querySelector('.mer-filters-search input'); if (i) { e.preventDefault(); i.focus(); } }
@@ -187,7 +188,7 @@
       addEventListener('keydown', key);
       function outside(e) { if (!e.target.closest('.mer-menu') && document.querySelector('.mer-menu-list')) s_menuKey[1](function (k) { return k + 1; }); }
       document.addEventListener('pointerdown', outside);
-      return function () { removeEventListener('hashchange', on); removeEventListener('keydown', key); document.removeEventListener('pointerdown', outside); };
+      return function () { removeEventListener('hashchange', on); removeEventListener('hashchange', notifyHost); removeEventListener('keydown', key); document.removeEventListener('pointerdown', outside); };
     }, []);
 
     // Lock the page behind the phone sheet.
@@ -310,10 +311,10 @@
     }
 
     var heads = {
-      home: ['Skills Estate', D.skills.length + ' skills for sales pursuits, scoping, delivery, Salesforce development, product work, writing and job applications, installed as ' + word(D.plugins.length) + ' plugins from one marketplace. Pick a kind of skill or a family to see its list.'],
+      home: ['Skills Estate', D.publicMap ? D.skills.length + ' skills published for this site. Pick a family or a kind of skill to see its list.' : D.skills.length + ' skills for sales pursuits, scoping, delivery, Salesforce development, product work, writing and job applications, installed as ' + word(D.plugins.length) + ' plugins from one marketplace. Pick a kind of skill or a family to see its list.'],
       skills: ['Find the skill for a job', family !== 'all' ? FAM[family].title + ': ' + plural(famCount[family] || 0, 'skill', 'skills') + '. ' + FAM[family].desc : D.skills.length + ' skills, sorted by the work they do and installed as ' + word(D.plugins.length) + ' plugins. Search by the job in plain words, or pick a family.'],
       workflows: ['Run skills in order for a job', 'Each workflow names what to bring, the request to paste into Claude and the skills that run. Run only the steps your work needs.'],
-      plugins: ['Install the plugins', 'Skills install in ' + word(D.plugins.length) + ' plugins from the Skills Estate marketplace. Install a plugin, then ask for the work in plain words or run its command. In Codex on a Mac, python3 tools/estate.py update installs them from a Skills Estate checkout.']
+      plugins: D.publicMap ? ['Plugins', 'Browse the skills in each plugin.'] : ['Install the plugins', 'Skills install in ' + word(D.plugins.length) + ' plugins from the Skills Estate marketplace. Install a plugin, then ask for the work in plain words or run its command. In Codex on a Mac, python3 tools/estate.py update installs them from a Skills Estate checkout.']
     };
 
     var viewLabel = { home: 'Overview', skills: 'Skills', workflows: 'Workflows', plugins: 'Plugins' };
@@ -371,12 +372,12 @@
       sidebar,
       h('div', { className: 'se-main' },
         h('div', { onClick: function (e) { var a = e.target.closest('.br-bc a'); if (!a) return; e.preventDefault(); if (a.textContent === 'Skills Estate') { clearAll(); setView('home'); } else if (a.textContent === 'Skills') setFamily('all'); else setView(view); } },
-          h(L.TopBar, { lead: h(L.Breadcrumb, { items: crumbs }) }, h(L.IconButton, { icon: theme === 'dark' ? 'sun' : 'moon', label: theme === 'dark' ? 'Switch to Day' : 'Switch to Night', size: 'sm', onClick: function () { s_theme[1](theme === 'dark' ? 'light' : 'dark'); } }), h('span', { className: 'se-hide-sm' }, h(L.Button, { variant: 'secondary', size: 'sm', href: 'https://github.com/mshellman-llc/Skills-Estate', icon: 'file-text' }, 'Repository on GitHub')))),
+          h(L.TopBar, { lead: h(L.Breadcrumb, { items: crumbs }) }, h(L.IconButton, { icon: theme === 'dark' ? 'sun' : 'moon', label: theme === 'dark' ? 'Switch to Day' : 'Switch to Night', size: 'sm', onClick: function () { s_theme[1](theme === 'dark' ? 'light' : 'dark'); } }), !D.publicMap && h('span', { className: 'se-hide-sm' }, h(L.Button, { variant: 'secondary', size: 'sm', href: 'https://github.com/mshellman-llc/Skills-Estate', icon: 'file-text' }, 'Repository on GitHub')))),
         h('main', { className: 'se-body' },
           h('div', { className: 'se-head' }, h('span', { className: 'se-rule', 'aria-hidden': true }), h('h1', null, heads[view][0]), h('p', null, heads[view][1])),
           facts, familyGrid, mobile, install, view === 'home' || view === 'plugins' ? null : tools, famNote,
           view === 'home' ? null : list,
-          h('p', { className: 'se-foot' }, 'Skills Estate main at ', h('a', { href: D.commitUrl }, 'commit ' + D.commit), ', ' + longDate(D.date) + '.')),
+          h('p', { className: 'se-foot' }, D.publicMap ? 'Updated ' + longDate(D.date) : h(R.Fragment, null, 'Skills Estate main at ', h('a', { href: D.commitUrl }, 'commit ' + D.commit), ', ' + longDate(D.date) + '.'))),
         toast ? h('div', { className: 'se-toast' }, h(L.Toast, null, toast)) : null));
   }
 
