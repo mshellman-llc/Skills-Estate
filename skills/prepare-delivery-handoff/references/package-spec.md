@@ -26,7 +26,8 @@ manifest in place, so nothing is re-keyed, re-mapped, or lost at the seam.
   "moment": "package | brief (default brief)",
   "as_of": "YYYY-MM-DD, required",
   "source_snapshot": {
-    "write-statement-of-work": "identifier of the executed SOW, required",
+    "sow": "identifier of the executed SOW, required; a draft or unsigned agreement fails",
+    "sow_executed": {"signed_on": "YYYY-MM-DD, required", "signers": ["each signer, required"]},
     "quote": "Q-number, required"
   },
   "sections": {
@@ -86,7 +87,7 @@ manifest in place, so nothing is re-keyed, re-mapped, or lost at the seam.
     }
   ],
   "figures": [
-    {"label": "total fee", "value": "as it appears in the source", "source": "executed SOW section 4 / Q-000123 field"}
+    {"label": "total fee", "value": "as it appears in the source", "source": "executed SOW section 4 / Q-000123 field (cites the identifiers in source_snapshot)"}
   ]
 }
 ```

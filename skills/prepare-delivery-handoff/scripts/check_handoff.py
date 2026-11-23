@@ -20,9 +20,11 @@ What it enforces (structure and traceability, not truth):
 - Scope is non-empty and every item is marked "in" or "out".
 - Every promise names where it was said; in_sow true requires the clause,
   in_sow false requires an owner.
-- Every contract figure's source references the SOW or the quote (money rule).
+- Every contract figure's source cites the SOW or quote identifier from the stamp, and
+  none names a deck, proposal, chat or memory (money rule).
 - Required stamps: client, engagement, as_of, source_snapshot.sow,
-  source_snapshot.quote.
+  source_snapshot.quote, and source_snapshot.sow_executed (signed_on date and signers).
+  A SOW stamp that reads as a draft or unsigned fails.
 - No em dash anywhere in the file.
 
 Stdlib only. Deterministic. A prose checklist can be skipped; this cannot.
@@ -35,7 +37,11 @@ import sys
 SECTION_KEYS = [f"{i:02d}" for i in range(1, 13)]
 VALID_MOMENTS = ("package", "brief")
 EM_DASH = "\u2014"
-FIGURE_SOURCE_RE = re.compile(r"(sow|quote|q-\d+)", re.IGNORECASE)
+# A figure's source may not name a document the money rule bars, even beside the SOW id.
+BARRED_FIGURE_SOURCE_RE = re.compile(r"\b(deck|proposal|slack|email|e-mail|memory|pitch)\b", re.IGNORECASE)
+# The stamp for the SOW must describe an executed agreement, never a draft.
+DRAFT_STAMP_RE = re.compile(r"\b(draft|unsigned|not signed|not for signature|pending signature)\b", re.IGNORECASE)
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 GAP_FIELDS = ("question", "owner", "resolve_by", "gate_blocked")
 SESSION_FIELDS = ("name", "owner", "attendees", "output")
 
@@ -149,6 +155,21 @@ def check_section_12(section, moment, findings):
             findings.append(f"section 12: readiness item {i} status must be ready, blocked, or unknown")
 
 
+def references_snapshot(source, snapshot):
+    """True when the source text carries the SOW identifier or the quote identifier from the stamp."""
+    if not isinstance(snapshot, dict):
+        return False
+    lowered = source.lower()
+    sow = snapshot.get("sow")
+    quote = snapshot.get("quote")
+    ids = []
+    if isinstance(sow, str) and sow.split():
+        ids.append(sow.split()[0])
+    if isinstance(quote, str) and quote.strip():
+        ids.append(quote.strip())
+    return any(i.lower() in lowered for i in ids)
+
+
 def check(manifest, raw_text):
     findings = []
 
@@ -173,6 +194,22 @@ def check(manifest, raw_text):
     snapshot = manifest.get("source_snapshot")
     if not isinstance(snapshot, dict) or not filled(snapshot.get("sow")) or not filled(snapshot.get("quote")):
         findings.append("stamp missing: source_snapshot.sow and source_snapshot.quote are both required")
+    else:
+        if DRAFT_STAMP_RE.search(snapshot["sow"]):
+            findings.append(
+                f"source_snapshot.sow describes a draft or unsigned agreement ({snapshot['sow']!r}); "
+                "this skill does not run before signature"
+            )
+        executed = snapshot.get("sow_executed")
+        if (
+            not isinstance(executed, dict)
+            or not isinstance(executed.get("signed_on"), str)
+            or not DATE_RE.match(executed["signed_on"])
+            or not filled(executed.get("signers"))
+        ):
+            findings.append(
+                "stamp missing: source_snapshot.sow_executed needs signed_on (YYYY-MM-DD) and a non-empty signers list"
+            )
 
     moment = manifest.get("moment", "brief")
     if moment not in VALID_MOMENTS:
@@ -236,9 +273,10 @@ def check(manifest, raw_text):
             findings.append(f"figure {i}: missing label or value")
             continue
         src = f.get("source", "")
-        if not filled(src) or not FIGURE_SOURCE_RE.search(src):
+        if not filled(src) or not references_snapshot(src, snapshot) or BARRED_FIGURE_SOURCE_RE.search(src):
             findings.append(
-                f"figure {i} ({f.get('label')!r}): source must reference the executed SOW or the quote (money rule)"
+                f"figure {i} ({f.get('label')!r}): source must cite the executed SOW or the quote by the "
+                "identifier in source_snapshot, and no deck, proposal, chat or memory (money rule)"
             )
 
     counts = {

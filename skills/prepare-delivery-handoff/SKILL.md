@@ -187,6 +187,21 @@ manifest, run the gate and review with `writing`, and stop with the findings and
 gaps. Say plainly that the transfer session and acceptance are outstanding. Never
 record an acceptance nobody gave.
 
+## One person in every role
+
+When the seller and the delivery lead are the same person, the warm transfer is that
+person reading the package back, and the acceptance is their own written acceptance of the
+brief. Record both with a date and the person's name, so the record shows who held which
+role. Do not invent a second attendee. The signature gate does not relax: the executed
+agreement and its signers are still required before a package or brief is built.
+
+## Evidence gate and the signature
+
+The evidence gate treats the "executed commitment" domain as covered only by a Confirmed
+claim with `executed: true`. A claim such as "the draft is not signed" sits in the domain
+without covering it, so an unsigned deal returns Insufficient and the output is the
+handoff readiness gap memo.
+
 ## Boundaries
 
 This skill is the first delivery link in the chain that runs SOW, then
