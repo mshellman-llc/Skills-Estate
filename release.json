@@ -1,0 +1,18 @@
+{
+  "format": 1,
+  "sourceCommit": "bd0592be3b6047590da9b356a9bae18c27686064",
+  "files": {
+    "private.html": {
+      "sha256": "a1fb1998f9f765ee2fda1896d525c4b05dec6ce98d55577e2211373b8ea30a5f",
+      "bytes": 820232
+    },
+    "public.html": {
+      "sha256": "4aee950b17602bae22f3b1560ac4745056b6d324e6d35350b079987123ce27ae",
+      "bytes": 783988
+    },
+    "catalog.json": {
+      "sha256": "3a8af5277197cf63beb09f4bf202106296b1dc07a0497203707d2c88b03ebee5",
+      "bytes": 458198
+    }
+  }
+}
