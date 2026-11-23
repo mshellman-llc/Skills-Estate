@@ -21,6 +21,14 @@ Checks, all blocking:
      and date.
   6. Pricing model is exactly one of fixed_fee or t_and_m.
   7. Approval action is a single value from the allowed set.
+  8. Optional margin_range_pct {"low", "expected", "high"} (percent points;
+     low required, expected and high optional). When present, its low end,
+     not the point figure, is compared with the floor and picks the approval
+     band, so margin_vs_floor and approval_route must follow the low end. A
+     block that sets either from the point figure while the low end puts it
+     elsewhere fails. The range must be ordered (low <= expected <= high),
+     expected must match stated_margin_pct, and the point figure may not sit
+     below the low end.
 
 Exit 0 on pass, 1 on any failure, 2 on unreadable input.
 Usage: deal_desk_gate.py <packet.md|packet.html>
@@ -127,6 +135,35 @@ def check(text):
             "stated_margin_pct %.2f does not match recomputed %.2f (fee %.2f, cost %.2f)"
             % (stated_margin, real_margin, fee, computed_cost))
 
+    # Optional margin range: the low end governs the floor verdict and the route.
+    governing_margin = real_margin
+    range_note = ""
+    rng = fig.get("margin_range_pct")
+    if rng is not None:
+        try:
+            if not isinstance(rng, dict) or "low" not in rng:
+                raise ValueError
+            low = float(rng["low"])
+            expected_pt = float(rng["expected"]) if rng.get("expected") is not None else None
+            high = float(rng["high"]) if rng.get("high") is not None else None
+        except (TypeError, ValueError):
+            fails.append("margin_range_pct must be an object with a numeric low and "
+                         "optional numeric expected and high")
+        else:
+            points = [low] + [v for v in (expected_pt, high) if v is not None]
+            if points != sorted(points):
+                fails.append("margin_range_pct must be ordered low <= expected <= high")
+            if expected_pt is not None and abs(expected_pt - stated_margin) > MARGIN_TOLERANCE_PTS:
+                fails.append(
+                    "margin_range_pct expected %.2f does not match stated_margin_pct %.2f"
+                    % (expected_pt, stated_margin))
+            if low > real_margin + MARGIN_TOLERANCE_PTS:
+                fails.append(
+                    "margin_range_pct low %.2f is above the recomputed margin %.2f"
+                    % (low, real_margin))
+            governing_margin = min(low, real_margin)
+            range_note = " (the low end of margin_range_pct, not the point figure)"
+
     # Floor comparison: present, sourced with a date, verdict matches arithmetic.
     floor_source = str(fig["floor_source"]).strip()
     if not floor_source:
@@ -134,13 +171,13 @@ def check(text):
     elif not DATE_RE.search(floor_source):
         fails.append("floor_source carries no verification date (YYYY-MM-DD)")
     verdict = str(fig["margin_vs_floor"]).strip().lower()
-    expected = "above" if real_margin >= floor else "below"
+    expected = "above" if governing_margin >= floor else "below"
     if verdict not in ("above", "below"):
         fails.append("margin_vs_floor must be 'above' or 'below', got %r" % verdict)
     elif verdict != expected:
         fails.append(
-            "margin_vs_floor says %r but recomputed margin %.2f is %s the %.2f floor"
-            % (verdict, real_margin, expected, floor))
+            "margin_vs_floor says %r but the governing margin %.2f is %s the %.2f floor%s"
+            % (verdict, governing_margin, expected, floor, range_note))
 
     # Approval ladder: sourced, and the stated route matches the band.
     ladder = fig["approval_ladder"]
@@ -155,7 +192,7 @@ def check(text):
         band = None
         try:
             for b in sorted(ladder, key=lambda b: float(b["min_margin_pct"]), reverse=True):
-                if real_margin >= float(b["min_margin_pct"]):
+                if governing_margin >= float(b["min_margin_pct"]):
                     band = b
                     break
             if band is None:
@@ -170,8 +207,8 @@ def check(text):
                 fails.append("approval ladder band has no approver")
             elif stated_route.lower() != required.lower():
                 fails.append(
-                    "approval_route %r does not match ladder: margin %.2f lands in the %r band"
-                    % (stated_route, real_margin, required))
+                    "approval_route %r does not match ladder: margin %.2f%s lands in the %r band"
+                    % (stated_route, governing_margin, range_note, required))
 
     # Delivery cosign: explicit human input, never blank, never inferred.
     cosign = fig["delivery_cosign"]

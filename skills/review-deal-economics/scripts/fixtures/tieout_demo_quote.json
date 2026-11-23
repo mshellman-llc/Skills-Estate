@@ -1,0 +1,11 @@
+{
+  "quote_id": "Q-DEMO-1",
+  "as_of": "2026-01-05",
+  "fee": 2000,
+  "roles": [
+    {"role": "Consultant", "hours": 10, "rate": 200, "low": 8, "expected": 10, "high": 12}
+  ],
+  "phases": [
+    {"phase": "Build", "hours": 10, "fee": 2000}
+  ]
+}

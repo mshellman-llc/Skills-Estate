@@ -74,7 +74,7 @@
       "required": ["sourceId", "sourceType", "title", "authority", "observedAt", "locator"],
       "properties": {
         "sourceId": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"},
-        "sourceType": {"type": "string", "enum": ["executed_contract", "current_sow", "current_quote", "crm_record", "approved_design", "meeting_transcript", "client_document", "internal_model", "message", "generated_artifact", "worked_example", "other"]},
+        "sourceType": {"type": "string", "description": "commercial_policy is a confirmed rate card, margin floor, approval ladder or discount authority; its authority is capped at 85, level with approved_design.", "enum": ["executed_contract", "current_sow", "current_quote", "crm_record", "approved_design", "commercial_policy", "meeting_transcript", "client_document", "internal_model", "message", "generated_artifact", "worked_example", "other"]},
         "title": {"type": "string"},
         "authority": {"type": "integer", "minimum": 0, "maximum": 100},
         "observedAt": {"type": "string", "format": "date-time"},

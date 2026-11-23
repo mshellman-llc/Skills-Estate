@@ -5,6 +5,10 @@ margin threshold or approval ladder. Keep its source and verification date
 in the review record. This estate supplies no default margin floor, role
 rate or discount authority.
 
+In the evidence ledger, record that policy source with sourceType
+`commercial_policy`. It has an authority cap of 85, level with an approved
+design. Do not retype a rate card or ladder as an approved design or other.
+
 Without that policy, prepare the sourced economics and identify the missing
 approval rule. Do not claim commercial approval. A missing policy does not
 prevent comparing known costs or recording a financial discrepancy.
@@ -72,7 +76,7 @@ have no authority for another engagement.
     {"min_margin_pct": 30, "approver": "Commercial owner"},
     {"min_margin_pct": 0, "approver": "Exception reviewer"}
   ],
-  "approval_ladder_source": "Fictional policy example, verified 2026-10-22",
+  "approval_ladder_source": "Fictional approval ladder, verified 2026-10-22",
   "approval_route": "Commercial owner",
   "delivery_cosign": {"status": "pending"},
   "delivery_cosign_scope": "Scope and staffing review pending",
@@ -85,6 +89,24 @@ cost from the role rows and checks the stated margin within its documented
 tolerance. It also checks whether the floor comparison and approval route
 match the supplied policy values. A valid record cannot establish that
 the policy itself was approved; inspect its source separately.
+
+### Margin range
+
+When staffing or cost is a range, add an optional `margin_range_pct` to the
+figures block, in percentage points:
+
+```json
+"margin_range_pct": {"low": 15, "expected": 52.84, "high": 60}
+```
+
+`low` is required when the field is present; `expected` and `high` are
+optional and, when given, must be ordered low, expected, high. `expected`
+must match `stated_margin_pct`, and the point figure may not sit below
+`low`. The gate compares the low end, not the point figure, with the floor
+and selects the approval band from it. Set `margin_vs_floor` and
+`approval_route` from the low end. A block that sets either from the point
+figure while the low end puts it elsewhere fails. Without the field the
+gate checks the single stated margin as before.
 
 Delivery review can be confirmed or conditional. It can also remain pending
 or be declined. Confirmed review needs a named reviewer and date. Preserve
