@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T19:14:39.521032+00:00",
-  "baseCommit": "da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e",
+  "generatedAt": "2026-11-23T19:45:42.175289+00:00",
+  "baseCommit": "65e93805e126bfff9409abba7c07b78903812612",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -65,7 +65,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-author-style/SKILL.md",
       "sourceSha256": "34e0428c79e8675f900e75fecf1bb94858b1e339be3b6e4013e04f30c1622e66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/apply-author-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/apply-author-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -196,7 +196,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-salesforce-patterns/SKILL.md",
       "sourceSha256": "97a238283a12443797e0970f0483169d2c283e27a7735ef344d3a87bc2d58d2b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/apply-salesforce-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/apply-salesforce-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "apply-salesforce-patterns",
@@ -433,7 +433,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-career-options/SKILL.md",
       "sourceSha256": "5b031d7d1564ceba461c02ac0de7a8bed69666a82108f74769500554319749a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/assess-career-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/assess-career-options/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-career-options",
@@ -576,7 +576,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-offering-fit/SKILL.md",
       "sourceSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/assess-offering-fit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/assess-offering-fit/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-offering-fit",
@@ -732,7 +732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-solution-delivery/SKILL.md",
       "sourceSha256": "373cbdd2199c0c41f5b492a5b4f2bb3c712ed9aaf5b9abebe078f8ee001b1d89",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/assess-solution-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/assess-solution-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-solution-delivery",
@@ -1112,7 +1112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/audit-accessibility/SKILL.md",
       "sourceSha256": "6f6b392bdc3eb2cf4277e1d13ea2210888228695c933a6c6835dddda47ee798e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/audit-accessibility/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/audit-accessibility/SKILL.md",
       "taskPackages": [
         {
           "name": "audit-accessibility",
@@ -1244,7 +1244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-estate-skill/SKILL.md",
       "sourceSha256": "24b0fa3b3246b650dd8b24613ddedd2b5086c56217caf4a21c6e0ae091434d2f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/author-estate-skill/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/author-estate-skill/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -1460,7 +1460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-style-runtime/SKILL.md",
       "sourceSha256": "abf76c99659ac51362b3bf6fef01a876fb92e9a3b3d3905ebcc99854c91b501c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/author-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/author-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1647,7 +1647,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "e314b77b616d9fe8648d8f8c14aa9fc5479fb0f0a3c13180661b2c1b18ef6f13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-offering-fit",
@@ -2064,7 +2064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deal-decision-deck/SKILL.md",
       "sourceSha256": "a83c28397853df493cd3ac479fc9cb588ddc595cc82e68d3a5f4059c4713e209",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-deal-decision-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-deal-decision-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2347,7 +2347,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deck/SKILL.md",
       "sourceSha256": "b8a3a16abac7d7ec0ad786846636c6cba01a5ec8509220640af6e45bd1ff9749",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2605,7 +2605,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-editorial-chart/SKILL.md",
       "sourceSha256": "cde02918eb0e09f72b62b58e9b75d66eed52f8a0421df36cfa3989ceb0b3f5d7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-editorial-chart/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-editorial-chart/SKILL.md",
       "taskPackages": [
         {
           "name": "build-editorial-chart",
@@ -2826,7 +2826,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "7c3f6b40512a561331d5c6003bd62a985ee383bc725748430063798f7a6a0121",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -3008,7 +3008,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-proposal/SKILL.md",
       "sourceSha256": "b175675b1f6ef1ddef372c16b44d278b4d6e417c8d773c9cd1c2c973cfeefe0b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -3278,7 +3278,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-moscow-story-map/SKILL.md",
       "sourceSha256": "b6e46327dc11d0e86d97e9b9c99121f819f87f76c895c48dcdee6b8236722c82",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "build-moscow-story-map",
@@ -3438,7 +3438,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-review-site/SKILL.md",
       "sourceSha256": "1534d3e3d0b67916b536acc209f4f963ae1d2c0370ce8106bf1ca8993724578d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "build-review-site",
@@ -3651,7 +3651,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-roadmap/SKILL.md",
       "sourceSha256": "db7e32ba564b4400f0a35919459bcc64f79bbd8d1d6d1f48037a70d8d1621c9c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/build-roadmap/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-roadmap/SKILL.md",
       "taskPackages": [
         {
           "name": "build-roadmap",
@@ -3976,7 +3976,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-knowledge/SKILL.md",
       "sourceSha256": "9049e911aaa57e057a466332ac0dc10045e19383c099384505f6413b8dd36d2e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/capture-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/capture-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-knowledge",
@@ -4112,7 +4112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-requirements/SKILL.md",
       "sourceSha256": "f86a6bf575098c5b148c1f9142b7fb0536e87d659bb464eb26a0493970e75d1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/capture-requirements/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/capture-requirements/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-requirements",
@@ -4329,7 +4329,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-salesforce-screens/SKILL.md",
       "sourceSha256": "a78f3f8a3aa09d11647d217ec599435f71050d74329203beeb6ee89240db9319",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/capture-salesforce-screens/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/capture-salesforce-screens/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4479,7 +4479,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/check-knowledge-hub/SKILL.md",
       "sourceSha256": "86789af6c5068ade95ae70a4e523f74f5e5e641c90e1158381f5a28b99212a59",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/check-knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/check-knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "check-knowledge-hub",
@@ -4629,7 +4629,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/compare-scope-options/SKILL.md",
       "sourceSha256": "3d37c9dc0dfb58725d6309b62e57f4365c51373bff43e38e40b5c3f687322bd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/compare-scope-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/compare-scope-options/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -4888,7 +4888,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/configure-salesforce-project/SKILL.md",
       "sourceSha256": "89e669c0397cc783ca45c1bf4473b4735f131fc05bbc572c0aa1dc58562c4ad4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/configure-salesforce-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/configure-salesforce-project/SKILL.md",
       "taskPackages": [
         {
           "name": "configure-salesforce-project",
@@ -5630,7 +5630,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deliver-salesforce-change/SKILL.md",
       "sourceSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/deliver-salesforce-change/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/deliver-salesforce-change/SKILL.md",
       "taskPackages": [
         {
           "name": "deliver-salesforce-change",
@@ -6004,7 +6004,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-orchestrator/SKILL.md",
       "sourceSha256": "caa57d432a662df7177bdf3748533341e0a28b26ffd50aa1ae1bb8ca3b2cbe08",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/delivery-orchestrator/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/delivery-orchestrator/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-requirements",
@@ -6275,7 +6275,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-analytics-plan/SKILL.md",
       "sourceSha256": "78d27b364ce3a619d70ed5dc9008b93351254d3ae7ca3dd9952f85e7398f45be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/design-analytics-plan/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-analytics-plan/SKILL.md",
       "taskPackages": [
         {
           "name": "design-analytics-plan",
@@ -6407,7 +6407,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-information-architecture/SKILL.md",
       "sourceSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/design-information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "design-information-architecture",
@@ -6539,7 +6539,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-process/SKILL.md",
       "sourceSha256": "a01f63c5f638cc1d414f52972b8a82294f39f25f59d66252c903c28357666dcb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/design-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-process/SKILL.md",
       "taskPackages": [
         {
           "name": "design-process",
@@ -6722,7 +6722,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-software-system/SKILL.md",
       "sourceSha256": "8f690301b9b970451cf73740db9d45c818475b441c85e6f5f7b23c2c6b123048",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/design-software-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-software-system/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -6897,7 +6897,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-sticker/SKILL.md",
       "sourceSha256": "b6dab8536880885060e9221906488aa8c5cbbc26ce194e2b179169024193b345",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/design-sticker/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-sticker/SKILL.md",
       "taskPackages": [
         {
           "name": "design-sticker",
@@ -7032,7 +7032,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-independent-product/SKILL.md",
       "sourceSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/develop-independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/develop-independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-independent-product",
@@ -7148,7 +7148,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-product/SKILL.md",
       "sourceSha256": "443f4e96e287cd29a34d571a8587999ab0c4e99567be08d4dbf96ffedabbbe95",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/develop-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/develop-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-product",
@@ -7375,7 +7375,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/draft-application-materials/SKILL.md",
       "sourceSha256": "a53b931a7ee559a7054537b27dd302dedf1baebf360e29afe879811f5a4e50e1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/draft-application-materials/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/draft-application-materials/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -7537,7 +7537,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/estimate-project/SKILL.md",
       "sourceSha256": "9fb5d9b573c326a58b62feac2f5c4d80238b9b13ce88dd5ada0c97982cded922",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/estimate-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/estimate-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -7785,11 +7785,11 @@
       "title": "Evidence core",
       "family": 5,
       "description": "Builds and validates the Knowledge Hub evidence records for Estate consulting work. Use before creating or materially revising a client artifact whose factual claims must trace to governed sources. Owns source authority, atomic claims, confidence, staleness, conflicts, inline claim references, and evidence sufficiency; it does not own Hub storage or the consulting lifecycle layout.",
-      "status": "github",
+      "status": "local-revision",
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "1c2bf5fc7cc938fb6c1a1fbe7dbcd7f4e35e770363072ea0290e1f57e0bba6b4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-solution-delivery",
@@ -7842,7 +7842,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 19,
-        "packageFingerprint": "5eb51af9dea98764488884f7afbf643bad6c5ed8ed2410954548a9b74ab55b6d",
+        "packageFingerprint": "e5f597cd785688e6b7f6d9539c04013775755ec8a5db93d58532ee2c20ce6291",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -8012,27 +8012,27 @@
         },
         {
           "path": "reference/artifact-registry.json",
-          "sha256": "f9c3952ffa3bba965ef33ee324bb70e0132f616b26cc3ffea7a2c498d3622278",
-          "bytes": 10409,
-          "gitBlob": "1129eaef203676b7c1fe56f1dbcdf55a8374f2ec"
+          "sha256": "e104efafa7e8fb8e286f07613b6f6c3f4368a03ef13017c3db3ffcbcb5096e9a",
+          "bytes": 10459,
+          "gitBlob": "26acbb6a185b632947283c2891d0cb2375818c91"
         },
         {
           "path": "schemas/evidence-ledger.schema.json",
-          "sha256": "df1188c6305434b199147ea2c358c0af66025e49ef17e167a19b3075a871a40c",
-          "bytes": 7129,
-          "gitBlob": "0f233e186419cc14c887ce3ac658823d4a9660a4"
+          "sha256": "dd80d604c87e327ef7df52b9c5829026ab008fef7e4ef306fd78b76430851065",
+          "bytes": 7352,
+          "gitBlob": "93a0b0b2a49aacbfe0829df74781fc67b3545e7c"
         },
         {
           "path": "scripts/evidence_core.py",
-          "sha256": "99c60cbe1f8a35326c8970acf4a849d95fd204288f019a7554603245f80d15dc",
-          "bytes": 25097,
-          "gitBlob": "666ffcc85adf3f7523b6db627ca4c752218c5a3a"
+          "sha256": "957dffa48cac4fcdd0258b0327f7c707a4dbbd16ef171b683c4f65721b361713",
+          "bytes": 25796,
+          "gitBlob": "9ddac9346eab7f19150d39537d6b4a4650ace958"
         },
         {
           "path": "scripts/evidence_core_selftest.py",
-          "sha256": "c2ae73c6ae3cdafb665bfc54b72c3b3e89a22400f493af7d19743220ea313017",
-          "bytes": 14492,
-          "gitBlob": "7874da65656726ef79247cbc85904ccc8ef4cccd"
+          "sha256": "5fec79d5ca7485acd4e74d291dd1aeef0f49040dd3f19487a7c8b3e7664c1c82",
+          "bytes": 16054,
+          "gitBlob": "aa5f2c86ad7140fe2195a738ab1e2c28d1b40dec"
         },
         {
           "path": "scripts/ledger_events.py",
@@ -8084,7 +8084,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/frame-jobs-to-be-done/SKILL.md",
       "sourceSha256": "9c39626ef8c4568afef3b93a28496d2708408f1ae375758f8ebfe17d1afa226b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/frame-jobs-to-be-done/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/frame-jobs-to-be-done/SKILL.md",
       "taskPackages": [
         {
           "name": "frame-jobs-to-be-done",
@@ -8366,7 +8366,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/guide-fortunes-weave/SKILL.md",
       "sourceSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/guide-fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/guide-fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "guide-fortunes-weave",
@@ -8480,7 +8480,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/import-tracker-export/SKILL.md",
       "sourceSha256": "303f8fd7642bf80652fad4907328277a1b920093202ecf3837c0013fe905ede3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/import-tracker-export/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/import-tracker-export/SKILL.md",
       "taskPackages": [
         {
           "name": "import-tracker-export",
@@ -8653,7 +8653,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ingest-transcript/SKILL.md",
       "sourceSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/ingest-transcript/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/ingest-transcript/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8819,7 +8819,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/lay-out-sticker-sheets/SKILL.md",
       "sourceSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/lay-out-sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/lay-out-sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "lay-out-sticker-sheets",
@@ -8938,7 +8938,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/load-project-context/SKILL.md",
       "sourceSha256": "4ee2f9d398d48a4ed0b3d3fe573a2b67f1d799cbbf2ab4c214221c9feca14822",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/load-project-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/load-project-context/SKILL.md",
       "taskPackages": [
         {
           "name": "load-project-context",
@@ -9090,7 +9090,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-discovery-record/SKILL.md",
       "sourceSha256": "591924339a334dc8207ad9e0f39c5112fde2b3c4859754a02a3e2fc1a0d7693e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/maintain-discovery-record/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/maintain-discovery-record/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -9359,7 +9359,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-skills-estate/SKILL.md",
       "sourceSha256": "00a2bf8f0726d18b51e929cab355804e975529cde0f82e4d828172cbe84c6a09",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/maintain-skills-estate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/maintain-skills-estate/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -9596,7 +9596,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-brand-profile/SKILL.md",
       "sourceSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-brand-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-brand-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-brand-profile",
@@ -9713,7 +9713,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-color-system/SKILL.md",
       "sourceSha256": "6ca791f214dca500df65669f232151d0064312cb0e99bbbe60a85ae0e3a1f695",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-color-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-color-system/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-color-system",
@@ -9921,7 +9921,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-consulting-knowledge/SKILL.md",
       "sourceSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-consulting-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-consulting-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-consulting-knowledge",
@@ -10255,7 +10255,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-cutover-closeout/SKILL.md",
       "sourceSha256": "ccb735fac1092a6073c9f18f3db775a6c0eb338507ee6a570ced71b9a3fcd468",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-cutover-closeout",
@@ -10491,7 +10491,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-decision-register/SKILL.md",
       "sourceSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-decision-register",
@@ -10651,7 +10651,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-linked-task/SKILL.md",
       "sourceSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-linked-task/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-linked-task/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "load-project-context"
@@ -10761,7 +10761,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-salesforce-devops/SKILL.md",
       "sourceSha256": "696aa80506a1d04ca45ae7a9fa0e17f03c75790c9be441c5f537584e6082cc3f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-salesforce-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-salesforce-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -10930,7 +10930,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-service-offering/SKILL.md",
       "sourceSha256": "cad2f61af6b45fb500642f6a8e5027d127eb87cdb4c97a415e7e72669339c158",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-service-offering/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-service-offering/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -11109,7 +11109,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-writing-profile/SKILL.md",
       "sourceSha256": "661cb380854e11b480c8ce08a449df7ae4365ff710f1ab8cff53e5cd11d33486",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/manage-writing-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-writing-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-writing-profile",
@@ -11295,7 +11295,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-journey/SKILL.md",
       "sourceSha256": "2b43a88c556f3e333b3c12837568aeaa88f093347ca8fcd83e62d444ff688b32",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/map-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/map-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-journey",
@@ -11500,7 +11500,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-sales-process/SKILL.md",
       "sourceSha256": "b748025f77345184a86a61a941fe6eb2f60d9ca16542011ddd84be537156dcc3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/map-sales-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/map-sales-process/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -11637,7 +11637,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/operate-salesforce-pipeline/SKILL.md",
       "sourceSha256": "587104dba57206c015cde53ae40c19b7118448ad95c74e13ea31b37f2b0fdd13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/operate-salesforce-pipeline/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/operate-salesforce-pipeline/SKILL.md",
       "taskPackages": [
         {
           "name": "operate-salesforce-pipeline",
@@ -11883,7 +11883,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-offering-artifacts/SKILL.md",
       "sourceSha256": "8ce392ac863ea41de982bf5606dda64e2fd92fac59560f39f15686895a7cc84c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/plan-offering-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-offering-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -12098,7 +12098,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-sprint/SKILL.md",
       "sourceSha256": "d51a5e894bea166e84c169b6b9764c4ef75ced3949bacbfc2627661f35db7e38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/plan-sprint/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-sprint/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-sprint",
@@ -12336,7 +12336,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-team-onboarding/SKILL.md",
       "sourceSha256": "0a289d5a65fc13097458b16b760eb1a6f4fca799bf3673bc8466d97fe3acfeea",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/plan-team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-team-onboarding",
@@ -12515,7 +12515,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-usability-study/SKILL.md",
       "sourceSha256": "252bcb7ec74179de8eccd9a6d19f4c50b15262cf1fd7d084f7d73b593a07b6ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/plan-usability-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-usability-study/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-usability-study",
@@ -12643,11 +12643,11 @@
       "title": "Sales-to-delivery handoff",
       "family": 2,
       "description": "Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (assess-solution-delivery), the kickoff meeting or project charter (start-delivery), requirements extraction (capture-requirements), or pre-sale research and call prep (prepare-sales-pursuit).",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/prepare-delivery-handoff/SKILL.md",
-      "sourceSha256": "829d47e32ecb16c7cc9640c00bf0d3e21335d86acf475eec2b24d1cd819184e1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/prepare-delivery-handoff/SKILL.md",
+      "sourceSha256": "42d6012305bc2b06e88be0c9739754b3ce12558d45ab421dee083fbb8545a45a",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-delivery-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-delivery-handoff",
@@ -12663,7 +12663,7 @@
         "inputs": "The executed agreement, quote, deal record, and receiving team.",
         "outputs": "A handoff package with ownership, assumptions, and tracked acceptance.",
         "example": "Prepare the sales-to-delivery handoff from the executed agreement and deal record.",
-        "reviewedEntrypointSha256": "829d47e32ecb16c7cc9640c00bf0d3e21335d86acf475eec2b24d1cd819184e1",
+        "reviewedEntrypointSha256": "42d6012305bc2b06e88be0c9739754b3ce12558d45ab421dee083fbb8545a45a",
         "expect": "It confirms the deal is signed, gathers facts from the executed SOW, quote and deal record, and builds a 12-section handoff manifest that a script gate checks. Every section is filled or carries a named gap with an owner, and it stops with a gap memo if required evidence is insufficient; it never records an acceptance nobody gave.",
         "requires": "An executed SOW and its quote for a signed deal, plus Python 3 to run the manifest gate.",
         "overview": "It confirms the deal is signed, gathers facts from the executed SOW, quote and deal record, and builds a 12-section handoff manifest that a script gate checks. Every section is filled or carries a named gap with an owner, and it stops with a gap memo if required evidence is insufficient; it never records an acceptance nobody gave.",
@@ -12691,7 +12691,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 12,
-        "packageFingerprint": "355ec026933955aae1282ac4812d63381a602b01aefe67577766324bc18a6090",
+        "packageFingerprint": "f99cb7a7c9f31051a9efc0208e857b7222a9a3bcd40a38d7870e397bf4de19bd",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -12751,8 +12751,8 @@
         "expect": "It confirms the deal is signed, gathers facts from the executed SOW, quote and deal record, and builds a 12-section handoff manifest that a script gate checks. Every section is filled or carries a named gap with an owner, and it stops with a gap memo if required evidence is insufficient; it never records an acceptance nobody gave.",
         "declared": true
       },
-      "markdown": "---\nname: prepare-delivery-handoff\ndescription: 'Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (assess-solution-delivery), the kickoff meeting or project charter (start-delivery), requirements extraction (capture-requirements), or pre-sale research and call prep (prepare-sales-pursuit).'\n---\n\n\n# Prepare delivery handoff\n\n> **Before writing: [`build-card.md`](../_shared/build-card.md) plus\n> [writing review](../writing/SKILL.md). Both shape the draft from its first line.**\n\nA signed deal crosses from the people who sold it to the people who deliver it, and\nmost of what the seller knows is about to walk out of the room. This skill captures\nit in one artifact family with one schema, produced at two moments:\n\n- **Moment 1, at signature: the handoff package.** Assembled from the executed SOW,\n  the quote, and the deal record. What was sold, what was decided and why, who was in\n  the room, what was promised, what is still open. The SSL walks it to the delivery\n  team in a recorded warm-transfer session.\n- **Moment 2, at delivery acceptance: the handoff brief.** The incoming team's\n  orientation document. Same sections, now completed with the readiness view, the\n  week-one discovery agenda, and the definition of done. Delivery accepting this\n  brief is the gate into Mobilize.\n\nBoth moments share the 12-section catalog and one manifest schema. Earlier drafts\nsplit this across a sell-side agent and a delivery-side agent with two divergent\nschemas and no defined mapping between them; facts died at the seam. That defect is\nwhy this is one skill. The package is the brief at an earlier state of completion,\nnever a different document.\n\n## Project context required\n\nUse only the caller-confirmed engagement, source records, private output location,\nand intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,\nand Pursuit Lead to that project's authorized owners; these labels do not impose\nan employer organization chart or signing authority. The executed agreement and\naccepted project plan determine gates, commercial rules, and support obligations.\nKeep account history, risk assessments, credentials, and client evidence outside\nportable skill sources. A cached account, attached Project, or available connector\nis not authorization to read, write, or publish.\n\n## Governance, delegated\n\n- **evidence-core runs first.** Every load-bearing claim enters the ledger\n  with source, confidence, and as-of date before any section is written. If a\n  required domain is Insufficient, produce the handoff readiness gap memo and stop;\n  a full handoff after an Insufficient gate is a hard fail. The artifact contract is\n  `sales_to_delivery_handoff` in evidence-core's `reference/artifact-registry.json`.\n- **brand-renderer owns the rendered surface.** No inlined hex, no\n  duplicated palette. Brand applies during the build.\n- **Writing-integrity owns writing review.** Run its bundled diagnostics on the rendered prose. No em\n  dashes, sentence-case headings, no AI-tell constructions.\n- **The money rule.** Contract figures come from the executed SOW and its quote\n  (Q-number) only. Never from Slack, never from memory, never from the proposal\n  deck, which may predate the final negotiation. This skill renders figures; it\n  never authors them.\n\nIf a governor is not installed on the current surface, state the check it would\nhave run, do the best manual substitute, and say that is what you did.\n\n## Source authority, in order\n\nThe executed SOW is the most authoritative source; read its scope, exclusions,\ndeliverables, fee model, dates, and assumptions verbatim. Then, in order: the quote,\nSalesforce (account, opportunity, stage history, contact roles), Drive (proposal,\ndiscovery decks, transcripts), Slack and Gmail (late changes, verbal commitments,\naccess blockers), calendar and call notes. The AE/CSE debrief comes last and narrow:\nonly the tacit room context no system holds. Mine the systems before interviewing\nanyone. Recency can override authority on current state: a recent thread reopening a\nsettled clause outranks the SOW on where things stand now, and that conflict is\nsurfaced, never silently resolved. Full connector table, search anchors, and\ncorroboration rules: `references/source-authority.md`.\n\n## The 12 sections\n\nFull catalog with each section's job and bar: `references/brief-catalog.md`.\n\n| # | Section | # | Section |\n|---|---------|---|---------|\n| 01 | The engagement | 07 | Sell-cycle promises |\n| 02 | What came before | 08 | Risks, assumptions, gaps |\n| 03 | Process and current state | 09 | The people |\n| 04 | System landscape | 10 | Relevant prior engagements |\n| 05 | Solution shape | 11 | Discovery sessions |\n| 06 | Decisions inherited | 12 | What good looks like |\n\nStructural rule, inherited from the provenance doctrine: **sections are never\ndropped.** Every section is present in every handoff. It is either filled with\nsourced facts, or it carries an explicit named gap with an owner, a resolve-by\ndate, and the gate it blocks. A section that genuinely does not apply (greenfield,\nno prior engagement) says so in one sourced line. A blank is a gate failure.\n\nThree sections carry special rules:\n\n- **07 Sell-cycle promises.** Anything said to the client that is not in the\n  executed SOW is a flagged liability, sourced to where and when it was said, with\n  an owner. Promises confirmed to be in the SOW are listed with the clause. This\n  section exists because unwritten promises are the single most common way sales\n  gets pulled back into delivery after signature.\n- **11 Discovery sessions.** The week-one agenda, built directly from the ledger's\n  Unknowns and Inferreds. Every session names an owner, the right attendees, and\n  the concrete output that closes the question. Never droppable.\n- **12 What good looks like.** The definition of done plus the readiness checklist.\n  Every criterion is observable, carries a binary test, and ladders to the one\n  outcome stated in section 01. Never droppable.\n\nSpecs for 11 and 12, including the readiness checklist items:\n`references/week-one-definition-of-done.md`.\n\n## Workflow\n\n1. **Orient.** Find the executed SOW and the Q-number. Confirm the deal is signed;\n   this skill does not run pre-signature. Pin the moment: package (signature) or\n   brief (delivery acceptance). Stamp the manifest with client, engagement,\n   source snapshot, and as-of date.\n2. **Run evidence-core.** Harvest in the authority order above. Read transcripts\n   verbatim, never summaries. Record a source nobody searched as an Unknown, because an\n   unsearched source cannot show that something is absent. Carry the delivery-lens and maturity-gap flags forward from the pursuit\n   so delivery inherits them instead of rediscovering them.\n3. **Build the manifest.** JSON, schema in `references/package-spec.md`. Fill the\n   12 sections from the ledger: roughly 80 percent of a clean deal assembles\n   mechanically from the SOW and quote. Everything the ledger could not source\n   becomes a gap entry with owner, resolve-by, and blocked gate. Mark every scope\n   item in or out. Log promises with where they were said and whether they are in\n   the SOW.\n4. **Gate it.**\n   ```bash\n   python3 scripts/check_handoff.py manifest.json\n   ```\n   Exit 0 passes, 1 fails, 2 is a usage or parse error. Report the counts it\n   prints, never an adjective. The gate is blocking at both moments.\n5. **Render.** Project the manifest through brand-renderer as the styled\n   HTML or portable Markdown brief. Confidence maps to presentation: Confirmed\n   reads as fact, Inferred as inference with its basis, Unknown as a named open\n   question, conflicts as flagged divergences with both values shown. Run\n   `writing` on the rendered prose. Never hand-patch the render; fix the manifest\n   and re-render.\n6. **Transfer and land.** Moment 1: support the warm transfer (the SSL walks the\n   package to the Program Lead and Solution Lead in a recorded session), then\n   ingest that session's transcript to close open questions. Moment 2: delivery\n   accepts the brief; record the acceptance. Deliver the file, commit it to the\n   client folder, write session memory pointing at the files.\n7. **Close the loop.** Top three things delivery inherits, then the landmines.\n   Flag the biggest judgment call in the handoff and argue the other side of it.\n\n### Seed DELIVERY-STATE.md at acceptance\n\nWhen delivery accepts the brief (Moment 2), create `DELIVERY-STATE.md` at the\nengagement folder root per delivery-orchestrator's `references/delivery-state-spec.md`:\nengagement meta, current stage, all eight gate statuses with `brief_accepted` marked\naccepted with the date, artifact locations (including the brief), and the first\nappend-only dated log line. If the file already exists, update the gate and log\ninstead of recreating it.\n\n## Durable output\n\nEvery run leaves a Markdown record per `_shared/output-contract.md`: the\nrendered brief itself when one ships, or a run record carrying the gate\ncounts, the open gaps with owners, and the outstanding human actions when the\nrun stops early. Deliver or link the file with the manifest; never just say\nit was written.\n\n## Depth tests during authoring\n\n- Name real things: systems, people, numbers, clauses, each with a source. No\n  \"the platform\", no \"various stakeholders\".\n- State the success spine early in 01 and return to it in 12.\n- Decisions carry status, owner, and rationale; open ones are visible, not buried.\n- Every assumption states what breaks if it is false.\n- People postures are sourced, never asserted; deal-versus-delivery stakeholder\n  mismatches are explicitly flagged, because a sponsor who vanishes at kickoff is\n  a top cause of failed starts.\n- Section 11 is built from the Unknowns: every open question maps to a session\n  whose output closes it, or names why it waits.\n\n## When time is short\n\nCut in this order, and say what you cut: 10 (prior engagements, keep a one-line\npointer), 03 (keep the breaks list, drop the full as-is map), 05 (point at the\nSolution Brief), depth in 02. Never cut: sourcing, section 07, the gap entries\nwith owners, sections 11 and 12, or the gate.\n\n## Running unattended\n\nThe warm transfer and the acceptance need humans. On a headless run: build the\nmanifest, run the gate and review with `writing`, and stop with the findings and the open\ngaps. Say plainly that the transfer session and acceptance are outstanding. Never\nrecord an acceptance nobody gave.\n\n## Boundaries\n\nThis skill is the first delivery link in the chain that runs SOW, then\nprepare-delivery-handoff, then kickoff, then status, then UAT, then manage-cutover-closeout. Its\nupstream producer is the sales side: the executed SOW and quote arrive as\nfixed input. Its downstream consumer is start-delivery, which\nturns the accepted brief into the charter and governance pack.\n\n- Does not judge technical deliverability or carry implementation depth. Section\n  05 is orientation only; the deep answer is assess-solution-delivery.\n- Does not run the kickoff or write the project charter. That is\n  start-delivery.\n- Does not extract or structure requirements. That is capture-requirements.\n- Does not do pursuit research or call prep. That is prepare-sales-pursuit, pre-sale\n  only.\n- Does not price, staff, commit dates, or reinterpret scope. The quote owns every\n  number; the Pursuit Lead and delivery leads own the decisions. It assembles and\n  transfers.\n- Does not initiate change orders. If delivery intent already differs from the\n  SOW, flag the conflict to the Pursuit Lead and leave the SOW text as signed.\n\n## Files\n\n- `scripts/check_handoff.py`: the gate. Validates a handoff manifest: all 12\n  sections present and either sourced or gapped with owner and resolve-by, 11 and\n  12 non-empty, every scope item marked in or out, promises sourced, contract\n  figures traced to the SOW or quote, no em dashes. Stdlib only.\n- `scripts/s2d_selftest.py`: runs the gate against the shipped fixtures and fails\n  loudly on any drift. Run it after any edit to the checker.\n- `scripts/fixtures/`: passing and failing manifests the selftest uses.\n- `references/brief-catalog.md`: the 12 sections, each with its job and its bar.\n- `references/package-spec.md`: the manifest schema, moment semantics, warm\n  transfer, and record seeding.\n- `references/week-one-definition-of-done.md`: section 11 and 12 specs and the\n  readiness checklist.\n- `references/source-authority.md`: connector table, search anchors, corroboration\n  and conflict rules.\n\n## Release gate (required)\n\nBefore you deliver, run the gate. This is a required step, not a suggestion, and\nnot something a reviewer does later. Full spec in\n[`release-gate.md`](../_shared/release-gate.md).\n\n1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For\n   a final artifact it emits a receipt the quality gate requires.\n2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,\n   footer.\n3. Run review-deliverable before you call it final.\n\nDo not present the artifact as finished until every check that applies has passed.\n",
-      "html": "<p>A signed deal crosses from the people who sold it to the people who deliver it, and most of what the seller knows is about to walk out of the room. This skill captures it in one artifact family with one schema, produced at two moments:</p><ul><li><strong>Moment 1, at signature: the handoff package.</strong> Assembled from the executed SOW,</li></ul><p>the quote, and the deal record. What was sold, what was decided and why, who was in the room, what was promised, what is still open. The SSL walks it to the delivery team in a recorded warm-transfer session.</p><ul><li><strong>Moment 2, at delivery acceptance: the handoff brief.</strong> The incoming team&#x27;s</li></ul><p>orientation document. Same sections, now completed with the readiness view, the week-one discovery agenda, and the definition of done. Delivery accepting this brief is the gate into Mobilize.</p><p>Both moments share the 12-section catalog and one manifest schema. Earlier drafts split this across a sell-side agent and a delivery-side agent with two divergent schemas and no defined mapping between them; facts died at the seam. That defect is why this is one skill. The package is the brief at an earlier state of completion, never a different document.</p><h3>Project context required</h3><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p><h3>Governance, delegated</h3><ul><li><strong>evidence-core runs first.</strong> Every load-bearing claim enters the ledger</li></ul><p>with source, confidence, and as-of date before any section is written. If a required domain is Insufficient, produce the handoff readiness gap memo and stop; a full handoff after an Insufficient gate is a hard fail. The artifact contract is <code>sales_to_delivery_handoff</code> in evidence-core&#x27;s <code>reference/artifact-registry.json</code>.</p><ul><li><strong>brand-renderer owns the rendered surface.</strong> No inlined hex, no</li></ul><p>duplicated palette. Brand applies during the build.</p><ul><li><strong>Writing-integrity owns writing review.</strong> Run its bundled diagnostics on the rendered prose. No em</li></ul><p>dashes, sentence-case headings, no AI-tell constructions.</p><ul><li><strong>The money rule.</strong> Contract figures come from the executed SOW and its quote</li></ul><p>(Q-number) only. Never from Slack, never from memory, never from the proposal deck, which may predate the final negotiation. This skill renders figures; it never authors them.</p><p>If a governor is not installed on the current surface, state the check it would have run, do the best manual substitute, and say that is what you did.</p><h3>Source authority, in order</h3><p>The executed SOW is the most authoritative source; read its scope, exclusions, deliverables, fee model, dates, and assumptions verbatim. Then, in order: the quote, Salesforce (account, opportunity, stage history, contact roles), Drive (proposal, discovery decks, transcripts), Slack and Gmail (late changes, verbal commitments, access blockers), calendar and call notes. The AE/CSE debrief comes last and narrow: only the tacit room context no system holds. Mine the systems before interviewing anyone. Recency can override authority on current state: a recent thread reopening a settled clause outranks the SOW on where things stand now, and that conflict is surfaced, never silently resolved. Full connector table, search anchors, and corroboration rules: <code>references/source-authority.md</code>.</p><h3>The 12 sections</h3><p>Full catalog with each section&#x27;s job and bar: <code>references/brief-catalog.md</code>.</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">#</th><th scope=\"col\">Section</th><th scope=\"col\">#</th><th scope=\"col\">Section</th></tr></thead><tbody><tr><td>01</td><td>The engagement</td><td>07</td><td>Sell-cycle promises</td></tr><tr><td>02</td><td>What came before</td><td>08</td><td>Risks, assumptions, gaps</td></tr><tr><td>03</td><td>Process and current state</td><td>09</td><td>The people</td></tr><tr><td>04</td><td>System landscape</td><td>10</td><td>Relevant prior engagements</td></tr><tr><td>05</td><td>Solution shape</td><td>11</td><td>Discovery sessions</td></tr><tr><td>06</td><td>Decisions inherited</td><td>12</td><td>What good looks like</td></tr></tbody></table></div><p>Structural rule, inherited from the provenance doctrine: <strong>sections are never dropped.</strong> Every section is present in every handoff. It is either filled with sourced facts, or it carries an explicit named gap with an owner, a resolve-by date, and the gate it blocks. A section that genuinely does not apply (greenfield, no prior engagement) says so in one sourced line. A blank is a gate failure.</p><p>Three sections carry special rules:</p><ul><li><strong>07 Sell-cycle promises.</strong> Anything said to the client that is not in the</li></ul><p>executed SOW is a flagged liability, sourced to where and when it was said, with an owner. Promises confirmed to be in the SOW are listed with the clause. This section exists because unwritten promises are the single most common way sales gets pulled back into delivery after signature.</p><ul><li><strong>11 Discovery sessions.</strong> The week-one agenda, built directly from the ledger&#x27;s</li></ul><p>Unknowns and Inferreds. Every session names an owner, the right attendees, and the concrete output that closes the question. Never droppable.</p><ul><li><strong>12 What good looks like.</strong> The definition of done plus the readiness checklist.</li></ul><p>Every criterion is observable, carries a binary test, and ladders to the one outcome stated in section 01. Never droppable.</p><p>Specs for 11 and 12, including the readiness checklist items: <code>references/week-one-definition-of-done.md</code>.</p><h3>Workflow</h3><ol><li><strong>Orient.</strong> Find the executed SOW and the Q-number. Confirm the deal is signed;</li></ol><p>this skill does not run pre-signature. Pin the moment: package (signature) or brief (delivery acceptance). Stamp the manifest with client, engagement, source snapshot, and as-of date.</p><ol><li><strong>Run evidence-core.</strong> Harvest in the authority order above. Read transcripts</li></ol><p>verbatim, never summaries. Record a source nobody searched as an Unknown, because an unsearched source cannot show that something is absent. Carry the delivery-lens and maturity-gap flags forward from the pursuit so delivery inherits them instead of rediscovering them.</p><ol><li><strong>Build the manifest.</strong> JSON, schema in <code>references/package-spec.md</code>. Fill the</li></ol><p>12 sections from the ledger: roughly 80 percent of a clean deal assembles mechanically from the SOW and quote. Everything the ledger could not source becomes a gap entry with owner, resolve-by, and blocked gate. Mark every scope item in or out. Log promises with where they were said and whether they are in the SOW.</p><ol><li><strong>Gate it.</strong></li></ol><p>``<code>bash python3 scripts/check_handoff.py manifest.json </code>`` Exit 0 passes, 1 fails, 2 is a usage or parse error. Report the counts it prints, never an adjective. The gate is blocking at both moments.</p><ol><li><strong>Render.</strong> Project the manifest through brand-renderer as the styled</li></ol><p>HTML or portable Markdown brief. Confidence maps to presentation: Confirmed reads as fact, Inferred as inference with its basis, Unknown as a named open question, conflicts as flagged divergences with both values shown. Run <code>writing</code> on the rendered prose. Never hand-patch the render; fix the manifest and re-render.</p><ol><li><strong>Transfer and land.</strong> Moment 1: support the warm transfer (the SSL walks the</li></ol><p>package to the Program Lead and Solution Lead in a recorded session), then ingest that session&#x27;s transcript to close open questions. Moment 2: delivery accepts the brief; record the acceptance. Deliver the file, commit it to the client folder, write session memory pointing at the files.</p><ol><li><strong>Close the loop.</strong> Top three things delivery inherits, then the landmines.</li></ol><p>Flag the biggest judgment call in the handoff and argue the other side of it.</p><h4>Seed DELIVERY-STATE.md at acceptance</h4><p>When delivery accepts the brief (Moment 2), create <code>DELIVERY-STATE.md</code> at the engagement folder root per delivery-orchestrator&#x27;s <code>references/delivery-state-spec.md</code>: engagement meta, current stage, all eight gate statuses with <code>brief_accepted</code> marked accepted with the date, artifact locations (including the brief), and the first append-only dated log line. If the file already exists, update the gate and log instead of recreating it.</p><h3>Durable output</h3><p>Every run leaves a Markdown record per <code>_shared/output-contract.md</code>: the rendered brief itself when one ships, or a run record carrying the gate counts, the open gaps with owners, and the outstanding human actions when the run stops early. Deliver or link the file with the manifest; never just say it was written.</p><h3>Depth tests during authoring</h3><ul><li>Name real things: systems, people, numbers, clauses, each with a source. No</li></ul><p>&quot;the platform&quot;, no &quot;various stakeholders&quot;.</p><ul><li>State the success spine early in 01 and return to it in 12.</li><li>Decisions carry status, owner, and rationale; open ones are visible, not buried.</li><li>Every assumption states what breaks if it is false.</li><li>People postures are sourced, never asserted; deal-versus-delivery stakeholder</li></ul><p>mismatches are explicitly flagged, because a sponsor who vanishes at kickoff is a top cause of failed starts.</p><ul><li>Section 11 is built from the Unknowns: every open question maps to a session</li></ul><p>whose output closes it, or names why it waits.</p><h3>When time is short</h3><p>Cut in this order, and say what you cut: 10 (prior engagements, keep a one-line pointer), 03 (keep the breaks list, drop the full as-is map), 05 (point at the Solution Brief), depth in 02. Never cut: sourcing, section 07, the gap entries with owners, sections 11 and 12, or the gate.</p><h3>Running unattended</h3><p>The warm transfer and the acceptance need humans. On a headless run: build the manifest, run the gate and review with <code>writing</code>, and stop with the findings and the open gaps. Say plainly that the transfer session and acceptance are outstanding. Never record an acceptance nobody gave.</p><h3>Boundaries</h3><p>This skill is the first delivery link in the chain that runs SOW, then prepare-delivery-handoff, then kickoff, then status, then UAT, then manage-cutover-closeout. Its upstream producer is the sales side: the executed SOW and quote arrive as fixed input. Its downstream consumer is start-delivery, which turns the accepted brief into the charter and governance pack.</p><ul><li>Does not judge technical deliverability or carry implementation depth. Section</li></ul><p>05 is orientation only; the deep answer is assess-solution-delivery.</p><ul><li>Does not run the kickoff or write the project charter. That is</li></ul><p>start-delivery.</p><ul><li>Does not extract or structure requirements. That is capture-requirements.</li><li>Does not do pursuit research or call prep. That is prepare-sales-pursuit, pre-sale</li></ul><p>only.</p><ul><li>Does not price, staff, commit dates, or reinterpret scope. The quote owns every</li></ul><p>number; the Pursuit Lead and delivery leads own the decisions. It assembles and transfers.</p><ul><li>Does not initiate change orders. If delivery intent already differs from the</li></ul><p>SOW, flag the conflict to the Pursuit Lead and leave the SOW text as signed.</p><h3>Files</h3><ul><li><code>scripts/check_handoff.py</code>: the gate. Validates a handoff manifest: all 12</li></ul><p>sections present and either sourced or gapped with owner and resolve-by, 11 and 12 non-empty, every scope item marked in or out, promises sourced, contract figures traced to the SOW or quote, no em dashes. Stdlib only.</p><ul><li><code>scripts/s2d_selftest.py</code>: runs the gate against the shipped fixtures and fails</li></ul><p>loudly on any drift. Run it after any edit to the checker.</p><ul><li><code>scripts/fixtures/</code>: passing and failing manifests the selftest uses.</li><li><code>references/brief-catalog.md</code>: the 12 sections, each with its job and its bar.</li><li><code>references/package-spec.md</code>: the manifest schema, moment semantics, warm</li></ul><p>transfer, and record seeding.</p><ul><li><code>references/week-one-definition-of-done.md</code>: section 11 and 12 specs and the</li></ul><p>readiness checklist.</p><ul><li><code>references/source-authority.md</code>: connector table, search anchors, corroboration</li></ul><p>and conflict rules.</p><h3>Release gate (required)</h3><p>Before you deliver, run the gate. This is a required step, not a suggestion, and not something a reviewer does later. Full spec in <code>release-gate.md</code> <span class=\"ref\">(../_shared/release-gate.md)</span>.</p><ol><li>Apply <code>writing</code> to the prose. Use the bundled diagnostic tools to check saved writing. For</li></ol><p>a final artifact it emits a receipt the quality gate requires.</p><ol><li>Run brand-renderer on the branded artifact: palette, borders, radii, logo,</li></ol><p>footer.</p><ol><li>Run review-deliverable before you call it final.</li></ol><p>Do not present the artifact as finished until every check that applies has passed.</p>",
+      "markdown": "---\nname: prepare-delivery-handoff\ndescription: 'Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (assess-solution-delivery), the kickoff meeting or project charter (start-delivery), requirements extraction (capture-requirements), or pre-sale research and call prep (prepare-sales-pursuit).'\n---\n\n\n# Prepare delivery handoff\n\n> **Before writing: [`build-card.md`](../_shared/build-card.md) plus\n> [writing review](../writing/SKILL.md). Both shape the draft from its first line.**\n\nA signed deal crosses from the people who sold it to the people who deliver it, and\nmost of what the seller knows is about to walk out of the room. This skill captures\nit in one artifact family with one schema, produced at two moments:\n\n- **Moment 1, at signature: the handoff package.** Assembled from the executed SOW,\n  the quote, and the deal record. What was sold, what was decided and why, who was in\n  the room, what was promised, what is still open. The SSL walks it to the delivery\n  team in a recorded warm-transfer session.\n- **Moment 2, at delivery acceptance: the handoff brief.** The incoming team's\n  orientation document. Same sections, now completed with the readiness view, the\n  week-one discovery agenda, and the definition of done. Delivery accepting this\n  brief is the gate into Mobilize.\n\nBoth moments share the 12-section catalog and one manifest schema. Earlier drafts\nsplit this across a sell-side agent and a delivery-side agent with two divergent\nschemas and no defined mapping between them; facts died at the seam. That defect is\nwhy this is one skill. The package is the brief at an earlier state of completion,\nnever a different document.\n\n## Project context required\n\nUse only the caller-confirmed engagement, source records, private output location,\nand intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,\nand Pursuit Lead to that project's authorized owners; these labels do not impose\nan employer organization chart or signing authority. The executed agreement and\naccepted project plan determine gates, commercial rules, and support obligations.\nKeep account history, risk assessments, credentials, and client evidence outside\nportable skill sources. A cached account, attached Project, or available connector\nis not authorization to read, write, or publish.\n\n## Governance, delegated\n\n- **evidence-core runs first.** Every load-bearing claim enters the ledger\n  with source, confidence, and as-of date before any section is written. If a\n  required domain is Insufficient, produce the handoff readiness gap memo and stop;\n  a full handoff after an Insufficient gate is a hard fail. The artifact contract is\n  `sales_to_delivery_handoff` in evidence-core's `reference/artifact-registry.json`.\n- **brand-renderer owns the rendered surface.** No inlined hex, no\n  duplicated palette. Brand applies during the build.\n- **Writing-integrity owns writing review.** Run its bundled diagnostics on the rendered prose. No em\n  dashes, sentence-case headings, no AI-tell constructions.\n- **The money rule.** Contract figures come from the executed SOW and its quote\n  (Q-number) only. Never from Slack, never from memory, never from the proposal\n  deck, which may predate the final negotiation. This skill renders figures; it\n  never authors them.\n\nIf a governor is not installed on the current surface, state the check it would\nhave run, do the best manual substitute, and say that is what you did.\n\n## Source authority, in order\n\nThe executed SOW is the most authoritative source; read its scope, exclusions,\ndeliverables, fee model, dates, and assumptions verbatim. Then, in order: the quote,\nSalesforce (account, opportunity, stage history, contact roles), Drive (proposal,\ndiscovery decks, transcripts), Slack and Gmail (late changes, verbal commitments,\naccess blockers), calendar and call notes. The AE/CSE debrief comes last and narrow:\nonly the tacit room context no system holds. Mine the systems before interviewing\nanyone. Recency can override authority on current state: a recent thread reopening a\nsettled clause outranks the SOW on where things stand now, and that conflict is\nsurfaced, never silently resolved. Full connector table, search anchors, and\ncorroboration rules: `references/source-authority.md`.\n\n## The 12 sections\n\nFull catalog with each section's job and bar: `references/brief-catalog.md`.\n\n| # | Section | # | Section |\n|---|---------|---|---------|\n| 01 | The engagement | 07 | Sell-cycle promises |\n| 02 | What came before | 08 | Risks, assumptions, gaps |\n| 03 | Process and current state | 09 | The people |\n| 04 | System landscape | 10 | Relevant prior engagements |\n| 05 | Solution shape | 11 | Discovery sessions |\n| 06 | Decisions inherited | 12 | What good looks like |\n\nStructural rule, inherited from the provenance doctrine: **sections are never\ndropped.** Every section is present in every handoff. It is either filled with\nsourced facts, or it carries an explicit named gap with an owner, a resolve-by\ndate, and the gate it blocks. A section that genuinely does not apply (greenfield,\nno prior engagement) says so in one sourced line. A blank is a gate failure.\n\nThree sections carry special rules:\n\n- **07 Sell-cycle promises.** Anything said to the client that is not in the\n  executed SOW is a flagged liability, sourced to where and when it was said, with\n  an owner. Promises confirmed to be in the SOW are listed with the clause. This\n  section exists because unwritten promises are the single most common way sales\n  gets pulled back into delivery after signature.\n- **11 Discovery sessions.** The week-one agenda, built directly from the ledger's\n  Unknowns and Inferreds. Every session names an owner, the right attendees, and\n  the concrete output that closes the question. Never droppable.\n- **12 What good looks like.** The definition of done plus the readiness checklist.\n  Every criterion is observable, carries a binary test, and ladders to the one\n  outcome stated in section 01. Never droppable.\n\nSpecs for 11 and 12, including the readiness checklist items:\n`references/week-one-definition-of-done.md`.\n\n## Workflow\n\n1. **Orient.** Find the executed SOW and the Q-number. Confirm the deal is signed;\n   this skill does not run pre-signature. Pin the moment: package (signature) or\n   brief (delivery acceptance). Stamp the manifest with client, engagement,\n   source snapshot, and as-of date.\n2. **Run evidence-core.** Harvest in the authority order above. Read transcripts\n   verbatim, never summaries. Record a source nobody searched as an Unknown, because an\n   unsearched source cannot show that something is absent. Carry the delivery-lens and maturity-gap flags forward from the pursuit\n   so delivery inherits them instead of rediscovering them.\n3. **Build the manifest.** JSON, schema in `references/package-spec.md`. Fill the\n   12 sections from the ledger: roughly 80 percent of a clean deal assembles\n   mechanically from the SOW and quote. Everything the ledger could not source\n   becomes a gap entry with owner, resolve-by, and blocked gate. Mark every scope\n   item in or out. Log promises with where they were said and whether they are in\n   the SOW.\n4. **Gate it.**\n   ```bash\n   python3 scripts/check_handoff.py manifest.json\n   ```\n   Exit 0 passes, 1 fails, 2 is a usage or parse error. Report the counts it\n   prints, never an adjective. The gate is blocking at both moments.\n5. **Render.** Project the manifest through brand-renderer as the styled\n   HTML or portable Markdown brief. Confidence maps to presentation: Confirmed\n   reads as fact, Inferred as inference with its basis, Unknown as a named open\n   question, conflicts as flagged divergences with both values shown. Run\n   `writing` on the rendered prose. Never hand-patch the render; fix the manifest\n   and re-render.\n6. **Transfer and land.** Moment 1: support the warm transfer (the SSL walks the\n   package to the Program Lead and Solution Lead in a recorded session), then\n   ingest that session's transcript to close open questions. Moment 2: delivery\n   accepts the brief; record the acceptance. Deliver the file, commit it to the\n   client folder, write session memory pointing at the files.\n7. **Close the loop.** Top three things delivery inherits, then the landmines.\n   Flag the biggest judgment call in the handoff and argue the other side of it.\n\n### Seed DELIVERY-STATE.md at acceptance\n\nWhen delivery accepts the brief (Moment 2), create `DELIVERY-STATE.md` at the\nengagement folder root per delivery-orchestrator's `references/delivery-state-spec.md`:\nengagement meta, current stage, all eight gate statuses with `brief_accepted` marked\naccepted with the date, artifact locations (including the brief), and the first\nappend-only dated log line. If the file already exists, update the gate and log\ninstead of recreating it.\n\n## Durable output\n\nEvery run leaves a Markdown record per `_shared/output-contract.md`: the\nrendered brief itself when one ships, or a run record carrying the gate\ncounts, the open gaps with owners, and the outstanding human actions when the\nrun stops early. Deliver or link the file with the manifest; never just say\nit was written.\n\n## Depth tests during authoring\n\n- Name real things: systems, people, numbers, clauses, each with a source. No\n  \"the platform\", no \"various stakeholders\".\n- State the success spine early in 01 and return to it in 12.\n- Decisions carry status, owner, and rationale; open ones are visible, not buried.\n- Every assumption states what breaks if it is false.\n- People postures are sourced, never asserted; deal-versus-delivery stakeholder\n  mismatches are explicitly flagged, because a sponsor who vanishes at kickoff is\n  a top cause of failed starts.\n- Section 11 is built from the Unknowns: every open question maps to a session\n  whose output closes it, or names why it waits.\n\n## When time is short\n\nCut in this order, and say what you cut: 10 (prior engagements, keep a one-line\npointer), 03 (keep the breaks list, drop the full as-is map), 05 (point at the\nSolution Brief), depth in 02. Never cut: sourcing, section 07, the gap entries\nwith owners, sections 11 and 12, or the gate.\n\n## Running unattended\n\nThe warm transfer and the acceptance need humans. On a headless run: build the\nmanifest, run the gate and review with `writing`, and stop with the findings and the open\ngaps. Say plainly that the transfer session and acceptance are outstanding. Never\nrecord an acceptance nobody gave.\n\n## One person in every role\n\nA seller who is also the delivery lead reads the package back as the warm transfer. The\nsame person accepts the brief in writing. Record each with a date and a name, so the\nrecord shows which role the person held. Do not invent a second attendee. The signature\ngate still applies: the executed agreement and its signers come before any package or\nbrief.\n\n## Evidence gate and the signature\n\nThe \"executed commitment\" domain is covered only by a Confirmed claim with `executed: true`.\nA claim that the draft is unsigned sits in the domain without covering it. An unsigned deal\ntherefore returns Insufficient and produces the handoff readiness gap memo.\n\n## Boundaries\n\nThis skill is the first delivery link in the chain that runs SOW, then\nprepare-delivery-handoff, then kickoff, then status, then UAT, then manage-cutover-closeout. Its\nupstream producer is the sales side: the executed SOW and quote arrive as\nfixed input. Its downstream consumer is start-delivery, which\nturns the accepted brief into the charter and governance pack.\n\n- Does not judge technical deliverability or carry implementation depth. Section\n  05 is orientation only; the deep answer is assess-solution-delivery.\n- Does not run the kickoff or write the project charter. That is\n  start-delivery.\n- Does not extract or structure requirements. That is capture-requirements.\n- Does not do pursuit research or call prep. That is prepare-sales-pursuit, pre-sale\n  only.\n- Does not price, staff, commit dates, or reinterpret scope. The quote owns every\n  number; the Pursuit Lead and delivery leads own the decisions. It assembles and\n  transfers.\n- Does not initiate change orders. If delivery intent already differs from the\n  SOW, flag the conflict to the Pursuit Lead and leave the SOW text as signed.\n\n## Files\n\n- `scripts/check_handoff.py`: the gate. Validates a handoff manifest: all 12\n  sections present and either sourced or gapped with owner and resolve-by, 11 and\n  12 non-empty, every scope item marked in or out, promises sourced, contract\n  figures traced to the SOW or quote, no em dashes. Stdlib only.\n- `scripts/s2d_selftest.py`: runs the gate against the shipped fixtures and fails\n  loudly on any drift. Run it after any edit to the checker.\n- `scripts/fixtures/`: passing and failing manifests the selftest uses.\n- `references/brief-catalog.md`: the 12 sections, each with its job and its bar.\n- `references/package-spec.md`: the manifest schema, moment semantics, warm\n  transfer, and record seeding.\n- `references/week-one-definition-of-done.md`: section 11 and 12 specs and the\n  readiness checklist.\n- `references/source-authority.md`: connector table, search anchors, corroboration\n  and conflict rules.\n\n## Release gate (required)\n\nBefore you deliver, run the gate. This is a required step, not a suggestion, and\nnot something a reviewer does later. Full spec in\n[`release-gate.md`](../_shared/release-gate.md).\n\n1. Apply `writing` to the prose. Use the bundled diagnostic tools to check saved writing. For\n   a final artifact it emits a receipt the quality gate requires.\n2. Run brand-renderer on the branded artifact: palette, borders, radii, logo,\n   footer.\n3. Run review-deliverable before you call it final.\n\nDo not present the artifact as finished until every check that applies has passed.\n",
+      "html": "<p>A signed deal crosses from the people who sold it to the people who deliver it, and most of what the seller knows is about to walk out of the room. This skill captures it in one artifact family with one schema, produced at two moments:</p><ul><li><strong>Moment 1, at signature: the handoff package.</strong> Assembled from the executed SOW,</li></ul><p>the quote, and the deal record. What was sold, what was decided and why, who was in the room, what was promised, what is still open. The SSL walks it to the delivery team in a recorded warm-transfer session.</p><ul><li><strong>Moment 2, at delivery acceptance: the handoff brief.</strong> The incoming team&#x27;s</li></ul><p>orientation document. Same sections, now completed with the readiness view, the week-one discovery agenda, and the definition of done. Delivery accepting this brief is the gate into Mobilize.</p><p>Both moments share the 12-section catalog and one manifest schema. Earlier drafts split this across a sell-side agent and a delivery-side agent with two divergent schemas and no defined mapping between them; facts died at the seam. That defect is why this is one skill. The package is the brief at an earlier state of completion, never a different document.</p><h3>Project context required</h3><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p><h3>Governance, delegated</h3><ul><li><strong>evidence-core runs first.</strong> Every load-bearing claim enters the ledger</li></ul><p>with source, confidence, and as-of date before any section is written. If a required domain is Insufficient, produce the handoff readiness gap memo and stop; a full handoff after an Insufficient gate is a hard fail. The artifact contract is <code>sales_to_delivery_handoff</code> in evidence-core&#x27;s <code>reference/artifact-registry.json</code>.</p><ul><li><strong>brand-renderer owns the rendered surface.</strong> No inlined hex, no</li></ul><p>duplicated palette. Brand applies during the build.</p><ul><li><strong>Writing-integrity owns writing review.</strong> Run its bundled diagnostics on the rendered prose. No em</li></ul><p>dashes, sentence-case headings, no AI-tell constructions.</p><ul><li><strong>The money rule.</strong> Contract figures come from the executed SOW and its quote</li></ul><p>(Q-number) only. Never from Slack, never from memory, never from the proposal deck, which may predate the final negotiation. This skill renders figures; it never authors them.</p><p>If a governor is not installed on the current surface, state the check it would have run, do the best manual substitute, and say that is what you did.</p><h3>Source authority, in order</h3><p>The executed SOW is the most authoritative source; read its scope, exclusions, deliverables, fee model, dates, and assumptions verbatim. Then, in order: the quote, Salesforce (account, opportunity, stage history, contact roles), Drive (proposal, discovery decks, transcripts), Slack and Gmail (late changes, verbal commitments, access blockers), calendar and call notes. The AE/CSE debrief comes last and narrow: only the tacit room context no system holds. Mine the systems before interviewing anyone. Recency can override authority on current state: a recent thread reopening a settled clause outranks the SOW on where things stand now, and that conflict is surfaced, never silently resolved. Full connector table, search anchors, and corroboration rules: <code>references/source-authority.md</code>.</p><h3>The 12 sections</h3><p>Full catalog with each section&#x27;s job and bar: <code>references/brief-catalog.md</code>.</p><div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">#</th><th scope=\"col\">Section</th><th scope=\"col\">#</th><th scope=\"col\">Section</th></tr></thead><tbody><tr><td>01</td><td>The engagement</td><td>07</td><td>Sell-cycle promises</td></tr><tr><td>02</td><td>What came before</td><td>08</td><td>Risks, assumptions, gaps</td></tr><tr><td>03</td><td>Process and current state</td><td>09</td><td>The people</td></tr><tr><td>04</td><td>System landscape</td><td>10</td><td>Relevant prior engagements</td></tr><tr><td>05</td><td>Solution shape</td><td>11</td><td>Discovery sessions</td></tr><tr><td>06</td><td>Decisions inherited</td><td>12</td><td>What good looks like</td></tr></tbody></table></div><p>Structural rule, inherited from the provenance doctrine: <strong>sections are never dropped.</strong> Every section is present in every handoff. It is either filled with sourced facts, or it carries an explicit named gap with an owner, a resolve-by date, and the gate it blocks. A section that genuinely does not apply (greenfield, no prior engagement) says so in one sourced line. A blank is a gate failure.</p><p>Three sections carry special rules:</p><ul><li><strong>07 Sell-cycle promises.</strong> Anything said to the client that is not in the</li></ul><p>executed SOW is a flagged liability, sourced to where and when it was said, with an owner. Promises confirmed to be in the SOW are listed with the clause. This section exists because unwritten promises are the single most common way sales gets pulled back into delivery after signature.</p><ul><li><strong>11 Discovery sessions.</strong> The week-one agenda, built directly from the ledger&#x27;s</li></ul><p>Unknowns and Inferreds. Every session names an owner, the right attendees, and the concrete output that closes the question. Never droppable.</p><ul><li><strong>12 What good looks like.</strong> The definition of done plus the readiness checklist.</li></ul><p>Every criterion is observable, carries a binary test, and ladders to the one outcome stated in section 01. Never droppable.</p><p>Specs for 11 and 12, including the readiness checklist items: <code>references/week-one-definition-of-done.md</code>.</p><h3>Workflow</h3><ol><li><strong>Orient.</strong> Find the executed SOW and the Q-number. Confirm the deal is signed;</li></ol><p>this skill does not run pre-signature. Pin the moment: package (signature) or brief (delivery acceptance). Stamp the manifest with client, engagement, source snapshot, and as-of date.</p><ol><li><strong>Run evidence-core.</strong> Harvest in the authority order above. Read transcripts</li></ol><p>verbatim, never summaries. Record a source nobody searched as an Unknown, because an unsearched source cannot show that something is absent. Carry the delivery-lens and maturity-gap flags forward from the pursuit so delivery inherits them instead of rediscovering them.</p><ol><li><strong>Build the manifest.</strong> JSON, schema in <code>references/package-spec.md</code>. Fill the</li></ol><p>12 sections from the ledger: roughly 80 percent of a clean deal assembles mechanically from the SOW and quote. Everything the ledger could not source becomes a gap entry with owner, resolve-by, and blocked gate. Mark every scope item in or out. Log promises with where they were said and whether they are in the SOW.</p><ol><li><strong>Gate it.</strong></li></ol><p>``<code>bash python3 scripts/check_handoff.py manifest.json </code>`` Exit 0 passes, 1 fails, 2 is a usage or parse error. Report the counts it prints, never an adjective. The gate is blocking at both moments.</p><ol><li><strong>Render.</strong> Project the manifest through brand-renderer as the styled</li></ol><p>HTML or portable Markdown brief. Confidence maps to presentation: Confirmed reads as fact, Inferred as inference with its basis, Unknown as a named open question, conflicts as flagged divergences with both values shown. Run <code>writing</code> on the rendered prose. Never hand-patch the render; fix the manifest and re-render.</p><ol><li><strong>Transfer and land.</strong> Moment 1: support the warm transfer (the SSL walks the</li></ol><p>package to the Program Lead and Solution Lead in a recorded session), then ingest that session&#x27;s transcript to close open questions. Moment 2: delivery accepts the brief; record the acceptance. Deliver the file, commit it to the client folder, write session memory pointing at the files.</p><ol><li><strong>Close the loop.</strong> Top three things delivery inherits, then the landmines.</li></ol><p>Flag the biggest judgment call in the handoff and argue the other side of it.</p><h4>Seed DELIVERY-STATE.md at acceptance</h4><p>When delivery accepts the brief (Moment 2), create <code>DELIVERY-STATE.md</code> at the engagement folder root per delivery-orchestrator&#x27;s <code>references/delivery-state-spec.md</code>: engagement meta, current stage, all eight gate statuses with <code>brief_accepted</code> marked accepted with the date, artifact locations (including the brief), and the first append-only dated log line. If the file already exists, update the gate and log instead of recreating it.</p><h3>Durable output</h3><p>Every run leaves a Markdown record per <code>_shared/output-contract.md</code>: the rendered brief itself when one ships, or a run record carrying the gate counts, the open gaps with owners, and the outstanding human actions when the run stops early. Deliver or link the file with the manifest; never just say it was written.</p><h3>Depth tests during authoring</h3><ul><li>Name real things: systems, people, numbers, clauses, each with a source. No</li></ul><p>&quot;the platform&quot;, no &quot;various stakeholders&quot;.</p><ul><li>State the success spine early in 01 and return to it in 12.</li><li>Decisions carry status, owner, and rationale; open ones are visible, not buried.</li><li>Every assumption states what breaks if it is false.</li><li>People postures are sourced, never asserted; deal-versus-delivery stakeholder</li></ul><p>mismatches are explicitly flagged, because a sponsor who vanishes at kickoff is a top cause of failed starts.</p><ul><li>Section 11 is built from the Unknowns: every open question maps to a session</li></ul><p>whose output closes it, or names why it waits.</p><h3>When time is short</h3><p>Cut in this order, and say what you cut: 10 (prior engagements, keep a one-line pointer), 03 (keep the breaks list, drop the full as-is map), 05 (point at the Solution Brief), depth in 02. Never cut: sourcing, section 07, the gap entries with owners, sections 11 and 12, or the gate.</p><h3>Running unattended</h3><p>The warm transfer and the acceptance need humans. On a headless run: build the manifest, run the gate and review with <code>writing</code>, and stop with the findings and the open gaps. Say plainly that the transfer session and acceptance are outstanding. Never record an acceptance nobody gave.</p><h3>One person in every role</h3><p>A seller who is also the delivery lead reads the package back as the warm transfer. The same person accepts the brief in writing. Record each with a date and a name, so the record shows which role the person held. Do not invent a second attendee. The signature gate still applies: the executed agreement and its signers come before any package or brief.</p><h3>Evidence gate and the signature</h3><p>The &quot;executed commitment&quot; domain is covered only by a Confirmed claim with <code>executed: true</code>. A claim that the draft is unsigned sits in the domain without covering it. An unsigned deal therefore returns Insufficient and produces the handoff readiness gap memo.</p><h3>Boundaries</h3><p>This skill is the first delivery link in the chain that runs SOW, then prepare-delivery-handoff, then kickoff, then status, then UAT, then manage-cutover-closeout. Its upstream producer is the sales side: the executed SOW and quote arrive as fixed input. Its downstream consumer is start-delivery, which turns the accepted brief into the charter and governance pack.</p><ul><li>Does not judge technical deliverability or carry implementation depth. Section</li></ul><p>05 is orientation only; the deep answer is assess-solution-delivery.</p><ul><li>Does not run the kickoff or write the project charter. That is</li></ul><p>start-delivery.</p><ul><li>Does not extract or structure requirements. That is capture-requirements.</li><li>Does not do pursuit research or call prep. That is prepare-sales-pursuit, pre-sale</li></ul><p>only.</p><ul><li>Does not price, staff, commit dates, or reinterpret scope. The quote owns every</li></ul><p>number; the Pursuit Lead and delivery leads own the decisions. It assembles and transfers.</p><ul><li>Does not initiate change orders. If delivery intent already differs from the</li></ul><p>SOW, flag the conflict to the Pursuit Lead and leave the SOW text as signed.</p><h3>Files</h3><ul><li><code>scripts/check_handoff.py</code>: the gate. Validates a handoff manifest: all 12</li></ul><p>sections present and either sourced or gapped with owner and resolve-by, 11 and 12 non-empty, every scope item marked in or out, promises sourced, contract figures traced to the SOW or quote, no em dashes. Stdlib only.</p><ul><li><code>scripts/s2d_selftest.py</code>: runs the gate against the shipped fixtures and fails</li></ul><p>loudly on any drift. Run it after any edit to the checker.</p><ul><li><code>scripts/fixtures/</code>: passing and failing manifests the selftest uses.</li><li><code>references/brief-catalog.md</code>: the 12 sections, each with its job and its bar.</li><li><code>references/package-spec.md</code>: the manifest schema, moment semantics, warm</li></ul><p>transfer, and record seeding.</p><ul><li><code>references/week-one-definition-of-done.md</code>: section 11 and 12 specs and the</li></ul><p>readiness checklist.</p><ul><li><code>references/source-authority.md</code>: connector table, search anchors, corroboration</li></ul><p>and conflict rules.</p><h3>Release gate (required)</h3><p>Before you deliver, run the gate. This is a required step, not a suggestion, and not something a reviewer does later. Full spec in <code>release-gate.md</code> <span class=\"ref\">(../_shared/release-gate.md)</span>.</p><ol><li>Apply <code>writing</code> to the prose. Use the bundled diagnostic tools to check saved writing. For</li></ol><p>a final artifact it emits a receipt the quality gate requires.</p><ol><li>Run brand-renderer on the branded artifact: palette, borders, radii, logo,</li></ol><p>footer.</p><ol><li>Run review-deliverable before you call it final.</li></ol><p>Do not present the artifact as finished until every check that applies has passed.</p>",
       "excerptHtml": "<p>A signed deal crosses from the people who sold it to the people who deliver it, and most of what the seller knows is about to walk out of the room. This skill captures it in one artifact family with one schema, produced at two moments:</p><ul><li><strong>Moment 1, at signature: the handoff package.</strong> Assembled from the executed SOW,</li></ul><p>the quote, and the deal record. What was sold, what was decided and why, who was in the room, what was promised, what is still open. The SSL walks it to the delivery team in a recorded warm-transfer session.</p><ul><li><strong>Moment 2, at delivery acceptance: the handoff brief.</strong> The incoming team&#x27;s</li></ul><p>orientation document. Same sections, now completed with the readiness view, the week-one discovery agenda, and the definition of done. Delivery accepting this brief is the gate into Mobilize.</p><p>Both moments share the 12-section catalog and one manifest schema. Earlier drafts split this across a sell-side agent and a delivery-side agent with two divergent schemas and no defined mapping between them; facts died at the seam. That defect is why this is one skill. The package is the brief at an earlier state of completion, never a different document.</p>",
       "headings": [
         "Project context required",
@@ -12765,6 +12765,8 @@
         "Depth tests during authoring",
         "When time is short",
         "Running unattended",
+        "One person in every role",
+        "Evidence gate and the signature",
         "Boundaries",
         "Files",
         "Release gate (required)"
@@ -12830,9 +12832,9 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "829d47e32ecb16c7cc9640c00bf0d3e21335d86acf475eec2b24d1cd819184e1",
-          "bytes": 13466,
-          "gitBlob": "36b4807be11a28efb476566ea52e99f379a695c6"
+          "sha256": "42d6012305bc2b06e88be0c9739754b3ce12558d45ab421dee083fbb8545a45a",
+          "bytes": 14148,
+          "gitBlob": "16d193446c8e0e5acec720110d2f3c7f06aae319"
         },
         {
           "path": "references/brief-catalog.md",
@@ -12842,9 +12844,9 @@
         },
         {
           "path": "references/package-spec.md",
-          "sha256": "85e506b26c4aa4835df4f8981a392cb3c142d54039fd9737b8f0b3c6a5927792",
-          "bytes": 5695,
-          "gitBlob": "7cbb62250ee92cba75c30cc1ddbec1f21384fc98"
+          "sha256": "c538527c314e51ba06ea5cb34decb99c8cbb0b959e9e8d4c67b8c1c8854ad5e4",
+          "bytes": 5852,
+          "gitBlob": "c2007cfdd0795056f9313b1075a1652cd55edd0e"
         },
         {
           "path": "references/source-authority.md",
@@ -12860,33 +12862,33 @@
         },
         {
           "path": "scripts/check_handoff.py",
-          "sha256": "bd88aa2d7cf6c2fa1cce83c4b1772b9ef41b695300e468945148176dea78cf5c",
-          "bytes": 12420,
-          "gitBlob": "70fb372cff3028de4b45867065dcce6a12a4c551"
+          "sha256": "02acfab7f18f1676057005fec3164ddef91603f34a766886fb1a2da4a56860d3",
+          "bytes": 14347,
+          "gitBlob": "df8024c89aaedd80d9a180a0888ed7ab16eeb57b"
         },
         {
           "path": "scripts/fixtures/fail_blank_and_unmarked.json",
-          "sha256": "61a7c21f35b2d6175f038c89bf0be9e4af0c41905ad6f26160419dbb58e20fae",
-          "bytes": 1843,
-          "gitBlob": "c8f59594136c56ff17561730d349fb067b1c1b7c"
+          "sha256": "3f1c2c6c57358124f05fee0534bfcfe10f5c8a82901f94a21fa0dfad05325bea",
+          "bytes": 1953,
+          "gitBlob": "1dc2fb846f4648ad53b6e6366e0896a0ca0f9098"
         },
         {
           "path": "scripts/fixtures/pass_brief.json",
-          "sha256": "8f1f1a9b1436fa1e2329ad86139ce529fee652da8f0f2fbdb351fcdb5f18c497",
-          "bytes": 5054,
-          "gitBlob": "d6bcb3faf9a54a6613d1bb927ffc075bd49821aa"
+          "sha256": "d82676bd13d7668fe311f350162478977626e57dce29432884042aa8e80976d1",
+          "bytes": 5164,
+          "gitBlob": "aa2220b1ee6e34d4de24dfa1ba8155db0f3acb9c"
         },
         {
           "path": "scripts/fixtures/pass_package.json",
-          "sha256": "8ac2eaf316853051907d96af66abe816f48f779a0040a5f820ef8b0cb999ac39",
-          "bytes": 3494,
-          "gitBlob": "d7730be52c234c9b4c6a6beb228cce32cc8a15ff"
+          "sha256": "c1b9699c30bddfd54b85da88208283cfa9ac4462b4f7a24ce13c4e797d5489ab",
+          "bytes": 3604,
+          "gitBlob": "0fdebada9e5764010b9c693b19dbf5a9dc836940"
         },
         {
           "path": "scripts/s2d_selftest.py",
-          "sha256": "8ef71c86767f9fec7d1575080ce25608380c15f7355b6ac1a59c953e76fdcc38",
-          "bytes": 5523,
-          "gitBlob": "245519f8ef5341ed9063f287ca76b71a447ab299"
+          "sha256": "537105d17e43ca048940b0ee2cfe7e121b77c41466c9752ec3bc19a9e1b02cbb",
+          "bytes": 6882,
+          "gitBlob": "185779469d019eb63c34b37b49114e4b42329140"
         },
         {
           "path": "skill.yaml",
@@ -12920,7 +12922,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-job-application/SKILL.md",
       "sourceSha256": "02bb1104b4c1b905966c63a8357fe1303d02e0a3867fba62e11c043d95023e62",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/prepare-job-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-job-application/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -13112,7 +13114,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-sales-pursuit/SKILL.md",
       "sourceSha256": "b8f2f3a732f8ef2f35699d8dae4be8af8f731df02d83ec420f50618d4c0def28",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/prepare-sales-pursuit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-sales-pursuit/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-sales-pursuit",
@@ -13410,7 +13412,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-session-handoff/SKILL.md",
       "sourceSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/prepare-session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-session-handoff",
@@ -13568,7 +13570,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritize-work/SKILL.md",
       "sourceSha256": "2b67c75621f16b0e328aa5205e5f2c84b88d011949bc7ad56fa72d007cd2e36a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/prioritize-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prioritize-work/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritize-work",
@@ -13861,7 +13863,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/promote-salesforce-changes/SKILL.md",
       "sourceSha256": "20ecc948c080ca2f890499ff1a554838259b2a9e3cbe7c14e0869e886c8780f0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/promote-salesforce-changes/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/promote-salesforce-changes/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -14090,7 +14092,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/publish-content/SKILL.md",
       "sourceSha256": "70f6d30f2a828f38b5a75a86d01e545dc0395a173840dcfe433e09494d01cf28",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/publish-content/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/publish-content/SKILL.md",
       "taskPackages": [
         {
           "name": "publish-content",
@@ -14392,7 +14394,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/reconcile-knowledge/SKILL.md",
       "sourceSha256": "5096adde62aa07c9de2264f645e53a85c1e17579f1f061633cb0feaa5aa2868c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/reconcile-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/reconcile-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "reconcile-knowledge",
@@ -14528,7 +14530,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/refine-backlog/SKILL.md",
       "sourceSha256": "a8904a379b92e3a8bd65f77898f8675a0b82c964d30e6110d1faaab2443a1784",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/refine-backlog/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/refine-backlog/SKILL.md",
       "taskPackages": [
         {
           "name": "refine-backlog",
@@ -14758,7 +14760,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/release-skill-package/SKILL.md",
       "sourceSha256": "18ced08f63182be20b58bb29afb4cc38c690163f52e31e79962eed6cecb4c381",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/release-skill-package/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/release-skill-package/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -14917,7 +14919,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/render-offering-brief/SKILL.md",
       "sourceSha256": "c0cb7e4ff088755bcddb1cea043052b9079b6b9ea1bfbf93d53c52ed96eb0c2d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/render-offering-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/render-offering-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -15158,7 +15160,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-contract-scope/SKILL.md",
       "sourceSha256": "bcb6ca0b615cdeb00ba84e6ac5e3c7ff295228db1f185a409e76be6813f71329",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/review-contract-scope/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-contract-scope/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -15370,7 +15372,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deal-economics/SKILL.md",
       "sourceSha256": "fd5db542ec246356f96fc01210d5ef8562e86aac39eb50c1cc97920e496095db",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/review-deal-economics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-deal-economics/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deal-economics",
@@ -15624,11 +15626,11 @@
       "title": "Review deliverable",
       "family": 9,
       "description": "Select and run the required artifact release controls before any Word document, PowerPoint deck, Excel workbook, PDF, HTML page, proposal, report, email, Slack message, or decision-bearing artifact is finalized. Use for every styled or client-facing output. Requires inspected evidence from the prose review (with a writing-diagnostics receipt for final narrative artifacts) and, for styled output, from brand-renderer plus the rendered result, not a claim that another skill was mentioned. Blocks release when a required runtime, receipt, source support, or rendered output is absent.",
-      "status": "github",
+      "status": "local-revision",
       "entrypointChanged": false,
       "sourcePath": "skills/review-deliverable/SKILL.md",
       "sourceSha256": "5d057ff677b132f8b04c31d6b3f22fdcd3d0ec8f9cb517332d37dd3dde6d9cad",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/review-deliverable/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-deliverable/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deliverable",
@@ -15704,7 +15706,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 5,
-        "packageFingerprint": "e61d925a12eb44d75278d1d377de33818c937e2ae8d724dc0853199a17f7ad2b",
+        "packageFingerprint": "c9ffa2a01e10c50646e8b2dbbbd4c9467673d8e14da82446bff3f203012df940",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -15812,15 +15814,15 @@
         },
         {
           "path": "scripts/quality_gate.py",
-          "sha256": "833d5f3895345bf230d6465d7110066201b2905127aae83027039ca2864877d8",
-          "bytes": 16129,
-          "gitBlob": "3ad43df2de7f4a7a2e9d271d05d22322a561bce0"
+          "sha256": "8419f4c30051d9ae54dd7c80a0bc54824eae1f841f3df29f9aa08a5fcab915f9",
+          "bytes": 16457,
+          "gitBlob": "f5d08152386298eb9f9e62e481f51b96cf94f789"
         },
         {
           "path": "scripts/quality_gate_selftest.py",
-          "sha256": "7b5062b8aef950cb17f2da300f66711e1f648b5c7f1ec4ac236f6425b37acfb4",
-          "bytes": 13456,
-          "gitBlob": "37ba4a7aa2422d9e90361761cc2e939be0f12249"
+          "sha256": "ff35b5c884c4427f8be0a14bba7614944dcf61c7b0cc4f4fdd837d3f762a546d",
+          "bytes": 14413,
+          "gitBlob": "59d6ceb607959240ea81803a0600e9f60cddd061"
         },
         {
           "path": "skill.yaml",
@@ -15854,7 +15856,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-sales-journey/SKILL.md",
       "sourceSha256": "2d8542e67dc50e8d0ebc086d7c60fddaabc8574a806fba340d1932727d3d3397",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/review-sales-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-sales-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -16004,7 +16006,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-runtime/SKILL.md",
       "sourceSha256": "bba06bf6d55a823144888d369961f2adca0233c050939b1c870e32ac3b54474b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/review-site-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-site-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "build-moscow-story-map",
@@ -16342,7 +16344,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-project/SKILL.md",
       "sourceSha256": "77670e283438bd9fb51094060c58bd4f8a1e489f7ed8442086e1a391285d99d4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/scope-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/scope-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -16549,7 +16551,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/simplify-code/SKILL.md",
       "sourceSha256": "156e04c98dbf3090b7e649c9a173bee3dfea52c8b524acbb220b76ac5f87e67a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/simplify-code/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/simplify-code/SKILL.md",
       "taskPackages": [
         {
           "name": "simplify-code",
@@ -16670,7 +16672,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/specify-implementation/SKILL.md",
       "sourceSha256": "13949c4b2674594085edde691b1bbf48c62bef1cefe2e1e957e7e7a3556caee4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/specify-implementation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/specify-implementation/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -16838,7 +16840,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/start-delivery/SKILL.md",
       "sourceSha256": "cc56c7de231537ac8ba66392242af9e86931ae44b08a88c3ce7e815af7567706",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/start-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/start-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "start-delivery",
@@ -17135,7 +17137,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/synthesize-discovery/SKILL.md",
       "sourceSha256": "90346d3cee2c8b512d91470e214d7120ab5cf17b74d82f595ca794b279c46617",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/synthesize-discovery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/synthesize-discovery/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -17343,7 +17345,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tailor-resume/SKILL.md",
       "sourceSha256": "80f8f1b012df1ac678ef0ec88271a8abc5df1d98bb8d4d347ed5feed6c6b5248",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/tailor-resume/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/tailor-resume/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -17499,7 +17501,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/track-delivery/SKILL.md",
       "sourceSha256": "c69af06a74e40909cb309098a53d4dc295ee98f2beefa3a227f84e14452be913",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/track-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/track-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "track-delivery",
@@ -17774,7 +17776,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/validate-delivery/SKILL.md",
       "sourceSha256": "e2cd8c66eb3b096bcc8f74658aa2e08c47fd29df07470376864027e0b3adfb02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/validate-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/validate-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "validate-delivery",
@@ -18015,7 +18017,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-salesforce-org/SKILL.md",
       "sourceSha256": "ef7f119c9035f2562cc46ff755936355cb6fc0dd34439cca9a5f8f5f5d55fad5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/verify-salesforce-org/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/verify-salesforce-org/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "deliver-salesforce-change"
@@ -18171,7 +18173,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-work-state/SKILL.md",
       "sourceSha256": "76de9e7c6c3916162139c2d14bcb1f7baf76da2bafea8fd864db2f10ce7bb5cc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/verify-work-state/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/verify-work-state/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-knowledge",
@@ -18345,7 +18347,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/work-in-github-repository/SKILL.md",
       "sourceSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/work-in-github-repository/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/work-in-github-repository/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18448,7 +18450,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-architecture-reference/SKILL.md",
       "sourceSha256": "044699c966448677710dcf19e6942acab6dc3cbe4334021ea043221a3e06c0b2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/write-architecture-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-architecture-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -18670,7 +18672,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-business-case/SKILL.md",
       "sourceSha256": "6d848cbbc407e7f3f46137019ea1b1127ce994043c0fff7acfe44834dd732358",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/write-business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "write-business-case",
@@ -18905,7 +18907,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-feature-spec/SKILL.md",
       "sourceSha256": "37bec88975ff9246aa2e76451a73e6612f9835c0316634e6edb44b1cb0a7cbce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/write-feature-spec/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-feature-spec/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -19056,7 +19058,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-portfolio-case-study/SKILL.md",
       "sourceSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/write-portfolio-case-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-portfolio-case-study/SKILL.md",
       "taskPackages": [
         {
           "name": "write-portfolio-case-study",
@@ -19190,7 +19192,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "8d6cd86381bfa343b41e026e2b3ed02e2622bf15d7ebcffb12d66c570d93fd3e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/write-statement-of-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-statement-of-work/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -19498,7 +19500,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing/SKILL.md",
       "sourceSha256": "7cf6662d187424e4e6fa9a30d4ebb6474e8f67c022d8d1988a1b6763b94c3708",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/writing/SKILL.md",
       "taskPackages": [
         {
           "name": "writing",
@@ -19904,7 +19906,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
       "sourceSha256": "7ddcbf7ca4d19919cb051d91d893e3cbb3797addebedeae3e9f5419cafcbd323",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/da5a6f1ec3560bdf54bf5a220eecc660cbf9d50e/skills/writing-diagnostics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/writing-diagnostics/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "apply-salesforce-patterns",
@@ -20344,8 +20346,8 @@
     }
   ],
   "counts": {
-    "github": 93,
-    "local-revision": 0,
+    "github": 90,
+    "local-revision": 3,
     "local-addition": 0,
     "canonical": 93,
     "total": 93,

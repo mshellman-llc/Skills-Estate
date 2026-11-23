@@ -248,6 +248,10 @@
     "0.4.58": {
       "content_sha256": "524a681a7b3d42f563bd383856dde714d795f4c912d87571241ab8f306886e79",
       "note": "Fix proof defects 167 to 169: deck extract landmark, theme shadows in the brand check, scope check for decks"
+    },
+    "0.4.59": {
+      "content_sha256": "03b5d395818e76fb4db748bfebf2a152e62cb7ab278476efc63f6a0832a5a258",
+      "note": "Fix proof defects 175 to 180: the handoff gate needs a signed SOW, the evidence gate applies the executed-commitment hard fail, the money rule cites the stamp identifiers, an honest blocked quality record exits 0, and the one-person handoff has a rule"
     }
   },
   "source_conflicts": [

@@ -1238,7 +1238,7 @@
       "inputs": "The executed agreement, quote, deal record, and receiving team.",
       "outputs": "A handoff package with ownership, assumptions, and tracked acceptance.",
       "example": "Prepare the sales-to-delivery handoff from the executed agreement and deal record.",
-      "reviewedEntrypointSha256": "829d47e32ecb16c7cc9640c00bf0d3e21335d86acf475eec2b24d1cd819184e1",
+      "reviewedEntrypointSha256": "42d6012305bc2b06e88be0c9739754b3ce12558d45ab421dee083fbb8545a45a",
       "expect": "It confirms the deal is signed, gathers facts from the executed SOW, quote and deal record, and builds a 12-section handoff manifest that a script gate checks. Every section is filled or carries a named gap with an owner, and it stops with a gap memo if required evidence is insufficient; it never records an acceptance nobody gave.",
       "requires": "An executed SOW and its quote for a signed deal, plus Python 3 to run the manifest gate.",
       "overview": "It confirms the deal is signed, gathers facts from the executed SOW, quote and deal record, and builds a 12-section handoff manifest that a script gate checks. Every section is filled or carries a named gap with an owner, and it stops with a gap memo if required evidence is insufficient; it never records an acceptance nobody gave.",
