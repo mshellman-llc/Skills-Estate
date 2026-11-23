@@ -216,6 +216,18 @@
     "0.4.50": {
       "content_sha256": "185577a2733ca0cf3ffb282236de9949cd69c060317faf4d00417ecd14df90ce",
       "note": "Validate every setting the writing hook and check read on the review and publish paths. A gate.json setting of the wrong type or shape, such as publish_tools as a string, a number, a list holding non-strings or null, falls back to its built-in default and the session is told it was ignored. The publish check's error path reads the built-in publish list, cannot raise, and denies any error on a call that list or the configured list names. A malformed ledger threshold or rule weight or min_count falls back to its default and is listed in config_ignored; a rule list, entry, id, scope or registers the check cannot read stops the run as incomplete. Receipts of the wrong shape are skipped."
+    },
+    "0.4.51": {
+      "content_sha256": "80e31053513562a7131b80a8c8b9c998b36e1c7d87f4e6e596345efa976ce01e",
+      "note": "Keep failed reply rewrites blocked, including short replies with bold list labels."
+    },
+    "0.4.52": {
+      "content_sha256": "1ab546375947b81acd19463821e0681aeea43526ecf3b8bee8a0a69f1796bca5",
+      "note": "Block every failed reply rewrite, scan short replies, and retain the block when logs or deliverables cannot be read or state cannot be saved."
+    },
+    "0.4.53": {
+      "content_sha256": "8e0c731f0b1139d7c7b8385c6dd2d89feb0e694763a0c0efc326b19dead82559",
+      "note": "Block failed reply rewrites until clean, scan short replies, and preserve blocking decisions through logging, deliverable and state errors."
     }
   },
   "source_conflicts": [
