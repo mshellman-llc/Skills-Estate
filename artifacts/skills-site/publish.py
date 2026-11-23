@@ -7,12 +7,49 @@ import json
 import os
 from pathlib import Path
 import re
+import subprocess
 import urllib.error
 import urllib.request
 
 REPOSITORY = 'mshellman-llc/Skills-Estate'
 BRANCH = 'site-publication'
 FILES = ('private.html', 'public.html', 'catalog.json')
+
+
+def publish_assets(api, manifest, directory):
+    """Keep licensed embedded fonts in built release assets, outside the Git source tree."""
+    source = manifest['sourceCommit']
+    tag = 'skills-site-' + source
+    endpoint = '/repos/' + REPOSITORY + '/releases/tags/' + tag
+    try:
+        release = api('GET', endpoint)
+    except urllib.error.HTTPError as error:
+        if error.code != 404:
+            raise
+        subprocess.run(['gh', 'release', 'create', tag, *[str(Path(directory) / name) for name in FILES],
+            '--repo', REPOSITORY, '--target', source, '--draft', '--prerelease', '--latest=false',
+            '--title', 'Skills Estate page ' + source[:7], '--notes', 'Complete pages built and verified from ' + source], check=True, capture_output=True)
+        release = api('GET', endpoint)
+    if release['target_commitish'] != source or {a['name'] for a in release['assets']} - set(FILES):
+        raise ValueError('Unexpected contents in the page release')
+    if release['draft']:
+        for asset in release['assets']:
+            if asset.get('state') == 'starter':
+                api('DELETE', '/repos/' + REPOSITORY + '/releases/assets/' + str(asset['id']))
+            elif asset['size'] != manifest['files'][asset['name']]['bytes']:
+                raise ValueError('A draft page asset has a different size than its manifest')
+        have = {a['name'] for a in release['assets'] if a.get('state') != 'starter'}
+        missing = [str(Path(directory) / name) for name in FILES if name not in have]
+        if missing:
+            subprocess.run(['gh', 'release', 'upload', tag, *missing, '--repo', REPOSITORY], check=True, capture_output=True)
+        subprocess.run(['gh', 'release', 'edit', tag, '--repo', REPOSITORY, '--draft=false', '--prerelease', '--latest=false'], check=True, capture_output=True)
+    for name in FILES:
+        url = 'https://github.com/' + REPOSITORY + '/releases/download/' + tag + '/' + name
+        with urllib.request.urlopen(url, timeout=30) as response:
+            data = response.read(4_000_001)
+        entry = manifest['files'][name]
+        if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
+            raise ValueError('Uploaded page release failed its readback: ' + name)
 
 
 def read_release(directory, source):
@@ -53,7 +90,8 @@ def publish(api, manifest, files):
         if comparison['status'] != 'ahead':
             raise ValueError('Page publication source history diverged')
     tree = []
-    for name, content in files.items():
+    # The branch carries only the manifest; generated HTML includes licensed font data.
+    for name, content in [('release.json', files['release.json'])]:
         blob = api('POST', prefix + '/git/blobs', {'content': base64.b64encode(content).decode(), 'encoding': 'base64'})
         tree.append({'path': name, 'mode': '100644', 'type': 'blob', 'sha': blob['sha']})
     tree_sha = api('POST', prefix + '/git/trees', {'tree': tree})['sha']
@@ -78,7 +116,8 @@ def main():
             data=json.dumps(body).encode() if body is not None else None, method=method,
             headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json', 'User-Agent': 'skills-estate-site-publisher'})
         with urllib.request.urlopen(request, timeout=30) as response:
-            return json.load(response)
+            return {} if response.status == 204 else json.load(response)
+    publish_assets(api, manifest, args.directory)
     print(json.dumps(publish(api, manifest, files)))
 
 

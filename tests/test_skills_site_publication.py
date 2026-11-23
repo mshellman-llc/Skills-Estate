@@ -1,10 +1,13 @@
 import base64
 import importlib.util
+import hashlib
+import io
 import json
 from pathlib import Path
 import re
 import tempfile
 import unittest
+from unittest.mock import patch
 import urllib.error
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,6 +73,7 @@ class SiteReleaseTests(unittest.TestCase):
         self.assertEqual('PATCH', writes[-1][0])
         self.assertTrue(writes[-1][1].endswith('/git/refs/heads/site-publication'))
         self.assertFalse(writes[-1][2]['force'])
+        self.assertEqual(['release.json'], [row['path'] for method, url, body in writes if url.endswith('/git/trees') for row in body['tree']])
         self.assertEqual([previous], next(body['parents'] for method, url, body in writes if url.endswith('/git/commits')))
         for status in ['behind', 'diverged']:
             def refuse(method, url, body=None):
@@ -99,6 +103,31 @@ class SiteReleaseTests(unittest.TestCase):
         publisher.publish(api, {'sourceCommit': 'b' * 40}, {'release.json': b'{}'})
         self.assertEqual('refs/heads/site-publication', writes[-1][1]['ref'])
         self.assertFalse(any(url.endswith('/heads/main') for url, _ in writes))
+
+    def test_draft_asset_upload_resumes_and_readback_precedes_manifest_publication(self):
+        contents = {name: name.encode() for name in publisher.FILES}
+        manifest = {'sourceCommit': 'a' * 40, 'files': {name: {'bytes': len(value), 'sha256': hashlib.sha256(value).hexdigest()} for name, value in contents.items()}}
+        release = {'target_commitish': manifest['sourceCommit'], 'draft': True, 'assets': [
+            {'id': 1, 'name': 'private.html', 'size': len(contents['private.html']), 'state': 'uploaded'},
+            {'id': 2, 'name': 'public.html', 'size': 0, 'state': 'starter'},
+        ]}
+        calls = []
+        def api(method, url, body=None):
+            calls.append((method, url))
+            return release if method == 'GET' else {}
+        def download(url, timeout):
+            return io.BytesIO(contents[url.rsplit('/', 1)[-1]])
+        with patch.object(publisher.subprocess, 'run') as run, patch.object(publisher.urllib.request, 'urlopen', side_effect=download):
+            publisher.publish_assets(api, manifest, Path('/generated'))
+        self.assertTrue(any(method == 'DELETE' and url.endswith('/2') for method, url in calls))
+        upload = run.call_args_list[0].args[0]
+        self.assertIn('/generated/public.html', upload)
+        self.assertNotIn('/generated/private.html', upload)
+        self.assertIn('--draft=false', run.call_args_list[1].args[0])
+        self.assertIn('--latest=false', run.call_args_list[1].args[0])
+        with patch.object(publisher.subprocess, 'run'), patch.object(publisher.urllib.request, 'urlopen', return_value=io.BytesIO(b'corrupt')):
+            with self.assertRaisesRegex(ValueError, 'readback'):
+                publisher.publish_assets(api, manifest, Path('/generated'))
 
 
 if __name__ == '__main__':

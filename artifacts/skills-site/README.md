@@ -29,13 +29,15 @@ The main verification workflow builds three complete pages: the estate export an
 flowchart LR
   A[Skills Estate main] --> B[Build and verify]
   B --> C[Publish complete pages]
-  C --> D[Generated site-publication branch]
-  D --> E[MeganOS private and public pages]
+  C --> D[Versioned release assets]
+  C --> E[Manifest on site-publication]
+  D --> F[MeganOS private and public pages]
+  E --> F
 ```
 
-After verification succeeds on main, the publication job downloads the artifact from that exact workflow run. `artifacts/skills-site/publish.py` publishes all files in one Git commit on the generated `site-publication` branch. It refuses a rollback or diverged source history. An identical retry leaves the branch unchanged. Publication does not write to main and does not change installed skills.
+After verification succeeds on main, the publication job downloads the artifact from that exact workflow run. `artifacts/skills-site/publish.py` uploads the complete pages and catalog as release assets, verifies their downloaded bytes, then publishes their manifest in one Git commit on the generated `site-publication` branch. It refuses a rollback or diverged source history. An identical retry leaves the branch unchanged. Publication does not write to main and does not change installed skills.
 
-MeganOS checks that branch once a minute and pins all downloads to its immutable commit. It verifies every file's hash, source and audience before saving the pair. A failed build or download keeps the previous complete release. An open map checks for a changed version once a minute and refreshes only when the version changes. MeganOS's public publication switch and the portfolio visibility and download settings still apply.
+MeganOS checks that branch once a minute and reads its manifest at an immutable commit. The manifest pins the versioned release assets by their hashes. Generated HTML contains licensed embedded font data, so only the manifest is committed to Git. Page releases are prereleases named `skills-site-<source commit>` and do not replace the latest plugin release. It verifies every file's hash, source and audience before saving the pair. A failed build or download keeps the previous complete release. An open map checks for a changed version once a minute and refreshes only when the version changes. MeganOS's public publication switch and the portfolio visibility and download settings still apply.
 
 The generated branch is for machine publication. Change layout, styles, scripts, fonts and catalog sources on main. No manual HTML copy, separate MeganOS layout deployment or running Mac is needed for those changes.
 
