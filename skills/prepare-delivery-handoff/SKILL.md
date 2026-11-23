@@ -189,18 +189,17 @@ record an acceptance nobody gave.
 
 ## One person in every role
 
-When the seller and the delivery lead are the same person, the warm transfer is that
-person reading the package back, and the acceptance is their own written acceptance of the
-brief. Record both with a date and the person's name, so the record shows who held which
-role. Do not invent a second attendee. The signature gate does not relax: the executed
-agreement and its signers are still required before a package or brief is built.
+A seller who is also the delivery lead reads the package back as the warm transfer. The
+same person accepts the brief in writing. Record each with a date and a name, so the
+record shows which role the person held. Do not invent a second attendee. The signature
+gate still applies: the executed agreement and its signers come before any package or
+brief.
 
 ## Evidence gate and the signature
 
-The evidence gate treats the "executed commitment" domain as covered only by a Confirmed
-claim with `executed: true`. A claim such as "the draft is not signed" sits in the domain
-without covering it, so an unsigned deal returns Insufficient and the output is the
-handoff readiness gap memo.
+The "executed commitment" domain is covered only by a Confirmed claim with `executed: true`.
+A claim that the draft is unsigned sits in the domain without covering it. An unsigned deal
+therefore returns Insufficient and produces the handoff readiness gap memo.
 
 ## Boundaries
 
