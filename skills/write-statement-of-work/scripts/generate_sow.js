@@ -53,6 +53,20 @@ function eng(val,section,name,source){if(val===null||val===undefined||val===""){
 function reason(val,section,name,decision,source){if(val===null||val===undefined||val===""){log.push([section,name,"FLAGGED, source absent, not invented",source,true]);return flag(name+": "+decision);}
   log.push([section,name,String(val),source,false]);return T(String(val),{size:22,color:INK});}
 
+// The contracting party is the legal entity, never the trading name. accountName stays for display.
+// An absent clientLegalName is a logged, visible flag; it is never filled from accountName.
+const clientLegalName=()=>m.projectContext&&m.projectContext.clientLegalName?String(m.projectContext.clientLegalName).trim()||null:null;
+const legalNameRun=(section)=>eng(clientLegalName(),section,"clientLegalName","projectContext.clientLegalName");
+// Start window in days comes from the contract profile, not from the engagement duration.
+const startWindowRun=()=>reason(input.contract.startWindowDays,"§5.1","startWindowDays","days allowed to start after signature","contract.startWindowDays");
+// {DATE} is the signing date, not the offer-expiry date (returnBy).
+// Signature block header for the client column: the legal entity, or a visible flag.
+function signatureClientHeader(section){const n=clientLegalName();
+  if(n){log.push([section,"clientLegalName",n,"projectContext.clientLegalName",false]);return hd(n);}
+  log.push([section,"clientLegalName","FLAGGED, not on quote","projectContext.clientLegalName",true]);
+  draftIssues.push("clientLegalName missing");return hd("Client [FLAG: client legal name missing]");}
+const signingDateRun=(section)=>reason(ctx.signingDate,section,"signing date","date the agreement is signed","projectContext.signingDate");
+
 // caller-selected contract language, verbatim, never paraphrased
 const AC=input.clauses;
 function clz(str,subs={}){return str.split(/(\{[A-Z_]+\})/).filter(s=>s!=="").map(p=>{const k=/^\{([A-Z_]+)\}$/.exec(p);if(k&&subs[k[1]]!==undefined){const v=subs[k[1]];return typeof v==="string"?T(v,{size:22,color:INK}):v;}return T(p,{size:22,color:INK});});}
@@ -151,14 +165,12 @@ function build(){const c=[];
     [[eng(money(sum.totalValue),"Cover","totalInvestment","projectSummary.totalValue")],[eng(sum.durationWeeks,"Cover","durationWeeks","projectSummary.durationWeeks"),T(" weeks",{size:22,color:INK})],[eng(sum.totalHours,"Cover","totalHours","projectSummary.totalHours")],[eng("$"+rec.bl,"Cover","blendedRate","timeline.summary.blendedRate"),T("/hr",{size:22,color:INK})]]]));
   }
   c.push(h2("Parties and notice"));
-  const clientName=ctx.accountName||null;
-  log.push(["Parties","clientLegalName",clientName||"FLAGGED, not on quote","projectContext.accountName",!clientName]);
-  c.push(clzP(AC.PREAMBLE,{CLIENT:clientName||"[CLIENT LEGAL NAME, confirm]"}));
+  c.push(clzP(AC.PREAMBLE,{CLIENT:legalNameRun("Parties")}));
   c.push(P([T("Effective Date:  ",{size:22,bold:true,color:INK}),T("____________   ",{size:22,color:INK}),T("(completed when signed)",{size:18,italics:true,color:STEEL})]));
   c.push(P([T("Professional Services Agreement Effective Date:  ",{size:22,bold:true,color:INK}),reason(ctx.psaEffectiveDate,"Cover","PSA effective date","blank if SOW001; else original PSA date","not in quote")]));
   c.push(table([4680,4680],[[hd(AC.NOTICE_SP_LABEL),hd(AC.NOTICE_CLIENT_LABEL)],
     [[T(provider.legalName,{size:22,bold:true,color:INK}),...provider.noticeAddress.map(line=>new TextRun({break:1,text:line,font:FONT,size:22,color:INK})),new TextRun({break:2,text:"Attn: "+provider.contact,font:FONT,size:22,color:INK})],
-     [eng(ctx.accountName,"Parties","clientLegalName","projectContext.accountName"),new TextRun({break:1}),reason(ctx.clientAddress,"Parties","client address","confirm address","not in quote"),new TextRun({break:2,text:"Attn: ",font:FONT,size:22,color:INK}),reason(ctx.clientContact,"Parties","client contact","confirm name, title","not in quote")]]]));
+     [legalNameRun("Notices"),new TextRun({break:1}),reason(ctx.clientAddress,"Parties","client address","confirm address","not in quote"),new TextRun({break:2,text:"Attn: ",font:FONT,size:22,color:INK}),reason(ctx.clientContact,"Parties","client contact","confirm name, title","not in quote")]]]));
   c.push(new Paragraph({children:[new PageBreak()]}));
   c.push(h1("Contents"));
   const contents=["1. Engagement overview","2. Scope","3. Delivery methodology","4. Deliverables",
@@ -195,7 +207,7 @@ function build(){const c=[];
   else if(ctxPlatform){driverRun=T("Migration to "+ctxPlatform+".",{size:20,color:INK});log.push(["§1.2","engagement driver","INFERRED from target platform — confirm","detected platform",true]);}
   else{driverRun=reason(null,"§1.2","engagement driver","from businessDriver","projectContext.businessDriver");}
   const cxCommon=[
-    cxRow("Client legal entity",[ctx.accountName?T(ctx.accountName,{size:20,color:INK}):flag("client legal entity: confirm")]),
+    cxRow("Client legal entity",[clientLegalName()?T(clientLegalName(),{size:20,color:INK}):flag("client legal entity: confirm")]),
     cxRow("Primary contact",[reason(ctx.primaryContact,"Context","primary contact","name, title, email","projectContext.primaryContact")]),
     cxRow("Executive sponsor",[reason(ctx.executiveSponsor,"Context","executive sponsor","name, title","projectContext.executiveSponsor")]),
     cxRow("Provider engagement lead",[reason(ctx.providerLead,"Context","provider lead","name, title","projectContext.providerLead")]),
@@ -278,7 +290,7 @@ function build(){const c=[];
   if(!isAssess)c.push(P([reason(m.scopeNote,"Section 4","scope note","confirm which supporting activities are included","model.scopeNote")]));
   // 5
   c.push(h1("5. Timeline and engagement structure"));c.push(h2("5.1 Duration"));
-  c.push(clzP(AC.ELAPSED_PERIOD,{N:String(sum.durationWeeks)}));
+  c.push(clzP(AC.ELAPSED_PERIOD,/\{N\}/.test(AC.ELAPSED_PERIOD)?{N:startWindowRun()}:{}));
   c.push(clzP(isAssess?AC.COMMENCEMENT_STAFFING_ASSESS:AC.COMMENCEMENT_STAFFING));
   c.push(P([T("Estimated at ",{size:22,color:INK}),eng(sum.durationWeeks,"§5.1","durationWeeks","projectSummary.durationWeeks"),T(" weeks, beginning ",{size:22,color:INK}),eng(band.startDate,"§5.1","startDate","bands[].startDate"),T(" and concluding ",{size:22,color:INK}),eng(band.endDate,"§5.1","endDate","bands[].endDate"),T(".",{size:22,color:INK})]));
   c.push(h2("5.2 Role engagement"));
@@ -401,9 +413,9 @@ function build(){const c=[];
   AC.MISC_TERMS.forEach(mt=>c.push(P([T(mt.title+" ",{size:22,bold:true,color:NAVY2}),T(mt.body,{size:22,color:INK})])));
   // signatures
   c.push(h1("Acceptance and signatures"));
-  c.push(clzP(AC.SIGNATURE_PREAMBLE,{DATE:reason(ctx.returnBy,"Signature","return-by date","offer-expiry date for signature","not in quote")},{keepNext:true}));
+  c.push(clzP(AC.SIGNATURE_PREAMBLE,{DATE:signingDateRun("Signature")},{keepNext:true}));
   c.push(P([T(AC.AUTHORITY_BIND,{size:22,bold:true,color:INK})],{keepNext:true}));
-  c.push(table([4680,4680],[[hd(provider.legalName),hd("Client")],
+  c.push(table([4680,4680],[[hd(provider.legalName),signatureClientHeader("Signature")],
     [[T("Signature:",{size:20,color:INK}),new TextRun({break:2}),T("Name:",{size:20,color:INK}),new TextRun({break:1}),T("Title:",{size:20,color:INK}),new TextRun({break:1}),T("Date:",{size:20,color:INK})],
      [T("Signature:",{size:20,color:INK}),new TextRun({break:2}),T("Name:",{size:20,color:INK}),new TextRun({break:1}),T("Title:",{size:20,color:INK}),new TextRun({break:1}),T("Date:",{size:20,color:INK})]]]));
   // Exhibit A, build variants only; assessments fix scope by the Section 4 deliverable list
@@ -444,14 +456,14 @@ function build(){const c=[];
 // clauses (PSA incorporation, fixed fee, invoices, expenses, order-of-precedence, signature).
 function buildLetter(){const c=[];delivCount=items.length;
   if(input.contract.status==="example")c.push(P([T("Synthetic example for skill testing",{bold:true})]));
-  if(input.args["--draft"])c.push(P([T("Working draft with unresolved inputs",{bold:true})]));const clientName=ctx.accountName||null;
+  if(input.args["--draft"])c.push(P([T("Working draft with unresolved inputs",{bold:true})]));
   if(LOGO)c.push(new Paragraph({spacing:{after:200},children:[new ImageRun({type:logoType,data:fs.readFileSync(LOGO),transformation:logoSize,altText:{title:provider.legalName,description:"logo",name:"logo"}})]}));
   c.push(new Paragraph({style:"Title",spacing:{before:120,after:60},children:[T("Letter of Engagement")]}));
   c.push(new Paragraph({spacing:{after:40},children:[T(ctx.opportunityName||"Advisory engagement",{size:24,color:TEAL})]}));
   c.push(P([T("Prepared for  ",{size:22,color:STEEL}),eng(ctx.accountName,"LOE","accountName","projectContext.accountName"),T("   •   Prepared by  ",{size:22,color:STEEL}),T(provider.legalName,{size:22,color:INK})]));
   c.push(table([4680,4680],[[hd("Investment"),hd("Timing")],
     [[eng(money(sum.totalValue),"LOE","fee","projectSummary.totalValue"),T("  (fixed fee)",{size:20,color:STEEL})],[T(m.durationLabel||(sum.durationWeeks+" week(s)"),{size:22,color:INK})]]]));
-  c.push(clzP(AC.PREAMBLE,{CLIENT:clientName||"[CLIENT LEGAL NAME — confirm]"}));
+  c.push(clzP(AC.PREAMBLE,{CLIENT:legalNameRun("LOE")}));
   c.push(P([T("Professional Services Agreement Effective Date:  ",{size:22,bold:true,color:INK}),reason(ctx.psaEffectiveDate,"LOE","PSA effective date","blank if first SOW; else original PSA date","not in quote")]));
   c.push(h2("Purpose"));
   const purpose=ctx.businessNeed||m.purposeNarrative||((ctx.accountName||"The Client")+" has engaged Service Provider for "+(ctx.opportunityName||"a rapid advisory screen")+". This letter sets out the scope, fee, and terms of that engagement under the Professional Services Agreement.");
@@ -473,9 +485,9 @@ function buildLetter(){const c=[];delivCount=items.length;
   c.push(h2("Terms"));
   AC.MISC_TERMS.filter(mt=>/Order of Precedence|Limited Modification/.test(mt.title)).forEach(mt=>c.push(P([T(mt.title+" ",{size:22,bold:true,color:NAVY2}),T(mt.body,{size:22,color:INK})])));
   c.push(clzP(AC.LOE_ACCEPTANCE));
-  c.push(clzP(AC.SIGNATURE_PREAMBLE,{DATE:reason(ctx.returnBy,"LOE","return-by date","offer-expiry date","not in quote")},{keepNext:true}));
+  c.push(clzP(AC.SIGNATURE_PREAMBLE,{DATE:signingDateRun("LOE")},{keepNext:true}));
   c.push(P([T(AC.AUTHORITY_BIND,{size:22,bold:true,color:INK})],{keepNext:true}));
-  c.push(table([4680,4680],[[hd(provider.legalName),hd("Client")],
+  c.push(table([4680,4680],[[hd(provider.legalName),signatureClientHeader("LOE signature")],
     [[T("Signature:",{size:20,color:INK}),new TextRun({break:2}),T("Name:",{size:20,color:INK}),new TextRun({break:1}),T("Title:",{size:20,color:INK}),new TextRun({break:1}),T("Date:",{size:20,color:INK})],
      [T("Signature:",{size:20,color:INK}),new TextRun({break:2}),T("Name:",{size:20,color:INK}),new TextRun({break:1}),T("Title:",{size:20,color:INK}),new TextRun({break:1}),T("Date:",{size:20,color:INK})]]]));
   return c;}

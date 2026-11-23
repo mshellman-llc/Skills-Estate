@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T17:29:50.479481+00:00",
+  "generatedAt": "2026-11-23T17:53:17.203916+00:00",
   "baseCommit": "4c73ff4d8897a30cce6e68b1f2503a027800c9bb",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
@@ -19172,7 +19172,7 @@
       "title": "Statement of work",
       "family": 1,
       "description": "Generate Statements of Work (.docx) from a confirmed quote JSON and a selected contract profile, in Waterfall (fixed scope), Agile (adaptive scope), and Assess (advisory, readout-gated) variants. Use when asked to generate the SOW, draft the SOW from the quote, build the SOW for a Q-number, or turn a quote into a Statement of Work. The quote is the source of truth; this skill renders it, does not price (the Pricing System prices), and does not author scope language (scope-project does). It builds the .docx, resolves placeholders with an audit trail, verifies the required-clause gate, and hands off to the embedded contract review mode. For authoring quality review, select the embedded contract scope and obligation review mode; DDOC remains a deck workflow.",
-      "status": "github",
+      "status": "local-revision",
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "8d6cd86381bfa343b41e026e2b3ed02e2622bf15d7ebcffb12d66c570d93fd3e",
@@ -19213,8 +19213,8 @@
         "references": [],
         "dependencyReferences": [],
         "sharedReferences": [],
-        "textFilesScanned": 20,
-        "packageFingerprint": "dc59d24c2c14ad13f1fab6ff7c17a2df18f3e242eb2495bc3d5ce242fff0f8b9",
+        "textFilesScanned": 23,
+        "packageFingerprint": "804d7f44b16c3ec85d7d929d3e5eb9ed2b592f625509df0d74952383a99824f2",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -19232,7 +19232,8 @@
           "scripts/input_contract.js",
           "scripts/verify_clauses.py",
           "scripts/verify_clauses_selftest.py",
-          "scripts/verify_contract.py"
+          "scripts/verify_contract.py",
+          "scripts/verify_render_parity.py"
         ],
         "connectors": {
           "required": [],
@@ -19321,9 +19322,9 @@
       "resources": [
         {
           "path": "README.md",
-          "sha256": "8d1d35ca83e2e22df8be9c4b29e817f5b54aaedb629894872c5c5d583b57710c",
-          "bytes": 1174,
-          "gitBlob": "55d3b2a35ae05c158b66548f5984f11ea610b5e6"
+          "sha256": "f6ceb8a5b5075868c6015a073646c8c92ff43506a47e70d8b909b41992113775",
+          "bytes": 1710,
+          "gitBlob": "2f0a981013224e656017f58cea49e93cacd26238"
         },
         {
           "path": "SKILL.md",
@@ -19333,21 +19334,21 @@
         },
         {
           "path": "fixtures/assessment.example.json",
-          "sha256": "760e1d4e7e10721f6f82c9634dc76f9efb5ac483e3d6aaf3bf8d7200f2390952",
-          "bytes": 5067,
-          "gitBlob": "4f425cbc21f6f27a1d333b12ef7a7f90b4063624"
+          "sha256": "3e46998e7449506afe56ea39e0788ce7b8807e3410b78c82b6e5f0c1b59cc29c",
+          "bytes": 5152,
+          "gitBlob": "e295e96c13b946d44dc865c393af1dd565b31a85"
         },
         {
           "path": "fixtures/contract.example.json",
-          "sha256": "1b023a70f8a9630413a85ee43fc5a4133e6839ce167a12c12f1272df9a9d86c0",
-          "bytes": 7011,
-          "gitBlob": "076464a7fc1a00042768ddb263224d57862dbb68"
+          "sha256": "2045be89236c2d435d677b1ab28ce867696b0fe41e765930870a552f5885e83f",
+          "bytes": 7036,
+          "gitBlob": "409f9efb218675ff00d8d9909585433113823c81"
         },
         {
           "path": "fixtures/quote.example.json",
-          "sha256": "65718bf89a59d23b9ae1c6f3324e1c740f775119fe102354028de3f0137bc786",
-          "bytes": 5158,
-          "gitBlob": "82de7b9f9f7fe0ecf3c9b7d038f2d3055984cb46"
+          "sha256": "e51a891b33f1fae616b67d42b2490025b634ad62d4c90c08e9eda99bb74d0e70",
+          "bytes": 5243,
+          "gitBlob": "bb15e58cbbd128af36f15b7086a01ac7c0e02bca"
         },
         {
           "path": "package.json",
@@ -19366,6 +19367,18 @@
           "sha256": "760e77f9ec95f940572ee610847d6ad4cbe3e4848e9582e1eabb1dfef22a15eb",
           "bytes": 1765,
           "gitBlob": "1a66ae26764f3d09712ca5a9b8db74607a536b62"
+        },
+        {
+          "path": "references/input-fields.md",
+          "sha256": "e8d898bed71d3d5cedf3236d09098b6e8dde490506e53479bed1b2e1f3d5b9b0",
+          "bytes": 1578,
+          "gitBlob": "a72878ac9ce2e40f50b8101c047dd5a749ca79a1"
+        },
+        {
+          "path": "references/release-gate.md",
+          "sha256": "52fad082b2858e5ed2c9ba201a1fa2b2ccf7666a24e1ec36bbe61db86fded9e1",
+          "bytes": 2421,
+          "gitBlob": "bfe0db2462c8ef7bd86e8ea12bc43e1c428b682c"
         },
         {
           "path": "references/required-clauses.md",
@@ -19387,21 +19400,21 @@
         },
         {
           "path": "scripts/generate_sow.js",
-          "sha256": "3d2d18e10e4246156182b2b8b16d6f5945b2b4dff5736b24121028f9bd4d0e99",
-          "bytes": 54568,
-          "gitBlob": "1d23164dadc45a4d6082d45d95a82f9e7509546f"
+          "sha256": "122c69221ba5206b7feb16773c6ac6319ec4f3d61ee66553c14316f7a1aac08c",
+          "bytes": 55581,
+          "gitBlob": "2d62a30bf198223a25a03754faabf4372d21d492"
         },
         {
           "path": "scripts/input_contract.js",
-          "sha256": "a2aed8ae4c84f980f46cbcaa31df47f36b8132d4205b690edff0ac148a0f58dc",
-          "bytes": 8324,
-          "gitBlob": "a808ba23e4fd8cdb0a82a21b218d9fbbd614c4b5"
+          "sha256": "f867cf0f07f4d6d204c9731c6f7fd1bde53f5a376ba7637e7c48ce85378c35a9",
+          "bytes": 8735,
+          "gitBlob": "9f0d4f33e21365b9aeb14e2895b446a4450dcacb"
         },
         {
           "path": "scripts/model-assess.json",
-          "sha256": "9af2df04fb883208ab85dba6d6b527b4514a4405a8d5dbe42a455c403322adbc",
-          "bytes": 5126,
-          "gitBlob": "7c16c142141adb5e3553a716d6072fdc24aa841d"
+          "sha256": "8922bca3b9ec6d4ca868de356dc55d1cc445824b67c7f5d10baa1f7c106735cb",
+          "bytes": 5211,
+          "gitBlob": "08035bea37a4ffb4cecb9fa981754f441fc25f2b"
         },
         {
           "path": "scripts/model-degraded.json",
@@ -19411,9 +19424,9 @@
         },
         {
           "path": "scripts/model.json",
-          "sha256": "74007f0daab0049c7554e8ae433d11077852a78885908089822c682d5117d9cb",
-          "bytes": 5217,
-          "gitBlob": "a943b38477069cd1b62258d7dafc16aa45418fdc"
+          "sha256": "6bd006d15f54072d203cca50b7784cdd456b2570d64bca8996de625388c27094",
+          "bytes": 5302,
+          "gitBlob": "a1c4f10009969832f5ce49dc9c326f844bfe0f90"
         },
         {
           "path": "scripts/verify_clauses.py",
@@ -19429,9 +19442,15 @@
         },
         {
           "path": "scripts/verify_contract.py",
-          "sha256": "57acb1a058aa2119a31f7974ee78f5b4aa579becead7de04ed06c68ceb17b5eb",
-          "bytes": 7077,
-          "gitBlob": "039b0ba3a4bb6c23f5d30741480ac46835ad6ea0"
+          "sha256": "595df1cc7414b00afbeda3f123a6acdd17a6906b1bee9e3a483b5d404f2d0f10",
+          "bytes": 11642,
+          "gitBlob": "5795599260795de307c2b5b410b167d59b36cded"
+        },
+        {
+          "path": "scripts/verify_render_parity.py",
+          "sha256": "51179e671b92ac61ae76e9f734a3ad6ff9536babc26e592c8dd6a09e7e850f74",
+          "bytes": 8826,
+          "gitBlob": "841af258562081bc7c442565fbfb3de3e73eae33"
         },
         {
           "path": "skill.yaml",
@@ -19867,7 +19886,7 @@
       "title": "Writing diagnostics",
       "family": 6,
       "description": "Internal diagnostic and figure-preservation tools used by `writing`. This module supplies scanners and review records; it does not select an author voice or act as a second editor.",
-      "status": "github",
+      "status": "local-revision",
       "entrypointChanged": false,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
       "sourceSha256": "7ddcbf7ca4d19919cb051d91d893e3cbb3797addebedeae3e9f5419cafcbd323",
@@ -19974,7 +19993,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 33,
-        "packageFingerprint": "d58c1dd86975487a34208d0aeadcef1741daad57fd201da7dc342ca316098616",
+        "packageFingerprint": "e3da7431c1fe872776439c0a1e838b6fcd369b3cfb37a78670e0d70c758b1b96",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -20170,15 +20189,15 @@
         },
         {
           "path": "scripts/prose_receipt.py",
-          "sha256": "68965e66303e527e2f146f888c5a750faf99f48f6012e3e55ecf7e06ecf9106e",
-          "bytes": 16109,
-          "gitBlob": "8cb8e31f96ecf054a0d61baf79ebd8cfcd2c409b"
+          "sha256": "88338aab1ab81afe6c9b109150e5580d7429babc65529996f5b42f4a7a727671",
+          "bytes": 17366,
+          "gitBlob": "280df49e2b4d7896278b3a8efe1476791c62aa3f"
         },
         {
           "path": "scripts/prose_receipt_selftest.py",
-          "sha256": "8e601ae31e7da8eae69029c4a64802547a1a556a573da711aada86a2bbc5da00",
-          "bytes": 8312,
-          "gitBlob": "9e2a0232c2f52679849da39b1df81a5d39bc3fb6"
+          "sha256": "d3cfd56e0504ab4f62de9a0d4255304fa010de4efe810f978f8f1324f50cb9fb",
+          "bytes": 11675,
+          "gitBlob": "246b5d44de5d51654cb92a7690d35013e3d490eb"
         },
         {
           "path": "scripts/record_ids.py",
@@ -20311,8 +20330,8 @@
     }
   ],
   "counts": {
-    "github": 91,
-    "local-revision": 2,
+    "github": 89,
+    "local-revision": 4,
     "local-addition": 0,
     "canonical": 93,
     "total": 93,
