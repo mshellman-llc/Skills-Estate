@@ -11,3 +11,6 @@ dist/
 node_modules/
 
 artifacts/skills-map/downloads/
+
+artifacts/skills-site/index.html
+artifacts/skills-site/vendor/Engrace-ItalicVF.woff2

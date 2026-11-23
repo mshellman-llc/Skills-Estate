@@ -57,6 +57,16 @@ jobs:
           fi
           python3 artifacts/skills-map/build.py --base "$map_baseline"
           python3 tools/browse.py --check
+      # The public Skills Estate site in the LiveLaughCode brand, filtered by config/skills-publication.json.
+      # Engrace is licensed for web embedding and stays out of the repository; it comes from a secret.
+      - name: Build the Skills Estate site
+        env:
+          LLC_ENGRACE_WOFF2_BASE64: ${{ secrets.LLC_ENGRACE_WOFF2_BASE64 }}
+        run: |
+          if [ -n "$LLC_ENGRACE_WOFF2_BASE64" ]; then
+            printf '%s' "$LLC_ENGRACE_WOFF2_BASE64" | base64 -d > artifacts/skills-site/vendor/Engrace-ItalicVF.woff2
+          fi
+          python3 artifacts/skills-site/build.py --target estate --out .local/skills-site/index.html
       - run: python3 tools/estate.py validate
       - name: Verify the recorded plugin version against this checkout
         run: python3 tools/plugin_version.py
@@ -98,6 +108,13 @@ jobs:
           path: dist/groups/*.zip
           if-no-files-found: error
           retention-days: 14
+      - uses: actions/upload-artifact@v7.0.2
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: skills-estate-site
+          path: .local/skills-site/index.html
+          if-no-files-found: error
+          retention-days: 30
       - uses: actions/upload-artifact@v7.0.2
         if: github.ref == 'refs/heads/main'
         with:
