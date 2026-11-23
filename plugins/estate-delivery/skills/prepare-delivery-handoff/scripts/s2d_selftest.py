@@ -19,6 +19,7 @@ CHECKER = os.path.join(HERE, "check_handoff.py")
 FIXTURES = os.path.join(HERE, "fixtures")
 
 failures = []
+CASES = []
 
 
 def run(path):
@@ -29,6 +30,7 @@ def run(path):
 
 
 def case(name, path, want_code, want_substrings=()):
+    CASES.append(name)
     code, out = run(path)
     ok = code == want_code and all(s in out for s in want_substrings)
     if ok:
@@ -56,6 +58,25 @@ def mutated(base, mutate, name):
 def main():
     with open(os.path.join(FIXTURES, "pass_brief.json"), encoding="utf-8") as fh:
         brief = json.load(fh)
+
+    # Issues 176, 177 and 180, on the invented fixture client.
+    case("legacy stamp key is refused",
+         mutated(brief, lambda m: m["source_snapshot"].update({"write-statement-of-work": m["source_snapshot"].pop("sow")}), "legacy"),
+         1, ["source_snapshot.sow and source_snapshot.quote are both required"])
+    case("an unsigned working draft is refused",
+         mutated(brief, lambda m: m["source_snapshot"].update(sow="unsigned working draft, not for signature"), "draft"),
+         1, ["describes a draft or unsigned agreement"])
+    case("an executed SOW with no signing record is refused",
+         mutated(brief, lambda m: m["source_snapshot"].pop("sow_executed"), "nosign"),
+         1, ["source_snapshot.sow_executed needs signed_on"])
+    case("a deck cannot source a contract figure",
+         mutated(brief, lambda m: m["figures"][0].update(source="proposal deck slide 4, as quoted in the pitch"), "deck"),
+         1, ["money rule"])
+    case("a deck beside the SOW id still fails",
+         mutated(brief, lambda m: m["figures"][0].update(source="SOW-FIX-001 and the proposal deck"), "deckid"),
+         1, ["money rule"])
+    case("the quote id alone sources a figure",
+         mutated(brief, lambda m: m["figures"][0].update(source="Q-000999 line 3"), "quoteid"), 0, ["RESULT: PASS"])
 
     # Shipped fixtures.
     case("pass_brief", os.path.join(FIXTURES, "pass_brief.json"), 0, ["RESULT: PASS"])
@@ -166,7 +187,7 @@ def main():
     for p in tmp:
         os.unlink(p)
 
-    total = 15
+    total = len(CASES)
     if failures:
         print(f"SELFTEST: FAIL ({len(failures)}/{total} cases failed: {', '.join(failures)})")
         return 1

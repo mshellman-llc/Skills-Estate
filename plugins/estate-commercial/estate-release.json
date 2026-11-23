@@ -21,7 +21,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "889c3879cf517968e715b7c286b49aff5b3b89a98163c68a4d75c0bf15ba27d7",
+      "required_sha256": "9a94c570a98734dc1970ef5f80238666374b1493335d7548338a913dde043109",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -241,7 +241,7 @@
       "subject": "estimate-project"
     },
     {
-      "required_sha256": "81539a4333a8377ff33e14b71d90865ba4a3c8b9e7c2c4fbb2d57c7a6b812627",
+      "required_sha256": "8b46f1db183e0aecd7467057b30cf1a86130c3a3766d75d9d0151e1bee0d0d71",
       "status": "review required",
       "subject": "evidence-core"
     },
@@ -366,7 +366,7 @@
       "subject": "plan-usability-study"
     },
     {
-      "required_sha256": "c3fad2a37ebabbd98827e8716a221960cee5ae4bce22556af8f9ba82202be197",
+      "required_sha256": "10ddf6cb59f4589e0bf191770dfb758ec48004a019bedf32b51b2d7bfe91d53e",
       "status": "review required",
       "subject": "prepare-delivery-handoff"
     },
@@ -431,7 +431,7 @@
       "subject": "review-deal-economics"
     },
     {
-      "required_sha256": "ec00e714f37d2ce5513a5f23153afb8fd008b8b25e11da0c712661b5616e5ea3",
+      "required_sha256": "3b4451cbeb53ee607943cf47d6188299c7b36bec4b54d95812fb38b3d9b4b4b8",
       "status": "review required",
       "subject": "review-deliverable"
     },
@@ -536,6 +536,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "ee523755aefd77a422a291a66e5560e621fec1b452ade819ec83523bb069c5d6",
+  "source_sha256": "c69b76f7a7f83b3c95151eee974f6479e5318165bd54a274a8b12dc18886742e",
   "status": "owner-published"
 }

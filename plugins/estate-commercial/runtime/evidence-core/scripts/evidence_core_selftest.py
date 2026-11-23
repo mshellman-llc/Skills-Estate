@@ -166,6 +166,10 @@ def contract_ledger(artifact_type: str) -> dict:
                "asOf": "2026-11-18T12:00:00Z", "loadBearing": True, "domains": [domain],
                "confidenceRationale": None, "closureCondition": None, "owner": None}
               for index, domain in enumerate(domains, start=1)]
+    executed_domains = core.contracts[artifact_type].get("executedDomains", [])
+    for claim in claims:
+        if claim["domains"][0] in executed_domains:
+            claim["executed"] = True
     claims.append({"claimId": "CLM-900", "statement": f"One open item in {domains[0]}.", "status": "Unknown",
                    "sourceIds": [], "sourceLocations": [], "asOf": "2026-11-18T12:00:00Z", "loadBearing": True,
                    "domains": [domains[0]], "confidenceRationale": None, "owner": "synthetic owner",
@@ -191,6 +195,27 @@ for artifact_type in core.contracts:
     ledger["claims"][-1]["stopRule"] = None
     gate_case(f"{artifact_type} contract, open item without a stop rule", ledger, artifact_type, "Insufficient",
               "readiness_gap_memo", lambda r: r.terminal and r.conclusionForce == "stop")
+
+# Issue 175: an unsigned deal cannot pass the handoff contract. The only claim in
+# the executed commitment domain says the invented bakery's agreement is unsigned,
+# so the domain stays Insufficient and the output is the readiness memo.
+unsigned = contract_ledger("sales_to_delivery_handoff")
+for claim in unsigned["claims"]:
+    if claim["domains"][0] == "executed commitment" and claim["claimId"] != "CLM-900":
+        claim["statement"] = "The agreement with the bakery is not signed."
+        claim.pop("executed", None)
+unsigned["claims"] = [c for c in unsigned["claims"] if c["claimId"] != "CLM-900"]
+gate_case("handoff contract, unsigned deal is not an executed commitment", unsigned, "sales_to_delivery_handoff",
+          "Insufficient", "readiness_gap_memo",
+          lambda r: r.terminal and r.domainCoverage["executed commitment"] == "Insufficient"
+          and any(b["domain"] == "executed commitment" for b in r.blockers))
+signed = copy.deepcopy(unsigned)
+for claim in signed["claims"]:
+    if claim["domains"][0] == "executed commitment":
+        claim["statement"] = "The agreement with the bakery was signed on 2026-08-01."
+        claim["executed"] = True
+gate_case("handoff contract, signed deal covers the executed commitment", signed, "sales_to_delivery_handoff",
+          "Sufficient", "sales_to_delivery_handoff", lambda r: not r.terminal)
 
 # Issue 161: a rate card or commercial policy is its own source type, capped at
 # 85. The fictional Riverbend Library (synthetic) Deal Desk ledger carries its

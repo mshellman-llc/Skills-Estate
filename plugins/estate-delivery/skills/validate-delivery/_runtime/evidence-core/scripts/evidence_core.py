@@ -229,6 +229,15 @@ class EvidenceCore:
         if not active:
             return "Insufficient", [{"domain": domain, "reason": "No evidence-backed claim covers this required domain", "owner": None, "closureCondition": "Provide and validate authoritative evidence for this domain"}], []
 
+        if domain in contract.get("executedDomains", []) and not any(
+                c.get("status") == "Confirmed" and c.get("executed") is True for c in active):
+            # A hard fail of the contract: a claim that merely sits in this domain, such as
+            # "the draft is not signed", is not an executed commitment.
+            return "Insufficient", [{"domain": domain,
+                                     "reason": "No Confirmed claim marks an executed commitment (executed: true)",
+                                     "owner": None,
+                                     "closureCondition": "Obtain the signed agreement and record it as a Confirmed claim with executed true"}], []
+
         if contract.get("sourceLocationRequired"):
             for claim in active:
                 located = {entry.get("sourceId") for entry in claim.get("sourceLocations", []) if entry.get("location")}

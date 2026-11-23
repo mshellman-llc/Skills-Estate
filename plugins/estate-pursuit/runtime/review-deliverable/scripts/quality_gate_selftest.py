@@ -10,6 +10,7 @@ more than the acceptance one: a gate that cannot refuse is not a gate.
 from __future__ import annotations
 
 import copy
+import json
 import subprocess
 import sys
 import tempfile
@@ -287,6 +288,23 @@ check("invalid hub status cannot release", validate(record).released, False)
 record = copy.deepcopy(GOOD)
 record["artifact"] = "SOW-000181"
 check("artifact as a string is rejected", "artifact-shape" in codes(record), True)
+
+# Issue 178: an honest blocked record is valid. The supporting check is blocked and
+# the record says it is not released, so the gate reports the blocker and exits 0.
+record = copy.deepcopy(GOOD)
+record["checks"][2]["verdict"] = "blocked"
+record["release"]["released"] = False
+verdict = validate(record)
+check("an honest blocked record is valid", verdict.ok, True)
+check("and it does not release", verdict.released, False)
+check("and it still reports the blocker", bool(verdict.blockers), True)
+blocked_path = Path(TEMP.name) / "blocked-record.json"
+blocked_path.write_text(json.dumps(record), encoding="utf-8")
+check("the command exits 0 on an honest blocked record",
+      subprocess.run([sys.executable, str(HERE / "quality_gate.py"), str(blocked_path)],
+                     capture_output=True, text=True).returncode, 0)
+record["release"]["released"] = True
+check("the same record claiming release is invalid", validate(record).ok, False)
 
 if FAILURES:
     print("SELFTEST FAILED")

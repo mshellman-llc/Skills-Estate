@@ -300,10 +300,15 @@ def validate(record: Any, base_dir: Optional[Path] = None) -> GateVerdict:
                    and c.get("control") == support
                    and c.get("verdict") == "pass" and _cited(c)]
         if not backing:
-            error("fail-closed",
-                  "assertion {!r} of kind {} has no passing cited check; "
-                  "release must fail closed".format(
-                      assertion.get("id") or assertion.get("text") or "?", kind))
+            message = ("assertion {!r} of kind {} has no passing cited check; "
+                       "release must fail closed".format(
+                           assertion.get("id") or assertion.get("text") or "?", kind))
+            if release["released"]:
+                error("fail-closed", message)
+            else:
+                # An honest blocked record: the claim is not backed and the record says
+                # it is not released. That is a valid record with a blocker, exit 0.
+                findings.append(Finding("warn", "fail-closed", message))
             blockers.append("fail-closed: {}".format(kind))
 
     released = release["released"]

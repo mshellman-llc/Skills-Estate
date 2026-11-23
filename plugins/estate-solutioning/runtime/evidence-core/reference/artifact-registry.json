@@ -125,6 +125,7 @@
       "decisionJob": "Transfer signed commitments and approved conditions into a safe delivery start without reopening settled ground or hiding unresolved readiness gaps.",
       "primaryAudience": ["delivery lead", "solution architect", "project lead", "sales lead"],
       "requiredDomains": ["executed commitment", "contract baseline", "current operational intent", "approved technical conditions", "approved commercial conditions", "stakeholders and authority", "readiness", "week-one validation backlog"],
+      "executedDomains": ["executed commitment"],
       "terminalIfInsufficient": true,
       "fullOutput": "Sales-to-Delivery Handoff",
       "insufficientOutput": "Handoff readiness gap memo",
