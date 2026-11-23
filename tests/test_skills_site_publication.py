@@ -25,6 +25,15 @@ publisher = module('site_release_publisher', 'artifacts/skills-site/publish.py')
 
 
 class SiteReleaseTests(unittest.TestCase):
+    def test_draft_lookup_uses_the_authenticated_release_list(self):
+        draft = {'tag_name': 'expected', 'draft': True}
+        def api(method, url):
+            if '/releases/tags/' in url:
+                raise urllib.error.HTTPError(url, 404, 'draft omitted', {}, None)
+            return [draft]
+        self.assertEqual(draft, publisher.find_release(api, 'expected'))
+        self.assertIsNone(publisher.find_release(api, 'absent'))
+
     def test_complete_build_is_deterministic_and_public_content_is_projected(self):
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary)

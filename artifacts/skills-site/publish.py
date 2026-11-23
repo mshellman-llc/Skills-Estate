@@ -16,20 +16,37 @@ BRANCH = 'site-publication'
 FILES = ('private.html', 'public.html', 'catalog.json')
 
 
+def find_release(api, tag):
+    prefix = '/repos/' + REPOSITORY
+    try:
+        return api('GET', prefix + '/releases/tags/' + tag)
+    except urllib.error.HTTPError as error:
+        if error.code != 404:
+            raise
+    # The tag endpoint omits drafts. The authenticated list includes them.
+    page = 1
+    while True:
+        releases = api('GET', prefix + '/releases?per_page=100&page=' + str(page))
+        match = next((release for release in releases if release['tag_name'] == tag), None)
+        if match:
+            return match
+        if len(releases) < 100:
+            return None
+        page += 1
+
+
 def publish_assets(api, manifest, directory):
     """Keep licensed embedded fonts in built release assets, outside the Git source tree."""
     source = manifest['sourceCommit']
     tag = 'skills-site-' + source
-    endpoint = '/repos/' + REPOSITORY + '/releases/tags/' + tag
-    try:
-        release = api('GET', endpoint)
-    except urllib.error.HTTPError as error:
-        if error.code != 404:
-            raise
+    release = find_release(api, tag)
+    if release is None:
         subprocess.run(['gh', 'release', 'create', tag, *[str(Path(directory) / name) for name in FILES],
             '--repo', REPOSITORY, '--target', source, '--draft', '--prerelease', '--latest=false',
             '--title', 'Skills Estate page ' + source[:7], '--notes', 'Complete pages built and verified from ' + source], check=True, capture_output=True)
-        release = api('GET', endpoint)
+        release = find_release(api, tag)
+        if release is None:
+            raise ValueError('The new page release could not be read back')
     if release['target_commitish'] != source or {a['name'] for a in release['assets']} - set(FILES):
         raise ValueError('Unexpected contents in the page release')
     if release['draft']:
