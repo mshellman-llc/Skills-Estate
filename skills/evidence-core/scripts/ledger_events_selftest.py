@@ -96,6 +96,17 @@ with tempfile.TemporaryDirectory() as directory:
         check("projection validates against evidence-ledger.schema.json: {}".format([e.message for e in errors][:2]),
               not errors)
 
+# --- a commercial_policy source passes the event check (issue 161) ----------
+policy_lines = []
+for line in lines:
+    event = json.loads(line)
+    if event.get("sourceId") == "SRC-001" and event.get("event") == "source":
+        event.update(sourceType="commercial_policy", authority=85, title="Rate card (synthetic)")
+    policy_lines.append(json.dumps(event))
+check("commercial_policy sourceType is accepted", "SOURCE-TYPE" not in codes_of("\n".join(policy_lines) + "\n"))
+bogus_lines = [l.replace('"client_document"', '"commercial_polcy"') for l in lines]
+check("a misspelled sourceType is still refused", "SOURCE-TYPE" in codes_of("\n".join(bogus_lines) + "\n"))
+
 # --- conditional-coverage fields carry through the projection ---------------
 with tempfile.TemporaryDirectory() as directory:
     ruled = pathlib.Path(directory) / "ruled.jsonl"

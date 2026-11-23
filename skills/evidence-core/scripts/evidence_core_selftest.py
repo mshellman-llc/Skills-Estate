@@ -8,7 +8,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from evidence_core import EvidenceCore  # noqa: E402
+from evidence_core import SOURCE_AUTHORITY_CAPS, EvidenceCore  # noqa: E402
 
 core = EvidenceCore(ROOT / "reference" / "artifact-registry.json")
 cases = [
@@ -191,6 +191,31 @@ for artifact_type in core.contracts:
     ledger["claims"][-1]["stopRule"] = None
     gate_case(f"{artifact_type} contract, open item without a stop rule", ledger, artifact_type, "Insufficient",
               "readiness_gap_memo", lambda r: r.terminal and r.conclusionForce == "stop")
+
+# Issue 161: a rate card or commercial policy is its own source type, capped at
+# 85. The fictional Riverbend Library (synthetic) Deal Desk ledger carries its
+# margin floor from a commercial_policy source; a type outside the table or a
+# score above the cap still fails.
+riverbend = contract_ledger("deal_desk")
+riverbend["context"]["clientName"] = "Riverbend Library (synthetic)"
+riverbend["sources"][0].update(sourceType="commercial_policy", authority=85, title="Rate card (synthetic)")
+policy_ok = core.evaluate(riverbend, "deal_desk")
+policy_codes = [item.code for item in core.validate_ledger(riverbend)]
+policy_passed = (policy_ok.status == "Conditional" and "SOURCE_TYPE" not in policy_codes
+                 and SOURCE_AUTHORITY_CAPS.get("commercial_policy") == 85)
+failed = failed or not policy_passed
+print(f"commercial_policy source type accepted for deal_desk: observed={policy_ok.status} pass={policy_passed}")
+riverbend["sources"][0]["authority"] = 90
+capped = [item.code for item in core.validate_ledger(riverbend)]
+capped_passed = "SOURCE_AUTHORITY_CAP" in capped
+failed = failed or not capped_passed
+print(f"commercial_policy authority above 85 is capped: pass={capped_passed}")
+schema_types = json.loads((ROOT / "schemas" / "evidence-ledger.schema.json").read_text(encoding="utf-8"))["$defs"]["source"]["properties"]["sourceType"]["enum"]
+import ledger_events  # noqa: E402
+types_passed = ("commercial_policy" in schema_types and "commercial_policy" in ledger_events.SOURCE_TYPES
+                and set(schema_types) == set(SOURCE_AUTHORITY_CAPS) == ledger_events.SOURCE_TYPES)
+failed = failed or not types_passed
+print(f"source type lists agree across core, schema and ledger_events: pass={types_passed}")
 
 # The command line exits 0 for a Conditional result and 1 for the readiness memo.
 import subprocess  # noqa: E402
