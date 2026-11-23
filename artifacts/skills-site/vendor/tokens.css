@@ -1,0 +1,255 @@
+/* LiveLaughCode — generated from tokens.json */
+:root, [data-theme="dark"] {
+  --navy-700: #283549; /* Palette step, the same in every theme. Components use the role tokens. */
+  --slate-600: #37485c; /* Palette step, the same in every theme. Components use the role tokens. */
+  --slate-500: #4d5869; /* Palette step, the same in every theme. Components use the role tokens. */
+  --steel-400: #687996; /* Palette step, the same in every theme. Components use the role tokens. */
+  --mist-300: #a5a8b5; /* Palette step, the same in every theme. Components use the role tokens. */
+  --mist-100: #d8dae5; /* Palette step, the same in every theme. Components use the role tokens. */
+  --surface: #161824; /* Page ground. Pinned brand value: white in Day. */
+  --inverse-surface: #ffffff; /* Snackbar and toast ground; the Night bar on a Day page. Pinned brand value. */
+  --on-surface: #ffffff; /* Headings and numerals. 20.1:1 on surface in Day, 17.6:1 on surface in Night. */
+  --on-surface-body: #e3e2e7; /* Paragraphs (LiveLaughCode addition). 17.2:1 on surface in Day, 13.7:1 on surface in Night. */
+  --on-surface-variant: #bdbcc2; /* Labels, captions, units, inactive icons. 7.5:1 on surface in Day, 9.4:1 on surface in Night. */
+  --inverse-on-surface: #0d0e12; /* Text on inverse-surface. 16.8:1 on inverse-surface in Day, 19.3:1 on inverse-surface in Night. */
+  --outline-variant: #2f3035; /* Rules inside tables and long lists, chart gridlines and the Day card edge. Never a control edge. */
+  --outline: #7d7d82; /* Text field, outlined button, segmented frame and checkbox edges. 4.4:1 on surface in Day, 4.3:1 on surface in Night. */
+  --focus: #bac7e0; /* 2px focus ring with a 2px ground gap (LiveLaughCode addition). 12.4:1 on surface in Day, 10.4:1 on surface in Night. */
+  --primary: #f1f0f6; /* Filled button, selected segment, switch track on. One per view. 19.3:1 on surface in Day, 15.6:1 on surface in Night. */
+  --on-primary: #121317; /* Text and icons on primary. 17:1 on primary in Day, 16.4:1 on primary in Night. */
+  --secondary-container: #332d58; /* The selected fill: a selected or open row, the active nav item, a selected chip and the tonal button. A pale violet on Day, deep violet on Night. Replaces every grey fill. */
+  --on-secondary-container: #ffffff; /* Text on secondary-container. 18.2:1 on secondary-container in Day, 12.5:1 on secondary-container in Night. */
+  --hover: #25273c; /* Hover fill on rows and quiet controls, a paler step of the violet selection fill. Text on it keeps its own color. */
+  --selected: var(--secondary-container); /* Plain name for the selected fill. Points to secondary-container. */
+  --primary-fixed: #283549; /* Brand navy, the same in both themes. Never where contrast is needed against the ground. */
+  --on-primary-fixed: #faf9fe; /* Text on primary-fixed. 11.8:1 on primary-fixed in Day, 11.8:1 on primary-fixed in Night. */
+  --data-1: #ece8ff; /* Chart series 1: brand indigo on Day, brand lavender on Night. 8.8:1 on surface in Day, 14.8:1 on surface in Night. */
+  --data-2: #7b5cd6; /* Chart series 2: brand violet in both themes. 4.8:1 on surface in Day, 3.7:1 on surface in Night. */
+  --data-3: #1a8c8c; /* Chart series 3: brand teal in both themes. 4.1:1 on surface in Day, 4.4:1 on surface in Night. The three series differ in lightness, so color-blind readers can tell them apart. */
+  --error: #ffaab6; /* Error text, the error mark and its rule. No tinted panels. 7.2:1 on surface in Day, 9.8:1 on surface in Night. */
+  --on-error: #53001b; /* Text on a destructive filled button. 7.2:1 on error in Day, 8.4:1 on error in Night. */
+  --state-hover: #ffffff14; /* Hover layer, in the content color: 8% of on-surface. */
+  --state-focus: #ffffff1a; /* Focus layer: 10% of on-surface. */
+  --state-pressed: #ffffff1a; /* Pressed layer: 10% of on-surface. */
+  --state-dragged: #ffffff29; /* Dragged layer: 16% of on-surface. */
+  --disabled-content: #ffffff61; /* Disabled text and icons: 38% of on-surface. */
+  --disabled-container: #ffffff1f; /* Disabled fills: 12% of on-surface. */
+  --scrim: #00000099; /* Dims the page under a dialog: 45% of tone 2. */
+  --signal-violet: #a893e4; /* Signal hue 1, from gradient stop 1, deepened on Day. The Blocked status marker, the first category and step 1. Use it for symbols, dots and short rules, never for body text or a large fill. 5.8:1 on surface in Day, 5.3:1 on secondary-container in Day, 6.7:1 on surface in Night, 6.0:1 on surface-raised in Night. */
+  --signal-indigo: #9498ec; /* Signal hue 2, from gradient stop 2. The second category and step 2. No status uses it. Use it for symbols, dots and short rules, never for body text or a large fill. 8.8:1 on surface in Day, 8.0:1 on secondary-container in Day, 6.7:1 on surface in Night, 6.0:1 on surface-raised in Night. */
+  --signal-blue: #76a0e9; /* Signal hue 3, from gradient stop 3, deepened on Day. The In review status marker, the third category and step 3. Use it for symbols, dots and short rules, never for body text or a large fill. 5.8:1 on surface in Day, 5.2:1 on secondary-container in Day, 6.7:1 on surface in Night, 6.0:1 on surface-raised in Night. */
+  --signal-teal: #5cadad; /* Signal hue 4, from gradient stop 4, deepened on Day. The Approved status marker, the fourth category and step 4. Use it for symbols, dots and short rules, never for body text or a large fill. 5.8:1 on surface in Day, 5.2:1 on secondary-container in Day, 6.8:1 on surface in Night, 6.1:1 on surface-raised in Night. */
+  --signal-violet-soft: #322b56; /* Soft tint of signal-violet, behind one card or cell of the first category, such as a CellReveal ground. Never a section ground. on-surface 16.8:1 on it in Day and 13.0:1 in Night; on-surface-variant 6.3:1 and 6.9:1; signal-violet 4.9:1 and 4.9:1. */
+  --signal-indigo-soft: #28244d; /* Soft tint of signal-indigo, behind one card or cell of the second category. Never a section ground. on-surface 16.0:1 on it in Day and 14.5:1 in Night; on-surface-variant 6.0:1 and 7.7:1; signal-indigo 7.0:1 and 5.5:1. */
+  --signal-blue-soft: #262a52; /* Soft tint of signal-blue, behind one card or cell of the third category. Never a section ground. on-surface 16.8:1 on it in Day and 13.7:1 in Night; on-surface-variant 6.3:1 and 7.3:1; signal-blue 4.8:1 and 5.2:1. */
+  --signal-teal-soft: #173841; /* Soft tint of signal-teal, behind one card or cell of the fourth category. Never a section ground. on-surface 17.0:1 on it in Day and 12.5:1 in Night; on-surface-variant 6.4:1 and 6.6:1; signal-teal 4.9:1 and 4.8:1. */
+  --signal-coral: var(--signal-violet); /* Earlier name, kept for pages built before 17 November. Points to signal-violet. */
+  --signal-green: var(--signal-teal); /* Earlier name, kept for pages built before 17 November. Points to signal-teal. */
+  --signal-orange: var(--signal-indigo); /* Earlier name, kept for pages built before 17 November. Points to signal-indigo. */
+  --signal-coral-soft: var(--signal-violet-soft); /* Earlier name. Points to signal-violet-soft. */
+  --signal-green-soft: var(--signal-teal-soft); /* Earlier name. Points to signal-teal-soft. */
+  --signal-orange-soft: var(--signal-indigo-soft); /* Earlier name. Points to signal-indigo-soft. */
+  --brand-violet: #7b5cd6; /* Brand accent, LiveLaughCode gradient stop 1 and step 1. The Code_ pill, progress fills, the selected tab line, switches that are on, step order and one soft field per page. Day 4.8:1 on surface, Night 3.6:1. */
+  --brand-indigo: #8387e9; /* Brand accent, gradient stop 2 on Day. Night lifts it to #8387e9 because #3b3f9c is 2.0:1 there. Day 8.8:1 on surface, Night 5.6:1. */
+  --brand-blue: #2f6fde; /* Brand accent, gradient stop 3. Day 4.7:1 on surface, Night 3.7:1. */
+  --brand-teal: #1a8c8c; /* Brand accent, gradient stop 4. Day 4.1:1 on surface, Night 4.3:1. */
+  --brand-lavender: #ece8ff; /* The LiveLaughCode logo's light ground, the same in every theme. Logo files and brand covers only, never a page ground. */
+  --brand-midnight: #12152a; /* The LiveLaughCode logo's dark ground, the same in every theme. Logo files and brand covers only. It is 1.02:1 against the Night surface and matches it on screen. */
+  --background: var(--surface); /* Material 3 name for the page ground; the product kit reads it. */
+  --ink: var(--on-surface); /* Earlier name for on-surface. */
+  --ink-body: var(--on-surface-body); /* Earlier name for on-surface-body. */
+  --ink-muted: var(--on-surface-variant); /* Earlier name for on-surface-variant. */
+  --line: var(--outline-variant); /* Earlier name for outline-variant. */
+  --line-strong: var(--outline); /* Earlier name for outline. */
+  --action: var(--primary); /* Earlier name for primary. */
+  --on-action: var(--on-primary); /* Earlier name for on-primary. */
+  --action-quiet: var(--secondary-container); /* Earlier name for secondary-container. */
+  --on-action-quiet: var(--on-secondary-container); /* Earlier name for on-secondary-container. */
+  --focus-ring: var(--focus); /* Earlier name for focus. */
+  --surface-raised: #1e222f; /* Cards and panels: white on Day with a hairline and shadow-sm, a step lighter than the page on Night. */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30), 0 1px 1px rgba(0, 0, 0, 0.20); /* Separates a white card from the white Day page. */
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.25); /* A deeper version of shadow-sm. */
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.30); /* The deepest version of shadow-sm. */
+}
+[data-theme="light"] {
+  --surface: #ffffff;
+  --inverse-surface: #161824;
+  --on-surface: #06070b;
+  --on-surface-body: #1a1b1f;
+  --on-surface-variant: #545459;
+  --inverse-on-surface: #faf9fe;
+  --outline-variant: #d2d1d6;
+  --outline: #78787d;
+  --focus: #283549;
+  --primary: #0d0e12;
+  --on-primary: #f1f0f6;
+  --secondary-container: #f5f2fc;
+  --on-secondary-container: #06070b;
+  --hover: #faf8fe;
+  --selected: var(--secondary-container);
+  --primary-fixed: #283549;
+  --on-primary-fixed: #faf9fe;
+  --data-1: #3b3f9c;
+  --data-2: #7b5cd6;
+  --data-3: #1a8c8c;
+  --error: #a12947;
+  --on-error: #ffffff;
+  --state-hover: #06070b14;
+  --state-focus: #06070b1a;
+  --state-pressed: #06070b1a;
+  --state-dragged: #06070b29;
+  --disabled-content: #06070b61;
+  --disabled-container: #06070b1f;
+  --scrim: #06070b73;
+  --signal-violet: #6d52be;
+  --signal-indigo: #3b3f9c;
+  --signal-blue: #2962c3;
+  --signal-teal: #157171;
+  --signal-violet-soft: #ede8f9;
+  --signal-indigo-soft: #e4e4f1;
+  --signal-blue-soft: #e2ebfa;
+  --signal-teal-soft: #dfefef;
+  --signal-coral: var(--signal-violet);
+  --signal-green: var(--signal-teal);
+  --signal-orange: var(--signal-indigo);
+  --signal-coral-soft: var(--signal-violet-soft);
+  --signal-green-soft: var(--signal-teal-soft);
+  --signal-orange-soft: var(--signal-indigo-soft);
+  --brand-violet: #7b5cd6;
+  --brand-indigo: #3b3f9c;
+  --brand-blue: #2f6fde;
+  --brand-teal: #1a8c8c;
+  --background: var(--surface);
+  --ink: var(--on-surface);
+  --ink-body: var(--on-surface-body);
+  --ink-muted: var(--on-surface-variant);
+  --line: var(--outline-variant);
+  --line-strong: var(--outline);
+  --action: var(--primary);
+  --on-action: var(--on-primary);
+  --action-quiet: var(--secondary-container);
+  --on-action-quiet: var(--on-secondary-container);
+  --focus-ring: var(--focus);
+  --surface-raised: #ffffff;
+  --shadow-sm: 0 1px 2px rgba(22, 24, 36, 0.04), 0 8px 24px rgba(59, 63, 156, 0.07);
+  --shadow-md: 0 1px 3px rgba(22, 24, 36, 0.06), 0 12px 32px rgba(59, 63, 156, 0.12);
+  --shadow-lg: 0 2px 6px rgba(22, 24, 36, 0.06), 0 20px 48px rgba(59, 63, 156, 0.18);
+}
+:root {
+  --space-1: 2px; /* Label to value; legend dot to text. */
+  --space-2: 6px; /* Unit beside a stat numeral; button icon gap. */
+  --space-3: 10px; /* Label above a title inside a cell. */
+  --space-4: 12px; /* Button horizontal padding; title to description. */
+  --space-6: 20px; /* Padding inside a box, a panel or a table cell. */
+  --space-8: 28px; /* Outer gutter between the content and the viewport edge on phones. */
+  --space-12: 44px; /* Section header to its first grid row. */
+  --space-24: 88px; /* Section top and bottom padding on desktop. */
+  --radius-0: 2px; /* Near-square corners for table cells, chart bars and full-bleed photography. */
+  --radius-1: 999px; /* Earlier name for radius-pill. */
+  --radius-sm: 12px; /* The smallest corner size, 12px. */
+  --radius-md: 20px; /* The middle corner size, 20px. */
+  --radius-lg: 24px; /* The largest corner size, 24px. */
+  --radius-pill: 999px; /* Phase timeline bars, progress tracks and avatars. */
+  --font-sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Engrace", "Instrument Sans", sans-serif;
+  --text-hero: 400 48px/52px var(--font-sans); /* Page title in the hero. One per page. */
+  --text-section-title: 400 32px/38px var(--font-sans); /* Section headline that states the situation with its number. */
+  --text-quote: 400 28px/36px var(--font-sans); /* Client quote, one per page. */
+  --text-stat: 400 40px/44px var(--font-sans); /* Stat numerals. Tabular figures. */
+  --text-card-title: 500 20px/26px var(--font-sans); /* Cell titles and lesson lines. */
+  --text-body: 400 15px/24px var(--font-sans); /* Paragraphs, 60 to 75 characters a line. */
+  --text-body-sm: 400 13px/20px var(--font-sans); /* Descriptions and captions. */
+  --text-label: 500 12px/16px var(--font-sans); /* Names the data in a cell or chart. Sentence case, on-surface-variant. */
+  --text-counter: 400 12px/16px var(--font-sans); /* Position in a real sequence, such as 2 of 7. Tabular figures. */
+}
+.hero {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+.section-title {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.quote {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.stat {
+  font-family: var(--font-sans);
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+.card-title {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.body-sm {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.counter {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("fonts/instrument-sans-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("fonts/instrument-sans-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("fonts/instrument-sans-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Engrace";
+  src: url("fonts/Engrace-ItalicVF.woff2") format("woff2");
+  font-weight: 50 200;
+  font-style: italic;
+  font-display: swap;
+}
