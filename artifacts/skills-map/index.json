@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T19:45:42.175289+00:00",
-  "baseCommit": "65e93805e126bfff9409abba7c07b78903812612",
+  "generatedAt": "2026-11-23T23:25:07.512510+00:00",
+  "baseCommit": "0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -65,7 +65,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-author-style/SKILL.md",
       "sourceSha256": "34e0428c79e8675f900e75fecf1bb94858b1e339be3b6e4013e04f30c1622e66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/apply-author-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/apply-author-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -189,14 +189,14 @@
     },
     {
       "id": "apply-salesforce-patterns",
-      "title": "Apply salesforce patterns",
+      "title": "Apply Salesforce patterns",
       "family": 3,
       "description": "Apply the estate''s Salesforce architecture (a service layer shared by trigger, UI and API entry points, a Unit of Work for all DML, selectors for all SOQL in USER_MODE, DTO returns from @AuraEnabled, imperative Apex from LWC) when the project uses it. Use for a new Apex class, trigger or LWC component, adding a service, selector or unit of work, running arch checks or pre-commit, or fixing architecture violations.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/apply-salesforce-patterns/SKILL.md",
       "sourceSha256": "97a238283a12443797e0970f0483169d2c283e27a7735ef344d3a87bc2d58d2b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/apply-salesforce-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/apply-salesforce-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "apply-salesforce-patterns",
@@ -433,7 +433,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-career-options/SKILL.md",
       "sourceSha256": "5b031d7d1564ceba461c02ac0de7a8bed69666a82108f74769500554319749a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/assess-career-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/assess-career-options/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-career-options",
@@ -576,7 +576,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-offering-fit/SKILL.md",
       "sourceSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/assess-offering-fit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/assess-offering-fit/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-offering-fit",
@@ -588,7 +588,7 @@
       ],
       "guide": {
         "what": "Match a prospect’s needs to an offering.",
-        "when": "Discovery needs to become an assess-offering-fit decision.",
+        "when": "Choose which offering fits a prospect's discovery findings.",
         "inputs": "The current offering catalog and supported prospect findings.",
         "outputs": "Ranked fit, evidence behind the score, disqualifiers, and open questions.",
         "example": "Compare this prospect’s discovery findings with our current offering catalog.",
@@ -732,7 +732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-solution-delivery/SKILL.md",
       "sourceSha256": "373cbdd2199c0c41f5b492a5b4f2bb3c712ed9aaf5b9abebe078f8ee001b1d89",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/assess-solution-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/assess-solution-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-solution-delivery",
@@ -745,17 +745,17 @@
       "guide": {
         "what": "Decide whether a proposed client solution can be delivered and make its delivery logic inspectable.",
         "when": "A solution needs deal approval, a build reference for developers or a field guide for a scoping call.",
-        "inputs": "A validated evidence ledger and gate report, plus the systems, interfaces, scope, staffing and commercial baseline.",
+        "inputs": "A checked table linking claims to sources, the result of the source checks, and the systems, interfaces, scope, staffing and commercial baseline.",
         "outputs": "A validated solution graph rendered as a Solution Brief, build reference or field guide, or a Technical Readiness Memo when evidence is insufficient.",
         "example": "Explain whether this solution can be delivered, including systems, interfaces, risks and decisions.",
         "reviewedEntrypointSha256": "373cbdd2199c0c41f5b492a5b4f2bb3c712ed9aaf5b9abebe078f8ee001b1d89",
         "expect": "It starts from a validated evidence ledger and gate report, then judges whether the solution is deliverable and builds a graph that a script validates before any page is drafted. If the evidence gate is Insufficient it stops at a short Technical Readiness Memo, and it does not approve margin, rates or commercial terms.",
-        "requires": "A validated evidence ledger and gate report from the evidence-core step, and Python 3; field guide mode also needs Node.js and Playwright for its browser check.",
+        "requires": "A checked table linking claims to sources and the result of the evidence-core checks, plus Python 3; field guide mode also needs Node.js and Playwright for its browser check.",
         "overview": "It checks the evidence for the proposed solution, then connects systems, interfaces, scope, ownership, staffing assumptions and risks in a structured solution graph. A validator checks that graph before it is rendered as a Solution Brief, build reference or scoping field guide. Insufficient evidence produces a Technical Readiness Memo identifying what prevents a delivery judgment.",
         "value": "Determine whether a proposed solution has a defensible delivery path across its systems, interfaces, scope, people and risks. It gives approvers or developers a connected explanation rather than a list of components.",
         "preparation": {
           "where": "Bring system and interface evidence, scoped work, constraints and commercial/staffing context. Evidence core creates the source-and-claim ledger and its gate report. The solution graph is the structured relationship model this workflow prepares; you need not draw it first.",
-          "missing": "If the evidence gate is insufficient, it returns a Technical Readiness Memo identifying what prevents a delivery judgment. A proposal can be explored, but absent evidence cannot be converted into an approved architecture or commercial decision."
+          "missing": "If the sources do not support a delivery judgment, it returns a Technical Readiness Memo identifying what prevents that judgment. A proposal can be explored, but absent evidence cannot be converted into an approved architecture or commercial decision."
         },
         "preparationSkills": [
           {
@@ -836,7 +836,7 @@
           "claude-ai",
           "cowork"
         ],
-        "setup": "A validated evidence ledger and gate report from the evidence-core step, and Python 3; field guide mode also needs Node.js and Playwright for its browser check.",
+        "setup": "A checked table linking claims to sources and the result of the evidence-core checks, plus Python 3; field guide mode also needs Node.js and Playwright for its browser check.",
         "expect": "It starts from a validated evidence ledger and gate report, then judges whether the solution is deliverable and builds a graph that a script validates before any page is drafted. If the evidence gate is Insufficient it stops at a short Technical Readiness Memo, and it does not approve margin, rates or commercial terms.",
         "declared": true
       },
@@ -1112,7 +1112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/audit-accessibility/SKILL.md",
       "sourceSha256": "6f6b392bdc3eb2cf4277e1d13ea2210888228695c933a6c6835dddda47ee798e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/audit-accessibility/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/audit-accessibility/SKILL.md",
       "taskPackages": [
         {
           "name": "audit-accessibility",
@@ -1244,7 +1244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-estate-skill/SKILL.md",
       "sourceSha256": "24b0fa3b3246b650dd8b24613ddedd2b5086c56217caf4a21c6e0ae091434d2f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/author-estate-skill/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/author-estate-skill/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -1460,7 +1460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-style-runtime/SKILL.md",
       "sourceSha256": "abf76c99659ac51362b3bf6fef01a876fb92e9a3b3d3905ebcc99854c91b501c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/author-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/author-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1647,7 +1647,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "e314b77b616d9fe8648d8f8c14aa9fc5479fb0f0a3c13180661b2c1b18ef6f13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-offering-fit",
@@ -2064,7 +2064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deal-decision-deck/SKILL.md",
       "sourceSha256": "a83c28397853df493cd3ac479fc9cb588ddc595cc82e68d3a5f4059c4713e209",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-deal-decision-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-deal-decision-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2347,7 +2347,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deck/SKILL.md",
       "sourceSha256": "b8a3a16abac7d7ec0ad786846636c6cba01a5ec8509220640af6e45bd1ff9749",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2605,7 +2605,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-editorial-chart/SKILL.md",
       "sourceSha256": "cde02918eb0e09f72b62b58e9b75d66eed52f8a0421df36cfa3989ceb0b3f5d7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-editorial-chart/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-editorial-chart/SKILL.md",
       "taskPackages": [
         {
           "name": "build-editorial-chart",
@@ -2826,7 +2826,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "7c3f6b40512a561331d5c6003bd62a985ee383bc725748430063798f7a6a0121",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -3008,7 +3008,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-proposal/SKILL.md",
       "sourceSha256": "b175675b1f6ef1ddef372c16b44d278b4d6e417c8d773c9cd1c2c973cfeefe0b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -3271,14 +3271,14 @@
     },
     {
       "id": "build-moscow-story-map",
-      "title": "Build moscow story map",
+      "title": "Build MoSCoW story map",
       "family": 2,
       "description": "Build and maintain a MoSCoW story map from tracker tickets. Places stories by workflow step and class, computes readiness and Must share, lists unclassed tickets, draws the critical path from Blocks links, and queues changed or new tickets for mapping. Use for \"class the release stories by workflow step\", \"what is ready to build\", \"what's on the critical path\", or mapping new tickets after an export. Do NOT use for MoSCoW values on captured requirements in the requirements workbook (capture-requirements), INVEST grading and sprint readiness reports (refine-backlog), ranking by value (prioritization), or writing new stories (capture-requirements).",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/build-moscow-story-map/SKILL.md",
       "sourceSha256": "b6e46327dc11d0e86d97e9b9c99121f819f87f76c895c48dcdee6b8236722c82",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "build-moscow-story-map",
@@ -3438,7 +3438,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-review-site/SKILL.md",
       "sourceSha256": "1534d3e3d0b67916b536acc209f4f963ae1d2c0370ce8106bf1ca8993724578d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "build-review-site",
@@ -3651,7 +3651,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-roadmap/SKILL.md",
       "sourceSha256": "db7e32ba564b4400f0a35919459bcc64f79bbd8d1d6d1f48037a70d8d1621c9c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/build-roadmap/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-roadmap/SKILL.md",
       "taskPackages": [
         {
           "name": "build-roadmap",
@@ -3976,7 +3976,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-knowledge/SKILL.md",
       "sourceSha256": "9049e911aaa57e057a466332ac0dc10045e19383c099384505f6413b8dd36d2e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/capture-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/capture-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-knowledge",
@@ -4112,7 +4112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-requirements/SKILL.md",
       "sourceSha256": "f86a6bf575098c5b148c1f9142b7fb0536e87d659bb464eb26a0493970e75d1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/capture-requirements/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/capture-requirements/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-requirements",
@@ -4322,14 +4322,14 @@
     },
     {
       "id": "capture-salesforce-screens",
-      "title": "Capture salesforce screens",
+      "title": "Capture Salesforce screens",
       "family": 3,
       "description": "Drive the sfqa CLI to run headless clickpath assertions against a Salesforce org and record each page''s visible text. It writes text evidence only, signs in through the SF CLI and keeps credentials out of the transcript. Trigger when you need to verify what a Salesforce page shows without a human watching: after deploying UI-affecting metadata and needing verification evidence, when estate-ac-qa needs its browser driver, or when a ticket needs proof that a value rendered. Do not trigger for interactive browser exploration (use sf-browser-automation) or for non-Salesforce pages.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/capture-salesforce-screens/SKILL.md",
       "sourceSha256": "a78f3f8a3aa09d11647d217ec599435f71050d74329203beeb6ee89240db9319",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/capture-salesforce-screens/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/capture-salesforce-screens/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4479,7 +4479,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/check-knowledge-hub/SKILL.md",
       "sourceSha256": "86789af6c5068ade95ae70a4e523f74f5e5e641c90e1158381f5a28b99212a59",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/check-knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/check-knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "check-knowledge-hub",
@@ -4629,7 +4629,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/compare-scope-options/SKILL.md",
       "sourceSha256": "3d37c9dc0dfb58725d6309b62e57f4365c51373bff43e38e40b5c3f687322bd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/compare-scope-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/compare-scope-options/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -4881,14 +4881,14 @@
     },
     {
       "id": "configure-salesforce-project",
-      "title": "Configure salesforce project",
+      "title": "Configure Salesforce project",
       "family": 3,
       "description": "Install, audit or repair a Salesforce repo''s delivery standards: git and Claude Code or Codex hooks, the CLAUDE.md or AGENTS.md contract, tracker and trunk settings, the DevOps Center local loop, initial retrieve and org-drift baseline. Use for set up delivery standards, install hooks, hooks not running, guard blocked me, switch tracker or trunk, first org commit or org drift. Not for ordinary implementation, deploys, promotion, releases or rollback (operate-salesforce-pipeline).",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/configure-salesforce-project/SKILL.md",
       "sourceSha256": "89e669c0397cc783ca45c1bf4473b4735f131fc05bbc572c0aa1dc58562c4ad4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/configure-salesforce-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/configure-salesforce-project/SKILL.md",
       "taskPackages": [
         {
           "name": "configure-salesforce-project",
@@ -5623,14 +5623,14 @@
     },
     {
       "id": "deliver-salesforce-change",
-      "title": "Deliver salesforce change",
+      "title": "Deliver Salesforce change",
       "family": 3,
       "description": "Prepare, check, and deliver changes to a single-org Salesforce project using isolated Git worktrees, generated permissions, local quality checks, and explicit org identity checks. Supports local preparation without an org. Use sf-deploy-engine for multi-environment promotion.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/deliver-salesforce-change/SKILL.md",
       "sourceSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/deliver-salesforce-change/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/deliver-salesforce-change/SKILL.md",
       "taskPackages": [
         {
           "name": "deliver-salesforce-change",
@@ -6004,7 +6004,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/delivery-orchestrator/SKILL.md",
       "sourceSha256": "caa57d432a662df7177bdf3748533341e0a28b26ffd50aa1ae1bb8ca3b2cbe08",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/delivery-orchestrator/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/delivery-orchestrator/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-requirements",
@@ -6275,7 +6275,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-analytics-plan/SKILL.md",
       "sourceSha256": "78d27b364ce3a619d70ed5dc9008b93351254d3ae7ca3dd9952f85e7398f45be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-analytics-plan/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-analytics-plan/SKILL.md",
       "taskPackages": [
         {
           "name": "design-analytics-plan",
@@ -6407,7 +6407,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-information-architecture/SKILL.md",
       "sourceSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "design-information-architecture",
@@ -6539,7 +6539,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-process/SKILL.md",
       "sourceSha256": "a01f63c5f638cc1d414f52972b8a82294f39f25f59d66252c903c28357666dcb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-process/SKILL.md",
       "taskPackages": [
         {
           "name": "design-process",
@@ -6722,7 +6722,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-software-system/SKILL.md",
       "sourceSha256": "8f690301b9b970451cf73740db9d45c818475b441c85e6f5f7b23c2c6b123048",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-software-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-software-system/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -6897,7 +6897,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-sticker/SKILL.md",
       "sourceSha256": "b6dab8536880885060e9221906488aa8c5cbbc26ce194e2b179169024193b345",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/design-sticker/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-sticker/SKILL.md",
       "taskPackages": [
         {
           "name": "design-sticker",
@@ -7032,7 +7032,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-independent-product/SKILL.md",
       "sourceSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/develop-independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/develop-independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-independent-product",
@@ -7148,7 +7148,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-product/SKILL.md",
       "sourceSha256": "443f4e96e287cd29a34d571a8587999ab0c4e99567be08d4dbf96ffedabbbe95",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/develop-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/develop-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-product",
@@ -7375,7 +7375,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/draft-application-materials/SKILL.md",
       "sourceSha256": "a53b931a7ee559a7054537b27dd302dedf1baebf360e29afe879811f5a4e50e1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/draft-application-materials/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/draft-application-materials/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -7537,7 +7537,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/estimate-project/SKILL.md",
       "sourceSha256": "9fb5d9b573c326a58b62feac2f5c4d80238b9b13ce88dd5ada0c97982cded922",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/estimate-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/estimate-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -7785,11 +7785,11 @@
       "title": "Evidence core",
       "family": 5,
       "description": "Builds and validates the Knowledge Hub evidence records for Estate consulting work. Use before creating or materially revising a client artifact whose factual claims must trace to governed sources. Owns source authority, atomic claims, confidence, staleness, conflicts, inline claim references, and evidence sufficiency; it does not own Hub storage or the consulting lifecycle layout.",
-      "status": "local-revision",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "1c2bf5fc7cc938fb6c1a1fbe7dbcd7f4e35e770363072ea0290e1f57e0bba6b4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-solution-delivery",
@@ -7817,15 +7817,15 @@
         "what": "Track source records and the claims an artifact can support.",
         "when": "A material client artifact needs evidence review.",
         "inputs": "The project sources, revisions, authority rules, and proposed claims.",
-        "outputs": "A source register, atomic claims, conflicts, and an evidence sufficiency decision.",
+        "outputs": "A list of sources, individual claims linked to those sources, conflicts, and a decision on whether the evidence is sufficient.",
         "example": "Build a claim ledger for this report using these versioned sources.",
         "reviewedEntrypointSha256": "1c2bf5fc7cc938fb6c1a1fbe7dbcd7f4e35e770363072ea0290e1f57e0bba6b4",
-        "expect": "It builds a ledger of sources and atomic claims first, with an authority score, status and owner for anything unresolved, and the document comes after. If a load-bearing area has too little evidence it writes a short readiness-gap memo and stops instead of drafting the full artifact. An open item with an owner, a closing condition and a rule that holds dependent work lets the full artifact go ahead, with that item listed.",
+        "expect": "It first records sources and individual claims, with an authority score, status and owner for anything unresolved, and writes the document afterward. If a required area has too little evidence, it writes a short readiness-gap memo and stops instead of drafting the full artifact. The full artifact can proceed with an unresolved item when that item names its owner, its closing condition and the work that must wait.",
         "requires": "Needs source files or exports for the engagement, a Knowledge Hub location for the evidence records, and Python 3 to run the ledger validator.",
-        "overview": "It builds a ledger of sources and atomic claims first, with an authority score, status and owner for anything unresolved, and the document comes after. If a load-bearing area has too little evidence it writes a short readiness-gap memo and stops instead of drafting the full artifact. An open item with an owner, a closing condition and a rule that holds dependent work lets the full artifact go ahead, with that item listed.",
+        "overview": "It first records sources and individual claims, with an authority score, status and owner for anything unresolved, and writes the document afterward. If a required area has too little evidence, it writes a short readiness-gap memo and stops instead of drafting the full artifact. The full artifact can proceed with an unresolved item when that item names its owner, its closing condition and the work that must wait.",
         "value": "Check which claims a project artifact can support before drafting it. The source register records authority, conflicts and missing evidence behind each important claim. This makes unsupported recommendations easier to identify before a document is written.",
         "preparation": {
-          "where": "Supply project documents or exports and identify where the source register should live. An evidence ledger is a table of individual claims linked to exact sources; this workflow creates it. Knowledge Hub means your selected project storage, which may be a folder or another supported store.",
+          "where": "Supply project documents or exports and identify where the list of sources should live. This workflow creates a table linking individual claims to exact sources. Knowledge Hub means your selected project storage, which may be a folder or another supported store.",
           "missing": "You do not need an existing ledger to begin. If a central area lacks enough evidence, it produces a readiness-gap memo identifying the missing material instead of allowing the dependent artifact to proceed as if complete."
         },
         "preparationSkills": []
@@ -7917,7 +7917,7 @@
           "cowork"
         ],
         "setup": "Needs source files or exports for the engagement, a Knowledge Hub location for the evidence records, and Python 3 to run the ledger validator.",
-        "expect": "It builds a ledger of sources and atomic claims first, with an authority score, status and owner for anything unresolved, and the document comes after. If a load-bearing area has too little evidence it writes a short readiness-gap memo and stops instead of drafting the full artifact. An open item with an owner, a closing condition and a rule that holds dependent work lets the full artifact go ahead, with that item listed.",
+        "expect": "It first records sources and individual claims, with an authority score, status and owner for anything unresolved, and writes the document afterward. If a required area has too little evidence, it writes a short readiness-gap memo and stops instead of drafting the full artifact. The full artifact can proceed with an unresolved item when that item names its owner, its closing condition and the work that must wait.",
         "declared": true
       },
       "markdown": "---\nname: evidence-core\ndescription: 'Builds and validates the Knowledge Hub evidence records for Estate consulting work. Use before creating or materially revising a client artifact whose factual claims must trace to governed sources. Owns source authority, atomic claims, confidence, staleness, conflicts, inline claim references, and evidence sufficiency; it does not own Hub storage or the consulting lifecycle layout.'\n---\n\n\n# Evidence core\n\n> **Before writing: [`build-card.md`](../_shared/build-card.md) plus\n> [`readout-brief.md`](../writing-diagnostics/references/registers/readout-brief.md). Inputs, not a final pass.**\n\nBuild the evidence foundation before planning an artifact. The visible document\nis never the first deliverable. The evidence ledger is.\n\n## Non-negotiable behavior\n\n- An absent fact becomes a named gap. Never fill it with plausible language.\n- Preserve source conflicts and never silently choose the convenient version.\n- A recent message does not override an executed commitment without explicit\n  authority.\n- Worked examples and generated artifacts have zero evidentiary authority.\n- Every load-bearing claim carries governed claim IDs and source IDs.\n- Unknown or contested load-bearing claims require an owner and closure\n  condition. With a stop rule as well, they leave the domain Conditional, not\n  Insufficient; see Conditional coverage.\n- If a required load-bearing domain is Insufficient, output a compact\n  readiness-gap memo and stop. Do not continue into the requested full artifact.\n  A Conditional result is not a stop: write the full artifact and list every open item.\n\n## Inputs\n\nAccept source files and exports in any practical format, but normalize their\nmeaning into `schemas/evidence-ledger.schema.json`. The ledger carries a stable\nclient, opportunity, or engagement context. Legacy engagement metadata remains\nreadable during migration.\n\nEach source records:\n\n- source ID and type\n- title and resolvable locator\n- authority score\n- observed and effective dates\n- supersession relationships\n- notes about limitations\n\nEach claim records:\n\n- claim ID and statement\n- Confirmed, Inferred, Unknown, Contested, or Superseded status\n- source IDs\n- as-of time\n- load-bearing flag\n- artifact domains\n- confidence rationale\n- for an unresolved claim, its owner, the condition that closes it, and its\n  stop rule: the dependent work that waits until it closes\n\n## Authority model\n\nThe validator caps authority by source type. Highest authority belongs to\nexecuted commitments and current authorized design or commercial records.\nMeeting records, client documents, CRM, internal models, and messages have\nbounded authority. Generated artifacts and worked examples have authority zero.\n\nDo not inflate a source's authority to make a claim pass.\n\n## Knowledge Hub ownership\n\nKnowledge Hub owns where `evidence.sources` and `evidence.claims` live, how they\nare resolved across storage surfaces, and whether a write persisted. This skill\nowns what those records mean and whether the evidence is sufficient. Do not\ncreate a second evidence store beside the Hub.\n\nAn inline marker such as `[CLM-0042]` is a pointer to a complete claim in the\nledger. It does not replace the ledger entry. Preserve an existing governed ID\nwhen importing another research workspace; map its fields before minting a new\nidentifier.\n\nClaim IDs, source IDs and sentence locators such as `I1.s24` are ledger keys.\nA finished page, brief, proposal or reply states each claim in plain words and\nnames its source by title, such as \"the customer's first interview\". Its claim and\nsource IDs move to the deliverable's source index or a link target, and the\nadjacent source marker becomes the title or a numbered note that resolves\nthere. Drafts may carry inline markers while they are assembled.\n\n## Source register\n\nThe logical Hub record `evidence.sources` records where facts came from. Every\ninventoried source gets a register row with the source fields listed under\nInputs. When a source supersedes\nanother, record that lineage in the register and mark the dependent claims\nSuperseded rather than deleting them. Evidence status in the register follows\nthe claim statuses above; the register row and its claims may never disagree.\n\nThe register enforces one rule at finalization: every load-bearing claim in a\nclient artifact names its source. Quantified and factual claims, meaning\ndollar and hour figures, percentages, counts, dates, named capabilities, and\nvague quantifiers such as \"most\" or \"several\", each need an adjacent source\nmarker: a document name, a `[SOURCE: ...]` tag, a confirmed quote id, or an\nevidence reference resolving to a register row. A claim with no marker fails\nthe artifact. A vague quantifier warns even when sourced; prefer the number\nwith its source. Honest uncertainty is never the failure: Confirmed, Inferred,\nUnknown, estimated, ranges, and \"not priced\" all stand.\n\nNumerical agreement with the quote does not establish a narrative claim's\norigin. This rule checks that every claim names an origin. No script\nenforces it yet; apply it by hand at finalization and note the manual pass in\nthe release record.\n\n## Workflow\n\n1. Resolve the Knowledge Hub, then inventory sources into `evidence.sources` and identify lineage,\n   supersession, and staleness.\n2. Create atomic claims. Split mixed statements when their sources or confidence\n   differ.\n3. Record open conflicts and their materiality.\n4. Populate the shared scope, estimate, decision, risk, assumption,\n   stakeholder, and timeline registers when relevant.\n5. Choose the artifact contract from `reference/artifact-registry.json`.\n6. Evaluate required domains with the standalone validator:\n\n```bash\npython3 scripts/evidence_core.py path/to/ledger.json solution_brief --output gate-report.json\n```\n\n7. If the result is Insufficient, produce the named readiness-gap memo with:\n   direction worth retaining, blockers, closure conditions, ownership gaps,\n   evidence references, and the next gate. Stop.\n8. If Sufficient or Conditional, pass the validated ledger and gate report to\n   the artifact-specific skill. A Conditional report lists its open items in\n   `openItems`; the full artifact shows each one with its owner, closure\n   condition and stop rule.\n\nThe CLI exits nonzero for a terminal result so automation cannot accidentally\ncontinue into full generation.\n\n## The event log, a trial\n\nInside a pursuit workspace the ledger is authored as `evidence/evidence-ledger.jsonl`,\nan append-only event log under git, one JSON object per line. This is the\nauthoring form supported by the workspace standard. The schema\ndocument above stays the form the gate reads; `scripts/ledger_events.py project`\nproduces it, so nothing downstream changes, and if the trial fails the projection\nstep is dropped and the document is authored directly.\n\nEvents: `context` first, then `source`, `claim`, `supersede`, `conflict`, and\n`register` (scope, estimate, decisions, risks, assumptions, stakeholders,\ntimeline). A claim carries the inline authoring tag from the workspace\nstandard: `STATED` and `OBSERVED` project to Confirmed when a supporting source\nhas authority 70 or higher and to Inferred otherwise, `INFERRED` to Inferred,\n`ASSUMED` to Unknown, which needs an owner and a closing condition when load-bearing. A\ndecision is a `register` row in `decisions`, never a claim; the check refuses a\n`DECIDED` claim because tagging a decision as evidence launders judgment. A\nsuperseded claim gets a `supersede` line, never an edit; a restated claim is a new\nline with the same id and the latest wins. Open conflicts project their claims as\nContested. Only load-bearing claims are recorded.\n\n```bash\npython3 scripts/ledger_events.py check evidence/evidence-ledger.jsonl\npython3 scripts/ledger_events.py project evidence/evidence-ledger.jsonl \\\n  --output evidence/evidence-ledger.json\n```\n\nRun `check` at every orchestrator gate commit, alongside `manage-consulting-knowledge`'s\n`hub_workspace.py check`, which proves the file is append-only against the\ncommitted copy and resolves the ids cited in prose. The projection then goes\nthrough `evidence_core.py` at finalization as before. `fixtures/pursuit-ledger.jsonl`\nis a worked example with every event kind.\n\n## Discovery synthesis contract\n\n`discovery_synthesis` covers findings, pain points, job statements, verbatims,\nopen questions and gaps. Each claim in those domains records a\n`sourceLocations` entry, the timestamp, line or section, for every source it\ncites. Open questions and gaps are satisfied by named gaps: each states the\nfollow-up that would close it in `closureCondition`.\n\nA synthesis that rests on one source, or on sources that record one\ninterviewee (`interviewees` on the source), can pass. It must state that limit\nas a `gaps` claim with `gapKind: single_source`. The gate passes when every\ndomain has a located claim, every gap names its closure, and the single-source\nlimit is stated where it applies. The discovery call-prep brief is a\ndifferent contract, `discovery_brief`; do not use it for a synthesis.\n\n```bash\npython3 scripts/evidence_core.py ledger.json discovery_synthesis --output gate-report.json\n```\n\n## Conditional coverage\n\nA load-bearing Unknown or Contested claim, or a load-bearing open conflict, is\nan open item. It leaves its domains Conditional only when it has all four of:\n\n- a named owner: `owner`\n- a closure condition: `closureCondition`\n- affected entities or artifact domains: a claim's `domains`, or a conflict's\n  `affectedDomains`\n- a clear rule preventing dependent work from proceeding early: `stopRule`,\n  such as \"do not quote a fixed install fee until the tills are counted\"\n\nThe gate reports such an item under `openItems` and continues to the full\nartifact. An item missing any of the four is a blocker, the gate report names\nthe missing fields in `missingConditions`, and the domain is Insufficient. A\nrough estimate or a business case may carry an open item this way; do not mark\na real open item as not load-bearing to get past the gate.\n\n## Validation and maintenance\n\nRun the selftest after any script, schema, or registry change:\n\n```bash\npython3 scripts/evidence_core_selftest.py\npython3 scripts/ledger_events_selftest.py\n```\n\nThe fixtures are synthetic and cover rich evidence, sparse evidence, an open\nload-bearing conflict, superseded pricing, and a single-interview discovery\nsynthesis. Bundled names, dates, quotations, approvals and commercial scenarios are test data, not client records or actual approvals. Supply authorized task evidence for real work.\n\n## Handoff to artifact skills\n\nPass these together:\n\n- validated evidence ledger\n- gate report\n- artifact contract\n- source manifest\n\nThe downstream skill may reason from the ledger. It may not bypass the gate,\nchange source authority, or treat an example as content.\n",
@@ -8084,7 +8084,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/frame-jobs-to-be-done/SKILL.md",
       "sourceSha256": "9c39626ef8c4568afef3b93a28496d2708408f1ae375758f8ebfe17d1afa226b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/frame-jobs-to-be-done/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/frame-jobs-to-be-done/SKILL.md",
       "taskPackages": [
         {
           "name": "frame-jobs-to-be-done",
@@ -8366,7 +8366,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/guide-fortunes-weave/SKILL.md",
       "sourceSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/guide-fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/guide-fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "guide-fortunes-weave",
@@ -8480,7 +8480,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/import-tracker-export/SKILL.md",
       "sourceSha256": "303f8fd7642bf80652fad4907328277a1b920093202ecf3837c0013fe905ede3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/import-tracker-export/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/import-tracker-export/SKILL.md",
       "taskPackages": [
         {
           "name": "import-tracker-export",
@@ -8653,7 +8653,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ingest-transcript/SKILL.md",
       "sourceSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/ingest-transcript/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/ingest-transcript/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8819,7 +8819,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/lay-out-sticker-sheets/SKILL.md",
       "sourceSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/lay-out-sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/lay-out-sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "lay-out-sticker-sheets",
@@ -8938,7 +8938,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/load-project-context/SKILL.md",
       "sourceSha256": "4ee2f9d398d48a4ed0b3d3fe573a2b67f1d799cbbf2ab4c214221c9feca14822",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/load-project-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/load-project-context/SKILL.md",
       "taskPackages": [
         {
           "name": "load-project-context",
@@ -9090,7 +9090,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-discovery-record/SKILL.md",
       "sourceSha256": "591924339a334dc8207ad9e0f39c5112fde2b3c4859754a02a3e2fc1a0d7693e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/maintain-discovery-record/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/maintain-discovery-record/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -9352,14 +9352,14 @@
     },
     {
       "id": "maintain-skills-estate",
-      "title": "Maintain skills estate",
+      "title": "Maintain Skills Estate",
       "family": 9,
       "description": "Maintain a Skills Estate checkout by authoring or repairing workflows, validating and packaging them, installing reviewed releases, or replacing a skill in another host or account. Use for estate maintenance and select only the requested operation.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-skills-estate/SKILL.md",
       "sourceSha256": "00a2bf8f0726d18b51e929cab355804e975529cde0f82e4d828172cbe84c6a09",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/maintain-skills-estate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/maintain-skills-estate/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -9373,7 +9373,7 @@
         "what": "Maintain a Skills Estate checkout by authoring, validating, packaging and releasing workflows.",
         "when": "A workflow needs creating or repair, packages need building, a reviewed release needs installing, or another host needs an update.",
         "inputs": "The canonical estate checkout, the reviewed source hash for installation and the target host.",
-        "outputs": "Validation and build results, packages, installation receipts and publication records for the requested operation.",
+        "outputs": "Packages, validation and build results, and saved records of the requested installations or publications.",
         "example": "Validate the current estate and build candidate packages without installing them.",
         "reviewedEntrypointSha256": "00a2bf8f0726d18b51e929cab355804e975529cde0f82e4d828172cbe84c6a09",
         "expect": "It works only on the confirmed estate checkout and runs the single operation you ask for, such as validate, build, bundle, status or install. Install needs the exact reviewed source hash, refuses to overwrite a divergent installation, and a successful build is reported as packaging only, not proof the skill works.",
@@ -9596,7 +9596,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-brand-profile/SKILL.md",
       "sourceSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-brand-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-brand-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-brand-profile",
@@ -9713,7 +9713,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-color-system/SKILL.md",
       "sourceSha256": "6ca791f214dca500df65669f232151d0064312cb0e99bbbe60a85ae0e3a1f695",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-color-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-color-system/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-color-system",
@@ -9921,7 +9921,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-consulting-knowledge/SKILL.md",
       "sourceSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-consulting-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-consulting-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-consulting-knowledge",
@@ -10255,7 +10255,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-cutover-closeout/SKILL.md",
       "sourceSha256": "ccb735fac1092a6073c9f18f3db775a6c0eb338507ee6a570ced71b9a3fcd468",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-cutover-closeout",
@@ -10491,7 +10491,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-decision-register/SKILL.md",
       "sourceSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-decision-register",
@@ -10508,9 +10508,9 @@
         "outputs": "A checked register, decisions.csv for tracker import and a decision log in Markdown.",
         "example": "Add the questions from today's refinement notes and list the ones with no owner.",
         "reviewedEntrypointSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-        "expect": "It turns questions from your meeting notes or refinement sources into register entries grouped by epic, with a status and an owner only when the sources name one. It reports unknown groups and questions without an owner, and it asks before writing anything to a tracker.",
+        "expect": "It turns questions from your meeting notes or refinement sources into a decision register grouped by epic, with a status and an owner only when the sources name one. It reports unknown groups and questions without an owner, and it asks before writing anything to a tracker.",
         "requires": "Needs the project's content folder with the questions file, the published Decisions page for saved answers, and python3.",
-        "overview": "It turns questions from your meeting notes or refinement sources into register entries grouped by epic, with a status and an owner only when the sources name one. It reports unknown groups and questions without an owner, and it asks before writing anything to a tracker.",
+        "overview": "It turns questions from your meeting notes or refinement sources into a decision register grouped by epic, with a status and an owner only when the sources name one. It reports unknown groups and questions without an owner, and it asks before writing anything to a tracker.",
         "value": "Keep refinement questions actionable by connecting each one to its epic, owner, status and answer. It produces a register and exports people can use to reconcile decisions back to the tracker.",
         "preparation": {
           "where": "Bring meeting/refinement notes or the existing content/questions.json in the review-site project. For exports of collected answers, use the saved answers from the published Decisions page. An empty or unassigned question is retained as unresolved.",
@@ -10587,7 +10587,7 @@
           "cowork"
         ],
         "setup": "Needs the project's content folder with the questions file, the published Decisions page for saved answers, and python3.",
-        "expect": "It turns questions from your meeting notes or refinement sources into register entries grouped by epic, with a status and an owner only when the sources name one. It reports unknown groups and questions without an owner, and it asks before writing anything to a tracker.",
+        "expect": "It turns questions from your meeting notes or refinement sources into a decision register grouped by epic, with a status and an owner only when the sources name one. It reports unknown groups and questions without an owner, and it asks before writing anything to a tracker.",
         "declared": true
       },
       "markdown": "---\nname: manage-decision-register\ndescription: Keep the client questions awaiting answers during release refinement as a decision register grouped by epic. Each question has an editable status and can carry an owner and saved answers; the register exports to the client's tracker as CSV or a decision log. Use to record questions from meeting notes, track which decisions are open or blocked, find questions without an owner, or export recorded answers. Do NOT use for discovery synthesis (discovery), recording decisions already made in the RAID log (track-delivery), or requirements capture (capture-requirements).\n---\n\n# Manage decision register\n\nThe register is `content/questions.json`. Each question belongs to a group, usually an epic, and has a status. An owner, an answer and links to stories and tickets are optional. On the published Decisions page, people change a question's status, record answers and comment. The page saves those to the shared store for everyone.\n\n## Record questions\n\nTake questions from the sources the user supplied: refinement notes, ticket comments, the epic description or a meeting summary. Write each question as the decision it needs. Add one or two sentences of `context` that say what depends on it.\n\nFill in the other fields:\n\n- `status`: one of Open, Proposed, Partly answered, Answered, Deferred, Blocked and Sandbox check.\n- `owner`: only when the sources name one. Never assign an owner.\n- `answer`: `Proposed answer` for the team's proposal, and `Answer` only for a decision the client recorded. Keep a recorded answer in the client's words.\n- `stories` and `tickets`: the work that waits on the question.\n\nA source that changes an answer supersedes the old answer only when it records the decision. A newer meeting summary that mentions a topic does not by itself close a question.\n\n## Check\n\n```bash\npython3 scripts/decisions.py check --content <project>/content --tickets <project>/tracker/tickets.json\n```\n\nThe check lists unknown groups, stories and tickets and any duplicate ids. It also counts questions by status and names the ones with no owner.\n\n## Export answers\n\nRead the `answers` collection from the published page with the artifact data tool and save it as JSON. Then run:\n\n```bash\npython3 scripts/decisions.py export --content <project>/content --saved answers.json --out <project>/exports\n```\n\nThe export writes two files:\n\n- `decisions.csv`: one row per question and ticket, for import as tracker comments.\n- `decisions.md`: a decision log grouped by epic.\n\nSaved statuses and answers from the page override the authored ones in both files. Ask the user before writing anything to the tracker. The export prepares the file; the import is the client's action or needs their approval.\n\n## Page behavior\n\nThe page behavior follows rules R-DEC-1 and R-DEC-2 in [the review rules](../review-site-runtime/references/review-rules.md). A closed card shows the question and its status. The owner, the answer, the context, linked work, the answer form and comments sit inside the card. Hide answered and No owner only filter the list. The epic list counts questions per group.\n",
@@ -10651,7 +10651,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-linked-task/SKILL.md",
       "sourceSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-linked-task/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-linked-task/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "load-project-context"
@@ -10754,14 +10754,14 @@
     },
     {
       "id": "manage-salesforce-devops",
-      "title": "Manage salesforce devops",
+      "title": "Manage Salesforce DevOps",
       "family": 3,
       "description": "Use this skill to manage the full lifecycle of DevOps Center work items — list, create, update, commit changes, perform status transitions, and create pull requests. Update fields like subject, description, and status. Commit and push code changes to work item branches. Create pull requests for work item branches via DevOps Center API. Invoke when the user wants to track, find, create, or update a work item, commit changes to a work item branch, advance a work item''s status through the pipeline, or create a pull request for code review. Consolidates sf devops work-item and review operations. For promotion or conflict recovery, select the embedded promotion mode; do not run the work-item update procedure as a substitute.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/manage-salesforce-devops/SKILL.md",
       "sourceSha256": "696aa80506a1d04ca45ae7a9fa0e17f03c75790c9be441c5f537584e6082cc3f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-salesforce-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-salesforce-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -10930,7 +10930,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-service-offering/SKILL.md",
       "sourceSha256": "cad2f61af6b45fb500642f6a8e5027d127eb87cdb4c97a415e7e72669339c158",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-service-offering/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-service-offering/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -11109,7 +11109,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-writing-profile/SKILL.md",
       "sourceSha256": "661cb380854e11b480c8ce08a449df7ae4365ff710f1ab8cff53e5cd11d33486",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/manage-writing-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-writing-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-writing-profile",
@@ -11295,7 +11295,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-journey/SKILL.md",
       "sourceSha256": "2b43a88c556f3e333b3c12837568aeaa88f093347ca8fcd83e62d444ff688b32",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/map-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/map-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-journey",
@@ -11500,7 +11500,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-sales-process/SKILL.md",
       "sourceSha256": "b748025f77345184a86a61a941fe6eb2f60d9ca16542011ddd84be537156dcc3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/map-sales-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/map-sales-process/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -11630,14 +11630,14 @@
     },
     {
       "id": "operate-salesforce-pipeline",
-      "title": "Operate salesforce pipeline",
+      "title": "Operate Salesforce pipeline",
       "family": 3,
       "description": "Operate a repo''s sf-deploy-engine Salesforce pipeline (pipeline.yml): validate and deploy to preprod, staging or production, cut a release, roll back by ticket or SHA, revalidate, recover a frozen environment, pause or resume the engine, or provision a new instance. Use for deploy to prod, promote, what needs to ship, rollback, validation failed, environment frozen, or a PR that targets an environment branch. For the local sandbox loop, worktrees and git hooks, use configure-salesforce-project.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/operate-salesforce-pipeline/SKILL.md",
       "sourceSha256": "587104dba57206c015cde53ae40c19b7118448ad95c74e13ea31b37f2b0fdd13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/operate-salesforce-pipeline/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/operate-salesforce-pipeline/SKILL.md",
       "taskPackages": [
         {
           "name": "operate-salesforce-pipeline",
@@ -11883,7 +11883,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-offering-artifacts/SKILL.md",
       "sourceSha256": "8ce392ac863ea41de982bf5606dda64e2fd92fac59560f39f15686895a7cc84c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-offering-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-offering-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -12098,7 +12098,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-sprint/SKILL.md",
       "sourceSha256": "d51a5e894bea166e84c169b6b9764c4ef75ced3949bacbfc2627661f35db7e38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-sprint/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-sprint/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-sprint",
@@ -12336,7 +12336,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-team-onboarding/SKILL.md",
       "sourceSha256": "0a289d5a65fc13097458b16b760eb1a6f4fca799bf3673bc8466d97fe3acfeea",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-team-onboarding",
@@ -12515,7 +12515,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-usability-study/SKILL.md",
       "sourceSha256": "252bcb7ec74179de8eccd9a6d19f4c50b15262cf1fd7d084f7d73b593a07b6ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/plan-usability-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-usability-study/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-usability-study",
@@ -12643,11 +12643,11 @@
       "title": "Sales-to-delivery handoff",
       "family": 2,
       "description": "Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (assess-solution-delivery), the kickoff meeting or project charter (start-delivery), requirements extraction (capture-requirements), or pre-sale research and call prep (prepare-sales-pursuit).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/prepare-delivery-handoff/SKILL.md",
       "sourceSha256": "42d6012305bc2b06e88be0c9739754b3ce12558d45ab421dee083fbb8545a45a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-delivery-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-delivery-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-delivery-handoff",
@@ -12922,7 +12922,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-job-application/SKILL.md",
       "sourceSha256": "02bb1104b4c1b905966c63a8357fe1303d02e0a3867fba62e11c043d95023e62",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-job-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-job-application/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -13114,7 +13114,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-sales-pursuit/SKILL.md",
       "sourceSha256": "b8f2f3a732f8ef2f35699d8dae4be8af8f731df02d83ec420f50618d4c0def28",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-sales-pursuit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-sales-pursuit/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-sales-pursuit",
@@ -13412,7 +13412,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-session-handoff/SKILL.md",
       "sourceSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prepare-session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-session-handoff",
@@ -13570,7 +13570,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritize-work/SKILL.md",
       "sourceSha256": "2b67c75621f16b0e328aa5205e5f2c84b88d011949bc7ad56fa72d007cd2e36a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/prioritize-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prioritize-work/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritize-work",
@@ -13856,14 +13856,14 @@
     },
     {
       "id": "promote-salesforce-changes",
-      "title": "Promote salesforce changes",
+      "title": "Promote Salesforce changes",
       "family": 3,
       "description": "Use this skill to drive the full DevOps Center promotion workflow for work items and pipeline stages — inspect plugin capabilities, validate preconditions, conditionally prepare work items, recover stale WI branches, optionally combine work items that share metadata, promote one or more work items or an entire stage, and complete the promotion. TRIGGER when the user wants to promote a work item, advance changes to the next environment or stage, recover a promotion conflict, combine work items, or move metadata through the release pipeline. The capability and validate steps run before mutation. DO NOT TRIGGER for work item creation or status updates (use manage-salesforce-devops), or for polling an existing promotion''s status.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/promote-salesforce-changes/SKILL.md",
       "sourceSha256": "20ecc948c080ca2f890499ff1a554838259b2a9e3cbe7c14e0869e886c8780f0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/promote-salesforce-changes/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/promote-salesforce-changes/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -14092,7 +14092,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/publish-content/SKILL.md",
       "sourceSha256": "70f6d30f2a828f38b5a75a86d01e545dc0395a173840dcfe433e09494d01cf28",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/publish-content/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/publish-content/SKILL.md",
       "taskPackages": [
         {
           "name": "publish-content",
@@ -14106,7 +14106,7 @@
         "what": "Take a piece of content from topic to publishable draft through nine gated steps, or rebuild an AI-written draft into one that can be published.",
         "when": "Someone wants blog posts, newsletters, guides, news, reviews, case studies or proposals that rest on the owner's own evidence, or has an AI draft to rescue or retire.",
         "inputs": "A goal for the run or the draft to rescue, a filled owner profile, the owner's writing rules folder, and the owner's data, answers and permissions.",
-        "outputs": "The final draft with its exhibits, a claim table, a meaning diff, panel scores, an approval packet, a run ledger entry and the defect log.",
+        "outputs": "The final draft with its exhibits, a claim table, a comparison of the original and revised meaning, panel scores, an approval packet, a record of the run and a list of defects.",
         "example": "Write a portfolio case study about the pricing rebuild from my decision notes and the before and after numbers, and stop for my sign-off before anything is published.",
         "reviewedEntrypointSha256": "70f6d30f2a828f38b5a75a86d01e545dc0395a173840dcfe433e09494d01cf28",
         "expect": "Separate agents scout topics, research, collect the owner's evidence, brief, draft, build exhibits, edit, fact-check and score the draft, and each step has a gate. It stops at every human gate with an approval packet. evidence_scan.py and the owner's writing check run at steps 6 and 9, and a claim with no source is cut, not softened. Nothing is published without the owner's sign-off.",
@@ -14117,7 +14117,7 @@
           ]
         },
         "requires": "Python 3 for evidence_scan.py, web research for the scout and researcher, and the owner's writing rules folder for the editor.",
-        "overview": "It runs a topic through nine steps, each owned by one agent with its own procedure. Every section of the brief needs a claim and an evidence ID, exhibits are built as code from cited data, and the editor removes AI writing patterns before a fact checker and a reader panel see the draft. Case studies also produce an evidence file that a named person signs.",
+        "overview": "It runs a topic through nine steps, each owned by one agent with its own procedure. Every section of the brief needs a claim linked to its source, exhibits are built as code from cited data, and the editor removes AI writing patterns before a fact checker and a reader panel see the draft. Case studies also produce a file of supporting sources that a named person signs.",
         "value": "Publish pieces that carry the owner's own evidence and decisions, and refuse pieces that do not. The pipeline sets no volume target, and a topic with nothing only the owner holds is dropped at step 2.",
         "preparation": {
           "where": "Fill the owner profile template and pass its path. Name the writing rules folder in the profile, and supply the owner's data files, screenshots, permissions and answers when the asset collector asks.",
@@ -14394,7 +14394,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/reconcile-knowledge/SKILL.md",
       "sourceSha256": "5096adde62aa07c9de2264f645e53a85c1e17579f1f061633cb0feaa5aa2868c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/reconcile-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/reconcile-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "reconcile-knowledge",
@@ -14530,7 +14530,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/refine-backlog/SKILL.md",
       "sourceSha256": "a8904a379b92e3a8bd65f77898f8675a0b82c964d30e6110d1faaab2443a1784",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/refine-backlog/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/refine-backlog/SKILL.md",
       "taskPackages": [
         {
           "name": "refine-backlog",
@@ -14760,7 +14760,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/release-skill-package/SKILL.md",
       "sourceSha256": "18ced08f63182be20b58bb29afb4cc38c690163f52e31e79962eed6cecb4c381",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/release-skill-package/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/release-skill-package/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -14919,7 +14919,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/render-offering-brief/SKILL.md",
       "sourceSha256": "c0cb7e4ff088755bcddb1cea043052b9079b6b9ea1bfbf93d53c52ed96eb0c2d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/render-offering-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/render-offering-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -15160,7 +15160,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-contract-scope/SKILL.md",
       "sourceSha256": "bcb6ca0b615cdeb00ba84e6ac5e3c7ff295228db1f185a409e76be6813f71329",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-contract-scope/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-contract-scope/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -15372,7 +15372,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deal-economics/SKILL.md",
       "sourceSha256": "fd5db542ec246356f96fc01210d5ef8562e86aac39eb50c1cc97920e496095db",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-deal-economics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-deal-economics/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deal-economics",
@@ -15385,7 +15385,7 @@
       "guide": {
         "what": "Prepare the internal Deal Desk packet that shows a deal's computed margin against the approval policy.",
         "when": "A priced quote needs internal commercial approval before proposal or SOW, or a packet's figures need tie-out.",
-        "inputs": "The quote, the confirmed margin floor and approval ladder, the evidence ledger and the delivery lead's cosign answer.",
+        "inputs": "The quote, the confirmed margin floor and approval ladder, the table linking claims to sources and the delivery lead's cosign answer.",
         "outputs": "A gated packet with recomputed margin, flagged risks, routed asks, an empty decisions log and a figure tie-out against the quote.",
         "example": "Prepare the Deal Desk packet for this quote and tie out the SOW draft's figures against it.",
         "reviewedEntrypointSha256": "fd5db542ec246356f96fc01210d5ef8562e86aac39eb50c1cc97920e496095db",
@@ -15626,11 +15626,11 @@
       "title": "Review deliverable",
       "family": 9,
       "description": "Select and run the required artifact release controls before any Word document, PowerPoint deck, Excel workbook, PDF, HTML page, proposal, report, email, Slack message, or decision-bearing artifact is finalized. Use for every styled or client-facing output. Requires inspected evidence from the prose review (with a writing-diagnostics receipt for final narrative artifacts) and, for styled output, from brand-renderer plus the rendered result, not a claim that another skill was mentioned. Blocks release when a required runtime, receipt, source support, or rendered output is absent.",
-      "status": "local-revision",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/review-deliverable/SKILL.md",
       "sourceSha256": "5d057ff677b132f8b04c31d6b3f22fdcd3d0ec8f9cb517332d37dd3dde6d9cad",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-deliverable/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-deliverable/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deliverable",
@@ -15689,7 +15689,7 @@
         "overview": "It opens the finished artifact and its sources, then records each required check as pass, fail, blocked or not applicable with cited evidence. A missing prose receipt, brand report or source for a claim blocks release, and it returns a remediation list instead of marking anything complete.",
         "value": "Decide whether a finished artifact meets its request, sources, format and release requirements. It gives repairs tied to evidence rather than a general impression that the output looks polished.",
         "preparation": {
-          "where": "Provide the actual finished artifact, original brief, controlling sources and the checks its producing workflow requires. Evidence records are the receipts or results of those checks; they are not supplied by this review automatically.",
+          "where": "Provide the actual finished artifact, original brief, controlling sources and the checks its producing workflow requires. Provide results from checks already run. The review runs missing checks available in the current environment and marks unavailable checks as blocked.",
           "missing": "Missing required sources or checks are recorded as blocked. The review can identify what must be repaired or obtained, but cannot create approval evidence or mark an unperformed render inspection as passed."
         },
         "preparationSkills": []
@@ -15856,7 +15856,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-sales-journey/SKILL.md",
       "sourceSha256": "2d8542e67dc50e8d0ebc086d7c60fddaabc8574a806fba340d1932727d3d3397",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-sales-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-sales-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -16006,7 +16006,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-runtime/SKILL.md",
       "sourceSha256": "bba06bf6d55a823144888d369961f2adca0233c050939b1c870e32ac3b54474b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/review-site-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-site-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "build-moscow-story-map",
@@ -16344,7 +16344,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-project/SKILL.md",
       "sourceSha256": "77670e283438bd9fb51094060c58bd4f8a1e489f7ed8442086e1a391285d99d4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/scope-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/scope-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -16551,7 +16551,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/simplify-code/SKILL.md",
       "sourceSha256": "156e04c98dbf3090b7e649c9a173bee3dfea52c8b524acbb220b76ac5f87e67a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/simplify-code/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/simplify-code/SKILL.md",
       "taskPackages": [
         {
           "name": "simplify-code",
@@ -16672,7 +16672,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/specify-implementation/SKILL.md",
       "sourceSha256": "13949c4b2674594085edde691b1bbf48c62bef1cefe2e1e957e7e7a3556caee4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/specify-implementation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/specify-implementation/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -16840,7 +16840,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/start-delivery/SKILL.md",
       "sourceSha256": "cc56c7de231537ac8ba66392242af9e86931ae44b08a88c3ce7e815af7567706",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/start-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/start-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "start-delivery",
@@ -17137,7 +17137,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/synthesize-discovery/SKILL.md",
       "sourceSha256": "90346d3cee2c8b512d91470e214d7120ab5cf17b74d82f595ca794b279c46617",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/synthesize-discovery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/synthesize-discovery/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -17345,7 +17345,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tailor-resume/SKILL.md",
       "sourceSha256": "80f8f1b012df1ac678ef0ec88271a8abc5df1d98bb8d4d347ed5feed6c6b5248",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/tailor-resume/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/tailor-resume/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -17501,7 +17501,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/track-delivery/SKILL.md",
       "sourceSha256": "c69af06a74e40909cb309098a53d4dc295ee98f2beefa3a227f84e14452be913",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/track-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/track-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "track-delivery",
@@ -17515,7 +17515,7 @@
         "what": "Issue the period's delivery status, steward the RAID and decision logs, and check work against the SOW scope.",
         "when": "A weekly status report, a decision or risk to log, or a check of whether a request is in scope.",
         "inputs": "The period's transcripts, the RAID and decision logs, the SOW scope baseline, the previous status file and a timesheet or quote for burn.",
-        "outputs": "A gated status report, append-only log entries with stable IDs, and change-order candidates with an evidence trail.",
+        "outputs": "A status report checked against its requirements, append-only log entries with stable IDs, and change-order candidates linked to their supporting sources.",
         "example": "Write this week's status from the transcripts and logs, and flag anything that looks outside the SOW.",
         "reviewedEntrypointSha256": "c69af06a74e40909cb309098a53d4dc295ee98f2beefa3a227f84e14452be913",
         "expect": "It pins the engagement, the exact period and the previous status file, then reads the period's transcripts and updates the RAID and decision logs with stable IDs. It flags scope drift as a change-order candidate with quoted evidence, shows burn only from a named source, and a blocking gate must pass before the report is issued.",
@@ -17776,7 +17776,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/validate-delivery/SKILL.md",
       "sourceSha256": "e2cd8c66eb3b096bcc8f74658aa2e08c47fd29df07470376864027e0b3adfb02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/validate-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/validate-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "validate-delivery",
@@ -17790,16 +17790,16 @@
         "what": "Trace tests to requirements, track UAT and assemble the go or no-go evidence.",
         "when": "Testing starts, or someone asks for test scripts, coverage or whether the release is ready.",
         "inputs": "The requirements workbook, the Test Plan, the SOW acceptance section, build status and reported test results.",
-        "outputs": "Traced test scripts, a defect log, a UAT tracker with coverage, and a go or no-go pack with an empty decision block.",
+        "outputs": "Test scripts traced to requirements, a list of defects, a UAT tracker with coverage, and a go or no-go pack with an empty decision block.",
         "example": "Build the test scripts and traceability check from this requirements workbook.",
         "reviewedEntrypointSha256": "e2cd8c66eb3b096bcc8f74658aa2e08c47fd29df07470376864027e0b3adfb02",
-        "expect": "It finds the requirements workbook, Test Plan and SOW acceptance language first and stops with a gap memo if one is missing. It builds traced test scripts, a UAT tracker, defect log and a go/no-go pack whose counts a script recomputes; humans execute tests, triage and decide, and the decision block stays empty.",
+        "expect": "It finds the requirements workbook, Test Plan and SOW acceptance language first and stops with a gap memo if one is missing. It builds test scripts traced to requirements, a UAT tracker, a list of defects and a go/no-go pack whose counts a script recomputes; humans execute tests, triage and decide, and the decision block stays empty.",
         "connectors": {
           "required": [],
           "optional": []
         },
         "requires": "The requirements workbook with requirement IDs, the Test Plan and the SOW acceptance section, plus Python 3 for the traceability gate.",
-        "overview": "It finds the requirements workbook, Test Plan and SOW acceptance language first and stops with a gap memo if one is missing. It builds traced test scripts, a UAT tracker, defect log and a go/no-go pack whose counts a script recomputes; humans execute tests, triage and decide, and the decision block stays empty.",
+        "overview": "It finds the requirements workbook, Test Plan and SOW acceptance language first and stops with a gap memo if one is missing. It builds test scripts traced to requirements, a UAT tracker, a list of defects and a go/no-go pack whose counts a script recomputes; humans execute tests, triage and decide, and the decision block stays empty.",
         "value": "Connect tests and UAT results to requirements and contractual acceptance. It shows coverage, defects and remaining release decisions so a finished build is not confused with an accepted delivery.",
         "preparation": {
           "where": "Supply requirements with IDs, the Test Plan, SOW acceptance language, build status and reported test results. The workbook normally comes from Capture requirements; the Test Plan specifies coverage and approach. These documents come from the engagement, not from the validator's assumptions.",
@@ -17861,7 +17861,7 @@
         "dependsOn": [],
         "runtimes": [],
         "setup": "The requirements workbook with requirement IDs, the Test Plan and the SOW acceptance section, plus Python 3 for the traceability gate.",
-        "expect": "It finds the requirements workbook, Test Plan and SOW acceptance language first and stops with a gap memo if one is missing. It builds traced test scripts, a UAT tracker, defect log and a go/no-go pack whose counts a script recomputes; humans execute tests, triage and decide, and the decision block stays empty.",
+        "expect": "It finds the requirements workbook, Test Plan and SOW acceptance language first and stops with a gap memo if one is missing. It builds test scripts traced to requirements, a UAT tracker, a list of defects and a go/no-go pack whose counts a script recomputes; humans execute tests, triage and decide, and the decision block stays empty.",
         "declared": false
       },
       "markdown": "---\nname: validate-delivery\ndescription: 'Run delivery validation: test scripts traced to the requirements workbook, the defect log and triage, the UAT tracker with coverage, the cutover readiness checklist and the go/no-go evidence pack. Use when testing starts or someone asks for test scripts, a traceability matrix, test coverage, \"are we ready for UAT\" or \"can we go live\". Not for writing requirements (capture-requirements), executing cutover or hypercare (manage-cutover-closeout) or weekly status (track-delivery).'\n---\n\n\n# Validate delivery\n\nStage 05 of the delivery lifecycle: prove the build against the requirements the client\nco-signed, and put complete evidence in front of the humans who decide go or no-go.\n\nThe identity of this skill is traceability. Every requirement in the workbook has at least\none test script or is a named gap with an owner; every test script traces to requirement IDs\nor is flagged as an orphan; every count in the go/no-go pack recomputes from the files. A\nrequirement nobody tested is invisible until go-live, which is the most expensive place to\nfind it. `scripts/trace_check.py` enforces all three invariants and exits nonzero when any\nbreaks; a prose checklist can be skipped, the gate cannot.\n\nThe second identity is the draft/decide boundary. This skill prepares and tracks. Humans\nexecute UAT, triage defects, sign off scripts, and make the go/no-go call. The skill never\nmarks a gate met, never waives a failed script, never closes a defect without verified\nretest evidence, and ships the decision block of the pack empty.\n\n## Project context required\n\nUse only the caller-confirmed engagement, source records, private output location,\nand intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,\nand Pursuit Lead to that project's authorized owners; these labels do not impose\nan employer organization chart or signing authority. The executed agreement and\naccepted project plan determine gates, commercial rules, and support obligations.\nKeep account history, risk assessments, credentials, and client evidence outside\nportable skill sources. A cached account, attached Project, or available connector\nis not authorization to read, write, or publish.\n\n## Governors\n\n- **evidence-core** owns provenance. Run it before assembling the go/no-go pack:\n  every fact in the pack (a pass, a defect state, an acceptance criterion status) traces to\n  a source with a date. Test results are evidence only when they carry an executor and a\n  date. If a load-bearing input (requirements workbook, Test Plan, SOW acceptance section)\n  is missing or insufficient, produce a readiness-gap memo naming what is missing and stop;\n  a go/no-go pack built on an unsourced requirement set is a hard fail.\n- **brand-renderer** owns brand for any client-facing render of these artifacts.\n  Never inline hex values here.\n- **writing** owns writing review; a confirmed profile supplies voice. Run its checker on every prose deliverable, including the pack.\n- **The SOW owns acceptance.** UAT gates, acceptance criteria, and deemed-acceptance\n  language live in the SOW and the co-signed Test Plan. Cite them by section, quote\n  criteria verbatim where the pack must state them, never restate contractual clauses in\n  your own words. Money and timeline figures come from the quote or SOW; this skill renders\n  them, never authors them.\n\nIf a governor is not installed on the current surface, state the check it would have run,\ndo the best manual substitute, and say that is what you did. Never silently skip.\n\n## Phase 0: orient\n\nFind the real objects before writing anything:\n\n1. **The requirements workbook** from capture-requirements: the Excel delivery\n   matrix with epics and requirements, Gherkin acceptance criteria, MoSCoW priorities, and\n   prefix-numbered requirement IDs (for example `CPE-001`). Those IDs, verbatim, are the\n   traceability keys for everything downstream. If no workbook exists, requirements capture\n   has not finished; route there and stop rather than testing against memory.\n2. **The Test Plan** from Design: severity definitions, test data approach, environments,\n   entry and exit criteria.\n3. **The SOW**: the acceptance mechanism and UAT gate language, by section number.\n4. **Build status**: which requirements are actually built in the sandbox. Testing what is\n   not built produces noise dressed as findings.\n\nStamp every artifact you generate with its sources and as-of dates. Workbook versions\nchange and sandboxes refresh; an unstamped tracker is stale the moment it is written. Truth\nhierarchy: the live workbook beats any prior extract, which beats memory, which beats chat.\n\n## Phase 1: test scripts, traced\n\nRead `references/test-script-format.md` before writing the first script.\n\nConvert Gherkin acceptance criteria to test steps mechanically wherever the AC allows:\nGiven becomes preconditions, When becomes action steps, Then becomes expected results,\nScenario Outlines become data-driven scripts. Mechanical is the goal because a step lifted\nfrom a co-signed AC inherits its authority; label anything you had to infer, and route\nmissing AC back through capture-requirements as an open question rather than\nquietly repairing the requirement inside a test script.\n\nCoverage rules: every requirement gets at least one script; Must Haves get a UAT script\nexecuted by the client persona; a requirement that cannot be scripted yet goes on the named\ngap list with owner, reason, and resolve-by. A script tracing to nothing is scope drift:\nflag it in its Orphan Flag field and route it to track-delivery so the drift\nsurfaces in status, not in a test asset.\n\nThen run the gate:\n\n```bash\npython3 scripts/trace_check.py --requirements reqs.csv --scripts tracker.csv --gaps gaps.csv\n```\n\nFix failures at the source files and rerun. Do not proceed to execution tracking with a\nfailing gate; the failures are exactly the coverage holes UAT exists to prevent.\n\n## Phase 2: defect log and triage\n\nRead `references/defect-log-spec.md`. Stand the log up before the first execution session\nso defects land in it from minute one, not in chat.\n\nThe non-negotiables: stable `DEF-###` IDs that never get reused; severity per the Test\nPlan's definitions (fall back to the reference table only when the Test Plan is silent, and\nsay so); a source on every defect (who reported, which script and step, which environment,\nwhen); a triage decision distinct from severity; and closure only on verified retest\nevidence recorded in the log. \"Dev says it's fixed\" moves a defect to Retest, never to\nClosed. Sev 1 and 2 defects also route to the RAID log as issues via\ntrack-delivery.\n\n## Phase 3: UAT tracker and coverage\n\nRead `references/uat-tracker-spec.md`. One row per script, statuses set only from reported\nexecution with an executor and date. Requirement status derives worst-wins from its\nscripts; never hand-set it.\n\nReport two numbers, always both: execution progress (terminal scripts over total) and\nrequirement pass rate (requirements fully passed over total), each cut by MoSCoW priority.\nReport counts as \"n of m (percent)\". Refresh daily during UAT and hand the movement summary\nto track-delivery; the tracker is the source, status quotes it.\n\n## Phase 4: cutover readiness and the go/no-go pack\n\nRead `references/go-no-go-pack.md` before assembling. The pack's nine sections are always\npresent; a section you cannot fill is a known unknown with an owner, never an omission.\n\nThe core discipline:\n\n- Coverage counts come from the gate, not from hand-tallying. Write the counts into a JSON\n  file as they will appear in the pack and verify them:\n\n```bash\npython3 scripts/trace_check.py --requirements reqs.csv --scripts tracker.csv \\\n  --gaps gaps.csv --gonogo pack-counts.json\n```\n\n- Every open and deferred defect appears, by severity, with owner and triage decision.\n- Every acceptance criterion from the SOW and Test Plan gets a Met / Not met / Cannot\n  assess status with an evidence pointer, cited by document and section.\n- The cutover readiness checklist carries per-item status and owner; executing it belongs\n  to manage-cutover-closeout, which inherits it along with the open defect list.\n- Framing is neutral: counts before adjectives, no inflation, no minimizing. The\n  recommendation appears once, in the final section, followed by the honest case for the\n  other answer. The signature block ships empty.\n\nPresent evidence as if you did not know which way the decision should go. Implying \"go\" by\nframing is a named failure mode of this stage.\n\nWhen the humans co-sign the go/no-go, update the engagement's DELIVERY-STATE.md in the same\nsession (`go_no_go` with date, pack path, append-only dated log line) per\ndelivery-orchestrator's `references/delivery-state-spec.md`.\n\n## Durable output\n\nEvery run leaves a Markdown record per `_shared/output-contract.md`: the\ngo/no-go pack when the stage completes, or a run record with the gate counts,\nthe coverage numbers, the named gaps, and the outstanding human decisions when\nit does not. The CSV trackers and defect log are secondary artifacts listed in\nthat record with their paths. Deliver or link the file; never just say it was\nwritten.\n\n## Running unattended\n\nTriage decisions, script sign-offs, and the go/no-go call need humans. On a scheduled or\nheadless run: refresh the tracker from reported results, recompute coverage, run the gate,\ndraft the triage sheet, and stop with the findings. Never record an execution result,\ntriage decision, or approval nobody gave.\n\n## Degradation ladder\n\nWhen time is short, cut in this order and say what you cut:\n\n1. Per-script narrative polish; keep title, trace, steps, expected results.\n2. First-pass yield and trend cuts in the tracker; keep the two core numbers.\n3. Individually narrated sev 3 and 4 defects in the pack; keep the full table.\n\nNever cut: the traceability gate, requirement IDs on scripts, defect closure evidence, the\nnamed gap list, or source stamps. Those are what make the pack signable.\n\n## Boundaries\n\nIn the delivery chain (SOW, then prepare-delivery-handoff, then kickoff, then status, then\nUAT, then manage-cutover-closeout), this skill's upstream producer is the Build stage\ntracked by track-delivery, whose cadence hands over a\nsandbox-complete build and the co-signed requirements to prove it against. Its\ndownstream consumer is manage-cutover-closeout, which inherits the readiness\nchecklist and the open defect list from the pack. UAT does not accept scope\nchanges: a script or ask that traces to no requirement is drift, flagged and\nrouted to track-delivery, never absorbed into the test assets.\n\n- Does not author requirements or acceptance criteria; that is capture-requirements.\n- Does not execute cutover, go-live, or hypercare; that is manage-cutover-closeout.\n- Does not run status cadence or own the RAID log; that is track-delivery. This\n  skill feeds it defects and test progress.\n- Does not build or fix the system; defects go to owners, not to this skill.\n- Does not decide go or no-go, sign off UAT, waive failed scripts, or close unverified\n  defects. Humans do all four.\n\n## Files\n\n- `scripts/trace_check.py` · the gate: requirement coverage, orphan flags, go/no-go count\n  recompute. Stdlib only, `--selftest` runs embedded fixtures, exits nonzero on failure.\n- `scripts/trace_check_selftest.py` · CLI-level selftest with pass and fail fixtures on disk.\n- `references/test-script-format.md` · script fields, Gherkin-to-steps mapping, coverage\n  and orphan rules, test data approach.\n- `references/defect-log-spec.md` · defect fields, severity, lifecycle, triage, closure\n  evidence rule.\n- `references/uat-tracker-spec.md` · tracker fields, derived requirement status, coverage\n  math and reporting rules.\n- `references/go-no-go-pack.md` · the nine pack sections, SOW authority rules, cutover\n  readiness checklist, neutrality rules.\n- `assets/test-script-template.md` · single-script template with the Gherkin-derived layout.\n- `assets/uat-tracker-template.csv` · tracker header plus example rows; this file is also\n  the `--scripts` input to the gate.\n- `assets/defect-log-template.csv` · defect log columns with sample rows, including a\n  correctly evidenced closure.\n- `assets/coverage-gaps-template.csv` · named gap list format the gate reads via `--gaps`.\n- `assets/gonogo-counts-example.json` · the count keys the gate recomputes via `--gonogo`.\n",
@@ -18010,14 +18010,14 @@
     },
     {
       "id": "verify-salesforce-org",
-      "title": "Verify salesforce org",
+      "title": "Verify Salesforce org",
       "family": 3,
       "description": "Check the exact intended Salesforce organization before a record write, file upload, or deployment. Use a fresh CLI or connector identity, compare its org ID and sandbox status, and refuse missing or mismatched targets.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/verify-salesforce-org/SKILL.md",
       "sourceSha256": "ef7f119c9035f2562cc46ff755936355cb6fc0dd34439cca9a5f8f5f5d55fad5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/verify-salesforce-org/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/verify-salesforce-org/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "deliver-salesforce-change"
@@ -18173,7 +18173,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-work-state/SKILL.md",
       "sourceSha256": "76de9e7c6c3916162139c2d14bcb1f7baf76da2bafea8fd864db2f10ce7bb5cc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/verify-work-state/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/verify-work-state/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-knowledge",
@@ -18340,14 +18340,14 @@
     },
     {
       "id": "work-in-github-repository",
-      "title": "Work in github repository",
+      "title": "Work in GitHub repository",
       "family": 9,
       "description": "Work with the task-selected GitHub repository using an available authenticated GitHub CLI and Git. Use for repository access, commits, pushes, pull requests, releases, and repository deployment workflows.",
       "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/work-in-github-repository/SKILL.md",
       "sourceSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/work-in-github-repository/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/work-in-github-repository/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18450,7 +18450,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-architecture-reference/SKILL.md",
       "sourceSha256": "044699c966448677710dcf19e6942acab6dc3cbe4334021ea043221a3e06c0b2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-architecture-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-architecture-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -18672,7 +18672,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-business-case/SKILL.md",
       "sourceSha256": "6d848cbbc407e7f3f46137019ea1b1127ce994043c0fff7acfe44834dd732358",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "write-business-case",
@@ -18685,7 +18685,7 @@
       "guide": {
         "what": "Write the business case a funding approver reads, including the case against and the cost of waiting.",
         "when": "An approver needs to decide whether to fund an initiative.",
-        "inputs": "A validated evidence ledger, the quote for engagement costs, sourced client value figures and the dated events that drive timing.",
+        "inputs": "A checked table linking claims to sources, the quote for engagement costs, sourced client value figures and the dated events that drive timing.",
         "outputs": "A gated business case with sourced figures, shown cost-of-delay arithmetic, sourced risks and a bounded ask, or a readiness gap memo when evidence is insufficient.",
         "example": "Build the business case for this initiative from the quote, the discovery findings and the renewal date.",
         "reviewedEntrypointSha256": "6d848cbbc407e7f3f46137019ea1b1127ce994043c0fff7acfe44834dd732358",
@@ -18695,10 +18695,10 @@
           "optional": []
         },
         "requires": "Needs the evidence-core skill, a quote or user-supplied pricing source for cost figures, and python3 to run the case gate.",
-        "overview": "It builds an evidence ledger from your sources, checks whether the central cost and benefit claims have enough support, and develops the investment argument: benefits, costs, alternatives, risks, the case against and the cost of waiting. Figures carry their sources and calculations. If the evidence is insufficient, it returns a readiness-gap memo instead of a full funding case.",
+        "overview": "It records individual claims with their sources, checks whether the central cost and benefit claims have enough support, and develops the investment argument: benefits, costs, alternatives, risks, the case against and the cost of waiting. Figures carry their sources and calculations. If the evidence is insufficient, it returns a readiness-gap memo instead of a full funding case.",
         "value": "Help an approver decide whether an initiative merits investment. It brings benefits, costs, alternatives, risks and the cost of waiting into one argument, including reasons the investment might not be justified.",
         "preparation": {
-          "where": "Bring discovery findings, a quote or other cost source, benefit evidence and relevant deadlines. An evidence ledger is a source-and-claim register; Evidence core prepares it from the project material. It is a helper in the complete package, not a document you must already have written.",
+          "where": "Bring discovery findings, a quote or other cost source, benefit evidence and relevant deadlines. Evidence core prepares a table linking individual claims to sources from the project material. It is a helper in the complete package, not a document you must already have written.",
           "missing": "The workflow can begin by assessing your sources. If a central benefit, cost or timing claim lacks enough support, it returns a readiness-gap memo rather than a persuasive-looking business case built on guesses."
         },
         "preparationSkills": [
@@ -18907,7 +18907,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-feature-spec/SKILL.md",
       "sourceSha256": "37bec88975ff9246aa2e76451a73e6612f9835c0316634e6edb44b1cb0a7cbce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-feature-spec/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-feature-spec/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -19058,7 +19058,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-portfolio-case-study/SKILL.md",
       "sourceSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-portfolio-case-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-portfolio-case-study/SKILL.md",
       "taskPackages": [
         {
           "name": "write-portfolio-case-study",
@@ -19192,7 +19192,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "8d6cd86381bfa343b41e026e2b3ed02e2622bf15d7ebcffb12d66c570d93fd3e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/write-statement-of-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-statement-of-work/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -19496,11 +19496,11 @@
       "title": "Writing",
       "family": 6,
       "description": "Write or review every word a person will read, in any format, against the owner's writing rules folder. Use before returning a reply, document, page, deck, message, interface label, commit message or pull request description, and when asked for writing integrity, a prose pass, a de-AI pass or to humanize text. Reviews text, reviews rendered pages, workbooks and decks on their extracted text, writes as the owner or as a brand, and logs wording corrections. Code and exact quotations are exempt.",
-      "status": "github",
+      "status": "local-revision",
       "entrypointChanged": false,
       "sourcePath": "skills/writing/SKILL.md",
       "sourceSha256": "7cf6662d187424e4e6fa9a30d4ebb6474e8f67c022d8d1988a1b6763b94c3708",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/writing/SKILL.md",
       "taskPackages": [
         {
           "name": "writing",
@@ -19575,7 +19575,7 @@
         "writing"
       ],
       "guide": {
-        "what": "Write or review every word a person will read against the owner's writing rules folder, with a check that proves which lines it covered. It is the estate's one writing skill.",
+        "what": "Write or review every word a person will read against the owner's writing rules folder. The review records which lines it covered. It is the estate's one writing skill.",
         "when": "Any reply, document, page, deck, message, interface label, commit message or pull request description is about to go to a reader, another tool needs a result on a saved file, or someone asks for writing integrity, a prose pass, a de-AI pass or to humanize text.",
         "inputs": "The draft or the saved file, the writing rules folder, and the channel and audience for the piece.",
         "outputs": "The reviewed text, and for a saved file a JSON result with status, line coverage, findings and a receipt.",
@@ -19589,7 +19589,7 @@
           ]
         },
         "requires": "Python 3 for check.py, and a writing rules folder with patterns.json named by --rules-dir, WRITING_HOME or the path in ~/.agents/writing/home.",
-        "overview": "It loads the owner's writing rules from their folder for each task and carries no copy of them. For a draft it picks the mode and register, then reviews each line. For a saved file, check.py extracts the text a reader sees, exempts code and quotations, scans every in-scope line and writes a receipt that counts the lines scanned against the lines extracted. A full review adds a verdict for every line and a document map that the script validates.",
+        "overview": "It loads the owner's writing rules from their folder for each task and carries no copy of them. For a draft it picks the mode and register, then reviews each line.\n\nFor a saved file, check.py extracts the text a reader sees, exempts code and quotations, scans every in-scope line and writes a receipt that counts the lines scanned against the lines extracted. A full review adds a verdict for every line and a document map that the script validates.",
         "value": "Give other tools one command that returns pass, fail or incomplete for a file, and stop a review from being reported as done when lines were skipped.",
         "preparation": {
           "where": "Provide the draft or the file path, and a writing rules folder that holds patterns.json. Name the folder with --rules-dir, the WRITING_HOME variable or the path in ~/.agents/writing/home. A full review also needs rules.md in that folder, a JSON list of the source documents and the project's confidentiality list from the Hub.",
@@ -19652,7 +19652,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 23,
-        "packageFingerprint": "dbf712ac21b5278c148facb9f5e576e346427cb694305486b83a19cf2f9617e4",
+        "packageFingerprint": "31fb48ac8272ae9bd1a6b1fee54cf308f55b429d8d96ab72bb81a49159c804bb",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -19780,9 +19780,9 @@
         },
         {
           "path": "scripts/check.py",
-          "sha256": "902677195ff3fe110de8ae479f4eae2e03d7840eaa6031008ed819d44d6a5b03",
-          "bytes": 83539,
-          "gitBlob": "3ac9017bb461b5c6c8a0091a03d21c5ef7825311"
+          "sha256": "7051fe237f3cee7949bbbe0fd9fd50c4abbd745d10163bd0440a26f0fa2c5249",
+          "bytes": 83942,
+          "gitBlob": "e46bacb9c0dcd1729725913f4d09adfeeced107a"
         },
         {
           "path": "scripts/check_selection.py",
@@ -19792,9 +19792,9 @@
         },
         {
           "path": "scripts/check_selftest.py",
-          "sha256": "e3693d4cf4bcb49943223fb92c43dfb00bf57d33339854e5730f21d9d8ae22e8",
-          "bytes": 58471,
-          "gitBlob": "bad08b3d2757581a6d1084e9014e2ebd88642781"
+          "sha256": "e4431991ac1dc0859ac92144a6a61b5b85581c1a024895435ebdaa8ba240c885",
+          "bytes": 60215,
+          "gitBlob": "60720b5de267fb3139c93b09c14a1ce87201c2bf"
         },
         {
           "path": "scripts/extract_review_text.py",
@@ -19906,7 +19906,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
       "sourceSha256": "7ddcbf7ca4d19919cb051d91d893e3cbb3797addebedeae3e9f5419cafcbd323",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/65e93805e126bfff9409abba7c07b78903812612/skills/writing-diagnostics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/writing-diagnostics/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "apply-salesforce-patterns",
@@ -19979,16 +19979,16 @@
         "what": "Run the writing diagnostics and figure checks that the writing skill uses.",
         "when": "Writing-integrity needs a pattern scan, a figure tie-out or a review receipt.",
         "inputs": "The saved text, the source version for figure comparison and the house configuration.",
-        "outputs": "Pattern findings, figure comparisons and validated review receipts; it does not rewrite text.",
+        "outputs": "A report of writing-pattern matches, source-to-revision figure comparisons and checked review records. It does not rewrite the text.",
         "example": "Check this saved draft for recurring writing patterns and confirm no figure changed from the source.",
         "reviewedEntrypointSha256": "7ddcbf7ca4d19919cb051d91d893e3cbb3797addebedeae3e9f5419cafcbd323",
         "expect": "It is an internal checker used by the writing review, not an editor, and it reports detectable patterns in a saved file by exit code without rewriting anything. It can reconcile figures between a source and a rewrite and emit a review receipt, but a clean scan does not show the prose was read.",
         "requires": "Needs Python 3 and a saved file to check.",
-        "overview": "It scans saved text for detectable writing patterns, compares figures between source and revised versions, and validates review receipts. The scripts return findings and exit codes; they do not rewrite the draft or select an author voice. A human or writing-review workflow still has to read the prose and judge whether a finding applies.",
+        "overview": "It checks saved text for recurring writing patterns and compares its figures with the source. It also checks the record of the writing review.\n\nThe scripts report findings and exit codes without rewriting text or selecting an author’s voice. A reviewer reads the prose and decides which findings require a change.",
         "value": "Find detectable writing patterns and compare figures between a source and a rewrite. It supports editing with specific findings and receipts, while leaving meaning and editorial decisions to the writing review.",
         "preparation": {
           "where": "Supply a saved text or supported document. A source version is needed only for figure comparison; a review receipt is a generated record of the checks and assessment. Python runs the bundled scripts without a neighboring skill installation.",
-          "missing": "Without a saved file the scanner cannot run. Without the source version it cannot verify figure preservation. You can use Review writing for an edit; a clean diagnostic result alone does not establish good prose or factual accuracy."
+          "missing": "Without a saved file the scanner cannot run. Without the source version it cannot verify figure preservation. You can use Writing for an edit; a clean diagnostic result alone does not establish good prose or factual accuracy."
         },
         "preparationSkills": [
           {
@@ -20346,8 +20346,8 @@
     }
   ],
   "counts": {
-    "github": 90,
-    "local-revision": 3,
+    "github": 92,
+    "local-revision": 1,
     "local-addition": 0,
     "canonical": 93,
     "total": 93,

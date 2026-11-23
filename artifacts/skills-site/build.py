@@ -70,10 +70,16 @@ def cname(c):
         return {'skill': c}
     if c in all_ids:
         return None
-    return {'text': CONNECTOR_NAMES.get(c, c.replace('-', ' ').capitalize())}
+    label = CONNECTOR_NAMES.get(c, c.replace('-', ' ').capitalize())
+    for spelling in ['Salesforce', 'MoSCoW', 'Skills Estate', 'DevOps', 'GitHub', 'CLI']:
+        label = re.sub(r'\b' + re.escape(spelling) + r'\b', spelling, label, flags=re.I)
+    return {'text': label}
 
 def clean(t):
     return re.sub(r'\s+', ' ', (t or '')).strip()
+
+def clean_paragraphs(text):
+    return '\n\n'.join(clean(part) for part in re.split(r'\n\s*\n', text or '') if clean(part))
 
 skills = []
 for s in idx['skills']:
@@ -88,7 +94,7 @@ for s in idx['skills']:
         'plugin': (p.get('plugins') or [None])[0],
         'what': clean(g.get('what')), 'when': clean(g.get('when')), 'inputs': clean(g.get('inputs')),
         'outputs': clean(g.get('outputs')), 'example': clean(g.get('example')),
-        'overview': clean(g.get('overview') or g.get('expect')),
+        'overview': clean_paragraphs(g.get('overview') or g.get('expect')),
         'where': clean(prep.get('where')), 'missing': clean(prep.get('missing')),
         'requires': clean(g.get('requires')), 'setup': '' if public_map else clean(p.get('setup')),
         'prepSkills': [x for x in (g.get('preparationSkills') or []) if isinstance(x, str) and x in ids],

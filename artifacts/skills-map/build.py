@@ -341,6 +341,8 @@ def build(args):
         title = re.search(r'^#\s+(.+)', body, re.M)
         title = title[1] if title else name.replace('-', ' ').capitalize()
         title = {'frame-jobs-to-be-done': 'JTBD framing', 'build-deal-decision-deck': 'Deal decision deck', 'estimate-project': 'Rough order of magnitude', 'write-statement-of-work': 'Statement of work', 'review-contract-scope': 'SOW quality', 'prepare-delivery-handoff': 'Sales-to-delivery handoff'}.get(name, title)
+        for spelling in ['Salesforce', 'MoSCoW', 'Skills Estate', 'DevOps', 'GitHub', 'CLI']:
+            title = re.sub(r'\b' + re.escape(spelling) + r'\b', spelling, title, flags=re.I)
         title = title[:1].upper()+title[1:]
         excerpt = overview_excerpt(body)
         guide = guides.get(name, {})

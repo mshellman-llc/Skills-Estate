@@ -6,7 +6,7 @@
     "desc": "For a researcher or product manager with notes but no agreed next move.",
     "inputs": "Interview notes or transcripts, who attended each one, the research question, the decision you need to make and any scoring inputs you have, such as reach, impact, confidence and effort for RICE.",
     "prompt": "Use these interview notes to identify supported needs, write job statements from them, and rank which problems deserve investigation next.",
-    "outcome": "Findings tied to source passages, job statements, and a ranked list of problems with each score’s formula and any unsourced input flagged.",
+    "outcome": "Findings tied to source passages, job statements, and a ranked list of problems with each score\u2019s formula and any unsourced input flagged.",
     "steps": [
       {
         "skill": "synthesize-discovery",
@@ -28,7 +28,7 @@
     "audience": "Product and research",
     "title": "Make a feature idea ready to discuss with engineers",
     "desc": "For a product owner, founder or designer who needs behavior defined before implementation.",
-    "inputs": "The product’s brief or folder, the user problem, existing behavior and constraints, any research or support evidence, and other planned work if sequencing matters.",
+    "inputs": "The product\u2019s brief or folder, the user problem, existing behavior and constraints, any research or support evidence, and other planned work if sequencing matters.",
     "prompt": "Turn this feature idea into a specification with user flows, requirements and testable acceptance criteria. Identify the decisions we still need to make, and if sequencing matters, show the feature on a roadmap beside its dependencies.",
     "outcome": "A feature specification for the release decision it serves, with user flows, requirements, testable acceptance criteria and the decisions still open, and a roadmap when sequencing matters.",
     "steps": [
@@ -51,8 +51,8 @@
     "id": "navigation-repair",
     "audience": "Product and research",
     "title": "Fix a website people cannot find their way around",
-    "desc": "For a designer, founder or content owner who decides the site’s navigation and labels.",
-    "inputs": "The site’s URL, its sitemap or page inventory, the main visitor tasks, and any search or usability observations.",
+    "desc": "For a designer, founder or content owner who decides the site\u2019s navigation and labels.",
+    "inputs": "The site\u2019s URL, its sitemap or page inventory, the main visitor tasks, and any search or usability observations.",
     "prompt": "Review this site against the tasks visitors need to complete. Propose clearer navigation and labels, prepare a usability study to test the changes, and check the navigation for accessibility barriers.",
     "outcome": "A proposed site structure, the reasons behind its labels, participant tasks that test whether people find the right content, and accessibility findings with proposed repairs.",
     "steps": [
@@ -86,7 +86,7 @@
       },
       {
         "skill": "map-journey",
-        "why": "When a customer’s or staff member’s experience is part of the gap, connect those steps to the people involved and the systems supporting them."
+        "why": "When a customer\u2019s or staff member\u2019s experience is part of the gap, connect those steps to the people involved and the systems supporting them."
       },
       {
         "skill": "prioritize-work",
@@ -98,11 +98,11 @@
   {
     "id": "sprint-plan",
     "audience": "Operations and delivery",
-    "title": "Plan a sprint that fits the team’s capacity",
+    "title": "Plan a sprint that fits the team\u2019s capacity",
     "desc": "For a team lead or product owner with more backlog than capacity.",
-    "inputs": "The Requirements tab from Capture requirements, team estimates and availability, recent velocity, the RAID log, and the definitions of ready and done; the decision log and each week’s meeting notes once the sprint starts.",
-    "prompt": "Review this backlog for readiness, propose a sprint goal with commit and stretch work that fits our available capacity, then track the sprint’s status, risks and decisions.",
-    "outcome": "Readiness gaps, a sprint goal and a proposed commit and stretch split sized to the team’s capacity, then a weekly status report and RAID and decision log entries during the sprint.",
+    "inputs": "The Requirements tab from Capture requirements, team estimates and availability, recent velocity, the RAID log, and the definitions of ready and done; the decision log and each week\u2019s meeting notes once the sprint starts.",
+    "prompt": "Review this backlog for readiness, propose a sprint goal with commit and stretch work that fits our available capacity, then track the sprint\u2019s status, risks and decisions.",
+    "outcome": "Readiness gaps, a sprint goal and a proposed commit and stretch split sized to the team\u2019s capacity, then a weekly status report and RAID and decision log entries during the sprint.",
     "steps": [
       {
         "skill": "refine-backlog",
@@ -110,7 +110,7 @@
       },
       {
         "skill": "plan-sprint",
-        "why": "Size the commitment against each person’s available capacity and the sprint goal."
+        "why": "Size the commitment against each person\u2019s available capacity and the sprint goal."
       },
       {
         "skill": "track-delivery",
@@ -125,8 +125,8 @@
     "title": "Start and validate a signed client project",
     "desc": "For a project manager receiving work from a sales or account team.",
     "inputs": "The executed statement of work, its quote, the deal record and the receiving delivery owner; the requirements workbook and Test Plan once testing starts.",
-    "prompt": "Build the handoff package for this signed project so the receiving owner can accept it. Once it is accepted, draft the charter, kickoff decks and Sprint 0 plan, and later the test scripts, UAT tracker and defect log.",
-    "outcome": "A handoff package, a draft charter with RAID and decision logs, kickoff decks, a Sprint 0 plan, test scripts traced to the requirements, a UAT tracker and a defect log.",
+    "prompt": "Build the handoff package for this signed project so the receiving owner can accept it. Once it is accepted, draft the charter, kickoff decks and Sprint 0 plan, and later the test scripts, UAT tracker and list of defects.",
+    "outcome": "A handoff package, a draft charter with RAID and decision logs, kickoff decks, a Sprint 0 plan, test scripts traced to the requirements, a UAT tracker and a list of defects.",
     "steps": [
       {
         "skill": "prepare-delivery-handoff",
@@ -134,11 +134,11 @@
       },
       {
         "skill": "start-delivery",
-        "why": "Draft the charter, kickoff decks and Sprint 0 plan from the accepted handoff, restating the executed statement of work’s scope without renegotiating it."
+        "why": "Draft the charter, kickoff decks and Sprint 0 plan from the accepted handoff, restating the executed statement of work\u2019s scope without renegotiating it."
       },
       {
         "skill": "validate-delivery",
-        "why": "Use the requirements workbook and Test Plan to build test scripts traced to each requirement, a UAT tracker and a defect log."
+        "why": "Use the requirements workbook and Test Plan to build test scripts traced to each requirement, a UAT tracker and a list of defects."
       }
     ],
     "note": "Run each step when the project reaches it, starting with the handoff at signature."
@@ -149,16 +149,16 @@
     "title": "Develop or review a Salesforce change",
     "desc": "For a developer working on Apex, triggers or LWC in an existing repository.",
     "inputs": "The repository with its Apex and LWC files, its architecture decisions, the GitHub issue for the change and the confirmed target org.",
-    "prompt": "Write or review this Salesforce change against the project’s architecture decisions. Keep business logic reusable across entry points, explain design issues, run local checks and a dry run against the confirmed org, then merge and deploy once I authorize it.",
+    "prompt": "Write or review this Salesforce change against the project\u2019s architecture decisions. Keep business logic reusable across entry points, explain design issues, run local checks and a dry run against the confirmed org, then merge and deploy once I authorize it.",
     "outcome": "A code change or specific review findings, architecture-check results, and validation and deployment evidence.",
     "steps": [
       {
         "skill": "apply-salesforce-patterns",
-        "why": "Read the project’s architecture decisions, then write or review code in the trigger, service, selector, unit-of-work and controller layers, and run the architecture checker."
+        "why": "Read the project\u2019s architecture decisions, then write or review code in the trigger, service, selector, unit-of-work and controller layers, and run the architecture checker."
       },
       {
         "skill": "deliver-salesforce-change",
-        "why": "On a single-org project, work from the change’s GitHub issue in an isolated worktree, run local checks and a dry run against the confirmed org, then squash-merge and deploy from main."
+        "why": "On a single-org project, work from the change\u2019s GitHub issue in an isolated worktree, run local checks and a dry run against the confirmed org, then squash-merge and deploy from main."
       }
     ],
     "note": "Configure Salesforce project is a separate option when you want to install or repair delivery standards and Claude hooks; do not run it just to review code."
@@ -166,10 +166,10 @@
   {
     "id": "salesforce-hooks",
     "audience": "Salesforce development",
-    "title": "Set up, audit or repair a Salesforce repository’s Claude hooks",
+    "title": "Set up, audit or repair a Salesforce repository\u2019s Claude hooks",
     "desc": "For a maintainer whose hooks stopped running, whose tracker or trunk branch changed, or whose team is adopting delivery standards.",
-    "inputs": "The Salesforce repository with any existing hooks and its CLAUDE.md or AGENTS.md, the intended tracker, trunk branch, host and ownership mode, the team’s architecture decisions, one real Apex or LWC change, and authentication already set up.",
-    "prompt": "Audit this Salesforce repository’s delivery standards and Claude hooks and explain the gaps. Install or repair only what I approve, preserve working configuration and run the architecture checker on one real change.",
+    "inputs": "The Salesforce repository with any existing hooks and its CLAUDE.md or AGENTS.md, the intended tracker, trunk branch, host and ownership mode, the team\u2019s architecture decisions, one real Apex or LWC change, and authentication already set up.",
+    "prompt": "Audit this Salesforce repository\u2019s delivery standards and Claude hooks and explain the gaps. Install or repair only what I approve, preserve working configuration and run the architecture checker on one real change.",
     "outcome": "A standards audit, or hooks and a CLAUDE.md or AGENTS.md block installed or repaired and checked to confirm each is armed, plus architecture-check results.",
     "steps": [
       {
@@ -218,7 +218,7 @@
       },
       {
         "skill": "assess-offering-fit",
-        "why": "Score the findings against each offering’s qualifiers and rank the fit, citing the evidence for each point."
+        "why": "Score the findings against each offering\u2019s qualifiers and rank the fit, citing the evidence for each point."
       }
     ],
     "note": "Without the qualifiers, the offering fit is diagnostic only."
@@ -234,11 +234,11 @@
     "steps": [
       {
         "skill": "scope-project",
-        "why": "Build each option’s scope items with effort and staffing estimates, leaving work with no effort basis unestimated."
+        "why": "Build each option\u2019s scope items with effort and staffing estimates, leaving work with no effort basis unestimated."
       },
       {
         "skill": "compare-scope-options",
-        "why": "Reconcile each option’s scope items, hours, staffing and price from one quote revision into one HTML side-by-side comparison."
+        "why": "Reconcile each option\u2019s scope items, hours, staffing and price from one quote revision into one HTML side-by-side comparison."
       },
       {
         "skill": "write-statement-of-work",
@@ -258,11 +258,11 @@
     "steps": [
       {
         "skill": "assess-career-options",
-        "why": "Compare the role’s pay, scope and progression with your criteria and pay thresholds, keeping unknown terms as questions."
+        "why": "Compare the role\u2019s pay, scope and progression with your criteria and pay thresholds, keeping unknown terms as questions."
       },
       {
         "skill": "prepare-job-application",
-        "why": "Build the role work record, matching the posting’s requirements to your career evidence."
+        "why": "Build the role work record, matching the posting\u2019s requirements to your career evidence."
       },
       {
         "skill": "tailor-resume",
@@ -309,7 +309,7 @@
         "why": "Read the whole draft for meaning and structure and repair vague or repetitive passages."
       }
     ],
-    "note": "Use Manage writing profile only to build or revise a person’s profile from writing they have authorized you to use."
+    "note": "Use Manage writing profile only to build or revise a person\u2019s profile from writing they have authorized you to use."
   },
   {
     "id": "decision-deck",
@@ -336,7 +336,7 @@
     "audience": "Personal and creative",
     "title": "Take a sticker idea through design and sheet layout",
     "desc": "For a maker developing typography-led stickers for printing.",
-    "inputs": "The message, intended size, visual references and production constraints; later, the approved PNGs, how many of each you need and your project’s sheet generator.",
+    "inputs": "The message, intended size, visual references and production constraints; later, the approved PNGs, how many of each you need and your project\u2019s sheet generator.",
     "prompt": "Explore distinct sticker compositions for this message and size. Once I choose a design and supply the approved PNGs, lay them out as Cricut Print Then Cut sheets.",
     "outcome": "Compositions and print-scale proofs, then Print Then Cut sheets checked for every requested count and DPI.",
     "steps": [
@@ -355,9 +355,9 @@
     "id": "game-planner",
     "audience": "Personal and creative",
     "title": "Answer a game question from your own planner",
-    "desc": "For a Fortune’s Weave player checking a route, roster or planning decision.",
+    "desc": "For a Fortune\u2019s Weave player checking a route, roster or planning decision.",
     "inputs": "The planner project location, or an export of its current roster and route, plus the question you want answered.",
-    "prompt": "Use my current Fortune’s Weave planner to answer this question. Separate what the game sources establish from any planning recommendation, and propose a planner update if needed.",
+    "prompt": "Use my current Fortune\u2019s Weave planner to answer this question. Separate what the game sources establish from any planning recommendation, and propose a planner update if needed.",
     "outcome": "A sourced answer, or a planner update made with your approval and then verified.",
     "steps": [
       {
@@ -374,11 +374,11 @@
     "desc": "For someone returning to an ongoing project or handing it to another session.",
     "inputs": "The project name, the result you want next, and its source folder or authorized hub connection.",
     "prompt": "Find the current project state and controlling sources. Explain what is complete, what is open and the next action the sources support, then prepare a handoff another session can use.",
-    "outcome": "The project’s current context, any conflicting records, the next action and a handoff another session can resume from.",
+    "outcome": "The project\u2019s current context, any conflicting records, the next action and a handoff another session can resume from.",
     "steps": [
       {
         "skill": "load-project-context",
-        "why": "Read the project’s index of records and the records this work needs, then name any source conflicts and the next supported action."
+        "why": "Read the project\u2019s index of records and the records this work needs, then name any source conflicts and the next supported action."
       },
       {
         "skill": "prepare-session-handoff",

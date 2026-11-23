@@ -74,6 +74,8 @@
   function section(label, rows) { rows = rows.filter(Boolean); return rows.length ? { label: label, rows: rows } : null; }
   function CodeBlock(p) { return h('pre', { className: 'llc-pg llc-codeblock' + (p.prompt ? ' se-prompt' : '') }, h('button', { type: 'button' }, 'Copy'), p.text); }
 
+  function Paragraphs(p) { return h('div', { className: 'se-prose' }, p.text.split(/\n\s*\n/).map(function (text, i) { return h('p', { key: i }, text); })); }
+
   function SkillDetail(p) {
     var s = SK[p.id], go = p.go;
     var c = cmd(s), parent = s.modeOf && SK[s.modeOf[0]];
@@ -82,7 +84,7 @@
       : row('Command', 'It has no command. It installs with the task packages listed under Ships inside.');
     var sections = [
       !D.publicMap && section('Run it', [runRow, s.example ? row('Example request', h(CodeBlock, { text: s.example, prompt: true })) : null]),
-      section('What it does', [row('How it works', s.overview), row('Use it when', s.when), row('Give it', s.inputs), row('You get', s.outputs)]),
+      section('What it does', [row('How it works', s.overview ? h(Paragraphs, { text: s.overview }) : null), row('Use it when', s.when), row('Give it', s.inputs), row('You get', s.outputs)]),
       section('Before you start', [row('Prepare', s.where), row('If something is missing', s.missing), row('Requires', s.requires),
         row('Setup', s.setup), s.needs ? row('Needs', Names(s.needs, go)) : null, s.optional ? row('Works with', Names(s.optional, go)) : null,
         s.prepSkills ? row('Run first', h(Links, { ids: s.prepSkills, kind: 'skill', go: go })) : null]),

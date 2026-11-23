@@ -252,6 +252,26 @@
     "0.4.59": {
       "content_sha256": "03b5d395818e76fb4db748bfebf2a152e62cb7ab278476efc63f6a0832a5a258",
       "note": "Fix proof defects 175 to 180: the handoff gate needs a signed SOW, the evidence gate applies the executed-commitment hard fail, the money rule cites the stamp identifiers, an honest blocked quality record exits 0, and the one-person handoff has a rule"
+    },
+    "0.4.60": {
+      "content_sha256": "445dccab5934c9f03c61ea7ff42e57173f51485c08cca8c794f0efdcfd3d947e",
+      "note": "Correct public skill titles and writing-review descriptions"
+    },
+    "0.4.61": {
+      "content_sha256": "c6b3ffc2a2fb5cc639dd75ad0d71ea385a67d1f18bbc2b45f11f8a446e7767f7",
+      "note": "Correct public skill names and writing descriptions; preserve overview paragraphs"
+    },
+    "0.4.62": {
+      "content_sha256": "1ca68315f483e75ffa43a665984baf6809bcc4865b267aa9ff0516ecb10e04e6",
+      "note": "Correct public skill copy and names; preserve paragraph breaks"
+    },
+    "0.4.63": {
+      "content_sha256": "5003d703d4c2653800e848dfd8f953d96023eeab6f8cb661e1d07d6dc55b8e57",
+      "note": "Correct public skill copy and names; preserve overview paragraphs and third-round audit style notes"
+    },
+    "0.4.64": {
+      "content_sha256": "0787d8935e696234d1874807669ef0ee11deb86d98d887818032d905abd94e0b",
+      "note": "Correct public skill copy and names, preserve overview paragraphs and fix audit round handling"
     }
   },
   "source_conflicts": [

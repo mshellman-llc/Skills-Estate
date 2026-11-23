@@ -582,6 +582,30 @@ class Review(Base):
         code, result = self.full(self.verdicts(error), document_map, '--round', '3')
         self.assertEqual([f['id'] for f in result['findings']], ['0003'])
 
+    def test_round_three_audit_logs_styles_but_keeps_errors_and_owner_calls_blocking(self):
+        verdicts, document_map = self.verdicts(), self.document_map()
+        _, sample = self.audit(verdicts)
+        line = sample[0]
+        style = self.verdict(line, verdict='fix', severity='style', rule='R13: clarify the label',
+                             quote=line['text'], replacement='Use the current label.')
+        audit = self.save('audit.json', {'rules_sha256': self.plan['rules_sha256'],
+                          'reviewer': 'independent audit worker', 'verdicts': [style]})
+        for round_n in (1, 2):
+            code, result = self.full(verdicts, document_map, '--audit', audit, '--round', str(round_n))
+            self.assertNotEqual(code, 0)
+            self.assertEqual(self.step(result, 'spot audit'), 'failed')
+        code, result = self.full(verdicts, document_map, '--audit', audit, '--round', '3')
+        self.assertEqual((code, result['status'], result['findings']), (0, 'pass', []))
+        self.assertEqual([entry['id'] for entry in result['logged']], [line['id']])
+        self.assertTrue(result['logged'][0]['rule'].startswith('spot-audit style:'))
+        self.assertEqual(self.receipt(result)['spot_audit']['logged_style_findings'], 1)
+        for error in (dict(style, severity='error'), dict(style, owner_call=True)):
+            audit = self.save('audit.json', {'rules_sha256': self.plan['rules_sha256'],
+                              'reviewer': 'independent audit worker', 'verdicts': [error]})
+            code, result = self.full(verdicts, document_map, '--audit', audit, '--round', '3')
+            self.assertNotEqual(code, 0)
+            self.assertEqual(self.step(result, 'spot audit'), 'failed')
+
     def test_owner_decisions_block_and_are_counted_apart(self):
         ask = {'0003': {'verdict': 'fix', 'owner_call': True, 'claims': 'unsupported', 'rule': 'K2: no source',
                         'quote': 'adding products', 'replacement': ''}}

@@ -158,3 +158,6 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 #root .se-list .mer-table thead th:last-child { padding-right: 16px; }
 @media (min-width: 901px) { .se-body > .mer-callout { padding-right: 200px; } }
 #root .se-list .mer-table-wrap { overflow: visible; }
+
+.se-prose p { margin: 0; }
+.se-prose p + p { margin-top: var(--space-3); }

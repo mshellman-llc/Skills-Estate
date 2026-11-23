@@ -944,13 +944,18 @@ def audit_sample(records, verdicts):
     return sorted(chooser.sample(ok, max(1, -(-len(ok) // AUDIT_SHARE))))
 
 
-def spot_audit(records, verdicts, data, rules_sha256, flags=None):
+def spot_audit(records, verdicts, data, rules_sha256, flags=None, round_n=1, logged=None):
     """Returns (findings, rejected, missing, info). A miss is fixed on its line, and its rule is swept across
     every line marked ok (see recheck), in place of a full line pass."""
     scope = {r['id']: r for r in in_scope(records)}
     wanted = [i for i in audit_sample(records, verdicts) if i in scope]
     sub = [scope[i] for i in wanted]
-    findings, rejected, missing = line_pass(sub, data, rules_sha256, flags)
+    audit_styles = []
+    findings, rejected, missing = line_pass(sub, data, rules_sha256, flags, round_n, audit_styles)
+    for item in audit_styles:
+        item['rule'] = 'spot-audit style: ' + item['rule'].split(': ', 1)[-1]
+    if logged is not None:
+        logged.extend(audit_styles)
     missed = set()
     for f in findings:
         rule = f['rule'].split(': ', 1)[-1]
@@ -961,7 +966,7 @@ def spot_audit(records, verdicts, data, rules_sha256, flags=None):
     marked_ok = sum(1 for v in verdicts.get('verdicts') or [] if isinstance(v, dict) and v.get('verdict') == 'ok')
     info = {'sampled': len(wanted), 'lines_marked_ok': marked_ok, 'line_pass_reviewer': first or None,
             'audit_reviewer': second or None, 'independent': bool(first and second and first != second),
-            'missed_rules': sorted(missed)}
+            'missed_rules': sorted(missed), 'logged_style_findings': len(audit_styles)}
     return findings, rejected, missing, info
 
 
@@ -1470,7 +1475,7 @@ def run(args):
                 if same:
                     raise Incomplete('audit file: ' + same)
                 found, rejected, absent, info = spot_audit(records, verdicts, audit,
-                                                           rules_info['rules_sha256'], flags)
+                                                           rules_info['rules_sha256'], flags, args.round, logged)
                 record['spot_audit'] = info
                 scope_note = f'{info["sampled"]} of the {info["lines_marked_ok"]} lines marked ok were re-reviewed'
                 independence = '' if info['independent'] else (
@@ -1500,7 +1505,7 @@ def run(args):
                 elif rejected or absent:
                     step('spot audit', 'failed', f'{len(absent)} sampled lines have no verdict and {len(rejected)} were rejected')
                 else:
-                    step('spot audit', 'ok', scope_note + ' and stand'
+                    step('spot audit', 'ok', scope_note + (f'; {info["logged_style_findings"]} style findings logged' if info['logged_style_findings'] else ' and stand')
                          + (f'; the round still fails on its {len(findings)} findings' if findings else '') + independence)
             except Incomplete as error:
                 step('spot audit', 'failed', str(error))
