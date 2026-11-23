@@ -189,17 +189,17 @@ record an acceptance nobody gave.
 
 ## One person in every role
 
-A seller who is also the delivery lead reads the package back as the warm transfer. The
-same person accepts the brief in writing. Record each with a date and a name, so the
-record shows which role the person held. Do not invent a second attendee. The signature
-gate still applies: the executed agreement and its signers come before any package or
-brief.
+A seller who is also the delivery lead reads the package back as the warm transfer. That
+person then accepts the brief in writing. Record each with a date and a name that shows which
+role the person held. Do not invent a second attendee. The signature gate still applies. The
+executed agreement and its signers come before any package or brief.
 
 ## Evidence gate and the signature
 
-The "executed commitment" domain is covered only by a Confirmed claim with `executed: true`.
-A claim that the draft is unsigned sits in the domain without covering it. An unsigned deal
-therefore returns Insufficient and produces the handoff readiness gap memo.
+The "executed commitment" domain is covered only by a Confirmed claim with `executed: true`
+that cites a source of type `executed_contract`. A claim that the draft is unsigned sits in
+the domain without covering it. An unsigned deal therefore returns Insufficient. The output
+is the handoff readiness gap memo, in the format `references/readiness-gap-memo.md` sets.
 
 ## Boundaries
 
@@ -231,6 +231,10 @@ turns the accepted brief into the charter and governance pack.
 - `scripts/s2d_selftest.py`: runs the gate against the shipped fixtures and fails
   loudly on any drift. Run it after any edit to the checker.
 - `scripts/fixtures/`: passing and failing manifests the selftest uses.
+- `references/readiness-gap-memo.md`: the format of the gap memo that replaces the brief when
+  the evidence gate is Insufficient: file type, seven sections in order, and the rules.
+- `scripts/check_gap_memo.py`: checks a gap memo's sections. `scripts/fixtures/gap_memo_example.md`
+  is the invented example the selftest runs it on.
 - `references/brief-catalog.md`: the 12 sections, each with its job and its bar.
 - `references/package-spec.md`: the manifest schema, moment semantics, warm
   transfer, and record seeding.

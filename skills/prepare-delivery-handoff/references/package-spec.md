@@ -27,7 +27,7 @@ manifest in place, so nothing is re-keyed, re-mapped, or lost at the seam.
   "as_of": "YYYY-MM-DD, required",
   "source_snapshot": {
     "sow": "identifier of the executed SOW, required; a draft or unsigned agreement fails",
-    "sow_executed": {"signed_on": "YYYY-MM-DD, required", "signers": ["each signer, required"]},
+    "sow_executed": {"signed_on": "YYYY-MM-DD, required", "signers": [{"name": "person, required", "party": "party the person signed for; at least two parties, required"}]},
     "quote": "Q-number, required"
   },
   "sections": {
