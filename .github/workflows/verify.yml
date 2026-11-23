@@ -67,6 +67,7 @@ jobs:
             printf '%s' "$LLC_ENGRACE_WOFF2_BASE64" | base64 -d > artifacts/skills-site/vendor/Engrace-ItalicVF.woff2
           fi
           python3 artifacts/skills-site/build.py --target estate --out .local/skills-site/index.html
+          python3 artifacts/skills-site/build_release.py --out .local/meganos-skills-site
       - run: python3 tools/estate.py validate
       - name: Verify the recorded plugin version against this checkout
         run: python3 tools/plugin_version.py
@@ -136,3 +137,33 @@ jobs:
             artifacts/skills-map/INTEGRATION.md
           if-no-files-found: error
           retention-days: 30
+
+      - uses: actions/upload-artifact@v7.0.2
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: meganos-skills-site
+          path: .local/meganos-skills-site/*
+          if-no-files-found: error
+          retention-days: 30
+  publish_site:
+    needs: verify
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    concurrency:
+      group: skills-site-publication
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Download the complete pages from this verified run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name meganos-skills-site --dir .local/meganos-skills-site
+      - name: Publish the complete pages atomically
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 artifacts/skills-site/publish.py --directory .local/meganos-skills-site

@@ -19,6 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ap.add_argument('--repo', default=os.path.normpath(os.path.join(HERE, '..', '..')))
 ap.add_argument('--llc', default=os.path.join(HERE, 'vendor'))
 ap.add_argument('--target', choices=['estate', 'portfolio'])
+ap.add_argument('--downloads-base', default='', help='hosted public SKILL.md download directory')
 ap.add_argument('--app', default=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'app.js'))
 ap.add_argument('--out', default=os.path.join(HERE, 'index.html'))
 ap.add_argument('--page-url', default='', help='address the Copy link button uses; empty means the address the page is served from')
@@ -43,6 +44,8 @@ on_disk = {d for d in os.listdir(skills_dir) if os.path.exists(os.path.join(skil
 in_index = {s['id'] for s in idx['skills']}
 drift = sorted(on_disk ^ in_index)
 
+all_ids = {s['id'] for s in idx['skills']}
+public_map = a.target == 'portfolio'
 hidden = []
 if a.target:
     # Show only what the owner published for this website; excluded records never enter the page.
@@ -65,6 +68,8 @@ CONNECTOR_NAMES = {'google-drive': 'Google Drive', 'github': 'GitHub', 'salesfor
 def cname(c):
     if c in ids:
         return {'skill': c}
+    if c in all_ids:
+        return None
     return {'text': CONNECTOR_NAMES.get(c, c.replace('-', ' ').capitalize())}
 
 def clean(t):
@@ -85,15 +90,16 @@ for s in idx['skills']:
         'outputs': clean(g.get('outputs')), 'example': clean(g.get('example')),
         'overview': clean(g.get('overview') or g.get('expect')),
         'where': clean(prep.get('where')), 'missing': clean(prep.get('missing')),
-        'requires': clean(g.get('requires')), 'setup': clean(p.get('setup')),
+        'requires': clean(g.get('requires')), 'setup': '' if public_map else clean(p.get('setup')),
         'prepSkills': [x for x in (g.get('preparationSkills') or []) if isinstance(x, str) and x in ids],
-        'needs': [cname(c) for c in conn.get('required', [])],
-        'optional': [cname(c) for c in conn.get('optional', [])],
+        'needs': [item for c in conn.get('required', []) if (item := cname(c))],
+        'optional': [item for c in conn.get('optional', []) if (item := cname(c))],
         'modeOf': [x for x in modes_of if x in ids], 'modeName': mode_names[0] if mode_names else '',
         'usedBy': [x for x in p.get('usedBy', []) if x in ids],
         'uses': sorted({x for x in (p.get('calls', []) + p.get('dependsOn', [])) if x in ids and x != s['id']}),
-        'examples': len(s.get('examples') or []),
-        'src': 'https://github.com/mshellman-llc/Skills-Estate/blob/main/' + s['sourcePath'],
+        'examples': 0 if public_map else len(s.get('examples') or []),
+        'src': '' if public_map else 'https://github.com/mshellman-llc/Skills-Estate/blob/' + head + '/' + s['sourcePath'],
+        'downloadUrl': a.downloads_base.rstrip('/') + '/' + s['id'] if public_map and a.downloads_base and s.get('downloadAllowed') and re.fullmatch(r'skills/[a-z0-9-]+/SKILL[.]md', s['sourcePath']) else '',
     }
     skills.append({k: v for k, v in rec.items() if v not in ('', [], None)})
 
@@ -116,9 +122,10 @@ for pl in idx['pluginInventory']:
     plugins.append({'id': pl['id'], 'desc': clean(pl.get('description')), 'skills': members})
 
 data = {
-    'commit': head[:7], 'commitUrl': 'https://github.com/mshellman-llc/Skills-Estate/commit/' + head,
+    'sourceCommit': head, 'publicMap': public_map, 'target': a.target or 'workspace',
+    'commit': head[:7], 'commitUrl': '' if public_map else 'https://github.com/mshellman-llc/Skills-Estate/commit/' + head,
     'date': head_date[:10],
-    'families': [{'id': f['id'], 'title': f['title'], 'desc': clean(f.get('description'))} for f in fams],
+    'families': [{'id': f['id'], 'title': f['title'], 'desc': clean(f.get('description'))} for f in fams if not public_map or any(s['family'] == f['id'] for s in skills)],
     'skills': skills, 'workflows': workflows, 'plugins': plugins,
     'pageUrl': a.page_url,
     'icons': json.load(open(os.path.join(os.path.dirname(os.path.abspath(a.app)), 'icons.json'))),
