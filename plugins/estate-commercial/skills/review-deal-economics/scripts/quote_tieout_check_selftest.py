@@ -18,6 +18,7 @@ CHECK = os.path.join(HERE, "quote_tieout_check.py")
 QUOTE = os.path.join(HERE, "fixtures", "tieout_quote.json")
 PASSING = os.path.join(HERE, "fixtures", "tieout_pass.md")
 FAILING = os.path.join(HERE, "fixtures", "tieout_fail.md")
+DEMO_QUOTE = os.path.join(HERE, "fixtures", "tieout_demo_quote.json")
 
 sys.path.insert(0, HERE)
 import quote_tieout_check as tieout  # noqa: E402
@@ -88,6 +89,51 @@ def main():
     fails, _ = tieout.check(quote, [
         ("a.md", body), ("b.md", "Second artifact says the fee is $218,000.\n")])
     case("multiple artifacts reconcile together", fails == [], "; ".join(fails))
+
+    # Issue 159: hours ranges are checked at both ends, the export carries
+    # optional low, expected and high fields, and a figure that matches only by
+    # number is a warning to confirm. The fictional quote Q-DEMO-1 has a
+    # 10-hour Build phase and a Consultant range of 8 to 12 hours.
+    with open(DEMO_QUOTE, encoding="utf-8") as fh:
+        demo = json.load(fh)
+
+    def demo_check(line):
+        return tieout.check(demo, [("demo.md", line + "\n")])
+
+    fails, _ = demo_check("The build takes 99 to 10 hours.")
+    case("range with a wrong low end fails", any("99 hours" in x for x in fails), "; ".join(fails))
+    fails, _ = demo_check("The build takes 10 to 99 hours.")
+    case("range with a wrong high end fails", any("99 hours" in x for x in fails))
+    fails, _ = demo_check("The build takes 99-10 hours.")
+    case("hyphen range with a wrong low end fails", any("99 hours" in x for x in fails))
+    fails, _ = demo_check("The build takes 99 hours.")
+    case("single wrong hours figure still fails", any("99 hours" in x for x in fails))
+    fails, _ = demo_check("The Consultant range is 8 to 12 hours.")
+    case("range inside the low and high fields passes", fails == [], "; ".join(fails))
+    fails, _ = demo_check("The Consultant range is 8-12 hours.")
+    case("hyphen range inside the low and high fields passes", fails == [], "; ".join(fails))
+    fails, _ = demo_check("The Consultant expects 10 hours at $200 each, 2,000 in total.")
+    case("expected hours figure passes", fails == [], "; ".join(fails))
+    fails, _ = demo_check("Consultant effort runs 8 to 13 hours.")
+    case("range with a wrong high end against the high field fails",
+         any("13 hours" in x for x in fails))
+
+    fails, warns = demo_check("Headroom covers 10 hours of unbilled work.")
+    case("value-only match does not fail", fails == [], "; ".join(fails))
+    case("value-only match warns to confirm",
+         any("matches a quote value by number only" in x and "10 hours" in x for x in warns),
+         "; ".join(warns))
+    fails, warns = demo_check("The Build phase takes 10 hours.")
+    case("labelled match raises no value-only warning",
+         fails == [] and not any("by number only" in x for x in warns), "; ".join(warns))
+    fails, warns = demo_check("Delivery needs a $2,000 reserve for contingency.")
+    case("value-only currency match warns to confirm",
+         fails == [] and any("$2,000 matches a quote value by number only" in x for x in warns),
+         "; ".join(warns))
+
+    q = subprocess.run([sys.executable, CHECK, DEMO_QUOTE, os.path.join(HERE, "fixtures", "tieout_pass.md")],
+                       capture_output=True, text=True)
+    case("demo quote against an unrelated artifact exits 1", q.returncode == 1)
 
     bad = [n for n, ok, _ in results if not ok]
     print("\n%d/%d cases passed." % (len(results) - len(bad), len(results)))

@@ -15,7 +15,9 @@ Standard library only. Python 3.9.
 Event types and the inline tag mapping:
 
   context    first line; clientId, clientName, scopeType, contextId
-  source     SRC-###: sourceType, title, authority, observedAt, locator
+  source     SRC-###: sourceType, title, authority, observedAt, locator;
+             sourceType commercial_policy (rate card, margin floor, approval
+             ladder) is capped at authority 85, as an approved design is
   claim      CLM-###: statement, tag, sourceIds, asOf, loadBearing, domains
              tag STATED or OBSERVED -> Confirmed when a supporting source has
              authority 70 or higher, otherwise Inferred (the authority model
@@ -62,7 +64,7 @@ def projected_status(tag: str, source_ids, sources: Dict[str, Dict]) -> str:
                 and isinstance(source.get("authority"), int) and source["authority"] >= CONFIRMED_AUTHORITY:
             return "Confirmed"
     return "Inferred"
-SOURCE_TYPES = {"executed_contract", "current_sow", "current_quote", "crm_record", "approved_design",
+SOURCE_TYPES = {"executed_contract", "current_sow", "current_quote", "crm_record", "approved_design", "commercial_policy",
                 "meeting_transcript", "client_document", "internal_model", "message",
                 "generated_artifact", "worked_example", "other"}
 REGISTERS = {"scope", "estimate", "decisions", "risks", "assumptions", "stakeholders", "timeline"}

@@ -39,7 +39,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "51ca19b4fe03afe4293327cbd6cd04ef65cd19b20603bfc1b1b505bcb57b4a97",
+      "required_sha256": "c4719d25acffd9d70ec0b46f8d963d0987a003e94aa51fd01cb96d5b96abdef6",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -259,7 +259,7 @@
       "subject": "estimate-project"
     },
     {
-      "required_sha256": "639ecb9258536efb2f906565c23b2c6dbebebbd08bd885bbd2a045d48e7ab311",
+      "required_sha256": "81539a4333a8377ff33e14b71d90865ba4a3c8b9e7c2c4fbb2d57c7a6b812627",
       "status": "review required",
       "subject": "evidence-core"
     },
@@ -444,7 +444,7 @@
       "subject": "review-contract-scope"
     },
     {
-      "required_sha256": "152f5a3c66237f654dd4d2b50c8b342e7326e79f158c81be4878cc36ca82f2b2",
+      "required_sha256": "5d8c4611d9b18c2a74f2f53c0afc50beda285ad4f3f8109d1c9d2042fb8a8695",
       "status": "review required",
       "subject": "review-deal-economics"
     },
@@ -554,6 +554,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "ecfdc88b772b123c9c4b8491578ca98ccedd8b46fa47683f3206a3ef5c52e5de",
+  "source_sha256": "7dae6e4242f6d82bcf826d172aaa4bbdb5936976d4aeb55156711b98005617f9",
   "status": "owner-published"
 }

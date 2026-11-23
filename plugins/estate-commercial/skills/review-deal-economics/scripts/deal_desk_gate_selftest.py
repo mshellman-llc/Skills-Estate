@@ -18,6 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 GATE = os.path.join(HERE, "deal_desk_gate.py")
 PASSING = os.path.join(HERE, "fixtures", "passing.md")
 FAILING = os.path.join(HERE, "fixtures", "failing.md")
+RANGE_HIDDEN = os.path.join(HERE, "fixtures", "range_hidden.md")
 
 sys.path.insert(0, HERE)
 import deal_desk_gate as gate  # noqa: E402
@@ -108,6 +109,52 @@ def main():
         g["approval_route"] = "AE"
     case("below-floor packet routed to AE fires",
          any("approval_route" in x for x in mutated(below_floor_wrong_route)))
+
+    # Issue 160: an optional margin_range_pct whose low end governs the floor
+    # verdict and the approval route.
+    r = subprocess.run([sys.executable, GATE, RANGE_HIDDEN], capture_output=True, text=True)
+    case("range fixture with point-set verdict and route exits nonzero", r.returncode == 1)
+    case("range fixture flags the verdict set from the point figure",
+         "margin_vs_floor says 'above'" in r.stdout and "margin_range_pct" in r.stdout)
+    case("range fixture flags the route set from the point figure",
+         "approval_route 'AE'" in r.stdout and "'ELT' band" in r.stdout)
+
+    def with_range(g, rng, verdict="below", route="ELT"):
+        g["margin_range_pct"] = rng
+        g["margin_vs_floor"] = verdict
+        g["approval_route"] = route
+
+    case("range low below floor with verdict and route from the low end passes",
+         mutated(lambda g: with_range(g, {"low": 15, "expected": 52.84})) == [])
+    case("range with low, expected and high passes",
+         mutated(lambda g: with_range(g, {"low": 43, "expected": 52.84, "high": 60},
+                                      route="Deal Desk + CEO")) == [])
+    case("range low in a middle band routes by that band",
+         any("approval_route" in x for x in mutated(
+             lambda g: with_range(g, {"low": 43, "expected": 52.84}, route="ELT"))))
+    case("range low above the floor keeps the point-figure result",
+         mutated(lambda g: g.update(margin_range_pct={"low": 50, "expected": 52.84, "high": 55})) == [])
+    case("range low below floor with verdict 'above' fires",
+         any("margin_vs_floor" in x for x in mutated(
+             lambda g: with_range(g, {"low": 15, "expected": 52.84}, verdict="above"))))
+    case("range low below floor with route from the point figure fires",
+         any("approval_route" in x for x in mutated(
+             lambda g: with_range(g, {"low": 15, "expected": 52.84}, route="AE"))))
+    case("range without a low end fires",
+         any("margin_range_pct" in x for x in mutated(
+             lambda g: g.update(margin_range_pct={"expected": 52.84}))))
+    case("range with a non-numeric low fires",
+         any("margin_range_pct" in x for x in mutated(
+             lambda g: g.update(margin_range_pct={"low": "n/a"}))))
+    case("range out of order fires",
+         any("ordered" in x for x in mutated(
+             lambda g: with_range(g, {"low": 60, "expected": 52.84}, verdict="above", route="AE"))))
+    case("range expected that disagrees with the stated margin fires",
+         any("expected" in x for x in mutated(
+             lambda g: with_range(g, {"low": 15, "expected": 40}))))
+    case("range low above the recomputed margin fires",
+         any("above the recomputed margin" in x for x in mutated(
+             lambda g: g.update(margin_range_pct={"low": 58}))))
 
     bad = [n for n, ok, _ in results if not ok]
     print("\n%d/%d cases passed." % (len(results) - len(bad), len(results)))

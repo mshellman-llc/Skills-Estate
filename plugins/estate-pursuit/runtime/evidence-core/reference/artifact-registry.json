@@ -101,6 +101,8 @@
       "terminalIfInsufficient": true,
       "fullOutput": "Deal Desk approval readout",
       "insufficientOutput": "Not ready for Deal Desk approval memo",
+      "policySourceType": "commercial_policy",
+      "policySourceNote": "The margin floor, approval ladder and rate card come from a named source recorded with sourceType commercial_policy (authority cap 85) and a verification date. Do not retype them as approved_design or other.",
       "hardFails": ["arithmetic mismatch", "real margin hidden behind point estimate", "delivery cosign missing", "risk smoothed over", "more than one approval ask"],
       "referenceComponents": ["Commercial approval Deal Desk pattern"]
     },

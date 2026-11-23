@@ -12,6 +12,7 @@ SOURCE_AUTHORITY_CAPS = {
     "current_sow": 95,
     "current_quote": 90,
     "approved_design": 85,
+    "commercial_policy": 85,
     "crm_record": 80,
     "client_document": 75,
     "meeting_transcript": 70,
