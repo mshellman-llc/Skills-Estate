@@ -11,6 +11,7 @@
     "contact": "Example Contract Owner"
   },
   "upfrontPercent": 25,
+  "startWindowDays": 30,
   "clauses": {
     "LOE_ACCEPTANCE": "Synthetic fixture loe acceptance. ",
     "CLIENT_RESOURCES_ASSESS": [

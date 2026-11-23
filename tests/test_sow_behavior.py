@@ -16,6 +16,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from portable import assemble
 from estate import runtime_dependencies
+from test_capabilities import configured
 NODE=os.environ.get('ESTATE_NODE') or shutil.which('node')
 
 class SowBehaviorTests(unittest.TestCase):
@@ -180,5 +181,197 @@ class SowBehaviorTests(unittest.TestCase):
         result,out,_=self.build();self.assertEqual(0,result.returncode,result.stderr)
         before=out.read_bytes();result,_,_=self.build()
         self.assertNotEqual(0,result.returncode);self.assertEqual(before,out.read_bytes())
+
+    # --- Proof defects 162 to 166 (synthetic names only) ---
+
+    def document_text(self,path):
+        import re
+        with zipfile.ZipFile(path) as archive:xml=archive.read('word/document.xml').decode()
+        return re.sub(r'\s+',' ',re.sub(r'<[^>]+>','',xml.replace('</w:p>',' ')))
+
+    def use_start_window_clause(self,days=45):
+        contract=json.loads(self.contract.read_text())
+        contract['clauses']['ELAPSED_PERIOD']='If the client does not start within {N} days of signature, dates are re-confirmed.'
+        contract['startWindowDays']=days
+        self.contract.write_text(json.dumps(contract))
+
+    def failures(self,verification):
+        import re
+        return json.loads(re.search(r'\{.*\}',verification.stdout,re.S).group(0))
+
+    def test_start_window_and_signing_date_come_from_their_own_fields(self):
+        self.use_start_window_clause(45)
+        model=copy.deepcopy(self.model)
+        model['projectContext']['signingDate']='2026-10-20'
+        self.assertEqual(4,model['projectSummary']['durationWeeks'])
+        result,out,source=self.build(model=model)
+        self.assertEqual(0,result.returncode,result.stderr)
+        text=self.document_text(out)
+        self.assertIn('within 45 days of signature',text)   # was "within 4 days" before the fix
+        self.assertNotIn('within 4 days',text)
+        self.assertIn('Synthetic fixture signature preamble. 2026-10-20',text)   # not returnBy, 2026-11-01
+        verification=self.verify(out,source)
+        self.assertEqual(0,verification.returncode,verification.stdout)
+        # A document that fills the start window from the duration no longer passes.
+        wrong=self.directory/'wrong-window.docx'
+        with zipfile.ZipFile(out) as archive,zipfile.ZipFile(wrong,'w') as target:
+            for member in archive.infolist():
+                data=archive.read(member.filename)
+                if member.filename=='word/document.xml':data=data.replace(b'>45<',b'>4<').replace(b'2026-10-20',b'2026-11-01')
+                target.writestr(member,data)
+        Path(str(wrong)+'.build.json').write_bytes(Path(str(out)+'.build.json').read_bytes())
+        verification=self.verify(wrong,source)
+        self.assertNotEqual(0,verification.returncode)
+        self.assertIn('ELAPSED_PERIOD',verification.stdout);self.assertIn('SIGNATURE_PREAMBLE',verification.stdout)
+
+    def test_absent_start_window_and_signing_date_are_visible_flags(self):
+        self.use_start_window_clause(45)
+        contract=json.loads(self.contract.read_text());del contract['startWindowDays'];self.contract.write_text(json.dumps(contract))
+        model=copy.deepcopy(self.model);del model['projectContext']['signingDate']
+        result,out,_=self.build(model=model)
+        self.assertNotEqual(0,result.returncode);self.assertFalse(out.exists())
+        self.assertIn('startWindowDays',result.stderr);self.assertIn('signing date',result.stderr)
+        result,out,source=self.build(model=model,name='draft',extra=('--draft',))
+        self.assertEqual(0,result.returncode,result.stderr)
+        text=self.document_text(out)
+        self.assertIn('[FLAG: startWindowDays',text);self.assertIn('[FLAG: signing date',text)
+        report=self.failures(self.verify(out,source))
+        self.assertIn('Unresolved input: {N} ',' '.join(f[:len('Unresolved input: {N} ')] for f in report['failures']))
+        self.assertTrue(any(f.startswith('Unresolved input: {DATE}') for f in report['failures']))
+
+    def test_invalid_start_window_is_rejected(self):
+        self.use_start_window_clause(0)
+        result,out,_=self.build()
+        self.assertNotEqual(0,result.returncode);self.assertFalse(out.exists())
+        self.assertIn('startWindowDays',result.stderr)
+
+    def test_null_fields_are_unresolved_findings_and_checks_continue(self):
+        result,out,source=self.build();self.assertEqual(0,result.returncode,result.stderr)
+        baseline=self.failures(self.verify(out,source))
+        self.assertTrue(baseline['passed'],baseline)
+        def variant(name,change):
+            model=copy.deepcopy(self.model);change(model)
+            path=self.directory/(name+'.quote.json');path.write_text(json.dumps(model));return path
+        # returnBy is the offer expiry; no token reads it, so a null there changes nothing the verifier checks.
+        quote=variant('null-return',lambda m:m['projectContext'].__setitem__('returnBy',None))
+        report=self.failures(self.verify(out,quote))
+        self.assertFalse(any('None' in f or 'replace()' in f for f in report['failures']),report)
+        for name,change,token in (
+                ('null-date',lambda m:m['projectContext'].__setitem__('signingDate',None),'{DATE}'),
+                ('null-total',lambda m:m['projectSummary'].__setitem__('totalValue',None),'{UPFRONT}'),
+                ('null-legal',lambda m:m['projectContext'].__setitem__('clientLegalName',None),'{CLIENT}')):
+            with self.subTest(name=name):
+                verification=self.verify(out,variant(name,change))
+                self.assertEqual(1,verification.returncode)
+                report=self.failures(verification)
+                self.assertGreater(report['checks'],50)   # earlier checks were all dropped
+                self.assertTrue(any(f.startswith('Unresolved input: '+token) for f in report['failures']),report['failures'])
+                self.assertFalse(any('NoneType' in f or 'replace()' in f for f in report['failures']),report['failures'])
+        # A null total reports every token that needs it, each as its own finding.
+        report=self.failures(self.verify(out,variant('null-total-2',lambda m:m['projectSummary'].__setitem__('totalValue',None))))
+        tokens=[f.split(' ')[2] for f in report['failures'] if f.startswith('Unresolved input: {')]
+        self.assertGreaterEqual(len(set(tokens)),2,report['failures'])
+
+    def test_document_route_checks_a_draft_without_the_build_record(self):
+        model=copy.deepcopy(self.model);del model['projectContext']['signingDate']
+        result,out,source=self.build(model=model,name='draft',extra=('--draft',))
+        self.assertEqual(0,result.returncode,result.stderr)
+        Path(str(out)+'.build.json').unlink()
+        default=self.failures(self.verify(out,source))
+        self.assertIn('Missing build record',default['failures'])
+        routed=self.run_command([sys.executable,self.package/'scripts/verify_contract.py',out,'--contract',self.contract,
+            '--quote',source,'--variant','waterfall','--document-route'])
+        report=self.failures(routed)
+        self.assertEqual('document-route',report['mode'])
+        self.assertFalse(any('build record' in f.lower() or 'Build hash' in f for f in report['failures']),report['failures'])
+        self.assertTrue(any(f.startswith('Unresolved input: {DATE}') for f in report['failures']))
+        self.assertGreater(report['checks'],50)
+        # A complete document passes in this mode with no build record at all.
+        result,clean,quote=self.build(name='clean');self.assertEqual(0,result.returncode,result.stderr)
+        Path(str(clean)+'.build.json').unlink()
+        routed=self.run_command([sys.executable,self.package/'scripts/verify_contract.py',clean,'--contract',self.contract,
+            '--quote',quote,'--variant','waterfall','--document-route'])
+        self.assertEqual(0,routed.returncode,routed.stdout)
+
+    def test_client_legal_name_is_the_party_and_account_name_stays_for_display(self):
+        model=copy.deepcopy(self.model)
+        model['projectContext']['accountName']='Northwind Outfitters'
+        model['projectContext']['clientLegalName']='Northwind Outfitters Holdings LLC'
+        result,out,source=self.build(model=model)
+        self.assertEqual(0,result.returncode,result.stderr)
+        text=self.document_text(out)
+        self.assertIn('Synthetic fixture preamble. Example Delivery LLC Northwind Outfitters Holdings LLC',text)
+        self.assertIn('Prepared for Northwind Outfitters',text)
+        self.assertGreaterEqual(text.count('Northwind Outfitters Holdings LLC'),4)   # parties, notices, accounts payable, signature block
+        self.assertEqual(0,self.verify(out,source).returncode)
+        log=next((out.parent/'_source').glob('*Resolution Log.md')).read_text()
+        self.assertIn('| Parties | clientLegalName | Northwind Outfitters Holdings LLC | projectContext.clientLegalName |  |',log)
+        self.assertIn('| Section 9.4 | clientLegalName | Northwind Outfitters Holdings LLC | projectContext.clientLegalName |  |',log)
+
+    def test_unknown_legal_entity_is_flagged_not_copied_from_the_trading_name(self):
+        model=copy.deepcopy(self.model)
+        model['projectContext']['accountName']='Northwind Outfitters';del model['projectContext']['clientLegalName']
+        result,out,_=self.build(model=model);self.assertNotEqual(0,result.returncode);self.assertFalse(out.exists())
+        self.assertIn('clientLegalName',result.stderr)
+        result,out,source=self.build(model=model,name='draft',extra=('--draft',))
+        self.assertEqual(0,result.returncode,result.stderr)
+        text=self.document_text(out)
+        self.assertIn('[FLAG: clientLegalName missing]',text)
+        self.assertNotIn('Example Delivery LLC Northwind Outfitters',text)   # the old preamble named the trading name
+        self.assertIn('Prepared for Northwind Outfitters',text)
+        log=next((out.parent/'_source').glob('*Resolution Log.md')).read_text()
+        self.assertIn('| Parties | clientLegalName | FLAGGED, not on quote | projectContext.clientLegalName | YES |',log)
+        self.assertNotEqual(0,self.verify(out,source).returncode)
+
+    def parity(self,*args):
+        return self.run_command([sys.executable,self.package/'scripts/verify_render_parity.py',*args])
+
+    def test_render_parity_names_a_table_row_missing_from_the_pages(self):
+        import re
+        result,out,_=self.build();self.assertEqual(0,result.returncode,result.stderr)
+        with zipfile.ZipFile(out) as archive:xml=archive.read('word/document.xml').decode()
+        rows=re.findall(r'<w:tr[ >].*?</w:tr>',xml,re.S)
+        row=next(r for r in rows if 'Configure the queue and execute the agreed test cases.' in r)
+        pages=self.directory/'pages.txt'
+        text=re.sub(r'<[^>]+>','',re.sub(r'<w:br[^>]*/>','\n',xml).replace('</w:p>','\n').replace('</w:tc>','\n'))
+        pages.write_text(__import__('html').unescape(text))
+        self.assertEqual(0,self.parity(out,'--pdf-text',pages).returncode)
+        # Wrapped lines and extra header and footer text do not matter.
+        wrapped=self.directory/'wrapped.txt'
+        wrapped.write_text(re.sub(r' +','\n',pages.read_text().replace('Configure the queue and','Configure the queue\nCONFIDENTIAL Page 3 of 9\nand')))
+        verdict=self.parity(out,'--pdf-text',wrapped)
+        self.assertEqual(0,verdict.returncode,verdict.stdout)
+        # Delete one row's text from the extracted pages: the check names it.
+        missing=pages.read_text().replace('Configure the queue and execute the agreed test cases.','')
+        dropped=self.directory/'dropped.txt';dropped.write_text(missing)
+        verdict=self.parity(out,'--pdf-text',dropped)
+        self.assertEqual(1,verdict.returncode)
+        self.assertIn('Configure the queue and execute the agreed test cases.',verdict.stdout)
+        self.assertIn('"kind": "cell"',verdict.stdout)
+
+    @configured('LibreOffice and pdftotext on PATH', lambda: bool(shutil.which('soffice') and shutil.which('pdftotext')))
+    def test_render_parity_against_a_real_render_and_a_dropped_row(self):
+        import re
+        result,out,_=self.build();self.assertEqual(0,result.returncode,result.stderr)
+        verdict=self.parity(out,'--output',self.directory/'parity.json')
+        self.assertEqual(0,verdict.returncode,verdict.stdout+verdict.stderr)
+        self.assertFalse(list(Path(tempfile.gettempdir()).glob('sow-parity-*')),'the temporary render folder must be removed')
+        # Render a copy whose Word file lost one table row, then compare it with the intact file.
+        altered=self.directory/'altered.docx'
+        with zipfile.ZipFile(out) as archive,zipfile.ZipFile(altered,'w',zipfile.ZIP_DEFLATED) as target:
+            for member in archive.infolist():
+                data=archive.read(member.filename)
+                if member.filename=='word/document.xml':
+                    xml=data.decode()
+                    row=next(r for r in re.findall(r'<w:tr[ >].*?</w:tr>',xml,re.S) if 'Configure the queue and execute the agreed test cases.' in r)
+                    data=xml.replace(row,'',1).encode()
+                target.writestr(member,data)
+        home=self.directory/'lo-home';home.mkdir()
+        render=subprocess.run([shutil.which('soffice'),'--headless','--convert-to','pdf','--outdir',str(self.directory),str(altered)],
+            env=dict(self.env,HOME=str(home)),capture_output=True,text=True,timeout=300)
+        self.assertEqual(0,render.returncode,render.stderr)
+        verdict=self.parity(out,'--pdf',self.directory/'altered.pdf')
+        self.assertEqual(1,verdict.returncode)
+        self.assertIn('Configure the queue and execute the agreed test cases.',verdict.stdout)
 
 if __name__=='__main__':unittest.main()

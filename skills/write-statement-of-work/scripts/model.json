@@ -5,6 +5,7 @@
   },
   "projectContext": {
     "accountName": "Example Manufacturing LLC",
+    "clientLegalName": "Example Manufacturing LLC",
     "opportunityName": "Service request pilot",
     "quoteName": "Q-EXAMPLE-001",
     "businessNeed": "The service desk needs one request queue with explicit ownership and a tested response workflow.",
@@ -17,7 +18,8 @@
     "providerLead": "Example Delivery Lead, Engagement Manager",
     "accountsPayable": "Accounts Payable, ap@example.test, 200 Example Avenue",
     "testScriptOwnership": "jointly authored by the client and provider",
-    "returnBy": "2026-11-01"
+    "returnBy": "2026-11-01",
+    "signingDate": "2026-10-28"
   },
   "projectSummary": {
     "totalValue": 10000,

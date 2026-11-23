@@ -35,6 +35,9 @@ function readInputs(argv) {
   }
   if(!Number.isFinite(contract.upfrontPercent)||contract.upfrontPercent<0||contract.upfrontPercent>100)
     throw new Error('Contract profile upfrontPercent must be between 0 and 100');
+  const window=contract.startWindowDays;
+  if(window!==undefined&&window!==null&&(!Number.isInteger(window)||window<=0))
+    throw new Error('Contract profile startWindowDays must be a positive whole number of days');
   if(!['tm','fixed'].includes(model.pricingModel)) throw new Error('Quote must explicitly state pricingModel: tm or fixed');
   if(['assess','assessment','loe'].includes(variant) && model.pricingModel!=='fixed')
     throw new Error('Assessment and engagement-letter variants require a fixed-fee quote');
@@ -75,6 +78,8 @@ function reconcile(model, variant) {
   if(!Number.isFinite(start)||!Number.isFinite(end)||end<start) errors.push('Engagement dates must be valid ISO dates in chronological order');
   const expires=model.projectContext.returnBy;
   if(expires && (!Number.isFinite(date(expires))||date(expires)>start)) errors.push('Signature return-by date must be valid and no later than the engagement start');
+  const signing=model.projectContext.signingDate;
+  if(signing!==undefined&&signing!==null&&signing!==''&&!Number.isFinite(date(signing))) errors.push('Signing date must be a valid ISO date');
   let hours=0,revenue=0,phaseHours=0;
   const phaseNames=new Set(band.phases.map(p=>p.name));
   if(!band.phases.length || phaseNames.size!==band.phases.length) errors.push('Quote must contain uniquely named delivery phases');

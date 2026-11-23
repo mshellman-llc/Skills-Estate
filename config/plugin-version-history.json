@@ -236,6 +236,14 @@
     "0.4.55": {
       "content_sha256": "00ce4aab46588fc4fafc64fa37c01d59dbb0b466132ae379b06b0929ecc52062",
       "note": "Fix proof defects 159 to 161: tie-out ranges and labels, margin range in the Deal Desk gate, commercial policy source type"
+    },
+    "0.4.56": {
+      "content_sha256": "225fc8bdbdf54bd63323a5dd3b20c1c07d691d9ba23ec0fbcc3a375004ca0eec",
+      "note": "Fix proof defects 162 to 166: statement of work tokens, verifier on drafts, client legal name, Word before-copies, render parity"
+    },
+    "0.4.57": {
+      "content_sha256": "47aa8fbcadf086fdd073e4cea0bb10a2f766390b940575562632a45ee264d46e",
+      "note": "Client legal name also names the accounts-payable recipient (section 9.4) in the statement of work"
     }
   },
   "source_conflicts": [

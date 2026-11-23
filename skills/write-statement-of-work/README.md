@@ -7,3 +7,7 @@ The optional Word generator supports a confirmed quote JSON and selected contrac
 Start with [SKILL.md](SKILL.md). The [synthetic quote](fixtures/quote.example.json) and [example contract profile](fixtures/contract.example.json) run without a proprietary pricing application. Actual provider identity, payment instructions, and contract approvals belong in the private project profile. Branding comes from the shared brand runtime.
 
 The builder writes the DOCX, input and artifact hashes, and a resolution log. Run the selected-contract verifier, then render and inspect the pages before delivery. Packaging and content checks alone do not prove usable layout.
+
+Each contract token has its own source field. The contracting party is `projectContext.clientLegalName`. The start window is the profile's `startWindowDays`. The signing date is `projectContext.signingDate`. See [input fields](references/input-fields.md).
+
+The release gate is in [references/release-gate.md](references/release-gate.md). It covers the contract check, with a mode for document-tool builds and drafts, and `scripts/verify_render_parity.py`. That script fails when the rendered PDF lacks any Word sentence or table cell.
