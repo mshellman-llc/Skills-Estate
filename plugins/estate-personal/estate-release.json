@@ -15,7 +15,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "b98b6b10bde38ac216849b88f6bc6d3ae456bafc8a4a4547aa630edd5f83b25f",
+      "required_sha256": "a504094dbf07860abacf997a9eb681eff779e72fba9a892f2e0e1340642b724d",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -150,7 +150,7 @@
       "subject": "build-roadmap"
     },
     {
-      "required_sha256": "33fd01ac0827438b9b9ea2a5dce5a93e10fc9831a005d40f299243bc7e80e888",
+      "required_sha256": "72e75879da574d59866f620d70462a6e567ef2bab78d0407b06181dfdc5ca1d4",
       "status": "review required",
       "subject": "capture-knowledge"
     },
@@ -255,7 +255,7 @@
       "subject": "import-tracker-export"
     },
     {
-      "required_sha256": "f32524bc231c9fd52397e89821bb6e0b1454287e2ac26490363dec1f6160e666",
+      "required_sha256": "31747fb758f0bb81516b4d9e7151235afdfef873d7db6a318e8df8a42035530a",
       "status": "review required",
       "subject": "ingest-transcript"
     },
@@ -265,7 +265,7 @@
       "subject": "lay-out-sticker-sheets"
     },
     {
-      "required_sha256": "d0d6e192f7f16d35408aec116eec834fe76d3263ddd3b7373951c3edb0184b27",
+      "required_sha256": "4341f84ab4c7ddb5b2b9aecd6ce50587795c2f17384a005b00584bf2a25e85b2",
       "status": "review required",
       "subject": "load-project-context"
     },
@@ -290,7 +290,7 @@
       "subject": "manage-color-system"
     },
     {
-      "required_sha256": "9296b5df2781e11fbb3bf4a7933dbec119c5b23d281074eb10159a5f80de9ab7",
+      "required_sha256": "a9ae2eac72b1338e2928dff9c09c2c36ea2a8f78d7e70d5869408d853eae6736",
       "status": "review required",
       "subject": "manage-consulting-knowledge"
     },
@@ -395,7 +395,7 @@
       "subject": "publish-content"
     },
     {
-      "required_sha256": "28b447d3810f01e6341fbaad602b93bad6a912e913864ac494c23a31f2d0b0d4",
+      "required_sha256": "1fba25eb6648be3fcb2a448a8a13af41677c0a69c0916c61fa70fb5e2735834f",
       "status": "review required",
       "subject": "reconcile-knowledge"
     },
@@ -530,6 +530,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "4180a04a2e24558e48da0872753ceaddecd604cd3b265c4152bc57e2ed44af5e",
+  "source_sha256": "c309e8c2ece119e437797ffe1b0df64044d7a404db7e2d70535e5df1e7d4ef04",
   "status": "owner-published"
 }

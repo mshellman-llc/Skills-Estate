@@ -32,6 +32,8 @@ more than one record.
 6. Send proposed claims through `evidence-core` before promoting them into a
    lifecycle record.
 
+After supported claims are accepted, reconcile their affected subject Markdown through `manage-consulting-knowledge`. Retain any returned pending refresh until saved files and retrieval are confirmed. Transcript preservation alone does not finish a subject-context refresh.
+
 An AI summary is navigation, not evidence. Preserve the raw transcript and cite
 it when a claim matters.
 

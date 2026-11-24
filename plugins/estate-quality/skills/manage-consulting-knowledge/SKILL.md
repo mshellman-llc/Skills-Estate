@@ -1,6 +1,6 @@
 ---
 name: manage-consulting-knowledge
-description: 'Resolve, retrieve, and safely update durable consulting knowledge across a client, its opportunities, and its engagements, and stand up or check the pursuit workspace inside the hub. Use when work needs bounded account, pursuit, delivery, evidence, transcript, outcome, or deliverable context from local files, Google Drive, or supplied files, or when a pursuit needs its workspace created, audited, repaired, or gated against the workspace standards.'
+description: 'Resolve, retrieve, and safely update durable consulting knowledge across a client, its opportunities, and its engagements, and stand up or check the pursuit workspace inside the hub. Use when work needs bounded account, pursuit, delivery, evidence, transcript, outcome, or deliverable context from local files, Google Drive, or supplied files, or when an existing client Markdown set needs new findings reconciled, or a pursuit needs its workspace created, audited, repaired, or gated against the workspace standards.'
 ---
 
 
@@ -21,7 +21,10 @@ remain a read or patch surface unless the host confirms a write.
 
 1. Confirm the client. When the task concerns a pursuit or delivery, confirm one
    opportunity or engagement. Stop if identity remains ambiguous.
-2. Read the manifest and the applicable front door: `client.front_door`,
+2. Read the configured Hub context and project guidance. An existing service
+   registry can supply identity, primary store and maintained-document routes;
+   do not initialize a second hub because its layout differs from hub.yaml.
+   For a manifest-backed store, read the manifest and applicable front door: `client.front_door`,
    `opportunity.front_door`, or `engagement.front_door`.
 3. Select the task route or up to four named logical records. Search transcript
    and evidence indexes before opening source bodies.
@@ -33,6 +36,8 @@ remain a read or patch surface unless the host confirms a write.
    to bypass a missing update operation.
 6. Read back or hash the result before reporting persistence. Mirror changes run
    only after the primary write succeeds. Divergent copies stop for review.
+
+When new work changes subject knowledge, follow [maintained context](references/maintained-context.md) before closing the session. Load any pending refreshes returned by the Hub. Update the registered upload Markdown in place and confirm its saved content and retrieval. Capturing a finding without reconciling its affected summaries leaves that refresh pending.
 
 The directory is a catalog, not a template to fill with empty files. Create a
 record when it has durable content. Store a fact once and point other records to
