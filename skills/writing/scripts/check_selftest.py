@@ -549,7 +549,7 @@ class Review(Base):
         audit, _ = self.audit(verdicts, reviewer='one agent')
         code, result = self.full(verdicts, document_map, '--audit', audit)
         self.assertEqual(code, 0)
-        self.assertIn('not independent', self.detail(result, 'spot audit'))
+        self.assertIn('self-check by the same independent reviewer', self.detail(result, 'spot audit'))
         self.assertFalse(self.receipt(result)['spot_audit']['independent'])
 
     def test_audit_in_a_failed_round_says_what_it_covered(self):

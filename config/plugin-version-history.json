@@ -264,6 +264,10 @@
     "0.4.67": {
       "content_sha256": "10650e7d7bf7386f150c84c693e12c1dd97c7af7087bd71ea091e19f25638fa7",
       "note": "Use one writing reviewer for outgoing copy and stop after two rounds; keep internal work in the main session."
+    },
+    "0.4.68": {
+      "content_sha256": "8bb83a24406d1378184747a4e5bd3d1520d3ad0ea5409ff4d2582cea98964d10",
+      "note": "Keep the single-reviewer audit assertion aligned with the bounded review output."
     }
   },
   "source_conflicts": [
