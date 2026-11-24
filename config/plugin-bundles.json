@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "version": "0.4.69",
+  "version": "0.4.70",
   "marketplace": "skills-estate-private",
   "bundles": {
     "estate-pursuit": {
@@ -176,7 +176,7 @@
       "controls": []
     },
     "estate-personal": {
-      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune\u2019s Weave planning.",
+      "description": "Personal and creative: sticker design, Cricut print sheets and Fortune’s Weave planning.",
       "entries": [
         "guide-fortunes-weave",
         "design-sticker",

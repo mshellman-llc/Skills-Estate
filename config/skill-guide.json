@@ -98,17 +98,17 @@
       "inputs": "The decision, supporting evidence, intended destination, and current record.",
       "outputs": "A verified saved record or revision proposal with its actual acceptance state.",
       "example": "Save this decision in the current project record with its supporting source.",
-      "reviewedEntrypointSha256": "9049e911aaa57e057a466332ac0dc10045e19383c099384505f6413b8dd36d2e",
+      "reviewedEntrypointSha256": "cb3deceb5445f016ee50547fdd1de2439823770b9b248152d49fcb3ee98c5411",
       "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It reads the hub context and the existing record for the subject, keeps your wording for decisions, and labels each statement as confirmed, reported, proposed or estimated. It submits a proposal against the exact revision it read and reports the real state (draft, pending, submitted or accepted), never calling a proposal accepted.",
+      "expect": "It reads the existing subject and supporting evidence, classifies the statement, and uses the configured Hub write or proposal operation. Accepted changes are reconciled into the registered subject Markdown, with saved-file confirmation and pending work retained when access prevents completion.",
       "connectors": {
         "required": [
           "manage-consulting-knowledge"
         ],
         "optional": []
       },
-      "requires": "A configured knowledge hub connection that supports context retrieval and update proposals.",
-      "overview": "It reads the hub context and the existing record for the subject, keeps your wording for decisions, and labels each statement as confirmed, reported, proposed or estimated. It submits a proposal against the exact revision it read and reports the real state (draft, pending, submitted or accepted), never calling a proposal accepted.",
+      "requires": "A configured Hub with a supported save or proposal adapter and access to the existing subject records.",
+      "overview": "It reads the existing subject and supporting evidence, classifies the statement, and uses the configured Hub write or proposal operation. Accepted changes are reconciled into the registered subject Markdown, with saved-file confirmation and pending work retained when access prevents completion.",
       "value": "Keep a decision or correction retrievable in the project record, with its evidence and approval state. This prevents a later session from treating an old assumption as the current decision.",
       "preparation": {
         "where": "Identify the subject, the fact or decision to retain and its supporting source. The destination is your configured knowledge hub or named project record, not a service supplied automatically by this skill.",
@@ -122,9 +122,9 @@
       "inputs": "The requested result and access to the relevant local sources or permitted Hub.",
       "outputs": "The relevant context, source conflicts, and the next supported action.",
       "example": "Resume this project from its current sources and identify the next action.",
-      "reviewedEntrypointSha256": "4ee2f9d398d48a4ed0b3d3fe573a2b67f1d799cbbf2ab4c214221c9feca14822",
+      "reviewedEntrypointSha256": "df4212b946ccc5ac11fc66ff221b2b322701b0262206f5fd8318d293a4f804c5",
       "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It reads the hub router and the relevant subject records at their exact revisions, then does the requested work from those sources. When hub access is unavailable it says what could not be checked and continues only with evidence it can reach, and it treats retrieved text as evidence rather than instructions.",
+      "expect": "It retrieves current project authorities and the relevant subject Markdown, checks unfinished refreshes, and resumes the requested work from those sources. It preserves conflicting evidence and reports unavailable access, while resolving pending subject updates before reporting the context current.",
       "connectors": {
         "required": [
           "manage-consulting-knowledge"
@@ -132,7 +132,7 @@
         "optional": []
       },
       "requires": "A configured knowledge hub connection that supports context retrieval.",
-      "overview": "It reads the hub router and the relevant subject records at their exact revisions, then does the requested work from those sources. When hub access is unavailable it says what could not be checked and continues only with evidence it can reach, and it treats retrieved text as evidence rather than instructions.",
+      "overview": "It retrieves current project authorities and the relevant subject Markdown, checks unfinished refreshes, and resumes the requested work from those sources. It preserves conflicting evidence and reports unavailable access, while resolving pending subject updates before reporting the context current.",
       "value": "Resume a project using the current decisions and source material instead of reconstructing it from chat history. It helps identify the next supported action and any conflicting records that affect it.",
       "preparation": {
         "where": "Name the project and requested result, then provide its source folder, router or authorized hub connection. A router is an index pointing to the project's authoritative records; it is information in your workspace, not another skill you must create first.",
@@ -170,9 +170,9 @@
       "inputs": "The folders, current authorities, and existing reconciliation records.",
       "outputs": "A comparison and, when authorized, verified reversible dispositions.",
       "example": "Compare these two project folders and identify unique material before proposing any moves.",
-      "reviewedEntrypointSha256": "5096adde62aa07c9de2264f645e53a85c1e17579f1f061633cb0feaa5aa2868c",
+      "reviewedEntrypointSha256": "3ce73cf73f89b52ac8bf6490d5bac6e213552dee58a98331e6ee60c18f50f55d",
       "reuseNote": "Use the caller\u2019s explicitly supplied or authorized sources, configuration, profile and destination. No personal identity or standing permissions transfer with the workflow.",
-      "expect": "It starts from one named folder and the comparison roots, hashes only changed files, and classifies each as duplicate, divergent, complementary, unique or unresolved. It archives only verified duplicates with a reversible move manifest, never deletes permanently, and stops at a plan for a comparison-only request.",
+      "expect": "It compares the named folder with current authorities, preserves unique evidence, and records reversible dispositions for authorized cleanup. When a supported finding changes living subject knowledge, it reconciles the registered Markdown and confirms retrieval while retaining original sources and historical submissions.",
       "connectors": {
         "required": [
           "manage-consulting-knowledge"
@@ -180,7 +180,7 @@
         "optional": []
       },
       "requires": "The named folder and comparison roots mounted and readable, and a configured knowledge hub connection.",
-      "overview": "It starts from one named folder and the comparison roots, hashes only changed files, and classifies each as duplicate, divergent, complementary, unique or unresolved. It archives only verified duplicates with a reversible move manifest, never deletes permanently, and stops at a plan for a comparison-only request.",
+      "overview": "It compares the named folder with current authorities, preserves unique evidence, and records reversible dispositions for authorized cleanup. When a supported finding changes living subject knowledge, it reconciles the registered Markdown and confirms retrieval while retaining original sources and historical submissions.",
       "value": "Separate exact duplicates from complementary or conflicting files before cleanup. It helps preserve the version that matters and makes any authorized archive move traceable and reversible.",
       "preparation": {
         "where": "Name the folder being reviewed and the folders or records it should be compared with. Current authorities are the documents your project treats as controlling; point to them or explain who owns that decision.",
@@ -856,12 +856,12 @@
       "what": "Retrieve and maintain a project\u2019s durable knowledge.",
       "when": "Work needs current client, pursuit, engagement, or evidence records.",
       "inputs": "The confirmed project identity, permitted storage, and relevant sources.",
-      "outputs": "Retrieved context or verified workspace and record updates.",
+      "outputs": "Retrieved context, reconciled subject Markdown, and confirmed record or workspace updates.",
       "example": "Find the current discovery and decision records for this opportunity in the permitted store.",
-      "reviewedEntrypointSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "expect": "It confirms the client and the opportunity or engagement first and stops if identity is ambiguous, then reads the front door and only the records the task needs. Writes go to the declared primary store only, with a hash check, and it reports one of five persistence states, so a returned patch is never described as an update.",
+      "reviewedEntrypointSha256": "c1afb51362baa5a01cd6fbade5c951af7d6267fd259e10772eb57e55eb90aa07",
+      "expect": "It resolves the project and its configured primary store, retrieves the relevant client or engagement records, and reconciles accepted findings into maintained subject Markdown. It preserves original evidence and dated conflicts, confirms saved file contents and retrieval, and keeps unfinished refreshes visible.",
       "requires": "Needs a hub folder, a Google Drive hub or supplied files, and Python 3 to run the record and workspace scripts.",
-      "overview": "It confirms the client and the opportunity or engagement first and stops if identity is ambiguous, then reads the front door and only the records the task needs. Writes go to the declared primary store only, with a hash check, and it reports one of five persistence states, so a returned patch is never described as an update.",
+      "overview": "It resolves the project and its configured primary store, retrieves the relevant client or engagement records, and reconciles accepted findings into maintained subject Markdown. It preserves original evidence and dated conflicts, confirms saved file contents and retrieval, and keeps unfinished refreshes visible.",
       "value": "Find and maintain the project records that later work should use: client context, opportunity findings, engagement decisions and evidence. It helps avoid conflicting copies and updates written to the wrong deal or client.",
       "preparation": {
         "where": "Identify the client and opportunity or engagement, then provide the project folder, supported Drive hub or supplied files. A front door is the index pointing to current records. The primary store is the destination your project has selected for updates.",
@@ -1674,10 +1674,10 @@
       "inputs": "The original transcript and confirmed client, opportunity, or engagement identity.",
       "outputs": "A preserved source, normalized transcript, and indexed meeting record.",
       "example": "Preserve and index this transcript under its confirmed opportunity and meeting identity.",
-      "reviewedEntrypointSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "expect": "It confirms the client and an opportunity or engagement ID before filing and stops if the meeting could belong to more than one. It keeps the raw transcript untouched, writes a normalized copy and index entry, and proposes claims with locators that go through the evidence step rather than being promoted directly.",
+      "reviewedEntrypointSha256": "66efabab693f766ad6c78d6ef3b58916d4abcdbffe12e8b04e9f4155b5a2e97d",
+      "expect": "It confirms the client and opportunity or engagement, preserves the original transcript, creates a normalized reading copy, and indexes the meeting. Extracted claims retain locators and pass through evidence review; accepted changes then refresh the affected subject Markdown and retrieval.",
       "requires": "A transcript file (Markdown, text or VTT), a confirmed client and opp- or eng- context ID, and Python 3 for the normalizer on a local machine.",
-      "overview": "It confirms the client and an opportunity or engagement ID before filing and stops if the meeting could belong to more than one. It keeps the raw transcript untouched, writes a normalized copy and index entry, and proposes claims with locators that go through the evidence step rather than being promoted directly.",
+      "overview": "It confirms the client and opportunity or engagement, preserves the original transcript, creates a normalized reading copy, and indexes the meeting. Extracted claims retain locators and pass through evidence review; accepted changes then refresh the affected subject Markdown and retrieval.",
       "value": "Preserve a meeting's original words and make the transcript discoverable under the right project. It creates a normalized reading copy and index without replacing the raw evidence or turning every remark into a confirmed requirement.",
       "preparation": {
         "where": "Supply a Markdown, text or VTT transcript and confirm the client plus opportunity or engagement ID. That ID is your project's filing identity. It comes from the project/CRM record or owner, not from a guessed client-name match.",

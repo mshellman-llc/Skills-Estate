@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "artifact": "skills/manage-consulting-knowledge/SKILL.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "text": "```bash\npython3 scripts/hub_records.py --hub \"<hub>\" routes\npython3 scripts/hub_records.py --hub \"<hub>\" --opportunity <opp-id> context proposal\npython3 scripts/hub_records.py --hub \"<hub>\" --opportunity <opp-id> read opportunity.discovery\npython3 scripts/hub_records.py --hub \"<hub>\" --opportunity <opp-id> write opportunity.discovery --input discovery.md --create\npython3 scripts/hub_records.py --hub \"<hub>\" --opportunity <opp-id> write opportunity.discovery --input discovery-revised.md --expected-hash <observed-sha256>\n```",
+      "reason": "Retained executable CLI examples use repeated command prefixes and flags."
+    },
+    {
+      "kind": "syntax",
+      "text": "```bash\npython3 scripts/hub_workspace.py init --hub \"<AI Knowledge Hub>\" --client \"<name>\" \\\n  --opportunity <opp-id> --opportunity-name \"<pursuit>\"\npython3 scripts/hub_workspace.py init --hub \"<AI Knowledge Hub>\" --engagement <eng-id> --engagement-name \"<delivery>\"\npython3 scripts/hub_workspace.py audit --hub \"<AI Knowledge Hub>\"\npython3 scripts/hub_workspace.py doctor --hub \"<AI Knowledge Hub>\"\npython3 scripts/hub_workspace.py check --hub \"<AI Knowledge Hub>\" [paths]\n```",
+      "reason": "Retained executable CLI examples use repeated command prefixes and flags."
+    },
+    {
+      "kind": "syntax",
+      "text": "```bash\npython3 scripts/hub_resolver_selftest.py\npython3 scripts/hub_runtime_selftest.py\npython3 scripts/migration_report_selftest.py\npython3 scripts/hub_workspace_selftest.py\n```",
+      "reason": "Retained executable CLI examples use repeated command prefixes and flags."
+    }
+  ],
+  "candidates": []
+}
