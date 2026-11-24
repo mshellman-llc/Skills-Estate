@@ -260,6 +260,18 @@
     "0.4.61": {
       "content_sha256": "0ee7f3af99b352d21bb7daabc877e5b8227fc9240558932091dbf26eb8b5b7ff",
       "note": "Fix proof issues 190 to 194: task-based and solo mobilization, charter evidence contract, unknown missing state, and first-phase stop precedence"
+    },
+    "0.4.67": {
+      "content_sha256": "10650e7d7bf7386f150c84c693e12c1dd97c7af7087bd71ea091e19f25638fa7",
+      "note": "Use one writing reviewer for outgoing copy and stop after two rounds; keep internal work in the main session."
+    },
+    "0.4.68": {
+      "content_sha256": "8bb83a24406d1378184747a4e5bd3d1520d3ad0ea5409ff4d2582cea98964d10",
+      "note": "Keep the single-reviewer audit assertion aligned with the bounded review output."
+    },
+    "0.4.69": {
+      "content_sha256": "58df93acd45b507205f5f6b91f556b5f44cb3e441121593ab633047d2e6a3f4f",
+      "note": "Update the source-bound writing guide for the one-reviewer, two-round policy."
     }
   },
   "source_conflicts": [

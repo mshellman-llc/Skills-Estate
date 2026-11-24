@@ -1,0 +1,21 @@
+{
+  "format": 1,
+  "artifact": "skills/writing/assets/gate-command.md",
+  "protected": [
+    {
+      "kind": "syntax",
+      "reason": "Executable command arguments must retain their spelling.",
+      "text": "`python3 ~/.agents/writing/bin/check.py --file PATH --audience external --prepare REVIEW --sources SOURCES.json --writer WRITER_SESSION --json`"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Executable command arguments must retain their spelling.",
+      "text": "`claude -p --session-id REVIEWER_SESSION`"
+    },
+    {
+      "kind": "syntax",
+      "reason": "Executable command arguments must retain their spelling.",
+      "text": "`check.py --file PATH --audience external --verdicts REVIEW/verdicts.json --document-map REVIEW/map.json --audit REVIEW/audit.json --sources SOURCES.json --writer WRITER_SESSION --full --json`"
+    }
+  ]
+}
