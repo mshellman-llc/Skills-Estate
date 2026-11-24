@@ -1897,13 +1897,13 @@
       ]
     },
     "writing": {
-      "what": "Write or review every word a person will read against the owner's writing rules folder, with a check that proves which lines it covered. It is the estate's one writing skill.",
+      "what": "Write or review reader-facing text against the owner's writing rules, using the main session for internal work and one independent reviewer for outgoing copy.",
       "when": "Any reply, document, page, deck, message, interface label, commit message or pull request description is about to go to a reader, another tool needs a result on a saved file, or someone asks for writing integrity, a prose pass, a de-AI pass or to humanize text.",
       "inputs": "The draft or the saved file, the writing rules folder, and the channel and audience for the piece.",
       "outputs": "The reviewed text, and for a saved file a JSON result with status, line coverage, findings and a receipt.",
       "example": "Check this proposal page before it goes to the client, then run the full review with the line pass and the document pass.",
-      "reviewedEntrypointSha256": "7cf6662d187424e4e6fa9a30d4ebb6474e8f67c022d8d1988a1b6763b94c3708",
-      "expect": "It reads the rules from the owner's folder each time, picks review, owner voice or brand voice, and sets the register from the channel and audience. For a file, check.py extracts the reader text, scans every in-scope line in parts of at most 300 lines and returns scan-pass, fail or incomplete; a rendered page, workbook or deck is reviewed on its extracted text. A full review adds a verdict for every line, a claims answer checked against a source list, a document map and a spot audit, and only that returns pass. The script rejects a missing verdict, a verdict whose first and last words are not its own line's, a misquoted line, an untraced number, verdicts written by any session that wrote or changed the piece and a map that marks more than a tenth of its lines as structural repeats. Questions only the owner can settle are asked first. Later rounds reassign only edited lines, and from round 3 style findings are logged instead of blocking. Code and quotations are exempt.",
+      "reviewedEntrypointSha256": "5d1bfda5adcbde41cdeaa89d8fb03731b3c6f74f8a13144604365f2db9014885",
+      "expect": "It reads the rules, chooses the mode and register, then scans the extracted reader text. Internal work, replies and drafts stay in the main session with an in-line review. Only outgoing copy gets one independent reviewer for the line pass, claims check, document map and spot audit. The writer applies corrections. A persistent per-file budget allows at most two rounds with that same reviewer, including failures and timeouts. Accepted verdicts carry forward. After round two, remaining errors are reported and publication stays blocked. Reviewer groups, replacement agents and new folders cannot restart the budget. Code and exact quotations are exempt.",
       "connectors": {
         "required": [],
         "optional": [
@@ -1911,8 +1911,8 @@
         ]
       },
       "requires": "Python 3 for check.py, and a writing rules folder with patterns.json named by --rules-dir, WRITING_HOME or the path in ~/.agents/writing/home.",
-      "overview": "It loads the owner's writing rules from their folder for each task and carries no copy of them. For a draft it picks the mode and register, then reviews each line. For a saved file, check.py extracts the text a reader sees, exempts code and quotations, scans every in-scope line and writes a receipt that counts the lines scanned against the lines extracted. A full review adds a verdict for every line and a document map that the script validates.",
-      "value": "Give other tools one command that returns pass, fail or incomplete for a file, and stop a review from being reported as done when lines were skipped.",
+      "overview": "It loads the owner's writing rules for each task and scans the text readers see. Internal work stays in the main session. Outgoing copy uses one independent reviewer for every pass, with at most two rounds and no replacement reviewers. The writer applies changes, and publication requires a passing review of the exact bytes.",
+      "value": "Keep writing checks within a fixed reviewer budget while preserving source checks and the publication gate.",
       "preparation": {
         "where": "Provide the draft or the file path, and a writing rules folder that holds patterns.json. Name the folder with --rules-dir, the WRITING_HOME variable or the path in ~/.agents/writing/home. A full review also needs rules.md in that folder, a JSON list of the source documents and the project's confidentiality list from the Hub.",
         "missing": "With no pattern ledger the check exits 2. With no rules.md the scan still runs and a full review is reported incomplete. A format the script does not read exits 2."
