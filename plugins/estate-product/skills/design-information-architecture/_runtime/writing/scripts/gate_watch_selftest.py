@@ -6,6 +6,8 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
+import review_policy
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -34,21 +36,35 @@ class WatchTest(unittest.TestCase):
         return subprocess.run([sys.executable, str(TOOL), '--folder', str(self.folder), *args],
                               capture_output=True, text=True, env=self.env, timeout=60)
 
+    def declare(self, path, digest):
+        with mock.patch.dict(os.environ, self.env):
+            return review_policy.prepare(path, self.folder / 'review', digest, ['writer'])
+
+    def test_internal_files_never_start_a_model(self):
+        (self.folder / 'private.md').write_text('A private draft.')
+        self.assertEqual(self.run_tool().returncode, 0)
+        self.assertFalse(self.calls.exists())
+
     def test_each_new_file_is_reviewed_once_per_version(self):
         (self.folder / 'proposal.md').write_text('A proposal for the client.\n')
+        self.declare(self.folder / 'proposal.md', 'first')
         (self.folder / '.hidden.md').write_text('skip\n')
         (self.folder / 'photo.png').write_bytes(b'skip')
         self.assertEqual(self.run_tool().returncode, 0)
         calls = self.calls.read_text().splitlines()
-        self.assertEqual(sum(1 for c in calls if c.startswith('/gate ')), 1)
+        self.assertEqual(sum(1 for c in calls if c.startswith('Review ')), 1)
         self.assertIn('proposal.md', calls[0])
         log = [json.loads(l) for l in (self.agent / 'gate-watch.jsonl').read_text().splitlines()]
         self.assertTrue(log[0]['result'].startswith('PASS'))
         self.run_tool()
-        self.assertEqual(sum(1 for c in self.calls.read_text().splitlines() if c.startswith('/gate ')), 1)
+        self.assertEqual(sum(1 for c in self.calls.read_text().splitlines() if c.startswith('Review ')), 1)
         (self.folder / 'proposal.md').write_text('A proposal for the client, revised.\n')
+        self.declare(self.folder / 'proposal.md', 'second')
         self.run_tool()
-        self.assertEqual(sum(1 for c in self.calls.read_text().splitlines() if c.startswith('/gate ')), 2)
+        self.assertEqual(sum(1 for c in self.calls.read_text().splitlines() if c.startswith('Review ')), 2)
+        (self.folder / 'proposal.md').write_text('A third version.')
+        self.run_tool()
+        self.assertEqual(sum(1 for c in self.calls.read_text().splitlines() if c.startswith('Review ')), 2)
 
     def test_missing_folder_exits_cleanly(self):
         self.folder.rmdir()

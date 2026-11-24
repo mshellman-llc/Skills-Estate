@@ -6,8 +6,8 @@
 launchd starts this when DIR changes (install_local.py --watch DIR). For each
 file in DIR that has settled, has no passing review receipt for its current
 bytes and has not already been tried at those bytes, it runs Claude Code
-headless with /gate on the file. /gate fixes findings in the file and repeats
-until check.py --full passes, then files the reviewed file by the workspace
+as the one independent reviewer of explicitly declared external copy. It has at most two rounds and never
+starts another model. A passing file is then filed by the workspace
 standard. A macOS notification reports each result, and every run is logged
 to ~/.agents/writing/gate-watch.jsonl.
 
@@ -22,6 +22,7 @@ import os
 import subprocess
 import sys
 import time
+import uuid
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -35,21 +36,23 @@ LOCK = AGENT / 'gate-watch.lock'
 CLAUDE = os.environ.get('CLAUDE_BIN') or str(Path.home() / '.local' / 'bin' / 'claude')
 SUFFIXES = {'.md', '.markdown', '.txt', '.html', '.htm', '.docx', '.pptx', '.xlsx', '.json'}
 SETTLE_SECONDS = float(os.environ.get('GATE_WATCH_SETTLE', '5'))
-RUN_SECONDS = 45 * 60
+RUN_SECONDS = 15 * 60
 HUBS = ['mcp__beastmode-hub', 'mcp__claude_ai_BeastMode_personal_Hub']  # local server, then the claude.ai connector
-TOOLS = ['Read', 'Write', 'Edit', 'Glob', 'Grep', 'Bash(python3:*)', 'Bash(codex exec:*)', 'Bash(codex:*)',
+TOOLS = ['Read', 'Write', 'Edit', 'Glob', 'Grep', 'Bash(python3:*)',
          'Bash(mv:*)', 'Bash(mkdir:*)', 'Bash(shasum:*)', 'Bash(ls:*)', *HUBS]
-BLOCKED = [f'{hub}__{name}' for hub in HUBS for name in ('write_record', 'bulk_edit_records', 'edit_file',
+BLOCKED = ['Agent', 'Task', 'Bash(claude:*)', 'Bash(codex:*)'] + [f'{hub}__{name}' for hub in HUBS for name in ('write_record', 'bulk_edit_records', 'edit_file',
                                                           'archive_file', 'add_file', 'create_project')]
 SOURCES = ('Find the documents it was written from first in the folder beside it named {stem}-sources, then '
            'with the Knowledge Hub\'s search and read_file. A file that lists sources counts as a source. '
-           'Run Codex as `codex exec`. ')
-TRIAL = ('/gate {path}\n\nThis is a trial run of the review folder. ' + SOURCES + 'Run every step of the gate, '
-         'including the evidence scan, and fix the file in place. Do not move it. '
+           'You are the one independent reviewer. Run every pass yourself in this session. '
+           'Do not launch a subagent, another model, an auditor or a headless process. ')
+TRIAL = ('Review {path} using the writing skill. You are already the independent reviewer.\n\n' + SOURCES + 'Run every step of the gate, '
+         'including the evidence scan. Write review records only; do not edit or move the source copy. '
          'End with one line: PASS or FAIL, then the path.')
-PROMPT = ('/gate {path}\n\n'
-          'This file landed in the review folder, so it goes to a client or goes public. ' + SOURCES + 'Run every step of the '
-          'gate, including the evidence scan. When the receipt passes, file the reviewed file by section 5 of the '
+PROMPT = ('Review {path} using the writing skill. You are already the independent reviewer.\n\n'
+          'The writer explicitly declared this file external. ' + SOURCES + 'Run every step of the '
+          'gate, including the evidence scan. Review the supplied copy without rewriting it. If it needs changes, report '
+          'them and stop so the writer can apply them. When the receipt passes, file the reviewed file by section 5 of the '
           'highest-numbered workspace standard in /Volumes/BeastMode/80-system/standards/, into its project\'s '
           'artifacts/ under the standard name, with its sources folder in the project\'s sources/; when no project matches, move it to '
           '/Volumes/BeastMode/90-inbox/unsorted/ with a one-line note beside it saying what it is. '
@@ -104,16 +107,28 @@ def candidates(folder, state):
             continue
         if path.name.endswith('.note.md'):
             continue  # the one-line note a filed piece leaves behind
+        allocation = hook.review_policy.read(path)
+        if allocation.get('audience') != 'external' or not allocation.get('writers'):
+            continue
         digest = sha(path)
-        if hook.reviewed(digest) or state.get(str(path)) == digest:
+        prior = state.get(str(path), {})
+        attempts = prior.get('attempts', 0) if isinstance(prior, dict) else 1
+        previous_sha = prior.get('sha256') if isinstance(prior, dict) else prior
+        if hook.reviewed(digest) or previous_sha == digest or attempts >= 2:
             continue
         yield path, digest
 
 
-def review(path, workdir, trial=False):
-    command = [CLAUDE, '-p', (TRIAL if trial else PROMPT).format(path=path, stem=path.stem), '--permission-mode', 'acceptEdits',
+def review(path, workdir, trial=False, session=None, resume=False):
+    allocation = hook.review_policy.read(path)
+    policy_context = ('\nUse the existing review folder ' + allocation['rounds'][-1]['directory']
+                      + '. The writer session IDs are ' + ', '.join(allocation['writers'])
+                      + '. Do not allocate another reviewer. Keep accepted verdicts; this is round '
+                      + str(allocation['rounds'][-1]['round']) + ' of two. No more review after round two.')
+    command = [CLAUDE, '-p', (TRIAL if trial else PROMPT).format(path=path, stem=path.stem) + policy_context, '--permission-mode', 'acceptEdits',
                '--allowedTools', *TOOLS, '--disallowedTools', *BLOCKED, '--add-dir', str(path.parent),
-               '--add-dir', '/Volumes/BeastMode', '--output-format', 'json']
+               '--add-dir', '/Volumes/BeastMode', '--output-format', 'json', '--max-turns', '30']
+    command += ['--resume' if resume else '--session-id', session or str(uuid.uuid4())]
     env = dict(os.environ, PATH=os.pathsep.join([str(Path.home() / '.local' / 'bin'), '/opt/homebrew/bin',
                                                   '/usr/local/bin', os.environ.get('PATH', '/usr/bin:/bin')]))
     try:
@@ -150,12 +165,27 @@ def main(argv=None):
         for path, digest in pending:
             if not path.is_file() or sha(path) != digest:
                 continue  # changed again while waiting; the next run takes it
-            state[str(path)] = digest
+            previous = state.get(str(path), {})
+            previous = previous if isinstance(previous, dict) else {}
+            attempt = previous.get('attempts', 0) + 1
+            allocation = hook.review_policy.read(path)
+            resume = bool(allocation.get('launches'))
+            try:
+                session = hook.review_policy.authorize_launch(allocation['writers'][0], str(path),
+                            allocation['reviewer_session'] if resume else None)
+            except (hook.review_policy.PolicyError, OSError, ValueError) as error:
+                log({'file': str(path), 'run': 'budget-stopped', 'result': str(error)})
+                continue
+            state[str(path)] = {'sha256': digest, 'attempts': attempt, 'session': session}
             STATE.write_text(json.dumps(state, indent=1), encoding='utf-8')
             notify('Writing review started', path.name)
             workdir = AGENT / 'gate-work' / digest[:12]
             workdir.mkdir(parents=True, exist_ok=True)
-            status, text = review(path, workdir, args.trial)
+            status, text = review(path, workdir, args.trial, session, resume)
+            # Reviewer edits must not trigger an automatic new headless session.
+            if path.is_file():
+                state[str(path)]['sha256'] = sha(path)
+            STATE.write_text(json.dumps(state, indent=1), encoding='utf-8')
             last = (text.strip().splitlines() or [''])[-1]
             passed = last.upper().startswith('PASS')
             log({'file': str(path), 'sha256': digest, 'run': status, 'result': last[:300]})

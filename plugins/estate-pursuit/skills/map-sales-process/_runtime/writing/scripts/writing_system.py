@@ -204,12 +204,16 @@ def sources_sha(*paths):
 
 def built_copies(home, out, prefs):
     """Each built copy and the source files its stamp hashes, in stamp order."""
-    core = [prefs, home / 'rules.md', home / 'corrections.md', home / 'patterns.json']
+    policy = [home.parent / 'instructions.md'] if (home.parent / 'instructions.md').is_file() else []
+    core = [prefs, home / 'rules.md', home / 'corrections.md', home / 'patterns.json', *policy]
     copies = {out / 'core' / 'core.md': core, out / 'claude-ai' / 'style.txt': core,
-              out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md': [home / 'rules.md', home / 'voice-profile.md']}
+              out / 'claude-ai-skill' / SKILL_NAME / 'SKILL.md': [home / 'rules.md', home / 'voice-profile.md', *policy]}
     about = home.parent / 'chatgpt-about.md'
     if about.is_file():
-        copies[out / 'chatgpt' / 'custom-instructions.txt'] = [about, home / 'rules.md', home / 'voice-profile.md']
+        copies[out / 'chatgpt' / 'custom-instructions.txt'] = [about, home / 'rules.md', home / 'voice-profile.md', *policy]
+    cloud = home.parent / 'instructions-claude-ai.md'
+    if cloud.is_file():
+        copies[out / 'claude-ai' / 'project-instructions.txt'] = [cloud, *policy]
     return copies
 
 
@@ -379,7 +383,7 @@ def fill(head, items, limit=CHATGPT_LIMIT):
     return text, rest
 
 
-def chatgpt_boxes(about, rules_md, voice_md):
+def chatgpt_boxes(about, rules_md, voice_md, policy=''):
     """The about text alone in one box; the rules in order, then the voice, in the other until it is full.
     Each line keeps its rule ID, because some rules cite others by ID. Returns both boxes and the IDs left out."""
     pattern = r'^- ([A-Z]\d+)\. (.+)$'
@@ -388,7 +392,7 @@ def chatgpt_boxes(about, rules_md, voice_md):
     box1 = about.strip()
     if len(box1) > CHATGPT_ABOUT_LIMIT:
         sys.exit(f'chatgpt-about.md is {len(box1)} characters; ChatGPT allows {CHATGPT_ABOUT_LIMIT}')
-    box2, left = fill(CHATGPT_RULES, items + (['When writing as me:'] + voice if voice else []))
+    box2, left = fill(CHATGPT_RULES + ('\n' + policy if policy else ''), items + (['When writing as me:'] + voice if voice else []))
     return box1, box2, [item.split('.')[0] for item in left if item != 'When writing as me:']
 
 
@@ -399,6 +403,10 @@ def build(args):
     rules_md = (home / 'rules.md').read_text(encoding='utf-8')
     ledger = json.loads((home / 'patterns.json').read_text(encoding='utf-8'))
     writing = section(prefs.read_text(encoding='utf-8'), 'Writing')
+    instruction_path = home.parent / 'instructions.md'
+    allocation = section(instruction_path.read_text(encoding='utf-8'), 'Subagents') if instruction_path.is_file() else ''
+    if allocation:
+        writing += '\n\nReview allocation: ' + allocation.strip()
     if not writing:
         sys.exit(f'no "## Writing" section in {prefs}')
     copies = built_copies(home, out, prefs)
@@ -432,6 +440,8 @@ def build(args):
              'Use these rules when the Knowledge Hub and her drive cannot be reached. When either can, the rules '
              'folder on the drive is newer and wins. Apply them without mentioning which copy you used.', '',
              '## Rules', '', body(rules_md).strip(), '']
+    if allocation:
+        skill += ['## Review allocation', '', allocation.strip(), '']
     voice_text = voice.read_text(encoding='utf-8') if voice.is_file() else ''
     if voice.is_file():
         skill += ['## Voice when she is the author', '', body(voice_text).strip(), '']
@@ -439,9 +449,13 @@ def build(args):
     left_out = None
     if chat_path in copies:
         about_text = body(copies[chat_path][0].read_text(encoding='utf-8'))
-        box1, box2, left_out = chatgpt_boxes(about_text, rules_md, voice_text)
+        box1, box2, left_out = chatgpt_boxes(about_text, rules_md, voice_text, allocation.strip())
         outputs.append((chat_path, '\n'.join([stamp_for(chat_path), '', '=== Box 1: More about you ===', '', box1, '',
                                               '=== Box 2: Custom instructions ===', '', box2, ''])))
+    cloud_path = out / 'claude-ai' / 'project-instructions.txt'
+    if cloud_path in copies:
+        cloud = copies[cloud_path][0].read_text(encoding='utf-8').replace('{{review_policy}}', allocation.strip())
+        outputs.append((cloud_path, stamp_for(cloud_path) + '\n\n' + cloud))
     written = []
     for path, text in outputs:
         path.parent.mkdir(parents=True, exist_ok=True)

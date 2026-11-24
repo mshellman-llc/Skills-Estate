@@ -31,7 +31,7 @@ Other options:
     --rules-dir DIR       rules folder (otherwise $WRITING_HOME, then the path
                           in ~/.agents/writing/home)
     --receipt-dir DIR     where receipts are written
-    --prepare DIR         write the text parts, outline and worker assignments
+    --prepare DIR         write bounded text parts, outline and one reviewer assignment
                           for the line pass and document pass
     --verdicts FILE...    line-pass verdicts to validate; several files merge
                           (the carried verdicts plus each worker's file)
@@ -39,8 +39,8 @@ Other options:
     --audit FILE          spot-audit verdicts to validate
     --recheck FILE        after an audit miss: one rule swept across every line
                           marked ok, in place of a full line pass
-    --round N             review round; from round 3 on, style findings are
-                          logged and only errors and owner decisions block
+    --audience NAME       internal (default) or external; only external copy starts a reviewer
+    --round N             round 1 or 2, persisted across review folders; round 2 logs style findings
     --sources FILE        the source list for the claims check (JSON list of names)
     --full                require the line pass and the document pass
     --writer NAME...      the session or name that wrote the piece; a verdict set
@@ -65,13 +65,14 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import extract_review_text as ext  # noqa: E402
+import review_policy  # noqa: E402
 
 VERSION = 3
 PART_LINES = 300            # largest part any reader or scan receives
-WORKER_LINES = 40           # lines per line-pass worker
+WORKER_LINES = None         # one reviewer reads the bounded text parts in order
 LONG_DOCUMENT_LINES = 2000  # above this the document pass works in two steps
 AUDIT_SHARE = 5             # the spot audit re-reviews one line in five
-STYLE_ROUND = 3             # from this round on, style findings are logged instead of blocking
+STYLE_ROUND = 2             # the final allowed round logs style findings; errors still block
 STYLE_DOC_RULES = ('fact stated more than once', 'recap of another section', 'more than one term for one thing')
 RULE_ID = re.compile(r'\b[A-Z]{1,2}\d{1,3}\b')
 CHUNK_SECONDS = 30
@@ -944,13 +945,13 @@ def audit_sample(records, verdicts):
     return sorted(chooser.sample(ok, max(1, -(-len(ok) // AUDIT_SHARE))))
 
 
-def spot_audit(records, verdicts, data, rules_sha256, flags=None):
+def spot_audit(records, verdicts, data, rules_sha256, flags=None, round_n=1, logged=None):
     """Returns (findings, rejected, missing, info). A miss is fixed on its line, and its rule is swept across
     every line marked ok (see recheck), in place of a full line pass."""
     scope = {r['id']: r for r in in_scope(records)}
     wanted = [i for i in audit_sample(records, verdicts) if i in scope]
     sub = [scope[i] for i in wanted]
-    findings, rejected, missing = line_pass(sub, data, rules_sha256, flags)
+    findings, rejected, missing = line_pass(sub, data, rules_sha256, flags, round_n, logged)
     missed = set()
     for f in findings:
         rule = f['rule'].split(': ', 1)[-1]
@@ -1212,22 +1213,9 @@ def shown(r):
 
 
 def workers(records):
-    """Groups of about WORKER_LINES in-scope lines; a section stays with one worker when it fits."""
-    groups, current = [], []
-    by_section = {}
-    for r in in_scope(records):
-        by_section.setdefault(r['section'], []).append(r)
-    for block in by_section.values():
-        if current and len(current) + len(block) > WORKER_LINES:
-            groups.append(current)
-            current = []
-        while len(block) > WORKER_LINES:
-            groups.append(block[:WORKER_LINES])
-            block = block[WORKER_LINES:]
-        current = current + block
-    if current:
-        groups.append(current)
-    return groups
+    """One assignment for one reviewer; text parts remain bounded for reading."""
+    scope = in_scope(records)
+    return [scope] if scope else []
 
 
 def prepare(path, records, rules, out, verdicts=None, review=(), sources=None, verdict_paths=(), writers=()):
@@ -1401,7 +1389,34 @@ def run(args):
     if review and steps[-1]['status'] == 'ok':
         steps[-1]['detail'] += f'; {len(review)} flags on {len(flags)} lines wait for a line-pass verdict'
 
-    record['round'] = args.round
+    record['round'] = args.round or 1
+    if (full or args.prepare) and args.audience == 'external':
+        try:
+            digest = sha(record['sha256'] + rules_info['rules_sha256'])
+            writers = piece_writers(path, args.writer)
+            if args.prepare:
+                policy = review_policy.prepare(path, args.prepare, digest, writers, args.round)
+            else:
+                documents = []
+                for review_path in [*(args.verdicts or []), args.document_map, args.audit, args.recheck]:
+                    if review_path:
+                        document = load_json(review_path, 'review record')
+                        document['verdict_writers'] = verdict_writers(document, [review_path])
+                        documents.append(document)
+                policy = review_policy.validate(path, digest, documents, args.round)
+            args.round = policy['round']
+            record['review_policy'] = policy
+            record['round'] = args.round
+        except (review_policy.PolicyError, OSError, ValueError, Incomplete) as error:
+            step('review policy', 'failed', str(error))
+            return finish(record, args, reasons, records)
+    elif full:
+        step('review policy', 'failed', 'Internal work gets the scan and an in-line review in the main session. '
+             'Only copy leaving the owner uses --audience external and one independent reviewer.')
+        return finish(record, args, reasons, records)
+    elif args.prepare:
+        review_policy.internal(path)
+    args.round = args.round or 1
     logged = []
     if full:
         verdicts = None
@@ -1470,11 +1485,11 @@ def run(args):
                 if same:
                     raise Incomplete('audit file: ' + same)
                 found, rejected, absent, info = spot_audit(records, verdicts, audit,
-                                                           rules_info['rules_sha256'], flags)
+                                                           rules_info['rules_sha256'], flags, args.round, logged)
                 record['spot_audit'] = info
                 scope_note = f'{info["sampled"]} of the {info["lines_marked_ok"]} lines marked ok were re-reviewed'
                 independence = '' if info['independent'] else (
-                    '; not independent, because the audit file does not name a reviewer other than the line-pass reviewer')
+                    '; self-check by the same independent reviewer')
                 if found and args.recheck:
                     findings += found
                     sweep = load_json(args.recheck, 'recheck file')
@@ -1519,10 +1534,15 @@ def run(args):
                            load_verdicts(args.verdicts) if args.verdicts else None, review,
                            source_names(args.sources) if args.sources else None,
                            args.verdicts or (), piece_writers(path, args.writer) if args.verdicts else ())
+            plan = json.loads(made.read_text(encoding='utf-8'))
+            plan['review_policy'] = record.get('review_policy', {'audience': 'internal', 'max_reviewers': 0})
+            if args.audience == 'internal':
+                plan['workers'] = []
+            made.write_text(json.dumps(plan, indent=1) + '\n', encoding='utf-8')
             record['purpose'] = 'prepare'
             refused = json.loads(made.read_text(encoding='utf-8')).get('carry_refused')
             if refused:
-                step('prepare', 'failed', f'{made} sends every line to a new reviewer; no verdict was carried '
+                step('prepare', 'failed', f'{made} returns every line to the same reviewer; no verdict was carried '
                      f'and no audit sample was drawn, because {refused}')
             else:
                 step('prepare', 'ok', f'{made} and the text parts were rewritten; verdict, map and audit files were not touched')
@@ -1628,7 +1648,8 @@ def main(argv=None):
     parser.add_argument('--document-map', metavar='FILE')
     parser.add_argument('--audit', metavar='FILE')
     parser.add_argument('--recheck', metavar='FILE')
-    parser.add_argument('--round', type=int, default=1)
+    parser.add_argument('--round', type=int, default=None)
+    parser.add_argument('--audience', choices=['internal', 'external'], default='internal')
     parser.add_argument('--sources', metavar='FILE')
     parser.add_argument('--full', action='store_true')
     parser.add_argument('--writer', metavar='NAME', nargs='+',

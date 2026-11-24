@@ -4,7 +4,7 @@
     install_local.py [--git-hooks] [--services] [--watch DIR] [--sync-corrections] [--dry]
 
 Copies check.py, extract_review_text.py, hook.py, writing_system.py,
-check_selection.py, gate_watch.py, rendered_read_guard.py and sync_corrections.py to ~/.agents/writing/bin with a manifest of their sha256, so
+check_selection.py, gate_watch.py, review_policy.py, rendered_read_guard.py and sync_corrections.py to ~/.agents/writing/bin with a manifest of their sha256, so
 the hooks keep working whichever branch the repository has checked out. Writes
 gate.json there when none exists, and the gate command for Claude Code
 (~/.claude/commands/gate.md) and Codex (~/.codex/prompts/gate.md). When the
@@ -24,8 +24,8 @@ for the gate's check on client and public pieces.
              corrections copied by hand before the first run; it saves the IDs
              without --apply.
 
-Hook settings for Claude Code and Codex are not edited here. The publish check
-needs a PreToolUse entry in ~/.claude/settings.json with the matcher
+The delegation guard is registered in both hosts while preserving other hooks.
+The publish check needs a separate PreToolUse entry in ~/.claude/settings.json with the matcher
 "Artifact|mcp__.*[Pp]ublish.*" that runs hook.py --tool claude-code.
 """
 import argparse
@@ -41,7 +41,7 @@ HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
 HOME = Path.home()
 BIN = HOME / '.agents' / 'writing' / 'bin'
-FILES = ['check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py', 'gate_watch.py',
+FILES = ['review_policy.py', 'check.py', 'extract_review_text.py', 'hook.py', 'writing_system.py', 'check_selection.py', 'gate_watch.py',
          'rendered_read_guard.py', 'sync_corrections.py']
 WATCH_LABEL = 'com.mshellman.writing-gate-watch'
 SYNC_LABEL = 'com.mshellman.writing-corrections-sync'
@@ -113,6 +113,25 @@ def install_commands(dry):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(text, encoding='utf-8')
     return [str(t) for t in targets]
+
+
+def install_host_hooks(dry):
+    matcher = 'Agent|Task|.*spawn_agent|Bash|.*exec_command|shell|local_shell'
+    targets = [(HOME / '.claude' / 'settings.json', 'claude-code'), (HOME / '.codex' / 'hooks.json', 'codex')]
+    changed = []
+    for path, host in targets:
+        data = json.loads(path.read_text()) if path.exists() else {}
+        groups = data.setdefault('hooks', {}).setdefault('PreToolUse', [])
+        command = f'/usr/bin/python3 {BIN / "hook.py"} --tool {host}'
+        # Preserve unrelated hooks and register the delegation guard exactly once.
+        entry = {'matcher': matcher, 'hooks': [{'type': 'command', 'command': command, 'timeout': 10}]}
+        if entry not in groups:
+            groups.append(entry)
+            if not dry:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(json.dumps(data, indent=2) + '\n')
+            changed.append(str(path))
+    return changed
 
 
 def install_git_hooks(dry):
@@ -315,7 +334,8 @@ def main(argv=None):
     ap.add_argument('--sync-corrections', action='store_true')
     ap.add_argument('--dry', action='store_true')
     args = ap.parse_args(argv)
-    report = {'bin': install_bin(args.dry), 'commands': install_commands(args.dry)}
+    report = {'bin': install_bin(args.dry), 'commands': install_commands(args.dry),
+              'host_hooks': install_host_hooks(args.dry)}
     if args.git_hooks:
         report['git_hooks'] = install_git_hooks(args.dry)
     if args.services:

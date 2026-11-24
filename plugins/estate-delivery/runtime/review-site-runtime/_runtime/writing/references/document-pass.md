@@ -1,6 +1,6 @@
 # Document pass
 
-One worker reads the whole extracted text and fills a fixed map. The text holds words only, so a page of several hundred lines fits in one read. The pass runs on the full text in every round, because repeats, recaps and drifting terms cannot be judged from one part. From round 3, `check.py --round 3` logs the map's repeats, recaps and term choices instead of blocking on them; counts, headings, leftover lines, numbers, provenance and confidentiality still block.
+The same independent reviewer reads the whole extracted text and fills a fixed map. The text holds words only, so a page of several hundred lines fits in one read. The pass runs on the full text in every round, because repeats, recaps and drifting terms cannot be judged from one part. In the final round 2, `check.py --round 2` logs the map's repeats, recaps and term choices instead of blocking on them; counts, headings, leftover lines, numbers, provenance and confidentiality still block.
 
 ## Start with the reader
 
@@ -16,10 +16,12 @@ When the current Hub returns the fact, set `retrieved` to `true` and name the fa
 
 ## The map
 
-Every key in this example is required except `structural_repeat`. An empty list means the worker looked and found none.
+Every key in this example is required except `structural_repeat`. An empty list means the reviewer looked and found none.
 
 ```json
 {
+  "reviewer": "the same reviewer as the line pass",
+  "session": "the same reviewer session",
   "text_sha256": "copied from assignments.json",
   "rules_sha256": "taken from the same file",
   "reader": {"who": "The finance lead for renewals",
@@ -79,4 +81,4 @@ The line pass and the document pass can both catch the same fault. The script co
 
 ## Documents over 2,000 lines
 
-`assignments.json` sets `two_step_document_pass` to true. Section workers each list their section's point, facts with figures, counts, terms and headings, with line IDs. One worker then compares those lists across sections for repeats, recaps, conflicting figures and drifting terms, and writes the single map.
+`assignments.json` sets `two_step_document_pass` to true. The same reviewer reads each section in bounded parts and records its point, figures, counts, terms and headings with line IDs. That reviewer compares its section notes and writes the single map. No section agents or additional document reviewer are started.

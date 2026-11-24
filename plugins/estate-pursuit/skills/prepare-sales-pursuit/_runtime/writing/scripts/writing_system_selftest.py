@@ -57,6 +57,20 @@ class SystemTest(unittest.TestCase):
         (home / '.claude' / 'CLAUDE.md').write_text('<!-- MEGAN-OS:BEGIN -->\nOld rules.\n<!-- MEGAN-OS:END -->\n\n# Local notes\n\nKeep me.\n')
         return home
 
+    def test_review_policy_reaches_every_generated_host_without_extra_reviewers(self):
+        policy = 'Internal work stays in the main session. Only outgoing copy gets one independent reviewer, for at most two rounds.'
+        (self.ctx / 'instructions.md').write_text('# Instructions\n\n## Subagents\n\n' + policy + '\n')
+        (self.ctx / 'instructions-claude-ai.md').write_text('Account guidance.\n\n{{review_policy}}\n')
+        (self.ctx / 'chatgpt-about.md').write_text('Synthetic owner context.\n')
+        out = self.run_tool('build')
+        self.assertEqual(out.returncode, 0, out.stderr)
+        for rel in ['core/core.md', 'claude-ai/style.txt', 'claude-ai/project-instructions.txt',
+                    'claude-ai-skill/megan-writing-style/SKILL.md', 'chatgpt/custom-instructions.txt']:
+            self.assertIn(policy, (self.ctx / 'generated' / rel).read_text(), rel)
+        self.run_tool('instructions', '--home', str(self.root if hasattr(self, 'root') else Path(self.tmp.name) / 'home'), '--json')
+        result = self.run_tool('check', '--living', str(self.living), '--json')
+        self.assertTrue(json.loads(result.stdout)['ok'])
+
     def test_instructions_init_builds_both_hosts_from_one_source(self):
         home = self.instruction_setup()
         out = self.run_tool('instructions', '--init', '--home', str(home), '--json')

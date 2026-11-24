@@ -21,7 +21,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "0c3eba45ce71d2ee8d2d8907b2c5dc3e09a6c46dc002e3bbf959df464c9ac9e6",
+      "required_sha256": "b98b6b10bde38ac216849b88f6bc6d3ae456bafc8a4a4547aa630edd5f83b25f",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -66,7 +66,7 @@
       "subject": "solutioning-router"
     },
     {
-      "required_sha256": "de5da1afab12542eeffac1300d44ffce32c9686b37282e1c3a5e34e5d00350da",
+      "required_sha256": "7ebe842e6efa991d3c9715094908f784e2ea0ebb97cdd26e33ae87d5f7c909c3",
       "status": "review required",
       "subject": "writing-router"
     },
@@ -526,7 +526,7 @@
       "subject": "write-statement-of-work"
     },
     {
-      "required_sha256": "3ad1a98c22c6c88d4ea0ca436abea9b295a180c328849d45b3f07a07aa1b5c95",
+      "required_sha256": "98d415116e45b35e07ede3a854db59c334a92519db49e62872115cb2af6afaf2",
       "status": "review required",
       "subject": "writing"
     },
@@ -536,6 +536,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "be0b3194a08697978a07f5c9b0c80f5e22ac9fd75b2eb57887af4827091d370e",
+  "source_sha256": "4180a04a2e24558e48da0872753ceaddecd604cd3b265c4152bc57e2ed44af5e",
   "status": "owner-published"
 }

@@ -38,7 +38,7 @@ class HookTest(unittest.TestCase):
                       {'id': 'list-bold-label', 'class': 'formatting', 'scope': 'general', 'status': 'active',
                        'weight': 3, 'rule': 'F8', 'pattern': r'(?m)^\s*(?:[-*+]|\d+[.)])\s+\*\*[^*\n]+\*\*',
                        'repair': 'Write the list item as a sentence without a bold label.'}]}))
-        (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'exclude': []}))
+        (self.home / 'gate.json').write_text(json.dumps({'include': [str(self.work) + '/*'], 'external': [str(self.work) + '/*'], 'exclude': []}))
         self.env = dict(os.environ, WRITING_HOME=str(self.rules), WRITING_AGENT_HOME=str(self.home),
                         WRITING_RECEIPTS=str(self.home / 'receipts'))
 
@@ -59,7 +59,7 @@ class HookTest(unittest.TestCase):
         self.assertIsNone(self.stop(CLEAN))
 
     def test_failed_rewrites_stay_blocked_until_the_reply_is_clean(self):
-        for active in (False, True, True):
+        for active in (False, True):
             out = self.stop(BAD, active=active)
             self.assertEqual(out['decision'], 'block')
             self.assertIn('delve', out['reason'])
@@ -73,8 +73,8 @@ class HookTest(unittest.TestCase):
                 with self.subTest(host=host, attempt=attempt):
                     out = self.run_hook({'hook_event_name': 'Stop', 'session_id': 'bold-' + host,
                                          'last_assistant_message': text, 'stop_hook_active': attempt > 0}, host)
-                    self.assertEqual(out['decision'], 'block')
-                    self.assertIn('list-bold-label', out['reason'])
+                    self.assertEqual(out.get('decision'), 'block' if attempt < 2 else None)
+                    self.assertIn('list-bold-label', out.get('reason', out.get('systemMessage', '')))
             clean = self.run_hook({'hook_event_name': 'Stop', 'session_id': 'bold-' + host,
                                    'last_assistant_message': '- Maya checked the forecast.',
                                    'stop_hook_active': True}, host)
@@ -88,7 +88,7 @@ class HookTest(unittest.TestCase):
                 mock.patch.object(hook, 'gate_config', return_value=hook.DEFAULT_GATE), \
                 mock.patch.object(hook, 'untold', return_value=[]), \
                 contextlib.redirect_stdout(io.StringIO()) as output:
-            hook.on_stop({'last_assistant_message': BAD, 'stop_hook_active': True}, args, {})
+            hook.on_stop({'last_assistant_message': BAD, 'stop_hook_active': True}, args, {'reply_blocks': 0})
         self.assertEqual(json.loads(output.getvalue())['decision'], 'block')
 
     def test_failed_reply_blocks_before_an_unreadable_deliverable_is_checked(self):
@@ -107,7 +107,7 @@ class HookTest(unittest.TestCase):
 
     def test_failed_reply_block_cannot_be_lost_to_a_state_write_error(self):
         event = {'hook_event_name': 'Stop', 'session_id': 'retry-read-only-state',
-                 'last_assistant_message': '- **Owner:** Maya checks the forecast.', 'stop_hook_active': True}
+                 'last_assistant_message': '- **Owner:** Maya checks the forecast.', 'stop_hook_active': False}
         with mock.patch.object(sys, 'stdin', io.StringIO(json.dumps(event))), \
                 mock.patch.object(hook, 'scan_text', return_value=('fail', [{'rule': 'list-bold-label',
                                                                         'text': '**Owner:**'}])), \
@@ -117,7 +117,7 @@ class HookTest(unittest.TestCase):
                 contextlib.redirect_stdout(io.StringIO()) as output:
             self.assertEqual(hook.main(['--tool', 'codex']), 0)
         self.assertEqual(json.loads(output.getvalue())['decision'], 'block')
-        save.assert_not_called()
+        save.assert_called_once()
 
     def test_hits_record_the_tool(self):
         self.stop(BAD)
@@ -142,7 +142,7 @@ class HookTest(unittest.TestCase):
 
     def publish(self, tool_input, tool='Artifact'):
         return self.run_hook({'hook_event_name': 'PreToolUse', 'session_id': 's4', 'tool_name': tool,
-                              'tool_input': tool_input})
+                              'tool_input': dict(tool_input, audience='external')})
 
     def test_publish_is_denied_until_the_exact_bytes_have_a_full_review(self):
         page = self.work / 'page.html'
@@ -250,7 +250,7 @@ class HookTest(unittest.TestCase):
     # -- gate.json settings of the wrong type or shape ------------------------------------------------------
 
     def gate(self, **settings):
-        base = {'include': [str(self.work) + '/*'], 'exclude': []}
+        base = {'external': [str(self.work) + '/*'], 'include': [str(self.work) + '/*'], 'external': [str(self.work) + '/*'], 'exclude': []}
         base.update(settings)
         (self.home / 'gate.json').write_text(json.dumps(base))
 

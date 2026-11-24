@@ -1,12 +1,12 @@
 # Line pass
 
-The line pass gives every in-scope line a written verdict. `check.py` rejects a record that covers only the lines a worker flagged.
+The line pass gives every in-scope line a written verdict. `check.py` rejects a record that covers only the lines the reviewer flagged.
 
-## What each worker receives
+## What the reviewer receives
 
-`assignments.json` lists the workers. Each worker gets about 40 `lines` and the whole of `outline.md`. The outline holds every heading and each section's first line, and a worker uses it to judge a line against the piece it belongs to. Give each worker the current `rules.md`, the register for the piece and the documents named under `sources`.
+`assignments.json` has one assignment for one independent reviewer. That reviewer reads the bounded text parts in order, with `outline.md`, the current `rules.md`, the register and the documents named under `sources`. The text parts never authorize more reviewers.
 
-## What each worker asks
+## What the reviewer asks
 
 Judge each line against every rule in `rules.md`. Then answer three questions about it and record each answer as `true` or `false`.
 
@@ -44,12 +44,12 @@ The flag answer and the fix are separate. A line can answer its flag `false` and
 
 ## Verdict record
 
-Copy `id`, `sha` and `section` from the assignment. They tie the verdict to the exact line and section the worker read. Copy the line's first three words into `first_words` and its last three into `last_words`, from the text you read; a line of three words or fewer gives the whole line in both. The script rejects a verdict whose words are not its own line's. Put the reviewer's name at the top of the file, and the reviewer's session ID in `session` when the host shows one. A verdict set whose reviewer or session is the piece's writer is rejected.
+Copy `id`, `sha` and `section` from the assignment. They tie the verdict to the exact line and section the reviewer read. Copy the line's first three words into `first_words` and its last three into `last_words`, from the text you read; a line of three words or fewer gives the whole line in both. The script rejects a verdict whose words are not its own line's. Put the reviewer's name at the top of the file, and the reviewer's session ID in `session` when the host shows one. A verdict set whose reviewer or session is the piece's writer is rejected.
 
 ```json
 {
   "rules_sha256": "copied from assignments.json",
-  "reviewer": "line-pass worker 2",
+  "reviewer": "external reviewer",
   "verdicts": [
     {"id": "0002", "sha": "5f0c1d2a9b7e", "section": "c41d88aa02f3", "verdict": "ok",
      "first_words": "Each ticket closes", "last_words": "the March queue",
@@ -73,10 +73,10 @@ Two more fields go on a `fix`:
 | Field | Value | Meaning |
 | --- | --- | --- |
 | `severity` | `error` | The line states something wrong or unsupported, contradicts another line, or leaves the reader with no next step. The default |
-| `severity` | `style` | Wording, rhythm, a repeat or a term choice. Blocks in rounds 1 and 2, logged from round 3 |
+| `severity` | `style` | Wording, rhythm, a repeat or a term choice. Blocks in round 1, logged in the final round 2 |
 | `owner_call` | `true` | Only the owner can settle it: an unsourced fact, a policy, a price, a slogan. Blocks until the owner answers, and goes to the owner instead of back to reviewers |
 
-Several workers can write to separate files. Pass them all to `--verdicts`, with `carried.json` from `--prepare`; the script merges them.
+The same reviewer can write separate files for bounded parts. Pass them all to `--verdicts`, with `carried.json` from `--prepare`; the script merges them.
 
 ## Lines the scanner passes
 
@@ -91,10 +91,10 @@ No scanner pattern matches these two lines, which came from a review that failed
 
 Run `--prepare` again with `--verdicts`. `assignments.json` then carries `audit`: one in five of the lines marked `ok`, rounded up. The sample is drawn the same way in a clean round and in a failed one.
 
-The audit file has the same format as the verdict file and holds one verdict for each sampled line, written without sight of the first verdicts. Its `reviewer` names who audited.
+The audit file has the same format as the verdict file and holds one verdict for each sampled line, written by the same independent reviewer without sight of its first verdicts. Keep the same `reviewer` and `session` identity. Do not launch an auditor.
 
 ```json
-{"rules_sha256": "the value in assignments.json", "reviewer": "audit worker",
+{"rules_sha256": "the value in assignments.json", "reviewer": "external reviewer",
  "verdicts": [{"id": "0007", "sha": "0be2c1d9a4f3", "section": "77aa01c3e2b9", "verdict": "ok",
                "first_words": "Renewals start in", "last_words": "before the call",
                "promise": false, "portable": false, "tension": false, "claims": "none"}]}
@@ -102,10 +102,10 @@ The audit file has the same format as the verdict file and holds one verdict for
 
 Pass it with `--audit FILE`. A clean round passes only after the audit. In a round that already fails, the audit is optional; when it runs, the receipt states how many of the `ok` lines it covered and that the round still fails.
 
-An audited line marked `fix` is fixed on that line. Its rule is then swept across every line the line pass marked `ok`: one worker reads those lines for that rule alone and writes a recheck file, passed with `--recheck FILE`. The file names the swept rules and lists a verdict for each line marked `ok`.
+An audited line marked `fix` is fixed on that line. Its rule is then swept across every line the line pass marked `ok`: the same reviewer reads those lines for that rule alone and writes a recheck file, passed with `--recheck FILE`. The file names the swept rules and lists a verdict for each line marked `ok`.
 
 ```json
-{"rules_sha256": "same as the audit file", "reviewer": "recheck worker", "rules": ["R6"],
+{"rules_sha256": "same as the audit file", "reviewer": "external reviewer", "rules": ["R6"],
  "verdicts": [{"id": "0012", "sha": "7d2a90c1e4b8", "verdict": "ok",
                "first_words": "Orders ship from", "last_words": "the Atlanta shop"},
               {"id": "0019", "sha": "4c1e0d2b9f3a", "verdict": "fix", "rule": "R6: any shop could say it",
@@ -115,12 +115,8 @@ An audited line marked `fix` is fixed on that line. Its rule is then swept acros
 
 The audit step passes when the recheck sweeps every missed rule and covers every line marked `ok`. Its fixes join the round's findings.
 
-## One reviewer
+## Reviewer and round limits
 
-One agent can run the whole review when no workers are available, as long as it did not write the piece. The writing session cannot review its own piece: `check.py` rejects its verdicts. Start a separate session, such as Claude Code headless or Codex, and pass the writer's session ID or name with `--writer` when the hook did not see the piece written. The reviewing agent takes the worker groups in order and reads `outline.md` before each group. It writes the map after the last group, then audits its own sample. It puts the same name in `reviewer` in both files. The receipt then records the audit as not independent, and the reply says so.
+One independent reviewer runs every pass in the same session. The writer applies fixes and never writes its own verdicts. Keep accepted verdicts with their original reviewer and session when preparing changed lines. The document map and spot audit name that same reviewer.
 
-## Later rounds
-
-A changed line has a new `sha`. The script rejects only that line's old verdict; its neighbours keep theirs. `--prepare` with `--verdicts` writes the standing verdicts to `carried.json` and assigns only the lines that need one. `carried.json` keeps the reviewer, the session and the sessions that wrote the source verdict files. A set whose reviewer wrote the piece is never carried. A change to `rules.md` or `patterns.json` changes `rules_sha256` and sends every line back. The owner can ask for a full pass at any time; delete the verdict file to start one.
-
-Pass `--round N` on each validation. From round 3, `severity: style` fixes and the map's repeats, recaps and term choices are logged instead of blocking. Reviewers in later rounds judge each line fresh, but a style preference that reverses an earlier round's fix is `severity: style`.
+Use at most two rounds. Resume the original reviewer once after source corrections; never replace it or start another model. The policy state counts rounds across review directories. From round 2, style findings are logged. Errors and owner decisions still block publication. At the limit, report the remaining findings and stop. A technical failure does not create an extra reviewer or reset the budget.

@@ -47,3 +47,7 @@ In a reconciliation test plan, a useful instruction is “Check whether the ledg
 Remove a subtitle that only repeats its heading. Do not add a sentence merely because the template has a subtitle field. Review the whole document for recurring formulas, including repeated instructions to collect evidence or confirm a boundary without saying what must be checked.
 
 Record the passages actually read and the corrections made. A scanner result supports only the patterns it checks. Do not turn a clean scan or a completed receipt into a claim that an editorial review passed.
+
+## Review allocation
+
+Keep internal work, chat replies and drafts in the main session with an in-line review. Only copy leaving the owner gets one independent reviewer for all passes. Do not split work among agents or require another model family. Use at most two rounds with that same reviewer, retain accepted verdicts, and stop with remaining errors after the final round. A full review still needs source checks; the reduced reviewer count does not waive factual or publication checks.

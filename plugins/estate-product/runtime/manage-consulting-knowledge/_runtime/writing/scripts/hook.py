@@ -12,7 +12,7 @@ Events:
                        bytes it publishes have a passing full review
     PostToolUse        scans each prose file a tool wrote, records deliverables for the gate and
                        logs which session wrote each file to writers.jsonl
-    Stop               scans every nonempty reply and holds each failed rewrite until it passes; holds
+    Stop               scans every nonempty reply and allows at most two correction attempts per reply; holds
                        the session while a deliverable it changed has no passing full review
 
 The scan is check.py on the rules folder (--rules-dir, then WRITING_HOME, then
@@ -59,6 +59,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import review_policy
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -73,13 +74,14 @@ PROSE = {'.md', '.markdown', '.mdx', '.txt', '.rst', '.html', '.htm'}
 SKIP_NAMES = {'CLAUDE.md', 'AGENTS.md', 'SKILL.md', 'MEMORY.md', 'CHANGELOG.md', 'LICENSE.md', 'WORKFLOW.md'}
 SKIP_PARTS = {'.git', 'node_modules', '.claude', '.codex', '.agents', 'dist', 'build', 'vendor', '.writing-receipts'}
 MIN_WORDS = 40
-FILE_NAG_LIMIT = 5
+FILE_NAG_LIMIT = 2
 DEFAULT_GATE = {
     'include': ['/Volumes/BeastMode/*/artifacts/*', '/Volumes/BeastMode/Claude outputs/*',
                 '/Volumes/BeastMode/Portfolio Site/site/*'],
     'exclude': ['*/archive/*', '*/99-archive/*', '*/sessions/*', '*.text.md', '*/.writing-receipts/*'],
     'extensions': ['.md', '.html', '.htm', '.docx', '.pptx', '.xlsx', '.txt'],
     'max_blocks_per_file': 2,
+    'external': [],
     'publish_tools': ['Artifact', 'mcp__*publish*', 'mcp__*Publish*'],
     'publish_requires': 'full',
 }
@@ -93,6 +95,7 @@ def _strings(value, empty_ok=True):
 
 # gate.json settings: (test, what a valid value is). A value that fails its test is replaced by the default.
 GATE_SETTINGS = {
+    'external': (_strings, 'explicit external-copy path patterns'),
     'include': (_strings, 'a list of fnmatch patterns (strings)'),
     'exclude': (_strings, 'a list of fnmatch patterns (strings)'),
     'extensions': (_strings, 'a list of file suffixes (strings)'),
@@ -270,7 +273,8 @@ def is_deliverable(path, cfg):
         return False
     if any(fnmatch.fnmatch(text, pat) for pat in cfg['exclude']):
         return False
-    return any(fnmatch.fnmatch(text, pat) for pat in cfg['include'])
+    return (any(fnmatch.fnmatch(text, pat) for pat in cfg.get('external', []))
+            or review_policy.read(path).get('audience') == 'external')
 
 
 def file_sha(path):
@@ -305,11 +309,20 @@ def emit(obj):
 
 def on_stop(event, args, state):
     reasons, tool = [], args.tool
+    if event.get('stop_hook_active') and not state:
+        emit({'systemMessage': 'The previous correction state is unavailable. Stop automatic retries and report remaining errors.'})
+        return True
     message = event.get('last_assistant_message') or ''
     if WORD.search(message):
         status, findings = scan_text(message, args.register)
         note_hits(tool, 'reply', 'chat', findings)
         if status == 'fail' and findings:
+            state['reply_blocks'] = state.get('reply_blocks', 0) + 1
+            if state['reply_blocks'] > 2:
+                state['carry'] = findings
+                emit({'systemMessage': 'The two in-line correction attempts are used. Keep remaining findings open; '
+                      'do not launch a reviewer or keep retrying.\n' + describe(findings)})
+                return
             reason = ('Your reply breaks the owner\'s writing rules. Rewrite these sentences, then give '
                       'the whole reply again without mentioning this check:\n' + describe(findings))
             try:
@@ -322,11 +335,11 @@ def on_stop(event, args, state):
     pending, blocked = [], state.setdefault('gate_blocks', {})
     for p in state.get('deliverables', []):
         path = Path(p)
-        if not path.is_file():
+        if not path.is_file() or not is_deliverable(path, cfg):
             continue
         if reviewed(file_sha(path)):
             continue
-        if blocked.get(p, 0) < cfg['max_blocks_per_file']:
+        if blocked.get(p, 0) < min(2, cfg['max_blocks_per_file']):
             pending.append(p)
             blocked[p] = blocked.get(p, 0) + 1
         else:
@@ -337,10 +350,9 @@ def on_stop(event, args, state):
     if pending:
         reasons.append('These deliverables changed without a passing full writing review of their current bytes:\n'
                        + '\n'.join(f'- {p}' for p in pending)
-                       + '\nRun the writing skill\'s full review on each (check.py --prepare, line pass, document '
-                         'pass, spot audit, then check.py --full). Give the line pass and the audit to separate '
-                         'reviewers, from a different model family when one is available. Fix findings at the source '
-                         'and run it again until the receipt passes.')
+                       + '\nUse one independent reviewer for all passes, with at most two review rounds. '
+                         'Continue with that same reviewer and retain accepted verdicts. Internal work stays '
+                         'in this session. After the limit, report remaining errors and stop; do not start more reviewers.')
     notes = untold(state)
     if reasons:
         emit({'decision': 'block', 'reason': '\n\n'.join(reasons + ([settings_text(notes)] if notes else []))})
@@ -476,9 +488,61 @@ def may_publish(event):
         return False   # the built-in list already said no
 
 
+REVIEW_POLICY = ('Keep internal work, chat and drafts in the main session, with an in-line writing review. '
+                 'Only copy leaving the owner gets one independent reviewer for all passes. No reviewer groups, '
+                 'cross-model requirement or nested agents. Use at most two rounds with that same reviewer; '
+                 'retain accepted verdicts. After the limit, report remaining errors and stop.')
+
+
+def delegation_request(event):
+    name = tool_name(event).split('.')[-1]
+    data = event.get('tool_input') or {}
+    if not isinstance(data, dict):
+        return None
+    if name in ('Agent', 'Task', 'spawn_agent') or name.endswith('__spawn_agent'):
+        return json.dumps(data), data.get('resume'), False
+    if name not in ('Bash', 'exec_command', 'shell', 'local_shell'):
+        return None
+    command = data.get('command') or data.get('cmd') or ''
+    if not isinstance(command, str):
+        return None
+    calls = list(re.finditer(r'(?:^|[;|&\n(]\s*|nohup\s+|do\s+)(?:\S*/)?(?:claude\s+(?:-p|--print)|codex\s+exec)\b', command))
+    if not calls:
+        return None
+    resumed = re.search(r'--resume\s+["\']?([a-zA-Z0-9_-]+)', command)
+    batch = len(calls) != 1 or bool(re.search(r'\b(for|while|parallel|xargs)\b|(?<![&>])&(?!&)', command))
+    return command, resumed.group(1) if resumed else None, batch
+
+
+def external_publish(event):
+    name = tool_name(event)
+    data = event.get('tool_input') or {}
+    if not isinstance(data, dict):
+        data = {}
+    action = str(data.get('command') or data.get('action') or data.get('operation') or '').lower()
+    if 'publish' in name.lower() or action in ('publish', 'share', 'send'):
+        return True
+    if name == 'Artifact' and action in ('update', 'edit', 'rewrite', 'replace') and data.get('audience') != 'internal':
+        return True
+    if data.get('audience') == 'external' or data.get('visibility') in ('public', 'organization', 'shared'):
+        return True
+    for field in PUBLISH_PATH_KEYS:
+        if isinstance(data.get(field), str) and review_policy.read(data[field]).get('audience') == 'external':
+            return True
+    return False   # creating an owner-only Artifact is internal work
+
+
 def on_pre_tool(event, args, state):
     """The denial reason for a publish call, or None when it may go out. main() denies on any exception."""
     cfg = gate_config()
+    delegation = delegation_request(event)
+    if delegation is not None:
+        text, resume, batch = delegation
+        try:
+            review_policy.authorize_launch(str(event.get('session_id') or ''), text, resume, batch)
+        except (review_policy.PolicyError, OSError, ValueError) as error:
+            return str(error)
+        return None
     if not is_publish_tool(event, cfg):
         return None
     name = event.get('tool_name') or ''
@@ -489,7 +553,7 @@ def on_pre_tool(event, args, state):
         return (f'Not published: the writing check could not read what {name} sends. It could not read {where}. '
                 'Save the content to a file, review it, and pass that file path or the content itself in the call.')
     sha = hashlib.sha256(data).hexdigest()
-    if cfg['publish_requires'] == 'scan':
+    if cfg['publish_requires'] == 'scan' or not external_publish(event):
         try:
             suffix = Path(where).suffix if Path(where).suffix else '.html'
             with tempfile.TemporaryDirectory() as tmp:
@@ -513,11 +577,13 @@ def on_pre_tool(event, args, state):
     note_hits(args.tool, 'publish', name, [{'rule': 'publish-without-review', 'text': where}])
     return (f'Not published: no passing full review covers {where} (sha256 {sha[:12]}). Save these exact bytes to a '
             'file, run the full review (check.py --file FILE --full with the line pass, document pass and spot audit '
-            'by a reviewer other than the writer) until it returns pass, then publish the same bytes.')
+            'by the one independent reviewer). Use at most two rounds; if errors remain, stop and report them. '
+            'Publish only the reviewed bytes.')
 
 
 def on_prompt(event, args, state):
-    notes = []
+    state['reply_blocks'] = 0
+    notes = [REVIEW_POLICY]
     carry = state.pop('carry', None)
     if carry:
         notes.append('Your last reply went out with these rule breaks; keep them out of this one:\n' + describe(carry))
@@ -550,7 +616,7 @@ def recurring(days=14, top=3):
 
 def on_session_start(event, args, state):
     top = recurring()
-    parts = []
+    parts = [REVIEW_POLICY]
     if top:
         parts.append('Writing habits that reached the owner most often in the last 14 days. Keep them out: '
                      + '; '.join(f'{rule} ({n} times)' for rule, n in top) + '.')
@@ -571,6 +637,9 @@ def pre_tool(event, args, state):
         reason = on_pre_tool(event, args, state)
     except Exception as error:
         if not may_publish(event):
+            if delegation_request(event) is not None:
+                deny('Reviewer launch denied because its budget could not be checked. Repair the local policy state; '
+                     'do not start replacement reviewers.')
             return 0
         name = tool_name(event) or 'the publish tool'
         note_hits(args.tool, 'publish-unresolved', name,
@@ -615,6 +684,10 @@ def main(argv=None):
         try:
             blocked = handler(event, args, state)
             if name == 'Stop' and blocked:
+                try:
+                    write_json(path, state)
+                except OSError:
+                    pass
                 return 0
         except Exception as error:  # a hook never breaks a session
             log_hits(args.tool, 'hook-error', name, [{'rule': 'hook-error', 'text': f'{type(error).__name__}: {error}'}])
