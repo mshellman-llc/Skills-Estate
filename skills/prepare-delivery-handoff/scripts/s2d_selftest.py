@@ -69,6 +69,12 @@ def main():
     case("an executed SOW with no signing record is refused",
          mutated(brief, lambda m: m["source_snapshot"].pop("sow_executed"), "nosign"),
          1, ["source_snapshot.sow_executed needs signed_on"])
+    case("one party signing alone is refused",
+         mutated(brief, lambda m: m["source_snapshot"]["sow_executed"].update(signers=[{"name": "Fixture Client Signer", "party": "Fixture Client"}]), "oneparty"),
+         1, ["signers that name a person for each of at least two parties"])
+    case("a signer with no party is refused",
+         mutated(brief, lambda m: m["source_snapshot"]["sow_executed"].update(signers=["Fixture Client Signer", "Fixture Provider Signer"]), "noparty"),
+         1, ["signers that name a person for each of at least two parties"])
     case("a deck cannot source a contract figure",
          mutated(brief, lambda m: m["figures"][0].update(source="proposal deck slide 4, as quoted in the pitch"), "deck"),
          1, ["money rule"])
@@ -77,6 +83,29 @@ def main():
          1, ["money rule"])
     case("the quote id alone sources a figure",
          mutated(brief, lambda m: m["figures"][0].update(source="Q-000999 line 3"), "quoteid"), 0, ["RESULT: PASS"])
+
+    # Issue 187: the readiness gap memo has a defined shape.
+    memo = os.path.join(FIXTURES, "gap_memo_example.md")
+    memo_checker = os.path.join(HERE, "check_gap_memo.py")
+
+    def memo_case(name, path, want_code, want=""):
+        proc = subprocess.run([sys.executable, memo_checker, path], capture_output=True, text=True)
+        out = proc.stdout + proc.stderr
+        if proc.returncode == want_code and want in out:
+            print(f"ok   {name} (exit {proc.returncode})")
+        else:
+            failures.append(name)
+            print(f"FAIL {name}: wanted exit {want_code} with {want!r}, got {proc.returncode}: {out.strip()}")
+        CASES.append(name)
+
+    memo_case("gap memo example passes", memo, 0, "RESULT: PASS")
+    with open(memo, encoding="utf-8") as fh:
+        memo_text = fh.read()
+    fd, no_next = tempfile.mkstemp(prefix="s2d_memo_", suffix=".md")
+    with os.fdopen(fd, "w", encoding="utf-8") as fh:
+        fh.write(memo_text.split("## Next gate")[0])
+    memo_case("gap memo without the next gate fails", no_next, 1, "missing section: Next gate")
+    os.unlink(no_next)
 
     # Shipped fixtures.
     case("pass_brief", os.path.join(FIXTURES, "pass_brief.json"), 0, ["RESULT: PASS"])

@@ -252,6 +252,10 @@
     "0.4.59": {
       "content_sha256": "03b5d395818e76fb4db748bfebf2a152e62cb7ab278476efc63f6a0832a5a258",
       "note": "Fix proof defects 175 to 180: the handoff gate needs a signed SOW, the evidence gate applies the executed-commitment hard fail, the money rule cites the stamp identifiers, an honest blocked quality record exits 0, and the one-person handoff has a rule"
+    },
+    "0.4.60": {
+      "content_sha256": "43e85c7869c13ddca05600a5cb1503c4fadf22840b4b6c7632824ee18852e37c",
+      "note": "Fix proof defects 184 to 187: executed flag needs an executed_contract source, the executed-commitment blocker keeps the ledger's owner, handoff signers need two parties, the layout check names its browser and the preflight probes it, and the gap memo has a defined format"
     }
   },
   "source_conflicts": [
