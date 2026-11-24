@@ -131,6 +131,40 @@
       "insufficientOutput": "Handoff readiness gap memo",
       "hardFails": ["no executed commitment", "contract silently overridden by recent intent", "solution analysis recreated instead of inherited", "commercial conditions dropped", "conditional readiness without owners and closure outputs"],
       "referenceComponents": ["Sales-to-Delivery Handoff example"]
+    },
+    {
+      "artifactType": "project_charter",
+      "adapter": "project_charter",
+      "decisionJob": "Draft mobilization from the signed agreement and accepted handoff, preserving owned gaps and human decisions.",
+      "primaryAudience": [
+        "delivery lead",
+        "client sponsor"
+      ],
+      "requiredDomains": [
+        "executed commitment",
+        "accepted handoff",
+        "scope baseline",
+        "delivery model confirmation",
+        "stakeholders and authority",
+        "risks and open items",
+        "governance",
+        "mobilization readiness"
+      ],
+      "executedDomains": [
+        "executed commitment"
+      ],
+      "sourceLocationRequired": true,
+      "terminalIfInsufficient": true,
+      "fullOutput": "Project Charter and mobilization pack",
+      "insufficientOutput": "Mobilization readiness gap memo",
+      "hardFails": [
+        "no executed commitment",
+        "no accepted handoff",
+        "invented confirmation or signature"
+      ],
+      "referenceComponents": [
+        "start-delivery charter spec"
+      ]
     }
   ]
 }

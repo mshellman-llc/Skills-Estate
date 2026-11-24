@@ -200,6 +200,18 @@ for artifact_type in core.contracts:
     gate_case(f"{artifact_type} contract, open item without a stop rule", ledger, artifact_type, "Insufficient",
               "readiness_gap_memo", lambda r: r.terminal and r.conclusionForce == "stop")
 
+# Issue 192: the charter has a callable evidence contract. A complete ledger passes;
+# absent handoff coverage or an unsigned commitment stops mobilization.
+charter = contract_ledger("project_charter")
+charter["claims"] = [c for c in charter["claims"] if c["claimId"] != "CLM-900"]
+gate_case("charter with signed agreement and handoff evidence", charter, "project_charter",
+          "Sufficient", "project_charter", lambda r: not r.terminal)
+for domain in ("accepted handoff", "executed commitment"):
+    absent = copy.deepcopy(charter)
+    absent["claims"] = [c for c in absent["claims"] if domain not in c["domains"]]
+    gate_case("charter missing " + domain, absent, "project_charter", "Insufficient",
+              "readiness_gap_memo", lambda r: r.terminal)
+
 # Issue 175: an unsigned deal cannot pass the handoff contract. The only claim in
 # the executed commitment domain says the invented bakery's agreement is unsigned,
 # so the domain stays Insufficient and the output is the readiness memo.

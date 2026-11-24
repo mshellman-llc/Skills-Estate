@@ -8,11 +8,11 @@ gate. Content-free: it never invents facts, it only reads gate statuses.
 Usage:
     python3 plan.py [path/to/DELIVERY-STATE.md] [--json]
 
-If the path is omitted or the file does not exist, the planner assumes a brand
-new engagement (nothing signed yet) and prints the full plan from the handoff,
-plus an instruction to create the state file.
+If the file is missing or contains no recognized gates, the stage is unknown.
+The planner reports the missing evidence and asks the orchestrator to reconstruct
+the state from artifacts before routing. It creates no file.
 
-Exit codes: 0 on success (findings are printed, not fatal), 2 on unreadable input.
+Exit codes: 0 for a plan, 2 for missing, unreadable or unestablished state.
 """
 
 import json
@@ -160,6 +160,22 @@ def render_text(meta, current_idx, remaining, findings, state_note):
     return "\n".join(out)
 
 
+def unknown_state(path, as_json, reason):
+    """Missing state cannot establish a stage, gate or artifact owner."""
+    finding = (reason + "; delivery-orchestrator must reconstruct DELIVERY-STATE.md "
+               "from the executed agreement and acceptance artifacts before routing. "
+               "The planner writes no state and infers no gate status.")
+    payload = {"engagement": None, "as_of": None, "state_source": path,
+               "state_status": "unknown", "complete": False, "current_stage": None,
+               "remaining": [], "cross_cutting": CROSS_CUTTING, "governors": GOVERNORS,
+               "truth_hierarchy": TRUTH, "findings": [finding]}
+    if as_json:
+        print(json.dumps(payload, indent=2))
+    else:
+        print("Current stage: unknown\nState source: " + path + "\nFindings (1):\n  - " + finding)
+    return 2
+
+
 def main(argv):
     args = [a for a in argv[1:] if a != "--json"]
     as_json = "--json" in argv[1:]
@@ -170,14 +186,12 @@ def main(argv):
         meta, declared, gates, findings = parse_state(text)
         state_note = path
     except FileNotFoundError:
-        meta, declared, gates, findings = {}, None, {}, []
-        state_note = ("%s not found: treating this as a new engagement at the "
-                      "handoff. Create the state file per "
-                      "references/delivery-state-spec.md before the first gate."
-                      % path)
+        return unknown_state(path, as_json, "State file is missing")
     except OSError as exc:
         print("plan.py: cannot read %s: %s" % (path, exc), file=sys.stderr)
         return 2
+    if not gates:
+        return unknown_state(path, as_json, "State file has no recognized gates")
     current_idx, remaining = compute(meta, declared, gates, findings)
     if as_json:
         payload = {

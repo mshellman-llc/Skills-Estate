@@ -30,7 +30,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "2a7ea5c3fee28e5a5156bf4a57995ecf3ce23e7156883f00858488ab79d03823",
+      "required_sha256": "0c3eba45ce71d2ee8d2d8907b2c5dc3e09a6c46dc002e3bbf959df464c9ac9e6",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -200,7 +200,7 @@
       "subject": "deliver-salesforce-change"
     },
     {
-      "required_sha256": "d9e541a43cc55ff2ec4fbbfdb58f242eee889260f738eabe1d77c34df1c7b89a",
+      "required_sha256": "98f66c54182bf142af0546ad7629189d4e3eb71c0965ae58a4907e62f61ee55e",
       "status": "review required",
       "subject": "delivery-orchestrator"
     },
@@ -250,7 +250,7 @@
       "subject": "estimate-project"
     },
     {
-      "required_sha256": "a275a44042fc0db997b20c9741192356c6c06bb8cd79ef46d14b3bc2684efa74",
+      "required_sha256": "d46330ec73692843525dbf180ebc1065aacb43cfb7491bbc4d8f9f7aabe23fb1",
       "status": "review required",
       "subject": "evidence-core"
     },
@@ -470,7 +470,7 @@
       "subject": "specify-implementation"
     },
     {
-      "required_sha256": "5c601bef3bdf8580ef91de1ff56ea7ab46274c819737ef644a04b8db85998ae8",
+      "required_sha256": "bfc36596934eea204ea5f4695328b2a53cf0e64b06a0d7e3f43adb05fd627d90",
       "status": "review required",
       "subject": "start-delivery"
     },
@@ -545,6 +545,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "60ba3ee1530678a462c194e4ef1ad15bb42e97a1a6c0f31c2974a0cb8b3e925e",
+  "source_sha256": "be0b3194a08697978a07f5c9b0c80f5e22ac9fd75b2eb57887af4827091d370e",
   "status": "owner-published"
 }

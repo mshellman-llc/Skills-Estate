@@ -35,9 +35,11 @@ estimate may supply a change candidate, but it does not amend the agreement.
 Keep estimates and accepted commitments distinct.
 
 For a request spanning stages, use valid existing artifacts as prerequisites.
-Draft later work where the available evidence supports it, with unresolved
-dependencies visible. Do not declare an exit gate passed without its actual
-acceptance. A change to a previously accepted requirement needs its reason and
+Each owning skill's entry prerequisites apply before drafting later work. In
+particular, start-delivery stops unless the handoff brief is accepted and the
+SOW is signed. That stop overrides both this stage guide and unattended drafting
+instructions. Return the stopped-run record with owners and closing conditions.
+Do not declare an exit gate passed without its actual acceptance. A change to a previously accepted requirement needs its reason and
 effect recorded before changing the baseline.
 
 ## Check project capabilities

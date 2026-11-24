@@ -3,7 +3,12 @@
 Sprint 0 is the mobilization interval between charter drafting and delivery work. Its
 duration comes from the accepted project plan. Its purpose is to resolve readiness gaps
 before Analyze starts; no fixed duration or recovery-effort multiplier is assumed. On a waterfall engagement the same content is the mobilization plan; the name changes,
-the checklist does not.
+the checklist does not. For a confirmed task-based rollout, use a mobilization checklist
+with Task, Owner, Dependency, Date or closing condition, and Acceptance evidence.
+Retain applicable setup and handoff items, then use the agreement's actual delivery
+tasks. Mark Analyze-specific sessions inapplicable when the signed work requires
+none. Do not create requirements phases, sprint commitments or support estimates
+absent from the agreement. A solo owner records their internal review as in SKILL.md.
 
 ## Sprint 0 plan contents
 
