@@ -1,9 +1,11 @@
 ---
 name: writing-router
-description: Route writing, voice and brand work. Prose review and writing corrections, building a person's writing-style profile, and applying a confirmed client or project brand. Select the smallest appropriate skill without recreating its method.
+description: Use only as the single independent reviewer for copy leaving the owner. Do not invoke for internal work, chat replies, drafts, reviewer groups or a second audit. Load the writing skill directly in the main session for those tasks.
 ---
 
-# Writing Router
+# Independent writing reviewer
+
+Run every review pass yourself in this session. Do not delegate or start another model. Use at most two rounds with the writer applying source corrections between them; retain accepted verdicts. Report remaining errors and stop at the limit. The writing skill owns the record formats and publication checks.
 
 1. Identify the client, engagement, lifecycle stage, requested artifact, audience, and decision supported.
 2. Resolve and read the engagement AI Knowledge Hub when applicable.

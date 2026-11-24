@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 import check
 
@@ -395,6 +396,16 @@ class Review(Base):
         self.sources = self.root / 'sources.json'
         self.sources.write_text(json.dumps(self.SOURCES))
         self.load_plan()
+        self.policy = mock.patch.object(check.review_policy, 'validate', side_effect=lambda path, digest, docs, requested=None: {'round': requested or 1})
+        self.policy.start()
+        self.addCleanup(self.policy.stop)
+
+    def check(self, path, *extra, **kwargs):
+        if '--audience' not in extra:
+            extra = (*extra, '--audience', 'external')
+        if '--writer' not in extra:
+            extra = (*extra, '--writer', 'writer-session')
+        return super().check(path, *extra, **kwargs)
 
     def load_plan(self, *extra):
         self.check(self.path, '--prepare', str(self.work), '--sources', str(self.sources), *extra)
@@ -411,12 +422,13 @@ class Review(Base):
             v['flags'] = {f['rule']: False for f in line['flags']}
         return dict(v, **change)
 
-    def verdicts(self, change=None, reviewer='line-pass worker'):
+    def verdicts(self, change=None, reviewer='independent reviewer'):
         out = [self.verdict(line, **(change or {}).get(line['id'], {})) for line in self.lines]
         return self.save('verdicts.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': reviewer, 'verdicts': out})
 
     def document_map(self, **change):
         data = {
+            'reviewer': 'independent reviewer',
             'text_sha256': self.plan['text_sha256'], 'rules_sha256': self.plan['rules_sha256'],
             'reader': {'who': 'The finance lead for renewals', 'must_decide_or_do': 'Approve the forecast for 14 accounts'},
             'sections': [{'id': s['id'], 'point': 'States the forecast scope', 'reader_acts': True} for s in self.plan['sections']],
@@ -428,7 +440,7 @@ class Review(Base):
         data.update(change)
         return self.save('map.json', data)
 
-    def audit(self, verdicts, reviewer='audit worker', **change):
+    def audit(self, verdicts, reviewer='independent reviewer', **change):
         self.check(self.path, '--verdicts', verdicts, '--prepare', str(self.work), '--sources', str(self.sources))
         sample = json.loads((self.work / 'assignments.json').read_text())['audit']
         return self.save('audit.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': reviewer,
@@ -449,6 +461,19 @@ class Review(Base):
     def detail(self, result, name):
         return {s['step']: s['detail'] for s in result['steps']}[name]
 
+    def test_external_full_review_with_one_reviewer_and_no_child_processes(self):
+        self.policy.stop()
+        verdicts, document_map = self.verdicts(), self.document_map()
+        audit, _ = self.audit(verdicts)
+        code, result = self.full(verdicts, document_map, '--audit', audit)
+        self.assertEqual((code, result['status']), (0, 'pass'))
+        self.assertEqual(self.receipt(result)['review_policy']['max_reviewers'], 1)
+        changed = json.loads(Path(audit).read_text())
+        changed['reviewer'] = 'second reviewer'
+        Path(audit).write_text(json.dumps(changed))
+        code, result = self.full(verdicts, document_map, '--audit', audit)
+        self.assertEqual((code, self.step(result, 'review policy')), (2, 'failed'))
+
     def test_prepare_writes_parts_outline_workers_and_a_prepare_receipt(self):
         self.assertEqual(self.plan['lines_in_scope'], 5)
         self.assertEqual(self.plan['numbers'], [{'id': '0002', 'quote': '14'}])
@@ -462,7 +487,7 @@ class Review(Base):
         self.check(long_path, '--prepare', str(self.root / 'long-review'))
         plan = json.loads((self.root / 'long-review' / 'assignments.json').read_text())
         self.assertEqual(len(plan['parts']), 3)
-        self.assertTrue(all(len(w['lines']) <= check.WORKER_LINES for w in plan['workers']))
+        self.assertEqual(len(plan['workers']), 1)
         self.assertEqual(sum(len(w['lines']) for w in plan['workers']), 700)
         for name in plan['parts']:
             self.assertLessEqual(len((self.root / 'long-review' / 'text' / name).read_text().splitlines()), check.PART_LINES)
@@ -517,7 +542,7 @@ class Review(Base):
         code, result = self.full(verdicts, document_map, '--audit', audit)
         self.assertEqual((code, result['status'], self.step(result, 'spot audit')), (0, 'pass', 'ok'))
         self.assertIn('1 of the 5 lines marked ok', self.detail(result, 'spot audit'))
-        self.assertTrue(self.receipt(result)['spot_audit']['independent'])
+        self.assertFalse(self.receipt(result)['spot_audit']['independent'])
 
     def test_audit_by_the_same_reviewer_is_recorded_as_not_independent(self):
         verdicts, document_map = self.verdicts(reviewer='one agent'), self.document_map()
@@ -864,8 +889,8 @@ class Review(Base):
         self.agent_home.mkdir(exist_ok=True)
         (self.agent_home / 'writers.jsonl').mkdir()   # a log that exists but cannot be read
         code, result = self.full(verdicts, document_map)
-        self.assertEqual((code, self.step(result, 'line pass')), (2, 'failed'))
-        self.assertIn('writer log', self.detail(result, 'line pass'))
+        self.assertEqual((code, self.step(result, 'review policy')), (2, 'failed'))
+        self.assertIn('writer log', self.detail(result, 'review policy'))
         (self.agent_home / 'writers.jsonl').rmdir()
         unnamed = self.save('verdicts-w2.json', {'rules_sha256': self.plan['rules_sha256'], 'reviewer': '',
                                                  'verdicts': []})
