@@ -219,14 +219,17 @@
     "writing"
   ],
   "reconcile-knowledge": [
-    "verify-work-state"
+    "verify-work-state",
+    "manage-consulting-knowledge"
   ],
   "load-project-context": [
     "manage-linked-task",
-    "verify-work-state"
+    "verify-work-state",
+    "manage-consulting-knowledge"
   ],
   "capture-knowledge": [
-    "verify-work-state"
+    "verify-work-state",
+    "manage-consulting-knowledge"
   ],
   "check-knowledge-hub": [
     "verify-work-state"

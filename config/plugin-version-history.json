@@ -272,6 +272,18 @@
     "0.4.69": {
       "content_sha256": "58df93acd45b507205f5f6b91f556b5f44cb3e441121593ab633047d2e6a3f4f",
       "note": "Update the source-bound writing guide for the one-reviewer, two-round policy."
+    },
+    "0.4.64": {
+      "content_sha256": "1e27cd74e5a6666bcd79d8640bfa7ceca1eb12876ee196174c9d726608b8bbfa",
+      "note": "Keep registered client Markdown current after accepted findings and confirm file content and retrieval before closing refreshes."
+    },
+    "0.4.65": {
+      "content_sha256": "ad5a9cdb7ce57e0c55ee1e554bf02b740fc97a8d81b379c16e48c25012cc7767",
+      "note": "Reconcile maintained client Markdown after source changes and verify saved content and retrieval before closing refreshes."
+    },
+    "0.4.70": {
+      "content_sha256": "376f351c4fb3fbacf20659eb4356b091b0b3b4ead5553148e1881baa968cee34",
+      "note": "Refresh maintained subject Markdown after accepted findings and confirm saved content and retrieval through the configured Hub adapter."
     }
   },
   "source_conflicts": [
