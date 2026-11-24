@@ -30,7 +30,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "9a94c570a98734dc1970ef5f80238666374b1493335d7548338a913dde043109",
+      "required_sha256": "2a7ea5c3fee28e5a5156bf4a57995ecf3ce23e7156883f00858488ab79d03823",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -120,7 +120,7 @@
       "subject": "author-style-runtime"
     },
     {
-      "required_sha256": "9f682313a7ed8531f17c0d819e2dd375f38862b320e8219581c2498a404dc7d5",
+      "required_sha256": "e48d1111312d3f13ede8ab26dde8585491ed19c1a0f87550a7b3c03e0e2477e9",
       "status": "review required",
       "subject": "brand-renderer"
     },
@@ -250,7 +250,7 @@
       "subject": "estimate-project"
     },
     {
-      "required_sha256": "8b46f1db183e0aecd7467057b30cf1a86130c3a3766d75d9d0151e1bee0d0d71",
+      "required_sha256": "a275a44042fc0db997b20c9741192356c6c06bb8cd79ef46d14b3bc2684efa74",
       "status": "review required",
       "subject": "evidence-core"
     },
@@ -375,7 +375,7 @@
       "subject": "plan-usability-study"
     },
     {
-      "required_sha256": "10ddf6cb59f4589e0bf191770dfb758ec48004a019bedf32b51b2d7bfe91d53e",
+      "required_sha256": "54112949aa793a34242e69ef51f547ec1d0e18ded6201f3da8c9136c560c0f64",
       "status": "review required",
       "subject": "prepare-delivery-handoff"
     },
@@ -545,6 +545,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "c69b76f7a7f83b3c95151eee974f6479e5318165bd54a274a8b12dc18886742e",
+  "source_sha256": "60ba3ee1530678a462c194e4ef1ad15bb42e97a1a6c0f31c2974a0cb8b3e925e",
   "status": "owner-published"
 }

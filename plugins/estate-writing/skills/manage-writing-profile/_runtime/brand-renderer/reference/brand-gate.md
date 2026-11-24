@@ -67,3 +67,13 @@ fails such a shape with `SHADOW`; set the shape's effect list empty
 The checker does not otherwise evaluate CSS variables, inherited styles, image
 colors, or font substitution by viewers. Its
 passing result supports the visual review; it cannot replace it.
+
+## Layout check browser
+
+The layout check runs on one named Playwright install. `node scripts/layout_check.cjs --probe`
+prints the module path, its version and the Chromium build, and exits 2 when none is
+available. The runtime preflight runs that probe and reports a missing browser under
+`missing`, so a machine without Playwright no longer reads as ready. Point `PW_MODULE` at the
+install (and `PW_CHROMIUM` at its browser when it is not the default) instead of borrowing a
+library from another project. Every layout report records the module, version and browser
+build it ran on, under `browser`.

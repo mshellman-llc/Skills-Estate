@@ -23,7 +23,8 @@ What it enforces (structure and traceability, not truth):
 - Every contract figure's source cites the SOW or quote identifier from the stamp, and
   none names a deck, proposal, chat or memory (money rule).
 - Required stamps: client, engagement, as_of, source_snapshot.sow,
-  source_snapshot.quote, and source_snapshot.sow_executed (signed_on date and signers).
+  source_snapshot.quote, and source_snapshot.sow_executed (signed_on date and signers naming a person
+  for each of at least two parties).
   A SOW stamp that reads as a draft or unsigned fails.
 - No em dash anywhere in the file.
 
@@ -155,6 +156,18 @@ def check_section_12(section, moment, findings):
             findings.append(f"section 12: readiness item {i} status must be ready, blocked, or unknown")
 
 
+def valid_signers(signers):
+    """Each signer names a person and a party, and at least two distinct parties signed."""
+    if not isinstance(signers, list) or not signers:
+        return False
+    parties = set()
+    for signer in signers:
+        if not isinstance(signer, dict) or not filled(signer.get("name")) or not filled(signer.get("party")):
+            return False
+        parties.add(signer["party"].strip().lower())
+    return len(parties) >= 2
+
+
 def references_snapshot(source, snapshot):
     """True when the source text carries the SOW identifier or the quote identifier from the stamp."""
     if not isinstance(snapshot, dict):
@@ -205,10 +218,11 @@ def check(manifest, raw_text):
             not isinstance(executed, dict)
             or not isinstance(executed.get("signed_on"), str)
             or not DATE_RE.match(executed["signed_on"])
-            or not filled(executed.get("signers"))
+            or not valid_signers(executed.get("signers"))
         ):
             findings.append(
-                "stamp missing: source_snapshot.sow_executed needs signed_on (YYYY-MM-DD) and a non-empty signers list"
+                "stamp missing: source_snapshot.sow_executed needs signed_on (YYYY-MM-DD) and signers "
+                "that name a person for each of at least two parties"
             )
 
     moment = manifest.get("moment", "brief")

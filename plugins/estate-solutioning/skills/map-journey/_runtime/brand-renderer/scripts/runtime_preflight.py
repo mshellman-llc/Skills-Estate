@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -82,7 +83,27 @@ def resolve() -> dict:
         if proc.returncode != 0:
             report["ok"] = False
             report["missing"].append("brand assets")
+    report["layout_browser"] = probe_layout_browser()
+    if report["layout_browser"].get("status") != "ready":
+        report["ok"] = False
+        report["missing"].append("layout check browser: " + str(report["layout_browser"].get("reason", "not ready")))
     return report
+
+
+def probe_layout_browser() -> dict:
+    """Ask the layout check which Playwright and browser it would use, without a page."""
+    node = shutil.which("node")
+    if not node:
+        return {"status": "pending", "reason": "node is not installed"}
+    try:
+        proc = subprocess.run([node, str(ROOT / "scripts" / "layout_check.cjs"), "--probe"],
+                              capture_output=True, text=True, timeout=120)
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {"status": "pending", "reason": str(exc)}
+    try:
+        return json.loads(proc.stdout.strip().splitlines()[-1])
+    except (json.JSONDecodeError, IndexError):
+        return {"status": "pending", "reason": (proc.stderr.strip() or "the probe printed nothing")[-300:]}
 
 
 def main() -> int:
@@ -101,6 +122,9 @@ def main() -> int:
         print("prose: {}".format(report["prose_check"]))
         print("brand: {}".format(report["brand_check"]))
         print("release: {}".format(report["quality_gate"]))
+        browser = report["layout_browser"]
+        print("layout browser: playwright {} at {}, chromium {}".format(
+            browser["playwright"]["version"], browser["playwright"]["module"], browser["chromiumVersion"]))
     else:
         print("release runtime: FAIL")
         for item in report["missing"]:

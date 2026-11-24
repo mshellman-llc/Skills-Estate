@@ -64,6 +64,13 @@ def playwright_entry() -> Path | None:
 
 
 node = os.environ.get("ESTATE_NODE") or shutil.which("node")
+# Issue 186: with no Playwright the check says so and names the module it looked for.
+if node:
+    absent = subprocess.run([node, str(CHECK), "--probe"], capture_output=True, text=True, timeout=120,
+                            env={**os.environ, "PW_MODULE": "/nonexistent/playwright"})
+    absent_report = json.loads(absent.stdout)
+    expect("probe without playwright is pending", (absent.returncode, absent_report["status"]), (2, "pending"))
+    expect("pending report names the module it looked for", absent_report["playwright"]["module"], "/nonexistent/playwright")
 entry = playwright_entry()
 if not node or entry is None:
     print("  SKIP live layout check: Node or Playwright is not available")
@@ -103,6 +110,10 @@ else:
             expect("flags a hidden qualifier", "qualifier for C1 not visible" in text, True)
             images = [p.name for p in folder.rglob("*") if p.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp", ".gif"}]
             expect("writes no image files", images, [])
+            code, report = run("good.html")
+            browser_info = report.get("browser", {})
+            expect("report names the playwright version", bool(browser_info.get("playwright", {}).get("version")), True)
+            expect("report names the browser build", bool(browser_info.get("chromiumVersion")), True)
 
 if fail:
     print("\nSELFTEST FAILED")

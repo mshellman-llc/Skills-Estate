@@ -114,7 +114,7 @@
           }
         },
         "gapKind": {"type": ["string", "null"]},
-        "executed": {"type": "boolean", "description": "True only when the source is a signed, executed commitment. A domain the contract lists in executedDomains is covered only by a Confirmed claim with executed true."}
+        "executed": {"type": "boolean", "description": "True only when the source is a signed, executed commitment. A domain the contract lists in executedDomains is covered only by a Confirmed claim with executed true that cites a source of type executed_contract."}
       }
     },
     "conflict": {

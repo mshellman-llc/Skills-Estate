@@ -3,7 +3,7 @@
   "engagement": "Quote-to-cash foundation, phase 1",
   "moment": "brief",
   "as_of": "2026-08-11",
-  "source_snapshot": {"sow": "SOW-FIX-001", "quote": "Q-000999", "sow_executed": {"signed_on": "2026-08-01", "signers": ["Fixture Client Signer", "Fixture Provider Signer"]}},
+  "source_snapshot": {"sow": "SOW-FIX-001", "quote": "Q-000999", "sow_executed": {"signed_on": "2026-08-01", "signers": [{"name": "Fixture Client Signer", "party": "Fixture Client"}, {"name": "Fixture Provider Signer", "party": "Fixture Provider"}]}},
   "sections": {
     "01": {"content": ["What was sold."], "sources": [{"name": "SOW-FIX-001 section 2", "date": "2026-08-01"}]},
     "02": {},

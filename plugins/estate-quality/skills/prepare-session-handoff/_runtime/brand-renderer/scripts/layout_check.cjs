@@ -1,5 +1,6 @@
 // Visual gate, deterministic half: read a rendered HTML artifact's layout from the DOM.
 // Usage: node layout_check.cjs artifact.html [--manifest parity.json] [--widths 1280,390] [--json out.json]
+//        node layout_check.cjs --probe     (report the Playwright module, its version and the browser build)
 // Checks sideways scroll, text past the viewport, clipped text, text contrast from
 // computed colors, and text parity across widths and against the parity manifest.
 // It writes no image files: the only output is the JSON report.
@@ -13,15 +14,39 @@ function parseArgs(argv) {
   const args = {widths: [1280, 390]};
   for (let i = 0; i < argv.length; i++) {
     const value = argv[i];
-    if (value === '--manifest') args.manifest = argv[++i];
+    if (value === '--probe') args.probe = true;
+    else if (value === '--manifest') args.manifest = argv[++i];
     else if (value === '--json') args.json = argv[++i];
     else if (value === '--widths') args.widths = argv[++i].split(',').map(Number);
     else if (!args.file) args.file = value;
     else throw new Error('Unexpected argument: ' + value);
   }
-  if (!args.file) throw new Error('Supply an HTML file');
+  if (!args.file && !args.probe) throw new Error('Supply an HTML file');
   if (args.widths.some(width => !Number.isFinite(width) || width < 200)) throw new Error('Widths must be numbers of at least 200');
   return args;
+}
+
+// Name the Playwright install this check runs on: the module path, its version and the
+// browser build, so a report can be reproduced.
+function playwrightInfo() {
+  const spec = process.env.PW_MODULE || 'playwright';
+  let version = null;
+  let moduleFolder = null;
+  try {
+    let start = null;
+    if (spec.startsWith('file:')) start = require('node:url').fileURLToPath(spec);
+    else if (path.isAbsolute(spec) || spec.startsWith('.')) start = path.resolve(spec);
+    else start = path.dirname(require.resolve(spec + '/package.json'));
+    for (let dir = fs.existsSync(start) && fs.statSync(start).isDirectory() ? start : path.dirname(start);
+         dir && dir !== path.dirname(dir); dir = path.dirname(dir)) {
+      const candidate = path.join(dir, 'package.json');
+      if (fs.existsSync(candidate)) {
+        const pkg = JSON.parse(fs.readFileSync(candidate, 'utf8'));
+        if (/^(playwright|playwright-core)$/.test(pkg.name || '')) { version = pkg.version; moduleFolder = dir; break; }
+      }
+    }
+  } catch (error) { /* the module may resolve only through import; leave the version unknown */ }
+  return {module: moduleFolder || spec, version};
 }
 
 // Runs inside the page. Returns the layout facts for the current viewport.
@@ -100,18 +125,25 @@ async function main() {
     console.error(error.message);
     process.exit(2);
   }
-  const file = path.resolve(args.file);
+  const file = args.file ? path.resolve(args.file) : null;
   const manifest = args.manifest ? JSON.parse(fs.readFileSync(args.manifest, 'utf8')) : {};
   let chromium;
   try {
     const pw = await import(process.env.PW_MODULE || 'playwright');
     chromium = pw.chromium ?? pw.default.chromium;
   } catch (error) {
-    console.log(JSON.stringify({status: 'pending', reason: 'playwright is not installed'}));
+    console.log(JSON.stringify({status: 'pending', reason: 'playwright is not installed', playwright: playwrightInfo()}));
     process.exit(2);
   }
-  const report = {artifact: file, writesImages: false, widths: {}, failures: [], warnings: []};
-  const browser = await chromium.launch(launchOptions());
+  const options = launchOptions();
+  const browser = await chromium.launch(options);
+  const browserInfo = {playwright: playwrightInfo(), chromiumExecutable: options.executablePath || 'playwright default', chromiumVersion: browser.version()};
+  if (args.probe) {
+    await browser.close();
+    console.log(JSON.stringify({status: 'ready', ...browserInfo}));
+    process.exit(0);
+  }
+  const report = {artifact: file, writesImages: false, browser: browserInfo, widths: {}, failures: [], warnings: []};
   try {
     for (const width of args.widths) {
       const page = await browser.newPage({viewport: {width, height: 900}});

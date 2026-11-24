@@ -220,23 +220,38 @@ class EvidenceCore:
         claims: list[dict[str, Any]],
         conflicts: list[dict[str, Any]],
         contract: dict[str, Any] | None = None,
+        sources: dict[str, dict[str, Any]] | None = None,
     ) -> tuple[str, list[dict[str, Any]], list[dict[str, Any]]]:
         """Return the domain's coverage, its blockers, and its conditional open items."""
         contract = contract or {}
+        sources = sources or {}
         active = [c for c in claims if domain in c.get("domains", []) and c.get("status") != "Superseded"]
         blockers: list[dict[str, Any]] = []
         open_items: list[dict[str, Any]] = []
         if not active:
             return "Insufficient", [{"domain": domain, "reason": "No evidence-backed claim covers this required domain", "owner": None, "closureCondition": "Provide and validate authoritative evidence for this domain"}], []
 
-        if domain in contract.get("executedDomains", []) and not any(
-                c.get("status") == "Confirmed" and c.get("executed") is True for c in active):
+        if domain in contract.get("executedDomains", []):
             # A hard fail of the contract: a claim that merely sits in this domain, such as
-            # "the draft is not signed", is not an executed commitment.
-            return "Insufficient", [{"domain": domain,
-                                     "reason": "No Confirmed claim marks an executed commitment (executed: true)",
-                                     "owner": None,
-                                     "closureCondition": "Obtain the signed agreement and record it as a Confirmed claim with executed true"}], []
+            # "the draft is not signed", is not an executed commitment. The executed flag
+            # counts only when a source of type executed_contract stands behind the claim.
+            def executed_backing(claim: dict[str, Any]) -> bool:
+                return claim.get("status") == "Confirmed" and claim.get("executed") is True and any(
+                    sources.get(sid, {}).get("sourceType") == "executed_contract" for sid in claim.get("sourceIds", []))
+
+            if not any(executed_backing(c) for c in active):
+                # Carry the owner, closure condition and stop rule the ledger already names.
+                named = next((c for c in active if c.get("status") in {"Unknown", "Contested"} and c.get("owner")), None)
+                blocker = {"domain": domain,
+                           "reason": "No Confirmed claim marks an executed commitment (executed: true, backed by an executed_contract source)",
+                           "owner": None,
+                           "closureCondition": "Obtain the signed agreement and record it as a Confirmed claim with executed true, backed by an executed_contract source"}
+                if named:
+                    blocker.update(claimId=named["claimId"], owner=named["owner"],
+                                   closureCondition=named.get("closureCondition") or blocker["closureCondition"])
+                    if named.get("stopRule"):
+                        blocker["stopRule"] = named["stopRule"]
+                return "Insufficient", [blocker], []
 
         if contract.get("sourceLocationRequired"):
             for claim in active:
@@ -302,8 +317,9 @@ class EvidenceCore:
         blockers: list[dict[str, Any]] = []
         open_items: list[dict[str, Any]] = []
 
+        source_lookup = self._index(ledger.get("sources", []), "sourceId") if ledger.get("sources") else {}
         for domain in contract["requiredDomains"]:
-            status, domain_blockers, domain_open_items = self._domain_status(domain, claims, conflicts, contract)
+            status, domain_blockers, domain_open_items = self._domain_status(domain, claims, conflicts, contract, source_lookup)
             domain_coverage[domain] = status
             blockers.extend(domain_blockers)
             open_items.extend(domain_open_items)

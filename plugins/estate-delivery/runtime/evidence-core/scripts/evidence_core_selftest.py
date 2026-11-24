@@ -167,9 +167,13 @@ def contract_ledger(artifact_type: str) -> dict:
                "confidenceRationale": None, "closureCondition": None, "owner": None}
               for index, domain in enumerate(domains, start=1)]
     executed_domains = core.contracts[artifact_type].get("executedDomains", [])
+    executed_source = {**source, "sourceId": "SRC-003", "sourceType": "executed_contract", "authority": 100,
+                       "title": "Signed agreement (synthetic)", "locator": "fixture://signed", "interviewees": []}
     for claim in claims:
         if claim["domains"][0] in executed_domains:
             claim["executed"] = True
+            claim["sourceIds"] = ["SRC-003"]
+            claim["sourceLocations"] = [{"sourceId": "SRC-003", "location": "page 9"}]
     claims.append({"claimId": "CLM-900", "statement": f"One open item in {domains[0]}.", "status": "Unknown",
                    "sourceIds": [], "sourceLocations": [], "asOf": "2026-11-18T12:00:00Z", "loadBearing": True,
                    "domains": [domains[0]], "confidenceRationale": None, "owner": "synthetic owner",
@@ -180,7 +184,7 @@ def contract_ledger(artifact_type: str) -> dict:
             "sources": [{**source, "sourceId": "SRC-001", "title": "First synthetic session", "locator": "fixture://one",
                          "interviewees": ["first person"]},
                         {**source, "sourceId": "SRC-002", "title": "Second synthetic session", "locator": "fixture://two",
-                         "interviewees": ["second person"]}],
+                         "interviewees": ["second person"]}] + ([executed_source] if executed_domains else []),
             "claims": claims, "conflicts": [], "coverage": []}
 
 
@@ -216,6 +220,25 @@ for claim in signed["claims"]:
         claim["executed"] = True
 gate_case("handoff contract, signed deal covers the executed commitment", signed, "sales_to_delivery_handoff",
           "Sufficient", "sales_to_delivery_handoff", lambda r: not r.terminal)
+
+# Issue 184: the executed flag needs an executed_contract source behind it. A claim
+# flagged executed on a working draft (an invented bakery agreement) stays Insufficient.
+drafted = copy.deepcopy(signed)
+drafted["sources"][2].update(sourceType="current_sow", authority=95, title="Bakery agreement, working draft, not for signature")
+gate_case("handoff contract, executed flag on a draft source is refused", drafted, "sales_to_delivery_handoff",
+          "Insufficient", "readiness_gap_memo",
+          lambda r: r.terminal and r.domainCoverage["executed commitment"] == "Insufficient")
+
+# Issue 185: the blocker keeps the owner, closure condition and stop rule the ledger already names.
+owned = copy.deepcopy(unsigned)
+owned["claims"].append({"claimId": "CLM-950", "statement": "Both parties have not yet signed.", "status": "Unknown",
+                        "sourceIds": [], "sourceLocations": [], "asOf": "2026-11-18T12:00:00Z", "loadBearing": True,
+                        "domains": ["executed commitment"], "confidenceRationale": None, "owner": "Bakery owner",
+                        "closureCondition": "Both parties sign", "stopRule": "No handoff until signed"})
+gate_case("handoff contract, the executed commitment blocker keeps the named owner", owned, "sales_to_delivery_handoff",
+          "Insufficient", "readiness_gap_memo",
+          lambda r: not r.ownershipGaps and any(b["domain"] == "executed commitment" and b["owner"] == "Bakery owner"
+                                                and b["closureCondition"] == "Both parties sign" for b in r.blockers))
 
 # Issue 161: a rate card or commercial policy is its own source type, capped at
 # 85. The fictional Riverbend Library (synthetic) Deal Desk ledger carries its
