@@ -12,7 +12,7 @@ Status: DRAFT until the Sign-off section carries the client signature block.
 | Client | {{CLIENT}} | SOW {{SOW_ID}} |
 | Engagement | {{ENGAGEMENT_NAME}} | SOW {{SOW_ID}} |
 | SOW id | {{SOW_ID}} | signed SOW |
-| Delivery model | {{WATERFALL_OR_AGILE}} | SOW {{SOW_ID}}, confirmed by {{CONFIRMING_ROLE}} on {{CONFIRM_DATE}} |
+| Delivery model | {{CONFIRMED_DELIVERY_MODEL}} | SOW {{SOW_ID}}, confirmed by {{CONFIRMING_ROLE}} on {{CONFIRM_DATE}} |
 | Start date | {{START_DATE}} | SOW {{SOW_ID}} |
 | Duration | {{WEEKS}} weeks | SOW {{SOW_ID}} |
 | Commercial structure | {{FIXED_FEE_OR_TM}} | SOW {{SOW_ID}} |
@@ -37,7 +37,7 @@ The scope below restates the signed SOW. It is the baseline the project is measu
 
 ### Flagged deltas
 
-Differences between stated client expectations and the SOW baseline. Each is a flag for the Program Lead and the Pursuit Lead, not a fix.
+Differences between stated client expectations and the SOW baseline. The Program Lead and Pursuit Lead resolve each difference through the agreed change process.
 
 | Flag | Expectation heard | What the SOW says | Heard from / where | Owner | Resolve by |
 |---|---|---|---|---|---|
@@ -45,7 +45,7 @@ Differences between stated client expectations and the SOW baseline. Each is a f
 
 ## Delivery model
 
-{{DELIVERY_MODEL_PARAGRAPH: name the model (waterfall or agile) exactly as the SOW variant states it, who confirmed it and when, and what that means for cadence, demos, and acceptance rhythm on this engagement.}}
+{{DELIVERY_MODEL_PARAGRAPH: name the confirmed model (waterfall, agile or task-based rollout), who confirmed it and when, and what that means for cadence, demos, and acceptance rhythm on this engagement.}}
 
 ## Team and allocations
 
@@ -66,7 +66,7 @@ Client-side counterparts:
 
 ## RACI
 
-Every activity row carries exactly one Accountable owner. Every role in the team table above appears at least once. An empty cell is a drafting failure, not a formatting choice.
+Every activity row carries exactly one Accountable owner. Every role in the team table above appears at least once. Fill each cell, including "None required" with a reason where no consultation or notification applies.
 
 | Activity | Responsible | Accountable | Consulted | Informed |
 |---|---|---|---|---|
@@ -86,6 +86,9 @@ Escalation path: {{ESCALATION_PATH}}. Decision log, RAID log, and status reports
 ## Phase plan and milestones
 
 Source: SOW {{SOW_ID}}, as of {{SOW_AS_OF_DATE}}
+
+For a confirmed task-based rollout, replace the phase rows with the task table in
+references/charter-spec.md. Keep this section heading.
 
 | Phase | Weeks | Exit gate | Gate owner |
 |---|---|---|---|

@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/delivery-orchestrator/references/stage-map.md",
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The implementation and deployment rows name separate authorized workflows; the repeated instruction applies to different stages.",
+      "source": "skills/delivery-orchestrator/references/stage-map.md, Work at each stage table"
+    }
+  ]
+}

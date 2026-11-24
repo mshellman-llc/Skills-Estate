@@ -28,7 +28,7 @@ reads the draft.
 
 ### Engagement summary
 
-One paragraph plus the meta table. Business outcome first, platform second. Client name,
+Write a paragraph about the business outcome and platform, followed by the meta table. Client name,
 engagement name, SOW id, delivery model, start date, duration, commercial structure. Each row of
 the meta table names its source. Commercial structure is fixed fee or T&M, exactly as the SOW
 states it, never both.
@@ -59,16 +59,16 @@ day one.
 
 ### Delivery model
 
-Names the variant, waterfall or agile, exactly as the SOW variant states it, plus who confirmed it
-and when. Detection is from the SOW; confirmation is from a human. State what the model means
-concretely for this engagement: acceptance rhythm, demo cadence, how scope change is handled.
+Name waterfall, agile or the task-based rollout confirmed by the authorized delivery owner.
+Record who confirmed it, when and the source. A price basis alone selects no model. State
+the agreement's acceptance rhythm and change-control rules; propose a cadence only where
+it remains to be agreed. A model decision cannot amend the signed scope.
 
 ### Team and allocations
 
 The project's confirmed delivery roles with named owners and allocations from the SOW estimate and the handoff brief, plus
-client-side counterparts from the stakeholder map. A role with no named owner is an open item in
-section 8, not a blank. Flag any deal-cycle versus delivery stakeholder mismatch the handoff brief
-surfaced; a sponsor who was in the deal but is absent from delivery is a kickoff risk, not a detail.
+client-side counterparts from the stakeholder map. Record a role with no named owner as an open item in section 8. Flag any deal-cycle versus delivery stakeholder mismatch the handoff brief
+surfaced; record a sponsor who was in the deal but is absent from delivery as a kickoff risk.
 
 ### RACI
 
@@ -79,6 +79,11 @@ script enforces:
 - Exactly one Accountable per activity. Shared accountability is no accountability.
 - Every role in the team table appears somewhere in the RACI. A role on the project that owns
   nothing in the RACI is either mis-staffed or the RACI is incomplete; both are findings.
+
+One person may hold several roles and appear in both Responsible and Accountable.
+Consulted or Informed may say "None required" when the reason is stated; every actual
+team role still appears in the RACI. A solo owner's internal kickoff is a recorded
+read-back before the client meeting, as SKILL.md describes.
 
 Minimum activity set: project plan and schedule, requirements ownership, solution design,
 build, testing, deployment and cutover, status reporting, decision escalation, change control.
@@ -96,6 +101,12 @@ The six delivery stages with week ranges and exit gates, drawn from the SOW. Wat
 boundaries are gate dates. Agile: keep the stage gates and add the sprint cadence inside Build.
 Dates derive from the SOW start date and duration; the charter does not invent a schedule the SOW
 does not support.
+
+For a confirmed task-based rollout, retain this section heading and replace the six-stage
+rows with the agreement's tasks and acceptance events. Use columns Task, Dependency,
+Date or closing condition, Acceptance evidence, and Owner. Carry support as its own task
+with the agreement's duration and boundary. Missing dates are owned open items. Do not
+add sprints, phases, co-signatures or stage obligations absent from the agreement.
 
 ### Assumptions and open items
 
