@@ -547,7 +547,7 @@
       "inputs": "The accepted handoff brief, the signed SOW, the confirmed delivery model and the shared engagement record.",
       "outputs": "A gated draft charter, seeded RAID and decision logs, internal and client kickoff decks, and a Sprint 0 or mobilization plan.",
       "example": "Prepare the charter, governance logs and kickoff decks from the signed SOW and the accepted handoff.",
-      "reviewedEntrypointSha256": "cc56c7de231537ac8ba66392242af9e86931ae44b08a88c3ce7e815af7567706",
+      "reviewedEntrypointSha256": "d3f00831833b286ed7c84a5074f65a4db996fb9f948ae3f690551bc7b4f3e687",
       "expect": "It starts from the accepted handoff brief and signed SOW and drafts the charter, RAID and decision logs, kickoff decks and Sprint 0 plan. It stops if no accepted handoff exists, restates SOW scope without renegotiating it, and drafts what humans sign without signing or provisioning anything.",
       "connectors": {
         "required": [],
@@ -590,7 +590,7 @@
       "inputs": "Executed scope, current delivery state, and the requested decision.",
       "outputs": "An updated stage record and the next owning workflow or gate.",
       "example": "Review this engagement\u2019s delivery state and route the next work to its owner.",
-      "reviewedEntrypointSha256": "caa57d432a662df7177bdf3748533341e0a28b26ffd50aa1ae1bb8ca3b2cbe08",
+      "reviewedEntrypointSha256": "311a93b50a1e5d41b3da00d1ec6ff0a165461c2c45623956f26bf96be50273a7",
       "expect": "It reads the engagement's DELIVERY-STATE.md, runs the planner to find the current stage and the next gate, and hands the work to the skill that owns it by name. It builds no artifacts itself, never marks a gate passed without its signed record, and does not touch pre-signature work.",
       "requires": "Needs the engagement's DELIVERY-STATE.md (or the delivery records needed to write one) and python3 to run the planner.",
       "overview": "It reads the engagement's DELIVERY-STATE.md, runs the planner to find the current stage and the next gate, and hands the work to the skill that owns it by name. It builds no artifacts itself, never marks a gate passed without its signed record, and does not touch pre-signature work.",

@@ -256,6 +256,10 @@
     "0.4.60": {
       "content_sha256": "43e85c7869c13ddca05600a5cb1503c4fadf22840b4b6c7632824ee18852e37c",
       "note": "Fix proof defects 184 to 187: executed flag needs an executed_contract source, the executed-commitment blocker keeps the ledger's owner, handoff signers need two parties, the layout check names its browser and the preflight probes it, and the gap memo has a defined format"
+    },
+    "0.4.61": {
+      "content_sha256": "0ee7f3af99b352d21bb7daabc877e5b8227fc9240558932091dbf26eb8b5b7ff",
+      "note": "Fix proof issues 190 to 194: task-based and solo mobilization, charter evidence contract, unknown missing state, and first-phase stop precedence"
     }
   },
   "source_conflicts": [

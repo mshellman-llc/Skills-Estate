@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T23:23:37.383951+00:00",
-  "baseCommit": "0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf",
+  "generatedAt": "2026-11-24T17:50:42.610847+00:00",
+  "baseCommit": "0e1279d1171abfb28f7acca806f3304c67cbfe2a",
   "repository": "mshellman-llc/Skills-Estate",
   "families": [
     {
@@ -65,7 +65,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-author-style/SKILL.md",
       "sourceSha256": "34e0428c79e8675f900e75fecf1bb94858b1e339be3b6e4013e04f30c1622e66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/apply-author-style/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/apply-author-style/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -196,7 +196,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/apply-salesforce-patterns/SKILL.md",
       "sourceSha256": "97a238283a12443797e0970f0483169d2c283e27a7735ef344d3a87bc2d58d2b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/apply-salesforce-patterns/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/apply-salesforce-patterns/SKILL.md",
       "taskPackages": [
         {
           "name": "apply-salesforce-patterns",
@@ -433,7 +433,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-career-options/SKILL.md",
       "sourceSha256": "5b031d7d1564ceba461c02ac0de7a8bed69666a82108f74769500554319749a8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/assess-career-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/assess-career-options/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-career-options",
@@ -576,7 +576,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-offering-fit/SKILL.md",
       "sourceSha256": "07f6e61a53b183853e0fa13a6f50b93c2544e11c63975f7eb93782145511813a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/assess-offering-fit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/assess-offering-fit/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-offering-fit",
@@ -732,7 +732,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/assess-solution-delivery/SKILL.md",
       "sourceSha256": "373cbdd2199c0c41f5b492a5b4f2bb3c712ed9aaf5b9abebe078f8ee001b1d89",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/assess-solution-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/assess-solution-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "assess-solution-delivery",
@@ -1112,7 +1112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/audit-accessibility/SKILL.md",
       "sourceSha256": "6f6b392bdc3eb2cf4277e1d13ea2210888228695c933a6c6835dddda47ee798e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/audit-accessibility/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/audit-accessibility/SKILL.md",
       "taskPackages": [
         {
           "name": "audit-accessibility",
@@ -1244,7 +1244,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-estate-skill/SKILL.md",
       "sourceSha256": "24b0fa3b3246b650dd8b24613ddedd2b5086c56217caf4a21c6e0ae091434d2f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/author-estate-skill/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/author-estate-skill/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -1460,7 +1460,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/author-style-runtime/SKILL.md",
       "sourceSha256": "abf76c99659ac51362b3bf6fef01a876fb92e9a3b3d3905ebcc99854c91b501c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/author-style-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/author-style-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -1643,11 +1643,11 @@
       "title": "Brand renderer",
       "family": 6,
       "description": "Render and check branded artifacts using a confirmed project profile or the shared neutral policy. Use for documents, decks, workbooks, PDFs, HTML, or brand-sensitive copy when the task needs visual identity applied without losing source meaning. Resolves required assets, preserves claims through export, and combines executable checks with inspection of the rendered result.",
-      "status": "local-revision",
+      "status": "github",
       "entrypointChanged": false,
       "sourcePath": "skills/brand-renderer/SKILL.md",
       "sourceSha256": "e314b77b616d9fe8648d8f8c14aa9fc5479fb0f0a3c13180661b2c1b18ef6f13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/brand-renderer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/brand-renderer/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-offering-fit",
@@ -2064,7 +2064,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deal-decision-deck/SKILL.md",
       "sourceSha256": "a83c28397853df493cd3ac479fc9cb588ddc595cc82e68d3a5f4059c4713e209",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-deal-decision-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-deal-decision-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2347,7 +2347,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-deck/SKILL.md",
       "sourceSha256": "b8a3a16abac7d7ec0ad786846636c6cba01a5ec8509220640af6e45bd1ff9749",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-deck/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-deck/SKILL.md",
       "taskPackages": [
         {
           "name": "build-deck",
@@ -2605,7 +2605,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-editorial-chart/SKILL.md",
       "sourceSha256": "cde02918eb0e09f72b62b58e9b75d66eed52f8a0421df36cfa3989ceb0b3f5d7",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-editorial-chart/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-editorial-chart/SKILL.md",
       "taskPackages": [
         {
           "name": "build-editorial-chart",
@@ -2826,7 +2826,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-explorer/SKILL.md",
       "sourceSha256": "7c3f6b40512a561331d5c6003bd62a985ee383bc725748430063798f7a6a0121",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-interactive-explorer/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-interactive-explorer/SKILL.md",
       "taskPackages": [
         {
           "name": "build-interactive-explorer",
@@ -3008,7 +3008,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-interactive-proposal/SKILL.md",
       "sourceSha256": "b175675b1f6ef1ddef372c16b44d278b4d6e417c8d773c9cd1c2c973cfeefe0b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-interactive-proposal/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-interactive-proposal/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -3278,7 +3278,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-moscow-story-map/SKILL.md",
       "sourceSha256": "b6e46327dc11d0e86d97e9b9c99121f819f87f76c895c48dcdee6b8236722c82",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-moscow-story-map/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-moscow-story-map/SKILL.md",
       "taskPackages": [
         {
           "name": "build-moscow-story-map",
@@ -3438,7 +3438,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-review-site/SKILL.md",
       "sourceSha256": "1534d3e3d0b67916b536acc209f4f963ae1d2c0370ce8106bf1ca8993724578d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-review-site/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-review-site/SKILL.md",
       "taskPackages": [
         {
           "name": "build-review-site",
@@ -3651,7 +3651,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/build-roadmap/SKILL.md",
       "sourceSha256": "db7e32ba564b4400f0a35919459bcc64f79bbd8d1d6d1f48037a70d8d1621c9c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/build-roadmap/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/build-roadmap/SKILL.md",
       "taskPackages": [
         {
           "name": "build-roadmap",
@@ -3976,7 +3976,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-knowledge/SKILL.md",
       "sourceSha256": "9049e911aaa57e057a466332ac0dc10045e19383c099384505f6413b8dd36d2e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/capture-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/capture-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-knowledge",
@@ -4112,7 +4112,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-requirements/SKILL.md",
       "sourceSha256": "f86a6bf575098c5b148c1f9142b7fb0536e87d659bb464eb26a0493970e75d1b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/capture-requirements/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/capture-requirements/SKILL.md",
       "taskPackages": [
         {
           "name": "capture-requirements",
@@ -4329,7 +4329,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/capture-salesforce-screens/SKILL.md",
       "sourceSha256": "a78f3f8a3aa09d11647d217ec599435f71050d74329203beeb6ee89240db9319",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/capture-salesforce-screens/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/capture-salesforce-screens/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -4479,7 +4479,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/check-knowledge-hub/SKILL.md",
       "sourceSha256": "86789af6c5068ade95ae70a4e523f74f5e5e641c90e1158381f5a28b99212a59",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/check-knowledge-hub/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/check-knowledge-hub/SKILL.md",
       "taskPackages": [
         {
           "name": "check-knowledge-hub",
@@ -4629,7 +4629,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/compare-scope-options/SKILL.md",
       "sourceSha256": "3d37c9dc0dfb58725d6309b62e57f4365c51373bff43e38e40b5c3f687322bd2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/compare-scope-options/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/compare-scope-options/SKILL.md",
       "taskPackages": [
         {
           "name": "compare-scope-options",
@@ -4888,7 +4888,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/configure-salesforce-project/SKILL.md",
       "sourceSha256": "89e669c0397cc783ca45c1bf4473b4735f131fc05bbc572c0aa1dc58562c4ad4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/configure-salesforce-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/configure-salesforce-project/SKILL.md",
       "taskPackages": [
         {
           "name": "configure-salesforce-project",
@@ -5630,7 +5630,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/deliver-salesforce-change/SKILL.md",
       "sourceSha256": "4b17df95e1078f8b0eb3c1dc255b87972f32e1bfb13af2280245ad287fffef66",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/deliver-salesforce-change/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/deliver-salesforce-change/SKILL.md",
       "taskPackages": [
         {
           "name": "deliver-salesforce-change",
@@ -6000,11 +6000,11 @@
       "title": "Delivery orchestrator",
       "family": 2,
       "description": "Orchestrates the delivery half of the Estate sell-to-deliver lifecycle from signed SOW through hypercare closeout. It owns the Handoff-through-closeout stage map and its human gates. Named skills own the artifacts and the per-engagement DELIVERY-STATE.md records their state. Use when a request concerns a live delivery engagement and the owning skill is not obvious. Do not use for pre-signature work; route directly to the named sales artifact owner.",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/delivery-orchestrator/SKILL.md",
-      "sourceSha256": "caa57d432a662df7177bdf3748533341e0a28b26ffd50aa1ae1bb8ca3b2cbe08",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/delivery-orchestrator/SKILL.md",
+      "sourceSha256": "311a93b50a1e5d41b3da00d1ec6ff0a165461c2c45623956f26bf96be50273a7",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/delivery-orchestrator/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-requirements",
@@ -6020,7 +6020,7 @@
         "inputs": "Executed scope, current delivery state, and the requested decision.",
         "outputs": "An updated stage record and the next owning workflow or gate.",
         "example": "Review this engagement’s delivery state and route the next work to its owner.",
-        "reviewedEntrypointSha256": "caa57d432a662df7177bdf3748533341e0a28b26ffd50aa1ae1bb8ca3b2cbe08",
+        "reviewedEntrypointSha256": "311a93b50a1e5d41b3da00d1ec6ff0a165461c2c45623956f26bf96be50273a7",
         "expect": "It reads the engagement's DELIVERY-STATE.md, runs the planner to find the current stage and the next gate, and hands the work to the skill that owns it by name. It builds no artifacts itself, never marks a gate passed without its signed record, and does not touch pre-signature work.",
         "requires": "Needs the engagement's DELIVERY-STATE.md (or the delivery records needed to write one) and python3 to run the planner.",
         "overview": "It reads the engagement's DELIVERY-STATE.md, runs the planner to find the current stage and the next gate, and hands the work to the skill that owns it by name. It builds no artifacts itself, never marks a gate passed without its signed record, and does not touch pre-signature work.",
@@ -6048,7 +6048,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 12,
-        "packageFingerprint": "e043faeeaeea800990a1e4f881c2071f42f32e130673c62c6e2b218e19fd6571",
+        "packageFingerprint": "05803afc7c72820c5904ff9c3a67cd3bccda23dd1b5ee647a44cef3c49ec3050",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -6113,8 +6113,8 @@
         "expect": "It reads the engagement's DELIVERY-STATE.md, runs the planner to find the current stage and the next gate, and hands the work to the skill that owns it by name. It builds no artifacts itself, never marks a gate passed without its signed record, and does not touch pre-signature work.",
         "declared": true
       },
-      "markdown": "---\nname: delivery-orchestrator\ndescription: 'Orchestrates the delivery half of the Estate sell-to-deliver lifecycle from signed SOW through hypercare closeout. It owns the Handoff-through-closeout stage map and its human gates. Named skills own the artifacts and the per-engagement DELIVERY-STATE.md records their state. Use when a request concerns a live delivery engagement and the owning skill is not obvious. Do not use for pre-signature work; route directly to the named sales artifact owner.'\n---\n\n\n# Delivery orchestrator\n\n> **Before writing: [`build-card.md`](../_shared/build-card.md) plus\n> [writing review](../writing/SKILL.md). Read both before drafting; the final review still runs at the gate.**\n\nThis skill coordinates delivery engagements after signature. It identifies the current stage, what gate\ncomes next, and which skill does the work. Content decisions stay with the skill\nthat owns each artifact. This file stays thin on purpose: the moment it starts\ndescribing how to build a charter or a test script, it is competing with the\nowner, and instruction competition is the defect the house model exists to kill.\n\n## Project context required\n\nUse only the caller-confirmed engagement, source records, private output location,\nand intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,\nand Pursuit Lead to that project's authorized owners; these labels do not impose\nan employer organization chart or signing authority. The executed agreement and\naccepted project plan determine gates, commercial rules, and support obligations.\nKeep account history, risk assessments, credentials, and client evidence outside\nportable skill sources. A cached account, attached Project, or available connector\nis not authorization to read, write, or publish.\n\n## Where the files are\n\n`scripts/` holds `plan.py` and its selftest with fixtures. `references/` holds\n`stage-map.md` (the full stage, gate, and owner table plus routing edge cases and\nthe known-gaps register) and `delivery-state-spec.md` (the DELIVERY-STATE.md\nformat). Read `stage-map.md` before routing anything unusual; the table below is\nthe compact form.\n\n## The lifecycle is eight ordered steps\n\nHandoff (pre-stage), then 01 Mobilize, 02 Analyze, 03 Design, 04 Build,\n05 Validate, 06 Deploy, and the closeout loop inside 06. Each exits through a\nnamed gate, several co-signed by the client. Gates are exit conditions held by\nhumans; skills draft, humans approve and sign. Preserve existing stage IDs in an engagement record. Apply the gates required\nby its accepted project plan; never mark one passed without its acceptance record.\n\n## Who owns what\n\nRead the [stage model](references/stages.json) for the current task owners and\nexit gates. The planner reads that same model. Read [the stage guide](references/stage-map.md)\nfor stage work and routing exceptions. Mobilization uses start-delivery;\nvalidation uses validate-delivery. Delivery-status maintains the reporting\ncadence and flags potential scope changes.\n\nUse the project's authorized implementation workflow for Build. Keep its actual\nbuild evidence distinct from acceptance. Apply `writing` to all authored\nprose; use the shared brand runtime for styled artifacts. The executed agreement\nand accepted changes govern commitments. This router does not approve a price.\n\n## How to route a request\n\n1. **Find the engagement and its state file.** `DELIVERY-STATE.md` at the\n   engagement folder root. Truth hierarchy: executed SOW/quote > artifact files >\n   state file > memory > chat. If the state file is missing, do not guess from\n   chat: locate the hard evidence (signed SOW? accepted brief? signed charter?\n   co-signed requirements?) and write the state file from it per\n   `references/delivery-state-spec.md` before routing.\n2. **Run the planner.** Never assemble the plan by hand.\n\n   ```bash\n   python3 scripts/plan.py path/to/DELIVERY-STATE.md\n   ```\n\n   It prints where the engagement is, the next gate and who holds it, the\n   ordered remaining stages with their owning skills, and findings (out-of-order\n   gates, a stage line that disagrees with the gate ledger, unparseable entries).\n   Report the position and every finding; do not narrate the run. `--json` gives\n   the machine contract; the text default is the one to use.\n3. **State the position plainly to the user.** Stage, next gate, gate holder.\n   If the user's request belongs to a different stage than the engagement is in,\n   say so before routing; building ahead of an unpassed gate gets rebuilt.\n4. **Hand off to the owning skill by name**, with the engagement folder, the\n   state file path, and the specific artifact asked for. This suite does not\n   build the artifact, review it, or restate the owner's method.\n5. **Verify the state file moved.** Whichever skill closes a gate updates\n   DELIVERY-STATE.md in the same session (gate status with date, artifact path,\n   append-only log line). When routing next, check the update happened; a stale\n   state file makes every later plan wrong.\n\n## Durable output\n\nThis suite produces no business artifact; those belong to the specialists it\nroutes to. What it does leave, per `_shared/output-contract.md`, is the run's\nown Markdown record: the planner output (position, next gate, remaining\nstages, findings), the routing decision made, and any state-file corrections,\nalongside the updated DELIVERY-STATE.md itself. Deliver or link the record;\nnever just say it was written.\n\n## Gate discipline\n\n- A gate passes when the signed or accepted artifact exists, not when the work\n  feels done. The planner treats an undated pass as suspect; so should you.\n- Reopening a passed gate is scope drift first: log it through\n  `track-delivery` and assess the change-order candidate before any\n  rework starts.\n- Apply the Go-Live Acceptance mechanism in the executed agreement. Use a\n  deemed-acceptance clock only when the agreement actually contains one;\n  otherwise obtain its specified acceptance evidence. `manage-cutover-closeout` owns\n  that check. This suite does not close the gate without that evidence.\n- A blocked gate is a finding with an owner and a resolve-by date in the state\n  file's open decisions, never a reason to route around the gate.\n\n## Check current capabilities and gaps\n\nInspect the caller's actual comparables library, authorized automation, and\napproval records before reporting a gap. If prior-deal evidence is unavailable,\nrecord that limit rather than inventing a comparison. Do not promise automatic\nexecution at signature or a stage change without its configured trigger and\nexecution evidence. Route pre-signature governance to its confirmed owner;\nthis suite starts at the signed engagement. See `references/stage-map.md`.\n\n## What this skill does not do\n\n- Does not build any delivery artifact; the stage skills own their artifacts.\n- Does not price or author numbers. Executed commercial artifacts hold committed values. Route proposed changes to the confirmed commercial owner and `scope-project`; `review-contract-scope` reviews their evidence and language but does not calculate pricing.\n- Does not gate content quality; parity and visual are `brand-renderer`,\n  writing review is `writing`, evidence is `evidence-core`.\n- Does not touch pre-signature work. Send each request to its named sales artifact owner.\n- Does not decide, approve, or sign; humans hold every gate.\n\n## Rules\n\n- **Never fabricate a gate status.** No signature on file means the gate is open.\n- **Never build ahead of the plan.** Work started before its gate gets rebuilt.\n- **Route by name.** Name the owning skill in the handoff; \"the requirements\n  skill\" invites the wrong one.\n- **Carry state in the file, not in chat.** Anything worth remembering across\n  sessions goes into DELIVERY-STATE.md's ledger or log, with a date.\n- **Report counts and gate names, not adjectives.** \"At 02 Analyze, next gate\n  requirements co-signed, 2 findings\" rather than \"on track\".\n- **Flag decisions, do not assume them.** Open decisions carry an owner, a\n  resolve-by date, and the gate they block.\n\n## Files\n\n- `references/stages.json` · the authoritative stage IDs, gates and task owners.\n- `scripts/plan.py` · the deterministic planner; it reads that stage model.\n  Keep `references/stage-map.md` consistent with the model when changing it.\n- `scripts/plan_selftest.py` · run it after any change to the planner or the\n  state spec; it must pass before the change ships.\n- `scripts/fixtures/` · state files exercising new, mid-engagement, complete,\n  out-of-order, and malformed cases.\n- `references/stage-map.md` · the full map, routing edge cases, known gaps.\n- `references/delivery-state-spec.md` · the DELIVERY-STATE.md format and rules.\n",
-      "html": "<p>This skill coordinates delivery engagements after signature. It identifies the current stage, what gate comes next, and which skill does the work. Content decisions stay with the skill that owns each artifact. This file stays thin on purpose: the moment it starts describing how to build a charter or a test script, it is competing with the owner, and instruction competition is the defect the house model exists to kill.</p><h3>Project context required</h3><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p><h3>Where the files are</h3><p><code>scripts/</code> holds <code>plan.py</code> and its selftest with fixtures. <code>references/</code> holds <code>stage-map.md</code> (the full stage, gate, and owner table plus routing edge cases and the known-gaps register) and <code>delivery-state-spec.md</code> (the DELIVERY-STATE.md format). Read <code>stage-map.md</code> before routing anything unusual; the table below is the compact form.</p><h3>The lifecycle is eight ordered steps</h3><p>Handoff (pre-stage), then 01 Mobilize, 02 Analyze, 03 Design, 04 Build, 05 Validate, 06 Deploy, and the closeout loop inside 06. Each exits through a named gate, several co-signed by the client. Gates are exit conditions held by humans; skills draft, humans approve and sign. Preserve existing stage IDs in an engagement record. Apply the gates required by its accepted project plan; never mark one passed without its acceptance record.</p><h3>Who owns what</h3><p>Read the stage model <span class=\"ref\">(references/stages.json)</span> for the current task owners and exit gates. The planner reads that same model. Read the stage guide <span class=\"ref\">(references/stage-map.md)</span> for stage work and routing exceptions. Mobilization uses start-delivery; validation uses validate-delivery. Delivery-status maintains the reporting cadence and flags potential scope changes.</p><p>Use the project&#x27;s authorized implementation workflow for Build. Keep its actual build evidence distinct from acceptance. Apply <code>writing</code> to all authored prose; use the shared brand runtime for styled artifacts. The executed agreement and accepted changes govern commitments. This router does not approve a price.</p><h3>How to route a request</h3><ol><li><strong>Find the engagement and its state file.</strong> <code>DELIVERY-STATE.md</code> at the</li></ol><p>engagement folder root. Truth hierarchy: executed SOW/quote &gt; artifact files &gt; state file &gt; memory &gt; chat. If the state file is missing, do not guess from chat: locate the hard evidence (signed SOW? accepted brief? signed charter? co-signed requirements?) and write the state file from it per <code>references/delivery-state-spec.md</code> before routing.</p><ol><li><strong>Run the planner.</strong> Never assemble the plan by hand.</li></ol><pre><code>   python3 scripts/plan.py path/to/DELIVERY-STATE.md\n   ```\n\nIt prints where the engagement is, the next gate and who holds it, the\n   ordered remaining stages with their owning skills, and findings (out-of-order\n   gates, a stage line that disagrees with the gate ledger, unparseable entries).\n   Report the position and every finding; do not narrate the run. `--json` gives\n   the machine contract; the text default is the one to use.\n3. **State the position plainly to the user.** Stage, next gate, gate holder.\n   If the user&#x27;s request belongs to a different stage than the engagement is in,\n   say so before routing; building ahead of an unpassed gate gets rebuilt.\n4. **Hand off to the owning skill by name**, with the engagement folder, the\n   state file path, and the specific artifact asked for. This suite does not\n   build the artifact, review it, or restate the owner&#x27;s method.\n5. **Verify the state file moved.** Whichever skill closes a gate updates\n   DELIVERY-STATE.md in the same session (gate status with date, artifact path,\n   append-only log line). When routing next, check the update happened; a stale\n   state file makes every later plan wrong.\n\n## Durable output\n\nThis suite produces no business artifact; those belong to the specialists it\nroutes to. What it does leave, per `_shared/output-contract.md`, is the run&#x27;s\nown Markdown record: the planner output (position, next gate, remaining\nstages, findings), the routing decision made, and any state-file corrections,\nalongside the updated DELIVERY-STATE.md itself. Deliver or link the record;\nnever just say it was written.\n\n## Gate discipline\n\n- A gate passes when the signed or accepted artifact exists, not when the work\n  feels done. The planner treats an undated pass as suspect; so should you.\n- Reopening a passed gate is scope drift first: log it through\n  `track-delivery` and assess the change-order candidate before any\n  rework starts.\n- Apply the Go-Live Acceptance mechanism in the executed agreement. Use a\n  deemed-acceptance clock only when the agreement actually contains one;\n  otherwise obtain its specified acceptance evidence. `manage-cutover-closeout` owns\n  that check. This suite does not close the gate without that evidence.\n- A blocked gate is a finding with an owner and a resolve-by date in the state\n  file&#x27;s open decisions, never a reason to route around the gate.\n\n## Check current capabilities and gaps\n\nInspect the caller&#x27;s actual comparables library, authorized automation, and\napproval records before reporting a gap. If prior-deal evidence is unavailable,\nrecord that limit rather than inventing a comparison. Do not promise automatic\nexecution at signature or a stage change without its configured trigger and\nexecution evidence. Route pre-signature governance to its confirmed owner;\nthis suite starts at the signed engagement. See `references/stage-map.md`.\n\n## What this skill does not do\n\n- Does not build any delivery artifact; the stage skills own their artifacts.\n- Does not price or author numbers. Executed commercial artifacts hold committed values. Route proposed changes to the confirmed commercial owner and `scope-project`; `review-contract-scope` reviews their evidence and language but does not calculate pricing.\n- Does not gate content quality; parity and visual are `brand-renderer`,\n  writing review is `writing`, evidence is `evidence-core`.\n- Does not touch pre-signature work. Send each request to its named sales artifact owner.\n- Does not decide, approve, or sign; humans hold every gate.\n\n## Rules\n\n- **Never fabricate a gate status.** No signature on file means the gate is open.\n- **Never build ahead of the plan.** Work started before its gate gets rebuilt.\n- **Route by name.** Name the owning skill in the handoff; &quot;the requirements\n  skill&quot; invites the wrong one.\n- **Carry state in the file, not in chat.** Anything worth remembering across\n  sessions goes into DELIVERY-STATE.md&#x27;s ledger or log, with a date.\n- **Report counts and gate names, not adjectives.** &quot;At 02 Analyze, next gate\n  requirements co-signed, 2 findings&quot; rather than &quot;on track&quot;.\n- **Flag decisions, do not assume them.** Open decisions carry an owner, a\n  resolve-by date, and the gate they block.\n\n## Files\n\n- `references/stages.json` · the authoritative stage IDs, gates and task owners.\n- `scripts/plan.py` · the deterministic planner; it reads that stage model.\n  Keep `references/stage-map.md` consistent with the model when changing it.\n- `scripts/plan_selftest.py` · run it after any change to the planner or the\n  state spec; it must pass before the change ships.\n- `scripts/fixtures/` · state files exercising new, mid-engagement, complete,\n  out-of-order, and malformed cases.\n- `references/stage-map.md` · the full map, routing edge cases, known gaps.\n- `references/delivery-state-spec.md` · the DELIVERY-STATE.md format and rules.</code></pre>",
+      "markdown": "---\nname: delivery-orchestrator\ndescription: 'Orchestrates the delivery half of the Estate sell-to-deliver lifecycle from signed SOW through hypercare closeout. It owns the Handoff-through-closeout stage map and its human gates. Named skills own the artifacts and the per-engagement DELIVERY-STATE.md records their state. Use when a request concerns a live delivery engagement and the owning skill is not obvious. Do not use for pre-signature work; route directly to the named sales artifact owner.'\n---\n\n\n# Delivery orchestrator\n\n> **Before writing: [`build-card.md`](../_shared/build-card.md) plus\n> [writing review](../writing/SKILL.md). Read both before drafting; the final review still runs at the gate.**\n\nThis skill coordinates delivery engagements after signature. It identifies the current stage, what gate\ncomes next, and which skill does the work. Content decisions stay with the skill\nthat owns each artifact. This file stays thin on purpose: the moment it starts\ndescribing how to build a charter or a test script, it is competing with the\nowner, and instruction competition is the defect the house model exists to kill.\n\n## Project context required\n\nUse only the caller-confirmed engagement, source records, private output location,\nand intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,\nand Pursuit Lead to that project's authorized owners; these labels do not impose\nan employer organization chart or signing authority. The executed agreement and\naccepted project plan determine gates, commercial rules, and support obligations.\nKeep account history, risk assessments, credentials, and client evidence outside\nportable skill sources. A cached account, attached Project, or available connector\nis not authorization to read, write, or publish.\n\n## Where the files are\n\n`scripts/` holds `plan.py` and its selftest with fixtures. `references/` holds\n`stage-map.md` (the full stage, gate, and owner table plus routing edge cases and\nthe known-gaps register) and `delivery-state-spec.md` (the DELIVERY-STATE.md\nformat). Read `stage-map.md` before routing anything unusual; the table below is\nthe compact form.\n\n## The lifecycle is eight ordered steps\n\nHandoff (pre-stage), then 01 Mobilize, 02 Analyze, 03 Design, 04 Build,\n05 Validate, 06 Deploy, and the closeout loop inside 06. Each exits through a\nnamed gate, several co-signed by the client. Gates are exit conditions held by\nhumans; skills draft, humans approve and sign. Preserve existing stage IDs in an engagement record. Apply the gates required\nby its accepted project plan; never mark one passed without its acceptance record.\n\n## Who owns what\n\nRead the [stage model](references/stages.json) for the current task owners and\nexit gates. The planner reads that same model. Read [the stage guide](references/stage-map.md)\nfor stage work and routing exceptions. Mobilization uses start-delivery;\nvalidation uses validate-delivery. Delivery-status maintains the reporting\ncadence and flags potential scope changes.\n\nUse the project's authorized implementation workflow for Build. Keep its actual\nbuild evidence distinct from acceptance. Apply `writing` to all authored\nprose; use the shared brand runtime for styled artifacts. The executed agreement\nand accepted changes govern commitments. This router does not approve a price.\n\n## How to route a request\n\n1. **Find the engagement and its state file.** `DELIVERY-STATE.md` at the\n   engagement folder root. Truth hierarchy: executed SOW/quote > artifact files >\n   state file > memory > chat. If the state file is missing, this\n   orchestrator reconstructs it from the executed agreement and acceptance\n   artifacts per `references/delivery-state-spec.md` before routing. This applies\n   to a lost file as well as a legacy engagement. Record artifact paths and\n   dates, and leave any unsupported gate open. A missing file establishes no stage.\n2. **Run the planner.** Never assemble the plan by hand.\n\n   ```bash\n   python3 scripts/plan.py path/to/DELIVERY-STATE.md\n   ```\n\n   It prints where the engagement is, the next gate and who holds it, the\n   ordered remaining stages with their owning skills, and findings (out-of-order\n   gates, a stage line that disagrees with the gate ledger, unparseable entries).\n   Report the position and every finding; do not narrate the run. `--json` gives\n   the machine contract; the text default is the one to use.\n3. **State the position plainly to the user.** Stage, next gate, gate holder.\n   If the user's request belongs to a different stage than the engagement is in,\n   say so before routing; building ahead of an unpassed gate gets rebuilt.\n4. **Hand off to the owning skill by name**, with the engagement folder, the\n   state file path, and the specific artifact asked for. This suite does not\n   build the artifact, review it, or restate the owner's method.\n5. **Verify the state file moved.** Whichever skill closes a gate updates\n   DELIVERY-STATE.md in the same session (gate status with date, artifact path,\n   append-only log line). When routing next, check the update happened; a stale\n   state file makes every later plan wrong.\n\n## Durable output\n\nThis suite produces no business artifact; those belong to the specialists it\nroutes to. What it does leave, per `_shared/output-contract.md`, is the run's\nown Markdown record: the planner output (position, next gate, remaining\nstages, findings), the routing decision made, and any state-file corrections,\nalongside the updated DELIVERY-STATE.md itself. Deliver or link the record;\nnever just say it was written.\n\n## Gate discipline\n\n- A gate passes when the signed or accepted artifact exists, not when the work\n  feels done. The planner treats an undated pass as suspect; so should you.\n- Reopening a passed gate is scope drift first: log it through\n  `track-delivery` and assess the change-order candidate before any\n  rework starts.\n- Apply the Go-Live Acceptance mechanism in the executed agreement. Use a\n  deemed-acceptance clock only when the agreement actually contains one;\n  otherwise obtain its specified acceptance evidence. `manage-cutover-closeout` owns\n  that check. This suite does not close the gate without that evidence.\n- A blocked gate is a finding with an owner and a resolve-by date in the state\n  file's open decisions, never a reason to route around the gate.\n\n## Check current capabilities and gaps\n\nInspect the caller's actual comparables library, authorized automation, and\napproval records before reporting a gap. If prior-deal evidence is unavailable,\nrecord that limit rather than inventing a comparison. Do not promise automatic\nexecution at signature or a stage change without its configured trigger and\nexecution evidence. Route pre-signature governance to its confirmed owner;\nthis suite starts at the signed engagement. See `references/stage-map.md`.\n\n## What this skill does not do\n\n- Does not build any delivery artifact; the stage skills own their artifacts.\n- Does not price or author numbers. Executed commercial artifacts hold committed values. Route proposed changes to the confirmed commercial owner and `scope-project`; `review-contract-scope` reviews their evidence and language but does not calculate pricing.\n- Does not gate content quality; parity and visual are `brand-renderer`,\n  writing review is `writing`, evidence is `evidence-core`.\n- Does not touch pre-signature work. Send each request to its named sales artifact owner.\n- Does not decide, approve, or sign; humans hold every gate.\n\n## Rules\n\n- **Never fabricate a gate status.** No signature on file means the gate is open.\n- **Never build ahead of the plan.** Work started before its gate gets rebuilt.\n- **Route by name.** Name the owning skill in the handoff; \"the requirements\n  skill\" invites the wrong one.\n- **Carry state in the file, not in chat.** Anything worth remembering across\n  sessions goes into DELIVERY-STATE.md's ledger or log, with a date.\n- **Report counts and gate names, not adjectives.** \"At 02 Analyze, next gate\n  requirements co-signed, 2 findings\" rather than \"on track\".\n- **Flag decisions, do not assume them.** Open decisions carry an owner, a\n  resolve-by date, and the gate they block.\n\n## Files\n\n- `references/stages.json` · the authoritative stage IDs, gates and task owners.\n- `scripts/plan.py` · the deterministic planner; it reads that stage model.\n  Keep `references/stage-map.md` consistent with the model when changing it.\n- `scripts/plan_selftest.py` · run it after any change to the planner or the\n  state spec; it must pass before the change ships.\n- `scripts/fixtures/` · state files exercising new, mid-engagement, complete,\n  out-of-order, and malformed cases.\n- `references/stage-map.md` · the full map, routing edge cases, known gaps.\n- `references/delivery-state-spec.md` · the DELIVERY-STATE.md format and rules.\n",
+      "html": "<p>This skill coordinates delivery engagements after signature. It identifies the current stage, what gate comes next, and which skill does the work. Content decisions stay with the skill that owns each artifact. This file stays thin on purpose: the moment it starts describing how to build a charter or a test script, it is competing with the owner, and instruction competition is the defect the house model exists to kill.</p><h3>Project context required</h3><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p><h3>Where the files are</h3><p><code>scripts/</code> holds <code>plan.py</code> and its selftest with fixtures. <code>references/</code> holds <code>stage-map.md</code> (the full stage, gate, and owner table plus routing edge cases and the known-gaps register) and <code>delivery-state-spec.md</code> (the DELIVERY-STATE.md format). Read <code>stage-map.md</code> before routing anything unusual; the table below is the compact form.</p><h3>The lifecycle is eight ordered steps</h3><p>Handoff (pre-stage), then 01 Mobilize, 02 Analyze, 03 Design, 04 Build, 05 Validate, 06 Deploy, and the closeout loop inside 06. Each exits through a named gate, several co-signed by the client. Gates are exit conditions held by humans; skills draft, humans approve and sign. Preserve existing stage IDs in an engagement record. Apply the gates required by its accepted project plan; never mark one passed without its acceptance record.</p><h3>Who owns what</h3><p>Read the stage model <span class=\"ref\">(references/stages.json)</span> for the current task owners and exit gates. The planner reads that same model. Read the stage guide <span class=\"ref\">(references/stage-map.md)</span> for stage work and routing exceptions. Mobilization uses start-delivery; validation uses validate-delivery. Delivery-status maintains the reporting cadence and flags potential scope changes.</p><p>Use the project&#x27;s authorized implementation workflow for Build. Keep its actual build evidence distinct from acceptance. Apply <code>writing</code> to all authored prose; use the shared brand runtime for styled artifacts. The executed agreement and accepted changes govern commitments. This router does not approve a price.</p><h3>How to route a request</h3><ol><li><strong>Find the engagement and its state file.</strong> <code>DELIVERY-STATE.md</code> at the</li></ol><p>engagement folder root. Truth hierarchy: executed SOW/quote &gt; artifact files &gt; state file &gt; memory &gt; chat. If the state file is missing, this orchestrator reconstructs it from the executed agreement and acceptance artifacts per <code>references/delivery-state-spec.md</code> before routing. This applies to a lost file as well as a legacy engagement. Record artifact paths and dates, and leave any unsupported gate open. A missing file establishes no stage.</p><ol><li><strong>Run the planner.</strong> Never assemble the plan by hand.</li></ol><pre><code>   python3 scripts/plan.py path/to/DELIVERY-STATE.md\n   ```\n\nIt prints where the engagement is, the next gate and who holds it, the\n   ordered remaining stages with their owning skills, and findings (out-of-order\n   gates, a stage line that disagrees with the gate ledger, unparseable entries).\n   Report the position and every finding; do not narrate the run. `--json` gives\n   the machine contract; the text default is the one to use.\n3. **State the position plainly to the user.** Stage, next gate, gate holder.\n   If the user&#x27;s request belongs to a different stage than the engagement is in,\n   say so before routing; building ahead of an unpassed gate gets rebuilt.\n4. **Hand off to the owning skill by name**, with the engagement folder, the\n   state file path, and the specific artifact asked for. This suite does not\n   build the artifact, review it, or restate the owner&#x27;s method.\n5. **Verify the state file moved.** Whichever skill closes a gate updates\n   DELIVERY-STATE.md in the same session (gate status with date, artifact path,\n   append-only log line). When routing next, check the update happened; a stale\n   state file makes every later plan wrong.\n\n## Durable output\n\nThis suite produces no business artifact; those belong to the specialists it\nroutes to. What it does leave, per `_shared/output-contract.md`, is the run&#x27;s\nown Markdown record: the planner output (position, next gate, remaining\nstages, findings), the routing decision made, and any state-file corrections,\nalongside the updated DELIVERY-STATE.md itself. Deliver or link the record;\nnever just say it was written.\n\n## Gate discipline\n\n- A gate passes when the signed or accepted artifact exists, not when the work\n  feels done. The planner treats an undated pass as suspect; so should you.\n- Reopening a passed gate is scope drift first: log it through\n  `track-delivery` and assess the change-order candidate before any\n  rework starts.\n- Apply the Go-Live Acceptance mechanism in the executed agreement. Use a\n  deemed-acceptance clock only when the agreement actually contains one;\n  otherwise obtain its specified acceptance evidence. `manage-cutover-closeout` owns\n  that check. This suite does not close the gate without that evidence.\n- A blocked gate is a finding with an owner and a resolve-by date in the state\n  file&#x27;s open decisions, never a reason to route around the gate.\n\n## Check current capabilities and gaps\n\nInspect the caller&#x27;s actual comparables library, authorized automation, and\napproval records before reporting a gap. If prior-deal evidence is unavailable,\nrecord that limit rather than inventing a comparison. Do not promise automatic\nexecution at signature or a stage change without its configured trigger and\nexecution evidence. Route pre-signature governance to its confirmed owner;\nthis suite starts at the signed engagement. See `references/stage-map.md`.\n\n## What this skill does not do\n\n- Does not build any delivery artifact; the stage skills own their artifacts.\n- Does not price or author numbers. Executed commercial artifacts hold committed values. Route proposed changes to the confirmed commercial owner and `scope-project`; `review-contract-scope` reviews their evidence and language but does not calculate pricing.\n- Does not gate content quality; parity and visual are `brand-renderer`,\n  writing review is `writing`, evidence is `evidence-core`.\n- Does not touch pre-signature work. Send each request to its named sales artifact owner.\n- Does not decide, approve, or sign; humans hold every gate.\n\n## Rules\n\n- **Never fabricate a gate status.** No signature on file means the gate is open.\n- **Never build ahead of the plan.** Work started before its gate gets rebuilt.\n- **Route by name.** Name the owning skill in the handoff; &quot;the requirements\n  skill&quot; invites the wrong one.\n- **Carry state in the file, not in chat.** Anything worth remembering across\n  sessions goes into DELIVERY-STATE.md&#x27;s ledger or log, with a date.\n- **Report counts and gate names, not adjectives.** &quot;At 02 Analyze, next gate\n  requirements co-signed, 2 findings&quot; rather than &quot;on track&quot;.\n- **Flag decisions, do not assume them.** Open decisions carry an owner, a\n  resolve-by date, and the gate they block.\n\n## Files\n\n- `references/stages.json` · the authoritative stage IDs, gates and task owners.\n- `scripts/plan.py` · the deterministic planner; it reads that stage model.\n  Keep `references/stage-map.md` consistent with the model when changing it.\n- `scripts/plan_selftest.py` · run it after any change to the planner or the\n  state spec; it must pass before the change ships.\n- `scripts/fixtures/` · state files exercising new, mid-engagement, complete,\n  out-of-order, and malformed cases.\n- `references/stage-map.md` · the full map, routing edge cases, known gaps.\n- `references/delivery-state-spec.md` · the DELIVERY-STATE.md format and rules.</code></pre>",
       "excerptHtml": "<p>This skill coordinates delivery engagements after signature. It identifies the current stage, what gate comes next, and which skill does the work. Content decisions stay with the skill that owns each artifact. This file stays thin on purpose: the moment it starts describing how to build a charter or a test script, it is competing with the owner, and instruction competition is the defect the house model exists to kill.</p><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p><p><code>scripts/</code> holds <code>plan.py</code> and its selftest with fixtures. <code>references/</code> holds <code>stage-map.md</code> (the full stage, gate, and owner table plus routing edge cases and the known-gaps register) and <code>delivery-state-spec.md</code> (the DELIVERY-STATE.md format). Read <code>stage-map.md</code> before routing anything unusual; the table below is the compact form.</p>",
       "headings": [
         "Project context required",
@@ -6185,21 +6185,21 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "caa57d432a662df7177bdf3748533341e0a28b26ffd50aa1ae1bb8ca3b2cbe08",
-          "bytes": 8729,
-          "gitBlob": "def3e2d91e85be701d3b95a1c9890b8dc5666e77"
+          "sha256": "311a93b50a1e5d41b3da00d1ec6ff0a165461c2c45623956f26bf96be50273a7",
+          "bytes": 8834,
+          "gitBlob": "5a6f42a66602e98c6a3c81bcdb043177947f6f7b"
         },
         {
           "path": "references/delivery-state-spec.md",
-          "sha256": "4ac4f387e4fdd0e7480d3bd91d9d31d1e1b6c418a7acb72f4a68918046f72072",
-          "bytes": 3562,
-          "gitBlob": "7085b5f1d4137cb6d00efe29da2237faa6440881"
+          "sha256": "3110045ab894c4ebeb45b140578b4929abb923cb504bbaf41dde036b50fa9b52",
+          "bytes": 4041,
+          "gitBlob": "adca4ec38af148433c4ffb9b4a857d6caa983493"
         },
         {
           "path": "references/stage-map.md",
-          "sha256": "4affda79d450d5648d7f08101eb58a78caa0d96dba19ffaf262815e48fcae2dc",
-          "bytes": 3525,
-          "gitBlob": "678e4cb2e1dc2fd07bc250e43a65f984cdbec6b5"
+          "sha256": "1fb6b46812d1cc9125eddefc37d11cf51f24666e07856fe9a83624ba096afeee",
+          "bytes": 3744,
+          "gitBlob": "61eb53a81720a3903609ab04a38e91ab3b705457"
         },
         {
           "path": "references/stages.json",
@@ -6233,15 +6233,15 @@
         },
         {
           "path": "scripts/plan.py",
-          "sha256": "f561393796424940722b969ca8394c7dd10193e55a59d952fd32e5aac375d3d0",
-          "bytes": 9083,
-          "gitBlob": "d2d82915ae5c1a3e4cb9e6dfc78423626fe29960"
+          "sha256": "4bad135a603026295a6619316c4952fa2be5c11ab528e52a37412e35f68b6056",
+          "bytes": 9807,
+          "gitBlob": "a8d8e1727a373e4cecd0a1ee5a5d2b97c7453015"
         },
         {
           "path": "scripts/plan_selftest.py",
-          "sha256": "d4ca91699e072ac4216df38ec2f397f4642511a71d020e52ad253ee44e258727",
-          "bytes": 4704,
-          "gitBlob": "b00f13f2886e8c42806d71589d625bd94b5f4801"
+          "sha256": "97f67ab712211ca7c3441243f895084f9c1c4a96842af87bf9a35325c31f2a5b",
+          "bytes": 4893,
+          "gitBlob": "e9ce8bf02b9ac03b090008fdfd2ddf3fb71c0330"
         },
         {
           "path": "skill.yaml",
@@ -6275,7 +6275,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-analytics-plan/SKILL.md",
       "sourceSha256": "78d27b364ce3a619d70ed5dc9008b93351254d3ae7ca3dd9952f85e7398f45be",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-analytics-plan/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/design-analytics-plan/SKILL.md",
       "taskPackages": [
         {
           "name": "design-analytics-plan",
@@ -6407,7 +6407,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-information-architecture/SKILL.md",
       "sourceSha256": "92e0c2b50fb003ce4cfb5a91ce0b58f0760c4c7fb59e8effee35e36661070ad8",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-information-architecture/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/design-information-architecture/SKILL.md",
       "taskPackages": [
         {
           "name": "design-information-architecture",
@@ -6539,7 +6539,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-process/SKILL.md",
       "sourceSha256": "a01f63c5f638cc1d414f52972b8a82294f39f25f59d66252c903c28357666dcb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/design-process/SKILL.md",
       "taskPackages": [
         {
           "name": "design-process",
@@ -6722,7 +6722,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-software-system/SKILL.md",
       "sourceSha256": "8f690301b9b970451cf73740db9d45c818475b441c85e6f5f7b23c2c6b123048",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-software-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/design-software-system/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -6897,7 +6897,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/design-sticker/SKILL.md",
       "sourceSha256": "b6dab8536880885060e9221906488aa8c5cbbc26ce194e2b179169024193b345",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/design-sticker/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/design-sticker/SKILL.md",
       "taskPackages": [
         {
           "name": "design-sticker",
@@ -7032,7 +7032,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-independent-product/SKILL.md",
       "sourceSha256": "f307f7513c76d85026239a606f0f5c9b4488d35144e499e8435ba0ecd27979eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/develop-independent-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/develop-independent-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-independent-product",
@@ -7148,7 +7148,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/develop-product/SKILL.md",
       "sourceSha256": "443f4e96e287cd29a34d571a8587999ab0c4e99567be08d4dbf96ffedabbbe95",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/develop-product/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/develop-product/SKILL.md",
       "taskPackages": [
         {
           "name": "develop-product",
@@ -7375,7 +7375,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/draft-application-materials/SKILL.md",
       "sourceSha256": "a53b931a7ee559a7054537b27dd302dedf1baebf360e29afe879811f5a4e50e1",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/draft-application-materials/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/draft-application-materials/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -7537,7 +7537,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/estimate-project/SKILL.md",
       "sourceSha256": "9fb5d9b573c326a58b62feac2f5c4d80238b9b13ce88dd5ada0c97982cded922",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/estimate-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/estimate-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -7789,7 +7789,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/evidence-core/SKILL.md",
       "sourceSha256": "1c2bf5fc7cc938fb6c1a1fbe7dbcd7f4e35e770363072ea0290e1f57e0bba6b4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/evidence-core/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/evidence-core/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "assess-solution-delivery",
@@ -7842,7 +7842,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 19,
-        "packageFingerprint": "5f463edd64194a1f9e9594575b8959591fea22a0083df5bc8b7351f8e075d23f",
+        "packageFingerprint": "a936e1f0523b363e683164b14c4d772f3a3601ec59aad3eafd0df1413ab44f41",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -8012,9 +8012,9 @@
         },
         {
           "path": "reference/artifact-registry.json",
-          "sha256": "e104efafa7e8fb8e286f07613b6f6c3f4368a03ef13017c3db3ffcbcb5096e9a",
-          "bytes": 10459,
-          "gitBlob": "26acbb6a185b632947283c2891d0cb2375818c91"
+          "sha256": "adf344729182a572ff9ffb599e7ccacbc8ebaa1567a4040c2ec5b0fe39cd246b",
+          "bytes": 11537,
+          "gitBlob": "b2613abc974bce2c7a313c47d735297c4ac44cc4"
         },
         {
           "path": "schemas/evidence-ledger.schema.json",
@@ -8030,9 +8030,9 @@
         },
         {
           "path": "scripts/evidence_core_selftest.py",
-          "sha256": "764a8feba1de6400b887232d0be043ff8b4c7c4e343c76d9a384de2f57f954a9",
-          "bytes": 18041,
-          "gitBlob": "78800be4eaf133718ae6427ba1135362fc9bd982"
+          "sha256": "33c6a1cc0585386c6a8daf4e392f8582732f7a89977863fb1ee4691feb673b40",
+          "bytes": 18807,
+          "gitBlob": "1266d6d5532a8fa6e3e65cc84300c55c785ef75b"
         },
         {
           "path": "scripts/ledger_events.py",
@@ -8084,7 +8084,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/frame-jobs-to-be-done/SKILL.md",
       "sourceSha256": "9c39626ef8c4568afef3b93a28496d2708408f1ae375758f8ebfe17d1afa226b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/frame-jobs-to-be-done/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/frame-jobs-to-be-done/SKILL.md",
       "taskPackages": [
         {
           "name": "frame-jobs-to-be-done",
@@ -8366,7 +8366,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/guide-fortunes-weave/SKILL.md",
       "sourceSha256": "37b454505c67ac4f826ebcea8dd31ca32a66c86792c53424ed2b0190f8adb4eb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/guide-fortunes-weave/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/guide-fortunes-weave/SKILL.md",
       "taskPackages": [
         {
           "name": "guide-fortunes-weave",
@@ -8480,7 +8480,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/import-tracker-export/SKILL.md",
       "sourceSha256": "303f8fd7642bf80652fad4907328277a1b920093202ecf3837c0013fe905ede3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/import-tracker-export/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/import-tracker-export/SKILL.md",
       "taskPackages": [
         {
           "name": "import-tracker-export",
@@ -8653,7 +8653,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/ingest-transcript/SKILL.md",
       "sourceSha256": "ee5e32af52b4907866ebb6436d428d482900e8549ee80e71af34411841773290",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/ingest-transcript/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/ingest-transcript/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -8819,7 +8819,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/lay-out-sticker-sheets/SKILL.md",
       "sourceSha256": "4159e9acd36400d53067017e23c79e46047702f701b4117a941b168274102ab0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/lay-out-sticker-sheets/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/lay-out-sticker-sheets/SKILL.md",
       "taskPackages": [
         {
           "name": "lay-out-sticker-sheets",
@@ -8938,7 +8938,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/load-project-context/SKILL.md",
       "sourceSha256": "4ee2f9d398d48a4ed0b3d3fe573a2b67f1d799cbbf2ab4c214221c9feca14822",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/load-project-context/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/load-project-context/SKILL.md",
       "taskPackages": [
         {
           "name": "load-project-context",
@@ -9090,7 +9090,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-discovery-record/SKILL.md",
       "sourceSha256": "591924339a334dc8207ad9e0f39c5112fde2b3c4859754a02a3e2fc1a0d7693e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/maintain-discovery-record/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/maintain-discovery-record/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -9359,7 +9359,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/maintain-skills-estate/SKILL.md",
       "sourceSha256": "00a2bf8f0726d18b51e929cab355804e975529cde0f82e4d828172cbe84c6a09",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/maintain-skills-estate/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/maintain-skills-estate/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -9596,7 +9596,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-brand-profile/SKILL.md",
       "sourceSha256": "c2dd1b461b121606da88831fb29602ba6b26c57d394417bad9e905b5946ad7fb",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-brand-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-brand-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-brand-profile",
@@ -9713,7 +9713,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-color-system/SKILL.md",
       "sourceSha256": "6ca791f214dca500df65669f232151d0064312cb0e99bbbe60a85ae0e3a1f695",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-color-system/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-color-system/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-color-system",
@@ -9921,7 +9921,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-consulting-knowledge/SKILL.md",
       "sourceSha256": "14125cf63dd56af8113accc478b7c95cc3e991bf0da45ea3627ce25e0e028507",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-consulting-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-consulting-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-consulting-knowledge",
@@ -10255,7 +10255,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-cutover-closeout/SKILL.md",
       "sourceSha256": "ccb735fac1092a6073c9f18f3db775a6c0eb338507ee6a570ced71b9a3fcd468",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-cutover-closeout/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-cutover-closeout/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-cutover-closeout",
@@ -10491,7 +10491,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-decision-register/SKILL.md",
       "sourceSha256": "19063f7b8df5183a3f2e1c66e2c58f6e19a3c05ec3559b8b3e94af48b5a3e07c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-decision-register/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-decision-register/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-decision-register",
@@ -10651,7 +10651,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-linked-task/SKILL.md",
       "sourceSha256": "ee0dc7d81e24355c6cd393033b9afef225c892d1aab2fab3a788e275ffff3531",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-linked-task/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-linked-task/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "load-project-context"
@@ -10761,7 +10761,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-salesforce-devops/SKILL.md",
       "sourceSha256": "696aa80506a1d04ca45ae7a9fa0e17f03c75790c9be441c5f537584e6082cc3f",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-salesforce-devops/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-salesforce-devops/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -10930,7 +10930,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-service-offering/SKILL.md",
       "sourceSha256": "cad2f61af6b45fb500642f6a8e5027d127eb87cdb4c97a415e7e72669339c158",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-service-offering/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-service-offering/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -11109,7 +11109,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/manage-writing-profile/SKILL.md",
       "sourceSha256": "661cb380854e11b480c8ce08a449df7ae4365ff710f1ab8cff53e5cd11d33486",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/manage-writing-profile/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/manage-writing-profile/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-writing-profile",
@@ -11295,7 +11295,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-journey/SKILL.md",
       "sourceSha256": "2b43a88c556f3e333b3c12837568aeaa88f093347ca8fcd83e62d444ff688b32",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/map-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/map-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-journey",
@@ -11500,7 +11500,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/map-sales-process/SKILL.md",
       "sourceSha256": "b748025f77345184a86a61a941fe6eb2f60d9ca16542011ddd84be537156dcc3",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/map-sales-process/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/map-sales-process/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -11637,7 +11637,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/operate-salesforce-pipeline/SKILL.md",
       "sourceSha256": "587104dba57206c015cde53ae40c19b7118448ad95c74e13ea31b37f2b0fdd13",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/operate-salesforce-pipeline/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/operate-salesforce-pipeline/SKILL.md",
       "taskPackages": [
         {
           "name": "operate-salesforce-pipeline",
@@ -11883,7 +11883,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-offering-artifacts/SKILL.md",
       "sourceSha256": "8ce392ac863ea41de982bf5606dda64e2fd92fac59560f39f15686895a7cc84c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-offering-artifacts/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/plan-offering-artifacts/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -12098,7 +12098,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-sprint/SKILL.md",
       "sourceSha256": "d51a5e894bea166e84c169b6b9764c4ef75ced3949bacbfc2627661f35db7e38",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-sprint/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/plan-sprint/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-sprint",
@@ -12336,7 +12336,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-team-onboarding/SKILL.md",
       "sourceSha256": "0a289d5a65fc13097458b16b760eb1a6f4fca799bf3673bc8466d97fe3acfeea",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-team-onboarding/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/plan-team-onboarding/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-team-onboarding",
@@ -12515,7 +12515,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/plan-usability-study/SKILL.md",
       "sourceSha256": "252bcb7ec74179de8eccd9a6d19f4c50b15262cf1fd7d084f7d73b593a07b6ce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/plan-usability-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/plan-usability-study/SKILL.md",
       "taskPackages": [
         {
           "name": "plan-usability-study",
@@ -12643,11 +12643,11 @@
       "title": "Sales-to-delivery handoff",
       "family": 2,
       "description": "Owns the Estate sales-to-delivery handoff at signature: the handoff package built from the executed SOW, quote, and deal record, and the incoming delivery handoff brief accepted before kickoff. Use when a deal signs and someone asks for the handoff package, the delivery handoff brief, the warm transfer, what delivery inherits, or what was promised on a signed deal. Do NOT use for technical deliverability judgment (assess-solution-delivery), the kickoff meeting or project charter (start-delivery), requirements extraction (capture-requirements), or pre-sale research and call prep (prepare-sales-pursuit).",
-      "status": "local-revision",
-      "entrypointChanged": true,
+      "status": "github",
+      "entrypointChanged": false,
       "sourcePath": "skills/prepare-delivery-handoff/SKILL.md",
       "sourceSha256": "7d5eaff9bc08793f6dee043f81f221f342d954ba34bcf6e66fd9c22c23bb3a07",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-delivery-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/prepare-delivery-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-delivery-handoff",
@@ -12941,7 +12941,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-job-application/SKILL.md",
       "sourceSha256": "02bb1104b4c1b905966c63a8357fe1303d02e0a3867fba62e11c043d95023e62",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-job-application/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/prepare-job-application/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -13133,7 +13133,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-sales-pursuit/SKILL.md",
       "sourceSha256": "b8f2f3a732f8ef2f35699d8dae4be8af8f731df02d83ec420f50618d4c0def28",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-sales-pursuit/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/prepare-sales-pursuit/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-sales-pursuit",
@@ -13431,7 +13431,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prepare-session-handoff/SKILL.md",
       "sourceSha256": "c7ad8674dcff4ea6f446ca504ad2ba844d51a6ad088aa67d9e8ece91aa059e3b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prepare-session-handoff/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/prepare-session-handoff/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-session-handoff",
@@ -13589,7 +13589,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/prioritize-work/SKILL.md",
       "sourceSha256": "2b67c75621f16b0e328aa5205e5f2c84b88d011949bc7ad56fa72d007cd2e36a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/prioritize-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/prioritize-work/SKILL.md",
       "taskPackages": [
         {
           "name": "prioritize-work",
@@ -13882,7 +13882,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/promote-salesforce-changes/SKILL.md",
       "sourceSha256": "20ecc948c080ca2f890499ff1a554838259b2a9e3cbe7c14e0869e886c8780f0",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/promote-salesforce-changes/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/promote-salesforce-changes/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-salesforce-devops",
@@ -14111,7 +14111,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/publish-content/SKILL.md",
       "sourceSha256": "70f6d30f2a828f38b5a75a86d01e545dc0395a173840dcfe433e09494d01cf28",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/publish-content/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/publish-content/SKILL.md",
       "taskPackages": [
         {
           "name": "publish-content",
@@ -14413,7 +14413,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/reconcile-knowledge/SKILL.md",
       "sourceSha256": "5096adde62aa07c9de2264f645e53a85c1e17579f1f061633cb0feaa5aa2868c",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/reconcile-knowledge/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/reconcile-knowledge/SKILL.md",
       "taskPackages": [
         {
           "name": "reconcile-knowledge",
@@ -14549,7 +14549,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/refine-backlog/SKILL.md",
       "sourceSha256": "a8904a379b92e3a8bd65f77898f8675a0b82c964d30e6110d1faaab2443a1784",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/refine-backlog/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/refine-backlog/SKILL.md",
       "taskPackages": [
         {
           "name": "refine-backlog",
@@ -14779,7 +14779,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/release-skill-package/SKILL.md",
       "sourceSha256": "18ced08f63182be20b58bb29afb4cc38c690163f52e31e79962eed6cecb4c381",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/release-skill-package/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/release-skill-package/SKILL.md",
       "taskPackages": [
         {
           "name": "maintain-skills-estate",
@@ -14938,7 +14938,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/render-offering-brief/SKILL.md",
       "sourceSha256": "c0cb7e4ff088755bcddb1cea043052b9079b6b9ea1bfbf93d53c52ed96eb0c2d",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/render-offering-brief/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/render-offering-brief/SKILL.md",
       "taskPackages": [
         {
           "name": "manage-service-offering",
@@ -15179,7 +15179,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-contract-scope/SKILL.md",
       "sourceSha256": "bcb6ca0b615cdeb00ba84e6ac5e3c7ff295228db1f185a409e76be6813f71329",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-contract-scope/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/review-contract-scope/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -15391,7 +15391,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deal-economics/SKILL.md",
       "sourceSha256": "fd5db542ec246356f96fc01210d5ef8562e86aac39eb50c1cc97920e496095db",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-deal-economics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/review-deal-economics/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deal-economics",
@@ -15649,7 +15649,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-deliverable/SKILL.md",
       "sourceSha256": "5d057ff677b132f8b04c31d6b3f22fdcd3d0ec8f9cb517332d37dd3dde6d9cad",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-deliverable/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/review-deliverable/SKILL.md",
       "taskPackages": [
         {
           "name": "review-deliverable",
@@ -15875,7 +15875,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-sales-journey/SKILL.md",
       "sourceSha256": "2d8542e67dc50e8d0ebc086d7c60fddaabc8574a806fba340d1932727d3d3397",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-sales-journey/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/review-sales-journey/SKILL.md",
       "taskPackages": [
         {
           "name": "map-sales-process",
@@ -16025,7 +16025,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/review-site-runtime/SKILL.md",
       "sourceSha256": "bba06bf6d55a823144888d369961f2adca0233c050939b1c870e32ac3b54474b",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/review-site-runtime/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/review-site-runtime/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "build-moscow-story-map",
@@ -16363,7 +16363,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/scope-project/SKILL.md",
       "sourceSha256": "77670e283438bd9fb51094060c58bd4f8a1e489f7ed8442086e1a391285d99d4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/scope-project/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/scope-project/SKILL.md",
       "taskPackages": [
         {
           "name": "scope-project",
@@ -16570,7 +16570,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/simplify-code/SKILL.md",
       "sourceSha256": "156e04c98dbf3090b7e649c9a173bee3dfea52c8b524acbb220b76ac5f87e67a",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/simplify-code/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/simplify-code/SKILL.md",
       "taskPackages": [
         {
           "name": "simplify-code",
@@ -16691,7 +16691,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/specify-implementation/SKILL.md",
       "sourceSha256": "13949c4b2674594085edde691b1bbf48c62bef1cefe2e1e957e7e7a3556caee4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/specify-implementation/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/specify-implementation/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -16855,11 +16855,11 @@
       "title": "Start delivery",
       "family": 2,
       "description": "Mobilize a signed engagement: the project charter, RAID and decision logs, internal and client kickoff decks and a Sprint 0 plan, built from the accepted sales-to-delivery handoff and signed SOW. Use when delivery is starting: kick off the project, mobilize the engagement, set up the RAID log, or \"the handoff is accepted, what now\". Not for the handoff itself (prepare-delivery-handoff), status after kickoff (track-delivery), requirements (capture-requirements) or later sprints (plan-sprint).",
-      "status": "github",
-      "entrypointChanged": false,
+      "status": "local-revision",
+      "entrypointChanged": true,
       "sourcePath": "skills/start-delivery/SKILL.md",
-      "sourceSha256": "cc56c7de231537ac8ba66392242af9e86931ae44b08a88c3ce7e815af7567706",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/start-delivery/SKILL.md",
+      "sourceSha256": "d3f00831833b286ed7c84a5074f65a4db996fb9f948ae3f690551bc7b4f3e687",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/start-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "start-delivery",
@@ -16875,7 +16875,7 @@
         "inputs": "The accepted handoff brief, the signed SOW, the confirmed delivery model and the shared engagement record.",
         "outputs": "A gated draft charter, seeded RAID and decision logs, internal and client kickoff decks, and a Sprint 0 or mobilization plan.",
         "example": "Prepare the charter, governance logs and kickoff decks from the signed SOW and the accepted handoff.",
-        "reviewedEntrypointSha256": "cc56c7de231537ac8ba66392242af9e86931ae44b08a88c3ce7e815af7567706",
+        "reviewedEntrypointSha256": "d3f00831833b286ed7c84a5074f65a4db996fb9f948ae3f690551bc7b4f3e687",
         "expect": "It starts from the accepted handoff brief and signed SOW and drafts the charter, RAID and decision logs, kickoff decks and Sprint 0 plan. It stops if no accepted handoff exists, restates SOW scope without renegotiating it, and drafts what humans sign without signing or provisioning anything.",
         "connectors": {
           "required": [],
@@ -16907,7 +16907,7 @@
         "dependencyReferences": [],
         "sharedReferences": [],
         "textFilesScanned": 17,
-        "packageFingerprint": "cb4ac49590e9fd59ffcf82998709febf21654f6d41f4b587a8e784ea59ee291e",
+        "packageFingerprint": "981a569b3ac52dd131c7d540e73f5be49a77c898645f3e74b8dbde8181db2734",
         "basis": "Source classification and automated reference scan; cross-environment execution has not been tested."
       },
       "catalogRole": {
@@ -16947,12 +16947,13 @@
         "expect": "It starts from the accepted handoff brief and signed SOW and drafts the charter, RAID and decision logs, kickoff decks and Sprint 0 plan. It stops if no accepted handoff exists, restates SOW scope without renegotiating it, and drafts what humans sign without signing or provisioning anything.",
         "declared": false
       },
-      "markdown": "---\nname: start-delivery\ndescription: 'Mobilize a signed engagement: the project charter, RAID and decision logs, internal and client kickoff decks and a Sprint 0 plan, built from the accepted sales-to-delivery handoff and signed SOW. Use when delivery is starting: kick off the project, mobilize the engagement, set up the RAID log, or \"the handoff is accepted, what now\". Not for the handoff itself (prepare-delivery-handoff), status after kickoff (track-delivery), requirements (capture-requirements) or later sprints (plan-sprint).'\n---\n\n\n# Start delivery\n\nMobilization is the stage between an accepted handoff and real delivery work. It produces one\nsigned artifact (the Project Charter), one living system (the governance pack), and two meetings\n(internal kickoff, then client kickoff). A weak start compounds: recovering lost efficiency in\nweeks one and two can create later rework, so this stage is deliberate,\ncomplete, and standardized rather than improvised per project.\n\nOne boundary carries the whole skill: **this skill drafts, humans sign.** It never signs the\ncharter, never commits the client to a cadence, never closes a handoff open question on its own,\nand never provisions an environment. It prepares the artifacts the humans act on, and it tracks\nwhat the humans did, truthfully.\n\n## Project context required\n\nUse only the caller-confirmed engagement, source records, private output location,\nand intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,\nand Pursuit Lead to that project's authorized owners; these labels do not impose\nan employer organization chart or signing authority. The executed agreement and\naccepted project plan determine gates, commercial rules, and support obligations.\nKeep account history, risk assessments, credentials, and client evidence outside\nportable skill sources. A cached account, attached Project, or available connector\nis not authorization to read, write, or publish.\n\n## Phase 0: orient on the sources\n\nFind the real objects before writing anything:\n\n1. **The accepted handoff brief.** Its sections (team, stakeholder map with deal-versus-delivery\n   mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill's\n   raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is\n   prepare-delivery-handoff's job. This skill does not cover the gap.\n2. **The signed SOW**, with its id and as-of date. The SOW is fixed input. Scope, phases, figures,\n   and commercial structure come from it; this skill renders them and authors none of them. Any\n   figure ultimately traces to the quote the SOW was built from, per the money rule.\n3. **The delivery model.** Detect waterfall or agile from the SOW variant, then confirm with the\n   Program Lead or CSE before building anything variant-specific. Detected is not confirmed;\n   never assume. Record the confirmation (who, when) in the charter and as a decision log entry.\n4. **The shared engagement record**, where one exists. Read what the handoff populated (meta,\n   scope_baseline, stakeholders, team, open_questions, gates); write only this stage's sections\n   (raid, decisions, artifacts, gates, confirmed team) and log every change.\n\nStamp everything generated with the SOW id and its as-of date. Record IDs do not survive sandbox\nrefreshes; the stamp is what makes an artifact auditable later.\n\n## Phase 1: draft the Project Charter\n\nRead `references/charter-spec.md`, then fill `assets/charter-template.md`. The two rules that\nmatter most:\n\n- **Scope is the SOW scope restated, never renegotiated.** The charter is where the client\n  re-accepts what they signed. When the handoff brief or a transcript shows the client expecting\n  something the SOW does not say (or vice versa), that delta becomes a flagged item (F-###) with\n  an owner and a resolve-by date before client kickoff. Neither write it into the baseline nor\n  silently drop it. If it implies paid work, humans take it to a Change Order conversation.\n- **Every section is always present.** A section the sources cannot fill carries a known unknown\n  with an owner, a resolve-by date, and the gate it blocks. Treat a blank as an open question\n  and invent nothing to fill it.\n\nGate the draft before any human reads it:\n\n```bash\npython3 scripts/charter_check.py CHARTER.md\n```\n\nIt verifies required sections, the scope source stamp (SOW id plus as-of date), a fully assigned\nRACI with exactly one Accountable per activity and every team role covered, no leftover\nplaceholder tokens, and no em dashes. Exit 0 passes. Report the counts it prints and leave out adjectives.\nThen run the `writing` checker over the charter prose. Fix the source and re-render; never\nhand-patch output the next regeneration would lose.\n\nThe Program Lead secures the signature. Mark the charter DRAFT until they do. When the\nsignature lands, update the engagement's DELIVERY-STATE.md in the same session\n(`charter_signed` with date, charter path, append-only dated log line) per\ndelivery-orchestrator's `references/delivery-state-spec.md`.\n\n## Phase 2: stand up the governance pack\n\nRead `references/governance-pack-spec.md`. Three artifacts from `assets/`: the RAID log, the\ndecision log, and the weekly status template. This skill creates and seeds them;\ntrack-delivery stewards them from kickoff onward, which is why the ID conventions are a\nfixed contract between the two skills: R/A/I/D-### for RAID items, DEC-### for decisions, zero-padded, permanent,\nappend-only. Downstream stewardship diffs these tables by ID; a renumbered log breaks every later\nreport.\n\nSeeding is the substance: every handoff open question becomes an owned RAID item with a resolve-by\ndate (letting one vanish is the named failure mode of this stage), handoff risks become R items,\nSOW basis-of-estimate assumptions become A items, and evidenced capability gaps from the\nsupplied project risk profile each get the agreed oversight and a sourced risk.\nEvery seeded item cites its source. Do not pad the log to look thorough.\n\nAgree with the team where the pack lives before client kickoff, and log that location as a\ndecision. The decision log records only decisions humans actually made, with the human named.\n\n## Phase 3: kickoff decks\n\nRead `references/kickoff-deck-contracts.md` for what every slide must carry, per deck and per\nvariant. This skill owns the content contract only. Mechanics are delegated: build-deck runs\nthe stage-gated build, pptx owns the file format, brand-renderer owns brand tokens and\nthe visual, parity, and brand gates, `writing` reviews the copy. Do not inline hex values or\nrestate any of their rules.\n\nTwo decks, in order. The **internal kickoff** runs first, always: it is where the Program Lead\nleads the risk and gap review off the seeded RAID log, and where the team agrees tools and the\nnote-keeping location, before the client sees anything. The **client kickoff** ends with explicit\nagreement on cadence and the path to charter signature. Both decks are populated from this\nengagement's record; a deck reusable on another client unchanged is a failed deck.\n\nBuild the confirmed variant only. If the SOW is ambiguous about the model, flag it as a\ndelta for a human to decide, and build no hybrid deck.\n\n## Phase 4: Sprint 0 plan, seeded backlog, research pack\n\nRead `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive Analyze work, each with an owner and\na date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.\n\n## Phase 5: track the operational setup\n\nSandbox provisioning and access grants are human or system actions. This skill records their\nstatus per environment and per person (provisioned, requested, blocked, verified), flags blockers\nas RAID items, and prompts the Program Lead on what is stuck. It never performs the setup and\nnever marks anything ready that nobody verified. Claiming unverified sandbox readiness is a named\nfailure mode; track real status only.\n\n## Durable output\n\nEvery run leaves a Markdown record per `_shared/output-contract.md`. On a full\nmobilization that record is the charter draft plus the seeded governance pack;\non a partial or headless run it is a run record carrying the gate counts, the\nflagged deltas, and the human actions still outstanding. Deliver or link the\nfiles; never just say they were written.\n\n## Governance delegation\n\n- **evidence-core** governs load-bearing factual claims (client context, stakeholder\n  facts, sell-cycle promises). Run it before drafting where installed. If a load-bearing domain is\n  insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence\n  is a hard fail.\n- **brand-renderer** owns brand for every rendered artifact, applied during the build.\n- **writing** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.\n- **The quote and SOW own every number.** This skill renders figures and authors none.\n\nWhere a governor is not installed on the current surface, state the check it would have run, do\nthe best manual substitute, and say that is what happened. Never silently skip, never pretend.\n\n## Running unattended\n\nPhase 0's variant confirmation, the charter signature, cadence agreement, and both kickoff\nmeetings need humans. On a scheduled or headless run: draft the charter, run the gate, seed the\ngovernance pack, and stop with findings and open items. Never record a confirmation, agreement,\nor signature nobody gave.\n\n## When time is short\n\nCut in this order, and say what was cut: (1) the research pack, (2) the internal deck's\nclient-context depth, keep the slide on risks and gaps, (3) backlog stories, keep the epics. Never\ncut: the charter gate, RAID seeding from handoff open questions, flagged deltas, source citations,\nor the internal-before-client kickoff order.\n\n## Boundaries\n\nIn the delivery chain (SOW, then prepare-delivery-handoff, then kickoff, then status, then\nUAT, then manage-cutover-closeout), this skill's upstream producer is\nprepare-delivery-handoff, whose accepted brief is the raw material, and its\ndownstream consumer is track-delivery, which stewards the logs this\nstage seeds. Kickoff does not re-scope: the SOW baseline is restated, never\nrenegotiated, and every delta is a flag for humans.\n\n- Does not run the handoff or write the handoff brief; that is prepare-delivery-handoff.\n- Does not steward status, RAID, or decisions after kickoff; that is track-delivery,\n  which takes over the exact files this skill seeds.\n- Does not capture requirements or author acceptance criteria; that is\n  capture-requirements, in Analyze.\n- Does not scope, price, or amend scope. It treats the SOW as fixed input; deltas are flags for humans.\n- Does not sign, approve, or gate. It drafts what humans sign and tracks what humans did.\n- Does not provision sandboxes or grant access; it tracks them.\n- Does not build deck files itself; build-deck, pptx, and brand-renderer do.\n\n## Files\n\n- `references/charter-spec.md` charter section spec and the scope-restatement rules.\n- `references/governance-pack-spec.md` governance templates, stable-ID contract, seeding rules.\n- `references/kickoff-deck-contracts.md` slide-by-slide content contracts, both decks, both variants.\n- `references/sprint0-backlog-seeding.md` Sprint 0 checklist, backlog seeding rules, research pack.\n- `assets/charter-template.md`, `assets/raid-log-template.md`, `assets/decision-log-template.md`,\n  `assets/status-report-template.md` the shells to fill; content, not structure.\n- `scripts/charter_check.py` the charter gate. Stdlib only; exits nonzero on failure.\n- `scripts/charter_check_selftest.py` runs the gate against `scripts/fixtures/` (one passing\n  charter, five shipped failing ones, plus an em-dash case synthesized at runtime so the shipped\n  tree itself stays em-dash free). Run it after any change to the gate.\n",
-      "html": "<p>Mobilization is the stage between an accepted handoff and real delivery work. It produces one signed artifact (the Project Charter), one living system (the governance pack), and two meetings (internal kickoff, then client kickoff). A weak start compounds: recovering lost efficiency in weeks one and two can create later rework, so this stage is deliberate, complete, and standardized rather than improvised per project.</p><p>One boundary carries the whole skill: <strong>this skill drafts, humans sign.</strong> It never signs the charter, never commits the client to a cadence, never closes a handoff open question on its own, and never provisions an environment. It prepares the artifacts the humans act on, and it tracks what the humans did, truthfully.</p><h3>Project context required</h3><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p><h3>Phase 0: orient on the sources</h3><p>Find the real objects before writing anything:</p><ol><li><strong>The accepted handoff brief.</strong> Its sections (team, stakeholder map with deal-versus-delivery</li></ol><p>mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill&#x27;s raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is prepare-delivery-handoff&#x27;s job. This skill does not cover the gap.</p><ol><li><strong>The signed SOW</strong>, with its id and as-of date. The SOW is fixed input. Scope, phases, figures,</li></ol><p>and commercial structure come from it; this skill renders them and authors none of them. Any figure ultimately traces to the quote the SOW was built from, per the money rule.</p><ol><li><strong>The delivery model.</strong> Detect waterfall or agile from the SOW variant, then confirm with the</li></ol><p>Program Lead or CSE before building anything variant-specific. Detected is not confirmed; never assume. Record the confirmation (who, when) in the charter and as a decision log entry.</p><ol><li><strong>The shared engagement record</strong>, where one exists. Read what the handoff populated (meta,</li></ol><p>scope_baseline, stakeholders, team, open_questions, gates); write only this stage&#x27;s sections (raid, decisions, artifacts, gates, confirmed team) and log every change.</p><p>Stamp everything generated with the SOW id and its as-of date. Record IDs do not survive sandbox refreshes; the stamp is what makes an artifact auditable later.</p><h3>Phase 1: draft the Project Charter</h3><p>Read <code>references/charter-spec.md</code>, then fill <code>assets/charter-template.md</code>. The two rules that matter most:</p><ul><li><strong>Scope is the SOW scope restated, never renegotiated.</strong> The charter is where the client</li></ul><p>re-accepts what they signed. When the handoff brief or a transcript shows the client expecting something the SOW does not say (or vice versa), that delta becomes a flagged item (F-###) with an owner and a resolve-by date before client kickoff. Neither write it into the baseline nor silently drop it. If it implies paid work, humans take it to a Change Order conversation.</p><ul><li><strong>Every section is always present.</strong> A section the sources cannot fill carries a known unknown</li></ul><p>with an owner, a resolve-by date, and the gate it blocks. Treat a blank as an open question and invent nothing to fill it.</p><p>Gate the draft before any human reads it:</p><pre><code>python3 scripts/charter_check.py CHARTER.md</code></pre><p>It verifies required sections, the scope source stamp (SOW id plus as-of date), a fully assigned RACI with exactly one Accountable per activity and every team role covered, no leftover placeholder tokens, and no em dashes. Exit 0 passes. Report the counts it prints and leave out adjectives. Then run the <code>writing</code> checker over the charter prose. Fix the source and re-render; never hand-patch output the next regeneration would lose.</p><p>The Program Lead secures the signature. Mark the charter DRAFT until they do. When the signature lands, update the engagement&#x27;s DELIVERY-STATE.md in the same session (<code>charter_signed</code> with date, charter path, append-only dated log line) per delivery-orchestrator&#x27;s <code>references/delivery-state-spec.md</code>.</p><h3>Phase 2: stand up the governance pack</h3><p>Read <code>references/governance-pack-spec.md</code>. Three artifacts from <code>assets/</code>: the RAID log, the decision log, and the weekly status template. This skill creates and seeds them; track-delivery stewards them from kickoff onward, which is why the ID conventions are a fixed contract between the two skills: R/A/I/D-### for RAID items, DEC-### for decisions, zero-padded, permanent, append-only. Downstream stewardship diffs these tables by ID; a renumbered log breaks every later report.</p><p>Seeding is the substance: every handoff open question becomes an owned RAID item with a resolve-by date (letting one vanish is the named failure mode of this stage), handoff risks become R items, SOW basis-of-estimate assumptions become A items, and evidenced capability gaps from the supplied project risk profile each get the agreed oversight and a sourced risk. Every seeded item cites its source. Do not pad the log to look thorough.</p><p>Agree with the team where the pack lives before client kickoff, and log that location as a decision. The decision log records only decisions humans actually made, with the human named.</p><h3>Phase 3: kickoff decks</h3><p>Read <code>references/kickoff-deck-contracts.md</code> for what every slide must carry, per deck and per variant. This skill owns the content contract only. Mechanics are delegated: build-deck runs the stage-gated build, pptx owns the file format, brand-renderer owns brand tokens and the visual, parity, and brand gates, <code>writing</code> reviews the copy. Do not inline hex values or restate any of their rules.</p><p>Two decks, in order. The <strong>internal kickoff</strong> runs first, always: it is where the Program Lead leads the risk and gap review off the seeded RAID log, and where the team agrees tools and the note-keeping location, before the client sees anything. The <strong>client kickoff</strong> ends with explicit agreement on cadence and the path to charter signature. Both decks are populated from this engagement&#x27;s record; a deck reusable on another client unchanged is a failed deck.</p><p>Build the confirmed variant only. If the SOW is ambiguous about the model, flag it as a delta for a human to decide, and build no hybrid deck.</p><h3>Phase 4: Sprint 0 plan, seeded backlog, research pack</h3><p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive Analyze work, each with an owner and a date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p><h3>Phase 5: track the operational setup</h3><p>Sandbox provisioning and access grants are human or system actions. This skill records their status per environment and per person (provisioned, requested, blocked, verified), flags blockers as RAID items, and prompts the Program Lead on what is stuck. It never performs the setup and never marks anything ready that nobody verified. Claiming unverified sandbox readiness is a named failure mode; track real status only.</p><h3>Durable output</h3><p>Every run leaves a Markdown record per <code>_shared/output-contract.md</code>. On a full mobilization that record is the charter draft plus the seeded governance pack; on a partial or headless run it is a run record carrying the gate counts, the flagged deltas, and the human actions still outstanding. Deliver or link the files; never just say they were written.</p><h3>Governance delegation</h3><ul><li><strong>evidence-core</strong> governs load-bearing factual claims (client context, stakeholder</li></ul><p>facts, sell-cycle promises). Run it before drafting where installed. If a load-bearing domain is insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence is a hard fail.</p><ul><li><strong>brand-renderer</strong> owns brand for every rendered artifact, applied during the build.</li><li><strong>writing</strong> owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.</li><li><strong>The quote and SOW own every number.</strong> This skill renders figures and authors none.</li></ul><p>Where a governor is not installed on the current surface, state the check it would have run, do the best manual substitute, and say that is what happened. Never silently skip, never pretend.</p><h3>Running unattended</h3><p>Phase 0&#x27;s variant confirmation, the charter signature, cadence agreement, and both kickoff meetings need humans. On a scheduled or headless run: draft the charter, run the gate, seed the governance pack, and stop with findings and open items. Never record a confirmation, agreement, or signature nobody gave.</p><h3>When time is short</h3><p>Cut in this order, and say what was cut: (1) the research pack, (2) the internal deck&#x27;s client-context depth, keep the slide on risks and gaps, (3) backlog stories, keep the epics. Never cut: the charter gate, RAID seeding from handoff open questions, flagged deltas, source citations, or the internal-before-client kickoff order.</p><h3>Boundaries</h3><p>In the delivery chain (SOW, then prepare-delivery-handoff, then kickoff, then status, then UAT, then manage-cutover-closeout), this skill&#x27;s upstream producer is prepare-delivery-handoff, whose accepted brief is the raw material, and its downstream consumer is track-delivery, which stewards the logs this stage seeds. Kickoff does not re-scope: the SOW baseline is restated, never renegotiated, and every delta is a flag for humans.</p><ul><li>Does not run the handoff or write the handoff brief; that is prepare-delivery-handoff.</li><li>Does not steward status, RAID, or decisions after kickoff; that is track-delivery,</li></ul><p>which takes over the exact files this skill seeds.</p><ul><li>Does not capture requirements or author acceptance criteria; that is</li></ul><p>capture-requirements, in Analyze.</p><ul><li>Does not scope, price, or amend scope. It treats the SOW as fixed input; deltas are flags for humans.</li><li>Does not sign, approve, or gate. It drafts what humans sign and tracks what humans did.</li><li>Does not provision sandboxes or grant access; it tracks them.</li><li>Does not build deck files itself; build-deck, pptx, and brand-renderer do.</li></ul><h3>Files</h3><ul><li><code>references/charter-spec.md</code> charter section spec and the scope-restatement rules.</li><li><code>references/governance-pack-spec.md</code> governance templates, stable-ID contract, seeding rules.</li><li><code>references/kickoff-deck-contracts.md</code> slide-by-slide content contracts, both decks, both variants.</li><li><code>references/sprint0-backlog-seeding.md</code> Sprint 0 checklist, backlog seeding rules, research pack.</li><li><code>assets/charter-template.md</code>, <code>assets/raid-log-template.md</code>, <code>assets/decision-log-template.md</code>,</li></ul><p><code>assets/status-report-template.md</code> the shells to fill; content, not structure.</p><ul><li><code>scripts/charter_check.py</code> the charter gate. Stdlib only; exits nonzero on failure.</li><li><code>scripts/charter_check_selftest.py</code> runs the gate against <code>scripts/fixtures/</code> (one passing</li></ul><p>charter, five shipped failing ones, plus an em-dash case synthesized at runtime so the shipped tree itself stays em-dash free). Run it after any change to the gate.</p>",
+      "markdown": "---\nname: start-delivery\ndescription: 'Mobilize a signed engagement: the project charter, RAID and decision logs, internal and client kickoff decks and a Sprint 0 plan, built from the accepted sales-to-delivery handoff and signed SOW. Use when delivery is starting: kick off the project, mobilize the engagement, set up the RAID log, or \"the handoff is accepted, what now\". Not for the handoff itself (prepare-delivery-handoff), status after kickoff (track-delivery), requirements (capture-requirements) or later sprints (plan-sprint).'\n---\n\n\n# Start delivery\n\nMobilization is the stage between an accepted handoff and real delivery work. It produces one\nsigned artifact (the Project Charter), one living system (the governance pack), and two meetings\n(internal kickoff, then client kickoff). A weak start compounds: recovering lost efficiency in\nweeks one and two can create later rework, so this stage is deliberate,\ncomplete, and standardized rather than improvised per project.\n\nOne boundary carries the whole skill: **this skill drafts, humans sign.** It never signs the\ncharter, never commits the client to a cadence, never closes a handoff open question on its own,\nand never provisions an environment. It prepares the artifacts the humans act on, and it tracks\nwhat the humans did, truthfully.\n\n## Project context required\n\nUse only the caller-confirmed engagement, source records, private output location,\nand intended audience. Map reference roles such as Program Lead, CSE, Solution Lead,\nand Pursuit Lead to that project's authorized owners; these labels do not impose\nan employer organization chart or signing authority. The executed agreement and\naccepted project plan determine gates, commercial rules, and support obligations.\nKeep account history, risk assessments, credentials, and client evidence outside\nportable skill sources. A cached account, attached Project, or available connector\nis not authorization to read, write, or publish.\n\n## Phase 0: orient on the sources\n\nFind the real objects before writing anything:\n\n1. **The accepted handoff brief.** Its sections (team, stakeholder map with deal-versus-delivery\n   mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill's\n   raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is\n   prepare-delivery-handoff's job. This skill does not cover the gap.\n2. **The signed SOW**, with its id and as-of date. Stop if it is unsigned or absent.\n   Phase 0 items 1 and 2 apply to every run, including unattended runs, and override\n   later drafting instructions and the orchestrator stage guide. On a stop, write the\n   partial-run record with the missing prerequisites, owners and closing conditions.\n   The SOW is fixed input. Scope, phases, figures,\n   and commercial structure come from it; this skill renders them and authors none of them. Any\n   figure ultimately traces to the quote the SOW was built from, per the money rule.\n3. **The delivery model.** Detect waterfall or agile from the SOW variant, then confirm with the\n   authorized delivery owner before building anything variant-specific. Detected is not\n   confirmed; never assume. A time-and-materials price does not determine the delivery model.\n   If the owner confirms that neither variant fits, use the task-based rollout form in\n   `references/charter-spec.md` and `references/kickoff-deck-contracts.md`. Record the\n   chosen model, who confirmed it, when, and its source in the charter and decision log.\n4. **The shared engagement record**, where one exists. Read what the handoff populated (meta,\n   scope_baseline, stakeholders, team, open_questions, gates); write only this stage's sections\n   (raid, decisions, artifacts, gates, confirmed team) and log every change.\n\nStamp everything generated with the SOW id and its as-of date. Record IDs do not survive sandbox\nrefreshes; the stamp is what makes an artifact auditable later.\n\n## When one person holds the delivery roles\n\nMap each actual role to its named owner in the team table. The same person may hold\nseveral roles, including Responsible and Accountable for an activity; each activity\nstill has exactly one Accountable owner. Use \"None required\" for a genuinely empty\nConsulted or Informed cell, with the reason beside the RACI. Never invent a teammate.\n\nThe solo delivery owner confirms the model in writing and records the date and source.\nTheir internal kickoff is a dated read-back of the scope, promises, risks, flagged\ndifferences, readiness and tools before the client kickoff. Keep the internal deck\nas the review agenda, with the owner as its only attendee. Record actions and the\ngovernance-pack location in the appropriate logs. Drafts remain proposed until the\nowner actually reviews or confirms them. Client attendance and acceptance still\nrequire their own records.\n\n## Phase 1: draft the Project Charter\n\nRead `references/charter-spec.md`, then fill `assets/charter-template.md`. The two rules that\nmatter most:\n\n- **Scope is the SOW scope restated, never renegotiated.** The charter is where the client\n  re-accepts what they signed. When the handoff brief or a transcript shows the client expecting\n  something the SOW does not say (or vice versa), that delta becomes a flagged item (F-###) with\n  an owner and a resolve-by date before client kickoff. Neither write it into the baseline nor\n  silently drop it. If it implies paid work, humans take it to a Change Order conversation.\n- **Every section is always present.** A section the sources cannot fill carries a known unknown\n  with an owner, a resolve-by date, and the gate it blocks. Treat a blank as an open question\n  and invent nothing to fill it.\n\nGate the draft before any human reads it:\n\n```bash\npython3 scripts/charter_check.py CHARTER.md\n```\n\nIt verifies required sections, the scope source stamp (SOW id plus as-of date), a fully assigned\nRACI with exactly one Accountable per activity and every team role covered, no leftover\nplaceholder tokens, and no em dashes. Exit 0 passes. Report the counts it prints and leave out adjectives.\nThen run the `writing` checker over the charter prose. Fix the source and re-render; never\nhand-patch output the next regeneration would lose.\n\nThe Program Lead secures the signature. Mark the charter DRAFT until they do. When the\nsignature lands, update the engagement's DELIVERY-STATE.md in the same session\n(`charter_signed` with date, charter path, append-only dated log line) per\ndelivery-orchestrator's `references/delivery-state-spec.md`.\n\n## Phase 2: stand up the governance pack\n\nRead `references/governance-pack-spec.md`. Three artifacts from `assets/`: the RAID log, the\ndecision log, and the weekly status template. This skill creates and seeds them;\ntrack-delivery stewards them from kickoff onward, which is why the ID conventions are a\nfixed contract between the two skills: R/A/I/D-### for RAID items, DEC-### for decisions, zero-padded, permanent,\nappend-only. Downstream stewardship diffs these tables by ID; a renumbered log breaks every later\nreport.\n\nSeeding is the substance: every handoff open question becomes an owned RAID item with a resolve-by\ndate (letting one vanish is the named failure mode of this stage), handoff risks become R items,\nSOW basis-of-estimate assumptions become A items, and evidenced capability gaps from the\nsupplied project risk profile each get the agreed oversight and a sourced risk.\nEvery seeded item cites its source. Do not pad the log to look thorough.\n\nAgree with the team where the pack lives before client kickoff, and log that location as a\ndecision. The decision log records only decisions humans actually made, with the human named.\n\n## Phase 3: kickoff decks\n\nRead `references/kickoff-deck-contracts.md` for what every slide must carry, per deck and per\nvariant. This skill owns the content contract only. Mechanics are delegated: build-deck runs\nthe stage-gated build, pptx owns the file format, brand-renderer owns brand tokens and\nthe visual, parity, and brand gates, `writing` reviews the copy. Do not inline hex values or\nrestate any of their rules.\n\nTwo decks, in order. The **internal kickoff** runs first, always: it is where the Program Lead\nleads the risk and gap review off the seeded RAID log, and where the team agrees tools and the\nnote-keeping location, before the client sees anything. The **client kickoff** ends with explicit\nagreement on cadence and the path to charter signature. Both decks are populated from this\nengagement's record; a deck reusable on another client unchanged is a failed deck.\n\nBuild the confirmed variant only. If the SOW is ambiguous about the model, flag it as a\ndelta for a human to decide, and build no hybrid deck.\n\n## Phase 4: Sprint 0 plan, seeded backlog, research pack\n\nRead `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive delivery work, each with an owner and\na date. For a confirmed task-based rollout, call it the mobilization checklist. Use the\nagreement's task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.\n\n## Phase 5: track the operational setup\n\nSandbox provisioning and access grants are human or system actions. This skill records their\nstatus per environment and per person (provisioned, requested, blocked, verified), flags blockers\nas RAID items, and prompts the Program Lead on what is stuck. It never performs the setup and\nnever marks anything ready that nobody verified. Claiming unverified sandbox readiness is a named\nfailure mode; track real status only.\n\n## Durable output\n\nEvery run leaves a Markdown record per `_shared/output-contract.md`. On a full\nmobilization that record is the charter draft plus the seeded governance pack;\non a partial or headless run it is a run record carrying the gate counts, the\nflagged deltas, and the human actions still outstanding. Deliver or link the\nfiles; never just say they were written.\n\n## Governance delegation\n\n- **evidence-core** governs load-bearing factual claims. Once Phase 0 permits work,\n  run `python3 _runtime/evidence-core/scripts/evidence_core.py evidence-ledger.json project_charter`\n  before drafting. The `project_charter` contract covers the executed commitment, accepted\n  handoff, scope baseline, confirmed delivery model, authority, governance, risks and readiness.\n  Record source locations for each claim. Insufficient produces a readiness-gap memo and\n  stops drafting; Conditional permits a draft carrying the owned open items. The signature\n  and brief-acceptance checks in Phase 0 still apply even when a ledger says Sufficient.\n- **brand-renderer** owns brand for every rendered artifact, applied during the build.\n- **writing** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.\n- **The quote and SOW own every number.** This skill renders figures and authors none.\n\nWhere a governor is not installed on the current surface, state the check it would have run, do\nthe best manual substitute, and say that is what happened. Never silently skip, never pretend.\n\n## Running unattended\n\nPhase 0's entry prerequisites apply to scheduled and headless runs. With no accepted\nbrief or signed SOW, stop and write the partial-run record. After both exist, run\nthe evidence check before drafting. An unconfirmed model remains an owned decision;\nvariant-specific plans and decks wait for confirmation. Draft the supported charter\nsections and governance pack only after those gates permit them. The charter signature,\ncadence agreement and kickoff reviews require their actual human records, including\nthe solo-owner review described above.\n\n## When time is short\n\nCut in this order, and say what was cut: (1) the research pack, (2) the internal deck's\nclient-context depth, keep the slide on risks and gaps, (3) backlog stories, keep the epics. Never\ncut: the charter gate, RAID seeding from handoff open questions, flagged deltas, source citations,\nor the internal-before-client kickoff order.\n\n## Boundaries\n\nIn the delivery chain (SOW, then prepare-delivery-handoff, then kickoff, then status, then\nUAT, then manage-cutover-closeout), this skill's upstream producer is\nprepare-delivery-handoff, whose accepted brief is the raw material, and its\ndownstream consumer is track-delivery, which stewards the logs this\nstage seeds. Kickoff does not re-scope: the SOW baseline is restated, never\nrenegotiated, and every delta is a flag for humans.\n\n- Does not run the handoff or write the handoff brief; that is prepare-delivery-handoff.\n- Does not steward status, RAID, or decisions after kickoff; that is track-delivery,\n  which takes over the exact files this skill seeds.\n- Does not capture requirements or author acceptance criteria; that is\n  capture-requirements, in Analyze.\n- Does not scope, price, or amend scope. It treats the SOW as fixed input; deltas are flags for humans.\n- Does not sign, approve, or gate. It drafts what humans sign and tracks what humans did.\n- Does not provision sandboxes or grant access; it tracks them.\n- Does not build deck files itself; build-deck, pptx, and brand-renderer do.\n\n## Files\n\n- `references/charter-spec.md` charter section spec and the scope-restatement rules.\n- `references/governance-pack-spec.md` governance templates, stable-ID contract, seeding rules.\n- `references/kickoff-deck-contracts.md` slide-by-slide content contracts, both decks, both variants.\n- `references/sprint0-backlog-seeding.md` Sprint 0 checklist, backlog seeding rules, research pack.\n- `assets/charter-template.md`, `assets/raid-log-template.md`, `assets/decision-log-template.md`,\n  `assets/status-report-template.md` the shells to fill; content, not structure.\n- `scripts/charter_check.py` the charter gate. Stdlib only; exits nonzero on failure.\n- `scripts/charter_check_selftest.py` runs the gate against `scripts/fixtures/` (one passing\n  charter, five shipped failing ones, plus an em-dash case synthesized at runtime so the shipped\n  tree itself stays em-dash free). Run it after any change to the gate.\n",
+      "html": "<p>Mobilization is the stage between an accepted handoff and real delivery work. It produces one signed artifact (the Project Charter), one living system (the governance pack), and two meetings (internal kickoff, then client kickoff). A weak start compounds: recovering lost efficiency in weeks one and two can create later rework, so this stage is deliberate, complete, and standardized rather than improvised per project.</p><p>One boundary carries the whole skill: <strong>this skill drafts, humans sign.</strong> It never signs the charter, never commits the client to a cadence, never closes a handoff open question on its own, and never provisions an environment. It prepares the artifacts the humans act on, and it tracks what the humans did, truthfully.</p><h3>Project context required</h3><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p><h3>Phase 0: orient on the sources</h3><p>Find the real objects before writing anything:</p><ol><li><strong>The accepted handoff brief.</strong> Its sections (team, stakeholder map with deal-versus-delivery</li></ol><p>mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill&#x27;s raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is prepare-delivery-handoff&#x27;s job. This skill does not cover the gap.</p><ol><li><strong>The signed SOW</strong>, with its id and as-of date. Stop if it is unsigned or absent.</li></ol><p>Phase 0 items 1 and 2 apply to every run, including unattended runs, and override later drafting instructions and the orchestrator stage guide. On a stop, write the partial-run record with the missing prerequisites, owners and closing conditions. The SOW is fixed input. Scope, phases, figures, and commercial structure come from it; this skill renders them and authors none of them. Any figure ultimately traces to the quote the SOW was built from, per the money rule.</p><ol><li><strong>The delivery model.</strong> Detect waterfall or agile from the SOW variant, then confirm with the</li></ol><p>authorized delivery owner before building anything variant-specific. Detected is not confirmed; never assume. A time-and-materials price does not determine the delivery model. If the owner confirms that neither variant fits, use the task-based rollout form in <code>references/charter-spec.md</code> and <code>references/kickoff-deck-contracts.md</code>. Record the chosen model, who confirmed it, when, and its source in the charter and decision log.</p><ol><li><strong>The shared engagement record</strong>, where one exists. Read what the handoff populated (meta,</li></ol><p>scope_baseline, stakeholders, team, open_questions, gates); write only this stage&#x27;s sections (raid, decisions, artifacts, gates, confirmed team) and log every change.</p><p>Stamp everything generated with the SOW id and its as-of date. Record IDs do not survive sandbox refreshes; the stamp is what makes an artifact auditable later.</p><h3>When one person holds the delivery roles</h3><p>Map each actual role to its named owner in the team table. The same person may hold several roles, including Responsible and Accountable for an activity; each activity still has exactly one Accountable owner. Use &quot;None required&quot; for a genuinely empty Consulted or Informed cell, with the reason beside the RACI. Never invent a teammate.</p><p>The solo delivery owner confirms the model in writing and records the date and source. Their internal kickoff is a dated read-back of the scope, promises, risks, flagged differences, readiness and tools before the client kickoff. Keep the internal deck as the review agenda, with the owner as its only attendee. Record actions and the governance-pack location in the appropriate logs. Drafts remain proposed until the owner actually reviews or confirms them. Client attendance and acceptance still require their own records.</p><h3>Phase 1: draft the Project Charter</h3><p>Read <code>references/charter-spec.md</code>, then fill <code>assets/charter-template.md</code>. The two rules that matter most:</p><ul><li><strong>Scope is the SOW scope restated, never renegotiated.</strong> The charter is where the client</li></ul><p>re-accepts what they signed. When the handoff brief or a transcript shows the client expecting something the SOW does not say (or vice versa), that delta becomes a flagged item (F-###) with an owner and a resolve-by date before client kickoff. Neither write it into the baseline nor silently drop it. If it implies paid work, humans take it to a Change Order conversation.</p><ul><li><strong>Every section is always present.</strong> A section the sources cannot fill carries a known unknown</li></ul><p>with an owner, a resolve-by date, and the gate it blocks. Treat a blank as an open question and invent nothing to fill it.</p><p>Gate the draft before any human reads it:</p><pre><code>python3 scripts/charter_check.py CHARTER.md</code></pre><p>It verifies required sections, the scope source stamp (SOW id plus as-of date), a fully assigned RACI with exactly one Accountable per activity and every team role covered, no leftover placeholder tokens, and no em dashes. Exit 0 passes. Report the counts it prints and leave out adjectives. Then run the <code>writing</code> checker over the charter prose. Fix the source and re-render; never hand-patch output the next regeneration would lose.</p><p>The Program Lead secures the signature. Mark the charter DRAFT until they do. When the signature lands, update the engagement&#x27;s DELIVERY-STATE.md in the same session (<code>charter_signed</code> with date, charter path, append-only dated log line) per delivery-orchestrator&#x27;s <code>references/delivery-state-spec.md</code>.</p><h3>Phase 2: stand up the governance pack</h3><p>Read <code>references/governance-pack-spec.md</code>. Three artifacts from <code>assets/</code>: the RAID log, the decision log, and the weekly status template. This skill creates and seeds them; track-delivery stewards them from kickoff onward, which is why the ID conventions are a fixed contract between the two skills: R/A/I/D-### for RAID items, DEC-### for decisions, zero-padded, permanent, append-only. Downstream stewardship diffs these tables by ID; a renumbered log breaks every later report.</p><p>Seeding is the substance: every handoff open question becomes an owned RAID item with a resolve-by date (letting one vanish is the named failure mode of this stage), handoff risks become R items, SOW basis-of-estimate assumptions become A items, and evidenced capability gaps from the supplied project risk profile each get the agreed oversight and a sourced risk. Every seeded item cites its source. Do not pad the log to look thorough.</p><p>Agree with the team where the pack lives before client kickoff, and log that location as a decision. The decision log records only decisions humans actually made, with the human named.</p><h3>Phase 3: kickoff decks</h3><p>Read <code>references/kickoff-deck-contracts.md</code> for what every slide must carry, per deck and per variant. This skill owns the content contract only. Mechanics are delegated: build-deck runs the stage-gated build, pptx owns the file format, brand-renderer owns brand tokens and the visual, parity, and brand gates, <code>writing</code> reviews the copy. Do not inline hex values or restate any of their rules.</p><p>Two decks, in order. The <strong>internal kickoff</strong> runs first, always: it is where the Program Lead leads the risk and gap review off the seeded RAID log, and where the team agrees tools and the note-keeping location, before the client sees anything. The <strong>client kickoff</strong> ends with explicit agreement on cadence and the path to charter signature. Both decks are populated from this engagement&#x27;s record; a deck reusable on another client unchanged is a failed deck.</p><p>Build the confirmed variant only. If the SOW is ambiguous about the model, flag it as a delta for a human to decide, and build no hybrid deck.</p><h3>Phase 4: Sprint 0 plan, seeded backlog, research pack</h3><p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive delivery work, each with an owner and a date. For a confirmed task-based rollout, call it the mobilization checklist. Use the agreement&#x27;s task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p><h3>Phase 5: track the operational setup</h3><p>Sandbox provisioning and access grants are human or system actions. This skill records their status per environment and per person (provisioned, requested, blocked, verified), flags blockers as RAID items, and prompts the Program Lead on what is stuck. It never performs the setup and never marks anything ready that nobody verified. Claiming unverified sandbox readiness is a named failure mode; track real status only.</p><h3>Durable output</h3><p>Every run leaves a Markdown record per <code>_shared/output-contract.md</code>. On a full mobilization that record is the charter draft plus the seeded governance pack; on a partial or headless run it is a run record carrying the gate counts, the flagged deltas, and the human actions still outstanding. Deliver or link the files; never just say they were written.</p><h3>Governance delegation</h3><ul><li><strong>evidence-core</strong> governs load-bearing factual claims. Once Phase 0 permits work,</li></ul><p>run <code>python3 _runtime/evidence-core/scripts/evidence_core.py evidence-ledger.json project_charter</code> before drafting. The <code>project_charter</code> contract covers the executed commitment, accepted handoff, scope baseline, confirmed delivery model, authority, governance, risks and readiness. Record source locations for each claim. Insufficient produces a readiness-gap memo and stops drafting; Conditional permits a draft carrying the owned open items. The signature and brief-acceptance checks in Phase 0 still apply even when a ledger says Sufficient.</p><ul><li><strong>brand-renderer</strong> owns brand for every rendered artifact, applied during the build.</li><li><strong>writing</strong> owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.</li><li><strong>The quote and SOW own every number.</strong> This skill renders figures and authors none.</li></ul><p>Where a governor is not installed on the current surface, state the check it would have run, do the best manual substitute, and say that is what happened. Never silently skip, never pretend.</p><h3>Running unattended</h3><p>Phase 0&#x27;s entry prerequisites apply to scheduled and headless runs. With no accepted brief or signed SOW, stop and write the partial-run record. After both exist, run the evidence check before drafting. An unconfirmed model remains an owned decision; variant-specific plans and decks wait for confirmation. Draft the supported charter sections and governance pack only after those gates permit them. The charter signature, cadence agreement and kickoff reviews require their actual human records, including the solo-owner review described above.</p><h3>When time is short</h3><p>Cut in this order, and say what was cut: (1) the research pack, (2) the internal deck&#x27;s client-context depth, keep the slide on risks and gaps, (3) backlog stories, keep the epics. Never cut: the charter gate, RAID seeding from handoff open questions, flagged deltas, source citations, or the internal-before-client kickoff order.</p><h3>Boundaries</h3><p>In the delivery chain (SOW, then prepare-delivery-handoff, then kickoff, then status, then UAT, then manage-cutover-closeout), this skill&#x27;s upstream producer is prepare-delivery-handoff, whose accepted brief is the raw material, and its downstream consumer is track-delivery, which stewards the logs this stage seeds. Kickoff does not re-scope: the SOW baseline is restated, never renegotiated, and every delta is a flag for humans.</p><ul><li>Does not run the handoff or write the handoff brief; that is prepare-delivery-handoff.</li><li>Does not steward status, RAID, or decisions after kickoff; that is track-delivery,</li></ul><p>which takes over the exact files this skill seeds.</p><ul><li>Does not capture requirements or author acceptance criteria; that is</li></ul><p>capture-requirements, in Analyze.</p><ul><li>Does not scope, price, or amend scope. It treats the SOW as fixed input; deltas are flags for humans.</li><li>Does not sign, approve, or gate. It drafts what humans sign and tracks what humans did.</li><li>Does not provision sandboxes or grant access; it tracks them.</li><li>Does not build deck files itself; build-deck, pptx, and brand-renderer do.</li></ul><h3>Files</h3><ul><li><code>references/charter-spec.md</code> charter section spec and the scope-restatement rules.</li><li><code>references/governance-pack-spec.md</code> governance templates, stable-ID contract, seeding rules.</li><li><code>references/kickoff-deck-contracts.md</code> slide-by-slide content contracts, both decks, both variants.</li><li><code>references/sprint0-backlog-seeding.md</code> Sprint 0 checklist, backlog seeding rules, research pack.</li><li><code>assets/charter-template.md</code>, <code>assets/raid-log-template.md</code>, <code>assets/decision-log-template.md</code>,</li></ul><p><code>assets/status-report-template.md</code> the shells to fill; content, not structure.</p><ul><li><code>scripts/charter_check.py</code> the charter gate. Stdlib only; exits nonzero on failure.</li><li><code>scripts/charter_check_selftest.py</code> runs the gate against <code>scripts/fixtures/</code> (one passing</li></ul><p>charter, five shipped failing ones, plus an em-dash case synthesized at runtime so the shipped tree itself stays em-dash free). Run it after any change to the gate.</p>",
       "excerptHtml": "<p>Mobilization is the stage between an accepted handoff and real delivery work. It produces one signed artifact (the Project Charter), one living system (the governance pack), and two meetings (internal kickoff, then client kickoff). A weak start compounds: recovering lost efficiency in weeks one and two can create later rework, so this stage is deliberate, complete, and standardized rather than improvised per project.</p><p>One boundary carries the whole skill: <strong>this skill drafts, humans sign.</strong> It never signs the charter, never commits the client to a cadence, never closes a handoff open question on its own, and never provisions an environment. It prepares the artifacts the humans act on, and it tracks what the humans did, truthfully.</p><p>Use only the caller-confirmed engagement, source records, private output location, and intended audience. Map reference roles such as Program Lead, CSE, Solution Lead, and Pursuit Lead to that project&#x27;s authorized owners; these labels do not impose an employer organization chart or signing authority. The executed agreement and accepted project plan determine gates, commercial rules, and support obligations. Keep account history, risk assessments, credentials, and client evidence outside portable skill sources. A cached account, attached Project, or available connector is not authorization to read, write, or publish.</p>",
       "headings": [
         "Project context required",
         "Phase 0: orient on the sources",
+        "When one person holds the delivery roles",
         "Phase 1: draft the Project Charter",
         "Phase 2: stand up the governance pack",
         "Phase 3: kickoff decks",
@@ -16973,8 +16974,8 @@
         },
         {
           "name": "capture-requirements",
-          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive Analyze work, each with an owner and\na date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
-          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive Analyze work, each with an owner and a date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
+          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive delivery work, each with an owner and\na date. For a confirmed task-based rollout, call it the mobilization checklist. Use the\nagreement's task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
+          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive delivery work, each with an owner and a date. For a confirmed task-based rollout, call it the mobilization checklist. Use the agreement&#x27;s task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
         },
         {
           "name": "build-deck",
@@ -16993,28 +16994,28 @@
         },
         {
           "name": "prepare-delivery-handoff",
-          "context": "1. **The accepted handoff brief.** Its sections (team, stakeholder map with deal-versus-delivery\n   mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill's\n   raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is\n   prepare-delivery-handoff's job. This skill does not cover the gap.\n2. **The signed SOW**, with its id and as-of date. The SOW is fixed input. Scope, phases, figures,\n   and commercial structure come from it; this skill renders them and authors none of them. Any\n   figure ultimately traces to the quote the SOW was built from, per the money rule.\n3. **The delivery model.** Detect waterfall or agile from the SOW variant, then confirm with the\n   Program Lead or CSE before building anything variant-specific. Detected is not confirmed;\n   never assume. Record the confirmation (who, when) in the charter and as a decision log entry.\n4. **The shared engagement record**, where one exists. Read what the handoff populated (meta,\n   scope_baseline, stakeholders, team, open_questions, gates); write only this stage's sections\n   (raid, decisions, artifacts, gates, confirmed team) and log every change.",
-          "contextHtml": "<ol><li><strong>The accepted handoff brief.</strong> Its sections (team, stakeholder map with deal-versus-delivery</li></ol><p>mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill&#x27;s raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is prepare-delivery-handoff&#x27;s job. This skill does not cover the gap.</p><ol><li><strong>The signed SOW</strong>, with its id and as-of date. The SOW is fixed input. Scope, phases, figures,</li></ol><p>and commercial structure come from it; this skill renders them and authors none of them. Any figure ultimately traces to the quote the SOW was built from, per the money rule.</p><ol><li><strong>The delivery model.</strong> Detect waterfall or agile from the SOW variant, then confirm with the</li></ol><p>Program Lead or CSE before building anything variant-specific. Detected is not confirmed; never assume. Record the confirmation (who, when) in the charter and as a decision log entry.</p><ol><li><strong>The shared engagement record</strong>, where one exists. Read what the handoff populated (meta,</li></ol><p>scope_baseline, stakeholders, team, open_questions, gates); write only this stage&#x27;s sections (raid, decisions, artifacts, gates, confirmed team) and log every change.</p>"
+          "context": "1. **The accepted handoff brief.** Its sections (team, stakeholder map with deal-versus-delivery\n   mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill's\n   raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is\n   prepare-delivery-handoff's job. This skill does not cover the gap.\n2. **The signed SOW**, with its id and as-of date. Stop if it is unsigned or absent.\n   Phase 0 items 1 and 2 apply to every run, including unattended runs, and override\n   later drafting instructions and the orchestrator stage guide. On a stop, write the\n   partial-run record with the missing prerequisites, owners and closing conditions.\n   The SOW is fixed input. Scope, phases, figures,\n   and commercial structure come from it; this skill renders them and authors none of them. Any\n   figure ultimately traces to the quote the SOW was built from, per the money rule.\n3. **The delivery model.** Detect waterfall or agile from the SOW variant, then confirm with the\n   authorized delivery owner before building anything variant-specific. Detected is not\n   confirmed; never assume. A time-and-materials price does not determine the delivery model.\n   If the owner confirms that neither variant fits, use the task-based rollout form in\n   `references/charter-spec.md` and `references/kickoff-deck-contracts.md`. Record the\n   chosen model, who confirmed it, when, and its source in the charter and decision log.\n4. **The shared engagement record**, where one exists. Read what the handoff populated (meta,\n   scope_baseline, stakeholders, team, open_questions, gates); write only this stage's sections\n   (raid, decisions, artifacts, gates, confirmed team) and log every change.",
+          "contextHtml": "<ol><li><strong>The accepted handoff brief.</strong> Its sections (team, stakeholder map with deal-versus-delivery</li></ol><p>mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill&#x27;s raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is prepare-delivery-handoff&#x27;s job. This skill does not cover the gap.</p><ol><li><strong>The signed SOW</strong>, with its id and as-of date. Stop if it is unsigned or absent.</li></ol><p>Phase 0 items 1 and 2 apply to every run, including unattended runs, and override later drafting instructions and the orchestrator stage guide. On a stop, write the partial-run record with the missing prerequisites, owners and closing conditions. The SOW is fixed input. Scope, phases, figures, and commercial structure come from it; this skill renders them and authors none of them. Any figure ultimately traces to the quote the SOW was built from, per the money rule.</p><ol><li><strong>The delivery model.</strong> Detect waterfall or agile from the SOW variant, then confirm with the</li></ol><p>authorized delivery owner before building anything variant-specific. Detected is not confirmed; never assume. A time-and-materials price does not determine the delivery model. If the owner confirms that neither variant fits, use the task-based rollout form in <code>references/charter-spec.md</code> and <code>references/kickoff-deck-contracts.md</code>. Record the chosen model, who confirmed it, when, and its source in the charter and decision log.</p><ol><li><strong>The shared engagement record</strong>, where one exists. Read what the handoff populated (meta,</li></ol><p>scope_baseline, stakeholders, team, open_questions, gates); write only this stage&#x27;s sections (raid, decisions, artifacts, gates, confirmed team) and log every change.</p>"
         },
         {
           "name": "evidence-core",
-          "context": "- **evidence-core** governs load-bearing factual claims (client context, stakeholder\n  facts, sell-cycle promises). Run it before drafting where installed. If a load-bearing domain is\n  insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence\n  is a hard fail.\n- **brand-renderer** owns brand for every rendered artifact, applied during the build.\n- **writing** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.\n- **The quote and SOW own every number.** This skill renders figures and authors none.",
-          "contextHtml": "<ul><li><strong>evidence-core</strong> governs load-bearing factual claims (client context, stakeholder</li></ul><p>facts, sell-cycle promises). Run it before drafting where installed. If a load-bearing domain is insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence is a hard fail.</p><ul><li><strong>brand-renderer</strong> owns brand for every rendered artifact, applied during the build.</li><li><strong>writing</strong> owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.</li><li><strong>The quote and SOW own every number.</strong> This skill renders figures and authors none.</li></ul>"
+          "context": "- **evidence-core** governs load-bearing factual claims. Once Phase 0 permits work,\n  run `python3 _runtime/evidence-core/scripts/evidence_core.py evidence-ledger.json project_charter`\n  before drafting. The `project_charter` contract covers the executed commitment, accepted\n  handoff, scope baseline, confirmed delivery model, authority, governance, risks and readiness.\n  Record source locations for each claim. Insufficient produces a readiness-gap memo and\n  stops drafting; Conditional permits a draft carrying the owned open items. The signature\n  and brief-acceptance checks in Phase 0 still apply even when a ledger says Sufficient.\n- **brand-renderer** owns brand for every rendered artifact, applied during the build.\n- **writing** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.\n- **The quote and SOW own every number.** This skill renders figures and authors none.",
+          "contextHtml": "<ul><li><strong>evidence-core</strong> governs load-bearing factual claims. Once Phase 0 permits work,</li></ul><p>run <code>python3 _runtime/evidence-core/scripts/evidence_core.py evidence-ledger.json project_charter</code> before drafting. The <code>project_charter</code> contract covers the executed commitment, accepted handoff, scope baseline, confirmed delivery model, authority, governance, risks and readiness. Record source locations for each claim. Insufficient produces a readiness-gap memo and stops drafting; Conditional permits a draft carrying the owned open items. The signature and brief-acceptance checks in Phase 0 still apply even when a ledger says Sufficient.</p><ul><li><strong>brand-renderer</strong> owns brand for every rendered artifact, applied during the build.</li><li><strong>writing</strong> owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.</li><li><strong>The quote and SOW own every number.</strong> This skill renders figures and authors none.</li></ul>"
         },
         {
           "name": "plan-sprint",
-          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive Analyze work, each with an owner and\na date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
-          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive Analyze work, each with an owner and a date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
+          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive delivery work, each with an owner and\na date. For a confirmed task-based rollout, call it the mobilization checklist. Use the\nagreement's task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
+          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive delivery work, each with an owner and a date. For a confirmed task-based rollout, call it the mobilization checklist. Use the agreement&#x27;s task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
         },
         {
           "name": "refine-backlog",
-          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive Analyze work, each with an owner and\na date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
-          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive Analyze work, each with an owner and a date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
+          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive delivery work, each with an owner and\na date. For a confirmed task-based rollout, call it the mobilization checklist. Use the\nagreement's task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
+          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive delivery work, each with an owner and a date. For a confirmed task-based rollout, call it the mobilization checklist. Use the agreement&#x27;s task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
         },
         {
           "name": "prepare-sales-pursuit",
-          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive Analyze work, each with an owner and\na date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
-          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive Analyze work, each with an owner and a date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
+          "context": "Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)\nlists every item standing between the charter and productive delivery work, each with an owner and\na date. For a confirmed task-based rollout, call it the mobilization checklist. Use the\nagreement's task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per\nworkstream, stories only where the SOW gives real basis, every item source-cited, no invented\nscope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by\ncapture-requirements). The client research pack is a two-page sourced extension of the\nhandoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit.\nOn agile engagements, Sprint 0 ends when `refine-backlog` has graded the first stories and\n`plan-sprint` has planned Sprint 1 against measured capacity; both follow\n`../_shared/planning-chain.md` and read the RAID log this phase seeds.",
+          "contextHtml": "<p>Read <code>references/sprint0-backlog-seeding.md</code>. The Sprint 0 plan (mobilization plan on waterfall) lists every item standing between the charter and productive delivery work, each with an owner and a date. For a confirmed task-based rollout, call it the mobilization checklist. Use the agreement&#x27;s task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per workstream, stories only where the SOW gives real basis, every item source-cited, no invented scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by capture-requirements). The client research pack is a two-page sourced extension of the handoff overview, not pursuit-grade research; a meeting-specific prep pack is prepare-sales-pursuit. On agile engagements, Sprint 0 ends when <code>refine-backlog</code> has graded the first stories and <code>plan-sprint</code> has planned Sprint 1 against measured capacity; both follow <code>../_shared/planning-chain.md</code> and read the RAID log this phase seeds.</p>"
         },
         {
           "name": "brand-renderer",
@@ -17030,15 +17031,15 @@
       "resources": [
         {
           "path": "SKILL.md",
-          "sha256": "cc56c7de231537ac8ba66392242af9e86931ae44b08a88c3ce7e815af7567706",
-          "bytes": 12574,
-          "gitBlob": "b8dea18c2fc24d3d5dd9943dfe702e149d774fa0"
+          "sha256": "d3f00831833b286ed7c84a5074f65a4db996fb9f948ae3f690551bc7b4f3e687",
+          "bytes": 14778,
+          "gitBlob": "5dddea671993b30ed1715d52101bfac5f89b3a5c"
         },
         {
           "path": "assets/charter-template.md",
-          "sha256": "ae1d5b555ed2a3b75ff4701e6da11b623aa9ba95cf007b41cd136c04ceb0e5f3",
-          "bytes": 5031,
-          "gitBlob": "419fbf6f61bbbe2793f397398a3931334f03fd33"
+          "sha256": "646c57b4349ffb161cc9ffabda62aed20ee792b21672d2a8bdce3ef8418c2ac4",
+          "bytes": 5233,
+          "gitBlob": "530b2c2318a281dbad25e77503e66d42dd85bf10"
         },
         {
           "path": "assets/decision-log-template.md",
@@ -17060,9 +17061,9 @@
         },
         {
           "path": "references/charter-spec.md",
-          "sha256": "391ca8477846ef7c100e82806ef53683bc350fd5909c74f66cd0a96e275bfc8b",
-          "bytes": 6135,
-          "gitBlob": "bbb9cef50223cc70dcf3cf9da4c27ade4c4ae099"
+          "sha256": "bb5b729a56e0c88f425809a5c27add2d94e9b06e24c54f26864ad8d8aaf82c60",
+          "bytes": 6937,
+          "gitBlob": "3849466a1044a099b7d09fef7e66f988a3f459c3"
         },
         {
           "path": "references/governance-pack-spec.md",
@@ -17072,15 +17073,15 @@
         },
         {
           "path": "references/kickoff-deck-contracts.md",
-          "sha256": "f4d0effd5d289cb49ee1d48b99ff8e462bba61fa6669ded61d9693137b00e3e8",
-          "bytes": 5408,
-          "gitBlob": "401d3888b45304d008f4a6f72c4bac51eabc38dd"
+          "sha256": "d8913aec63504567390dc719a00cc4b5e5438f783ac9bdcfcdcdd2d33a36e392",
+          "bytes": 6136,
+          "gitBlob": "68186d2f49207903e0e1bfccbed328187e0e30f8"
         },
         {
           "path": "references/sprint0-backlog-seeding.md",
-          "sha256": "644cc0a9106b07a0ac66c5c50e70d3f0d6121b8f452324191b952e32e50dd961",
-          "bytes": 4081,
-          "gitBlob": "d809d6c4e239bce3f1c198343ec2e9859f567a48"
+          "sha256": "c1898836f57cd9c674f44b7919425b4d1cde52832e0f9be8dd318826570ae580",
+          "bytes": 4560,
+          "gitBlob": "2fd722b6566a8d4fa82b6e0c76a236eadfe9af19"
         },
         {
           "path": "scripts/charter_check.py",
@@ -17090,9 +17091,9 @@
         },
         {
           "path": "scripts/charter_check_selftest.py",
-          "sha256": "75c1b80325fc50f7fa89f9fac1f37a11d0b081d44335f39ec1b8b95a737f3f2e",
-          "bytes": 3172,
-          "gitBlob": "232d4910a318d69b76421cf7c3a7f6f30c4ff75f"
+          "sha256": "13f9a006e8215846e57d00f5178be577c9043aae9370723ffa6bd4548db3d9bc",
+          "bytes": 6015,
+          "gitBlob": "5e0f91478e275e0274b2e70f41b389ba8132be21"
         },
         {
           "path": "scripts/fixtures/charter_fail_missing_section.md",
@@ -17156,7 +17157,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/synthesize-discovery/SKILL.md",
       "sourceSha256": "90346d3cee2c8b512d91470e214d7120ab5cf17b74d82f595ca794b279c46617",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/synthesize-discovery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/synthesize-discovery/SKILL.md",
       "taskPackages": [
         {
           "name": "synthesize-discovery",
@@ -17364,7 +17365,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/tailor-resume/SKILL.md",
       "sourceSha256": "80f8f1b012df1ac678ef0ec88271a8abc5df1d98bb8d4d347ed5feed6c6b5248",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/tailor-resume/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/tailor-resume/SKILL.md",
       "taskPackages": [
         {
           "name": "prepare-job-application",
@@ -17520,7 +17521,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/track-delivery/SKILL.md",
       "sourceSha256": "c69af06a74e40909cb309098a53d4dc295ee98f2beefa3a227f84e14452be913",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/track-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/track-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "track-delivery",
@@ -17795,7 +17796,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/validate-delivery/SKILL.md",
       "sourceSha256": "e2cd8c66eb3b096bcc8f74658aa2e08c47fd29df07470376864027e0b3adfb02",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/validate-delivery/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/validate-delivery/SKILL.md",
       "taskPackages": [
         {
           "name": "validate-delivery",
@@ -18036,7 +18037,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-salesforce-org/SKILL.md",
       "sourceSha256": "ef7f119c9035f2562cc46ff755936355cb6fc0dd34439cca9a5f8f5f5d55fad5",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/verify-salesforce-org/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/verify-salesforce-org/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "deliver-salesforce-change"
@@ -18192,7 +18193,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/verify-work-state/SKILL.md",
       "sourceSha256": "76de9e7c6c3916162139c2d14bcb1f7baf76da2bafea8fd864db2f10ce7bb5cc",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/verify-work-state/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/verify-work-state/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "capture-knowledge",
@@ -18366,7 +18367,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/work-in-github-repository/SKILL.md",
       "sourceSha256": "7d3edfe8b0755067d54fd27ee39e7dba685f8891d3b9ae0a38b4e4187778ee14",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/work-in-github-repository/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/work-in-github-repository/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [],
       "guide": {
@@ -18469,7 +18470,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-architecture-reference/SKILL.md",
       "sourceSha256": "044699c966448677710dcf19e6942acab6dc3cbe4334021ea043221a3e06c0b2",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-architecture-reference/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/write-architecture-reference/SKILL.md",
       "taskPackages": [
         {
           "name": "design-software-system",
@@ -18691,7 +18692,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-business-case/SKILL.md",
       "sourceSha256": "6d848cbbc407e7f3f46137019ea1b1127ce994043c0fff7acfe44834dd732358",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-business-case/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/write-business-case/SKILL.md",
       "taskPackages": [
         {
           "name": "write-business-case",
@@ -18926,7 +18927,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-feature-spec/SKILL.md",
       "sourceSha256": "37bec88975ff9246aa2e76451a73e6612f9835c0316634e6edb44b1cb0a7cbce",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-feature-spec/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/write-feature-spec/SKILL.md",
       "taskPackages": [
         {
           "name": "write-feature-spec",
@@ -19077,7 +19078,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-portfolio-case-study/SKILL.md",
       "sourceSha256": "99fb4ee3b98f03b1e4a4ab9132235c2df961bb772c53a9d121a628eba0a145e4",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-portfolio-case-study/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/write-portfolio-case-study/SKILL.md",
       "taskPackages": [
         {
           "name": "write-portfolio-case-study",
@@ -19211,7 +19212,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/write-statement-of-work/SKILL.md",
       "sourceSha256": "8d6cd86381bfa343b41e026e2b3ed02e2622bf15d7ebcffb12d66c570d93fd3e",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/write-statement-of-work/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/write-statement-of-work/SKILL.md",
       "taskPackages": [
         {
           "name": "write-statement-of-work",
@@ -19519,7 +19520,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing/SKILL.md",
       "sourceSha256": "7cf6662d187424e4e6fa9a30d4ebb6474e8f67c022d8d1988a1b6763b94c3708",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/writing/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/writing/SKILL.md",
       "taskPackages": [
         {
           "name": "writing",
@@ -19925,7 +19926,7 @@
       "entrypointChanged": false,
       "sourcePath": "skills/writing-diagnostics/SKILL.md",
       "sourceSha256": "7ddcbf7ca4d19919cb051d91d893e3cbb3797addebedeae3e9f5419cafcbd323",
-      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0c0f8a42d0b8a48815f59ea61836cde6d4b5d6cf/skills/writing-diagnostics/SKILL.md",
+      "githubUrl": "https://github.com/mshellman-llc/Skills-Estate/blob/0e1279d1171abfb28f7acca806f3304c67cbfe2a/skills/writing-diagnostics/SKILL.md",
       "taskPackages": [],
       "downloadPackages": [
         "apply-salesforce-patterns",

@@ -59,10 +59,11 @@ and accepted changes govern commitments. This router does not approve a price.
 
 1. **Find the engagement and its state file.** `DELIVERY-STATE.md` at the
    engagement folder root. Truth hierarchy: executed SOW/quote > artifact files >
-   state file > memory > chat. If the state file is missing, do not guess from
-   chat: locate the hard evidence (signed SOW? accepted brief? signed charter?
-   co-signed requirements?) and write the state file from it per
-   `references/delivery-state-spec.md` before routing.
+   state file > memory > chat. If the state file is missing, this
+   orchestrator reconstructs it from the executed agreement and acceptance
+   artifacts per `references/delivery-state-spec.md` before routing. This applies
+   to a lost file as well as a legacy engagement. Record artifact paths and
+   dates, and leave any unsupported gate open. A missing file establishes no stage.
 2. **Run the planner.** Never assemble the plan by hand.
 
    ```bash

@@ -36,18 +36,40 @@ Find the real objects before writing anything:
    mismatches, sell-cycle promises, scope and risks, open questions with owners) are this skill's
    raw material. If no accepted brief exists, stop: the handoff is not done, and finishing it is
    prepare-delivery-handoff's job. This skill does not cover the gap.
-2. **The signed SOW**, with its id and as-of date. The SOW is fixed input. Scope, phases, figures,
+2. **The signed SOW**, with its id and as-of date. Stop if it is unsigned or absent.
+   Phase 0 items 1 and 2 apply to every run, including unattended runs, and override
+   later drafting instructions and the orchestrator stage guide. On a stop, write the
+   partial-run record with the missing prerequisites, owners and closing conditions.
+   The SOW is fixed input. Scope, phases, figures,
    and commercial structure come from it; this skill renders them and authors none of them. Any
    figure ultimately traces to the quote the SOW was built from, per the money rule.
 3. **The delivery model.** Detect waterfall or agile from the SOW variant, then confirm with the
-   Program Lead or CSE before building anything variant-specific. Detected is not confirmed;
-   never assume. Record the confirmation (who, when) in the charter and as a decision log entry.
+   authorized delivery owner before building anything variant-specific. Detected is not
+   confirmed; never assume. A time-and-materials price does not determine the delivery model.
+   If the owner confirms that neither variant fits, use the task-based rollout form in
+   `references/charter-spec.md` and `references/kickoff-deck-contracts.md`. Record the
+   chosen model, who confirmed it, when, and its source in the charter and decision log.
 4. **The shared engagement record**, where one exists. Read what the handoff populated (meta,
    scope_baseline, stakeholders, team, open_questions, gates); write only this stage's sections
    (raid, decisions, artifacts, gates, confirmed team) and log every change.
 
 Stamp everything generated with the SOW id and its as-of date. Record IDs do not survive sandbox
 refreshes; the stamp is what makes an artifact auditable later.
+
+## When one person holds the delivery roles
+
+Map each actual role to its named owner in the team table. The same person may hold
+several roles, including Responsible and Accountable for an activity; each activity
+still has exactly one Accountable owner. Use "None required" for a genuinely empty
+Consulted or Informed cell, with the reason beside the RACI. Never invent a teammate.
+
+The solo delivery owner confirms the model in writing and records the date and source.
+Their internal kickoff is a dated read-back of the scope, promises, risks, flagged
+differences, readiness and tools before the client kickoff. Keep the internal deck
+as the review agenda, with the owner as its only attendee. Record actions and the
+governance-pack location in the appropriate logs. Drafts remain proposed until the
+owner actually reviews or confirms them. Client attendance and acceptance still
+require their own records.
 
 ## Phase 1: draft the Project Charter
 
@@ -118,8 +140,9 @@ delta for a human to decide, and build no hybrid deck.
 ## Phase 4: Sprint 0 plan, seeded backlog, research pack
 
 Read `references/sprint0-backlog-seeding.md`. The Sprint 0 plan (mobilization plan on waterfall)
-lists every item standing between the charter and productive Analyze work, each with an owner and
-a date. The backlog seed is a projection of the SOW scope baseline: one E-### epic per
+lists every item standing between the charter and productive delivery work, each with an owner and
+a date. For a confirmed task-based rollout, call it the mobilization checklist. Use the
+agreement's task dependencies and acceptance events without adding phases or sprints. The backlog seed is a projection of the SOW scope baseline: one E-### epic per
 workstream, stories only where the SOW gives real basis, every item source-cited, no invented
 scope, no sizing, no acceptance-criteria authoring (that is Analyze work, owned by
 capture-requirements). The client research pack is a two-page sourced extension of the
@@ -146,10 +169,13 @@ files; never just say they were written.
 
 ## Governance delegation
 
-- **evidence-core** governs load-bearing factual claims (client context, stakeholder
-  facts, sell-cycle promises). Run it before drafting where installed. If a load-bearing domain is
-  insufficient, produce the readiness-gap memo and stop; a full charter on insufficient evidence
-  is a hard fail.
+- **evidence-core** governs load-bearing factual claims. Once Phase 0 permits work,
+  run `python3 _runtime/evidence-core/scripts/evidence_core.py evidence-ledger.json project_charter`
+  before drafting. The `project_charter` contract covers the executed commitment, accepted
+  handoff, scope baseline, confirmed delivery model, authority, governance, risks and readiness.
+  Record source locations for each claim. Insufficient produces a readiness-gap memo and
+  stops drafting; Conditional permits a draft carrying the owned open items. The signature
+  and brief-acceptance checks in Phase 0 still apply even when a ledger says Sufficient.
 - **brand-renderer** owns brand for every rendered artifact, applied during the build.
 - **writing** owns writing review; run its bundled diagnostics on every prose deliverable, including the charter.
 - **The quote and SOW own every number.** This skill renders figures and authors none.
@@ -159,10 +185,13 @@ the best manual substitute, and say that is what happened. Never silently skip, 
 
 ## Running unattended
 
-Phase 0's variant confirmation, the charter signature, cadence agreement, and both kickoff
-meetings need humans. On a scheduled or headless run: draft the charter, run the gate, seed the
-governance pack, and stop with findings and open items. Never record a confirmation, agreement,
-or signature nobody gave.
+Phase 0's entry prerequisites apply to scheduled and headless runs. With no accepted
+brief or signed SOW, stop and write the partial-run record. After both exist, run
+the evidence check before drafting. An unconfirmed model remains an owned decision;
+variant-specific plans and decks wait for confirmation. Draft the supported charter
+sections and governance pack only after those gates permit them. The charter signature,
+cadence agreement and kickoff reviews require their actual human records, including
+the solo-owner review described above.
 
 ## When time is short
 

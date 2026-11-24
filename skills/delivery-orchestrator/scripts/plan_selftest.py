@@ -27,18 +27,20 @@ def check(name, cond, detail=""):
         failures.append(name)
 
 
-# 1. Missing state file: full plan from the handoff, new-engagement note.
-r = run([os.path.join(FIX, "does_not_exist.md")])
-check("missing_state_exit0", r.returncode == 0, r.stderr)
-check("missing_state_starts_at_handoff", "Current stage: S2D Handoff" in r.stdout)
-check("missing_state_names_handoff_skill", "prepare-delivery-handoff" in r.stdout)
-check("missing_state_says_create_file",
-      "treating this as a new engagement" in r.stdout)
-check("missing_state_lists_all_stages",
-      all(s in r.stdout for s in
-          ["Mobilize", "Analyze", "Design", "Build", "Validate",
-           "Deploy", "Closeout"]))
-check("missing_state_zero_findings", "Findings: 0" in r.stdout)
+# Issue 193: absent state proves no stage. No file is created and no handoff is assumed.
+missing = os.path.join(FIX, "does_not_exist.md")
+r = run([missing])
+check("missing_state_exit2", r.returncode == 2, r.stderr)
+check("missing_state_unknown", "Current stage: unknown" in r.stdout)
+check("missing_state_no_handoff", "Current stage: S2D" not in r.stdout)
+check("missing_state_requires_reconstruction", "reconstruct DELIVERY-STATE.md" in r.stdout)
+check("missing_state_writes_nothing", not os.path.exists(missing))
+r = run([missing, "--json"])
+payload = json.loads(r.stdout)
+check("missing_json_unknown", payload["state_status"] == "unknown")
+check("missing_json_no_route", payload["current_stage"] is None and payload["remaining"] == [])
+check("missing_json_not_complete", payload["complete"] is False)
+check("missing_json_has_finding", len(payload["findings"]) == 1)
 
 # 2. Mid-engagement at Analyze.
 r = run([os.path.join(FIX, "mid_analyze.md")])

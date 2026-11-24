@@ -1,0 +1,248 @@
+{
+  "format": 1,
+  "artifact": "skills/start-delivery/assets/charter-template.md",
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The source stamps and named template variables recur in separate sections that need their own agreement reference.",
+      "source": "skills/start-delivery/assets/charter-template.md, Scope baseline, Team and allocations, Phase plan and milestones"
+    }
+  ],
+  "protected": [
+    {
+      "kind": "syntax",
+      "text": "{{ACCEPTANCE_METHOD}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ACTIVITY}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ALLOC}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ARTIFACT_LOCATION}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ASSUMPTION}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ATTENDEES}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{AUTHORIZED_SIGNATORY_ROLE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{AUTHOR_ROLE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{CLIENT}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{CONFIRMED_DELIVERY_MODEL}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{CONFIRMING_ROLE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{CONFIRM_DATE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{DATE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{DAY}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{DELIVERY_MODEL_PARAGRAPH: name the confirmed model (waterfall, agile or task-based rollout), who confirmed it and when, and what that means for cadence, demos, and acceptance rhythm on this engagement.}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{DELIVERY_ORGANIZATION}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{DEMO_OR_STAGE_REVIEW}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{DRAFT_DATE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ENGAGEMENT_NAME}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ESCALATION_PATH}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{EXPECTATION}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{FIXED_FEE_OR_TM}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{FREQ}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{FUNCTION}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{GATE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{NAME}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ONE_PARAGRAPH_SUMMARY: what is being built, for whom, why now. Business outcome first, platform second. Every fact here traces to the SOW or the accepted handoff brief.}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ONE_ROLE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{OUTPUT}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{OUT_OF_SCOPE_ITEM}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{OWNER_ROLE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{OWNER}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{RISK}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ROLES}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{ROLE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{SOURCE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{SOW_AS_OF_DATE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{SOW_CLAUSE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{SOW_ID}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{SOW_POSITION}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{SOW_SCOPE_TEXT}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{START_DATE}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{WEEKS}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "syntax",
+      "text": "{{WORKSTREAM}}",
+      "reason": "Template variable expanded when the charter is filled."
+    },
+    {
+      "kind": "identifier",
+      "text": "F-001",
+      "reason": "Permanent identifier required by the charter and governance log format."
+    },
+    {
+      "kind": "identifier",
+      "text": "A-001",
+      "reason": "Permanent identifier required by the charter and governance log format."
+    },
+    {
+      "kind": "identifier",
+      "text": "R-001",
+      "reason": "Permanent identifier required by the charter and governance log format."
+    }
+  ]
+}

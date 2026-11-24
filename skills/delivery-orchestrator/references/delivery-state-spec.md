@@ -82,8 +82,15 @@ current: <stage name, lowercase: handoff | mobilize | analyze | design | build |
 
 ## Creating the file
 
-The `prepare-delivery-handoff` skill creates DELIVERY-STATE.md as part of the handoff
-package, seeded from the executed SOW. If an engagement predates the convention,
-this suite writes one from what is on disk before routing anything: read the
-engagement folder, set gate statuses only where a signed artifact proves them,
-and log the reconstruction as the first entry.
+The `prepare-delivery-handoff` skill creates the initial DELIVERY-STATE.md in the
+handoff package, seeded from the executed SOW. The delivery orchestrator owns
+reconstruction when that file is lost or the engagement predates this convention.
+Read the executed agreement and acceptance artifacts before routing. Record the
+artifact path and acceptance date for each passed gate, and leave unsupported
+gates open with an owned verification question. Log reconstruction as the first
+entry, naming who checked the artifacts. Preserve earlier logs if recovered.
+
+The planner never creates state. A missing file or a file with no recognized
+gates returns an unknown position with exit 2, no next gate and no remaining
+route. Create a new engagement at handoff only when the inspected artifacts
+establish that position. File absence alone is insufficient.

@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "artifact": "skills/start-delivery/references/charter-spec.md",
+  "candidates": [
+    {
+      "rule": "C12-verbatim-recycling",
+      "reason": "The section list and detailed rules repeat the required heading names so the charter gate can match them.",
+      "source": "skills/start-delivery/references/charter-spec.md, Required sections and Section rules"
+    }
+  ]
+}
