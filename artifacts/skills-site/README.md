@@ -10,7 +10,11 @@ The builder stops with a catalog drift error when `index.json` and the `skills/`
 
 ## What the page shows
 
-The page opens on an overview of the families. Its Skills, Workflows and Plugins pages each have a search field and filters. The fact cards above each list filter it by kind of skill, scoped to the open family. Opening a row shows its command, example request and connections directly beneath it. Pages link as `#skill-<id>`, `#workflow-<id>`, `#plugin-<id>` and `#family-<id>`, and older `#skill-` and `#workflow-` links still open.
+The page opens on an overview of the families. Its Skills, Journeys and Plugins pages each have a search field and filters. The fact cards above each list filter it by kind of skill, scoped to the open family. Opening a row shows its command, example request and connections directly beneath it.
+
+A journey runs skills in order for one job, from `artifacts/skills-map/workflows.json`. Opening one shows the request to paste, what to bring, a journey map with every step side by side, and the open step's inputs, outputs, example request, missing-input handling and connectors, with what it hands to the next step. This replaces the separate journeys page.
+
+Pages link as `#skill-<id>`, `#workflow-<id>`, `#workflow-<id>-step-<n>`, `#plugin-<id>` and `#family-<id>`. `#workflows` and `#journeys` open the journey list, and older `#skill-` and `#workflow-` links still open. A step change replaces the address rather than adding history.
 
 ## Files
 
