@@ -24,6 +24,8 @@ Turn the user's request into work based on the right sources. This skill is a wo
 6. Apply lighter prose review to routine internal notes and deep review to hiring, public, client, or consequential work. Accuracy and privacy apply at every level. Check accuracy, representation, writing, and layout separately; a passing script or attractive render does not prove content quality. Show a business reader the problem, the user's role, decisions, mechanism, and supported result, rather than unexplained internal counts.
 7. Perform the requested work. Use the existing publication/replacement gate when applicable; do not create a new competing quality contract. Use [verify-work-state](_runtime/verify-work-state/WORKFLOW.md) for material changes. If a Brain task ID is the work source, also use [manage-linked-task](_runtime/manage-linked-task/WORKFLOW.md) and resolve its paths against the current router.
 
+When a project has sources or owning MDs without a maintained-document policy, use `manage-consulting-knowledge` to resolve that setup gap. An empty queue does not establish current knowledge.
+
 When project context returns maintained Markdown or pending refreshes, load the relevant subject files and resolve the pending work through `manage-consulting-knowledge` before reporting the context current. Use the discovered adapter; a summary timestamp does not refresh its dependent files.
 
 Return the useful result, material source conflicts or gaps, and exact state. For material work, finish with changed now, verified, still unchanged, and the exact next action. Keep private provenance out of public artifacts. Do not claim publication, adoption, or universal AI compliance from local files.

@@ -5,6 +5,19 @@ the owner's work, a workstream, findings, decisions or outcomes. Project guidanc
 or the Hub response selects the files and write adapter. Keep private client
 paths and subject lists in that configuration, outside the reusable skill.
 
+## Resolve the maintained files
+
+Check whether the configured Hub names maintained subject MDs. Existing authority
+files without required upkeep are a configuration gap, even when the queue is
+empty. Read those files and register them in place through the supported adapter;
+do not create another summary merely to fit an export folder. Keep formal record
+writes on their required writer path.
+
+When a subject has durable sources but no useful MD, reconcile the source into a
+substantive client or workstream file and register it before reporting the work
+finished. Keep historical research separate from evidence of the owner's role.
+An empty folder or a media collection does not need an invented project story.
+
 ## Capture and reconcile
 
 1. Preserve the dated source and classify its supported claims. Read the existing
