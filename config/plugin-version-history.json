@@ -285,10 +285,6 @@
       "content_sha256": "376f351c4fb3fbacf20659eb4356b091b0b3b4ead5553148e1881baa968cee34",
       "note": "Refresh maintained subject Markdown after accepted findings and confirm saved content and retrieval through the configured Hub adapter."
     },
-    "0.4.71": {
-      "content_sha256": "93e2e7c6bfab1fc578bfb4fa68a48871d11844e0a5f5a54ae96b06a8de57287f",
-      "note": "Resolve missing subject upkeep before closing knowledge work; maintain existing owning MDs and distinguish historical research from personal work."
-    },
     "0.4.72": {
       "content_sha256": "9904244c659d498a239c0b58d00fe9cfe4031186f07c8c34328a24275be35777",
       "note": "Require useful maintained MDs when a subject has sources; register existing owners in place, preserve historical attribution and expose missing upkeep."
