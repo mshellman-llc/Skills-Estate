@@ -1,6 +1,6 @@
 ---
 name: load-project-context
-description: Start or resume knowledge-hub work from current hub context and subject authorities. Use when the user asks to get oriented, resume a project, or use her current context. Route career drafting to prepare-job-application; do not run a whole-drive audit for an ordinary task.
+description: Start or resume knowledge-hub work from current hub context and subject authorities. Use at the start of ordinary client or project work, including new meeting notes, uploaded sources and implementation findings, as well as requests to get oriented or resume. Route career drafting to prepare-job-application; do not run a whole-drive audit for an ordinary task.
 metadata:
   version: "2026.09.30.2"
 ---

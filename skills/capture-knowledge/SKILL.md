@@ -1,6 +1,6 @@
 ---
 name: capture-knowledge
-description: Save a knowledge-hub decision, discovery, or factual correction with evidence and review state. Use when the user says remember this, correct the hub, or capture a decision. Do not treat brainstorming as confirmed fact or claim a proposal is accepted.
+description: Save a knowledge-hub decision, discovery, or factual correction with evidence and review state. Use during normal client work when new findings, corrections, decisions, outcomes or work status need durable capture, including when the user does not say remember or update the Hub. Do not treat brainstorming as confirmed fact or claim a proposal is accepted.
 metadata:
   version: "2026.09.30.2"
 ---
