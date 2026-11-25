@@ -288,6 +288,10 @@
     "0.4.72": {
       "content_sha256": "9904244c659d498a239c0b58d00fe9cfe4031186f07c8c34328a24275be35777",
       "note": "Require useful maintained MDs when a subject has sources; register existing owners in place, preserve historical attribution and expose missing upkeep."
+    },
+    "0.4.73": {
+      "content_sha256": "f570fe4b90be79731742a41257428b7665205026464eff38b02dc678fbfc3310",
+      "note": "Make durable client knowledge upkeep part of normal work, including meeting findings and chat-only changes, with explicit read-only handling."
     }
   },
   "source_conflicts": [
