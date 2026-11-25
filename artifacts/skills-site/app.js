@@ -38,15 +38,15 @@
     try { if (navigator.clipboard) return navigator.clipboard.writeText(text).catch(function () {}); } catch (e) {}
   }
 
-  // Route: #skill-<id>, #workflow-<id>, #plugin-<id>, #family-<id>, #workflows, #plugins (plain names pass through the claude.ai frame).
+  // Route: #skill-<id>, #workflow-<id>[-step-<n>], #plugin-<id>, #family-<id>, #workflows or #journeys, #plugins (plain names pass through the claude.ai frame).
   function parse() {
     var x = decodeURIComponent(location.hash.replace(/^#/, ''));
     var m = /^(skill|workflow|plugin|family)[\/-](.+)$/.exec(x);
     if (m && m[1] === 'skill' && SK[m[2]]) return { view: 'skills', sel: m[2] };
-    if (m && m[1] === 'workflow' && WF[m[2]]) return { view: 'workflows', wsel: m[2] };
+    if (m && m[1] === 'workflow') { var ws = /^(.+?)-step-(\d+)$/.exec(m[2]); if (ws && WF[ws[1]]) return { view: 'workflows', wsel: ws[1], step: Math.min(Math.max(+ws[2] - 1, 0), WF[ws[1]].steps.length - 1) }; if (WF[m[2]]) return { view: 'workflows', wsel: m[2] }; }
     if (m && m[1] === 'plugin' && PL[m[2]]) return { view: 'plugins', psel: m[2] };
     if (m && m[1] === 'family' && FAM[m[2]]) return { view: 'skills', family: m[2] };
-    if (x === 'workflows') return { view: 'workflows' };
+    if (x === 'workflows' || x === 'journeys') return { view: 'workflows' };
     if (x === 'plugins') return { view: 'plugins' };
     if (x === 'skills') return { view: 'skills' };
     return { view: 'home' };
@@ -93,7 +93,7 @@
         s.modes ? row('Its modes', h(Links, { ids: s.modes, kind: 'skill', go: go })) : null,
         s.usedBy ? row('Ships inside', h(Links, { ids: s.usedBy, kind: 'skill', go: go })) : null,
         s.uses ? row('Draws on', h(Links, { ids: s.uses, kind: 'skill', go: go })) : null,
-        usedIn[s.id] ? row('In workflows', h(Links, { ids: usedIn[s.id], kind: 'workflow', go: go })) : null,
+        usedIn[s.id] ? row('In journeys', h(Links, { ids: usedIn[s.id], kind: 'workflow', go: go })) : null,
         s.examples ? row('Recorded examples', plural(s.examples, 'run', 'runs') + ' in the repository') : null])
     ].filter(Boolean);
     return h(L.DetailPanel, { kicker: FAM[s.family].title, title: s.title, subtitle: s.what, sections: sections },
@@ -102,31 +102,75 @@
           h(L.Button, { variant: 'ghost', size: 'sm', icon: 'send', onClick: function () { copy((D.pageUrl && D.pageUrl.charAt(0) === '/' ? location.origin + D.pageUrl : D.pageUrl || location.href.split('#')[0]) + '#skill-' + s.id); p.toast('Link to ' + s.title + ' copied'); } }, 'Copy link'))));
   }
 
-  function StepSeq(p) {
-    var ref = useRef(null), w = WF[p.id];
-    useEffect(function () { if (window.LLCInteractions) window.LLCInteractions.init(ref.current); }, [p.id]);
-    var n = w.steps.length;
-    var marks = [];
-    w.steps.forEach(function (st, i) { if (i) marks.push(h('u', { key: 'u' + i })); marks.push(h('span', { key: 'n' + i, className: 'ix-nm' + (i === 0 ? ' is-on' : '') }, i + 1)); });
-    return h('div', { className: 'ix se-steps', ref: ref }, h('div', { className: 'ix-card ix-x' }, h('div', { className: 'ix-stp', style: { display: 'grid', gap: '14px' } },
-      h('div', { className: 'ix-st' }, marks),
-      h('div', { className: 'ix-well ix-st-v' }, w.steps.map(function (st, i) {
-        var s = SK[st.skill];
-        return h('div', { key: i, className: i === 0 ? 'is-on' : '' }, h('small', null, 'Step ' + (i + 1) + ' of ' + n), h('strong', null, s.title), h('p', null, st.why),
-          cmd(s) ? h('small', null, cmd(s)) : null,
-          h('span', { className: 'se-links' }, h('button', { type: 'button', className: 'se-link', onClick: function () { p.go('skill', s.id); } }, 'Open ' + s.title)));
-      })),
-      h('div', { className: 'ix-st-n' }, h('button', { className: 'ix-pillbtn', 'data-d': '-1', disabled: true }, 'Back'), h('button', { className: 'ix-pillbtn is-on', 'data-d': '1' }, 'Next')))));
+  // A journey runs skills in order. The map shows every step side by side; the open step shows what it needs,
+  // what it produces and what it hands to the next step. #workflow-<id>-step-<n> opens a step directly.
+  function JourneyMap(p) {
+    var w = WF[p.id], n = w.steps.length;
+    return h('div', { className: 'ix se-jmap', style: { '--n': n } }, h('ol', { className: 'se-jmap-list', 'aria-label': w.title + ': steps in order' }, w.steps.map(function (st, i) {
+      var s = SK[st.skill], on = i === p.step;
+      return h('li', { key: i, className: (on ? 'is-on' : '') + (i < p.step ? ' is-done' : '') },
+        h('button', { type: 'button', className: 'se-jmap-step', 'aria-current': on ? 'step' : undefined, 'aria-controls': 'se-jstep', onClick: function () { p.pick(i); } },
+          h('span', { className: 'se-jmap-mark' }, h('span', { className: 'ix-nm' + (i <= p.step ? ' is-on' : '') }, i + 1), i < n - 1 ? h('u', { 'aria-hidden': true }) : null),
+          h('small', null, 'Step ' + (i + 1) + ' of ' + n),
+          h('strong', null, s.title),
+          h('span', { className: 'se-jmap-why' }, st.why),
+          h('span', { className: 'se-jmap-hand' }, i < n - 1 ? 'Hands off to step ' + (i + 2) : 'Gives the journey result')));
+    })));
+  }
+
+  function JourneyStep(p) {
+    var w = WF[p.id], n = w.steps.length, i = p.step, st = w.steps[i], s = SK[st.skill], next = w.steps[i + 1], go = p.go;
+    var c = cmd(s), parent = s.modeOf && SK[s.modeOf[0]];
+    var sections = [
+      section('This step', [row('Start with', s.inputs), row('You get', s.outputs)]),
+      !D.publicMap && section('Ask Claude', [s.example ? row('Example request', h(CodeBlock, { text: s.example, prompt: true })) : null,
+        c ? row('Run it by name', h(CodeBlock, { text: c })) : parent && parent.plugin ? row('Run it by name', h(R.Fragment, null, h(CodeBlock, { text: cmd(parent) }), h('span', null, 'Runs through ' + parent.title + (s.modeName ? '. Ask for the ' + s.modeName + '.' : '.')))) : null]),
+      section('How it works', [row('What it does', s.overview), row('If something is missing', s.missing), row('Requires', s.requires),
+        s.needs ? row('Needs', Names(s.needs, go)) : null, s.optional ? row('Works with', Names(s.optional, go)) : null])
+    ].filter(Boolean);
+    return h('div', { id: 'se-jstep', className: 'se-jstep', role: 'region', 'aria-label': 'Step ' + (i + 1) + ': ' + s.title },
+      h(L.DetailPanel, { kicker: 'Step ' + (i + 1) + ' of ' + n + (s.plugin && !D.publicMap ? ' · ' + s.plugin : ''), title: s.title, subtitle: st.why, sections: sections },
+        h('div', { className: 'se-actions' },
+          next ? h(L.Callout, { title: 'Then step ' + (i + 2) + ': ' + SK[next.skill].title, icon: 'chevron-right' }, next.why)
+            : h(L.Callout, { title: 'Journey result', icon: 'check' }, w.outcome),
+          h('div', { className: 'se-row' },
+            h(L.Button, { variant: 'secondary', size: 'sm', disabled: i === 0, onClick: function () { p.pick(i - 1); } }, 'Back'),
+            next ? h(L.Button, { variant: 'primary', size: 'sm', onClick: function () { p.pick(i + 1); } }, 'Next step') : null,
+            h(L.Button, { variant: 'ghost', size: 'sm', onClick: function () { go('skill', s.id); } }, 'Open ' + s.title + ' in Skills')))));
   }
 
   function WorkflowDetail(p) {
-    var w = WF[p.id];
-    var plugins = []; w.steps.forEach(function (st) { var pl = SK[st.skill].plugin || (SK[st.skill].modeOf && SK[SK[st.skill].modeOf[0]].plugin); if (pl && plugins.indexOf(pl) < 0) plugins.push(pl); });
-    return h(L.DetailPanel, { kicker: w.kind, title: w.title, subtitle: w.desc, sections: [
-      section('Ask Claude', [row('Request to paste', h(CodeBlock, { text: w.prompt, prompt: true }))]),
-      section('Skills', [row('Run them in this order', h(StepSeq, { key: w.id, id: w.id, go: p.go }))]),
-      section('Bring', [row('Start with', w.inputs), row('You get', w.outcome), row('Note', w.note),
-        !D.publicMap && plugins.length ? row('Install', h(Links, { ids: plugins, kind: 'plugin', go: p.go })) : null])].filter(Boolean) });
+    var w = WF[p.id], n = D.workflows.length, at = D.workflows.indexOf(w);
+    var start = parse().step;
+    var st = useState(start == null ? 0 : start), step = st[0];
+    var ref = useRef(null);
+    useEffect(function () {
+      function on() { var r = parse(); if (r.wsel === p.id) st[1](r.step == null ? 0 : r.step); }
+      addEventListener('hashchange', on);
+      return function () { removeEventListener('hashchange', on); };
+    }, [p.id]);
+    function pick(i) {
+      if (i < 0 || i >= w.steps.length) return;
+      st[1](i); p.stepHash('workflow-' + w.id + (i ? '-step-' + (i + 1) : ''));
+      setTimeout(function () {
+        var el = ref.current && ref.current.querySelector('.se-jstep'); if (!el) return;
+        var r = el.getBoundingClientRect(); if (r.top < 0 || r.top > innerHeight * 0.6) el.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }, 30);
+    }
+    var plugins = []; w.steps.forEach(function (x) { var pl = SK[x.skill].plugin || (SK[x.skill].modeOf && SK[SK[x.skill].modeOf[0]].plugin); if (pl && plugins.indexOf(pl) < 0) plugins.push(pl); });
+    var prev = D.workflows[(at - 1 + n) % n], nextJ = D.workflows[(at + 1) % n];
+    return h('div', { ref: ref, className: 'se-journey' },
+      h(L.DetailPanel, { kicker: w.kind + ' · ' + plural(w.steps.length, 'step', 'steps'), title: w.title, subtitle: w.desc, sections: [
+        section('Ask Claude', [row('Request to paste', h(CodeBlock, { text: w.prompt, prompt: true }))]),
+        section('Bring', [row('Start with', w.inputs), row('You get', w.outcome), row('Note', w.note),
+          !D.publicMap && plugins.length ? row('Install', h(Links, { ids: plugins, kind: 'plugin', go: p.go })) : null])].filter(Boolean) },
+        h('div', { className: 'se-jbody' },
+          h('h4', { className: 'se-jlabel' }, 'Journey map'),
+          h(JourneyMap, { id: w.id, step: step, pick: pick }),
+          h(JourneyStep, { key: step, id: w.id, step: step, pick: pick, go: p.go }),
+          n > 1 ? h('div', { className: 'se-jnext' },
+            h(L.Button, { variant: 'ghost', size: 'sm', onClick: function () { p.go('workflow', prev.id); } }, 'Previous: ' + prev.title),
+            h(L.Button, { variant: 'secondary', size: 'sm', onClick: function () { p.go('workflow', nextJ.id); } }, 'Next journey: ' + nextJ.title)) : null)));
   }
 
   function PluginDetail(p) {
@@ -160,6 +204,8 @@
 
     function say(t) { s_toast[1](t); clearTimeout(say.t); say.t = setTimeout(function () { s_toast[1](null); }, 1800); }
     function notifyHost() { if (parent !== window && D.pageUrl) parent.postMessage({ type: 'skills-site-hash', hash: location.hash }, location.origin); }
+    // A step change replaces the address instead of adding history; phones skip telling the host, which would scroll the page.
+    function stepHash(x) { try { history.replaceState(null, '', '#' + x); } catch (e) {} if (!matchMedia('(max-width: 767px)').matches) notifyHost(); }
     function setHash(x) { if (x) { if (location.hash !== '#' + x) location.hash = x; } else if (location.hash) history.replaceState(null, '', location.pathname + location.search); notifyHost(); }
 
     function go(kind, id) {
@@ -245,7 +291,7 @@
       tableProps.selected = sel;
     } else if (view === 'workflows') {
       var kinds = []; D.workflows.forEach(function (w) { if (kinds.indexOf(w.kind) < 0) kinds.push(w.kind); });
-      tableProps = { columns: [{ key: 'name', label: 'Workflow' }, { key: 'n', label: 'Skills', numeric: true, width: '84px' }],
+      tableProps = { columns: [{ key: 'name', label: 'Journey' }, { key: 'n', label: 'Steps', numeric: true, width: '84px' }],
         groups: kinds.map(function (k) { return { label: k, rows: wvisible.filter(function (w) { return w.kind === k; }).map(function (w) { return { id: w.id, name: w.title, sub: w.desc, n: w.steps.length }; }) }; }).filter(function (g) { return g.rows.length; }), selected: wsel };
     } else {
       tableProps = { columns: [{ key: 'name', label: 'Plugin' }, { key: 'n', label: 'Skills', numeric: true, width: '84px' }],
@@ -262,7 +308,7 @@
       go(view === 'skills' ? 'skill' : view === 'workflows' ? 'workflow' : 'plugin', id);
     }
 
-    var count = view === 'skills' ? visible.length + ' of ' + D.skills.length + ' skills' : view === 'workflows' ? wvisible.length + ' of ' + D.workflows.length + ' workflows' : D.plugins.length + ' plugins';
+    var count = view === 'skills' ? visible.length + ' of ' + D.skills.length + ' skills' : view === 'workflows' ? wvisible.length + ' of ' + D.workflows.length + ' journeys' : D.plugins.length + ' plugins';
     var anySet = q || kind !== 'all' || plugin || (view === 'skills' && family !== 'all') || wkind !== 'all' || (view === 'workflows' && wfam);
 
     function menu(label, items, current, pick) {
@@ -275,7 +321,7 @@
     var tools = h('div', { className: 'se-tools' },
       h('div', { className: 'se-grow', key: 'fb' + resetKey + view, onInput: function (e) { if (e.target.tagName === 'INPUT') s_q[1](e.target.value); },
         onClick: function (e) { if (e.target.closest('.mer-filters-clear')) clearAll(); } },
-        h(L.FilterBar, { search: view === 'skills' ? 'Search skills: discovery, scope, writing' : view === 'workflows' ? 'Search workflows: interviews, release, resume' : undefined, count: count, clearable: !!anySet,
+        h(L.FilterBar, { search: view === 'skills' ? 'Search skills: discovery, scope, writing' : view === 'workflows' ? 'Search journeys: interviews, release, resume' : undefined, count: count, clearable: !!anySet,
           filters: plugin && view === 'skills' ? [{ label: 'Plugin', value: plugin, set: true }] : wfam && view === 'workflows' ? [{ label: 'Family', value: FAM[wfam].title, set: true }] : [] })),
       view === 'skills' ? menu('Kind', KINDS.map(function (k) { return [k[0], k[1], k[0] === 'task' ? 'Install one and ask for it' : k[0] === 'mode' ? 'Runs inside another skill' : k[0] === 'support' ? 'Ships inside task packages' : '']; }),
         KINDS.filter(function (k) { return k[0] === kind; })[0][1], function (v) { s_kind[1](v); }) : null,
@@ -285,11 +331,11 @@
 
     var detailId = view === 'skills' ? sel : view === 'workflows' ? wsel : psel;
     var detail = detailId
-      ? (view === 'skills' ? h(SkillDetail, { key: detailId, id: detailId, go: go, toast: say }) : view === 'workflows' ? h(WorkflowDetail, { key: detailId, id: detailId, go: go }) : h(PluginDetail, { key: detailId, id: detailId, go: go, showPlugin: showPlugin }))
+      ? (view === 'skills' ? h(SkillDetail, { key: detailId, id: detailId, go: go, toast: say }) : view === 'workflows' ? h(WorkflowDetail, { key: detailId, id: detailId, go: go, stepHash: stepHash }) : h(PluginDetail, { key: detailId, id: detailId, go: go, showPlugin: showPlugin }))
       : null;
 
     var list = (view === 'skills' && !visible.length) || (view === 'workflows' && !wvisible.length)
-      ? h(L.EmptyState, { title: view === 'skills' ? 'No skills match' : 'No workflows match', action: h(L.Button, { variant: 'secondary', size: 'sm', onClick: clearAll }, 'Clear filters') }, 'Try fewer words, or clear the filters to see the whole list.')
+      ? h(L.EmptyState, { title: view === 'skills' ? 'No skills match' : 'No journeys match', action: h(L.Button, { variant: 'secondary', size: 'sm', onClick: clearAll }, 'Clear filters') }, 'Try fewer words, or clear the filters to see the whole list.')
       : h('div', { className: 'se-list', onClick: onTable, onKeyDown: onTable }, chunks().map(function (c, i) {
           return c.detail ? h('div', { key: 'detail', className: 'se-inline', role: 'region', 'aria-label': 'Details' }, h('div', { className: 'se-inline-close' }, h(L.IconButton, { icon: 'close', label: 'Close details', size: 'sm', onClick: closeDetail })), c.detail)
             : h('div', { key: i, className: 'se-chunk' + (c.split ? ' is-split' : '') }, h(L.DataTable, Object.assign({ key: view + order + i + (c.sel || '') + small, columns: tableProps.columns, selectable: true, selected: c.sel }, c.groups ? { groups: c.groups } : c.group ? { groups: [c.group] } : { rows: c.rows })));
@@ -313,31 +359,31 @@
     var heads = {
       home: ['Skills Estate', D.publicMap ? D.skills.length + ' skills published for this site. Pick a family or a kind of skill to see its list.' : D.skills.length + ' skills for sales pursuits, scoping, delivery, Salesforce development, product work, writing and job applications, installed as ' + word(D.plugins.length) + ' plugins from one marketplace. Pick a kind of skill or a family to see its list.'],
       skills: ['Find the skill for a job', family !== 'all' ? FAM[family].title + ': ' + plural(famCount[family] || 0, 'skill', 'skills') + '. ' + FAM[family].desc : D.skills.length + ' skills, sorted by the work they do and installed as ' + word(D.plugins.length) + ' plugins. Search by the job in plain words, or pick a family.'],
-      workflows: ['Run skills in order for a job', 'Each workflow names what to bring, the request to paste into Claude and the skills that run. Run only the steps your work needs.'],
+      workflows: ['Run skills in order for a job', 'Each journey names what to bring, the request to paste into Claude and the skills that run, one step at a time. Open a step to see what it needs and what it hands to the next one.'],
       plugins: D.publicMap ? ['Plugins', 'Browse the skills in each plugin.'] : ['Install the plugins', 'Skills install in ' + word(D.plugins.length) + ' plugins from the Skills Estate marketplace. Install a plugin, then ask for the work in plain words or run its command. In Codex on a Mac, python3 tools/estate.py update installs them from a Skills Estate checkout.']
     };
 
-    var viewLabel = { home: 'Overview', skills: 'Skills', workflows: 'Workflows', plugins: 'Plugins' };
+    var viewLabel = { home: 'Overview', skills: 'Skills', workflows: 'Journeys', plugins: 'Plugins' };
     var crumbs = view === 'home' ? ['Skills Estate'] : ['Skills Estate', viewLabel[view]]; if (view === 'skills' && family !== 'all') crumbs.push(FAM[family].title);
 
     var sidebar = h('div', { onClick: function (e) {
       var a = e.target.closest('a'); if (!a) return; e.preventDefault();
       var t = a.querySelector('span').textContent;
-      if (t === 'Overview') { clearAll(); setView('home'); } else if (t === 'Skills') setFamily('all'); else if (t === 'Workflows') setView('workflows'); else if (t === 'Plugins') setView('plugins');
+      if (t === 'Overview') { clearAll(); setView('home'); } else if (t === 'Skills') setFamily('all'); else if (t === 'Journeys') setView('workflows'); else if (t === 'Plugins') setView('plugins');
       else if (t === 'All skills') setFamily('all'); else D.families.forEach(function (f) { if (f.title === t) setFamily(f.id); });
     }, style: { display: 'contents' } }, h(L.Sidebar, { groups: [
-      { items: [{ label: 'Overview', current: view === 'home' }, { label: 'Skills', count: D.skills.length, current: view === 'skills' }, { label: 'Workflows', count: D.workflows.length, current: view === 'workflows' }, { label: 'Plugins', count: D.plugins.length, current: view === 'plugins' }] },
+      { items: [{ label: 'Overview', current: view === 'home' }, { label: 'Skills', count: D.skills.length, current: view === 'skills' }, { label: 'Journeys', count: D.workflows.length, current: view === 'workflows' }, { label: 'Plugins', count: D.plugins.length, current: view === 'plugins' }] },
       { label: 'Families', items: [{ label: 'All skills', count: D.skills.length, current: view === 'skills' && family === 'all' }].concat(D.families.map(function (f) { return { label: f.title, count: famCount[f.id] || 0, current: view === 'skills' && family === f.id }; })) }] }));
 
     var mobile = view === 'home' ? null : h('div', { className: 'se-mobile' },
-      h('div', { key: 'seg' + view, onClick: function (e) { var b = e.target.closest('button'); if (b) setView(b.textContent.toLowerCase()); } }, h(L.Segmented, { items: ['Skills', 'Workflows', 'Plugins'], defaultValue: viewLabel[view], label: 'View' })),
+      h('div', { key: 'seg' + view, onClick: function (e) { var b = e.target.closest('button'); if (b) setView(b.textContent === 'Journeys' ? 'workflows' : b.textContent.toLowerCase()); } }, h(L.Segmented, { items: ['Skills', 'Journeys', 'Plugins'], defaultValue: viewLabel[view], label: 'View' })),
       view === 'skills' ? h('div', { key: 'fam' + family, onChange: function (e) { var i = e.target.selectedIndex; setFamily(i === 0 ? 'all' : D.families[i - 1].id); } },
         h(L.Field, { label: 'Family', as: 'select', options: ['All families (' + D.skills.length + ')'].concat(D.families.map(function (f) { return f.title + ' (' + (famCount[f.id] || 0) + ')'; })),
           defaultValue: family === 'all' ? 'All families (' + D.skills.length + ')' : FAM[family].title + ' (' + famCount[family] + ')' })) : null);
 
-    // The headline facts are filters: a kind narrows the skill list (press again to clear), Workflows opens that view.
+    // The headline facts are filters: a kind narrows the skill list (press again to clear), Journeys opens that view.
     var FACT_KIND = { 'Task packages': 'task', 'Task modes': 'mode', 'Supporting modules': 'support' };
-    // On a family, the facts count that family's skills and the workflows that use them.
+    // On a family, the facts count that family's skills and the journeys that use them.
     var scopeFam = view === 'skills' ? (family !== 'all' ? family : null) : view === 'workflows' ? wfam : null, inFamily = !!scopeFam;
     function scopeCount(k) { return D.skills.filter(function (s) { return s.kind === k && (!inFamily || s.family === scopeFam); }).length; }
     var scopeWorkflows = D.workflows.filter(function (w) { return !inFamily || w.steps.some(function (st) { return SK[st.skill].family === scopeFam; }); }).length;
@@ -345,7 +391,7 @@
       var f = e.target.closest('.mer-fact'); if (!f || f.getAttribute('aria-disabled') === 'true') return;
       if (e.type === 'keydown') { if (e.key !== 'Enter' && e.key !== ' ') return; e.preventDefault(); }
       var t = f.querySelector('dt').textContent;
-      if (t === 'Workflows') { if (view === 'workflows') return; s_wfam[1](scopeFam); setView('workflows', true); return; }
+      if (t === 'Journeys') { if (view === 'workflows') return; s_wfam[1](scopeFam); setView('workflows', true); return; }
       var k = FACT_KIND[t]; if (!k) return;
       if (view === 'skills' && kind === k) s_kind[1]('all'); else { s_kind[1](k); if (view !== 'skills') { s_fam[1](scopeFam || 'all'); s_view[1]('skills'); s_sheet[1](false); setHash(scopeFam ? 'family-' + scopeFam : 'skills'); window.scrollTo(0, 0); } }
     }
@@ -353,7 +399,7 @@
       { label: 'Task packages', value: scopeCount('task'), note: 'Install one and ask for it directly' },
       { label: 'Task modes', value: scopeCount('mode'), note: 'Run inside another skill' },
       { label: 'Supporting modules', value: scopeCount('support'), note: 'Ship inside the packages that use them' },
-      { label: 'Workflows', value: scopeWorkflows, note: inFamily ? 'Workflows that use these skills' : 'Skills matched to a job, in order' }] })) : null;
+      { label: 'Journeys', value: scopeWorkflows, note: inFamily ? 'Journeys that use these skills' : 'Skills run in order for one job' }] })) : null;
 
     var familyGrid = view === 'home' ? h('section', { className: 'se-fams', 'aria-label': 'Families' }, h('h2', null, 'Families'),
       h('div', { className: 'se-grid' }, D.families.map(function (f) {

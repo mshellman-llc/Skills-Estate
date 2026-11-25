@@ -158,3 +158,37 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 #root .se-list .mer-table thead th:last-child { padding-right: 16px; }
 @media (min-width: 901px) { .se-body > .mer-callout { padding-right: 200px; } }
 #root .se-list .mer-table-wrap { overflow: visible; }
+/* Journeys: the map lays every step side by side; the open step's panel sits under it. */
+.se-jbody { display: grid; gap: var(--space-4); padding: var(--space-4) 20px 0; }
+.se-jlabel { margin: 0; color: var(--on-surface-variant); font-size: 12px; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; }
+.se-jmap { background: none; }
+.se-jmap-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--space-3); }
+.se-jmap-list > li { min-width: 0; }
+.se-jmap-step { all: unset; box-sizing: border-box; display: grid; gap: 6px; align-content: start; width: 100%; height: 100%; padding: 14px 16px 16px; border: 1px solid var(--outline-variant); border-radius: var(--radius-md); background: var(--surface-raised); color: var(--on-surface-body); cursor: pointer; transition: border-color .15s, background .15s; }
+.se-jmap-step:hover { border-color: var(--on-surface-variant); }
+.se-jmap-step:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.is-on > .se-jmap-step { border-color: var(--on-surface); background: var(--hover); }
+.se-jmap-mark { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.se-jmap-mark u { flex: 1; height: 2px; margin-right: -30px; background: var(--outline-variant); text-decoration: none; }
+.is-done .se-jmap-mark u { background: var(--on-surface-variant); }
+.se-jmap-step small { color: var(--on-surface-variant); font-size: 12px; }
+.se-jmap-step strong { color: var(--on-surface); font-size: 14.5px; line-height: 20px; font-weight: 600; }
+.se-jmap-why { font-size: 13px; line-height: 19px; }
+.se-jmap-hand { margin-top: auto; padding-top: 6px; color: var(--on-surface-variant); font-size: 12px; }
+#root .se-jstep .mer-detail { box-shadow: none; }
+#root .se-jstep .mer-detail > .mer-detail-kicker, #root .se-jstep .mer-detail > h3, #root .se-jstep .mer-detail > .mer-detail-sub { background: var(--surface-raised); color: var(--on-surface); }
+#root .se-jstep .mer-detail > .mer-detail-kicker, #root .se-jstep .mer-detail > .mer-detail-sub { color: var(--on-surface-variant); }
+#root .se-jstep .mer-detail > section:first-of-type dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-4); }
+.se-jstep .se-actions .mer-callout { max-width: none; }
+.se-jnext { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--outline-variant); }
+.se-jnext .mer-btn { max-width: 100%; }
+.se-jnext .mer-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 760px) {
+  .se-jmap-list { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .se-jmap-step { grid-template-columns: 30px minmax(0, 1fr); column-gap: 12px; row-gap: 2px; padding: 12px 14px; }
+  .se-jmap-mark { grid-row: 1 / span 4; margin: 0; align-self: start; }
+  .se-jmap-mark u { display: none; }
+  .se-jmap-hand { display: none; }
+  #root .se-jstep .mer-detail > section:first-of-type dl { grid-template-columns: minmax(0, 1fr); }
+  .se-jnext { flex-direction: column; }
+}
