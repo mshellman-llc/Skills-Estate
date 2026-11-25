@@ -159,7 +159,9 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 @media (min-width: 901px) { .se-body > .mer-callout { padding-right: 200px; } }
 #root .se-list .mer-table-wrap { overflow: visible; }
 /* Journeys: the map lays every step side by side; the open step's panel sits under it. */
-.se-jbody { display: grid; gap: var(--space-4); padding: var(--space-4) 20px 0; }
+.se-jbody { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding: var(--space-4) 20px 0; }
+/* Long button labels must not set the panel's width: on a phone they made the map and step panel run past the screen. */
+#root .se-inline .mer-detail > * { min-width: 0; }
 .se-jlabel { margin: 0; color: var(--on-surface-variant); font-size: 12px; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; }
 .se-jmap { background: none; }
 .se-jmap-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--space-3); }
@@ -180,6 +182,8 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 #root .se-jstep .mer-detail > .mer-detail-kicker, #root .se-jstep .mer-detail > .mer-detail-sub { color: var(--on-surface-variant); }
 #root .se-jstep .mer-detail > section:first-of-type dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-4); }
 .se-jstep .se-actions .mer-callout { max-width: none; }
+/* The brand callout draws its signal motif at the bottom right; keep the note's text clear of it. */
+#root .se-jstep .se-actions .mer-callout { padding-right: 200px; }
 .se-jnext { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--outline-variant); }
 .se-jnext .mer-btn { max-width: 100%; }
 .se-jnext .mer-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -191,4 +195,8 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   .se-jmap-hand { display: none; }
   #root .se-jstep .mer-detail > section:first-of-type dl { grid-template-columns: minmax(0, 1fr); }
   .se-jnext { flex-direction: column; }
+  .se-jnext .mer-btn { height: auto; min-height: 32px; padding-block: 6px; justify-content: flex-start; }
+  .se-jnext .mer-btn span { white-space: normal; text-align: left; }
+  #root .se-jstep .se-actions .mer-callout { padding-right: 16px; padding-bottom: 52px; }
+  #root .se-jstep .se-actions .mer-callout::after { width: 150px; height: 60px; bottom: -17px; }
 }
