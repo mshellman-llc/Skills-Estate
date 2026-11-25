@@ -5,6 +5,26 @@ the owner's work, a workstream, findings, decisions or outcomes. Project guidanc
 or the Hub response selects the files and write adapter. Keep private client
 paths and subject lists in that configuration, outside the reusable skill.
 
+## Trigger from the work
+
+Run this procedure when ordinary work adds or changes durable knowledge. Meeting
+findings, a changed requirement, a tested implementation result and a corrected
+work report qualify even when the request names only the immediate deliverable.
+Keep the requested delivery skill as the main workflow; knowledge upkeep is its
+completion step. It does not require a separate user request.
+
+| Normal request | Knowledge work |
+| --- | --- |
+| Explain what changed in this client standup. | Capture supported changes and reconcile the affected workstream, owner-work and findings MDs. |
+| Refine these requirements using the new interview. | Keep the requirements workflow, then reconcile changed business rules and findings into their existing owners. |
+| The integration test passed; update the delivery report. | Retain the test's scope and result, update the delivery and outcome context, and preserve earlier failed attempts as history. |
+| Find the last agreed scope. | Retrieve the current authority. With no new finding, keep the MDs and dates unchanged. |
+| Fix the formatting in this brief. | Keep its facts intact. Record that presentation changed without adding subject knowledge. |
+
+Read-only retrieval does not authorize a new business fact. A proposal stays a
+proposal, a test result retains its environment and a historical source keeps its
+effective date. Never manufacture a change to demonstrate the trigger.
+
 ## Resolve the maintained files
 
 Check whether the configured Hub names maintained subject MDs. Existing authority

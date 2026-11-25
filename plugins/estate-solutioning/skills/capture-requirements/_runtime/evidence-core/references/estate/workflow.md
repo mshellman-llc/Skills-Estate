@@ -14,6 +14,34 @@ Restore the audience’s actual purpose across copy, titles, diagrams, UI and in
 
 Before delivery, compare the finished content against the source and request, compute any totals, inspect the rendered result through its DOM and page text when layout matters, and verify the destination when a write was requested. State the actual layer reached: prepared locally, installed, committed, pushed, published, or verified in the destination.
 
+## Keep client knowledge current during normal work
+
+Client knowledge upkeep is part of the requested work. Trigger it when a meeting,
+message, uploaded file, tracker change, implementation result or user correction
+adds or changes durable client knowledge. The user does not need to ask to save
+knowledge or clean up the Hub. This applies to every configured client; no client
+name or private path belongs in the reusable workflow.
+
+At the start, resolve the client and engagement through the configured Hub and
+read its owning Markdown. Use `manage-consulting-knowledge` and its maintained
+context procedure when available. If it is not available, apply the same steps
+through the supported adapter: preserve the dated source, capture the finding,
+reconcile the affected existing MDs, read them back, confirm their refresh and
+check retrieval. A captured fact, source file, deliverable or session note alone
+does not finish that work. Do not wait for a later cleanup task.
+
+Check client context, the owner's work, workstreams, findings and outcomes for
+claims the new evidence changes. Keep filenames stable, retain dated history
+where it explains a changed answer, and advance only affected evidence dates.
+Register existing useful owners when upkeep is missing. Use the required writer
+for formal records; a blocked record stays pending with its next action.
+
+Before closing, resolve pending intake and MD refreshes. A read-only lookup,
+formatting change or repeated source may change no durable knowledge; record the
+specific reason and leave the MD bodies and evidence dates intact. Never invent
+a finding or bump a date to satisfy a gate. Report the saved MDs and the actual
+completion state. A drive scanner detects files; it does not synthesize meetings.
+
 ## Choose visuals and interactions for the reader's task
 
 When the user asks for visuals or interactive elements, identify the question to explain, comparison to make, response to rehearse, information to find or decision to support. Choose the representation from that task and the source material before choosing a layout. A system map can show ownership and exchanges; a process view can show sequence, handoffs and exceptions; a comparison can show what changes between options; a rehearsal view can hide an answer until the reader attempts it. These are examples, not required sections.

@@ -1,6 +1,6 @@
 ---
 name: manage-consulting-knowledge
-description: 'Resolve, retrieve, and safely update durable consulting knowledge across a client, its opportunities, and its engagements, and stand up or check the pursuit workspace inside the hub. Use when work needs bounded account, pursuit, delivery, evidence, transcript, outcome, or deliverable context from local files, Google Drive, or supplied files, or when an existing client Markdown set needs new findings reconciled, or a pursuit needs its workspace created, audited, repaired, or gated against the workspace standards.'
+description: 'Resolve, retrieve, and safely update durable consulting knowledge across a client, its opportunities, and its engagements, and stand up or check the pursuit workspace inside the hub. Use when work needs bounded account, pursuit, delivery, evidence, transcript, outcome, or deliverable context from local files, Google Drive, or supplied files, or when ordinary client work introduces a finding, correction, decision, implementation result or changed work status that must update existing Markdown without a separate cleanup request, or a pursuit needs its workspace created, audited, repaired, or gated against the workspace standards.'
 ---
 
 Run this module's relative commands from the directory containing this WORKFLOW.md. Resolve that directory to an absolute path first. A command that explicitly names another working directory keeps that requirement. This file is a supporting workflow, not another installed skill entrypoint.

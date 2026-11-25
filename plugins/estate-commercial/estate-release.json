@@ -21,7 +21,7 @@
   ],
   "review_gaps": [
     {
-      "required_sha256": "168b6054c7cef06e3222c1f459bf3e568f1461a37f44f8f660224e265014b946",
+      "required_sha256": "9c8e2e64f03cc9c636cda1de146d1c31effd15e93ee7af4b109d853c62707131",
       "status": "review required",
       "subject": "shared assembly"
     },
@@ -156,7 +156,7 @@
       "subject": "build-roadmap"
     },
     {
-      "required_sha256": "89679db93ae0e46baed2fe7e618c9dcee2772586993a4dafb83736fec47585bd",
+      "required_sha256": "b58ce33eddb529c9e0667487072b728ed20b1832c2ccb86cf755d609e69be7bc",
       "status": "review required",
       "subject": "capture-knowledge"
     },
@@ -271,7 +271,7 @@
       "subject": "lay-out-sticker-sheets"
     },
     {
-      "required_sha256": "ffa1c2cd47c48251fb97c48a4393a8a7a711d71dad086970ccfa3f4ec861655b",
+      "required_sha256": "5931a6d4951dc84e19c348c761cfef54bb7ee3b1b2bddc9f18d1cb10e24cd0ba",
       "status": "review required",
       "subject": "load-project-context"
     },
@@ -296,7 +296,7 @@
       "subject": "manage-color-system"
     },
     {
-      "required_sha256": "faddbb787d7cc4ffa35799bd215291107a2fdcbe348aea55d4c1fe84a7986396",
+      "required_sha256": "3036da6e934a7781e0f618bdc3918fa4ed89edd991e9741eff13719fbadffd6a",
       "status": "review required",
       "subject": "manage-consulting-knowledge"
     },
@@ -536,6 +536,6 @@
       "subject": "writing-diagnostics"
     }
   ],
-  "source_sha256": "0282b54dfb2618f999d756b6e3fd6436b379da2e3185d9d8d54915c5f12e3d10",
+  "source_sha256": "0afd23207d295b248396232fb384da87f3d419f31f1793823fb1e611a4f62d8a",
   "status": "owner-published"
 }
